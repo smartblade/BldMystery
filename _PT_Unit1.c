@@ -4,62 +4,89 @@
 #include <stdio.h>
 #include <assert.h>
 #include "application.h"
+#include "BBLibc.h"
+#include "bld_ext_funcs.h"
 #pragma hdrstop
 
 //---------------------------------------------------------------------------
 
-typedef void ( *FuncMarkLevelToLoad)(char *);
-
-typedef void (WINAPI *FuncMain)(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow);
-
-void tmp()
-{
-    LPTSTR lpszFunction = "Dialog";
-    LPVOID lpMsgBuf;
-    LPVOID lpDisplayBuf;
-    DWORD dw = GetLastError(); 
-
-    FormatMessage(
-        FORMAT_MESSAGE_ALLOCATE_BUFFER | 
-        FORMAT_MESSAGE_FROM_SYSTEM |
-        FORMAT_MESSAGE_IGNORE_INSERTS,
-        NULL,
-        dw,
-        MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-        (LPTSTR) &lpMsgBuf,
-        0, NULL );
-
-    // Display the error message and exit the process
-
-    lpDisplayBuf = (LPVOID)LocalAlloc(LMEM_ZEROINIT, 
-        (lstrlen((LPCTSTR)lpMsgBuf) + lstrlen((LPCTSTR)lpszFunction) + 40) * sizeof(TCHAR)); 
-    sprintf((LPTSTR)lpDisplayBuf,
-        TEXT("%s failed with error %d: %s"), 
-        lpszFunction, dw, lpMsgBuf); 
-    MessageBox(NULL, (LPCTSTR)lpDisplayBuf, TEXT("Error"), MB_OK);
-
-    LocalFree(lpMsgBuf);
-    LocalFree(lpDisplayBuf);
-    ExitProcess(dw);
-}
-/*0x00401168*/
-/*0x0233E8A1*/
-
-/*0xFE0C28C7*/
 
 /*error 1813: ”казанный тип ресурса в файле образа отсутствует */
 
 
 
-/*thiscall calling convention*/
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0041000A
+*/
+
+void application_load_level(application_t *self, char *map)
+{
+        double timeBefore, timeAfter;
+        BBLibc_name_t mapName;
+        DWORD curTime;
+        static loadLevelCounter = 0;
+
+        curTime = timeGetTime();
+        timeBefore = curTime;
+
+        BBlibc_name_set(&mapName, Unknown005B09A6(map));
+        BBlibc_name_copy(&self->mapName, &mapName);
+        BBlibc_name_clear(&mapName);
+
+        map = self->mapName.string;
+
+        /*
+        TODO MessageManager calls
+        */
+
+        if (loadLevelCounter) {
+                SetCurrentDirectory(BBlibc_format_string("..\\%s", map));
+        } else {
+                SetCurrentDirectory(BBlibc_format_string("..\\Maps\\%s", map));
+        }
+
+        /*
+        TODO MessageManager calls
+        */
+
+        if (*var007C59B8) {
+                (*var007C59B8)[2] = 1;
+                (*var007C59B8)[3] = 1;
+        }
+
+        if (FALSE) {
+                /*
+                TODO Server/client
+                */
+        } else {
+                loadLevelCounter++;
+
+                application_load_level_script(self, "Cfg.py");
+        }
+
+        timeAfter = timeGetTime();
+        BBlibc_format_string("Load Time = %f\n", (timeAfter - timeBefore)/66.0/*TODO check coef*/);
+
+        /*
+        TODO MessageManager calls
+        */
+
+        if (*var007C59B8) {
+                (*var007C59B8)[2] = 0;
+                (*var007C59B8)[3] = 0;
+        }
+}
 
 
+void _thiscall_application_load_level(char *map)
+{
+        application_t *self;
 
-HMODULE blade = NULL;
-void (*LoadNetModule)(char *) = NULL;
-application_t* (*CreateApp)(HINSTANCE hInstance, int nCmdShow, LPSTR lpCmdLine) = NULL;
-void (*Set007E7470To01)(void) = NULL;
-void (*OnEvent)(int a, int b) = NULL;
+        _asm { mov self, ecx}
+
+        application_load_level(self, map);
+}
 
 
 /*
@@ -115,60 +142,41 @@ int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, 
 
 void startup_cb(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-        FuncMain mainF;
-
         if (!blade)
                 return;
 
-        mainF = GetProcAddress(blade, "MarkLevelToLoad");
-
-        mainF = (((char *)mainF) - 0x18A61);
-
         BladeWinMain(blade, hPrevInstance, lpCmdLine, nCmdShow);
-        //mainF(blade, hPrevInstance, lpCmdLine, nCmdShow);
 }
 
 
 #pragma argsused
 WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-        FuncMarkLevelToLoad MarkLevelToLoad;
-        FuncMain mainF;
+        void (*BldStartup)(void *) = NULL;
 
         blade = LoadLibrary("Blade.exe");
-/*if (blade != 0x2330000) {
-char buf[256];
-sprintf(buf, "[%p]\n", blade);
-MessageBox(NULL, buf, TEXT("Error"), MB_OK);
-return 2;
-}*/
+
         if (!blade)
                 return 1;
-
-        /*_asm
-        {
-                call ebp+08
-                or dword ptr [0x007EC70C], 0xFFFFFFFF
-        }*/
 
         LoadNetModule = (void *)((char *)blade + 0x001B57C2);
         CreateApp = (void *)((char *)blade + 0x001B8D30);
         Set007E7470To01 = (void *)((char *)blade + 0x001ABD01);
         OnEvent = (void *)((char *)blade + 0x001AE837);
+        Unknown005B09A6 = (void *)((char *)blade + 0x001B09A6);
+        _thiscall_BBlibc_name_set = (void *)((char *)blade + 0x001B9BA4);
+        _thiscall_BBlibc_name_clear = (void *)((char *)blade + 0x001B9B98);
+        _thiscall_BBlibc_name_copy = (void *)((char *)blade + 0x001B9B9E);
+        BBlibc_format_string = (void *)((char *)blade + 0x001B9BF2);
+        _thiscall_application_load_level_script = (void *)((char *)blade + 0x000131D2);
 
+        var007C59B8 = (void *)((char *)blade + 0x003C59B8);
 
-        MarkLevelToLoad = GetProcAddress(blade, "MarkLevelToLoad");
+        BldStartup = (void *)((char *)blade + 0x001BA062);
 
-        mainF = (((char *)MarkLevelToLoad) - 0x18A61 + 0x1A9460);
-
-        mainF((void *)startup_cb, NULL, NULL, NULL);
-
-
-
-        //MarkLevelToLoad("Casa");
-
+        BldStartup(startup_cb);
 
         return 0;
 }
 //---------------------------------------------------------------------------
- 
+

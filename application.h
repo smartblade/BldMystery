@@ -1,4 +1,11 @@
 
+#ifndef APPLICATION_H
+
+#define APPLICATION_H
+
+
+#include "BBLibc.h"
+
 typedef struct {
         char unknownFields[20];
         int  (*destroy)(int); /*0x005B8E00*/
@@ -15,7 +22,9 @@ typedef struct {
 
 typedef struct {
         application_methods_t *methods;
-        char unknownFields[1976];
+        char unknownFields1[1540];
+        BBLibc_name_t mapName;
+        char unknownFields2[428];
         void *module;
 } application_t;
 
@@ -26,7 +35,10 @@ extern int application_destroy(application_t *self, int a);
 extern int application_start(application_t *self);
 extern void application_wait_for_event(application_t *self);
 extern void application_end(application_t *self);
+extern void application_load_level_script(application_t *self, char *script);
 
 #endif
+
+#endif /* APPLICATION_H */
 
  
