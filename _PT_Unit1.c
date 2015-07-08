@@ -5,6 +5,7 @@
 #include <assert.h>
 #include "application.h"
 #include "BBLibc.h"
+#include "net_data.h"
 #include "bld_ext_funcs.h"
 #pragma hdrstop
 
@@ -22,13 +23,12 @@
 
 void application_load_level(application_t *self, char *map)
 {
+        char buffer[260];
         double timeBefore, timeAfter;
         BBLibc_name_t mapName;
-        DWORD curTime;
         static loadLevelCounter = 0;
 
-        curTime = timeGetTime();
-        timeBefore = curTime;
+        timeBefore = timeGetTime();
 
         BBlibc_name_set(&mapName, Unknown005B09A6(map));
         BBlibc_name_copy(&self->mapName, &mapName);
@@ -36,9 +36,9 @@ void application_load_level(application_t *self, char *map)
 
         map = self->mapName.string;
 
-        /*
-        TODO MessageManager calls
-        */
+        GetCurrentDirectory(sizeof(buffer), buffer);
+        message_manager_print(message_manager, buffer);
+        message_manager_print(message_manager, "\n");
 
         if (loadLevelCounter) {
                 SetCurrentDirectory(BBlibc_format_string("..\\%s", map));
@@ -46,19 +46,22 @@ void application_load_level(application_t *self, char *map)
                 SetCurrentDirectory(BBlibc_format_string("..\\Maps\\%s", map));
         }
 
-        /*
-        TODO MessageManager calls
-        */
+        GetCurrentDirectory(sizeof(buffer), buffer);
+        message_manager_print(message_manager, buffer);
+        message_manager_print(message_manager, "\n");
 
         if (*var007C59B8) {
                 (*var007C59B8)[2] = 1;
                 (*var007C59B8)[3] = 1;
         }
 
-        if (FALSE) {
-                /*
-                TODO Server/client
-                */
+        if (net_data_is_net_game(net_data) & 0xff) {
+                if (net_data_is_server(net_data) & 0xff) {
+                        application_load_level_script(self, "Server.py");
+                        Set007E7470To01();
+                } else {
+                        application_load_level_script(self, "Client.py");
+                }
         } else {
                 loadLevelCounter++;
 
@@ -66,11 +69,12 @@ void application_load_level(application_t *self, char *map)
         }
 
         timeAfter = timeGetTime();
-        BBlibc_format_string("Load Time = %f\n", (timeAfter - timeBefore)/66.0/*TODO check coef*/);
-
-        /*
-        TODO MessageManager calls
-        */
+        message_manager_print(
+                message_manager,
+                BBlibc_format_string(
+                        "Load Time = %f\n", (timeAfter - timeBefore)/1000.0
+                )
+        );
 
         if (*var007C59B8) {
                 (*var007C59B8)[2] = 0;
@@ -169,8 +173,11 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         _thiscall_BBlibc_name_copy = (void *)((char *)blade + 0x001B9B9E);
         BBlibc_format_string = (void *)((char *)blade + 0x001B9BF2);
         _thiscall_application_load_level_script = (void *)((char *)blade + 0x000131D2);
+        message_manager_print = (void *)((char *)blade + 0x001B9BDA);
 
         var007C59B8 = (void *)((char *)blade + 0x003C59B8);
+        msg_manager_ptr = (void *)((char *)blade + 0x001A67B4);
+        net_data_ptr = (void *)((char *)blade + 0x003EAD20);
 
         BldStartup = (void *)((char *)blade + 0x001BA062);
 

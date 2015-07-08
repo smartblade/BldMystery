@@ -2,6 +2,7 @@
 #define BLD_EXT_FUNCS
 #include "application.h"
 #include "BBLibc.h"
+#include "net_data.h"
 #include "bld_ext_funcs.h"
 
 #define DEFINE_METHOD_OF_CLASS_0(class, method, func_name)\
@@ -41,5 +42,8 @@ DEFINE_THISCALL_FUNC_1(application_t, _thiscall_application_load_level_script, a
 DEFINE_THISCALL_FUNC_1(BBLibc_name_t, _thiscall_BBlibc_name_set, BBlibc_name_set)
 DEFINE_THISCALL_FUNC_0(BBLibc_name_t, _thiscall_BBlibc_name_clear, BBlibc_name_clear)
 DEFINE_THISCALL_FUNC_1(BBLibc_name_t, _thiscall_BBlibc_name_copy, BBlibc_name_copy)
+
+DEFINE_METHOD_OF_CLASS_0(net_data_t, is_net_game, net_data_is_net_game)
+DEFINE_METHOD_OF_CLASS_0(net_data_t, is_server, net_data_is_server)
 
 
