@@ -55,8 +55,8 @@ void application_load_level(application_t *self, char *map)
                 (*var007C59B8)[3] = 1;
         }
 
-        if (net_data_is_net_game(net_data) & 0xff) {
-                if (net_data_is_server(net_data) & 0xff) {
+        if (net_data_is_net_game(net_data)) {
+                if (net_data_is_server(net_data)) {
                         application_load_level_script(self, "Server.py");
                         Set007E7470To01();
                 } else {
@@ -112,7 +112,7 @@ int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, 
 
         assert(App);
 
-        if ((application_start(App) & 0xff) == 0)
+        if (application_start(App) == 0)
                 return 0;
 
         Set007E7470To01();

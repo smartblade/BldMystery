@@ -1,5 +1,6 @@
 
 #define BLD_EXT_FUNCS
+#include <windows.h>
 #include "application.h"
 #include "BBLibc.h"
 #include "net_data.h"
