@@ -95,6 +95,44 @@ void _thiscall_application_load_level(char *map)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x005B8D91
+*/
+
+application_t* application_init(
+        application_t *self, void *module, int nCmdShow, char *cmdLine
+) {
+        application_init2(self, module, nCmdShow, cmdLine, NULL);
+        self->methods = application_methods_ptr;
+        return self;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x005B8D30
+*/
+
+
+application_t* CreateApp(void *module, int nCmdShow, char *cmdLine)
+{
+        application_t *new_memory;
+        application_t *new_application;
+
+        new_memory = (application_t *)bld_new(sizeof(application_t));
+        if (new_memory) {
+                new_application = application_init(new_memory, module, nCmdShow, cmdLine);
+        } else {
+                new_application = NULL;
+        }
+
+        application = new_application;
+
+        return application;
+}
+
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x00410C02
 */
 
@@ -164,7 +202,6 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
                 return 1;
 
         LoadNetModule = (void *)((char *)blade + 0x001B57C2);
-        CreateApp = (void *)((char *)blade + 0x001B8D30);
         Set007E7470To01 = (void *)((char *)blade + 0x001ABD01);
         OnEvent = (void *)((char *)blade + 0x001AE837);
         Unknown005B09A6 = (void *)((char *)blade + 0x001B09A6);
@@ -173,11 +210,15 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         _thiscall_BBlibc_name_copy = (void *)((char *)blade + 0x001B9B9E);
         BBlibc_format_string = (void *)((char *)blade + 0x001B9BF2);
         _thiscall_application_load_level_script = (void *)((char *)blade + 0x000131D2);
+        _thiscall_application_init2 = (void *)((char *)blade + 0x0000EFB0);
         message_manager_print = (void *)((char *)blade + 0x001B9BDA);
+        bld_new = (void *)((char *)blade + 0x001B96B4);
 
         var007C59B8 = (void *)((char *)blade + 0x003C59B8);
         msg_manager_ptr = (void *)((char *)blade + 0x001A67B4);
         net_data_ptr = (void *)((char *)blade + 0x003EAD20);
+        application_ptr = (void *)((char *)blade + 0x003EC6F4);
+        application_methods_ptr = (void *)((char *)blade + 0x001BE7D8);
 
         BldStartup = (void *)((char *)blade + 0x001BA062);
 

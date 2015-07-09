@@ -26,6 +26,7 @@ typedef struct {
         BBLibc_name_t mapName;
         char unknownFields2[428];
         void *module;
+        char unknownFields3[16];
 } application_t;
 
 
@@ -36,6 +37,13 @@ extern boolean application_start(application_t *self);
 extern void application_wait_for_event(application_t *self);
 extern void application_end(application_t *self);
 extern void application_load_level_script(application_t *self, char *script);
+extern application_t* application_init(
+        application_t *self, void *module, int nCmdShow, char *cmdLine
+);
+extern application_t *application_init2(
+        application_t *self, void *module, int nCmdShow, char *cmdLine,
+        void *unknown
+);
 
 #endif
 
