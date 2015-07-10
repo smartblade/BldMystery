@@ -21,20 +21,20 @@ void func_name(class *self, void *arg1) {\
         _asm { call funcPtr }\
 }
 
-#define DEFINE_THISCALL_FUNC_0(class, funcPtr, func_name)\
+#define CALL_THISCALL_FUNC_0(class, funcPtr, func_name)\
 void func_name(class *self) {\
         _asm { mov ecx, self }\
         _asm { call funcPtr }\
 }
 
-#define DEFINE_THISCALL_FUNC_1(class, funcPtr, func_name)\
+#define CALL_THISCALL_FUNC_1(class, funcPtr, func_name)\
 void func_name(class *self, void *arg1) {\
         _asm { push arg1 }\
         _asm { mov ecx, self }\
         _asm { call funcPtr }\
 }
 
-#define DEFINE_THISCALL_FUNC_4(class, funcPtr, func_name)\
+#define CALL_THISCALL_FUNC_4(class, funcPtr, func_name)\
 void func_name(class *self, void *arg1, void *arg2, void *arg3, void *arg4) {\
         _asm { push arg4 }\
         _asm { push arg3 }\
@@ -44,17 +44,25 @@ void func_name(class *self, void *arg1, void *arg2, void *arg3, void *arg4) {\
         _asm { call funcPtr }\
 }
 
+#define DEFINE_THISCALL_FUNC_1(class, funcPtr, func_name)\
+void func_name(void *arg1) {\
+        class *self;\
+        _asm { mov self, ecx}\
+        funcPtr(self, arg1);\
+}
+
 DEFINE_METHOD_OF_CLASS_1(application_t, destroy, application_destroy)
 DEFINE_METHOD_OF_CLASS_0(application_t, start, application_start)
 DEFINE_METHOD_OF_CLASS_0(application_t, end, application_end)
 DEFINE_METHOD_OF_CLASS_0(application_t, wait_for_event, application_wait_for_event)
-DEFINE_THISCALL_FUNC_1(application_t, _thiscall_application_load_level_script, application_load_level_script)
-DEFINE_THISCALL_FUNC_4(application_t, _thiscall_application_init2, application_init2)
+CALL_THISCALL_FUNC_1(application_t, _thiscall_application_load_level_script, application_load_level_script)
+CALL_THISCALL_FUNC_4(application_t, _thiscall_application_init2, application_init2)
+DEFINE_THISCALL_FUNC_1(application_t, _impl_application_load_level, _thiscall_application_load_level)
 
 
-DEFINE_THISCALL_FUNC_1(BBLibc_name_t, _thiscall_BBlibc_name_set, BBlibc_name_set)
-DEFINE_THISCALL_FUNC_0(BBLibc_name_t, _thiscall_BBlibc_name_clear, BBlibc_name_clear)
-DEFINE_THISCALL_FUNC_1(BBLibc_name_t, _thiscall_BBlibc_name_copy, BBlibc_name_copy)
+CALL_THISCALL_FUNC_1(BBLibc_name_t, _thiscall_BBlibc_name_set, BBlibc_name_set)
+CALL_THISCALL_FUNC_0(BBLibc_name_t, _thiscall_BBlibc_name_clear, BBlibc_name_clear)
+CALL_THISCALL_FUNC_1(BBLibc_name_t, _thiscall_BBlibc_name_copy, BBlibc_name_copy)
 
 DEFINE_METHOD_OF_CLASS_0(net_data_t, is_net_game, net_data_is_net_game)
 DEFINE_METHOD_OF_CLASS_0(net_data_t, is_server, net_data_is_server)

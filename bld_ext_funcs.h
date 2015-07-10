@@ -38,3 +38,37 @@ EXTERN application_methods_t *application_methods_ptr NULL_INIT;
 #define application (*application_ptr)
 
 
+#ifndef BLD_EXT_FUNCS
+extern void _thiscall_application_load_level(char *map);
+#endif
+
+extern void _impl_application_load_level(application_t *self, char *map);
+
+
+#define NEW_OBJECT3(result, class, init_func, arg1, arg2, arg3)\
+{\
+        class *new_memory;\
+        new_memory = (class *)bld_new(sizeof(class));\
+        if (new_memory) {\
+                result = init_func(new_memory, arg1, arg2, arg3);\
+        } else {\
+                result = NULL;\
+        }\
+}
+
+#define NEW_APPLICATION(result, module, nCmdShow, cmdLine)\
+NEW_OBJECT3(result, application_t, application_init, module, nCmdShow, cmdLine)\
+{\
+        void **src_ptr, **dst_ptr;\
+        int i;\
+        src_ptr = (void **)application_methods_ptr;\
+        dst_ptr = (void **)result->methods;\
+        for( i = 0; i < sizeof(application_methods_t)/sizeof(void *); i++) {\
+                if (*dst_ptr == NULL)\
+                        *dst_ptr = *src_ptr;\
+                src_ptr++;\
+                dst_ptr++;\
+        }\
+}\
+
+

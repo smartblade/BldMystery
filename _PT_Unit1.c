@@ -12,8 +12,11 @@
 //---------------------------------------------------------------------------
 
 
-/*error 1813: ”казанный тип ресурса в файле образа отсутствует */
-
+static application_methods_t application_methods = {
+        NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+        NULL, NULL,
+        _thiscall_application_load_level
+};
 
 
 /*
@@ -21,7 +24,7 @@
 * Entry point:            0x0041000A
 */
 
-void application_load_level(application_t *self, char *map)
+void _impl_application_load_level(application_t *self, char *map)
 {
         char buffer[260];
         double timeBefore, timeAfter;
@@ -83,16 +86,6 @@ void application_load_level(application_t *self, char *map)
 }
 
 
-void _thiscall_application_load_level(char *map)
-{
-        application_t *self;
-
-        _asm { mov self, ecx}
-
-        application_load_level(self, map);
-}
-
-
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B8D91
@@ -102,7 +95,7 @@ application_t* application_init(
         application_t *self, void *module, int nCmdShow, char *cmdLine
 ) {
         application_init2(self, module, nCmdShow, cmdLine, NULL);
-        self->methods = application_methods_ptr;
+        self->methods = &application_methods;
         return self;
 }
 
@@ -115,15 +108,9 @@ application_t* application_init(
 
 application_t* CreateApp(void *module, int nCmdShow, char *cmdLine)
 {
-        application_t *new_memory;
         application_t *new_application;
 
-        new_memory = (application_t *)bld_new(sizeof(application_t));
-        if (new_memory) {
-                new_application = application_init(new_memory, module, nCmdShow, cmdLine);
-        } else {
-                new_application = NULL;
-        }
+        NEW_APPLICATION(new_application, module, nCmdShow, cmdLine)
 
         application = new_application;
 
@@ -186,6 +173,13 @@ void startup_cb(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, i
 {
         if (!blade)
                 return;
+
+        /*
+         * Pass blade dll module pointer to blade main function instead of exe process
+         * handler to avoid following error from DialogBoxParam function when game
+         * launcher starting:
+         *   error 1813: ”казанный тип ресурса в файле образа отсутствует
+        */
 
         BladeWinMain(blade, hPrevInstance, lpCmdLine, nCmdShow);
 }

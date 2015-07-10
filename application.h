@@ -7,16 +7,16 @@
 #include "BBLibc.h"
 
 typedef struct {
-        char unknownFields[20];
+        void *unknownFuncs[5];
         int  (*destroy)(int); /*0x005B8E00*/
         boolean (*start)(void);
         void (*wait_for_event)(void);/*0x005B8DD3*/
         void (*end)(void);
-        char unknownFields1[12];
+        void *unknownFuncs1[3];
         void (*mark_level_to_load)(char *);
-        char unknownFields2[4];
+        void *unknownFuncs2[1];
         void (*load_level)(char *);
-        char unknownFields3[10000];
+        void *unknownFuncs3[17];
 } application_methods_t;
 
 
