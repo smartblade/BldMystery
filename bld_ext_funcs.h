@@ -17,7 +17,7 @@ EXTERN HMODULE blade NULL_INIT;
 EXTERN void (*LoadNetModule)(char *) NULL_INIT;
 EXTERN void (*Set007E7470To01)(void) NULL_INIT;
 EXTERN void (*OnEvent)(int a, int b) NULL_INIT;
-EXTERN char *(*Unknown005B09A6)(char *map) NULL_INIT;
+EXTERN char *(*get_map_for_net_game)(char *map) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_BBlibc_name_set)(char *string) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_BBlibc_name_clear)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_BBlibc_name_copy)(BBLibc_name_t *name) NULL_INIT;

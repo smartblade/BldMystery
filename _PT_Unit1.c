@@ -33,7 +33,7 @@ void _impl_application_load_level(application_t *self, char *map)
 
         timeBefore = timeGetTime();
 
-        BBlibc_name_set(&mapName, Unknown005B09A6(map));
+        BBlibc_name_set(&mapName, get_map_for_net_game(map));
         BBlibc_name_copy(&self->mapName, &mapName);
         BBlibc_name_clear(&mapName);
 
@@ -198,7 +198,7 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         LoadNetModule = (void *)((char *)blade + 0x001B57C2);
         Set007E7470To01 = (void *)((char *)blade + 0x001ABD01);
         OnEvent = (void *)((char *)blade + 0x001AE837);
-        Unknown005B09A6 = (void *)((char *)blade + 0x001B09A6);
+        get_map_for_net_game = (void *)((char *)blade + 0x001B09A6);
         _thiscall_BBlibc_name_set = (void *)((char *)blade + 0x001B9BA4);
         _thiscall_BBlibc_name_clear = (void *)((char *)blade + 0x001B9B98);
         _thiscall_BBlibc_name_copy = (void *)((char *)blade + 0x001B9B9E);
