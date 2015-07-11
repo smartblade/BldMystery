@@ -1,0 +1,4 @@
+Company: RAD Game Tools
+Product: Miles Sound System
+Site:    http://www.radgametools.com/miles.htm
+File:    Mss32.dll
