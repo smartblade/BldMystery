@@ -104,6 +104,23 @@ void _impl_application_load_level(application_t *self, char *map)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x004131D2
+*/
+
+void application_load_level_script_(application_t *self, char *script)
+{
+        BBLibc_name_t mode;
+
+        /*ebp-18 = 0*/
+
+        BBlibc_name_set(&mode, "Game");
+        application_set_mode(self, &mode);
+        BBlibc_name_clear(&mode);
+}
+
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x005B8D91
 */
 
@@ -219,6 +236,7 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         _thiscall_BBlibc_name_clear = (void *)((char *)blade + 0x001B9B98);
         _thiscall_BBlibc_name_copy = (void *)((char *)blade + 0x001B9B9E);
         BBlibc_format_string = (void *)((char *)blade + 0x001B9BF2);
+        _thiscall_application_set_mode = (void *)((char *)blade + 0x00011DF9);
         _thiscall_application_load_level_script = (void *)((char *)blade + 0x000131D2);
         _thiscall_application_init2 = (void *)((char *)blade + 0x0000EFB0);
         message_manager_print = (void *)((char *)blade + 0x001B9BDA);

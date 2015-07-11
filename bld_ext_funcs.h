@@ -22,6 +22,7 @@ EXTERN void __stdcall (*_thiscall_BBlibc_name_set)(char *string) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_BBlibc_name_clear)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_BBlibc_name_copy)(BBLibc_name_t *name) NULL_INIT;
 EXTERN char * (*BBlibc_format_string)(const char *format, ...) NULL_INIT;
+EXTERN void __stdcall (*_thiscall_application_set_mode)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_application_load_level_script)(char *script) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_application_init2)(void) NULL_INIT;
 EXTERN void (*message_manager_print)(void *message_manager, char *message) NULL_INIT;

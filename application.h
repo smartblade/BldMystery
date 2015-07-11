@@ -5,6 +5,7 @@
 
 
 #include "BBLibc.h"
+#include "entity.h"
 
 typedef struct {
         void *unknownFuncs[5];
@@ -22,7 +23,9 @@ typedef struct {
 
 typedef struct {
         application_methods_t *methods;
-        char unknownFields1[1520];
+        char unknownFields1[100];
+        entity_t *player1;
+        char unknownFields100[1416];
         char *map_to_load;
         char unknownFields10[16];
         BBLibc_name_t mapName;
@@ -38,6 +41,7 @@ extern int application_destroy(application_t *self, int a);
 extern boolean application_start(application_t *self);
 extern void application_wait_for_event(application_t *self);
 extern void application_end(application_t *self);
+extern void application_set_mode(application_t *self, BBLibc_name_t *mode);
 extern void application_load_level_script(application_t *self, char *script);
 extern application_t* application_init(
         application_t *self, void *module, int nCmdShow, char *cmdLine
