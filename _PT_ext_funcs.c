@@ -57,6 +57,7 @@ DEFINE_METHOD_OF_CLASS_0(application_t, end, application_end)
 DEFINE_METHOD_OF_CLASS_0(application_t, wait_for_event, application_wait_for_event)
 CALL_THISCALL_FUNC_1(application_t, _thiscall_application_load_level_script, application_load_level_script)
 CALL_THISCALL_FUNC_4(application_t, _thiscall_application_init2, application_init2)
+DEFINE_THISCALL_FUNC_1(application_t, _impl_application_mark_level_to_load, _thiscall_application_mark_level_to_load)
 DEFINE_THISCALL_FUNC_1(application_t, _impl_application_load_level, _thiscall_application_load_level)
 
 

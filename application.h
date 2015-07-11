@@ -22,7 +22,9 @@ typedef struct {
 
 typedef struct {
         application_methods_t *methods;
-        char unknownFields1[1540];
+        char unknownFields1[1520];
+        char *map_to_load;
+        char unknownFields10[16];
         BBLibc_name_t mapName;
         char unknownFields2[428];
         void *module;

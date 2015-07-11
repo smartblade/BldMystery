@@ -14,9 +14,25 @@
 
 static application_methods_t application_methods = {
         NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-        NULL, NULL,
+        _thiscall_application_mark_level_to_load,
+         NULL,
         _thiscall_application_load_level
 };
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004130E8
+*/
+
+void _impl_application_mark_level_to_load(application_t *self, char *map)
+{
+        if (application->map_to_load) {
+                free(application->map_to_load);
+                application->map_to_load = NULL;
+        }
+        application->map_to_load = strdup(map);
+}
 
 
 /*

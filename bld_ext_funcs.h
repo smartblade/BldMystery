@@ -39,9 +39,11 @@ EXTERN application_methods_t *application_methods_ptr NULL_INIT;
 
 
 #ifndef BLD_EXT_FUNCS
+extern void _thiscall_application_mark_level_to_load(char *map);
 extern void _thiscall_application_load_level(char *map);
 #endif
 
+extern void _impl_application_mark_level_to_load(application_t *self, char *map);
 extern void _impl_application_load_level(application_t *self, char *map);
 
 
