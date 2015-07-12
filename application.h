@@ -24,8 +24,12 @@ typedef struct {
 typedef struct {
         application_methods_t *methods;
         char unknownFields1[100];
-        entity_t *player1;
-        char unknownFields100[1416];
+        person_t *player1;
+        char unknownFields100[12];
+        camera_t *camera;
+        char unknownFields200[308];
+        void *unknownPtrForCamera;
+        char unknownFields300[1088];
         char *map_to_load;
         char unknownFields10[16];
         BBLibc_name_t mapName;

@@ -110,12 +110,25 @@ void _impl_application_load_level(application_t *self, char *map)
 void application_load_level_script_(application_t *self, char *script)
 {
         BBLibc_name_t mode;
-
-        /*ebp-18 = 0*/
+        BBLibc_name_t camera_name;
+        camera_t *camera;
 
         BBlibc_name_set(&mode, "Game");
         application_set_mode(self, &mode);
         BBlibc_name_clear(&mode);
+
+        /* TODO decompile instructions */
+
+        self->player1 = NULL;
+
+        if (!self->camera) {
+                BBlibc_name_set(&camera_name, "Camera");
+                NEW_CAMERA(camera, 0, &camera_name)
+                BBlibc_name_clear(&camera_name);
+
+                self->camera = camera;
+                self->camera->unknownPtrFromApplication = &self->unknownPtrForCamera;
+        }
 }
 
 
@@ -241,6 +254,7 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         _thiscall_application_init2 = (void *)((char *)blade + 0x0000EFB0);
         message_manager_print = (void *)((char *)blade + 0x001B9BDA);
         bld_new = (void *)((char *)blade + 0x001B96B4);
+        _thiscall_camera_init = (void *)((char *)blade + 0x000EAB20);
 
         var007C59B8 = (void *)((char *)blade + 0x003C59B8);
         msg_manager_ptr = (void *)((char *)blade + 0x001A67B4);

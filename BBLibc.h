@@ -10,6 +10,11 @@ typedef struct {
         int len;
 } BBLibc_name_t;
 
+typedef struct {
+        void *methods;
+        BBLibc_name_t name;
+} BBLibc_named_object_t;
+
 
 #ifndef BLD_EXT_FUNCS
 

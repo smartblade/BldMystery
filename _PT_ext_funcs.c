@@ -34,6 +34,14 @@ void func_name(class *self, void *arg1) {\
         _asm { call funcPtr }\
 }
 
+#define CALL_THISCALL_FUNC_2(class, funcPtr, func_name)\
+void func_name(class *self, void *arg1, void *arg2) {\
+        _asm { push arg2 }\
+        _asm { push arg1 }\
+        _asm { mov ecx, self }\
+        _asm { call funcPtr }\
+}
+
 #define CALL_THISCALL_FUNC_4(class, funcPtr, func_name)\
 void func_name(class *self, void *arg1, void *arg2, void *arg3, void *arg4) {\
         _asm { push arg4 }\
@@ -68,5 +76,7 @@ CALL_THISCALL_FUNC_1(BBLibc_name_t, _thiscall_BBlibc_name_copy, BBlibc_name_copy
 
 DEFINE_METHOD_OF_CLASS_0(net_data_t, is_net_game, net_data_is_net_game)
 DEFINE_METHOD_OF_CLASS_0(net_data_t, is_server, net_data_is_server)
+
+CALL_THISCALL_FUNC_2(camera_t, _thiscall_camera_init, camera_init)
 
 

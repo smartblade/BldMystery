@@ -27,6 +27,7 @@ EXTERN void __stdcall (*_thiscall_application_load_level_script)(char *script) N
 EXTERN void __stdcall (*_thiscall_application_init2)(void) NULL_INIT;
 EXTERN void (*message_manager_print)(void *message_manager, char *message) NULL_INIT;
 EXTERN void * (*bld_new)(size_t size) NULL_INIT;
+EXTERN void __stdcall (*_thiscall_camera_init)(void) NULL_INIT;
 
 EXTERN int **var007C59B8 NULL_INIT;
 EXTERN void **msg_manager_ptr NULL_INIT;
@@ -47,6 +48,17 @@ extern void _thiscall_application_load_level(char *map);
 extern void _impl_application_mark_level_to_load(application_t *self, char *map);
 extern void _impl_application_load_level(application_t *self, char *map);
 
+
+#define NEW_OBJECT2(result, class, init_func, arg1, arg2)\
+{\
+        class *new_memory;\
+        new_memory = (class *)bld_new(sizeof(class));\
+        if (new_memory) {\
+                result = init_func(new_memory, arg1, arg2);\
+        } else {\
+                result = NULL;\
+        }\
+}
 
 #define NEW_OBJECT3(result, class, init_func, arg1, arg2, arg3)\
 {\
@@ -73,5 +85,8 @@ NEW_OBJECT3(result, application_t, application_init, module, nCmdShow, cmdLine)\
                 dst_ptr++;\
         }\
 }\
+
+#define NEW_CAMERA(result, unknown, name)\
+NEW_OBJECT2(result, camera_t, camera_init, unknown, name)
 
 
