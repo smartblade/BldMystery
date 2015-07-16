@@ -117,6 +117,16 @@ void application_load_level_script_(application_t *self, char *script)
         application_set_mode(self, &mode);
         BBlibc_name_clear(&mode);
 
+        application_init_python_path(self);
+
+        CALL_THISCALL_VOID_0(self->clock1, self->clock1->methods->unknown18)
+
+        self->unknown5C8 = NULL;
+
+        CALL_THISCALL_VOID_0(self->clock1, self->clock1->methods->unknown1C)
+
+        self->unknownPtrForCamera = NUM_3F266666;
+
         /* TODO decompile instructions */
 
         self->player1 = NULL;

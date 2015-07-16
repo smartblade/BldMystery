@@ -37,7 +37,7 @@ typedef struct {
                 entity_t parent;
         };
         char unknownFields1[592];
-        void *unknownPtrFromApplication;
+        float *unknownPtrFromApplication;
         char unknownFields2[72];
 } camera_t;
 

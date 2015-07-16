@@ -40,6 +40,15 @@ EXTERN application_methods_t *application_methods_ptr NULL_INIT;
 #define application (*application_ptr)
 
 
+#define CALL_THISCALL_VOID_0(self, funcPtr)\
+{\
+        void *fnPtr = funcPtr;\
+        void *selfPtr = self;\
+        _asm { mov ecx, selfPtr }\
+        _asm { call fnPtr }\
+}
+
+
 #ifndef BLD_EXT_FUNCS
 extern void _thiscall_application_mark_level_to_load(char *map);
 extern void _thiscall_application_load_level(char *map);
@@ -88,5 +97,8 @@ NEW_OBJECT3(result, application_t, application_init, module, nCmdShow, cmdLine)\
 
 #define NEW_CAMERA(result, unknown, name)\
 NEW_OBJECT2(result, camera_t, camera_init, unknown, name)
+
+
+#define NUM_3F266666 0.65
 
 

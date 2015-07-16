@@ -6,9 +6,13 @@
 
 #include "BBLibc.h"
 #include "entity.h"
+#include "game_clock.h"
+
 
 typedef struct {
-        void *unknownFuncs[5];
+        void *unknownFuncs10[2];
+        void (*init_python_path)(void); /*0x00411B94*/
+        void *unknownFuncs20[2];
         int  (*destroy)(int); /*0x005B8E00*/
         boolean (*start)(void);
         void (*wait_for_event)(void);/*0x005B8DD3*/
@@ -23,13 +27,19 @@ typedef struct {
 
 typedef struct {
         application_methods_t *methods;
-        char unknownFields1[100];
+        char unknownFields1[40];
+        game_clock_t *clock1;
+        game_clock_t *clock2;
+        char unknownFields20[52];
         person_t *player1;
         char unknownFields100[12];
         camera_t *camera;
-        char unknownFields200[308];
-        void *unknownPtrForCamera;
-        char unknownFields300[1088];
+        char unknownFields200[304];
+        float unknown1AC;
+        float unknownPtrForCamera;
+        char unknownFields300[1044];
+        void *unknown5C8;
+        char unknownFields310[40];
         char *map_to_load;
         char unknownFields10[16];
         BBLibc_name_t mapName;
@@ -41,6 +51,7 @@ typedef struct {
 
 #ifndef BLD_EXT_FUNCS
 
+extern void application_init_python_path(application_t *self);
 extern int application_destroy(application_t *self, int a);
 extern boolean application_start(application_t *self);
 extern void application_wait_for_event(application_t *self);

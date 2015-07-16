@@ -59,6 +59,7 @@ void func_name(void *arg1) {\
         funcPtr(self, arg1);\
 }
 
+DEFINE_METHOD_OF_CLASS_0(application_t, init_python_path, application_init_python_path)
 DEFINE_METHOD_OF_CLASS_1(application_t, destroy, application_destroy)
 DEFINE_METHOD_OF_CLASS_0(application_t, start, application_start)
 DEFINE_METHOD_OF_CLASS_0(application_t, end, application_end)
