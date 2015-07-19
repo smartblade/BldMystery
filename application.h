@@ -27,7 +27,9 @@ typedef struct {
 
 typedef struct {
         application_methods_t *methods;
-        char unknownFields1[40];
+        char unknownFields1[24];
+        boolean bUnknown01C;
+        char unknownFields1000[12];
         game_clock_t *clock1;
         game_clock_t *clock2;
         char unknownFields20[52];
@@ -65,6 +67,7 @@ extern application_t *application_init2(
         application_t *self, void *module, int nCmdShow, char *cmdLine,
         void *unknown
 );
+extern boolean application_run_python_file(application_t *self, const char *file_name);
 
 #endif
 

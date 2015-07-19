@@ -2,6 +2,10 @@
 
 #define ENTITY_H
 
+
+#define PLAYER "Player1"
+
+
 typedef struct {
         void *unknownFuncs[4];
         int (*is_type_of)(int type); /*person: 0x005305D5, camera: 0x004EACB3*/
@@ -36,7 +40,8 @@ typedef struct {
                 entity_methods_t *methods;
                 entity_t parent;
         };
-        char unknownFields1[592];
+        char unknownFields1[588];
+        float unknownValueFromApplication;
         float *unknownPtrFromApplication;
         char unknownFields2[72];
 } camera_t;

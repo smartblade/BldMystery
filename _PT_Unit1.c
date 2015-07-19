@@ -107,11 +107,21 @@ void _impl_application_load_level(application_t *self, char *map)
 * Entry point:            0x004131D2
 */
 
-void application_load_level_script_(application_t *self, char *script)
+void application_load_level_script_(application_t *self, const char *script)
 {
         BBLibc_name_t mode;
         BBLibc_name_t camera_name;
+        int foundIndex;
+        int hash_value;
+        char *str_ptr;
+        int i;
+        array_t *array;
+        world_t *world;
+        person_t *player1;
         camera_t *camera;
+        char *str1;
+        char *str2;
+        int cmp_result;
 
         BBlibc_name_set(&mode, "Game");
         application_set_mode(self, &mode);
@@ -127,7 +137,7 @@ void application_load_level_script_(application_t *self, char *script)
 
         self->unknownPtrForCamera = NUM_3F266666;
 
-        /* TODO decompile instructions */
+        CALL_THISCALL_VOID_0(&game_state, _thiscall_00439E8D)
 
         self->player1 = NULL;
 
@@ -139,6 +149,92 @@ void application_load_level_script_(application_t *self, char *script)
                 self->camera = camera;
                 self->camera->unknownPtrFromApplication = &self->unknownPtrForCamera;
         }
+
+        self->camera->unknownValueFromApplication = self->unknownPtrForCamera;
+        self->bUnknown01C = TRUE;
+
+        application_run_python_file(self, script);
+
+        /* TODO decomplile */
+
+        if (!net_data_is_net_game(net_data) || net_data_is_server(net_data)) {
+
+                assert(PLAYER);
+
+                world = &game_state.world;
+                if (
+                        world->player1 &&
+                        !strcmp(
+                                BBlibc_name_string(
+                                        BBLibc_named_object_id(
+                                                &world->player1->parent.parent.parent
+                                        )
+                                ),
+                                PLAYER
+                        )
+                ) {
+                        player1 = world->player1;
+                } else {
+                        str_ptr = PLAYER;
+                        hash_value = 0;
+                        while (*str_ptr) {
+                                hash_value += *str_ptr;
+                                str_ptr++;
+                        }
+                        hash_value = hash_value & 0xFF;
+
+                        array = &world->hash[hash_value];
+
+                        foundIndex = -1;
+                        for(i = 0; i < array->size; i++) {
+
+                                str1 = BBlibc_name_string(
+                                        BBLibc_named_object_id(
+                                                array->elements[i]
+                                        )
+                                );
+                                str2 = PLAYER;
+
+                                for(;;) {
+                                        if (
+                                                (str1[0] != str2[0]) ||
+                                                (str2[0] && (str1[1] != str2[1]))
+                                        ) {
+                                                cmp_result = 1;
+                                                break;
+                                        }
+                                        if (
+                                                (str2[0] == '\0') ||
+                                                (str2[1] == '\0')
+                                        ) {
+                                                cmp_result = 0;
+                                                break;
+                                        }
+                                        str2 += 2;
+                                        str1 += 2;
+                                }
+
+                                if (!cmp_result) {
+                                        foundIndex = i;
+                                        break;
+                                }
+                        }
+
+                        if (foundIndex != -1) {
+                                world->player1 = array->elements[foundIndex];
+                                player1 = world->player1;
+                        } else
+                                player1 = NULL;
+                }
+                self->player1 = player1;
+
+                /* TODO decomplile */
+
+        } else {
+                /* TODO decomplile */
+        }
+
+        /* TODO decomplile */
 }
 
 
@@ -258,19 +354,24 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         _thiscall_BBlibc_name_set = (void *)((char *)blade + 0x001B9BA4);
         _thiscall_BBlibc_name_clear = (void *)((char *)blade + 0x001B9B98);
         _thiscall_BBlibc_name_copy = (void *)((char *)blade + 0x001B9B9E);
+        _thiscall_BBlibc_name_string = (void *)((char *)blade + 0x001B9BD4);
+        _thiscall_BBLibc_named_object_id = (void *)((char *)blade + 0x001B9C2E);
         BBlibc_format_string = (void *)((char *)blade + 0x001B9BF2);
         _thiscall_application_set_mode = (void *)((char *)blade + 0x00011DF9);
         _thiscall_application_load_level_script = (void *)((char *)blade + 0x000131D2);
         _thiscall_application_init2 = (void *)((char *)blade + 0x0000EFB0);
+        _thiscall_application_run_python_file = (void *)((char *)blade + 0x000156D0);
         message_manager_print = (void *)((char *)blade + 0x001B9BDA);
         bld_new = (void *)((char *)blade + 0x001B96B4);
         _thiscall_camera_init = (void *)((char *)blade + 0x000EAB20);
+        _thiscall_00439E8D = (void *)((char *)blade + 0x00039E8D);
 
         var007C59B8 = (void *)((char *)blade + 0x003C59B8);
         msg_manager_ptr = (void *)((char *)blade + 0x001A67B4);
         net_data_ptr = (void *)((char *)blade + 0x003EAD20);
         application_ptr = (void *)((char *)blade + 0x003EC6F4);
         application_methods_ptr = (void *)((char *)blade + 0x001BE7D8);
+        game_state_ptr = (void *)((char *)blade + 0x001DD668);
 
         BldStartup = (void *)((char *)blade + 0x001BA062);
 
