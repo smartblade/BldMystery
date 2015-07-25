@@ -158,6 +158,8 @@ void application_load_level_script_(application_t *self, const char *script)
 
         /* TODO decomplile */
 
+        application_prepare_level(self);
+
         if (!net_data_is_net_game(net_data) || net_data_is_server(net_data)) {
 
                 assert(PLAYER);
@@ -229,13 +231,26 @@ void application_load_level_script_(application_t *self, const char *script)
                 }
                 self->player1 = player1;
 
-                /* TODO decomplile */
+                if (!self->player1) {
+                        application_exit_with_error(
+                                self, "Error", "Player1 not declared in pj.py"
+                        );
+                }
+
+                CALL_THISCALL_VOID_1(self->camera, _thiscall_camera_004EAFAA, self->player1)
+
+                self->camera->unknownPtrFromApplication = &self->unknownPtrForCamera;
+                self->camera->unknownValueFromApplication = self->unknownPtrForCamera;
+
+                self->client = NULL;
 
         } else {
                 /* TODO decomplile */
         }
 
-        /* TODO decomplile */
+        if (BBlibc_name_is_equal_string(&self->mode, "Game")) {
+                CALL_THISCALL_VOID_0(self->clock1, self->clock1->methods->unknown20)
+        }
 }
 
 
@@ -356,16 +371,19 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         _thiscall_BBlibc_name_clear = (void *)((char *)blade + 0x001B9B98);
         _thiscall_BBlibc_name_copy = (void *)((char *)blade + 0x001B9B9E);
         _thiscall_BBlibc_name_string = (void *)((char *)blade + 0x001B9BD4);
+        _thiscall_BBlibc_name_is_equal_string = (void *)((char *)blade + 0x001B9BF8);
         _thiscall_BBLibc_named_object_id = (void *)((char *)blade + 0x001B9C2E);
         BBlibc_format_string = (void *)((char *)blade + 0x001B9BF2);
         _thiscall_application_set_mode = (void *)((char *)blade + 0x00011DF9);
         _thiscall_application_load_level_script = (void *)((char *)blade + 0x000131D2);
         _thiscall_application_init2 = (void *)((char *)blade + 0x0000EFB0);
         _thiscall_application_run_python_file = (void *)((char *)blade + 0x000156D0);
+        _thiscall_application_prepare_level = (void *)((char *)blade + 0x00014EF6);
         message_manager_print = (void *)((char *)blade + 0x001B9BDA);
         bld_new = (void *)((char *)blade + 0x001B96B4);
         _thiscall_camera_init = (void *)((char *)blade + 0x000EAB20);
         _thiscall_00439E8D = (void *)((char *)blade + 0x00039E8D);
+        _thiscall_camera_004EAFAA = (void *)((char *)blade + 0x000EAFAA);
 
         var007C59B8 = (void *)((char *)blade + 0x003C59B8);
         msg_manager_ptr = (void *)((char *)blade + 0x001A67B4);

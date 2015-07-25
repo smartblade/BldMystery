@@ -21,7 +21,9 @@ typedef struct {
         void (*mark_level_to_load)(char *);
         void *unknownFuncs2[1];
         void (*load_level)(char *);
-        void *unknownFuncs3[17];
+        void *unknownFuncs3[7];
+        void (*exit_with_error)(char *, char *);/*0x00410A93*/
+        void *unknownFuncs4[9];
 } application_methods_t;
 
 
@@ -34,14 +36,16 @@ typedef struct {
         game_clock_t *clock2;
         char unknownFields20[52];
         person_t *player1;
-        char unknownFields100[12];
+        entity_t *client;
+        char unknownFields100[8];
         camera_t *camera;
         char unknownFields200[304];
         float unknown1AC;
         float unknownPtrForCamera;
         char unknownFields300[1044];
         void *unknown5C8;
-        char unknownFields310[40];
+        char unknownFields310[32];
+        BBLibc_name_t mode;
         char *map_to_load;
         char unknownFields10[16];
         BBLibc_name_t mapName;
@@ -58,6 +62,9 @@ extern int application_destroy(application_t *self, int a);
 extern boolean application_start(application_t *self);
 extern void application_wait_for_event(application_t *self);
 extern void application_end(application_t *self);
+extern void application_exit_with_error(
+        application_t *self, const char *title, const char *message
+);
 extern void application_set_mode(application_t *self, BBLibc_name_t *mode);
 extern void application_load_level_script(application_t *self, char *script);
 extern application_t* application_init(
@@ -68,6 +75,7 @@ extern application_t *application_init2(
         void *unknown
 );
 extern boolean application_run_python_file(application_t *self, const char *file_name);
+extern void application_prepare_level(application_t *self);
 
 #endif
 

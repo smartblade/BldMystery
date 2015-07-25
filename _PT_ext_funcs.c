@@ -21,6 +21,15 @@ void func_name(class *self, void *arg1) {\
         _asm { call funcPtr }\
 }
 
+#define DEFINE_METHOD_OF_CLASS_2(class, method, func_name)\
+void func_name(class *self, void *arg1, void *arg2) {\
+        void *funcPtr = self->methods->method;\
+        _asm { push arg2 }\
+        _asm { push arg1 }\
+        _asm { mov ecx, self }\
+        _asm { call funcPtr }\
+}
+
 #define CALL_THISCALL_FUNC_0(class, funcPtr, func_name)\
 void func_name(class *self) {\
         _asm { mov ecx, self }\
@@ -64,10 +73,12 @@ DEFINE_METHOD_OF_CLASS_1(application_t, destroy, application_destroy)
 DEFINE_METHOD_OF_CLASS_0(application_t, start, application_start)
 DEFINE_METHOD_OF_CLASS_0(application_t, end, application_end)
 DEFINE_METHOD_OF_CLASS_0(application_t, wait_for_event, application_wait_for_event)
+DEFINE_METHOD_OF_CLASS_2(application_t, exit_with_error, application_exit_with_error)
 CALL_THISCALL_FUNC_1(application_t, _thiscall_application_set_mode, application_set_mode)
 CALL_THISCALL_FUNC_1(application_t, _thiscall_application_load_level_script, application_load_level_script)
 CALL_THISCALL_FUNC_4(application_t, _thiscall_application_init2, application_init2)
 CALL_THISCALL_FUNC_1(application_t, _thiscall_application_run_python_file, application_run_python_file)
+CALL_THISCALL_FUNC_0(application_t, _thiscall_application_prepare_level, application_prepare_level)
 DEFINE_THISCALL_FUNC_1(application_t, _impl_application_mark_level_to_load, _thiscall_application_mark_level_to_load)
 DEFINE_THISCALL_FUNC_1(application_t, _impl_application_load_level, _thiscall_application_load_level)
 
@@ -76,6 +87,7 @@ CALL_THISCALL_FUNC_1(BBLibc_name_t, _thiscall_BBlibc_name_set, BBlibc_name_set)
 CALL_THISCALL_FUNC_0(BBLibc_name_t, _thiscall_BBlibc_name_clear, BBlibc_name_clear)
 CALL_THISCALL_FUNC_1(BBLibc_name_t, _thiscall_BBlibc_name_copy, BBlibc_name_copy)
 CALL_THISCALL_FUNC_0(BBLibc_name_t, _thiscall_BBlibc_name_string, BBlibc_name_string)
+CALL_THISCALL_FUNC_1(BBLibc_name_t, _thiscall_BBlibc_name_is_equal_string, BBlibc_name_is_equal_string)
 
 CALL_THISCALL_FUNC_0(BBLibc_named_object_t, _thiscall_BBLibc_named_object_id, BBLibc_named_object_id)
 

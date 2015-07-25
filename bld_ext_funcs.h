@@ -23,16 +23,19 @@ EXTERN void __stdcall (*_thiscall_BBlibc_name_set)(char *string) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_BBlibc_name_clear)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_BBlibc_name_copy)(BBLibc_name_t *name) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_BBlibc_name_string)(void) NULL_INIT;
+EXTERN void __stdcall (*_thiscall_BBlibc_name_is_equal_string)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_BBLibc_named_object_id)(void) NULL_INIT;
 EXTERN char * (*BBlibc_format_string)(const char *format, ...) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_application_set_mode)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_application_load_level_script)(char *script) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_application_init2)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_application_run_python_file)(void) NULL_INIT;
+EXTERN void __stdcall (*_thiscall_application_prepare_level)(void) NULL_INIT;
 EXTERN void (*message_manager_print)(void *message_manager, char *message) NULL_INIT;
 EXTERN void * (*bld_new)(size_t size) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_camera_init)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_00439E8D)(void) NULL_INIT;
+EXTERN void __stdcall (*_thiscall_camera_004EAFAA)(void) NULL_INIT;
 
 EXTERN int **var007C59B8 NULL_INIT;
 EXTERN void **msg_manager_ptr NULL_INIT;
@@ -51,6 +54,16 @@ EXTERN game_state_t *game_state_ptr NULL_INIT;
 {\
         void *fnPtr = funcPtr;\
         void *selfPtr = self;\
+        _asm { mov ecx, selfPtr }\
+        _asm { call fnPtr }\
+}
+
+#define CALL_THISCALL_VOID_1(self, funcPtr, arg1)\
+{\
+        void *fnPtr = funcPtr;\
+        void *selfPtr = self;\
+        void *arg = arg1;\
+        _asm { push arg }\
         _asm { mov ecx, selfPtr }\
         _asm { call fnPtr }\
 }

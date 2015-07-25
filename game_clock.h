@@ -8,6 +8,7 @@ typedef struct {
         void *unknownFuncs[6];
         void (*unknown18)(void); /*0x004CC360*/
         void (*unknown1C)(void); /*0x004CC3A0*/
+        void (*unknown20)(void); /*0x004CC3D0*/
 } game_clock_methods_t;
 
 typedef struct {
