@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <stdio.h>
 #include <assert.h>
+#include <float.h>
 #include "application.h"
 #include "BBLibc.h"
 #include "net_data.h"
@@ -374,6 +375,12 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         game_state_ptr = (void *)((char *)blade + 0x001DD668);
 
         BldStartup = (void *)((char *)blade + 0x001BA062);
+
+        /*
+         * Disable floating point exceptions to avoid throwing division
+         * by zero exception when using OpenGL raster
+         */
+        _control87(MCW_EM,MCW_EM);
 
         BldStartup(startup_cb);
 
