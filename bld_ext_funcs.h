@@ -27,7 +27,6 @@ EXTERN void __stdcall (*_thiscall_BBlibc_name_is_equal_string)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_BBLibc_named_object_id)(void) NULL_INIT;
 EXTERN char * (*BBlibc_format_string)(const char *format, ...) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_application_set_mode)(void) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_application_load_level_script)(char *script) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_application_init2)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_application_run_python_file)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_application_prepare_level)(void) NULL_INIT;
@@ -36,6 +35,8 @@ EXTERN void * (*bld_new)(size_t size) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_camera_init)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_00439E8D)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_camera_004EAFAA)(void) NULL_INIT;
+EXTERN void __stdcall (*_thiscall_0040AD82)(void) NULL_INIT;
+EXTERN void __stdcall (*_thiscall_0040ADA8)(void) NULL_INIT;
 
 EXTERN int **var007C59B8 NULL_INIT;
 EXTERN void **msg_manager_ptr NULL_INIT;
@@ -43,6 +44,8 @@ EXTERN net_data_t **net_data_ptr NULL_INIT;
 EXTERN application_t **application_ptr NULL_INIT;
 EXTERN application_methods_t *application_methods_ptr NULL_INIT;
 EXTERN game_state_t *game_state_ptr NULL_INIT;
+EXTERN void **var005DEFBC NULL_INIT;
+EXTERN void **var005DEFD4 NULL_INIT;
 
 #define message_manager (*msg_manager_ptr)
 #define net_data (*net_data_ptr)

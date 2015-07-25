@@ -108,7 +108,7 @@ void _impl_application_load_level(application_t *self, char *map)
 * Entry point:            0x004131D2
 */
 
-void application_load_level_script_(application_t *self, const char *script)
+void application_load_level_script(application_t *self, const char *script)
 {
         BBLibc_name_t mode;
         BBLibc_name_t camera_name;
@@ -156,7 +156,9 @@ void application_load_level_script_(application_t *self, const char *script)
 
         application_run_python_file(self, script);
 
-        /* TODO decomplile */
+        CALL_THISCALL_VOID_1(&self->unknown7C, _thiscall_0040AD82, var005DEFBC)
+
+        CALL_THISCALL_VOID_1(&self->unknown7C, _thiscall_0040ADA8, var005DEFD4)
 
         application_prepare_level(self);
 
@@ -245,7 +247,74 @@ void application_load_level_script_(application_t *self, const char *script)
                 self->client = NULL;
 
         } else {
-                /* TODO decomplile */
+                self->player1 = NULL;
+
+                world = &game_state.world;
+                if (
+                        world->player1 &&
+                        !strcmp(
+                                BBlibc_name_string(
+                                        BBLibc_named_object_id(
+                                                &world->player1->parent.parent.parent
+                                        )
+                                ),
+                                PLAYER
+                        )
+                ) {
+                        player1 = world->player1;
+                } else {
+                        str_ptr = PLAYER;
+                        hash_value = 0;
+                        while (*str_ptr) {
+                                hash_value += *str_ptr;
+                                str_ptr++;
+                        }
+                        hash_value = hash_value & 0xFF;
+
+                        array = &world->hash[hash_value];
+
+                        foundIndex = -1;
+                        for(i = 0; i < array->size; i++) {
+
+                                str1 = BBlibc_name_string(
+                                        BBLibc_named_object_id(
+                                                array->elements[i]
+                                        )
+                                );
+                                str2 = PLAYER;
+
+                                for(;;) {
+                                        if (
+                                                (str1[0] != str2[0]) ||
+                                                (str2[0] && (str1[1] != str2[1]))
+                                        ) {
+                                                cmp_result = 1;
+                                                break;
+                                        }
+                                        if (
+                                                (str2[0] == '\0') ||
+                                                (str2[1] == '\0')
+                                        ) {
+                                                cmp_result = 0;
+                                                break;
+                                        }
+                                        str2 += 2;
+                                        str1 += 2;
+                                }
+
+                                if (!cmp_result) {
+                                        foundIndex = i;
+                                        break;
+                                }
+                        }
+
+                        if (foundIndex != -1) {
+                                world->player1 = array->elements[foundIndex];
+                                player1 = world->player1;
+                        } else
+                                player1 = NULL;
+                }
+                self->client = (entity_t *) player1;
         }
 
         if (BBlibc_name_is_equal_string(&self->mode, "Game")) {
@@ -375,7 +444,6 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         _thiscall_BBLibc_named_object_id = (void *)((char *)blade + 0x001B9C2E);
         BBlibc_format_string = (void *)((char *)blade + 0x001B9BF2);
         _thiscall_application_set_mode = (void *)((char *)blade + 0x00011DF9);
-        _thiscall_application_load_level_script = (void *)((char *)blade + 0x000131D2);
         _thiscall_application_init2 = (void *)((char *)blade + 0x0000EFB0);
         _thiscall_application_run_python_file = (void *)((char *)blade + 0x000156D0);
         _thiscall_application_prepare_level = (void *)((char *)blade + 0x00014EF6);
@@ -384,6 +452,8 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         _thiscall_camera_init = (void *)((char *)blade + 0x000EAB20);
         _thiscall_00439E8D = (void *)((char *)blade + 0x00039E8D);
         _thiscall_camera_004EAFAA = (void *)((char *)blade + 0x000EAFAA);
+        _thiscall_0040AD82 = (void *)((char *)blade + 0x0000AD82);
+        _thiscall_0040ADA8 = (void *)((char *)blade + 0x0000ADA8);
 
         var007C59B8 = (void *)((char *)blade + 0x003C59B8);
         msg_manager_ptr = (void *)((char *)blade + 0x001A67B4);
@@ -391,6 +461,8 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         application_ptr = (void *)((char *)blade + 0x003EC6F4);
         application_methods_ptr = (void *)((char *)blade + 0x001BE7D8);
         game_state_ptr = (void *)((char *)blade + 0x001DD668);
+        var005DEFBC = (void *)((char *)blade + 0x001DEFBC);
+        var005DEFD4 = (void *)((char *)blade + 0x001DEFD4);
 
         BldStartup = (void *)((char *)blade + 0x001BA062);
 

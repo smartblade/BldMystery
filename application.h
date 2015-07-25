@@ -39,7 +39,8 @@ typedef struct {
         entity_t *client;
         char unknownFields100[8];
         camera_t *camera;
-        char unknownFields200[304];
+        void *unknown7C;
+        char unknownFields200[300];
         float unknown1AC;
         float unknownPtrForCamera;
         char unknownFields300[1044];
@@ -66,7 +67,7 @@ extern void application_exit_with_error(
         application_t *self, const char *title, const char *message
 );
 extern void application_set_mode(application_t *self, BBLibc_name_t *mode);
-extern void application_load_level_script(application_t *self, char *script);
+extern void application_load_level_script(application_t *self, const char *script);
 extern application_t* application_init(
         application_t *self, void *module, int nCmdShow, char *cmdLine
 );
