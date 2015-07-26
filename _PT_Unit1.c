@@ -24,21 +24,6 @@ static application_methods_t application_methods = {
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x004130E8
-*/
-
-void _impl_application_mark_level_to_load(application_t *self, char *map)
-{
-        if (application->map_to_load) {
-                free(application->map_to_load);
-                application->map_to_load = NULL;
-        }
-        application->map_to_load = strdup(map);
-}
-
-
-/*
-* Module:                 Blade.exe
 * Entry point:            0x0041000A
 */
 
@@ -101,6 +86,72 @@ void _impl_application_load_level(application_t *self, char *map)
                 (*var007C59B8)[2] = 0;
                 (*var007C59B8)[3] = 0;
         }
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00410C02
+*/
+
+int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+{
+        application_t *App;
+        char *cmd;
+        MSG msg;
+        int code;
+
+        cmd = lpCmdLine;
+
+        LoadNetModule("NetBlade\\Netblade.dll");
+        App = create_application(hInstance, nCmdShow, cmd);
+
+        assert(App);
+
+        if (application_start(App) == 0)
+                return 0;
+
+        Set007E7470To01();
+        for(;;) {
+                if (PeekMessage(&msg, NULL, WM_NULL, WM_NULL, PM_REMOVE)) {
+
+                        if (msg.message == WM_QUIT) {
+                                application_end(App);
+
+                                if (App) {
+                                        code = application_destroy(App, 1);
+                                } else {
+                                        code = 0;
+                                }
+
+                                return msg.wParam;
+                        } else {
+                                TranslateMessage(&msg);
+                                DispatchMessage(&msg);
+                        }
+                } else {
+                        /* wait for event */
+
+                        application_wait_for_event(App);
+
+                        OnEvent(0, 0xbff00000);
+                }
+        }
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004130E8
+*/
+
+void _impl_application_mark_level_to_load(application_t *self, char *map)
+{
+        if (application->map_to_load) {
+                free(application->map_to_load);
+                application->map_to_load = NULL;
+        }
+        application->map_to_load = strdup(map);
 }
 
 
@@ -370,25 +421,11 @@ boolean application_run_python_file(application_t *self, const char *file_name)
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x005B8D91
-*/
-
-application_t* application_init(
-        application_t *self, void *module, int nCmdShow, char *cmdLine
-) {
-        application_init2(self, module, nCmdShow, cmdLine, NULL);
-        self->methods = &application_methods;
-        return self;
-}
-
-
-/*
-* Module:                 Blade.exe
 * Entry point:            0x005B8D30
 */
 
 
-application_t* CreateApp(void *module, int nCmdShow, char *cmdLine)
+application_t* create_application(void *module, int nCmdShow, char *cmdLine)
 {
         application_t *new_application;
 
@@ -402,52 +439,15 @@ application_t* CreateApp(void *module, int nCmdShow, char *cmdLine)
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x00410C02
+* Entry point:            0x005B8D91
 */
 
-int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
-{
-        application_t *App;
-        char *cmd;
-        MSG msg;
-        int code;
-
-        cmd = lpCmdLine;
-
-        LoadNetModule("NetBlade\\Netblade.dll");
-        App = CreateApp(hInstance, nCmdShow, cmd);
-
-        assert(App);
-
-        if (application_start(App) == 0)
-                return 0;
-
-        Set007E7470To01();
-        for(;;) {
-                if (PeekMessage(&msg, NULL, WM_NULL, WM_NULL, PM_REMOVE)) {
-
-                        if (msg.message == WM_QUIT) {
-                                application_end(App);
-
-                                if (App) {
-                                        code = application_destroy(App, 1);
-                                } else {
-                                        code = 0;
-                                }
-
-                                return msg.wParam;
-                        } else {
-                                TranslateMessage(&msg);
-                                DispatchMessage(&msg);
-                        }
-                } else {
-                        /* wait for event */
-
-                        application_wait_for_event(App);
-
-                        OnEvent(0, 0xbff00000);
-                }
-        }
+application_t* application_init(
+        application_t *self, void *module, int nCmdShow, char *cmdLine
+) {
+        application_init2(self, module, nCmdShow, cmdLine, NULL);
+        self->methods = &application_methods;
+        return self;
 }
 
 

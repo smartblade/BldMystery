@@ -78,8 +78,10 @@ extern application_t *application_init2(
 extern boolean application_run_python_file(application_t *self, const char *file_name);
 extern void application_prepare_level(application_t *self);
 
+
+extern application_t *create_application(void *module, int nCmdShow, char *cmdLine);
+
 #endif
 
 #endif /* APPLICATION_H */
 
- 
