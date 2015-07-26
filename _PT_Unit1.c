@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <float.h>
+#include <Python.h>
 #include "application.h"
 #include "BBLibc.h"
 #include "net_data.h"
@@ -325,6 +326,50 @@ void application_load_level_script(application_t *self, const char *script)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x004156D0
+*/
+
+boolean application_run_python_file(application_t *self, const char *file_name)
+{
+        FILE *file;
+
+        file = fopen(file_name, "rt");
+
+        if (!file) {
+                message_manager_print(
+                        message_manager,
+                        BBlibc_format_string(
+                                "No se ha podido encontrar %s\n",
+                                file_name
+                        )
+                );
+
+                return FALSE;
+        }
+
+        if (PyRun_SimpleFile(file, (char *)file_name) == -1) {
+                message_manager_print(
+                        message_manager,
+                        BBlibc_format_string(
+                                "B_App::RunScriptFile() -> Error ejecutando %s\n",
+                                file_name
+                        )
+                );
+        }
+
+        if (PyErr_Occurred()) {
+                PyErr_Print();
+                PyErr_Clear();
+        }
+
+        fclose(file);
+
+        return TRUE;
+}
+
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x005B8D91
 */
 
@@ -422,10 +467,22 @@ void startup_cb(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, i
 }
 
 
+void LoadMsvcrtFunctions(void)
+{
+        HMODULE msvcrt = NULL;
+        msvcrt = LoadLibrary("msvcrt.dll");
+
+        msvcrt_fopen = (void *)GetProcAddress(msvcrt, "fopen");
+        msvcrt_fclose = (void *)GetProcAddress(msvcrt, "fclose");
+}
+
+
 #pragma argsused
 WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
         void (*BldStartup)(void *) = NULL;
+
+        LoadMsvcrtFunctions();
 
         blade = LoadLibrary("Blade.exe");
 
@@ -445,7 +502,6 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         BBlibc_format_string = (void *)((char *)blade + 0x001B9BF2);
         _thiscall_application_set_mode = (void *)((char *)blade + 0x00011DF9);
         _thiscall_application_init2 = (void *)((char *)blade + 0x0000EFB0);
-        _thiscall_application_run_python_file = (void *)((char *)blade + 0x000156D0);
         _thiscall_application_prepare_level = (void *)((char *)blade + 0x00014EF6);
         message_manager_print = (void *)((char *)blade + 0x001B9BDA);
         bld_new = (void *)((char *)blade + 0x001B96B4);

@@ -10,7 +10,7 @@
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
-    <LIBFILES value=""/>
+    <LIBFILES value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Lib\python15.lib&quot;"/>
     <LIBRARIES value=""/>
     <SPARELIBS value=""/>
     <PACKAGES value="vcl.bpi rtl.bpi dbrtl.bpi adortl.bpi vcldb.bpi vclx.bpi bdertl.bpi 
@@ -57,6 +57,7 @@
       <FILE FILENAME="_PT_test_blade_Project.bpf" FORMNAME="" UNITNAME="_PT_test_blade_Project" CONTAINERID="BPF" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="_PT_Unit1.c" FORMNAME="" UNITNAME="_PT_Unit1" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="_PT_ext_funcs.c" FORMNAME="" UNITNAME="_PT_ext_funcs" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="C:\Program Files (x86)\Borland\CBuilder6\Lib\python15.lib" FORMNAME="" UNITNAME="python15.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

@@ -1,5 +1,6 @@
 
 #include <windows.h>
+#include <stdio.h>
 #include "game_state.h"
 
 #ifdef BLD_EXT_FUNCS
@@ -13,6 +14,19 @@
 #       define NULL_INIT
 
 #endif;
+
+
+/*msvcrt functions */
+EXTERN FILE* (*msvcrt_fopen)(const char *, const char *) NULL_INIT;
+EXTERN int (*msvcrt_fclose)(FILE*) NULL_INIT;
+
+#ifdef __BORLANDC__
+
+#define fopen msvcrt_fopen
+#define fclose msvcrt_fclose
+
+#endif
+
 
 EXTERN HMODULE blade NULL_INIT;
 EXTERN void (*LoadNetModule)(char *) NULL_INIT;
@@ -28,7 +42,6 @@ EXTERN void __stdcall (*_thiscall_BBLibc_named_object_id)(void) NULL_INIT;
 EXTERN char * (*BBlibc_format_string)(const char *format, ...) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_application_set_mode)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_application_init2)(void) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_application_run_python_file)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_application_prepare_level)(void) NULL_INIT;
 EXTERN void (*message_manager_print)(void *message_manager, char *message) NULL_INIT;
 EXTERN void * (*bld_new)(size_t size) NULL_INIT;
