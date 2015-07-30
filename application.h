@@ -43,14 +43,19 @@ typedef struct {
         char unknownFields200[300];
         float unknown1AC;
         float unknownPtrForCamera;
-        char unknownFields300[1044];
+        char unknownFields300[1036];
+        float fUnknown5C0;
+        char unknownFields400[4];
         void *unknown5C8;
-        char unknownFields310[32];
+        char unknownFields310[6];
+        boolean no_sleep;
+        char unknownFields320[24];
         BBLibc_name_t mode;
         char *map_to_load;
         char unknownFields10[16];
         BBLibc_name_t mapName;
-        char unknownFields2[428];
+        char unknownFields2[424];
+        void *window;
         void *module;
         char unknownFields3[16];
 } application_t;
@@ -77,6 +82,7 @@ extern application_t *application_init2(
 );
 extern boolean application_run_python_file(application_t *self, const char *file_name);
 extern void application_prepare_level(application_t *self);
+extern boolean application_process_event(application_t *self);
 
 
 extern application_t *create_application(void *module, int nCmdShow, char *cmdLine);

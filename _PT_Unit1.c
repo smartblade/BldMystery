@@ -15,7 +15,9 @@
 
 
 static application_methods_t application_methods = {
-        NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+        NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+        _thiscall_application_wait_for_event,
+        NULL, NULL, NULL, NULL,
         _thiscall_application_mark_level_to_load,
          NULL,
         _thiscall_application_load_level
@@ -86,6 +88,32 @@ void _impl_application_load_level(application_t *self, char *map)
                 (*var007C59B8)[2] = 0;
                 (*var007C59B8)[3] = 0;
         }
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00410272
+*/
+
+void _impl_application_wait_for_event(application_t *self) {
+        static int counter = 0;
+
+        if (!self->no_sleep)
+                Sleep(50);
+
+        if (counter == 60) {
+                SetWindowText(
+                        self->window,
+                        BBlibc_format_string(
+                                "%s %.1f", "Blade", self->fUnknown5C0
+                        )
+                );
+                counter = 0;
+        }
+
+        counter++;
+        application_process_event(self);
 }
 
 
@@ -503,6 +531,7 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         _thiscall_application_set_mode = (void *)((char *)blade + 0x00011DF9);
         _thiscall_application_init2 = (void *)((char *)blade + 0x0000EFB0);
         _thiscall_application_prepare_level = (void *)((char *)blade + 0x00014EF6);
+        _thiscall_application_process_event = (void *)((char *)blade + 0x0001210E);
         message_manager_print = (void *)((char *)blade + 0x001B9BDA);
         bld_new = (void *)((char *)blade + 0x001B96B4);
         _thiscall_camera_init = (void *)((char *)blade + 0x000EAB20);

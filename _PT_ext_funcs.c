@@ -61,6 +61,13 @@ void func_name(class *self, void *arg1, void *arg2, void *arg3, void *arg4) {\
         _asm { call funcPtr }\
 }
 
+#define DEFINE_THISCALL_FUNC_0(class, funcPtr, func_name)\
+void func_name() {\
+        class *self;\
+        _asm { mov self, ecx}\
+        funcPtr(self);\
+}
+
 #define DEFINE_THISCALL_FUNC_1(class, funcPtr, func_name)\
 void func_name(void *arg1) {\
         class *self;\
@@ -77,8 +84,10 @@ DEFINE_METHOD_OF_CLASS_2(application_t, exit_with_error, application_exit_with_e
 CALL_THISCALL_FUNC_1(application_t, _thiscall_application_set_mode, application_set_mode)
 CALL_THISCALL_FUNC_4(application_t, _thiscall_application_init2, application_init2)
 CALL_THISCALL_FUNC_0(application_t, _thiscall_application_prepare_level, application_prepare_level)
+CALL_THISCALL_FUNC_0(application_t, _thiscall_application_process_event, application_process_event)
 DEFINE_THISCALL_FUNC_1(application_t, _impl_application_mark_level_to_load, _thiscall_application_mark_level_to_load)
 DEFINE_THISCALL_FUNC_1(application_t, _impl_application_load_level, _thiscall_application_load_level)
+DEFINE_THISCALL_FUNC_0(application_t, _impl_application_wait_for_event, _thiscall_application_wait_for_event)
 
 
 CALL_THISCALL_FUNC_1(BBLibc_name_t, _thiscall_BBlibc_name_set, BBlibc_name_set)

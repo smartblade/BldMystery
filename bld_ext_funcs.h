@@ -43,6 +43,7 @@ EXTERN char * (*BBlibc_format_string)(const char *format, ...) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_application_set_mode)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_application_init2)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_application_prepare_level)(void) NULL_INIT;
+EXTERN void __stdcall (*_thiscall_application_process_event)(void) NULL_INIT;
 EXTERN void (*message_manager_print)(void *message_manager, char *message) NULL_INIT;
 EXTERN void * (*bld_new)(size_t size) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_camera_init)(void) NULL_INIT;
@@ -88,10 +89,12 @@ EXTERN void **var005DEFD4 NULL_INIT;
 #ifndef BLD_EXT_FUNCS
 extern void _thiscall_application_mark_level_to_load(char *map);
 extern void _thiscall_application_load_level(char *map);
+extern void _thiscall_application_wait_for_event(void);
 #endif
 
 extern void _impl_application_mark_level_to_load(application_t *self, char *map);
 extern void _impl_application_load_level(application_t *self, char *map);
+extern void _impl_application_wait_for_event(application_t *self);
 
 
 #define NEW_OBJECT2(result, class, init_func, arg1, arg2)\
