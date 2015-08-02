@@ -1,10 +1,29 @@
 //---------------------------------------------------------------------------
 
+#ifdef __BORLANDC__
+
+/*
+ * Define MS_COREDLL for Borland C Builder to avoid crash after _PyObject_New
+ * call
+ */
+#define MS_COREDLL
+
+#endif
+
+
 #include <Python.h>
+#include <windows.h>
 #include <assert.h>
 #include <blade_ext.h>
 #define BUILD_LIB
 #include <export.h>
+
+
+typedef struct {
+        PyObject_HEAD
+        int soundID;
+        int soundDev;
+} bld_py_sound_t;
 
 
 static PyObject* bex_nEntities(PyObject* self, PyObject* args);
@@ -263,6 +282,21 @@ static PyObject* bex_GetInputMode(PyObject* self, PyObject* args);
 static PyObject* bex_SaveScreenShot(PyObject* self, PyObject* args);
 static PyObject* bex_CleanArea(PyObject* self, PyObject* args);
 
+static PyObject *create_sound(const char *file_name, const char *sound_name);
+static void init_sound_type(void);
+static void bld_py_sound_dealloc(PyObject *self);
+static int bld_py_sound_print(PyObject *self, FILE *file, int flags);
+static boolean bld_py_sound_check(PyObject *self);
+static PyObject *bld_py_sound_repr(PyObject *self);
+static PyObject *bld_py_sound_getattr(PyObject *self, char *attr_name);
+static int bld_py_sound_setattr(PyObject *self, char *attr_name, PyObject *value);
+
+
+static PyTypeObject soundTypeObject;
+
+static void (*init_funcs[])(void) = {
+    init_sound_type, NULL
+};
 
 static PyMethodDef methods[] = {
     { "nEntities",                      bex_nEntities,                      METH_VARARGS, "int nEntities(void) \n Devuelve el nxffffffba de entidades en el mapa.\n" },
@@ -524,6 +558,35 @@ static PyMethodDef methods[] = {
 };
 
 
+// address: 0x10001e46
+PyObject *bex_SetListenerPosition(PyObject *self, PyObject *args) {
+        int mode;
+        double x = 0.0, y = 0.0, z = 0.0;
+
+        if (!PyArg_ParseTuple(args, "i|ddd", &mode, &x, &y, &z))
+                return NULL;
+
+        return Py_BuildValue("i", SetListenerMode(mode, x, y, z));
+}
+
+// address: 0x100020b6
+PyObject *bex_CreateSound(PyObject *self, PyObject *args) {
+        const char * file_name;
+        const char * sound_name;
+        PyObject *sound;
+
+        if (!PyArg_ParseTuple(args, "ss", &file_name, &sound_name))
+                return NULL;
+
+        sound = create_sound(file_name, sound_name);
+        if (sound == NULL) {
+                Py_INCREF(Py_None);
+                return Py_None;
+        }
+
+        return sound;
+}
+
 // address: 0x10002255
 PyObject *bex_AddScheduledFunc(PyObject *self, PyObject *args) {
         double time;
@@ -695,15 +758,7 @@ PyObject *bex_GetNewExclusionGroupId(PyObject *self, PyObject *args) {
 
 
 
-PyObject* bex_SetListenerPosition(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_CreateSpark(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_CreateSound(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -1640,9 +1695,112 @@ PyObject* bex_CleanArea(PyObject* self, PyObject* args) {
 }
 
 
+// address: 0x1000737B
+
 /* Use stdcall to avoid generation underscores */
 LIB_EXP __stdcall void initBladex()
 {
+        int i;
+
+        for( i = 0; i < sizeof(init_funcs)/sizeof(init_funcs[0]); i++)
+                if (init_funcs[i])
+                        init_funcs[i]();
+
         Py_InitModule4("Bladex", methods, NULL, NULL, PYTHON_API_VERSION);
+}
+
+
+// address: 0x10017e10
+PyObject *create_sound(const char *file_name, const char *sound_name) {
+        int soundID;
+        bld_py_sound_t *sound_obj;
+
+        soundID = CreateSound(file_name, sound_name);
+        if (soundID != 0) {
+
+                sound_obj = PyObject_NEW(bld_py_sound_t, &soundTypeObject);
+
+                if (sound_obj != NULL) {
+                    sound_obj->soundID = soundID;
+                    sound_obj->soundDev = GetSoundDevInstace();
+                    return (PyObject *)sound_obj;
+                } else {
+                    DestroySound(soundID);
+                    return NULL;
+                }
+        }
+        return NULL;
+}
+
+// address: 0x100181f3
+void init_sound_type() {
+
+    memset(&soundTypeObject, 0, sizeof(PyTypeObject));
+
+    soundTypeObject.ob_refcnt = 1;
+    soundTypeObject.ob_type = &PyType_Type;
+    soundTypeObject.ob_size = 0;
+    soundTypeObject.tp_name = "B_PySound";
+    soundTypeObject.tp_basicsize = sizeof(bld_py_sound_t);
+    soundTypeObject.tp_itemsize = 0;
+    soundTypeObject.tp_dealloc = bld_py_sound_dealloc;
+    soundTypeObject.tp_print = bld_py_sound_print;
+    soundTypeObject.tp_getattr = bld_py_sound_getattr;
+    soundTypeObject.tp_setattr = bld_py_sound_setattr;
+    soundTypeObject.tp_compare = NULL;
+    soundTypeObject.tp_repr = bld_py_sound_repr;
+    soundTypeObject.tp_as_number = NULL;
+    soundTypeObject.tp_as_sequence = NULL;
+    soundTypeObject.tp_as_mapping = NULL;
+    soundTypeObject.tp_hash = NULL;
+}
+
+
+// address: 0x1001829e
+void bld_py_sound_dealloc(PyObject *self)
+{
+        if (bld_py_sound_check(self))
+                free(self);
+}
+
+// address: 0x100182c7
+boolean bld_py_sound_check(PyObject *self) {
+
+        if (self == NULL)
+                return FALSE;
+
+
+        if ( ((bld_py_sound_t *)self)->soundID == 0 )
+                return FALSE;
+
+        return TRUE;
+}
+
+// TODO implement
+// address: 0x100182e5
+int bld_py_sound_print(PyObject *self, FILE *file, int flags)
+{
+        return 0;
+}
+
+// TODO implement
+// address: 0x1001834a
+PyObject *bld_py_sound_repr(PyObject *self)
+{
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100183b5
+PyObject *bld_py_sound_getattr(PyObject *self, char *attr_name)
+{
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100185e4
+int bld_py_sound_setattr(PyObject *self, char *attr_name, PyObject *value)
+{
+        return 0;
 }
 
