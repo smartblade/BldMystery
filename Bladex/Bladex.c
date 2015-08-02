@@ -8,6 +8,12 @@
  */
 #define MS_COREDLL
 
+/*
+ * Define USE_DL_IMPORT for Borland C Builder to avoid access violation
+ * when writing to _Py_NoneStruct
+ */
+#define USE_DL_IMPORT
+
 #endif
 
 
@@ -757,6 +763,143 @@ PyObject *bex_GetNewExclusionGroupId(PyObject *self, PyObject *args) {
 }
 
 
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x10002b19
+PyObject *bex_ReadLevel(PyObject *self, PyObject *args) {
+        const char *file_name;
+
+        if(!PyArg_ParseTuple(args, "s", &file_name))
+                return NULL;
+
+        ReadLevel(file_name);
+
+        Py_INCREF(Py_None);
+        return Py_None;
+}
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x10002d9c
+PyObject *bex_ReadBitMap(PyObject *self, PyObject *args) {
+        const char *file_name;
+        const char *internal_name;
+
+        if(!PyArg_ParseTuple(args, "ss", &file_name, &internal_name))
+                return NULL;
+
+        ReadBitMap(file_name, internal_name);
+
+        Py_INCREF(Py_None);
+        return Py_None;
+}
+
+// address: 0x10002df1
+PyObject *bex_ReadAlphaBitMap(PyObject *self, PyObject *args) {
+        const char *file_name;
+        const char *internal_name;
+
+        if(!PyArg_ParseTuple(args, "ss", &file_name, &internal_name))
+                return NULL;
+
+        ReadAlphaBitMap(file_name, internal_name);
+
+        Py_INCREF(Py_None);
+        return Py_None;
+}
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x100030b5
+PyObject *bex_AddParticleGType(PyObject *self, PyObject *args) {
+        const char *new_type;
+        const char *parent_type;
+        int operation_type;
+        int duration;
+
+        if(!PyArg_ParseTuple(
+                args, "ssii", &new_type, &parent_type, &operation_type,
+                &duration
+        ))
+                return NULL;
+
+        return Py_BuildValue(
+                "i", AddParticleGType(
+                        new_type, parent_type, operation_type, duration
+                )
+        );
+}
+
+// address: 0x10003117
+PyObject *bex_SetParticleGVal(PyObject *self, PyObject *args) {
+        const char *type;
+        int i, r, g, b, alpha;
+        double size;
+
+        if(!PyArg_ParseTuple(args, "siiiiid", &type, &i, &r, &g, &b, &alpha, &size))
+                return NULL;
+
+        return Py_BuildValue("i", SetParticleGVal(type, i, r, g, b, alpha, size));
+}
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x100053a0
+PyObject *bex_CloseDebugChannel(PyObject *self, PyObject *args) {
+        const char *channel_name;
+
+        if(!PyArg_ParseTuple(args, "s", &channel_name))
+                return NULL;
+
+        return Py_BuildValue("i", CloseDebugChannel(channel_name));
+}
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x100069b9
+PyObject *bex_BodInspector(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, "")) {
+                PyErr_SetString(
+                        PyExc_RuntimeError,
+                        "Wrong number of arguments in tuple."
+                );
+                return NULL;
+        }
+
+        BodInspector();
+        return Py_BuildValue("");
+}
+
 
 PyObject* bex_CreateSpark(PyObject* self, PyObject* args) {
         return NULL;
@@ -818,10 +961,6 @@ PyObject* bex_LoadLevel(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_ReadLevel(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_CloseLevel(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -835,14 +974,6 @@ PyObject* bex_ShowSounds(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_nSounds(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ReadBitMap(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ReadAlphaBitMap(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -1202,14 +1333,6 @@ PyObject* bex_AnmGetEventFrame(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_AddParticleGType(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetParticleGVal(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_GetnParticleGType(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -1311,10 +1434,6 @@ PyObject* bex_Quit(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_OpenDebugChannel(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_CloseDebugChannel(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -1627,10 +1746,6 @@ PyObject* bex_SetMouseState(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_GetPTime(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_BodInspector(PyObject* self, PyObject* args) {
         return NULL;
 }
 

@@ -31,5 +31,18 @@ LIB_EXP void RestartTime(void);
 LIB_EXP double GetTimeSpeed(void);
 LIB_EXP void SetTimeSpeed(double speed);
 LIB_EXP int GetNewExclusionGroupId(void);
+LIB_EXP void ReadLevel(const char *file_name);
+LIB_EXP void ReadBitMap(const char *file_name, const char *internal_name);
+LIB_EXP void ReadAlphaBitMap(const char *file_name, const char *internal_name);
+LIB_EXP int AddParticleGType(
+        const char *new_type, const char *parent_type, int operation_type,
+        int duration
+);
+LIB_EXP int SetParticleGVal(
+        const char *type, int i, int r, int g, int b, int alpha, double size
+);
+
+LIB_EXP int CloseDebugChannel(const char *channel_name);
+LIB_EXP void BodInspector(void);
 
 #endif /* BLADE_EXT_H */
