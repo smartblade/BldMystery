@@ -564,6 +564,13 @@ static PyMethodDef methods[] = {
 };
 
 
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 // address: 0x10001e46
 PyObject *bex_SetListenerPosition(PyObject *self, PyObject *args) {
         int mode;
@@ -574,6 +581,13 @@ PyObject *bex_SetListenerPosition(PyObject *self, PyObject *args) {
 
         return Py_BuildValue("i", SetListenerMode(mode, x, y, z));
 }
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
 
 // address: 0x100020b6
 PyObject *bex_CreateSound(PyObject *self, PyObject *args) {
@@ -592,6 +606,56 @@ PyObject *bex_CreateSound(PyObject *self, PyObject *args) {
 
         return sound;
 }
+
+
+// address: 0x10002118
+PyObject *bex_CreateTimer(PyObject *self, PyObject *args) {
+        const char *timer_name;
+        double period;
+
+        if (!PyArg_ParseTuple(args, "sd", &timer_name, &period))
+                return NULL;
+
+        return Py_BuildValue("i", CreateTimer(timer_name, period));
+}
+
+
+// address: 0x1000216e
+PyObject *bex_GetnTimers(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", GetnTimers());
+}
+
+
+// address: 0x100021ab
+PyObject *bex_GetTimerInfo(PyObject *self, PyObject *args) {
+        int timer_index;
+        const char *timer_name;
+        double period;
+        PyObject *tuple, *nameObj, *periodObj;
+
+        if (!PyArg_ParseTuple(args, "i", &timer_index))
+                return NULL;
+
+        if (!GetTimerInfo(timer_index, &timer_name, &period)) {
+                Py_INCREF(Py_None);
+                return Py_None;
+        }
+
+        tuple = PyTuple_New(2);
+
+        nameObj = PyString_FromString(timer_name);
+        periodObj = PyFloat_FromDouble(period);
+
+        PyTuple_SET_ITEM(tuple, 0, nameObj);
+        PyTuple_SET_ITEM(tuple, 1, periodObj);
+
+        return tuple;
+}
+
 
 // address: 0x10002255
 PyObject *bex_AddScheduledFunc(PyObject *self, PyObject *args) {
@@ -906,18 +970,6 @@ PyObject* bex_CreateSpark(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_CreateRoute(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_CreateTimer(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetnTimers(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetTimerInfo(PyObject* self, PyObject* args) {
         return NULL;
 }
 

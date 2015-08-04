@@ -12,6 +12,11 @@ LIB_EXP int SetListenerMode(int mode, double x, double y, double z);
 LIB_EXP int CreateSound(const char *file_name, const char *sound_name);
 LIB_EXP void DestroySound(int soundID);
 LIB_EXP int GetSoundDevInstace(void);
+LIB_EXP int CreateTimer(const char *timer_name, double period);
+LIB_EXP int GetnTimers(void);
+LIB_EXP int GetTimerInfo(
+        int timer_index, const char **timer_name, double *period
+);
 LIB_EXP int AddScheduledFunc(
         double time, PyObject *func, PyObject *args, const char *name
 );
