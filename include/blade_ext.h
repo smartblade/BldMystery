@@ -36,6 +36,16 @@ LIB_EXP void RestartTime(void);
 LIB_EXP double GetTimeSpeed(void);
 LIB_EXP void SetTimeSpeed(double speed);
 LIB_EXP int GetNewExclusionGroupId(void);
+LIB_EXP int AssocKey(
+        const char *action, const char *input_device, const char *key,
+        int press
+);
+LIB_EXP double GetTimeActionHeld(const char *action_name);
+LIB_EXP int AddInputAction(const char *action_name, int npi);
+LIB_EXP int RemoveInputAction(const char *action_name);
+LIB_EXP void UnBindAll(void);
+LIB_EXP const char *Input(const char *text);
+LIB_EXP void MarkLevelToLoad(const char *dir_name);
 LIB_EXP void ReadLevel(const char *file_name);
 LIB_EXP void ReadBitMap(const char *file_name, const char *internal_name);
 LIB_EXP void ReadAlphaBitMap(const char *file_name, const char *internal_name);

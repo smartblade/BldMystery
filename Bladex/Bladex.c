@@ -826,6 +826,51 @@ PyObject *bex_GetNewExclusionGroupId(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", GetNewExclusionGroupId());
 }
 
+// address: 0x10002733
+PyObject *bex_AssocKey(PyObject *self, PyObject *args) {
+        const char *action, *input_device, *key;
+        int press = 1;
+
+        if(!PyArg_ParseTuple(args, "sss|i", &action, &input_device, &key, &press))
+                return NULL;
+
+        return Py_BuildValue("i", AssocKey(action, input_device, key, press));
+}
+
+
+// address: 0x1000279C
+PyObject* bex_GetTimeActionHeld(PyObject* self, PyObject* args) {
+        const char *action_name;
+
+        if(!PyArg_ParseTuple(args, "s", &action_name))
+                return NULL;
+
+        return Py_BuildValue("d", GetTimeActionHeld(action_name));
+}
+
+
+// address: 0x100027EA
+PyObject* bex_AddInputAction(PyObject* self, PyObject* args) {
+        const char *action_name;
+        int npi;
+
+        if(!PyArg_ParseTuple(args, "si", &action_name, &npi))
+                return NULL;
+
+        return Py_BuildValue("i", AddInputAction(action_name, npi));
+}
+
+
+// address: 0x1000283C
+PyObject* bex_RemoveInputAction(PyObject* self, PyObject* args) {
+        const char *action_name;
+
+        if(!PyArg_ParseTuple(args, "s", &action_name))
+                return NULL;
+
+        return Py_BuildValue("i", RemoveInputAction(action_name));
+}
+
 
 /*
 ................................................................................
@@ -833,6 +878,49 @@ PyObject *bex_GetNewExclusionGroupId(PyObject *self, PyObject *args) {
 ................................................................................
 ................................................................................
 */
+
+// address: 0x10002A31
+PyObject *bex_UnBindAll(PyObject* self, PyObject* args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        UnBindAll();
+
+        Py_INCREF(Py_None);
+        return Py_None;
+}
+
+
+// address: 0x10002a6d
+PyObject *bex_Input(PyObject *self, PyObject *args) {
+        const char *output;
+        const char *text;
+
+        if(!PyArg_ParseTuple(args, "s", &text))
+                return NULL;
+
+        output = Input(text);
+        if (output == NULL)
+            return Py_BuildValue("i", 0);
+
+        return Py_BuildValue("s", output);
+}
+
+
+// address: 0x10002ACF
+PyObject *bex_LoadLevel(PyObject* self, PyObject* args) {
+        const char *dir_name;
+
+        if(!PyArg_ParseTuple(args, "s", &dir_name))
+                return NULL;
+
+        MarkLevelToLoad(dir_name);
+
+        Py_INCREF(Py_None);
+        return Py_None;
+}
+
 
 // address: 0x10002b19
 PyObject *bex_ReadLevel(PyObject *self, PyObject *args) {
@@ -973,18 +1061,6 @@ PyObject* bex_CreateRoute(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_GetTimeActionHeld(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddInputAction(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_RemoveInputAction(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_AddBoundFunc(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -993,23 +1069,7 @@ PyObject* bex_Bind2(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_AssocKey(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_RemoveBoundFunc(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_UnBindAll(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_Input(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_LoadLevel(PyObject* self, PyObject* args) {
         return NULL;
 }
 
