@@ -564,6 +564,158 @@ static PyMethodDef methods[] = {
 };
 
 
+
+// address: 0x10001000
+PyObject *bex_ExportWorld(PyObject *self, PyObject *args) {
+        const char *world;
+        int ret = 0;
+
+        if (PyArg_ParseTuple(args, "s", &world))
+                ret = WorldToMBW(world);
+
+        return Py_BuildValue("i", ret);
+}
+
+
+// address: 0x1000104d
+PyObject *bex_SoundSystemActive(PyObject *self, PyObject *args) {
+
+        if (SoundSystemActive() != 1) {
+                return Py_BuildValue("i", 0);
+        } else {
+                return Py_BuildValue("i", 1);
+        }
+}
+
+
+// address: 0x10001086
+PyObject *bex_SetSSFrecuency(PyObject *self, PyObject *args) {
+        int frequency, ret;
+
+        if (!PyArg_ParseTuple(args, "i", &frequency))
+                return NULL;
+
+        ret = SetSSFrecuency(frequency);
+
+        if (ret != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x100010e6
+PyObject *bex_SetSS2dChannels(PyObject *self, PyObject *args) {
+        int num_ch, ret;
+
+        if (!PyArg_ParseTuple(args, "i", &num_ch))
+                return NULL;
+
+        ret = SetSS2dChannels(num_ch);
+
+        if (ret != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x10001146
+PyObject *bex_SetSS3dChannels(PyObject *self, PyObject *args) {
+        int num_ch, ret;
+
+        if (!PyArg_ParseTuple(args, "i", &num_ch))
+                return NULL;
+
+        ret = SetSS3dChannels(num_ch);
+
+        if (ret != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x100011a6
+PyObject *bex_SetSSFilter(PyObject *self, PyObject *args) {
+        int filter_output, ret;
+
+        if (!PyArg_ParseTuple(args, "i", &filter_output))
+                return NULL;
+
+        ret = SetSSFilter(filter_output);
+
+        if (ret != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x10001206
+PyObject *bex_KillMusic(PyObject *self, PyObject *args) {
+        int ret;
+
+        ret = KillMusic();
+
+        if (ret != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x1000123f
+PyObject *bex_ShutDownSoundChannels(PyObject *self, PyObject *args) {
+        int ret;
+
+        ret = ShutDownSoundChannels();
+
+        if (ret != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x10001278
+PyObject *bex_PauseSoundSystem(PyObject *self, PyObject *args) {
+        int ret;
+
+        ret = PauseSoundSystem();
+
+        if (ret != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x100012b1
+PyObject *bex_PauseSoundSystemButMusic(PyObject *self, PyObject *args) {
+        int ret;
+
+        ret = PauseSoundSystemButMusic();
+
+        if (ret != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x100012ea
+PyObject *bex_ResumeSoundSystem(PyObject *self, PyObject *args) {
+        int ret;
+
+        ret = ResumeSoundSystem();
+
+        if (ret != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
 /*
 ................................................................................
 ................................................................................
@@ -936,12 +1088,88 @@ PyObject *bex_ReadLevel(PyObject *self, PyObject *args) {
 }
 
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+// address: 0x10002b63
+PyObject *bex_CloseLevel(PyObject *self, PyObject *args) {
+        const char *statement1 = NULL, *statement2 = NULL;
+
+        if(!PyArg_ParseTuple(args, "|ss", &statement1, &statement2))
+                return NULL;
+
+        CloseLevel(statement1, statement2);
+
+        Py_INCREF(Py_None);
+        return Py_None;
+}
+
+
+// address: 0x10002bc6
+PyObject *bex_PlaySound(PyObject *self, PyObject *args) {
+        int soundId, unknown = 0;
+        double x, y, z;
+
+        if(!PyArg_ParseTuple(args, "iddd|i", &soundId, &x, &y, &z, &unknown))
+                return NULL;
+
+        return Py_BuildValue("i", OutSound(soundId, x, y, z, unknown));
+}
+
+
+// address: 0x10002c43
+PyObject *bex_ShowSounds(PyObject *self, PyObject *args) {
+        int showSounds;
+
+        if(!PyArg_ParseTuple(args, "i", &showSounds))
+                return NULL;
+
+        return Py_BuildValue("i", SetShowSounds(showSounds));
+}
+
+
+// address: 0x10002c8d
+PyObject *bex_nSounds(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", nSounds());
+}
+
+
+// address: 0x10002cca
+PyObject *bex_GetSoundName(PyObject *self, PyObject *args) {
+        int soundId;
+        const char *soundName;
+
+        if(!PyArg_ParseTuple(args, "i", &soundId))
+                return NULL;
+
+        soundName = GetSoundName(soundId);
+        if (soundName == NULL) {
+                Py_INCREF(Py_None);
+                return Py_None;
+        }
+
+        return Py_BuildValue("s", soundName);
+}
+
+
+// address: 0x10002d33
+PyObject *bex_GetSoundFileName(PyObject *self, PyObject *args) {
+        int soundId;
+        const char *soundFileName;
+
+        if(!PyArg_ParseTuple(args, "i", &soundId))
+                return NULL;
+
+        soundFileName = GetSoundFileName(soundId);
+        if (soundFileName == NULL) {
+                Py_INCREF(Py_None);
+                return Py_None;
+        }
+
+        return Py_BuildValue("s", soundFileName);
+}
+
 
 // address: 0x10002d9c
 PyObject *bex_ReadBitMap(PyObject *self, PyObject *args) {
@@ -972,12 +1200,96 @@ PyObject *bex_ReadAlphaBitMap(PyObject *self, PyObject *args) {
 }
 
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+// address: 0x10002e46
+PyObject *bex_SetSun(PyObject *self, PyObject *args) {
+        int exists;
+        double x, y, z;
+
+        if(!PyArg_ParseTuple(args, "iddd", &exists, &x, &y, &z))
+                return NULL;
+
+        SetSun(exists, x, y, z);
+
+        return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x10002eaf
+PyObject *bex_InsideActionArea(PyObject *self, PyObject *args) {
+        int AA;
+        double x, y, z;
+
+        if(!PyArg_ParseTuple(args, "iddd", &AA, &x, &y, &z))
+                return NULL;
+
+        return Py_BuildValue("i", InsideAA(AA, x, y, z));
+}
+
+
+// address: 0x10002f1d
+PyObject *bex_AnmAddEvent(PyObject *self, PyObject *args) {
+        const char *anm_name, *event_name;
+        double event_frame;
+
+        if(!PyArg_ParseTuple(args, "ssd", &anm_name, &event_name, &event_frame))
+                return NULL;
+
+        AnmAddEvent(anm_name, event_name, event_frame);
+
+        return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x10002f76
+PyObject *bex_AddAnmEvent(PyObject *self, PyObject *args) {
+        const char *anm_name, *event_name;
+        double event_frame;
+
+        if(!PyArg_ParseTuple(args, "ssd", &anm_name, &event_name, &event_frame))
+                return NULL;
+
+        AddAnmEvent(anm_name, event_name, event_frame);
+
+        return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x10002fcf
+PyObject *bex_AnmDelEvent(PyObject *self, PyObject *args) {
+        const char *anm_name, *event_name;
+
+        if(!PyArg_ParseTuple(args, "ss", &anm_name, &event_name))
+                return NULL;
+
+        AnmDelEvent(anm_name, event_name);
+
+        return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x1000301c
+PyObject *bex_AnmClearEvents(PyObject *self, PyObject *args) {
+        const char *anm_name;
+
+        if(!PyArg_ParseTuple(args, "s", &anm_name))
+                return NULL;
+
+        AnmClearEvents(anm_name);
+
+        return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x1000305f
+PyObject *bex_AnmGetEventFrame(PyObject *self, PyObject *args) {
+        const char *anm_name, *event_name;
+
+        if(!PyArg_ParseTuple(args, "ss", &anm_name, &event_name))
+                return NULL;
+
+        return Py_BuildValue("d", AnmGetEventFrame(anm_name, event_name));
+}
+
 
 // address: 0x100030b5
 PyObject *bex_AddParticleGType(PyObject *self, PyObject *args) {
@@ -1073,22 +1385,6 @@ PyObject* bex_RemoveBoundFunc(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_CloseLevel(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_PlaySound(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ShowSounds(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_nSounds(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_SetSoundVolume(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -1118,46 +1414,6 @@ PyObject* bex_CreateEntity(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_DeleteEntity(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SoundSystemActive(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetSSFrecuency(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetSS2dChannels(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetSS3dChannels(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetSSFilter(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_KillMusic(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ResumeSoundSystem(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_PauseSoundSystem(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_PauseSoundSystemButMusic(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ShutDownSoundChannels(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -1417,34 +1673,6 @@ PyObject* bex_CDCallBack(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_SetSun(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_InsideActionArea(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AnmAddEvent(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddAnmEvent(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AnmDelEvent(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AnmClearEvents(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AnmGetEventFrame(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_GetnParticleGType(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -1522,10 +1750,6 @@ PyObject* bex_GetScreenXY(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_ShowActionAreas(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ExportWorld(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -1746,14 +1970,6 @@ PyObject* bex_GetModelPos(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_GetGhostSectorSound(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetSoundName(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetSoundFileName(PyObject* self, PyObject* args) {
         return NULL;
 }
 
