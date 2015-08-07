@@ -1024,12 +1024,59 @@ PyObject* bex_RemoveInputAction(PyObject* self, PyObject* args) {
 }
 
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+// address: 0x10002886
+PyObject *bex_AddBoundFunc(PyObject *self, PyObject *args) {
+        const char *action_name;
+        const char *predproc;
+        PyObject *proc;
+
+        if(!PyArg_ParseTuple(args, "ss", &action_name, &predproc)) {
+                PyErr_Clear();
+
+                if(!PyArg_ParseTuple(args, "sO", &action_name, &proc))
+                        return NULL;
+
+                return Py_BuildValue("i", Bind(action_name, proc));
+        }
+
+        return Py_BuildValue("i", BindPred(action_name, predproc));
+}
+
+
+// address: 0x10002924
+PyObject *bex_Bind2(PyObject *self, PyObject *args) {
+        const char *action_name1, *action_name2, *new_action;
+        int unknown = 100;
+
+        if(!PyArg_ParseTuple(args, "sss|i", &action_name1, &action_name2, &new_action, &unknown))
+                return NULL;
+
+        PyErr_Clear();
+
+        return Py_BuildValue(
+                "i",
+                Bind2(action_name1, action_name2, new_action, unknown)
+        );
+}
+
+
+// address: 0x10002993
+PyObject *bex_RemoveBoundFunc(PyObject *self, PyObject *args) {
+        const char *action_name, *predproc;
+        PyObject *proc;
+
+        if(!PyArg_ParseTuple(args, "ss", &action_name, &predproc)) {
+                PyErr_Clear();
+
+                if(!PyArg_ParseTuple(args, "sO", &action_name, &proc))
+                        return NULL;
+
+                return Py_BuildValue("i", UnBind(action_name, proc));
+        }
+
+        return Py_BuildValue("i", UnBindPred(action_name, predproc));
+}
+
 
 // address: 0x10002A31
 PyObject *bex_UnBindAll(PyObject* self, PyObject* args) {
@@ -1370,18 +1417,6 @@ PyObject* bex_CreateSpark(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_CreateRoute(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddBoundFunc(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_Bind2(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_RemoveBoundFunc(PyObject* self, PyObject* args) {
         return NULL;
 }
 

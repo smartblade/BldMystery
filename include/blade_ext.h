@@ -54,6 +54,14 @@ LIB_EXP int AssocKey(
 LIB_EXP double GetTimeActionHeld(const char *action_name);
 LIB_EXP int AddInputAction(const char *action_name, int npi);
 LIB_EXP int RemoveInputAction(const char *action_name);
+LIB_EXP int Bind(const char *action_name, PyObject *proc);
+LIB_EXP int BindPred(const char *action_name, const char *predproc);
+LIB_EXP int Bind2(
+        const char *action_name1, const char *action_name2,
+        const char *new_action, int unknown
+);
+LIB_EXP int UnBind(const char *action_name, PyObject *proc);
+LIB_EXP int UnBindPred(const char *action_name, const char *predproc);
 LIB_EXP void UnBindAll(void);
 LIB_EXP const char *Input(const char *text);
 LIB_EXP void MarkLevelToLoad(const char *dir_name);
