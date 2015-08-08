@@ -27,13 +27,19 @@
 
 typedef struct {
         PyObject_HEAD
+        char *name;
+} bld_py_entity_t;
+
+typedef struct {
+        PyObject_HEAD
+        int sectorID;
+} bld_py_sector_t;
+
+typedef struct {
+        PyObject_HEAD
         int soundID;
         int soundDev;
 } bld_py_sound_t;
-
-typedef struct {
-        char *name;
-} bld_py_entity_t;
 
 
 static PyObject* bex_nEntities(PyObject* self, PyObject* args);
@@ -300,6 +306,14 @@ static int bld_py_entity_print(PyObject *self, FILE *file, int flags);
 static PyObject *bld_py_entity_getattr(PyObject *self, char *attr_name);
 static int bld_py_entity_setattr(PyObject *self, char *attr_name, PyObject *value);
 
+static PyObject* get_sector_by_index(int index);
+static PyObject* get_sector_by_position(double x, double y, double z);
+static void init_sector_type(void);
+static void bld_py_sector_dealloc(PyObject *self);
+static int bld_py_sector_print(PyObject *self, FILE *file, int flags);
+static PyObject *bld_py_sector_getattr(PyObject *self, char *attr_name);
+static int bld_py_sector_setattr(PyObject *self, char *attr_name, PyObject *value);
+
 static PyObject *create_sound(const char *file_name, const char *sound_name);
 static void init_sound_type(void);
 static void bld_py_sound_dealloc(PyObject *self);
@@ -311,10 +325,11 @@ static int bld_py_sound_setattr(PyObject *self, char *attr_name, PyObject *value
 
 
 static PyTypeObject entityTypeObject;
+static PyTypeObject sectorTypeObject;
 static PyTypeObject soundTypeObject;
 
 static void (*init_funcs[])(void) = {
-    init_entity_type, init_sound_type, NULL
+    init_entity_type, init_sector_type, init_sound_type, NULL
 };
 
 static PyMethodDef methods[] = {
@@ -780,6 +795,35 @@ PyObject *bex_SetListenerPosition(PyObject *self, PyObject *args) {
                 return NULL;
 
         return Py_BuildValue("i", SetListenerMode(mode, x, y, z));
+}
+
+
+// address: 0x10001ee7
+PyObject *bex_GetSector(PyObject *self, PyObject *args) {
+        int index;
+        double x, y, z;
+        PyObject *sector;
+
+        if (!PyArg_ParseTuple(args, "i", &index)) {
+                PyErr_Clear();
+
+                if (!PyArg_ParseTuple(args, "ddd", &x, &y, &z))
+                        return NULL;
+
+                sector = get_sector_by_position(x, y, z);
+                if (sector == NULL) {
+                        Py_INCREF(Py_None);
+                        return Py_None;
+                }
+
+        } else {
+                sector = get_sector_by_index(index);
+                if (sector == NULL) {
+                        Py_INCREF(Py_None);
+                        return Py_None;
+                }
+        }
+        return sector;
 }
 
 /*
@@ -1596,10 +1640,6 @@ PyObject* bex_GetLastPlayerCType(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_GetSector(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_GetCharType(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -2340,6 +2380,92 @@ int bld_py_entity_setattr(PyObject *self, char *attr_name, PyObject *value)
 ................................................................................
 ................................................................................
 */
+
+// address: 0x10016520
+PyObject *get_sector_by_index(int index) {
+        int sectorID;
+        bld_py_sector_t *sector_obj;
+
+        sectorID = GetSectorByIndex(index);
+        if (sectorID >= 0) {
+                sector_obj = PyObject_NEW(bld_py_sector_t, &sectorTypeObject);
+                if (sector_obj != NULL) {
+                        sector_obj->sectorID = sectorID;
+                        return (PyObject *)sector_obj;
+                } else {
+                        return NULL;
+                }
+        }
+
+        return NULL;
+}
+
+// address: 0x1001657c
+PyObject *get_sector_by_position(double x, double y, double z) {
+        int index;
+
+        index = GetSectorByPosition(x, y, z);
+
+        return get_sector_by_index(index);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x10016f4f
+void init_sector_type() {
+
+        memset(&sectorTypeObject, 0, sizeof(PyTypeObject));
+
+        sectorTypeObject.ob_refcnt = 1;
+        sectorTypeObject.ob_type = &PyType_Type;
+        sectorTypeObject.ob_size = 0;
+        sectorTypeObject.tp_name = "B_PySector";
+        sectorTypeObject.tp_basicsize = sizeof(bld_py_sector_t);
+        sectorTypeObject.tp_itemsize = 0;
+        sectorTypeObject.tp_dealloc = bld_py_sector_dealloc;
+        sectorTypeObject.tp_print = bld_py_sector_print;
+        sectorTypeObject.tp_getattr = bld_py_sector_getattr;
+        sectorTypeObject.tp_setattr = bld_py_sector_setattr;
+        sectorTypeObject.tp_compare = NULL;
+        sectorTypeObject.tp_repr = NULL;
+        sectorTypeObject.tp_as_number = NULL;
+        sectorTypeObject.tp_as_sequence = NULL;
+        sectorTypeObject.tp_as_mapping = NULL;
+        sectorTypeObject.tp_hash = NULL;
+}
+
+// TODO implement
+// address: 0x10016ffa
+void bld_py_sector_dealloc(PyObject *self)
+{
+}
+
+// TODO implement
+// address: 0x1001700c
+int bld_py_sector_print(PyObject *self, FILE *file, int flags)
+{
+        return 0;
+}
+
+// TODO implement
+// address: 0x1001703f
+PyObject *bld_py_sector_getattr(PyObject *self, char *attr_name)
+{
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100175eb
+int bld_py_sector_setattr(PyObject *self, char *attr_name, PyObject *value)
+{
+        return 0;
+}
+
 
 // address: 0x10017e10
 PyObject *create_sound(const char *file_name, const char *sound_name) {
