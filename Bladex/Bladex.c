@@ -27,6 +27,11 @@
 
 typedef struct {
         PyObject_HEAD
+        int charID;
+} bld_py_char_t;
+
+typedef struct {
+        PyObject_HEAD
         char *name;
 } bld_py_entity_t;
 
@@ -303,6 +308,13 @@ static PyObject* bex_GetInputMode(PyObject* self, PyObject* args);
 static PyObject* bex_SaveScreenShot(PyObject* self, PyObject* args);
 static PyObject* bex_CleanArea(PyObject* self, PyObject* args);
 
+static PyObject *get_char_by_name(const char *name, const char *short_name);
+static void init_char_type(void);
+static void bld_py_char_dealloc(PyObject *self);
+static int bld_py_char_print(PyObject *self, FILE *file, int flags);
+static PyObject *bld_py_char_getattr(PyObject *self, char *attr_name);
+static int bld_py_char_setattr(PyObject *self, char *attr_name, PyObject *value);
+
 static PyObject *get_entity_by_name(const char *name);
 static PyObject *get_entity_by_index(int index);
 static void init_entity_type(void);
@@ -336,14 +348,15 @@ static PyObject *bld_py_sound_getattr(PyObject *self, char *attr_name);
 static int bld_py_sound_setattr(PyObject *self, char *attr_name, PyObject *value);
 
 
+static PyTypeObject charTypeObject;
 static PyTypeObject entityTypeObject;
 static PyTypeObject materialTypeObject;
 static PyTypeObject sectorTypeObject;
 static PyTypeObject soundTypeObject;
 
 static void (*init_funcs[])(void) = {
-    init_entity_type, init_material_type, init_sector_type, init_sound_type,
-    NULL
+    init_char_type, init_entity_type, init_material_type, init_sector_type,
+    init_sound_type, NULL
 };
 
 static PyMethodDef methods[] = {
@@ -838,6 +851,25 @@ PyObject *bex_GetSector(PyObject *self, PyObject *args) {
                 }
         }
         return sector;
+}
+
+
+// address: 0x10001faf
+PyObject *bex_GetCharType(PyObject *self, PyObject *args) {
+        const char *name, *short_name;
+        PyObject *character;
+
+        if (!PyArg_ParseTuple(args, "ss", &name, &short_name))
+                return NULL;
+
+
+        character = get_char_by_name(name, short_name);
+        if (character == NULL) {
+                Py_INCREF(Py_None);
+                return Py_None;
+        }
+
+        return character;
 }
 
 /*
@@ -1780,10 +1812,6 @@ PyObject* bex_GetLastPlayerCType(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_GetCharType(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_GetTrailType(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -2379,12 +2407,89 @@ LIB_EXP __stdcall void initBladex()
         Py_InitModule4("Bladex", methods, NULL, NULL, PYTHON_API_VERSION);
 }
 
+
+// address: 0x100073b0
+PyObject *get_char_by_name(const char *name, const char *short_name) {
+        bld_py_char_t *char_obj;
+        int charID;
+
+        charID = GetCharByName(name, short_name);
+        if (charID < 0)
+                return NULL;
+
+        char_obj = PyObject_NEW(bld_py_char_t, &charTypeObject);
+        if (char_obj == NULL)
+                return NULL;
+
+        char_obj->charID = charID;
+
+        return (PyObject *)char_obj;
+}
+
 /*
 ................................................................................
 ................................................................................
 ................................................................................
 ................................................................................
 */
+
+// address: 0x10007a77
+void init_char_type() {
+
+        memset(&charTypeObject, 0, sizeof(PyTypeObject));
+
+        charTypeObject.ob_refcnt = 1;
+        charTypeObject.ob_type = &PyType_Type;
+        charTypeObject.ob_size = 0;
+        charTypeObject.tp_name = "B_PyChar";
+        charTypeObject.tp_basicsize = sizeof(bld_py_char_t);
+        charTypeObject.tp_itemsize = 0;
+        charTypeObject.tp_dealloc = bld_py_char_dealloc;
+        charTypeObject.tp_print = bld_py_char_print;
+        charTypeObject.tp_getattr = bld_py_char_getattr;
+        charTypeObject.tp_setattr = bld_py_char_setattr;
+        charTypeObject.tp_compare = NULL;
+        charTypeObject.tp_repr = NULL;
+        charTypeObject.tp_as_number = NULL;
+        charTypeObject.tp_as_sequence = NULL;
+        charTypeObject.tp_as_mapping = NULL;
+        charTypeObject.tp_hash = NULL;
+}
+
+// TODO implement
+// address: 0x10007b22
+void bld_py_char_dealloc(PyObject *self)
+{
+}
+
+// TODO implement
+// address: 0x10007b34
+int bld_py_char_print(PyObject *self, FILE *file, int flags)
+{
+        return 0;
+}
+
+// TODO implement
+// address: 0x10007b67
+PyObject *bld_py_char_getattr(PyObject *self, char *attr_name)
+{
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10008984
+int bld_py_char_setattr(PyObject *self, char *attr_name, PyObject *value)
+{
+        return 0;
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 
 // address: 0x1000a010
 PyObject *get_entity_by_name(const char *name) {
