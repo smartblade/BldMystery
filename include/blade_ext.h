@@ -8,6 +8,7 @@
 
 
 typedef struct _entity_t entity_t;
+typedef struct _material_t material_t;
 
 
 LIB_EXP int WorldToMBW(const char *world);
@@ -95,8 +96,19 @@ LIB_EXP int AddParticleGType(
 LIB_EXP int SetParticleGVal(
         const char *type, int i, int r, int g, int b, int alpha, double size
 );
-
+LIB_EXP int SetDefaultMaterial(const char *entity_kind, const char *material);
+LIB_EXP material_t *CreateMaterial(const char *name);
 LIB_EXP int CloseDebugChannel(const char *channel_name);
+LIB_EXP int SetSolidMask(const char *kind, int mask);
+LIB_EXP int AddStepSound(const char *name, int soundID);
+LIB_EXP int AddMaterialStepSound(
+        const char *table, const char *material, const char *step_sound
+);
+LIB_EXP int AddActionStepSound(
+        const char *table, const char *action, const char *step_sound_table
+);
 LIB_EXP void BodInspector(void);
+LIB_EXP int OpenProfileSection(int section, const char *comment);
+LIB_EXP int CloseProfileSection(int section);
 
 #endif /* BLADE_EXT_H */

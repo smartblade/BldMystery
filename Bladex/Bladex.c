@@ -32,6 +32,11 @@ typedef struct {
 
 typedef struct {
         PyObject_HEAD
+        material_t *material;
+} bld_py_material_t;
+
+typedef struct {
+        PyObject_HEAD
         int sectorID;
 } bld_py_sector_t;
 
@@ -306,6 +311,13 @@ static int bld_py_entity_print(PyObject *self, FILE *file, int flags);
 static PyObject *bld_py_entity_getattr(PyObject *self, char *attr_name);
 static int bld_py_entity_setattr(PyObject *self, char *attr_name, PyObject *value);
 
+static PyObject *create_material(const char *name);
+static void init_material_type(void);
+static void bld_py_material_dealloc(PyObject *self);
+static int bld_py_material_print(PyObject *self, FILE *file, int flags);
+static PyObject *bld_py_material_getattr(PyObject *self, char *attr_name);
+static int bld_py_material_setattr(PyObject *self, char *attr_name, PyObject *value);
+
 static PyObject* get_sector_by_index(int index);
 static PyObject* get_sector_by_position(double x, double y, double z);
 static void init_sector_type(void);
@@ -325,11 +337,13 @@ static int bld_py_sound_setattr(PyObject *self, char *attr_name, PyObject *value
 
 
 static PyTypeObject entityTypeObject;
+static PyTypeObject materialTypeObject;
 static PyTypeObject sectorTypeObject;
 static PyTypeObject soundTypeObject;
 
 static void (*init_funcs[])(void) = {
-    init_entity_type, init_sector_type, init_sound_type, NULL
+    init_entity_type, init_material_type, init_sector_type, init_sound_type,
+    NULL
 };
 
 static PyMethodDef methods[] = {
@@ -1462,6 +1476,41 @@ PyObject *bex_SetParticleGVal(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", SetParticleGVal(type, i, r, g, b, alpha, size));
 }
 
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x10003f25
+PyObject *bex_SetDefaultMaterial(PyObject *self, PyObject *args) {
+        const char *entity_kind, *material;
+
+        if(!PyArg_ParseTuple(args, "ss", &entity_kind, &material))
+                return NULL;
+
+        return Py_BuildValue("i", SetDefaultMaterial(entity_kind, material));
+}
+
+
+// address: 0x10003f77
+PyObject *bex_CreateMaterial(PyObject *self, PyObject *args) {
+        const char *name;
+        PyObject *material;
+
+        if(!PyArg_ParseTuple(args, "s", &name))
+                return NULL;
+
+        material = create_material(name);
+        if (material == NULL) {
+                Py_INCREF(Py_None);
+                return Py_None;
+        }
+
+        return material;
+}
+
 
 /*
 ................................................................................
@@ -1488,6 +1537,67 @@ PyObject *bex_CloseDebugChannel(PyObject *self, PyObject *args) {
 ................................................................................
 */
 
+// address: 0x10005c18
+PyObject *bex_SetSolidMask(PyObject *self, PyObject *args) {
+        const char *kind;
+        int mask;
+
+        if(!PyArg_ParseTuple(args, "si", &kind, &mask))
+                return NULL;
+
+        return Py_BuildValue("i", SetSolidMask(kind, mask));
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x100060c8
+PyObject *bex_AddStepSound(PyObject *self, PyObject *args) {
+        const char *name;
+        bld_py_sound_t *sound;
+
+        if(!PyArg_ParseTuple(args, "sO", &name, &sound))
+                return NULL;
+
+        return Py_BuildValue("i", AddStepSound(name, sound->soundID));
+}
+
+
+// address: 0x1000611d
+PyObject *bex_AddMaterialStepSound(PyObject *self, PyObject *args) {
+        const char *table, *material, *step_sound;
+
+        if(!PyArg_ParseTuple(args, "sss", &table, &material, &step_sound))
+                return NULL;
+
+        return Py_BuildValue("i", AddMaterialStepSound(table, material, step_sound));
+}
+
+// address: 0x10006177
+PyObject *bex_AddActionStepSound(PyObject *self, PyObject *args) {
+        const char *table, *action, *step_sound_table;
+
+        if(!PyArg_ParseTuple(args, "sss", &table, &action, &step_sound_table))
+                return NULL;
+
+        return Py_BuildValue(
+                "i",
+                AddActionStepSound(table, action, step_sound_table)
+        );
+}
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 // address: 0x100069b9
 PyObject *bex_BodInspector(PyObject *self, PyObject *args) {
 
@@ -1501,6 +1611,36 @@ PyObject *bex_BodInspector(PyObject *self, PyObject *args) {
 
         BodInspector();
         return Py_BuildValue("");
+}
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+// address: 0x10007048
+PyObject *bex_OpenProfileSection(PyObject *self, PyObject *args) {
+        int section;
+        const char *comment = "";
+
+        if(!PyArg_ParseTuple(args, "i|s", &section, &comment))
+                return NULL;
+
+        return Py_BuildValue("i", OpenProfileSection(section, comment));
+}
+
+// address: 0x100070a1
+PyObject *bex_CloseProfileSection(PyObject *self, PyObject *args) {
+        int section;
+
+        if(!PyArg_ParseTuple(args, "i", &section))
+                return NULL;
+
+        return Py_BuildValue("i", CloseProfileSection(section));
 }
 
 
@@ -1649,14 +1789,6 @@ PyObject* bex_GetTrailType(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_SetDefaultMass(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetDefaultMaterial(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_CreateMaterial(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -1980,14 +2112,6 @@ PyObject* bex_SaveProfileData(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_OpenProfileSection(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_CloseProfileSection(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_StartProfile(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -2045,10 +2169,6 @@ PyObject* bex_SetEventTableFuncC(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_SetEventTableFunc(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetSolidMask(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -2112,19 +2232,7 @@ PyObject* bex_GetWindowId(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_AddStepSound(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddMaterialStepSound(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_AddTextureMaterial(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddActionStepSound(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -2370,6 +2478,87 @@ PyObject *bld_py_entity_getattr(PyObject *self, char *attr_name)
 // TODO implement
 // address: 0x10013c54
 int bld_py_entity_setattr(PyObject *self, char *attr_name, PyObject *value)
+{
+        return 0;
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x10015ab8
+PyObject *create_material(const char *name) {
+        material_t *material;
+        bld_py_material_t *material_obj;
+
+        material_obj = PyObject_NEW(bld_py_material_t, &materialTypeObject);
+        if (!material_obj)
+                return NULL;
+
+        material = CreateMaterial(name);
+        if (!material)
+                return NULL;
+
+        material_obj->material = material;
+        return (PyObject *)material_obj;
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x10015bca
+void init_material_type() {
+
+        memset(&materialTypeObject, 0, sizeof(PyTypeObject));
+
+        materialTypeObject.ob_refcnt = 1;
+        materialTypeObject.ob_type = &PyType_Type;
+        materialTypeObject.ob_size = 0;
+        materialTypeObject.tp_name = "B_PyMaterial";
+        materialTypeObject.tp_basicsize = sizeof(bld_py_material_t);
+        materialTypeObject.tp_itemsize = 0;
+        materialTypeObject.tp_dealloc = bld_py_material_dealloc;
+        materialTypeObject.tp_print = bld_py_material_print;
+        materialTypeObject.tp_getattr = bld_py_material_getattr;
+        materialTypeObject.tp_setattr = bld_py_material_setattr;
+        materialTypeObject.tp_compare = NULL;
+        materialTypeObject.tp_repr = NULL;
+        materialTypeObject.tp_as_number = NULL;
+        materialTypeObject.tp_as_sequence = NULL;
+        materialTypeObject.tp_as_mapping = NULL;
+        materialTypeObject.tp_hash = NULL;
+}
+
+// TODO implement
+// address: 0x10015c75
+void bld_py_material_dealloc(PyObject *self)
+{
+}
+
+// TODO implement
+// address: 0x10015c87
+int bld_py_material_print(PyObject *self, FILE *file, int flags)
+{
+        return 0;
+}
+
+// TODO implement
+// address: 0x10015cf1
+PyObject *bld_py_material_getattr(PyObject *self, char *attr_name)
+{
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10015f7e
+int bld_py_material_setattr(PyObject *self, char *attr_name, PyObject *value)
 {
         return 0;
 }
