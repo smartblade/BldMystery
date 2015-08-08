@@ -31,6 +31,10 @@ typedef struct {
         int soundDev;
 } bld_py_sound_t;
 
+typedef struct {
+        char *name;
+} bld_py_entity_t;
+
 
 static PyObject* bex_nEntities(PyObject* self, PyObject* args);
 static PyObject* bex_GetTime(PyObject* self, PyObject* args);
@@ -288,6 +292,14 @@ static PyObject* bex_GetInputMode(PyObject* self, PyObject* args);
 static PyObject* bex_SaveScreenShot(PyObject* self, PyObject* args);
 static PyObject* bex_CleanArea(PyObject* self, PyObject* args);
 
+static PyObject *get_entity_by_name(const char *name);
+static PyObject *get_entity_by_index(int index);
+static void init_entity_type(void);
+static void bld_py_entity_dealloc(PyObject *self);
+static int bld_py_entity_print(PyObject *self, FILE *file, int flags);
+static PyObject *bld_py_entity_getattr(PyObject *self, char *attr_name);
+static int bld_py_entity_setattr(PyObject *self, char *attr_name, PyObject *value);
+
 static PyObject *create_sound(const char *file_name, const char *sound_name);
 static void init_sound_type(void);
 static void bld_py_sound_dealloc(PyObject *self);
@@ -298,10 +310,11 @@ static PyObject *bld_py_sound_getattr(PyObject *self, char *attr_name);
 static int bld_py_sound_setattr(PyObject *self, char *attr_name, PyObject *value);
 
 
+static PyTypeObject entityTypeObject;
 static PyTypeObject soundTypeObject;
 
 static void (*init_funcs[])(void) = {
-    init_sound_type, NULL
+    init_entity_type, init_sound_type, NULL
 };
 
 static PyMethodDef methods[] = {
@@ -714,6 +727,41 @@ PyObject *bex_ResumeSoundSystem(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", 0);
         else
                 return Py_BuildValue("i", 1);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x10001c5e
+PyObject *bex_GetEntity(PyObject *self, PyObject *args) {
+        const char *name;
+        int index;
+        PyObject *entity;
+
+        if (!PyArg_ParseTuple(args, "s", &name)) {
+                PyErr_Clear();
+
+                if (!PyArg_ParseTuple(args, "i", &index))
+                        return NULL;
+
+                entity = get_entity_by_index(index);
+                if (entity == NULL) {
+                        Py_INCREF(Py_None);
+                        return Py_None;
+                }
+        } else {
+                entity = get_entity_by_name(name);
+                if (entity == NULL) {
+                        Py_INCREF(Py_None);
+                        return Py_None;
+                }
+        }
+
+        return entity;
 }
 
 /*
@@ -1516,10 +1564,6 @@ PyObject* bex_SetTurnSpeed(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_GetEntity(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_GetEntitiesAt(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -2187,6 +2231,115 @@ LIB_EXP __stdcall void initBladex()
         Py_InitModule4("Bladex", methods, NULL, NULL, PYTHON_API_VERSION);
 }
 
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x1000a010
+PyObject *get_entity_by_name(const char *name) {
+        entity_t *entity;
+        bld_py_entity_t *entity_obj;
+
+        entity = GetEntity(name);
+        if (entity != NULL) {
+                entity_obj = PyObject_NEW(bld_py_entity_t, &entityTypeObject);
+                if (entity_obj != NULL) {
+                        entity_obj->name = strdup(name);
+                        return (PyObject *)entity_obj;
+                } else {
+                        return NULL;
+                }
+        }
+
+        return NULL;
+}
+
+// address: 0x1000a076
+PyObject *get_entity_by_index(int index) {
+        entity_t *entity;
+        bld_py_entity_t *entity_obj;
+
+        entity = GetEntityI(index);
+        if (entity != NULL) {
+                entity_obj = PyObject_NEW(bld_py_entity_t, &entityTypeObject);
+                if (entity_obj != NULL) {
+                        entity_obj->name = strdup(GetEntityName(entity));
+                        return (PyObject *)entity_obj;
+                } else {
+                        return NULL;
+                }
+        }
+
+        return NULL;
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x100136c6
+void init_entity_type() {
+
+        memset(&entityTypeObject, 0, sizeof(PyTypeObject));
+
+        entityTypeObject.ob_refcnt = 1;
+        entityTypeObject.ob_type = &PyType_Type;
+        entityTypeObject.ob_size = 0;
+        entityTypeObject.tp_name = "B_PyEntity";
+        entityTypeObject.tp_basicsize = sizeof(bld_py_entity_t);
+        entityTypeObject.tp_itemsize = 0;
+        entityTypeObject.tp_dealloc = bld_py_entity_dealloc;
+        entityTypeObject.tp_print = bld_py_entity_print;
+        entityTypeObject.tp_getattr = bld_py_entity_getattr;
+        entityTypeObject.tp_setattr = bld_py_entity_setattr;
+        entityTypeObject.tp_compare  = NULL;
+        entityTypeObject.tp_repr = NULL;
+        entityTypeObject.tp_as_number = NULL;
+        entityTypeObject.tp_as_sequence = NULL;
+        entityTypeObject.tp_as_mapping = NULL;
+        entityTypeObject.tp_hash = NULL;
+}
+
+
+// TODO implement
+// address: 0x10013771
+void bld_py_entity_dealloc(PyObject *self)
+{
+}
+
+// TODO implement
+// address: 0x10013793
+int bld_py_entity_print(PyObject *self, FILE *file, int flags)
+{
+        return 0;
+}
+
+// TODO implement
+// address: 0x100137fe
+PyObject *bld_py_entity_getattr(PyObject *self, char *attr_name)
+{
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10013c54
+int bld_py_entity_setattr(PyObject *self, char *attr_name, PyObject *value)
+{
+        return 0;
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
 
 // address: 0x10017e10
 PyObject *create_sound(const char *file_name, const char *sound_name) {
