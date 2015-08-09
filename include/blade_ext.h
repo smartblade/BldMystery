@@ -11,6 +11,41 @@ typedef struct _entity_t entity_t;
 typedef struct _material_t material_t;
 
 
+#define CHR_FLT_TURN_SPEED                0
+#define CHR_FLT_DIE_FALL                  1
+#define CHR_FLT_J_COST                    4
+#define CHR_FLT_MAX_FALL                  5
+#define CHR_FLT_MAX_STAIR                 6
+#define CHR_FLT_FOV                       7
+#define CHR_FLT_MAX_GRAB                 10
+#define CHR_FLT_MED_GRAB                 11
+#define CHR_FLT_MIN_TAKE                 13
+#define CHR_FLT_MAX_TAKE_1               14
+#define CHR_FLT_MAX_TAKE_2               15
+#define CHR_FLT_MAX_TAKE_3               16
+#define CHR_FLT_MAX_TAKE_4               17
+#define CHR_FLT_MAX_TAKE_5               18
+#define CHR_FLT_REACH                    19
+#define CHR_FLT_MIN_2_GRAB               20
+#define CHR_FLT_HEAR_MIN_VOLUME          21
+#define CHR_FLT_MOV_FRWD_SPEED_IN_STRAFE 22
+#define CHR_FLT_MOV_BKWD_SPEED_IN_STRAFE 23
+#define CHR_FLT_MAX_COMBAT_DIST          24
+#define CHR_FLT_DIST_STOP                25
+#define CHR_FLT_DIST_STOP_2              26
+#define CHR_FLT_MAX_SEE_DIST             27
+#define CHR_FLT_DIST_STOP_MAX_FACT       28
+
+#define CHR_STR_INT_NAME                  0
+#define CHR_STR_NO_ARMOUR                 3
+#define CHR_STR_LOW_ARMOUR                4
+#define CHR_STR_MED_ARMOUR                5
+#define CHR_STR_HIGH_ARMOUR               6
+
+#define CHR_INT_NATURAL_WEAPONS           0
+#define CHR_INT_HEAD_CONTROLLED           1
+
+
 LIB_EXP int WorldToMBW(const char *world);
 LIB_EXP int SoundSystemActive(void);
 LIB_EXP int SetSSFrecuency(int frequency);
@@ -29,6 +64,11 @@ LIB_EXP int SetListenerMode(int mode, double x, double y, double z);
 LIB_EXP int GetSectorByIndex(int index);
 LIB_EXP int GetSectorByPosition(double x, double y, double z);
 LIB_EXP int GetCharByName(const char *name, const char *short_name);
+LIB_EXP int SetNCDSpheres(int charID, int NCDSpheres);
+LIB_EXP int SetCDSphere(int charID, int index, double h, double r);
+LIB_EXP int GetCharIntProperty(int charID, int property_kind, int unknown, int *value);
+LIB_EXP int GetCharFloatProperty(int charID, int property_kind, int unknown, double *value);
+LIB_EXP int GetCharStringProperty(int charID, int property_kind, int unknown, const char **value);
 LIB_EXP int CreateSound(const char *file_name, const char *sound_name);
 LIB_EXP void DestroySound(int soundID);
 LIB_EXP int GetSoundDevInstace(void);

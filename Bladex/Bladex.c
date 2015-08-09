@@ -309,6 +309,19 @@ static PyObject* bex_SaveScreenShot(PyObject* self, PyObject* args);
 static PyObject* bex_CleanArea(PyObject* self, PyObject* args);
 
 static PyObject *get_char_by_name(const char *name, const char *short_name);
+static PyObject* bex_char_LoadAllAnimations(PyObject* self, PyObject* args);
+static PyObject* bex_char_ChangeAnimation(PyObject* self, PyObject* args);
+static PyObject* bex_char_SetAnmDefaultPrefix(PyObject* self, PyObject* args);
+static PyObject* bex_char_AddAttack(PyObject* self, PyObject* args);
+static PyObject* bex_char_AttackWindow(PyObject* self, PyObject* args);
+static PyObject* bex_char_AddLevels(PyObject* self, PyObject* args);
+static PyObject* bex_char_AddEnergyLevel(PyObject* self, PyObject* args);
+static PyObject* bex_char_AttackTypeFlag(PyObject* self, PyObject* args);
+static PyObject* bex_char_AllowAttack(PyObject* self, PyObject* args);
+static PyObject* bex_char_MetaAttack(PyObject* self, PyObject* args);
+static PyObject* bex_char_AssignTrail(PyObject* self, PyObject* args);
+static PyObject* bex_char_SetNCDSpheres(PyObject* self, PyObject* args);
+static PyObject* bex_char_SetCDSphere(PyObject* self, PyObject* args);
 static void init_char_type(void);
 static void bld_py_char_dealloc(PyObject *self);
 static int bld_py_char_print(PyObject *self, FILE *file, int flags);
@@ -615,6 +628,23 @@ static PyMethodDef methods[] = {
     { "GetInputMode",                   bex_GetInputMode,                   METH_VARARGS, "string GetInputMode(string device) \n  Obtiene el modo del dispositivo device.\n" },
     { "SaveScreenShot",                 bex_SaveScreenShot,                 METH_VARARGS, "SaveScreenShot(filename,width,height) \n  Acaso necesita descripcion?\n" },
     { "CleanArea",                      bex_CleanArea,                      METH_VARARGS, "CleanArea(x,y,z,distance) \n  Limpia una zona esferica con centro en 'x,y,z'\ny distancia 'distance' de sangre.\n" },
+    { NULL,                             NULL,                               0,            NULL },
+};
+
+static PyMethodDef char_methods[] = {
+    { "LoadAllAnimations",              bex_char_LoadAllAnimations,         METH_VARARGS, NULL },
+    { "ChangeAnimation",                bex_char_ChangeAnimation,           METH_VARARGS, NULL },
+    { "SetAnmDefaultPrefix",            bex_char_SetAnmDefaultPrefix,       METH_VARARGS, NULL },
+    { "AddAttack",                      bex_char_AddAttack,                 METH_VARARGS, NULL },
+    { "AttackWindow",                   bex_char_AttackWindow,              METH_VARARGS, NULL },
+    { "AddLevels",                      bex_char_AddLevels,                 METH_VARARGS, NULL },
+    { "AddEnergyLevel",                 bex_char_AddEnergyLevel,            METH_VARARGS, NULL },
+    { "AttackTypeFlag",                 bex_char_AttackTypeFlag,            METH_VARARGS, NULL },
+    { "AllowAttack",                    bex_char_AllowAttack,               METH_VARARGS, NULL },
+    { "MetaAttack",                     bex_char_MetaAttack,                METH_VARARGS, NULL },
+    { "AssignTrail",                    bex_char_AssignTrail,               METH_VARARGS, NULL },
+    { "SetNCDSpheres",                  bex_char_SetNCDSpheres,             METH_VARARGS, NULL },
+    { "SetCDSphere",                    bex_char_SetCDSphere,               METH_VARARGS, NULL },
     { NULL,                             NULL,                               0,            NULL },
 };
 
@@ -2426,12 +2456,111 @@ PyObject *get_char_by_name(const char *name, const char *short_name) {
         return (PyObject *)char_obj;
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+// TODO implement
+// address: 0x10007410
+PyObject* bex_char_LoadAllAnimations(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x1000745b
+PyObject* bex_char_ChangeAnimation(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100074d0
+PyObject* bex_char_SetAnmDefaultPrefix(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x1000753d
+PyObject* bex_char_AddAttack(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100075b2
+PyObject* bex_char_AttackWindow(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10007643
+PyObject* bex_char_AddLevels(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100076cc
+PyObject* bex_char_AddEnergyLevel(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10007747
+PyObject* bex_char_AttackTypeFlag(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100077bc
+PyObject* bex_char_AllowAttack(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10007889
+PyObject* bex_char_MetaAttack(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100078fe
+PyObject* bex_char_AssignTrail(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+// address: 0x1000797b
+PyObject *bex_char_SetNCDSpheres(PyObject *self, PyObject *args) {
+        bld_py_char_t *character = (bld_py_char_t *)self;
+        int NCDSpheres;
+        int ret;
+
+        if(!PyArg_ParseTuple(args, "i", &NCDSpheres))
+                return NULL;
+
+        ret = SetNCDSpheres(character->charID, NCDSpheres);
+        if (!ret) {
+                return Py_BuildValue("i", 0);
+        } else {
+                return Py_BuildValue("i", 1);
+        }
+}
+
+// address: 0x100079e8
+PyObject *bex_char_SetCDSphere(PyObject *self, PyObject *args) {
+        bld_py_char_t *character = (bld_py_char_t *)self;
+        int index;
+        double h, r;
+        int ret;
+
+        if(!PyArg_ParseTuple(args, "idd", &index, &h, &r))
+                return NULL;
+
+        ret = SetCDSphere(character->charID, index, h, r);
+        if (!ret) {
+                return Py_BuildValue("i", 0);
+        } else {
+                return Py_BuildValue("i", 1);
+        }
+}
+
+// address: 0x10007a6D
+void init_char() {
+        init_char_type();
+}
 
 // address: 0x10007a77
 void init_char_type() {
@@ -2456,24 +2585,642 @@ void init_char_type() {
         charTypeObject.tp_hash = NULL;
 }
 
-// TODO implement
 // address: 0x10007b22
-void bld_py_char_dealloc(PyObject *self)
-{
+void bld_py_char_dealloc(PyObject *self) {
+        free(self);
 }
 
-// TODO implement
 // address: 0x10007b34
-int bld_py_char_print(PyObject *self, FILE *file, int flags)
-{
+int bld_py_char_print(PyObject *self, FILE *file, int flags) {
+        static char buffer[32];
+
+        sprintf(buffer, "CharType %d", ((bld_py_char_t *)self)->charID);
+        fprintf(file, buffer);
         return 0;
 }
 
-// TODO implement
 // address: 0x10007b67
-PyObject *bld_py_char_getattr(PyObject *self, char *attr_name)
-{
-        return NULL;
+PyObject *bld_py_char_getattr(PyObject *self, char *attr_name) {
+        double dist_stop, dist_stop2, dist_stop_max_factor, max_combat_dist;
+        double max_see_dist, mov_frwd_speed_in_strafe, mov_bkwd_speed_in_strafe;
+        double turn_speed, j_cost, max_fall, die_fall, max_stair, fov;
+        const char *int_name;
+        double max_grab, med_grab, min_2_grab;
+        const char *no_armour;
+        char *local19, local21, local23;
+        char local18, local20, local22, local24, local35;
+        double local25, local26, local27, local28, local29, local30;
+        double local31, local32;
+        int local33, local34;
+        int code;
+        char buffer[256];
+
+        if (!strcmp(attr_name, "__doc__")) {
+                return PyString_FromString("CharType de enemigos de Blade.");
+        }
+
+        if (!strcmp(attr_name, "DistStop")) {
+                code = GetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_DIST_STOP, 0,
+                        &dist_stop
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+                return PyFloat_FromDouble(dist_stop);
+        }
+
+        if (!strcmp(attr_name, "DistStop2")) {
+                code = GetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_DIST_STOP_2, 0,
+                        &dist_stop2
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+                return PyFloat_FromDouble(dist_stop2);
+        }
+
+        if (!strcmp(attr_name, "DistStopMaxFactor")) {
+                code = GetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID,
+                        CHR_FLT_DIST_STOP_MAX_FACT, 0, &dist_stop_max_factor
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+                return PyFloat_FromDouble(dist_stop_max_factor);
+        }
+
+        if (!strcmp(attr_name, "MaxCombatDist")) {
+                code = GetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID,
+                        CHR_FLT_MAX_COMBAT_DIST, 0, &max_combat_dist
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+                return PyFloat_FromDouble(max_combat_dist);
+        }
+
+        if (!strcmp(attr_name, "MaxSeeDist")) {
+                code = GetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_MAX_SEE_DIST,
+                        0, &max_see_dist
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+                return PyFloat_FromDouble(max_see_dist);
+        }
+
+        if (!strcmp(attr_name, "MovFrwdSpeedInStrafe")) {
+                code = GetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID,
+                        CHR_FLT_MOV_FRWD_SPEED_IN_STRAFE, 0,
+                        &mov_frwd_speed_in_strafe
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+                return PyFloat_FromDouble(mov_frwd_speed_in_strafe);
+        }
+
+        if (!strcmp(attr_name, "MovBkwdSpeedInStrafe")) {
+                code = GetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID,
+                        CHR_FLT_MOV_BKWD_SPEED_IN_STRAFE, 0,
+                        &mov_bkwd_speed_in_strafe
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+                return PyFloat_FromDouble(mov_bkwd_speed_in_strafe);
+        }
+
+        if (!strcmp(attr_name, "TurnSpeed")) {
+                code = GetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_TURN_SPEED, 0,
+                        &turn_speed
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+                return PyFloat_FromDouble(turn_speed);
+        }
+
+        if (!strcmp(attr_name, "Jcost")) {
+                code = GetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_J_COST, 0,
+                        &j_cost
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+                return PyFloat_FromDouble(j_cost);
+        }
+
+        if (!strcmp(attr_name, "MaxFall")) {
+                code = GetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_MAX_FALL, 0,
+                        &max_fall
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+                return PyFloat_FromDouble(max_fall);
+        }
+
+        if (!strcmp(attr_name, "DieFall")) {
+                code = GetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_DIE_FALL, 0,
+                        &die_fall
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+                return PyFloat_FromDouble(die_fall);
+        }
+
+        if (!strcmp(attr_name, "MaxStair")) {
+                code = GetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_MAX_STAIR, 0,
+                        &max_stair
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+                return PyFloat_FromDouble(max_stair);
+        }
+
+        if (!strcmp(attr_name, "Fov")) {
+                code = GetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_FOV, 0, &fov
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+                return PyFloat_FromDouble(fov);
+        }
+
+        if (!strcmp(attr_name, "IntName")) {
+                code = GetCharStringProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_STR_INT_NAME, 0,
+                        &int_name
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Internal name");
+                        return NULL;
+                }
+                return PyString_FromString(int_name);
+        }
+
+        if (!strcmp(attr_name, "MaxGrab")) {
+                code = GetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_MAX_GRAB, 0,
+                        &max_grab
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+                return PyFloat_FromDouble(max_grab);
+        }
+
+        if (!strcmp(attr_name, "MedGrab")) {
+                code = GetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_MED_GRAB, 0,
+                        &med_grab
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+                return PyFloat_FromDouble(med_grab);
+        }
+
+        if (!strcmp(attr_name, "Min2Grab")) {
+                code = GetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_MIN_2_GRAB, 0,
+                        &min_2_grab
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+                return PyFloat_FromDouble(min_2_grab);
+        }
+
+        if (!strcmp(attr_name, "NoArmour")) {
+                code = GetCharStringProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_STR_NO_ARMOUR, 0,
+                        &no_armour
+                );
+                if (code != 1) {
+                    if (code != -2) {
+                            PyErr_SetString(PyExc_AttributeError, attr_name);
+                    } else {
+                            sprintf(buffer, "Unsupported %s", attr_name);
+                            PyErr_SetString(PyExc_AttributeError, buffer);
+                    }
+                    return NULL;
+                }
+                return PyString_FromString(no_armour);
+        }
+
+// TODO implement
+/*
+
+    edi = "LowArmour";
+    esi = attr_name;
+    ecx = 10;
+    flags = LOGICALFLAGS32(0);
+    do {
+        if (ecx == 0) {
+            goto L149;
+        }
+        tmpb = *esi - *edi;
+        flags = SUBFLAGS8(*esi, *edi, tmpb);
+        esi +=  (DF == 0) ? 1 : -1;
+        edi +=  (DF == 0) ? 1 : -1;
+        ecx = ecx - 1;
+    } while (tmpb == 0);
+L149:
+
+    if (!flags) {
+        eax = ((bld_py_char_t *)self)->charID;
+        eax = GetCharStringProperty(eax, 4, 0, &local19);
+        if (eax != 1) {
+            if (eax != -2) {
+                edx = PyExc_AttributeError;
+                PyErr_SetString(edx, attr_name);
+            } else {
+                sprintf(0x10026cf0, attr_name);
+                edx = PyExc_AttributeError;
+                PyErr_SetString(edx, &local20);
+            }
+            eax = 0;
+        } else {
+            eax = PyString_FromString(local19);
+        }
+    }
+    
+    edi = "MedArmour";
+    esi = attr_name;
+    ecx = 10;
+    flags = LOGICALFLAGS32(0);
+    do {
+        if (ecx == 0) {
+            goto L134;
+        }
+        tmpb = *esi - *edi;
+        flags = SUBFLAGS8(*esi, *edi, tmpb);
+        esi +=  (DF == 0) ? 1 : -1;
+        edi +=  (DF == 0) ? 1 : -1;
+        ecx = ecx - 1;
+    } while (tmpb == 0);
+L134:
+    if (!flags) {
+        eax = ((bld_py_char_t *)self)->charID;
+        eax = GetCharStringProperty(eax, 5, 0, &local21);
+        if (eax != 1) {
+            if (eax != -2) {
+                edx = PyExc_AttributeError;
+                PyErr_SetString(edx, attr_name);
+            } else {
+                sprintf(0x10026d0c, attr_name);
+                edx = PyExc_AttributeError;
+                PyErr_SetString(edx, &local22);
+            }
+            eax = 0;
+        } else {
+            eax = PyString_FromString(local21);
+        }
+    }
+
+    edi = "HighArmour";
+    esi = attr_name;
+    ecx = 11;
+    flags = LOGICALFLAGS32(0);
+    do {
+        if (ecx == 0) {
+            goto L119;
+        }
+        tmpb = *esi - *edi;
+        flags = SUBFLAGS8(*esi, *edi, tmpb);
+        esi +=  (DF == 0) ? 1 : -1;
+        edi +=  (DF == 0) ? 1 : -1;
+        ecx = ecx - 1;
+    } while (tmpb == 0);
+L119:
+    if (!flags) {
+        eax = ((bld_py_char_t *)self)->charID;
+        eax = GetCharStringProperty(eax, 6, 0, &local23);
+        if (eax != 1) {
+            if (eax != -2) {
+                edx = PyExc_AttributeError;
+                PyErr_SetString(edx, attr_name);
+            } else {
+                sprintf(0x10026d28, attr_name);
+                edx = PyExc_AttributeError;
+                PyErr_SetString(edx, &local24);
+            }
+            eax = 0;
+        } else {
+            eax = PyString_FromString(local23);
+        }
+    }
+
+    edi = "MinTake";
+    esi = attr_name;
+    ecx = 8;
+    flags = LOGICALFLAGS32(0);
+    do {
+        if (ecx == 0) {
+            goto L104;
+        }
+        tmpb = *esi - *edi;
+        flags = SUBFLAGS8(*esi, *edi, tmpb);
+        esi +=  (DF == 0) ? 1 : -1;
+        edi +=  (DF == 0) ? 1 : -1;
+        ecx = ecx - 1;
+    } while (tmpb == 0);
+L104:
+    if (!flags) {
+        eax = ((bld_py_char_t *)self)->charID;
+        eax = GetCharFloatProperty(eax, 13, 0, &local25);
+        if (eax != 1) {
+            edx = PyExc_AttributeError;
+            PyErr_SetString(edx, attr_name);
+            eax = 0;
+        } else {
+            eax = PyFloat_FromDouble(local25);
+        }
+    }
+
+    edi = "MaxTake1";
+    esi = attr_name;
+    ecx = 9;
+    flags = LOGICALFLAGS32(0);
+    do {
+        if (ecx == 0) {
+            goto L94;
+        }
+        tmpb = *esi - *edi;
+        flags = SUBFLAGS8(*esi, *edi, tmpb);
+        esi +=  (DF == 0) ? 1 : -1;
+        edi +=  (DF == 0) ? 1 : -1;
+        ecx = ecx - 1;
+    } while (tmpb == 0);
+L94:
+    if (!flags)  {
+        eax = ((bld_py_char_t *)self)->charID;
+        eax = GetCharFloatProperty(eax, 14, 0, &local26);
+        if (eax != 1) {
+            edx = PyExc_AttributeError;
+            PyErr_SetString(edx, attr_name);
+            eax = 0;
+        } else {
+            eax = PyFloat_FromDouble(local26);
+        }
+    }
+
+    edi = "MaxTake2";
+    esi = attr_name;
+    ecx = 9;
+    flags = LOGICALFLAGS32(0);
+    do {
+        if (ecx == 0) {
+            goto L84;
+        }
+        tmpb = *esi - *edi;
+        flags = SUBFLAGS8(*esi, *edi, tmpb);
+        esi +=  (DF == 0) ? 1 : -1;
+        edi +=  (DF == 0) ? 1 : -1;
+        ecx = ecx - 1;
+    } while (tmpb == 0);
+L84:
+    if (!flags) {
+        eax = ((bld_py_char_t *)self)->charID;
+        eax = GetCharFloatProperty(eax, 15, 0, &local27);
+        if (eax != 1) {
+            edx = PyExc_AttributeError;
+            PyErr_SetString(edx, attr_name);
+            eax = 0;
+        } else {
+            eax = PyFloat_FromDouble(local27);
+        }
+    }
+
+    edi = "MaxTake3";
+    esi = attr_name;
+    ecx = 9;
+    flags = LOGICALFLAGS32(0);
+    do {
+        if (ecx == 0) {
+            goto L74;
+        }
+        tmpb = *esi - *edi;
+        flags = SUBFLAGS8(*esi, *edi, tmpb);
+        esi +=  (DF == 0) ? 1 : -1;
+        edi +=  (DF == 0) ? 1 : -1;
+        ecx = ecx - 1;
+    } while (tmpb == 0);
+L74:
+    if (!flags) {
+        eax = ((bld_py_char_t *)self)->charID;
+        eax = GetCharFloatProperty(eax, 16, 0, &local28);
+        if (eax != 1) {
+            edx = PyExc_AttributeError;
+            PyErr_SetString(edx, attr_name);
+            eax = 0;
+        } else {
+            eax = PyFloat_FromDouble(local28);
+        }
+    }
+
+    edi = "MaxTake4";
+    esi = attr_name;
+    ecx = 9;
+    flags = LOGICALFLAGS32(0);
+    do {
+        if (ecx == 0) {
+            goto L64;
+        }
+        tmpb = *esi - *edi;
+        flags = SUBFLAGS8(*esi, *edi, tmpb);
+        esi +=  (DF == 0) ? 1 : -1;
+        edi +=  (DF == 0) ? 1 : -1;
+        ecx = ecx - 1;
+    } while (tmpb == 0);
+L64:
+    if (!flags) {
+        eax = ((bld_py_char_t *)self)->charID;
+        eax = GetCharFloatProperty(eax, 17, 0, &local29);
+        if (eax != 1) {
+            edx = PyExc_AttributeError;
+            PyErr_SetString(edx, attr_name);
+            eax = 0;
+        } else {
+            eax = PyFloat_FromDouble(local29);
+        }
+    }
+
+    edi = "MaxTake5";
+    esi = attr_name;
+    ecx = 9;
+    flags = LOGICALFLAGS32(0);
+    do {
+        if (ecx == 0) {
+            goto L54;
+        }
+        tmpb = *esi - *edi;
+        flags = SUBFLAGS8(*esi, *edi, tmpb);
+        esi +=  (DF == 0) ? 1 : -1;
+        edi +=  (DF == 0) ? 1 : -1;
+        ecx = ecx - 1;
+    } while (tmpb == 0);
+L54:
+    if (!flags) {
+        eax = ((bld_py_char_t *)self)->charID;
+        eax = GetCharFloatProperty(eax, 18, 0, &local30);
+        if (eax != 1) {
+            edx = PyExc_AttributeError;
+            PyErr_SetString(edx, attr_name);
+            eax = 0;
+        } else {
+            eax = PyFloat_FromDouble(local30);
+        }
+    }
+
+    edi = "Reach";
+    esi = attr_name;
+    ecx = 6;
+    flags = LOGICALFLAGS32(0);
+    do {
+        if (ecx == 0) {
+            goto L44;
+        }
+        tmpb = *esi - *edi;
+        flags = SUBFLAGS8(*esi, *edi, tmpb);
+        esi +=  (DF == 0) ? 1 : -1;
+        edi +=  (DF == 0) ? 1 : -1;
+        ecx = ecx - 1;
+    } while (tmpb == 0);
+L44:
+    if (!flags) {
+        eax = ((bld_py_char_t *)self)->charID;
+        eax = GetCharFloatProperty(eax, 19, 0, &local31);
+        if (eax != 1) {
+            edx = PyExc_AttributeError;
+            PyErr_SetString(edx, attr_name);
+            eax = 0;
+        } else {
+            eax = PyFloat_FromDouble(local31);
+        }
+    }
+
+    edi = "HearMinVolume";
+    esi = attr_name;
+    ecx = 14;
+    flags = LOGICALFLAGS32(0);
+    do {
+        if (ecx == 0) {
+            goto L34;
+        }
+        tmpb = *esi - *edi;
+        flags = SUBFLAGS8(*esi, *edi, tmpb);
+        esi +=  (DF == 0) ? 1 : -1;
+        edi +=  (DF == 0) ? 1 : -1;
+        ecx = ecx - 1;
+    } while (tmpb == 0);
+L34:
+    if (!flags) {
+        eax = ((bld_py_char_t *)self)->charID;
+        eax = GetCharFloatProperty(eax, 21, 0, &local32);
+        if (eax != 1) {
+            edx = PyExc_AttributeError;
+            PyErr_SetString(edx, attr_name);
+            eax = 0;
+        } else {
+            eax = PyFloat_FromDouble(local32);
+        }
+    }
+
+    edi = "NaturalWeapons";
+    esi = attr_name;
+    ecx = 15;
+    flags = LOGICALFLAGS32(0);
+    do {
+        if (ecx == 0) {
+            goto L24;
+        }
+        tmpb = *esi - *edi;
+        flags = SUBFLAGS8(*esi, *edi, tmpb);
+        esi +=  (DF == 0) ? 1 : -1;
+        edi +=  (DF == 0) ? 1 : -1;
+        ecx = ecx - 1;
+    } while (tmpb == 0);
+L24:
+    if (!flags) {
+        eax = ((bld_py_char_t *)self)->charID;
+        eax = GetCharIntProperty(eax, 0, 0, &local33);
+        if (eax != 1) {
+            ecx = PyExc_AttributeError;
+            PyErr_SetString(ecx, attr_name);
+            eax = 0;
+        } else {
+            eax = PyInt_FromLong(local33);
+        }
+    }
+
+    edi = "HeadControlled";
+    esi = attr_name;
+    ecx = 15;
+    flags = LOGICALFLAGS32(0);
+    do {
+        if (ecx == 0) {
+            goto L14;
+        }
+        tmpb = *esi - *edi;
+        flags = SUBFLAGS8(*esi, *edi, tmpb);
+        esi +=  (DF == 0) ? 1 : -1;
+        edi +=  (DF == 0) ? 1 : -1;
+        ecx = ecx - 1;
+    } while (tmpb == 0);
+L14:
+    if (!flags) {
+        edx = ((bld_py_char_t *)self)->charID;
+        eax = GetCharIntProperty(edx, 1, 0, &local34);
+        if (eax != 1) {
+            if (eax != -2) {
+                ecx = PyExc_AttributeError;
+                PyErr_SetString(ecx, attr_name);
+            } else {
+                sprintf(0x10026db4, attr_name);
+                ecx = PyExc_AttributeError;
+                PyErr_SetString(ecx, &local35);
+            }
+            eax = 0;
+        } else {
+            eax = PyInt_FromLong(local34);
+        }
+    }
+*/
+    return Py_FindMethod(char_methods, self, attr_name);
 }
 
 // TODO implement
@@ -2482,13 +3229,6 @@ int bld_py_char_setattr(PyObject *self, char *attr_name, PyObject *value)
 {
         return 0;
 }
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
 
 // address: 0x1000a010
