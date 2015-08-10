@@ -57,6 +57,32 @@ LIB_EXP int ShutDownSoundChannels(void);
 LIB_EXP int PauseSoundSystem(void);
 LIB_EXP int PauseSoundSystemButMusic(void);
 LIB_EXP int ResumeSoundSystem(void);
+LIB_EXP int SetMusicVolume(float volume);
+LIB_EXP double GetMusicVolume(void);
+LIB_EXP int SetSoundVolume(double volume);
+LIB_EXP double GetSoundVolume(void);
+LIB_EXP int GetSSSpeakerConfig(void);
+LIB_EXP int SetEAXOverride(int EAXOverride);
+LIB_EXP int GetEAXOverride(void);
+LIB_EXP int SaveSSConfig(void);
+LIB_EXP int SetSSSpeakerConfig(int config);
+LIB_EXP int GetSSQuality(void);
+LIB_EXP int SetSSQuality(int SSQuality);
+LIB_EXP int SetAutoGenTexture(const char *textureName, int textureEffect);
+LIB_EXP int SetBloodLevel(int blood_level);
+LIB_EXP int GetBloodLevel(void);
+LIB_EXP int SetMutilationLevel(int mutilation_level);
+LIB_EXP int GetMutilationLevel(void);
+LIB_EXP const char *GetWorldFileName();
+LIB_EXP int AddTranTime(
+        const char *biped_name, const char *next_anm , const char *prev_anm,
+        double time, int unknown
+);
+LIB_EXP int CheckAnims(void);
+LIB_EXP int GiveAnims(const char *race_name);
+LIB_EXP int GetAnimationDuration(const char *animation_name, double *duration);
+LIB_EXP int SetAnimationFactor(const char *mov, double new_speed_factor);
+LIB_EXP void SetTurnSpeed(const char *race_name, double new_speed);
 LIB_EXP entity_t *GetEntity(const char *name);
 LIB_EXP entity_t *GetEntityI(int index);
 LIB_EXP const char *GetEntityName(entity_t *entity);
@@ -136,6 +162,26 @@ LIB_EXP int AddParticleGType(
 );
 LIB_EXP int SetParticleGVal(
         const char *type, int i, int r, int g, int b, int alpha, double size
+);
+LIB_EXP int GetnParticleGType(void);
+LIB_EXP int GetParticleGType(
+        int index, const char **type, const char **parent_type,
+        int *operation_type, int *duration
+);
+LIB_EXP int GetParticleGVal(
+        const char *type, int index, int *r, int *g, int *b, int *alpha,
+        double *size
+);
+LIB_EXP int GetEntitiesAt(
+        double x, double y, double z, double radius, char ***entitiy_names
+);
+LIB_EXP int GetEntitiesVisibleFrom(
+        double xc, double yc, double zc, double radius, double xdir,
+        double ydir, double zdir, double angle, char ***entitiy_names
+);
+LIB_EXP int GetObjectEntitiesVisibleFrom(
+        double xc, double yc, double zc, double radius, double xdir,
+        double ydir, double zdir, double angle, char ***entitiy_names
 );
 LIB_EXP int SetDefaultMaterial(const char *entity_kind, const char *material);
 LIB_EXP material_t *CreateMaterial(const char *name);

@@ -801,6 +801,280 @@ PyObject *bex_ResumeSoundSystem(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", 1);
 }
 
+
+// address: 0x10001323
+PyObject *bex_SetMusicVolume(PyObject *self, PyObject *args) {
+        double volume = 1.0;
+        int ret;
+
+        if (!PyArg_ParseTuple(args, "d", &volume))
+                return NULL;
+
+        ret = SetMusicVolume(volume);
+        if (ret != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x10001397
+PyObject *bex_GetMusicVolume(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("d", GetMusicVolume());
+}
+
+
+// address: 0x100013da
+PyObject *bex_SetSoundVolume(PyObject *self, PyObject *args) {
+        double volume = 1.0;
+
+        if (!PyArg_ParseTuple(args, "d", &volume))
+                return NULL;
+
+        return Py_BuildValue("i", SetSoundVolume(volume));
+}
+
+
+// address: 0x10001436
+PyObject *bex_GetSoundVolume(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("d", GetSoundVolume());
+}
+
+
+// address: 0x10001479
+PyObject *bex_GetSpeakerConfig(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", GetSSSpeakerConfig());
+}
+
+
+// address: 0x100014b6
+PyObject *bex_SetEAXOverride(PyObject *self, PyObject *args) {
+        int EAXOverride = 1;
+
+        if (!PyArg_ParseTuple(args, "i", &EAXOverride))
+                return NULL;
+
+        return Py_BuildValue("i", SetEAXOverride(EAXOverride));
+}
+
+
+// address: 0x10001507
+PyObject *bex_GetEAXOverride(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", GetEAXOverride());
+}
+
+
+// address: 0x10001544
+PyObject *bex_SaveSSConfig(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", SaveSSConfig());
+}
+
+
+// address: 0x10001581
+PyObject *bex_SetSpeakerConfig(PyObject *self, PyObject *args) {
+        int config = 1;
+
+        if (!PyArg_ParseTuple(args, "i", &config))
+                return NULL;
+
+        return Py_BuildValue("i", SetSSSpeakerConfig(config));
+}
+
+
+// address: 0x100015d2
+PyObject *bex_GetSSQuality(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", GetSSQuality());
+}
+
+
+// address: 0x1000160f
+PyObject *bex_SetSSQuality(PyObject *self, PyObject *args) {
+        int SSQuality = 1;
+
+        if (!PyArg_ParseTuple(args, "i", &SSQuality))
+                return NULL;
+
+        return Py_BuildValue("i", SetSSQuality(SSQuality));
+}
+
+
+// address: 0x10001660
+PyObject *bex_SetAutoGenTexture(PyObject *self, PyObject *args) {
+        const char *textureName;
+        int textureEffect;
+
+        if (!PyArg_ParseTuple(args, "si", &textureName, &textureEffect))
+                return NULL;
+
+        return Py_BuildValue("i", SetAutoGenTexture(textureName, textureEffect));
+}
+
+
+// address: 0x100016b2
+PyObject *bex_SetBloodLevel(PyObject *self, PyObject *args) {
+        double blood_level = 1.0;
+
+        if (!PyArg_ParseTuple(args, "d", &blood_level))
+                return NULL;
+
+        return Py_BuildValue("i", SetBloodLevel(blood_level));
+}
+
+
+// address: 0x1000170f
+PyObject *bex_GetBloodLevel(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", GetBloodLevel());
+}
+
+
+// address: 0x1000174c
+PyObject *bex_SetMutilationLevel(PyObject *self, PyObject *args) {
+        double mutilation_level = 1.0;
+
+        if (!PyArg_ParseTuple(args, "d", &mutilation_level))
+                return NULL;
+
+        return Py_BuildValue("i", SetMutilationLevel(mutilation_level));
+}
+
+
+// address: 0x100017a9
+PyObject *bex_GetMutilationLevel(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", GetMutilationLevel());
+}
+
+
+// address: 0x100017e6
+PyObject *bex_GetWorldFileName(PyObject *self, PyObject *args) {
+        const char *world_file_name;
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        world_file_name = GetWorldFileName();
+        if (!world_file_name) {
+                Py_INCREF(Py_None);
+                return Py_None;
+        }
+
+        return Py_BuildValue("s", world_file_name);
+}
+
+
+// address: 0x10001842
+PyObject *bex_AddTranTime(PyObject *self, PyObject *args) {
+        const char *biped_name, *next_anm , *prev_anm;
+        double time;
+        int unknown = 1;
+
+        if (!PyArg_ParseTuple(
+                args, "sssd|i", &biped_name, &next_anm , &prev_anm, &time,
+                &unknown)
+        )
+                return NULL;
+
+        return Py_BuildValue(
+                "i",
+                AddTranTime(biped_name, next_anm , prev_anm, time, unknown)
+        );
+}
+
+
+// address: 0x100018b7
+PyObject *bex_CheckAnims(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", CheckAnims());
+}
+
+
+// address: 0x100018f4
+PyObject *bex_GiveAnims(PyObject *self, PyObject *args) {
+        const char *race_name;
+
+        if (!PyArg_ParseTuple(args, "s", &race_name))
+                return NULL;
+
+        return Py_BuildValue("i", GiveAnims(race_name));
+}
+
+
+// address: 0x1000193e
+PyObject *bex_GetAnimationDuration(PyObject *self, PyObject *args) {
+        const char *animation_name;
+        double duration;
+        int ret;
+
+        if (!PyArg_ParseTuple(args, "s", &animation_name))
+                return NULL;
+
+        ret = GetAnimationDuration(animation_name, &duration);
+        if (!ret)
+                return Py_BuildValue("d", 0.0);
+
+        return Py_BuildValue("d", duration);
+}
+
+
+// address: 0x100019aa
+PyObject *bex_SetAnimationFactor(PyObject *self, PyObject *args) {
+        const char *mov;
+        double new_speed_factor;
+
+        if (!PyArg_ParseTuple(args, "sd", &mov, &new_speed_factor))
+                return NULL;
+
+        return Py_BuildValue("i", SetAnimationFactor(mov, new_speed_factor));
+}
+
+
+// address: 0x10001a00
+PyObject *bex_SetTurnSpeed(PyObject *self, PyObject *args) {
+        const char *race_name;
+        double new_speed;
+
+        if (!PyArg_ParseTuple(args, "sd", &race_name, &new_speed))
+                return NULL;
+
+        SetTurnSpeed(race_name, new_speed);
+
+        return Py_BuildValue("i", 1);
+}
+
 /*
 ................................................................................
 ................................................................................
@@ -1538,6 +1812,185 @@ PyObject *bex_SetParticleGVal(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", SetParticleGVal(type, i, r, g, b, alpha, size));
 }
 
+
+// address: 0x10003195
+PyObject *bex_GetnParticleGType(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", GetnParticleGType());
+}
+
+
+// address: 0x100031d2
+PyObject *bex_GetParticleGType(PyObject *self, PyObject *args) {
+        int index, operation_type, duration, ret;
+        const char *type, *parent_type;
+        PyObject *tuple, *typeObj, *parentTypeObj, *opTypeObject, *durationObj;
+
+        if(!PyArg_ParseTuple(args, "i", &index))
+                return NULL;
+
+        ret = GetParticleGType(
+                index, &type, &parent_type, &operation_type, &duration
+        );
+        if (!ret) {
+                Py_INCREF(Py_None);
+                return Py_None;
+        }
+
+        tuple = PyTuple_New(4);
+
+        typeObj = PyString_FromString(type);
+        PyTuple_SET_ITEM(tuple, 0, typeObj);
+
+        parentTypeObj = PyString_FromString(parent_type);
+        PyTuple_SET_ITEM(tuple, 1, parentTypeObj);
+
+        opTypeObject = PyInt_FromLong(operation_type);
+        PyTuple_SET_ITEM(tuple, 2, opTypeObject);
+
+        durationObj = PyInt_FromLong(duration);
+        PyTuple_SET_ITEM(tuple, 3, durationObj);
+
+        return tuple;
+}
+
+
+// address: 0x100032b1
+PyObject *bex_GetParticleGVal(PyObject *self, PyObject *args) {
+        const char *type;
+        double size;
+        int index, ret, r, g, b, alpha;
+        PyObject *tuple, *rObj, *gObj, *bObject, *alphaObj, *sizeObj;
+
+        if(!PyArg_ParseTuple(args, "si", &type, &index))
+                return NULL;
+
+        ret = GetParticleGVal(type, index, &r, &g, &b, &alpha, &size);
+        if (!ret) {
+                Py_INCREF(Py_None);
+                return Py_None;
+        }
+
+        tuple = PyTuple_New(5);
+
+        rObj = PyInt_FromLong(r);
+        PyTuple_SET_ITEM(tuple, 0, rObj);
+
+        gObj = PyInt_FromLong(g);
+        PyTuple_SET_ITEM(tuple, 1, gObj);
+
+        bObject = PyInt_FromLong(b);
+        PyTuple_SET_ITEM(tuple, 2, bObject);
+
+        alphaObj = PyInt_FromLong(alpha);
+        PyTuple_SET_ITEM(tuple, 3, alphaObj);
+
+        sizeObj = PyFloat_FromDouble(size);
+        PyTuple_SET_ITEM(tuple, 4, sizeObj);
+
+        return tuple;
+}
+
+
+// address: 0x100033bc
+PyObject *bex_GetEntitiesAt(PyObject *self, PyObject *args) {
+        double x, y, z, radius;
+        char **entitiy_names;
+        int num_entities, i;
+        PyObject *tuple, *nameObj;
+
+        if(!PyArg_ParseTuple(args, "dddd", &x, &y, &z, &radius))
+                return NULL;
+
+        entitiy_names = NULL;
+        num_entities = GetEntitiesAt(x, y, z, radius, &entitiy_names);
+
+        tuple = PyTuple_New(num_entities);
+
+        for (i = 0; i < num_entities; i++) {
+                nameObj = PyString_FromString(entitiy_names[i]);
+                PyTuple_SET_ITEM(tuple, i, nameObj);
+        }
+
+        if (entitiy_names)
+                free(entitiy_names);
+
+        return tuple;
+}
+
+
+// address: 0x1000348f
+PyObject *bex_GetEntitiesVisibleFrom(PyObject *self, PyObject *args) {
+        char **entitiy_names;
+        int num_entities, i;
+        PyObject *center = NULL, *direction = NULL, *tuple, *nameObj;
+        double radius, angle, xc, yc, zc, xdir, ydir, zdir;
+
+        if(!PyArg_ParseTuple(args, "OdOd", &center, &radius, &direction, &angle))
+                return NULL;
+
+        if(!PyArg_ParseTuple(center, "ddd", &xc, &yc, &zc))
+                return NULL;
+
+        if(!PyArg_ParseTuple(direction, "ddd", &xdir, &ydir, &zdir))
+                return NULL;
+
+        entitiy_names = NULL;
+        num_entities = GetEntitiesVisibleFrom(
+                xc, yc, zc, radius, xdir, ydir, zdir, angle, &entitiy_names
+        );
+
+        tuple = PyTuple_New(num_entities);
+
+        for (i = 0; i < num_entities; i++) {
+                nameObj = PyString_FromString(entitiy_names[i]);
+                PyTuple_SET_ITEM(tuple, i, nameObj);
+        }
+
+        if (entitiy_names)
+                free(entitiy_names);
+
+        return tuple;
+}
+
+
+// address: 0x100035e2
+PyObject *bex_GetObjectEntitiesVisibleFrom(PyObject *self, PyObject *args) {
+        char **entitiy_names;
+        int num_entities, i;
+        PyObject *center = NULL, *direction = NULL, *tuple, *nameObj;
+        double radius, angle, xc, yc, zc, xdir, ydir, zdir;
+
+        if(!PyArg_ParseTuple(args, "OdOd", &center, &radius, &direction, &angle))
+                return NULL;
+
+        if(!PyArg_ParseTuple(center, "ddd", &xc, &yc, &zc))
+                return NULL;
+
+        if(!PyArg_ParseTuple(direction, "ddd", &xdir, &ydir, &zdir))
+                return NULL;
+
+        entitiy_names = NULL;
+        num_entities = GetObjectEntitiesVisibleFrom(
+                xc, yc, zc, radius, xdir, ydir, zdir, angle, &entitiy_names
+        );
+
+        tuple = PyTuple_New(num_entities);
+
+        for (i = 0; i < num_entities; i++) {
+                nameObj = PyString_FromString(entitiy_names[i]);
+                PyTuple_SET_ITEM(tuple, i, nameObj);
+        }
+
+        if (entitiy_names)
+                free(entitiy_names);
+
+        return tuple;
+}
+
 /*
 ................................................................................
 ................................................................................
@@ -1714,111 +2167,11 @@ PyObject* bex_CreateRoute(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_SetSoundVolume(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetSoundVolume(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetBloodLevel(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetBloodLevel(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetMutilationLevel(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetMutilationLevel(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_CreateEntity(PyObject* self, PyObject* args) {
         return NULL;
 }
 
 PyObject* bex_DeleteEntity(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetMusicVolume(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetMusicVolume(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetSSQuality(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetSSQuality(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetSpeakerConfig(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetSpeakerConfig(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetEAXOverride(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetEAXOverride(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SaveSSConfig(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetAutoGenTexture(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddTranTime(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_CheckAnims(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GiveAnims(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetAnimationDuration(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetAnimationFactor(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetTurnSpeed(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetEntitiesAt(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetEntitiesVisibleFrom(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetObjectEntitiesVisibleFrom(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -1982,18 +2335,6 @@ PyObject* bex_CDCallBack(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_GetnParticleGType(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetParticleGType(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetParticleGVal(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_AddCombustionDataFor(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -2107,10 +2448,6 @@ PyObject* bex_AddBipedAction(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_RemoveBipedAction(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetWorldFileName(PyObject* self, PyObject* args) {
         return NULL;
 }
 
