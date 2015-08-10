@@ -73,7 +73,7 @@ LIB_EXP int SetBloodLevel(int blood_level);
 LIB_EXP int GetBloodLevel(void);
 LIB_EXP int SetMutilationLevel(int mutilation_level);
 LIB_EXP int GetMutilationLevel(void);
-LIB_EXP const char *GetWorldFileName();
+LIB_EXP const char *GetWorldFileName(void);
 LIB_EXP int AddTranTime(
         const char *biped_name, const char *next_anm , const char *prev_anm,
         double time, int unknown
@@ -95,6 +95,7 @@ LIB_EXP int SetCDSphere(int charID, int index, double h, double r);
 LIB_EXP int GetCharIntProperty(int charID, int property_kind, int unknown, int *value);
 LIB_EXP int GetCharFloatProperty(int charID, int property_kind, int unknown, double *value);
 LIB_EXP int GetCharStringProperty(int charID, int property_kind, int unknown, const char **value);
+LIB_EXP int GetTrailByName(const char *name);
 LIB_EXP int CreateSound(const char *file_name, const char *sound_name);
 LIB_EXP void DestroySound(int soundID);
 LIB_EXP int GetSoundDevInstace(void);

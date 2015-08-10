@@ -51,6 +51,11 @@ typedef struct {
         int soundDev;
 } bld_py_sound_t;
 
+typedef struct {
+        PyObject_HEAD
+        int trailID;
+} bld_py_trail_t;
+
 
 static PyObject* bex_nEntities(PyObject* self, PyObject* args);
 static PyObject* bex_GetTime(PyObject* self, PyObject* args);
@@ -360,16 +365,24 @@ static PyObject *bld_py_sound_repr(PyObject *self);
 static PyObject *bld_py_sound_getattr(PyObject *self, char *attr_name);
 static int bld_py_sound_setattr(PyObject *self, char *attr_name, PyObject *value);
 
+static PyObject *get_trail_type(const char *name);
+static void init_trail_type(void);
+static void bld_py_trail_dealloc(PyObject *self);
+static int bld_py_trail_print(PyObject *self, FILE *file, int flags);
+static PyObject *bld_py_trail_getattr(PyObject *self, char *attr_name);
+static int bld_py_trail_setattr(PyObject *self, char *attr_name, PyObject *value);
+
 
 static PyTypeObject charTypeObject;
 static PyTypeObject entityTypeObject;
 static PyTypeObject materialTypeObject;
 static PyTypeObject sectorTypeObject;
 static PyTypeObject soundTypeObject;
+static PyTypeObject trailTypeObject;
 
 static void (*init_funcs[])(void) = {
     init_char_type, init_entity_type, init_material_type, init_sector_type,
-    init_sound_type, NULL
+    init_sound_type, init_trail_type, NULL
 };
 
 static PyMethodDef methods[] = {
@@ -1174,6 +1187,24 @@ PyObject *bex_GetCharType(PyObject *self, PyObject *args) {
         }
 
         return character;
+}
+
+
+// address: 0x10002011
+PyObject *bex_GetTrailType(PyObject *self, PyObject *args) {
+        const char *name;
+        PyObject *trail;
+
+        if (!PyArg_ParseTuple(args, "s", &name))
+                return NULL;
+
+        trail = get_trail_type(name);
+        if (trail == NULL) {
+                Py_INCREF(Py_None);
+                return Py_None;
+        }
+
+        return trail;
 }
 
 /*
@@ -2192,10 +2223,6 @@ PyObject* bex_GetWeaponCombos(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_GetLastPlayerCType(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetTrailType(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -3720,6 +3747,77 @@ PyObject *bld_py_sound_getattr(PyObject *self, char *attr_name)
 // TODO implement
 // address: 0x100185e4
 int bld_py_sound_setattr(PyObject *self, char *attr_name, PyObject *value)
+{
+        return 0;
+}
+
+
+// address: 0x100189a0
+PyObject *get_trail_type(const char *name) {
+        bld_py_trail_t *trail_obj;
+        int trailID;
+
+        trailID = GetTrailByName(name);
+        if (trailID < 0)
+                return NULL;
+
+        trail_obj = PyObject_NEW(bld_py_trail_t, &trailTypeObject);
+        if (!trail_obj)
+                return NULL;
+
+        trail_obj->trailID = trailID;
+
+        return (PyObject *)trail_obj;
+}
+
+
+// address: 0x10018a06
+void init_trail_type() {
+
+        memset(&trailTypeObject, 0, sizeof(PyTypeObject));
+
+        trailTypeObject.ob_refcnt = 1;
+
+        trailTypeObject.ob_type = &PyType_Type;
+        trailTypeObject.ob_size = 0;
+        trailTypeObject.tp_name = "B_PyTrail";
+        trailTypeObject.tp_basicsize = sizeof(bld_py_trail_t);;
+        trailTypeObject.tp_itemsize = 0;
+        trailTypeObject.tp_dealloc = bld_py_trail_dealloc;
+        trailTypeObject.tp_print = bld_py_trail_print;
+        trailTypeObject.tp_getattr = bld_py_trail_getattr;
+        trailTypeObject.tp_setattr = bld_py_trail_setattr;
+        trailTypeObject.tp_compare = NULL;
+        trailTypeObject.tp_repr = NULL;
+        trailTypeObject.tp_as_number = NULL;
+        trailTypeObject.tp_as_sequence = NULL;
+        trailTypeObject.tp_as_mapping = NULL;
+        trailTypeObject.tp_hash = NULL;
+}
+
+// TODO implement
+// address: 0x10018ab1
+void bld_py_trail_dealloc(PyObject *self)
+{
+}
+
+// TODO implement
+// address: 0x10018ac3
+int bld_py_trail_print(PyObject *self, FILE *file, int flags)
+{
+        return 0;
+}
+
+// TODO implement
+// address: 0x10018af6
+PyObject *bld_py_trail_getattr(PyObject *self, char *attr_name)
+{
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10018d8e
+int bld_py_trail_setattr(PyObject *self, char *attr_name, PyObject *value)
 {
         return 0;
 }
