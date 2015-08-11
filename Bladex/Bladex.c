@@ -1929,25 +1929,25 @@ PyObject *bex_GetParticleGVal(PyObject *self, PyObject *args) {
 // address: 0x100033bc
 PyObject *bex_GetEntitiesAt(PyObject *self, PyObject *args) {
         double x, y, z, radius;
-        char **entitiy_names;
+        char **entity_names;
         int num_entities, i;
         PyObject *tuple, *nameObj;
 
         if(!PyArg_ParseTuple(args, "dddd", &x, &y, &z, &radius))
                 return NULL;
 
-        entitiy_names = NULL;
-        num_entities = GetEntitiesAt(x, y, z, radius, &entitiy_names);
+        entity_names = NULL;
+        num_entities = GetEntitiesAt(x, y, z, radius, &entity_names);
 
         tuple = PyTuple_New(num_entities);
 
         for (i = 0; i < num_entities; i++) {
-                nameObj = PyString_FromString(entitiy_names[i]);
+                nameObj = PyString_FromString(entity_names[i]);
                 PyTuple_SET_ITEM(tuple, i, nameObj);
         }
 
-        if (entitiy_names)
-                free(entitiy_names);
+        if (entity_names)
+                free(entity_names);
 
         return tuple;
 }
@@ -1955,7 +1955,7 @@ PyObject *bex_GetEntitiesAt(PyObject *self, PyObject *args) {
 
 // address: 0x1000348f
 PyObject *bex_GetEntitiesVisibleFrom(PyObject *self, PyObject *args) {
-        char **entitiy_names;
+        char **entity_names;
         int num_entities, i;
         PyObject *center = NULL, *direction = NULL, *tuple, *nameObj;
         double radius, angle, xc, yc, zc, xdir, ydir, zdir;
@@ -1969,20 +1969,20 @@ PyObject *bex_GetEntitiesVisibleFrom(PyObject *self, PyObject *args) {
         if(!PyArg_ParseTuple(direction, "ddd", &xdir, &ydir, &zdir))
                 return NULL;
 
-        entitiy_names = NULL;
+        entity_names = NULL;
         num_entities = GetEntitiesVisibleFrom(
-                xc, yc, zc, radius, xdir, ydir, zdir, angle, &entitiy_names
+                xc, yc, zc, radius, xdir, ydir, zdir, angle, &entity_names
         );
 
         tuple = PyTuple_New(num_entities);
 
         for (i = 0; i < num_entities; i++) {
-                nameObj = PyString_FromString(entitiy_names[i]);
+                nameObj = PyString_FromString(entity_names[i]);
                 PyTuple_SET_ITEM(tuple, i, nameObj);
         }
 
-        if (entitiy_names)
-                free(entitiy_names);
+        if (entity_names)
+                free(entity_names);
 
         return tuple;
 }
@@ -1990,7 +1990,7 @@ PyObject *bex_GetEntitiesVisibleFrom(PyObject *self, PyObject *args) {
 
 // address: 0x100035e2
 PyObject *bex_GetObjectEntitiesVisibleFrom(PyObject *self, PyObject *args) {
-        char **entitiy_names;
+        char **entity_names;
         int num_entities, i;
         PyObject *center = NULL, *direction = NULL, *tuple, *nameObj;
         double radius, angle, xc, yc, zc, xdir, ydir, zdir;
@@ -2004,30 +2004,293 @@ PyObject *bex_GetObjectEntitiesVisibleFrom(PyObject *self, PyObject *args) {
         if(!PyArg_ParseTuple(direction, "ddd", &xdir, &ydir, &zdir))
                 return NULL;
 
-        entitiy_names = NULL;
+        entity_names = NULL;
         num_entities = GetObjectEntitiesVisibleFrom(
-                xc, yc, zc, radius, xdir, ydir, zdir, angle, &entitiy_names
+                xc, yc, zc, radius, xdir, ydir, zdir, angle, &entity_names
         );
 
         tuple = PyTuple_New(num_entities);
 
         for (i = 0; i < num_entities; i++) {
-                nameObj = PyString_FromString(entitiy_names[i]);
+                nameObj = PyString_FromString(entity_names[i]);
                 PyTuple_SET_ITEM(tuple, i, nameObj);
         }
 
-        if (entitiy_names)
-                free(entitiy_names);
+        if (entity_names)
+                free(entity_names);
 
         return tuple;
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x10003735
+PyObject *bex_GetCombos(PyObject *self, PyObject *args) {
+        combo_t *combos;
+        int num_combos, i;
+        PyObject *tuple, *list, *nameObj, *executedObj;
+        const char *person_name;
+
+        if(!PyArg_ParseTuple(args, "s", &person_name))
+                return NULL;
+
+        num_combos = GetCombos(person_name, &combos);
+
+        list = PyList_New(num_combos);
+
+        for (i = 0; i < num_combos; i++) {
+                tuple = PyTuple_New(2);
+
+                nameObj = PyString_FromString(combos[i].name);
+                PyTuple_SET_ITEM(tuple, 0, nameObj);
+
+                executedObj = PyFloat_FromDouble(combos[i].executed);
+                PyTuple_SET_ITEM(tuple, 1, executedObj);
+
+                PyList_SET_ITEM(list, i, tuple);
+        }
+
+        return list;
+}
+
+
+// address: 0x10003814
+PyObject *bex_SetCombos(PyObject *self, PyObject *args) {
+        int num_combos, i, ret;
+        char **combos_names;
+        int *combos_executed;
+        const char *person_name;
+        PyObject *combos_obj, *tuple;
+
+        if(!PyArg_ParseTuple(args, "sO", &person_name, &combos_obj))
+                return NULL;
+
+
+        if (!PyList_CheckExact(combos_obj)) {
+                PyErr_SetString(
+                        PyExc_RuntimeError, "Error 2nd element must be a list."
+                );
+                return NULL;
+        }
+
+        num_combos = PyList_Size(combos_obj);
+
+        combos_names = (char **) malloc(num_combos * sizeof(char *));
+        combos_executed = (int *) malloc(num_combos * sizeof(int));
+
+        assert(combos_names);
+        assert(combos_executed);
+
+        for (i = 0; i < num_combos; i++) {
+                tuple = PyList_GET_ITEM(combos_obj, i);
+
+                if (!PyTuple_CheckExact(tuple)) {
+                        PyErr_SetString(
+                                PyExc_RuntimeError, "Error getting element."
+                        );
+                        return NULL;
+                }
+
+                combos_names[i] = strdup(PyString_AsString(PyTuple_GET_ITEM(tuple, 0)));
+
+                combos_executed[i] = PyInt_AsLong(PyTuple_GET_ITEM(tuple, 1));
+
+        }
+
+        ret = SetCombos(person_name, num_combos, combos_names, combos_executed);
+
+        for (i = 0; i < num_combos; i++) {
+                free(combos_names[i]);
+        }
+
+        free(combos_names);
+        free(combos_executed);
+
+        return Py_BuildValue("i", ret);
+}
+
+
+// address: 0x100039fd
+PyObject *bex_GetWeaponCombos(PyObject *self, PyObject *args) {
+        combo_t *combos;
+        int num_combos, i;
+        PyObject *tuple, *list, *nameObj, *executedObj;
+        const char *person_name, *weapon_kind;
+
+        if(!PyArg_ParseTuple(args, "ss", &person_name, &weapon_kind))
+                return NULL;
+
+        num_combos = GetWeaponCombos(person_name, weapon_kind, &combos);
+
+        list = PyList_New(num_combos);
+
+        for (i = 0; i < num_combos; i++) {
+                tuple = PyTuple_New(2);
+
+                nameObj = PyString_FromString(combos[i].name);
+                PyTuple_SET_ITEM(tuple, 0, nameObj);
+
+                executedObj = PyFloat_FromDouble(combos[i].executed);
+                PyTuple_SET_ITEM(tuple, 1, executedObj);
+
+                PyList_SET_ITEM(list, i, tuple);
+        }
+
+        return list;
+}
+
+
+// address: 0x10003ae4
+PyObject *bex_GetLastPlayerCType(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("s", GetLastPlayerCType());
+}
+
+
+// address: 0x10003b28
+PyObject *bex_GetEnemiesVisibleFrom(PyObject *self, PyObject *args) {
+        char **enemy_names;
+        int num_enemies, i;
+        PyObject *center = NULL, *direction = NULL, *tuple, *nameObj;
+        double radius, angle, xc, yc, zc, xdir, ydir, zdir;
+
+        if(!PyArg_ParseTuple(args, "OdOd", &center, &radius, &direction, &angle))
+                return NULL;
+
+        if(!PyArg_ParseTuple(center, "ddd", &xc, &yc, &zc))
+                return NULL;
+
+        if(!PyArg_ParseTuple(direction, "ddd", &xdir, &ydir, &zdir))
+                return NULL;
+
+        enemy_names = NULL;
+        num_enemies = GetEnemiesVisibleFrom(
+                xc, yc, zc, radius, xdir, ydir, zdir, angle, &enemy_names
+        );
+
+        tuple = PyTuple_New(num_enemies);
+
+        for (i = 0; i < num_enemies; i++) {
+                nameObj = PyString_FromString(enemy_names[i]);
+                PyTuple_SET_ITEM(tuple, i, nameObj);
+        }
+
+        if (enemy_names)
+                free(enemy_names);
+
+        return tuple;
+}
+
+
+// address: 0x10003c7b
+PyObject *bex_CDPlayTrack(PyObject *self, PyObject *args) {
+        int ntrack;
+
+        if(!PyArg_ParseTuple(args, "i", &ntrack))
+                return NULL;
+
+        return Py_BuildValue("i", PlayCDTrack(ntrack));
+}
+
+
+// address: 0x10003cc5
+PyObject *bex_CDnTracks(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", nCDTracks());
+}
+
+
+// address: 0x10003d02
+PyObject *bex_CheckPyErrors(PyObject *self, PyObject *args) {
+
+    if (PyErr_Occurred()) {
+        PyErr_Print();
+        PyErr_Clear();
+        return Py_BuildValue("i", 1);
+    }
+
+    return Py_BuildValue("i", 0);
+}
+
+
+// address: 0x10003d47
+PyObject *bex_CDLenght(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", CDLenght());
+}
+
+
+// address: 0x10003d84
+PyObject *bex_CDTrackLenght(PyObject *self, PyObject *args) {
+        int ntrack;
+
+        if(!PyArg_ParseTuple(args, "i", &ntrack))
+                return NULL;
+
+        return Py_BuildValue("i", CDTrackLenght(ntrack));
+}
+
+
+// address: 0x10003dce
+PyObject *bex_CDPresent(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", CDPresent());
+}
+
+
+// address: 0x10003e0b
+PyObject *bex_CDStop(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", CDStop());
+}
+
+
+// address: 0x10003e48
+PyObject *bex_CDPause(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", CDPause());
+}
+
+
+// address: 0x10003e85
+PyObject *bex_CDCallBack(PyObject *self, PyObject *args) {
+        PyObject *func;
+
+        if(!PyArg_ParseTuple(args, "O", &func))
+                return NULL;
+
+        return Py_BuildValue("i", CDSetCallBack(func));
+}
+
+
+// address: 0x10003ecf
+PyObject *bex_SetDefaultMass(PyObject *self, PyObject *args) {
+        const char *entity_kind;
+        double mass;
+
+        if(!PyArg_ParseTuple(args, "sd", &entity_kind, &mass))
+                return NULL;
+
+        return Py_BuildValue("i", SetDefaultMass(entity_kind, mass));
+}
+
 
 // address: 0x10003f25
 PyObject *bex_SetDefaultMaterial(PyObject *self, PyObject *args) {
@@ -2160,6 +2423,197 @@ PyObject *bex_BodInspector(PyObject *self, PyObject *args) {
 }
 
 
+// address: 0x10006a03
+PyObject *bex_SetRunString(PyObject *self, PyObject *args) {
+        const char *variable;
+
+        if(!PyArg_ParseTuple(args, "s", &variable))
+                return NULL;
+
+        SetRunString(variable);
+
+        Py_INCREF(Py_None);
+        return Py_None;
+}
+
+
+// address: 0x10006a4d
+PyObject *bex_SetStringValue(PyObject *self, PyObject *args) {
+        const char *variable, *value;
+
+        if(!PyArg_ParseTuple(args, "ss", &variable, &value))
+                return NULL;
+
+        return Py_BuildValue("i", SetStringValue(variable, value));
+}
+
+
+// address: 0x10006a9f
+PyObject *bex_GetStringValue(PyObject *self, PyObject *args) {
+        const char *variable, *value;
+
+        if(!PyArg_ParseTuple(args, "s", &variable))
+                return NULL;
+
+        value = GetStringValue(variable);
+        if (value)
+            return Py_BuildValue("s", value);
+
+        Py_INCREF(Py_None);
+        return Py_None;
+}
+
+
+// address: 0x10006b08
+PyObject *bex_DeleteStringValue(PyObject *self, PyObject *args) {
+        const char *variable;
+
+        if(!PyArg_ParseTuple(args, "s", &variable))
+                return NULL;
+
+        return Py_BuildValue("i", DeleteStringValue(variable));
+}
+
+
+// address: 0x10006b52
+PyObject *bex_SaveEntitiesData(PyObject *self, PyObject *args) {
+        const char *file_name;
+
+        if(!PyArg_ParseTuple(args, "s", &file_name))
+                return NULL;
+
+        return Py_BuildValue("i", SaveEntitiesData(file_name));
+}
+
+
+// address: 0x10006b9c
+PyObject *bex_LoadEntitiesData(PyObject *self, PyObject *args) {
+        const char *file_name;
+
+        if(!PyArg_ParseTuple(args, "s", &file_name))
+                return NULL;
+
+        return Py_BuildValue("i", LoadEntitiesData(file_name));
+}
+
+
+// address: 0x10006be6
+PyObject *bex_SaveParticleSystemsData(PyObject *self, PyObject *args) {
+        const char *file_name;
+
+        if(!PyArg_ParseTuple(args, "s", &file_name))
+                return NULL;
+
+        return Py_BuildValue("i", SaveParticleSystemsData(file_name));
+}
+
+
+// address: 0x10006c30
+PyObject *bex_LoadParticleSystemsData(PyObject *self, PyObject *args) {
+        const char *file_name;
+
+        if(!PyArg_ParseTuple(args, "s", &file_name))
+                return NULL;
+
+        return Py_BuildValue("i", LoadParticleSystemsData(file_name));
+}
+
+
+// address: 0x10006c7a
+PyObject *bex_SaveCombustionData(PyObject *self, PyObject *args) {
+        const char *file_name;
+
+        if(!PyArg_ParseTuple(args, "s", &file_name))
+                return NULL;
+
+        return Py_BuildValue("i", SaveCombustionData(file_name));
+}
+
+
+// address: 0x10006cc4
+PyObject *bex_LoadCombustionData(PyObject *self, PyObject *args) {
+        const char *file_name;
+
+        if(!PyArg_ParseTuple(args, "s", &file_name))
+                return NULL;
+
+        return Py_BuildValue("i", LoadCombustionData(file_name));
+}
+
+
+// address: 0x10006d0e
+PyObject *bex_ReassignCombustionData(PyObject *self, PyObject *args) {
+
+        ReassignCombustionData();
+
+        return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x10006d29
+PyObject *bex_SaveAnmRaceData(PyObject *self, PyObject *args) {
+        const char *file_name, *race;
+
+        if(!PyArg_ParseTuple(args, "ss", &file_name, &race))
+                return NULL;
+
+        return Py_BuildValue("i", SaveAnmRaceData(file_name, race));
+}
+
+
+// address: 0x10006d7b
+PyObject *bex_LoadAnmRaceData(PyObject *self, PyObject *args) {
+        const char *file_name;
+
+        if(!PyArg_ParseTuple(args, "s", &file_name))
+                return NULL;
+
+        return Py_BuildValue("i", LoadAnmRaceData(file_name));
+}
+
+
+// address: 0x10006dc5
+PyObject *bex_SaveAnmSoundData(PyObject *self, PyObject *args) {
+        const char *file_name, *race;
+
+        if(!PyArg_ParseTuple(args, "ss", &file_name, &race))
+                return NULL;
+
+        return Py_BuildValue("i", SaveAnmSoundData(file_name, race));
+}
+
+
+// address: 0x10006e17
+PyObject *bex_LoadAnmSoundData(PyObject *self, PyObject *args) {
+        const char *file_name;
+
+        if(!PyArg_ParseTuple(args, "s", &file_name))
+                return NULL;
+
+        return Py_BuildValue("i",  LoadAnmSoundData(file_name));
+}
+
+
+// address: 0x10006e61
+PyObject *bex_GetSaveInfo(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return GetSaveInfo();
+}
+
+
+// address: 0x10006e86
+PyObject *bex_SetSaveInfo(PyObject *self, PyObject *args) {
+        PyObject *info;
+
+        if(!PyArg_ParseTuple(args, "O", &info))
+                return NULL;
+
+        return Py_BuildValue("i", SetSaveInfo(info));
+}
+
 /*
 ................................................................................
 ................................................................................
@@ -2190,6 +2644,97 @@ PyObject *bex_CloseProfileSection(PyObject *self, PyObject *args) {
 }
 
 
+// address: 0x100070eb
+PyObject *bex_StartProfile(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", StartProfile());
+}
+
+
+// address: 0x10007128
+PyObject *bex_EnableProfiler(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", EnableProfiler());
+}
+
+
+// address: 0x10007165
+PyObject *bex_DisableProfiler(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", DisableProfiler());
+}
+
+
+// address: 0x100071a2
+PyObject *bex_SaveProfileData(PyObject *self, PyObject *args) {
+        const char *file_name;
+
+        if(!PyArg_ParseTuple(args, "s", &file_name))
+                return NULL;
+
+        return Py_BuildValue("i", SaveProfileData(file_name));
+}
+
+
+// address: 0x100071ec
+PyObject *bex_SetInputMode(PyObject *self, PyObject *args) {
+        const char *device, *mode;
+
+        if(!PyArg_ParseTuple(args, "ss", &device, &mode))
+                return NULL;
+
+        return Py_BuildValue("i", SetInputMode(device, mode));
+}
+
+
+// address: 0x1000723e
+PyObject *bex_GetInputMode(PyObject *self, PyObject *args) {
+        const char *device;
+
+        if(!PyArg_ParseTuple(args, "s", &device))
+                return NULL;
+
+        return Py_BuildValue("s", GetInputMode(device));
+}
+
+
+// address: 0x10007288
+PyObject *bex_SaveScreenShot(PyObject *self, PyObject *args) {
+        const char *file_name;
+        int width, height;
+
+        if(!PyArg_ParseTuple(args, "sii", &file_name, &width, &height))
+                return NULL;
+
+        SaveScreeShoot(file_name, width, height);
+
+        return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x100072dd
+PyObject *bex_CleanArea(PyObject *self, PyObject *args) {
+        float x, y, z, distance;
+
+        if(!PyArg_ParseTuple(args, "ffff", &x, &y, &z, &distance))
+                return NULL;
+
+        CleanArea(x, y, z, distance);
+
+        return Py_BuildValue("i", 1);
+}
+
+
+
 PyObject* bex_CreateSpark(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -2203,30 +2748,6 @@ PyObject* bex_CreateEntity(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_DeleteEntity(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetEnemiesVisibleFrom(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetCombos(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetCombos(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetWeaponCombos(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetLastPlayerCType(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetDefaultMass(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -2330,38 +2851,6 @@ PyObject* bex_GetTriggerSectorName(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_CDPlayTrack(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_CDnTracks(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_CDLenght(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_CDTrackLenght(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_CDPresent(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_CDStop(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_CDPause(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_CDCallBack(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_AddCombustionDataFor(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -2430,10 +2919,6 @@ PyObject* bex_ShowActionAreas(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_CheckPyErrors(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_SetAppMode(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -2487,74 +2972,6 @@ PyObject* bex_DoneLoadGame(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_BeginLoadGame(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetSaveInfo(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetSaveInfo(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_LoadEntitiesData(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SaveEntitiesData(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_LoadParticleSystemsData(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SaveParticleSystemsData(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_LoadAnmRaceData(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SaveAnmRaceData(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_LoadAnmSoundData(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SaveAnmSoundData(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SaveProfileData(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_StartProfile(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_EnableProfiler(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_DisableProfiler(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ReassignCombustionData(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_LoadCombustionData(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SaveCombustionData(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -2726,22 +3143,6 @@ PyObject* bex_GetPTime(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_SetRunString(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetStringValue(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetStringValue(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_DeleteStringValue(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_PerformHeapCheck(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -2767,22 +3168,6 @@ PyObject* bex_HeapCheckLeaks(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_DumpMemoryLeaks(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetInputMode(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetInputMode(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SaveScreenShot(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_CleanArea(PyObject* self, PyObject* args) {
         return NULL;
 }
 

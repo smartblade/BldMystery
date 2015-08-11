@@ -10,6 +10,11 @@
 typedef struct _entity_t entity_t;
 typedef struct _material_t material_t;
 
+typedef struct {
+        const char *name;
+        int executed;
+} combo_t;
+
 
 #define CHR_FLT_TURN_SPEED                0
 #define CHR_FLT_DIE_FALL                  1
@@ -174,16 +179,38 @@ LIB_EXP int GetParticleGVal(
         double *size
 );
 LIB_EXP int GetEntitiesAt(
-        double x, double y, double z, double radius, char ***entitiy_names
+        double x, double y, double z, double radius, char ***entity_names
 );
 LIB_EXP int GetEntitiesVisibleFrom(
         double xc, double yc, double zc, double radius, double xdir,
-        double ydir, double zdir, double angle, char ***entitiy_names
+        double ydir, double zdir, double angle, char ***entity_names
 );
 LIB_EXP int GetObjectEntitiesVisibleFrom(
         double xc, double yc, double zc, double radius, double xdir,
-        double ydir, double zdir, double angle, char ***entitiy_names
+        double ydir, double zdir, double angle, char ***entity_names
 );
+LIB_EXP int GetCombos(const char *person_name, combo_t **combos);
+LIB_EXP int SetCombos(
+        const char *person_name, int num_combos, char **combos_names,
+        int *combos_executed
+);
+LIB_EXP int GetWeaponCombos(
+        const char *person_name, const char *weapon_kind, combo_t **combos
+);
+LIB_EXP const char *GetLastPlayerCType(void);
+LIB_EXP int GetEnemiesVisibleFrom(
+        double xc, double yc, double zc, double radius, double xdir,
+        double ydir, double zdir, double angle, char ***enemy_names
+);
+LIB_EXP int PlayCDTrack(int ntrack);
+LIB_EXP int nCDTracks(void);
+LIB_EXP int CDLenght(void);
+LIB_EXP int CDTrackLenght(int ntrack);
+LIB_EXP int CDPresent(void);
+LIB_EXP int CDStop(void);
+LIB_EXP int CDPause(void);
+LIB_EXP int CDSetCallBack(PyObject *func);
+LIB_EXP int SetDefaultMass(const char *entity_kind, double mass);
 LIB_EXP int SetDefaultMaterial(const char *entity_kind, const char *material);
 LIB_EXP material_t *CreateMaterial(const char *name);
 LIB_EXP int CloseDebugChannel(const char *channel_name);
@@ -196,7 +223,32 @@ LIB_EXP int AddActionStepSound(
         const char *table, const char *action, const char *step_sound_table
 );
 LIB_EXP void BodInspector(void);
+LIB_EXP void SetRunString(const char *variable);
+LIB_EXP int SetStringValue(const char *variable, const char *value);
+LIB_EXP const char *GetStringValue(const char *variable);
+LIB_EXP int DeleteStringValue(const char *variable);
+LIB_EXP int SaveEntitiesData(const char *filename);
+LIB_EXP int LoadEntitiesData(const char *filename);
+LIB_EXP int SaveParticleSystemsData(const char *filename);
+LIB_EXP int LoadParticleSystemsData(const char *filename);
+LIB_EXP int SaveCombustionData(const char *file_name);
+LIB_EXP int LoadCombustionData(const char *file_name);
+LIB_EXP int ReassignCombustionData(void);
+LIB_EXP int SaveAnmRaceData(const char *file_name, const char *race);
+LIB_EXP int LoadAnmRaceData(const char *file_name);
+LIB_EXP int SaveAnmSoundData(const char *file_name, const char *race);
+LIB_EXP int LoadAnmSoundData(const char *file_name);
+LIB_EXP PyObject *GetSaveInfo(void);
+LIB_EXP int SetSaveInfo(PyObject *info);
 LIB_EXP int OpenProfileSection(int section, const char *comment);
 LIB_EXP int CloseProfileSection(int section);
+LIB_EXP int StartProfile(void);
+LIB_EXP int EnableProfiler(void);
+LIB_EXP int DisableProfiler(void);
+LIB_EXP int SaveProfileData(const char *file_name);
+LIB_EXP int SetInputMode(const char *device, const char *mode);
+LIB_EXP const char *GetInputMode(const char *device);
+LIB_EXP void SaveScreeShoot(const char *filename, int width, int height);
+LIB_EXP void CleanArea(double x, double y, double z, float distance);
 
 #endif /* BLADE_EXT_H */
