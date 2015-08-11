@@ -335,6 +335,14 @@ static int bld_py_char_setattr(PyObject *self, char *attr_name, PyObject *value)
 
 static PyObject *get_entity_by_name(const char *name);
 static PyObject *get_entity_by_index(int index);
+static PyObject *create_entity(
+        const char *name, const char *kind, double x, double y, double z,
+        const char *parent_class, const char *unknown
+);
+static PyObject *create_entity_decal(
+        const char *name, double x, double y, double z, int i_unknown,
+        double d_unknown1, double d_unknown2
+);
 static void init_entity_type(void);
 static void bld_py_entity_dealloc(PyObject *self);
 static int bld_py_entity_print(PyObject *self, FILE *file, int flags);
@@ -1086,6 +1094,44 @@ PyObject *bex_SetTurnSpeed(PyObject *self, PyObject *args) {
         SetTurnSpeed(race_name, new_speed);
 
         return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x10001a51
+PyObject *bex_CreateEntity(PyObject *self, PyObject *args) {
+        const char *name, *kind, *parent_class = "", *unknown = NULL;
+        int i_unknown;
+        double d_unknown1, d_unknown2;
+        double x, y, z;
+        PyObject *type, *value, *traceback;
+
+        if (
+                PyArg_ParseTuple(
+                        args, "ssddd|ss", &name, &kind, &x, &y, &z,
+                        &parent_class, &unknown
+                )
+        ) {
+                return create_entity(name, kind, x, y, z, parent_class, unknown);
+        }
+
+        PyErr_Fetch(&type, &value, &traceback);
+
+        PyErr_Clear();
+
+        if (
+                !PyArg_ParseTuple(
+                        args, "ssdddid|d", &name, &kind, &x, &y, &z, &i_unknown,
+                        &d_unknown1, &d_unknown2
+                ) ||
+                strcmp(kind, "Entity Decal")
+        ) {
+                PyErr_Restore(type, value, traceback);
+                return NULL;
+        }
+
+        return create_entity_decal(
+                name, x, y, z, i_unknown, d_unknown1, d_unknown2
+        );
 }
 
 /*
@@ -2065,7 +2111,7 @@ PyObject *bex_SetCombos(PyObject *self, PyObject *args) {
                 return NULL;
 
 
-        if (!PyList_CheckExact(combos_obj)) {
+        if (!PyList_Check(combos_obj)) {
                 PyErr_SetString(
                         PyExc_RuntimeError, "Error 2nd element must be a list."
                 );
@@ -2083,7 +2129,7 @@ PyObject *bex_SetCombos(PyObject *self, PyObject *args) {
         for (i = 0; i < num_combos; i++) {
                 tuple = PyList_GET_ITEM(combos_obj, i);
 
-                if (!PyTuple_CheckExact(tuple)) {
+                if (!PyTuple_Check(tuple)) {
                         PyErr_SetString(
                                 PyExc_RuntimeError, "Error getting element."
                         );
@@ -2740,10 +2786,6 @@ PyObject* bex_CreateSpark(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_CreateRoute(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_CreateEntity(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -3808,6 +3850,52 @@ PyObject *get_entity_by_index(int index) {
         }
 
         return NULL;
+}
+
+
+// address: 0x1000a0e6
+PyObject *create_entity(
+        const char *name, const char *kind, double x, double y, double z,
+        const char *parent_class, const char *unknown
+) {
+        entity_t *entity;
+        bld_py_entity_t *entity_obj;
+
+        entity_obj = PyObject_NEW(bld_py_entity_t, &entityTypeObject);
+        if (entity_obj == NULL)
+                return NULL;
+
+        entity = CreateEntity(name, kind, x, y, z, parent_class, unknown);
+        if (entity == NULL)
+                return NULL;
+
+        entity_obj->name = strdup(GetEntityName(entity));
+        return (PyObject *)entity_obj;
+}
+
+
+// address: 0x1000a179
+PyObject *create_entity_decal(
+        const char *name, double x, double y, double z, int i_unknown,
+        double d_unknown1, double d_unknown2
+) {
+        entity_t *entity;
+        bld_py_entity_t *entity_obj;
+
+        entity_obj = PyObject_NEW(bld_py_entity_t, &entityTypeObject);
+        if (entity_obj == NULL)
+                return NULL;
+
+
+
+        entity = CreateEntityDecal(
+                name, x, y, z, i_unknown, d_unknown1, d_unknown2
+        );
+        if (entity == NULL)
+                return NULL;
+
+        entity_obj->name = strdup(GetEntityName(entity));
+        return (PyObject *)entity_obj;
 }
 
 /*

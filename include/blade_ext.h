@@ -90,6 +90,14 @@ LIB_EXP int SetAnimationFactor(const char *mov, double new_speed_factor);
 LIB_EXP void SetTurnSpeed(const char *race_name, double new_speed);
 LIB_EXP entity_t *GetEntity(const char *name);
 LIB_EXP entity_t *GetEntityI(int index);
+LIB_EXP entity_t *CreateEntity(
+        const char *name, const char *kind, double x, double y, double z,
+        const char *parent_class, const char *unknown
+);
+LIB_EXP entity_t *CreateEntityDecal(
+        const char *name, double x, double y, double z, int i_unknown,
+        double d_unknown1, double d_unknown2
+);
 LIB_EXP const char *GetEntityName(entity_t *entity);
 LIB_EXP int SetListenerMode(int mode, double x, double y, double z);
 LIB_EXP int GetSectorByIndex(int index);
