@@ -222,7 +222,26 @@ LIB_EXP int SetDefaultMass(const char *entity_kind, double mass);
 LIB_EXP int SetDefaultMaterial(const char *entity_kind, const char *material);
 LIB_EXP material_t *CreateMaterial(const char *name);
 LIB_EXP int CloseDebugChannel(const char *channel_name);
+LIB_EXP int OpenDebugChannel(const char *channel_name);
+LIB_EXP int SetAppMode(const char *mode);
+LIB_EXP const char *GetAppMode(void);
+LIB_EXP const char *GetCommandLine(void);
+LIB_EXP int Quit(void);
 LIB_EXP int SetSolidMask(const char *kind, int mask);
+LIB_EXP int SetDrawObjectShadows(int draw);
+LIB_EXP int GetAutoEngageCombat(void);
+LIB_EXP int SetAutoEngageCombat(int auto_engage_combat);
+LIB_EXP double GetAecGap(void);
+LIB_EXP int SetAecGap(double aec_gap);
+LIB_EXP int GetDrawObjectShadows(void);
+LIB_EXP int GetModelPos(const char *person, double *x, double *y, double *z);
+LIB_EXP const char *GetCurrentMap(void);
+LIB_EXP int SetCurrentMap(const char *map);
+LIB_EXP int LoadWorld(const char *file_name);
+LIB_EXP void DoneLoadGame(void);
+LIB_EXP void BeginLoadGame(void);
+LIB_EXP int GetWindowId(void);
+LIB_EXP int GetProgramId(void);
 LIB_EXP int AddStepSound(const char *name, int soundID);
 LIB_EXP int AddMaterialStepSound(
         const char *table, const char *material, const char *step_sound
@@ -230,6 +249,41 @@ LIB_EXP int AddMaterialStepSound(
 LIB_EXP int AddActionStepSound(
         const char *table, const char *action, const char *step_sound_table
 );
+LIB_EXP int AddTextureMaterial(const char *texture, const char *material);
+LIB_EXP int GetMusicEventPriority(int unknown);
+LIB_EXP int getMusicEvent(const char *event_name);
+LIB_EXP int exeMusicEvent(int unknown1, int unknown2);
+LIB_EXP int addMusicEventCD(
+        const char *lpszEventName, int iTrack, double dFIn, double dFOut,
+        float fVolume, float fPriority, int bBackGround, int iNext
+);
+LIB_EXP int addMusicEventMP3(
+        const char *lpszEventName, const char *lpszFile, double dFIn,
+        float fVolume, double dFOut, float fPriority, int bBackGround,
+        int iNext, int unknown
+);
+LIB_EXP int addMusicEventWAV(
+        const char *lpszEventName, const char *lpszFile, double dFIn,
+        float fVolume, double dFOut, float fPriority, int bBackGround,
+        int iNext, int opened
+);
+LIB_EXP int addMusicEventADPCM(
+        const char *lpszEventName, const char *lpszFile, double dFIn,
+        float fVolume, double dFOut, float fPriority, int bBackGround,
+        int iNext, int unknown
+);
+LIB_EXP int dropDebugInfo(void);
+LIB_EXP int loadSoundDataBase(const char *file_name);
+LIB_EXP int saveSoundDataBase(const char *file_name);
+LIB_EXP int loadMusicState(const char *file_name);
+LIB_EXP int saveMusicState(const char *file_name);
+LIB_EXP void TakeSnapShot(void);
+LIB_EXP void saveSoundStats(const char *file_name);
+LIB_EXP void GetMouseState(int *invert, double *xsens, double *ysens);
+LIB_EXP void SetMouseState(int invert, double xsens, double ysens);
+LIB_EXP double GetPSeconds(void);
+LIB_EXP int GetnRaces(void);
+LIB_EXP const char *GetRaceName(int index);
 LIB_EXP void BodInspector(void);
 LIB_EXP void SetRunString(const char *variable);
 LIB_EXP int SetStringValue(const char *variable, const char *value);

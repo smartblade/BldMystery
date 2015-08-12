@@ -1101,7 +1101,7 @@ PyObject *bex_SetTurnSpeed(PyObject *self, PyObject *args) {
 PyObject *bex_CreateEntity(PyObject *self, PyObject *args) {
         const char *name, *kind, *parent_class = "", *unknown = NULL;
         int i_unknown;
-        double d_unknown1, d_unknown2;
+        double d_unknown1, d_unknown2 = 0.0;
         double x, y, z;
         PyObject *type, *value, *traceback;
 
@@ -2384,6 +2384,64 @@ PyObject *bex_CloseDebugChannel(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", CloseDebugChannel(channel_name));
 }
 
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x10005441
+PyObject *bex_OpenDebugChannel(PyObject *self, PyObject *args) {
+        const char *channel_name;
+
+        if(!PyArg_ParseTuple(args, "s", &channel_name))
+                return NULL;
+
+        return Py_BuildValue("i", OpenDebugChannel(channel_name));
+}
+
+
+// address: 0x10005492
+PyObject *bex_SetAppMode(PyObject *self, PyObject *args) {
+        const char *mode;
+
+        if(!PyArg_ParseTuple(args, "s", &mode))
+                return NULL;
+
+        return Py_BuildValue("i", SetAppMode(mode));
+}
+
+
+// address: 0x100054e3
+PyObject *bex_GetAppMode(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("s", GetAppMode());
+}
+
+
+// address: 0x10005529
+PyObject *bex_GetCommandLine(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("s", GetCommandLine());
+}
+
+
+// address: 0x1000556f
+PyObject *bex_Quit(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", Quit());
+}
+
 
 /*
 ................................................................................
@@ -2403,12 +2461,177 @@ PyObject *bex_SetSolidMask(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", SetSolidMask(kind, mask));
 }
 
+
+// address: 0x10005c6a
+PyObject *bex_SetDrawObjectShadows(PyObject *self, PyObject *args) {
+        int draw;
+
+        if(!PyArg_ParseTuple(args, "i", &draw))
+                return NULL;
+
+        return Py_BuildValue("i", SetDrawObjectShadows(draw));
+}
+
+
+// address: 0x10005cb4
+PyObject *bex_GetAutoEngageCombat(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", GetAutoEngageCombat());
+}
+
+
+// address: 0x10005cf1
+PyObject *bex_SetAutoEngageCombat(PyObject *self, PyObject *args) {
+        int auto_engage_combat;
+
+        if(!PyArg_ParseTuple(args, "i", &auto_engage_combat))
+                return NULL;
+
+        return Py_BuildValue("i", SetAutoEngageCombat(auto_engage_combat));
+}
+
+
+// address: 0x10005d3b
+PyObject *bex_GetAecGap(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("d", GetAecGap());
+}
+
+
+// address: 0x10005d7e
+PyObject *bex_SetAecGap(PyObject *self, PyObject *args) {
+        double aec_gap;
+
+        if(!PyArg_ParseTuple(args, "d", &aec_gap))
+                return NULL;
+
+        return Py_BuildValue("i", SetAecGap(aec_gap));
+}
+
+
+// address: 0x10005dcc
+PyObject *bex_GetDrawObjectShadows(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", GetDrawObjectShadows());
+}
+
+
+// address: 0x10005e09
+PyObject *bex_GetModelPos(PyObject *self, PyObject *args) {
+        const char *person = NULL;
+        int ret;
+        double x, y, z;
+
+        if(!PyArg_ParseTuple(args, "s", &person))
+                return NULL;
+
+        ret = GetModelPos(person, &x, &y, &z);
+        if (!ret)
+                return Py_BuildValue("i", 0);
+
+        return Py_BuildValue("ddd", x, y, z);
+}
+
 /*
 ................................................................................
 ................................................................................
 ................................................................................
 ................................................................................
 */
+
+// address: 0x10005ee6
+PyObject *bex_GetCurrentMap(PyObject *self, PyObject *args) {
+        const char *map;
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        map = GetCurrentMap();
+        if (map == NULL) {
+                Py_INCREF(Py_None);
+                return Py_None;
+        }
+
+        return Py_BuildValue("s", map);
+}
+
+
+// address: 0x10005f42
+PyObject *bex_SetCurrentMap(PyObject *self, PyObject *args) {
+        const char *map;
+
+        if(!PyArg_ParseTuple(args, "s", &map))
+                return NULL;
+
+        return Py_BuildValue("i", SetCurrentMap(map));
+}
+
+
+// address: 0x10005f8c
+PyObject *bex_LoadWorld(PyObject *self, PyObject *args) {
+        const char *file_name;
+
+        if(!PyArg_ParseTuple(args, "s", &file_name))
+                return NULL;
+
+        return Py_BuildValue("i", LoadWorld(file_name));
+}
+
+
+// address: 0x10005fd6
+PyObject *bex_DoneLoadGame(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        DoneLoadGame();
+
+        Py_INCREF(Py_None);
+        return Py_None;
+}
+
+
+// address: 0x10006012
+PyObject *bex_BeginLoadGame(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        BeginLoadGame();
+
+        Py_INCREF(Py_None);
+        return Py_None;
+}
+
+
+// address: 0x1000604e
+PyObject *bex_GetWindowId(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", GetWindowId());
+}
+
+
+// address: 0x1000608b
+PyObject *bex_GetProgramId(PyObject *self, PyObject *args) {
+
+        if(!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", GetProgramId());
+}
+
 
 // address: 0x100060c8
 PyObject *bex_AddStepSound(PyObject *self, PyObject *args) {
@@ -2446,12 +2669,312 @@ PyObject *bex_AddActionStepSound(PyObject *self, PyObject *args) {
 }
 
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+// address: 0x100061d1
+PyObject *bex_AddTextureMaterial(PyObject *self, PyObject *args) {
+        const char *texture, *material;
+
+        if (!PyArg_ParseTuple(args, "ss", &texture, &material))
+                return NULL;
+
+        return Py_BuildValue("i", AddTextureMaterial(texture, material));
+}
+
+
+// address: 0x10006223
+PyObject *bex_GetMusicEventPriority(PyObject *self, PyObject *args) {
+        int unknown;
+
+        if (!PyArg_ParseTuple(args, "i", &unknown))
+                return NULL;
+
+        return Py_BuildValue("i", GetMusicEventPriority(unknown));
+}
+
+
+// address: 0x1000626d
+PyObject *bex_GetMusicEvent(PyObject *self, PyObject *args) {
+        const char *event_name;
+
+        if (!PyArg_ParseTuple(args, "s", &event_name))
+                return NULL;
+
+        return Py_BuildValue("i", getMusicEvent(event_name));
+}
+
+
+// address: 0x100062b7
+PyObject *bex_ExeMusicEvent(PyObject *self, PyObject *args) {
+        int unknown1, unknown2 = 0;
+
+        if (!PyArg_ParseTuple(args, "i|i", &unknown1, &unknown2))
+                return NULL;
+
+        return Py_BuildValue("i", exeMusicEvent(unknown1, (unknown2 != 0) ));
+}
+
+
+// address: 0x10006316
+PyObject *bex_AddMusicEventCD(PyObject *self, PyObject *args) {
+        const char *lpszEventName;
+        int iTrack, bBackGround, iNext;
+        double dFIn, dFOut, fVolume, fPriority; 
+
+        if (!PyArg_ParseTuple(
+                args, "siddddii", &lpszEventName, &iTrack, &dFIn, &dFOut,
+                &fVolume, &fPriority, &bBackGround, &iNext
+        ))
+                return NULL;
+
+        return Py_BuildValue(
+                "i", addMusicEventCD(
+                        lpszEventName, iTrack, dFIn, dFOut, fVolume, fPriority,
+                        (bBackGround != 0), iNext
+                )
+        );
+}
+
+
+// address: 0x100063b2
+PyObject *bex_AddMusicEventMP3(PyObject *self, PyObject *args) {
+        const char *lpszEventName, *lpszFile;
+        int bBackGround, iNext, unknown = 0;
+        double dFIn, fVolume, dFOut, fPriority; 
+
+        if (!PyArg_ParseTuple(
+                args, "ssddddii|i", &lpszEventName, &lpszFile, &dFIn, &dFOut,
+                &fVolume, &fPriority, &bBackGround, &iNext, &unknown
+        ))
+                return NULL;
+
+        return Py_BuildValue(
+                "i", addMusicEventMP3(
+                        lpszEventName, lpszFile, dFIn, fVolume, dFOut,
+                        fPriority, (bBackGround != 0), iNext, unknown
+                )
+        );
+}
+
+
+// address: 0x1000645d
+PyObject *bex_AddMusicEventWAV(PyObject *self, PyObject *args) {
+        const char *lpszEventName, *lpszFile;
+        int bBackGround, iNext, opened = 0;
+        double dFIn, fVolume, dFOut, fPriority; 
+
+        if (!PyArg_ParseTuple(
+                args, "ssddddii|i", &lpszEventName, &lpszFile, &dFIn, &dFOut,
+                &fVolume, &fPriority, &bBackGround, &iNext, &opened
+        ))
+                return NULL;
+
+        return Py_BuildValue(
+                "i", addMusicEventWAV(
+                        lpszEventName, lpszFile, dFIn, fVolume, dFOut,
+                        fPriority, (bBackGround != 0), iNext, opened
+                )
+        );
+}
+
+
+// address: 0x10006508
+PyObject *bex_AddMusicEventADPCM(PyObject *self, PyObject *args) {
+        const char *lpszEventName, *lpszFile;
+        int bBackGround, iNext, unknown = 0;
+        double dFIn, fVolume, dFOut, fPriority; 
+
+        if (!PyArg_ParseTuple(
+                args, "ssddddii|i", &lpszEventName, &lpszFile, &dFIn, &dFOut,
+                &fVolume, &fPriority, &bBackGround, &iNext, &unknown
+        ))
+                return NULL;
+
+        return Py_BuildValue(
+                "i", addMusicEventADPCM(
+                        lpszEventName, lpszFile, dFIn, fVolume, dFOut,
+                        fPriority, (bBackGround != 0), iNext, unknown
+                )
+        );
+}
+
+
+// address: 0x100065b3
+PyObject *bex_YSSInfo(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, "")) {
+                PyErr_SetString(
+                        PyExc_RuntimeError,
+                        "Wrong number of arguments in tuple."
+                );
+                return NULL;
+        }
+
+        return Py_BuildValue("i", dropDebugInfo());
+}
+
+
+// address: 0x10006607
+PyObject *bex_LoadSoundDataBase(PyObject *self, PyObject *args) {
+        const char *file_name;
+
+        if (!PyArg_ParseTuple(args, "s", &file_name)) {
+                PyErr_SetString(
+                        PyExc_RuntimeError,
+                        "Wrong number of arguments in tuple."
+                );
+                return NULL;
+        }
+
+        return Py_BuildValue("i", loadSoundDataBase(file_name));
+}
+
+
+// address: 0x10006668
+PyObject *bex_SaveSoundDataBase(PyObject *self, PyObject *args) {
+        const char *file_name;
+
+        if (!PyArg_ParseTuple(args, "s", &file_name)) {
+                PyErr_SetString(
+                        PyExc_RuntimeError,
+                        "Wrong number of arguments in tuple."
+                );
+                return NULL;
+        }
+
+        return Py_BuildValue("i", saveSoundDataBase(file_name));
+}
+
+
+// address: 0x100066c9
+PyObject *bex_LoadMusicState(PyObject *self, PyObject *args) {
+        const char *file_name;
+
+        if (!PyArg_ParseTuple(args, "s", &file_name)) {
+                PyErr_SetString(
+                        PyExc_RuntimeError,
+                        "Wrong number of arguments in tuple."
+                );
+                return NULL;
+        }
+
+        return Py_BuildValue("i", loadMusicState(file_name));
+}
+
+
+// address: 0x1000672a
+PyObject *bex_SaveMusicState(PyObject *self, PyObject *args) {
+        const char *file_name;
+
+        if (!PyArg_ParseTuple(args, "s", &file_name)) {
+                PyErr_SetString(
+                        PyExc_RuntimeError,
+                        "Wrong number of arguments in tuple."
+                );
+                return NULL;
+        }
+
+        return Py_BuildValue("i", saveMusicState(file_name));
+}
+
+
+// address: 0x1000678b
+PyObject *bex_TakeSnapShot(PyObject *self, PyObject *args) {
+
+        TakeSnapShot();
+
+        return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x100067a6
+PyObject *bex_SaveStats(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, "")) {
+                PyErr_SetString(
+                        PyExc_RuntimeError,
+                        "Wrong number of arguments in tuple."
+                );
+                return NULL;
+        }
+
+        saveSoundStats("sndinfo.txt");
+
+        return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x100067fa
+PyObject *bex_GetMouseState(PyObject *self, PyObject *args) {
+        int invert;
+        double xsens, ysens;
+
+        if (!PyArg_ParseTuple(args, "")) {
+                PyErr_SetString(
+                        PyExc_RuntimeError,
+                        "Wrong number of arguments in tuple."
+                );
+                return NULL;
+        }
+
+        GetMouseState(&invert, &xsens, &ysens);
+
+        return Py_BuildValue("idd", invert, xsens, ysens);
+}
+
+
+// address: 0x1000686c
+PyObject *bex_SetMouseState(PyObject *self, PyObject *args) {
+        int invert;
+        double xsens, ysens;
+
+        if (!PyArg_ParseTuple(args, "idd", &invert, &xsens, &ysens)) {
+                PyErr_SetString(
+                        PyExc_RuntimeError,
+                        "Wrong number of arguments in tuple."
+                );
+                return NULL;
+        }
+
+        SetMouseState(invert, xsens, ysens);
+
+        return Py_BuildValue("");
+}
+
+
+// address: 0x100068de
+PyObject *bex_GetPTime(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, "")) {
+                PyErr_SetString(
+                        PyExc_RuntimeError,
+                        "Wrong number of arguments in tuple."
+                );
+                return NULL;
+        }
+
+        return Py_BuildValue("d", GetPSeconds());
+}
+
+
+// address: 0x1000692e
+PyObject *bex_GetAnmRaces(PyObject *self, PyObject *args) {
+        int num_races, i;
+        PyObject *list, *race_name_obj;
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        num_races = GetnRaces();
+
+        list = PyList_New(num_races);
+
+        for (i = 0; i < num_races; i++) {
+            race_name_obj = PyString_FromString(GetRaceName(i));
+            PyList_SetItem(list, i, race_name_obj);
+        }
+
+        return list;
+}
+
 
 // address: 0x100069b9
 PyObject *bex_BodInspector(PyObject *self, PyObject *args) {
@@ -2961,22 +3484,6 @@ PyObject* bex_ShowActionAreas(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_SetAppMode(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetAppMode(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_Quit(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_OpenDebugChannel(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_LoadSampledAnimation(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -2989,10 +3496,6 @@ PyObject* bex_CreateDFCAnimation(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_GetAnmRaces(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_CreateBipedData(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -3002,42 +3505,6 @@ PyObject* bex_AddBipedAction(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_RemoveBipedAction(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_LoadWorld(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_DoneLoadGame(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_BeginLoadGame(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetDrawObjectShadows(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetDrawObjectShadows(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetAutoEngageCombat(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetAutoEngageCombat(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetAecGap(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetAecGap(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -3085,103 +3552,7 @@ PyObject* bex_AddFloorCTolerance(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_GetModelPos(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_GetGhostSectorSound(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetCurrentMap(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetCurrentMap(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetCommandLine(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetProgramId(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetWindowId(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddTextureMaterial(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetMusicEventPriority(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetMusicEvent(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ExeMusicEvent(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddMusicEventCD(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddMusicEventMP3(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddMusicEventWAV(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddMusicEventADPCM(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_YSSInfo(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_LoadSoundDataBase(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SaveSoundDataBase(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_LoadMusicState(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SaveMusicState(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SaveStats(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_TakeSnapShot(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetMouseState(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetMouseState(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetPTime(PyObject* self, PyObject* args) {
         return NULL;
 }
 
