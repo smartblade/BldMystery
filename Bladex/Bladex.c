@@ -343,6 +343,131 @@ static PyObject *create_entity_decal(
         const char *name, double x, double y, double z, int i_unknown,
         double d_unknown1, double d_unknown2
 );
+static PyObject* bex_ent_GetParticleEntity(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SeverLimb(PyObject* self, PyObject* args);
+static PyObject* bex_ent_ResetWounds(PyObject* self, PyObject* args);
+static PyObject* bex_ent_Impulse(PyObject* self, PyObject* args);
+static PyObject* bex_ent_ImpulseC(PyObject* self, PyObject* args);
+static PyObject* bex_ent_Fly(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SubscribeToList(PyObject* self, PyObject* args);
+static PyObject* bex_ent_RemoveFromList(PyObject* self, PyObject* args);
+static PyObject* bex_ent_RemoveFromInvent(PyObject* self, PyObject* args);
+static PyObject* bex_ent_RemoveFromInventRight(PyObject* self, PyObject* args);
+static PyObject* bex_ent_RemoveFromInventLeft(PyObject* self, PyObject* args);
+static PyObject* bex_ent_RemoveFromInventLeft2(PyObject* self, PyObject* args);
+static PyObject* bex_ent_RemoveFromWorld(PyObject* self, PyObject* args);
+static PyObject* bex_ent_RemoveFromWorldWithChilds(PyObject* self, PyObject* args);
+static PyObject* bex_ent_LaunchAnimation(PyObject* self, PyObject* args);
+static PyObject* bex_ent_LaunchAnimation2(PyObject* self, PyObject* args);
+static PyObject* bex_ent_LaunchAnmType(PyObject* self, PyObject* args);
+static PyObject* bex_ent_GotAnmType(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetMesh(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetAnmFlags(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetTmpAnmFlags(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetActiveEnemy(PyObject* self, PyObject* args);
+static PyObject* bex_ent_CanISee(PyObject* self, PyObject* args);
+static PyObject* bex_ent_CanISeeFrom(PyObject* self, PyObject* args);
+static PyObject* bex_ent_InsideActionArea(PyObject* self, PyObject* args);
+static PyObject* bex_ent_CheckAnimCol(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetEnemy(PyObject* self, PyObject* args);
+static PyObject* bex_ent_GetEnemyName(PyObject* self, PyObject* args);
+static PyObject* bex_ent_Chase(PyObject* self, PyObject* args);
+static PyObject* bex_ent_ResetChase(PyObject* self, PyObject* args);
+static PyObject* bex_ent_GoTo(PyObject* self, PyObject* args);
+static PyObject* bex_ent_CanGoTo(PyObject* self, PyObject* args);
+static PyObject* bex_ent_QuickFace(PyObject* self, PyObject* args);
+static PyObject* bex_ent_Face(PyObject* self, PyObject* args);
+static PyObject* bex_ent_LookAtEntity(PyObject* self, PyObject* args);
+static PyObject* bex_ent_StartLooking(PyObject* self, PyObject* args);
+static PyObject* bex_ent_StopLooking(PyObject* self, PyObject* args);
+static PyObject* bex_ent_AddWatchAnim(PyObject* self, PyObject* args);
+static PyObject* bex_ent_GraspPos(PyObject* self, PyObject* args);
+static PyObject* bex_ent_Freeze(PyObject* self, PyObject* args);
+static PyObject* bex_ent_UnFreeze(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SwitchTo1H(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SwitchToBow(PyObject* self, PyObject* args);
+static PyObject* bex_ent_LaunchBayRoute(PyObject* self, PyObject* args);
+static PyObject* bex_ent_LaunchWatch(PyObject* self, PyObject* args);
+static PyObject* bex_ent_GetActionMode(PyObject* self, PyObject* args);
+static PyObject* bex_ent_StartGrabbing(PyObject* self, PyObject* args);
+static PyObject* bex_ent_StopGrabbing(PyObject* self, PyObject* args);
+static PyObject* bex_ent_LookAt(PyObject* self, PyObject* args);
+static PyObject* bex_ent_LookAtPerson(PyObject* self, PyObject* args);
+static PyObject* bex_ent_AddAnmEventFunc(PyObject* self, PyObject* args);
+static PyObject* bex_ent_DelAnmEventFunc(PyObject* self, PyObject* args);
+static PyObject* bex_ent_ClearAnmEventFuncs(PyObject* self, PyObject* args);
+static PyObject* bex_ent_AddAnimSound(PyObject* self, PyObject* args);
+static PyObject* bex_ent_AddEventSound(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SlideTo(PyObject* self, PyObject* args);
+static PyObject* bex_ent_ClearPath(PyObject* self, PyObject* args);
+static PyObject* bex_ent_StartPath(PyObject* self, PyObject* args);
+static PyObject* bex_ent_GoToPath(PyObject* self, PyObject* args);
+static PyObject* bex_ent_TurnOn(PyObject* self, PyObject* args);
+static PyObject* bex_ent_TurnOff(PyObject* self, PyObject* args);
+static PyObject* bex_ent_AddPathNode(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetNodeStartTangent(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetNodeEndTangent(PyObject* self, PyObject* args);
+static PyObject* bex_ent_Rotate(PyObject* self, PyObject* args);
+static PyObject* bex_ent_RotateAbs(PyObject* self, PyObject* args);
+static PyObject* bex_ent_RotateRel(PyObject* self, PyObject* args);
+static PyObject* bex_ent_Move(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetPosition(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetOrientation(PyObject* self, PyObject* args);
+static PyObject* bex_ent_PutToWorld(PyObject* self, PyObject* args);
+static PyObject* bex_ent_GetInventoryEntity(PyObject* self, PyObject* args);
+static PyObject* bex_ent_GetInventorySelected(PyObject* self, PyObject* args);
+static PyObject* bex_ent_GetInventory(PyObject* self, PyObject* args);
+static PyObject* bex_ent_Use(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetSound(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetObjectSound(PyObject* self, PyObject* args);
+static PyObject* bex_ent_PlaySound(PyObject* self, PyObject* args);
+static PyObject* bex_ent_StopSound(PyObject* self, PyObject* args);
+static PyObject* bex_ent_Stop(PyObject* self, PyObject* args);
+static PyObject* bex_ent_MessageEvent(PyObject* self, PyObject* args);
+static PyObject* bex_ent_Rel2AbsPoint(PyObject* self, PyObject* args);
+static PyObject* bex_ent_Rel2AbsVector(PyObject* self, PyObject* args);
+static PyObject* bex_ent_Abs2RelPoint(PyObject* self, PyObject* args);
+static PyObject* bex_ent_Abs2RelVector(PyObject* self, PyObject* args);
+static PyObject* bex_ent_GetDummyAxis(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SQDistance2(PyObject* self, PyObject* args);
+static PyObject* bex_ent_CatchOnFire(PyObject* self, PyObject* args);
+static PyObject* bex_ent_ExcludeHitFor(PyObject* self, PyObject* args);
+static PyObject* bex_ent_Unlink(PyObject* self, PyObject* args);
+static PyObject* bex_ent_Link(PyObject* self, PyObject* args);
+static PyObject* bex_ent_LinkToNode(PyObject* self, PyObject* args);
+static PyObject* bex_ent_LinkAnchors(PyObject* self, PyObject* args);
+static PyObject* bex_ent_GetNodeIndex(PyObject* self, PyObject* args);
+static PyObject* bex_ent_GetNChildren(PyObject* self, PyObject* args);
+static PyObject* bex_ent_GetChild(PyObject* self, PyObject* args);
+static PyObject* bex_ent_AddCameraEvent(PyObject* self, PyObject* args);
+static PyObject* bex_ent_RemoveCameraEvent(PyObject* self, PyObject* args);
+static PyObject* bex_ent_AddCameraNode(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetCameraStartTangentNode(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetCameraEndTangentNode(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetTravellingView(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetPersonView(PyObject* self, PyObject* args);
+static PyObject* bex_ent_CameraClearPath(PyObject* self, PyObject* args);
+static PyObject* bex_ent_CameraStartPath(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetMaxCamera(PyObject* self, PyObject* args);
+static PyObject* bex_ent_Cut(PyObject* self, PyObject* args);
+static PyObject* bex_ent_DoAction(PyObject* self, PyObject* args);
+static PyObject* bex_ent_DoActionWI(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetOnFloor(PyObject* self, PyObject* args);
+static PyObject* bex_ent_RaiseEvent(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetWoundedZone(PyObject* self, PyObject* args);
+static PyObject* bex_ent_GetWoundedZone(PyObject* self, PyObject* args);
+static PyObject* bex_ent_InterruptCombat(PyObject* self, PyObject* args);
+static PyObject* bex_ent_GetGroupMembers(PyObject* self, PyObject* args);
+static PyObject* bex_ent_GetCombatants(PyObject* self, PyObject* args);
+static PyObject* bex_ent_ExcludeHitInAnimationFor(PyObject* self, PyObject* args);
+static PyObject* bex_ent_TestPos(PyObject* self, PyObject* args);
+static PyObject* bex_ent_TestPosInOwnBox(PyObject* self, PyObject* args);
+static PyObject* bex_ent_UnlinkChildren(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetNextAttack(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetAuraActive(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetAuraParams(PyObject* self, PyObject* args);
+static PyObject* bex_ent_SetAuraGradient(PyObject* self, PyObject* args);
+static PyObject* bex_ent_IsValid(PyObject* self, PyObject* args);
 static void init_entity_type(void);
 static void bld_py_entity_dealloc(PyObject *self);
 static int bld_py_entity_print(PyObject *self, FILE *file, int flags);
@@ -365,6 +490,11 @@ static PyObject *bld_py_sector_getattr(PyObject *self, char *attr_name);
 static int bld_py_sector_setattr(PyObject *self, char *attr_name, PyObject *value);
 
 static PyObject *create_sound(const char *file_name, const char *sound_name);
+static PyObject* bex_snd_Play(PyObject* self, PyObject* args);
+static PyObject* bex_snd_PlayStereo(PyObject* self, PyObject* args);
+static PyObject* bex_snd_SetPitchVar(PyObject* self, PyObject* args);
+static PyObject* bex_snd_AddAltSound(PyObject* self, PyObject* args);
+static PyObject* bex_snd_Stop(PyObject* self, PyObject* args);
 static void init_sound_type(void);
 static void bld_py_sound_dealloc(PyObject *self);
 static int bld_py_sound_print(PyObject *self, FILE *file, int flags);
@@ -666,6 +796,144 @@ static PyMethodDef char_methods[] = {
     { "AssignTrail",                    bex_char_AssignTrail,               METH_VARARGS, NULL },
     { "SetNCDSpheres",                  bex_char_SetNCDSpheres,             METH_VARARGS, NULL },
     { "SetCDSphere",                    bex_char_SetCDSphere,               METH_VARARGS, NULL },
+    { NULL,                             NULL,                               0,            NULL },
+};
+
+static PyMethodDef entity_methods[] = {
+    { "GetParticleEntity",              bex_ent_GetParticleEntity,          METH_VARARGS, NULL },
+    { "SeverLimb",                      bex_ent_SeverLimb,                  METH_VARARGS, NULL },
+    { "ResetWounds",                    bex_ent_ResetWounds,                METH_VARARGS, NULL },
+    { "Impulse",                        bex_ent_Impulse,                    METH_VARARGS, NULL },
+    { "ImpulseC",                       bex_ent_ImpulseC,                   METH_VARARGS, NULL },
+    { "Fly",                            bex_ent_Fly,                        METH_VARARGS, NULL },
+    { "SubscribeToList",                bex_ent_SubscribeToList,            METH_VARARGS, NULL },
+    { "RemoveFromList",                 bex_ent_RemoveFromList,             METH_VARARGS, NULL },
+    { "RemoveFromInvent",               bex_ent_RemoveFromInvent,           METH_VARARGS, NULL },
+    { "RemoveFromInventRight",          bex_ent_RemoveFromInventRight,      METH_VARARGS, NULL },
+    { "RemoveFromInventLeft",           bex_ent_RemoveFromInventLeft,       METH_VARARGS, NULL },
+    { "RemoveFromInventLeft2",          bex_ent_RemoveFromInventLeft2,      METH_VARARGS, NULL },
+    { "RemoveFromWorld",                bex_ent_RemoveFromWorld,            METH_VARARGS, NULL },
+    { "RemoveFromWorldWithChilds",      bex_ent_RemoveFromWorldWithChilds,  METH_VARARGS, NULL },
+    { "LaunchAnimation",                bex_ent_LaunchAnimation,            METH_VARARGS, NULL },
+    { "LaunchAnimation2",               bex_ent_LaunchAnimation2,           METH_VARARGS, NULL },
+    { "LaunchAnmType",                  bex_ent_LaunchAnmType,              METH_VARARGS, NULL },
+    { "GotAnmType",                     bex_ent_GotAnmType,                 METH_VARARGS, NULL },
+    { "SetMesh",                        bex_ent_SetMesh,                    METH_VARARGS, NULL },
+    { "SetAnmFlags",                    bex_ent_SetAnmFlags,                METH_VARARGS, NULL },
+    { "SetTmpAnmFlags",                 bex_ent_SetTmpAnmFlags,             METH_VARARGS, NULL },
+    { "SetActiveEnemy",                 bex_ent_SetActiveEnemy,             METH_VARARGS, NULL },
+    { "CanISee",                        bex_ent_CanISee,                    METH_VARARGS, NULL },
+    { "CanISeeFrom",                    bex_ent_CanISeeFrom,                METH_VARARGS, NULL },
+    { "InsideActionArea",               bex_ent_InsideActionArea,           METH_VARARGS, NULL },
+    { "CheckAnimCol",                   bex_ent_CheckAnimCol,               METH_VARARGS, NULL },
+    { "SetEnemy",                       bex_ent_SetEnemy,                   METH_VARARGS, NULL },
+    { "GetEnemyName",                   bex_ent_GetEnemyName,               METH_VARARGS, NULL },
+    { "Chase",                          bex_ent_Chase,                      METH_VARARGS, NULL },
+    { "ResetChase",                     bex_ent_ResetChase,                 METH_VARARGS, NULL },
+    { "GoTo",                           bex_ent_GoTo,                       METH_VARARGS, NULL },
+    { "CanGoTo",                        bex_ent_CanGoTo,                    METH_VARARGS, NULL },
+    { "QuickFace",                      bex_ent_QuickFace,                  METH_VARARGS, NULL },
+    { "Face",                           bex_ent_Face,                       METH_VARARGS, NULL },
+    { "LookAtEntity",                   bex_ent_LookAtEntity,               METH_VARARGS, NULL },
+    { "StartLooking",                   bex_ent_StartLooking,               METH_VARARGS, NULL },
+    { "StopLooking",                    bex_ent_StopLooking,                METH_VARARGS, NULL },
+    { "AddWatchAnim",                   bex_ent_AddWatchAnim,               METH_VARARGS, NULL },
+    { "GraspPos",                       bex_ent_GraspPos,                   METH_VARARGS, NULL },
+    { "Freeze",                         bex_ent_Freeze,                     METH_VARARGS, NULL },
+    { "UnFreeze",                       bex_ent_UnFreeze,                   METH_VARARGS, NULL },
+    { "SwitchTo1H",                     bex_ent_SwitchTo1H,                 METH_VARARGS, NULL },
+    { "SwitchToBow",                    bex_ent_SwitchToBow,                METH_VARARGS, NULL },
+    { "LaunchBayRoute",                 bex_ent_LaunchBayRoute,             METH_VARARGS, NULL },
+    { "LaunchWatch",                    bex_ent_LaunchWatch,                METH_VARARGS, NULL },
+    { "GetActionMode",                  bex_ent_GetActionMode,              METH_VARARGS, NULL },
+    { "StartGrabbing",                  bex_ent_StartGrabbing,              METH_VARARGS, NULL },
+    { "StopGrabbing",                   bex_ent_StopGrabbing,               METH_VARARGS, NULL },
+    { "LookAt",                         bex_ent_LookAt,                     METH_VARARGS, NULL },
+    { "LookAtPerson",                   bex_ent_LookAtPerson,               METH_VARARGS, NULL },
+    { "AddAnmEventFunc",                bex_ent_AddAnmEventFunc,            METH_VARARGS, NULL },
+    { "DelAnmEventFunc",                bex_ent_DelAnmEventFunc,            METH_VARARGS, NULL },
+    { "ClearAnmEventFuncs",             bex_ent_ClearAnmEventFuncs,         METH_VARARGS, NULL },
+    { "AddAnimSound",                   bex_ent_AddAnimSound,               METH_VARARGS, NULL },
+    { "AddEventSound",                  bex_ent_AddEventSound,              METH_VARARGS, NULL },
+    { "SlideTo",                        bex_ent_SlideTo,                    METH_VARARGS, NULL },
+    { "ClearPath",                      bex_ent_ClearPath,                  METH_VARARGS, NULL },
+    { "StartPath",                      bex_ent_StartPath,                  METH_VARARGS, NULL },
+    { "GoToPath",                       bex_ent_GoToPath,                   METH_VARARGS, NULL },
+    { "TurnOn",                         bex_ent_TurnOn,                     METH_VARARGS, NULL },
+    { "TurnOff",                        bex_ent_TurnOff,                    METH_VARARGS, NULL },
+    { "AddPathNode",                    bex_ent_AddPathNode,                METH_VARARGS, NULL },
+    { "SetNodeStartTangent",            bex_ent_SetNodeStartTangent,        METH_VARARGS, NULL },
+    { "SetNodeEndTangent",              bex_ent_SetNodeEndTangent,          METH_VARARGS, NULL },
+    { "Rotate",                         bex_ent_Rotate,                     METH_VARARGS, NULL },
+    { "RotateAbs",                      bex_ent_RotateAbs,                  METH_VARARGS, NULL },
+    { "RotateRel",                      bex_ent_RotateRel,                  METH_VARARGS, NULL },
+    { "Move",                           bex_ent_Move,                       METH_VARARGS, NULL },
+    { "SetPosition",                    bex_ent_SetPosition,                METH_VARARGS, NULL },
+    { "SetOrientation",                 bex_ent_SetOrientation,             METH_VARARGS, NULL },
+    { "PutToWorld",                     bex_ent_PutToWorld,                 METH_VARARGS, NULL },
+    { "GetInventoryEntity",             bex_ent_GetInventoryEntity,         METH_VARARGS, NULL },
+    { "GetInventorySelected",           bex_ent_GetInventorySelected,       METH_VARARGS, NULL },
+    { "GetInventory",                   bex_ent_GetInventory,               METH_VARARGS, NULL },
+    { "Use",                            bex_ent_Use,                        METH_VARARGS, NULL },
+    { "SetSound",                       bex_ent_SetSound,                   METH_VARARGS, NULL },
+    { "SetObjectSound",                 bex_ent_SetObjectSound,             METH_VARARGS, NULL },
+    { "PlaySound",                      bex_ent_PlaySound,                  METH_VARARGS, NULL },
+    { "StopSound",                      bex_ent_StopSound,                  METH_VARARGS, NULL },
+    { "Stop",                           bex_ent_Stop,                       METH_VARARGS, NULL },
+    { "MessageEvent",                   bex_ent_MessageEvent,               METH_VARARGS, NULL },
+    { "Rel2AbsPoint",                   bex_ent_Rel2AbsPoint,               METH_VARARGS, NULL },
+    { "Rel2AbsVector",                  bex_ent_Rel2AbsVector,              METH_VARARGS, NULL },
+    { "Abs2RelPoint",                   bex_ent_Abs2RelPoint,               METH_VARARGS, NULL },
+    { "Abs2RelVector",                  bex_ent_Abs2RelVector,              METH_VARARGS, NULL },
+    { "GetDummyAxis",                   bex_ent_GetDummyAxis,               METH_VARARGS, NULL },
+    { "SQDistance2",                    bex_ent_SQDistance2,                METH_VARARGS, NULL },
+    { "CatchOnFire",                    bex_ent_CatchOnFire,                METH_VARARGS, NULL },
+    { "ExcludeHitFor",                  bex_ent_ExcludeHitFor,              METH_VARARGS, NULL },
+    { "Unlink",                         bex_ent_Unlink,                     METH_VARARGS, NULL },
+    { "Link",                           bex_ent_Link,                       METH_VARARGS, NULL },
+    { "LinkToNode",                     bex_ent_LinkToNode,                 METH_VARARGS, NULL },
+    { "LinkAnchors",                    bex_ent_LinkAnchors,                METH_VARARGS, NULL },
+    { "GetNodeIndex",                   bex_ent_GetNodeIndex,               METH_VARARGS, NULL },
+    { "GetNChildren",                   bex_ent_GetNChildren,               METH_VARARGS, NULL },
+    { "GetChild",                       bex_ent_GetChild,                   METH_VARARGS, NULL },
+    { "AddCameraEvent",                 bex_ent_AddCameraEvent,             METH_VARARGS, NULL },
+    { "RemoveCameraEvent",              bex_ent_RemoveCameraEvent,          METH_VARARGS, NULL },
+    { "AddCameraNode",                  bex_ent_AddCameraNode,              METH_VARARGS, NULL },
+    { "SetCameraStartTangentNode",      bex_ent_SetCameraStartTangentNode,  METH_VARARGS, NULL },
+    { "SetCameraEndTangentNode",        bex_ent_SetCameraEndTangentNode,    METH_VARARGS, NULL },
+    { "SetTravellingView",              bex_ent_SetTravellingView,          METH_VARARGS, NULL },
+    { "SetPersonView",                  bex_ent_SetPersonView,              METH_VARARGS, NULL },
+    { "CameraClearPath",                bex_ent_CameraClearPath,            0,            NULL },
+    { "CameraStartPath",                bex_ent_CameraStartPath,            0,            NULL },
+    { "SetMaxCamera",                   bex_ent_SetMaxCamera,               METH_VARARGS, NULL },
+    { "Cut",                            bex_ent_Cut,                        METH_VARARGS, NULL },
+    { "DoAction",                       bex_ent_DoAction,                   METH_VARARGS, NULL },
+    { "DoActionWI",                     bex_ent_DoActionWI,                 METH_VARARGS, NULL },
+    { "SetOnFloor",                     bex_ent_SetOnFloor,                 METH_VARARGS, NULL },
+    { "RaiseEvent",                     bex_ent_RaiseEvent,                 METH_VARARGS, NULL },
+    { "SetWoundedZone",                 bex_ent_SetWoundedZone,             METH_VARARGS, NULL },
+    { "GetWoundedZone",                 bex_ent_GetWoundedZone,             METH_VARARGS, NULL },
+    { "InterruptCombat",                bex_ent_InterruptCombat,            METH_VARARGS, NULL },
+    { "GetGroupMembers",                bex_ent_GetGroupMembers,            METH_VARARGS, NULL },
+    { "GetCombatants",                  bex_ent_GetCombatants,              METH_VARARGS, NULL },
+    { "ExcludeHitInAnimationFor",       bex_ent_ExcludeHitInAnimationFor,   METH_VARARGS, NULL },
+    { "TestPos",                        bex_ent_TestPos,                    METH_VARARGS, NULL },
+    { "TestPosInOwnBox",                bex_ent_TestPosInOwnBox,            METH_VARARGS, NULL },
+    { "UnlinkChildren",                 bex_ent_UnlinkChildren,             METH_VARARGS, NULL },
+    { "SetNextAttack",                  bex_ent_SetNextAttack,              METH_VARARGS, NULL },
+    { "SetAuraActive",                  bex_ent_SetAuraActive,              METH_VARARGS, NULL },
+    { "SetAuraParams",                  bex_ent_SetAuraParams,              METH_VARARGS, NULL },
+    { "SetAuraGradient",                bex_ent_SetAuraGradient,            METH_VARARGS, NULL },
+    { "IsValid",                        bex_ent_IsValid,                    METH_VARARGS, NULL },
+    { NULL,                             NULL,                               0,            NULL },
+};
+
+static PyMethodDef sound_methods[] = {
+    { "Play",                           bex_snd_Play,                       METH_VARARGS, NULL },
+    { "PlayStereo",                     bex_snd_PlayStereo,                 METH_VARARGS, NULL },
+    { "SetPitchVar",                    bex_snd_SetPitchVar,                METH_VARARGS, NULL },
+    { "AddAltSound",                    bex_snd_AddAltSound,                METH_VARARGS, NULL },
+    { "Stop",                           bex_snd_Stop,                       METH_VARARGS, NULL },
     { NULL,                             NULL,                               0,            NULL },
 };
 
@@ -4604,6 +4872,527 @@ PyObject *create_entity_decal(
 ................................................................................
 */
 
+// address: 0x1000e17d
+PyObject *bex_ent_SetSound(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        const char *sound;
+        int ret;
+
+        if (!PyArg_ParseTuple(args, "s", &sound))
+                return NULL;
+
+        ret = SetSound(entity->name, sound);
+        if (ret != 1)
+            return Py_BuildValue("i", 0);
+        else
+            return Py_BuildValue("i", 1);
+}
+
+//TODO implement entity methods
+
+PyObject* bex_ent_GetParticleEntity(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SeverLimb(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_ResetWounds(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_Impulse(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_ImpulseC(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_Fly(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SubscribeToList(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_RemoveFromList(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_RemoveFromInvent(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_RemoveFromInventRight(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_RemoveFromInventLeft(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_RemoveFromInventLeft2(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_RemoveFromWorld(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_RemoveFromWorldWithChilds(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_LaunchAnimation(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_LaunchAnimation2(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_LaunchAnmType(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_GotAnmType(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetMesh(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetAnmFlags(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetTmpAnmFlags(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetActiveEnemy(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_CanISee(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_CanISeeFrom(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_InsideActionArea(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_CheckAnimCol(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetEnemy(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_GetEnemyName(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_Chase(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_ResetChase(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_GoTo(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_CanGoTo(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_QuickFace(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_Face(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_LookAtEntity(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_StartLooking(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_StopLooking(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_AddWatchAnim(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_GraspPos(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_Freeze(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_UnFreeze(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SwitchTo1H(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SwitchToBow(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_LaunchBayRoute(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_LaunchWatch(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_GetActionMode(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_StartGrabbing(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_StopGrabbing(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_LookAt(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_LookAtPerson(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_AddAnmEventFunc(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_DelAnmEventFunc(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_ClearAnmEventFuncs(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_AddAnimSound(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_AddEventSound(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SlideTo(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_ClearPath(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_StartPath(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_GoToPath(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_TurnOn(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_TurnOff(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_AddPathNode(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetNodeStartTangent(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetNodeEndTangent(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_Rotate(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_RotateAbs(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_RotateRel(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_Move(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetPosition(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetOrientation(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_PutToWorld(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_GetInventoryEntity(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_GetInventorySelected(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_GetInventory(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_Use(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetObjectSound(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_PlaySound(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_StopSound(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_Stop(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_MessageEvent(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_Rel2AbsPoint(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_Rel2AbsVector(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_Abs2RelPoint(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_Abs2RelVector(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_GetDummyAxis(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SQDistance2(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_CatchOnFire(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_ExcludeHitFor(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_Unlink(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_Link(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_LinkToNode(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_LinkAnchors(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_GetNodeIndex(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_GetNChildren(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_GetChild(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_AddCameraEvent(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_RemoveCameraEvent(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_AddCameraNode(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetCameraStartTangentNode(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetCameraEndTangentNode(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetTravellingView(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetPersonView(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_CameraClearPath(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_CameraStartPath(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetMaxCamera(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_Cut(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_DoAction(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_DoActionWI(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetOnFloor(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_RaiseEvent(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetWoundedZone(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_GetWoundedZone(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_InterruptCombat(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_GetGroupMembers(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_GetCombatants(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_ExcludeHitInAnimationFor(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_TestPos(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_TestPosInOwnBox(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_UnlinkChildren(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetNextAttack(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetAuraActive(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetAuraParams(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_SetAuraGradient(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_ent_IsValid(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 // address: 0x100136c6
 void init_entity_type() {
 
@@ -4645,7 +5434,7 @@ int bld_py_entity_print(PyObject *self, FILE *file, int flags)
 // address: 0x100137fe
 PyObject *bld_py_entity_getattr(PyObject *self, char *attr_name)
 {
-        return NULL;
+        return Py_FindMethod(entity_methods, self, attr_name);
 }
 
 // TODO implement
@@ -4829,7 +5618,7 @@ int bld_py_sector_setattr(PyObject *self, char *attr_name, PyObject *value)
 }
 
 
-// address: 0x10017e10
+// address: 0x10017e50
 PyObject *create_sound(const char *file_name, const char *sound_name) {
         int soundID;
         bld_py_sound_t *sound_obj;
@@ -4851,7 +5640,56 @@ PyObject *create_sound(const char *file_name, const char *sound_name) {
         return NULL;
 }
 
-// address: 0x100181f3
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+//TODO implement sound methods
+
+PyObject* bex_snd_Play(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_snd_PlayStereo(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+// address: 0x100180b5
+PyObject *bex_snd_SetPitchVar(PyObject *self, PyObject *args) {
+        bld_py_sound_t *sound = (bld_py_sound_t *)self;
+        int i_unknown;
+        double d_unknown1, d_unknown2, d_unknown3, d_unknown4;
+
+
+        if (!PyArg_ParseTuple(
+                args, "idddd", &i_unknown, &d_unknown1, &d_unknown2,
+                &d_unknown3, &d_unknown4
+        ))
+                return NULL;
+
+        SetSoundPitchVar(sound->soundID, i_unknown, d_unknown1, d_unknown2, d_unknown3, d_unknown4);
+        return Py_BuildValue("i", 1);
+}
+
+PyObject* bex_snd_AddAltSound(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+PyObject* bex_snd_Stop(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x10018233
 void init_sound_type() {
 
     memset(&soundTypeObject, 0, sizeof(PyTypeObject));
@@ -4875,14 +5713,14 @@ void init_sound_type() {
 }
 
 
-// address: 0x1001829e
+// address: 0x100182de
 void bld_py_sound_dealloc(PyObject *self)
 {
         if (bld_py_sound_check(self))
                 free(self);
 }
 
-// address: 0x100182c7
+// address: 0x10018307
 boolean bld_py_sound_check(PyObject *self) {
 
         if (self == NULL)
@@ -4896,28 +5734,28 @@ boolean bld_py_sound_check(PyObject *self) {
 }
 
 // TODO implement
-// address: 0x100182e5
+// address: 0x10018325
 int bld_py_sound_print(PyObject *self, FILE *file, int flags)
 {
         return 0;
 }
 
 // TODO implement
-// address: 0x1001834a
+// address: 0x1001838a
 PyObject *bld_py_sound_repr(PyObject *self)
 {
         return NULL;
 }
 
 // TODO implement
-// address: 0x100183b5
+// address: 0x100183f5
 PyObject *bld_py_sound_getattr(PyObject *self, char *attr_name)
 {
-        return NULL;
+        return Py_FindMethod(sound_methods, self, attr_name);
 }
 
 // TODO implement
-// address: 0x100185e4
+// address: 0x10018624
 int bld_py_sound_setattr(PyObject *self, char *attr_name, PyObject *value)
 {
         return 0;

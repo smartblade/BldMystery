@@ -6,6 +6,14 @@
 
 #include <export.h>
 
+#ifdef GetCommandLine
+/* Undefine WINAPI macro GetCommandLine to avoid collision with
+ * Blade.GetCommandLine
+ */
+#undef GetCommandLine
+
+#endif
+
 
 typedef struct _entity_t entity_t;
 typedef struct _material_t material_t;
@@ -99,6 +107,7 @@ LIB_EXP entity_t *CreateEntityDecal(
         double d_unknown1, double d_unknown2
 );
 LIB_EXP const char *GetEntityName(entity_t *entity);
+LIB_EXP int SetSound(const char *entity_name, const char *sound);
 LIB_EXP int SetListenerMode(int mode, double x, double y, double z);
 LIB_EXP int GetSectorByIndex(int index);
 LIB_EXP int GetSectorByPosition(double x, double y, double z);
@@ -112,6 +121,10 @@ LIB_EXP int GetTrailByName(const char *name);
 LIB_EXP int CreateSound(const char *file_name, const char *sound_name);
 LIB_EXP void DestroySound(int soundID);
 LIB_EXP int GetSoundDevInstace(void);
+LIB_EXP void SetSoundPitchVar(
+        int soundID, int i_unknown, float f_unknown1, float f_unknown2,
+        float f_unknown3, float f_unknown4
+);
 LIB_EXP int CreateTimer(const char *timer_name, double period);
 LIB_EXP int GetnTimers(void);
 LIB_EXP int GetTimerInfo(
