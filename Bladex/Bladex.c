@@ -2374,6 +2374,211 @@ PyObject *bex_CreateMaterial(PyObject *self, PyObject *args) {
 ................................................................................
 */
 
+// address: 0x1000407c
+PyObject *bex_nMaterials(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", nMaterials());
+}
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+// address: 0x10004425
+PyObject *bex_SetTriggerSectorFunc(PyObject *self, PyObject *args) {
+        const char *trigger_sector_name, *func_type;
+        PyObject *func;
+
+        if (!PyArg_ParseTuple(
+                args, "ssO", &trigger_sector_name, &func_type, &func
+        ))
+                return NULL;
+
+        if (!PyCallable_Check(func))
+                func = NULL;
+
+        return Py_BuildValue(
+                "i", SetTriggerSectorFunc(trigger_sector_name, func_type, func)
+        );
+}
+
+
+// address: 0x10004497
+PyObject *bex_GetTriggerSectorFunc(PyObject *self, PyObject *args) {
+        const char *trigger_sector_name, *func_type;
+        PyObject *func;
+
+        if (!PyArg_ParseTuple(args, "ss", &trigger_sector_name, &func_type))
+                return NULL;
+
+        func = GetTriggerSectorFunc(trigger_sector_name, func_type);
+        if (func)
+                return func;
+
+        Py_INCREF(Py_None);
+        return Py_None;
+}
+
+
+// address: 0x100044fa
+PyObject *bex_SetTriggerSectorData(PyObject *self, PyObject *args) {
+        const char *trigger_sector_name;
+        PyObject *data;
+
+        if (!PyArg_ParseTuple(args, "sO", &trigger_sector_name, &data))
+                return NULL;
+
+        return Py_BuildValue(
+                "i", SetTriggerSectorData(trigger_sector_name, data)
+        );
+}
+
+
+// address: 0x1000454c
+PyObject *bex_GetTriggerSectorData(PyObject *self, PyObject *args) {
+        const char *trigger_sector_name;
+        PyObject *data;
+
+        if (!PyArg_ParseTuple(args, "s", &trigger_sector_name))
+                return NULL;
+
+        data = GetTriggerSectorData(trigger_sector_name);
+        if (data)
+                return data;
+
+        Py_INCREF(Py_None);
+        return Py_None;
+}
+
+
+// address: 0x100045a6
+PyObject *bex_RemoveTriggerSectorFunc(PyObject *self, PyObject *args) {
+        const char *trigger_sector_name, *func_type;
+
+        if (!PyArg_ParseTuple(args, "ss", &trigger_sector_name, &func_type))
+                return NULL;
+
+        return Py_BuildValue(
+                "i", SetTriggerSectorFunc(trigger_sector_name, func_type, NULL)
+        );
+}
+
+
+// address: 0x100045fa
+PyObject *bex_GetTriggerSectorFloorHeight(PyObject *self, PyObject *args) {
+        const char *trigger_sector_name;
+
+        if (!PyArg_ParseTuple(args, "s", &trigger_sector_name))
+                return NULL;
+
+        return Py_BuildValue(
+                "i", GetTriggerSectorFloorHeight(trigger_sector_name)
+        );
+}
+
+
+// address: 0x10004644
+PyObject *bex_GetTriggerSectorRoofHeight(PyObject *self, PyObject *args) {
+        const char *trigger_sector_name;
+
+        if (!PyArg_ParseTuple(args, "s", &trigger_sector_name))
+                return NULL;
+
+        return Py_BuildValue(
+                "i", GetTriggerSectorRoofHeight(trigger_sector_name)
+        );
+}
+
+
+// address: 0x1000468e
+PyObject *bex_GetTriggerSectorGroup(PyObject *self, PyObject *args) {
+        const char *trigger_sector_name;
+
+        if (!PyArg_ParseTuple(args, "s", &trigger_sector_name))
+                return NULL;
+
+        return Py_BuildValue("s", GetTriggerSectorGroup(trigger_sector_name));
+}
+
+
+// address: 0x100046d8
+PyObject *bex_GetTriggerSectorPoints(PyObject *self, PyObject *args) {
+        PyObject *list, *tuple, *xObj, *yObj;
+        const char *trigger_sector_name;
+        int num_points, i;
+        double *points;
+
+        if (!PyArg_ParseTuple(args, "s", &trigger_sector_name))
+                return NULL;
+
+        points = GetTriggerSectorPoints(trigger_sector_name);
+
+        num_points = points[0];
+        points++;
+
+        list = PyList_New(num_points);
+
+        for (i = 0; i < num_points; i++) {
+            tuple = PyTuple_New(2);
+
+            xObj = PyFloat_FromDouble(*points);
+            points++;
+
+            yObj = PyFloat_FromDouble(*points);
+            points++;
+
+            PyTuple_SET_ITEM(tuple, 0, xObj);
+            PyTuple_SET_ITEM(tuple, 1, yObj);
+
+            PyList_SetItem(list, i, tuple);
+        }
+
+        return Py_BuildValue("O", list);
+}
+
+
+// address: 0x100047f4
+PyObject *bex_nTriggerSectors(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", nTriggerSectors());
+}
+
+
+// address: 0x10004831
+PyObject *bex_GetTriggerSectorName(PyObject *self, PyObject *args) {
+        int index;
+        const char *name;
+
+        if (!PyArg_ParseTuple(args, "i", &index))
+                return NULL;
+
+        name = GetTriggerSectorName(index);
+        if (name)
+            return Py_BuildValue("s", name);
+
+        Py_INCREF(Py_None);
+        return Py_None;
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
 // address: 0x100053a0
 PyObject *bex_CloseDebugChannel(PyObject *self, PyObject *args) {
         const char *channel_name;
@@ -2443,12 +2648,251 @@ PyObject *bex_Quit(PyObject *self, PyObject *args) {
 }
 
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+// address: 0x100055ac
+PyObject *bex_LoadSampledAnimation(PyObject *self, PyObject *args) {
+        const char* file, *internal_name, *race_name = "";
+        int type, i_unknown = 20;
+
+        if (!PyArg_ParseTuple(
+                args, "ss|isi", &file, &internal_name, &type, &race_name,
+                &i_unknown
+        ))
+                return NULL;
+
+        return Py_BuildValue(
+                "i",
+                LoadSampledAnimation(
+                        file, internal_name, type, race_name, i_unknown
+                )
+        );
+}
+
+
+// address: 0x10005624
+PyObject *bex_CreateFCAnimation(PyObject *self, PyObject *args) {
+        const char* file, *internal_name;
+        int n_armonics;
+
+        if (!PyArg_ParseTuple(args, "ss|i", &file, &internal_name, &n_armonics))
+                return NULL;
+
+        return Py_BuildValue(
+                "i",
+                CreateFCAnimation(file, internal_name, n_armonics)
+        );
+}
+
+
+// address: 0x1000567e
+PyObject *bex_CreateDFCAnimation(PyObject *self, PyObject *args) {
+        const char* file1, *file2, *internal_name;
+        int n_armonics;
+
+        if (!PyArg_ParseTuple(
+                args, "sss|i", &file1, &file2, &internal_name, &n_armonics
+        ))
+                return NULL;
+
+        return Py_BuildValue(
+                "i",
+                CreateDFCAnimation(file1, file2, internal_name, n_armonics)
+        );
+}
+
+
+// address: 0x100056e0
+PyObject *bex_CreateBipedData(PyObject *self, PyObject *args) {
+        const char *biped_name, *kind;
+
+        if (!PyArg_ParseTuple(args, "ss", &biped_name, &kind))
+                return NULL;
+
+        return Py_BuildValue("i", CreateBipedData(biped_name, kind));
+}
+
+
+// address: 0x10005732
+PyObject *bex_AddBipedAction(PyObject *self, PyObject *args) {
+        const char *char_name, *action_name, *animation_name, *s_unknown;
+        double d_unknown1, d_unknown2;
+        int i_unknown;
+
+        if (PyArg_ParseTuple(
+                args, "sssddi", &char_name, &action_name, &animation_name,
+                &d_unknown1, &d_unknown2, &i_unknown
+        ))
+                return Py_BuildValue(
+                        "i",
+                        AddBipedAction(
+                                char_name, action_name, animation_name,
+                                d_unknown1, d_unknown2, i_unknown
+                        )
+                );
+
+        PyErr_Clear();
+        if(!PyArg_ParseTuple(
+                args, "ssssddi", &char_name, &action_name, &animation_name,
+                &s_unknown, &d_unknown1, &d_unknown2, &i_unknown
+        ))
+                return NULL;
+
+        return Py_BuildValue(
+                "i", 
+                AddBipedActionC(
+                        char_name, action_name, animation_name, s_unknown,
+                        d_unknown1, d_unknown2, i_unknown
+                )
+        );
+}
+
+
+// address: 0x10005828
+PyObject *bex_RemoveBipedAction(PyObject *self, PyObject *args) {
+        const char *s_unknown1, *s_unknown2;
+
+        if (!PyArg_ParseTuple(args, "ss", &s_unknown1, &s_unknown2))
+                return NULL;
+
+        return Py_BuildValue("i", RemoveBipedAction(s_unknown1, s_unknown2));
+}
+
+
+// address: 0x1000587a
+PyObject *bex_AddAnmRStep(PyObject *self, PyObject *args) {
+        const char *animation_name;
+        double d_unknown;
+
+        if (!PyArg_ParseTuple(args, "sd", &animation_name, &d_unknown))
+                return NULL;
+
+        return Py_BuildValue("i", AddRStepEvent(animation_name, d_unknown));
+}
+
+
+// address: 0x100058d0
+PyObject *bex_AnmTypeRSteps(PyObject *self, PyObject *args) {
+        const char *s_unknown1, *s_unknown2;
+
+        if (!PyArg_ParseTuple(args, "ss", &s_unknown1, &s_unknown2))
+                return NULL;
+
+        return Py_BuildValue("i", RStepEvents(s_unknown1, s_unknown2));
+}
+
+
+// address: 0x10005922
+PyObject *bex_AnmTypeLSteps(PyObject *self, PyObject *args) {
+        const char *s_unknown1, *s_unknown2;
+
+        if (!PyArg_ParseTuple(args, "ss", &s_unknown1, &s_unknown2))
+                return NULL;
+
+        return Py_BuildValue("i", LStepEvents(s_unknown1, s_unknown2));
+}
+
+
+// address: 0x10005974
+PyObject *bex_SetActionEventTable(PyObject *self, PyObject *args) {
+        const char *race_name, *action_name, *table_name;
+
+        if (!PyArg_ParseTuple(args, "sss", &race_name, &action_name, &table_name))
+                return NULL;
+
+        return Py_BuildValue(
+                "i", SetActionEventTable(race_name, action_name, table_name)
+        );
+}
+
+
+// address: 0x100059ce
+PyObject *bex_SetEventTableFuncC(PyObject *self, PyObject *args) {
+        const char *event_table_name, *event_type, *funcC;
+
+        if (!PyArg_ParseTuple(args, "sss", &event_table_name, &event_type, &funcC))
+                return NULL;
+
+        return Py_BuildValue(
+                "i", SetEventTableFuncC(event_table_name, event_type, funcC)
+        );
+}
+
+
+// address: 0x10005a28
+PyObject *bex_SetEventTableFunc(PyObject *self, PyObject *args) {
+        const char *event_table_name, *event_type;
+        PyObject *func;
+
+        if (!PyArg_ParseTuple(args, "ssO", &event_table_name, &event_type, &func))
+                return NULL;
+
+        return Py_BuildValue(
+                "i", SetEventTableFunc(event_table_name, event_type, func)
+        );
+}
+
+
+// address: 0x10005a82
+PyObject *bex_AddAnmLStep(PyObject *self, PyObject *args) {
+        const char *animation_name;
+        double d_unknown;
+
+        if (!PyArg_ParseTuple(args, "sd", &animation_name, &d_unknown))
+                return NULL;
+
+        return Py_BuildValue("i", AddLStepEvent(animation_name, d_unknown));
+}
+
+
+// address: 0x10005ad8
+PyObject *bex_AddAnmRRelease(PyObject *self, PyObject *args) {
+        const char *animation_name;
+        double d_unknown;
+
+        if (!PyArg_ParseTuple(args, "sd", &animation_name, &d_unknown))
+                return NULL;
+
+        return Py_BuildValue("i", AddRReleaseEvent(animation_name, d_unknown));
+}
+
+
+// address: 0x10005b2e
+PyObject *bex_AddAnmLRelease(PyObject *self, PyObject *args) {
+        const char *animation_name;
+        double d_unknown;
+
+        if (!PyArg_ParseTuple(args, "sd", &animation_name, &d_unknown))
+                return NULL;
+
+        return Py_BuildValue("i", AddLReleaseEvent(animation_name, d_unknown));
+}
+
+
+// address: 0x10005b84
+PyObject *bex_AddStopTests(PyObject *self, PyObject *args) {
+        const char *animation_name;
+
+        if (!PyArg_ParseTuple(args, "s", &animation_name))
+                return NULL;
+
+        AddStopTests(animation_name);
+
+        return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x10005bc7
+PyObject *bex_AddFloorCTolerance(PyObject *self, PyObject *args) {
+        const char *animation_name;
+        double tolerance;
+
+        if (!PyArg_ParseTuple(args, "sd", &animation_name, &tolerance))
+                return NULL;
+
+        AddFloorCTolerance(animation_name, tolerance);
+
+        return Py_BuildValue("i", 1);
+}
+
 
 // address: 0x10005c18
 PyObject *bex_SetSolidMask(PyObject *self, PyObject *args) {
@@ -3320,10 +3764,6 @@ PyObject* bex_GetMaterial(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_nMaterials(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_GenerateEntityName(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -3369,50 +3809,6 @@ PyObject* bex_SetGhostSectorGroupSound(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_AddTriggerSector(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetTriggerSectorFunc(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetTriggerSectorFunc(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_RemoveTriggerSectorFunc(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetTriggerSectorData(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetTriggerSectorData(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetTriggerSectorFloorHeight(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetTriggerSectorRoofHeight(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetTriggerSectorGroup(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetTriggerSectorPoints(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_nTriggerSectors(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetTriggerSectorName(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -3481,74 +3877,6 @@ PyObject* bex_GetScreenXY(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_ShowActionAreas(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_LoadSampledAnimation(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_CreateFCAnimation(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_CreateDFCAnimation(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_CreateBipedData(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddBipedAction(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_RemoveBipedAction(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetActionEventTable(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetEventTableFuncC(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetEventTableFunc(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddAnmRStep(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddAnmLStep(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AnmTypeRSteps(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AnmTypeLSteps(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddAnmRRelease(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddAnmLRelease(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddStopTests(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddFloorCTolerance(PyObject* self, PyObject* args) {
         return NULL;
 }
 

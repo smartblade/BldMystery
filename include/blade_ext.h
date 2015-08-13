@@ -221,12 +221,69 @@ LIB_EXP int CDSetCallBack(PyObject *func);
 LIB_EXP int SetDefaultMass(const char *entity_kind, double mass);
 LIB_EXP int SetDefaultMaterial(const char *entity_kind, const char *material);
 LIB_EXP material_t *CreateMaterial(const char *name);
+LIB_EXP int nMaterials(void);
+LIB_EXP int SetTriggerSectorFunc(
+        const char *trigger_sector_name, const char *func_type, PyObject *func
+);
+LIB_EXP PyObject *GetTriggerSectorFunc(
+        const char *trigger_sector_name, const char *func_type
+);
+LIB_EXP int SetTriggerSectorData(
+        const char *trigger_sector_name, PyObject *data
+);
+LIB_EXP PyObject *GetTriggerSectorData(const char *trigger_sector_name);
+LIB_EXP int GetTriggerSectorFloorHeight(const char *trigger_sector_name);
+LIB_EXP int GetTriggerSectorRoofHeight(const char *trigger_sector_name);
+LIB_EXP const char *GetTriggerSectorGroup(const char *trigger_sector_name);
+LIB_EXP double *GetTriggerSectorPoints(const char *trigger_sector_name);
+LIB_EXP int nTriggerSectors(void);
+LIB_EXP const char *GetTriggerSectorName(int index);
 LIB_EXP int CloseDebugChannel(const char *channel_name);
 LIB_EXP int OpenDebugChannel(const char *channel_name);
 LIB_EXP int SetAppMode(const char *mode);
 LIB_EXP const char *GetAppMode(void);
 LIB_EXP const char *GetCommandLine(void);
 LIB_EXP int Quit(void);
+LIB_EXP int LoadSampledAnimation(
+        const char *file, const char *internal_name, int type,
+        const char *s_unknown, int i_unknown
+);
+LIB_EXP int CreateFCAnimation(
+        const char *file, const char *internal_name, int n_armonics
+);
+LIB_EXP int CreateDFCAnimation(
+        const char *file1, const char *file2, const char *internal_name,
+        int n_armonics
+);
+LIB_EXP int CreateBipedData(const char *biped_name, const char *kind);
+LIB_EXP int AddBipedAction(
+        const char *char_name, const char *action_name,
+        const char *animation_name, double d_unknown1, double d_unknown2,
+        int i_unknown
+);
+LIB_EXP int AddBipedActionC(
+        const char *char_name, const char *action_name,
+        const char *animation_name, const char *s_unknown, double d_unknown1,
+        double d_unknown2, int i_unknown
+);
+LIB_EXP int RemoveBipedAction(const char *s_unknown1, const char *s_unknown2);
+LIB_EXP int AddRStepEvent(const char *animation_name, double d_unknown);
+LIB_EXP int RStepEvents(const char *s_unknown1, const char *s_unknown2);
+LIB_EXP int LStepEvents(const char *s_unknown1, const char *s_unknown2);
+LIB_EXP int SetActionEventTable(
+        const char *race_name, const char *action_name, const char *table_name
+);
+LIB_EXP int SetEventTableFuncC(
+        const char *s_unknown1, const char *s_unknown2, const char *s_unknown3
+);
+LIB_EXP int SetEventTableFunc(
+        const char *event_table_name, const char *event_type, PyObject *func
+);
+LIB_EXP int AddLStepEvent(const char *animation_name, double d_unknown);
+LIB_EXP int AddRReleaseEvent(const char *animation_name, double d_unknown);
+LIB_EXP int AddLReleaseEvent(const char *animation_name, double d_unknown);
+LIB_EXP void AddStopTests(const char *animation_name);
+LIB_EXP void AddFloorCTolerance(const char *animation_name, double tolerance);
 LIB_EXP int SetSolidMask(const char *kind, int mask);
 LIB_EXP int SetDrawObjectShadows(int draw);
 LIB_EXP int GetAutoEngageCombat(void);
