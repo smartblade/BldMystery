@@ -4390,10 +4390,20 @@ PyObject* bex_char_ChangeAnimation(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-// TODO implement
 // address: 0x100074d0
-PyObject* bex_char_SetAnmDefaultPrefix(PyObject* self, PyObject* args) {
-        return NULL;
+PyObject *bex_char_SetAnmDefaultPrefix(PyObject *self, PyObject *args) {
+        bld_py_char_t *character = (bld_py_char_t *)self;
+        const char *prefix;
+        int ret;
+
+        if(!PyArg_ParseTuple(args, "s", &prefix))
+                return NULL;
+
+        ret = SetAnmDefaultPrefix(character->charID, prefix);
+        if (!ret)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
 }
 
 // TODO implement
@@ -5771,6 +5781,32 @@ int bld_py_sector_print(PyObject *self, FILE *file, int flags)
 // address: 0x1001703f
 PyObject *bld_py_sector_getattr(PyObject *self, char *attr_name)
 {
+        PyObject *on_hit;
+
+#define SEC_FUNC_ON_HIT 2
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+        if (!strcmp(attr_name, "OnHit")) {
+                GetSectorFuncProperty(
+                        ((bld_py_sector_t *)self)->sectorID, SEC_FUNC_ON_HIT, 0,
+                        &on_hit
+                );
+                return on_hit;
+        }
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
         return NULL;
 }
 

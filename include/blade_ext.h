@@ -111,7 +111,11 @@ LIB_EXP int SetSound(const char *entity_name, const char *sound);
 LIB_EXP int SetListenerMode(int mode, double x, double y, double z);
 LIB_EXP int GetSectorByIndex(int index);
 LIB_EXP int GetSectorByPosition(double x, double y, double z);
+LIB_EXP int GetSectorFuncProperty(
+        int sectorID, int property_kind, int unknown, PyObject **value
+);
 LIB_EXP int GetCharByName(const char *name, const char *short_name);
+LIB_EXP int SetAnmDefaultPrefix(int charID, const char *prefix);
 LIB_EXP int SetNCDSpheres(int charID, int NCDSpheres);
 LIB_EXP int SetCDSphere(int charID, int index, double h, double r);
 LIB_EXP int GetCharIntProperty(int charID, int property_kind, int unknown, int *value);
