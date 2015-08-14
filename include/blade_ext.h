@@ -251,6 +251,39 @@ LIB_EXP const char *GetTriggerSectorGroup(const char *trigger_sector_name);
 LIB_EXP double *GetTriggerSectorPoints(const char *trigger_sector_name);
 LIB_EXP int nTriggerSectors(void);
 LIB_EXP const char *GetTriggerSectorName(int index);
+LIB_EXP const char *GenerateEntityName(void);
+LIB_EXP int AddWatchAnim(const char *anim);
+LIB_EXP int AddAnimFlags(
+        const char *anim, int wuea, int mdf_y, int solf, int copy_rot,
+        int bng_mov, int head_f
+);
+LIB_EXP int SetEAX(int eax_flag);
+LIB_EXP int SetActionCameraMovement(
+        const char *action_name, double angle, double start_pos, double end_pos
+);
+LIB_EXP int DeactivateInput(void);
+LIB_EXP int ActivateInput(void);
+LIB_EXP int SetGhostSectorSound(
+        const char *aghost_name, const char *file_name, double volume,
+        double base_volume, double min_dist, double max_dist, double v_max_dist,
+        double scale
+);
+LIB_EXP int SetGhostSectorGroupSound(
+        const char *group_name, const char *file_name, double volume,
+        double base_volume, double min_dist, double max_dist, double unknown,
+        double scale
+);
+LIB_EXP int SetRootWidget(long int widget);
+LIB_EXP long int GetRootWidget(void);
+LIB_EXP int AddCombustionDataFor(
+        const char *object_kind, const char *fire_kind, double upper_treshol,
+        double lower_treshold, double flame_height, double flame_size,
+        double speed, double livetime
+);
+LIB_EXP int SetAfterFrameFunc(const char *name, PyObject *function);
+LIB_EXP PyObject *GetAfterFrameFunc(const char *name);
+LIB_EXP int GetnAfterFrameFuncs(void);
+LIB_EXP const char *GetAfterFrameFuncName(int index);
 LIB_EXP int CloseDebugChannel(const char *channel_name);
 LIB_EXP int OpenDebugChannel(const char *channel_name);
 LIB_EXP int SetAppMode(const char *mode);

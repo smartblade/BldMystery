@@ -2833,11 +2833,239 @@ PyObject *bex_GetTriggerSectorName(PyObject *self, PyObject *args) {
 
         name = GetTriggerSectorName(index);
         if (name)
-            return Py_BuildValue("s", name);
+                return Py_BuildValue("s", name);
 
         Py_INCREF(Py_None);
         return Py_None;
 }
+
+
+// address: 0x1000489a
+PyObject *bex_GenerateEntityName(PyObject *self, PyObject *args) {
+
+        return Py_BuildValue("s", GenerateEntityName());
+}
+
+
+// address: 0x100048c6
+PyObject *bex_AddWatchAnim(PyObject *self, PyObject *args) {
+        const char *anim;
+
+        if (!PyArg_ParseTuple(args, "s", &anim))
+                return NULL;
+
+        return Py_BuildValue("i", AddWatchAnim(anim));
+}
+
+
+// address: 0x10004910
+PyObject *bex_AddAnimFlags(PyObject *self, PyObject *args) {
+        const char *anim;
+        int wuea, mdf_y, solf, copy_rot, bng_mov, head_f;
+
+        if (!PyArg_ParseTuple(
+                args, "siiiiii", &anim, &wuea, &mdf_y, &solf, &copy_rot,
+                &bng_mov, &head_f
+        ))
+                return NULL;
+
+        return Py_BuildValue(
+                "i",
+                AddAnimFlags(anim, wuea, mdf_y, solf, copy_rot, bng_mov, head_f)
+        );
+}
+
+
+// address: 0x1000498a
+PyObject *bex_SetEAX(PyObject *self, PyObject *args) {
+        int eax_flag;
+
+        if (!PyArg_ParseTuple(args, "i", &eax_flag))
+                return NULL;
+
+        return Py_BuildValue("i", SetEAX(eax_flag));
+}
+
+
+// address: 0x100049d4
+PyObject *bex_SetActionCameraMovement(PyObject *self, PyObject *args) {
+        const char* action_name;
+        double angle, start_pos, end_pos;
+
+        if (!PyArg_ParseTuple(
+                args, "sddd", &action_name, &angle, &start_pos, &end_pos
+        ))
+                return NULL;
+
+        return Py_BuildValue(
+                "i",
+                SetActionCameraMovement(action_name, angle, start_pos, end_pos)
+        );
+}
+
+
+// address: 0x10004a42
+PyObject *bex_DeactivateInput(PyObject *self, PyObject *args) {
+        return Py_BuildValue("i", DeactivateInput());
+}
+
+
+// address: 0x10004a65
+PyObject *bex_ActivateInput(PyObject *self, PyObject *args) {
+        return Py_BuildValue("i", ActivateInput());
+}
+
+
+// address: 0x10004a88
+PyObject *bex_SetGhostSectorSound(PyObject *self, PyObject *args) {
+        const char *ghost_name, *file_name;
+        double volume = 1.0, base_volume = 1.0, min_dist = 1000.0;
+        double max_dist = 20000.0, v_max_dist = 10000.0, scale = 1.0;
+
+        if (!PyArg_ParseTuple(
+                args, "ss|dddddd", &ghost_name, &file_name, &volume,
+                &base_volume, &min_dist, &max_dist, &v_max_dist, &scale
+        ))
+                return NULL;
+
+        return Py_BuildValue(
+                "i",
+                SetGhostSectorSound(
+                        ghost_name, file_name, volume, base_volume, min_dist,
+                        max_dist, v_max_dist, scale
+                )
+        );
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+// address: 0x10004c41
+PyObject *bex_SetGhostSectorGroupSound(PyObject *self, PyObject *args) {
+        const char *group_name, *file_name;
+        double volume = 1.0, base_volume = 1.0, min_dist = 1000.0;
+        double max_dist = 20000.0, unknown = 20000.0, scale = 1.0;
+
+        /* FIXME Too many arguments: should be 7 gets 8 */
+        if (!PyArg_ParseTuple(
+                args, "ss|ddddd", &group_name, &file_name, &volume,
+                &base_volume, &min_dist, &max_dist, &unknown, &scale
+        ))
+                return NULL;
+
+        return Py_BuildValue(
+                "i",
+                SetGhostSectorGroupSound(
+                        group_name, file_name, volume,
+                        base_volume, min_dist, max_dist, unknown, scale
+                )
+        );
+}
+
+
+// address: 0x10004d2f
+PyObject *bex_SetRootWidget(PyObject *self, PyObject *args) {
+        long int widget;
+
+        if (!PyArg_ParseTuple(args, "l", &widget))
+                return NULL;
+
+        return Py_BuildValue("i", SetRootWidget(widget));
+}
+
+
+// address: 0x10004d79
+PyObject *bex_GetRootWidget(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("l", GetRootWidget());
+}
+
+
+// address: 0x10004dbd
+PyObject *bex_AddCombustionDataFor(PyObject *self, PyObject *args) {
+        const char *object_kind, *fire_kind;
+        double upper_treshol, lower_treshold, flame_height, flame_size, speed;
+        double livetime;
+
+        if (!PyArg_ParseTuple(
+                args, "ssdddddd", &object_kind, &fire_kind, &upper_treshol,
+                &lower_treshold, &flame_height, &flame_size, &speed, &livetime
+        ))
+                return NULL;
+
+        return Py_BuildValue(
+                "i", AddCombustionDataFor(
+                        object_kind, fire_kind, upper_treshol, lower_treshold,
+                        flame_height, flame_size, speed, livetime
+                )
+        );
+}
+
+
+// address: 0x10004e57
+PyObject *bex_SetAfterFrameFunc(PyObject *self, PyObject *args) {
+        const char *name;
+        PyObject *function = NULL;
+
+        if (!PyArg_ParseTuple(args, "sO", &name, &function))
+                return NULL;
+
+        return Py_BuildValue("i", SetAfterFrameFunc(name, function));
+}
+
+// address: 0x10004eb0
+PyObject *bex_GetAfterFrameFunc(PyObject *self, PyObject *args) {
+        const char *name;
+        PyObject *function;
+
+        if (!PyArg_ParseTuple(args, "s", &name))
+                return NULL;
+
+        function = GetAfterFrameFunc(name);
+        if (function == NULL) {
+                Py_INCREF(Py_None);
+                return Py_None;
+        }
+
+        Py_INCREF(function);
+        return function;
+}
+
+
+// address: 0x10004f17
+PyObject *bex_GetnAfterFrameFuncs(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", GetnAfterFrameFuncs());
+}
+
+
+// address: 0x10004f54
+PyObject *bex_GetAfterFrameFuncName(PyObject *self, PyObject *args) {
+        int index;
+        const char *func_name;
+
+        if (!PyArg_ParseTuple(args, "i", &index))
+                return NULL;
+
+        func_name = GetAfterFrameFuncName(index);
+        if (func_name)
+                return Py_BuildValue("s", func_name);
+
+        Py_INCREF(Py_None);
+        return Py_None;
+}
+
 
 /*
 ................................................................................
@@ -4032,35 +4260,7 @@ PyObject* bex_GetMaterial(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_GenerateEntityName(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddWatchAnim(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddAnimFlags(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetEAX(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_GetSound(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetActionCameraMovement(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_DeactivateInput(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ActivateInput(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -4068,27 +4268,7 @@ PyObject* bex_AddGhostSector(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_SetGhostSectorSound(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetGhostSectorGroupSound(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_AddTriggerSector(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddCombustionDataFor(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetRootWidget(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetRootWidget(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -4097,22 +4277,6 @@ PyObject* bex_SetCallCheck(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_DrawBOD(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetAfterFrameFunc(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetAfterFrameFunc(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetAfterFrameFuncName(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_GetnAfterFrameFuncs(PyObject* self, PyObject* args) {
         return NULL;
 }
 
