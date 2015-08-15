@@ -4951,7 +4951,673 @@ PyObject *bld_py_char_getattr(PyObject *self, char *attr_name) {
 // address: 0x10008984
 int bld_py_char_setattr(PyObject *self, char *attr_name, PyObject *value)
 {
-        return 0;
+        PyObject *on_first;
+        double dist_stop, dist_stop_2, dist_stop_max_factor;
+        double max_combat_dist, max_see_dist, mov_frwd_speed_in_strafe;
+        double mov_bkwd_speed_in_strafe, turn_speed;
+        double j_cost, max_fall, die_fall, max_stair, fov;
+        double max_grab, med_grab, min_2_grab;
+        const char *int_name, *add_route_anim;
+        const char *no_armour, *low_armour, *med_armour, *high_armour;
+        double min_take, reach, hear_min_volume;
+        double max_take_1, max_take_2, max_take_3, max_take_4, max_take_5;
+        int natural_weapons, head_controlled;
+        int code;
+
+        PyErr_Clear();
+
+        if (value == NULL) {
+                PyErr_SetString(
+                        PyExc_AttributeError, "can't delete Char attributes"
+                );
+                return -1;
+        }
+
+        if (!strcmp(attr_name, "OnFirst")) {
+                if (!PyArg_Parse(value, "O", &on_first)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFuncProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FNC_ON_FIRST, 0,
+                        on_first
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "DistStop")) {
+                if (!PyArg_Parse(value, "d", &dist_stop)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_DIST_STOP, 0,
+                        dist_stop
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "DistStop2")) {
+                if (!PyArg_Parse(value, "d", &dist_stop_2)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_DIST_STOP_2, 0,
+                        dist_stop_2
+                );
+
+                if (code != 1) {
+                    PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                    return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "DistStopMaxFactor")) {
+                if (!PyArg_Parse(value, "d", &dist_stop_max_factor)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID,
+                        CHR_FLT_DIST_STOP_MAX_FACT, 0, dist_stop_max_factor
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "MaxCombatDist")) {
+                if (!PyArg_Parse(value, "d", &max_combat_dist)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID,
+                        CHR_FLT_MAX_COMBAT_DIST, 0, max_combat_dist
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "MaxSeeDist")) {
+                if (!PyArg_Parse(value, "d", &max_see_dist)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(((bld_py_char_t *)self)->charID, CHR_FLT_MAX_SEE_DIST, 0, max_see_dist);
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "MovFrwdSpeedInStrafe")) {
+                if (!PyArg_Parse(value, "d", &mov_frwd_speed_in_strafe)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID,
+                        CHR_FLT_MOV_FRWD_SPEED_IN_STRAFE, 0,
+                        mov_frwd_speed_in_strafe
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "MovBkwdSpeedInStrafe")) {
+                if (!PyArg_Parse(value, "d", &mov_bkwd_speed_in_strafe)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID,
+                        CHR_FLT_MOV_BKWD_SPEED_IN_STRAFE, 0,
+                        mov_bkwd_speed_in_strafe
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "TurnSpeed")) {
+                if (!PyArg_Parse(value, "d", &turn_speed)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_TURN_SPEED, 0,
+                        turn_speed
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+        if (!strcmp(attr_name, "Jcost")) {
+                if (!PyArg_Parse(value, "d", &j_cost)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_J_COST, 0,
+                        j_cost
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "MaxFall")) {
+                if (!PyArg_Parse(value, "d", &max_fall)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_MAX_FALL, 0,
+                        max_fall
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "DieFall")) {
+                if (!PyArg_Parse(value, "d", &die_fall)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_DIE_FALL, 0,
+                        die_fall
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "MaxStair")) {
+                if (!PyArg_Parse(value, "d", &max_stair)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_MAX_STAIR, 0,
+                        max_stair
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "Fov")) {
+                if (!PyArg_Parse(value, "d", &fov)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_FOV, 0,
+                        fov
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "IntName")) {
+                if (!PyArg_Parse(value, "s", &int_name)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharStringProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_STR_INT_NAME, 0,
+                        int_name
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+    }
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+        if (!strcmp(attr_name, "AddRouteAnim")) {
+                if (!PyArg_Parse(value, "s", &add_route_anim)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharStringProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_STR_ADD_ROUTE_ANIM,
+                        0, add_route_anim
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "MaxGrab")) {
+                if (!PyArg_Parse(value, "d", &max_grab)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_MAX_GRAB, 0,
+                        max_grab
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "MedGrab")) {
+                if (!PyArg_Parse(value, "d", &med_grab)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_MED_GRAB, 0,
+                        med_grab
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "Min2Grab")) {
+                if (!PyArg_Parse(value, "d", &min_2_grab)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_MIN_2_GRAB, 0,
+                        min_2_grab
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+        if (!strcmp(attr_name, "NoArmour")) {
+                if (!PyArg_Parse(value, "s", &no_armour)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharStringProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_STR_NO_ARMOUR, 0,
+                        no_armour
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "LowArmour")) {
+                if (!PyArg_Parse(value, "s", &low_armour)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharStringProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_STR_LOW_ARMOUR, 0,
+                        low_armour
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "MedArmour")) {
+                if (!PyArg_Parse(value, "s", &med_armour)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharStringProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_STR_MED_ARMOUR, 0,
+                        med_armour
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "HighArmour")) {
+                if (!PyArg_Parse(value, "s", &high_armour)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharStringProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_STR_HIGH_ARMOUR, 0,
+                        high_armour
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "MinTake")) {
+                if (!PyArg_Parse(value, "d", &min_take)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_MIN_TAKE, 0,
+                        min_take
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "MaxTake1")) {
+                if (!PyArg_Parse(value, "d", &max_take_1)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_MAX_TAKE_1, 0,
+                        max_take_1
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "MaxTake2")) {
+                if (!PyArg_Parse(value, "d", &max_take_2)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_MAX_TAKE_2, 0,
+                        max_take_2
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "MaxTake3")) {
+                if (!PyArg_Parse(value, "d", &max_take_3)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_MAX_TAKE_3, 0,
+                        max_take_3
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "MaxTake4")) {
+                if (!PyArg_Parse(value, "d", &max_take_4)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_MAX_TAKE_4, 0,
+                        max_take_4
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "MaxTake5")) {
+                if (!PyArg_Parse(value, "d", &max_take_5)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID, CHR_FLT_MAX_TAKE_5, 0,
+                        max_take_5
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "Reach")) {
+                if (!PyArg_Parse(value, "d", &reach)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(((bld_py_char_t *)self)->charID, CHR_FLT_REACH, 0, reach);
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "HearMinVolume")) {
+                if (!PyArg_Parse(value, "d", &hear_min_volume)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharFloatProperty(
+                        ((bld_py_char_t *)self)->charID,
+                        CHR_FLT_HEAR_MIN_VOLUME, 0, hear_min_volume
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "NaturalWeapons")) {
+                if (!PyArg_Parse(value, "i", &natural_weapons)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharIntProperty(
+                        ((bld_py_char_t *)self)->charID,
+                        CHR_INT_NATURAL_WEAPONS, 0, natural_weapons
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        if (!strcmp(attr_name, "HeadControlled")) {
+                if (!PyArg_Parse(value, "i", &head_controlled)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetCharIntProperty(
+                        ((bld_py_char_t *)self)->charID,
+                        CHR_INT_HEAD_CONTROLLED, 0, head_controlled
+                );
+
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        PyErr_SetString(PyExc_AttributeError, "Not implemented");
+        return -1;
 }
 
 
