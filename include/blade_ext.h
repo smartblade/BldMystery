@@ -110,6 +110,10 @@ LIB_EXP entity_t *CreateEntityDecal(
         double d_unknown1, double d_unknown2
 );
 LIB_EXP const char *GetEntityName(entity_t *entity);
+LIB_EXP int GetEntityStringProperty(
+        const char *entity_name, int property_kind, int unknown,
+        const char **value
+);
 LIB_EXP int SetSound(const char *entity_name, const char *sound);
 LIB_EXP int SetListenerMode(int mode, double x, double y, double z);
 LIB_EXP int GetSectorByIndex(int index);

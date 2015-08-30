@@ -37,6 +37,11 @@ typedef struct {
 
 typedef struct {
         PyObject_HEAD
+        char *name;
+} bld_py_inventory_t;
+
+typedef struct {
+        PyObject_HEAD
         material_t *material;
 } bld_py_material_t;
 
@@ -474,6 +479,13 @@ static int bld_py_entity_print(PyObject *self, FILE *file, int flags);
 static PyObject *bld_py_entity_getattr(PyObject *self, char *attr_name);
 static int bld_py_entity_setattr(PyObject *self, char *attr_name, PyObject *value);
 
+static PyObject *get_inventory(const char *name);
+static void init_inventory_type(void);
+static void bld_py_inventory_dealloc(PyObject *self);
+static int bld_py_inventory_print(PyObject *self, FILE *file, int flags);
+static PyObject *bld_py_inventory_getattr(PyObject *self, char *attr_name);
+static int bld_py_inventory_setattr(PyObject *self, char *attr_name, PyObject *value);
+
 static PyObject *create_material(const char *name);
 static void init_material_type(void);
 static void bld_py_material_dealloc(PyObject *self);
@@ -513,14 +525,15 @@ static int bld_py_trail_setattr(PyObject *self, char *attr_name, PyObject *value
 
 static PyTypeObject charTypeObject;
 static PyTypeObject entityTypeObject;
+static PyTypeObject inventoryTypeObject;
 static PyTypeObject materialTypeObject;
 static PyTypeObject sectorTypeObject;
 static PyTypeObject soundTypeObject;
 static PyTypeObject trailTypeObject;
 
 static void (*init_funcs[])(void) = {
-    init_char_type, init_entity_type, init_material_type, init_sector_type,
-    init_sound_type, init_trail_type, NULL
+    init_char_type, init_entity_type, init_inventory_type, init_material_type,
+    init_sector_type, init_sound_type, init_trail_type, NULL
 };
 
 static PyMethodDef methods[] = {
@@ -5712,6 +5725,32 @@ PyObject *create_entity_decal(
 ................................................................................
 */
 
+// address: 0x1000dffd
+PyObject *bex_ent_GetInventory(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *inventory;
+        const char *name;
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        code = GetEntityStringProperty(entity->name, 0, 0, &name);//TODO use macro definition for property kind
+        if ((code != 1) || (inventory = get_inventory(name)) == NULL) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Entity.");
+                return NULL;
+        }
+
+        return inventory;
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 // address: 0x1000e17d
 PyObject *bex_ent_SetSound(PyObject *self, PyObject *args) {
         bld_py_entity_t *entity = (bld_py_entity_t *)self;
@@ -6022,10 +6061,6 @@ PyObject* bex_ent_GetInventorySelected(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_ent_GetInventory(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_ent_Use(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -6280,6 +6315,77 @@ PyObject *bld_py_entity_getattr(PyObject *self, char *attr_name)
 // TODO implement
 // address: 0x10013c54
 int bld_py_entity_setattr(PyObject *self, char *attr_name, PyObject *value)
+{
+        return 0;
+}
+
+
+// address: 0x100140a0
+PyObject *get_inventory(const char *name) {
+        bld_py_inventory_t *inventory_obj;
+
+        inventory_obj = PyObject_NEW(bld_py_inventory_t, &inventoryTypeObject);
+        if (inventory_obj == NULL)
+                return NULL;
+
+        inventory_obj->name = strdup(name);
+
+        return (PyObject *)inventory_obj;
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x10014e22
+void init_inventory_type() {
+
+        memset(&inventoryTypeObject, 0, sizeof(PyTypeObject));
+
+        inventoryTypeObject.ob_refcnt = 1;
+        inventoryTypeObject.ob_type = &PyType_Type;
+        inventoryTypeObject.ob_size = 0;
+        inventoryTypeObject.tp_name = "B_PyInventory";
+        inventoryTypeObject.tp_basicsize = sizeof(bld_py_inventory_t);
+        inventoryTypeObject.tp_itemsize = 0;
+        inventoryTypeObject.tp_dealloc = bld_py_inventory_dealloc;
+        inventoryTypeObject.tp_print = bld_py_inventory_print;
+        inventoryTypeObject.tp_getattr = bld_py_inventory_getattr;
+        inventoryTypeObject.tp_setattr = bld_py_inventory_setattr;
+        inventoryTypeObject.tp_compare = NULL;
+        inventoryTypeObject.tp_repr = NULL;
+        inventoryTypeObject.tp_as_number = NULL;
+        inventoryTypeObject.tp_as_sequence = NULL;
+        inventoryTypeObject.tp_as_mapping = NULL;
+        inventoryTypeObject.tp_hash = NULL;
+}
+
+// TODO implement
+// address: 0x10014ecd
+void bld_py_inventory_dealloc(PyObject *self)
+{
+}
+
+// TODO implement
+// address: 0x10014ef8
+int bld_py_inventory_print(PyObject *self, FILE *file, int flags)
+{
+        return 0;
+}
+
+// TODO implement
+// address: 0x10014f60
+PyObject *bld_py_inventory_getattr(PyObject *self, char *attr_name)
+{
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10015768
+int bld_py_inventory_setattr(PyObject *self, char *attr_name, PyObject *value)
 {
         return 0;
 }
