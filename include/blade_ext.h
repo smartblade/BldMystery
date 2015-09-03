@@ -115,6 +115,9 @@ LIB_EXP int GetEntityStringProperty(
         const char **value
 );
 LIB_EXP int SetSound(const char *entity_name, const char *sound);
+LIB_EXP int GetInventoryIntProperty(
+        const char *name, int property_kind, int *value
+);
 LIB_EXP int SetListenerMode(int mode, double x, double y, double z);
 LIB_EXP int GetSectorByIndex(int index);
 LIB_EXP int GetSectorByPosition(double x, double y, double z);

@@ -6380,6 +6380,39 @@ int bld_py_inventory_print(PyObject *self, FILE *file, int flags)
 // address: 0x10014f60
 PyObject *bld_py_inventory_getattr(PyObject *self, char *attr_name)
 {
+        int holding_bow;
+        int code;
+
+#define INV_INT_HOLDING_BOW 13
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+        if (!strcmp(attr_name, "HoldingBow")) {
+                code = GetInventoryIntProperty(
+                        ((bld_py_inventory_t *)self)->name, INV_INT_HOLDING_BOW,
+                        &holding_bow
+                );
+
+                if (code != -1)
+                        return PyInt_FromLong(holding_bow);
+
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+
+                return NULL;
+        }
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
         return NULL;
 }
 
