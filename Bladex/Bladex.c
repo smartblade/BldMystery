@@ -25,6 +25,19 @@
 #include <export.h>
 
 
+#define MAX_PROPERTY_KINDS                   1024
+
+#define PROP_TYPE_OBJ                           0
+#define PROP_TYPE_INT                           1
+#define PROP_TYPE_FLT                           2
+#define PROP_TYPE_STR                           3
+#define PROP_TYPE_VEC                           4
+
+#define PROP_ONLY_GET                           1
+#define PROP_ONLY_SET                           2
+#define PROP_GET_AND_SET                        3
+
+
 typedef struct {
         PyObject_HEAD
         int charID;
@@ -60,6 +73,15 @@ typedef struct {
         PyObject_HEAD
         int trailID;
 } bld_py_trail_t;
+
+typedef struct {
+	char *name;
+	int kind;
+	unsigned char data_type;
+	unsigned char flags;
+	PyObject *(*get_func)(PyObject *, char *);
+	int (*set_func)(PyObject *, char *, PyObject *);
+} property_info_t ;
 
 
 static PyObject* bex_nEntities(PyObject* self, PyObject* args);
@@ -473,6 +495,119 @@ static PyObject* bex_ent_SetAuraActive(PyObject* self, PyObject* args);
 static PyObject* bex_ent_SetAuraParams(PyObject* self, PyObject* args);
 static PyObject* bex_ent_SetAuraGradient(PyObject* self, PyObject* args);
 static PyObject* bex_ent_IsValid(PyObject* self, PyObject* args);
+static void init_entity_properties(void);
+static PyObject *bex_ent_doc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_Data_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_TimerFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_HitFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_InflictHitFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_HitShieldFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_DamageFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_StickFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_FrameFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_HearFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_SeeFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_UseFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_ChangeNodeFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_TouchFluidFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_EnterPrimaryAAFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_EnterSecondaryAAFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_EnterCloseFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_EnterLargeFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_AnmEndedFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_DelayNoSeenFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_RouteEndedFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_ImHurtFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_ImDeadFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_EnemyDeadFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_NoAllowedAreaFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_EnemyNoAllowedAreaFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_CharSeeingEnemyFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_AnmTranFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_NewComboFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_BigFallFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_AttackFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_ToggleCombatFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_TakeFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_ThrowFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_MutilateFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_AttackList_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_OnHitFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_OnStopFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_OnStepFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_OnAnimationEndFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_OnPathNodeFunc_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_RAttackMin_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_RAttackMax_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_ActionAreaMin_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_ActionAreaMax_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_Arrow_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_Static_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_Actor_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_Person_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_Weapon_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_Orientation_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_SubscribedLists_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_FiresIntensity_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_LightIntensity_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_LightPrecission_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_LightColor_get(PyObject *self, char *attr_name);
+static PyObject *bex_ent_LightGlow_get(PyObject *self, char *attr_name);
+static int bex_ent_Static_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_Actor_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_Person_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_Weapon_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_Arrow_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_Data_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_FiresIntensity_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_Lights_set(PyObject *self, char *attr_name, PyObject *value);
+static PyObject *bex_ent_Lights_get(PyObject *self, char *attr_name);
+static int bex_ent_RAttackMin_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_RAttackMax_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_ActionAreaMin_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_ActionAreaMax_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_Orientation_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_TimerFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_HitFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_InflictHitFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_HitShieldFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_DamageFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_StickFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_FrameFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_HearFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_SeeFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_UseFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_ChangeNodeFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_TouchFluidFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_EnterPrimaryAAFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_EnterSecondaryAAFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_EnterCloseFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_EnterLargeFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_AnmEndedFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_DelayNoSeenFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_RouteEndedFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_ImHurtFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_ImDeadFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_EnemyDeadFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_NoAllowedAreaFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_EnemyNoAllowedAreaFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_CharSeeingEnemyFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_AnmTranFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_NewComboFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_BigFallFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_AttackFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_ToggleCombatFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_TakeFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_ThrowFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_MutilateFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_AttackList_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_OnHitFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_OnStopFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_OnStepFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_OnAnimationEndFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_OnPathNodeFunc_set(PyObject *self, char *attr_name, PyObject *value);
+static int bex_ent_InternalState_set(PyObject *self, char *attr_name, PyObject *value);
+static PyObject *bex_ent_InternalState_get(PyObject *self, char *attr_name);
 static void init_entity_type(void);
 static void bld_py_entity_dealloc(PyObject *self);
 static int bld_py_entity_print(PyObject *self, FILE *file, int flags);
@@ -522,6 +657,13 @@ static int bld_py_trail_print(PyObject *self, FILE *file, int flags);
 static PyObject *bld_py_trail_getattr(PyObject *self, char *attr_name);
 static int bld_py_trail_setattr(PyObject *self, char *attr_name, PyObject *value);
 
+static int insert_property(
+        const char *name, int property_kind, int data_type, int flags,
+        PyObject *(*get_func)(PyObject *, char *),
+        int (*set_func)(PyObject *, char *, PyObject *)
+);
+static int find_property(property_info_t *properties, const char *name);
+
 
 static PyTypeObject charTypeObject;
 static PyTypeObject entityTypeObject;
@@ -530,6 +672,9 @@ static PyTypeObject materialTypeObject;
 static PyTypeObject sectorTypeObject;
 static PyTypeObject soundTypeObject;
 static PyTypeObject trailTypeObject;
+
+static property_info_t *property_kinds;
+static int num_property_kinds = 0;
 
 static void (*init_funcs[])(void) = {
     init_char_type, init_entity_type, init_inventory_type, init_material_type,
@@ -5735,7 +5880,7 @@ PyObject *bex_ent_GetInventory(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ""))
                 return NULL;
 
-        code = GetEntityStringProperty(entity->name, 0, 0, &name);//TODO use macro definition for property kind
+        code = GetEntityStringProperty(entity->name, ENT_STR_NAME, 0, &name);
         if ((code != 1) || (inventory = get_inventory(name)) == NULL) {
                 PyErr_SetString(PyExc_AttributeError, "Invalid Entity.");
                 return NULL;
@@ -6261,12 +6406,947 @@ PyObject* bex_ent_IsValid(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x1000e9dd
+void init_entity_properties() {
+        property_kinds = (property_info_t *)malloc(
+                MAX_PROPERTY_KINDS * sizeof(property_info_t)
+        );
+        insert_property("Data",                   -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_Data_get                  , bex_ent_Data_set);
+        insert_property("__doc__",                -1                              , PROP_TYPE_OBJ, PROP_ONLY_GET   , bex_ent_doc_get                   , NULL);
+        insert_property("Name",                   ENT_STR_NAME                    , PROP_TYPE_STR, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Kind",                   ENT_STR_KIND                    , PROP_TYPE_STR, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("SendSectorMsgs",         ENT_INT_SEND_SECTOR_MSGS        , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("SendTriggerSectorMsgs",  ENT_INT_SEND_TRIGGER_SECTOR_MSGS, PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Scale",                  ENT_FLT_SCALE                   , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Position",               ENT_VEC_POSITION                , PROP_TYPE_VEC, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("D",                      ENT_VEC_D                       , PROP_TYPE_VEC, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("D1",                     ENT_VEC_D1                      , PROP_TYPE_VEC, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("D2",                     ENT_VEC_D2                      , PROP_TYPE_VEC, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Velocity",               ENT_VEC_VELOCITY                , PROP_TYPE_VEC, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Gravity",                ENT_VEC_GRAVITY                 , PROP_TYPE_VEC, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("AngularVelocity",        ENT_VEC_ANGULAR_VELOCITY        , PROP_TYPE_VEC, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Life",                   ENT_FLT_LIFE                    , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Energy",                 ENT_FLT_ENERGY                  , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Level",                  ENT_INT_LEVEL                   , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("PartialLevel",           ENT_INT_PARTIAL_LEVEL           , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("InAttack",               ENT_INT_IN_ATTACK               , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("InDestructorAttack",     ENT_INT_IN_DESTRUCTOR_ATTACK    , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("CombatDistFlag",         ENT_INT_COMBAT_DIST_FLAG        , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+/* FIXME two "Angle" properties */
+        insert_property("Angle",                  ENT_FLT_ANGLE                   , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("T2Fall",                 ENT_FLT_T2_FALL                 , PROP_TYPE_FLT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("Flick",                  ENT_INT_FLICK                   , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Intensity2",             ENT_FLT_INTENSITY2              , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("FlickPeriod",            ENT_FLT_FLICK_PERIOD            , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("LookAtTime",             ENT_FLT_LOOK_AT_TIME            , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Mass",                   ENT_FLT_MASS                    , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("TrailLifeTime",          ENT_FLT_TRAIL_LIFE_TIME         , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("TrailColor",             ENT_VEC_TRAIL_COLOR             , PROP_TYPE_VEC, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("InventoryVisible",       ENT_INT_INVENTORY_VISIBLE       , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Visible",                ENT_INT_VISIBLE                 , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("CastShadows",            ENT_INT_CAST_SHADOWS            , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Gof",                    ENT_INT_GOF                     , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Gob",                    ENT_INT_GOB                     , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Aim",                    ENT_INT_AIM                     , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Tr",                     ENT_INT_TR                      , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Tl",                     ENT_INT_TL                      , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Run",                    ENT_INT_RUN                     , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Sneak",                  ENT_INT_SNEAK                   , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Attack",                 ENT_INT_ATTACK                  , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Block",                  ENT_INT_BLOCK                   , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("ContinuousBlock",        ENT_INT_CONTINUOUS_BLOCK        , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Active",                 ENT_INT_ACTIVE                  , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Target",                 ENT_VEC_TARGET                  , PROP_TYPE_VEC, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("MinSectorLength",        ENT_FLT_MIN_SECTOR_LENGTH       , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("MaxAmplitude",           ENT_FLT_MAX_AMPLITUDE           , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Damage",                 ENT_INT_DAMAGE                  , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("DamageRadius",           ENT_FLT_DAMAGE_RADIUS           , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("SimpleSections",         ENT_INT_SIMPLE_SECTIONS         , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("OuterGlowColor",         ENT_VEC_OUTER_GLOW_COLOR        , PROP_TYPE_VEC, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("InnerGlowColor",         ENT_VEC_INNER_GLOW_COLOR        , PROP_TYPE_VEC, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("CoreGlowColor",          ENT_VEC_CORE_GLOW_COLOR         , PROP_TYPE_VEC, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("SendNotify",             ENT_INT_SEND_NOTIFY             , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Playing",                ENT_INT_PLAYING                 , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("Blind",                  ENT_INT_BLIND                   , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Deaf",                   ENT_INT_DEAF                    , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("WillCrashInFloor",       ENT_INT_WILL_CRASH_IN_FLOOR     , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("GoToSneaking",           ENT_INT_GO_TO_SNEAKING          , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("GoToJogging",            ENT_INT_GO_TO_JOGGING           , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("OnFloor",                ENT_INT_ON_FLOOR                , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("TestHit",                ENT_INT_TEST_HIT                , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("Displacement",           ENT_FLT_DISPLACEMENT            , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("DisplacementLimit",      ENT_FLT_DISPLACEMENT_LIMIT      , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("V_D",                    ENT_FLT_V_D                     , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("A_D",                    ENT_FLT_A_D                     , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("IsStopped",              ENT_INT_IS_STOPPED              , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("Material",               ENT_STR_MATERIAL                , PROP_TYPE_STR, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("Animation",              ENT_STR_ANIMATION               , PROP_TYPE_STR, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("FPS",                    ENT_FLT_F_P_S                   , PROP_TYPE_FLT, PROP_ONLY_SET   , NULL                              , NULL);
+        insert_property("CurrentAreas",           ENT_INT_CURRENT_AREAS           , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("CharType",               ENT_STR_CHAR_TYPE               , PROP_TYPE_STR, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("CharTypeExt",            ENT_STR_CHAR_TYPE_EXT           , PROP_TYPE_STR, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("Parent",                 ENT_STR_PARENT                  , PROP_TYPE_STR, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("InitPos",                ENT_VEC_INIT_POS                , PROP_TYPE_VEC, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("EnemyLastSeen",          ENT_VEC_ENEMY_LAST_SEEN         , PROP_TYPE_VEC, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("AstarState",             ENT_FLT_ASTAR_STATE             , PROP_TYPE_FLT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("Will1aaTo2aa",           ENT_INT_WILL1AA_TO2AA           , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("Wuea",                   ENT_FLT_WUEA                    , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("AnmPos",                 ENT_FLT_ANM_POS                 , PROP_TYPE_FLT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("RouteType",              ENT_FLT_ROUTE_TYPE              , PROP_TYPE_FLT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("BayRoute",               ENT_FLT_BAY_ROUTE               , PROP_TYPE_FLT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("Intensity",              ENT_FLT_INTENSITY               , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Precission",             ENT_FLT_PRECISSION              , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("AngVel",                 ENT_FLT_ANG_VEL                 , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("SizeFactor",             ENT_FLT_SIZE_FACTOR             , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("GlowTexture",            ENT_STR_GLOW_TEXTURE            , PROP_TYPE_STR, PROP_ONLY_SET   , NULL                              , NULL);
+        insert_property("GlowTestZ",              ENT_INT_GLOW_TEST_Z             , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("GlowSizeDist",           ENT_INT_GLOW_SIZE_DIST          , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("MinDistance",            ENT_FLT_MIN_DISTANCE            , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("MaxDistance",            ENT_FLT_MAX_DISTANCE            , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Volume",                 ENT_FLT_VOLUME                  , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("BaseVolume",             ENT_FLT_BASE_VOLUME             , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Pitch",                  ENT_FLT_PITCH                   , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("SoundScale",             ENT_FLT_SOUND_SCALE             , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("CanUse",                 ENT_INT_CAN_USE                 , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("InventorySelection",     ENT_STR_INVENTORY_SELECTION     , PROP_TYPE_STR, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("Physic",                 ENT_INT_PHYSIC                  , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("nLights",                ENT_INT_N_LIGHTS                , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("nFires",                 ENT_INT_N_FIRES                 , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("AnimFullName",           ENT_STR_ANIM_FULL_NAME          , PROP_TYPE_STR, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("AnimName",               ENT_STR_ANIM_NAME               , PROP_TYPE_STR, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("PrevAnimName",           ENT_STR_PREV_ANIM_NAME          , PROP_TYPE_STR, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("TimerFunc",              -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_TimerFunc_get             , bex_ent_TimerFunc_set);
+        insert_property("HitFunc",                -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_HitFunc_get               , bex_ent_HitFunc_set);
+        insert_property("InflictHitFunc",         -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_InflictHitFunc_get        , bex_ent_InflictHitFunc_set);
+        insert_property("DamageFunc",             -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_DamageFunc_get            , bex_ent_DamageFunc_set);
+        insert_property("StickFunc",              -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_StickFunc_get             , bex_ent_StickFunc_set);
+        insert_property("FrameFunc",              -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_FrameFunc_get             , bex_ent_FrameFunc_set);
+        insert_property("HearFunc",               -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_HearFunc_get              , bex_ent_HearFunc_set);
+        insert_property("SeeFunc",                -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_SeeFunc_get               , bex_ent_SeeFunc_set);
+        insert_property("UseFunc",                -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_UseFunc_get               , bex_ent_UseFunc_set);
+        insert_property("TouchFluidFunc",         -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_TouchFluidFunc_get        , bex_ent_TouchFluidFunc_set);
+        insert_property("EnterPrimaryAAFunc",     -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_EnterPrimaryAAFunc_get    , bex_ent_EnterPrimaryAAFunc_set);
+        insert_property("EnterSecondaryAAFunc",   -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_EnterSecondaryAAFunc_get  , bex_ent_EnterSecondaryAAFunc_set);
+        insert_property("EnterCloseFunc",         -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_EnterCloseFunc_get        , bex_ent_EnterCloseFunc_set);
+        insert_property("EnterLargeFunc",         -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_EnterLargeFunc_get        , bex_ent_EnterLargeFunc_set);
+        insert_property("AnmEndedFunc",           -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_AnmEndedFunc_get          , bex_ent_AnmEndedFunc_set);
+        insert_property("DelayNoSeenFunc",        -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_DelayNoSeenFunc_get       , bex_ent_DelayNoSeenFunc_set);
+        insert_property("RouteEndedFunc",         -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_RouteEndedFunc_get        , bex_ent_RouteEndedFunc_set);
+        insert_property("ImHurtFunc",             -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_ImHurtFunc_get            , bex_ent_ImHurtFunc_set);
+        insert_property("ImDeadFunc",             -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_ImDeadFunc_get            , bex_ent_ImDeadFunc_set);
+        insert_property("EnemyDeadFunc",          -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_EnemyDeadFunc_get         , bex_ent_EnemyDeadFunc_set);
+        insert_property("NoAllowedAreaFunc",      -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_NoAllowedAreaFunc_get     , bex_ent_NoAllowedAreaFunc_set);
+        insert_property("EnemyNoAllowedAreaFunc", -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_EnemyNoAllowedAreaFunc_get, bex_ent_EnemyNoAllowedAreaFunc_set);
+        insert_property("CharSeeingEnemyFunc",    -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_CharSeeingEnemyFunc_get   , bex_ent_CharSeeingEnemyFunc_set);
+        insert_property("AnmTranFunc",            -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_AnmTranFunc_get           , bex_ent_AnmTranFunc_set);
+        insert_property("NewComboFunc",           -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_NewComboFunc_get          , bex_ent_NewComboFunc_set);
+        insert_property("BigFallFunc",            -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_BigFallFunc_get           , bex_ent_BigFallFunc_set);
+        insert_property("AttackFunc",             -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_AttackFunc_get            , bex_ent_AttackFunc_set);
+        insert_property("ToggleCombatFunc",       -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_ToggleCombatFunc_get      , bex_ent_ToggleCombatFunc_set);
+        insert_property("TakeFunc",               -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_TakeFunc_get              , bex_ent_TakeFunc_set);
+        insert_property("ThrowFunc",              -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_ThrowFunc_get             , bex_ent_ThrowFunc_set);
+        insert_property("OnHitFunc",              -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_OnHitFunc_get             , bex_ent_OnHitFunc_set);
+        insert_property("OnStopFunc",             -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_OnStopFunc_get            , bex_ent_OnStopFunc_set);
+        insert_property("OnAnimationEndFunc",     -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_OnAnimationEndFunc_get    , bex_ent_OnAnimationEndFunc_set);
+        insert_property("OnPathNodeFunc",         -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_OnPathNodeFunc_get        , bex_ent_OnPathNodeFunc_set);
+        insert_property("Orientation",            -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_Orientation_get           , bex_ent_Orientation_set);
+        insert_property("FiresIntensity",         -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_FiresIntensity_get        , bex_ent_FiresIntensity_set);
+        insert_property("SubscribedLists",        -1                              , PROP_TYPE_OBJ, PROP_ONLY_GET   , bex_ent_SubscribedLists_get       , NULL);
+        insert_property("LightIntensity",         -1                              , PROP_TYPE_OBJ, PROP_ONLY_GET   , bex_ent_LightIntensity_get        , NULL);
+        insert_property("LightPrecission",        -1                              , PROP_TYPE_OBJ, PROP_ONLY_GET   , bex_ent_LightPrecission_get       , NULL);
+        insert_property("LightColor",             -1                              , PROP_TYPE_OBJ, PROP_ONLY_GET   , bex_ent_LightColor_get            , NULL);
+        insert_property("LightGlow",              -1                              , PROP_TYPE_OBJ, PROP_ONLY_GET   , bex_ent_LightGlow_get             , NULL);
+        insert_property("Lights",                 -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_Lights_get                , bex_ent_Lights_set);
+        insert_property("MutilateFunc",           -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_MutilateFunc_get          , bex_ent_MutilateFunc_set);
+        insert_property("AttackList",             -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_AttackList_get            , bex_ent_AttackList_set);
+        insert_property("Reflection",             ENT_FLT_REFLECTION              , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Transparency",           ENT_FLT_TRANSPARENCY            , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("DeepColor",              ENT_VEC_DEEP_COLOR              , PROP_TYPE_VEC, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Color",                  ENT_VEC_COLOR                   , PROP_TYPE_VEC, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Solid",                  ENT_INT_SOLID                   , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("SlidingSurface",         ENT_VEC_SLIDING_SURFACE         , PROP_TYPE_VEC, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("AddBayPoint",            ENT_VEC_ADD_BAY_POINT           , PROP_TYPE_VEC, PROP_ONLY_SET   , NULL                              , NULL);
+        insert_property("LastBayNumAnims",        ENT_INT_LAST_BAY_NUM_ANIMS      , PROP_TYPE_INT, PROP_ONLY_SET   , NULL                              , NULL);
+        insert_property("LastBayAngAnims",        ENT_FLT_LAST_BAY_ANG_ANIMS      , PROP_TYPE_FLT, PROP_ONLY_SET   , NULL                              , NULL);
+        insert_property("InvertedRoute",          ENT_INT_INVERTED_ROUTE          , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Dist2Floor",             ENT_FLT_DIST2_FLOOR             , PROP_TYPE_FLT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("BlockingPropensity",     ENT_FLT_BLOCKING_PROPENSITY     , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("RangeDefenceCapable",    ENT_INT_RANGE_DEFENCE_CAPABLE   , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("ActiveEnemy",            ENT_STR_ACTIVE_ENEMY            , PROP_TYPE_STR, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("InvRight",               ENT_STR_INV_RIGHT               , PROP_TYPE_STR, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("InvLeft",                ENT_STR_INV_LEFT                , PROP_TYPE_STR, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("InvLeft2",               ENT_STR_INV_LEFT2               , PROP_TYPE_STR, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("InvRightBack",           ENT_STR_INV_RIGHT_BACK          , PROP_TYPE_STR, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("InvLeftBack",            ENT_STR_INV_LEFT_BACK           , PROP_TYPE_STR, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("InCombat",               ENT_INT_IN_COMBAT               , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("DefenceNeeded",          ENT_INT_DEFENCE_NEEDED          , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("MeshName",               ENT_STR_MESH_NAME               , PROP_TYPE_STR, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("PersonNodeName",         ENT_STR_PERSON_NODE_NAME        , PROP_TYPE_STR, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("PersonName",             ENT_STR_PERSON_NAME             , PROP_TYPE_STR, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("ObjectName",             ENT_STR_OBJECT_NAME             , PROP_TYPE_STR, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("YGravity",               ENT_FLT_Y_GRAVITY               , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Friction",               ENT_FLT_FRICTION                , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Friction2",              ENT_FLT_FRICTION2               , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("PPS",                    ENT_FLT_P_P_S                   , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("DeathTime",              ENT_FLT_DEATH_TIME              , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("FollowFactor",           ENT_FLT_FOLLOW_FACTOR           , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("NormalVelocity",         ENT_FLT_NORMAL_VELOCITY         , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("RandomVelocity",         ENT_FLT_RANDOM_VELOCITY         , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("RandomVelocity_V",       ENT_FLT_RANDOM_VELOCITY_V       , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Time2Live",              ENT_FLT_TIME2_LIVE              , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Time2Live_V",            ENT_FLT_TIME2_LIVE_V            , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("ObjCTest",               ENT_INT_OBJ_C_TEST              , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Static",                 0                               , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_Static_get                , bex_ent_Static_set);
+        insert_property("Object",                 ENT_INT_OBJECT                  , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Person",                 4                               , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_Person_get                , bex_ent_Person_set);
+        insert_property("Weapon",                 10                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_Weapon_get                , bex_ent_Weapon_set);
+        insert_property("Actor",                  11                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_Actor_get                 , bex_ent_Actor_set);
+        insert_property("Arrow",                  12                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_Arrow_get                 , bex_ent_Arrow_set);
+        insert_property("RAttackMin",             -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_RAttackMin_get            , bex_ent_RAttackMin_set);
+        insert_property("RAttackMax",             -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_RAttackMax_get            , bex_ent_RAttackMax_set);
+        insert_property("ActionAreaMin",          -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_ActionAreaMin_get         , bex_ent_ActionAreaMin_set);
+        insert_property("ActionAreaMax",          -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_ActionAreaMax_get         , bex_ent_ActionAreaMax_set);
+        insert_property("FireParticleType",       ENT_STR_FIRE_PARTICLE_TYPE      , PROP_TYPE_STR, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("ParticleType",           ENT_STR_PARTICLE_TYPE           , PROP_TYPE_STR, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("ExclusionGroup",         ENT_INT_EXCLUSION_GROUP         , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("TPos",                   ENT_VEC_T_POS                   , PROP_TYPE_VEC, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("TAng",                   ENT_VEC_T_ANG                   , PROP_TYPE_VEC, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("TType",                  ENT_INT_T_TYPE                  , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("SType",                  ENT_INT_S_TYPE                  , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("PViewType",              ENT_INT_P_VIEW_TYPE             , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("ETarget",                ENT_STR_E_TARGET                , PROP_TYPE_STR, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("ESource",                ENT_STR_E_SOURCE                , PROP_TYPE_STR, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Dist",                   ENT_FLT_DIST                    , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Returns",                ENT_INT_RETURNS                 , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("EarthQuake",             ENT_INT_EARTH_QUAKE             , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("EarthQuakeFactor",       ENT_FLT_EARTH_QUAKE_FACTOR      , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("ChangeNodeFunc",         -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_ChangeNodeFunc_get        , bex_ent_ChangeNodeFunc_set);
+        insert_property("CombatGroup",            ENT_STR_COMBAT_GROUP            , PROP_TYPE_STR, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Heard",                  ENT_INT_HEARD                   , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Seen",                   ENT_INT_SEEN                    , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("LastTimeSeen",           ENT_FLT_LAST_TIME_SEEN          , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Radius",                 ENT_FLT_RADIUS                  , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Cone",                   ENT_FLT_CONE                    , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Height",                 ENT_FLT_HEIGHT                  , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("HitShieldFunc",          -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_HitShieldFunc_get         , bex_ent_HitShieldFunc_set);
+        insert_property("Alpha",                  ENT_FLT_ALPHA                   , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("SelfIlum",               ENT_FLT_SELF_ILUM               , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Texture",                ENT_INT_TEXTURE                 , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("TextureName",            ENT_STR_TEXTURE_NAME            , PROP_TYPE_STR, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("BlendMode",              ENT_STR_BLEND_MODE              , PROP_TYPE_STR, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Frame",                  ENT_FLT_FRAME                   , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("RasterMode",             ENT_STR_RASTER_MODE             , PROP_TYPE_STR, PROP_ONLY_SET   , NULL                              , NULL);
+        insert_property("RasterModeZ",            ENT_STR_RASTER_MODE_Z           , PROP_TYPE_STR, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("RasterModeAlpha",        ENT_STR_RASTER_MODE_ALPHA       , PROP_TYPE_STR, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("MutilationsMask",        ENT_INT_MUTILATIONS_MASK        , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("ExclusionMask",          ENT_INT_EXCLUSION_MASK          , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Zoom",                   ENT_FLT_ZOOM                    , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("SelfLight",              ENT_FLT_SELF_LIGHT              , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("ContinuousDamage",       ENT_INT_CONTINUOUS_DAMAGE       , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("TrailMode",              ENT_INT_TRAIL_MODE              , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("WeaponMode",             ENT_INT_WEAPON_MODE             , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("StaticWeaponMode",       ENT_INT_STATIC_WEAPON_MODE      , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("LastSound",              ENT_STR_LAST_SOUND              , PROP_TYPE_STR, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("LastSoundPosition",      ENT_VEC_LAST_SOUND_POSITION     , PROP_TYPE_VEC, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("ZoomS",                  ENT_FLT_ZOOM_S                  , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("ZoomT",                  ENT_FLT_ZOOM_T                  , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("OriginS",                ENT_FLT_ORIGIN_S                , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("OriginT",                ENT_FLT_ORIGIN_T                , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+/* FIXME two "Angle" properties */
+        insert_property("Angle",                  ENT_FLT_ANGLE_2                 , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("FixedTarget",            ENT_INT_FIXED_TARGET            , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("InternalState",          -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_InternalState_get         , bex_ent_InternalState_set);
+        insert_property("Accuracy",               ENT_FLT_ACCURACY                , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("AimOffTarget",           ENT_FLT_AIM_OFF_TARGET          , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("AimVector",              ENT_VEC_AIM_VECTOR              , PROP_TYPE_VEC, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("LastAttackTime",         ENT_FLT_LAST_ATTACK_TIME        , PROP_TYPE_FLT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("InWorld",                ENT_INT_IN_WORLD                , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("RangeActive",            ENT_INT_RANGE_ACTIVE            , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("MeleeActive",            ENT_INT_MELEE_ACTIVE            , PROP_TYPE_INT, PROP_ONLY_GET   , NULL                              , NULL);
+        insert_property("OnStepFunc",             -1                              , PROP_TYPE_OBJ, PROP_GET_AND_SET, bex_ent_OnStepFunc_get            , bex_ent_OnStepFunc_set);
+        insert_property("Reflects",               ENT_INT_REFLECTS                , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+        insert_property("Frozen",                 ENT_INT_FROZEN                  , PROP_TYPE_INT, PROP_GET_AND_SET, NULL                              , NULL);
+}
+
+// TODO implement
+// address: 0x10010208
+PyObject *bex_ent_doc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x1001021b
+PyObject *bex_ent_Data_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010230
+PyObject *bex_ent_TimerFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010278
+PyObject *bex_ent_HitFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100102c0
+PyObject *bex_ent_InflictHitFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010308
+PyObject *bex_ent_HitShieldFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010350
+PyObject *bex_ent_DamageFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010398
+PyObject *bex_ent_StickFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100103e0
+PyObject *bex_ent_FrameFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010428
+PyObject *bex_ent_HearFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010470
+PyObject *bex_ent_SeeFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100104b8
+PyObject *bex_ent_UseFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010500
+PyObject *bex_ent_ChangeNodeFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010548
+PyObject *bex_ent_TouchFluidFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010590
+PyObject *bex_ent_EnterPrimaryAAFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100105d8
+PyObject *bex_ent_EnterSecondaryAAFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010620
+PyObject *bex_ent_EnterCloseFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010668
+PyObject *bex_ent_EnterLargeFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100106b0
+PyObject *bex_ent_AnmEndedFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100106f8
+PyObject *bex_ent_DelayNoSeenFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010740
+PyObject *bex_ent_RouteEndedFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010788
+PyObject *bex_ent_ImHurtFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100107d0
+PyObject *bex_ent_ImDeadFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010818
+PyObject *bex_ent_EnemyDeadFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010860
+PyObject *bex_ent_NoAllowedAreaFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100108a8
+PyObject *bex_ent_EnemyNoAllowedAreaFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100108f0
+PyObject *bex_ent_CharSeeingEnemyFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010938
+PyObject *bex_ent_AnmTranFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010980
+PyObject *bex_ent_NewComboFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100109c8
+PyObject *bex_ent_BigFallFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010a10
+PyObject *bex_ent_AttackFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010a58
+PyObject *bex_ent_ToggleCombatFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010aa0
+PyObject *bex_ent_TakeFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010ae8
+PyObject *bex_ent_ThrowFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010b30
+PyObject *bex_ent_MutilateFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010b78
+PyObject *bex_ent_AttackList_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010bd6
+PyObject *bex_ent_OnHitFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010c1e
+PyObject *bex_ent_OnStopFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010c66
+PyObject *bex_ent_OnStepFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010cae
+PyObject *bex_ent_OnAnimationEndFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010cf6
+PyObject *bex_ent_OnPathNodeFunc_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010d3e
+PyObject *bex_ent_RAttackMin_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010d90
+PyObject *bex_ent_RAttackMax_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010de2
+PyObject *bex_ent_ActionAreaMin_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010e34
+PyObject *bex_ent_ActionAreaMax_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010e86
+PyObject *bex_ent_Arrow_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010ed8
+PyObject *bex_ent_Static_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010f2a
+PyObject *bex_ent_Actor_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010f7c
+PyObject *bex_ent_Person_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10010fce
+PyObject *bex_ent_Weapon_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10011020
+PyObject *bex_ent_Orientation_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10011122
+PyObject *bex_ent_SubscribedLists_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100111fc
+PyObject *bex_ent_FiresIntensity_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100112db
+PyObject *bex_ent_LightIntensity_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100113ba
+PyObject *bex_ent_LightPrecission_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10011499
+PyObject *bex_ent_LightColor_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100115fa
+PyObject *bex_ent_LightGlow_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x100116d4
+int bex_ent_Static_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x1001174e
+int bex_ent_Actor_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x100117c8
+int bex_ent_Person_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10011842
+int bex_ent_Weapon_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x100118bc
+int bex_ent_Arrow_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10011936
+int bex_ent_Data_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x100119b1
+int bex_ent_FiresIntensity_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10011a7e
+int bex_ent_Lights_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10011ced
+PyObject *bex_ent_Lights_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+// TODO implement
+// address: 0x10011f3b
+int bex_ent_RAttackMin_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10011fbe
+int bex_ent_RAttackMax_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012041
+int bex_ent_ActionAreaMin_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x100120c4
+int bex_ent_ActionAreaMax_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012147
+int bex_ent_Orientation_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x100121ee
+int bex_ent_TimerFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x1001226d
+int bex_ent_HitFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012304
+int bex_ent_InflictHitFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x1001239b
+int bex_ent_HitShieldFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x1001241a
+int bex_ent_DamageFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012499
+int bex_ent_StickFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012518
+int bex_ent_FrameFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012597
+int bex_ent_HearFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012616
+int bex_ent_SeeFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x100126ad
+int bex_ent_UseFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x1001272c
+int bex_ent_ChangeNodeFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x100127ab
+int bex_ent_TouchFluidFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x1001282a
+int bex_ent_EnterPrimaryAAFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x100128a9
+int bex_ent_EnterSecondaryAAFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012928
+int bex_ent_EnterCloseFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x100129a7
+int bex_ent_EnterLargeFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012a26
+int bex_ent_AnmEndedFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012abd
+int bex_ent_DelayNoSeenFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012b3c
+int bex_ent_RouteEndedFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012bbb
+int bex_ent_ImHurtFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012c3a
+int bex_ent_ImDeadFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012cb9
+int bex_ent_EnemyDeadFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012d38
+int bex_ent_NoAllowedAreaFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012db7
+int bex_ent_EnemyNoAllowedAreaFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012e36
+int bex_ent_CharSeeingEnemyFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012eb5
+int bex_ent_AnmTranFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012f34
+int bex_ent_NewComboFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10012fb3
+int bex_ent_BigFallFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10013032
+int bex_ent_AttackFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x100130b1
+int bex_ent_ToggleCombatFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10013130
+int bex_ent_TakeFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x100131af
+int bex_ent_ThrowFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x1001322e
+int bex_ent_MutilateFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x100132c5
+int bex_ent_AttackList_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10013340
+int bex_ent_OnHitFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x100133bf
+int bex_ent_OnStopFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x1001343e
+int bex_ent_OnStepFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x100134bd
+int bex_ent_OnAnimationEndFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x10013554
+int bex_ent_OnPathNodeFunc_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x100135d3
+int bex_ent_InternalState_set(PyObject *self, char *attr_name, PyObject *value) {
+        return -1;
+}
+
+// TODO implement
+// address: 0x1001364e
+PyObject *bex_ent_InternalState_get(PyObject *self, char *attr_name) {
+        return NULL;
+}
+
+
+// address: 0x100136bc
+void init_entity() {
+        init_entity_type();
+}
+
 
 // address: 0x100136c6
 void init_entity_type() {
@@ -6305,10 +7385,144 @@ int bld_py_entity_print(PyObject *self, FILE *file, int flags)
         return 0;
 }
 
-// TODO implement
+
 // address: 0x100137fe
 PyObject *bld_py_entity_getattr(PyObject *self, char *attr_name)
 {
+        int prop_index, data_type, code;
+        static PyObject * (*get_prop_func)(PyObject *self, char *attr_name);
+        int int_value;
+        double double_value;
+        const char *str_value;
+        double x, y, z;
+        PyObject *tuple, *xObj, *yObj, *zObj;
+
+        prop_index = find_property(property_kinds, attr_name);
+        if (prop_index == -1) {
+                return Py_FindMethod(entity_methods, self, attr_name);
+        }
+
+        if (
+                property_kinds[prop_index].flags == PROP_ONLY_GET ||
+                property_kinds[prop_index].flags == PROP_GET_AND_SET
+        ) {
+                if (property_kinds[prop_index].data_type == PROP_TYPE_OBJ ) {
+                        get_prop_func = property_kinds[prop_index].get_func;
+                        return get_prop_func(self, attr_name);
+                }
+
+                data_type = property_kinds[prop_index].data_type;
+                if ((data_type - 1) > 3) {
+                        return NULL;
+                }
+                switch(data_type) {
+                        case PROP_TYPE_INT:
+                                code = GetEntityIntProperty(
+                                        ((bld_py_entity_t *)self)->name,
+                                        property_kinds[prop_index].kind, 0,
+                                        &int_value
+                                );
+                                if (code != 1) {
+                                        if (code != -2) {
+                                                PyErr_SetString(
+                                                    PyExc_AttributeError,
+                                                    attr_name
+                                                );
+                                        } else {
+                                                char buffer[512];
+                                                sprintf(
+                                                    buffer, "Unsupported %s",
+                                                    attr_name
+                                                );
+                                                PyErr_SetString(
+                                                    PyExc_AttributeError, buffer
+                                                );
+                                        }
+                                        return NULL;
+                                }
+                                return PyInt_FromLong(int_value);
+
+                        case PROP_TYPE_FLT:
+                                code = GetEntityFloatProperty(
+                                        ((bld_py_entity_t *)self)->name,
+                                        property_kinds[prop_index].kind, 0,
+                                        &double_value
+                                );
+                                if (code != 1) {
+                                        if (code != -2) {
+                                                PyErr_SetString(
+                                                    PyExc_AttributeError,
+                                                    attr_name
+                                                );
+                                        } else {
+                                                char buffer[512];
+                                                sprintf(
+                                                    buffer, "Unsupported %s",
+                                                    attr_name
+                                                );
+                                                PyErr_SetString(
+                                                    PyExc_AttributeError, buffer
+                                                );
+                                        }
+                                        return NULL;
+                                }
+                                return PyFloat_FromDouble(double_value);
+
+                        case PROP_TYPE_STR:
+                                code = GetEntityStringProperty(
+                                        ((bld_py_entity_t *)self)->name,
+                                        property_kinds[prop_index].kind, 0,
+                                        &str_value
+                                );
+                                if (code != 1) {
+                                        if (code != -2) {
+                                                PyErr_SetString(PyExc_AttributeError, attr_name);
+                                        } else {
+                                                char buffer[512];
+                                                sprintf(buffer, "Unsupported %s", attr_name);
+                                                PyErr_SetString(PyExc_AttributeError, buffer);
+                                        }
+                                        return NULL;
+                                }
+                                if (str_value == NULL) {
+                                        if (Py_None)
+                                                Py_INCREF(Py_None);
+                                        return Py_None;
+                                } else {
+                                        return PyString_FromString(str_value);
+                                }
+
+                        case PROP_TYPE_VEC:
+                                code = GetEntityVectorProperty(
+                                        ((bld_py_entity_t *)self)->name,
+                                        property_kinds[prop_index].kind, 0,
+                                        &x, &y, &z
+                                );
+                                if (code != 1) {
+                                        if (code != -2) {
+                                                PyErr_SetString(PyExc_AttributeError, attr_name);
+                                        } else {
+                                                char buffer[512];
+                                                sprintf(buffer, "Unsupported %s", attr_name);
+                                                PyErr_SetString(PyExc_AttributeError, buffer);
+                                        }
+                                        return NULL;
+                                } else {
+                                        tuple = PyTuple_New(3);
+
+                                        xObj = PyFloat_FromDouble(x);
+                                        yObj = PyFloat_FromDouble(y);
+                                        zObj = PyFloat_FromDouble(z);
+
+                                        PyTuple_SetItem(tuple, 0, xObj);
+                                        PyTuple_SetItem(tuple, 1, yObj);
+                                        PyTuple_SetItem(tuple, 2, zObj);
+
+                                        return tuple;
+                                }
+                }
+        }
+
         return Py_FindMethod(entity_methods, self, attr_name);
 }
 
@@ -6316,7 +7530,147 @@ PyObject *bld_py_entity_getattr(PyObject *self, char *attr_name)
 // address: 0x10013c54
 int bld_py_entity_setattr(PyObject *self, char *attr_name, PyObject *value)
 {
-        return 0;
+        int prop_index, data_type, code;
+        static int (*set_prop_func)(PyObject *self, char *attr_name, PyObject *value);
+        const char *name;
+        int int_value;
+        double double_value;
+        const char *str_value;
+        double x, y, z;
+        char buffer[512];
+
+        if (value == NULL) {
+                PyErr_SetString(
+                        PyExc_AttributeError, "can't delete entity attributes"
+                );
+                return -1;
+        }
+
+        prop_index = find_property(property_kinds, attr_name);
+        if (
+                prop_index != -1 &&
+                (property_kinds[prop_index].flags == PROP_ONLY_SET ||
+                 property_kinds[prop_index].flags == PROP_GET_AND_SET
+                )
+        ) {
+L49:
+                if (property_kinds[prop_index].data_type == PROP_TYPE_OBJ) {
+                        set_prop_func = property_kinds[prop_index].set_func;
+                        return (*set_prop_func)(self, attr_name, value);
+                }
+
+                data_type = property_kinds[prop_index].data_type;
+
+                switch(data_type) {
+                        case PROP_TYPE_INT:
+                                if (!PyArg_Parse(value, "i", &int_value)) {
+                                        PyErr_SetString(
+                                                PyExc_AttributeError,
+                                                "Invalid Param."
+                                        );
+                                        return -1;
+                                }
+
+                                code = SetEntityIntProperty(
+                                        ((bld_py_entity_t *)self)->name,
+                                        property_kinds[prop_index].kind, 0,
+                                        int_value
+                                );
+                                if (code != 1) {
+                                        PyErr_SetString(
+                                                PyExc_AttributeError,
+                                                "Invalid Param."
+                                        );
+                                        return -1;
+                                }
+
+                                return 0;
+
+                        case PROP_TYPE_FLT:
+                                if (!PyArg_Parse(value, "d", &double_value)) {
+                                        PyErr_SetString(
+                                                PyExc_AttributeError,
+                                                "Invalid Param."
+                                        );
+                                        return -1;
+                                }
+
+                                code = SetEntityFloatProperty(
+                                        ((bld_py_entity_t *)self)->name,
+                                        property_kinds[prop_index].kind, 0,
+                                        double_value
+                                );
+                                if (code != 1) {
+                                        PyErr_SetString(
+                                                PyExc_AttributeError,
+                                                "Invalid Param."
+                                        );
+                                        return -1;
+                                }
+
+                                return 0;
+
+                        case PROP_TYPE_STR:
+                                if (!PyArg_Parse(value, "s", &str_value)) {
+                                        PyErr_SetString(
+                                                PyExc_AttributeError,
+                                                "Invalid Param."
+                                        );
+                                        return -1;
+                                }
+
+                                code = SetEntityStringProperty(
+                                        ((bld_py_entity_t *)self)->name,
+                                        property_kinds[prop_index].kind, 0,
+                                        str_value
+                                );
+                                if (code != 1) {
+                                        PyErr_SetString(
+                                                PyExc_AttributeError,
+                                                "Invalid Param."
+                                        );
+                                        return -1;
+                                }
+
+                                return 0;
+
+                        case PROP_TYPE_VEC:
+                                if (!PyArg_Parse(value, "(ddd)", &x, &y, &z)) {
+                                        PyErr_SetString(
+                                                PyExc_AttributeError,
+                                                "Invalid Param."
+                                        );
+                                        return -1;
+                                }
+
+                                code = SetEntityVectorProperty(
+                                        ((bld_py_entity_t *)self)->name,
+                                        property_kinds[prop_index].kind, 0,
+                                        x, y, z
+                                );
+                                if (code != 1) {
+                                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                                        return -1;
+                                }
+
+                                return 0;
+                }
+
+        }
+
+        code = GetEntityStringProperty(
+                ((bld_py_entity_t *)self)->name, ENT_STR_NAME, 0,
+                &name
+        );
+        if (code != 1) {
+                sprintf(buffer, "Not implemented: %s", attr_name);
+        } else {
+                sprintf(buffer, "Not implemented: Attribute %s    Entity: %s", attr_name, name);
+        }
+
+        PyErr_SetString(PyExc_AttributeError, buffer);
+
+        return -1;
 }
 
 
@@ -6835,5 +8189,55 @@ PyObject *bld_py_trail_getattr(PyObject *self, char *attr_name)
 int bld_py_trail_setattr(PyObject *self, char *attr_name, PyObject *value)
 {
         return 0;
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// TODO implement
+// address: 0x100190d7
+int insert_property(
+        const char *name, int property_kind, int data_type, int flags,
+        PyObject *(*get_func)(PyObject *, char *),
+        int (*set_func)(PyObject *, char *, PyObject *)
+) {
+        property_kinds[num_property_kinds].name = strdup(name);
+        property_kinds[num_property_kinds].kind = property_kind;
+        property_kinds[num_property_kinds].data_type = data_type;
+        property_kinds[num_property_kinds].flags = flags;
+        property_kinds[num_property_kinds].get_func = get_func;
+        property_kinds[num_property_kinds].set_func = set_func;
+        num_property_kinds++;
+// TODO implement properly
+        return 0;
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// TODO implement
+// address: 0x10019563
+int find_property(property_info_t *properties, const char *name) {
+        int i;
+        static int need_init_properties = TRUE;
+
+        if (need_init_properties)
+                init_entity_properties();
+
+        need_init_properties = FALSE;
+
+        for( i = 0; i < num_property_kinds; i++)
+                if (!strcmp(property_kinds[i].name, name))
+                        return i;
+// TODO implement properly
+        return -1;
 }
 

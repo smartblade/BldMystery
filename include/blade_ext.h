@@ -62,6 +62,205 @@ typedef struct {
 #define CHR_FNC_ON_FIRST                  0
 
 
+#define ENT_INT_N_LIGHTS                  1
+#define ENT_INT_N_FIRES                   2
+#define ENT_INT_SEND_SECTOR_MSGS          5
+#define ENT_INT_VISIBLE                   6
+#define ENT_INT_FLICK                     7
+#define ENT_INT_PHYSIC                   13
+#define ENT_INT_CAN_USE                  16
+#define ENT_INT_INVENTORY_VISIBLE        17
+#define ENT_INT_ACTIVE                   18
+#define ENT_INT_DAMAGE                   20
+#define ENT_INT_SEND_NOTIFY              21
+#define ENT_INT_SOLID                    22
+#define ENT_INT_GOF                      23
+#define ENT_INT_GOB                      24
+#define ENT_INT_TR                       25
+#define ENT_INT_TL                       26
+#define ENT_INT_RUN                      27
+#define ENT_INT_LEVEL                    28
+#define ENT_INT_CURRENT_AREAS            29
+#define ENT_INT_BLIND                    30
+#define ENT_INT_TEXTURE                  30
+#define ENT_INT_DEAF                     31
+#define ENT_INT_TEST_HIT                 33
+#define ENT_INT_IN_COMBAT                34
+#define ENT_INT_FIXED_TARGET             35
+#define ENT_INT_EXCLUSION_GROUP          36
+#define ENT_INT_SIMPLE_SECTIONS          37
+#define ENT_INT_SNEAK                    38
+#define ENT_INT_CAST_SHADOWS             39
+#define ENT_INT_ATTACK                   40
+#define ENT_INT_BLOCK                    41
+#define ENT_INT_COMBAT_DIST_FLAG         42
+#define ENT_INT_T_TYPE                   43
+#define ENT_INT_S_TYPE                   44
+#define ENT_INT_EARTH_QUAKE              45
+#define ENT_INT_ON_FLOOR                 46
+#define ENT_INT_LAST_BAY_NUM_ANIMS       47
+#define ENT_INT_HEARD                    48
+#define ENT_INT_SEEN                     49
+#define ENT_INT_SEND_TRIGGER_SECTOR_MSGS 50
+#define ENT_INT_PARTIAL_LEVEL            51
+#define ENT_INT_IN_DESTRUCTOR_ATTACK     52
+#define ENT_INT_GLOW_TEST_Z              53
+#define ENT_INT_GLOW_SIZE_DIST           53
+#define ENT_INT_OBJ_C_TEST               54
+#define ENT_INT_RETURNS                  55
+#define ENT_INT_MUTILATIONS_MASK         56
+#define ENT_INT_GO_TO_JOGGING            57
+#define ENT_INT_EXCLUSION_MASK           58
+#define ENT_INT_P_VIEW_TYPE              59
+#define ENT_INT_CONTINUOUS_BLOCK         60
+#define ENT_INT_DEFENCE_NEEDED           61
+#define ENT_INT_AIM                      62
+#define ENT_INT_WILL_CRASH_IN_FLOOR      64
+#define ENT_INT_INVERTED_ROUTE           65
+#define ENT_INT_GO_TO_SNEAKING           66
+#define ENT_INT_CONTINUOUS_DAMAGE        67
+#define ENT_INT_WILL1AA_TO2AA            68
+#define ENT_INT_IN_WORLD                 71
+#define ENT_INT_IN_ATTACK                72
+#define ENT_INT_RANGE_ACTIVE             73
+#define ENT_INT_MELEE_ACTIVE             74
+#define ENT_INT_TRAIL_MODE               75
+#define ENT_INT_WEAPON_MODE              76
+#define ENT_INT_STATIC_WEAPON_MODE       77
+#define ENT_INT_IS_STOPPED               78
+#define ENT_INT_PLAYING                  79
+#define ENT_INT_REFLECTS                 80
+#define ENT_INT_FROZEN                   81
+#define ENT_INT_OBJECT                   82
+#define ENT_INT_RANGE_DEFENCE_CAPABLE    83
+
+#define ENT_FLT_SCALE                     0
+#define ENT_FLT_INTENSITY                 5
+#define ENT_FLT_PRECISSION                6
+#define ENT_FLT_INTENSITY2                7
+#define ENT_FLT_FLICK_PERIOD              8
+#define ENT_FLT_ANGLE                     9
+#define ENT_FLT_LIFE                     10
+#define ENT_FLT_ENERGY                   11
+#define ENT_FLT_DAMAGE_RADIUS            12
+#define ENT_FLT_T2_FALL                  13
+#define ENT_FLT_LOOK_AT_TIME             16
+#define ENT_FLT_MASS                     17
+#define ENT_FLT_PITCH                    20
+#define ENT_FLT_ANM_POS                  21
+#define ENT_FLT_DISPLACEMENT             22
+#define ENT_FLT_REFLECTION               24
+#define ENT_FLT_TRANSPARENCY             25
+#define ENT_FLT_F_P_S                    26
+#define ENT_FLT_TRAIL_LIFE_TIME          27
+#define ENT_FLT_MIN_DISTANCE             28
+#define ENT_FLT_MAX_DISTANCE             29
+#define ENT_FLT_VOLUME                   30
+#define ENT_FLT_BASE_VOLUME              31
+#define ENT_FLT_SOUND_SCALE              32
+#define ENT_FLT_MIN_SECTOR_LENGTH        33
+#define ENT_FLT_MAX_AMPLITUDE            34
+#define ENT_FLT_WUEA                     35
+#define ENT_FLT_ROUTE_TYPE               36
+#define ENT_FLT_ANG_VEL                  37
+#define ENT_FLT_SIZE_FACTOR              38
+#define ENT_FLT_BAY_ROUTE                39
+#define ENT_FLT_ASTAR_STATE              40
+#define ENT_FLT_DIST2_FLOOR              41
+#define ENT_FLT_Y_GRAVITY                42
+#define ENT_FLT_FRICTION                 43
+#define ENT_FLT_FRICTION2                44
+#define ENT_FLT_P_P_S                    45
+#define ENT_FLT_DEATH_TIME               46
+#define ENT_FLT_RANDOM_VELOCITY          47
+#define ENT_FLT_RANDOM_VELOCITY_V        48
+#define ENT_FLT_TIME2_LIVE               49
+#define ENT_FLT_TIME2_LIVE_V             50
+#define ENT_FLT_DIST                     51
+#define ENT_FLT_EARTH_QUAKE_FACTOR       52
+#define ENT_FLT_BLOCKING_PROPENSITY      53
+#define ENT_FLT_RADIUS                   54
+#define ENT_FLT_HEIGHT                   55
+#define ENT_FLT_CONE                     56
+#define ENT_FLT_ALPHA                    57
+#define ENT_FLT_LAST_BAY_ANG_ANIMS       58
+#define ENT_FLT_LAST_TIME_SEEN           59
+#define ENT_FLT_ZOOM_S                   60
+#define ENT_FLT_ZOOM_T                   61
+#define ENT_FLT_ORIGIN_S                 62
+#define ENT_FLT_ORIGIN_T                 63
+#define ENT_FLT_ANGLE_2                  67
+#define ENT_FLT_FRAME                    68
+#define ENT_FLT_ZOOM                     69
+#define ENT_FLT_NORMAL_VELOCITY          70
+#define ENT_FLT_FOLLOW_FACTOR            71
+#define ENT_FLT_SELF_ILUM                72
+#define ENT_FLT_ACCURACY                 73
+#define ENT_FLT_AIM_OFF_TARGET           74
+#define ENT_FLT_LAST_ATTACK_TIME         75
+#define ENT_FLT_DISPLACEMENT_LIMIT       76
+#define ENT_FLT_V_D                      77
+#define ENT_FLT_A_D                      78
+#define ENT_FLT_SELF_LIGHT               79
+
+#define ENT_STR_NAME                      0
+#define ENT_STR_KIND                      1
+#define ENT_STR_PREV_ANIM_NAME            2
+#define ENT_STR_MATERIAL                  5
+#define ENT_STR_ANIMATION                 6
+#define ENT_STR_ANIM_FULL_NAME            9
+#define ENT_STR_ANIM_NAME                10
+#define ENT_STR_INVENTORY_SELECTION      11
+#define ENT_STR_CHAR_TYPE                12
+#define ENT_STR_CHAR_TYPE_EXT            13
+#define ENT_STR_PARENT                   14
+#define ENT_STR_INV_RIGHT                15
+#define ENT_STR_INV_LEFT                 16
+#define ENT_STR_GLOW_TEXTURE             17
+#define ENT_STR_OBJECT_NAME              18
+#define ENT_STR_PERSON_NAME              19
+#define ENT_STR_PERSON_NODE_NAME         20
+#define ENT_STR_INV_RIGHT_BACK           22
+#define ENT_STR_INV_LEFT_BACK            23
+#define ENT_STR_ACTIVE_ENEMY             24
+#define ENT_STR_E_TARGET                 25
+#define ENT_STR_E_SOURCE                 26
+#define ENT_STR_COMBAT_GROUP             27
+#define ENT_STR_BLEND_MODE               28
+#define ENT_STR_INV_LEFT2                29
+#define ENT_STR_RASTER_MODE              31
+#define ENT_STR_TEXTURE_NAME             32
+#define ENT_STR_RASTER_MODE_Z            33
+#define ENT_STR_RASTER_MODE_ALPHA        34
+#define ENT_STR_LAST_SOUND               35
+#define ENT_STR_FIRE_PARTICLE_TYPE       36
+#define ENT_STR_PARTICLE_TYPE            37
+#define ENT_STR_MESH_NAME                39
+
+#define ENT_VEC_POSITION                  0
+#define ENT_VEC_COLOR                     4
+#define ENT_VEC_VELOCITY                  5
+#define ENT_VEC_GRAVITY                   6
+#define ENT_VEC_ANGULAR_VELOCITY          7
+#define ENT_VEC_SLIDING_SURFACE           9
+#define ENT_VEC_TRAIL_COLOR              11
+#define ENT_VEC_ADD_BAY_POINT            12
+#define ENT_VEC_TARGET                   13
+#define ENT_VEC_OUTER_GLOW_COLOR         14
+#define ENT_VEC_INNER_GLOW_COLOR         15
+#define ENT_VEC_CORE_GLOW_COLOR          16
+#define ENT_VEC_INIT_POS                 17
+#define ENT_VEC_ENEMY_LAST_SEEN          18
+#define ENT_VEC_D1                       20
+#define ENT_VEC_D2                       21
+#define ENT_VEC_D                        22
+#define ENT_VEC_T_ANG                    24
+#define ENT_VEC_T_POS                    25
+#define ENT_VEC_DEEP_COLOR               26
+#define ENT_VEC_LAST_SOUND_POSITION      27
+#define ENT_VEC_AIM_VECTOR               28
+
+
 LIB_EXP int WorldToMBW(const char *world);
 LIB_EXP int SoundSystemActive(void);
 LIB_EXP int SetSSFrecuency(int frequency);
@@ -113,6 +312,30 @@ LIB_EXP const char *GetEntityName(entity_t *entity);
 LIB_EXP int GetEntityStringProperty(
         const char *entity_name, int property_kind, int unknown,
         const char **value
+);
+LIB_EXP int SetEntityStringProperty(
+        const char *entity_name, int property_kind, int unknown,
+        const char *value
+);
+LIB_EXP int GetEntityFloatProperty(
+        const char *entity_name, int property_kind, int unknown, double *value
+);
+LIB_EXP int SetEntityFloatProperty(
+        const char *entity_name, int property_kind, int unknown, double value
+);
+LIB_EXP int GetEntityIntProperty(
+        const char *entity_name, int property_kind, int unknown, int *value
+);
+LIB_EXP int SetEntityIntProperty(
+        const char *entity_name, int property_kind, int unknown, int value
+);
+LIB_EXP int GetEntityVectorProperty(
+        const char *entity_name, int property_kind, int unknown,
+        double *x, double *y, double *z
+);
+LIB_EXP int SetEntityVectorProperty(
+        const char *entity_name, int property_kind, int unknown,
+        double x, double y, double z
 );
 LIB_EXP int SetSound(const char *entity_name, const char *sound);
 LIB_EXP int GetInventoryIntProperty(
