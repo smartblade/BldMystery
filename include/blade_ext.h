@@ -260,6 +260,16 @@ typedef struct {
 #define ENT_VEC_LAST_SOUND_POSITION      27
 #define ENT_VEC_AIM_VECTOR               28
 
+#define ENT_FNC_HIT_FUNC                  1
+#define ENT_FNC_IM_DEAD_FUNC             15
+#define ENT_FNC_TAKE_FUNC                23
+#define ENT_FNC_THROW_FUNC               24
+#define ENT_FNC_NEW_COMBO_FUNC           25
+#define ENT_FNC_MUTILATE_FUNC            29
+#define ENT_FNC_DAMAGE_FUNC              30
+#define ENT_FNC_ATTACK_FUNC              37
+#define ENT_FNC_BIG_FALL_FUNC            38
+
 
 LIB_EXP int WorldToMBW(const char *world);
 LIB_EXP int SoundSystemActive(void);
@@ -337,7 +347,17 @@ LIB_EXP int SetEntityVectorProperty(
         const char *entity_name, int property_kind, int unknown,
         double x, double y, double z
 );
+LIB_EXP int SetEntityFuncProperty(
+        const char *entity_name, int property_kind, int unknown, PyObject *func
+);
+LIB_EXP int Freeze(const char *entity_name);
+LIB_EXP int EntityAddAnmEventFunc(
+        const char *entity_name, const char *anm_event, PyObject *func
+);
+LIB_EXP void EntityRemoveFromWorld(const char *entity_name);
 LIB_EXP int SetSound(const char *entity_name, const char *sound);
+LIB_EXP PyObject *GetEntityData(const char *entity_name);
+LIB_EXP int SetEntityData(const char *entity_name, PyObject *data);
 LIB_EXP int GetInventoryIntProperty(
         const char *name, int property_kind, int *value
 );
