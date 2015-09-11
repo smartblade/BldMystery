@@ -14,6 +14,14 @@
 
 #endif
 
+#ifdef GetObject
+/* Undefine WinGDI macro GetObject to avoid collision with
+ * Blade.GetObject
+ */
+#undef GetObject
+
+#endif
+
 
 typedef struct _entity_t entity_t;
 typedef struct _material_t material_t;
@@ -358,6 +366,13 @@ LIB_EXP void EntityRemoveFromWorld(const char *entity_name);
 LIB_EXP int SetSound(const char *entity_name, const char *sound);
 LIB_EXP PyObject *GetEntityData(const char *entity_name);
 LIB_EXP int SetEntityData(const char *entity_name, PyObject *data);
+LIB_EXP const char *GetObject(const char *inv_name, int obj_type, int index);
+LIB_EXP const char *GetObjectByName(
+        const char *inv_name, int obj_type, const char *obj_name
+);
+LIB_EXP const char *GetSelectedObject(const char *inv_name, int obj_type);
+LIB_EXP const char *GetActiveShield(const char *inv_name);
+LIB_EXP const char *GetActiveWeapon(const char *inv_name);
 LIB_EXP int GetInventoryIntProperty(
         const char *name, int property_kind, int *value
 );
