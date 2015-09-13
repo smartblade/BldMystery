@@ -2946,6 +2946,54 @@ PyObject *bex_nMaterials(PyObject *self, PyObject *args) {
 ................................................................................
 */
 
+// address: 0x1000426f
+PyObject *bex_AddTriggerSector(PyObject *self, PyObject *args) {
+        const char *trigger_sector_name, *group_name;
+        double floor_height, roof_height;
+        PyObject *pointsList, *tuple, *xObj, *yObj;
+        point_2d_t *points;
+        int num_points, i, code;
+
+        if (!PyArg_ParseTuple(
+                args, "ssddO", &trigger_sector_name, &group_name, &floor_height,
+                &roof_height, &pointsList
+        ))
+                return NULL;
+
+        if (!PyList_Check(pointsList))
+                return Py_BuildValue("i", 0);
+
+
+        num_points = PyList_Size(pointsList);
+        points = malloc(num_points * sizeof(point_2d_t));
+        if (points == NULL)
+                return Py_BuildValue("i", 0);
+
+        for (i = 0; i < num_points; i++) {
+                tuple = PyList_GetItem(pointsList, i);
+                if (!PyTuple_Check(tuple)) {
+                        free(points);
+                        PyErr_SetString(PyExc_RuntimeError, "Wrong number of arguments in tuple.");
+                        return NULL;
+                }
+
+                xObj = PyTuple_GetItem(tuple, 0);
+                yObj = PyTuple_GetItem(tuple, 1);
+
+                points[i].x = PyFloat_AsDouble(xObj);
+                points[i].y = PyFloat_AsDouble(yObj);
+        }
+
+        code = CreateTriggerSector(
+                trigger_sector_name, group_name, floor_height, roof_height,
+                num_points, points
+        );
+
+        free(points);
+
+        return Py_BuildValue("i", code);
+}
+
 
 // address: 0x10004425
 PyObject *bex_SetTriggerSectorFunc(PyObject *self, PyObject *args) {
@@ -3224,12 +3272,38 @@ PyObject *bex_SetGhostSectorSound(PyObject *self, PyObject *args) {
         );
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x10004b76
+PyObject *bex_GetSound(PyObject *self, PyObject *args) {
+        int soundID;
+        bld_py_sound_t *sound_obj;
+        const char *sound_name;
+
+        if (!PyArg_ParseTuple(args, "s", &sound_name)) {
+                PyErr_SetString(
+                        PyExc_RuntimeError,
+                        "Wrong number of arguments in tuple."
+                );
+                return NULL;
+        }
+
+        soundID = GetSound(sound_name);
+        if (soundID == 0) {
+                Py_INCREF(Py_None);
+                return Py_None;
+        }
+
+        sound_obj = PyObject_NEW(bld_py_sound_t, &soundTypeObject);
+        if (sound_obj == NULL) {
+                Py_INCREF(Py_None);
+                return Py_None;
+        }
+
+        sound_obj->soundID = soundID;
+        sound_obj->soundDev = GetSoundDevInstace();
+
+        return (PyObject *)sound_obj;
+}
 
 
 // address: 0x10004c41
@@ -3353,6 +3427,23 @@ PyObject *bex_GetAfterFrameFuncName(PyObject *self, PyObject *args) {
         return Py_None;
 }
 
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x100050b2
+PyObject *bex_SetCallCheck(PyObject *self, PyObject *args) {
+        int check;
+
+        if (!PyArg_ParseTuple(args, "i", &check))
+                return NULL;
+
+        return Py_BuildValue("i", SetCallCheck(check));
+}
 
 /*
 ................................................................................
@@ -4547,19 +4638,7 @@ PyObject* bex_GetMaterial(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_GetSound(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_AddGhostSector(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_AddTriggerSector(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_SetCallCheck(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -5999,6 +6078,133 @@ PyObject *create_entity_decal(
 ................................................................................
 */
 
+// address: 0x1000a60c
+PyObject *bex_ent_AddCameraEvent(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int frame;
+        PyObject *func;
+
+        if (!PyArg_ParseTuple(args, "iO", &frame, &func))
+                return NULL;
+
+        code = AddCameraEvent(entity->name, frame, func);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x1000a6ee
+PyObject *bex_ent_SubscribeToList(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        const char *list;
+
+        if (!PyArg_ParseTuple(args, "s", &list))
+                return NULL;
+
+        code = SubscribeEntityToList(entity->name, list);
+        if (code == 0)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x1000b9a6
+PyObject *bex_ent_Link(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        bld_py_entity_t *child;
+        void *unknown;
+
+        if (!PyArg_ParseTuple(args, "O", &child))
+                return NULL;
+
+        if (child == NULL)
+                code = -1;
+        else
+                code = Link(entity->name, child->name, &unknown);
+
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x1000ba38
+PyObject *bex_ent_LinkAnchors(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        const char *entity_anchor, *child_anchor;
+        bld_py_entity_t *child;
+        void *unknown;
+
+        if (PyArg_ParseTuple(args, "sOs", &entity_anchor, &child, &child_anchor)) {
+                if (child == NULL)
+                        code = -1;
+                else
+                        code = LinkAnchors(
+                                entity->name, entity_anchor, child->name,
+                                child_anchor, &unknown
+                        );
+        }
+
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+// address: 0x1000c660
+PyObject *bex_ent_GraspPos(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        const char *grasp;
+        double x, y, z;
+        PyObject *tuple, *xObj, *yObj, *zObj;
+
+        if (!PyArg_ParseTuple(args, "s", &grasp))
+                return NULL;
+
+        code = GraspPos(entity->name, grasp, &x, &y, &z);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+
+        tuple = PyTuple_New(3);
+        xObj = PyFloat_FromDouble(x);
+        yObj = PyFloat_FromDouble(y);
+        zObj = PyFloat_FromDouble(z);
+        PyTuple_SetItem(tuple, 0, xObj);
+        PyTuple_SetItem(tuple, 1, yObj);
+        PyTuple_SetItem(tuple, 2, zObj);
+
+        return tuple;
+}
+
 
 // address: 0x1000c785
 PyObject *bex_ent_Freeze(PyObject *self, PyObject *args) {
@@ -6022,6 +6228,33 @@ PyObject *bex_ent_Freeze(PyObject *self, PyObject *args) {
 ................................................................................
 */
 
+// address: 0x1000cc55
+PyObject *bex_ent_AddAnimSound(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        const char *animation;
+        bld_py_sound_t *sound;
+        double time;
+
+        if (!PyArg_ParseTuple(args, "sOd", &animation, &sound, &time)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return NULL;
+        }
+
+        if (sound->ob_type != &soundTypeObject) {
+                PyErr_SetString(
+                        PyExc_AttributeError, "Invalid Param: Not a sound."
+                );
+                return NULL;
+        }
+
+        code = AddSoundAnim(entity->name, animation, time, sound->soundID);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
 
 // address: 0x1000cd17
 PyObject *bex_ent_AddAnmEventFunc(PyObject *self, PyObject *args) {
@@ -6036,6 +6269,113 @@ PyObject *bex_ent_AddAnmEventFunc(PyObject *self, PyObject *args) {
         }
 
         code = EntityAddAnmEventFunc(entity->name, anm_event, func);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x1000ce8b
+PyObject *bex_ent_AddEventSound(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        const char *event_name;
+        bld_py_sound_t *sound;
+
+        if (!PyArg_ParseTuple(args, "sO", &event_name, &sound)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return NULL;
+        }
+
+        if (sound->ob_type != &soundTypeObject) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param: Not a sound.");
+                return NULL;
+        }
+
+        code = AddSoundEvent(entity->name, event_name, sound->soundID);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x1000d280
+PyObject *bex_ent_TurnOn(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        code = TurnOnActor(entity->name);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+// address: 0x1000d93f
+PyObject *bex_ent_SetMaxCamera(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        char *cam_file_name;
+        int i_unknown, num_frames;
+
+        if (!PyArg_ParseTuple(args, "sii", &cam_file_name, &i_unknown, &num_frames))
+                return NULL;
+
+        code = CameraSetMaxCamera(entity->name, cam_file_name, i_unknown, num_frames);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x1000dc02
+PyObject *bex_ent_RotateRel(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        double x, y, z, x_dir, y_dir, z_dir, angle;
+        int i_unknown = 1;
+
+        if (!PyArg_ParseTuple(
+                args, "ddddddd|i", &x, &y, &z, &x_dir, &y_dir, &z_dir, &angle,
+                &i_unknown
+        ))
+                return NULL;
+
+        code = EntityRotateRel(
+                entity->name, x, y, z, x_dir, y_dir, z_dir, angle, i_unknown
+        );
         if (code != 1)
                 return Py_BuildValue("i", 0);
         else
@@ -6110,6 +6450,46 @@ PyObject *bex_ent_SetSound(PyObject *self, PyObject *args) {
             return Py_BuildValue("i", 1);
 }
 
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x1000e257
+PyObject *bex_ent_PlaySound(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int i_unknown = -1;
+        int code;
+
+        if (!PyArg_ParseTuple(args, "|i", &i_unknown))
+                return NULL;
+
+        code = PlayEntitySound(entity->name, i_unknown);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x1000e577
+PyObject *bex_ent_SetOnFloor(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", SetOnFloor(entity->name));
+}
+
 //TODO implement entity methods
 
 PyObject* bex_ent_GetParticleEntity(PyObject* self, PyObject* args) {
@@ -6133,10 +6513,6 @@ PyObject* bex_ent_ImpulseC(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_ent_Fly(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ent_SubscribeToList(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -6260,10 +6636,6 @@ PyObject* bex_ent_AddWatchAnim(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_ent_GraspPos(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_ent_UnFreeze(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -6312,14 +6684,6 @@ PyObject* bex_ent_ClearAnmEventFuncs(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_ent_AddAnimSound(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ent_AddEventSound(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_ent_SlideTo(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -6333,10 +6697,6 @@ PyObject* bex_ent_StartPath(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_ent_GoToPath(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ent_TurnOn(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -6361,10 +6721,6 @@ PyObject* bex_ent_Rotate(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_ent_RotateAbs(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ent_RotateRel(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -6397,10 +6753,6 @@ PyObject* bex_ent_Use(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_ent_SetObjectSound(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ent_PlaySound(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -6452,15 +6804,7 @@ PyObject* bex_ent_Unlink(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_ent_Link(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_ent_LinkToNode(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ent_LinkAnchors(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -6473,10 +6817,6 @@ PyObject* bex_ent_GetNChildren(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_ent_GetChild(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ent_AddCameraEvent(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -6512,10 +6852,6 @@ PyObject* bex_ent_CameraStartPath(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_ent_SetMaxCamera(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_ent_Cut(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -6525,10 +6861,6 @@ PyObject* bex_ent_DoAction(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_ent_DoActionWI(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ent_SetOnFloor(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -6875,10 +7207,19 @@ PyObject *bex_ent_TimerFunc_get(PyObject *self, char *attr_name) {
         return NULL;
 }
 
-// TODO implement
 // address: 0x10010278
 PyObject *bex_ent_HitFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(entity->name, ENT_FNC_HIT_FUNC, 0, &func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
 // TODO implement
@@ -7133,16 +7474,35 @@ PyObject *bex_ent_Arrow_get(PyObject *self, char *attr_name) {
         return NULL;
 }
 
-// TODO implement
 // address: 0x10010ed8
 PyObject *bex_ent_Static_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int is_static;
+
+        code = GetEntityIntProperty(entity->name, ENT_INT_STATIC, 0, &is_static);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return PyInt_FromLong(is_static);
 }
 
-// TODO implement
+
 // address: 0x10010f2a
 PyObject *bex_ent_Actor_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int is_actor;
+
+        code = GetEntityIntProperty(entity->name, ENT_INT_ACTOR, 0, &is_actor);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return PyInt_FromLong(is_actor);
 }
 
 // TODO implement
@@ -7151,10 +7511,19 @@ PyObject *bex_ent_Person_get(PyObject *self, char *attr_name) {
         return NULL;
 }
 
-// TODO implement
 // address: 0x10010fce
 PyObject *bex_ent_Weapon_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int is_weapon;
+
+        code = GetEntityIntProperty(entity->name, ENT_INT_WEAPON, 0, &is_weapon);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return PyInt_FromLong(is_weapon);
 }
 
 // TODO implement
@@ -7199,28 +7568,87 @@ PyObject *bex_ent_LightGlow_get(PyObject *self, char *attr_name) {
         return NULL;
 }
 
-// TODO implement
+
 // address: 0x100116d4
 int bex_ent_Static_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int is_static;
+
+        if (!PyArg_Parse(value, "i", &is_static)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = ChangeEntityStatic(entity->name, is_static);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Error changing mode.");
+                return -1;
+        }
+
+        return 0;
 }
 
-// TODO implement
 // address: 0x1001174e
 int bex_ent_Actor_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int is_actor;
+        int code;
+
+        if (!PyArg_Parse(value, "i", &is_actor)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = ChangeEntityActor(entity->name, is_actor);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Error changing mode.");
+                return -1;
+        }
+
+        return 0;
 }
 
-// TODO implement
+
 // address: 0x100117c8
 int bex_ent_Person_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int is_person;
+        int code;
+
+        if (!PyArg_Parse(value, "i", &is_person)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = ChangeEntityPerson(entity->name, is_person);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Error changing mode.");
+                return -1;
+        }
+
+        return 0;
 }
 
-// TODO implement
+
 // address: 0x10011842
 int bex_ent_Weapon_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int is_weapon;
+        int code;
+
+        if (!PyArg_Parse(value, "i", &is_weapon)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = ChangeEntityWeapon(entity->name, is_weapon);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Error changing mode.");
+                return -1;
+        }
+
+        return 0;
 }
 
 // TODO implement
@@ -7250,16 +7678,121 @@ int bex_ent_Data_set(PyObject *self, char *attr_name, PyObject *value) {
         return 0;
 }
 
-// TODO implement
 // address: 0x100119b1
 int bex_ent_FiresIntensity_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int i, num_fires;
+        double item;
+        PyObject *itemObj;
+        int code;
+
+        if (!PyList_Check(value)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param, not a list.");
+                return -1;
+        }
+
+        num_fires = PyList_Size(value);
+
+        for (i = 0; i < num_fires; i++) {
+                itemObj = PyList_GetItem(value, i);
+                item = PyFloat_AsDouble(itemObj);
+
+                code = SetEntityFloatProperty(
+                        entity->name, ENT_FLT_FIRES_INTENSITY, i, item
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+        }
+
+        return 0;
 }
 
-// TODO implement
 // address: 0x10011a7e
 int bex_ent_Lights_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int i, num_lights;
+        PyObject *tuple, *intensityObj, *precisionObj, *colourObj;
+        PyObject *rObj, *gObj, *bObj;
+        double intensity, precision, r, g, b;
+        int code;
+
+        if (!PyList_Check(value)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param, not a list.");
+                return -1;
+        }
+
+        num_lights = PyList_Size(value);
+
+        for (i = 0; i < num_lights; i++) {
+                tuple = PyList_GetItem(value, i);
+
+                if (!PyTuple_Check(tuple)) {
+                        PyErr_SetString(
+                                PyExc_AttributeError,
+                                "Invalid Param, not a tuple."
+                        );
+                        return -1;
+                }
+
+                intensityObj = PyTuple_GetItem(tuple, 0);
+                precisionObj = PyTuple_GetItem(tuple, 1);
+                colourObj = PyTuple_GetItem(tuple, 2);
+
+                if (!PyTuple_Check(colourObj)) {
+                        PyErr_SetString(
+                                PyExc_AttributeError,
+                                "Invalid Param, color not a tuple."
+                        );
+                        return -1;
+                }
+
+                rObj = PyTuple_GetItem(colourObj, 0);
+                gObj = PyTuple_GetItem(colourObj, 1);
+                bObj = PyTuple_GetItem(colourObj, 2);
+
+                intensity = PyFloat_AsDouble(intensityObj);
+                precision = PyFloat_AsDouble(precisionObj);
+                r = PyFloat_AsDouble(rObj);
+                g = PyFloat_AsDouble(gObj);
+                b = PyFloat_AsDouble(bObj);
+
+                code = SetEntityFloatProperty(
+                        entity->name, ENT_FLT_LIGHTS_INTENSITY, i, intensity
+                );
+                if (code != 1) {
+                        PyErr_SetString(
+                                PyExc_AttributeError,
+                                "Invalid Param - Intensity."
+                        );
+                        return -1;
+                }
+
+                code = SetEntityFloatProperty(
+                        entity->name, ENT_FLT_LIGHTS_PRECISION, i, precision
+                );
+                if (code != 1) {
+                        PyErr_SetString(
+                                PyExc_AttributeError,
+                                "Invalid Param - Precission."
+                        );
+                        return -1;
+                }
+
+                code = SetEntityVectorProperty(
+                        entity->name, ENT_VEC_LIGHTS_COLOUR, i, r, g, b
+                );
+                if (code != 1) {
+                        PyErr_SetString(
+                                PyExc_AttributeError,
+                                "Invalid Param - Color."
+                        );
+                        return -1;
+                }
+        }
+
+        return 0;
 }
 
 // TODO implement
@@ -7292,16 +7825,48 @@ int bex_ent_ActionAreaMax_set(PyObject *self, char *attr_name, PyObject *value) 
         return -1;
 }
 
-// TODO implement
 // address: 0x10012147
 int bex_ent_Orientation_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        double quat1, quat2, quat3, quat4;
+        int code;
+
+
+        if (!PyArg_Parse(value, "(dddd)", &quat1, &quat2, &quat3, &quat4)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityQuatProperty(
+                entity->name, ENT_QUAT_ORIENTATION, 0, quat1, quat2, quat3,
+                quat4
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
-// TODO implement
 // address: 0x100121ee
 int bex_ent_TimerFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(entity->name, ENT_FNC_TIMER_FUNC, 0, func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
 
@@ -7334,10 +7899,26 @@ int bex_ent_InflictHitFunc_set(PyObject *self, char *attr_name, PyObject *value)
         return -1;
 }
 
-// TODO implement
 // address: 0x1001239b
 int bex_ent_HitShieldFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(
+                entity->name, ENT_FNC_HIT_SHIELD_FUNC, 0, func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
 
@@ -7385,10 +7966,25 @@ int bex_ent_SeeFunc_set(PyObject *self, char *attr_name, PyObject *value) {
         return -1;
 }
 
-// TODO implement
+
 // address: 0x100126ad
 int bex_ent_UseFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(entity->name, ENT_FNC_USE_FUNC, 0, func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
 // TODO implement
@@ -7669,10 +8265,30 @@ int bex_ent_OnStepFunc_set(PyObject *self, char *attr_name, PyObject *value) {
         return -1;
 }
 
-// TODO implement
+
 // address: 0x100134bd
 int bex_ent_OnAnimationEndFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        if (!PyCallable_Check(func))
+            func = NULL;
+
+        code = SetEntityFuncProperty(
+                entity->name, ENT_FNC_ON_ANIMATION_END_FUNC, 0, func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
 // TODO implement
@@ -8885,13 +9501,41 @@ PyObject *create_sound(const char *file_name, const char *sound_name) {
 
 //TODO implement sound methods
 
-PyObject* bex_snd_Play(PyObject* self, PyObject* args) {
-        return NULL;
+
+// address: 0x10017fb3
+PyObject *bex_snd_Play(PyObject *self, PyObject *args) {
+        bld_py_sound_t *sound = (bld_py_sound_t *)self;
+        int i_unknown = 0;
+        int code;
+        double x, y, z;
+
+        if (!PyArg_ParseTuple(args, "ddd|i", &x, &y, &z, &i_unknown))
+                return NULL;
+
+        code = PlaySoundM(sound->soundID, x, y, z, i_unknown);
+        if (code != 0)
+                return Py_BuildValue("i", 1);
+        else
+                return Py_BuildValue("i", 0);
 }
 
-PyObject* bex_snd_PlayStereo(PyObject* self, PyObject* args) {
-        return NULL;
+
+// address: 0x10018046
+PyObject *bex_snd_PlayStereo(PyObject *self, PyObject *args) {
+        bld_py_sound_t *sound = (bld_py_sound_t *)self;
+        int i_unknown = 0;
+        int code;
+
+        if (!PyArg_ParseTuple(args, "|i", &i_unknown))
+                return NULL;
+
+        code = PlaySoundStereo(sound->soundID, i_unknown);
+        if (code != 0)
+                return Py_BuildValue("i", 1);
+        else
+                return Py_BuildValue("i", 0);
 }
+
 
 // address: 0x100180b5
 PyObject *bex_snd_SetPitchVar(PyObject *self, PyObject *args) {

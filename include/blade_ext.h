@@ -31,6 +31,11 @@ typedef struct {
         int executed;
 } combo_t;
 
+typedef struct {
+        double x;
+        double y;
+} point_2d_t;
+
 
 #define CHR_FLT_TURN_SPEED                0
 #define CHR_FLT_DIE_FALL                  1
@@ -70,11 +75,14 @@ typedef struct {
 #define CHR_FNC_ON_FIRST                  0
 
 
+#define ENT_INT_STATIC                    0
 #define ENT_INT_N_LIGHTS                  1
 #define ENT_INT_N_FIRES                   2
 #define ENT_INT_SEND_SECTOR_MSGS          5
 #define ENT_INT_VISIBLE                   6
 #define ENT_INT_FLICK                     7
+#define ENT_INT_WEAPON                   10
+#define ENT_INT_ACTOR                    11
 #define ENT_INT_PHYSIC                   13
 #define ENT_INT_CAN_USE                  16
 #define ENT_INT_INVENTORY_VISIBLE        17
@@ -143,6 +151,9 @@ typedef struct {
 #define ENT_INT_RANGE_DEFENCE_CAPABLE    83
 
 #define ENT_FLT_SCALE                     0
+#define ENT_FLT_FIRES_INTENSITY           1
+#define ENT_FLT_LIGHTS_INTENSITY          2
+#define ENT_FLT_LIGHTS_PRECISION          3
 #define ENT_FLT_INTENSITY                 5
 #define ENT_FLT_PRECISSION                6
 #define ENT_FLT_INTENSITY2                7
@@ -246,6 +257,7 @@ typedef struct {
 #define ENT_STR_MESH_NAME                39
 
 #define ENT_VEC_POSITION                  0
+#define ENT_VEC_LIGHTS_COLOUR             2
 #define ENT_VEC_COLOR                     4
 #define ENT_VEC_VELOCITY                  5
 #define ENT_VEC_GRAVITY                   6
@@ -269,14 +281,20 @@ typedef struct {
 #define ENT_VEC_AIM_VECTOR               28
 
 #define ENT_FNC_HIT_FUNC                  1
+#define ENT_FNC_TIMER_FUNC                2
+#define ENT_FNC_ON_ANIMATION_END_FUNC     5
+#define ENT_FNC_USE_FUNC                  8
 #define ENT_FNC_IM_DEAD_FUNC             15
 #define ENT_FNC_TAKE_FUNC                23
 #define ENT_FNC_THROW_FUNC               24
 #define ENT_FNC_NEW_COMBO_FUNC           25
 #define ENT_FNC_MUTILATE_FUNC            29
 #define ENT_FNC_DAMAGE_FUNC              30
+#define ENT_FNC_HIT_SHIELD_FUNC          32
 #define ENT_FNC_ATTACK_FUNC              37
 #define ENT_FNC_BIG_FALL_FUNC            38
+
+#define ENT_QUAT_ORIENTATION              1
 
 
 LIB_EXP int WorldToMBW(const char *world);
@@ -328,43 +346,84 @@ LIB_EXP entity_t *CreateEntityDecal(
 );
 LIB_EXP const char *GetEntityName(entity_t *entity);
 LIB_EXP int GetEntityStringProperty(
-        const char *entity_name, int property_kind, int unknown,
+        const char *entity_name, int property_kind, int index,
         const char **value
 );
 LIB_EXP int SetEntityStringProperty(
-        const char *entity_name, int property_kind, int unknown,
+        const char *entity_name, int property_kind, int index,
         const char *value
 );
 LIB_EXP int GetEntityFloatProperty(
-        const char *entity_name, int property_kind, int unknown, double *value
+        const char *entity_name, int property_kind, int index, double *value
 );
 LIB_EXP int SetEntityFloatProperty(
-        const char *entity_name, int property_kind, int unknown, double value
+        const char *entity_name, int property_kind, int index, double value
 );
 LIB_EXP int GetEntityIntProperty(
-        const char *entity_name, int property_kind, int unknown, int *value
+        const char *entity_name, int property_kind, int index, int *value
 );
 LIB_EXP int SetEntityIntProperty(
-        const char *entity_name, int property_kind, int unknown, int value
+        const char *entity_name, int property_kind, int index, int value
 );
 LIB_EXP int GetEntityVectorProperty(
-        const char *entity_name, int property_kind, int unknown,
+        const char *entity_name, int property_kind, int index,
         double *x, double *y, double *z
 );
 LIB_EXP int SetEntityVectorProperty(
-        const char *entity_name, int property_kind, int unknown,
+        const char *entity_name, int property_kind, int index,
         double x, double y, double z
 );
+LIB_EXP int GetEntityFuncProperty(
+        const char *entity_name, int property_kind, int index, PyObject **func
+);
 LIB_EXP int SetEntityFuncProperty(
-        const char *entity_name, int property_kind, int unknown, PyObject *func
+        const char *entity_name, int property_kind, int index, PyObject *func
+);
+LIB_EXP int SetEntityQuatProperty(
+        const char *entity_name, int property_kind, int index, double quat1,
+        double quat2, double quat3, double quat4
+);
+LIB_EXP int AddCameraEvent(const char *entity_name, int frame, PyObject *func);
+LIB_EXP int SubscribeEntityToList(const char *entity_name, const char *list);
+LIB_EXP int Link(
+        const char *entity_name, const char *child_entity_name, void *unknown
+);
+LIB_EXP int LinkAnchors(
+        const char *entity_name, const char *entity_anchor_name,
+        const char *child_name, const char *child_anchor_name, void *unknown
+);
+LIB_EXP int GraspPos(
+        const char *entity_name, const char *grasp, double *x, double *y,
+        double *z
 );
 LIB_EXP int Freeze(const char *entity_name);
+LIB_EXP int AddSoundAnim(
+        const char *entity_name, const char *anm_event, double time, int soundID
+);
 LIB_EXP int EntityAddAnmEventFunc(
         const char *entity_name, const char *anm_event, PyObject *func
 );
+LIB_EXP int AddSoundEvent(
+        const char *entity_name, const char *event, int soundID
+);
+LIB_EXP int TurnOnActor(const char *entity_name);
+LIB_EXP int CameraSetMaxCamera(
+        const char *entity_name, const char *cam_file_name, int i_unknown,
+        int num_frames
+);
+LIB_EXP int EntityRotateRel(
+        const char *entity_name, double x, double y, double z, double x_dir,
+        double y_dir, double z_dir, double angle, int i_unknown
+);
 LIB_EXP void EntityRemoveFromWorld(const char *entity_name);
 LIB_EXP int SetSound(const char *entity_name, const char *sound);
+LIB_EXP int PlayEntitySound(const char *entity_name, int i_unknown);
+LIB_EXP int SetOnFloor(const char *entity_name);
 LIB_EXP PyObject *GetEntityData(const char *entity_name);
+LIB_EXP int ChangeEntityStatic(const char *entity_name, int is_static);
+LIB_EXP int ChangeEntityActor(const char *entity_name, int is_actor);
+LIB_EXP int ChangeEntityPerson(const char *entity_name, int is_person);
+LIB_EXP int ChangeEntityWeapon(const char *entity_name, int is_weapon);
 LIB_EXP int SetEntityData(const char *entity_name, PyObject *data);
 LIB_EXP const char *GetObject(const char *inv_name, int obj_type, int index);
 LIB_EXP const char *GetObjectByName(
@@ -380,23 +439,25 @@ LIB_EXP int SetListenerMode(int mode, double x, double y, double z);
 LIB_EXP int GetSectorByIndex(int index);
 LIB_EXP int GetSectorByPosition(double x, double y, double z);
 LIB_EXP int GetSectorFuncProperty(
-        int sectorID, int property_kind, int unknown, PyObject **value
+        int sectorID, int property_kind, int index, PyObject **value
 );
 LIB_EXP int GetCharByName(const char *name, const char *short_name);
 LIB_EXP int SetAnmDefaultPrefix(int charID, const char *prefix);
 LIB_EXP int SetNCDSpheres(int charID, int NCDSpheres);
 LIB_EXP int SetCDSphere(int charID, int index, double h, double r);
-LIB_EXP int GetCharIntProperty(int charID, int property_kind, int unknown, int *value);
-LIB_EXP int SetCharIntProperty(int charID, int property_kind, int unknown, int value);
-LIB_EXP int GetCharFloatProperty(int charID, int property_kind, int unknown, double *value);
-LIB_EXP int SetCharFloatProperty(int charID, int property_kind, int unknown, double value);
-LIB_EXP int GetCharStringProperty(int charID, int property_kind, int unknown, const char **value);
-LIB_EXP int SetCharStringProperty(int charID, int property_kind, int unknown, const char *value);
-LIB_EXP int SetCharFuncProperty(int charID, int property_kind, int unknown, PyObject *func);
+LIB_EXP int GetCharIntProperty(int charID, int property_kind, int index, int *value);
+LIB_EXP int SetCharIntProperty(int charID, int property_kind, int index, int value);
+LIB_EXP int GetCharFloatProperty(int charID, int property_kind, int index, double *value);
+LIB_EXP int SetCharFloatProperty(int charID, int property_kind, int index, double value);
+LIB_EXP int GetCharStringProperty(int charID, int property_kind, int index, const char **value);
+LIB_EXP int SetCharStringProperty(int charID, int property_kind, int index, const char *value);
+LIB_EXP int SetCharFuncProperty(int charID, int property_kind, int index, PyObject *func);
 LIB_EXP int GetTrailByName(const char *name);
 LIB_EXP int CreateSound(const char *file_name, const char *sound_name);
 LIB_EXP void DestroySound(int soundID);
 LIB_EXP int GetSoundDevInstace(void);
+LIB_EXP int PlaySoundM(int soundID, double x, double y, double z, int i_unknown);
+LIB_EXP int PlaySoundStereo(int soundID, int i_unknown);
 LIB_EXP void SetSoundPitchVar(
         int soundID, int i_unknown, float f_unknown1, float f_unknown2,
         float f_unknown3, float f_unknown4
@@ -511,6 +572,11 @@ LIB_EXP int SetDefaultMass(const char *entity_kind, double mass);
 LIB_EXP int SetDefaultMaterial(const char *entity_kind, const char *material);
 LIB_EXP material_t *CreateMaterial(const char *name);
 LIB_EXP int nMaterials(void);
+LIB_EXP int CreateTriggerSector(
+	const char *trigger_sector_name, const char *group_name,
+	double floor_height, double roof_height, int num_points,
+	point_2d_t *points
+);
 LIB_EXP int SetTriggerSectorFunc(
         const char *trigger_sector_name, const char *func_type, PyObject *func
 );
@@ -544,6 +610,7 @@ LIB_EXP int SetGhostSectorSound(
         double base_volume, double min_dist, double max_dist, double v_max_dist,
         double scale
 );
+LIB_EXP int GetSound(const char *sound_name);
 LIB_EXP int SetGhostSectorGroupSound(
         const char *group_name, const char *file_name, double volume,
         double base_volume, double min_dist, double max_dist, double unknown,
@@ -560,6 +627,7 @@ LIB_EXP int SetAfterFrameFunc(const char *name, PyObject *function);
 LIB_EXP PyObject *GetAfterFrameFunc(const char *name);
 LIB_EXP int GetnAfterFrameFuncs(void);
 LIB_EXP const char *GetAfterFrameFuncName(int index);
+LIB_EXP int SetCallCheck(int check);
 LIB_EXP int CloseDebugChannel(const char *channel_name);
 LIB_EXP int OpenDebugChannel(const char *channel_name);
 LIB_EXP int SetAppMode(const char *mode);
