@@ -6078,6 +6078,36 @@ PyObject *create_entity_decal(
 ................................................................................
 */
 
+// address: 0x1000a349
+PyObject *bex_ent_SeverLimb(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        entity_t *limb_entity;
+        bld_py_entity_t *limb_entity_obj;
+        int limb;
+
+        if(!PyArg_ParseTuple(args, "i", &limb))
+                return Py_BuildValue("i", 0);
+
+        limb_entity = SeverLimb(entity->name, limb);
+        if (limb_entity == NULL)
+                return Py_BuildValue("i", 0);
+
+
+        limb_entity_obj = PyObject_NEW(bld_py_entity_t, &entityTypeObject);
+        if (limb_entity_obj == NULL)
+                return Py_BuildValue("i", 0);
+
+        limb_entity_obj->name = strdup(GetEntityName(limb_entity));
+        return (PyObject *)limb_entity_obj;
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 // address: 0x1000a60c
 PyObject *bex_ent_AddCameraEvent(PyObject *self, PyObject *args) {
         bld_py_entity_t *entity = (bld_py_entity_t *)self;
@@ -6116,6 +6146,59 @@ PyObject *bex_ent_SubscribeToList(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", 0);
         else
                 return Py_BuildValue("i", 1);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x1000a95f
+PyObject *bex_ent_Rel2AbsVector(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        const char *unknown;
+        double x_rel, y_rel, z_rel, x_abs, y_abs, z_abs;
+        PyObject *tuple, *xObj, *yObj, *zObj;
+
+        if (!PyArg_ParseTuple(args, "ddd", &x_rel, &y_rel, &z_rel)) {
+                PyErr_Clear();
+
+                if (!PyArg_ParseTuple(args, "ddds", &x_rel, &y_rel, &z_rel, &unknown))
+                        return Py_BuildValue("i", 0);
+
+                Rel2AbsVectorN(
+                        entity->name, x_rel, y_rel, z_rel, unknown, &x_abs,
+                        &y_abs, &z_abs
+                );
+
+                tuple = PyTuple_New(3);
+
+                xObj = PyFloat_FromDouble(x_abs);
+                yObj = PyFloat_FromDouble(y_abs);
+                zObj = PyFloat_FromDouble(z_abs);
+
+                PyTuple_SET_ITEM(tuple, 0, xObj);
+                PyTuple_SET_ITEM(tuple, 1, yObj);
+                PyTuple_SET_ITEM(tuple, 2, zObj);
+
+                return tuple;
+        }
+
+        Rel2AbsVector(entity->name, x_rel, y_rel, z_rel, &x_abs, &y_abs, &z_abs);
+
+        tuple = PyTuple_New(3);
+
+        xObj = PyFloat_FromDouble(x_abs);
+        yObj = PyFloat_FromDouble(y_abs);
+        zObj = PyFloat_FromDouble(z_abs);
+
+        PyTuple_SET_ITEM(tuple, 0, xObj);
+        PyTuple_SET_ITEM(tuple, 1, yObj);
+        PyTuple_SET_ITEM(tuple, 2, zObj);
+
+        return tuple;
 }
 
 /*
@@ -6169,6 +6252,35 @@ PyObject *bex_ent_LinkAnchors(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", 0);
         else
                 return Py_BuildValue("i", 1);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x1000bbd9
+PyObject *bex_ent_GetNChildren(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("i", GetNChildren(entity->name));
+}
+
+
+// address: 0x1000bc31
+PyObject *bex_ent_GetChild(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int index;
+
+        if (!PyArg_ParseTuple(args, "i", &index))
+                return NULL;
+
+        return Py_BuildValue("s", GetChild(entity->name, index));
 }
 
 /*
@@ -6473,6 +6585,29 @@ PyObject *bex_ent_PlaySound(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", 1);
 }
 
+
+// address: 0x1000e2cb
+PyObject *bex_ent_Stop(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        double x, y, z;
+        int code;
+
+        if (!PyArg_ParseTuple(args, "ddd", &x, &y, &z)) {
+                PyErr_Clear();
+                if (!PyArg_ParseTuple(args, ""))
+                        return NULL;
+
+                code = Stop(entity->name);
+
+        } else
+                code = StopAt(entity->name, x, y, z);
+
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
 /*
 ................................................................................
 ................................................................................
@@ -6493,10 +6628,6 @@ PyObject *bex_ent_SetOnFloor(PyObject *self, PyObject *args) {
 //TODO implement entity methods
 
 PyObject* bex_ent_GetParticleEntity(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ent_SeverLimb(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -6760,19 +6891,11 @@ PyObject* bex_ent_StopSound(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_ent_Stop(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_ent_MessageEvent(PyObject* self, PyObject* args) {
         return NULL;
 }
 
 PyObject* bex_ent_Rel2AbsPoint(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ent_Rel2AbsVector(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -6809,14 +6932,6 @@ PyObject* bex_ent_LinkToNode(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_ent_GetNodeIndex(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ent_GetNChildren(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ent_GetChild(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -7813,16 +7928,49 @@ int bex_ent_RAttackMax_set(PyObject *self, char *attr_name, PyObject *value) {
         return -1;
 }
 
-// TODO implement
+
 // address: 0x10012041
 int bex_ent_ActionAreaMin_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        double action_area_min;
+        int code;
+
+        if (!PyArg_Parse(value, "d", &action_area_min)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityIntProperty(
+                entity->name, ENT_INT_ACTION_AREA, 0, action_area_min
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Error changing mode.");
+                return -1;
+        }
+
+        return 0;
 }
 
-// TODO implement
 // address: 0x100120c4
 int bex_ent_ActionAreaMax_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        double action_area_max;
+        int code;
+
+        if (!PyArg_Parse(value, "d", &action_area_max)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityIntProperty(
+                entity->name, ENT_INT_ACTION_AREA, 1, action_area_max
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Error changing mode.");
+                return -1;
+        }
+
+        return 0;
 }
 
 // address: 0x10012147
@@ -7942,10 +8090,25 @@ int bex_ent_DamageFunc_set(PyObject *self, char *attr_name, PyObject *value) {
         return 0;
 }
 
-// TODO implement
+
 // address: 0x10012499
 int bex_ent_StickFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(entity->name, ENT_FNC_STICK_FUNC, 0, func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
 // TODO implement
@@ -7954,16 +8117,47 @@ int bex_ent_FrameFunc_set(PyObject *self, char *attr_name, PyObject *value) {
         return -1;
 }
 
-// TODO implement
 // address: 0x10012597
 int bex_ent_HearFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(entity->name, ENT_FNC_HEAR_FUNC, 0, func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
-// TODO implement
 // address: 0x10012616
 int bex_ent_SeeFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        if (!PyCallable_Check(func))
+                func = NULL;
+
+        code = SetEntityFuncProperty(entity->name, ENT_FNC_SEE_FUNC, 0, func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
 
@@ -7999,40 +8193,139 @@ int bex_ent_TouchFluidFunc_set(PyObject *self, char *attr_name, PyObject *value)
         return -1;
 }
 
-// TODO implement
+
 // address: 0x1001282a
 int bex_ent_EnterPrimaryAAFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(
+                entity->name, ENT_FNC_ENTER_PRIMARY_AA, 0, func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
-// TODO implement
+
 // address: 0x100128a9
 int bex_ent_EnterSecondaryAAFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(
+                entity->name, ENT_FNC_ENTER_SECONDARY_AA, 0, func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
-// TODO implement
+
 // address: 0x10012928
 int bex_ent_EnterCloseFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(entity->name, ENT_FNC_ENTER_CLOSE, 0, func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
-// TODO implement
+
 // address: 0x100129a7
 int bex_ent_EnterLargeFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(entity->name, ENT_FNC_ENTER_LARGE, 0, func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
-// TODO implement
+
 // address: 0x10012a26
 int bex_ent_AnmEndedFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        if (!PyCallable_Check(func))
+                func = NULL;
+
+        code = SetEntityFuncProperty(entity->name, ENT_FNC_ANM_ENDED, 0, func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
-// TODO implement
+
 // address: 0x10012abd
 int bex_ent_DelayNoSeenFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(
+                entity->name, ENT_FNC_DELAY_NO_SEEN_FUNC, 0, func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
 // TODO implement
@@ -8041,10 +8334,26 @@ int bex_ent_RouteEndedFunc_set(PyObject *self, char *attr_name, PyObject *value)
         return -1;
 }
 
-// TODO implement
 // address: 0x10012bbb
 int bex_ent_ImHurtFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if(!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(
+                entity->name, ENT_FNC_IM_HURT_FUNC, 0, func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
 
@@ -8063,36 +8372,104 @@ int bex_ent_ImDeadFunc_set(PyObject *self, char *attr_name, PyObject *value) {
                 entity->name, ENT_FNC_IM_DEAD_FUNC, 0, func
         );
         if (code != 1) {
-               PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
                 return -1;
         }
 
         return 0;
 }
 
-// TODO implement
 // address: 0x10012cb9
 int bex_ent_EnemyDeadFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(
+                entity->name, ENT_FNC_ENEMY_DEAD_FUNC, 0, func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
-// TODO implement
+
 // address: 0x10012d38
 int bex_ent_NoAllowedAreaFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(
+                entity->name, ENT_FNC_NO_ALLOWED_AREA_FUNC, 0, func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
-// TODO implement
+
 // address: 0x10012db7
 int bex_ent_EnemyNoAllowedAreaFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(
+                entity->name, ENT_FNC_ENEMY_NO_ALLOWED_AREA, 0, func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
-// TODO implement
+
 // address: 0x10012e36
 int bex_ent_CharSeeingEnemyFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(
+                entity->name, ENT_FNC_CHAR_SEEING_ENEMY, 0, func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
+
 
 // TODO implement
 // address: 0x10012eb5
@@ -8167,10 +8544,27 @@ int bex_ent_AttackFunc_set(PyObject *self, char *attr_name, PyObject *value) {
         return 0;
 }
 
-// TODO implement
+
 // address: 0x100130b1
 int bex_ent_ToggleCombatFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(
+                entity->name, ENT_FNC_TOGGLE_COMBAT, 0, func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
 
@@ -8241,10 +8635,25 @@ int bex_ent_MutilateFunc_set(PyObject *self, char *attr_name, PyObject *value) {
         return 0;
 }
 
-// TODO implement
+
 // address: 0x100132c5
 int bex_ent_AttackList_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *attack_list;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &attack_list)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetAttackList(entity->name, attack_list);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
 // TODO implement
@@ -8675,10 +9084,17 @@ PyObject* bex_inv_GetLeftBack(PyObject* self, PyObject* args) {
 }
 
 
-// TODO implement
 // address: 0x100141f1
-PyObject* bex_inv_LinkRightHand(PyObject* self, PyObject* args) {
-        return NULL;
+PyObject *bex_inv_LinkRightHand(PyObject *self, PyObject *args) {
+        bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
+        int code;
+        const char *obj_name;
+
+        code = 0;
+        if (PyArg_ParseTuple(args, "s", &obj_name))
+                code = LinkRightHand(inventory->name, obj_name);
+
+        return Py_BuildValue("i", code);
 }
 
 
@@ -8913,10 +9329,19 @@ PyObject* bex_inv_IsShieldSelected(PyObject* self, PyObject* args) {
 }
 
 
-// TODO implement
 // address: 0x10014a92
-PyObject* bex_inv_AddWeapon(PyObject* self, PyObject* args) {
-        return NULL;
+PyObject *bex_inv_AddWeapon(PyObject *self, PyObject *args) {
+        bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
+        int code;
+        int flag = 0;
+        const char *weapon_name;
+
+        code = 0;
+
+        if (PyArg_ParseTuple(args, "s|i", &weapon_name, &flag))
+                code = AddWeapon(inventory->name, flag, weapon_name);
+
+        return Py_BuildValue("i", code);
 }
 
 
@@ -9168,12 +9593,14 @@ int bld_py_inventory_print(PyObject *self, FILE *file, int flags)
 PyObject *bld_py_inventory_getattr(PyObject *self, char *attr_name)
 {
         int n_weapons, n_shields;
+        int max_weapons;
         int holding_bow, n_kind_objects;
         int code;
 
 #define INV_INT_N_WEAPONS              1
 #define INV_INT_N_SHIELDS              2
 #define INV_INT_N_KIND_OBJECTS         4
+#define INV_INT_MAX_WEAPONS            7
 #define INV_INT_HOLDING_BOW           13
 
 /*
@@ -9205,6 +9632,26 @@ PyObject *bld_py_inventory_getattr(PyObject *self, char *attr_name)
 
                 if (code != -1)
                         return PyInt_FromLong(n_shields);
+
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+
+                return NULL;
+        }
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+        if (!strcmp(attr_name, "maxWeapons")) {
+                code = GetInventoryIntProperty(
+                        ((bld_py_inventory_t *)self)->name, INV_INT_MAX_WEAPONS,
+                        &max_weapons
+                );
+
+                if (code != -1)
+                        return PyInt_FromLong(max_weapons);
 
                 PyErr_SetString(PyExc_AttributeError, attr_name);
 

@@ -81,6 +81,7 @@ typedef struct {
 #define ENT_INT_SEND_SECTOR_MSGS          5
 #define ENT_INT_VISIBLE                   6
 #define ENT_INT_FLICK                     7
+#define ENT_INT_ACTION_AREA               8
 #define ENT_INT_WEAPON                   10
 #define ENT_INT_ACTOR                    11
 #define ENT_INT_PHYSIC                   13
@@ -282,15 +283,30 @@ typedef struct {
 
 #define ENT_FNC_HIT_FUNC                  1
 #define ENT_FNC_TIMER_FUNC                2
+#define ENT_FNC_HEAR_FUNC                 3
 #define ENT_FNC_ON_ANIMATION_END_FUNC     5
 #define ENT_FNC_USE_FUNC                  8
+#define ENT_FNC_SEE_FUNC                  9
+#define ENT_FNC_ENTER_CLOSE              10
+#define ENT_FNC_ENTER_LARGE              11
+#define ENT_FNC_ANM_ENDED                12
+#define ENT_FNC_DELAY_NO_SEEN_FUNC       13
 #define ENT_FNC_IM_DEAD_FUNC             15
+#define ENT_FNC_IM_HURT_FUNC             16
+#define ENT_FNC_ENEMY_DEAD_FUNC          17
+#define ENT_FNC_NO_ALLOWED_AREA_FUNC     18
+#define ENT_FNC_ENEMY_NO_ALLOWED_AREA    19
+#define ENT_FNC_CHAR_SEEING_ENEMY        21
 #define ENT_FNC_TAKE_FUNC                23
 #define ENT_FNC_THROW_FUNC               24
 #define ENT_FNC_NEW_COMBO_FUNC           25
+#define ENT_FNC_TOGGLE_COMBAT            26
+#define ENT_FNC_STICK_FUNC               27
 #define ENT_FNC_MUTILATE_FUNC            29
 #define ENT_FNC_DAMAGE_FUNC              30
 #define ENT_FNC_HIT_SHIELD_FUNC          32
+#define ENT_FNC_ENTER_PRIMARY_AA         34
+#define ENT_FNC_ENTER_SECONDARY_AA       35
 #define ENT_FNC_ATTACK_FUNC              37
 #define ENT_FNC_BIG_FALL_FUNC            38
 
@@ -383,8 +399,17 @@ LIB_EXP int SetEntityQuatProperty(
         const char *entity_name, int property_kind, int index, double quat1,
         double quat2, double quat3, double quat4
 );
+LIB_EXP entity_t *SeverLimb(const char *entity_name, int limb);
 LIB_EXP int AddCameraEvent(const char *entity_name, int frame, PyObject *func);
 LIB_EXP int SubscribeEntityToList(const char *entity_name, const char *list);
+LIB_EXP int Rel2AbsVector(
+        const char *entity_name, double x_rel, double y_rel, double z_rel,
+        double *x_abs, double *y_abs, double *z_abs
+);
+LIB_EXP int Rel2AbsVectorN(
+        const char *entity_name, double x_rel, double y_rel, double z_rel,
+        const char *unknown, double *x_abs, double *y_abs, double *z_abs
+);
 LIB_EXP int Link(
         const char *entity_name, const char *child_entity_name, void *unknown
 );
@@ -392,6 +417,8 @@ LIB_EXP int LinkAnchors(
         const char *entity_name, const char *entity_anchor_name,
         const char *child_name, const char *child_anchor_name, void *unknown
 );
+LIB_EXP int GetNChildren(const char *entity_name);
+LIB_EXP const char *GetChild(const char *entity_name, int index);
 LIB_EXP int GraspPos(
         const char *entity_name, const char *grasp, double *x, double *y,
         double *z
@@ -418,6 +445,8 @@ LIB_EXP int EntityRotateRel(
 LIB_EXP void EntityRemoveFromWorld(const char *entity_name);
 LIB_EXP int SetSound(const char *entity_name, const char *sound);
 LIB_EXP int PlayEntitySound(const char *entity_name, int i_unknown);
+LIB_EXP int Stop(const char *entity_name);
+LIB_EXP int StopAt(const char *entity_name, double x, double y, double z);
 LIB_EXP int SetOnFloor(const char *entity_name);
 LIB_EXP PyObject *GetEntityData(const char *entity_name);
 LIB_EXP int ChangeEntityStatic(const char *entity_name, int is_static);
@@ -425,6 +454,8 @@ LIB_EXP int ChangeEntityActor(const char *entity_name, int is_actor);
 LIB_EXP int ChangeEntityPerson(const char *entity_name, int is_person);
 LIB_EXP int ChangeEntityWeapon(const char *entity_name, int is_weapon);
 LIB_EXP int SetEntityData(const char *entity_name, PyObject *data);
+LIB_EXP int SetAttackList(const char *entity_name, PyObject *attack_list);
+LIB_EXP int LinkRightHand(const char *inv_name, const char *obj_name);
 LIB_EXP const char *GetObject(const char *inv_name, int obj_type, int index);
 LIB_EXP const char *GetObjectByName(
         const char *inv_name, int obj_type, const char *obj_name
@@ -432,6 +463,7 @@ LIB_EXP const char *GetObjectByName(
 LIB_EXP const char *GetSelectedObject(const char *inv_name, int obj_type);
 LIB_EXP const char *GetActiveShield(const char *inv_name);
 LIB_EXP const char *GetActiveWeapon(const char *inv_name);
+LIB_EXP int AddWeapon(const char *inv_name, int flag, const char *weapon_name);
 LIB_EXP int GetInventoryIntProperty(
         const char *name, int property_kind, int *value
 );
