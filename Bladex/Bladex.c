@@ -635,9 +635,14 @@ static PyObject* bex_inv_LinkLeftBack(PyObject* self, PyObject* args);
 static PyObject* bex_inv_LinkBack(PyObject* self, PyObject* args);
 static PyObject* bex_inv_SetCurrentQuiver(PyObject* self, PyObject* args);
 static PyObject* bex_inv_AddObject(PyObject* self, PyObject* args);
+static PyObject* add_object(PyObject *self, PyObject *args, int obj_type);
 static PyObject* bex_inv_RemoveObject(PyObject* self, PyObject* args);
 static PyObject* bex_inv_GetObject(PyObject* self, PyObject* args);
+static PyObject* get_object(PyObject *self, PyObject *args, int obj_type);
 static PyObject* bex_inv_GetSelectedObject(PyObject* self, PyObject* args);
+static PyObject* get_selected_object(
+        PyObject *self, PyObject *args, int obj_type
+);
 static PyObject* bex_inv_CycleObjects(PyObject* self, PyObject* args);
 static PyObject* bex_inv_IsObjectSelected(PyObject* self, PyObject* args);
 static PyObject* bex_inv_GetNumberObjectsAt(PyObject* self, PyObject* args);
@@ -696,6 +701,24 @@ static int bld_py_material_setattr(PyObject *self, char *attr_name, PyObject *va
 
 static PyObject* get_sector_by_index(int index);
 static PyObject* get_sector_by_position(double x, double y, double z);
+static PyObject* bex_sec_InitBreak(PyObject* self, PyObject* args);
+static PyObject* bex_sec_DoBreak(PyObject* self, PyObject* args);
+static PyObject* bex_sec_SetSurfaceTexture(PyObject* self, PyObject* args);
+static PyObject* bex_sec_SetSurfaceTextureZoomX(PyObject* self, PyObject* args);
+static PyObject* bex_sec_SetSurfaceTextureZoomY(PyObject* self, PyObject* args);
+static PyObject* bex_sec_SetSurfaceTextureX(PyObject* self, PyObject* args);
+static PyObject* bex_sec_SetSurfaceTextureY(PyObject* self, PyObject* args);
+static PyObject* bex_sec_GetSurfaceTexture(PyObject* self, PyObject* args);
+static PyObject* bex_sec_GetSurfaceTextureZoomX(PyObject* self, PyObject* args);
+static PyObject* bex_sec_GetSurfaceTextureZoomY(PyObject* self, PyObject* args);
+static PyObject* bex_sec_GetSurfaceTextureX(PyObject* self, PyObject* args);
+static PyObject* bex_sec_GetSurfaceTextureY(PyObject* self, PyObject* args);
+static PyObject* bex_sec_SetSpecularLight(PyObject* self, PyObject* args);
+static PyObject* bex_sec_GetSpecularLight(PyObject* self, PyObject* args);
+static PyObject* bex_sec_SetSpecularShininess(PyObject* self, PyObject* args);
+static PyObject* bex_sec_GetSpecularShininess(PyObject* self, PyObject* args);
+static PyObject* bex_sec_SetSelfLight(PyObject* self, PyObject* args);
+static PyObject* bex_sec_GetSelfLight(PyObject* self, PyObject* args);
 static void init_sector_type(void);
 static void bld_py_sector_dealloc(PyObject *self);
 static int bld_py_sector_print(PyObject *self, FILE *file, int flags);
@@ -1212,6 +1235,28 @@ static PyMethodDef inventory_methods[] = {
     { "GetRightBack",                   bex_inv_GetRightBack,               METH_VARARGS, NULL },
     { "GetLeftBack",                    bex_inv_GetLeftBack,                METH_VARARGS, NULL },
     { "CarringObject",                  bex_inv_CarringObject,              METH_VARARGS, NULL },
+    { NULL,                             NULL,                               0,            NULL },
+};
+
+static PyMethodDef sector_methods[] = {
+    { "InitBreak",                      bex_sec_InitBreak,                  METH_VARARGS, NULL },
+    { "DoBreak",                        bex_sec_DoBreak,                    METH_VARARGS, NULL },
+    { "SetSurfaceTexture",              bex_sec_SetSurfaceTexture,          METH_VARARGS, NULL },
+    { "GetSurfaceTexture",              bex_sec_GetSurfaceTexture,          METH_VARARGS, NULL },
+    { "SetSurfaceTextureZoomX",         bex_sec_SetSurfaceTextureZoomX,     METH_VARARGS, NULL },
+    { "GetSurfaceTextureZoomX",         bex_sec_GetSurfaceTextureZoomX,     METH_VARARGS, NULL },
+    { "SetSurfaceTextureZoomY",         bex_sec_SetSurfaceTextureZoomY,     METH_VARARGS, NULL },
+    { "GetSurfaceTextureZoomY",         bex_sec_GetSurfaceTextureZoomY,     METH_VARARGS, NULL },
+    { "SetSurfaceTextureX",             bex_sec_SetSurfaceTextureX,         METH_VARARGS, NULL },
+    { "GetSurfaceTextureX",             bex_sec_GetSurfaceTextureX,         METH_VARARGS, NULL },
+    { "SetSurfaceTextureY",             bex_sec_SetSurfaceTextureY,         METH_VARARGS, NULL },
+    { "GetSurfaceTextureY",             bex_sec_GetSurfaceTextureY,         METH_VARARGS, NULL },
+    { "GetSpecularLight",               bex_sec_GetSpecularLight,           METH_VARARGS, NULL },
+    { "SetSpecularLight",               bex_sec_SetSpecularLight,           METH_VARARGS, NULL },
+    { "GetSpecularShininess",           bex_sec_GetSpecularShininess,       METH_VARARGS, NULL },
+    { "SetSpecularShininess",           bex_sec_SetSpecularShininess,       METH_VARARGS, NULL },
+    { "GetSelfLight",                   bex_sec_GetSelfLight,               METH_VARARGS, NULL },
+    { "SetSelfLight",                   bex_sec_SetSelfLight,               METH_VARARGS, NULL },
     { NULL,                             NULL,                               0,            NULL },
 };
 
@@ -4772,53 +4817,159 @@ PyObject *bex_char_SetAnmDefaultPrefix(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", 1);
 }
 
-// TODO implement
+
 // address: 0x1000753d
-PyObject* bex_char_AddAttack(PyObject* self, PyObject* args) {
-        return NULL;
+PyObject *bex_char_AddAttack(PyObject *self, PyObject *args) {
+        bld_py_char_t *character = (bld_py_char_t *)self;
+        const char *attack_name, *anm_name;
+        int code;
+
+        if(!PyArg_ParseTuple(args, "ss", &attack_name, &anm_name))
+                return NULL;
+
+        code = AddAttack(character->charID, attack_name, anm_name);
+        if (code == 0)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
 }
 
-// TODO implement
+
 // address: 0x100075b2
-PyObject* bex_char_AttackWindow(PyObject* self, PyObject* args) {
-        return NULL;
+PyObject *bex_char_AttackWindow(PyObject *self, PyObject *args) {
+        bld_py_char_t *character = (bld_py_char_t *)self;
+        const char *anm_name, *window_name;
+        double window1, window2;
+        int code;
+
+        if (!PyArg_ParseTuple(
+                args, "sdds", &anm_name, &window1, &window2, &window_name
+        ))
+                return NULL;
+
+        code = AttackWindow(
+                character->charID, anm_name, window1, window2, window_name
+        );
+        if (code == 0)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
 }
 
-// TODO implement
+
 // address: 0x10007643
-PyObject* bex_char_AddLevels(PyObject* self, PyObject* args) {
-        return NULL;
+PyObject *bex_char_AddLevels(PyObject *self, PyObject *args) {
+        bld_py_char_t *character = (bld_py_char_t *)self;
+        const char *anm_name;
+        double level1, level2;
+        int code;
+
+        if (!PyArg_ParseTuple(args, "sdd", &anm_name, &level1, &level2))
+                return NULL;
+
+        code = AttackLevels(character->charID, anm_name, level1, level2);
+        if (code == 0)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
 }
 
-// TODO implement
+
 // address: 0x100076cc
-PyObject* bex_char_AddEnergyLevel(PyObject* self, PyObject* args) {
-        return NULL;
+PyObject *bex_char_AddEnergyLevel(PyObject *self, PyObject *args) {
+        bld_py_char_t *character = (bld_py_char_t *)self;
+        const char *anm_name;
+        double level;
+        int code;
+
+        if (!PyArg_ParseTuple(args, "sd", &anm_name, &level))
+                return NULL;
+
+        code = AttackEnergyLevel(character->charID, anm_name, level);
+        if (code == 0)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
 }
 
-// TODO implement
+
 // address: 0x10007747
-PyObject* bex_char_AttackTypeFlag(PyObject* self, PyObject* args) {
-        return NULL;
+PyObject *bex_char_AttackTypeFlag(PyObject *self, PyObject *args) {
+        bld_py_char_t *character = (bld_py_char_t *)self;
+        const char *attack_name;
+        int flag;
+        int code;
+
+        if (!PyArg_ParseTuple(args, "si", &attack_name, &flag))
+                return NULL;
+
+        code = AttackTypeFlag(character->charID, attack_name, flag);
+        if (code == 0)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
 }
 
-// TODO implement
 // address: 0x100077bc
-PyObject* bex_char_AllowAttack(PyObject* self, PyObject* args) {
-        return NULL;
+PyObject *bex_char_AllowAttack(PyObject *self, PyObject *args) {
+        bld_py_char_t *character = (bld_py_char_t *)self;
+        const char *attack_name, *keys, *previous, *previous_negative;
+        const char *window_name;
+        const char *weapon_kind = "1H";
+        int code;
+
+        if (!PyArg_ParseTuple(
+                args, "sssss|s", &attack_name, &keys, &previous,
+                &previous_negative, &window_name, &weapon_kind
+        ))
+                return NULL;
+
+        code = AllowAttack(
+                character->charID, attack_name, keys, previous,
+                previous_negative, window_name, weapon_kind
+        );
+        if (code == 0)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
 }
 
-// TODO implement
+
 // address: 0x10007889
-PyObject* bex_char_MetaAttack(PyObject* self, PyObject* args) {
-        return NULL;
+PyObject *bex_char_MetaAttack(PyObject *self, PyObject *args) {
+        bld_py_char_t *character = (bld_py_char_t *)self;
+        const char *meta_attack_name, *attack_name;
+        int code;
+
+        if (!PyArg_ParseTuple(args, "ss", &meta_attack_name, &attack_name))
+                return NULL;
+
+        code = MetaAttack(character->charID, meta_attack_name, attack_name);
+        if (code == 0)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
 }
 
-// TODO implement
+
 // address: 0x100078fe
-PyObject* bex_char_AssignTrail(PyObject* self, PyObject* args) {
-        return NULL;
+PyObject *bex_char_AssignTrail(PyObject *self, PyObject *args) {
+        bld_py_char_t *character = (bld_py_char_t *)self;
+        const char *attack_name, *unknown, *trail_name;
+        int code;
+
+        if (!PyArg_ParseTuple(args, "sss", &attack_name, &unknown, &trail_name))
+                return NULL;
+
+        code = AssignTrail(
+                character->charID, attack_name, unknown, trail_name
+        );
+        if (code == 0)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
 }
+
 
 // address: 0x1000797b
 PyObject *bex_char_SetNCDSpheres(PyObject *self, PyObject *args) {
@@ -6208,6 +6359,62 @@ PyObject *bex_ent_Rel2AbsVector(PyObject *self, PyObject *args) {
 ................................................................................
 */
 
+// address: 0x1000b274
+PyObject *bex_ent_LaunchAnimation(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        const char *anm_name;
+
+        if (!PyArg_ParseTuple(args, "s", &anm_name))
+                return NULL;
+
+
+        code = SetEntityStringProperty(
+                entity->name, ENT_STR_ANIM_FULL_NAME, 0, anm_name
+        );
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+// address: 0x1000b4c4
+PyObject *bex_ent_SetTmpAnmFlags(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int wuea, mod_y, solf, copy_rot, bng_mov, headf;
+        int unknown = 1;
+
+        if (!PyArg_ParseTuple(
+                args, "iiiiii|i", &wuea, &mod_y, &solf, &copy_rot, &bng_mov,
+                &headf, &unknown
+        ))
+                return NULL;
+
+        code = SetTmpAnmFlags(
+                entity->name, wuea, mod_y, solf, copy_rot, bng_mov, headf,
+                unknown
+        );
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 // address: 0x1000b9a6
 PyObject *bex_ent_Link(PyObject *self, PyObject *args) {
         bld_py_entity_t *entity = (bld_py_entity_t *)self;
@@ -6539,6 +6746,19 @@ PyObject *bex_ent_RemoveFromWorld(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", 1);
 }
 
+
+// address: 0x1000e0c9
+PyObject *bex_ent_RemoveFromWorldWithChilds(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        EntityRemoveFromWorldWithChilds(entity->name);
+
+        return Py_BuildValue("i", 1);
+}
+
 /*
 ................................................................................
 ................................................................................
@@ -6667,14 +6887,6 @@ PyObject* bex_ent_RemoveFromInventLeft2(PyObject* self, PyObject* args) {
         return NULL;
 }
 
-PyObject* bex_ent_RemoveFromWorldWithChilds(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ent_LaunchAnimation(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
 PyObject* bex_ent_LaunchAnimation2(PyObject* self, PyObject* args) {
         return NULL;
 }
@@ -6692,10 +6904,6 @@ PyObject* bex_ent_SetMesh(PyObject* self, PyObject* args) {
 }
 
 PyObject* bex_ent_SetAnmFlags(PyObject* self, PyObject* args) {
-        return NULL;
-}
-
-PyObject* bex_ent_SetTmpAnmFlags(PyObject* self, PyObject* args) {
         return NULL;
 }
 
@@ -7445,10 +7653,21 @@ PyObject *bex_ent_ImHurtFunc_get(PyObject *self, char *attr_name) {
         return NULL;
 }
 
-// TODO implement
 // address: 0x100107d0
 PyObject *bex_ent_ImDeadFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_IM_DEAD_FUNC, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
 // TODO implement
@@ -7523,10 +7742,23 @@ PyObject *bex_ent_MutilateFunc_get(PyObject *self, char *attr_name) {
         return NULL;
 }
 
-// TODO implement
+
 // address: 0x10010b78
 PyObject *bex_ent_AttackList_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *atack_list;
+
+        atack_list = GetAttackList(entity->name);
+        if (atack_list == NULL) {
+                if (Py_None)
+                        Py_INCREF(Py_None);
+                return Py_None;
+        }
+
+        if (atack_list)
+                Py_INCREF(atack_list);
+
+        return atack_list;
 }
 
 // TODO implement
@@ -7641,10 +7873,33 @@ PyObject *bex_ent_Weapon_get(PyObject *self, char *attr_name) {
         return PyInt_FromLong(is_weapon);
 }
 
-// TODO implement
+
 // address: 0x10011020
 PyObject *bex_ent_Orientation_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        double quat1, quat2, quat3, quat4;
+        PyObject *tuple, *quat1Obj, *quat2Obj, *quat3Obj, *quat4Obj;
+
+        code = GetEntityQuatProperty(entity->name, ENT_QUAT_ORIENTATION, 0, &quat1, &quat2, &quat3, &quat4);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        tuple = PyTuple_New(4);
+
+        quat1Obj = PyFloat_FromDouble(quat1);
+        quat2Obj = PyFloat_FromDouble(quat2);
+        quat3Obj = PyFloat_FromDouble(quat3);
+        quat4Obj = PyFloat_FromDouble(quat4);
+
+        PyTuple_SetItem(tuple, 0, quat1Obj);
+        PyTuple_SetItem(tuple, 1, quat2Obj);
+        PyTuple_SetItem(tuple, 2, quat3Obj);
+        PyTuple_SetItem(tuple, 3, quat4Obj);
+
+        return tuple;
 }
 
 // TODO implement
@@ -8471,10 +8726,24 @@ int bex_ent_CharSeeingEnemyFunc_set(PyObject *self, char *attr_name, PyObject *v
 }
 
 
-// TODO implement
 // address: 0x10012eb5
 int bex_ent_AnmTranFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        return -1;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(entity->name, ENT_FNC_ANM_TRAN, 0, func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
 
@@ -9098,10 +9367,18 @@ PyObject *bex_inv_LinkRightHand(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
 // address: 0x1001424b
-PyObject* bex_inv_LinkLeftHand(PyObject* self, PyObject* args) {
-        return NULL;
+PyObject *bex_inv_LinkLeftHand(PyObject *self, PyObject *args) {
+        bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
+        int code;
+        const char *obj_name;
+
+        code = 0;
+
+        if (PyArg_ParseTuple(args, "s", &obj_name))
+                code = LinkLeftHand(inventory->name, obj_name);
+
+        return Py_BuildValue("i", code);
 }
 
 
@@ -9126,10 +9403,18 @@ PyObject* bex_inv_LinkLeftBack(PyObject* self, PyObject* args) {
 }
 
 
-// TODO implement
 // address: 0x100143b3
-PyObject* bex_inv_LinkBack(PyObject* self, PyObject* args) {
-        return NULL;
+PyObject *bex_inv_LinkBack(PyObject *self, PyObject *args) {
+        bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
+        int code;
+        const char *obj_name;
+
+        code = 0;
+
+        if (PyArg_ParseTuple(args, "s", &obj_name))
+                code = LinkBack(inventory->name, obj_name);
+
+        return Py_BuildValue("i", code);
 }
 
 
@@ -9140,11 +9425,27 @@ PyObject* bex_inv_SetCurrentQuiver(PyObject* self, PyObject* args) {
 }
 
 
-// TODO implement
 // address: 0x10014467
-PyObject* bex_inv_AddObject(PyObject* self, PyObject* args) {
-        return NULL;
+PyObject *bex_inv_AddObject(PyObject *self, PyObject *args) {
+        return add_object(self, args, INV_OBJ_TYPE_OBJECT);
 }
+
+
+// address: 0x1001447e
+PyObject *add_object(PyObject *self, PyObject *args, int obj_type) {
+        bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
+        int unknown = 0;
+        const char *obj_name;
+        int code;
+
+        code = 0;
+
+        if (PyArg_ParseTuple(args, "s|i", &obj_name, &unknown))
+                code = AddObject(inventory->name, obj_type, unknown, obj_name);
+
+        return Py_BuildValue("i", code);
+}
+
 
 
 // TODO implement
@@ -9244,10 +9545,9 @@ PyObject* bex_inv_GetMaxNumberObjectsAt(PyObject* self, PyObject* args) {
 }
 
 
-// TODO implement
 // address: 0x100148bb
-PyObject* bex_inv_AddShield(PyObject* self, PyObject* args) {
-        return NULL;
+PyObject *bex_inv_AddShield(PyObject *self, PyObject *args) {
+        return add_object(self, args, INV_OBJ_TYPE_SHIELD);
 }
 
 
@@ -9261,6 +9561,7 @@ PyObject* bex_inv_RemoveShield(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x100148e9
 PyObject* bex_inv_GetShield(PyObject* self, PyObject* args) {
+        PyErr_SetString(PyExc_AttributeError,"GetShield");
         return NULL;
 }
 
@@ -9352,10 +9653,9 @@ PyObject* bex_inv_RemoveWeapon(PyObject* self, PyObject* args) {
 }
 
 
-// TODO implement
 // address: 0x10014b12
-PyObject* bex_inv_GetWeapon(PyObject* self, PyObject* args) {
-        return NULL;
+PyObject *bex_inv_GetWeapon(PyObject *self, PyObject *args) {
+        return get_object(self, args, INV_OBJ_TYPE_WEAPON);
 }
 
 
@@ -9439,6 +9739,7 @@ PyObject* bex_inv_RemoveQuiver(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10014ca8
 PyObject* bex_inv_GetQuiver(PyObject* self, PyObject* args) {
+        PyErr_SetString(PyExc_AttributeError,"GetQuiver");
         return NULL;
 }
 
@@ -9464,10 +9765,9 @@ PyObject* bex_inv_IsQuiverSelected(PyObject* self, PyObject* args) {
 }
 
 
-// TODO implement
 // address: 0x10014d04
-PyObject* bex_inv_AddKey(PyObject* self, PyObject* args) {
-        return NULL;
+PyObject *bex_inv_AddKey(PyObject *self, PyObject *args) {
+        return add_object(self, args, INV_OBJ_TYPE_KEY);
 }
 
 
@@ -9593,14 +9893,16 @@ int bld_py_inventory_print(PyObject *self, FILE *file, int flags)
 PyObject *bld_py_inventory_getattr(PyObject *self, char *attr_name)
 {
         int n_weapons, n_shields;
-        int max_weapons;
-        int holding_bow, n_kind_objects;
+        int max_weapons, max_shields;
+        int has_bow, holding_bow, n_kind_objects;
         int code;
 
 #define INV_INT_N_WEAPONS              1
 #define INV_INT_N_SHIELDS              2
+#define INV_INT_HAS_BOW                3
 #define INV_INT_N_KIND_OBJECTS         4
 #define INV_INT_MAX_WEAPONS            7
+#define INV_INT_MAX_SHIELDS            8
 #define INV_INT_HOLDING_BOW           13
 
 /*
@@ -9658,12 +9960,39 @@ PyObject *bld_py_inventory_getattr(PyObject *self, char *attr_name)
                 return NULL;
         }
 
+        if (!strcmp(attr_name, "maxShields")) {
+                code = GetInventoryIntProperty(
+                        ((bld_py_inventory_t *)self)->name, INV_INT_MAX_SHIELDS,
+                        &max_shields);
+
+                if (code != -1)
+                        return PyInt_FromLong(max_shields);
+
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+
+                return NULL;
+        }
+
 /*
 ................................................................................
 ................................................................................
 ................................................................................
 ................................................................................
 */
+
+        if (!strcmp(attr_name, "HasBow")) {
+                code = GetInventoryIntProperty(
+                        ((bld_py_inventory_t *)self)->name, INV_INT_HAS_BOW,
+                        &has_bow
+                );
+
+                if (code != -1)
+                        return PyInt_FromLong(has_bow);
+
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+
+                return NULL;
+        }
 
         if (!strcmp(attr_name, "HoldingBow")) {
                 code = GetInventoryIntProperty(
@@ -9833,12 +10162,156 @@ PyObject *get_sector_by_position(double x, double y, double z) {
         return get_sector_by_index(index);
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x100165b4
+PyObject *bex_sec_InitBreak(PyObject *self, PyObject *args) {
+        bld_py_sector_t *sector = (bld_py_sector_t *)self;
+        int code;
+        double x_vec1, y_vec1, z_vec1, x_vec2, y_vec2, z_vec2, x_vec3, y_vec3, z_vec3;
+        const char *s_unknown = "";//TODO check string 0x1002c114
+        double d_unknown = 100.0;
+        int i_unknown = 1;
+
+        if (!PyArg_ParseTuple(
+                args, "(ddd)(ddd)(ddd)|sdi", &x_vec1, &y_vec1, &z_vec1, &x_vec2,
+                &y_vec2, &z_vec2, &x_vec3, &y_vec3, &z_vec3, &s_unknown,
+                &d_unknown, &i_unknown
+        ))
+                return NULL;
+
+        code = InitBreakSector(
+                sector->sectorID, x_vec1, y_vec1, z_vec1, x_vec2, y_vec2,
+                z_vec2, x_vec3, y_vec3, z_vec3, s_unknown, d_unknown, i_unknown
+        );
+        if (code == 0)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+
+// TODO implement
+// address: 0x100166c0
+PyObject* bex_sec_DoBreak(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+
+// TODO implement
+// address: 0x10016794
+PyObject* bex_sec_SetSurfaceTexture(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+
+// TODO implement
+// address: 0x1001680b
+PyObject* bex_sec_SetSurfaceTextureZoomX(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+
+// TODO implement
+// address: 0x10016886
+PyObject* bex_sec_SetSurfaceTextureZoomY(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+
+// TODO implement
+// address: 0x10016901
+PyObject* bex_sec_SetSurfaceTextureX(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+
+// TODO implement
+// address: 0x1001697c
+PyObject* bex_sec_SetSurfaceTextureY(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+
+// TODO implement
+// address: 0x100169f7
+PyObject* bex_sec_GetSurfaceTexture(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+
+// TODO implement
+// address: 0x10016a70
+PyObject* bex_sec_GetSurfaceTextureZoomX(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+
+// TODO implement
+// address: 0x10016aec
+PyObject* bex_sec_GetSurfaceTextureZoomY(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+
+// TODO implement
+// address: 0x10016b68
+PyObject* bex_sec_GetSurfaceTextureX(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+
+// TODO implement
+// address: 0x10016be4
+PyObject* bex_sec_GetSurfaceTextureY(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+
+// TODO implement
+// address: 0x10016c60
+PyObject* bex_sec_SetSpecularLight(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+
+// TODO implement
+// address: 0x10016cdb
+PyObject* bex_sec_GetSpecularLight(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+
+// TODO implement
+// address: 0x10016d57
+PyObject* bex_sec_SetSpecularShininess(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+
+// TODO implement
+// address: 0x10016dd2
+PyObject* bex_sec_GetSpecularShininess(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+
+// TODO implement
+// address: 0x10016e4e
+PyObject* bex_sec_SetSelfLight(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+
+// TODO implement
+// address: 0x10016ec9
+PyObject* bex_sec_GetSelfLight(PyObject* self, PyObject* args) {
+        return NULL;
+}
+
+// address: 0x10016f45
+void init_sector() {
+        init_sector_type();
+}
 
 // address: 0x10016f4f
 void init_sector_type() {
@@ -9880,9 +10353,29 @@ int bld_py_sector_print(PyObject *self, FILE *file, int flags)
 // address: 0x1001703f
 PyObject *bld_py_sector_getattr(PyObject *self, char *attr_name)
 {
-        PyObject *on_hit;
+        PyObject *on_enter, *on_hit;
 
-#define SEC_FUNC_ON_HIT 2
+#define SEC_FUNC_ON_ENTER                 0
+#define SEC_FUNC_ON_HIT                   2
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+        if (!strcmp(attr_name, "Index")) {
+                return PyInt_FromLong(((bld_py_sector_t *)self)->sectorID);
+        }
+
+        if (!strcmp(attr_name, "OnEnter")) {
+                GetSectorFuncProperty(
+                        ((bld_py_sector_t *)self)->sectorID, SEC_FUNC_ON_ENTER,
+                        0, &on_enter
+                );
+                return on_enter;
+        }
 
 /*
 ................................................................................
@@ -9906,7 +10399,7 @@ PyObject *bld_py_sector_getattr(PyObject *self, char *attr_name)
 ................................................................................
 */
 
-        return NULL;
+        return Py_FindMethod(sector_methods, self, attr_name);
 }
 
 // TODO implement

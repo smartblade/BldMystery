@@ -297,6 +297,7 @@ typedef struct {
 #define ENT_FNC_NO_ALLOWED_AREA_FUNC     18
 #define ENT_FNC_ENEMY_NO_ALLOWED_AREA    19
 #define ENT_FNC_CHAR_SEEING_ENEMY        21
+#define ENT_FNC_ANM_TRAN                 22
 #define ENT_FNC_TAKE_FUNC                23
 #define ENT_FNC_THROW_FUNC               24
 #define ENT_FNC_NEW_COMBO_FUNC           25
@@ -395,6 +396,10 @@ LIB_EXP int GetEntityFuncProperty(
 LIB_EXP int SetEntityFuncProperty(
         const char *entity_name, int property_kind, int index, PyObject *func
 );
+LIB_EXP int GetEntityQuatProperty(
+        const char *entity_name, int property_kind, int index, double *quat1,
+        double *quat2, double *quat3, double *quat4
+);
 LIB_EXP int SetEntityQuatProperty(
         const char *entity_name, int property_kind, int index, double quat1,
         double quat2, double quat3, double quat4
@@ -409,6 +414,10 @@ LIB_EXP int Rel2AbsVector(
 LIB_EXP int Rel2AbsVectorN(
         const char *entity_name, double x_rel, double y_rel, double z_rel,
         const char *unknown, double *x_abs, double *y_abs, double *z_abs
+);
+LIB_EXP int SetTmpAnmFlags(
+        const char *entity_name, int wuea, int mod_y, int solf, int copy_rot,
+        int bng_mov, int headf, int unknown
 );
 LIB_EXP int Link(
         const char *entity_name, const char *child_entity_name, void *unknown
@@ -443,12 +452,14 @@ LIB_EXP int EntityRotateRel(
         double y_dir, double z_dir, double angle, int i_unknown
 );
 LIB_EXP void EntityRemoveFromWorld(const char *entity_name);
+LIB_EXP void EntityRemoveFromWorldWithChilds(const char *entity_name);
 LIB_EXP int SetSound(const char *entity_name, const char *sound);
 LIB_EXP int PlayEntitySound(const char *entity_name, int i_unknown);
 LIB_EXP int Stop(const char *entity_name);
 LIB_EXP int StopAt(const char *entity_name, double x, double y, double z);
 LIB_EXP int SetOnFloor(const char *entity_name);
 LIB_EXP PyObject *GetEntityData(const char *entity_name);
+LIB_EXP PyObject *GetAttackList(const char *entity_name);
 LIB_EXP int ChangeEntityStatic(const char *entity_name, int is_static);
 LIB_EXP int ChangeEntityActor(const char *entity_name, int is_actor);
 LIB_EXP int ChangeEntityPerson(const char *entity_name, int is_person);
@@ -456,6 +467,11 @@ LIB_EXP int ChangeEntityWeapon(const char *entity_name, int is_weapon);
 LIB_EXP int SetEntityData(const char *entity_name, PyObject *data);
 LIB_EXP int SetAttackList(const char *entity_name, PyObject *attack_list);
 LIB_EXP int LinkRightHand(const char *inv_name, const char *obj_name);
+LIB_EXP int LinkLeftHand(const char *inv_name, const char *obj_name);
+LIB_EXP int LinkBack(const char *inv_name, const char *obj_name);
+LIB_EXP int AddObject(
+        const char *inv_name, int obj_type, int unknown, const char *obj_name
+);
 LIB_EXP const char *GetObject(const char *inv_name, int obj_type, int index);
 LIB_EXP const char *GetObjectByName(
         const char *inv_name, int obj_type, const char *obj_name
@@ -470,11 +486,41 @@ LIB_EXP int GetInventoryIntProperty(
 LIB_EXP int SetListenerMode(int mode, double x, double y, double z);
 LIB_EXP int GetSectorByIndex(int index);
 LIB_EXP int GetSectorByPosition(double x, double y, double z);
+LIB_EXP int InitBreakSector(
+        int sectorID, double x_vec1, double y_vec1, double z_vec1,
+        double x_vec2, double y_vec2, double z_vec2, double x_vec3,
+        double y_vec3, double z_vec3, const char *s_unknown, double d_unknown,
+        int i_unknown
+);
 LIB_EXP int GetSectorFuncProperty(
         int sectorID, int property_kind, int index, PyObject **value
 );
 LIB_EXP int GetCharByName(const char *name, const char *short_name);
 LIB_EXP int SetAnmDefaultPrefix(int charID, const char *prefix);
+LIB_EXP int AddAttack(int charID, const char *attack_name, const char *anm_name);
+LIB_EXP int AttackWindow(
+        int charID, const char *anm_name, float window1, float window2,
+        const char *window_name
+);
+LIB_EXP int AttackLevels(
+        int charID, const char *anm_name, float level1, float level2
+);
+LIB_EXP int AttackEnergyLevel(
+        int charID, const char *anm_name, float  level
+);
+LIB_EXP int AttackTypeFlag(int charID, const char *attack_name, int flag);
+LIB_EXP int AllowAttack(
+        int charID, const char *attack_name, const char *keys,
+        const char *previous, const char *previous_negative,
+        const char *window_name, const char *weapon_kind
+);
+LIB_EXP int MetaAttack(
+        int charID, const char *meta_attack_name, const char *attack_name
+);
+LIB_EXP int AssignTrail(
+        int charID, const char *attack_name, const char *unknown,
+        const char *trail_name
+);
 LIB_EXP int SetNCDSpheres(int charID, int NCDSpheres);
 LIB_EXP int SetCDSphere(int charID, int index, double h, double r);
 LIB_EXP int GetCharIntProperty(int charID, int property_kind, int index, int *value);
