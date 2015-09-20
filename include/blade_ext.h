@@ -281,6 +281,7 @@ typedef struct {
 #define ENT_VEC_LAST_SOUND_POSITION      27
 #define ENT_VEC_AIM_VECTOR               28
 
+#define ENT_FNC_FRAME                     0
 #define ENT_FNC_HIT_FUNC                  1
 #define ENT_FNC_TIMER_FUNC                2
 #define ENT_FNC_HEAR_FUNC                 3
@@ -306,12 +307,24 @@ typedef struct {
 #define ENT_FNC_MUTILATE_FUNC            29
 #define ENT_FNC_DAMAGE_FUNC              30
 #define ENT_FNC_HIT_SHIELD_FUNC          32
+#define ENT_FNC_INFLICT_HIT              33
 #define ENT_FNC_ENTER_PRIMARY_AA         34
 #define ENT_FNC_ENTER_SECONDARY_AA       35
 #define ENT_FNC_ATTACK_FUNC              37
 #define ENT_FNC_BIG_FALL_FUNC            38
 
 #define ENT_QUAT_ORIENTATION              1
+
+
+#define SEC_INT_ACTIVE                    0
+#define SEC_INT_TOO_STEEP                 2
+
+#define SEC_VEC_ACTIVE_SURFACE            0
+
+#define SEC_FNC_ON_ENTER                  0
+#define SEC_FNC_ON_LEAVE                  1
+#define SEC_FNC_ON_HIT                    2
+#define SEC_FNC_ON_WALK_ON                3
 
 
 LIB_EXP int WorldToMBW(const char *world);
@@ -415,9 +428,16 @@ LIB_EXP int Rel2AbsVectorN(
         const char *entity_name, double x_rel, double y_rel, double z_rel,
         const char *unknown, double *x_abs, double *y_abs, double *z_abs
 );
+LIB_EXP double SQDistance2(const char *entity_name1, const char *entity_name2);
 LIB_EXP int SetTmpAnmFlags(
         const char *entity_name, int wuea, int mod_y, int solf, int copy_rot,
         int bng_mov, int headf, int unknown
+);
+LIB_EXP int CanISee(
+        const char *entity_name, const char *seen_entity_name, int *canISee
+);
+LIB_EXP int UnlinkChild(
+        const char *entity_name, const char *child_entity_name, void *unknown
 );
 LIB_EXP int Link(
         const char *entity_name, const char *child_entity_name, void *unknown
@@ -428,6 +448,7 @@ LIB_EXP int LinkAnchors(
 );
 LIB_EXP int GetNChildren(const char *entity_name);
 LIB_EXP const char *GetChild(const char *entity_name, int index);
+LIB_EXP const char *GetEnemy(const char *entity_name);
 LIB_EXP int GraspPos(
         const char *entity_name, const char *grasp, double *x, double *y,
         double *z
@@ -451,6 +472,7 @@ LIB_EXP int EntityRotateRel(
         const char *entity_name, double x, double y, double z, double x_dir,
         double y_dir, double z_dir, double angle, int i_unknown
 );
+LIB_EXP PyObject *GetGroupMembers(const char *entity_name);
 LIB_EXP void EntityRemoveFromWorld(const char *entity_name);
 LIB_EXP void EntityRemoveFromWorldWithChilds(const char *entity_name);
 LIB_EXP int SetSound(const char *entity_name, const char *sound);
@@ -492,8 +514,18 @@ LIB_EXP int InitBreakSector(
         double y_vec3, double z_vec3, const char *s_unknown, double d_unknown,
         int i_unknown
 );
+LIB_EXP int SetSectorIntProperty(
+        int sectorID, int property_kind, int index, int value
+);
+LIB_EXP int SetSectorVectorProperty(
+        int sectorID, int property_kind, int index, double x,
+        double y, double z
+);
 LIB_EXP int GetSectorFuncProperty(
         int sectorID, int property_kind, int index, PyObject **value
+);
+LIB_EXP int SetSectorFuncProperty(
+        int sectorID, int property_kind, int index, PyObject *value
 );
 LIB_EXP int GetCharByName(const char *name, const char *short_name);
 LIB_EXP int SetAnmDefaultPrefix(int charID, const char *prefix);
@@ -706,6 +738,10 @@ LIB_EXP PyObject *GetAfterFrameFunc(const char *name);
 LIB_EXP int GetnAfterFrameFuncs(void);
 LIB_EXP const char *GetAfterFrameFuncName(int index);
 LIB_EXP int SetCallCheck(int check);
+LIB_EXP int DrawBOD(
+        const char *BODName, int x, int y, int w, int h, double scale,
+        int i_unknown
+);
 LIB_EXP int CloseDebugChannel(const char *channel_name);
 LIB_EXP int OpenDebugChannel(const char *channel_name);
 LIB_EXP int SetAppMode(const char *mode);
