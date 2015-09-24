@@ -7628,11 +7628,24 @@ PyObject *bex_ent_Data_get(PyObject *self, char *attr_name) {
         return GetEntityData(entity->name);
 }
 
-// TODO implement
+
 // address: 0x10010230
 PyObject *bex_ent_TimerFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_TIMER_FUNC, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
+
 
 // address: 0x10010278
 PyObject *bex_ent_HitFunc_get(PyObject *self, char *attr_name) {
@@ -7649,28 +7662,74 @@ PyObject *bex_ent_HitFunc_get(PyObject *self, char *attr_name) {
         return func;
 }
 
-// TODO implement
+
 // address: 0x100102c0
 PyObject *bex_ent_InflictHitFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_INFLICT_HIT, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010308
 PyObject *bex_ent_HitShieldFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_HIT_SHIELD_FUNC, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010350
 PyObject *bex_ent_DamageFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(entity->name, ENT_FNC_DAMAGE_FUNC, 0, &func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010398
 PyObject *bex_ent_StickFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_STICK_FUNC, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
 
@@ -7689,22 +7748,52 @@ PyObject *bex_ent_FrameFunc_get(PyObject *self, char *attr_name) {
         return func;
 }
 
-// TODO implement
+
 // address: 0x10010428
 PyObject *bex_ent_HearFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(entity->name, ENT_FNC_HEAR_FUNC, 0, &func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010470
 PyObject *bex_ent_SeeFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(entity->name, ENT_FNC_SEE_FUNC, 0, &func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x100104b8
 PyObject *bex_ent_UseFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(entity->name, ENT_FNC_USE_FUNC, 0, &func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
 // TODO implement
@@ -7719,53 +7808,148 @@ PyObject *bex_ent_TouchFluidFunc_get(PyObject *self, char *attr_name) {
         return NULL;
 }
 
-// TODO implement
+
 // address: 0x10010590
 PyObject *bex_ent_EnterPrimaryAAFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_ENTER_PRIMARY_AA, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x100105d8
 PyObject *bex_ent_EnterSecondaryAAFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_ENTER_SECONDARY_AA, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010620
 PyObject *bex_ent_EnterCloseFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_ENTER_CLOSE, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010668
 PyObject *bex_ent_EnterLargeFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_ENTER_LARGE, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x100106b0
 PyObject *bex_ent_AnmEndedFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(entity->name, ENT_FNC_ANM_ENDED, 0, &func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x100106f8
 PyObject *bex_ent_DelayNoSeenFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_DELAY_NO_SEEN_FUNC, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010740
 PyObject *bex_ent_RouteEndedFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_ROUTE_ENDED, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010788
 PyObject *bex_ent_ImHurtFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_IM_HURT_FUNC, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
+
 
 // address: 0x100107d0
 PyObject *bex_ent_ImDeadFunc_get(PyObject *self, char *attr_name) {
@@ -7784,76 +7968,216 @@ PyObject *bex_ent_ImDeadFunc_get(PyObject *self, char *attr_name) {
         return func;
 }
 
-// TODO implement
+
 // address: 0x10010818
 PyObject *bex_ent_EnemyDeadFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_ENEMY_DEAD_FUNC, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010860
 PyObject *bex_ent_NoAllowedAreaFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_NO_ALLOWED_AREA_FUNC, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x100108a8
 PyObject *bex_ent_EnemyNoAllowedAreaFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_ENEMY_NO_ALLOWED_AREA, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x100108f0
 PyObject *bex_ent_CharSeeingEnemyFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_CHAR_SEEING_ENEMY, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010938
 PyObject *bex_ent_AnmTranFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(entity->name, ENT_FNC_ANM_TRAN, 0, &func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010980
 PyObject *bex_ent_NewComboFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_NEW_COMBO_FUNC, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x100109c8
 PyObject *bex_ent_BigFallFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_BIG_FALL_FUNC, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010a10
 PyObject *bex_ent_AttackFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_ATTACK_FUNC, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010a58
 PyObject *bex_ent_ToggleCombatFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_TOGGLE_COMBAT, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010aa0
 PyObject *bex_ent_TakeFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(entity->name, ENT_FNC_TAKE_FUNC, 0, &func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010ae8
 PyObject *bex_ent_ThrowFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_THROW_FUNC, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010b30
 PyObject *bex_ent_MutilateFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_MUTILATE_FUNC, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
 
@@ -7881,11 +8205,22 @@ PyObject *bex_ent_OnHitFunc_get(PyObject *self, char *attr_name) {
         return NULL;
 }
 
-// TODO implement
+
 // address: 0x10010c1e
 PyObject *bex_ent_OnStopFunc_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(entity->name, ENT_FNC_ON_STOP, 0, &func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
+
 
 // TODO implement
 // address: 0x10010c66
@@ -7929,10 +8264,20 @@ PyObject *bex_ent_ActionAreaMax_get(PyObject *self, char *attr_name) {
         return NULL;
 }
 
-// TODO implement
+
 // address: 0x10010e86
 PyObject *bex_ent_Arrow_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int is_arrow;
+
+        code = GetEntityIntProperty(entity->name, ENT_INT_ARROW, 0, &is_arrow);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return PyInt_FromLong(is_arrow);
 }
 
 // address: 0x10010ed8
@@ -7966,11 +8311,24 @@ PyObject *bex_ent_Actor_get(PyObject *self, char *attr_name) {
         return PyInt_FromLong(is_actor);
 }
 
-// TODO implement
+
 // address: 0x10010f7c
 PyObject *bex_ent_Person_get(PyObject *self, char *attr_name) {
-        return NULL;
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int is_person;
+
+        code = GetEntityIntProperty(
+                entity->name, ENT_INT_PERSON, 0, &is_person
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return PyInt_FromLong(is_person);
 }
+
 
 // address: 0x10010fce
 PyObject *bex_ent_Weapon_get(PyObject *self, char *attr_name) {
@@ -10026,9 +10384,10 @@ int bld_py_inventory_print(PyObject *self, FILE *file, int flags)
 // address: 0x10014f60
 PyObject *bld_py_inventory_getattr(PyObject *self, char *attr_name)
 {
-        int n_objects, n_weapons, n_shields;
+        int n_objects, n_weapons, n_shields, n_quivers;
         int max_objects, max_weapons, max_shields;
         int has_bow, holding_bow, n_kind_objects;
+        int n_keys, n_special_keys, n_tablets;
         int code;
 
 #define INV_INT_N_OBJECTS              0
@@ -10036,9 +10395,13 @@ PyObject *bld_py_inventory_getattr(PyObject *self, char *attr_name)
 #define INV_INT_N_SHIELDS              2
 #define INV_INT_HAS_BOW                3
 #define INV_INT_N_KIND_OBJECTS         4
+#define INV_INT_N_QUIVERS              5
 #define INV_INT_MAX_OBJECTS            6
 #define INV_INT_MAX_WEAPONS            7
 #define INV_INT_MAX_SHIELDS            8
+#define INV_INT_N_KEYS                10
+#define INV_INT_N_SPECIAL_KEYS        11
+#define INV_INT_N_TABLETS             12
 #define INV_INT_HOLDING_BOW           13
 
 /*
@@ -10089,12 +10452,21 @@ PyObject *bld_py_inventory_getattr(PyObject *self, char *attr_name)
 
                 return NULL;
         }
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+        /* FIXME double nQuivers */
+        if (!strcmp(attr_name, "nQuivers")) {
+                code = GetInventoryIntProperty(
+                        ((bld_py_inventory_t *)self)->name, INV_INT_N_QUIVERS,
+                        &n_quivers
+                );
+
+                if (code != -1)
+                        return PyInt_FromLong(n_quivers);
+
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+
+                return NULL;
+        }
 
         if (!strcmp(attr_name, "maxObjects")) {
                 code = GetInventoryIntProperty(
@@ -10187,6 +10559,63 @@ PyObject *bld_py_inventory_getattr(PyObject *self, char *attr_name)
 
                 if (code != -1)
                         return PyInt_FromLong(n_kind_objects);
+
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+
+                return NULL;
+        }
+
+        /* FIXME double nQuivers */
+        if (!strcmp(attr_name, "nQuivers")) {
+                code = GetInventoryIntProperty(
+                        ((bld_py_inventory_t *)self)->name, INV_INT_N_QUIVERS,
+                        &n_quivers
+                );
+
+                if (code != -1)
+                        return PyInt_FromLong(n_quivers);
+
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+
+                return NULL;
+        }
+
+        if (!strcmp(attr_name, "nKeys")) {
+                code = GetInventoryIntProperty(
+                        ((bld_py_inventory_t *)self)->name, INV_INT_N_KEYS,
+                        &n_keys
+                );
+
+                if (code != -1)
+                        return PyInt_FromLong(n_keys);
+
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+
+                return NULL;
+        }
+
+        if (!strcmp(attr_name, "nSpecialKeys")) {
+                code = GetInventoryIntProperty(
+                        ((bld_py_inventory_t *)self)->name,
+                        INV_INT_N_SPECIAL_KEYS, &n_special_keys
+                );
+
+                if (code != -1)
+                        return PyInt_FromLong(n_special_keys);
+
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+
+                return NULL;
+        }
+
+        if (!strcmp(attr_name, "nTablets")) {
+                code = GetInventoryIntProperty(
+                        ((bld_py_inventory_t *)self)->name, INV_INT_N_TABLETS,
+                        &n_tablets
+                );
+
+                if (code != -1)
+                        return PyInt_FromLong(n_tablets);
 
                 PyErr_SetString(PyExc_AttributeError, attr_name);
 
@@ -10517,7 +10946,16 @@ int bld_py_sector_print(PyObject *self, FILE *file, int flags)
 // address: 0x1001703f
 PyObject *bld_py_sector_getattr(PyObject *self, char *attr_name)
 {
-        PyObject *on_enter, *on_hit;
+        int active;
+        double active_surf_x, active_surf_y, active_surf_z;
+        PyObject *active_surface, *surf_x_obj, *surf_y_obj, *surf_z_obj;
+        int num_pieces;
+        double piece_x, piece_y, piece_z;
+        const char *piece_name;
+        PyObject *piece_x_obj, *piece_y_obj, *piece_z_obj;
+        PyObject *break_info, *piece_obj, *piece_coord_obj, *piece_name_obj;
+        PyObject *on_enter, *on_leave, *on_hit, *on_walk_on, *on_walk_out;
+        int code;
 
 /*
 ................................................................................
@@ -10525,6 +10963,106 @@ PyObject *bld_py_sector_getattr(PyObject *self, char *attr_name)
 ................................................................................
 ................................................................................
 */
+
+        if (!strcmp(attr_name, "Active")) {
+                code = GetSectorIntProperty(
+                        ((bld_py_sector_t *)self)->sectorID, SEC_INT_ACTIVE, 0,
+                        &active
+                );
+                if (code == 1)
+                        return PyInt_FromLong(active);
+
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+
+                return NULL;
+        }
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+        if (!strcmp(attr_name, "ActiveSurface")) {
+                code = GetSectorVectorProperty(
+                        ((bld_py_sector_t *)self)->sectorID,
+                        SEC_VEC_ACTIVE_SURFACE, 0, &active_surf_x,
+                        &active_surf_y, &active_surf_z
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+
+                active_surface = PyTuple_New(3);
+
+                surf_x_obj = PyFloat_FromDouble(active_surf_x);
+                surf_y_obj = PyFloat_FromDouble(active_surf_y);
+                surf_z_obj = PyFloat_FromDouble(active_surf_z);
+
+                PyTuple_SET_ITEM(active_surface, 0, surf_x_obj);
+                PyTuple_SET_ITEM(active_surface, 1, surf_y_obj);
+                PyTuple_SET_ITEM(active_surface, 2, surf_z_obj);
+
+                return active_surface;
+        }
+
+        if (!strcmp(attr_name, "BreakInfo")) {
+                int i;
+
+                num_pieces = 0;
+
+                code = GetSectorIntProperty(
+                        ((bld_py_sector_t *)self)->sectorID, SEC_INT_NUM_PIECES,
+                        0, &num_pieces
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+
+                if (num_pieces == 0) {
+                        Py_INCREF(Py_None);
+                        return Py_None;
+                }
+
+                break_info = PyTuple_New(num_pieces);
+
+                for (i = 0; i < num_pieces; i++) {
+
+                        piece_obj = PyTuple_New(2);
+                        piece_coord_obj = PyTuple_New(3);
+
+                        GetSectorVectorProperty(
+                                ((bld_py_sector_t *)self)->sectorID,
+                                SEC_VEC_PIECE, i, &piece_x, &piece_y, &piece_z
+                        );
+
+                        piece_x_obj = PyFloat_FromDouble(piece_x);
+                        piece_y_obj = PyFloat_FromDouble(piece_y);
+                        piece_z_obj = PyFloat_FromDouble(piece_z);
+
+                        PyTuple_SET_ITEM(piece_coord_obj, 0, piece_x_obj);
+                        PyTuple_SET_ITEM(piece_coord_obj, 1, piece_y_obj);
+                        PyTuple_SET_ITEM(piece_coord_obj, 2, piece_z_obj);
+
+                        GetSectorStringProperty(
+                                ((bld_py_sector_t *)self)->sectorID,
+                                SEC_STR_PIECE_NAME, i, &piece_name
+                        );
+
+                        piece_name_obj = PyString_FromString(piece_name);
+
+                        PyTuple_SET_ITEM(piece_obj, 0, piece_name_obj);
+                        PyTuple_SET_ITEM(piece_obj, 1, piece_coord_obj);
+
+                        PyTuple_SET_ITEM(break_info, i, piece_obj);
+
+                }
+
+                return break_info;
+        }
 
         if (!strcmp(attr_name, "Index")) {
                 return PyInt_FromLong(((bld_py_sector_t *)self)->sectorID);
@@ -10538,12 +11076,13 @@ PyObject *bld_py_sector_getattr(PyObject *self, char *attr_name)
                 return on_enter;
         }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+        if (!strcmp(attr_name, "OnLeave")) {
+                GetSectorFuncProperty(
+                        ((bld_py_sector_t *)self)->sectorID, SEC_FNC_ON_LEAVE,
+                        0, &on_leave
+                );
+                return on_leave;
+        }
 
         if (!strcmp(attr_name, "OnHit")) {
                 GetSectorFuncProperty(
@@ -10551,6 +11090,22 @@ PyObject *bld_py_sector_getattr(PyObject *self, char *attr_name)
                         &on_hit
                 );
                 return on_hit;
+        }
+
+        if (!strcmp(attr_name, "OnWalkOn")) {
+                GetSectorFuncProperty(
+                        ((bld_py_sector_t *)self)->sectorID, SEC_FNC_ON_WALK_ON,
+                        0, &on_walk_on
+                );
+                return on_walk_on;
+        }
+
+        if (!strcmp(attr_name, "OnWalkOut")) {
+                GetSectorFuncProperty(
+                        ((bld_py_sector_t *)self)->sectorID,
+                        SEC_FNC_ON_WALK_OUT, 0, &on_walk_out
+                );
+                return on_walk_out;
         }
 
 /*

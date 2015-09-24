@@ -78,12 +78,14 @@ typedef struct {
 #define ENT_INT_STATIC                    0
 #define ENT_INT_N_LIGHTS                  1
 #define ENT_INT_N_FIRES                   2
+#define ENT_INT_PERSON                    4
 #define ENT_INT_SEND_SECTOR_MSGS          5
 #define ENT_INT_VISIBLE                   6
 #define ENT_INT_FLICK                     7
 #define ENT_INT_ACTION_AREA               8
 #define ENT_INT_WEAPON                   10
 #define ENT_INT_ACTOR                    11
+#define ENT_INT_ARROW                    12
 #define ENT_INT_PHYSIC                   13
 #define ENT_INT_CAN_USE                  16
 #define ENT_INT_INVENTORY_VISIBLE        17
@@ -285,6 +287,7 @@ typedef struct {
 #define ENT_FNC_HIT_FUNC                  1
 #define ENT_FNC_TIMER_FUNC                2
 #define ENT_FNC_HEAR_FUNC                 3
+#define ENT_FNC_ON_STOP                   4
 #define ENT_FNC_ON_ANIMATION_END_FUNC     5
 #define ENT_FNC_USE_FUNC                  8
 #define ENT_FNC_SEE_FUNC                  9
@@ -292,6 +295,7 @@ typedef struct {
 #define ENT_FNC_ENTER_LARGE              11
 #define ENT_FNC_ANM_ENDED                12
 #define ENT_FNC_DELAY_NO_SEEN_FUNC       13
+#define ENT_FNC_ROUTE_ENDED              14
 #define ENT_FNC_IM_DEAD_FUNC             15
 #define ENT_FNC_IM_HURT_FUNC             16
 #define ENT_FNC_ENEMY_DEAD_FUNC          17
@@ -318,13 +322,18 @@ typedef struct {
 
 #define SEC_INT_ACTIVE                    0
 #define SEC_INT_TOO_STEEP                 2
+#define SEC_INT_NUM_PIECES                4
+
+#define SEC_STR_PIECE_NAME                1
 
 #define SEC_VEC_ACTIVE_SURFACE            0
+#define SEC_VEC_PIECE                     1
 
 #define SEC_FNC_ON_ENTER                  0
 #define SEC_FNC_ON_LEAVE                  1
 #define SEC_FNC_ON_HIT                    2
 #define SEC_FNC_ON_WALK_ON                3
+#define SEC_FNC_ON_WALK_OUT               4
 
 
 LIB_EXP int WorldToMBW(const char *world);
@@ -514,8 +523,18 @@ LIB_EXP int InitBreakSector(
         double y_vec3, double z_vec3, const char *s_unknown, double d_unknown,
         int i_unknown
 );
+LIB_EXP int GetSectorStringProperty(
+        int sectorID, int property_kind, int index, const char **value
+);
+LIB_EXP int GetSectorIntProperty(
+        int sectorID, int property_kind, int index, int *value
+);
 LIB_EXP int SetSectorIntProperty(
         int sectorID, int property_kind, int index, int value
+);
+LIB_EXP int GetSectorVectorProperty(
+        int sectorID, int property_kind, int index,
+        double *x, double *y, double *z
 );
 LIB_EXP int SetSectorVectorProperty(
         int sectorID, int property_kind, int index, double x,
