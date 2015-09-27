@@ -289,6 +289,7 @@ typedef struct {
 #define ENT_FNC_HEAR_FUNC                 3
 #define ENT_FNC_ON_STOP                   4
 #define ENT_FNC_ON_ANIMATION_END_FUNC     5
+#define ENT_FNC_TOUCH_FLUID               6
 #define ENT_FNC_USE_FUNC                  8
 #define ENT_FNC_SEE_FUNC                  9
 #define ENT_FNC_ENTER_CLOSE              10
@@ -310,10 +311,12 @@ typedef struct {
 #define ENT_FNC_STICK_FUNC               27
 #define ENT_FNC_MUTILATE_FUNC            29
 #define ENT_FNC_DAMAGE_FUNC              30
+#define ENT_FNC_CHANGE_NODE              31
 #define ENT_FNC_HIT_SHIELD_FUNC          32
 #define ENT_FNC_INFLICT_HIT              33
 #define ENT_FNC_ENTER_PRIMARY_AA         34
 #define ENT_FNC_ENTER_SECONDARY_AA       35
+#define ENT_FNC_ON_STEP                  36
 #define ENT_FNC_ATTACK_FUNC              37
 #define ENT_FNC_BIG_FALL_FUNC            38
 
@@ -334,6 +337,18 @@ typedef struct {
 #define SEC_FNC_ON_HIT                    2
 #define SEC_FNC_ON_WALK_ON                3
 #define SEC_FNC_ON_WALK_OUT               4
+
+
+#define SND_INT_SEND_NOTIFY               0
+
+#define SND_FLT_MIN_DISTANCE              0
+#define SND_FLT_MAX_DISTANCE              1
+#define SND_FLT_VOLUME                    2
+#define SND_FLT_BASE_VOLUME               3
+#define SND_FLT_SCALE                     4
+#define SND_FLT_PITCH                     5
+
+#define SND_STR_NAME                      0
 
 
 LIB_EXP int WorldToMBW(const char *world);
@@ -428,16 +443,29 @@ LIB_EXP int SetEntityQuatProperty(
 );
 LIB_EXP entity_t *SeverLimb(const char *entity_name, int limb);
 LIB_EXP int AddCameraEvent(const char *entity_name, int frame, PyObject *func);
-LIB_EXP int SubscribeEntityToList(const char *entity_name, const char *list);
+LIB_EXP int SubscribeEntityToList(
+        const char *entity_name, const char *timer_name
+);
+LIB_EXP int Rel2AbsPoint(
+        const char *entity_name, double x_rel, double y_rel, double z_rel,
+        double *x_abs, double *y_abs, double *z_abs
+);
+LIB_EXP int Rel2AbsPointN(
+        const char *entity_name, double x_rel, double y_rel, double z_rel,
+        const char *anchor_name, double *x_abs, double *y_abs, double *z_abs
+);
 LIB_EXP int Rel2AbsVector(
         const char *entity_name, double x_rel, double y_rel, double z_rel,
         double *x_abs, double *y_abs, double *z_abs
 );
 LIB_EXP int Rel2AbsVectorN(
         const char *entity_name, double x_rel, double y_rel, double z_rel,
-        const char *unknown, double *x_abs, double *y_abs, double *z_abs
+        const char *anchor_name, double *x_abs, double *y_abs, double *z_abs
 );
 LIB_EXP double SQDistance2(const char *entity_name1, const char *entity_name2);
+LIB_EXP int RemoveEntityFromList(
+        const char *entity_name, const char *timer_name
+);
 LIB_EXP int SetTmpAnmFlags(
         const char *entity_name, int wuea, int mod_y, int solf, int copy_rot,
         int bng_mov, int headf, int unknown
@@ -458,6 +486,7 @@ LIB_EXP int LinkAnchors(
 LIB_EXP int GetNChildren(const char *entity_name);
 LIB_EXP const char *GetChild(const char *entity_name, int index);
 LIB_EXP const char *GetEnemy(const char *entity_name);
+LIB_EXP int QuickFace(const char *entity_name, double angle);
 LIB_EXP int GraspPos(
         const char *entity_name, const char *grasp, double *x, double *y,
         double *z
@@ -469,17 +498,51 @@ LIB_EXP int AddSoundAnim(
 LIB_EXP int EntityAddAnmEventFunc(
         const char *entity_name, const char *anm_event, PyObject *func
 );
+LIB_EXP int EntityDelAnmEventFunc(
+        const char *entity_name, const char *anm_event
+);
 LIB_EXP int AddSoundEvent(
         const char *entity_name, const char *event, int soundID
 );
+LIB_EXP int CameraClearPath(const char *entity_name, int node);
+LIB_EXP int CameraStartPath(const char *entity_name, int node);
 LIB_EXP int TurnOnActor(const char *entity_name);
+LIB_EXP int CameraAddTargetNode(
+        const char *entity_name, float time, double x, double y, double z
+);
+LIB_EXP int CameraAddSourceNode(
+        const char *entity_name, float time, double x, double y, double z
+);
+LIB_EXP int CameraSetStartTangentTargetNode(
+        const char *entity_name, int unknown1, double unknown2, double unknown3,
+        double unknown4
+);
+LIB_EXP int CameraSetStartTangentSourceNode(
+        const char *entity_name, int unknown1, double unknown2, double unknown3,
+        double unknown4
+);
+LIB_EXP int CameraSetEndTangentTargetNode(
+        const char *entity_name, int unknown1, double unknown2, double unknown3,
+        double unknown4
+);
+LIB_EXP int CameraSetEndTangentSourceNode(
+        const char *entity_name, int unknown1, double unknown2, double unknown3,
+        double unknown4
+);
+LIB_EXP int CameraSetPersonView(
+        const char *entity_name, const char *person_name
+);
 LIB_EXP int CameraSetMaxCamera(
         const char *entity_name, const char *cam_file_name, int i_unknown,
         int num_frames
 );
+LIB_EXP int CameraCut(const char *entity_name);
 LIB_EXP int EntityRotateRel(
         const char *entity_name, double x, double y, double z, double x_dir,
         double y_dir, double z_dir, double angle, int i_unknown
+);
+LIB_EXP int EntityMove(
+        const char *entity_name, double x, double y, double z, int unknown
 );
 LIB_EXP PyObject *GetGroupMembers(const char *entity_name);
 LIB_EXP void EntityRemoveFromWorld(const char *entity_name);
@@ -489,6 +552,8 @@ LIB_EXP int PlayEntitySound(const char *entity_name, int i_unknown);
 LIB_EXP int Stop(const char *entity_name);
 LIB_EXP int StopAt(const char *entity_name, double x, double y, double z);
 LIB_EXP int SetOnFloor(const char *entity_name);
+LIB_EXP int RaiseEvent(const char *entity_name, const char *event_name);
+LIB_EXP int InterruptCombat(const char *entity_name);
 LIB_EXP PyObject *GetEntityData(const char *entity_name);
 LIB_EXP PyObject *GetAttackList(const char *entity_name);
 LIB_EXP int ChangeEntityStatic(const char *entity_name, int is_static);
@@ -497,6 +562,7 @@ LIB_EXP int ChangeEntityPerson(const char *entity_name, int is_person);
 LIB_EXP int ChangeEntityWeapon(const char *entity_name, int is_weapon);
 LIB_EXP int SetEntityData(const char *entity_name, PyObject *data);
 LIB_EXP int SetAttackList(const char *entity_name, PyObject *attack_list);
+LIB_EXP int CarringObject(const char *inv_name, const char *obj_name);
 LIB_EXP int LinkRightHand(const char *inv_name, const char *obj_name);
 LIB_EXP int LinkLeftHand(const char *inv_name, const char *obj_name);
 LIB_EXP int LinkBack(const char *inv_name, const char *obj_name);
@@ -508,6 +574,11 @@ LIB_EXP const char *GetObjectByName(
         const char *inv_name, int obj_type, const char *obj_name
 );
 LIB_EXP const char *GetSelectedObject(const char *inv_name, int obj_type);
+LIB_EXP int IsSelected(const char *inv_name, int obj_type, int obj_index);
+LIB_EXP int GetNumberObjectsAt(const char *inv_name, int obj_type, int index);
+LIB_EXP int GetMaxNumberObjectsAt(
+        const char *inv_name, int obj_type, int index
+);
 LIB_EXP const char *GetActiveShield(const char *inv_name);
 LIB_EXP const char *GetActiveWeapon(const char *inv_name);
 LIB_EXP int AddWeapon(const char *inv_name, int flag, const char *weapon_name);
@@ -523,8 +594,16 @@ LIB_EXP int InitBreakSector(
         double y_vec3, double z_vec3, const char *s_unknown, double d_unknown,
         int i_unknown
 );
+LIB_EXP int DoBreakSector(
+        int sectorID, double x_impulse, double y_impulse, double z_impulse,
+        double x, double y, double z, double x_unknown, double y_unknown,
+        double z_unknown
+);
 LIB_EXP int GetSectorStringProperty(
         int sectorID, int property_kind, int index, const char **value
+);
+LIB_EXP int SetSectorStringProperty(
+        int sectorID, int property_kind, int index, const char *value
 );
 LIB_EXP int GetSectorIntProperty(
         int sectorID, int property_kind, int index, int *value
@@ -585,6 +664,9 @@ LIB_EXP int GetTrailByName(const char *name);
 LIB_EXP int CreateSound(const char *file_name, const char *sound_name);
 LIB_EXP void DestroySound(int soundID);
 LIB_EXP int GetSoundDevInstace(void);
+LIB_EXP int GetGhostSectorSound(const char *gs_name);
+LIB_EXP char *GetSoundStringProperty(int property_kind, int soundID);
+LIB_EXP double GetSoundFloatProperty(int property_kind, int soundID);
 LIB_EXP int PlaySoundM(int soundID, double x, double y, double z, int i_unknown);
 LIB_EXP int PlaySoundStereo(int soundID, int i_unknown);
 LIB_EXP void SetSoundPitchVar(
@@ -701,6 +783,11 @@ LIB_EXP int SetDefaultMass(const char *entity_kind, double mass);
 LIB_EXP int SetDefaultMaterial(const char *entity_kind, const char *material);
 LIB_EXP material_t *CreateMaterial(const char *name);
 LIB_EXP int nMaterials(void);
+LIB_EXP int CreateGhostSector(
+	const char *ghost_sector_name, const char *group_name,
+	double floor_height, double roof_height, int num_points,
+	point_2d_t *points
+);
 LIB_EXP int CreateTriggerSector(
 	const char *trigger_sector_name, const char *group_name,
 	double floor_height, double roof_height, int num_points,
@@ -756,10 +843,20 @@ LIB_EXP int SetAfterFrameFunc(const char *name, PyObject *function);
 LIB_EXP PyObject *GetAfterFrameFunc(const char *name);
 LIB_EXP int GetnAfterFrameFuncs(void);
 LIB_EXP const char *GetAfterFrameFuncName(int index);
+LIB_EXP int RemoveAfterFrameFunc(const char *name);
 LIB_EXP int SetCallCheck(int check);
 LIB_EXP int DrawBOD(
         const char *BODName, int x, int y, int w, int h, double scale,
         int i_unknown
+);
+LIB_EXP int WriteText(double x, double y, const char *text);
+LIB_EXP void GetTextWH(const char *text, double *w, double *h);
+LIB_EXP void GetScreenRect(
+        double *x_min, double *y_min, double *x_max, double *y_max
+);
+LIB_EXP void GetScreenXY(
+        double map_x, double map_y, double map_z, double *screen_x,
+        double *screen_y
 );
 LIB_EXP int CloseDebugChannel(const char *channel_name);
 LIB_EXP int OpenDebugChannel(const char *channel_name);
