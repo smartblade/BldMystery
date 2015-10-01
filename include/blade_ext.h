@@ -258,14 +258,17 @@ typedef struct {
 #define ENT_STR_FIRE_PARTICLE_TYPE       36
 #define ENT_STR_PARTICLE_TYPE            37
 #define ENT_STR_MESH_NAME                39
+#define ENT_STR_GOT_ANM_TYPE             40
 
 #define ENT_VEC_POSITION                  0
 #define ENT_VEC_LIGHTS_COLOUR             2
+#define ENT_VEC_IMPULSE                   3
 #define ENT_VEC_COLOR                     4
 #define ENT_VEC_VELOCITY                  5
 #define ENT_VEC_GRAVITY                   6
 #define ENT_VEC_ANGULAR_VELOCITY          7
 #define ENT_VEC_SLIDING_SURFACE           9
+#define ENT_VEC_SLIDE_TO                 10
 #define ENT_VEC_TRAIL_COLOR              11
 #define ENT_VEC_ADD_BAY_POINT            12
 #define ENT_VEC_TARGET                   13
@@ -442,9 +445,13 @@ LIB_EXP int SetEntityQuatProperty(
         double quat2, double quat3, double quat4
 );
 LIB_EXP entity_t *SeverLimb(const char *entity_name, int limb);
+LIB_EXP int ResetWounds(const char *entity_name);
 LIB_EXP int AddCameraEvent(const char *entity_name, int frame, PyObject *func);
 LIB_EXP int SubscribeEntityToList(
         const char *entity_name, const char *timer_name
+);
+LIB_EXP int MessageEvent(
+        const char *entity_name, int message_type, int unknown1, int unknown2
 );
 LIB_EXP int Rel2AbsPoint(
         const char *entity_name, double x_rel, double y_rel, double z_rel,
@@ -462,16 +469,26 @@ LIB_EXP int Rel2AbsVectorN(
         const char *entity_name, double x_rel, double y_rel, double z_rel,
         const char *anchor_name, double *x_abs, double *y_abs, double *z_abs
 );
+LIB_EXP int GetDummyAxis(
+        const char *entity_name, const char *anchor_name, double x_dir,
+        double y_dir, double z_dir, double *x_dummy_axis, double *y_dummy_axis,
+        double *z_dummy_axis, int unknown
+);
 LIB_EXP double SQDistance2(const char *entity_name1, const char *entity_name2);
 LIB_EXP int RemoveEntityFromList(
         const char *entity_name, const char *timer_name
 );
+LIB_EXP int RemoveFromInventRight(const char *entity_name);
 LIB_EXP int SetTmpAnmFlags(
         const char *entity_name, int wuea, int mod_y, int solf, int copy_rot,
         int bng_mov, int headf, int unknown
 );
 LIB_EXP int CanISee(
         const char *entity_name, const char *seen_entity_name, int *canISee
+);
+LIB_EXP int ExcludeHitFor(
+        const char *entity_name, const char *exclude_hit_for_name,
+        void *unknown
 );
 LIB_EXP int UnlinkChild(
         const char *entity_name, const char *child_entity_name, void *unknown
@@ -483,8 +500,16 @@ LIB_EXP int LinkAnchors(
         const char *entity_name, const char *entity_anchor_name,
         const char *child_name, const char *child_anchor_name, void *unknown
 );
+LIB_EXP int LinkToNode(
+        const char *entity_name, const char *child_name, int node_index,
+        void *unknown
+);
+LIB_EXP int GetNodeIndex(
+        const char *entity_name, const char *node_name, int *index
+);
 LIB_EXP int GetNChildren(const char *entity_name);
 LIB_EXP const char *GetChild(const char *entity_name, int index);
+LIB_EXP int UnlinkChilds(const char *entity_name);
 LIB_EXP const char *GetEnemy(const char *entity_name);
 LIB_EXP int QuickFace(const char *entity_name, double angle);
 LIB_EXP int GraspPos(
@@ -492,6 +517,7 @@ LIB_EXP int GraspPos(
         double *z
 );
 LIB_EXP int Freeze(const char *entity_name);
+LIB_EXP int UnFreeze(const char *entity_name);
 LIB_EXP int AddSoundAnim(
         const char *entity_name, const char *anm_event, double time, int soundID
 );
@@ -565,9 +591,13 @@ LIB_EXP int SetAttackList(const char *entity_name, PyObject *attack_list);
 LIB_EXP int CarringObject(const char *inv_name, const char *obj_name);
 LIB_EXP int LinkRightHand(const char *inv_name, const char *obj_name);
 LIB_EXP int LinkLeftHand(const char *inv_name, const char *obj_name);
+LIB_EXP int LinkRightBack(const char *inv_name, const char *obj_name);
 LIB_EXP int LinkBack(const char *inv_name, const char *obj_name);
 LIB_EXP int AddObject(
         const char *inv_name, int obj_type, int unknown, const char *obj_name
+);
+LIB_EXP int RemoveObject(
+        const char *inv_name, int obj_type, const char *obj_name
 );
 LIB_EXP const char *GetObject(const char *inv_name, int obj_type, int index);
 LIB_EXP const char *GetObjectByName(
