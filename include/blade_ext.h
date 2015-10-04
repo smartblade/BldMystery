@@ -242,6 +242,7 @@ typedef struct {
 #define ENT_STR_OBJECT_NAME              18
 #define ENT_STR_PERSON_NAME              19
 #define ENT_STR_PERSON_NODE_NAME         20
+#define ENT_STR_MESH                     21
 #define ENT_STR_INV_RIGHT_BACK           22
 #define ENT_STR_INV_LEFT_BACK            23
 #define ENT_STR_ACTIVE_ENEMY             24
@@ -277,6 +278,7 @@ typedef struct {
 #define ENT_VEC_CORE_GLOW_COLOR          16
 #define ENT_VEC_INIT_POS                 17
 #define ENT_VEC_ENEMY_LAST_SEEN          18
+#define ENT_VEC_FLY_VELOCITY             19
 #define ENT_VEC_D1                       20
 #define ENT_VEC_D2                       21
 #define ENT_VEC_D                        22
@@ -326,6 +328,44 @@ typedef struct {
 #define ENT_QUAT_ORIENTATION              1
 
 
+#define INV_INT_N_OBJECTS                 0
+#define INV_INT_N_WEAPONS                 1
+#define INV_INT_N_SHIELDS                 2
+#define INV_INT_HAS_BOW                   3
+#define INV_INT_N_KIND_OBJECTS            4
+#define INV_INT_N_QUIVERS                 5
+#define INV_INT_MAX_OBJECTS               6
+#define INV_INT_MAX_WEAPONS               7
+#define INV_INT_MAX_SHIELDS               8
+#define INV_INT_MAX_QUIVERS               9
+#define INV_INT_N_KEYS                   10
+#define INV_INT_N_SPECIAL_KEYS           11
+#define INV_INT_N_TABLETS                12
+#define INV_INT_HOLDING_BOW              13
+#define INV_INT_HAS_BOW_ON_BACK          15
+#define INV_INT_HOLDING_SHIELD           16
+#define INV_INT_HAS_SHIELD_ON_BACK       17
+
+#define INV_STR_NAME                      0
+#define INV_STR_OWNER                     1
+
+
+#define INV_OBJ_TYPE_MAGIC_SHIELD        -5
+#define INV_OBJ_TYPE_BOW                 -4
+#define INV_OBJ_TYPE_OBJECT               0
+#define INV_OBJ_TYPE_SHIELD               1
+#define INV_OBJ_TYPE_WEAPON               2
+#define INV_OBJ_TYPE_QUIVER               3
+#define INV_OBJ_TYPE_KEY                  4
+#define INV_OBJ_TYPE_SPECIAL_KEY          5
+#define INV_OBJ_TYPE_TABLET               6
+
+
+#define MAT_STR_NAME                      0
+
+#define MAT_SND_HIT_SOUND                 1
+
+
 #define SEC_INT_ACTIVE                    0
 #define SEC_INT_TOO_STEEP                 2
 #define SEC_INT_NUM_PIECES                4
@@ -352,6 +392,13 @@ typedef struct {
 #define SND_FLT_PITCH                     5
 
 #define SND_STR_NAME                      0
+
+
+#define TRL_FLT_TIME_2_LIVE               0
+#define TRL_FLT_TRANSPARENCY              1
+#define TRL_FLT_SHRINK_FACTOR             2
+
+#define TRL_VEC_COLOR                     0
 
 
 LIB_EXP int WorldToMBW(const char *world);
@@ -479,9 +526,13 @@ LIB_EXP int RemoveEntityFromList(
         const char *entity_name, const char *timer_name
 );
 LIB_EXP int RemoveFromInventRight(const char *entity_name);
+LIB_EXP int RemoveFromInventLeft(const char *entity_name);
 LIB_EXP int SetTmpAnmFlags(
         const char *entity_name, int wuea, int mod_y, int solf, int copy_rot,
         int bng_mov, int headf, int unknown
+);
+LIB_EXP int SetActiveEnemy(
+        const char *entity_name, const char *active_enemy_name, int *unknown
 );
 LIB_EXP int CanISee(
         const char *entity_name, const char *seen_entity_name, int *canISee
@@ -511,7 +562,9 @@ LIB_EXP int GetNChildren(const char *entity_name);
 LIB_EXP const char *GetChild(const char *entity_name, int index);
 LIB_EXP int UnlinkChilds(const char *entity_name);
 LIB_EXP const char *GetEnemy(const char *entity_name);
+LIB_EXP int GoTo(const char *entity_name, int x, int y, int z);
 LIB_EXP int QuickFace(const char *entity_name, double angle);
+LIB_EXP int Face(const char *entity_name, double angle);
 LIB_EXP int GraspPos(
         const char *entity_name, const char *grasp, double *x, double *y,
         double *z
@@ -563,6 +616,10 @@ LIB_EXP int CameraSetMaxCamera(
         int num_frames
 );
 LIB_EXP int CameraCut(const char *entity_name);
+LIB_EXP int EntityRotate(
+        const char *entity_name, double x_dir, double y_dir, double z_dir,
+        double velocity, int unknown
+);
 LIB_EXP int EntityRotateRel(
         const char *entity_name, double x, double y, double z, double x_dir,
         double y_dir, double z_dir, double angle, int i_unknown
@@ -571,6 +628,7 @@ LIB_EXP int EntityMove(
         const char *entity_name, double x, double y, double z, int unknown
 );
 LIB_EXP PyObject *GetGroupMembers(const char *entity_name);
+LIB_EXP int EntityPutToWorld(const char *entity_name);
 LIB_EXP void EntityRemoveFromWorld(const char *entity_name);
 LIB_EXP void EntityRemoveFromWorldWithChilds(const char *entity_name);
 LIB_EXP int SetSound(const char *entity_name, const char *sound);
@@ -580,6 +638,17 @@ LIB_EXP int StopAt(const char *entity_name, double x, double y, double z);
 LIB_EXP int SetOnFloor(const char *entity_name);
 LIB_EXP int RaiseEvent(const char *entity_name, const char *event_name);
 LIB_EXP int InterruptCombat(const char *entity_name);
+LIB_EXP int SetAuraActive(const char *entity_name, int is_active);
+LIB_EXP int SetAuraParams(
+        const char *entity_name, double size, double alpha,
+        double colour_intensity, int hide_front_faces, int hide_back_faces,
+        int alpha_mode
+);
+LIB_EXP int SetAuraGradient(
+        const char *entity_name, int gap, double r1, double g1, double b1,
+        double alpha1, double starting_point, double r2, double g2, double b2,
+        double alpha2, double ending_point
+);
 LIB_EXP PyObject *GetEntityData(const char *entity_name);
 LIB_EXP PyObject *GetAttackList(const char *entity_name);
 LIB_EXP int ChangeEntityStatic(const char *entity_name, int is_static);
@@ -592,7 +661,9 @@ LIB_EXP int CarringObject(const char *inv_name, const char *obj_name);
 LIB_EXP int LinkRightHand(const char *inv_name, const char *obj_name);
 LIB_EXP int LinkLeftHand(const char *inv_name, const char *obj_name);
 LIB_EXP int LinkRightBack(const char *inv_name, const char *obj_name);
+LIB_EXP int LinkLeftBack(const char *inv_name, const char *obj_name);
 LIB_EXP int LinkBack(const char *inv_name, const char *obj_name);
+LIB_EXP int SetCurrentQuiver(const char *inv_name, const char *quiver_name);
 LIB_EXP int AddObject(
         const char *inv_name, int obj_type, int unknown, const char *obj_name
 );
@@ -604,6 +675,7 @@ LIB_EXP const char *GetObjectByName(
         const char *inv_name, int obj_type, const char *obj_name
 );
 LIB_EXP const char *GetSelectedObject(const char *inv_name, int obj_type);
+LIB_EXP void Cycle(const char *inv_name, int obj_type);
 LIB_EXP int IsSelected(const char *inv_name, int obj_type, int obj_index);
 LIB_EXP int GetNumberObjectsAt(const char *inv_name, int obj_type, int index);
 LIB_EXP int GetMaxNumberObjectsAt(
@@ -612,8 +684,14 @@ LIB_EXP int GetMaxNumberObjectsAt(
 LIB_EXP const char *GetActiveShield(const char *inv_name);
 LIB_EXP const char *GetActiveWeapon(const char *inv_name);
 LIB_EXP int AddWeapon(const char *inv_name, int flag, const char *weapon_name);
+LIB_EXP int GetInventoryStringProperty(
+	const char *name, int property_kind, const char **value
+);
 LIB_EXP int GetInventoryIntProperty(
         const char *name, int property_kind, int *value
+);
+LIB_EXP int SetInventoryIntProperty(
+        const char *name, int property_kind, int value
 );
 LIB_EXP int SetListenerMode(int mode, double x, double y, double z);
 LIB_EXP int GetSectorByIndex(int index);
@@ -691,18 +769,27 @@ LIB_EXP int GetCharStringProperty(int charID, int property_kind, int index, cons
 LIB_EXP int SetCharStringProperty(int charID, int property_kind, int index, const char *value);
 LIB_EXP int SetCharFuncProperty(int charID, int property_kind, int index, PyObject *func);
 LIB_EXP int GetTrailByName(const char *name);
+LIB_EXP int SetTrailFloatProperty(
+        int trailID, int property_kind, int index, double value
+);
+LIB_EXP int SetTrailVectorProperty(
+        int trailID, int property_kind, int index, double x, double y, double z
+);
 LIB_EXP int CreateSound(const char *file_name, const char *sound_name);
 LIB_EXP void DestroySound(int soundID);
 LIB_EXP int GetSoundDevInstace(void);
 LIB_EXP int GetGhostSectorSound(const char *gs_name);
 LIB_EXP char *GetSoundStringProperty(int property_kind, int soundID);
 LIB_EXP double GetSoundFloatProperty(int property_kind, int soundID);
+LIB_EXP void SetSoundFloatProperty(int property_kind, int soundID, double value);
+LIB_EXP void SetSoundIntProperty(int property_kind, int soundID, int value);
 LIB_EXP int PlaySoundM(int soundID, double x, double y, double z, int i_unknown);
 LIB_EXP int PlaySoundStereo(int soundID, int i_unknown);
 LIB_EXP void SetSoundPitchVar(
         int soundID, int i_unknown, float f_unknown1, float f_unknown2,
         float f_unknown3, float f_unknown4
 );
+LIB_EXP int StopSound(int soundID);
 LIB_EXP int CreateTimer(const char *timer_name, double period);
 LIB_EXP int GetnTimers(void);
 LIB_EXP int GetTimerInfo(
@@ -812,6 +899,12 @@ LIB_EXP int CDSetCallBack(PyObject *func);
 LIB_EXP int SetDefaultMass(const char *entity_kind, double mass);
 LIB_EXP int SetDefaultMaterial(const char *entity_kind, const char *material);
 LIB_EXP material_t *CreateMaterial(const char *name);
+LIB_EXP int GetMaterialStringProperty(
+        material_t *material, int property_kind, int index, const char **value
+);
+LIB_EXP int SetMaterialSoundProperty(
+        material_t *material, int property_kind, int index, int soundID
+);
 LIB_EXP int nMaterials(void);
 LIB_EXP int CreateGhostSector(
 	const char *ghost_sector_name, const char *group_name,
