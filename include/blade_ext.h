@@ -103,6 +103,7 @@ typedef struct {
 #define ENT_INT_BLIND                    30
 #define ENT_INT_TEXTURE                  30
 #define ENT_INT_DEAF                     31
+#define ENT_INT_WOUNDED_ZONES            32
 #define ENT_INT_TEST_HIT                 33
 #define ENT_INT_IN_COMBAT                34
 #define ENT_INT_FIXED_TARGET             35
@@ -449,6 +450,7 @@ LIB_EXP entity_t *CreateEntityDecal(
         double d_unknown1, double d_unknown2
 );
 LIB_EXP const char *GetEntityName(entity_t *entity);
+LIB_EXP int DeleteEntity(const char *name);
 LIB_EXP int GetEntityStringProperty(
         const char *entity_name, int property_kind, int index,
         const char **value
@@ -493,6 +495,10 @@ LIB_EXP int SetEntityQuatProperty(
 );
 LIB_EXP entity_t *SeverLimb(const char *entity_name, int limb);
 LIB_EXP int ResetWounds(const char *entity_name);
+LIB_EXP int ImpulseC(
+        const char *entity_name, double x, double y, double z, double x_vec,
+        double y_vec, double z_vec
+);
 LIB_EXP int AddCameraEvent(const char *entity_name, int frame, PyObject *func);
 LIB_EXP int SubscribeEntityToList(
         const char *entity_name, const char *timer_name
@@ -571,6 +577,7 @@ LIB_EXP int GraspPos(
 );
 LIB_EXP int Freeze(const char *entity_name);
 LIB_EXP int UnFreeze(const char *entity_name);
+LIB_EXP int GetActionMode(const char *entity_name, int *action_mode);
 LIB_EXP int AddSoundAnim(
         const char *entity_name, const char *anm_event, double time, int soundID
 );
@@ -635,6 +642,10 @@ LIB_EXP int SetSound(const char *entity_name, const char *sound);
 LIB_EXP int PlayEntitySound(const char *entity_name, int i_unknown);
 LIB_EXP int Stop(const char *entity_name);
 LIB_EXP int StopAt(const char *entity_name, double x, double y, double z);
+LIB_EXP int EntityCatchOnFire(
+        const char *entity_name, double x, double y, double z
+);
+LIB_EXP const char *GetParticleEntity(const char *entity_name);
 LIB_EXP int SetOnFloor(const char *entity_name);
 LIB_EXP int RaiseEvent(const char *entity_name, const char *event_name);
 LIB_EXP int InterruptCombat(const char *entity_name);
@@ -655,9 +666,12 @@ LIB_EXP int ChangeEntityStatic(const char *entity_name, int is_static);
 LIB_EXP int ChangeEntityActor(const char *entity_name, int is_actor);
 LIB_EXP int ChangeEntityPerson(const char *entity_name, int is_person);
 LIB_EXP int ChangeEntityWeapon(const char *entity_name, int is_weapon);
+LIB_EXP int ChangeEntityArrow(const char *entity_name, int is_arrow);
 LIB_EXP int SetEntityData(const char *entity_name, PyObject *data);
 LIB_EXP int SetAttackList(const char *entity_name, PyObject *attack_list);
 LIB_EXP int CarringObject(const char *inv_name, const char *obj_name);
+LIB_EXP const char *GetRightBack(const char *inv_name);
+LIB_EXP const char *GetLeftBack(const char *inv_name);
 LIB_EXP int LinkRightHand(const char *inv_name, const char *obj_name);
 LIB_EXP int LinkLeftHand(const char *inv_name, const char *obj_name);
 LIB_EXP int LinkRightBack(const char *inv_name, const char *obj_name);
@@ -683,6 +697,7 @@ LIB_EXP int GetMaxNumberObjectsAt(
 );
 LIB_EXP const char *GetActiveShield(const char *inv_name);
 LIB_EXP const char *GetActiveWeapon(const char *inv_name);
+LIB_EXP const char *GetActiveQuiver(const char *inv_name);
 LIB_EXP int AddWeapon(const char *inv_name, int flag, const char *weapon_name);
 LIB_EXP int GetInventoryStringProperty(
 	const char *name, int property_kind, const char **value
