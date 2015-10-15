@@ -1250,6 +1250,10 @@ static PyMethodDef sound_methods[] = {
     { NULL,                             NULL,                               0,            NULL },
 };
 
+static PyMethodDef trail_methods[] = {
+    { NULL,                             NULL,                               0,            NULL },
+};
+
 
 
 // address: 0x10001000
@@ -5831,12 +5835,6 @@ PyObject *bex_ent_GetEnemyName(PyObject *self, PyObject *args) {
         return PyString_FromString(enemy_name);
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
 // address: 0x1000c1c8
 PyObject *bex_ent_Chase(PyObject *self, PyObject *args) {
@@ -5861,12 +5859,22 @@ PyObject *bex_ent_Chase(PyObject *self, PyObject *args) {
 
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x1000c255
+PyObject *bex_ent_ResetChase(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        code = ResetChase(entity->name);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
 
 // address: 0x1000c2ba
 PyObject *bex_ent_GoTo(PyObject *self, PyObject *args) {
@@ -5885,12 +5893,22 @@ PyObject *bex_ent_GoTo(PyObject *self, PyObject *args) {
 }
 
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+// address: 0x1000c339
+PyObject *bex_ent_CanGoTo(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int x, y, z;
+
+        if (!PyArg_ParseTuple(args, "iii", &x, &y, &z))
+                return NULL;
+
+        code = CanGoTo(entity->name, x, y, z);
+        if (code != 1) {
+                return Py_BuildValue("i", 0);
+        } else {
+                return Py_BuildValue("i", 1);
+        }
+}
 
 
 // address: 0x1000c3b8
@@ -5943,12 +5961,48 @@ PyObject *bex_ent_Face(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", 1);
 }
 
+
+// address: 0x1000c50d
+PyObject *bex_ent_StartLooking(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int x, y, z;
+
+        if (!PyArg_ParseTuple(args, "iii", &x, &y, &z))
+                return NULL;
+
+        code = StartLooking(entity->name, x, y, z);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+
+
+// address: 0x1000c58c
+PyObject *bex_ent_StopLooking(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+
+        code = StopLooking(entity->name);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
 /*
 ................................................................................
 ................................................................................
 ................................................................................
 ................................................................................
 */
+
 
 
 // address: 0x1000c660
@@ -6009,12 +6063,60 @@ PyObject *bex_ent_UnFreeze(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", 1);
 }
 
+
+// address: 0x1000c84f
+PyObject *bex_ent_SwitchTo1H(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        code = SwitchTo1H(entity->name);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x1000c8b4
+PyObject *bex_ent_SwitchToBow(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        code = SwitchToBow(entity->name);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
 /*
 ................................................................................
 ................................................................................
 ................................................................................
 ................................................................................
 */
+
+// address: 0x1000c97e
+PyObject *bex_ent_LaunchWatch(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        code = LaunchWatch(entity->name);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
 
 // address: 0x1000c9e3
 PyObject *bex_ent_GetActionMode(PyObject *self, PyObject *args) {
@@ -6871,40 +6973,12 @@ PyObject* bex_ent_SetEnemy(PyObject* self, PyObject* args) {
         NOT_IMPLEMENTED_FUNC("bex_ent_SetEnemy", NULL);
 }
 
-PyObject* bex_ent_ResetChase(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_ResetChase", NULL);
-}
-
-PyObject* bex_ent_CanGoTo(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_CanGoTo", NULL);
-}
-
-PyObject* bex_ent_StartLooking(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_StartLooking", NULL);
-}
-
-PyObject* bex_ent_StopLooking(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_StopLooking", NULL);
-}
-
 PyObject* bex_ent_AddWatchAnim(PyObject* self, PyObject* args) {
         NOT_IMPLEMENTED_FUNC("bex_ent_AddWatchAnim", NULL);
 }
 
-PyObject* bex_ent_SwitchTo1H(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_SwitchTo1H", NULL);
-}
-
-PyObject* bex_ent_SwitchToBow(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_SwitchToBow", NULL);
-}
-
 PyObject* bex_ent_LaunchBayRoute(PyObject* self, PyObject* args) {
         NOT_IMPLEMENTED_FUNC("bex_ent_LaunchBayRoute", NULL);
-}
-
-PyObject* bex_ent_LaunchWatch(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_LaunchWatch", NULL);
 }
 
 PyObject* bex_ent_StartGrabbing(PyObject* self, PyObject* args) {
@@ -7926,10 +8000,22 @@ PyObject *bex_ent_RAttackMax_get(PyObject *self, char *attr_name) {
         NOT_IMPLEMENTED_FUNC("bex_ent_RAttackMax_get", NULL);
 }
 
-// TODO implement
+
 // address: 0x10010de2
 PyObject *bex_ent_ActionAreaMin_get(PyObject *self, char *attr_name) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_ActionAreaMin_get", NULL);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int action_area_min;
+
+        code = GetEntityIntProperty(
+                entity->name, ENT_INT_ACTION_AREA, 0, &action_area_min
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return PyInt_FromLong(action_area_min);
 }
 
 
@@ -9788,11 +9874,18 @@ PyObject *bex_inv_LinkLeftHand(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", code);
 }
 
-
-// TODO implement
 // address: 0x100142a5
-PyObject* bex_inv_LinkLeftHand2(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_inv_LinkLeftHand2", NULL);
+PyObject *bex_inv_LinkLeftHand2(PyObject *self, PyObject *args) {
+        bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
+        int code;
+        const char *obj_name;
+
+        code = 0;
+
+        if (PyArg_ParseTuple(args, "s", &obj_name))
+                code = LinkLeftHand2(inventory->name, obj_name);
+
+        return Py_BuildValue("i", code);
 }
 
 
@@ -12072,12 +12165,10 @@ PyObject *get_trail_type(const char *name) {
 }
 
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+// address: 0x100189fc
+void init_trail() {
+        init_trail_type();
+}
 
 
 // address: 0x10018a06
@@ -12121,15 +12212,90 @@ int bld_py_trail_print(PyObject *self, FILE *file, int flags) {
         return 0;
 }
 
-// TODO implement
+
 // address: 0x10018af6
 PyObject *bld_py_trail_getattr(PyObject *self, char *attr_name)
 {
-        NOT_IMPLEMENTED_ATTR("bld_py_trail_getattr", attr_name);
-        return NULL;
+        double time_2_live, transparency, shrink_factor;
+        double r, g, b;
+        PyObject *colorTuple, *rObj, *gObj, *bObj;
+        char buffer[512];
+        int code;
+
+        if (!strcmp(attr_name, "__doc__"))
+                return PyString_FromString("Blah blah BLAH !!");
+
+        if (!strcmp(attr_name, "Time2Live")) {
+                code = GetTrailFloatProperty(
+                        ((bld_py_trail_t *)self)->trailID, TRL_FLT_TIME_2_LIVE,
+                        0, &time_2_live
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+
+                return PyFloat_FromDouble(time_2_live);
+        }
+
+        if (!strcmp(attr_name, "Transparency")) {
+                code = GetTrailFloatProperty(
+                        ((bld_py_trail_t *)self)->trailID, TRL_FLT_TRANSPARENCY,
+                        0, &transparency
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+
+                return PyFloat_FromDouble(transparency);
+        }
+
+        if (!strcmp(attr_name, "ShrinkFactor")) {
+                code = GetTrailFloatProperty(
+                        ((bld_py_trail_t *)self)->trailID,
+                        TRL_FLT_SHRINK_FACTOR, 0, &shrink_factor
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+
+                return PyFloat_FromDouble(shrink_factor);
+        }
+
+        if (!strcmp(attr_name, "Color")) {
+                code = GetTrailVectorProperty(
+                        ((bld_py_trail_t *)self)->trailID, TRL_VEC_COLOR, 0,
+                        &r, &g, &b
+                );
+                if (code != 1) {
+                        if (code != -2) {
+                                PyErr_SetString(PyExc_AttributeError, attr_name);
+                        } else {
+                                sprintf(buffer, "Unsupported %s", attr_name);
+                                PyErr_SetString(PyExc_AttributeError, buffer);
+                        }
+                        return NULL;
+                }
+
+                colorTuple = PyTuple_New(3);
+
+                rObj = PyFloat_FromDouble(r);
+                gObj = PyFloat_FromDouble(g);
+                bObj = PyFloat_FromDouble(b);
+
+                PyTuple_SetItem(colorTuple, 0, rObj);
+                PyTuple_SetItem(colorTuple, 1, gObj);
+                PyTuple_SetItem(colorTuple, 2, bObj);
+
+                return colorTuple;
+        }
+
+        return Py_FindMethod(trail_methods, self, attr_name);
 }
 
-// TODO implement
+
 // address: 0x10018d8e
 int bld_py_trail_setattr(PyObject *self, char *attr_name, PyObject *value)
 {
@@ -12137,12 +12303,13 @@ int bld_py_trail_setattr(PyObject *self, char *attr_name, PyObject *value)
         double r, g, b;
         int code;
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+        PyErr_Clear();
+        if (value == NULL) {
+                PyErr_SetString(
+                        PyExc_AttributeError, "can't delete Trail attributes"
+                );
+                return -1;
+        }
 
         if (!strcmp(attr_name, "Time2Live")) {
                 if (!PyArg_Parse(value, "d", &time_2_live)) {
@@ -12216,14 +12383,7 @@ int bld_py_trail_setattr(PyObject *self, char *attr_name, PyObject *value)
                 return 0;
         }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-        NOT_IMPLEMENTED_ATTR("bld_py_trail_setattr", attr_name);
+        PyErr_SetString(PyExc_AttributeError, "Not implemented");
         return -1;
 }
 

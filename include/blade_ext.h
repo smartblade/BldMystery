@@ -590,18 +590,25 @@ LIB_EXP const char *GetEnemy(const char *entity_name);
 LIB_EXP int Chase(
         const char *entity_name, const char *enemy_name, int action_area
 );
+LIB_EXP int ResetChase(const char *entity_name);
 LIB_EXP int GoTo(const char *entity_name, int x, int y, int z);
+LIB_EXP int CanGoTo(const char *entity_name, int x, int y, int z);
 LIB_EXP int LookAtEntity(
         const char *entity_name, const char *look_at_entity_name
 );
 LIB_EXP int QuickFace(const char *entity_name, double angle);
 LIB_EXP int Face(const char *entity_name, double angle);
+LIB_EXP int StartLooking(const char *entity_name, int x, int y, int z);
+LIB_EXP int StopLooking(const char *entity_name);
 LIB_EXP int GraspPos(
         const char *entity_name, const char *grasp, double *x, double *y,
         double *z
 );
 LIB_EXP int Freeze(const char *entity_name);
 LIB_EXP int UnFreeze(const char *entity_name);
+LIB_EXP int SwitchTo1H(const char *entity_name);
+LIB_EXP int SwitchToBow(const char *entity_name);
+LIB_EXP int LaunchWatch(const char *entity_name);
 LIB_EXP int GetActionMode(const char *entity_name, int *action_mode);
 LIB_EXP int AddSoundAnim(
         const char *entity_name, const char *anm_event, double time, int soundID
@@ -707,6 +714,7 @@ LIB_EXP const char *GetRightBack(const char *inv_name);
 LIB_EXP const char *GetLeftBack(const char *inv_name);
 LIB_EXP int LinkRightHand(const char *inv_name, const char *obj_name);
 LIB_EXP int LinkLeftHand(const char *inv_name, const char *obj_name);
+LIB_EXP int LinkLeftHand2(const char *inv_name, const char *obj_name);
 LIB_EXP int LinkRightBack(const char *inv_name, const char *obj_name);
 LIB_EXP int LinkLeftBack(const char *inv_name, const char *obj_name);
 LIB_EXP int LinkBack(const char *inv_name, const char *obj_name);
@@ -821,8 +829,15 @@ LIB_EXP int GetCharStringProperty(int charID, int property_kind, int index, cons
 LIB_EXP int SetCharStringProperty(int charID, int property_kind, int index, const char *value);
 LIB_EXP int SetCharFuncProperty(int charID, int property_kind, int index, PyObject *func);
 LIB_EXP int GetTrailByName(const char *name);
+LIB_EXP int GetTrailFloatProperty(
+        int trailID, int property_kind, int index, double *value
+);
 LIB_EXP int SetTrailFloatProperty(
         int trailID, int property_kind, int index, double value
+);
+LIB_EXP int GetTrailVectorProperty(
+        int trailID, int property_kind, int index,
+        double *x, double *y, double *z
 );
 LIB_EXP int SetTrailVectorProperty(
         int trailID, int property_kind, int index, double x, double y, double z
