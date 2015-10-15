@@ -27,3 +27,6 @@
 extern PyObject *get_char_by_name(const char *name, const char *short_name);
 extern void init_char(void);
 
+extern PyObject *get_trail_type(const char *name);
+extern void init_trail(void);
+
