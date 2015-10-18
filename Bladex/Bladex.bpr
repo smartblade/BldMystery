@@ -4,7 +4,7 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="Bladex.dll"/>
-    <OBJFILES value="Bladex.obj Character.obj Trail.obj"/>
+    <OBJFILES value="Bladex.obj Character.obj Trail.obj HeapCheck.obj Utils.obj"/>
     <RESFILES value="Bladex.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -60,6 +60,8 @@
       <FILE FILENAME="..\blade.lib" FORMNAME="" UNITNAME="blade.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Character.c" FORMNAME="" UNITNAME="Character" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Trail.c" FORMNAME="" UNITNAME="Trail" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="HeapCheck.c" FORMNAME="" UNITNAME="HeapCheck" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Utils.c" FORMNAME="" UNITNAME="Utils" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
