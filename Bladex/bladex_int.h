@@ -36,7 +36,7 @@ typedef struct {
 	int (*set_func)(PyObject *, char *, PyObject *);
 } property_info_t ;
 
-static property_info_t *property_kinds;
+extern property_info_t *property_kinds;
 
 
 extern PyObject *get_char_by_name(const char *name, const char *short_name);

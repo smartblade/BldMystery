@@ -21,6 +21,8 @@ static void make_tree(int first, int last);
 static void make_sub_tree(int first, int last, int char_index, int *node_index);
 
 
+property_info_t *property_kinds;
+
 static int need_init_properties = TRUE;
 static int root_node[256];
 static property_tree_node_t tree_nodes[2000];
