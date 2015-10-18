@@ -33,6 +33,11 @@ typedef struct {
 
 typedef struct {
         PyObject_HEAD
+        void *unknown;
+} bld_py_route_t;
+
+typedef struct {
+        PyObject_HEAD
         int sectorID;
 } bld_py_sector_t;
 
@@ -50,6 +55,13 @@ typedef struct {
 	PyObject *(*get_func)(PyObject *, char *);
 	int (*set_func)(PyObject *, char *, PyObject *);
 } property_info_t ;
+
+typedef struct {
+        int first_element;
+        int num_elements;
+        unsigned char symbol;
+        int next;
+} property_tree_node_t;
 
 //TODO remove
 #define NOT_IMPLEMENTED_FUNC(msg, ret) {\
@@ -685,6 +697,14 @@ static int bld_py_material_print(PyObject *self, FILE *file, int flags);
 static PyObject *bld_py_material_getattr(PyObject *self, char *attr_name);
 static int bld_py_material_setattr(PyObject *self, char *attr_name, PyObject *value);
 
+static PyObject *create_route(void);
+static PyObject* bex_route_AddPoint(PyObject* self, PyObject* args);
+static void init_route_type(void);
+static void bld_py_route_dealloc(PyObject *self);
+static int bld_py_route_print(PyObject *self, FILE *file, int flags);
+static PyObject *bld_py_route_getattr(PyObject *self, char *attr_name);
+static int bld_py_route_setattr(PyObject *self, char *attr_name, PyObject *value);
+
 static PyObject* get_sector_by_index(int index);
 static PyObject* get_sector_by_position(double x, double y, double z);
 static PyObject* bex_sec_InitBreak(PyObject* self, PyObject* args);
@@ -733,26 +753,39 @@ static void heap_check_delay_free(int i);
 static void heap_check_system_memory(int i);
 static void heap_check_leaks(int i);
 static int dump_memory_leaks(const char *s);
+static void init_properties(void);
 static int insert_property(
         const char *name, int property_kind, int data_type, int flags,
         PyObject *(*get_func)(PyObject *, char *),
         int (*set_func)(PyObject *, char *, PyObject *)
 );
+static int get_new_property_index(
+        property_info_t *properties, char *name, int num
+);
+static void shift_elements(
+        property_info_t *properties, int from, int num_elements
+);
+static void make_tree(int first, int last);
+static void make_sub_tree(int first, int last, int char_index, int *node_index);
 static int find_property(property_info_t *properties, const char *name);
 
 
 static PyTypeObject entityTypeObject;
 static PyTypeObject inventoryTypeObject;
 static PyTypeObject materialTypeObject;
+static PyTypeObject routeTypeObject;
 static PyTypeObject sectorTypeObject;
 static PyTypeObject soundTypeObject;
 
+static int need_init_properties = TRUE;
+static int root_node[256];
+static property_tree_node_t tree_nodes[2000];
 static property_info_t *property_kinds;
 static int num_property_kinds = 0;
 
 static void (*init_funcs[])(void) = {
     init_char, init_entity_type, init_inventory_type, init_material_type,
-    init_sector_type, init_sound_type, init_trail, NULL
+    init_route_type, init_sector_type, init_sound_type, init_trail, NULL
 };
 
 static PyMethodDef methods[] = {
@@ -1205,6 +1238,12 @@ static PyMethodDef inventory_methods[] = {
     { "CarringObject",                  bex_inv_CarringObject,              METH_VARARGS, NULL },
     { NULL,                             NULL,                               0,            NULL },
 };
+
+static PyMethodDef route_methods[] = {
+    { "AddPoint",                       bex_route_AddPoint,                 METH_VARARGS, NULL },
+    { NULL,                             NULL,                               0,            NULL },
+};
+
 
 static PyMethodDef sector_methods[] = {
     { "InitBreak",                      bex_sec_InitBreak,                  METH_VARARGS, NULL },
@@ -1857,12 +1896,23 @@ PyObject *bex_GetTrailType(PyObject *self, PyObject *args) {
         return trail;
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x1000206a
+PyObject *bex_CreateRoute(PyObject *self, PyObject *args) {
+        PyObject *route;
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        route = create_route();
+        if (route == NULL) {
+                Py_INCREF(Py_None);
+                return Py_None;
+        }
+
+        return route;
+}
+
 
 // address: 0x100020b6
 PyObject *bex_CreateSound(PyObject *self, PyObject *args) {
@@ -4923,12 +4973,6 @@ PyObject *bex_CleanArea(PyObject *self, PyObject *args) {
         CleanArea(x, y, z, distance);
 
         return Py_BuildValue("i", 1);
-}
-
-
-
-PyObject* bex_CreateRoute(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_CreateRoute", NULL);
 }
 
 
@@ -11043,12 +11087,104 @@ int bld_py_material_setattr(PyObject *self, char *attr_name, PyObject *value)
         return -1;
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x10016310
+PyObject *create_route() {
+        bld_py_route_t *route_obj;
+
+        route_obj = PyObject_NEW(bld_py_route_t, &routeTypeObject);
+        if (route_obj == NULL)
+                return NULL;
+
+        return (PyObject *)route_obj;
+}
+
+
+// address: 0x10016346
+PyObject *bex_route_AddPoint(PyObject *self, PyObject *args) {
+        double x, y, z;
+
+        if (self == NULL)
+                return NULL;
+
+        if (!PyArg_ParseTuple(args, "ddd", &x, &y, &z))
+                return NULL;
+
+        return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x10016396
+void init_route() {
+        init_route_type();
+}
+
+
+// address: 0x100163a0
+void init_route_type() {
+        memset(&routeTypeObject, 0, sizeof(PyTypeObject));
+
+        routeTypeObject.ob_refcnt = 1;
+        routeTypeObject.ob_type = &PyType_Type;
+        routeTypeObject.ob_size = 0;
+        routeTypeObject.tp_name = "B_PyRoute";
+        routeTypeObject.tp_basicsize = sizeof(bld_py_route_t);
+        routeTypeObject.tp_itemsize = 0;
+        routeTypeObject.tp_dealloc = bld_py_route_dealloc;
+        routeTypeObject.tp_print = bld_py_route_print;
+        routeTypeObject.tp_getattr = bld_py_route_getattr;
+        routeTypeObject.tp_setattr = bld_py_route_setattr;
+        routeTypeObject.tp_compare = NULL;
+        routeTypeObject.tp_repr = NULL;
+        routeTypeObject.tp_as_number = NULL;
+        routeTypeObject.tp_as_sequence = NULL;
+        routeTypeObject.tp_as_mapping = NULL;
+        routeTypeObject.tp_hash = NULL;
+}
+
+
+// address: 0x1001644b
+void bld_py_route_dealloc(PyObject *self) {
+        free(self);
+}
+
+
+// address: 0x1001645d
+int bld_py_route_print(PyObject *self, FILE *file, int flags) {
+        char buffer[128];
+
+        sprintf(buffer, "B_Route: %d", 0);
+        fprintf(file, buffer);
+
+        return 0;
+}
+
+
+// address: 0x10016491
+PyObject *bld_py_route_getattr(PyObject *self, char *attr_name) {
+
+        if (!strcmp(attr_name, "__doc__"))
+                return PyString_FromString("Objeto ruta de Blade.");
+
+        return Py_FindMethod(route_methods, self, attr_name);
+}
+
+
+// address: 0x100164d3
+int bld_py_route_setattr(PyObject *self, char *attr_name, PyObject *value) {
+
+        PyErr_Clear();
+        if (value == NULL) {
+                PyErr_SetString(
+                        PyExc_AttributeError, "can't delete route attributes"
+                );
+                return -1;
+        }
+
+        PyErr_SetString(PyExc_AttributeError, "Not implemented");
+        return -1;
+}
+
 
 // address: 0x10016520
 PyObject *get_sector_by_index(int index) {
@@ -11284,11 +11420,11 @@ int bld_py_sector_print(PyObject *self, FILE *file, int flags) {
         return 0;
 }
 
-// TODO implement
+
 // address: 0x1001703f
 PyObject *bld_py_sector_getattr(PyObject *self, char *attr_name)
 {
-        int active;
+        int active, n_surfaces;
         double active_surf_x, active_surf_y, active_surf_z;
         PyObject *active_surface, *surf_x_obj, *surf_y_obj, *surf_z_obj;
         int num_pieces;
@@ -11297,14 +11433,12 @@ PyObject *bld_py_sector_getattr(PyObject *self, char *attr_name)
         PyObject *piece_x_obj, *piece_y_obj, *piece_z_obj;
         PyObject *break_info, *piece_obj, *piece_coord_obj, *piece_name_obj;
         PyObject *on_enter, *on_leave, *on_hit, *on_walk_on, *on_walk_out;
+        int too_steep, action_area;
+        double too_steep_angle;
         int code;
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+        if (!strcmp(attr_name, "__doc__"))
+                return PyString_FromString("Sector de un mapa de Blade.");
 
         if (!strcmp(attr_name, "Active")) {
                 code = GetSectorIntProperty(
@@ -11319,12 +11453,18 @@ PyObject *bld_py_sector_getattr(PyObject *self, char *attr_name)
                 return NULL;
         }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+        if (!strcmp(attr_name, "nSurfaces")) {
+                code = GetSectorIntProperty(
+                        ((bld_py_sector_t *)self)->sectorID, SEC_INT_N_SURFACES,
+                        0, &n_surfaces
+                );
+                if (code == 1)
+                        return PyInt_FromLong(n_surfaces);
+
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+
+                return NULL;
+        }
 
         if (!strcmp(attr_name, "ActiveSurface")) {
                 code = GetSectorVectorProperty(
@@ -11450,27 +11590,47 @@ PyObject *bld_py_sector_getattr(PyObject *self, char *attr_name)
                 return on_walk_out;
         }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-        if (!Py_FindMethod(sector_methods, self, attr_name)) {//TODO remove
-                NOT_IMPLEMENTED_ATTR("bld_py_sector_getattr", attr_name);
+        if (!strcmp(attr_name, "TooSteep")) {
+                GetSectorIntProperty(
+                        ((bld_py_sector_t *)self)->sectorID, SEC_INT_TOO_STEEP,
+                        0, &too_steep
+                );
+                return PyInt_FromLong(too_steep);
+        }
+
+        if (!strcmp(attr_name, "TooSteepAngle")) {
+                GetSectorFloatProperty(
+                        ((bld_py_sector_t *)self)->sectorID,
+                        SEC_FLT_TOO_STEEP_ANGLE, 0, &too_steep_angle
+                );
+                return PyFloat_FromDouble(too_steep_angle);
+        }
+
+        if (!strcmp(attr_name, "ActionArea")) {
+                code = GetSectorIntProperty(
+                        ((bld_py_sector_t *)self)->sectorID,
+                        SEC_INT_ACTION_AREA, 0, &action_area
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+
+                return PyInt_FromLong(action_area);
         }
 
         return Py_FindMethod(sector_methods, self, attr_name);
 }
 
-// TODO implement
+
 // address: 0x100175eb
 int bld_py_sector_setattr(PyObject *self, char *attr_name, PyObject *value)
 {
         int active;
-        PyObject *on_enter, *on_leave, *on_hit, *on_walk_on;
+        PyObject *on_enter, *on_leave, *on_hit, *on_walk_on, *on_walk_out;
         double active_surf_x, active_surf_y, active_surf_z;
-        int too_steep;
+        int too_steep, action_area;
+        double too_steep_angle;
         int num_pieces;
         double piece_x, piece_y, piece_z;
         const char *piece_name;
@@ -11610,12 +11770,26 @@ int bld_py_sector_setattr(PyObject *self, char *attr_name, PyObject *value)
                 return 0;
         }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+        if (!strcmp(attr_name, "OnWalkOut")) {
+                if (!PyArg_Parse(value, "O", &on_walk_out)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                if (!PyCallable_Check(on_walk_out))
+                        on_walk_out = NULL;
+
+                code = SetSectorFuncProperty(
+                        ((bld_py_sector_t *)self)->sectorID,
+                        SEC_FNC_ON_WALK_OUT, 0, on_walk_out
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
 
         if (!strcmp(attr_name, "TooSteep")) {
                 if (!PyArg_Parse(value, "i", &too_steep)) {
@@ -11635,12 +11809,23 @@ int bld_py_sector_setattr(PyObject *self, char *attr_name, PyObject *value)
                 return 0;
         }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+        if (!strcmp(attr_name, "TooSteepAngle")) {
+                if (!PyArg_Parse(value, "d", &too_steep_angle)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                code = SetSectorFloatProperty(
+                        ((bld_py_sector_t *)self)->sectorID,
+                        SEC_FLT_TOO_STEEP_ANGLE, 0, too_steep_angle
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
 
         if (!strcmp(attr_name, "BreakInfo")) {
                 int i;
@@ -11691,14 +11876,25 @@ int bld_py_sector_setattr(PyObject *self, char *attr_name, PyObject *value)
                 return 0;
         }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-        NOT_IMPLEMENTED_ATTR("bld_py_sector_setattr", attr_name);
+        if (!strcmp(attr_name, "ActionArea")) {
+                if (!PyArg_Parse(value, "i", &action_area)) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
 
+                code = SetSectorIntProperty(
+                        ((bld_py_sector_t *)self)->sectorID,
+                        SEC_INT_ACTION_AREA, 0, action_area
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                        return -1;
+                }
+
+                return 0;
+        }
+
+        PyErr_SetString(PyExc_AttributeError, "Not implemented");
         return -1;
 }
 
@@ -12174,53 +12370,217 @@ int dump_memory_leaks(const char *s) {
         return 0;
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
-// TODO implement
+// address: 0x100190b0
+void init_properties() {
+        init_entity_properties();
+        make_tree(0, num_property_kinds - 1);
+        need_init_properties = FALSE;
+}
+
+
 // address: 0x100190d7
 int insert_property(
         const char *name, int property_kind, int data_type, int flags,
         PyObject *(*get_func)(PyObject *, char *),
         int (*set_func)(PyObject *, char *, PyObject *)
 ) {
-        property_kinds[num_property_kinds].name = strdup(name);
-        property_kinds[num_property_kinds].kind = property_kind;
-        property_kinds[num_property_kinds].data_type = data_type;
-        property_kinds[num_property_kinds].flags = flags;
-        property_kinds[num_property_kinds].get_func = get_func;
-        property_kinds[num_property_kinds].set_func = set_func;
-        num_property_kinds++;
-// TODO implement properly
+        int index;
+        char *property_name;
+
+        property_name = strdup(name);
+
+        if (num_property_kinds < MAX_PROPERTY_KINDS) {
+
+                index = get_new_property_index(
+                        property_kinds, property_name, num_property_kinds
+                );
+
+                property_kinds[index].name = property_name;
+                property_kinds[index].kind = property_kind;
+                property_kinds[index].data_type = data_type;
+                property_kinds[index].flags = flags;
+                property_kinds[index].get_func = get_func;
+                property_kinds[index].set_func = set_func;
+                num_property_kinds++;
+        }
+
         return 0;
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
-// TODO implement
+// address: 0x100191e0
+int get_new_property_index(property_info_t *properties, char *name, int num) {
+        int index, compare_flag;
+
+        index = 0;
+        if (num > 0) {
+                do {
+                        compare_flag = strcmp(name, property_kinds[index].name);
+                        index++;
+                } while (compare_flag >= 0 && index < num);
+
+                if (compare_flag < 0) {
+                        index = index - 1;
+                }
+
+                shift_elements(properties, index, num - index);
+        }
+
+        return index;
+}
+
+
+// address: 0x100192ab
+void shift_elements(property_info_t *properties, int from, int num_elements) {
+        int i;
+
+        i = from + num_elements - 1;
+        while (i >= from) {
+                property_kinds[i + 1] = property_kinds[i];
+                i--;
+        }
+}
+
+
+// address: 0x100192ff
+void make_tree(int first, int last) {
+        int i, node_index, cur_element;
+
+        node_index = 0;
+
+        for (i = 0; i < 256; i++)
+                root_node[i] = -1;
+
+        for (cur_element = first; cur_element <= last; cur_element++) {
+                if (
+                        cur_element < last &&
+                        (
+                                property_kinds[cur_element].name[0] !=
+                                property_kinds[cur_element + 1].name[0]
+                        )
+                ) {
+                        root_node[property_kinds[cur_element].name[0]] =
+                                node_index;
+                        make_sub_tree(first, cur_element, 1, &node_index);
+                        first = cur_element + 1;
+                } else if (cur_element >= last) {
+
+                        root_node[property_kinds[cur_element].name[0]] =
+                                node_index;
+                        make_sub_tree(first, cur_element, 1, &node_index);
+                }
+        }
+}
+
+
+// address: 0x1001940a
+void make_sub_tree(int first, int last, int char_index, int *node_index) {
+        int cur_node;
+        int cur_element;
+
+        cur_element = first;
+        while (cur_element <= last) {
+                if (
+                        cur_element < last &&
+                        (
+                                property_kinds[cur_element].name[char_index] ==
+                                property_kinds[cur_element + 1].name[char_index]
+                        )
+                ) {
+                        cur_element++;
+
+                } else {
+
+                        cur_node = *node_index;
+                        tree_nodes[cur_node].first_element = first;
+                        tree_nodes[cur_node].num_elements =
+                                cur_element - first + 1;
+
+                        tree_nodes[cur_node].symbol =
+                                property_kinds[cur_element].name[char_index];
+                        (*node_index)++;
+
+                        if (char_index >= 4) {
+                                tree_nodes[cur_node].next = 0;
+                        } else {
+                                if (
+                                        (tree_nodes[cur_node].num_elements > 0)
+                                         &&
+                                        (tree_nodes[cur_node].symbol != '\0')
+                                ) {
+                                        make_sub_tree(
+                                                first, cur_element,
+                                                char_index + 1, node_index
+                                        );
+                                }
+                                tree_nodes[cur_node].next = *node_index;
+                        }
+                        cur_element++;
+                        first = cur_element;
+                }
+        }
+
+        if (char_index < 4) {
+                tree_nodes[*node_index].symbol = 255;
+                (*node_index)++;
+        }
+}
+
+
 // address: 0x10019563
 int find_property(property_info_t *properties, const char *name) {
-        int i;
-        static int need_init_properties = TRUE;
+        char cur_char;
+        int char_index, node_index, cur_element, i, last;
 
         if (need_init_properties)
-                init_entity_properties();
+                init_properties();
 
-        need_init_properties = FALSE;
+        node_index = root_node[name[0]];
+        char_index = 1;
 
-        for( i = 0; i < num_property_kinds; i++)
-                if (!strcmp(property_kinds[i].name, name))
-                        return i;
-// TODO implement properly
+        if (node_index == -1)
+                return -1;
+
+        for (i = char_index; i < 4; i++) {
+                cur_char = name[char_index];
+                if (cur_char == '\0') {
+                        if (tree_nodes[node_index].symbol == '\0')
+                                return tree_nodes[node_index].first_element;
+                        return -1;
+                }
+
+                while (cur_char > tree_nodes[node_index].symbol)
+                        node_index = tree_nodes[node_index].next;
+
+                if (cur_char != tree_nodes[node_index].symbol)
+                        return -1;
+
+                node_index++;
+                char_index++;
+        }
+
+        cur_element = tree_nodes[node_index - 1].first_element;
+        last = cur_element + tree_nodes[node_index - 1].num_elements;
+        cur_char = name[char_index];
+
+        while (cur_element < last) {
+
+                while (cur_char == property_kinds[cur_element].name[char_index]) {
+                        if (cur_char == '\0')
+                                return cur_element;
+
+                        char_index++;
+
+                        cur_char = name[char_index];
+                }
+
+                if (cur_char < property_kinds[cur_element].name[char_index])
+                        return -1;
+
+                cur_element++;
+        }
+
         return -1;
 }
 

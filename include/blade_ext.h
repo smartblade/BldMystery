@@ -377,8 +377,12 @@ typedef struct {
 
 
 #define SEC_INT_ACTIVE                    0
+#define SEC_INT_N_SURFACES                1
 #define SEC_INT_TOO_STEEP                 2
 #define SEC_INT_NUM_PIECES                4
+#define SEC_INT_ACTION_AREA               5
+
+#define SEC_FLT_TOO_STEEP_ANGLE           7
 
 #define SEC_STR_PIECE_NAME                1
 
@@ -768,6 +772,12 @@ LIB_EXP int GetSectorStringProperty(
 );
 LIB_EXP int SetSectorStringProperty(
         int sectorID, int property_kind, int index, const char *value
+);
+LIB_EXP int GetSectorFloatProperty(
+        int sectorID, int property_kind, int index, double *value
+);
+LIB_EXP int SetSectorFloatProperty(
+        int sectorID, int property_kind, int index, double value
 );
 LIB_EXP int GetSectorIntProperty(
         int sectorID, int property_kind, int index, int *value
