@@ -4,7 +4,8 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="Bladex.dll"/>
-    <OBJFILES value="Bladex.obj Character.obj Trail.obj HeapCheck.obj Utils.obj"/>
+    <OBJFILES value="Bladex.obj Character.obj Trail.obj HeapCheck.obj Utils.obj Route.obj 
+      Sound.obj Material.obj"/>
     <RESFILES value="Bladex.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -62,6 +63,9 @@
       <FILE FILENAME="Trail.c" FORMNAME="" UNITNAME="Trail" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="HeapCheck.c" FORMNAME="" UNITNAME="HeapCheck" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Utils.c" FORMNAME="" UNITNAME="Utils" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Route.c" FORMNAME="" UNITNAME="Route" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Sound.c" FORMNAME="" UNITNAME="Sound" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Material.c" FORMNAME="" UNITNAME="Material" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

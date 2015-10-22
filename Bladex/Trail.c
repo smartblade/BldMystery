@@ -2,12 +2,6 @@
 #include "bladex_int.h"
 
 
-typedef struct {
-        PyObject_HEAD
-        int trailID;
-} bld_py_trail_t;
-
-
 static void init_trail_type(void);
 static void bld_py_trail_dealloc(PyObject *self);
 static int bld_py_trail_print(PyObject *self, FILE *file, int flags);
@@ -15,7 +9,8 @@ static PyObject *bld_py_trail_getattr(PyObject *self, char *attr_name);
 static int bld_py_trail_setattr(PyObject *self, char *attr_name, PyObject *value);
 
 
-static PyTypeObject trailTypeObject;
+PyTypeObject trailTypeObject;
+
 
 static PyMethodDef trail_methods[] = {
     { NULL,                             NULL,                               0,            NULL },

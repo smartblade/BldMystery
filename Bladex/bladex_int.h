@@ -26,6 +26,46 @@
 
 #define MAX_PROPERTY_KINDS                   1024
 
+typedef struct {
+        PyObject_HEAD
+        int charID;
+} bld_py_char_t;
+
+typedef struct {
+        PyObject_HEAD
+        char *name;
+} bld_py_entity_t;
+
+typedef struct {
+        PyObject_HEAD
+        char *name;
+} bld_py_inventory_t;
+
+typedef struct {
+        PyObject_HEAD
+        material_t *material;
+} bld_py_material_t;
+
+typedef struct {
+        PyObject_HEAD
+        void *unknown;
+} bld_py_route_t;
+
+typedef struct {
+        PyObject_HEAD
+        int sectorID;
+} bld_py_sector_t;
+
+typedef struct {
+        PyObject_HEAD
+        int soundID;
+        int soundDev;
+} bld_py_sound_t;
+
+typedef struct {
+        PyObject_HEAD
+        int trailID;
+} bld_py_trail_t;
 
 typedef struct {
 	char *name;
@@ -38,11 +78,33 @@ typedef struct {
 
 extern property_info_t *property_kinds;
 
+extern PyTypeObject charTypeObject;
+extern PyTypeObject entityTypeObject;
+extern PyTypeObject inventoryTypeObject;
+extern PyTypeObject materialTypeObject;
+extern PyTypeObject routeTypeObject;
+extern PyTypeObject sectorTypeObject;
+extern PyTypeObject soundTypeObject;
+extern PyTypeObject trailTypeObject;
+
 
 extern PyObject *get_char_by_name(const char *name, const char *short_name);
 extern void init_char(void);
 
 extern void init_entity_properties(void);
+
+extern PyObject *get_material_by_name(const char *name);
+extern PyObject *get_material_by_index(int index);
+extern PyObject *create_material(const char *name);
+extern void init_material(void);
+
+extern PyObject *create_route(void);
+extern void init_route(void);
+
+extern PyObject *create_sound(const char *file_name, const char *sound_name);
+extern PyObject *create_sound_s(int id);
+extern PyObject *get_ghost_sector_sound(const char *gs_name);
+extern void init_sound(void);
 
 extern PyObject *get_trail_type(const char *name);
 extern void init_trail(void);

@@ -2,12 +2,6 @@
 #include "bladex_int.h"
 
 
-typedef struct {
-        PyObject_HEAD
-        int charID;
-} bld_py_char_t;
-
-
 static PyObject* bex_char_LoadAllAnimations(PyObject* self, PyObject* args);
 static PyObject* bex_char_ChangeAnimation(PyObject* self, PyObject* args);
 static PyObject* bex_char_SetAnmDefaultPrefix(PyObject* self, PyObject* args);
@@ -28,7 +22,8 @@ static PyObject *bld_py_char_getattr(PyObject *self, char *attr_name);
 static int bld_py_char_setattr(PyObject *self, char *attr_name, PyObject *value);
 
 
-static PyTypeObject charTypeObject;
+PyTypeObject charTypeObject;
+
 
 static PyMethodDef char_methods[] = {
     { "LoadAllAnimations",              bex_char_LoadAllAnimations,         METH_VARARGS, NULL },
