@@ -371,9 +371,13 @@ typedef struct {
 #define INV_OBJ_TYPE_TABLET               6
 
 
+#define MAT_FLT_WEIGHT                    0
+
 #define MAT_STR_NAME                      0
 
+#define MAT_SND_FRICTION_SOUND            0
 #define MAT_SND_HIT_SOUND                 1
+#define MAT_SND_BREAK_SOUND               2
 
 
 #define SEC_INT_ACTIVE                    0
@@ -660,6 +664,9 @@ LIB_EXP int CameraSetMaxCamera(
         int num_frames
 );
 LIB_EXP int CameraCut(const char *entity_name);
+LIB_EXP int CameraSetTravelingView(
+        const char *entity_name, int unknown1, int unknown2
+);
 LIB_EXP int EntityRotate(
         const char *entity_name, double x_dir, double y_dir, double z_dir,
         double velocity, int unknown
@@ -684,6 +691,7 @@ LIB_EXP int EntityCatchOnFire(
         const char *entity_name, double x, double y, double z
 );
 LIB_EXP const char *GetParticleEntity(const char *entity_name);
+LIB_EXP int DoAction(const char *entity_name, const char *action_name);
 LIB_EXP int SetOnFloor(const char *entity_name);
 LIB_EXP int RaiseEvent(const char *entity_name, const char *event_name);
 LIB_EXP int InterruptCombat(const char *entity_name);
@@ -853,6 +861,7 @@ LIB_EXP int SetTrailVectorProperty(
         int trailID, int property_kind, int index, double x, double y, double z
 );
 LIB_EXP int CreateSound(const char *file_name, const char *sound_name);
+LIB_EXP int CreateSoundS(int soundID);
 LIB_EXP void DestroySound(int soundID);
 LIB_EXP int GetSoundDevInstace(void);
 LIB_EXP int GetGhostSectorSound(const char *gs_name);
@@ -979,8 +988,20 @@ LIB_EXP int SetDefaultMaterial(const char *entity_kind, const char *material);
 LIB_EXP material_t *GetMaterial(const char *name);
 LIB_EXP material_t *GetMaterialI(int index);
 LIB_EXP material_t *CreateMaterial(const char *name);
+LIB_EXP int AddHitSoundComb(
+        material_t *material1, material_t *material2, int soundID
+);
+LIB_EXP int GetMaterialFloatProperty(
+        material_t *material, int property_kind, int index, double *value
+);
+LIB_EXP int SetMaterialFloatProperty(
+        material_t *material, int property_kind, int index, double value
+);
 LIB_EXP int GetMaterialStringProperty(
         material_t *material, int property_kind, int index, const char **value
+);
+LIB_EXP int GetMaterialSoundProperty(
+        material_t *material, int property_kind, int index, int *soundID
 );
 LIB_EXP int SetMaterialSoundProperty(
         material_t *material, int property_kind, int index, int soundID
