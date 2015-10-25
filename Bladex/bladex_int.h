@@ -93,6 +93,9 @@ extern void init_char(void);
 
 extern void init_entity_properties(void);
 
+extern PyObject *get_inventory(const char *name);
+extern void init_inventory(void);
+
 extern PyObject *get_material_by_name(const char *name);
 extern PyObject *get_material_by_index(int index);
 extern PyObject *create_material(const char *name);
@@ -100,6 +103,10 @@ extern void init_material(void);
 
 extern PyObject *create_route(void);
 extern void init_route(void);
+
+extern PyObject* get_sector_by_index(int index);
+extern PyObject* get_sector_by_position(double x, double y, double z);
+extern void init_sector(void);
 
 extern PyObject *create_sound(const char *file_name, const char *sound_name);
 extern PyObject *create_sound_s(int id);
