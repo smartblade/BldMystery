@@ -17,6 +17,7 @@
 //TODO remove
 #define NOT_IMPLEMENTED_FUNC(msg, ret) {\
         char buffer[512];\
+        assert(msg == NULL);\
         sprintf(buffer, "print \"%s not implemented\"", msg);\
         PyRun_SimpleString("print \"*********************************\"");\
         PyRun_SimpleString("print \"*********************************\"");\
@@ -27,19 +28,6 @@
         PyRun_SimpleString("print \"*********************************\"");\
         PyRun_SimpleString("print \"*********************************\"");\
         return ret;\
-}
-//TODO remove
-#define NOT_IMPLEMENTED_ATTR(func_name, attr_name) {\
-        char buffer[512];\
-        sprintf(buffer, "print \"%s: %s not implemented\"", func_name, attr_name);\
-        PyRun_SimpleString("print \"*********************************\"");\
-        PyRun_SimpleString("print \"*********************************\"");\
-        PyRun_SimpleString("print \"*********************************\"");\
-        PyRun_SimpleString("print \"*************ERROR***************\"");\
-        PyRun_SimpleString(buffer);\
-        PyRun_SimpleString("print \"*********************************\"");\
-        PyRun_SimpleString("print \"*********************************\"");\
-        PyRun_SimpleString("print \"*********************************\"");\
 }
 
 static PyObject* bex_nEntities(PyObject* self, PyObject* args);
@@ -5233,6 +5221,53 @@ PyObject *bex_ent_Rel2AbsVector(PyObject *self, PyObject *args) {
         return tuple;
 }
 
+
+// address: 0x1000ab25
+PyObject *bex_ent_Abs2RelPoint(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        const char *anchor_name = NULL;
+        double x_rel, y_rel, z_rel, x_abs, y_abs, z_abs;
+        PyObject *tuple, *xObj, *yObj, *zObj;
+
+        if (!PyArg_ParseTuple(
+                args, "ddd|s", &x_abs, &y_abs, &z_abs, &anchor_name
+        ))
+                return NULL;
+
+        if (anchor_name) {
+                Abs2RelPointN(
+                        entity->name, x_abs, y_abs, z_abs, anchor_name,
+                        &x_rel, &y_rel, &z_rel
+                );
+
+                tuple = PyTuple_New(3);
+
+                xObj = PyFloat_FromDouble(x_rel);
+                yObj = PyFloat_FromDouble(y_rel);
+                zObj = PyFloat_FromDouble(z_rel);
+
+                PyTuple_SET_ITEM(tuple, 0, xObj);
+                PyTuple_SET_ITEM(tuple, 1, yObj);
+                PyTuple_SET_ITEM(tuple, 2, zObj);
+
+                return tuple;
+        }
+
+        Abs2RelPoint(entity->name, x_abs, y_abs, z_abs, &x_rel, &y_rel, &z_rel);
+
+        tuple = PyTuple_New(3);
+
+        xObj = PyFloat_FromDouble(x_rel);
+        yObj = PyFloat_FromDouble(y_rel);
+        zObj = PyFloat_FromDouble(z_rel);
+
+        PyTuple_SET_ITEM(tuple, 0, xObj);
+        PyTuple_SET_ITEM(tuple, 1, yObj);
+        PyTuple_SET_ITEM(tuple, 2, zObj);
+
+        return tuple;
+}
+
 /*
 ................................................................................
 ................................................................................
@@ -5502,12 +5537,30 @@ PyObject *bex_ent_CanISee(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", canISee);
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x1000b72b
+PyObject *bex_ent_CanISeeFrom(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        bld_py_entity_t *seen_entity;
+        int canISee;
+        int code;
+        const char *seen_entity_name;
+        double x, y, z;
+
+        if (!PyArg_ParseTuple(args, "Oddd", &seen_entity, &x, &y, &z))
+                return NULL;
+
+        seen_entity_name = NULL;
+        if (seen_entity != NULL)
+                seen_entity_name = seen_entity->name;
+
+        code = CanISeeFrom(entity->name, seen_entity_name, x, y, z, &canISee);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", canISee);
+}
+
 
 // address: 0x1000b7da
 PyObject *bex_ent_ExcludeHitFor(PyObject *self, PyObject *args) {
@@ -5533,12 +5586,29 @@ PyObject *bex_ent_ExcludeHitFor(PyObject *self, PyObject *args) {
 }
 
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+// address: 0x1000b877
+PyObject *bex_ent_ExcludeHitInAnimationFor(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        bld_py_entity_t *exclude_for_entity;
+        void *unknown;
+        int code;
+
+        if (!PyArg_ParseTuple(args, "O", &exclude_for_entity))
+                return NULL;
+
+        if (exclude_for_entity && (PyObject *)exclude_for_entity != Py_None)
+                code = ExcludeHitInAnimationFor(
+                        entity->name, exclude_for_entity->name, &unknown
+                );
+        else
+                code = -1;
+
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
 
 // address: 0x1000b914
 PyObject *bex_ent_Unlink(PyObject *self, PyObject *args) {
@@ -5696,6 +5766,36 @@ PyObject *bex_ent_InsideActionArea(PyObject *self, PyObject *args) {
 ................................................................................
 */
 
+// address: 0x1000bd9a
+PyObject *bex_ent_TestPos(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        double x, y, z;
+        int action_area = 0;
+        double max_fall = 1.7976931348623157e+308;
+        int is_correct;
+
+        if (!PyArg_ParseTuple(
+                args, "ddd|id", &x, &y, &z, &action_area, &max_fall
+        ))
+                return NULL;
+
+        code = TestPos(
+                entity->name, x, y, z, max_fall, action_area, &is_correct
+        );
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", is_correct);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 // address: 0x1000bffb
 PyObject *bex_ent_UnlinkChildren(PyObject *self, PyObject *args) {
         bld_py_entity_t *entity = (bld_py_entity_t *)self;
@@ -5711,12 +5811,46 @@ PyObject *bex_ent_UnlinkChildren(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", 1);
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x1000c067
+PyObject *bex_ent_SetNextAttack(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        const char *attack;
+        int res;
+
+        if (!PyArg_ParseTuple(args, "s", &attack))
+                return NULL;
+
+        code = SetNextAttack(entity->name, attack, &res);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", res);
+}
+
+
+// address: 0x1000c0e3
+PyObject *bex_ent_SetEnemy(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        bld_py_entity_t *enemy;
+        const char *enemy_name;
+
+        if (!PyArg_ParseTuple(args, "O", &enemy))
+                return NULL;
+
+        enemy_name = NULL;
+        if (enemy != NULL)
+                enemy_name = enemy->name;
+
+        code = SetEnemy(entity->name, enemy_name);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
 
 // address: 0x1000c168
 PyObject *bex_ent_GetEnemyName(PyObject *self, PyObject *args) {
@@ -6699,12 +6833,29 @@ PyObject *bex_ent_DoAction(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", code);
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x1000e4f2
+PyObject *bex_ent_DoActionWI(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        const char *action_name;
+        int interpolation_type;
+        double time, unknown1 = 0.0;
+        int code;
+
+        if (!PyArg_ParseTuple(
+                args, "sid|d", &action_name, &interpolation_type, &time,
+                &unknown1
+        ))
+                return NULL;
+
+        code = DoActionWI(
+                entity->name, action_name, interpolation_type, time,
+                unknown1
+        );
+
+        return Py_BuildValue("i", code);
+}
+
 
 // address: 0x1000e577
 PyObject *bex_ent_SetOnFloor(PyObject *self, PyObject *args) {
@@ -6882,16 +7033,8 @@ PyObject* bex_ent_SetAnmFlags(PyObject* self, PyObject* args) {
         NOT_IMPLEMENTED_FUNC("bex_ent_SetAnmFlags", NULL);
 }
 
-PyObject* bex_ent_CanISeeFrom(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_CanISeeFrom", NULL);
-}
-
 PyObject* bex_ent_CheckAnimCol(PyObject* self, PyObject* args) {
         NOT_IMPLEMENTED_FUNC("bex_ent_CheckAnimCol", NULL);
-}
-
-PyObject* bex_ent_SetEnemy(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_SetEnemy", NULL);
 }
 
 PyObject* bex_ent_AddWatchAnim(PyObject* self, PyObject* args) {
@@ -6966,10 +7109,6 @@ PyObject* bex_ent_SetObjectSound(PyObject* self, PyObject* args) {
         NOT_IMPLEMENTED_FUNC("bex_ent_SetObjectSound", NULL);
 }
 
-PyObject* bex_ent_Abs2RelPoint(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_Abs2RelPoint", NULL);
-}
-
 PyObject* bex_ent_Abs2RelVector(PyObject* self, PyObject* args) {
         NOT_IMPLEMENTED_FUNC("bex_ent_Abs2RelVector", NULL);
 }
@@ -6978,24 +7117,8 @@ PyObject* bex_ent_RemoveCameraEvent(PyObject* self, PyObject* args) {
         NOT_IMPLEMENTED_FUNC("bex_ent_RemoveCameraEvent", NULL);
 }
 
-PyObject* bex_ent_DoActionWI(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_DoActionWI", NULL);
-}
-
-PyObject* bex_ent_ExcludeHitInAnimationFor(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_ExcludeHitInAnimationFor", NULL);
-}
-
-PyObject* bex_ent_TestPos(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_TestPos", NULL);
-}
-
 PyObject* bex_ent_TestPosInOwnBox(PyObject* self, PyObject* args) {
         NOT_IMPLEMENTED_FUNC("bex_ent_TestPosInOwnBox", NULL);
-}
-
-PyObject* bex_ent_SetNextAttack(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_SetNextAttack", NULL);
 }
 
 PyObject* bex_ent_IsValid(PyObject* self, PyObject* args) {
@@ -7447,10 +7570,22 @@ PyObject *bex_ent_UseFunc_get(PyObject *self, char *attr_name) {
         return func;
 }
 
-// TODO implement
+
 // address: 0x10010500
 PyObject *bex_ent_ChangeNodeFunc_get(PyObject *self, char *attr_name) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_ChangeNodeFunc_get", NULL);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_CHANGE_NODE, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
 
@@ -7860,10 +7995,20 @@ PyObject *bex_ent_AttackList_get(PyObject *self, char *attr_name) {
         return atack_list;
 }
 
-// TODO implement
+
 // address: 0x10010bd6
 PyObject *bex_ent_OnHitFunc_get(PyObject *self, char *attr_name) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_OnHitFunc_get", NULL);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(entity->name, ENT_FNC_ON_HIT, 0, &func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
 
@@ -7883,34 +8028,91 @@ PyObject *bex_ent_OnStopFunc_get(PyObject *self, char *attr_name) {
 }
 
 
-// TODO implement
 // address: 0x10010c66
 PyObject *bex_ent_OnStepFunc_get(PyObject *self, char *attr_name) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_OnStepFunc_get", NULL);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(entity->name, ENT_FNC_ON_STEP, 0, &func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010cae
 PyObject *bex_ent_OnAnimationEndFunc_get(PyObject *self, char *attr_name) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_OnAnimationEndFunc_get", NULL);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_ON_ANIMATION_END_FUNC, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010cf6
 PyObject *bex_ent_OnPathNodeFunc_get(PyObject *self, char *attr_name) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_OnPathNodeFunc_get", NULL);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        PyObject *func;
+
+        code = GetEntityFuncProperty(
+                entity->name, ENT_FNC_ON_PATH_NODE, 0, &func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return func;
 }
 
-// TODO implement
+
 // address: 0x10010d3e
 PyObject *bex_ent_RAttackMin_get(PyObject *self, char *attr_name) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_RAttackMin_get", NULL);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int r_attack_min;
+
+        code = GetEntityIntProperty(
+                entity->name, ENT_INT_R_ATTACK, 0, &r_attack_min
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return PyInt_FromLong(r_attack_min);
 }
 
-// TODO implement
+
 // address: 0x10010d90
 PyObject *bex_ent_RAttackMax_get(PyObject *self, char *attr_name) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_RAttackMax_get", NULL);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int r_attack_max;
+
+        code = GetEntityIntProperty(
+                entity->name, ENT_INT_R_ATTACK, 1, &r_attack_max
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        return PyInt_FromLong(r_attack_max);
 }
 
 
@@ -8059,40 +8261,224 @@ PyObject *bex_ent_Orientation_get(PyObject *self, char *attr_name) {
         return tuple;
 }
 
-// TODO implement
+
 // address: 0x10011122
 PyObject *bex_ent_SubscribedLists_get(PyObject *self, char *attr_name) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_SubscribedLists_get", NULL);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int num_lists, i;
+        PyObject *subscribed_lists, *subscribed_list_obj;
+        const char *subscribed_list_name;
+
+        code = GetEntityIntProperty(
+                entity->name, ENT_INT_N_SUBSCRIBED_LISTS, 0, &num_lists
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        subscribed_lists = PyList_New(num_lists);
+
+        for (i = 0; i < num_lists; i++) {
+                code = GetEntityStringProperty(
+                        entity->name, ENT_STR_SUBSCRIBED_LIST, i,
+                        &subscribed_list_name
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+
+                subscribed_list_obj = PyString_FromString(subscribed_list_name);
+                PyList_SetItem(subscribed_lists, i, subscribed_list_obj);
+        }
+
+        return subscribed_lists;
 }
 
-// TODO implement
+
 // address: 0x100111fc
 PyObject *bex_ent_FiresIntensity_get(PyObject *self, char *attr_name) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_FiresIntensity_get", NULL);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int num_fires, i;
+        PyObject *fires, *intensity_obj;
+        double intensity;
+
+        code = GetEntityIntProperty(
+                entity->name, ENT_INT_N_FIRES, 0, &num_fires
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        fires = PyList_New(num_fires);
+
+        for (i = 0; i < num_fires; i++) {
+                code = GetEntityFloatProperty(
+                        entity->name, ENT_FLT_FIRES_INTENSITY, i, &intensity
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+
+                intensity_obj = PyFloat_FromDouble(intensity);
+                PyList_SetItem(fires, i, intensity_obj);
+        }
+
+        return fires;
 }
 
-// TODO implement
+
 // address: 0x100112db
 PyObject *bex_ent_LightIntensity_get(PyObject *self, char *attr_name) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_LightIntensity_get", NULL);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int num_lights, i;
+        PyObject *lights, *intensity_obj;
+        double intensity;
+
+        code = GetEntityIntProperty(
+                entity->name, ENT_INT_N_LIGHTS, 0, &num_lights
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        lights = PyTuple_New(num_lights);
+
+        for (i = 0; i < num_lights; i++) {
+                code = GetEntityFloatProperty(
+                        entity->name, ENT_FLT_LIGHTS_INTENSITY, i, &intensity
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+
+                intensity_obj = PyFloat_FromDouble(intensity);
+                PyTuple_SetItem(lights, i, intensity_obj);
+        }
+
+        return lights;
 }
 
-// TODO implement
+
 // address: 0x100113ba
 PyObject *bex_ent_LightPrecission_get(PyObject *self, char *attr_name) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_LightPrecission_get", NULL);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int num_lights, i;
+        PyObject *lights, *precision_obj;
+        double precision;
+
+        code = GetEntityIntProperty(
+                entity->name, ENT_INT_N_LIGHTS, 0, &num_lights
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        lights = PyTuple_New(num_lights);
+
+        for (i = 0; i < num_lights; i++) {
+                code = GetEntityFloatProperty(
+                        entity->name, ENT_FLT_LIGHTS_PRECISION, i, &precision
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+
+                precision_obj = PyFloat_FromDouble(precision);
+                PyTuple_SetItem(lights, i, precision_obj);
+        }
+
+        return lights;
 }
 
-// TODO implement
+
 // address: 0x10011499
 PyObject *bex_ent_LightColor_get(PyObject *self, char *attr_name) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_LightColor_get", NULL);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int num_lights, i;
+        PyObject *lights, *color_obj, *r_obj, *g_obj, *b_obj;
+        double r, g, b;
+
+        code = GetEntityIntProperty(
+                entity->name, ENT_INT_N_LIGHTS, 0, &num_lights
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        lights = PyTuple_New(num_lights);
+
+        for (i = 0; i < num_lights; i++) {
+                code = GetEntityVectorProperty(
+                        entity->name, ENT_VEC_LIGHTS_COLOUR, i, &r, &g, &b
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+
+                r_obj = PyFloat_FromDouble(r);
+                g_obj = PyFloat_FromDouble(g);
+                b_obj = PyFloat_FromDouble(b);
+
+                color_obj = PyTuple_New(3);
+
+                PyTuple_SetItem(color_obj, 0, r_obj);
+                PyTuple_SetItem(color_obj, 1, g_obj);
+                PyTuple_SetItem(color_obj, 2, b_obj);
+
+                PyTuple_SetItem(lights, i, color_obj);
+        }
+
+        return lights;
 }
 
-// TODO implement
+
 // address: 0x100115fa
 PyObject *bex_ent_LightGlow_get(PyObject *self, char *attr_name) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_LightGlow_get", NULL);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int num_lights, i;
+        PyObject *lights, *glow_obj;
+        int glow;
+
+        code = GetEntityIntProperty(
+                entity->name, ENT_INT_N_LIGHTS, 0, &num_lights
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, attr_name);
+                return NULL;
+        }
+
+        lights = PyTuple_New(num_lights);
+
+        for (i = 0; i < num_lights; i++) {
+                code = GetEntityIntProperty(
+                        entity->name, ENT_INT_GLOW, i, &glow
+                );
+                if (code != 1) {
+                        PyErr_SetString(PyExc_AttributeError, attr_name);
+                        return NULL;
+                }
+
+                glow_obj = PyInt_FromLong(glow);
+                PyTuple_SetItem(lights, i, glow_obj);
+        }
+
+        return lights;
 }
 
 
@@ -8406,16 +8792,49 @@ PyObject *bex_ent_Lights_get(PyObject *self, char *attr_name) {
 }
 
 
-// TODO implement
 // address: 0x10011f3b
 int bex_ent_RAttackMin_set(PyObject *self, char *attr_name, PyObject *value) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_RAttackMin_set", -1);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        double r_attack_min;
+        int code;
+
+        if (!PyArg_Parse(value, "d", &r_attack_min)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityIntProperty(
+                entity->name, ENT_INT_R_ATTACK, 0, r_attack_min
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Error changing mode.");
+                return -1;
+        }
+
+        return 0;
 }
 
-// TODO implement
+
 // address: 0x10011fbe
 int bex_ent_RAttackMax_set(PyObject *self, char *attr_name, PyObject *value) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_RAttackMax_set", -1);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        double r_attack_max;
+        int code;
+
+        if (!PyArg_Parse(value, "d", &r_attack_max)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityIntProperty(
+                entity->name, ENT_INT_R_ATTACK, 1, r_attack_max
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Error changing mode.");
+                return -1;
+        }
+
+        return 0;
 }
 
 
@@ -8621,11 +9040,27 @@ int bex_ent_StickFunc_set(PyObject *self, char *attr_name, PyObject *value) {
         return 0;
 }
 
-// TODO implement
+
 // address: 0x10012518
 int bex_ent_FrameFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_FrameFunc_set", -1);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(entity->name, ENT_FNC_FRAME, 0, func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
+
 
 // address: 0x10012597
 int bex_ent_HearFunc_set(PyObject *self, char *attr_name, PyObject *value) {
@@ -9232,10 +9667,25 @@ int bex_ent_AttackList_set(PyObject *self, char *attr_name, PyObject *value) {
         return 0;
 }
 
-// TODO implement
+
 // address: 0x10013340
 int bex_ent_OnHitFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_OnHitFunc_set", -1);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(entity->name, ENT_FNC_ON_HIT, 0, func);
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
 
@@ -9307,10 +9757,27 @@ int bex_ent_OnAnimationEndFunc_set(PyObject *self, char *attr_name, PyObject *va
         return 0;
 }
 
-// TODO implement
+
 // address: 0x10013554
 int bex_ent_OnPathNodeFunc_set(PyObject *self, char *attr_name, PyObject *value) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_OnPathNodeFunc_set", -1);
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        PyObject *func;
+        int code;
+
+        if (!PyArg_Parse(value, "O", &func)) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        code = SetEntityFuncProperty(
+                entity->name, ENT_FNC_ON_PATH_NODE, 0, func
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
+                return -1;
+        }
+
+        return 0;
 }
 
 
@@ -10233,10 +10700,9 @@ PyObject *bex_inv_AddMagicShield(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
 // address: 0x10014c63
-PyObject* bex_inv_RemoveMagicShield(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_inv_RemoveMagicShield", NULL);
+PyObject *bex_inv_RemoveMagicShield(PyObject *self, PyObject *args) {
+        return remove_object(self, args, INV_OBJ_TYPE_MAGIC_SHIELD);
 }
 
 
@@ -10831,7 +11297,7 @@ PyObject *bex_sec_InitBreak(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
         double x_vec1, y_vec1, z_vec1, x_vec2, y_vec2, z_vec2, x_vec3, y_vec3, z_vec3;
-        const char *s_unknown = "";//TODO check string 0x1002c114
+        const char *s_unknown = "";
         double d_unknown = 100.0;
         int i_unknown = 1;
 
@@ -10877,121 +11343,354 @@ PyObject *bex_sec_DoBreak(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
 // address: 0x10016794
-PyObject* bex_sec_SetSurfaceTexture(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_sec_SetSurfaceTexture", NULL);
+PyObject *bex_sec_SetSurfaceTexture(PyObject *self, PyObject *args) {
+        bld_py_sector_t *sector = (bld_py_sector_t *)self;
+        int code;
+        int surface_index;
+        const char *texture;
+
+        if (!PyArg_ParseTuple(args, "is", &surface_index, &texture))
+                return NULL;
+
+        code = SetSectorStringProperty(
+                sector->sectorID, SEC_STR_TEXTURE, surface_index, texture
+        );
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
 }
 
 
-// TODO implement
 // address: 0x1001680b
-PyObject* bex_sec_SetSurfaceTextureZoomX(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_sec_SetSurfaceTextureZoomX", NULL);
+PyObject *bex_sec_SetSurfaceTextureZoomX(PyObject *self, PyObject *args) {
+        bld_py_sector_t *sector = (bld_py_sector_t *)self;
+        int code;
+        int surface_index;
+        double zoom_x;
+
+        if (!PyArg_ParseTuple(args, "id", &surface_index, &zoom_x))
+                return NULL;
+
+        code = SetSectorFloatProperty(
+                sector->sectorID, SEC_FLT_TEXTURE_ZOOM_X, surface_index, zoom_x
+        );
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
 }
 
 
-// TODO implement
 // address: 0x10016886
-PyObject* bex_sec_SetSurfaceTextureZoomY(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_sec_SetSurfaceTextureZoomY", NULL);
+PyObject *bex_sec_SetSurfaceTextureZoomY(PyObject *self, PyObject *args) {
+        bld_py_sector_t *sector = (bld_py_sector_t *)self;
+        int code;
+        int surface_index;
+        double zoom_y;
+
+        if (!PyArg_ParseTuple(args, "id", &surface_index, &zoom_y))
+                return NULL;
+
+        code = SetSectorFloatProperty(
+                sector->sectorID, SEC_FLT_TEXTURE_ZOOM_Y, surface_index, zoom_y
+        );
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
 }
 
 
-// TODO implement
 // address: 0x10016901
-PyObject* bex_sec_SetSurfaceTextureX(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_sec_SetSurfaceTextureX", NULL);
+PyObject *bex_sec_SetSurfaceTextureX(PyObject *self, PyObject *args) {
+        bld_py_sector_t *sector = (bld_py_sector_t *)self;
+        int code;
+        int surface_index;
+        double texture_x;
+
+        if (!PyArg_ParseTuple(args, "id", &surface_index, &texture_x))
+                return NULL;
+
+        code = SetSectorFloatProperty(
+                sector->sectorID, SEC_FLT_TEXTURE_X, surface_index, texture_x
+        );
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
 }
 
 
-// TODO implement
 // address: 0x1001697c
-PyObject* bex_sec_SetSurfaceTextureY(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_sec_SetSurfaceTextureY", NULL);
+PyObject *bex_sec_SetSurfaceTextureY(PyObject *self, PyObject *args) {
+        bld_py_sector_t *sector = (bld_py_sector_t *)self;
+        int code;
+        int surface_index;
+        double texture_y;
+
+        if (!PyArg_ParseTuple(args, "id", &surface_index, &texture_y))
+                return NULL;
+
+        code = SetSectorFloatProperty(
+                sector->sectorID, SEC_FLT_TEXTURE_Y, surface_index, texture_y
+        );
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
 }
 
 
-// TODO implement
 // address: 0x100169f7
-PyObject* bex_sec_GetSurfaceTexture(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_sec_GetSurfaceTexture", NULL);
+PyObject *bex_sec_GetSurfaceTexture(PyObject *self, PyObject *args) {
+        bld_py_sector_t *sector = (bld_py_sector_t *)self;
+        int code;
+        int surface_index;
+        const char *texture;
+
+        if (!PyArg_ParseTuple(args, "i", &surface_index))
+                return NULL;
+
+        code = GetSectorStringProperty(
+                sector->sectorID, SEC_STR_TEXTURE, surface_index, &texture
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Sector Texture");
+                return NULL;
+        }
+
+        return PyString_FromString(texture);
 }
 
 
-// TODO implement
 // address: 0x10016a70
-PyObject* bex_sec_GetSurfaceTextureZoomX(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_sec_GetSurfaceTextureZoomX", NULL);
+PyObject *bex_sec_GetSurfaceTextureZoomX(PyObject *self, PyObject *args) {
+        bld_py_sector_t *sector = (bld_py_sector_t *)self;
+        int code;
+        int surface_index;
+        double zoom_x;
+
+        if (!PyArg_ParseTuple(args, "i", &surface_index))
+                return NULL;
+
+        code = GetSectorFloatProperty(
+                sector->sectorID, SEC_FLT_TEXTURE_ZOOM_X, surface_index, &zoom_x
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Sector Texture Zoom X");
+                return NULL;
+        }
+
+        return PyFloat_FromDouble(zoom_x);
 }
 
 
-// TODO implement
 // address: 0x10016aec
-PyObject* bex_sec_GetSurfaceTextureZoomY(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_sec_GetSurfaceTextureZoomY", NULL);
+PyObject *bex_sec_GetSurfaceTextureZoomY(PyObject *self, PyObject *args) {
+        bld_py_sector_t *sector = (bld_py_sector_t *)self;
+        int code;
+        int surface_index;
+        double zoom_y;
+
+        if (!PyArg_ParseTuple(args, "i", &surface_index))
+                return NULL;
+
+        code = GetSectorFloatProperty(
+                sector->sectorID, SEC_FLT_TEXTURE_ZOOM_Y, surface_index, &zoom_y
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Sector Texture ZoomY");
+                return NULL;
+        }
+
+        return PyFloat_FromDouble(zoom_y);
 }
 
 
-// TODO implement
 // address: 0x10016b68
-PyObject* bex_sec_GetSurfaceTextureX(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_sec_GetSurfaceTextureX", NULL);
+PyObject *bex_sec_GetSurfaceTextureX(PyObject *self, PyObject *args) {
+        bld_py_sector_t *sector = (bld_py_sector_t *)self;
+        int code;
+        int surface_index;
+        double texture_x;
+
+        if (!PyArg_ParseTuple(args, "i", &surface_index))
+                return NULL;
+
+        code = GetSectorFloatProperty(
+                sector->sectorID, SEC_FLT_TEXTURE_X, surface_index, &texture_x
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Sector Texture X");
+                return NULL;
+        }
+
+        return PyFloat_FromDouble(texture_x);
 }
 
 
-// TODO implement
 // address: 0x10016be4
-PyObject* bex_sec_GetSurfaceTextureY(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_sec_GetSurfaceTextureY", NULL);
+PyObject *bex_sec_GetSurfaceTextureY(PyObject *self, PyObject *args) {
+        bld_py_sector_t *sector = (bld_py_sector_t *)self;
+        int code;
+        int surface_index;
+        double texture_y;
+
+        if (!PyArg_ParseTuple(args, "i", &surface_index))
+                return NULL;
+
+        code = GetSectorFloatProperty(
+                sector->sectorID, 0, surface_index, &texture_y
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Sector Texture Y");
+                return NULL;
+        }
+
+        return PyFloat_FromDouble(texture_y);
 }
 
 
-// TODO implement
 // address: 0x10016c60
-PyObject* bex_sec_SetSpecularLight(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_sec_SetSpecularLight", NULL);
+PyObject *bex_sec_SetSpecularLight(PyObject *self, PyObject *args) {
+        bld_py_sector_t *sector = (bld_py_sector_t *)self;
+        int code;
+        int surface_index;
+        double specular_light;
+
+        /*FIXME second parameter should be double*/
+        if (!PyArg_ParseTuple(args, "is", &surface_index, &specular_light))
+                return NULL;
+
+        code = SetSectorFloatProperty(
+                sector->sectorID, SEC_FLT_SPECULAR_LIGHT, surface_index,
+                specular_light
+        );
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
 }
 
 
-// TODO implement
 // address: 0x10016cdb
-PyObject* bex_sec_GetSpecularLight(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_sec_GetSpecularLight", NULL);
+PyObject *bex_sec_GetSpecularLight(PyObject *self, PyObject *args) {
+        bld_py_sector_t *sector = (bld_py_sector_t *)self;
+        int code;
+        int surface_index;
+        double specular_light;
+
+        if (!PyArg_ParseTuple(args, "i", &surface_index))
+                return NULL;
+
+        code = GetSectorFloatProperty(
+                sector->sectorID, SEC_FLT_SPECULAR_LIGHT, surface_index,
+                &specular_light
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Sector Texture Zoom");
+                return NULL;
+        }
+
+        return PyFloat_FromDouble(specular_light);
 }
 
 
-// TODO implement
 // address: 0x10016d57
-PyObject* bex_sec_SetSpecularShininess(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_sec_SetSpecularShininess", NULL);
+PyObject *bex_sec_SetSpecularShininess(PyObject *self, PyObject *args) {
+        bld_py_sector_t *sector = (bld_py_sector_t *)self;
+        int code;
+        int surface_index;
+        double specular_shininess;
+
+        /*FIXME second parameter should be double*/
+        if (!PyArg_ParseTuple(args, "is", &surface_index, &specular_shininess))
+                return NULL;
+
+        code = SetSectorFloatProperty(
+                sector->sectorID, SEC_FLT_SPECULAR_SHININESS, surface_index,
+                specular_shininess
+        );
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
 }
 
 
-// TODO implement
 // address: 0x10016dd2
-PyObject* bex_sec_GetSpecularShininess(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_sec_GetSpecularShininess", NULL);
+PyObject *bex_sec_GetSpecularShininess(PyObject *self, PyObject *args) {
+        bld_py_sector_t *sector = (bld_py_sector_t *)self;
+        int code;
+        int surface_index;
+        double specular_shininess;
+
+        if (!PyArg_ParseTuple(args, "i", &surface_index))
+                return NULL;
+
+        code = GetSectorFloatProperty(
+                sector->sectorID, SEC_FLT_SPECULAR_SHININESS, surface_index,
+                &specular_shininess
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Sector Texture Zoom");
+                return NULL;
+        }
+
+        return PyFloat_FromDouble(specular_shininess);
 }
 
 
-// TODO implement
 // address: 0x10016e4e
-PyObject* bex_sec_SetSelfLight(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_sec_SetSelfLight", NULL);
+PyObject *bex_sec_SetSelfLight(PyObject *self, PyObject *args) {
+        bld_py_sector_t *sector = (bld_py_sector_t *)self;
+        int code;
+        int surface_index;
+        double self_light;
+
+        /*FIXME second parameter should be double*/
+        if (!PyArg_ParseTuple(args, "is", &surface_index, &self_light))
+                return NULL;
+
+        code = SetSectorFloatProperty(
+                sector->sectorID, SEC_FLT_SELF_LIGHT, surface_index, self_light
+        );
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
 }
 
 
-// TODO implement
 // address: 0x10016ec9
-PyObject* bex_sec_GetSelfLight(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_sec_GetSelfLight", NULL);
+PyObject *bex_sec_GetSelfLight(PyObject *self, PyObject *args) {
+        bld_py_sector_t *sector = (bld_py_sector_t *)self;
+        int code;
+        int surface_index;
+        double self_light;
+
+        if (!PyArg_ParseTuple(args, "i", &surface_index))
+                return NULL;
+
+        code = GetSectorFloatProperty(
+                sector->sectorID, SEC_FLT_SELF_LIGHT, surface_index, &self_light
+        );
+        if (code != 1) {
+                PyErr_SetString(PyExc_AttributeError, "Sector Texture Zoom");
+                return NULL;
+        }
+
+        return PyFloat_FromDouble(self_light);
 }
+
 
 // address: 0x10016f45
 void init_sector() {
         init_sector_type();
 }
+
 
 // address: 0x10016f4f
 void init_sector_type() {

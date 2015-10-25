@@ -92,10 +92,12 @@ typedef struct {
 #define ENT_INT_VISIBLE                   6
 #define ENT_INT_FLICK                     7
 #define ENT_INT_ACTION_AREA               8
+#define ENT_INT_R_ATTACK                  9
 #define ENT_INT_WEAPON                   10
 #define ENT_INT_ACTOR                    11
 #define ENT_INT_ARROW                    12
 #define ENT_INT_PHYSIC                   13
+#define ENT_INT_GLOW                     14
 #define ENT_INT_CAN_USE                  16
 #define ENT_INT_INVENTORY_VISIBLE        17
 #define ENT_INT_ACTIVE                   18
@@ -149,6 +151,7 @@ typedef struct {
 #define ENT_INT_GO_TO_SNEAKING           66
 #define ENT_INT_CONTINUOUS_DAMAGE        67
 #define ENT_INT_WILL1AA_TO2AA            68
+#define ENT_INT_N_SUBSCRIBED_LISTS       69
 #define ENT_INT_IN_WORLD                 71
 #define ENT_INT_IN_ATTACK                72
 #define ENT_INT_RANGE_ACTIVE             73
@@ -268,6 +271,7 @@ typedef struct {
 #define ENT_STR_LAST_SOUND               35
 #define ENT_STR_FIRE_PARTICLE_TYPE       36
 #define ENT_STR_PARTICLE_TYPE            37
+#define ENT_STR_SUBSCRIBED_LIST          38
 #define ENT_STR_MESH_NAME                39
 #define ENT_STR_GOT_ANM_TYPE             40
 
@@ -305,6 +309,7 @@ typedef struct {
 #define ENT_FNC_ON_STOP                   4
 #define ENT_FNC_ON_ANIMATION_END_FUNC     5
 #define ENT_FNC_TOUCH_FLUID               6
+#define ENT_FNC_ON_PATH_NODE              7
 #define ENT_FNC_USE_FUNC                  8
 #define ENT_FNC_SEE_FUNC                  9
 #define ENT_FNC_ENTER_CLOSE              10
@@ -317,6 +322,7 @@ typedef struct {
 #define ENT_FNC_ENEMY_DEAD_FUNC          17
 #define ENT_FNC_NO_ALLOWED_AREA_FUNC     18
 #define ENT_FNC_ENEMY_NO_ALLOWED_AREA    19
+#define ENT_FNC_ON_HIT                   20
 #define ENT_FNC_CHAR_SEEING_ENEMY        21
 #define ENT_FNC_ANM_TRAN                 22
 #define ENT_FNC_TAKE_FUNC                23
@@ -386,8 +392,16 @@ typedef struct {
 #define SEC_INT_NUM_PIECES                4
 #define SEC_INT_ACTION_AREA               5
 
+#define SEC_FLT_TEXTURE_X                 0
+#define SEC_FLT_TEXTURE_Y                 1
+#define SEC_FLT_TEXTURE_ZOOM_X            2
+#define SEC_FLT_TEXTURE_ZOOM_Y            3
+#define SEC_FLT_SPECULAR_LIGHT            4
+#define SEC_FLT_SPECULAR_SHININESS        5
+#define SEC_FLT_SELF_LIGHT                6
 #define SEC_FLT_TOO_STEEP_ANGLE           7
 
+#define SEC_STR_TEXTURE                   0
 #define SEC_STR_PIECE_NAME                1
 
 #define SEC_VEC_ACTIVE_SURFACE            0
@@ -546,6 +560,14 @@ LIB_EXP int Rel2AbsVectorN(
         const char *entity_name, double x_rel, double y_rel, double z_rel,
         const char *anchor_name, double *x_abs, double *y_abs, double *z_abs
 );
+LIB_EXP int Abs2RelPoint(
+        const char *entity_name, double x_abs, double y_abs, double z_abs,
+        double *x_rel, double *y_rel, double *z_rel
+);
+LIB_EXP int Abs2RelPointN(
+        const char *entity_name, double x_abs, double y_abs, double z_abs,
+        const char *anchor_name, double *x_rel, double *y_rel, double *z_rel
+);
 LIB_EXP int GetDummyAxis(
         const char *entity_name, const char *anchor_name, double x_dir,
         double y_dir, double z_dir, double *x_dummy_axis, double *y_dummy_axis,
@@ -567,9 +589,16 @@ LIB_EXP int SetActiveEnemy(
 LIB_EXP int CanISee(
         const char *entity_name, const char *seen_entity_name, int *canISee
 );
+LIB_EXP int CanISeeFrom(
+        const char *entity_name, const char *seen_entity_name,
+        double x, double y, double z, int *canISee
+);
 LIB_EXP int ExcludeHitFor(
         const char *entity_name, const char *exclude_hit_for_name,
         void *unknown
+);
+LIB_EXP int ExcludeHitInAnimationFor(
+        const char *entity_name, const char *exclude_hit_for_name, void *unknown
 );
 LIB_EXP int UnlinkChild(
         const char *entity_name, const char *child_entity_name, void *unknown
@@ -593,7 +622,15 @@ LIB_EXP const char *GetChild(const char *entity_name, int index);
 LIB_EXP int InsideActionArea(
         const char *entity_name, int action_area, int *is_inside
 );
+LIB_EXP int TestPos(
+        const char *entity_name, double x, double y, double z, double max_fall,
+        int action_area, int *isCorrect
+);
 LIB_EXP int UnlinkChilds(const char *entity_name);
+LIB_EXP int SetNextAttack(
+        const char *entity_name, const char *attack, int *res
+);
+LIB_EXP int SetEnemy(const char *entity_name, const char *enemy_name);
 LIB_EXP const char *GetEnemy(const char *entity_name);
 LIB_EXP int Chase(
         const char *entity_name, const char *enemy_name, int action_area
@@ -692,6 +729,10 @@ LIB_EXP int EntityCatchOnFire(
 );
 LIB_EXP const char *GetParticleEntity(const char *entity_name);
 LIB_EXP int DoAction(const char *entity_name, const char *action_name);
+LIB_EXP int DoActionWI(
+        const char *entity_name, const char *action_name,
+        int interpolation_type, double time, double unknown1
+);
 LIB_EXP int SetOnFloor(const char *entity_name);
 LIB_EXP int RaiseEvent(const char *entity_name, const char *event_name);
 LIB_EXP int InterruptCombat(const char *entity_name);
