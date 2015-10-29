@@ -241,6 +241,7 @@ typedef struct {
 #define ENT_STR_NAME                      0
 #define ENT_STR_KIND                      1
 #define ENT_STR_PREV_ANIM_NAME            2
+#define ENT_STR_LOOK_AT_PERSON            4
 #define ENT_STR_MATERIAL                  5
 #define ENT_STR_ANIMATION                 6
 #define ENT_STR_ANIM_FULL_NAME            9
@@ -538,6 +539,7 @@ LIB_EXP int ImpulseC(
         double y_vec, double z_vec
 );
 LIB_EXP int AddCameraEvent(const char *entity_name, int frame, PyObject *func);
+LIB_EXP int DeleteCameraEvent(const char *entity_name, int frame);
 LIB_EXP int SubscribeEntityToList(
         const char *entity_name, const char *timer_name
 );
@@ -568,6 +570,14 @@ LIB_EXP int Abs2RelPointN(
         const char *entity_name, double x_abs, double y_abs, double z_abs,
         const char *anchor_name, double *x_rel, double *y_rel, double *z_rel
 );
+LIB_EXP int Abs2RelVector(
+        const char *entity_name, double x_abs, double y_abs, double z_abs,
+        double *x_rel, double *y_rel, double *z_rel
+);
+LIB_EXP int Abs2RelVectorN(
+        const char *entity_name, double x_abs, double y_abs, double z_abs,
+        const char *anchor_name, double *x_rel, double *y_rel, double *z_rel
+);
 LIB_EXP int GetDummyAxis(
         const char *entity_name, const char *anchor_name, double x_dir,
         double y_dir, double z_dir, double *x_dummy_axis, double *y_dummy_axis,
@@ -579,9 +589,17 @@ LIB_EXP int RemoveEntityFromList(
 );
 LIB_EXP int RemoveFromInventRight(const char *entity_name);
 LIB_EXP int RemoveFromInventLeft(const char *entity_name);
+LIB_EXP int RemoveFromInventLeft2(const char *entity_name);
+LIB_EXP int LaunchAnimation2(
+        const char *entity_name, const char *anm_name1, const char *anm_name2
+);
 LIB_EXP int SetTmpAnmFlags(
         const char *entity_name, int wuea, int mod_y, int solf, int copy_rot,
         int bng_mov, int headf, int unknown
+);
+LIB_EXP int SetAnmFlags(
+        const char *entity_name, const char *anm_name, int wuea, int mod_y,
+        int solf, int copy_rot, int bng_mov, int headf
 );
 LIB_EXP int SetActiveEnemy(
         const char *entity_name, const char *active_enemy_name, int *unknown
@@ -622,6 +640,10 @@ LIB_EXP const char *GetChild(const char *entity_name, int index);
 LIB_EXP int InsideActionArea(
         const char *entity_name, int action_area, int *is_inside
 );
+LIB_EXP int CheckAnimCol(
+        const char *entity_name, const char *anm_name, const char *obj_name,
+        int unknown, int *res
+);
 LIB_EXP int TestPos(
         const char *entity_name, double x, double y, double z, double max_fall,
         int action_area, int *isCorrect
@@ -655,6 +677,8 @@ LIB_EXP int SwitchTo1H(const char *entity_name);
 LIB_EXP int SwitchToBow(const char *entity_name);
 LIB_EXP int LaunchWatch(const char *entity_name);
 LIB_EXP int GetActionMode(const char *entity_name, int *action_mode);
+LIB_EXP int StartGrabbing(const char *entity_name);
+LIB_EXP int StopGrabbing(const char *entity_name);
 LIB_EXP int AddSoundAnim(
         const char *entity_name, const char *anm_event, double time, int soundID
 );
@@ -664,6 +688,7 @@ LIB_EXP int EntityAddAnmEventFunc(
 LIB_EXP int EntityDelAnmEventFunc(
         const char *entity_name, const char *anm_event
 );
+LIB_EXP int EntityClearAnmEventFuncs(const char *entity_name);
 LIB_EXP int AddSoundEvent(
         const char *entity_name, const char *event, int soundID
 );
@@ -715,12 +740,17 @@ LIB_EXP int EntityRotateRel(
 LIB_EXP int EntityMove(
         const char *entity_name, double x, double y, double z, int unknown
 );
+LIB_EXP int EntitySetOrientation(
+        const char *entity_name, double quat1, double quat2, double quat3,
+        double quat4, int unknown
+);
 LIB_EXP PyObject *GetGroupMembers(const char *entity_name);
 LIB_EXP PyObject *GetCombatants(const char *entity_name);
 LIB_EXP int EntityPutToWorld(const char *entity_name);
 LIB_EXP void EntityRemoveFromWorld(const char *entity_name);
 LIB_EXP void EntityRemoveFromWorldWithChilds(const char *entity_name);
 LIB_EXP int SetSound(const char *entity_name, const char *sound);
+LIB_EXP int SetObjectSound(const char *entity_name, const char *sound);
 LIB_EXP int PlayEntitySound(const char *entity_name, int i_unknown);
 LIB_EXP int Stop(const char *entity_name);
 LIB_EXP int StopAt(const char *entity_name, double x, double y, double z);
