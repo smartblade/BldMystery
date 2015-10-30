@@ -17,6 +17,10 @@
 
 
 #include <Python.h>
+
+/* Use stdcall to avoid generation underscores */
+#define INIT_PY_MODULE_FUNC void __stdcall
+
 #include <windows.h>
 #include <assert.h>
 #include <blade_ext.h>
@@ -86,6 +90,9 @@ extern PyTypeObject routeTypeObject;
 extern PyTypeObject sectorTypeObject;
 extern PyTypeObject soundTypeObject;
 extern PyTypeObject trailTypeObject;
+
+
+LIB_EXP INIT_PY_MODULE_FUNC initBladex(void);
 
 
 extern PyObject *get_char_by_name(const char *name, const char *short_name);

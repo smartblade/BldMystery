@@ -4643,9 +4643,7 @@ PyObject *bex_CleanArea(PyObject *self, PyObject *args) {
 
 
 // address: 0x1000737B
-
-/* Use stdcall to avoid generation underscores */
-LIB_EXP __stdcall void initBladex()
+INIT_PY_MODULE_FUNC initBladex()
 {
         int i;
 
@@ -4653,10 +4651,8 @@ LIB_EXP __stdcall void initBladex()
                 if (init_funcs[i])
                         init_funcs[i]();
 
-        Py_InitModule4("Bladex", methods, NULL, NULL, PYTHON_API_VERSION);
+        Py_InitModule("Bladex", methods);
 }
-
-
 
 
 // address: 0x1000a010
