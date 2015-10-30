@@ -3,7 +3,7 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.06.00"/>
-    <PROJECT value="Bladex.dll"/>
+    <PROJECT value="..\bin\Bladex.dll"/>
     <OBJFILES value="Bladex.obj Character.obj Trail.obj HeapCheck.obj Utils.obj Route.obj 
       Sound.obj Material.obj Sector.obj Inventory.obj"/>
     <RESFILES value="Bladex.res"/>
@@ -44,7 +44,7 @@
     <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>
     <AFLAGS value="/mx /w2 /zd"/>
-    <LFLAGS value="-D&quot;&quot; -aa -Tpd -x -Gn -Gi -v"/>
+    <LFLAGS value="-l..\lib -D&quot;&quot; -aa -Tpd -x -Gn -Gi -v"/>
     <OTHERFILES value=""/>
   </OPTIONS>
   <LINKER>
@@ -116,6 +116,14 @@ Item0=$(BCB)\source\vcl
 [HistoryLists\hlConditionals]
 Count=1
 Item0=_DEBUG
+
+[HistoryLists\hlFinalOutputDir]
+Count=1
+Item0=..\bin\
+
+[HistoryLists\hIBPIOutputDir]
+Count=1
+Item0=..\lib\
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl
