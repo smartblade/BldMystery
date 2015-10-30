@@ -1,28 +1,10 @@
 
-#ifdef __BORLANDC__
+#ifndef BLADEX_INT_H
 
-/*
- * Define MS_COREDLL for Borland C Builder to avoid crash after _PyObject_New
- * call
- */
-#define MS_COREDLL
+#define BLADEX_INT_H
 
-/*
- * Define USE_DL_IMPORT for Borland C Builder to avoid access violation
- * when writing to _Py_NoneStruct
- */
-#define USE_DL_IMPORT
-
-#endif
-
-
-#include <Python.h>
-
-/* Use stdcall to avoid generation underscores */
-#define INIT_PY_MODULE_FUNC void __stdcall
-
-#include <windows.h>
-#include <assert.h>
+#include <bld_system.h>
+#include <bld_python.h>
 #include <blade_ext.h>
 #define BUILD_LIB
 #include <export.h>
@@ -137,3 +119,5 @@ extern int insert_property(
         int (*set_func)(PyObject *, char *, PyObject *)
 );
 extern int find_property(property_info_t *properties, const char *name);
+
+#endif /* BLADEX_INT_H */
