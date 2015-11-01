@@ -14,22 +14,6 @@
 #define PROP_GET_AND_SET                        3
 
 
-//TODO remove
-#define NOT_IMPLEMENTED_FUNC(msg, ret) {\
-        char buffer[512];\
-        assert(msg == NULL);\
-        sprintf(buffer, "print \"%s not implemented\"", msg);\
-        PyRun_SimpleString("print \"*********************************\"");\
-        PyRun_SimpleString("print \"*********************************\"");\
-        PyRun_SimpleString("print \"*********************************\"");\
-        PyRun_SimpleString("print \"*************ERROR***************\"");\
-        PyRun_SimpleString(buffer);\
-        PyRun_SimpleString("print \"*********************************\"");\
-        PyRun_SimpleString("print \"*********************************\"");\
-        PyRun_SimpleString("print \"*********************************\"");\
-        return ret;\
-}
-
 static PyObject* bex_nEntities(PyObject* self, PyObject* args);
 static PyObject* bex_GetTime(PyObject* self, PyObject* args);
 static PyObject* bex_SetTime(PyObject* self, PyObject* args);
@@ -5203,12 +5187,23 @@ PyObject *bex_ent_RemoveFromList(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", 1);
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x1000b0d6
+PyObject *bex_ent_RemoveFromInvent(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        const char *obj_name;
+
+        if (!PyArg_ParseTuple(args, "s", &obj_name))
+                return NULL;
+
+        code = RemoveFromInvent(entity->name, obj_name);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
 
 // address: 0x1000b145
 PyObject *bex_ent_RemoveFromInventRight(PyObject *self, PyObject *args) {
@@ -5697,7 +5692,7 @@ PyObject *bex_ent_TestPos(PyObject *self, PyObject *args) {
         int code;
         double x, y, z;
         int action_area = 0;
-        double max_fall = 1.7976931348623157e+308;
+        double max_fall = BLD_MAX_DOUBLE;
         int is_correct;
 
         if (!PyArg_ParseTuple(
@@ -5714,12 +5709,24 @@ PyObject *bex_ent_TestPos(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", is_correct);
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x1000bed4
+PyObject *bex_ent_TestPosInOwnBox(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        double x, y, z, box_size = 1.0;
+        int is_correct;
+
+        if (!PyArg_ParseTuple(args, "ddd|d", &x, &y, &z, &box_size))
+                return NULL;
+
+        code = TestPosInOwnBox(entity->name, x, y, z, box_size, &is_correct);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", is_correct);
+}
+
 
 // address: 0x1000bffb
 PyObject *bex_ent_UnlinkChildren(PyObject *self, PyObject *args) {
@@ -5936,7 +5943,6 @@ PyObject *bex_ent_StartLooking(PyObject *self, PyObject *args) {
 }
 
 
-
 // address: 0x1000c58c
 PyObject *bex_ent_StopLooking(PyObject *self, PyObject *args) {
         bld_py_entity_t *entity = (bld_py_entity_t *)self;
@@ -5953,13 +5959,22 @@ PyObject *bex_ent_StopLooking(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", 1);
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
+// address: 0x1000c5f1
+PyObject *bex_ent_AddWatchAnim(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        const char *anm_name;
+
+        if (!PyArg_ParseTuple(args, "s", &anm_name))
+                return NULL;
+
+        code = AddEntWatchAnim(entity->name, anm_name);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
 
 
 // address: 0x1000c660
@@ -6052,12 +6067,23 @@ PyObject *bex_ent_SwitchToBow(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", 1);
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x1000c919
+PyObject *bex_ent_LaunchBayRoute(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        code = LaunchBayRoute(entity->name);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
 
 // address: 0x1000c97e
 PyObject *bex_ent_LaunchWatch(PyObject *self, PyObject *args) {
@@ -6123,12 +6149,34 @@ PyObject *bex_ent_StopGrabbing(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", 1);
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x1000cb18
+PyObject *bex_ent_LookAt(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        const char *obj_name;
+        double x, y, z;
+
+        if (PyArg_ParseTuple(args, "s", &obj_name)) {
+                code = SetEntityStringProperty(
+                        entity->name, ENT_STR_LOOK_AT, 0, obj_name
+                );
+        } else {
+                PyErr_Clear();
+                if (!PyArg_ParseTuple(args, "ddd", &x, &y, &z))
+                        return NULL;
+
+                code = SetEntityVectorProperty(
+                        entity->name, ENT_VEC_LOOK_AT_COORD, 0, x, y, z
+                );
+        }
+
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
 
 // address: 0x1000cbe2
 PyObject *bex_ent_LookAtPerson(PyObject *self, PyObject *args) {
@@ -6275,12 +6323,22 @@ PyObject *bex_ent_SlideTo(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", 1);
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x1000cfce
+PyObject *bex_ent_ClearPath(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        code = ClearActorPath(entity->name);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
 
 // address: 0x1000d033
 PyObject *bex_ent_CameraClearPath(PyObject *self, PyObject *args) {
@@ -6315,12 +6373,56 @@ PyObject *bex_ent_CameraStartPath(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", 1);
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x1000d10d
+PyObject *bex_ent_AddPathNode(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        double time, x, y, z;
+
+        if (!PyArg_ParseTuple(args, "dddd", &time, &x, &y, &z))
+                return NULL;
+
+        code = AddActorPathnode(entity->name, time, x,  y, z);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x1000d1a2
+PyObject *bex_ent_StartPath(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        code = StartActorPath(entity->name);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x1000d207
+PyObject *bex_ent_GoToPath(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int i_unknown;
+        double d_unknown;
+
+        if (!PyArg_ParseTuple(args, "id", &i_unknown, &d_unknown))
+                return NULL;
+
+        code = GoToActorPath(entity->name, i_unknown, d_unknown);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
 
 // address: 0x1000d280
 PyObject *bex_ent_TurnOn(PyObject *self, PyObject *args) {
@@ -6354,12 +6456,49 @@ PyObject *bex_ent_TurnOff(PyObject *self, PyObject *args) {
 }
 
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+// address: 0x1000d34a
+PyObject *bex_ent_SetNodeStartTangent(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int unknown1;
+        double unknown2, unknown3, unknown4;
+
+        if (!PyArg_ParseTuple(
+                args, "iddd", &unknown1, &unknown2, &unknown3, &unknown4
+        ))
+                return NULL;
+
+        code = SetActorNodeStartTangent(
+                entity->name, unknown1, unknown2, unknown3, unknown4
+        );
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
+
+// address: 0x1000d3db
+PyObject *bex_ent_SetNodeEndTangent(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        int unknown1;
+        double unknown2, unknown3, unknown4;
+
+        if (!PyArg_ParseTuple(
+                args, "iddd", &unknown1, &unknown2, &unknown3, &unknown4
+        ))
+                return NULL;
+
+        code = SetActorNodeEndTangent(
+                entity->name, unknown1, unknown2, unknown3, unknown4
+        );
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
 
 // address: 0x1000d46c
 PyObject *bex_ent_AddCameraNode(PyObject *self, PyObject *args) {
@@ -6528,12 +6667,29 @@ PyObject *bex_ent_Rotate(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", 1);
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x1000db3a
+PyObject *bex_ent_RotateAbs(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        double x, y, z, x_dir, y_dir, z_dir, angle;
+        int i_unknown = 1;
+
+        if (!PyArg_ParseTuple(
+                args, "ddddddd|i", &x, &y, &z, &x_dir, &y_dir, &z_dir, &angle,
+                &i_unknown
+        ))
+                return NULL;
+
+        code = EntityRotateAbs(
+                entity->name, x, y, z, x_dir, y_dir, z_dir, angle, i_unknown
+        );
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
 
 // address: 0x1000dc02
 PyObject *bex_ent_RotateRel(PyObject *self, PyObject *args) {
@@ -6575,12 +6731,24 @@ PyObject *bex_ent_Move(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", 1);
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x1000dd62
+PyObject *bex_ent_SetPosition(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+        double x, y, z;
+        int unknown = 1;
+
+        if (!PyArg_ParseTuple(args, "ddd|i", &x, &y, &z, &unknown))
+                return NULL;
+
+        code = EntitySetPosition(entity->name, x, y, z, unknown);
+        if (code != 1)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
 
 // address: 0x1000ddfa
 PyObject *bex_ent_SetOrientation(PyObject *self, PyObject *args) {
@@ -6686,12 +6854,6 @@ PyObject *bex_ent_GetInventory(PyObject *self, PyObject *args) {
         return inventory;
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
 // address: 0x1000e081
 PyObject *bex_ent_RemoveFromWorld(PyObject *self, PyObject *args) {
@@ -6718,12 +6880,22 @@ PyObject *bex_ent_RemoveFromWorldWithChilds(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", 1);
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+
+// address: 0x1000e111
+PyObject *bex_ent_Use(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
+        int code;
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        code = UseEntity(entity->name);
+        if (code == 0)
+                return Py_BuildValue("i", 0);
+        else
+                return Py_BuildValue("i", 1);
+}
+
 
 // address: 0x1000e17d
 PyObject *bex_ent_SetSound(PyObject *self, PyObject *args) {
@@ -7027,73 +7199,14 @@ PyObject *bex_ent_SetAuraGradient(PyObject *self, PyObject *args) {
 }
 
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+// address: 0x1000e98e
+PyObject *bex_ent_IsValid(PyObject *self, PyObject *args) {
+        bld_py_entity_t *entity = (bld_py_entity_t *)self;
 
-//TODO implement entity methods
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
 
-PyObject* bex_ent_RemoveFromInvent(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_RemoveFromInvent", NULL);
-}
-
-PyObject* bex_ent_AddWatchAnim(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_AddWatchAnim", NULL);
-}
-
-PyObject* bex_ent_LaunchBayRoute(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_LaunchBayRoute", NULL);
-}
-
-PyObject* bex_ent_LookAt(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_LookAt", NULL);
-}
-
-PyObject* bex_ent_ClearPath(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_ClearPath", NULL);
-}
-
-PyObject* bex_ent_StartPath(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_StartPath", NULL);
-}
-
-PyObject* bex_ent_GoToPath(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_GoToPath", NULL);
-}
-
-PyObject* bex_ent_AddPathNode(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_AddPathNode", NULL);
-}
-
-PyObject* bex_ent_SetNodeStartTangent(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_SetNodeStartTangent", NULL);
-}
-
-PyObject* bex_ent_SetNodeEndTangent(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_SetNodeEndTangent", NULL);
-}
-
-PyObject* bex_ent_RotateAbs(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_RotateAbs", NULL);
-}
-
-PyObject* bex_ent_SetPosition(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_SetPosition", NULL);
-}
-
-PyObject* bex_ent_Use(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_Use", NULL);
-}
-
-PyObject* bex_ent_TestPosInOwnBox(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_TestPosInOwnBox", NULL);
-}
-
-PyObject* bex_ent_IsValid(PyObject* self, PyObject* args) {
-        NOT_IMPLEMENTED_FUNC("bex_ent_IsValid", NULL);
+        return Py_BuildValue("i",  IsValidEntity(entity->name));
 }
 
 

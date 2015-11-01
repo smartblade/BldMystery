@@ -241,6 +241,7 @@ typedef struct {
 #define ENT_STR_NAME                      0
 #define ENT_STR_KIND                      1
 #define ENT_STR_PREV_ANIM_NAME            2
+#define ENT_STR_LOOK_AT                   3
 #define ENT_STR_LOOK_AT_PERSON            4
 #define ENT_STR_MATERIAL                  5
 #define ENT_STR_ANIMATION                 6
@@ -283,6 +284,7 @@ typedef struct {
 #define ENT_VEC_VELOCITY                  5
 #define ENT_VEC_GRAVITY                   6
 #define ENT_VEC_ANGULAR_VELOCITY          7
+#define ENT_VEC_LOOK_AT_COORD             8
 #define ENT_VEC_SLIDING_SURFACE           9
 #define ENT_VEC_SLIDE_TO                 10
 #define ENT_VEC_TRAIL_COLOR              11
@@ -587,6 +589,7 @@ LIB_EXP double SQDistance2(const char *entity_name1, const char *entity_name2);
 LIB_EXP int RemoveEntityFromList(
         const char *entity_name, const char *timer_name
 );
+LIB_EXP int RemoveFromInvent(const char *entity_name, const char *obj_name);
 LIB_EXP int RemoveFromInventRight(const char *entity_name);
 LIB_EXP int RemoveFromInventLeft(const char *entity_name);
 LIB_EXP int RemoveFromInventLeft2(const char *entity_name);
@@ -648,6 +651,10 @@ LIB_EXP int TestPos(
         const char *entity_name, double x, double y, double z, double max_fall,
         int action_area, int *isCorrect
 );
+LIB_EXP int TestPosInOwnBox(
+        const char *entity_name, double x, double y, double z, double box_size,
+        int *isCorrect
+);
 LIB_EXP int UnlinkChilds(const char *entity_name);
 LIB_EXP int SetNextAttack(
         const char *entity_name, const char *attack, int *res
@@ -667,6 +674,7 @@ LIB_EXP int QuickFace(const char *entity_name, double angle);
 LIB_EXP int Face(const char *entity_name, double angle);
 LIB_EXP int StartLooking(const char *entity_name, int x, int y, int z);
 LIB_EXP int StopLooking(const char *entity_name);
+LIB_EXP int AddEntWatchAnim(const char *entity_name, const char *anm_name);
 LIB_EXP int GraspPos(
         const char *entity_name, const char *grasp, double *x, double *y,
         double *z
@@ -675,6 +683,7 @@ LIB_EXP int Freeze(const char *entity_name);
 LIB_EXP int UnFreeze(const char *entity_name);
 LIB_EXP int SwitchTo1H(const char *entity_name);
 LIB_EXP int SwitchToBow(const char *entity_name);
+LIB_EXP int LaunchBayRoute(const char *entity_name);
 LIB_EXP int LaunchWatch(const char *entity_name);
 LIB_EXP int GetActionMode(const char *entity_name, int *action_mode);
 LIB_EXP int StartGrabbing(const char *entity_name);
@@ -692,10 +701,26 @@ LIB_EXP int EntityClearAnmEventFuncs(const char *entity_name);
 LIB_EXP int AddSoundEvent(
         const char *entity_name, const char *event, int soundID
 );
+LIB_EXP int ClearActorPath(const char *entity_name);
 LIB_EXP int CameraClearPath(const char *entity_name, int node);
 LIB_EXP int CameraStartPath(const char *entity_name, int node);
+LIB_EXP int AddActorPathnode(
+        const char *entity_name, double time, double x, double y, double z
+);
+LIB_EXP int StartActorPath(const char *entity_name);
+LIB_EXP int GoToActorPath(
+        const char *entity_name, int i_unknown, double d_unknown
+);
 LIB_EXP int TurnOnActor(const char *entity_name);
 LIB_EXP int TurnOffActor(const char *entity_name);
+LIB_EXP int SetActorNodeStartTangent(
+        const char *entity_name, int unknown1, double unknown2, double unknown3,
+        double unknown4
+);
+LIB_EXP int SetActorNodeEndTangent(
+        const char *entity_name, int unknown1, double unknown2, double unknown3,
+        double unknown4
+);
 LIB_EXP int CameraAddTargetNode(
         const char *entity_name, float time, double x, double y, double z
 );
@@ -733,11 +758,18 @@ LIB_EXP int EntityRotate(
         const char *entity_name, double x_dir, double y_dir, double z_dir,
         double velocity, int unknown
 );
+LIB_EXP int EntityRotateAbs(
+        const char *entity_name, double x, double y, double z, double x_dir,
+        double y_dir, double z_dir, double angle, int i_unknown
+);
 LIB_EXP int EntityRotateRel(
         const char *entity_name, double x, double y, double z, double x_dir,
         double y_dir, double z_dir, double angle, int i_unknown
 );
 LIB_EXP int EntityMove(
+        const char *entity_name, double x, double y, double z, int unknown
+);
+LIB_EXP int EntitySetPosition(
         const char *entity_name, double x, double y, double z, int unknown
 );
 LIB_EXP int EntitySetOrientation(
@@ -749,6 +781,7 @@ LIB_EXP PyObject *GetCombatants(const char *entity_name);
 LIB_EXP int EntityPutToWorld(const char *entity_name);
 LIB_EXP void EntityRemoveFromWorld(const char *entity_name);
 LIB_EXP void EntityRemoveFromWorldWithChilds(const char *entity_name);
+LIB_EXP int UseEntity(const char *entity_name);
 LIB_EXP int SetSound(const char *entity_name, const char *sound);
 LIB_EXP int SetObjectSound(const char *entity_name, const char *sound);
 LIB_EXP int PlayEntitySound(const char *entity_name, int i_unknown);
@@ -777,6 +810,7 @@ LIB_EXP int SetAuraGradient(
         double alpha1, double starting_point, double r2, double g2, double b2,
         double alpha2, double ending_point
 );
+LIB_EXP int IsValidEntity(const char *entity_name);
 LIB_EXP PyObject *GetEntityData(const char *entity_name);
 LIB_EXP PyObject *GetAttackList(const char *entity_name);
 LIB_EXP int ChangeEntityStatic(const char *entity_name, int is_static);
