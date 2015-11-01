@@ -53,7 +53,11 @@ static PyMethodDef sector_methods[] = {
 };
 
 
-// address: 0x10016520
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016520
+*/
+
 PyObject *get_sector_by_index(int index) {
         int sectorID;
         bld_py_sector_t *sector_obj;
@@ -72,7 +76,11 @@ PyObject *get_sector_by_index(int index) {
         return NULL;
 }
 
-// address: 0x1001657c
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1001657C
+*/
+
 PyObject *get_sector_by_position(double x, double y, double z) {
         int index;
 
@@ -82,7 +90,11 @@ PyObject *get_sector_by_position(double x, double y, double z) {
 }
 
 
-// address: 0x100165b4
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100165B4
+*/
+
 PyObject *bex_sec_InitBreak(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
@@ -109,7 +121,11 @@ PyObject *bex_sec_InitBreak(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100166c0
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100166C0
+*/
+
 PyObject *bex_sec_DoBreak(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
@@ -133,7 +149,11 @@ PyObject *bex_sec_DoBreak(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10016794
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016794
+*/
+
 PyObject *bex_sec_SetSurfaceTexture(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
@@ -153,7 +173,11 @@ PyObject *bex_sec_SetSurfaceTexture(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1001680b
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1001680B
+*/
+
 PyObject *bex_sec_SetSurfaceTextureZoomX(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
@@ -173,7 +197,11 @@ PyObject *bex_sec_SetSurfaceTextureZoomX(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10016886
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016886
+*/
+
 PyObject *bex_sec_SetSurfaceTextureZoomY(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
@@ -193,7 +221,11 @@ PyObject *bex_sec_SetSurfaceTextureZoomY(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10016901
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016901
+*/
+
 PyObject *bex_sec_SetSurfaceTextureX(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
@@ -213,7 +245,11 @@ PyObject *bex_sec_SetSurfaceTextureX(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1001697c
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1001697C
+*/
+
 PyObject *bex_sec_SetSurfaceTextureY(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
@@ -233,7 +269,11 @@ PyObject *bex_sec_SetSurfaceTextureY(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100169f7
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100169F7
+*/
+
 PyObject *bex_sec_GetSurfaceTexture(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
@@ -255,7 +295,11 @@ PyObject *bex_sec_GetSurfaceTexture(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10016a70
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016A70
+*/
+
 PyObject *bex_sec_GetSurfaceTextureZoomX(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
@@ -277,7 +321,11 @@ PyObject *bex_sec_GetSurfaceTextureZoomX(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10016aec
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016AEC
+*/
+
 PyObject *bex_sec_GetSurfaceTextureZoomY(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
@@ -299,7 +347,11 @@ PyObject *bex_sec_GetSurfaceTextureZoomY(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10016b68
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016B68
+*/
+
 PyObject *bex_sec_GetSurfaceTextureX(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
@@ -321,7 +373,11 @@ PyObject *bex_sec_GetSurfaceTextureX(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10016be4
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016BE4
+*/
+
 PyObject *bex_sec_GetSurfaceTextureY(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
@@ -343,7 +399,11 @@ PyObject *bex_sec_GetSurfaceTextureY(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10016c60
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016C60
+*/
+
 PyObject *bex_sec_SetSpecularLight(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
@@ -365,7 +425,11 @@ PyObject *bex_sec_SetSpecularLight(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10016cdb
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016CDB
+*/
+
 PyObject *bex_sec_GetSpecularLight(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
@@ -388,7 +452,11 @@ PyObject *bex_sec_GetSpecularLight(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10016d57
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016D57
+*/
+
 PyObject *bex_sec_SetSpecularShininess(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
@@ -410,7 +478,11 @@ PyObject *bex_sec_SetSpecularShininess(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10016dd2
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016DD2
+*/
+
 PyObject *bex_sec_GetSpecularShininess(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
@@ -433,7 +505,11 @@ PyObject *bex_sec_GetSpecularShininess(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10016e4e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016E4E
+*/
+
 PyObject *bex_sec_SetSelfLight(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
@@ -454,7 +530,11 @@ PyObject *bex_sec_SetSelfLight(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10016ec9
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016EC9
+*/
+
 PyObject *bex_sec_GetSelfLight(PyObject *self, PyObject *args) {
         bld_py_sector_t *sector = (bld_py_sector_t *)self;
         int code;
@@ -476,13 +556,21 @@ PyObject *bex_sec_GetSelfLight(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10016f45
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016F45
+*/
+
 void init_sector() {
         init_sector_type();
 }
 
 
-// address: 0x10016f4f
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016F4F
+*/
+
 void init_sector_type() {
 
         memset(&sectorTypeObject, 0, sizeof(PyTypeObject));
@@ -506,13 +594,21 @@ void init_sector_type() {
 }
 
 
-// address: 0x10016ffa
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016FFA
+*/
+
 void bld_py_sector_dealloc(PyObject *self) {
         free(self);
 }
 
 
-// address: 0x1001700c
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1001700C
+*/
+
 int bld_py_sector_print(PyObject *self, FILE *file, int flags) {
         static char buffer[512];
         sprintf(buffer, "Sector: %d", ((bld_py_sector_t *)self)->sectorID);
@@ -521,7 +617,11 @@ int bld_py_sector_print(PyObject *self, FILE *file, int flags) {
 }
 
 
-// address: 0x1001703f
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1001703F
+*/
+
 PyObject *bld_py_sector_getattr(PyObject *self, char *attr_name)
 {
         int active, n_surfaces;
@@ -723,7 +823,11 @@ PyObject *bld_py_sector_getattr(PyObject *self, char *attr_name)
 }
 
 
-// address: 0x100175eb
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100175EB
+*/
+
 int bld_py_sector_setattr(PyObject *self, char *attr_name, PyObject *value)
 {
         int active;

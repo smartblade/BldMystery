@@ -19,7 +19,11 @@ static PyMethodDef route_methods[] = {
 };
 
 
-// address: 0x10016310
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016310
+*/
+
 PyObject *create_route() {
         bld_py_route_t *route_obj;
 
@@ -31,7 +35,11 @@ PyObject *create_route() {
 }
 
 
-// address: 0x10016346
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016346
+*/
+
 PyObject *bex_route_AddPoint(PyObject *self, PyObject *args) {
         double x, y, z;
 
@@ -45,13 +53,21 @@ PyObject *bex_route_AddPoint(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10016396
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016396
+*/
+
 void init_route() {
         init_route_type();
 }
 
 
-// address: 0x100163a0
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100163A0
+*/
+
 void init_route_type() {
         memset(&routeTypeObject, 0, sizeof(PyTypeObject));
 
@@ -74,13 +90,21 @@ void init_route_type() {
 }
 
 
-// address: 0x1001644b
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1001644B
+*/
+
 void bld_py_route_dealloc(PyObject *self) {
         free(self);
 }
 
 
-// address: 0x1001645d
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1001645D
+*/
+
 int bld_py_route_print(PyObject *self, FILE *file, int flags) {
         char buffer[128];
 
@@ -91,7 +115,11 @@ int bld_py_route_print(PyObject *self, FILE *file, int flags) {
 }
 
 
-// address: 0x10016491
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10016491
+*/
+
 PyObject *bld_py_route_getattr(PyObject *self, char *attr_name) {
 
         if (!strcmp(attr_name, "__doc__"))
@@ -101,7 +129,11 @@ PyObject *bld_py_route_getattr(PyObject *self, char *attr_name) {
 }
 
 
-// address: 0x100164d3
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100164D3
+*/
+
 int bld_py_route_setattr(PyObject *self, char *attr_name, PyObject *value) {
 
         PyErr_Clear();

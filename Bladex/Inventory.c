@@ -149,7 +149,11 @@ static PyMethodDef inventory_methods[] = {
 };
 
 
-// address: 0x100140a0
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100140A0
+*/
+
 PyObject *get_inventory(const char *name) {
         bld_py_inventory_t *inventory_obj;
 
@@ -163,7 +167,11 @@ PyObject *get_inventory(const char *name) {
 }
 
 
-// address: 0x100140e9
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100140E9
+*/
+
 PyObject *bex_inv_CarringObject(PyObject *self, PyObject *args) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         int code;
@@ -178,7 +186,11 @@ PyObject *bex_inv_CarringObject(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10014149
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014149
+*/
+
 PyObject *bex_inv_GetRightBack(PyObject *self, PyObject *args) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         const char *obj_name;
@@ -193,7 +205,11 @@ PyObject *bex_inv_GetRightBack(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1001419d
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1001419D
+*/
+
 PyObject *bex_inv_GetLeftBack(PyObject *self, PyObject *args) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         const char *obj_name;
@@ -208,7 +224,11 @@ PyObject *bex_inv_GetLeftBack(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100141f1
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100141F1
+*/
+
 PyObject *bex_inv_LinkRightHand(PyObject *self, PyObject *args) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         int code;
@@ -222,7 +242,11 @@ PyObject *bex_inv_LinkRightHand(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1001424b
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1001424B
+*/
+
 PyObject *bex_inv_LinkLeftHand(PyObject *self, PyObject *args) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         int code;
@@ -236,7 +260,11 @@ PyObject *bex_inv_LinkLeftHand(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", code);
 }
 
-// address: 0x100142a5
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100142A5
+*/
+
 PyObject *bex_inv_LinkLeftHand2(PyObject *self, PyObject *args) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         int code;
@@ -251,7 +279,11 @@ PyObject *bex_inv_LinkLeftHand2(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100142ff
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100142FF
+*/
+
 PyObject *bex_inv_LinkRightBack(PyObject *self, PyObject *args) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         int code;
@@ -266,7 +298,11 @@ PyObject *bex_inv_LinkRightBack(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10014359
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014359
+*/
+
 PyObject *bex_inv_LinkLeftBack(PyObject *self, PyObject *args) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         int code;
@@ -281,7 +317,11 @@ PyObject *bex_inv_LinkLeftBack(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100143b3
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100143B3
+*/
+
 PyObject *bex_inv_LinkBack(PyObject *self, PyObject *args) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         int code;
@@ -296,7 +336,11 @@ PyObject *bex_inv_LinkBack(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1001440d
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1001440D
+*/
+
 PyObject *bex_inv_SetCurrentQuiver(PyObject *self, PyObject *args) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         int code;
@@ -311,13 +355,21 @@ PyObject *bex_inv_SetCurrentQuiver(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10014467
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014467
+*/
+
 PyObject *bex_inv_AddObject(PyObject *self, PyObject *args) {
         return add_object(self, args, INV_OBJ_TYPE_OBJECT);
 }
 
 
-// address: 0x1001447e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1001447E
+*/
+
 PyObject *add_object(PyObject *self, PyObject *args, int obj_type) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         int unknown = 0;
@@ -333,13 +385,21 @@ PyObject *add_object(PyObject *self, PyObject *args, int obj_type) {
 }
 
 
-// address: 0x100144eb
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100144EB
+*/
+
 PyObject *bex_inv_RemoveObject(PyObject *self, PyObject *args) {
         return remove_object(self, args, INV_OBJ_TYPE_OBJECT);
 }
 
 
-// address: 0x10014502
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014502
+*/
+
 PyObject *remove_object(PyObject *self, PyObject *args, int obj_type) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         const char *obj_name;
@@ -354,13 +414,21 @@ PyObject *remove_object(PyObject *self, PyObject *args, int obj_type) {
 }
 
 
-// address: 0x10014566
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014566
+*/
+
 PyObject* bex_inv_GetObject(PyObject* self, PyObject* args) {
         return get_object(self, args, INV_OBJ_TYPE_OBJECT);
 }
 
 
-// address: 0x1001457d
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1001457D
+*/
+
 PyObject *get_object(PyObject *self, PyObject *args, int obj_type) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         int obj_index;
@@ -390,13 +458,21 @@ PyObject *get_object(PyObject *self, PyObject *args, int obj_type) {
 }
 
 
-// address: 0x10014669
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014669
+*/
+
 PyObject *bex_inv_GetSelectedObject(PyObject *self, PyObject *args) {
         return get_selected_object(self, args, INV_OBJ_TYPE_OBJECT);
 }
 
 
-// address: 0x10014680
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014680
+*/
+
 PyObject *get_selected_object(PyObject *self, PyObject *args, int obj_type) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         const char *obj;
@@ -414,13 +490,21 @@ PyObject *get_selected_object(PyObject *self, PyObject *args, int obj_type) {
 }
 
 
-// address: 0x100146f2
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100146F2
+*/
+
 PyObject *bex_inv_CycleObjects(PyObject *self, PyObject *args) {
         return cycle_objects(self, args, INV_OBJ_TYPE_OBJECT);
 }
 
 
-// address: 0x10014709
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014709
+*/
+
 PyObject *cycle_objects(PyObject *self, PyObject *args, int obj_type) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
 
@@ -434,13 +518,21 @@ PyObject *cycle_objects(PyObject *self, PyObject *args, int obj_type) {
 }
 
 
-// address: 0x1001475f
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1001475F
+*/
+
 PyObject *bex_inv_IsObjectSelected(PyObject *self, PyObject *args) {
         return is_object_selected(self, args, INV_OBJ_TYPE_OBJECT);
 }
 
 
-// address: 0x10014776
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014776
+*/
+
 PyObject *is_object_selected(PyObject *self, PyObject *args, int obj_type) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         int obj_index;
@@ -454,13 +546,21 @@ PyObject *is_object_selected(PyObject *self, PyObject *args, int obj_type) {
 }
 
 
-// address: 0x100147d3
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100147D3
+*/
+
 PyObject *bex_inv_GetNumberObjectsAt(PyObject *self, PyObject *args) {
         return get_number_objects_at(self, args, INV_OBJ_TYPE_OBJECT);
 }
 
 
-// address: 0x100147ea
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100147EA
+*/
+
 PyObject *get_number_objects_at(PyObject *self, PyObject *args, int obj_type) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         int index;
@@ -475,13 +575,21 @@ PyObject *get_number_objects_at(PyObject *self, PyObject *args, int obj_type) {
 }
 
 
-// address: 0x10014847
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014847
+*/
+
 PyObject *bex_inv_GetMaxNumberObjectsAt(PyObject *self, PyObject *args) {
         return get_max_number_objects_at(self, args, INV_OBJ_TYPE_OBJECT);
 }
 
 
-// address: 0x1001485e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1001485E
+*/
+
 PyObject *get_max_number_objects_at(
         PyObject *self, PyObject *args, int obj_type
 ) {
@@ -497,31 +605,51 @@ PyObject *get_max_number_objects_at(
 }
 
 
-// address: 0x100148bb
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100148BB
+*/
+
 PyObject *bex_inv_AddShield(PyObject *self, PyObject *args) {
         return add_object(self, args, INV_OBJ_TYPE_SHIELD);
 }
 
 
-// address: 0x100148d2
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100148D2
+*/
+
 PyObject *bex_inv_RemoveShield(PyObject *self, PyObject *args) {
         return remove_object(self, args, INV_OBJ_TYPE_SHIELD);
 }
 
 
-// address: 0x100148e9
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100148E9
+*/
+
 PyObject* bex_inv_GetShield(PyObject* self, PyObject* args) {
         return get_object(self, args, INV_OBJ_TYPE_SHIELD);
 }
 
 
-// address: 0x10014900
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014900
+*/
+
 PyObject *bex_inv_GetSelectedShield(PyObject *self, PyObject *args) {
         return get_selected_object(self, args, INV_OBJ_TYPE_SHIELD);
 }
 
 
-// address: 0x10014917
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014917
+*/
+
 PyObject *bex_inv_GetActiveShield(PyObject *self, PyObject *args) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         const char *shield_name;
@@ -539,7 +667,11 @@ PyObject *bex_inv_GetActiveShield(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10014986
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014986
+*/
+
 PyObject *bex_inv_GetActiveWeapon(PyObject *self, PyObject *args) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         const char *weapon_name;
@@ -557,7 +689,11 @@ PyObject *bex_inv_GetActiveWeapon(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100149f5
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100149F5
+*/
+
 PyObject *bex_inv_GetActiveQuiver(PyObject *self, PyObject *args) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         const char *quiver_name;
@@ -575,19 +711,31 @@ PyObject *bex_inv_GetActiveQuiver(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10014a64
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014A64
+*/
+
 PyObject *bex_inv_CycleShields(PyObject *self, PyObject *args) {
         return cycle_objects(self, args, INV_OBJ_TYPE_SHIELD);
 }
 
 
-// address: 0x10014a7b
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014A7B
+*/
+
 PyObject *bex_inv_IsShieldSelected(PyObject *self, PyObject *args) {
         return is_object_selected(self, args, INV_OBJ_TYPE_SHIELD);
 }
 
 
-// address: 0x10014a92
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014A92
+*/
+
 PyObject *bex_inv_AddWeapon(PyObject *self, PyObject *args) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         int code;
@@ -603,19 +751,31 @@ PyObject *bex_inv_AddWeapon(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10014afb
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014AFB
+*/
+
 PyObject *bex_inv_RemoveWeapon(PyObject *self, PyObject *args) {
         return remove_object(self, args, INV_OBJ_TYPE_WEAPON);
 }
 
 
-// address: 0x10014b12
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014B12
+*/
+
 PyObject *bex_inv_GetWeapon(PyObject *self, PyObject *args) {
         return get_object(self, args, INV_OBJ_TYPE_WEAPON);
 }
 
 
-// address: 0x10014b29
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014B29
+*/
+
 PyObject *bex_inv_GetBow(PyObject *self, PyObject *args) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         const char *obj_name;
@@ -630,7 +790,11 @@ PyObject *bex_inv_GetBow(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10014b81
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014B81
+*/
+
 PyObject *bex_inv_GetMagicShield(PyObject *self, PyObject *args) {
         bld_py_inventory_t *inventory = (bld_py_inventory_t *)self;
         const char *obj_name;
@@ -646,163 +810,271 @@ PyObject *bex_inv_GetMagicShield(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10014bd9
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014BD9
+*/
+
 PyObject *bex_inv_GetSelectedWeapon(PyObject *self, PyObject *args) {
         return get_selected_object(self, args, INV_OBJ_TYPE_WEAPON);
 }
 
 
-// address: 0x10014bf0
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014BF0
+*/
+
 PyObject *bex_inv_CycleWeapons(PyObject *self, PyObject *args) {
         return cycle_objects(self, args, INV_OBJ_TYPE_WEAPON);
 }
 
 
-// address: 0x10014c07
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014C07
+*/
+
 PyObject *bex_inv_IsWeaponSelected(PyObject *self, PyObject *args) {
         return is_object_selected(self, args, INV_OBJ_TYPE_WEAPON);
 }
 
 
-// address: 0x10014c1e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014C1E
+*/
+
 PyObject *bex_inv_AddBow(PyObject *self, PyObject *args) {
         return add_object(self, args, INV_OBJ_TYPE_BOW);
 }
 
 
-// address: 0x10014c35
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014C35
+*/
+
 PyObject *bex_inv_RemoveBow(PyObject *self, PyObject *args) {
         return remove_object(self, args, INV_OBJ_TYPE_BOW);
 }
 
 
-// address: 0x10014c4c
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014C4C
+*/
+
 PyObject *bex_inv_AddMagicShield(PyObject *self, PyObject *args) {
         return add_object(self, args, INV_OBJ_TYPE_MAGIC_SHIELD);
 }
 
 
-// address: 0x10014c63
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014C63
+*/
+
 PyObject *bex_inv_RemoveMagicShield(PyObject *self, PyObject *args) {
         return remove_object(self, args, INV_OBJ_TYPE_MAGIC_SHIELD);
 }
 
 
-// address: 0x10014c7a
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014C7A
+*/
+
 PyObject *bex_inv_AddQuiver(PyObject *self, PyObject *args) {
         return add_object(self, args, INV_OBJ_TYPE_QUIVER);
 }
 
 
-// address: 0x10014c91
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014C91
+*/
+
 PyObject *bex_inv_RemoveQuiver(PyObject *self, PyObject *args) {
         return remove_object(self, args, INV_OBJ_TYPE_QUIVER);
 }
 
 
-// address: 0x10014ca8
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014CA8
+*/
+
 PyObject *bex_inv_GetQuiver(PyObject *self, PyObject *args) {
         return get_object(self, args, INV_OBJ_TYPE_QUIVER);
 }
 
 
-// address: 0x10014cbf
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014CBF
+*/
+
 PyObject *bex_inv_GetSelectedQuiver(PyObject *self, PyObject *args) {
         return get_selected_object(self, args, INV_OBJ_TYPE_QUIVER);
 }
 
 
-// address: 0x10014cd6
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014CD6
+*/
+
 PyObject *bex_inv_CycleQuivers(PyObject *self, PyObject *args) {
         return cycle_objects(self, args, INV_OBJ_TYPE_QUIVER);
 }
 
 
-// address: 0x10014ced
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014CED
+*/
+
 PyObject *bex_inv_IsQuiverSelected(PyObject *self, PyObject *args) {
         return is_object_selected(self, args, INV_OBJ_TYPE_QUIVER);
 }
 
 
-// address: 0x10014d04
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014D04
+*/
+
 PyObject *bex_inv_AddKey(PyObject *self, PyObject *args) {
         return add_object(self, args, INV_OBJ_TYPE_KEY);
 }
 
 
-// address: 0x10014d1b
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014D1B
+*/
+
 PyObject *bex_inv_RemoveKey(PyObject *self, PyObject *args) {
         return remove_object(self, args, INV_OBJ_TYPE_KEY);
 }
 
 
-// address: 0x10014d32
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014D32
+*/
+
 PyObject *bex_inv_GetKey(PyObject *self, PyObject *args) {
         return get_object(self, args, INV_OBJ_TYPE_KEY);
 }
 
 
-// address: 0x10014d49
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014D49
+*/
+
 PyObject *bex_inv_GetSelectedKey(PyObject *self, PyObject *args) {
         return get_selected_object(self, args, INV_OBJ_TYPE_KEY);
 }
 
 
-// address: 0x10014d60
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014D60
+*/
+
 PyObject *bex_inv_CycleKeys(PyObject *self, PyObject *args) {
         return cycle_objects(self, args, INV_OBJ_TYPE_KEY);
 }
 
 
-// address: 0x10014d77
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014D77
+*/
+
 PyObject *bex_inv_IsKeySelected(PyObject *self, PyObject *args) {
         return is_object_selected(self, args, INV_OBJ_TYPE_KEY);
 }
 
 
-// address: 0x10014d8e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014D8E
+*/
+
 PyObject *bex_inv_AddSpecialKey(PyObject *self, PyObject *args) {
         return add_object(self, args, INV_OBJ_TYPE_SPECIAL_KEY);
 }
 
 
-// address: 0x10014da5
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014DA5
+*/
+
 PyObject *bex_inv_RemoveSpecialKey(PyObject *self, PyObject *args) {
         return remove_object(self, args, INV_OBJ_TYPE_SPECIAL_KEY);
 }
 
 
-// address: 0x10014dbc
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014DBC
+*/
+
 PyObject *bex_inv_GetSpecialKey(PyObject *self, PyObject *args) {
         return get_object(self, args, INV_OBJ_TYPE_SPECIAL_KEY);
 }
 
 
-// address: 0x10014dd3
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014DD3
+*/
+
 PyObject *bex_inv_AddTablet(PyObject *self, PyObject *args) {
         return add_object(self, args, INV_OBJ_TYPE_TABLET);
 }
 
 
-// address: 0x10014dea
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014DEA
+*/
+
 PyObject *bex_inv_RemoveTablet(PyObject *self, PyObject *args) {
         return remove_object(self, args, INV_OBJ_TYPE_TABLET);
 }
 
 
-// address: 0x10014e01
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014E01
+*/
+
 PyObject *bex_inv_GetTablet(PyObject *self, PyObject *args) {
         return get_object(self, args, INV_OBJ_TYPE_TABLET);
 }
 
 
-// address: 0x10014e18
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014E18
+*/
+
 void init_inventory() {
         init_inventory_type();
 }
 
 
-// address: 0x10014e22
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014E22
+*/
+
 void init_inventory_type() {
 
         memset(&inventoryTypeObject, 0, sizeof(PyTypeObject));
@@ -826,7 +1098,11 @@ void init_inventory_type() {
 }
 
 
-// address: 0x10014ecd
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014ECD
+*/
+
 void bld_py_inventory_dealloc(PyObject *self) {
         if (((bld_py_inventory_t *)self)->name)
                 free(((bld_py_inventory_t *)self)->name);
@@ -835,7 +1111,11 @@ void bld_py_inventory_dealloc(PyObject *self) {
 }
 
 
-// address: 0x10014ef8
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014EF8
+*/
+
 int bld_py_inventory_print(PyObject *self, FILE *file, int flags) {
         const char *name;
         int code;
@@ -855,7 +1135,11 @@ int bld_py_inventory_print(PyObject *self, FILE *file, int flags) {
 }
 
 
-// address: 0x10014f60
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10014F60
+*/
+
 PyObject *bld_py_inventory_getattr(PyObject *self, char *attr_name)
 {
         const char *name, *owner;
@@ -1152,7 +1436,11 @@ PyObject *bld_py_inventory_getattr(PyObject *self, char *attr_name)
 }
 
 
-// address: 0x10015768
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10015768
+*/
+
 int bld_py_inventory_setattr(PyObject *self, char *attr_name, PyObject *value)
 {
         int max_objects, max_weapons, max_shields, max_quivers;

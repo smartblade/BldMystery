@@ -17,7 +17,11 @@ static PyMethodDef trail_methods[] = {
 };
 
 
-// address: 0x100189a0
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100189A0
+*/
+
 PyObject *get_trail_type(const char *name) {
         bld_py_trail_t *trail_obj;
         int trailID;
@@ -36,13 +40,21 @@ PyObject *get_trail_type(const char *name) {
 }
 
 
-// address: 0x100189fc
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100189FC
+*/
+
 void init_trail() {
         init_trail_type();
 }
 
 
-// address: 0x10018a06
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10018A06
+*/
+
 void init_trail_type() {
 
         memset(&trailTypeObject, 0, sizeof(PyTypeObject));
@@ -67,13 +79,21 @@ void init_trail_type() {
 }
 
 
-// address: 0x10018ab1
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10018AB1
+*/
+
 void bld_py_trail_dealloc(PyObject *self) {
         free(self);
 }
 
 
-// address: 0x10018ac3
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10018AC3
+*/
+
 int bld_py_trail_print(PyObject *self, FILE *file, int flags) {
         static char buffer[512];
 
@@ -84,7 +104,11 @@ int bld_py_trail_print(PyObject *self, FILE *file, int flags) {
 }
 
 
-// address: 0x10018af6
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10018AF6
+*/
+
 PyObject *bld_py_trail_getattr(PyObject *self, char *attr_name)
 {
         double time_2_live, transparency, shrink_factor;
@@ -167,7 +191,11 @@ PyObject *bld_py_trail_getattr(PyObject *self, char *attr_name)
 }
 
 
-// address: 0x10018d8e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10018D8E
+*/
+
 int bld_py_trail_setattr(PyObject *self, char *attr_name, PyObject *value)
 {
         double time_2_live, transparency, shrink_factor;

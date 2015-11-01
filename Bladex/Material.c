@@ -19,7 +19,11 @@ static PyMethodDef material_methods[] = {
 };
 
 
-// address: 0x10015a00
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10015A00
+*/
+
 PyObject *get_material_by_name(const char *name) {
         material_t *material;
         bld_py_material_t *material_obj;
@@ -38,7 +42,11 @@ PyObject *get_material_by_name(const char *name) {
 }
 
 
-// address: 0x10015a5c
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10015A5C
+*/
+
 PyObject *get_material_by_index(int index) {
         material_t *material;
         bld_py_material_t *material_obj;
@@ -57,7 +65,11 @@ PyObject *get_material_by_index(int index) {
 }
 
 
-// address: 0x10015ab8
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10015AB8
+*/
+
 PyObject *create_material(const char *name) {
         material_t *material;
         bld_py_material_t *material_obj;
@@ -75,7 +87,11 @@ PyObject *create_material(const char *name) {
 }
 
 
-// address: 0x10015b13
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10015B13
+*/
+
 PyObject *bex_mat_AddHitSoundComb(PyObject *self, PyObject *args) {
         bld_py_material_t *material = (bld_py_material_t *)self;
         material_t *material1, *material2;
@@ -101,13 +117,21 @@ PyObject *bex_mat_AddHitSoundComb(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10015bc0
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10015BC0
+*/
+
 void init_material() {
         init_material_type();
 }
 
 
-// address: 0x10015bca
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10015BCA
+*/
+
 void init_material_type() {
 
         memset(&materialTypeObject, 0, sizeof(PyTypeObject));
@@ -131,13 +155,21 @@ void init_material_type() {
 }
 
 
-// address: 0x10015c75
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10015C75
+*/
+
 void bld_py_material_dealloc(PyObject *self) {
         free(self);
 }
 
 
-// address: 0x10015c87
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10015C87
+*/
+
 int bld_py_material_print(PyObject *self, FILE *file, int flags) {
         const char *name;
         int code;
@@ -156,7 +188,11 @@ int bld_py_material_print(PyObject *self, FILE *file, int flags) {
 }
 
 
-// address: 0x10015cf1
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10015CF1
+*/
+
 PyObject *bld_py_material_getattr(PyObject *self, char *attr_name)
 {
         const char *name;
@@ -250,7 +286,11 @@ PyObject *bld_py_material_getattr(PyObject *self, char *attr_name)
 }
 
 
-// address: 0x10015f7e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10015F7E
+*/
+
 int bld_py_material_setattr(PyObject *self, char *attr_name, PyObject *value)
 {
         bld_py_sound_t *break_sound, *friction_sound, *hit_sound;

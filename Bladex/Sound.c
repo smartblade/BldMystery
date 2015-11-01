@@ -29,7 +29,11 @@ static PyMethodDef sound_methods[] = {
 };
 
 
-// address: 0x10017e50
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10017E50
+*/
+
 PyObject *create_sound(const char *file_name, const char *sound_name) {
         int soundID;
         bld_py_sound_t *sound_obj;
@@ -52,7 +56,11 @@ PyObject *create_sound(const char *file_name, const char *sound_name) {
 }
 
 
-// address: 0x10017ec9
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10017EC9
+*/
+
 PyObject *create_sound_s(int id) {
         int soundID;
         bld_py_sound_t *sound_obj;
@@ -74,7 +82,11 @@ PyObject *create_sound_s(int id) {
 }
 
 
-// address: 0x10017f3e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10017F3E
+*/
+
 PyObject *get_ghost_sector_sound(const char *gs_name) {
         int soundID;
         bld_py_sound_t *sound_obj;
@@ -96,7 +108,11 @@ PyObject *get_ghost_sector_sound(const char *gs_name) {
 }
 
 
-// address: 0x10017fb3
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10017FB3
+*/
+
 PyObject *bex_snd_Play(PyObject *self, PyObject *args) {
         bld_py_sound_t *sound = (bld_py_sound_t *)self;
         int i_unknown = 0;
@@ -114,7 +130,11 @@ PyObject *bex_snd_Play(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10018046
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10018046
+*/
+
 PyObject *bex_snd_PlayStereo(PyObject *self, PyObject *args) {
         bld_py_sound_t *sound = (bld_py_sound_t *)self;
         int i_unknown = 0;
@@ -131,7 +151,11 @@ PyObject *bex_snd_PlayStereo(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100180b5
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100180B5
+*/
+
 PyObject *bex_snd_SetPitchVar(PyObject *self, PyObject *args) {
         bld_py_sound_t *sound = (bld_py_sound_t *)self;
         int i_unknown;
@@ -149,7 +173,11 @@ PyObject *bex_snd_SetPitchVar(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1001813f
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1001813F
+*/
+
 PyObject *bex_snd_AddAltSound(PyObject *self, PyObject *args) {
         bld_py_sound_t *sound = (bld_py_sound_t *)self;
         const char *alt_sound;
@@ -168,7 +196,11 @@ PyObject *bex_snd_AddAltSound(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100181cb
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100181CB
+*/
+
 PyObject *bex_snd_Stop(PyObject *self, PyObject *args) {
         bld_py_sound_t *sound = (bld_py_sound_t *)self;
         int code;
@@ -184,13 +216,21 @@ PyObject *bex_snd_Stop(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10018229
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10018229
+*/
+
 void init_sound() {
         init_sound_type();
 }
 
 
-// address: 0x10018233
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10018233
+*/
+
 void init_sound_type() {
 
     memset(&soundTypeObject, 0, sizeof(PyTypeObject));
@@ -214,7 +254,11 @@ void init_sound_type() {
 }
 
 
-// address: 0x100182de
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100182DE
+*/
+
 void bld_py_sound_dealloc(PyObject *self)
 {
         if (bld_py_sound_check(self))
@@ -222,7 +266,11 @@ void bld_py_sound_dealloc(PyObject *self)
 }
 
 
-// address: 0x10018307
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10018307
+*/
+
 boolean bld_py_sound_check(PyObject *self) {
 
         if (self == NULL)
@@ -236,7 +284,11 @@ boolean bld_py_sound_check(PyObject *self) {
 }
 
 
-// address: 0x10018325
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10018325
+*/
+
 int bld_py_sound_print(PyObject *self, FILE *file, int flags)
 {
         char buffer[128];
@@ -257,7 +309,11 @@ int bld_py_sound_print(PyObject *self, FILE *file, int flags)
 }
 
 
-// address: 0x1001838a
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1001838A
+*/
+
 PyObject *bld_py_sound_repr(PyObject *self)
 {
         char buffer[128];
@@ -278,7 +334,11 @@ PyObject *bld_py_sound_repr(PyObject *self)
 }
 
 
-// address: 0x100183f5
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100183F5
+*/
+
 PyObject *bld_py_sound_getattr(PyObject *self, char *attr_name)
 {
         if (!bld_py_sound_check(self))
@@ -357,7 +417,11 @@ PyObject *bld_py_sound_getattr(PyObject *self, char *attr_name)
 }
 
 
-// address: 0x10018624
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10018624
+*/
+
 int bld_py_sound_setattr(PyObject *self, char *attr_name, PyObject *value)
 {
         double min_distance, max_distance, volume, base_volume, pitch, scale;

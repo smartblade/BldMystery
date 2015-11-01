@@ -29,7 +29,11 @@ static property_tree_node_t tree_nodes[2000];
 static int num_property_kinds = 0;
 
 
-// address: 0x100190b0
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100190B0
+*/
+
 void init_properties() {
         init_entity_properties();
         make_tree(0, num_property_kinds - 1);
@@ -37,7 +41,11 @@ void init_properties() {
 }
 
 
-// address: 0x100190d7
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100190D7
+*/
+
 int insert_property(
         const char *name, int property_kind, int data_type, int flags,
         PyObject *(*get_func)(PyObject *, char *),
@@ -67,7 +75,11 @@ int insert_property(
 }
 
 
-// address: 0x100191e0
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100191E0
+*/
+
 int get_new_property_index(property_info_t *properties, char *name, int num) {
         int index, compare_flag;
 
@@ -89,7 +101,11 @@ int get_new_property_index(property_info_t *properties, char *name, int num) {
 }
 
 
-// address: 0x100192ab
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100192AB
+*/
+
 void shift_elements(property_info_t *properties, int from, int num_elements) {
         int i;
 
@@ -101,7 +117,11 @@ void shift_elements(property_info_t *properties, int from, int num_elements) {
 }
 
 
-// address: 0x100192ff
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100192FF
+*/
+
 void make_tree(int first, int last) {
         int i, node_index, cur_element;
 
@@ -132,7 +152,11 @@ void make_tree(int first, int last) {
 }
 
 
-// address: 0x1001940a
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1001940A
+*/
+
 void make_sub_tree(int first, int last, int char_index, int *node_index) {
         int cur_node;
         int cur_element;
@@ -186,7 +210,11 @@ void make_sub_tree(int first, int last, int char_index, int *node_index) {
 }
 
 
-// address: 0x10019563
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10019563
+*/
+
 int find_property(property_info_t *properties, const char *name) {
         char cur_char;
         int char_index, node_index, cur_element, i, last;

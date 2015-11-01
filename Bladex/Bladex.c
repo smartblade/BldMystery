@@ -525,7 +525,11 @@ static PyMethodDef methods[] = {
 };
 
 
-// address: 0x10001000
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001000
+*/
+
 PyObject *bex_ExportWorld(PyObject *self, PyObject *args) {
         const char *world;
         int ret = 0;
@@ -537,7 +541,11 @@ PyObject *bex_ExportWorld(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000104d
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000104D
+*/
+
 PyObject *bex_SoundSystemActive(PyObject *self, PyObject *args) {
 
         if (SoundSystemActive() != 1) {
@@ -548,7 +556,11 @@ PyObject *bex_SoundSystemActive(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001086
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001086
+*/
+
 PyObject *bex_SetSSFrecuency(PyObject *self, PyObject *args) {
         int frequency, ret;
 
@@ -564,7 +576,11 @@ PyObject *bex_SetSSFrecuency(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100010e6
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100010E6
+*/
+
 PyObject *bex_SetSS2dChannels(PyObject *self, PyObject *args) {
         int num_ch, ret;
 
@@ -580,7 +596,11 @@ PyObject *bex_SetSS2dChannels(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001146
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001146
+*/
+
 PyObject *bex_SetSS3dChannels(PyObject *self, PyObject *args) {
         int num_ch, ret;
 
@@ -596,7 +616,11 @@ PyObject *bex_SetSS3dChannels(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100011a6
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100011A6
+*/
+
 PyObject *bex_SetSSFilter(PyObject *self, PyObject *args) {
         int filter_output, ret;
 
@@ -612,7 +636,11 @@ PyObject *bex_SetSSFilter(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001206
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001206
+*/
+
 PyObject *bex_KillMusic(PyObject *self, PyObject *args) {
         int ret;
 
@@ -625,7 +653,11 @@ PyObject *bex_KillMusic(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000123f
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000123F
+*/
+
 PyObject *bex_ShutDownSoundChannels(PyObject *self, PyObject *args) {
         int ret;
 
@@ -638,7 +670,11 @@ PyObject *bex_ShutDownSoundChannels(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001278
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001278
+*/
+
 PyObject *bex_PauseSoundSystem(PyObject *self, PyObject *args) {
         int ret;
 
@@ -651,7 +687,11 @@ PyObject *bex_PauseSoundSystem(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100012b1
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100012B1
+*/
+
 PyObject *bex_PauseSoundSystemButMusic(PyObject *self, PyObject *args) {
         int ret;
 
@@ -664,7 +704,11 @@ PyObject *bex_PauseSoundSystemButMusic(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100012ea
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100012EA
+*/
+
 PyObject *bex_ResumeSoundSystem(PyObject *self, PyObject *args) {
         int ret;
 
@@ -677,7 +721,11 @@ PyObject *bex_ResumeSoundSystem(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001323
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001323
+*/
+
 PyObject *bex_SetMusicVolume(PyObject *self, PyObject *args) {
         double volume = 1.0;
         int ret;
@@ -693,7 +741,11 @@ PyObject *bex_SetMusicVolume(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001397
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001397
+*/
+
 PyObject *bex_GetMusicVolume(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -703,7 +755,11 @@ PyObject *bex_GetMusicVolume(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100013da
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100013DA
+*/
+
 PyObject *bex_SetSoundVolume(PyObject *self, PyObject *args) {
         double volume = 1.0;
 
@@ -714,7 +770,11 @@ PyObject *bex_SetSoundVolume(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001436
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001436
+*/
+
 PyObject *bex_GetSoundVolume(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -724,7 +784,11 @@ PyObject *bex_GetSoundVolume(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001479
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001479
+*/
+
 PyObject *bex_GetSpeakerConfig(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -734,7 +798,11 @@ PyObject *bex_GetSpeakerConfig(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100014b6
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100014B6
+*/
+
 PyObject *bex_SetEAXOverride(PyObject *self, PyObject *args) {
         int EAXOverride = 1;
 
@@ -745,7 +813,11 @@ PyObject *bex_SetEAXOverride(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001507
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001507
+*/
+
 PyObject *bex_GetEAXOverride(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -755,7 +827,11 @@ PyObject *bex_GetEAXOverride(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001544
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001544
+*/
+
 PyObject *bex_SaveSSConfig(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -765,7 +841,11 @@ PyObject *bex_SaveSSConfig(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001581
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001581
+*/
+
 PyObject *bex_SetSpeakerConfig(PyObject *self, PyObject *args) {
         int config = 1;
 
@@ -776,7 +856,11 @@ PyObject *bex_SetSpeakerConfig(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100015d2
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100015D2
+*/
+
 PyObject *bex_GetSSQuality(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -786,7 +870,11 @@ PyObject *bex_GetSSQuality(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000160f
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000160F
+*/
+
 PyObject *bex_SetSSQuality(PyObject *self, PyObject *args) {
         int SSQuality = 1;
 
@@ -797,7 +885,11 @@ PyObject *bex_SetSSQuality(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001660
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001660
+*/
+
 PyObject *bex_SetAutoGenTexture(PyObject *self, PyObject *args) {
         const char *textureName;
         int textureEffect;
@@ -809,7 +901,11 @@ PyObject *bex_SetAutoGenTexture(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100016b2
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100016B2
+*/
+
 PyObject *bex_SetBloodLevel(PyObject *self, PyObject *args) {
         double blood_level = 1.0;
 
@@ -820,7 +916,11 @@ PyObject *bex_SetBloodLevel(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000170f
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000170F
+*/
+
 PyObject *bex_GetBloodLevel(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -830,7 +930,11 @@ PyObject *bex_GetBloodLevel(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000174c
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000174C
+*/
+
 PyObject *bex_SetMutilationLevel(PyObject *self, PyObject *args) {
         double mutilation_level = 1.0;
 
@@ -841,7 +945,11 @@ PyObject *bex_SetMutilationLevel(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100017a9
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100017A9
+*/
+
 PyObject *bex_GetMutilationLevel(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -851,7 +959,11 @@ PyObject *bex_GetMutilationLevel(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100017e6
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100017E6
+*/
+
 PyObject *bex_GetWorldFileName(PyObject *self, PyObject *args) {
         const char *world_file_name;
 
@@ -868,7 +980,11 @@ PyObject *bex_GetWorldFileName(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001842
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001842
+*/
+
 PyObject *bex_AddTranTime(PyObject *self, PyObject *args) {
         const char *biped_name, *next_anm , *prev_anm;
         double time;
@@ -887,7 +1003,11 @@ PyObject *bex_AddTranTime(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100018b7
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100018B7
+*/
+
 PyObject *bex_CheckAnims(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -897,7 +1017,11 @@ PyObject *bex_CheckAnims(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100018f4
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100018F4
+*/
+
 PyObject *bex_GiveAnims(PyObject *self, PyObject *args) {
         const char *race_name;
 
@@ -908,7 +1032,11 @@ PyObject *bex_GiveAnims(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000193e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000193E
+*/
+
 PyObject *bex_GetAnimationDuration(PyObject *self, PyObject *args) {
         const char *animation_name;
         double duration;
@@ -925,7 +1053,11 @@ PyObject *bex_GetAnimationDuration(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100019aa
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100019AA
+*/
+
 PyObject *bex_SetAnimationFactor(PyObject *self, PyObject *args) {
         const char *mov;
         double new_speed_factor;
@@ -937,7 +1069,11 @@ PyObject *bex_SetAnimationFactor(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001a00
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001A00
+*/
+
 PyObject *bex_SetTurnSpeed(PyObject *self, PyObject *args) {
         const char *race_name;
         double new_speed;
@@ -951,7 +1087,11 @@ PyObject *bex_SetTurnSpeed(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001a51
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001A51
+*/
+
 PyObject *bex_CreateEntity(PyObject *self, PyObject *args) {
         const char *name, *kind, *parent_class = "", *unknown = NULL;
         int i_unknown;
@@ -989,7 +1129,11 @@ PyObject *bex_CreateEntity(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001ba3
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001BA3
+*/
+
 PyObject *bex_DeleteEntity(PyObject *self, PyObject *args) {
         bld_py_entity_t *entity;
         const char *name;
@@ -1009,7 +1153,11 @@ PyObject *bex_DeleteEntity(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001c5e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001C5E
+*/
+
 PyObject *bex_GetEntity(PyObject *self, PyObject *args) {
         const char *name;
         int index;
@@ -1038,7 +1186,11 @@ PyObject *bex_GetEntity(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001d0a
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001D0A
+*/
+
 PyObject *bex_CreateSpark(PyObject *self, PyObject *args) {
         const char *name;
         double x, y, z, x_spark_dir, y_spark_dir, z_spark_dir, d_unknown1;
@@ -1066,7 +1218,11 @@ PyObject *bex_CreateSpark(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001e46
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001E46
+*/
+
 PyObject *bex_SetListenerPosition(PyObject *self, PyObject *args) {
         int mode;
         double x = 0.0, y = 0.0, z = 0.0;
@@ -1078,7 +1234,11 @@ PyObject *bex_SetListenerPosition(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001ee7
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001EE7
+*/
+
 PyObject *bex_GetSector(PyObject *self, PyObject *args) {
         int index;
         double x, y, z;
@@ -1107,7 +1267,11 @@ PyObject *bex_GetSector(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10001faf
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10001FAF
+*/
+
 PyObject *bex_GetCharType(PyObject *self, PyObject *args) {
         const char *name, *short_name;
         PyObject *character;
@@ -1126,7 +1290,11 @@ PyObject *bex_GetCharType(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002011
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002011
+*/
+
 PyObject *bex_GetTrailType(PyObject *self, PyObject *args) {
         const char *name;
         PyObject *trail;
@@ -1144,7 +1312,11 @@ PyObject *bex_GetTrailType(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000206a
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000206A
+*/
+
 PyObject *bex_CreateRoute(PyObject *self, PyObject *args) {
         PyObject *route;
 
@@ -1161,7 +1333,11 @@ PyObject *bex_CreateRoute(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100020b6
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100020B6
+*/
+
 PyObject *bex_CreateSound(PyObject *self, PyObject *args) {
         const char * file_name;
         const char * sound_name;
@@ -1180,7 +1356,11 @@ PyObject *bex_CreateSound(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002118
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002118
+*/
+
 PyObject *bex_CreateTimer(PyObject *self, PyObject *args) {
         const char *timer_name;
         double period;
@@ -1192,7 +1372,11 @@ PyObject *bex_CreateTimer(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000216e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000216E
+*/
+
 PyObject *bex_GetnTimers(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -1202,7 +1386,11 @@ PyObject *bex_GetnTimers(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100021ab
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100021AB
+*/
+
 PyObject *bex_GetTimerInfo(PyObject *self, PyObject *args) {
         int timer_index;
         const char *timer_name;
@@ -1229,7 +1417,11 @@ PyObject *bex_GetTimerInfo(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002255
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002255
+*/
+
 PyObject *bex_AddScheduledFunc(PyObject *self, PyObject *args) {
         double time;
         PyObject *func, *func_args;
@@ -1241,7 +1433,11 @@ PyObject *bex_AddScheduledFunc(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", AddScheduledFunc(time, func, func_args, name));
 }
 
-// address: 0x100022c2
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100022C2
+*/
+
 PyObject *bex_RemoveScheduledFunc(PyObject *self, PyObject *args) {
         const char *name;
 
@@ -1251,7 +1447,11 @@ PyObject *bex_RemoveScheduledFunc(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", RemoveScheduledFunc(name));
 }
 
-// address: 0x1000230c
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000230C
+*/
+
 PyObject *bex_GetnScheduledFuncs(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -1260,7 +1460,11 @@ PyObject *bex_GetnScheduledFuncs(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", GetnScheduledFuncs());
 }
 
-// address: 0x10002349
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002349
+*/
+
 PyObject *bex_GetScheduledFunc(PyObject * self, PyObject *args) {
         int index, ret;
         PyObject *func, *arg;
@@ -1297,7 +1501,11 @@ PyObject *bex_GetScheduledFunc(PyObject * self, PyObject *args) {
         return Py_BuildValue("i", ret);
 }
 
-// address: 0x10002499
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002499
+*/
+
 PyObject *bex_nEntities(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -1306,7 +1514,11 @@ PyObject *bex_nEntities(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", nEntities());
 }
 
-// address: 0x100024d6
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100024D6
+*/
+
 PyObject *bex_nSectors(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -1315,7 +1527,11 @@ PyObject *bex_nSectors(PyObject *self, PyObject *args) {
         return Py_BuildValue("i",  nSectors());
 }
 
-// address: 0x10002513
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002513
+*/
+
 PyObject *bex_GetTime(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -1324,7 +1540,11 @@ PyObject *bex_GetTime(PyObject *self, PyObject *args) {
         return Py_BuildValue("d", GetTime());
 }
 
-// address: 0x10002556
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002556
+*/
+
 PyObject *bex_SetTime(PyObject *self, PyObject *args) {
         double time;
 
@@ -1334,7 +1554,11 @@ PyObject *bex_SetTime(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", SetTime(time));
 }
 
-// address: 0x100025a4
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100025A4
+*/
+
 PyObject *bex_GoToTime(PyObject *self, PyObject *args) {
         double time;
 
@@ -1344,7 +1568,11 @@ PyObject *bex_GoToTime(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", GoToTime(time));
 }
 
-// address: 0x100025f2
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100025F2
+*/
+
 PyObject *bex_StopTime(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -1356,7 +1584,11 @@ PyObject *bex_StopTime(PyObject *self, PyObject *args) {
         return Py_None;
 }
 
-// address: 0x1000262e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000262E
+*/
+
 PyObject *bex_RestartTime(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -1368,7 +1600,11 @@ PyObject *bex_RestartTime(PyObject *self, PyObject *args) {
         return Py_None;
 }
 
-// address: 0x1000266a
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000266A
+*/
+
 PyObject *bex_GetTimeSpeed(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -1377,7 +1613,11 @@ PyObject *bex_GetTimeSpeed(PyObject *self, PyObject *args) {
         return Py_BuildValue("d", GetTimeSpeed());
 }
 
-// address: 0x100026ad
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100026AD
+*/
+
 PyObject *bex_SetTimeSpeed(PyObject *self, PyObject *args) {
         double speed;
 
@@ -1389,7 +1629,11 @@ PyObject *bex_SetTimeSpeed(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", 1);
 }
 
-// address: 0x100026f6
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100026F6
+*/
+
 PyObject *bex_GetNewExclusionGroupId(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -1398,7 +1642,11 @@ PyObject *bex_GetNewExclusionGroupId(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", GetNewExclusionGroupId());
 }
 
-// address: 0x10002733
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002733
+*/
+
 PyObject *bex_AssocKey(PyObject *self, PyObject *args) {
         const char *action, *input_device, *key;
         int press = 1;
@@ -1410,7 +1658,11 @@ PyObject *bex_AssocKey(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000279C
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000279C
+*/
+
 PyObject* bex_GetTimeActionHeld(PyObject* self, PyObject* args) {
         const char *action_name;
 
@@ -1421,7 +1673,11 @@ PyObject* bex_GetTimeActionHeld(PyObject* self, PyObject* args) {
 }
 
 
-// address: 0x100027EA
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100027EA
+*/
+
 PyObject* bex_AddInputAction(PyObject* self, PyObject* args) {
         const char *action_name;
         int npi;
@@ -1433,7 +1689,11 @@ PyObject* bex_AddInputAction(PyObject* self, PyObject* args) {
 }
 
 
-// address: 0x1000283C
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000283C
+*/
+
 PyObject* bex_RemoveInputAction(PyObject* self, PyObject* args) {
         const char *action_name;
 
@@ -1444,7 +1704,11 @@ PyObject* bex_RemoveInputAction(PyObject* self, PyObject* args) {
 }
 
 
-// address: 0x10002886
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002886
+*/
+
 PyObject *bex_AddBoundFunc(PyObject *self, PyObject *args) {
         const char *action_name;
         const char *predproc;
@@ -1463,7 +1727,11 @@ PyObject *bex_AddBoundFunc(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002924
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002924
+*/
+
 PyObject *bex_Bind2(PyObject *self, PyObject *args) {
         const char *action_name1, *action_name2, *new_action;
         int unknown = 100;
@@ -1480,7 +1748,11 @@ PyObject *bex_Bind2(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002993
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002993
+*/
+
 PyObject *bex_RemoveBoundFunc(PyObject *self, PyObject *args) {
         const char *action_name, *predproc;
         PyObject *proc;
@@ -1498,7 +1770,11 @@ PyObject *bex_RemoveBoundFunc(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002A31
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002A31
+*/
+
 PyObject *bex_UnBindAll(PyObject* self, PyObject* args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -1511,7 +1787,11 @@ PyObject *bex_UnBindAll(PyObject* self, PyObject* args) {
 }
 
 
-// address: 0x10002a6d
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002A6D
+*/
+
 PyObject *bex_Input(PyObject *self, PyObject *args) {
         const char *output;
         const char *text;
@@ -1527,7 +1807,11 @@ PyObject *bex_Input(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002ACF
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002ACF
+*/
+
 PyObject *bex_LoadLevel(PyObject* self, PyObject* args) {
         const char *dir_name;
 
@@ -1541,7 +1825,11 @@ PyObject *bex_LoadLevel(PyObject* self, PyObject* args) {
 }
 
 
-// address: 0x10002b19
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002B19
+*/
+
 PyObject *bex_ReadLevel(PyObject *self, PyObject *args) {
         const char *file_name;
 
@@ -1555,7 +1843,11 @@ PyObject *bex_ReadLevel(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002b63
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002B63
+*/
+
 PyObject *bex_CloseLevel(PyObject *self, PyObject *args) {
         const char *statement1 = NULL, *statement2 = NULL;
 
@@ -1569,7 +1861,11 @@ PyObject *bex_CloseLevel(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002bc6
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002BC6
+*/
+
 PyObject *bex_PlaySound(PyObject *self, PyObject *args) {
         int soundId, unknown = 0;
         double x, y, z;
@@ -1581,7 +1877,11 @@ PyObject *bex_PlaySound(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002c43
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002C43
+*/
+
 PyObject *bex_ShowSounds(PyObject *self, PyObject *args) {
         int showSounds;
 
@@ -1592,7 +1892,11 @@ PyObject *bex_ShowSounds(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002c8d
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002C8D
+*/
+
 PyObject *bex_nSounds(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -1602,7 +1906,11 @@ PyObject *bex_nSounds(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002cca
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002CCA
+*/
+
 PyObject *bex_GetSoundName(PyObject *self, PyObject *args) {
         int soundId;
         const char *soundName;
@@ -1620,7 +1928,11 @@ PyObject *bex_GetSoundName(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002d33
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002D33
+*/
+
 PyObject *bex_GetSoundFileName(PyObject *self, PyObject *args) {
         int soundId;
         const char *soundFileName;
@@ -1638,7 +1950,11 @@ PyObject *bex_GetSoundFileName(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002d9c
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002D9C
+*/
+
 PyObject *bex_ReadBitMap(PyObject *self, PyObject *args) {
         const char *file_name;
         const char *internal_name;
@@ -1652,7 +1968,11 @@ PyObject *bex_ReadBitMap(PyObject *self, PyObject *args) {
         return Py_None;
 }
 
-// address: 0x10002df1
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002DF1
+*/
+
 PyObject *bex_ReadAlphaBitMap(PyObject *self, PyObject *args) {
         const char *file_name;
         const char *internal_name;
@@ -1667,7 +1987,11 @@ PyObject *bex_ReadAlphaBitMap(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002e46
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002E46
+*/
+
 PyObject *bex_SetSun(PyObject *self, PyObject *args) {
         int exists;
         double x, y, z;
@@ -1681,7 +2005,11 @@ PyObject *bex_SetSun(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002eaf
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002EAF
+*/
+
 PyObject *bex_InsideActionArea(PyObject *self, PyObject *args) {
         int AA;
         double x, y, z;
@@ -1693,7 +2021,11 @@ PyObject *bex_InsideActionArea(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002f1d
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002F1D
+*/
+
 PyObject *bex_AnmAddEvent(PyObject *self, PyObject *args) {
         const char *anm_name, *event_name;
         double event_frame;
@@ -1707,7 +2039,11 @@ PyObject *bex_AnmAddEvent(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002f76
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002F76
+*/
+
 PyObject *bex_AddAnmEvent(PyObject *self, PyObject *args) {
         const char *anm_name, *event_name;
         double event_frame;
@@ -1721,7 +2057,11 @@ PyObject *bex_AddAnmEvent(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10002fcf
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10002FCF
+*/
+
 PyObject *bex_AnmDelEvent(PyObject *self, PyObject *args) {
         const char *anm_name, *event_name;
 
@@ -1734,7 +2074,11 @@ PyObject *bex_AnmDelEvent(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000301c
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000301C
+*/
+
 PyObject *bex_AnmClearEvents(PyObject *self, PyObject *args) {
         const char *anm_name;
 
@@ -1747,7 +2091,11 @@ PyObject *bex_AnmClearEvents(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000305f
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000305F
+*/
+
 PyObject *bex_AnmGetEventFrame(PyObject *self, PyObject *args) {
         const char *anm_name, *event_name;
 
@@ -1758,7 +2106,11 @@ PyObject *bex_AnmGetEventFrame(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100030b5
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100030B5
+*/
+
 PyObject *bex_AddParticleGType(PyObject *self, PyObject *args) {
         const char *new_type;
         const char *parent_type;
@@ -1778,7 +2130,11 @@ PyObject *bex_AddParticleGType(PyObject *self, PyObject *args) {
         );
 }
 
-// address: 0x10003117
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003117
+*/
+
 PyObject *bex_SetParticleGVal(PyObject *self, PyObject *args) {
         const char *type;
         int i, r, g, b, alpha;
@@ -1791,7 +2147,11 @@ PyObject *bex_SetParticleGVal(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10003195
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003195
+*/
+
 PyObject *bex_GetnParticleGType(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -1801,7 +2161,11 @@ PyObject *bex_GetnParticleGType(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100031d2
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100031D2
+*/
+
 PyObject *bex_GetParticleGType(PyObject *self, PyObject *args) {
         int index, operation_type, duration, ret;
         const char *type, *parent_type;
@@ -1836,7 +2200,11 @@ PyObject *bex_GetParticleGType(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100032b1
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100032B1
+*/
+
 PyObject *bex_GetParticleGVal(PyObject *self, PyObject *args) {
         const char *type;
         double size;
@@ -1873,7 +2241,11 @@ PyObject *bex_GetParticleGVal(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100033bc
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100033BC
+*/
+
 PyObject *bex_GetEntitiesAt(PyObject *self, PyObject *args) {
         double x, y, z, radius;
         char **entity_names;
@@ -1900,7 +2272,11 @@ PyObject *bex_GetEntitiesAt(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000348f
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000348F
+*/
+
 PyObject *bex_GetEntitiesVisibleFrom(PyObject *self, PyObject *args) {
         char **entity_names;
         int num_entities, i;
@@ -1935,7 +2311,11 @@ PyObject *bex_GetEntitiesVisibleFrom(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100035e2
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100035E2
+*/
+
 PyObject *bex_GetObjectEntitiesVisibleFrom(PyObject *self, PyObject *args) {
         char **entity_names;
         int num_entities, i;
@@ -1970,7 +2350,11 @@ PyObject *bex_GetObjectEntitiesVisibleFrom(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10003735
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003735
+*/
+
 PyObject *bex_GetCombos(PyObject *self, PyObject *args) {
         combo_t *combos;
         int num_combos, i;
@@ -2000,7 +2384,11 @@ PyObject *bex_GetCombos(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10003814
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003814
+*/
+
 PyObject *bex_SetCombos(PyObject *self, PyObject *args) {
         int num_combos, i, ret;
         char **combos_names;
@@ -2056,7 +2444,11 @@ PyObject *bex_SetCombos(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100039fd
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100039FD
+*/
+
 PyObject *bex_GetWeaponCombos(PyObject *self, PyObject *args) {
         combo_t *combos;
         int num_combos, i;
@@ -2086,7 +2478,11 @@ PyObject *bex_GetWeaponCombos(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10003ae4
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003AE4
+*/
+
 PyObject *bex_GetLastPlayerCType(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -2096,7 +2492,11 @@ PyObject *bex_GetLastPlayerCType(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10003b28
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003B28
+*/
+
 PyObject *bex_GetEnemiesVisibleFrom(PyObject *self, PyObject *args) {
         char **enemy_names;
         int num_enemies, i;
@@ -2131,7 +2531,11 @@ PyObject *bex_GetEnemiesVisibleFrom(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10003c7b
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003C7B
+*/
+
 PyObject *bex_CDPlayTrack(PyObject *self, PyObject *args) {
         int ntrack;
 
@@ -2142,7 +2546,11 @@ PyObject *bex_CDPlayTrack(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10003cc5
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003CC5
+*/
+
 PyObject *bex_CDnTracks(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -2152,7 +2560,11 @@ PyObject *bex_CDnTracks(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10003d02
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003D02
+*/
+
 PyObject *bex_CheckPyErrors(PyObject *self, PyObject *args) {
 
     if (PyErr_Occurred()) {
@@ -2165,7 +2577,11 @@ PyObject *bex_CheckPyErrors(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10003d47
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003D47
+*/
+
 PyObject *bex_CDLenght(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -2175,7 +2591,11 @@ PyObject *bex_CDLenght(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10003d84
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003D84
+*/
+
 PyObject *bex_CDTrackLenght(PyObject *self, PyObject *args) {
         int ntrack;
 
@@ -2186,7 +2606,11 @@ PyObject *bex_CDTrackLenght(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10003dce
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003DCE
+*/
+
 PyObject *bex_CDPresent(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -2196,7 +2620,11 @@ PyObject *bex_CDPresent(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10003e0b
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003E0B
+*/
+
 PyObject *bex_CDStop(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -2206,7 +2634,11 @@ PyObject *bex_CDStop(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10003e48
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003E48
+*/
+
 PyObject *bex_CDPause(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -2216,7 +2648,11 @@ PyObject *bex_CDPause(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10003e85
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003E85
+*/
+
 PyObject *bex_CDCallBack(PyObject *self, PyObject *args) {
         PyObject *func;
 
@@ -2227,7 +2663,11 @@ PyObject *bex_CDCallBack(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10003ecf
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003ECF
+*/
+
 PyObject *bex_SetDefaultMass(PyObject *self, PyObject *args) {
         const char *entity_kind;
         double mass;
@@ -2239,7 +2679,11 @@ PyObject *bex_SetDefaultMass(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10003f25
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003F25
+*/
+
 PyObject *bex_SetDefaultMaterial(PyObject *self, PyObject *args) {
         const char *entity_kind, *material;
 
@@ -2250,7 +2694,11 @@ PyObject *bex_SetDefaultMaterial(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10003f77
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003F77
+*/
+
 PyObject *bex_CreateMaterial(PyObject *self, PyObject *args) {
         const char *name;
         PyObject *material;
@@ -2268,7 +2716,11 @@ PyObject *bex_CreateMaterial(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10003fd0
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10003FD0
+*/
+
 PyObject *bex_GetMaterial(PyObject *self, PyObject *args) {
         const char *name;
         int index;
@@ -2298,7 +2750,11 @@ PyObject *bex_GetMaterial(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000407c
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000407C
+*/
+
 PyObject *bex_nMaterials(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -2308,7 +2764,11 @@ PyObject *bex_nMaterials(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100040b9
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100040B9
+*/
+
 PyObject *bex_AddGhostSector(PyObject *self, PyObject *args) {
         const char *ghost_sector_name, *group_name;
         double floor_height, roof_height;
@@ -2356,7 +2816,11 @@ PyObject *bex_AddGhostSector(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000426f
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000426F
+*/
+
 PyObject *bex_AddTriggerSector(PyObject *self, PyObject *args) {
         const char *trigger_sector_name, *group_name;
         double floor_height, roof_height;
@@ -2405,7 +2869,11 @@ PyObject *bex_AddTriggerSector(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10004425
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10004425
+*/
+
 PyObject *bex_SetTriggerSectorFunc(PyObject *self, PyObject *args) {
         const char *trigger_sector_name, *func_type;
         PyObject *func;
@@ -2424,7 +2892,11 @@ PyObject *bex_SetTriggerSectorFunc(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10004497
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10004497
+*/
+
 PyObject *bex_GetTriggerSectorFunc(PyObject *self, PyObject *args) {
         const char *trigger_sector_name, *func_type;
         PyObject *func;
@@ -2441,7 +2913,11 @@ PyObject *bex_GetTriggerSectorFunc(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100044fa
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100044FA
+*/
+
 PyObject *bex_SetTriggerSectorData(PyObject *self, PyObject *args) {
         const char *trigger_sector_name;
         PyObject *data;
@@ -2455,7 +2931,11 @@ PyObject *bex_SetTriggerSectorData(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000454c
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000454C
+*/
+
 PyObject *bex_GetTriggerSectorData(PyObject *self, PyObject *args) {
         const char *trigger_sector_name;
         PyObject *data;
@@ -2472,7 +2952,11 @@ PyObject *bex_GetTriggerSectorData(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100045a6
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100045A6
+*/
+
 PyObject *bex_RemoveTriggerSectorFunc(PyObject *self, PyObject *args) {
         const char *trigger_sector_name, *func_type;
 
@@ -2485,7 +2969,11 @@ PyObject *bex_RemoveTriggerSectorFunc(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100045fa
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100045FA
+*/
+
 PyObject *bex_GetTriggerSectorFloorHeight(PyObject *self, PyObject *args) {
         const char *trigger_sector_name;
 
@@ -2498,7 +2986,11 @@ PyObject *bex_GetTriggerSectorFloorHeight(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10004644
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10004644
+*/
+
 PyObject *bex_GetTriggerSectorRoofHeight(PyObject *self, PyObject *args) {
         const char *trigger_sector_name;
 
@@ -2511,7 +3003,11 @@ PyObject *bex_GetTriggerSectorRoofHeight(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000468e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000468E
+*/
+
 PyObject *bex_GetTriggerSectorGroup(PyObject *self, PyObject *args) {
         const char *trigger_sector_name;
 
@@ -2522,7 +3018,11 @@ PyObject *bex_GetTriggerSectorGroup(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100046d8
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100046D8
+*/
+
 PyObject *bex_GetTriggerSectorPoints(PyObject *self, PyObject *args) {
         PyObject *list, *tuple, *xObj, *yObj;
         const char *trigger_sector_name;
@@ -2558,7 +3058,11 @@ PyObject *bex_GetTriggerSectorPoints(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100047f4
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100047F4
+*/
+
 PyObject *bex_nTriggerSectors(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -2568,7 +3072,11 @@ PyObject *bex_nTriggerSectors(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10004831
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10004831
+*/
+
 PyObject *bex_GetTriggerSectorName(PyObject *self, PyObject *args) {
         int index;
         const char *name;
@@ -2585,14 +3093,22 @@ PyObject *bex_GetTriggerSectorName(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000489a
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000489A
+*/
+
 PyObject *bex_GenerateEntityName(PyObject *self, PyObject *args) {
 
         return Py_BuildValue("s", GenerateEntityName());
 }
 
 
-// address: 0x100048c6
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100048C6
+*/
+
 PyObject *bex_AddWatchAnim(PyObject *self, PyObject *args) {
         const char *anim;
 
@@ -2603,7 +3119,11 @@ PyObject *bex_AddWatchAnim(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10004910
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10004910
+*/
+
 PyObject *bex_AddAnimFlags(PyObject *self, PyObject *args) {
         const char *anim;
         int wuea, mdf_y, solf, copy_rot, bng_mov, head_f;
@@ -2621,7 +3141,11 @@ PyObject *bex_AddAnimFlags(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000498a
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000498A
+*/
+
 PyObject *bex_SetEAX(PyObject *self, PyObject *args) {
         int eax_flag;
 
@@ -2632,7 +3156,11 @@ PyObject *bex_SetEAX(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100049d4
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100049D4
+*/
+
 PyObject *bex_SetActionCameraMovement(PyObject *self, PyObject *args) {
         const char* action_name;
         double angle, start_pos, end_pos;
@@ -2649,19 +3177,31 @@ PyObject *bex_SetActionCameraMovement(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10004a42
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10004A42
+*/
+
 PyObject *bex_DeactivateInput(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", DeactivateInput());
 }
 
 
-// address: 0x10004a65
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10004A65
+*/
+
 PyObject *bex_ActivateInput(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", ActivateInput());
 }
 
 
-// address: 0x10004a88
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10004A88
+*/
+
 PyObject *bex_SetGhostSectorSound(PyObject *self, PyObject *args) {
         const char *ghost_name, *file_name;
         double volume = 1.0, base_volume = 1.0, min_dist = 1000.0;
@@ -2683,7 +3223,11 @@ PyObject *bex_SetGhostSectorSound(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10004b76
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10004B76
+*/
+
 PyObject *bex_GetSound(PyObject *self, PyObject *args) {
         int soundID;
         bld_py_sound_t *sound_obj;
@@ -2716,7 +3260,11 @@ PyObject *bex_GetSound(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10004c41
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10004C41
+*/
+
 PyObject *bex_SetGhostSectorGroupSound(PyObject *self, PyObject *args) {
         const char *group_name, *file_name;
         double volume = 1.0, base_volume = 1.0, min_dist = 1000.0;
@@ -2739,7 +3287,11 @@ PyObject *bex_SetGhostSectorGroupSound(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10004d2f
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10004D2F
+*/
+
 PyObject *bex_SetRootWidget(PyObject *self, PyObject *args) {
         long int widget;
 
@@ -2750,7 +3302,11 @@ PyObject *bex_SetRootWidget(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10004d79
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10004D79
+*/
+
 PyObject *bex_GetRootWidget(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -2760,7 +3316,11 @@ PyObject *bex_GetRootWidget(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10004dbd
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10004DBD
+*/
+
 PyObject *bex_AddCombustionDataFor(PyObject *self, PyObject *args) {
         const char *object_kind, *fire_kind;
         double upper_treshol, lower_treshold, flame_height, flame_size, speed;
@@ -2781,7 +3341,11 @@ PyObject *bex_AddCombustionDataFor(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10004e57
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10004E57
+*/
+
 PyObject *bex_SetAfterFrameFunc(PyObject *self, PyObject *args) {
         const char *name;
         PyObject *function = NULL;
@@ -2792,7 +3356,11 @@ PyObject *bex_SetAfterFrameFunc(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", SetAfterFrameFunc(name, function));
 }
 
-// address: 0x10004eb0
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10004EB0
+*/
+
 PyObject *bex_GetAfterFrameFunc(PyObject *self, PyObject *args) {
         const char *name;
         PyObject *function;
@@ -2811,7 +3379,11 @@ PyObject *bex_GetAfterFrameFunc(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10004f17
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10004F17
+*/
+
 PyObject *bex_GetnAfterFrameFuncs(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -2821,7 +3393,11 @@ PyObject *bex_GetnAfterFrameFuncs(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10004f54
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10004F54
+*/
+
 PyObject *bex_GetAfterFrameFuncName(PyObject *self, PyObject *args) {
         int index;
         const char *func_name;
@@ -2838,7 +3414,11 @@ PyObject *bex_GetAfterFrameFuncName(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10004fbd
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10004FBD
+*/
+
 PyObject *bex_RemoveAfterFrameFunc(PyObject *self, PyObject *args) {
         const char *name;
 
@@ -2849,7 +3429,11 @@ PyObject *bex_RemoveAfterFrameFunc(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005007
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005007
+*/
+
 PyObject *bex_SetMenuTgapFunc(PyObject *self, PyObject *args) {
         PyObject *tgapFunc = NULL;
 
@@ -2860,7 +3444,11 @@ PyObject *bex_SetMenuTgapFunc(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005058
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005058
+*/
+
 PyObject *bex_GetMenuTgapFunc(PyObject *self, PyObject *args) {
         PyObject *tgapFunc;
 
@@ -2878,7 +3466,11 @@ PyObject *bex_GetMenuTgapFunc(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100050b2
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100050B2
+*/
+
 PyObject *bex_SetCallCheck(PyObject *self, PyObject *args) {
         int check;
 
@@ -2889,7 +3481,11 @@ PyObject *bex_SetCallCheck(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100050fc
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100050FC
+*/
+
 PyObject *bex_DrawBOD(PyObject *self, PyObject *args) {
         const char *BODName;
         int x, y, w, h, i_unknown;
@@ -2904,7 +3500,11 @@ PyObject *bex_DrawBOD(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005188
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005188
+*/
+
 PyObject *bex_ShowActionAreas(PyObject *self, PyObject *args) {
         int action_areas_bit_mask;
 
@@ -2915,7 +3515,11 @@ PyObject *bex_ShowActionAreas(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100051d2
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100051D2
+*/
+
 PyObject *bex_WriteText(PyObject *self, PyObject *args) {
         const char *text = NULL;
         double x, y;
@@ -2927,7 +3531,11 @@ PyObject *bex_WriteText(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000523b
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000523B
+*/
+
 PyObject *bex_GetTextWH(PyObject *self, PyObject *args) {
         const char *text = NULL;
         double w, h;
@@ -2941,7 +3549,11 @@ PyObject *bex_GetTextWH(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000529d
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000529D
+*/
+
 PyObject *bex_GetScreenRect(PyObject *self, PyObject *args) {
         double x_min, y_min, x_max, y_max;
 
@@ -2954,7 +3566,11 @@ PyObject *bex_GetScreenRect(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005308
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005308
+*/
+
 PyObject *bex_GetScreenXY(PyObject *self, PyObject *args) {
         PyObject *tuple;
         double map_x, map_y, map_z, screen_x, screen_y;
@@ -2971,7 +3587,11 @@ PyObject *bex_GetScreenXY(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100053a0
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100053A0
+*/
+
 PyObject *bex_CloseDebugChannel(PyObject *self, PyObject *args) {
         const char *channel_name;
 
@@ -2982,7 +3602,11 @@ PyObject *bex_CloseDebugChannel(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100053f1
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100053F1
+*/
+
 PyObject *bex_DumpMemoryLeaks(PyObject *self, PyObject *args) {
         const char *s;
 
@@ -2993,7 +3617,11 @@ PyObject *bex_DumpMemoryLeaks(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005441
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005441
+*/
+
 PyObject *bex_OpenDebugChannel(PyObject *self, PyObject *args) {
         const char *channel_name;
 
@@ -3004,7 +3632,11 @@ PyObject *bex_OpenDebugChannel(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005492
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005492
+*/
+
 PyObject *bex_SetAppMode(PyObject *self, PyObject *args) {
         const char *mode;
 
@@ -3015,7 +3647,11 @@ PyObject *bex_SetAppMode(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100054e3
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100054E3
+*/
+
 PyObject *bex_GetAppMode(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -3025,7 +3661,11 @@ PyObject *bex_GetAppMode(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005529
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005529
+*/
+
 PyObject *bex_GetCommandLine(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -3035,7 +3675,11 @@ PyObject *bex_GetCommandLine(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000556f
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000556F
+*/
+
 PyObject *bex_Quit(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -3045,7 +3689,11 @@ PyObject *bex_Quit(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100055ac
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100055AC
+*/
+
 PyObject *bex_LoadSampledAnimation(PyObject *self, PyObject *args) {
         const char* file, *internal_name, *race_name = "";
         int type, i_unknown = 20;
@@ -3065,7 +3713,11 @@ PyObject *bex_LoadSampledAnimation(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005624
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005624
+*/
+
 PyObject *bex_CreateFCAnimation(PyObject *self, PyObject *args) {
         const char* file, *internal_name;
         int n_armonics;
@@ -3080,7 +3732,11 @@ PyObject *bex_CreateFCAnimation(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000567e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000567E
+*/
+
 PyObject *bex_CreateDFCAnimation(PyObject *self, PyObject *args) {
         const char* file1, *file2, *internal_name;
         int n_armonics;
@@ -3097,7 +3753,11 @@ PyObject *bex_CreateDFCAnimation(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100056e0
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100056E0
+*/
+
 PyObject *bex_CreateBipedData(PyObject *self, PyObject *args) {
         const char *biped_name, *kind;
 
@@ -3108,7 +3768,11 @@ PyObject *bex_CreateBipedData(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005732
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005732
+*/
+
 PyObject *bex_AddBipedAction(PyObject *self, PyObject *args) {
         const char *char_name, *action_name, *animation_name, *s_unknown;
         double d_unknown1, d_unknown2;
@@ -3143,7 +3807,11 @@ PyObject *bex_AddBipedAction(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005828
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005828
+*/
+
 PyObject *bex_RemoveBipedAction(PyObject *self, PyObject *args) {
         const char *s_unknown1, *s_unknown2;
 
@@ -3154,7 +3822,11 @@ PyObject *bex_RemoveBipedAction(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000587a
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000587A
+*/
+
 PyObject *bex_AddAnmRStep(PyObject *self, PyObject *args) {
         const char *animation_name;
         double d_unknown;
@@ -3166,7 +3838,11 @@ PyObject *bex_AddAnmRStep(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100058d0
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100058D0
+*/
+
 PyObject *bex_AnmTypeRSteps(PyObject *self, PyObject *args) {
         const char *s_unknown1, *s_unknown2;
 
@@ -3177,7 +3853,11 @@ PyObject *bex_AnmTypeRSteps(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005922
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005922
+*/
+
 PyObject *bex_AnmTypeLSteps(PyObject *self, PyObject *args) {
         const char *s_unknown1, *s_unknown2;
 
@@ -3188,7 +3868,11 @@ PyObject *bex_AnmTypeLSteps(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005974
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005974
+*/
+
 PyObject *bex_SetActionEventTable(PyObject *self, PyObject *args) {
         const char *race_name, *action_name, *table_name;
 
@@ -3201,7 +3885,11 @@ PyObject *bex_SetActionEventTable(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100059ce
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100059CE
+*/
+
 PyObject *bex_SetEventTableFuncC(PyObject *self, PyObject *args) {
         const char *event_table_name, *event_type, *funcC;
 
@@ -3214,7 +3902,11 @@ PyObject *bex_SetEventTableFuncC(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005a28
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005A28
+*/
+
 PyObject *bex_SetEventTableFunc(PyObject *self, PyObject *args) {
         const char *event_table_name, *event_type;
         PyObject *func;
@@ -3228,7 +3920,11 @@ PyObject *bex_SetEventTableFunc(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005a82
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005A82
+*/
+
 PyObject *bex_AddAnmLStep(PyObject *self, PyObject *args) {
         const char *animation_name;
         double d_unknown;
@@ -3240,7 +3936,11 @@ PyObject *bex_AddAnmLStep(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005ad8
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005AD8
+*/
+
 PyObject *bex_AddAnmRRelease(PyObject *self, PyObject *args) {
         const char *animation_name;
         double d_unknown;
@@ -3252,7 +3952,11 @@ PyObject *bex_AddAnmRRelease(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005b2e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005B2E
+*/
+
 PyObject *bex_AddAnmLRelease(PyObject *self, PyObject *args) {
         const char *animation_name;
         double d_unknown;
@@ -3264,7 +3968,11 @@ PyObject *bex_AddAnmLRelease(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005b84
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005B84
+*/
+
 PyObject *bex_AddStopTests(PyObject *self, PyObject *args) {
         const char *animation_name;
 
@@ -3277,7 +3985,11 @@ PyObject *bex_AddStopTests(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005bc7
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005BC7
+*/
+
 PyObject *bex_AddFloorCTolerance(PyObject *self, PyObject *args) {
         const char *animation_name;
         double tolerance;
@@ -3291,7 +4003,11 @@ PyObject *bex_AddFloorCTolerance(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005c18
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005C18
+*/
+
 PyObject *bex_SetSolidMask(PyObject *self, PyObject *args) {
         const char *kind;
         int mask;
@@ -3303,7 +4019,11 @@ PyObject *bex_SetSolidMask(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005c6a
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005C6A
+*/
+
 PyObject *bex_SetDrawObjectShadows(PyObject *self, PyObject *args) {
         int draw;
 
@@ -3314,7 +4034,11 @@ PyObject *bex_SetDrawObjectShadows(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005cb4
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005CB4
+*/
+
 PyObject *bex_GetAutoEngageCombat(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -3324,7 +4048,11 @@ PyObject *bex_GetAutoEngageCombat(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005cf1
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005CF1
+*/
+
 PyObject *bex_SetAutoEngageCombat(PyObject *self, PyObject *args) {
         int auto_engage_combat;
 
@@ -3335,7 +4063,11 @@ PyObject *bex_SetAutoEngageCombat(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005d3b
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005D3B
+*/
+
 PyObject *bex_GetAecGap(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -3345,7 +4077,11 @@ PyObject *bex_GetAecGap(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005d7e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005D7E
+*/
+
 PyObject *bex_SetAecGap(PyObject *self, PyObject *args) {
         double aec_gap;
 
@@ -3356,7 +4092,11 @@ PyObject *bex_SetAecGap(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005dcc
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005DCC
+*/
+
 PyObject *bex_GetDrawObjectShadows(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -3366,7 +4106,11 @@ PyObject *bex_GetDrawObjectShadows(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005e09
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005E09
+*/
+
 PyObject *bex_GetModelPos(PyObject *self, PyObject *args) {
         const char *person = NULL;
         int ret;
@@ -3383,7 +4127,11 @@ PyObject *bex_GetModelPos(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005e8d
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005E8D
+*/
+
 PyObject *bex_GetGhostSectorSound(PyObject *self, PyObject *args) {
         const char *gs_name;
         PyObject *sound;
@@ -3401,7 +4149,11 @@ PyObject *bex_GetGhostSectorSound(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005ee6
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005EE6
+*/
+
 PyObject *bex_GetCurrentMap(PyObject *self, PyObject *args) {
         const char *map;
 
@@ -3418,7 +4170,11 @@ PyObject *bex_GetCurrentMap(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005f42
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005F42
+*/
+
 PyObject *bex_SetCurrentMap(PyObject *self, PyObject *args) {
         const char *map;
 
@@ -3429,7 +4185,11 @@ PyObject *bex_SetCurrentMap(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005f8c
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005F8C
+*/
+
 PyObject *bex_LoadWorld(PyObject *self, PyObject *args) {
         const char *file_name;
 
@@ -3440,7 +4200,11 @@ PyObject *bex_LoadWorld(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10005fd6
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10005FD6
+*/
+
 PyObject *bex_DoneLoadGame(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -3453,7 +4217,11 @@ PyObject *bex_DoneLoadGame(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006012
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006012
+*/
+
 PyObject *bex_BeginLoadGame(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -3466,7 +4234,11 @@ PyObject *bex_BeginLoadGame(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000604e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000604E
+*/
+
 PyObject *bex_GetWindowId(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -3476,7 +4248,11 @@ PyObject *bex_GetWindowId(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000608b
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000608B
+*/
+
 PyObject *bex_GetProgramId(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -3486,7 +4262,11 @@ PyObject *bex_GetProgramId(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100060c8
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100060C8
+*/
+
 PyObject *bex_AddStepSound(PyObject *self, PyObject *args) {
         const char *name;
         bld_py_sound_t *sound;
@@ -3498,7 +4278,11 @@ PyObject *bex_AddStepSound(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000611d
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000611D
+*/
+
 PyObject *bex_AddMaterialStepSound(PyObject *self, PyObject *args) {
         const char *table, *material, *step_sound;
 
@@ -3508,7 +4292,11 @@ PyObject *bex_AddMaterialStepSound(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", AddMaterialStepSound(table, material, step_sound));
 }
 
-// address: 0x10006177
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006177
+*/
+
 PyObject *bex_AddActionStepSound(PyObject *self, PyObject *args) {
         const char *table, *action, *step_sound_table;
 
@@ -3522,7 +4310,11 @@ PyObject *bex_AddActionStepSound(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100061d1
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100061D1
+*/
+
 PyObject *bex_AddTextureMaterial(PyObject *self, PyObject *args) {
         const char *texture, *material;
 
@@ -3533,7 +4325,11 @@ PyObject *bex_AddTextureMaterial(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006223
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006223
+*/
+
 PyObject *bex_GetMusicEventPriority(PyObject *self, PyObject *args) {
         int unknown;
 
@@ -3544,7 +4340,11 @@ PyObject *bex_GetMusicEventPriority(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000626d
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000626D
+*/
+
 PyObject *bex_GetMusicEvent(PyObject *self, PyObject *args) {
         const char *event_name;
 
@@ -3555,7 +4355,11 @@ PyObject *bex_GetMusicEvent(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100062b7
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100062B7
+*/
+
 PyObject *bex_ExeMusicEvent(PyObject *self, PyObject *args) {
         int unknown1, unknown2 = 0;
 
@@ -3566,7 +4370,11 @@ PyObject *bex_ExeMusicEvent(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006316
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006316
+*/
+
 PyObject *bex_AddMusicEventCD(PyObject *self, PyObject *args) {
         const char *lpszEventName;
         int iTrack, bBackGround, iNext;
@@ -3587,7 +4395,11 @@ PyObject *bex_AddMusicEventCD(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100063b2
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100063B2
+*/
+
 PyObject *bex_AddMusicEventMP3(PyObject *self, PyObject *args) {
         const char *lpszEventName, *lpszFile;
         int bBackGround, iNext, unknown = 0;
@@ -3608,7 +4420,11 @@ PyObject *bex_AddMusicEventMP3(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000645d
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000645D
+*/
+
 PyObject *bex_AddMusicEventWAV(PyObject *self, PyObject *args) {
         const char *lpszEventName, *lpszFile;
         int bBackGround, iNext, opened = 0;
@@ -3629,7 +4445,11 @@ PyObject *bex_AddMusicEventWAV(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006508
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006508
+*/
+
 PyObject *bex_AddMusicEventADPCM(PyObject *self, PyObject *args) {
         const char *lpszEventName, *lpszFile;
         int bBackGround, iNext, unknown = 0;
@@ -3650,7 +4470,11 @@ PyObject *bex_AddMusicEventADPCM(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100065b3
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100065B3
+*/
+
 PyObject *bex_YSSInfo(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, "")) {
@@ -3665,7 +4489,11 @@ PyObject *bex_YSSInfo(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006607
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006607
+*/
+
 PyObject *bex_LoadSoundDataBase(PyObject *self, PyObject *args) {
         const char *file_name;
 
@@ -3681,7 +4509,11 @@ PyObject *bex_LoadSoundDataBase(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006668
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006668
+*/
+
 PyObject *bex_SaveSoundDataBase(PyObject *self, PyObject *args) {
         const char *file_name;
 
@@ -3697,7 +4529,11 @@ PyObject *bex_SaveSoundDataBase(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100066c9
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100066C9
+*/
+
 PyObject *bex_LoadMusicState(PyObject *self, PyObject *args) {
         const char *file_name;
 
@@ -3713,7 +4549,11 @@ PyObject *bex_LoadMusicState(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000672a
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000672A
+*/
+
 PyObject *bex_SaveMusicState(PyObject *self, PyObject *args) {
         const char *file_name;
 
@@ -3729,7 +4569,11 @@ PyObject *bex_SaveMusicState(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000678b
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000678B
+*/
+
 PyObject *bex_TakeSnapShot(PyObject *self, PyObject *args) {
 
         TakeSnapShot();
@@ -3738,7 +4582,11 @@ PyObject *bex_TakeSnapShot(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100067a6
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100067A6
+*/
+
 PyObject *bex_SaveStats(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, "")) {
@@ -3755,7 +4603,11 @@ PyObject *bex_SaveStats(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100067fa
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100067FA
+*/
+
 PyObject *bex_GetMouseState(PyObject *self, PyObject *args) {
         int invert;
         double xsens, ysens;
@@ -3774,7 +4626,11 @@ PyObject *bex_GetMouseState(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000686c
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000686C
+*/
+
 PyObject *bex_SetMouseState(PyObject *self, PyObject *args) {
         int invert;
         double xsens, ysens;
@@ -3793,7 +4649,11 @@ PyObject *bex_SetMouseState(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100068de
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100068DE
+*/
+
 PyObject *bex_GetPTime(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, "")) {
@@ -3808,7 +4668,11 @@ PyObject *bex_GetPTime(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000692e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000692E
+*/
+
 PyObject *bex_GetAnmRaces(PyObject *self, PyObject *args) {
         int num_races, i;
         PyObject *list, *race_name_obj;
@@ -3829,7 +4693,11 @@ PyObject *bex_GetAnmRaces(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100069b9
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100069B9
+*/
+
 PyObject *bex_BodInspector(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, "")) {
@@ -3845,7 +4713,11 @@ PyObject *bex_BodInspector(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006a03
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006A03
+*/
+
 PyObject *bex_SetRunString(PyObject *self, PyObject *args) {
         const char *variable;
 
@@ -3859,7 +4731,11 @@ PyObject *bex_SetRunString(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006a4d
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006A4D
+*/
+
 PyObject *bex_SetStringValue(PyObject *self, PyObject *args) {
         const char *variable, *value;
 
@@ -3870,7 +4746,11 @@ PyObject *bex_SetStringValue(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006a9f
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006A9F
+*/
+
 PyObject *bex_GetStringValue(PyObject *self, PyObject *args) {
         const char *variable, *value;
 
@@ -3886,7 +4766,11 @@ PyObject *bex_GetStringValue(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006b08
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006B08
+*/
+
 PyObject *bex_DeleteStringValue(PyObject *self, PyObject *args) {
         const char *variable;
 
@@ -3897,7 +4781,11 @@ PyObject *bex_DeleteStringValue(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006b52
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006B52
+*/
+
 PyObject *bex_SaveEntitiesData(PyObject *self, PyObject *args) {
         const char *file_name;
 
@@ -3908,7 +4796,11 @@ PyObject *bex_SaveEntitiesData(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006b9c
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006B9C
+*/
+
 PyObject *bex_LoadEntitiesData(PyObject *self, PyObject *args) {
         const char *file_name;
 
@@ -3919,7 +4811,11 @@ PyObject *bex_LoadEntitiesData(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006be6
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006BE6
+*/
+
 PyObject *bex_SaveParticleSystemsData(PyObject *self, PyObject *args) {
         const char *file_name;
 
@@ -3930,7 +4826,11 @@ PyObject *bex_SaveParticleSystemsData(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006c30
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006C30
+*/
+
 PyObject *bex_LoadParticleSystemsData(PyObject *self, PyObject *args) {
         const char *file_name;
 
@@ -3941,7 +4841,11 @@ PyObject *bex_LoadParticleSystemsData(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006c7a
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006C7A
+*/
+
 PyObject *bex_SaveCombustionData(PyObject *self, PyObject *args) {
         const char *file_name;
 
@@ -3952,7 +4856,11 @@ PyObject *bex_SaveCombustionData(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006cc4
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006CC4
+*/
+
 PyObject *bex_LoadCombustionData(PyObject *self, PyObject *args) {
         const char *file_name;
 
@@ -3963,7 +4871,11 @@ PyObject *bex_LoadCombustionData(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006d0e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006D0E
+*/
+
 PyObject *bex_ReassignCombustionData(PyObject *self, PyObject *args) {
 
         ReassignCombustionData();
@@ -3972,7 +4884,11 @@ PyObject *bex_ReassignCombustionData(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006d29
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006D29
+*/
+
 PyObject *bex_SaveAnmRaceData(PyObject *self, PyObject *args) {
         const char *file_name, *race;
 
@@ -3983,7 +4899,11 @@ PyObject *bex_SaveAnmRaceData(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006d7b
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006D7B
+*/
+
 PyObject *bex_LoadAnmRaceData(PyObject *self, PyObject *args) {
         const char *file_name;
 
@@ -3994,7 +4914,11 @@ PyObject *bex_LoadAnmRaceData(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006dc5
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006DC5
+*/
+
 PyObject *bex_SaveAnmSoundData(PyObject *self, PyObject *args) {
         const char *file_name, *race;
 
@@ -4005,7 +4929,11 @@ PyObject *bex_SaveAnmSoundData(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006e17
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006E17
+*/
+
 PyObject *bex_LoadAnmSoundData(PyObject *self, PyObject *args) {
         const char *file_name;
 
@@ -4016,7 +4944,11 @@ PyObject *bex_LoadAnmSoundData(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006e61
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006E61
+*/
+
 PyObject *bex_GetSaveInfo(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -4026,7 +4958,11 @@ PyObject *bex_GetSaveInfo(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006e86
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006E86
+*/
+
 PyObject *bex_SetSaveInfo(PyObject *self, PyObject *args) {
         PyObject *info;
 
@@ -4037,7 +4973,11 @@ PyObject *bex_SetSaveInfo(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006ed0
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006ED0
+*/
+
 PyObject *bex_HeapCheckSetMark(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -4047,7 +4987,11 @@ PyObject *bex_HeapCheckSetMark(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006f0c
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006F0C
+*/
+
 PyObject *bex_PerformHeapCheck(PyObject *self, PyObject *args) {
 
         if (!PyArg_ParseTuple(args, ""))
@@ -4059,7 +5003,11 @@ PyObject *bex_PerformHeapCheck(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006f40
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006F40
+*/
+
 PyObject *bex_HeapCheckAllAllocations(PyObject *self, PyObject *args) {
         int i;
 
@@ -4072,7 +5020,11 @@ PyObject *bex_HeapCheckAllAllocations(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006f82
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006F82
+*/
+
 PyObject *bex_HeapCheckDelayFree(PyObject *self, PyObject *args) {
         int i;
 
@@ -4085,7 +5037,11 @@ PyObject *bex_HeapCheckDelayFree(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10006fc4
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10006FC4
+*/
+
 PyObject *bex_HeapCheckSystemMemory(PyObject *self, PyObject *args) {
         int i;
 
@@ -4098,7 +5054,11 @@ PyObject *bex_HeapCheckSystemMemory(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10007006
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10007006
+*/
+
 PyObject *bex_HeapCheckLeaks(PyObject *self, PyObject *args) {
         int i;
 
@@ -4111,7 +5071,11 @@ PyObject *bex_HeapCheckLeaks(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10007048
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10007048
+*/
+
 PyObject *bex_OpenProfileSection(PyObject *self, PyObject *args) {
         int section;
         const char *comment = "";
@@ -4122,7 +5086,11 @@ PyObject *bex_OpenProfileSection(PyObject *self, PyObject *args) {
         return Py_BuildValue("i", OpenProfileSection(section, comment));
 }
 
-// address: 0x100070a1
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100070A1
+*/
+
 PyObject *bex_CloseProfileSection(PyObject *self, PyObject *args) {
         int section;
 
@@ -4133,7 +5101,11 @@ PyObject *bex_CloseProfileSection(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100070eb
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100070EB
+*/
+
 PyObject *bex_StartProfile(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -4143,7 +5115,11 @@ PyObject *bex_StartProfile(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10007128
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10007128
+*/
+
 PyObject *bex_EnableProfiler(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -4153,7 +5129,11 @@ PyObject *bex_EnableProfiler(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10007165
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10007165
+*/
+
 PyObject *bex_DisableProfiler(PyObject *self, PyObject *args) {
 
         if(!PyArg_ParseTuple(args, ""))
@@ -4163,7 +5143,11 @@ PyObject *bex_DisableProfiler(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100071a2
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100071A2
+*/
+
 PyObject *bex_SaveProfileData(PyObject *self, PyObject *args) {
         const char *file_name;
 
@@ -4174,7 +5158,11 @@ PyObject *bex_SaveProfileData(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100071ec
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100071EC
+*/
+
 PyObject *bex_SetInputMode(PyObject *self, PyObject *args) {
         const char *device, *mode;
 
@@ -4185,7 +5173,11 @@ PyObject *bex_SetInputMode(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000723e
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000723E
+*/
+
 PyObject *bex_GetInputMode(PyObject *self, PyObject *args) {
         const char *device;
 
@@ -4196,7 +5188,11 @@ PyObject *bex_GetInputMode(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x10007288
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x10007288
+*/
+
 PyObject *bex_SaveScreenShot(PyObject *self, PyObject *args) {
         const char *file_name;
         int width, height;
@@ -4210,7 +5206,11 @@ PyObject *bex_SaveScreenShot(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x100072dd
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x100072DD
+*/
+
 PyObject *bex_CleanArea(PyObject *self, PyObject *args) {
         float x, y, z, distance;
 
@@ -4223,7 +5223,11 @@ PyObject *bex_CleanArea(PyObject *self, PyObject *args) {
 }
 
 
-// address: 0x1000737B
+/*
+* Module:                 Bladex.dll
+* Entry point:            0x1000737B
+*/
+
 INIT_PY_MODULE_FUNC initBladex()
 {
         int i;
