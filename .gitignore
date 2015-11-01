@@ -12,6 +12,8 @@
 *.~bpg
 *.~ddp
 *.~bpf
+*_origin.*
+*_patched.*
 B3DLib.dll
 BBLibc.dll
 BImagexc.dll
@@ -19,9 +21,7 @@ BInputc.dll
 BIPCx.dll
 Blade.exe
 Blade.ico
-Blade_origin.exe
 Bladex.dll
-Bladex_origin.dll
 BUIxc.dll
 BVideoc.dll
 Console.dll
