@@ -80,7 +80,26 @@ LIB_EXP INIT_PY_MODULE_FUNC initBladex(void);
 extern PyObject *get_char_by_name(const char *name, const char *short_name);
 extern void init_char(void);
 
+extern PyObject *get_entity_by_name(const char *name);
+extern PyObject *get_entity_by_index(int index);
+extern PyObject *create_entity(
+        const char *name, const char *kind, double x, double y, double z,
+        const char *parent_class, const char *unknown
+);
+extern PyObject *create_entity_decal(
+        const char *name, double x, double y, double z, int i_unknown,
+        double d_unknown1, double d_unknown2
+);
+extern PyObject *create_spark(
+        const char *name, double x, double y, double z, double x_spark_dir,
+        double y_spark_dir, double z_spark_dir, double d_unknown1,
+        double d_unknown2, double d_unknown3, double d_unknown4,
+        double d_unknown5, int i_unknown6, int i_unknown7, int i_unknown8,
+        int i_unknown9, int i_unknown10, int i_unknown11, double d_unknown12,
+        double d_unknown13, double d_unknown14, int i_unknown15
+);
 extern void init_entity_properties(void);
+extern void init_entity(void);
 
 extern PyObject *get_inventory(const char *name);
 extern void init_inventory(void);

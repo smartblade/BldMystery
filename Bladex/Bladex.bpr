@@ -5,7 +5,7 @@
     <VERSION value="BCB.06.00"/>
     <PROJECT value="..\bin\Bladex.dll"/>
     <OBJFILES value="Bladex.obj Character.obj Trail.obj HeapCheck.obj Utils.obj Route.obj 
-      Sound.obj Material.obj Sector.obj Inventory.obj"/>
+      Sound.obj Material.obj Sector.obj Inventory.obj Entity.obj"/>
     <RESFILES value="Bladex.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -68,6 +68,7 @@
       <FILE FILENAME="Material.c" FORMNAME="" UNITNAME="Material" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Sector.c" FORMNAME="" UNITNAME="Sector" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Inventory.c" FORMNAME="" UNITNAME="Inventory" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Entity.c" FORMNAME="" UNITNAME="Entity" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
