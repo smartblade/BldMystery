@@ -11,7 +11,7 @@
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
-    <LIBFILES value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Lib\python15.lib&quot; ..\blade.lib"/>
+    <LIBFILES value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Lib\python15.lib&quot; ..\lib\blade.lib"/>
     <LIBRARIES value=""/>
     <SPARELIBS value=""/>
     <PACKAGES value="vcl.bpi rtl.bpi dbrtl.bpi adortl.bpi vcldb.bpi vclx.bpi bdertl.bpi 
@@ -58,7 +58,7 @@
       <FILE FILENAME="Bladex.bpf" FORMNAME="" UNITNAME="Bladex" CONTAINERID="BPF" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Bladex.c" FORMNAME="" UNITNAME="Bladex" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="C:\Program Files (x86)\Borland\CBuilder6\Lib\python15.lib" FORMNAME="" UNITNAME="python15.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="..\blade.lib" FORMNAME="" UNITNAME="blade.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\lib\blade.lib" FORMNAME="" UNITNAME="blade.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Character.c" FORMNAME="" UNITNAME="Character" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Trail.c" FORMNAME="" UNITNAME="Trail" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="HeapCheck.c" FORMNAME="" UNITNAME="HeapCheck" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
