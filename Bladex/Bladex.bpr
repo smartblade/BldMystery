@@ -3,7 +3,7 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.06.00"/>
-    <PROJECT value="..\bin\Bladex.dll"/>
+    <PROJECT value="..\..\bin\Bladex.dll"/>
     <OBJFILES value="Bladex.obj Character.obj Trail.obj HeapCheck.obj Utils.obj Route.obj 
       Sound.obj Material.obj Sector.obj Inventory.obj Entity.obj"/>
     <RESFILES value="Bladex.res"/>
@@ -119,12 +119,14 @@ Count=1
 Item0=_DEBUG
 
 [HistoryLists\hlFinalOutputDir]
-Count=1
-Item0=..\bin\
+Count=2
+Item0=..\..\bin\
+Item1=..\bin\
 
 [HistoryLists\hIBPIOutputDir]
-Count=1
-Item0=..\lib\
+Count=2
+Item0=..\lib
+Item1=..\lib\
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl
