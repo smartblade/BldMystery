@@ -23,8 +23,16 @@
 
 #include <Python.h>
 
+#ifdef __BORLANDC__
+
 /* Use stdcall to avoid generation underscores */
 #define INIT_PY_MODULE_FUNC void __stdcall
+
+#else
+
+#define INIT_PY_MODULE_FUNC void
+
+#endif
 
 
 #endif /* BLD_PYTHON_H */

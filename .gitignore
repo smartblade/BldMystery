@@ -1,9 +1,19 @@
 *.obj
+*.exp
+*.ilk
+*.ncb
+*.pdb
+*.idb
+*.dep
 *.lib
 *.res
 *.ddp
 *.tds
 *.str
+*.suo
+*.embed.manifest
+*.intermediate.manifest
+*.vcproj.*user
 *.~c
 *.~cpp
 *.~h
@@ -14,6 +24,7 @@
 *.~bpf
 *_origin.*
 *_patched.*
+BuildLog.htm
 B3DLib.dll
 BBLibc.dll
 BImagexc.dll
