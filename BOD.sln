@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Raster", "Raster\Raster.vcproj", "{15817D0C-F1B7-40B7-A229-706AB72278A8}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bladex", "Bladex\Bladex.vcproj", "{45BBCEFB-81A4-4FDB-832A-027D0A5B991A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +15,10 @@ Global
 		{15817D0C-F1B7-40B7-A229-706AB72278A8}.Debug|Win32.Build.0 = Release|Win32
 		{15817D0C-F1B7-40B7-A229-706AB72278A8}.Release|Win32.ActiveCfg = Release|Win32
 		{15817D0C-F1B7-40B7-A229-706AB72278A8}.Release|Win32.Build.0 = Release|Win32
+		{45BBCEFB-81A4-4FDB-832A-027D0A5B991A}.Debug|Win32.ActiveCfg = Release|Win32
+		{45BBCEFB-81A4-4FDB-832A-027D0A5B991A}.Debug|Win32.Build.0 = Release|Win32
+		{45BBCEFB-81A4-4FDB-832A-027D0A5B991A}.Release|Win32.ActiveCfg = Release|Win32
+		{45BBCEFB-81A4-4FDB-832A-027D0A5B991A}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

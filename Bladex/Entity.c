@@ -1529,7 +1529,6 @@ PyObject *bex_ent_LinkToNode(PyObject *self, PyObject *args) {
 
 PyObject *bex_ent_GetNodeIndex(PyObject *self, PyObject *args) {
         bld_py_entity_t *entity = (bld_py_entity_t *)self;
-        int code;
         const char *node_name;
         int index = -1;
 
@@ -3216,7 +3215,6 @@ PyObject *bex_ent_GetParticleEntity(PyObject *self, PyObject *args) {
         bld_py_entity_t *entity = (bld_py_entity_t *)self;
         const char *particle_entity_name;
         bld_py_entity_t *particle_entity;
-        int code;
 
         if (!PyArg_ParseTuple(args, ""))
                 return NULL;
