@@ -1,4 +1,4 @@
-
+#undef NDEBUG // TODO remove
 #include "raster_int.h"
 
 static PyObject* raster_Cls(PyObject* self, PyObject* args);
@@ -200,6 +200,7 @@ PyObject *raster_BmpHandle(PyObject *self, PyObject *args) {
 // TODO implement
 // address: 0x10001406
 PyObject* raster_BmpName(PyObject* self, PyObject* args) {
+        assert("raster_BmpName" == NULL);
         return NULL;
 }
 
@@ -207,6 +208,7 @@ PyObject* raster_BmpName(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x1000145b
 PyObject* raster_nTextures(PyObject* self, PyObject* args) {
+        assert("raster_nTextures" == NULL);
         return NULL;
 }
 
@@ -214,6 +216,7 @@ PyObject* raster_nTextures(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x100014a5
 PyObject* raster_GetTextureInfo(PyObject* self, PyObject* args) {
+        assert("raster_GetTextureInfo" == NULL);
         return NULL;
 }
 
@@ -255,6 +258,7 @@ PyObject *add_item(PyObject *tuple, PyObject *item) {
 // TODO implement
 // address: 0x100016b1
 PyObject* raster_SetGammaCorrection(PyObject* self, PyObject* args) {
+        assert("raster_SetGammaCorrection" == NULL);
         return NULL;
 }
 
@@ -262,6 +266,7 @@ PyObject* raster_SetGammaCorrection(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10001709
 PyObject* raster_GetGammaCorrection(PyObject* self, PyObject* args) {
+        assert("raster_GetGammaCorrection" == NULL);
         return NULL;
 }
 
@@ -269,6 +274,7 @@ PyObject* raster_GetGammaCorrection(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10001755
 PyObject* raster_SetContrast(PyObject* self, PyObject* args) {
+        assert("raster_SetContrast" == NULL);
         return NULL;
 }
 
@@ -276,6 +282,7 @@ PyObject* raster_SetContrast(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x100017ad
 PyObject* raster_GetContrast(PyObject* self, PyObject* args) {
+        assert("raster_GetContrast" == NULL);
         return NULL;
 }
 
@@ -283,6 +290,7 @@ PyObject* raster_GetContrast(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x100017f9
 PyObject* raster_SetBrightness(PyObject* self, PyObject* args) {
+        assert("raster_SetBrightness" == NULL);
         return NULL;
 }
 
@@ -290,6 +298,7 @@ PyObject* raster_SetBrightness(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10001851
 PyObject* raster_GetBrightness(PyObject* self, PyObject* args) {
+        assert("raster_GetBrightness" == NULL);
         return NULL;
 }
 
@@ -297,6 +306,7 @@ PyObject* raster_GetBrightness(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x1000189d
 PyObject* raster_SetVideoSettings(PyObject* self, PyObject* args) {
+        assert("raster_SetVideoSettings" == NULL);
         return NULL;
 }
 
@@ -304,20 +314,33 @@ PyObject* raster_SetVideoSettings(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10001906
 PyObject* raster_SetFlags(PyObject* self, PyObject* args) {
+        assert("raster_SetFlags" == NULL);
         return NULL;
 }
 
 
-// TODO implement
-// address: 0x1000195e
-PyObject* raster_SetTextMode(PyObject* self, PyObject* args) {
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x1000195E
+*/
+
+PyObject *raster_SetTextMode(PyObject *self, PyObject *args) {
+        int text_mode;
+
+        if (!PyArg_ParseTuple(args, "i:SetTextMode", &text_mode))
+                return NULL;
+
+        set_text_mode(text_mode);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
 // TODO implement
 // address: 0x100019b6
 PyObject* raster_GetTextMode(PyObject* self, PyObject* args) {
+        assert("raster_GetTextMode" == NULL);
         return NULL;
 }
 
@@ -325,6 +348,7 @@ PyObject* raster_GetTextMode(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10001a00
 PyObject* raster_Line(PyObject* self, PyObject* args) {
+        assert("raster_Line" == NULL);
         return NULL;
 }
 
@@ -332,48 +356,85 @@ PyObject* raster_Line(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10001a70
 PyObject* raster_LineTo(PyObject* self, PyObject* args) {
+        assert("raster_LineTo" == NULL);
         return NULL;
 }
 
 
-// TODO implement
-// address: 0x10001acf
-PyObject* raster_Rectangle(PyObject* self, PyObject* args) {
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10001ACF
+*/
+
+PyObject *raster_Rectangle(PyObject *self, PyObject *args) {
+        int x1, y1, x2, y2;
+
+        if (!PyArg_ParseTuple(args, "iiii:Rectangle", &x1, &y1, &x2, &y2))
+                return NULL;
+
+        rectangle(x1, y1, x2, y2);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
 // TODO implement
 // address: 0x10001b3f
 PyObject* raster_SolidRectangle(PyObject* self, PyObject* args) {
+        assert("raster_SolidRectangle" == NULL);
         return NULL;
 }
 
 
-// TODO implement
-// address: 0x10001baf
-PyObject* raster_SetPosition(PyObject* self, PyObject* args) {
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10001BAF
+*/
+ 
+PyObject *raster_SetPosition(PyObject *self, PyObject *args) {
+        float x, y;
+
+        if (!PyArg_ParseTuple(args, "ff:SetPosition", &x, &y))
+                return NULL;
+
+        set_position(x, y);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
 // TODO implement
 // address: 0x10001c0e
 PyObject* raster_GetPosition(PyObject* self, PyObject* args) {
+        assert("raster_GetPosition" == NULL);
         return NULL;
 }
 
 
-// TODO implement
-// address: 0x10001cc8
-PyObject* raster_SetPenColor(PyObject* self, PyObject* args) {
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10001CC8
+*/
+
+PyObject *raster_SetPenColor(PyObject *self, PyObject *args) {
+        int r, g, b;
+
+        if (!PyArg_ParseTuple(args, "iii:SetPenColor", &r, &g, &b))
+                return NULL;
+
+        set_pen_color(r, g, b);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
 // TODO implement
 // address: 0x10001d31
 PyObject* raster_SetFillColor(PyObject* self, PyObject* args) {
+        assert("raster_SetFillColor" == NULL);
         return NULL;
 }
 
@@ -399,6 +460,7 @@ PyObject *raster_SetAlpha(PyObject *self, PyObject *args) {
 // TODO implement
 // address: 0x10001df2
 PyObject* raster_GetAlpha(PyObject* self, PyObject* args) {
+        assert("raster_GetAlpha" == NULL);
         return NULL;
 }
 
@@ -406,6 +468,7 @@ PyObject* raster_GetAlpha(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10001e3e
 PyObject* raster_SetTextShadow(PyObject* self, PyObject* args) {
+        assert("raster_SetTextShadow" == NULL);
         return NULL;
 }
 
@@ -413,6 +476,7 @@ PyObject* raster_SetTextShadow(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10001e9d
 PyObject* raster_GetTextShadow(PyObject* self, PyObject* args) {
+        assert("raster_GetTextShadow" == NULL);
         return NULL;
 }
 
@@ -420,6 +484,7 @@ PyObject* raster_GetTextShadow(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10001f4a
 PyObject* raster_SetTextColor(PyObject* self, PyObject* args) {
+        assert("raster_SetTextColor" == NULL);
         return NULL;
 }
 
@@ -427,6 +492,7 @@ PyObject* raster_SetTextColor(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10001fb3
 PyObject* raster_SetTextAlpha(PyObject* self, PyObject* args) {
+        assert("raster_SetTextAlpha" == NULL);
         return NULL;
 }
 
@@ -434,6 +500,7 @@ PyObject* raster_SetTextAlpha(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x1000200b
 PyObject* raster_SetTextBlurColor(PyObject* self, PyObject* args) {
+        assert("raster_SetTextBlurColor" == NULL);
         return NULL;
 }
 
@@ -441,6 +508,7 @@ PyObject* raster_SetTextBlurColor(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10002074
 PyObject* raster_SetTextBlurAlpha(PyObject* self, PyObject* args) {
+        assert("raster_SetTextBlurAlpha" == NULL);
         return NULL;
 }
 
@@ -448,6 +516,7 @@ PyObject* raster_SetTextBlurAlpha(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x100020cc
 PyObject* raster_GetTextAlpha(PyObject* self, PyObject* args) {
+        assert("raster_GetTextAlpha" == NULL);
         return NULL;
 }
 
@@ -455,6 +524,7 @@ PyObject* raster_GetTextAlpha(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10002118
 PyObject* raster_GetTextBlurAlpha(PyObject* self, PyObject* args) {
+        assert("raster_GetTextBlurAlpha" == NULL);
         return NULL;
 }
 
@@ -462,6 +532,7 @@ PyObject* raster_GetTextBlurAlpha(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10002164
 PyObject* raster_SetTextBlur(PyObject* self, PyObject* args) {
+        assert("raster_SetTextBlur" == NULL);
         return NULL;
 }
 
@@ -469,6 +540,7 @@ PyObject* raster_SetTextBlur(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x100021d4
 PyObject* raster_GetTextBlur(PyObject* self, PyObject* args) {
+        assert("raster_GetTextBlur" == NULL);
         return NULL;
 }
 
@@ -476,6 +548,7 @@ PyObject* raster_GetTextBlur(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x100022e3
 PyObject* raster_SetTextScale(PyObject* self, PyObject* args) {
+        assert("raster_SetTextScale" == NULL);
         return NULL;
 }
 
@@ -483,43 +556,99 @@ PyObject* raster_SetTextScale(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10002342
 PyObject* raster_GetTextScale(PyObject* self, PyObject* args) {
+        assert("raster_GetTextScale" == NULL);
         return NULL;
 }
 
 
-// TODO implement
-// address: 0x100023fc
-PyObject* raster_WriteText(PyObject* self, PyObject* args) {
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100023FC
+*/
+
+PyObject *raster_WriteText(PyObject *self, PyObject *args) {
+        const char *text;
+        int code;
+
+        if (!PyArg_ParseTuple(args, "s:WriteText", &text))
+                return NULL;
+
+        code = write_text(text);
+
+        return Py_BuildValue("i", code);
 }
 
 
-// TODO implement
-// address: 0x10002451
-PyObject* raster_SysWrite(PyObject* self, PyObject* args) {
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10002451
+*/
+
+PyObject *raster_SysWrite(PyObject *self, PyObject *args) {
+        int x, y;
+        const char *text;
+        byte r, g, b;
+
+        if (!PyArg_ParseTuple(
+                args, "iisbbb:SysWrite", &x, &y, &text, &r, &g, &b
+        ))
+                return NULL;
+
+        sys_write(x, y, text, r, g, b);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
 // TODO implement
 // address: 0x100024d2
 PyObject* raster_GetImage(PyObject* self, PyObject* args) {
+        assert("raster_GetImage" == NULL);
         return NULL;
 }
 
+/*
+* Module:                 Raster.dll
+* Entry point:            0x1000255F
+*/
+ 
+PyObject *raster_DrawImage(PyObject *self, PyObject *args) {
+        int w, h;
+        const char *color_style, *stretch_or_centered;
+        long image_data;
 
-// TODO implement
-// address: 0x1000255f
-PyObject* raster_DrawImage(PyObject* self, PyObject* args) {
-        return NULL;
+        if (!PyArg_ParseTuple(
+                args, "iissl:DrawImage", &w, &h, &color_style,
+                &stretch_or_centered, &image_data
+        ))
+                return NULL;
+
+        draw_image(w, h, color_style, stretch_or_centered, image_data);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
-// TODO implement
-// address: 0x100025d6
-PyObject* raster_DrawBitmap(PyObject* self, PyObject* args) {
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100025D6
+*/
+
+PyObject *raster_DrawBitmap(PyObject *self, PyObject *args) {
+        long bmp_handle;
+        int w, h;
+
+        if (!PyArg_ParseTuple(args, "lii:DrawBitmap", &bmp_handle, &w, &h))
+                return NULL;
+
+        draw_bitmap(bmp_handle, w, h);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
+
 
 /*
 * Module:                 Raster.dll
@@ -545,16 +674,27 @@ PyObject *raster_SetBackgroundImage(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x100026c0
-PyObject* raster_RemoveBackgroundImage(PyObject* self, PyObject* args) {
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100026C0
+*/
+ 
+PyObject *raster_RemoveBackgroundImage(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ":RemoveBackgroundImage"))
+                return NULL;
+
+        remove_background_image();
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
 // TODO implement
 // address: 0x1000270c
 PyObject* raster_SetClipWindow(PyObject* self, PyObject* args) {
+        assert("raster_SetClipWindow" == NULL);
         return NULL;
 }
 
@@ -562,6 +702,7 @@ PyObject* raster_SetClipWindow(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x1000277c
 PyObject* raster_GetClipWindow(PyObject* self, PyObject* args) {
+        assert("raster_GetClipWindow" == NULL);
         return NULL;
 }
 
@@ -569,6 +710,7 @@ PyObject* raster_GetClipWindow(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x1000288b
 PyObject* raster_SetClipActive(PyObject* self, PyObject* args) {
+        assert("raster_SetClipActive" == NULL);
         return NULL;
 }
 
@@ -576,20 +718,35 @@ PyObject* raster_SetClipActive(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x100028e3
 PyObject* raster_GetClipActive(PyObject* self, PyObject* args) {
+        assert("raster_GetClipActive" == NULL);
         return NULL;
 }
 
 
-// TODO implement
-// address: 0x1000292d
-PyObject* raster_SetRasterParameter(PyObject* self, PyObject* args) {
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x1000292D
+*/
+ 
+PyObject *raster_SetRasterParameter(PyObject *self, PyObject *args) {
+        const char * parameter, *value;
+        int code;
+
+        if (!PyArg_ParseTuple(
+                args, "ss:SetRasterParameter", &parameter, &value
+        ))
+                return NULL;
+
+        code = set_raster_parameter(parameter, value);
+
+        return Py_BuildValue("i", code);
 }
 
 
 // TODO implement
 // address: 0x1000298a
 PyObject* raster_GetRasterParameter(PyObject* self, PyObject* args) {
+        assert("raster_GetRasterParameter" == NULL);
         return NULL;
 }
 
@@ -597,6 +754,7 @@ PyObject* raster_GetRasterParameter(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x100029df
 PyObject* raster_SetFont(PyObject* self, PyObject* args) {
+        assert("raster_SetFont" == NULL);
         return NULL;
 }
 
@@ -633,6 +791,7 @@ PyObject *raster_GetSize(PyObject *self, PyObject *args) {
 // TODO implement
 // address: 0x10002ae4
 PyObject* raster_SetWindowSize(PyObject* self, PyObject* args) {
+        assert("raster_SetWindowSize" == NULL);
         return NULL;
 }
 
@@ -640,6 +799,7 @@ PyObject* raster_SetWindowSize(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10002b4f
 PyObject* raster_GetWindowSize(PyObject* self, PyObject* args) {
+        assert("raster_GetWindowSize" == NULL);
         return NULL;
 }
 
@@ -647,6 +807,7 @@ PyObject* raster_GetWindowSize(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10002bfa
 PyObject* raster_FullScreen(PyObject* self, PyObject* args) {
+        assert("raster_FullScreen" == NULL);
         return NULL;
 }
 
@@ -654,6 +815,7 @@ PyObject* raster_FullScreen(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10002c44
 PyObject* raster_nVideoModes(PyObject* self, PyObject* args) {
+        assert("raster_nVideoModes" == NULL);
         return NULL;
 }
 
@@ -661,6 +823,7 @@ PyObject* raster_nVideoModes(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10002c8e
 PyObject* raster_GetVideoModeDscr(PyObject* self, PyObject* args) {
+        assert("raster_GetVideoModeDscr" == NULL);
         return NULL;
 }
 
@@ -668,6 +831,7 @@ PyObject* raster_GetVideoModeDscr(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10002dd1
 PyObject* raster_SetVideoMode(PyObject* self, PyObject* args) {
+        assert("raster_SetVideoMode" == NULL);
         return NULL;
 }
 
@@ -675,6 +839,7 @@ PyObject* raster_SetVideoMode(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x10002e26
 PyObject* raster_GetCurrentMode(PyObject* self, PyObject* args) {
+        assert("raster_GetCurrentMode" == NULL);
         return NULL;
 }
 
@@ -695,16 +860,28 @@ PyObject *raster_ClassIdName(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x10002fab
-PyObject* raster_SetDomeColor(PyObject* self, PyObject* args) {
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10002FAB
+*/
+
+PyObject *raster_SetDomeColor(PyObject *self, PyObject *args) {
+        int r, g, b;
+
+        if (!PyArg_ParseTuple(args, "iii:SetDomeColor", &r, &g, &b))
+                return NULL;
+
+        set_dome_color(r, g, b);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
 // TODO implement
 // address: 0x10003014
 PyObject* raster_GetDomeColor(PyObject* self, PyObject* args) {
+        assert("raster_GetDomeColor" == NULL);
         return NULL;
 }
 
@@ -712,6 +889,7 @@ PyObject* raster_GetDomeColor(PyObject* self, PyObject* args) {
 // TODO implement
 // address: 0x100030f5
 PyObject* raster_UnifyRenderBuffers(PyObject* self, PyObject* args) {
+        assert("raster_UnifyRenderBuffers" == NULL);
         return NULL;
 }
 

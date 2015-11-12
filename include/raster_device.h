@@ -48,7 +48,7 @@ public:
         virtual void unknown098() = 0;
         virtual void cls(boolean unknown1, boolean unknown2, boolean unknown3) = 0;
         virtual void unknown0A0() = 0;
-        virtual void unknown0A4() = 0;
+        virtual void set_dome_color(byte r, byte g, byte b) = 0;
         virtual void unknown0A8() = 0;
         virtual void unknown0AC() = 0;
         virtual void unknown0B0() = 0;
@@ -74,7 +74,9 @@ public:
         virtual void unknown100() = 0;
         virtual void unknown104() = 0;
         virtual void unknown108() = 0;
-        virtual void unknown10C() = 0;
+        virtual void sys_write(
+                int x, int y, const char *text, byte r, byte g, byte b
+        ) = 0;
         virtual void unknown110() = 0;
         virtual void unknown114() = 0;
         virtual void unknown118() = 0;
@@ -91,11 +93,11 @@ public:
         virtual void unknown144() = 0;
         virtual void unknown148() = 0;
         virtual void unknown14C() = 0;
-        virtual void unknown150() = 0;
+        virtual void rectangle(int x1, int y1, int x2, int y2) = 0;
         virtual void unknown154() = 0;
         virtual void unknown158() = 0;
-        virtual void unknown15C() = 0;
-        virtual void unknown160() = 0;
+        virtual void set_position(float x, float y) = 0;
+        virtual void set_pen_color(byte r, byte g, byte b) = 0;
         virtual void unknown164() = 0;
         virtual void unknown168() = 0;
         virtual void unknown16C() = 0;
@@ -106,7 +108,7 @@ public:
         virtual void unknown180() = 0;
         virtual void unknown184() = 0;
         virtual void unknown188() = 0;
-        virtual void unknown18C() = 0;
+        virtual void set_text_mode(int text_mode) = 0;
         virtual void unknown190() = 0;
         virtual void unknown194() = 0;
         virtual void unknown198() = 0;
@@ -127,16 +129,21 @@ public:
         virtual void unknown1D4() = 0;
         virtual void unknown1D8() = 0;
         virtual void unknown1DC() = 0;
-        virtual void unknown1E0() = 0;
-        virtual void unknown1E4() = 0;
-        virtual void unknown1E8() = 0;
+        virtual int write_text(const char *text) = 0;
+        virtual void draw_bitmap(long handle, int w, int h) = 0;
+        virtual void draw_image(
+                int w, int h, const char *color_style, const char *is_normal,
+                long image_data
+        ) = 0;
         virtual void unknown1EC() = 0;
         virtual void set_background_image(
                 int w, int h, const char *is_rgb, const char *is_normal,
                 const char *stretch_or_centered, long image_data
         ) = 0;
-        virtual void unknown1F4() = 0;
-        virtual void unknown1F8() = 0;
+        virtual void remove_background_image() = 0;
+        virtual int set_raster_parameter(
+                const char *scene, const char *parameter
+        ) = 0;
         virtual void unknown1FC() = 0;
         virtual void get_size(int &w, int &h) = 0;
         virtual void unknown204() = 0;
