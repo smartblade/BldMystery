@@ -205,11 +205,20 @@ PyObject* raster_BmpName(PyObject* self, PyObject* args) {
 }
 
 
-// TODO implement
-// address: 0x1000145b
-PyObject* raster_nTextures(PyObject* self, PyObject* args) {
-        assert("raster_nTextures" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x1000145B
+*/
+
+PyObject *raster_nTextures(PyObject *self, PyObject *args) {
+        int num_textures;
+
+        if (!PyArg_ParseTuple(args, ":nTextures"))
+                return NULL;
+
+        num_textures = n_textures();
+
+        return Py_BuildValue("i", num_textures);
 }
 
 
@@ -337,11 +346,20 @@ PyObject *raster_SetTextMode(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x100019b6
-PyObject* raster_GetTextMode(PyObject* self, PyObject* args) {
-        assert("raster_GetTextMode" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100019B6
+*/
+
+PyObject *raster_GetTextMode(PyObject *self, PyObject *args) {
+        int text_mode;
+
+        if (!PyArg_ParseTuple(args, ":GetTextMode"))
+                return NULL;
+
+        text_mode = get_text_mode();
+
+        return Py_BuildValue("i", text_mode);
 }
 
 
@@ -379,11 +397,21 @@ PyObject *raster_Rectangle(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x10001b3f
-PyObject* raster_SolidRectangle(PyObject* self, PyObject* args) {
-        assert("raster_SolidRectangle" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10001B3F
+*/
+
+PyObject *raster_SolidRectangle(PyObject *self, PyObject *args) {
+        int x1, y1, x2, y2;
+
+        if (!PyArg_ParseTuple(args, "iiii:SolidRectangle", &x1, &y1, &x2, &y2))
+                return NULL;
+
+        solid_rectangle(x1, y1, x2, y2);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
@@ -405,11 +433,30 @@ PyObject *raster_SetPosition(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x10001c0e
-PyObject* raster_GetPosition(PyObject* self, PyObject* args) {
-        assert("raster_GetPosition" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10001C0E
+*/
+
+PyObject *raster_GetPosition(PyObject *self, PyObject *args) {
+        PyObject *posObj, *xObj, *yObj;
+        float x, y;
+
+        if (!PyArg_ParseTuple(args, ":GetPosition"))
+                return NULL;
+
+        get_position(x, y);
+
+        Py_INCREF(Py_None);
+        posObj = Py_None;
+
+        xObj = PyFloat_FromDouble(x);
+        posObj = add_item(posObj, xObj);
+
+        yObj = PyFloat_FromDouble(y);
+        posObj = add_item(posObj, yObj);
+
+        return posObj;
 }
 
 
@@ -431,11 +478,21 @@ PyObject *raster_SetPenColor(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x10001d31
-PyObject* raster_SetFillColor(PyObject* self, PyObject* args) {
-        assert("raster_SetFillColor" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10001D31
+*/
+
+PyObject *raster_SetFillColor(PyObject *self, PyObject *args) {
+        int r, g, b;
+
+        if (!PyArg_ParseTuple(args, "iii:SetFillColor", &r, &g, &b))
+                return NULL;
+
+        set_fill_color(r, g, b);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
@@ -457,11 +514,17 @@ PyObject *raster_SetAlpha(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x10001df2
-PyObject* raster_GetAlpha(PyObject* self, PyObject* args) {
-        assert("raster_GetAlpha" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10001DF2
+*/
+
+PyObject *raster_GetAlpha(PyObject *self, PyObject *args) {
+
+    if (!PyArg_ParseTuple(args, ":GetAlpha"))
+                return NULL;
+
+        return Py_BuildValue("f", get_alpha());
 }
 
 
@@ -481,19 +544,39 @@ PyObject* raster_GetTextShadow(PyObject* self, PyObject* args) {
 }
 
 
-// TODO implement
-// address: 0x10001f4a
-PyObject* raster_SetTextColor(PyObject* self, PyObject* args) {
-        assert("raster_SetTextColor" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10001F4A
+*/
+
+PyObject *raster_SetTextColor(PyObject *self, PyObject *args) {
+        int r, g, b;
+
+        if (!PyArg_ParseTuple(args, "iii:SetTextColor", &r, &g, &b))
+                return NULL;
+
+        set_text_color(r, g, b);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
-// TODO implement
-// address: 0x10001fb3
-PyObject* raster_SetTextAlpha(PyObject* self, PyObject* args) {
-        assert("raster_SetTextAlpha" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10001FB3
+*/
+
+PyObject *raster_SetTextAlpha(PyObject *self, PyObject *args) {
+        float alpha;
+
+        if (!PyArg_ParseTuple(args, "f:SetTextAlpha", &alpha))
+                return NULL;
+
+        set_text_alpha(alpha);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
@@ -513,11 +596,17 @@ PyObject* raster_SetTextBlurAlpha(PyObject* self, PyObject* args) {
 }
 
 
-// TODO implement
-// address: 0x100020cc
-PyObject* raster_GetTextAlpha(PyObject* self, PyObject* args) {
-        assert("raster_GetTextAlpha" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100020CC
+*/
+
+PyObject *raster_GetTextAlpha(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ":GetTextAlpha"))
+                return NULL;
+
+        return Py_BuildValue("f", get_text_alpha());
 }
 
 
@@ -751,11 +840,21 @@ PyObject* raster_GetRasterParameter(PyObject* self, PyObject* args) {
 }
 
 
-// TODO implement
-// address: 0x100029df
-PyObject* raster_SetFont(PyObject* self, PyObject* args) {
-        assert("raster_SetFont" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100029DF
+*/
+
+PyObject *raster_SetFont(PyObject *self, PyObject *args) {
+        long font_pointer;
+
+        if (!PyArg_ParseTuple(args, "l:SetFont", &font_pointer))
+                return NULL;
+
+        set_font(font_pointer);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 

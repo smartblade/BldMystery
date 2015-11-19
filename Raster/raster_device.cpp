@@ -44,11 +44,37 @@ long bmp_handle(const char *bmp_name) {
 
 /*
 * Module:                 Raster.dll
+* Entry point:            0x100035BD
+*/
+
+int n_textures() {
+        return B_3D_raster_device->n_textures();
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Raster.dll
 * Entry point:            0x100036C0
 */
 
 void set_text_mode(int text_mode) {
         B_3D_raster_device->set_text_mode(text_mode);
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100036DD
+*/
+
+int get_text_mode() {
+        return B_3D_raster_device->get_text_mode();
 }
 
 /*
@@ -67,12 +93,16 @@ void rectangle(int x1, int y1, int x2, int y2) {
         B_3D_raster_device->rectangle(x1, y1, x2, y2);
 }
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Raster.dll
+* Entry point:            0x100037AA
 */
+
+void solid_rectangle(int x1, int y1, int x2, int y2) {
+        B_3D_raster_device->solid_rectangle(x1, y1, x2, y2);
+}
+
 
 /*
 * Module:                 Raster.dll
@@ -83,12 +113,16 @@ void set_position(float x, float y) {
         B_3D_raster_device->set_position(x, y);
 }
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Raster.dll
+* Entry point:            0x100037F4
 */
+
+void get_position(float &x, float &y) {
+        B_3D_raster_device->get_position(x, y);
+}
+
 
 /*
 * Module:                 Raster.dll
@@ -99,12 +133,16 @@ void set_pen_color(byte r, byte g, byte b) {
         B_3D_raster_device->set_pen_color(r, g, b);
 }
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Raster.dll
+* Entry point:            0x10003839
 */
+
+void set_fill_color(byte r, byte g, byte b) {
+        B_3D_raster_device->set_fill_color(r, g, b);
+}
+
 
 /*
 * Module:                 Raster.dll
@@ -121,6 +159,46 @@ void set_alpha(float alpha) {
 ................................................................................
 ................................................................................
 */
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10003967
+*/
+
+float get_alpha() {
+        return B_3D_raster_device->get_alpha();
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x1000397F
+*/
+
+void set_text_color(byte r, byte g, byte b) {
+        B_3D_raster_device->set_text_color(r, g, b);
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100039A3
+*/
+ 
+void set_text_alpha(float alpha) {
+        B_3D_raster_device->set_text_alpha(alpha);
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100039C0
+*/
+
+float get_text_alpha() {
+        return B_3D_raster_device->get_text_alpha();
+}
+
 
 /*
 * Module:                 Raster.dll
@@ -244,12 +322,16 @@ const char *class_id_name() {
         return B_3D_raster_device->class_id_name();
 }
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Raster.dll
+* Entry point:            0x10003D13
 */
+
+void set_font(long font_pointer) {
+        B_3D_raster_device->set_font(font_pointer);
+}
+
 
 /*
 * Module:                 Raster.dll
