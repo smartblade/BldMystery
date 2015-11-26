@@ -35,12 +35,16 @@ long bmp_handle(const char *bmp_name) {
         return B_3D_raster_device->bmp_handle(bmp_name);
 }
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Raster.dll
+* Entry point:            0x100035A3
 */
+
+const char *bmp_name(long handle) {
+        return B_3D_raster_device->bmp_name(handle);
+}
+
 
 /*
 * Module:                 Raster.dll
@@ -51,12 +55,101 @@ int n_textures() {
         return B_3D_raster_device->n_textures();
 }
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Raster.dll
+* Entry point:            0x100035D2
 */
+
+int get_texture_info(int index, int &w, int &h, int &depth) {
+
+        return B_3D_raster_device->get_texture_info(
+                index, w, h, depth
+        );
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100035F8
+*/
+
+void set_flags(long flags) {
+        B_3D_raster_device->set_flags(flags);
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10003612
+*/
+
+void set_video_settings(float gamma, float contrast, float brightness) {
+        B_3D_raster_device->set_video_settings(
+                gamma, contrast, brightness
+        );
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10003633
+*/
+
+void set_gamma_correction(float gamma) {
+        B_3D_raster_device->set_gamma_correction(gamma);
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x1000364D
+*/
+
+float get_gamma_correction() {
+        return B_3D_raster_device->get_gamma_correction();
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10003662
+*/
+
+void set_contrast(float contrast) {
+        return B_3D_raster_device->set_contrast(contrast);
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x1000367C
+*/
+
+float get_contrast() {
+        return B_3D_raster_device->get_contrast();
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10003691
+*/
+
+void set_brightness(float brightness) {
+        B_3D_raster_device->set_brightness(brightness);
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100036AB
+*/
+
+float get_brightness() {
+        return B_3D_raster_device->get_brightness();
+}
+
 
 /*
 * Module:                 Raster.dll
@@ -151,6 +244,32 @@ void set_fill_color(byte r, byte g, byte b) {
 
 void set_alpha(float alpha) {
         B_3D_raster_device->set_alpha(alpha);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x1000389E
+*/
+
+void set_text_blur_alpha(float alpha) {
+        B_3D_raster_device->set_text_blur_alpha(alpha);
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100038BB
+*/
+
+float get_text_blur_alpha() {
+        return B_3D_raster_device->get_text_blur_alpha();
 }
 
 /*
@@ -286,8 +405,18 @@ void draw_bitmap(long handle, int w, int h) {
 * Entry point:            0x10003B52
 */
 
-int set_raster_parameter(const char *scene, const char *parameter) {
-        return B_3D_raster_device->set_raster_parameter(scene, parameter);
+int set_raster_parameter(const char *parameter, const char *value) {
+        return B_3D_raster_device->set_raster_parameter(parameter, value);
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10003B73
+*/
+
+const char *get_raster_parameter(const char *parameter) {
+        return B_3D_raster_device->get_raster_parameter(parameter);
 }
 
 /*

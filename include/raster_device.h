@@ -10,14 +10,16 @@ public:
         virtual void unknown000() = 0;
         virtual void swap_buffers() = 0;
         virtual void unknown008() = 0;
-        virtual void unknown00C() = 0;
-        virtual void unknown010() = 0;
-        virtual void unknown014() = 0;
-        virtual void unknown018() = 0;
-        virtual void unknown01C() = 0;
-        virtual void unknown020() = 0;
-        virtual void unknown024() = 0;
-        virtual void unknown028() = 0;
+        virtual void set_gamma_correction(float gamma) = 0;
+        virtual float get_gamma_correction() = 0;
+        virtual void set_contrast(float contrast) = 0;
+        virtual float get_contrast() = 0;
+        virtual void set_brightness(float brightness) = 0;
+        virtual float get_brightness() = 0;
+        virtual void set_video_settings(
+                float gamma, float contrast, float brightness
+        ) = 0;
+        virtual void set_flags(long flags) = 0;
         virtual void unknown02C() = 0;
         virtual void unknown030() = 0;
         virtual void unknown034() = 0;
@@ -25,10 +27,12 @@ public:
         virtual void unknown03C() = 0;
         virtual long bmp_handle(const char *bmp_name) = 0;
         virtual void unknown044() = 0;
-        virtual void unknown048() = 0;
+        virtual const char *bmp_name(long handle) = 0;
         virtual void unknown04C() = 0;
         virtual void unknown050() = 0;
-        virtual void unknown054() = 0;
+        virtual int get_texture_info(
+                int index, int &w, int &h, int &depth
+        ) = 0;
         virtual void unknown058() = 0;
         virtual void unknown05C() = 0;
         virtual void unknown060() = 0;
@@ -123,11 +127,11 @@ public:
         virtual void set_text_alpha(float alpha) = 0;
         virtual void unknown1C0() = 0;
         virtual void unknown1C4() = 0;
-        virtual void unknown1C8() = 0;
+        virtual void set_text_blur_alpha(float alpha) = 0;
         virtual void unknown1CC() = 0;
         virtual float get_text_alpha() = 0;
         virtual void unknown1D4() = 0;
-        virtual void unknown1D8() = 0;
+        virtual float get_text_blur_alpha() = 0;
         virtual void unknown1DC() = 0;
         virtual int write_text(const char *text) = 0;
         virtual void draw_bitmap(long handle, int w, int h) = 0;
@@ -142,9 +146,9 @@ public:
         ) = 0;
         virtual void remove_background_image() = 0;
         virtual int set_raster_parameter(
-                const char *scene, const char *parameter
+                const char *parameter, const char *value
         ) = 0;
-        virtual void unknown1FC() = 0;
+        virtual const char *get_raster_parameter(const char *parameter) = 0;
         virtual void get_size(int &w, int &h) = 0;
         virtual void unknown204() = 0;
         virtual void unknown208() = 0;

@@ -197,11 +197,21 @@ PyObject *raster_BmpHandle(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x10001406
-PyObject* raster_BmpName(PyObject* self, PyObject* args) {
-        assert("raster_BmpName" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10001406
+*/
+
+PyObject *raster_BmpName(PyObject *self, PyObject *args) {
+        long handle;
+        const char *name;
+
+        if (!PyArg_ParseTuple(args, "l:BmpName", &handle))
+                return NULL;
+
+        name = bmp_name(handle);
+
+        return Py_BuildValue("s", name);
 }
 
 
@@ -222,11 +232,32 @@ PyObject *raster_nTextures(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x100014a5
-PyObject* raster_GetTextureInfo(PyObject* self, PyObject* args) {
-        assert("raster_GetTextureInfo" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100014A5
+*/
+
+PyObject *raster_GetTextureInfo(PyObject *self, PyObject *args) {
+        int index, code, w, h, depth;
+        PyObject *infoObj, *wObj, *hObj, *depthObj;
+
+        if (!PyArg_ParseTuple(args, "i:GetTextureInfo", &index))
+                return NULL;
+
+        code = get_texture_info(index, w, h, depth); 
+
+        infoObj = Py_BuildValue("i", code);
+
+        wObj = PyInt_FromLong(w);
+        infoObj = add_item(infoObj, wObj);
+
+        hObj = PyInt_FromLong(h);
+        infoObj = add_item(infoObj, hObj);
+
+        depthObj = PyInt_FromLong(depth);
+        infoObj = add_item(infoObj, depthObj);
+
+        return infoObj;
 }
 
 
@@ -264,67 +295,137 @@ PyObject *add_item(PyObject *tuple, PyObject *item) {
 }
 
 
-// TODO implement
-// address: 0x100016b1
-PyObject* raster_SetGammaCorrection(PyObject* self, PyObject* args) {
-        assert("raster_SetGammaCorrection" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100016B1
+*/
+
+PyObject *raster_SetGammaCorrection(PyObject *self, PyObject *args) {
+        float gamma;
+
+        if (!PyArg_ParseTuple(args, "f:SetGammaCorrection", &gamma))
+                return NULL;
+
+        set_gamma_correction(gamma);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
-// TODO implement
-// address: 0x10001709
-PyObject* raster_GetGammaCorrection(PyObject* self, PyObject* args) {
-        assert("raster_GetGammaCorrection" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10001709
+*/
+
+PyObject *raster_GetGammaCorrection(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ":GetGammaCorrection"))
+                return NULL;
+
+        return Py_BuildValue("f", get_gamma_correction());
 }
 
 
-// TODO implement
-// address: 0x10001755
-PyObject* raster_SetContrast(PyObject* self, PyObject* args) {
-        assert("raster_SetContrast" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10001755
+*/
+
+PyObject *raster_SetContrast(PyObject *self, PyObject *args) {
+        float contrast;
+
+        if (!PyArg_ParseTuple(args, "f:SetContrast", &contrast))
+                return NULL;
+
+        set_contrast(contrast);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
-// TODO implement
-// address: 0x100017ad
-PyObject* raster_GetContrast(PyObject* self, PyObject* args) {
-        assert("raster_GetContrast" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100017AD
+*/
+
+PyObject *raster_GetContrast(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ":GetContrast"))
+                return NULL;
+
+        return Py_BuildValue("f", get_contrast());
 }
 
 
-// TODO implement
-// address: 0x100017f9
-PyObject* raster_SetBrightness(PyObject* self, PyObject* args) {
-        assert("raster_SetBrightness" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100017F9
+*/
+
+PyObject *raster_SetBrightness(PyObject *self, PyObject *args) {
+        float brightness;
+
+        if (!PyArg_ParseTuple(args, "f:SetBrightness", &brightness))
+                return NULL;
+
+        set_brightness(brightness);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
-// TODO implement
-// address: 0x10001851
-PyObject* raster_GetBrightness(PyObject* self, PyObject* args) {
-        assert("raster_GetBrightness" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10001851
+*/
+
+PyObject *raster_GetBrightness(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ":GetBrightness"))
+                return NULL;
+
+        return Py_BuildValue("f", get_brightness());
 }
 
 
-// TODO implement
-// address: 0x1000189d
-PyObject* raster_SetVideoSettings(PyObject* self, PyObject* args) {
-        assert("raster_SetVideoSettings" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x1000189D
+*/
+
+PyObject *raster_SetVideoSettings(PyObject *self, PyObject *args) {
+        float gamma, contrast, brightness;
+
+        if (!PyArg_ParseTuple(
+                args, "fff:SetVideoSettings", &gamma, &contrast, &brightness
+        ))
+                return NULL;
+
+        set_video_settings(gamma, contrast, brightness);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
-// TODO implement
-// address: 0x10001906
-PyObject* raster_SetFlags(PyObject* self, PyObject* args) {
-        assert("raster_SetFlags" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10001906
+*/
+
+PyObject *raster_SetFlags(PyObject *self, PyObject *args) {
+        long flags;
+
+        if (!PyArg_ParseTuple(args, "l:SetFlags", &flags))
+                return NULL;
+
+        set_flags(flags);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
@@ -588,11 +689,21 @@ PyObject* raster_SetTextBlurColor(PyObject* self, PyObject* args) {
 }
 
 
-// TODO implement
-// address: 0x10002074
-PyObject* raster_SetTextBlurAlpha(PyObject* self, PyObject* args) {
-        assert("raster_SetTextBlurAlpha" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10002074
+*/
+
+PyObject *raster_SetTextBlurAlpha(PyObject *self, PyObject *args) {
+        float alpha;
+
+        if (!PyArg_ParseTuple(args, "f:SetTextBlurAlpha", &alpha))
+                return NULL;
+
+        set_text_blur_alpha(alpha);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
@@ -610,11 +721,17 @@ PyObject *raster_GetTextAlpha(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x10002118
-PyObject* raster_GetTextBlurAlpha(PyObject* self, PyObject* args) {
-        assert("raster_GetTextBlurAlpha" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10002118
+*/
+
+PyObject *raster_GetTextBlurAlpha(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ":GetTextBlurAlpha"))
+                return NULL;
+
+        return Py_BuildValue("f", get_text_blur_alpha());
 }
 
 
@@ -832,11 +949,20 @@ PyObject *raster_SetRasterParameter(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x1000298a
-PyObject* raster_GetRasterParameter(PyObject* self, PyObject* args) {
-        assert("raster_GetRasterParameter" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x1000298A
+*/
+
+PyObject *raster_GetRasterParameter(PyObject *self, PyObject *args) {
+        const char *parameter, *value;
+
+        if (!PyArg_ParseTuple(args, "s:GetRasterParameter", &parameter))
+                return NULL;
+
+        value = get_raster_parameter(parameter);
+
+        return Py_BuildValue("s", value);
 }
 
 
