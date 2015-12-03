@@ -45,7 +45,9 @@ extern void set_pen_color(byte r, byte g, byte b);
 extern void set_fill_color(byte r, byte g, byte b);
 extern void set_alpha(float alpha);
 extern void set_text_blur_alpha(float alpha);
+extern void get_text_shadow(int &x_shadow, int &y_shadow);
 extern float get_text_blur_alpha(void);
+extern void set_text_shadow(int x_shadow, int y_shadow);
 extern float get_alpha(void);
 extern void set_text_color(byte r, byte g, byte b);
 extern void set_text_alpha(float alpha);
@@ -65,8 +67,18 @@ extern void draw_bitmap(long bmp_handle, int w, int h);
 extern int set_raster_parameter(const char *parameter, const char *value);
 extern const char *get_raster_parameter(const char * parameter);
 extern void get_size(int &w, int &h);
+extern int set_window_size(int w, int h);
+extern int get_window_size(int &w, int &h);
+extern int full_screen(void);
+extern int n_video_modes(void);
+extern int set_video_mode(int mode_index);
+extern int get_current_mode(
+        int &unknown1, int &unknown2, int &unknown3, int &unknown4, int &unknown5
+);
 extern const char *class_id_name(void);
 extern void set_font(long font_pointer);
+extern void get_dome_color(byte &r, byte &g, byte &b);
+extern void unify_render_buffers(void);
 extern void set_dome_color(byte r, byte g, byte b);
 
 

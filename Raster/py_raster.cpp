@@ -622,26 +622,55 @@ PyObject *raster_SetAlpha(PyObject *self, PyObject *args) {
 
 PyObject *raster_GetAlpha(PyObject *self, PyObject *args) {
 
-    if (!PyArg_ParseTuple(args, ":GetAlpha"))
+        if (!PyArg_ParseTuple(args, ":GetAlpha"))
                 return NULL;
 
         return Py_BuildValue("f", get_alpha());
 }
 
 
-// TODO implement
-// address: 0x10001e3e
-PyObject* raster_SetTextShadow(PyObject* self, PyObject* args) {
-        assert("raster_SetTextShadow" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10001E3E
+*/
+
+PyObject *raster_SetTextShadow(PyObject *self, PyObject *args) {
+        int x_shadow, y_shadow;
+
+        if (!PyArg_ParseTuple(args, "ii:SetTextShadow", &x_shadow, &y_shadow))
+                return NULL;
+
+        set_text_shadow(x_shadow, y_shadow);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
-// TODO implement
-// address: 0x10001e9d
-PyObject* raster_GetTextShadow(PyObject* self, PyObject* args) {
-        assert("raster_GetTextShadow" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10001E9D
+*/
+
+PyObject *raster_GetTextShadow(PyObject *self, PyObject *args) {
+        PyObject *shadowObj, *xShadowObj, *yShadowObj;
+        int x_shadow, y_shadow;
+
+        if (!PyArg_ParseTuple(args, ":GetTextShadow"))
+                return NULL;
+
+        get_text_shadow(x_shadow, y_shadow);
+
+        Py_INCREF(Py_None);
+        shadowObj = Py_None;
+
+        xShadowObj = PyInt_FromLong(x_shadow);
+        shadowObj = add_item(shadowObj, xShadowObj);
+
+        yShadowObj = PyInt_FromLong(y_shadow);
+        shadowObj = add_item(shadowObj, yShadowObj);
+
+        return shadowObj;
 }
 
 
@@ -1013,35 +1042,81 @@ PyObject *raster_GetSize(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x10002ae4
-PyObject* raster_SetWindowSize(PyObject* self, PyObject* args) {
-        assert("raster_SetWindowSize" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10002AE4
+*/
+
+PyObject *raster_SetWindowSize(PyObject *self, PyObject *args) {
+        int w = -1, h = -1;
+        int code;
+
+        if (!PyArg_ParseTuple(args, "|ii:SetWindowSize", &w, &h))
+                return NULL;
+
+        code = set_window_size(w, h);
+
+        return Py_BuildValue("i", code);
 }
 
 
-// TODO implement
-// address: 0x10002b4f
-PyObject* raster_GetWindowSize(PyObject* self, PyObject* args) {
-        assert("raster_GetWindowSize" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10002B4F
+*/
+
+PyObject *raster_GetWindowSize(PyObject *self, PyObject *args) {
+        int code, w, h;
+        PyObject *sizeObj, *wObj, *hObj;
+
+        if (!PyArg_ParseTuple(args, ":GetWindowSize"))
+                return NULL;
+
+        code = get_window_size(w, h);
+
+        sizeObj = Py_BuildValue("i", code);
+
+        wObj = PyInt_FromLong(w);
+        sizeObj = add_item(sizeObj, wObj);
+
+        hObj = PyInt_FromLong(h);
+        sizeObj = add_item(sizeObj, hObj);
+
+        return sizeObj;
 }
 
 
-// TODO implement
-// address: 0x10002bfa
-PyObject* raster_FullScreen(PyObject* self, PyObject* args) {
-        assert("raster_FullScreen" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10002BFA
+*/
+
+PyObject *raster_FullScreen(PyObject *self, PyObject *args) {
+        int code;
+
+        if (!PyArg_ParseTuple(args, ":FullScreen"))
+                return NULL;
+
+        code = full_screen();
+
+        return Py_BuildValue("i", code);
 }
 
 
-// TODO implement
-// address: 0x10002c44
-PyObject* raster_nVideoModes(PyObject* self, PyObject* args) {
-        assert("raster_nVideoModes" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10002C44
+*/
+
+PyObject *raster_nVideoModes(PyObject *self, PyObject *args) {
+        int num_modes;
+
+        if (!PyArg_ParseTuple(args, ":nVideoModes"))
+                return NULL;
+
+        num_modes = n_video_modes();
+
+        return Py_BuildValue("i", num_modes);
 }
 
 
@@ -1053,20 +1128,61 @@ PyObject* raster_GetVideoModeDscr(PyObject* self, PyObject* args) {
 }
 
 
-// TODO implement
-// address: 0x10002dd1
-PyObject* raster_SetVideoMode(PyObject* self, PyObject* args) {
-        assert("raster_SetVideoMode" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10002DD1
+*/
+
+PyObject *raster_SetVideoMode(PyObject *self, PyObject *args) {
+        int mode_index, code;
+
+        if (!PyArg_ParseTuple(args, "i:SetVideoMode", &mode_index))
+                return NULL;
+
+        code = set_video_mode(mode_index);
+
+        return Py_BuildValue("i", code);
 }
 
 
-// TODO implement
-// address: 0x10002e26
-PyObject* raster_GetCurrentMode(PyObject* self, PyObject* args) {
-        assert("raster_GetCurrentMode" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10002E26
+*/
+
+PyObject *raster_GetCurrentMode(PyObject *self, PyObject *args) {
+        PyObject *curModeObj, *unknown1Obj, *unknown2Obj, *unknown3Obj;
+        PyObject *unknown4Obj, *unknown5Obj;
+        int unknown1, unknown2, unknown3, unknown4, unknown5;
+        int code;
+
+        if (!PyArg_ParseTuple(args, ":GetCurrentMode"))
+                return NULL;
+
+        code = get_current_mode(
+                unknown1, unknown2, unknown3, unknown4, unknown5
+        );
+
+        curModeObj = Py_BuildValue("i", code);
+
+        unknown1Obj = PyInt_FromLong(unknown1);
+        curModeObj = add_item(curModeObj, unknown1Obj);
+
+        unknown2Obj = PyInt_FromLong(unknown2);
+        curModeObj = add_item(curModeObj, unknown2Obj);
+
+        unknown3Obj = PyInt_FromLong(unknown3);
+        curModeObj = add_item(curModeObj, unknown3Obj);
+
+        unknown4Obj = PyInt_FromLong(unknown4);
+        curModeObj = add_item(curModeObj, unknown4Obj);
+
+        unknown5Obj = PyInt_FromLong(unknown5);
+        curModeObj = add_item(curModeObj, unknown5Obj);
+
+        return curModeObj;
 }
+
 
 /*
 * Module:                 Raster.dll
@@ -1103,19 +1219,50 @@ PyObject *raster_SetDomeColor(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x10003014
-PyObject* raster_GetDomeColor(PyObject* self, PyObject* args) {
-        assert("raster_GetDomeColor" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10003014
+*/
+
+PyObject *raster_GetDomeColor(PyObject *self, PyObject *args) {
+        PyObject *domeColorObj, *rObj, *gObj, *bObj;
+        byte r, g, b;
+
+        if (!PyArg_ParseTuple(args, ":GetDomeColor"))
+                return NULL;
+
+        get_dome_color(r, g, b);
+
+        Py_INCREF(Py_None);
+        domeColorObj = Py_None;
+
+        rObj = PyInt_FromLong(r);
+        domeColorObj = add_item(domeColorObj, rObj);
+
+        gObj = PyInt_FromLong(g);
+        domeColorObj = add_item(domeColorObj, gObj);
+
+        bObj = PyInt_FromLong(b);
+        domeColorObj = add_item(domeColorObj, bObj);
+
+        return domeColorObj;
 }
 
 
-// TODO implement
-// address: 0x100030f5
-PyObject* raster_UnifyRenderBuffers(PyObject* self, PyObject* args) {
-        assert("raster_UnifyRenderBuffers" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100030F5
+*/
+
+PyObject *raster_UnifyRenderBuffers(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ":UnifyRenderBuffers"))
+                return NULL;
+
+        unify_render_buffers();
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
@@ -1129,3 +1276,10 @@ INIT_PY_MODULE_FUNC initRaster()
 //TODO implement properly
         Py_InitModule("Raster", methods);
 }
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/

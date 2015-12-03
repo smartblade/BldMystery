@@ -281,6 +281,26 @@ float get_text_blur_alpha() {
 
 /*
 * Module:                 Raster.dll
+* Entry point:            0x10003925
+*/
+
+void set_text_shadow(int x_shadow, int y_shadow) {
+         B_3D_raster_device->set_text_shadow(x_shadow, y_shadow);
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10003946
+*/
+
+void get_text_shadow(int &x_shadow, int &y_shadow) {
+        B_3D_raster_device->get_text_shadow(x_shadow, y_shadow);
+}
+
+
+/*
+* Module:                 Raster.dll
 * Entry point:            0x10003967
 */
 
@@ -435,12 +455,83 @@ void get_size(int &w, int &h) {
         B_3D_raster_device->get_size(w, h);
 }
 
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10003BE6
+*/
+
+int set_window_size(int w, int h) {
+        return B_3D_raster_device->set_window_size(w, h);
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10003C07
+*/
+
+int get_window_size(int &w, int &h) {
+        return B_3D_raster_device->get_window_size(w, h);
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10003C28
+*/
+
+int full_screen() {
+        return B_3D_raster_device->full_screen();
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10003C40
+*/
+
+int n_video_modes() {
+        return B_3D_raster_device->n_video_modes();
+}
+
 /*
 ................................................................................
 ................................................................................
 ................................................................................
 ................................................................................
 */
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10003C88
+*/
+
+int set_video_mode(int mode_index) {
+        return B_3D_raster_device->set_video_mode(mode_index);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10003CCE
+*/
+
+int get_current_mode(
+        int &unknown1, int &unknown2, int &unknown3, int &unknown4,
+        int &unknown5
+) {
+        return B_3D_raster_device->get_current_mode(
+                unknown1, unknown2, unknown3, unknown4, unknown5
+        );
+}
+
 
 /*
 * Module:                 Raster.dll
@@ -471,9 +562,22 @@ void set_dome_color(byte r, byte g, byte b) {
         B_3D_raster_device->set_dome_color(r, g, b);
 }
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Raster.dll
+* Entry point:            0x10003D54
 */
+
+void get_dome_color(byte &r, byte &g, byte &b) {
+        B_3D_raster_device->get_dome_color(r, g, b);
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10003DA6
+*/
+
+void unify_render_buffers() {
+        B_3D_raster_device->unify_render_buffers();
+}

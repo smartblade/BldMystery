@@ -53,7 +53,7 @@ public:
         virtual void cls(boolean unknown1, boolean unknown2, boolean unknown3) = 0;
         virtual void unknown0A0() = 0;
         virtual void set_dome_color(byte r, byte g, byte b) = 0;
-        virtual void unknown0A8() = 0;
+        virtual void get_dome_color(byte &r, byte &g, byte &b) = 0;
         virtual void unknown0AC() = 0;
         virtual void unknown0B0() = 0;
         virtual void unknown0B4() = 0;
@@ -88,7 +88,7 @@ public:
         virtual void unknown120() = 0;
         virtual void unknown124() = 0;
         virtual void unknown128() = 0;
-        virtual void unknown12C() = 0;
+        virtual void unify_render_buffers() = 0;
         virtual void unknown130() = 0;
         virtual void unknown134() = 0;
         virtual void unknown138() = 0;
@@ -116,8 +116,8 @@ public:
         virtual int get_text_mode() = 0;
         virtual void unknown194() = 0;
         virtual void unknown198() = 0;
-        virtual void unknown19C() = 0;
-        virtual void unknown1A0() = 0;
+        virtual void set_text_shadow(int x_shadow, int y_shadow) = 0;
+        virtual void get_text_shadow(int &x_shadow, int &y_shadow) = 0;
         virtual void unknown1A4() = 0;
         virtual void unknown1A8() = 0;
         virtual void unknown1AC() = 0;
@@ -151,14 +151,17 @@ public:
         virtual const char *get_raster_parameter(const char *parameter) = 0;
         virtual void get_size(int &w, int &h) = 0;
         virtual void unknown204() = 0;
-        virtual void unknown208() = 0;
-        virtual void unknown20C() = 0;
-        virtual void unknown210() = 0;
+        virtual int set_window_size(int w, int h) = 0;
+        virtual int get_window_size(int &w, int &h) = 0;
+        virtual int n_video_modes() = 0;
         virtual void unknown214() = 0;
         virtual void unknown218() = 0;
-        virtual void unknown21C() = 0;
-        virtual void unknown220() = 0;
-        virtual void unknown224() = 0;
+        virtual int set_video_mode(int mode_index) = 0;
+        virtual int get_current_mode(
+                int &unknown1, int &unknown2, int &unknown3, int &unknown4,
+                int &unknown5
+        ) = 0;
+        virtual int full_screen() = 0;
         virtual void unknown228() = 0;
         virtual void unknown22C() = 0;
         virtual const char *class_id_name() = 0;
