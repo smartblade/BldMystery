@@ -89,10 +89,10 @@ public:
         virtual void unknown124() = 0;
         virtual void unknown128() = 0;
         virtual void unify_render_buffers() = 0;
-        virtual void unknown130() = 0;
-        virtual void unknown134() = 0;
-        virtual void unknown138() = 0;
-        virtual void unknown13C() = 0;
+        virtual void set_clip_window(int x, int y, int w, int h) = 0;
+        virtual void get_clip_window(int &x, int &y, int &w, int &h) = 0;
+        virtual void set_clip_active(int clip_active) = 0;
+        virtual int get_clip_active() = 0;
         virtual void unknown140() = 0;
         virtual void unknown144() = 0;
         virtual void unknown148() = 0;
@@ -118,14 +118,18 @@ public:
         virtual void unknown198() = 0;
         virtual void set_text_shadow(int x_shadow, int y_shadow) = 0;
         virtual void get_text_shadow(int &x_shadow, int &y_shadow) = 0;
-        virtual void unknown1A4() = 0;
-        virtual void unknown1A8() = 0;
-        virtual void unknown1AC() = 0;
-        virtual void unknown1B0() = 0;
+        virtual void set_text_scale(float scale_x, float scale_y)  = 0;
+        virtual void get_text_scale(float &scale_x, float &scale_y) = 0;
+        virtual void set_text_blur(
+                int unknown1, int unknown2, int unknown3, int unknown4
+        ) = 0;
+        virtual void get_text_blur(
+                int &unknown1, int &unknown2, int &unknown3, int &unknown4
+        ) = 0;
         virtual void set_text_color(byte r, byte g, byte b) = 0;
         virtual void unknown1B8() = 0;
         virtual void set_text_alpha(float alpha) = 0;
-        virtual void unknown1C0() = 0;
+        virtual void set_text_blur_color(byte r, byte g, byte b) = 0;
         virtual void unknown1C4() = 0;
         virtual void set_text_blur_alpha(float alpha) = 0;
         virtual void unknown1CC() = 0;
@@ -139,7 +143,10 @@ public:
                 int w, int h, const char *color_style, const char *is_normal,
                 long image_data
         ) = 0;
-        virtual void unknown1EC() = 0;
+        virtual int get_image(
+                int x, int y, int w, int h, const char *color_style,
+                const char *stretch_or_centered, int image_size, long image_data
+        ) = 0;
         virtual void set_background_image(
                 int w, int h, const char *is_rgb, const char *is_normal,
                 const char *stretch_or_centered, long image_data
@@ -154,7 +161,10 @@ public:
         virtual int set_window_size(int w, int h) = 0;
         virtual int get_window_size(int &w, int &h) = 0;
         virtual int n_video_modes() = 0;
-        virtual void unknown214() = 0;
+        virtual int get_video_mode_dscr(
+                int mode_index, int &depth, int &w, int &h, int &unknown,
+                int &frequency
+        ) = 0;
         virtual void unknown218() = 0;
         virtual int set_video_mode(int mode_index) = 0;
         virtual int get_current_mode(

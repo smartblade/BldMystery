@@ -710,11 +710,21 @@ PyObject *raster_SetTextAlpha(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x1000200b
-PyObject* raster_SetTextBlurColor(PyObject* self, PyObject* args) {
-        assert("raster_SetTextBlurColor" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x1000200B
+*/
+
+PyObject *raster_SetTextBlurColor(PyObject *self, PyObject *args) {
+        int r, g, b;
+
+        if (!PyArg_ParseTuple(args, "iii:SetTextBlurColor", &r, &g, &b))
+                return NULL;
+
+        set_text_blur_color(r, g, b);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
@@ -764,35 +774,103 @@ PyObject *raster_GetTextBlurAlpha(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x10002164
-PyObject* raster_SetTextBlur(PyObject* self, PyObject* args) {
-        assert("raster_SetTextBlur" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10002164
+*/
+
+PyObject *raster_SetTextBlur(PyObject *self, PyObject *args) {
+        int unknown1, unknown2, unknown3, unknown4;
+
+        if (!PyArg_ParseTuple(
+                args, "iiii:SetTextBlur", &unknown1, &unknown2, &unknown3,
+                &unknown4
+        ))
+                return NULL;
+
+        set_text_blur(unknown1, unknown2, unknown3, unknown4);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
-// TODO implement
-// address: 0x100021d4
-PyObject* raster_GetTextBlur(PyObject* self, PyObject* args) {
-        assert("raster_GetTextBlur" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100021D4
+*/
+
+PyObject *raster_GetTextBlur(PyObject *self, PyObject *args) {
+        PyObject *textBlurObj;
+        PyObject *unknown1Obj, *unknown2Obj, *unknown3Obj, *unknown4Obj;
+        int unknown1, unknown2, unknown3, unknown4;
+
+        if (!PyArg_ParseTuple(args, ":GetTextBlur"))
+                return NULL;
+
+        get_text_blur(unknown1, unknown2, unknown3, unknown4);
+
+        Py_INCREF(Py_None);
+        textBlurObj = Py_None;
+
+        unknown1Obj = PyInt_FromLong(unknown1);
+        textBlurObj = add_item(textBlurObj, unknown1Obj);
+
+        unknown2Obj = PyInt_FromLong(unknown2);
+        textBlurObj = add_item(textBlurObj, unknown2Obj);
+
+        unknown3Obj = PyInt_FromLong(unknown3);
+        textBlurObj = add_item(textBlurObj, unknown3Obj);
+
+        unknown4Obj = PyInt_FromLong(unknown4);
+        textBlurObj = add_item(textBlurObj, unknown4Obj);
+
+        return textBlurObj;
 }
 
 
-// TODO implement
-// address: 0x100022e3
-PyObject* raster_SetTextScale(PyObject* self, PyObject* args) {
-        assert("raster_SetTextScale" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100022E3
+*/
+
+PyObject *raster_SetTextScale(PyObject *self, PyObject *args) {
+        float scale_x, scale_y;
+
+        if (!PyArg_ParseTuple(args, "ff:SetTextScale", &scale_x, &scale_y))
+                return NULL;
+
+        set_text_scale(scale_x, scale_y);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
-// TODO implement
-// address: 0x10002342
-PyObject* raster_GetTextScale(PyObject* self, PyObject* args) {
-        assert("raster_GetTextScale" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10002342
+*/
+
+PyObject *raster_GetTextScale(PyObject *self, PyObject *args) {
+        PyObject *textScaleObj, *scaleXObj, *scaleYObj;
+        float scale_x, scale_y;
+
+        if (!PyArg_ParseTuple(args, ":GetTextScale"))
+                return NULL;
+
+        get_text_scale(scale_x, scale_y);
+
+        Py_INCREF(Py_None);
+        textScaleObj = Py_None;
+
+        scaleXObj = PyFloat_FromDouble(scale_x);
+        textScaleObj = add_item(textScaleObj, scaleXObj);
+
+        scaleYObj = PyFloat_FromDouble(scale_y);
+        textScaleObj = add_item(textScaleObj, scaleYObj);
+
+        return textScaleObj;
 }
 
 
@@ -836,12 +914,30 @@ PyObject *raster_SysWrite(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x100024d2
-PyObject* raster_GetImage(PyObject* self, PyObject* args) {
-        assert("raster_GetImage" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100024D2
+*/
+
+PyObject *raster_GetImage(PyObject *self, PyObject *args) {
+        int x, y, w, h, image_size, code;
+        char *color_style, *stretch_or_centered;
+        long image_data;
+
+        if (!PyArg_ParseTuple(
+                args, "iiiissil:GetImage", &x, &y, &w, &h, &color_style,
+                &stretch_or_centered, &image_size, &image_data
+        ))
+                return NULL;
+
+        code = get_image(
+                x, y, w, h, color_style, stretch_or_centered, image_size,
+                image_data
+        );
+
+        return Py_BuildValue("i", code);
 }
+
 
 /*
 * Module:                 Raster.dll
@@ -926,36 +1022,90 @@ PyObject *raster_RemoveBackgroundImage(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x1000270c
-PyObject* raster_SetClipWindow(PyObject* self, PyObject* args) {
-        assert("raster_SetClipWindow" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x1000270C
+*/
+
+PyObject *raster_SetClipWindow(PyObject *self, PyObject *args) {
+        int x, y, w, h;
+
+        if (!PyArg_ParseTuple(args, "iiii:SetClipWindow", &x, &y, &w, &h))
+                return NULL;
+
+        set_clip_window(x, y, w, h);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
-// TODO implement
-// address: 0x1000277c
-PyObject* raster_GetClipWindow(PyObject* self, PyObject* args) {
-        assert("raster_GetClipWindow" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x1000277C
+*/
+
+PyObject *raster_GetClipWindow(PyObject *self, PyObject *args) {
+        PyObject *clipWindowObj, *xObj, *yObj, *wObj, *hObj;
+        int x, y, w, h;
+
+        if (!PyArg_ParseTuple(args, ":GetClipWindow"))
+                return NULL;
+
+        get_clip_window(x, y, w, h);
+
+        Py_INCREF(Py_None);
+        clipWindowObj = Py_None;
+
+        xObj = PyInt_FromLong(x);
+        clipWindowObj = add_item(clipWindowObj, xObj);
+
+        yObj = PyInt_FromLong(y);
+        clipWindowObj = add_item(clipWindowObj, yObj);
+
+        wObj = PyInt_FromLong(w);
+        clipWindowObj = add_item(clipWindowObj, wObj);
+
+        hObj = PyInt_FromLong(h);
+        clipWindowObj = add_item(clipWindowObj, hObj);
+
+        return clipWindowObj;
 }
 
 
-// TODO implement
-// address: 0x1000288b
-PyObject* raster_SetClipActive(PyObject* self, PyObject* args) {
-        assert("raster_SetClipActive" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x1000288B
+*/
+
+PyObject *raster_SetClipActive(PyObject *self, PyObject *args) {
+        int clip_active;
+
+        if (!PyArg_ParseTuple(args, "i:SetClipActive", &clip_active))
+                return NULL;
+
+        set_clip_active(clip_active);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
-// TODO implement
-// address: 0x100028e3
-PyObject* raster_GetClipActive(PyObject* self, PyObject* args) {
-        assert("raster_GetClipActive" == NULL);
-        return NULL;
-}
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100028E3
+*/
+
+PyObject *raster_GetClipActive(PyObject *self, PyObject *args) {
+        int clip_active;
+
+        if (!PyArg_ParseTuple(args, ":GetClipActive"))
+                return NULL;
+
+        clip_active = get_clip_active(); 
+
+        return Py_BuildValue("i", clip_active);
+ }
 
 
 /*
@@ -1120,11 +1270,41 @@ PyObject *raster_nVideoModes(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x10002c8e
-PyObject* raster_GetVideoModeDscr(PyObject* self, PyObject* args) {
-        assert("raster_GetVideoModeDscr" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10002C8E
+*/
+
+PyObject *raster_GetVideoModeDscr(PyObject *self, PyObject *args) {
+        PyObject *modeDscrObj; 
+        PyObject *depthObj, *wObj, *hObj, *unknownObj, *frequencyObj;
+        int code, mode_index, depth, w, h, unknown, frequency;
+
+        if (!PyArg_ParseTuple(args, "i:GetVideoModeDscr", &mode_index))
+                return NULL;
+
+        code = get_video_mode_dscr(
+                mode_index, depth, w, h, unknown, frequency
+        );
+
+        modeDscrObj = Py_BuildValue("i", code);
+
+        depthObj = PyInt_FromLong(depth);
+        modeDscrObj = add_item(modeDscrObj, depthObj);
+
+        wObj = PyInt_FromLong(w);
+        modeDscrObj = add_item(modeDscrObj, wObj);
+
+        hObj = PyInt_FromLong(h);
+        modeDscrObj = add_item(modeDscrObj, hObj);
+
+        unknownObj = PyInt_FromLong(unknown);
+        modeDscrObj = add_item(modeDscrObj, unknownObj);
+
+        frequencyObj = PyInt_FromLong(frequency);
+        modeDscrObj = add_item(modeDscrObj, frequencyObj);
+
+        return modeDscrObj;
 }
 
 

@@ -170,6 +170,26 @@ int get_text_mode() {
         return B_3D_raster_device->get_text_mode();
 }
 
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100036F5
+*/
+
+void set_text_scale(float scale_x, float scale_y) {
+        B_3D_raster_device->set_text_scale(scale_x, scale_y);
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10003716
+*/
+
+void get_text_scale(float &scale_x, float &scale_y) {
+        B_3D_raster_device->get_text_scale(scale_x, scale_y);
+}
+
 /*
 ................................................................................
 ................................................................................
@@ -246,12 +266,16 @@ void set_alpha(float alpha) {
         B_3D_raster_device->set_alpha(alpha);
 }
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Raster.dll
+* Entry point:            0x1000387A
 */
+ 
+void set_text_blur_color(byte r, byte g, byte b) {
+        B_3D_raster_device->set_text_blur_color(r, g, b);
+}
+
 
 /*
 * Module:                 Raster.dll
@@ -272,12 +296,39 @@ float get_text_blur_alpha() {
         return B_3D_raster_device->get_text_blur_alpha();
 }
 
+
 /*
 ................................................................................
 ................................................................................
 ................................................................................
 ................................................................................
 */
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100038D3
+*/
+
+void set_text_blur(int unknown1, int unknown2, int unknown3, int unknown4) {
+        B_3D_raster_device->set_text_blur(
+                unknown1, unknown2, unknown3, unknown4
+        );
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x100038FC
+*/
+ 
+void get_text_blur(
+        int &unknown1, int &unknown2, int &unknown3, int &unknown4
+) {
+        B_3D_raster_device->get_text_blur(
+                unknown1, unknown2, unknown3, unknown4
+        );
+}
+
 
 /*
 * Module:                 Raster.dll
@@ -358,12 +409,22 @@ void sys_write(int x, int y, const char *text, byte r, byte g, byte b) {
         B_3D_raster_device->sys_write(x, y, text, r, g, b);
 }
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Raster.dll
+* Entry point:            0x10003A25
 */
+
+int get_image(
+        int x, int y, int w, int h, const char *color_style,
+        const char *stretch_or_centered, int image_size, long image_data
+) {
+        return B_3D_raster_device->get_image(
+                x, y, w, h, color_style, stretch_or_centered, image_size,
+                image_data
+        );
+}
+
 
 /*
 * Module:                 Raster.dll
@@ -412,12 +473,25 @@ void draw_bitmap(long handle, int w, int h) {
         B_3D_raster_device->draw_bitmap(handle, w, h);
 }
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Raster.dll
+* Entry point:            0x10003B00
 */
+
+void set_clip_window(int x, int y, int w, int h) {
+        B_3D_raster_device->set_clip_window(x, y, w, h);
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10003B29
+*/
+
+void get_clip_window(int &x, int &y, int &w, int &h) {
+        B_3D_raster_device->get_clip_window(x, y, w, h);
+}
 
 
 /*
@@ -439,12 +513,26 @@ const char *get_raster_parameter(const char *parameter) {
         return B_3D_raster_device->get_raster_parameter(parameter);
 }
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Raster.dll
+* Entry point:            0x10003B90
 */
+
+void set_clip_active(int clip_active) {
+        B_3D_raster_device->set_clip_active(clip_active);
+}
+
+
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10003BAD
+*/
+
+int get_clip_active() {
+        return B_3D_raster_device->get_clip_active();
+}
+
 
 /*
 * Module:                 Raster.dll
@@ -495,12 +583,21 @@ int n_video_modes() {
         return B_3D_raster_device->n_video_modes();
 }
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Raster.dll
+* Entry point:            0x10003C58
 */
+
+int get_video_mode_dscr(
+        int mode_index, int &depth, int &w, int &h, int &unknown,
+        int &frequency
+) {
+        return B_3D_raster_device->get_video_mode_dscr(
+                mode_index, depth, w, h, unknown, frequency
+        );
+}
+
 
 /*
 * Module:                 Raster.dll
