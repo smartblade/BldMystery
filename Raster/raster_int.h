@@ -39,6 +39,8 @@ extern void set_text_mode(int text_mode);
 extern int get_text_mode(void);
 extern void set_text_scale(float scale_x, float scale_y);
 extern void get_text_scale(float &scale_x, float &scale_y);
+extern void line(int x1, int y1, int x2, int y2);
+extern void line_to(int x, int y);
 extern void rectangle(int x1, int y1, int x2, int y2);
 extern void solid_rectangle(int x1, int y1, int x2, int y2);
 extern void set_position(float x, float y);

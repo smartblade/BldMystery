@@ -95,8 +95,8 @@ public:
         virtual int get_clip_active() = 0;
         virtual void unknown140() = 0;
         virtual void unknown144() = 0;
-        virtual void unknown148() = 0;
-        virtual void unknown14C() = 0;
+        virtual void line(int x1, int y1, int x2, int y2) = 0;
+        virtual void line_to(int x, int y) = 0;
         virtual void rectangle(int x1, int y1, int x2, int y2) = 0;
         virtual void solid_rectangle(int x1, int y1, int x2, int y2) = 0;
         virtual void unknown158() = 0;

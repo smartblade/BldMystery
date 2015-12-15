@@ -1,4 +1,4 @@
-#undef NDEBUG // TODO remove
+
 #include "raster_int.h"
 
 static PyObject* raster_Cls(PyObject* self, PyObject* args);
@@ -464,19 +464,39 @@ PyObject *raster_GetTextMode(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x10001a00
-PyObject* raster_Line(PyObject* self, PyObject* args) {
-        assert("raster_Line" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10001A00
+*/
+
+PyObject *raster_Line(PyObject *self, PyObject *args) {
+        int x1, y1, x2, y2;
+
+        if (!PyArg_ParseTuple(args, "iiii:Line", &x1, &y1, &x2, &y2))
+                return NULL;
+
+        line(x1, y1, x2, y2);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
-// TODO implement
-// address: 0x10001a70
-PyObject* raster_LineTo(PyObject* self, PyObject* args) {
-        assert("raster_LineTo" == NULL);
-        return NULL;
+/*
+* Module:                 Raster.dll
+* Entry point:            0x10001A70
+*/
+
+PyObject *raster_LineTo(PyObject *self, PyObject *args) {
+        int x, y;
+
+        if (!PyArg_ParseTuple(args, "ii:LineTo", &x, &y))
+                return NULL;
+
+        line_to(x, y);
+
+        Py_INCREF(Py_None);
+        return Py_None;
 }
 
 
