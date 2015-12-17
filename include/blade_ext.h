@@ -1321,5 +1321,24 @@ LIB_EXP int SetInputMode(const char *device, const char *mode);
 LIB_EXP const char *GetInputMode(const char *device);
 LIB_EXP void SaveScreeShoot(const char *filename, int width, int height);
 LIB_EXP void CleanArea(double x, double y, double z, float distance);
+LIB_EXP void SetLocalOptions(
+        const char *name, const char *kind, const char *weapon,
+        const char *shield, const char *map
+);
+LIB_EXP void RestartNet(void);
+LIB_EXP boolean StartServer(
+        const char *game_name, const char *player_name, int max_players,
+        boolean TCP
+);
+LIB_EXP void NetAddPosition(double x, double y, double z);
+LIB_EXP void GetLocalOptionsNet(
+        const char **name, const char **kind, const char **weapon,
+        const char **shield
+);
+LIB_EXP void GetNextPosition(double *x, double *y, double *z);
+LIB_EXP int GetNetState(void);
+LIB_EXP int NetSetPPS(int PPS);
+LIB_EXP int IsValidProtocol(int protocol);
+LIB_EXP int GetDedicatedServerState(void);
 
 #endif /* BLADE_EXT_H */
