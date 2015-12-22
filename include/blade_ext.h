@@ -42,6 +42,12 @@ typedef struct {
         double z;
 } point_3d_t;
 
+typedef struct {
+	char name[128];
+	int num_players;
+	int max_players;
+} bld_server_info;
+
 
 #define CHR_FLT_TURN_SPEED                0
 #define CHR_FLT_DIE_FALL                  1
@@ -1326,9 +1332,16 @@ LIB_EXP void SetLocalOptions(
         const char *shield, const char *map
 );
 LIB_EXP void RestartNet(void);
+LIB_EXP boolean JoinSession(int index, const char *player_name);
+LIB_EXP boolean GetBrowseResult(int index, bld_server_info *info);
+LIB_EXP boolean BrowseSessions(const char *ip_address);
 LIB_EXP boolean StartServer(
         const char *game_name, const char *player_name, int max_players,
         boolean TCP
+);
+LIB_EXP boolean NetSetObjectState(const char *entity_name, boolean state);
+LIB_EXP void NetAddEventUserFunc(
+        const char *action, PyObject *func, int ignore_host
 );
 LIB_EXP void NetAddPosition(double x, double y, double z);
 LIB_EXP void GetLocalOptionsNet(
@@ -1336,7 +1349,16 @@ LIB_EXP void GetLocalOptionsNet(
         const char **shield
 );
 LIB_EXP void GetNextPosition(double *x, double *y, double *z);
+LIB_EXP void SendNetUserString(
+        short kind, const char *str, int i_unknown, const char *str_unknown
+);
+LIB_EXP void ServerSetPyGetUserString(PyObject *func);
+LIB_EXP void ServerSetPyByePlayerFunc(PyObject *func);
+LIB_EXP void GetLifeAndLevel(const char *entity_name, int *energy, int *life);
 LIB_EXP int GetNetState(void);
+LIB_EXP void ServerSetPyCreatePlayerFunc(PyObject *func);
+LIB_EXP boolean ClientStartMainChar(void);
+LIB_EXP int ServerSetSendDataState(int state);
 LIB_EXP int NetSetPPS(int PPS);
 LIB_EXP int IsValidProtocol(int protocol);
 LIB_EXP int GetDedicatedServerState(void);

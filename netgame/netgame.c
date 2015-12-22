@@ -124,27 +124,64 @@ PyObject *net_RestartNet(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x100010d7
-PyObject* net_JoinSession(PyObject* self, PyObject* args) {
-        assert("net_JoinSession" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x100010D7
+*/
+
+PyObject *net_JoinSession(PyObject *self, PyObject *args) {
+        int index;
+        const char *player_name;
+        int status;
+
+        if (!PyArg_ParseTuple(args, "is", &index, &player_name))
+                return NULL;
+
+        status = JoinSession(index, player_name);
+
+        return Py_BuildValue("i", status);
 }
 
 
-// TODO implement
-// address: 0x1000112e
-PyObject* net_GetBrowseResult(PyObject* self, PyObject* args) {
-        assert("net_GetBrowseResult" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x1000112E
+*/
+
+PyObject *net_GetBrowseResult(PyObject *self, PyObject *args) {
+        int index;
+        bld_server_info info;
+
+        if (!PyArg_ParseTuple(args, "i", &index))
+                return NULL;
+
+        if (GetBrowseResult(index, &info))
+                return Py_BuildValue(
+                        "sii", info.name, info.num_players, info.max_players
+                );
+        else
+                return Py_BuildValue("");
 }
 
 
-// TODO implement
-// address: 0x100011a3
-PyObject* net_BrowseSessions(PyObject* self, PyObject* args) {
-        assert("0x100011a3" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x100011A3
+*/
+
+PyObject *net_BrowseSessions(PyObject *self, PyObject *args) {
+        const char *ip_address = NULL;
+        int status;
+
+        if (!PyArg_ParseTuple(args, "s", &ip_address))
+                return NULL;
+
+        if (!strcmp(ip_address, "[ipx]"))
+                ip_address = NULL;
+
+        status = BrowseSessions(ip_address);
+
+        return Py_BuildValue("i", status);
 }
 
 
@@ -238,19 +275,40 @@ PyObject* net_GetClientId(PyObject* self, PyObject* args) {
 }
 
 
-// TODO implement
-// address: 0x100014ef
-PyObject* net_SetObjectState(PyObject* self, PyObject* args) {
-        assert("net_SetObjectState" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x100014EF
+*/
+
+PyObject *net_SetObjectState(PyObject *self, PyObject *args) {
+        const char *entity_name;
+        int state, status;
+
+        if (!PyArg_ParseTuple(args, "si", &entity_name, &state))
+                return NULL;
+
+        status = NetSetObjectState(entity_name, (state != 0));
+
+        return Py_BuildValue("i", status);
 }
 
 
-// TODO implement
-// address: 0x1000154c
-PyObject* net_Bind(PyObject* self, PyObject* args) {
-        assert("net_Bind" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x1000154C
+*/
+ 
+PyObject *net_Bind(PyObject *self, PyObject *args) {
+        const char *action;
+        PyObject *func;
+        int ignore_host;
+
+        if (!PyArg_ParseTuple(args, "sOi", &action, &func, &ignore_host))
+                return NULL;
+
+        NetAddEventUserFunc(action, func, ignore_host);
+
+        return Py_BuildValue("");
 }
 
 
@@ -313,35 +371,74 @@ PyObject *net_GetNextPosition(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x100016f9
-PyObject* net_SendUserString(PyObject* self, PyObject* args) {
-        assert("net_SendUserString" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x100016F9
+*/
+
+PyObject *net_SendUserString(PyObject *self, PyObject *args) {
+        int kind;
+        const char *str = NULL;
+        const char *unknown_str = NULL;
+
+        if (!PyArg_ParseTuple(args, "is|s", &kind, &str, &unknown_str))
+                return NULL;
+
+        SendNetUserString(kind, str, 1, unknown_str);
+
+        return Py_BuildValue("");
 }
 
 
-// TODO implement
-// address: 0x1000175d
-PyObject* net_SetStringUserFunc(PyObject* self, PyObject* args) {
-        assert("net_SetStringUserFunc" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x1000175D
+*/
+
+PyObject *net_SetStringUserFunc(PyObject *self, PyObject *args) {
+        PyObject *func;
+
+        if (!PyArg_ParseTuple(args, "O", &func))
+                return NULL;
+
+        ServerSetPyGetUserString(func);
+
+        return Py_BuildValue("");
 }
 
 
-// TODO implement
-// address: 0x1000179e
-PyObject* net_SetByePlayerFunc(PyObject* self, PyObject* args) {
-        assert("net_SetByePlayerFunc" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x1000179E
+*/
+
+PyObject *net_SetByePlayerFunc(PyObject *self, PyObject *args) {
+        PyObject *func;
+
+        if (!PyArg_ParseTuple(args, "O", &func))
+                return NULL;
+
+        ServerSetPyByePlayerFunc(func);
+
+        return Py_BuildValue("");
 }
 
 
-// TODO implement
-// address: 0x100017df
-PyObject* net_GetPlayerData(PyObject* self, PyObject* args) {
-        assert("net_GetPlayerData" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x100017DF
+*/
+
+PyObject *net_GetPlayerData(PyObject *self, PyObject *args) {
+        const char *entity_name;
+        int energy, life;
+
+        if (!PyArg_ParseTuple(args, "s", &entity_name))
+                return NULL;
+
+        GetLifeAndLevel(entity_name, &energy, &life);
+
+        return Py_BuildValue("ii", energy, life);
 }
 
 
@@ -362,27 +459,54 @@ PyObject *net_GetNetState(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x1000186f
-PyObject* net_SetJoinPlayerFunc(PyObject* self, PyObject* args) {
-        assert("net_SetJoinPlayerFunc" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x1000186F
+*/
+
+PyObject *net_SetJoinPlayerFunc(PyObject *self, PyObject *args) {
+        PyObject *func;
+
+        if (!PyArg_ParseTuple(args, "O", &func))
+                return NULL;
+
+        ServerSetPyCreatePlayerFunc(func);
+
+        return Py_BuildValue("");
 }
 
 
-// TODO implement
-// address: 0x100018b0
-PyObject* net_CreateMainPlayer(PyObject* self, PyObject* args) {
-        assert("net_CreateMainPlayer" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x100018B0
+*/
+
+PyObject *net_CreateMainPlayer(PyObject *self, PyObject *args) {
+        int status;
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        status = ClientStartMainChar();
+
+        return Py_BuildValue("i", status);
 }
 
 
-// TODO implement
-// address: 0x100018f2
-PyObject* net_SetServerState(PyObject* self, PyObject* args) {
-        assert("net_SetServerState" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x100018F2
+*/
+
+PyObject *net_SetServerState(PyObject *self, PyObject *args) {
+        int state, status;
+
+        if (!PyArg_ParseTuple(args, "i", &state))
+                return NULL;
+
+        status = ServerSetSendDataState(state);
+
+        return Py_BuildValue("i", status);
 }
 
 
