@@ -80,11 +80,20 @@ static PyMethodDef methods[] = {
 };
 
 
-// TODO implement
-// address: 0x10001000
-PyObject* net_ServerChangeLevel(PyObject* self, PyObject* args) {
-        assert("net_ServerChangeLevel" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x10001000
+*/
+
+PyObject *net_ServerChangeLevel(PyObject *self, PyObject *args) {
+        const char *level_name;
+
+        if (!PyArg_ParseTuple(args, "s", &level_name))
+                return NULL;
+
+        NetServerChangeLevel(level_name);
+
+        return Py_BuildValue("");
 }
 
 
@@ -203,75 +212,161 @@ PyObject *net_StartServer(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x10001284
-PyObject* net_ServerInfoBlock(PyObject* self, PyObject* args) {
-        assert("net_ServerInfoBlock" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x10001284
+*/
+
+PyObject *net_ServerInfoBlock(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        return Py_BuildValue("s", ServerInfoBlock());
 }
 
 
-// TODO implement
-// address: 0x100012b8
-PyObject* net_CallEventSound(PyObject* self, PyObject* args) {
-        assert("net_CallEventSound" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x100012B8
+*/
+
+PyObject *net_CallEventSound(PyObject *self, PyObject *args) {
+        const char *entity_name;
+        int id;
+
+        if (!PyArg_ParseTuple(args, "si", &entity_name, &id))
+                return NULL;
+
+        CallNetEventSound(entity_name, id);
+
+        return Py_BuildValue("");
 }
 
 
-// TODO implement
-// address: 0x10001303
-PyObject* net_SetSoundFunc(PyObject* self, PyObject* args) {
-        assert("net_SetSoundFunc" == NULL);
-        return NULL;
+
+/*
+* Module:                 netgame.dll
+* Entry point:            0x10001303
+*/
+
+PyObject *net_SetSoundFunc(PyObject *self, PyObject *args) {
+        PyObject *func;
+
+        if (!PyArg_ParseTuple(args, "O", &func))
+                return NULL;
+
+        ClientSetPyClientSoundFunc(func);
+
+        return Py_BuildValue("");
 }
 
 
-// TODO implement
-// address: 0x10001344
-PyObject* net_SetMutilaFunc(PyObject* self, PyObject* args) {
-        assert("net_SetMutilaFunc" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x10001344
+*/
+
+PyObject *net_SetMutilaFunc(PyObject *self, PyObject *args) {
+        PyObject *func;
+
+        if (!PyArg_ParseTuple(args, "O", &func))
+                return NULL;
+
+        ClientSetPyClientMutilaFunc(func);
+
+        return Py_BuildValue("");
 }
 
 
-// TODO implement
-// address: 0x10001385
-PyObject* net_SetClientDamageFunc(PyObject* self, PyObject* args) {
-        assert("net_SetClientDamageFunc" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x10001385
+*/
+
+PyObject *net_SetClientDamageFunc(PyObject *self, PyObject *args) {
+        PyObject *func;
+
+        if (!PyArg_ParseTuple(args, "O", &func))
+                return NULL;
+
+        ClientSetPyClientDamageFunc(func);
+
+        return Py_BuildValue("");
 }
 
 
-// TODO implement
-// address: 0x100013c6
-PyObject* net_SendUnguaranteedUserString(PyObject* self, PyObject* args) {
-        assert("net_SendUnguaranteedUserString" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x100013C6
+*/
+
+PyObject *net_SendUnguaranteedUserString(PyObject *self, PyObject *args) {
+        int kind;
+        const char *str = NULL;
+        const char *unknown_str = NULL;
+
+        if (!PyArg_ParseTuple(args, "is|s", &kind, &str, &unknown_str))
+                return NULL;
+
+        SendNetUserString(kind, str, FALSE, unknown_str);
+
+        return Py_BuildValue("");
 }
 
 
-// TODO implement
-// address: 0x1000142a
-PyObject* net_AddSoundToClient(PyObject* self, PyObject* args) {
-        assert("net_AddSoundToClient" == NULL);
-        return NULL;
+
+/*
+* Module:                 netgame.dll
+* Entry point:            0x1000142A
+*/
+
+PyObject *net_AddSoundToClient(PyObject *self, PyObject *args) {
+        const char *entity_name, *animation_name;
+        PyObject *sound_object;
+        int status = 0;
+
+        if (!PyArg_ParseTuple(
+                args, "ssO", &entity_name, &animation_name, &sound_object
+        ))
+                return NULL;
+
+        NetAddSoundToClient(entity_name, animation_name, sound_object);
+
+        return Py_BuildValue("i", status);
 }
 
 
-// TODO implement
-// address: 0x10001488
-PyObject* net_ClearPools(PyObject* self, PyObject* args) {
-        assert("net_ClearPools" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x10001488
+*/
+
+PyObject *net_ClearPools(PyObject *self, PyObject *args) {
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        ClearPools();
+
+        return Py_BuildValue("");
 }
 
 
-// TODO implement
-// address: 0x100014bb
-PyObject* net_GetClientId(PyObject* self, PyObject* args) {
-        assert("net_GetClientId" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x100014BB
+*/
+
+PyObject *net_GetClientId(PyObject *self, PyObject *args) {
+        const char *client_id;
+
+        if (!PyArg_ParseTuple(args, ""))
+                return NULL;
+
+        client_id = NetGetClientId();
+
+        return Py_BuildValue("s", client_id);
 }
 
 
@@ -329,11 +424,20 @@ PyObject *net_AddPosition(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x100015fe
-PyObject* net_SetPersonView(PyObject* self, PyObject* args) {
-        assert("net_SetPersonView" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x100015FE
+*/
+ 
+PyObject *net_SetPersonView(PyObject *self, PyObject *args) {
+        const char *entity_name;
+
+        if (!PyArg_ParseTuple(args, "s", &entity_name))
+                return NULL;
+
+        NetSetPersonView(entity_name);
+
+        return Py_BuildValue("");
 }
 
 
@@ -384,7 +488,7 @@ PyObject *net_SendUserString(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "is|s", &kind, &str, &unknown_str))
                 return NULL;
 
-        SendNetUserString(kind, str, 1, unknown_str);
+        SendNetUserString(kind, str, TRUE, unknown_str);
 
         return Py_BuildValue("");
 }
@@ -510,11 +614,20 @@ PyObject *net_SetServerState(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x1000193a
-PyObject* net_GetTime(PyObject* self, PyObject* args) {
-        assert("net_GetTime" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x1000193A
+*/
+ 
+PyObject *net_GetTime(PyObject *self, PyObject *args) {
+        float time;
+
+        if (!PyArg_ParseTuple(args, ""))
+            return NULL;
+
+        time = NetGetTime();
+
+        return Py_BuildValue("d", time);
 }
 
 
@@ -569,19 +682,37 @@ PyObject *net_IsDedicated(PyObject *self, PyObject *args) {
 }
 
 
-// TODO implement
-// address: 0x10001a46
-PyObject* net_SetDedicated(PyObject* self, PyObject* args) {
-        assert("net_SetDedicated" == NULL);
-        return NULL;
+/*
+* Module:                 netgame.dll
+* Entry point:            0x10001A46
+*/
+
+PyObject *net_SetDedicated(PyObject *self, PyObject *args) {
+        int dedicated;
+
+        if (!PyArg_ParseTuple(args, "i", &dedicated))
+                return NULL;
+
+        SetDedicatedServerState(dedicated);
+
+        return Py_BuildValue("");
 }
 
+/*
+* Module:                 netgame.dll
+* Entry point:            0x10001A87
+*/
 
-// TODO implement
-// address: 0x10001a87
-PyObject* net_ChangeAnmSoundIndex(PyObject* self, PyObject* args) {
-        assert("net_ChangeAnmSoundIndex" == NULL);
-        return NULL;
+PyObject *net_ChangeAnmSoundIndex(PyObject *self, PyObject *args) {
+        const char *person_name;
+        int index;
+
+        if (!PyArg_ParseTuple(args, "si", &person_name, &index))
+                return NULL;
+
+        PersonChangeAnmSoundIndex(person_name, index);
+
+        return Py_BuildValue("");
 }
 
 

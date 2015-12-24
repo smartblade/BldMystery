@@ -1327,6 +1327,7 @@ LIB_EXP int SetInputMode(const char *device, const char *mode);
 LIB_EXP const char *GetInputMode(const char *device);
 LIB_EXP void SaveScreeShoot(const char *filename, int width, int height);
 LIB_EXP void CleanArea(double x, double y, double z, float distance);
+LIB_EXP void NetServerChangeLevel(const char *level_name);
 LIB_EXP void SetLocalOptions(
         const char *name, const char *kind, const char *weapon,
         const char *shield, const char *map
@@ -1339,18 +1340,30 @@ LIB_EXP boolean StartServer(
         const char *game_name, const char *player_name, int max_players,
         boolean TCP
 );
+LIB_EXP const char *ServerInfoBlock(void);
+LIB_EXP void CallNetEventSound(const char *entity_name, byte id);
+LIB_EXP void ClientSetPyClientSoundFunc(PyObject *func);
+LIB_EXP void ClientSetPyClientMutilaFunc(PyObject *func);
+LIB_EXP void ClientSetPyClientDamageFunc(PyObject *func);
+LIB_EXP void NetAddSoundToClient(
+        const char *entity_name, const char *animation_name,
+        PyObject *sound_object
+);
+LIB_EXP void ClearPools(void);
+LIB_EXP const char *NetGetClientId(void);
 LIB_EXP boolean NetSetObjectState(const char *entity_name, boolean state);
 LIB_EXP void NetAddEventUserFunc(
         const char *action, PyObject *func, int ignore_host
 );
 LIB_EXP void NetAddPosition(double x, double y, double z);
+LIB_EXP void NetSetPersonView(const char *entity_name);
 LIB_EXP void GetLocalOptionsNet(
         const char **name, const char **kind, const char **weapon,
         const char **shield
 );
 LIB_EXP void GetNextPosition(double *x, double *y, double *z);
 LIB_EXP void SendNetUserString(
-        short kind, const char *str, int i_unknown, const char *str_unknown
+        short kind, const char *str, int guaranteed, const char *str_unknown
 );
 LIB_EXP void ServerSetPyGetUserString(PyObject *func);
 LIB_EXP void ServerSetPyByePlayerFunc(PyObject *func);
@@ -1359,8 +1372,11 @@ LIB_EXP int GetNetState(void);
 LIB_EXP void ServerSetPyCreatePlayerFunc(PyObject *func);
 LIB_EXP boolean ClientStartMainChar(void);
 LIB_EXP int ServerSetSendDataState(int state);
+LIB_EXP float NetGetTime(void);
 LIB_EXP int NetSetPPS(int PPS);
 LIB_EXP int IsValidProtocol(int protocol);
 LIB_EXP int GetDedicatedServerState(void);
+LIB_EXP void SetDedicatedServerState(int dedicated);
+LIB_EXP void PersonChangeAnmSoundIndex(const char *person_name, int index);
 
 #endif /* BLADE_EXT_H */
