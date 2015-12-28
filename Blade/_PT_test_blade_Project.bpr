@@ -3,7 +3,7 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.06.00"/>
-    <PROJECT value="_PT_test_blade_Project.exe"/>
+    <PROJECT value="..\..\bin\_PT_test_blade_Project.exe"/>
     <OBJFILES value="_PT_Unit1.obj _PT_ext_funcs.obj"/>
     <RESFILES value="_PT_test_blade_Project.res"/>
     <IDLFILES value=""/>
@@ -43,7 +43,7 @@
     <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>
     <AFLAGS value="/mx /w2 /zd"/>
-    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn -v"/>
+    <LFLAGS value="-l..\..\lib -D&quot;&quot; -aa -Tpe -x -Gn -v"/>
     <OTHERFILES value=""/>
   </OPTIONS>
   <LINKER>
@@ -89,6 +89,30 @@ OriginalFilename=
 ProductName=
 ProductVersion=1.0.0.0
 Comments=
+
+[HistoryLists\hlIncludePath]
+Count=1
+Item0=C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=1
+Item0=C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_DEBUG
+
+[HistoryLists\hlFinalOutputDir]
+Count=1
+Item0=..\..\bin\
+
+[HistoryLists\hIBPIOutputDir]
+Count=1
+Item0=..\..\lib
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl

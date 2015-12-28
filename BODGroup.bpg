@@ -14,7 +14,7 @@ PROJECTS = _PT_test_blade_Project.exe Bladex.dll Raster.dll netgame.dll
 default: $(PROJECTS)
 #------------------------------------------------------------------------------
 
-_PT_test_blade_Project.exe: _PT_test_blade_Project.bpr
+_PT_test_blade_Project.exe: Blade\_PT_test_blade_Project.bpr
   $(ROOT)\bin\bpr2mak $**
   $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
 
