@@ -11,7 +11,7 @@ typedef struct {
         int (*is_type_of)(int type); /*person: 0x005305D5, camera: 0x004EACB3*/
 } entity_methods_t;
 
-typedef struct {
+typedef struct _entity_t {
         union {
                 entity_methods_t *methods;
                 BBLibc_named_object_t parent;

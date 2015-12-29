@@ -5,6 +5,7 @@
 #include <assert.h>
 #include <float.h>
 #include <Python.h>
+#include <blade_ext.h>
 #include "application.h"
 #include "BBLibc.h"
 #include "net_data.h"
@@ -26,7 +27,7 @@ static application_methods_t application_methods = {
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x0041000A
+* Entry point:            0x0041009D
 */
 
 void _impl_application_load_level(application_t *self, char *map)
@@ -93,7 +94,7 @@ void _impl_application_load_level(application_t *self, char *map)
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x00410272
+* Entry point:            0x00410305
 */
 
 void _impl_application_wait_for_event(application_t *self) {
@@ -118,8 +119,15 @@ void _impl_application_wait_for_event(application_t *self) {
 
 
 /*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
 * Module:                 Blade.exe
-* Entry point:            0x00410C02
+* Entry point:            0x00410CC2
 */
 
 int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -169,8 +177,15 @@ int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, 
 
 
 /*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
 * Module:                 Blade.exe
-* Entry point:            0x004130E8
+* Entry point:            0x0041316C
 */
 
 void _impl_application_mark_level_to_load(application_t *self, char *map)
@@ -182,10 +197,17 @@ void _impl_application_mark_level_to_load(application_t *self, char *map)
         application->map_to_load = strdup(map);
 }
 
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x004131D2
+* Entry point:            0x00413256
 */
 
 void application_load_level_script(application_t *self, const char *script)
@@ -400,12 +422,21 @@ void application_load_level_script(application_t *self, const char *script)
         if (BBlibc_name_is_equal_string(&self->mode, "Game")) {
                 CALL_THISCALL_VOID_0(self->clock1, self->clock1->methods->unknown20)
         }
+
+        StartGSQR();
 }
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
 
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x004156D0
+* Entry point:            0x00415759
 */
 
 boolean application_run_python_file(application_t *self, const char *file_name)
@@ -448,8 +479,32 @@ boolean application_run_python_file(application_t *self, const char *file_name)
 
 
 /*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
 * Module:                 Blade.exe
-* Entry point:            0x005B8D30
+* Entry point:            0x005B5357
+*/
+// TODO implement
+void StartGSQR() {
+}
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x005B9B60
 */
 
 
@@ -464,10 +519,17 @@ application_t* create_application(void *module, int nCmdShow, char *cmdLine)
         return application;
 }
 
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x005B8D91
+* Entry point:            0x005B9BC1
 */
 
 application_t* application_init(

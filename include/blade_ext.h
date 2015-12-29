@@ -1378,5 +1378,6 @@ LIB_EXP int IsValidProtocol(int protocol);
 LIB_EXP int GetDedicatedServerState(void);
 LIB_EXP void SetDedicatedServerState(int dedicated);
 LIB_EXP void PersonChangeAnmSoundIndex(const char *person_name, int index);
+LIB_EXP void StartGSQR(void);
 
 #endif /* BLADE_EXT_H */

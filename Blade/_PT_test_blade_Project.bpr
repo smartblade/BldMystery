@@ -30,7 +30,7 @@
     <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="NO_STRICT;_NO_VCL;_RTLDLL;USEPACKAGES"/>
     <MAINSOURCE value="_PT_test_blade_Project.bpf"/>
-    <INCLUDEPATH value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot;;&quot;C:\Games\Severence - Blade of Darkness\Bin&quot;;$(BCB)\include;$(BCB)\include\vcl"/>
+    <INCLUDEPATH value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot;;&quot;C:\Games\Severence - Blade of Darkness\Bin&quot;;$(BCB)\include;$(BCB)\include\vcl;..\include"/>
     <LIBPATH value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot;;&quot;C:\Games\Severence - Blade of Darkness\Bin&quot;;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
     <OTHERFILES value=""/>
@@ -38,7 +38,7 @@
   <OPTIONS>
     <IDLCFLAGS value="-I&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot; 
       -I&quot;C:\Games\Severence - Blade of Darkness\Bin&quot; -I$(BCB)\include 
-      -I$(BCB)\include\vcl -src_suffix cpp -D_DEBUG -boa"/>
+      -I$(BCB)\include\vcl -I..\include -src_suffix cpp -D_DEBUG -boa"/>
     <CFLAG1 value="-Od -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -tW -tWM- -c"/>
     <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>
@@ -91,8 +91,9 @@ ProductVersion=1.0.0.0
 Comments=
 
 [HistoryLists\hlIncludePath]
-Count=1
-Item0=C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl
+Count=2
+Item0=C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl;..\include
+Item1=C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
 Count=1
