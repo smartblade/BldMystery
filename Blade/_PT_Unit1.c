@@ -59,15 +59,15 @@ void _impl_application_load_level(application_t *self, char *map)
         message_manager_print(message_manager, buffer);
         message_manager_print(message_manager, "\n");
 
-        if (*var007C59B8) {
-                (*var007C59B8)[2] = 1;
-                (*var007C59B8)[3] = 1;
+        if (*var007C8ED0) {
+                (*var007C8ED0)[2] = 1;
+                (*var007C8ED0)[3] = 1;
         }
 
         if (net_data_is_net_game(net_data)) {
                 if (net_data_is_server(net_data)) {
                         application_load_level_script(self, "Server.py");
-                        Set007E7470To01();
+                        Set007EA988To01();
                 } else {
                         application_load_level_script(self, "Client.py");
                 }
@@ -85,9 +85,9 @@ void _impl_application_load_level(application_t *self, char *map)
                 )
         );
 
-        if (*var007C59B8) {
-                (*var007C59B8)[2] = 0;
-                (*var007C59B8)[3] = 0;
+        if (*var007C8ED0) {
+                (*var007C8ED0)[2] = 0;
+                (*var007C8ED0)[3] = 0;
         }
 }
 
@@ -147,7 +147,7 @@ int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, 
         if (application_start(App) == 0)
                 return 0;
 
-        Set007E7470To01();
+        Set007EA988To01();
         for(;;) {
                 if (PeekMessage(&msg, NULL, WM_NULL, WM_NULL, PM_REMOVE)) {
 
@@ -240,7 +240,7 @@ void application_load_level_script(application_t *self, const char *script)
 
         self->unknownPtrForCamera = NUM_3F266666;
 
-        CALL_THISCALL_VOID_0(&game_state, _thiscall_00439E8D)
+        CALL_THISCALL_VOID_0(&game_state, _thiscall_00439F5D)
 
         self->player1 = NULL;
 
@@ -258,9 +258,9 @@ void application_load_level_script(application_t *self, const char *script)
 
         application_run_python_file(self, script);
 
-        CALL_THISCALL_VOID_1(&self->unknown7C, _thiscall_0040AD82, var005DEFBC)
+        CALL_THISCALL_VOID_1(&self->unknown7C, _thiscall_0040AD82, var005E24DC)
 
-        CALL_THISCALL_VOID_1(&self->unknown7C, _thiscall_0040ADA8, var005DEFD4)
+        CALL_THISCALL_VOID_1(&self->unknown7C, _thiscall_0040ADA8, var005E24F4)
 
         application_prepare_level(self);
 
@@ -341,7 +341,7 @@ void application_load_level_script(application_t *self, const char *script)
                         );
                 }
 
-                CALL_THISCALL_VOID_1(self->camera, _thiscall_camera_004EAFAA, self->player1)
+                CALL_THISCALL_VOID_1(self->camera, _thiscall_camera_004EB1AA, self->player1)
 
                 self->camera->unknownPtrFromApplication = &self->unknownPtrForCamera;
                 self->camera->unknownValueFromApplication = self->unknownPtrForCamera;
@@ -560,7 +560,7 @@ void startup_cb(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, i
 void LoadMsvcrtFunctions(void)
 {
         HMODULE msvcrt = NULL;
-        msvcrt = LoadLibrary("msvcrt.dll");
+        msvcrt = LoadLibrary("bicrt.dll");
 
         msvcrt_fopen = (void *)GetProcAddress(msvcrt, "fopen");
         msvcrt_fclose = (void *)GetProcAddress(msvcrt, "fclose");
@@ -570,6 +570,7 @@ void LoadMsvcrtFunctions(void)
 #pragma argsused
 WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
+        HMODULE BBLibc, shw32;
         void (*BldStartup)(void *) = NULL;
 
         LoadMsvcrtFunctions();
@@ -579,39 +580,42 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         if (!blade)
                 return 1;
 
-        LoadNetModule = (void *)((char *)blade + 0x001B57C2);
-        Set007E7470To01 = (void *)((char *)blade + 0x001ABD01);
-        OnEvent = (void *)((char *)blade + 0x001AE837);
-        get_map_for_net_game = (void *)((char *)blade + 0x001B09A6);
-        _thiscall_BBlibc_name_set = (void *)((char *)blade + 0x001B9BA4);
-        _thiscall_BBlibc_name_clear = (void *)((char *)blade + 0x001B9B98);
-        _thiscall_BBlibc_name_copy = (void *)((char *)blade + 0x001B9B9E);
-        _thiscall_BBlibc_name_string = (void *)((char *)blade + 0x001B9BD4);
-        _thiscall_BBlibc_name_is_equal_string = (void *)((char *)blade + 0x001B9BF8);
-        _thiscall_BBLibc_named_object_id = (void *)((char *)blade + 0x001B9C2E);
-        BBlibc_format_string = (void *)((char *)blade + 0x001B9BF2);
-        _thiscall_application_set_mode = (void *)((char *)blade + 0x00011DF9);
-        _thiscall_application_init2 = (void *)((char *)blade + 0x0000EFB0);
-        _thiscall_application_prepare_level = (void *)((char *)blade + 0x00014EF6);
-        _thiscall_application_process_event = (void *)((char *)blade + 0x0001210E);
-        message_manager_print = (void *)((char *)blade + 0x001B9BDA);
-        bld_new = (void *)((char *)blade + 0x001B96B4);
-        _thiscall_camera_init = (void *)((char *)blade + 0x000EAB20);
-        _thiscall_00439E8D = (void *)((char *)blade + 0x00039E8D);
-        _thiscall_camera_004EAFAA = (void *)((char *)blade + 0x000EAFAA);
+        BBLibc = LoadLibrary("BBLibc.dll");
+        shw32 = LoadLibrary("Shw32.dll");
+
+        LoadNetModule = (void *)((char *)blade + 0x001B65D2);
+        Set007EA988To01 = (void *)((char *)blade + 0x001AC791);
+        OnEvent = (void *)((char *)blade + 0x001AF2CE);
+        get_map_for_net_game = (void *)((char *)blade + 0x001B143D);
+        _thiscall_BBlibc_name_set = (void *)GetProcAddress(BBLibc, "??0B_Name@@QAE@PBD@Z");
+        _thiscall_BBlibc_name_clear = (void *)GetProcAddress(BBLibc, "??1B_Name@@QAE@XZ");
+        _thiscall_BBlibc_name_copy = (void *)GetProcAddress(BBLibc, "??4B_Name@@QAEAAV0@ABV0@@Z");
+        _thiscall_BBlibc_name_string = (void *)GetProcAddress(BBLibc, "?String@B_Name@@QBEQADXZ");
+        _thiscall_BBlibc_name_is_equal_string = (void *)GetProcAddress(BBLibc, "??8B_Name@@QBEIPBD@Z");
+        _thiscall_BBLibc_named_object_id = (void *)GetProcAddress(BBLibc, "?Id@B_NamedObj@@QBEABVB_Name@@XZ");
+        BBlibc_format_string = (void *)GetProcAddress(BBLibc, "?vararg@@YAPBDPBDZZ");
+        _thiscall_application_set_mode = (void *)((char *)blade + 0x00011EB9);
+        _thiscall_application_init2 = (void *)((char *)blade + 0x0000F040);
+        _thiscall_application_prepare_level = (void *)((char *)blade + 0x00014F7F);
+        _thiscall_application_process_event = (void *)((char *)blade + 0x000121CE);
+        message_manager_print = (void *)GetProcAddress(BBLibc, "??6@YAAAVB_MessageManager@@AAV0@PBD@Z");
+        bld_new = (void *)GetProcAddress(shw32, "shi_new");
+        _thiscall_camera_init = (void *)((char *)blade + 0x000EAD20);
+        _thiscall_00439F5D = (void *)((char *)blade + 0x00039F5D);
+        _thiscall_camera_004EB1AA = (void *)((char *)blade + 0x000EB1AA);
         _thiscall_0040AD82 = (void *)((char *)blade + 0x0000AD82);
         _thiscall_0040ADA8 = (void *)((char *)blade + 0x0000ADA8);
 
-        var007C59B8 = (void *)((char *)blade + 0x003C59B8);
-        msg_manager_ptr = (void *)((char *)blade + 0x001A67B4);
-        net_data_ptr = (void *)((char *)blade + 0x003EAD20);
-        application_ptr = (void *)((char *)blade + 0x003EC6F4);
-        application_methods_ptr = (void *)((char *)blade + 0x001BE7D8);
-        game_state_ptr = (void *)((char *)blade + 0x001DD668);
-        var005DEFBC = (void *)((char *)blade + 0x001DEFBC);
-        var005DEFD4 = (void *)((char *)blade + 0x001DEFD4);
+        var007C8ED0 = (void *)((char *)blade + 0x003C8ED0);
+        msg_manager_ptr = (void *)GetProcAddress(BBLibc, "?mout@@3VB_MessageManager@@A");
+        net_data_ptr = (void *)((char *)blade + 0x003EE2C4);
+        application_ptr = (void *)((char *)blade + 0x003EFC94);
+        application_methods_ptr = (void *)((char *)blade + 0x001C0848);
+        game_state_ptr = (void *)((char *)blade + 0x001E0B88);
+        var005E24DC = (void *)((char *)blade + 0x001E24DC);
+        var005E24F4 = (void *)((char *)blade + 0x001E24F4);
 
-        BldStartup = (void *)((char *)blade + 0x001BA062);
+        BldStartup = (void *)((char *)blade + 0x001BC34A);
 
         /*
          * Disable floating point exceptions to avoid throwing division

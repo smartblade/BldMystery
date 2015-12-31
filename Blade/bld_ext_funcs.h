@@ -30,7 +30,7 @@ EXTERN int (*msvcrt_fclose)(FILE*) NULL_INIT;
 
 EXTERN HMODULE blade NULL_INIT;
 EXTERN void (*LoadNetModule)(char *) NULL_INIT;
-EXTERN void (*Set007E7470To01)(void) NULL_INIT;
+EXTERN void (*Set007EA988To01)(void) NULL_INIT;
 EXTERN void (*OnEvent)(int a, int b) NULL_INIT;
 EXTERN char *(*get_map_for_net_game)(char *map) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_BBlibc_name_set)(char *string) NULL_INIT;
@@ -47,19 +47,19 @@ EXTERN void __stdcall (*_thiscall_application_process_event)(void) NULL_INIT;
 EXTERN void (*message_manager_print)(void *message_manager, char *message) NULL_INIT;
 EXTERN void * (*bld_new)(size_t size) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_camera_init)(void) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_00439E8D)(void) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_camera_004EAFAA)(void) NULL_INIT;
+EXTERN void __stdcall (*_thiscall_00439F5D)(void) NULL_INIT;
+EXTERN void __stdcall (*_thiscall_camera_004EB1AA)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_0040AD82)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_0040ADA8)(void) NULL_INIT;
 
-EXTERN int **var007C59B8 NULL_INIT;
+EXTERN int **var007C8ED0 NULL_INIT;
 EXTERN void **msg_manager_ptr NULL_INIT;
 EXTERN net_data_t **net_data_ptr NULL_INIT;
 EXTERN application_t **application_ptr NULL_INIT;
 EXTERN application_methods_t *application_methods_ptr NULL_INIT;
 EXTERN game_state_t *game_state_ptr NULL_INIT;
-EXTERN void **var005DEFBC NULL_INIT;
-EXTERN void **var005DEFD4 NULL_INIT;
+EXTERN void **var005E24DC NULL_INIT;
+EXTERN void **var005E24F4 NULL_INIT;
 
 #define message_manager (*msg_manager_ptr)
 #define net_data (*net_data_ptr)
