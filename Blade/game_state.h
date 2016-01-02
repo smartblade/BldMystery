@@ -5,6 +5,7 @@
 
 
 #include "array.h"
+#include "entity.h"
 
 
 typedef struct {

@@ -3,12 +3,12 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.06.00"/>
-    <PROJECT value="..\..\bin\_PT_test_blade_Project.exe"/>
-    <OBJFILES value="_PT_Unit1.obj _PT_ext_funcs.obj"/>
-    <RESFILES value="_PT_test_blade_Project.res"/>
+    <PROJECT value="..\..\bin\Blade.exe"/>
+    <OBJFILES value="_PT_Unit1.obj _PT_ext_funcs.obj ext.obj"/>
+    <RESFILES value="Blade.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
-    <DEFFILE value=""/>
+    <DEFFILE value="blade.def"/>
     <RESDEPEN value="$(RESFILES)"/>
     <LIBFILES value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Lib\python15.lib&quot;"/>
     <LIBRARIES value=""/>
@@ -29,7 +29,7 @@
     <LINKER value="ilink32"/>
     <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="NO_STRICT;_NO_VCL;_RTLDLL;USEPACKAGES"/>
-    <MAINSOURCE value="_PT_test_blade_Project.bpf"/>
+    <MAINSOURCE value="Blade.bpf"/>
     <INCLUDEPATH value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot;;&quot;C:\Games\Severence - Blade of Darkness\Bin&quot;;$(BCB)\include;$(BCB)\include\vcl;..\include"/>
     <LIBPATH value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot;;&quot;C:\Games\Severence - Blade of Darkness\Bin&quot;;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
@@ -53,11 +53,13 @@
     <OTHERFILES value=""/>
   </LINKER>
   <FILELIST>
-      <FILE FILENAME="_PT_test_blade_Project.res" FORMNAME="" UNITNAME="_PT_test_blade_Project.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="_PT_test_blade_Project.bpf" FORMNAME="" UNITNAME="_PT_test_blade_Project" CONTAINERID="BPF" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Blade.res" FORMNAME="" UNITNAME="Blade.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Blade.bpf" FORMNAME="" UNITNAME="Blade" CONTAINERID="BPF" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="_PT_Unit1.c" FORMNAME="" UNITNAME="_PT_Unit1" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="_PT_ext_funcs.c" FORMNAME="" UNITNAME="_PT_ext_funcs" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="C:\Program Files (x86)\Borland\CBuilder6\Lib\python15.lib" FORMNAME="" UNITNAME="python15.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ext.cpp" FORMNAME="" UNITNAME="ext" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="blade.def" FORMNAME="" UNITNAME="blade.def" CONTAINERID="DefTool" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
@@ -119,7 +121,7 @@ Item0=..\..\lib
 DebugSourceDirs=$(BCB)\source\vcl
 
 [Parameters]
-RunParams=
+RunParams=-console
 Launcher=
 UseLauncher=0
 DebugCWD=

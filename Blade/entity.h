@@ -2,6 +2,8 @@
 
 #define ENTITY_H
 
+#include "BBLibc.h"
+
 
 #define PLAYER "Player1"
 

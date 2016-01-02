@@ -575,7 +575,7 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
 
         LoadMsvcrtFunctions();
 
-        blade = LoadLibrary("Blade.exe");
+        blade = LoadLibrary("Blade.dll");
 
         if (!blade)
                 return 1;

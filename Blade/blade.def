@@ -1,0 +1,4 @@
+LIBRARY     BLADE.EXE
+
+EXPORTS
+    GetEntityVectorProperty = _GetEntityVectorProperty

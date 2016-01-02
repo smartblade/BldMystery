@@ -1,7 +1,9 @@
 
 #include <windows.h>
 #include <stdio.h>
+#include "application.h"
 #include "game_state.h"
+#include "net_data.h"
 
 #ifdef BLD_EXT_FUNCS
 
