@@ -4,7 +4,7 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="..\..\bin\Blade.exe"/>
-    <OBJFILES value="_PT_Unit1.obj _PT_ext_funcs.obj ext.obj"/>
+    <OBJFILES value="_PT_Unit1.obj _PT_ext_funcs.obj ext.obj net_ext.obj"/>
     <RESFILES value="Blade.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -30,13 +30,13 @@
     <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="NO_STRICT;_NO_VCL;_RTLDLL;USEPACKAGES"/>
     <MAINSOURCE value="Blade.bpf"/>
-    <INCLUDEPATH value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot;;&quot;C:\Games\Severence - Blade of Darkness\Bin&quot;;$(BCB)\include;$(BCB)\include\vcl;..\include"/>
-    <LIBPATH value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot;;&quot;C:\Games\Severence - Blade of Darkness\Bin&quot;;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <INCLUDEPATH value="..\;&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot;;&quot;C:\Games\Severence - Blade of Darkness\Bin&quot;;$(BCB)\include;$(BCB)\include\vcl;..\include"/>
+    <LIBPATH value="..\;&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot;;&quot;C:\Games\Severence - Blade of Darkness\Bin&quot;;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
     <OTHERFILES value=""/>
   </MACROS>
   <OPTIONS>
-    <IDLCFLAGS value="-I&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot; 
+    <IDLCFLAGS value="-I..\. -I&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot; 
       -I&quot;C:\Games\Severence - Blade of Darkness\Bin&quot; -I$(BCB)\include 
       -I$(BCB)\include\vcl -I..\include -src_suffix cpp -D_DEBUG -boa"/>
     <CFLAG1 value="-Od -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -tW -tWM- -c"/>
@@ -60,6 +60,7 @@
       <FILE FILENAME="C:\Program Files (x86)\Borland\CBuilder6\Lib\python15.lib" FORMNAME="" UNITNAME="python15.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="ext.cpp" FORMNAME="" UNITNAME="ext" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="blade.def" FORMNAME="" UNITNAME="blade.def" CONTAINERID="DefTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="net_ext.cpp" FORMNAME="" UNITNAME="net_ext" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
