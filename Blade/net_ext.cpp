@@ -581,11 +581,9 @@ int NetSetPPS(int PPS)
 * Module:                 Blade.exe
 * Entry point:            0x005B6490
 */
-// TODO implement
+
 int IsValidProtocol(int protocol)
 {
-        int (*bld_proc)(int protocol);
-        bld_proc = (int (*)(int protocol))GetProcAddress(blade, "IsValidProtocol");
-        return bld_proc(protocol);
+        return net->is_valid_protocol(protocol);
 }
 

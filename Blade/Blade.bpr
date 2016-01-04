@@ -4,7 +4,7 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="..\..\bin\Blade.exe"/>
-    <OBJFILES value="_PT_Unit1.obj _PT_ext_funcs.obj ext.obj net_ext.obj"/>
+    <OBJFILES value="_PT_Unit1.obj _PT_ext_funcs.obj ext.obj net_ext.obj bcb_wrappers.obj"/>
     <RESFILES value="Blade.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -61,6 +61,7 @@
       <FILE FILENAME="ext.cpp" FORMNAME="" UNITNAME="ext" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="blade.def" FORMNAME="" UNITNAME="blade.def" CONTAINERID="DefTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="net_ext.cpp" FORMNAME="" UNITNAME="net_ext" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="bcb_wrappers.cpp" FORMNAME="" UNITNAME="bcb_wrappers" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

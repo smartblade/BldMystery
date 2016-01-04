@@ -3,7 +3,7 @@
 
 #define BLADE_EXT_H
 
-
+#include <bld_server_info.h>
 #include <export.h>
 
 #ifdef GetCommandLine
@@ -41,12 +41,6 @@ typedef struct {
         double y;
         double z;
 } point_3d_t;
-
-typedef struct {
-	char name[128];
-	int num_players;
-	int max_players;
-} bld_server_info;
 
 
 #define CHR_FLT_TURN_SPEED                0

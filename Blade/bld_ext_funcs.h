@@ -5,6 +5,19 @@
 #include "game_state.h"
 #include "net_data.h"
 
+
+#ifdef __cplusplus
+
+#include <bld_abstract_net.h>
+
+#else
+
+typedef net_data_t bld_abstract_net;  
+
+#endif
+
+
+
 #ifdef BLD_EXT_FUNCS
 
 #       define EXTERN
@@ -15,7 +28,8 @@
 #       define EXTERN extern
 #       define NULL_INIT
 
-#endif;
+#endif
+
 
 
 /*msvcrt functions */
@@ -56,7 +70,8 @@ EXTERN void __stdcall (*_thiscall_0040ADA8)(void) NULL_INIT;
 
 EXTERN int **var007C8ED0 NULL_INIT;
 EXTERN void **msg_manager_ptr NULL_INIT;
-EXTERN net_data_t **net_data_ptr NULL_INIT;
+EXTERN bld_abstract_net **net_data_ptr NULL_INIT;
+EXTERN bld_abstract_net *net NULL_INIT;
 EXTERN application_t **application_ptr NULL_INIT;
 EXTERN application_methods_t *application_methods_ptr NULL_INIT;
 EXTERN game_state_t *game_state_ptr NULL_INIT;
@@ -97,6 +112,16 @@ extern void _thiscall_application_wait_for_event(void);
 extern void _impl_application_mark_level_to_load(application_t *self, char *map);
 extern void _impl_application_load_level(application_t *self, char *map);
 extern void _impl_application_wait_for_event(application_t *self);
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern void create_bcb_wrappers(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #define NEW_OBJECT2(result, class, init_func, arg1, arg2)\

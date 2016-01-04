@@ -600,11 +600,17 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
 
         BldStartup = (void *)((char *)blade + 0x001BC34A);
 
+#ifdef __BORLANDC__
+
+        create_bcb_wrappers();
+
         /*
          * Disable floating point exceptions to avoid throwing division
          * by zero exception when using OpenGL raster
          */
         _control87(MCW_EM,MCW_EM);
+
+#endif
 
         BldStartup(startup_cb);
 
