@@ -23,7 +23,6 @@ public:
         virtual bool get_browse_result(int index, bld_server_info *info) = 0;
         virtual bool join_session(int index, const char *player_name) = 0;
         virtual bool is_valid_protocol(bool tcp) = 0;
-        virtual void unknown030() = 0;
 };
 
 #endif /* BLD_ABSTRACT_NET_H */

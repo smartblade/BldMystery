@@ -568,6 +568,7 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
 
         LoadNetModule = (void *)((char *)blade + 0x001B65D2);
         Set007EA988To01 = (void *)((char *)blade + 0x001AC791);
+        reset_client_map_name = (void *)((char *)blade + 0x001B1431);
         OnEvent = (void *)((char *)blade + 0x001AF2CE);
         get_map_for_net_game = (void *)((char *)blade + 0x001B143D);
         _thiscall_BBlibc_name_set = (void *)GetProcAddress(BBLibc, "??0B_Name@@QAE@PBD@Z");
@@ -591,6 +592,9 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
 
         var007C8ED0 = (void *)((char *)blade + 0x003C8ED0);
         msg_manager_ptr = (void *)GetProcAddress(BBLibc, "?mout@@3VB_MessageManager@@A");
+        client_map_name = (void *)((char *)blade + 0x003EE018);
+        net_game_name = (void *)((char *)blade + 0x003EE0B8);
+        net_max_players_ptr = (void *)((char *)blade + 0x003EE138);
         net_data_ptr = (void *)((char *)blade + 0x003EE2C4);
         application_ptr = (void *)((char *)blade + 0x003EFC94);
         application_methods_ptr = (void *)((char *)blade + 0x001C0848);

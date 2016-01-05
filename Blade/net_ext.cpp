@@ -436,12 +436,17 @@ int ServerSetSendDataState(int state)
 * Module:                 Blade.exe
 * Entry point:            0x005B61B6
 */
-// TODO implement
+
 int GetNetState(void)
 {
-        int (*bld_proc)(void);
-        bld_proc = (int (*)(void))GetProcAddress(blade, "GetNetState");
-        return bld_proc();
+        if (net->is_net_game()) {
+                if (net->is_server())
+                        return 1;
+
+                return 2;
+        }
+
+        return 0;
 }
 
 
@@ -468,21 +473,20 @@ void ClearPools(void)
 * Module:                 Blade.exe
 * Entry point:            0x005B637B
 */
-// TODO implement
+
 boolean StartServer(
         const char *game_name, const char *player_name, int max_players,
         boolean TCP
 )
 {
-        boolean (*bld_proc)(
-        const char *game_name, const char *player_name, int max_players,
-        boolean TCP
-);
-        bld_proc = (boolean (*)(
-        const char *game_name, const char *player_name, int max_players,
-        boolean TCP
-))GetProcAddress(blade, "StartServer");
-        return bld_proc(game_name, player_name, max_players, TCP);
+        bool status;
+
+        status = net->start_server(game_name, player_name, max_players, TCP);
+
+        strcpy(net_game_name, (game_name + 3));
+        net_max_players = max_players - 1;
+
+        return status;
 }
 
 
@@ -490,12 +494,10 @@ boolean StartServer(
 * Module:                 Blade.exe
 * Entry point:            0x005B63E4
 */
-// TODO implement
+
 boolean BrowseSessions(const char *ip_address)
 {
-        boolean (*bld_proc)(const char *ip_address);
-        bld_proc = (boolean (*)(const char *ip_address))GetProcAddress(blade, "BrowseSessions");
-        return bld_proc(ip_address);
+        return net->browse_sessions(ip_address);
 }
 
 
@@ -503,12 +505,10 @@ boolean BrowseSessions(const char *ip_address)
 * Module:                 Blade.exe
 * Entry point:            0x005B63FE
 */
-// TODO implement
+
 boolean GetBrowseResult(int index, bld_server_info *info)
 {
-        boolean (*bld_proc)(int index, bld_server_info *info);
-        bld_proc = (boolean (*)(int index, bld_server_info *info))GetProcAddress(blade, "GetBrowseResult");
-        return bld_proc(index, info);
+        return net->get_browse_result(index, info);
 }
 
 
@@ -516,12 +516,16 @@ boolean GetBrowseResult(int index, bld_server_info *info)
 * Module:                 Blade.exe
 * Entry point:            0x005B641C
 */
-// TODO implement
+
 boolean JoinSession(int index, const char *player_name)
 {
-        boolean (*bld_proc)(int index, const char *player_name);
-        bld_proc = (boolean (*)(int index, const char *player_name))GetProcAddress(blade, "JoinSession");
-        return bld_proc(index, player_name);
+        bool status;
+
+        reset_client_map_name();
+
+        status = net->join_session(index, player_name);
+
+        return status;
 }
 
 

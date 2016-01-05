@@ -47,6 +47,7 @@ EXTERN int (*msvcrt_fclose)(FILE*) NULL_INIT;
 EXTERN HMODULE blade NULL_INIT;
 EXTERN void (*LoadNetModule)(char *) NULL_INIT;
 EXTERN void (*Set007EA988To01)(void) NULL_INIT;
+EXTERN void (*reset_client_map_name)(void) NULL_INIT;
 EXTERN void (*OnEvent)(int a, int b) NULL_INIT;
 EXTERN char *(*get_map_for_net_game)(char *map) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_BBlibc_name_set)(char *string) NULL_INIT;
@@ -70,6 +71,9 @@ EXTERN void __stdcall (*_thiscall_0040ADA8)(void) NULL_INIT;
 
 EXTERN int **var007C8ED0 NULL_INIT;
 EXTERN void **msg_manager_ptr NULL_INIT;
+EXTERN char *client_map_name NULL_INIT;
+EXTERN char *net_game_name NULL_INIT;
+EXTERN int *net_max_players_ptr NULL_INIT;
 EXTERN bld_abstract_net **net_data_ptr NULL_INIT;
 EXTERN bld_abstract_net *net NULL_INIT;
 EXTERN application_t **application_ptr NULL_INIT;
@@ -79,6 +83,7 @@ EXTERN void **var005E24DC NULL_INIT;
 EXTERN void **var005E24F4 NULL_INIT;
 
 #define message_manager (*msg_manager_ptr)
+#define net_max_players (*net_max_players_ptr)
 #define net_data (*net_data_ptr)
 #define application (*application_ptr)
 #define game_state (*game_state_ptr)
