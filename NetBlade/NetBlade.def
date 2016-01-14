@@ -1,0 +1,5 @@
+LIBRARY     NETBLADE.DLL
+
+EXPORTS
+    GetNetInterface = _GetNetInterface
+    CloseConnection = _CloseConnection

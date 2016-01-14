@@ -22,36 +22,7 @@
 *.~bpg
 *.~ddp
 *.~bpf
+*.~def
 *_origin.*
 *_patched.*
 BuildLog.htm
-B3DLib.dll
-BBLibc.dll
-BImagexc.dll
-BInputc.dll
-BIPCx.dll
-Blade.exe
-Blade.ico
-Bladex.dll
-BUIxc.dll
-BVideoc.dll
-Console.dll
-DefCh.txt
-InstallAux.dll
-Inventory.dll
-Mss32.dll
-Msvcrt.dll
-netgame.dll
-python15.dll
-Raster.dll
-Shw32.dll
-Traps_C.dll
-Mss
-netblade
-Raster/D3d.dll
-Raster/D3d Permedia.dll
-Raster/D3d Voodoo 3 and Banshee.dll
-Raster/D3d i740 Windows98.dll
-Raster/Voodoo 1-2 D3d v04.dll
-Raster/rNull.dlx
-Raster/ropengl.dll
