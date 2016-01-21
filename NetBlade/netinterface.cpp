@@ -4,6 +4,7 @@
 
 bool is_valid_ipx = false;
 bool is_valid_tcp = false;
+bld_abstract_net *gbl_net = NULL;
 
 /*
 ................................................................................
@@ -19,7 +20,25 @@ bool is_valid_tcp = false;
 */
 // TODO implement
 bld_abstract_net *GetNetInterface(void *cb, void *module) {
-        return new bld_net();
+
+        if (gbl_net == NULL) {
+
+                assert(cb!=NULL);
+
+                gbl_net = new bld_net(cb);
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+                is_valid_ipx = bld_check_protocol(false);
+                is_valid_tcp = bld_check_protocol(true);
+        }
+
+        return gbl_net;
 }
 
 /*

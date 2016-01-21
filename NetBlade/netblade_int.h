@@ -2,6 +2,7 @@
 
 #define NETBLADE_INT_H
 
+#include <dplobby.h>
 #include <bld_system.h>
 #include <bld_abstract_net.h>
 #define BUILD_LIB
@@ -9,11 +10,24 @@
 
 
 extern bool is_net_game;
+extern LPDIRECTPLAYLOBBY3A gbl_dp_lobby;
+extern LPDIRECTPLAY4A gbl_dp_interface;
 extern bool is_valid_ipx;
 extern bool is_valid_tcp;
+extern bld_abstract_net *gbl_net;
 
 
-bool bld_is_net_game(void);
+extern bool bld_is_net_game(void);
+
+extern bool bld_start_server(
+        const char *game_name, const char *player_name, int max_players,
+        bool TCP
+);
+extern HRESULT bld_create_dp_interface(
+        LPGUID dp_provider, LPDIRECTPLAY4A *dp_interface
+);
+extern HRESULT bld_destroy_dp_interface(LPDIRECTPLAY4A dp_interface);
+extern bool bld_check_protocol(bool tcp);
 
 
 #ifdef __cplusplus
@@ -30,6 +44,12 @@ LIB_EXP void CloseConnection(void);
 
 class bld_net : public bld_abstract_net
 {
+private:
+        void *cb;
+public:
+        bld_net(void *cb) {
+                this->cb = cb;
+        }
         virtual void unknown000();
         virtual void unknown004();
         virtual bool is_net_game();

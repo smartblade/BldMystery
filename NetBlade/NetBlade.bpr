@@ -4,13 +4,13 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="..\..\bin\NetBlade\NetBlade.dll"/>
-    <OBJFILES value="netinterface.obj netfunctions.obj bld_net.obj"/>
+    <OBJFILES value="netinterface.obj netfunctions.obj bld_net.obj interface.obj"/>
     <RESFILES value="NetBlade.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
     <DEFFILE value="NetBlade.def"/>
     <RESDEPEN value="$(RESFILES)"/>
-    <LIBFILES value=""/>
+    <LIBFILES value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Lib\Psdk\dplayx.lib&quot;"/>
     <LIBRARIES value=""/>
     <SPARELIBS value=""/>
     <PACKAGES value="vcl.bpi rtl.bpi dbrtl.bpi adortl.bpi vcldb.bpi vclx.bpi bdertl.bpi 
@@ -59,6 +59,8 @@
       <FILE FILENAME="NetBlade.def" FORMNAME="" UNITNAME="NetBlade.def" CONTAINERID="DefTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="netfunctions.cpp" FORMNAME="" UNITNAME="netfunctions" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="bld_net.cpp" FORMNAME="" UNITNAME="bld_net" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="C:\Program Files (x86)\Borland\CBuilder6\Lib\Psdk\dplayx.lib" FORMNAME="" UNITNAME="dplayx.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="interface.cpp" FORMNAME="" UNITNAME="interface" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

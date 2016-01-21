@@ -76,13 +76,12 @@ void bld_net::unknown018() {
 * Module:                 NetBlade.dll
 * Entry point:            0x10003A10
 */
-// TODO implement
+
 bool bld_net::start_server(
                 const char *game_name, const char *player_name, int max_players,
                 bool TCP
 ) {
-        assert("start_server" == NULL);
-        return false;
+        return bld_start_server(game_name, player_name, max_players, TCP);
 }
 
 
