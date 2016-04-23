@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemata.jklnet.org/Reko/v4">
+  <arch>x86-protected-32</arch>
+  <platform>win32</platform>
+  <input>
+    <filename>..\Bin\netblade\NetBlade_patched.dll</filename>
+    <disassembly>..\Bin\netblade\NetBlade_patched.asm</disassembly>
+    <intermediate-code>..\Bin\netblade\NetBlade_patched.dis</intermediate-code>
+    <output>..\Bin\netblade\NetBlade_patched.c</output>
+    <types-file>..\Bin\netblade\NetBlade_patched.h</types-file>
+    <global-vars>..\Bin\netblade\NetBlade_patched.globals.c</global-vars>
+    <user>
+      <processor />
+      <procedure name="bld_is_server">
+        <characteristics />
+        <address>10001000</address>
+        <CSignature>boolean bld_is_server()</CSignature>
+      </procedure>
+      <procedure name="bld_is_net_game">
+        <address>1000100A</address>
+        <CSignature>boolean bld_is_net_game()</CSignature>
+      </procedure>
+      <procedure name="bld_destroy_handles">
+        <characteristics />
+        <address>10001312</address>
+        <CSignature>int bld_destroy_handles()</CSignature>
+      </procedure>
+      <procedure name="bld_start_server">
+        <characteristics />
+        <address>10002C70</address>
+        <CSignature>boolean bld_start_server(
+        const char *game_name, const char *player_name, int max_players,
+        boolean TCP
+)</CSignature>
+      </procedure>
+      <procedure name="bld_create_dp_interface">
+        <characteristics />
+        <address>10002FF1</address>
+        <CSignature>HRESULT bld_create_dp_interface(
+        LPGUID dp_provider, LPDIRECTPLAY4A *dp_interface
+)</CSignature>
+      </procedure>
+      <procedure name="bld_destroy_dp_interface">
+        <characteristics />
+        <address>10003065</address>
+        <CSignature>HRESULT bld_destroy_dp_interface(LPDIRECTPLAY4A dp_interface)</CSignature>
+      </procedure>
+      <procedure name="bld_check_protocol">
+        <characteristics />
+        <address>100036FC</address>
+        <CSignature>boolean bld_check_protocol(boolean tcp)</CSignature>
+      </procedure>
+      <procedure name="GetNetInterface">
+        <characteristics />
+        <address>1000386F</address>
+        <CSignature>void GetNetInterface(void *cb, void *module)</CSignature>
+      </procedure>
+      <procedure name="bld_net__is_net_game">
+        <characteristics />
+        <address>10003980</address>
+        <CSignature>boolean bld_net__is_net_game(void *this)</CSignature>
+      </procedure>
+      <procedure name="bld_net__is_server">
+        <characteristics />
+        <address>10003990</address>
+        <CSignature>boolean bld_net__is_server(void *this)</CSignature>
+      </procedure>
+      <procedure name="bld_net__start_server">
+        <characteristics />
+        <address>10003A10</address>
+        <CSignature>boolean bld_net__start_server(
+                const char *game_name,  const char *player_name, int max_players,
+                boolean TCP
+)</CSignature>
+      </procedure>
+      <procedure name="bld_net__browse_sessions">
+        <address>10003A40</address>
+        <CSignature>boolean bld_net__browse_sessions(const char *ip_address)</CSignature>
+      </procedure>
+      <procedure name="bld_net__get_browse_result">
+        <address>10003A60</address>
+        <CSignature>boolean bld_net__get_browse_result(int index, void *info)</CSignature>
+      </procedure>
+      <procedure name="bld_net__join_session">
+        <address>10003A80</address>
+        <CSignature>boolean bld_net__join_session(int index, const char *player_name)</CSignature>
+      </procedure>
+      <procedure name="bld_net__is_valid_protocol">
+        <address>10003AA0</address>
+        <CSignature>boolean bld_net__is_valid_protocol(boolean tcp)</CSignature>
+      </procedure>
+      <procedure name="bld_net__delete">
+        <address>10003AD0</address>
+        <CSignature>void bld_net__delete(int deleteFlag)</CSignature>
+      </procedure>
+      <call>
+        <address>10001386</address>
+        <signature stackDelta="4">
+          <arg name="ptrArg00">
+            <ptr size="4">
+              <prim domain="SignedInt" size="4" />
+            </ptr>
+            <stack />
+          </arg>
+        </signature>
+      </call>
+      <call>
+        <address>100013BB</address>
+        <signature stackDelta="4">
+          <arg name="ptrArg00">
+            <ptr size="4">
+              <prim domain="SignedInt" size="4" />
+            </ptr>
+            <stack />
+          </arg>
+          <arg name="ptrArg04">
+            <ptr size="4">
+              <prim domain="SignedInt" size="4" />
+            </ptr>
+            <stack />
+          </arg>
+        </signature>
+      </call>
+      <global>
+        <Address>10005288</Address>
+        <type>boolean</type>
+        <Name>is_server</Name>
+      </global>
+      <global>
+        <Address>10005289</Address>
+        <type>boolean</type>
+        <Name>is_net_game</Name>
+      </global>
+      <global>
+        <Address>10005294</Address>
+        <type>LPDIRECTPLAYLOBBY3A</type>
+        <Name>gbl_dp_lobby</Name>
+      </global>
+      <global>
+        <Address>10006CD0</Address>
+        <type>LPDIRECTPLAY4A</type>
+        <Name>gbl_dp_interface</Name>
+      </global>
+      <global>
+        <Address>10006CD8</Address>
+        <type>boolean</type>
+        <Name>is_valid_ipx</Name>
+      </global>
+      <global>
+        <Address>10006CD9</Address>
+        <type>boolean</type>
+        <Name>is_valid_tcp</Name>
+      </global>
+    </user>
+  </input>
+  <metadata>
+    <filename>dplay.xml</filename>
+  </metadata>
+</project>
