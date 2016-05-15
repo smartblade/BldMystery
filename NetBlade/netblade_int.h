@@ -19,6 +19,7 @@ typedef struct {
 
 
 extern bool is_net_game;
+extern PLAYER_INFO gbl_player_info;
 extern LPDIRECTPLAYLOBBY3A gbl_dp_lobby;
 extern LPDIRECTPLAY4A gbl_dp_interface;
 extern bool is_valid_ipx;
@@ -27,6 +28,8 @@ extern bld_abstract_net *gbl_net;
 
 
 extern bool bld_is_net_game(void);
+extern void bld_set_gbl_player_info(PLAYER_INFO *player_info);
+extern HRESULT bld_create_thread(void);
 
 extern bool bld_start_server(
         const char *game_name, const char *player_name, int max_players,

@@ -7,15 +7,25 @@ static GUID AppGUID = {
                 0x9C, 0x4F, 0x00, 0xA0, 0xC9, 0x05, 0x42, 0x5E
         }
 };
-static int max_players = 5;
+static int gbl_max_players = 5;
+PLAYER_INFO gbl_player_info = {NULL, NULL, NULL, NULL, 0};
 LPDIRECTPLAYLOBBY3A gbl_dp_lobby = NULL;
 LPDIRECTPLAY4A gbl_dp_interface = NULL;
 
 
 static HRESULT bld_create_player(
-        LPDIRECTPLAY4A dp_interface, char *game_name, char *player_name,
-        PLAYER_INFO *player_info
+        LPDIRECTPLAY4A dp_interface, const char *game_name,
+        const char *player_name, PLAYER_INFO *player_info
 );
+
+
+inline void bld_assert_result(HRESULT hr) {
+        assert(DPERR_BUFFERTOOSMALL!=hr);
+        assert(DPERR_UNAVAILABLE!=hr);
+        assert(DPERR_INVALIDPARAMS!=hr);
+        assert(DPERR_INVALIDFLAGS!=hr);
+        assert(DPERR_ALREADYINITIALIZED!=hr);
+}
 
 
 /*
@@ -27,7 +37,45 @@ bool bld_start_server(
         const char *game_name, const char *player_name, int max_players,
         bool TCP
 ) {
+        HRESULT hr;
+        GUID dp_provider;
+
+        hr = bld_create_thread();
+        if (hr < DP_OK)
+                goto finish;
+
+        if (gbl_dp_interface == NULL) {
+                if (TCP)
+                        dp_provider = DPSPGUID_TCPIP;
+                else
+                        dp_provider = DPSPGUID_IPX;
+
+                hr = bld_create_dp_interface(&dp_provider, &gbl_dp_interface);
+                bld_assert_result(hr);
+                if (hr < DP_OK)
+                        goto finish;
+        }
+
+        gbl_max_players = max_players;
+        if (gbl_max_players > 100)
+                gbl_max_players = 100;
+        if (gbl_max_players < 2)
+                gbl_max_players = 2;
+
+        hr = bld_create_player(
+                gbl_dp_interface, game_name, player_name, &gbl_player_info
+        );
+        bld_assert_result(hr);
+
+        bld_set_gbl_player_info(&gbl_player_info);
+
+        if (hr < DP_OK)
+                goto finish;
+
+finish:
+
         assert("bld_start_server" == NULL);
+
         return false;
 }
 
@@ -53,7 +101,7 @@ HRESULT bld_create_player(
         session_desc.dwSize = sizeof(DPSESSIONDESC2);
         session_desc.dwFlags = (DPSESSION_KEEPALIVE | DPSESSION_MIGRATEHOST);
         session_desc.guidApplication = AppGUID;
-        session_desc.dwMaxPlayers = max_players;
+        session_desc.dwMaxPlayers = gbl_max_players;
         session_desc.lpszSessionNameA = (char *)game_name;
 
         hr = dp_interface->Open(&session_desc, DPOPEN_CREATE);
