@@ -5,8 +5,17 @@
 #include <dplobby.h>
 #include <bld_system.h>
 #include <bld_abstract_net.h>
+#include <bld_net_cb.h>
 #define BUILD_LIB
 #include <export.h>
+
+typedef struct {
+        LPDIRECTPLAY4A dp_interface;
+        void *unknown04;
+        HANDLE event;
+        DPID dpid;
+        int unknown10;
+} PLAYER_INFO;
 
 
 extern bool is_net_game;
@@ -34,7 +43,7 @@ extern bool bld_check_protocol(bool tcp);
 extern "C" {
 #endif
 
-LIB_EXP bld_abstract_net *GetNetInterface(void *cb, void *module);
+LIB_EXP bld_abstract_net *GetNetInterface(bld_net_cb *cb, void *module);
 LIB_EXP void CloseConnection(void);
 
 #ifdef __cplusplus

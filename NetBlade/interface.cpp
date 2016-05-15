@@ -1,8 +1,21 @@
 
 #include "netblade_int.h"
 
+static GUID AppGUID = {
+        0x5BFDB060, 0x06A4, 0x11D0,
+        {
+                0x9C, 0x4F, 0x00, 0xA0, 0xC9, 0x05, 0x42, 0x5E
+        }
+};
+static int max_players = 5;
 LPDIRECTPLAYLOBBY3A gbl_dp_lobby = NULL;
 LPDIRECTPLAY4A gbl_dp_interface = NULL;
+
+
+static HRESULT bld_create_player(
+        LPDIRECTPLAY4A dp_interface, char *game_name, char *player_name,
+        PLAYER_INFO *player_info
+);
 
 
 /*
@@ -23,14 +36,50 @@ bool bld_start_server(
 * Module:                 NetBlade.dll
 * Entry point:            0x10002EE5
 */
-// TODO implement
-void unknown(
+
+HRESULT bld_create_player(
         LPDIRECTPLAY4A dp_interface, const char *game_name,
-        const char *player_name
+        const char *player_name, PLAYER_INFO *player_info
 ) {
-        //dp_interface->Open();
-        //dp_interface->CreatePlayer();
-        //dp_interface->Close();
+        DPID dpid;/* the dpid of the player created given by directplay */
+        DPNAME name;
+        HRESULT hr;
+        DPSESSIONDESC2 session_desc;
+
+        if (dp_interface == NULL)
+                return DPERR_INVALIDOBJECT;
+
+        ZeroMemory(&session_desc, sizeof(DPSESSIONDESC2));
+        session_desc.dwSize = sizeof(DPSESSIONDESC2);
+        session_desc.dwFlags = (DPSESSION_KEEPALIVE | DPSESSION_MIGRATEHOST);
+        session_desc.guidApplication = AppGUID;
+        session_desc.dwMaxPlayers = max_players;
+        session_desc.lpszSessionNameA = (char *)game_name;
+
+        hr = dp_interface->Open(&session_desc, DPOPEN_CREATE);
+        if (hr < DP_OK)
+                goto close;
+
+        ZeroMemory(&name,sizeof(DPNAME));
+        name.dwSize = sizeof(DPNAME);
+        name.lpszShortNameA = (char *)player_name;
+        name.lpszLongNameA = NULL;
+
+        dp_interface->CreatePlayer(
+                &dpid, &name, player_info->event, NULL, 0, DPPLAYER_SERVERPLAYER
+        );
+        if (hr < DP_OK)
+                goto close;
+
+        player_info->dp_interface = dp_interface;
+        player_info->dpid = dpid;
+        player_info->unknown10 = 1;
+
+        return DP_OK;
+close:
+        dp_interface->Close();
+
+        return hr;
 }
 
 /*

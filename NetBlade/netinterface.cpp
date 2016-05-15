@@ -19,7 +19,7 @@ bld_abstract_net *gbl_net = NULL;
 * Entry point:            0x1000386F
 */
 // TODO implement
-bld_abstract_net *GetNetInterface(void *cb, void *module) {
+bld_abstract_net *GetNetInterface(bld_net_cb *cb, void *module) {
 
         if (gbl_net == NULL) {
 
