@@ -20,10 +20,29 @@
         <address>1000100A</address>
         <CSignature>boolean bld_is_net_game()</CSignature>
       </procedure>
+      <procedure name="bld_start_thread">
+        <address>10001203</address>
+        <CSignature>void bld_start_thread(void *parametres)</CSignature>
+      </procedure>
+      <procedure name="bld_get_player_name">
+        <characteristics />
+        <address>10001253</address>
+        <CSignature>HRESULT bld_get_player_name(LPDIRECTPLAY4A dp_interface, DPID dpid, LPDPNAME *lpdpname)</CSignature>
+      </procedure>
       <procedure name="bld_destroy_handles">
         <characteristics />
         <address>10001312</address>
         <CSignature>int bld_destroy_handles()</CSignature>
+      </procedure>
+      <procedure name="bld_create_thread">
+        <characteristics />
+        <address>10001BFB</address>
+        <CSignature>int bld_create_thread()</CSignature>
+      </procedure>
+      <procedure name="bld_dialog_proc">
+        <characteristics />
+        <address>10001F3E</address>
+        <CSignature>INT_PTR bld_dialog_proc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);</CSignature>
       </procedure>
       <procedure name="bld_start_server">
         <characteristics />
@@ -93,6 +112,12 @@
         <address>10003AD0</address>
         <CSignature>void bld_net__delete(int deleteFlag)</CSignature>
       </procedure>
+      <procedure name="DllMain">
+        <characteristics />
+        <address>10003C59</address>
+        <decompile>false</decompile>
+        <CSignature>BOOL DllMain(HANDLE hModule, DWORD dwReason, LPVOID lpReserved)</CSignature>
+      </procedure>
       <call>
         <address>10001386</address>
         <signature stackDelta="4">
@@ -121,6 +146,23 @@
           </arg>
         </signature>
       </call>
+      <global>
+        <Address>100042D0</Address>
+        <type>GUID</type>
+        <Name>AppGUID</Name>
+      </global>
+      <global>
+        <Address>10005010</Address>
+        <prim domain="SignedInt" size="4" />
+        <Name>max_players</Name>
+      </global>
+      <global>
+        <Address>1000511C</Address>
+        <arr length="7">
+          <prim domain="Character" size="1" />
+        </arr>
+        <Name>txtPlayer</Name>
+      </global>
       <global>
         <Address>10005288</Address>
         <type>boolean</type>
