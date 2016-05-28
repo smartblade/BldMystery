@@ -44,12 +44,57 @@ void bld_set_gbl_player_info(PLAYER_INFO *player_info) {
 ................................................................................
 */
 
+/*
+* Module:                 NetBlade.dll
+* Entry point:            0x10001253
+*/
+
+HRESULT bld_get_player_name(
+        LPDIRECTPLAY4A dp_interface, DPID dpid, LPDPNAME *lpdpname
+) {
+        HRESULT hr;
+        DWORD len;
+        LPVOID nameMem = NULL;
+
+        hr = dp_interface->GetPlayerName(dpid, NULL, &len);
+        if (hr != DPERR_BUFFERTOOSMALL)
+                goto cleanup;
+
+        nameMem = GlobalLock(GlobalAlloc(GHND, len));
+        if (nameMem == NULL) {
+                hr = DPERR_NOMEMORY;
+                goto cleanup;
+        }
+
+        hr = dp_interface->GetPlayerName(dpid, nameMem, &len);
+        if (hr < DP_OK)
+                goto cleanup;
+
+        *lpdpname = (LPDPNAME)nameMem;
+        return DP_OK;
+
+cleanup:
+        if (nameMem != NULL) {
+                GlobalUnlock(GlobalHandle(nameMem));
+                GlobalFree(GlobalHandle(nameMem));
+        }
+
+        return hr;
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 
 /*
 * Module:                 NetBlade.dll
 * Entry point:            0x10001BFB
 */
-
+// TODO implement
 HRESULT bld_create_thread() {
         assert("bld_create_thread" == NULL);
         return 0;

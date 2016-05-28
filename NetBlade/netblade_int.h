@@ -29,6 +29,9 @@ extern bld_abstract_net *gbl_net;
 
 extern bool bld_is_net_game(void);
 extern void bld_set_gbl_player_info(PLAYER_INFO *player_info);
+extern HRESULT bld_get_player_name(
+        LPDIRECTPLAY4A dp_interface, DPID dpid, LPDPNAME *lpdpname
+);
 extern HRESULT bld_create_thread(void);
 
 extern bool bld_start_server(
