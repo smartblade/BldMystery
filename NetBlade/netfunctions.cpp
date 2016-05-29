@@ -3,7 +3,7 @@
 
 
 static char gbl_unknown_names[3][40] = {"", "", ""};
-static bool is_server = false;
+bool is_server = false;
 bool is_net_game = false;
 
 

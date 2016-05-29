@@ -18,13 +18,13 @@ typedef struct {
 } PLAYER_INFO;
 
 
+extern bool is_server;
 extern bool is_net_game;
 extern PLAYER_INFO gbl_player_info;
 extern LPDIRECTPLAYLOBBY3A gbl_dp_lobby;
 extern LPDIRECTPLAY4A gbl_dp_interface;
 extern bool is_valid_ipx;
 extern bool is_valid_tcp;
-extern bld_abstract_net *gbl_net;
 
 
 extern bool bld_is_server(void);
@@ -67,9 +67,9 @@ LIB_EXP void CloseConnection(void);
 class bld_net : public bld_abstract_net
 {
 private:
-        void *cb;
+        bld_net_cb *cb;
 public:
-        bld_net(void *cb) {
+        bld_net(bld_net_cb *cb) {
                 this->cb = cb;
         }
         virtual void unknown000();
@@ -88,7 +88,10 @@ public:
         virtual bool join_session(int index, const char *player_name);
         virtual bool is_valid_protocol(bool tcp);
         virtual ~bld_net();
+        static void cb_unknown00C(int i1, int i2, int i3, const char *s);
 };
+
+extern bld_net *gbl_net;
 
 
 #endif /* NETBLADE_INT_H */

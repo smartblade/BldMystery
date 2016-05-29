@@ -32,7 +32,7 @@ inline void bld_assert_result(HRESULT hr) {
 * Module:                 NetBlade.dll
 * Entry point:            0x10002C70
 */
-// TODO implement
+
 bool bld_start_server(
         const char *game_name, const char *player_name, int max_players,
         bool TCP
@@ -80,11 +80,12 @@ finish:
                 gbl_dp_interface = NULL;
                 is_net_game = false;
                 return false;
+        } else {
+                bld_net::cb_unknown00C(0, 1, 0, player_name);
+                is_net_game = true;
+                is_server = true;
+                return true;
         }
-
-        assert("bld_start_server" == NULL);
-
-        return false;
 }
 
 
