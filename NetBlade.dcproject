@@ -20,6 +20,16 @@
         <address>1000100A</address>
         <CSignature>boolean bld_is_net_game()</CSignature>
       </procedure>
+      <procedure name="bld_set_gbl_player_info">
+        <characteristics />
+        <address>1000101E</address>
+        <CSignature>void bld_set_gbl_player_info(LPDIRECTPLAY4A *player_info)</CSignature>
+      </procedure>
+      <procedure name="bld_get_player_dpid">
+        <characteristics />
+        <address>10001036</address>
+        <CSignature>DPID bld_get_player_dpid()</CSignature>
+      </procedure>
       <procedure name="bld_start_thread">
         <address>10001203</address>
         <CSignature>void bld_start_thread(void *parametres)</CSignature>
@@ -34,10 +44,33 @@
         <address>10001312</address>
         <CSignature>int bld_destroy_handles()</CSignature>
       </procedure>
+      <procedure name="bld_shift_unknown_names">
+        <characteristics />
+        <address>10001744</address>
+        <CSignature>void bld_shift_unknown_names(const char *name)</CSignature>
+      </procedure>
       <procedure name="bld_create_thread">
         <characteristics />
         <address>10001BFB</address>
         <CSignature>int bld_create_thread()</CSignature>
+      </procedure>
+      <procedure name="bld_update_player_data">
+        <characteristics />
+        <address>10001CD7</address>
+        <CSignature>HRESULT bld_update_player_data()</CSignature>
+      </procedure>
+      <procedure name="bld_enum_players_cb">
+        <characteristics />
+        <address>10001EE9</address>
+        <CSignature>BOOL bld_enum_players_cb(
+    DPID                  dpId,         DWORD           dwPlayerType,
+    LPCDPNAME     lpName,    DWORD           dwFlags,
+    LPVOID              lpContext )</CSignature>
+      </procedure>
+      <procedure name="bld_enum_players">
+        <characteristics />
+        <address>10001F08</address>
+        <CSignature>void bld_enum_players(LPDIRECTPLAY4A dp_interface)</CSignature>
       </procedure>
       <procedure name="bld_dialog_proc">
         <characteristics />
@@ -50,6 +83,14 @@
         <CSignature>boolean bld_start_server(
         const char *game_name, const char *player_name, int max_players,
         boolean TCP
+)</CSignature>
+      </procedure>
+      <procedure name="bld_create_player">
+        <characteristics />
+        <address>10002EE5</address>
+        <CSignature>HRESULT bld_create_player(
+        LPDIRECTPLAY4A dp_interface, const char *game_name,
+        const char *player_name, void *player_info
 )</CSignature>
       </procedure>
       <procedure name="bld_create_dp_interface">
@@ -157,11 +198,32 @@
         <Name>max_players</Name>
       </global>
       <global>
+        <Address>1000505C</Address>
+        <arr length="9">
+          <prim domain="Character" size="1" />
+        </arr>
+        <Name>txtNetGame</Name>
+      </global>
+      <global>
+        <Address>10005068</Address>
+        <type>DPID</type>
+        <Name>gbl_player_dpid</Name>
+      </global>
+      <global>
         <Address>1000511C</Address>
         <arr length="7">
           <prim domain="Character" size="1" />
         </arr>
         <Name>txtPlayer</Name>
+      </global>
+      <global>
+        <Address>10005210</Address>
+        <arr length="3">
+          <arr length="40">
+            <prim domain="Character" size="1" />
+          </arr>
+        </arr>
+        <Name>gbl_unknown_names</Name>
       </global>
       <global>
         <Address>10005288</Address>
@@ -172,6 +234,11 @@
         <Address>10005289</Address>
         <type>boolean</type>
         <Name>is_net_game</Name>
+      </global>
+      <global>
+        <Address>10005290</Address>
+        <type>LPDIRECTPLAY4A</type>
+        <Name>gbl_player_info</Name>
       </global>
       <global>
         <Address>10005294</Address>
