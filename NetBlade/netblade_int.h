@@ -27,12 +27,19 @@ extern bool is_valid_tcp;
 extern bld_abstract_net *gbl_net;
 
 
+extern bool bld_is_server(void);
 extern bool bld_is_net_game(void);
 extern void bld_set_gbl_player_info(PLAYER_INFO *player_info);
+extern DPID bld_get_player_dpid(void);
 extern HRESULT bld_get_player_name(
         LPDIRECTPLAY4A dp_interface, DPID dpid, LPDPNAME *lpdpname
 );
+extern int bld_destroy_handles(void);
+extern void bld_shift_unknown_names(const char *name);
 extern HRESULT bld_create_thread(void);
+extern HRESULT bld_update_player_data(void);
+
+extern void bld_enum_players(LPDIRECTPLAY4A dp_interface);
 
 extern bool bld_start_server(
         const char *game_name, const char *player_name, int max_players,

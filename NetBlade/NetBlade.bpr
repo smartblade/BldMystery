@@ -4,7 +4,7 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="..\..\bin\NetBlade\NetBlade.dll"/>
-    <OBJFILES value="netinterface.obj netfunctions.obj bld_net.obj interface.obj"/>
+    <OBJFILES value="netinterface.obj netfunctions.obj bld_net.obj interface.obj netdialog.obj"/>
     <RESFILES value="NetBlade.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -61,6 +61,7 @@
       <FILE FILENAME="bld_net.cpp" FORMNAME="" UNITNAME="bld_net" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="C:\Program Files (x86)\Borland\CBuilder6\Lib\Psdk\dplayx.lib" FORMNAME="" UNITNAME="dplayx.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="interface.cpp" FORMNAME="" UNITNAME="interface" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="netdialog.cpp" FORMNAME="" UNITNAME="netdialog" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

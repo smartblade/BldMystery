@@ -72,7 +72,15 @@ bool bld_start_server(
         if (hr < DP_OK)
                 goto finish;
 
+        hr = bld_update_player_data();
+
 finish:
+        if (hr < DP_OK) {
+                bld_destroy_dp_interface(gbl_dp_interface);
+                gbl_dp_interface = NULL;
+                is_net_game = false;
+                return false;
+        }
 
         assert("bld_start_server" == NULL);
 
