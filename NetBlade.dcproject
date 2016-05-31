@@ -49,6 +49,11 @@
         <address>10001744</address>
         <CSignature>void bld_shift_unknown_names(const char *name)</CSignature>
       </procedure>
+      <procedure name="bld_send_message">
+        <characteristics />
+        <address>1000188C</address>
+        <CSignature>HRESULT bld_send_message(DPID idTo, LPVOID lpData, DWORD wDataSize)</CSignature>
+      </procedure>
       <procedure name="bld_create_thread">
         <characteristics />
         <address>10001BFB</address>
@@ -110,6 +115,11 @@
         <address>100036FC</address>
         <CSignature>boolean bld_check_protocol(boolean tcp)</CSignature>
       </procedure>
+      <procedure name="bld_net_cb_unknown00C">
+        <characteristics />
+        <address>1000381B</address>
+        <CSignature>void bld_net_cb_unknown00C(int i1, int i2, int i3, char *s)</CSignature>
+      </procedure>
       <procedure name="GetNetInterface">
         <characteristics />
         <address>1000386F</address>
@@ -124,6 +134,11 @@
         <characteristics />
         <address>10003990</address>
         <CSignature>boolean bld_net__is_server(void *this)</CSignature>
+      </procedure>
+      <procedure name="bld_net__send_message">
+        <characteristics />
+        <address>100039B0</address>
+        <CSignature>HRESULT bld_net__send_message(DPID idTo, LPVOID lpData, DWORD wDataSize)</CSignature>
       </procedure>
       <procedure name="bld_net__start_server">
         <characteristics />
