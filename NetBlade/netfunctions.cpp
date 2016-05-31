@@ -82,7 +82,7 @@ HRESULT bld_get_player_name(
         }
 
         hr = dp_interface->GetPlayerName(dpid, nameMem, &len);
-        if (hr < DP_OK)
+        if (FAILED(hr))
                 goto cleanup;
 
         *lpdpname = (LPDPNAME)nameMem;
@@ -184,7 +184,7 @@ HRESULT bld_update_player_data() {
         hr = bld_get_player_name(
                 gbl_player_info.dp_interface, gbl_player_info.dpid, &lpdpname
         );
-        if (hr < DP_OK)
+        if (FAILED(hr))
                 goto cleanup;
 
         if (lpdpname->lpszShortNameA)
@@ -198,7 +198,7 @@ HRESULT bld_update_player_data() {
         );
         GlobalUnlock(GlobalHandle(lpdpname));
         GlobalFree(GlobalHandle(lpdpname));
-        if (hr < DP_OK)
+        if (FAILED(hr))
                 goto cleanup;
 
         bld_shift_unknown_names("Net Game");

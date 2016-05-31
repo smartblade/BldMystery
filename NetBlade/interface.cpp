@@ -41,7 +41,7 @@ bool bld_start_server(
         GUID dp_provider;
 
         hr = bld_create_thread();
-        if (hr < DP_OK)
+        if (FAILED(hr))
                 goto finish;
 
         if (gbl_dp_interface == NULL) {
@@ -52,7 +52,7 @@ bool bld_start_server(
 
                 hr = bld_create_dp_interface(&dp_provider, &gbl_dp_interface);
                 bld_assert_result(hr);
-                if (hr < DP_OK)
+                if (FAILED(hr))
                         goto finish;
         }
 
@@ -69,13 +69,13 @@ bool bld_start_server(
 
         bld_set_gbl_player_info(&gbl_player_info);
 
-        if (hr < DP_OK)
+        if (FAILED(hr))
                 goto finish;
 
         hr = bld_update_player_data();
 
 finish:
-        if (hr < DP_OK) {
+        if (FAILED(hr)) {
                 bld_destroy_dp_interface(gbl_dp_interface);
                 gbl_dp_interface = NULL;
                 is_net_game = false;
@@ -114,7 +114,7 @@ HRESULT bld_create_player(
         session_desc.lpszSessionNameA = (char *)game_name;
 
         hr = dp_interface->Open(&session_desc, DPOPEN_CREATE);
-        if (hr < DP_OK)
+        if (FAILED(hr))
                 goto close;
 
         ZeroMemory(&name,sizeof(DPNAME));
@@ -125,7 +125,7 @@ HRESULT bld_create_player(
         dp_interface->CreatePlayer(
                 &dpid, &name, player_info->event, NULL, 0, DPPLAYER_SERVERPLAYER
         );
-        if (hr < DP_OK)
+        if (FAILED(hr))
                 goto close;
 
         player_info->dp_interface = dp_interface;
@@ -153,12 +153,12 @@ HRESULT bld_create_dp_interface(
 
         /* Creation IDirectPlay interface */
         hr = DirectPlayCreate(dp_provider, &lpdp, NULL);
-        if (hr < DP_OK)
+        if (FAILED(hr))
                 goto cleanup;
 
         /* Get interface of required  version */
         hr = lpdp->QueryInterface(IID_IDirectPlay4A, (VOID**)&lpdp4);
-        if (hr < DP_OK)
+        if (FAILED(hr))
                 goto cleanup;
 
         *dp_interface = lpdp4;
@@ -219,7 +219,7 @@ bool bld_check_protocol(bool tcp) {
         else
                 dp_provider = DPSPGUID_IPX;
 
-        if (bld_create_dp_interface(&dp_provider, &gbl_dp_interface) < DP_OK)
+        if (FAILED(bld_create_dp_interface(&dp_provider, &gbl_dp_interface)))
                 return false;
 
         bld_destroy_dp_interface(gbl_dp_interface);
