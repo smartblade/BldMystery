@@ -9,11 +9,13 @@
 class bld_abstract_net {
 public:
         virtual void unknown000() = 0;
-        virtual void unknown004() = 0;
+        virtual int unknown004() = 0;
         virtual bool is_net_game() = 0;
         virtual bool is_server() = 0;
         virtual void unknown010() = 0;
-        virtual void unknown014() = 0;
+        virtual long send_message(
+                unsigned long idTo, void *lpData, unsigned long wDataSize
+        ) = 0;
         virtual void unknown018() = 0;
         virtual bool start_server(
                 const char *game_name, const char *player_name, int max_players,

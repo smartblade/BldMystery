@@ -133,6 +133,26 @@ void bld_shift_unknown_names(const char *name) {
 ................................................................................
 */
 
+/*
+* Module:                 NetBlade.dll
+* Entry point:            0x1000188C
+*/
+
+HRESULT bld_send_message(DPID idTo, LPVOID lpData, DWORD wDataSize) {
+        HRESULT hr;
+        hr = gbl_player_info.dp_interface->Send(
+                gbl_player_info.dpid, idTo, 0, lpData, wDataSize
+        );
+        return hr;
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 
 /*
 * Module:                 NetBlade.dll

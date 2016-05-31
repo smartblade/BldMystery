@@ -30,11 +30,12 @@
 class bcb_net : public bld_abstract_net
 {
         virtual void unknown000() {}
-        virtual void unknown004() {}
+        virtual int unknown004() {return 0;}
         virtual bool is_net_game();
         virtual bool is_server();
         virtual void unknown010() {}
-        virtual void unknown014() {}
+        virtual long send_message(
+                unsigned long idTo, void *lpData, unsigned long wDataSize) {return -1;}
         virtual void unknown018() {}
         virtual bool start_server(
                 const char *game_name, const char *player_name, int max_players,

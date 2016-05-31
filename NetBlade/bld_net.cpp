@@ -15,9 +15,9 @@ void bld_net::unknown000() {
 * Module:                 NetBlade.dll
 * Entry point:            0x10003970
 */
-// TODO implement
-void bld_net::unknown004() {
-        assert("unknown004" == NULL);
+
+int bld_net::unknown004() {
+        return 0;
 }
 
 
@@ -35,10 +35,9 @@ bool bld_net::is_net_game() {
 * Module:                 NetBlade.dll
 * Entry point:            0x10003990
 */
-// TODO implement
+
 bool bld_net::is_server() {
-        assert("is_server" == NULL);
-        return false;
+        return bld_is_server();
 }
 
 
@@ -56,9 +55,9 @@ void bld_net::unknown010() {
 * Module:                 NetBlade.dll
 * Entry point:            0x100039B0
 */
-// TODO implement
-void bld_net::unknown014() {
-        assert("unknown014" == NULL);
+
+long bld_net::send_message(unsigned long idTo, void *lpData, unsigned long wDataSize) {
+        return bld_send_message(idTo, lpData, wDataSize);
 }
 
 
