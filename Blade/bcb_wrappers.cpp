@@ -36,7 +36,9 @@ class bcb_net : public bld_abstract_net
         virtual void unknown010() {}
         virtual long send_message(
                 unsigned long idTo, void *lpData, unsigned long wDataSize) {return -1;}
-        virtual void unknown018() {}
+        virtual long send_guaranteed_message(
+                unsigned long idTo, void *lpData, unsigned long wDataSize
+        ) { return -1;}
         virtual bool start_server(
                 const char *game_name, const char *player_name, int max_players,
                 bool TCP

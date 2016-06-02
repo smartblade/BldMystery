@@ -147,6 +147,19 @@ HRESULT bld_send_message(DPID idTo, LPVOID lpData, DWORD wDataSize) {
 }
 
 /*
+* Module:                 NetBlade.dll
+* Entry point:            0x100018BF
+*/
+
+HRESULT bld_send_guaranteed_message(DPID idTo, LPVOID lpData, DWORD wDataSize) {
+        HRESULT hr;
+        hr = gbl_player_info.dp_interface->Send(
+                gbl_player_info.dpid, idTo, DPSEND_GUARANTEED, lpData, wDataSize
+        );
+        return hr;
+}
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................

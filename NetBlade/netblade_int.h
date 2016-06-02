@@ -37,6 +37,9 @@ extern HRESULT bld_get_player_name(
 extern int bld_destroy_handles(void);
 extern void bld_shift_unknown_names(const char *name);
 extern HRESULT bld_send_message(DPID idTo, LPVOID lpData, DWORD wDataSize);
+extern HRESULT bld_send_guaranteed_message(
+        DPID idTo, LPVOID lpData, DWORD wDataSize
+);
 extern HRESULT bld_create_thread(void);
 extern HRESULT bld_update_player_data(void);
 
@@ -81,7 +84,9 @@ public:
         virtual long send_message(
                 unsigned long idTo, void *lpData, unsigned long wDataSize
         );
-        virtual void unknown018();
+        virtual long send_guaranteed_message(
+                unsigned long idTo, void *lpData, unsigned long wDataSize
+        );
         virtual bool start_server(
                 const char *game_name, const char *player_name, int max_players,
                 bool TCP

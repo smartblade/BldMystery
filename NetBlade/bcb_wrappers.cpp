@@ -50,7 +50,9 @@ public:
         virtual void unknown010();
         virtual long send_message(
                 unsigned long idTo, void *lpData, unsigned long wDataSize);
-        virtual void unknown018();
+        virtual long send_guaranteed_message(
+                unsigned long idTo, void *lpData, unsigned long wDataSize
+        );
         virtual bool start_server(
                 const char *game_name, const char *player_name, int max_players,
                 bool TCP
@@ -80,8 +82,10 @@ __declspec(naked) long vc2bcb_net::send_message(
         unsigned long idTo, void *lpData, unsigned long wDataSize)
         DEFINE_VC2BCB_METHOD_WRAPPER_RET(0x14, 0x0C, 0)
 
-__declspec(naked) void vc2bcb_net::unknown018()
-        DEFINE_VC2BCB_METHOD_WRAPPER_RET(0x18, 0x0C, (void)false)
+__declspec(naked) long vc2bcb_net::send_guaranteed_message(
+                unsigned long idTo, void *lpData, unsigned long wDataSize
+        )
+        DEFINE_VC2BCB_METHOD_WRAPPER_RET(0x18, 0x0C, 0)
 
 __declspec(naked) bool vc2bcb_net::start_server(
         const char *game_name, const char *player_name, int max_players,

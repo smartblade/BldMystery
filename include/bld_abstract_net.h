@@ -16,7 +16,9 @@ public:
         virtual long send_message(
                 unsigned long idTo, void *lpData, unsigned long wDataSize
         ) = 0;
-        virtual void unknown018() = 0;
+        virtual long send_guaranteed_message(
+                unsigned long idTo, void *lpData, unsigned long wDataSize
+        ) = 0;
         virtual bool start_server(
                 const char *game_name, const char *player_name, int max_players,
                 bool TCP

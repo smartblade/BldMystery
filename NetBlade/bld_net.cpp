@@ -65,9 +65,11 @@ long bld_net::send_message(unsigned long idTo, void *lpData, unsigned long wData
 * Module:                 NetBlade.dll
 * Entry point:            0x100039E0
 */
-// TODO implement
-void bld_net::unknown018() {
-        assert("unknown018" == NULL);
+
+long bld_net::send_guaranteed_message(
+        unsigned long idTo, void *lpData, unsigned long wDataSize
+) {
+        return bld_send_guaranteed_message(idTo, lpData, wDataSize);
 }
 
 
