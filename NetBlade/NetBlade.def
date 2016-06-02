@@ -1,5 +1,5 @@
 LIBRARY     NETBLADE.DLL
 
 EXPORTS
-    GetNetInterface = _GetNetInterface
+    GetNetInterface = _bcb_GetNetInterface
     CloseConnection = _CloseConnection
