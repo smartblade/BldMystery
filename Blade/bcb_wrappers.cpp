@@ -12,7 +12,7 @@
         _asm { mov eax, [edx] }\
         _asm { mov ecx, [esp] }\
         _asm { mov retPtr, ecx }\
-        _asm { mov ecx, [esp + 0x04] }\
+        _asm { mov ecx, edx }\
         _asm { mov espPtr, esp }\
         _asm { add esp, 0x08 }\
         _asm { call [eax + offset] }\
