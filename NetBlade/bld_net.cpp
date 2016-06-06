@@ -16,8 +16,8 @@ void bld_net::unknown000() {
 * Entry point:            0x10003970
 */
 
-int bld_net::unknown004() {
-        return 0;
+unsigned long bld_net::get_all_players_id() {
+        return DPID_ALLPLAYERS;
 }
 
 

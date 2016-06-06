@@ -9,7 +9,7 @@
 class bld_abstract_net {
 public:
         virtual void unknown000() = 0;
-        virtual int unknown004() = 0;
+        virtual unsigned long get_all_players_id() = 0;
         virtual bool is_net_game() = 0;
         virtual bool is_server() = 0;
         virtual void unknown010() = 0;

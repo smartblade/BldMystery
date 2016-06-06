@@ -77,7 +77,7 @@ public:
                 this->cb = cb;
         }
         virtual void unknown000();
-        virtual int unknown004();
+        virtual unsigned long get_all_players_id();
         virtual bool is_net_game();
         virtual bool is_server();
         virtual void unknown010();

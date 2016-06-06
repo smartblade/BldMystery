@@ -44,7 +44,7 @@ public:
                 this->net = net;
         }
         virtual void unknown000();
-        virtual int unknown004();
+        virtual unsigned long get_all_players_id();
         virtual bool is_net_game();
         virtual bool is_server();
         virtual void unknown010();
@@ -66,7 +66,7 @@ public:
 __declspec(naked) void vc2bcb_net::unknown000()
         DEFINE_VC2BCB_METHOD_WRAPPER_RET(0x00, 0x00, (void)false)
 
-__declspec(naked) int vc2bcb_net::unknown004()
+__declspec(naked) unsigned long vc2bcb_net::get_all_players_id()
         DEFINE_VC2BCB_METHOD_WRAPPER_RET(0x04, 0x00, false)
 
 __declspec(naked) bool vc2bcb_net::is_net_game()
