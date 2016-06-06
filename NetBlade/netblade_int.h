@@ -17,6 +17,37 @@ typedef struct {
         int unknown10;
 } PLAYER_INFO;
 
+class bld_net : public bld_abstract_net
+{
+private:
+        bld_net_cb *cb;
+public:
+        bld_net(bld_net_cb *cb) {
+                this->cb = cb;
+        }
+        virtual void unknown000();
+        virtual unsigned long get_all_players_id();
+        virtual bool is_net_game();
+        virtual bool is_server();
+        virtual void unknown010();
+        virtual long send_message(
+                unsigned long idTo, void *lpData, unsigned long wDataSize
+        );
+        virtual long send_guaranteed_message(
+                unsigned long idTo, void *lpData, unsigned long wDataSize
+        );
+        virtual bool start_server(
+                const char *game_name, const char *player_name, int max_players,
+                bool TCP
+        );
+        virtual bool browse_sessions(const char *ip_address);
+        virtual bool get_browse_result(int index, bld_server_info *info);
+        virtual bool join_session(int index, const char *player_name);
+        virtual bool is_valid_protocol(bool tcp);
+        virtual ~bld_net();
+        static void cb_unknown00C(int i1, int i2, int i3, const char *s);
+};
+
 
 extern bool is_server;
 extern bool is_net_game;
@@ -25,6 +56,7 @@ extern LPDIRECTPLAYLOBBY3A gbl_dp_lobby;
 extern LPDIRECTPLAY4A gbl_dp_interface;
 extern bool is_valid_ipx;
 extern bool is_valid_tcp;
+extern bld_net *gbl_net;
 
 
 extern bool bld_is_server(void);
@@ -66,40 +98,6 @@ LIB_EXP void CloseConnection(void);
 #ifdef __cplusplus
 }
 #endif
-
-
-class bld_net : public bld_abstract_net
-{
-private:
-        bld_net_cb *cb;
-public:
-        bld_net(bld_net_cb *cb) {
-                this->cb = cb;
-        }
-        virtual void unknown000();
-        virtual unsigned long get_all_players_id();
-        virtual bool is_net_game();
-        virtual bool is_server();
-        virtual void unknown010();
-        virtual long send_message(
-                unsigned long idTo, void *lpData, unsigned long wDataSize
-        );
-        virtual long send_guaranteed_message(
-                unsigned long idTo, void *lpData, unsigned long wDataSize
-        );
-        virtual bool start_server(
-                const char *game_name, const char *player_name, int max_players,
-                bool TCP
-        );
-        virtual bool browse_sessions(const char *ip_address);
-        virtual bool get_browse_result(int index, bld_server_info *info);
-        virtual bool join_session(int index, const char *player_name);
-        virtual bool is_valid_protocol(bool tcp);
-        virtual ~bld_net();
-        static void cb_unknown00C(int i1, int i2, int i3, const char *s);
-};
-
-extern bld_net *gbl_net;
 
 
 #endif /* NETBLADE_INT_H */
