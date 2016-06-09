@@ -90,10 +90,9 @@ bool bld_net::start_server(
 * Module:                 NetBlade.dll
 * Entry point:            0x10003A40
 */
-// TODO implement
+
 bool bld_net::browse_sessions(const char *ip_address) {
-        assert("browse_sessions" == NULL);
-        return false;
+        return bld_browse_sessions(ip_address);
 }
 
 

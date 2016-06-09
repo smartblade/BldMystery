@@ -10,6 +10,8 @@ static GUID AppGUID = {
 static int gbl_max_players = 5;
 PLAYER_INFO gbl_player_info = {NULL, NULL, NULL, NULL, 0};
 LPDIRECTPLAYLOBBY3A gbl_dp_lobby = NULL;
+static int gbl_num_sessions = 0;
+static SESSION_INFO gbl_sessions[MAX_SESSIONS_NUM];
 LPDIRECTPLAY4A gbl_dp_interface = NULL;
 
 
@@ -17,6 +19,10 @@ static HRESULT bld_create_player(
         LPDIRECTPLAY4A dp_interface, const char *game_name,
         const char *player_name, PLAYER_INFO *player_info
 );
+static HRESULT bld_enum_sessions(LPDIRECTPLAY4A dp_interface);
+static BOOL PASCAL bld_enum_sessions_cb(
+        LPCDPSESSIONDESC2 lpThisSD, LPDWORD lpdwTimeOut, DWORD dwFlags,
+        LPVOID lpContext);
 
 
 inline void bld_assert_result(HRESULT hr) {
@@ -192,6 +198,161 @@ HRESULT bld_destroy_dp_interface(LPDIRECTPLAY4A dp_interface) {
 ................................................................................
 ................................................................................
 */
+
+
+/*
+* Module:                 NetBlade.dll
+* Entry point:            0x10003107
+*/
+
+bool bld_browse_sessions(const char *ip_address)
+{
+        DWORD lpConnectionSize;
+        char lpConnection[128];
+        HRESULT hr;
+        LPDIRECTPLAYLOBBYA lpdplobby;
+        GUID dp_provider;
+
+        lpConnectionSize = sizeof(lpConnection);
+
+        hr = bld_create_thread();
+        if (FAILED(hr))
+                goto cleanup;
+
+        if (gbl_dp_interface == NULL) {
+                if (ip_address)
+                        dp_provider = GUID_NULL;
+                else
+                        dp_provider = DPSPGUID_IPX;
+
+                hr = bld_create_dp_interface(&dp_provider, &gbl_dp_interface);
+                bld_assert_result(hr);
+                if (FAILED(hr))
+                        goto cleanup;
+        }
+
+        if (ip_address)
+        {
+                if (gbl_dp_lobby == NULL)
+                {
+                        // creating lobby object
+                        hr = DirectPlayLobbyCreateA(
+                                NULL, &lpdplobby, NULL, NULL, 0
+                        );
+                        if (FAILED(hr))
+                                goto cleanup;
+
+                        // get new interface of lobby
+	                    hr = lpdplobby->QueryInterface(
+                                IID_IDirectPlayLobby3A, (LPVOID *)&gbl_dp_lobby
+                        );
+
+                        // release old interface since we have new one
+                        lpdplobby->Release();
+                        if (FAILED(hr))
+                                goto cleanup;
+                }
+
+                hr = gbl_dp_lobby->CreateAddress(
+                        DPSPGUID_TCPIP, DPAID_INet, ip_address,
+                        strlen(ip_address), &lpConnection, &lpConnectionSize
+                );
+                if (FAILED(hr))
+                        goto cleanup;
+
+                hr = gbl_dp_interface->InitializeConnection(&lpConnection, 0);
+                bld_assert_result(hr);
+                if (FAILED(hr))
+                        goto cleanup;
+        }
+
+        hr = bld_enum_sessions(gbl_dp_interface);
+        if (FAILED(hr))
+                goto cleanup;
+
+        return true;
+
+cleanup:
+        if (gbl_dp_lobby)
+                gbl_dp_lobby->Release();
+
+        gbl_dp_lobby = NULL;
+
+        bld_destroy_dp_interface(gbl_dp_interface);
+
+        gbl_dp_interface = NULL;
+
+        return false;
+}
+
+
+/*
+* Module:                 NetBlade.dll
+* Entry point:            0x1000346E
+*/
+
+HRESULT bld_enum_sessions(LPDIRECTPLAY4A dp_interface)
+{
+        HRESULT hr;
+        DPSESSIONDESC2 session_desc;
+
+        if (dp_interface == NULL)
+                return DPERR_INVALIDOBJECT;
+
+        gbl_num_sessions = 0;
+
+        ZeroMemory(&session_desc, sizeof(DPSESSIONDESC2));
+        session_desc.dwSize = sizeof(DPSESSIONDESC2);
+        session_desc.guidApplication = AppGUID;
+
+        hr = dp_interface->EnumSessions(
+                &session_desc, 0, bld_enum_sessions_cb, NULL,
+                DPENUMSESSIONS_AVAILABLE
+        );
+
+        return hr;
+}
+
+/*
+* Module:                 NetBlade.dll
+* Entry point:            0x100034E7
+*/
+
+BOOL PASCAL bld_enum_sessions_cb(
+        LPCDPSESSIONDESC2 lpThisSD, LPDWORD lpdwTimeOut, DWORD dwFlags,
+        LPVOID lpContext)
+{
+        BOOL code;
+
+        if (dwFlags & DPESC_TIMEDOUT)
+            return FALSE;
+
+        if (gbl_num_sessions < MAX_SESSIONS_NUM)
+        {
+            gbl_sessions[gbl_num_sessions].desc = *lpThisSD;
+            strcpy(
+                    gbl_sessions[gbl_num_sessions].session_name,
+                    lpThisSD->lpszSessionNameA
+            );
+            gbl_sessions[gbl_num_sessions].desc.lpszSessionNameA =
+                    gbl_sessions[gbl_num_sessions].session_name;
+
+            gbl_num_sessions++;
+            code = TRUE;
+        }
+        else
+            code = FALSE;
+
+        return code;
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 
 /*
 * Module:                 NetBlade.dll

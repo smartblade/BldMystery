@@ -9,6 +9,8 @@
 #define BUILD_LIB
 #include <export.h>
 
+#define MAX_SESSIONS_NUM                                 32
+
 typedef struct {
         LPDIRECTPLAY4A dp_interface;
         void *unknown04;
@@ -16,6 +18,11 @@ typedef struct {
         DPID dpid;
         int unknown10;
 } PLAYER_INFO;
+
+typedef struct {
+        DPSESSIONDESC2 desc;
+        char session_name[128];
+} SESSION_INFO;
 
 class bld_net : public bld_abstract_net
 {
@@ -85,6 +92,7 @@ extern HRESULT bld_create_dp_interface(
         LPGUID dp_provider, LPDIRECTPLAY4A *dp_interface
 );
 extern HRESULT bld_destroy_dp_interface(LPDIRECTPLAY4A dp_interface);
+extern bool bld_browse_sessions(const char *ip_address);
 extern bool bld_check_protocol(bool tcp);
 
 
