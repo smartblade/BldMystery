@@ -110,6 +110,21 @@
         <address>10003065</address>
         <CSignature>HRESULT bld_destroy_dp_interface(LPDIRECTPLAY4A dp_interface)</CSignature>
       </procedure>
+      <procedure name="bld_browse_sessions">
+        <characteristics />
+        <address>10003107</address>
+        <CSignature>boolean bld_browse_sessions(const char *ip_address)</CSignature>
+      </procedure>
+      <procedure name="bld_enum_sessions">
+        <characteristics />
+        <address>1000346E</address>
+        <CSignature>HRESULT bld_enum_sessions(LPDIRECTPLAY4A dp_interface)</CSignature>
+      </procedure>
+      <procedure name="bld_enum_sessions_cb">
+        <characteristics />
+        <address>100034E7</address>
+        <CSignature>BOOL bld_enum_sessions_cb(LPDPSESSIONDESC2 lpThisSD,  LPDWORD lpdwTimeOut,  DWORD dwFlags,  LPVOID lpContext)</CSignature>
+      </procedure>
       <procedure name="bld_check_protocol">
         <characteristics />
         <address>100036FC</address>
@@ -264,6 +279,11 @@
         <Address>10006CD0</Address>
         <type>LPDIRECTPLAY4A</type>
         <Name>gbl_dp_interface</Name>
+      </global>
+      <global>
+        <Address>10006CD4</Address>
+        <prim domain="SignedInt" size="4" />
+        <Name>gbl_num_sessions</Name>
       </global>
       <global>
         <Address>10006CD8</Address>
