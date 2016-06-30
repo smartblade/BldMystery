@@ -192,12 +192,22 @@ HRESULT bld_destroy_dp_interface(LPDIRECTPLAY4A dp_interface) {
         return hr;
 }
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 NetBlade.dll
+* Entry point:            0x1000308C
 */
+
+bool bld_get_browse_result(int index, bld_server_info *info)
+{
+        if (index < gbl_num_sessions) {
+                strcpy(info->name, gbl_sessions[index].session_name);
+                info->max_players = gbl_sessions[index].desc.dwMaxPlayers;
+                info->num_players = gbl_sessions[index].desc.dwCurrentPlayers;
+                return true;
+        }
+        return false;
+}
 
 
 /*

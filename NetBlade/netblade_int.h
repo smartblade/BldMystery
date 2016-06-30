@@ -92,6 +92,7 @@ extern HRESULT bld_create_dp_interface(
         LPGUID dp_provider, LPDIRECTPLAY4A *dp_interface
 );
 extern HRESULT bld_destroy_dp_interface(LPDIRECTPLAY4A dp_interface);
+extern bool bld_get_browse_result(int index, bld_server_info *info);
 extern bool bld_browse_sessions(const char *ip_address);
 extern bool bld_check_protocol(bool tcp);
 

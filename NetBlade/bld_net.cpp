@@ -100,10 +100,9 @@ bool bld_net::browse_sessions(const char *ip_address) {
 * Module:                 NetBlade.dll
 * Entry point:            0x10003A60
 */
-// TODO implement
+
 bool bld_net::get_browse_result(int index, bld_server_info *info) {
-        assert("get_browse_result" == NULL);
-        return false;
+        return bld_get_browse_result(index, info);
 }
 
 
