@@ -23,6 +23,10 @@ static HRESULT bld_enum_sessions(LPDIRECTPLAY4A dp_interface);
 static BOOL PASCAL bld_enum_sessions_cb(
         LPCDPSESSIONDESC2 lpThisSD, LPDWORD lpdwTimeOut, DWORD dwFlags,
         LPVOID lpContext);
+static HRESULT bld_create_client_player(
+        LPDIRECTPLAY4A dp_interface, LPGUID sessionGuid,
+        const char *player_name, PLAYER_INFO *player_info
+);
 
 
 inline void bld_assert_result(HRESULT hr) {
@@ -144,6 +148,7 @@ close:
 
         return hr;
 }
+
 
 /*
 * Module:                 NetBlade.dll
@@ -323,6 +328,7 @@ HRESULT bld_enum_sessions(LPDIRECTPLAY4A dp_interface)
         return hr;
 }
 
+
 /*
 * Module:                 NetBlade.dll
 * Entry point:            0x100034E7
@@ -356,12 +362,82 @@ BOOL PASCAL bld_enum_sessions_cb(
         return code;
 }
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 NetBlade.dll
+* Entry point:            0x100035A7
 */
+
+bool bld_join_session(int index, const char *player_name)
+{
+        HRESULT hr;
+
+        if (index >= gbl_num_sessions)
+                return false;
+
+        hr = bld_create_client_player(
+                gbl_dp_interface, &gbl_sessions[index].desc.guidInstance,
+                player_name, &gbl_player_info
+        );
+        if (FAILED(hr))
+                return false;
+
+        bld_net::cb_unknown00C(0, 1, 1, player_name);
+        is_net_game = true;
+        is_server = false;
+
+        return true;
+}
+
+
+/*
+* Module:                 NetBlade.dll
+* Entry point:            0x10003614
+*/
+
+HRESULT bld_create_client_player(
+        LPDIRECTPLAY4A dp_interface, LPGUID sessionGuid,
+        const char *player_name, PLAYER_INFO *player_info)
+{
+        DPID dpid;/* the dpid of the player created given by directplay */
+        DPNAME name;
+        HRESULT hr;
+        DPSESSIONDESC2 session_desc;
+
+        if (dp_interface == NULL)
+                return DPERR_INVALIDOBJECT;
+
+        ZeroMemory(&session_desc, sizeof(DPSESSIONDESC2));
+        session_desc.dwSize = sizeof(DPSESSIONDESC2);
+        session_desc.guidInstance = *sessionGuid;
+
+        player_info->dp_interface = dp_interface;
+
+        hr = dp_interface->Open(&session_desc, DPOPEN_JOIN);
+        if (FAILED(hr))
+                goto close;
+
+        ZeroMemory(&name,sizeof(DPNAME));
+        name.dwSize = sizeof(DPNAME);
+        name.lpszShortNameA = (char *)player_name;
+        name.lpszLongNameA = NULL;
+
+        dp_interface->CreatePlayer(
+                &dpid, &name, player_info->event, NULL, 0, 0
+        );
+        if (FAILED(hr))
+                goto close;
+
+        player_info->dpid = dpid;
+        player_info->unknown10 = 0;
+
+        return DP_OK;
+
+close:
+        dp_interface->Close();
+
+        return hr;
+}
 
 
 /*

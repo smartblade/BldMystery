@@ -110,10 +110,9 @@ bool bld_net::get_browse_result(int index, bld_server_info *info) {
 * Module:                 NetBlade.dll
 * Entry point:            0x10003A80
 */
-// TODO implement
+
 bool bld_net::join_session(int index, const char *player_name) {
-        assert("join_session" == NULL);
-        return false;
+        return bld_join_session(index, player_name);
 }
 
 
