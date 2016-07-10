@@ -110,6 +110,10 @@
         <address>10003065</address>
         <CSignature>HRESULT bld_destroy_dp_interface(LPDIRECTPLAY4A dp_interface)</CSignature>
       </procedure>
+      <procedure name="bld_get_browse_result">
+        <characteristics />
+        <address>1000308C</address>
+      </procedure>
       <procedure name="bld_browse_sessions">
         <characteristics />
         <address>10003107</address>
@@ -124,6 +128,19 @@
         <characteristics />
         <address>100034E7</address>
         <CSignature>BOOL bld_enum_sessions_cb(LPDPSESSIONDESC2 lpThisSD,  LPDWORD lpdwTimeOut,  DWORD dwFlags,  LPVOID lpContext)</CSignature>
+      </procedure>
+      <procedure name="bld_join_session">
+        <characteristics />
+        <address>100035A7</address>
+        <CSignature>boolean bld_join_session(int index, const char *player_name)</CSignature>
+      </procedure>
+      <procedure name="bld_create_client_player">
+        <characteristics />
+        <address>10003614</address>
+        <CSignature>HRESULT bld_create_client_player(
+        LPDIRECTPLAY4A dp_interface, LPGUID sessionGuid,
+        const char *player_name, void *player_info
+)</CSignature>
       </procedure>
       <procedure name="bld_check_protocol">
         <characteristics />
