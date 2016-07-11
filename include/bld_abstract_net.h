@@ -8,7 +8,7 @@
 
 class bld_abstract_net {
 public:
-        virtual void unknown000() = 0;
+        virtual unsigned long get_session_player_dpid() = 0;
         virtual unsigned long get_all_players_id() = 0;
         virtual bool is_net_game() = 0;
         virtual bool is_server() = 0;

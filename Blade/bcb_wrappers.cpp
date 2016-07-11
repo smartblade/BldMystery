@@ -29,7 +29,7 @@
 
 class bcb_net : public bld_abstract_net
 {
-        virtual void unknown000() {}
+        virtual unsigned long get_session_player_dpid() {return 0;}
         virtual unsigned long get_all_players_id() {return 0;}
         virtual bool is_net_game();
         virtual bool is_server();

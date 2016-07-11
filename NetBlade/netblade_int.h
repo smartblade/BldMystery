@@ -32,7 +32,7 @@ public:
         bld_net(bld_net_cb *cb) {
                 this->cb = cb;
         }
-        virtual void unknown000();
+        virtual unsigned long get_session_player_dpid();
         virtual unsigned long get_all_players_id();
         virtual bool is_net_game();
         virtual bool is_server();
@@ -82,6 +82,7 @@ extern HRESULT bld_send_guaranteed_message(
 extern HRESULT bld_create_thread(void);
 extern HRESULT bld_update_player_data(void);
 
+extern DPID bld_get_session_player_dpid(void);
 extern void bld_enum_players(LPDIRECTPLAY4A dp_interface);
 
 extern bool bld_start_server(

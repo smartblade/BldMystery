@@ -5,9 +5,9 @@
 * Module:                 NetBlade.dll
 * Entry point:            0x10003960
 */
-// TODO implement
-void bld_net::unknown000() {
-        assert("unknown000" == NULL);
+
+unsigned long bld_net::get_session_player_dpid() {
+        return bld_get_session_player_dpid();
 }
 
 
