@@ -5,6 +5,9 @@
 static char gbl_unknown_names[3][40] = {"", "", ""};
 bool is_server = false;
 bool is_net_game = false;
+HANDLE gbl_event = NULL;
+HANDLE gbl_thread = NULL;
+DWORD gbl_thread_id = 0;
 
 
 /*
@@ -58,6 +61,19 @@ DPID bld_get_player_dpid() {
 ................................................................................
 ................................................................................
 */
+
+
+/*
+* Module:                 NetBlade.dll
+* Entry point:            0x10001203
+*/
+// TODO implement
+DWORD WINAPI bld_thread_start_cb(LPVOID lpThreadParameter)
+{
+        assert("bld_thread_start_cb" == NULL);
+        return 0;
+}
+
 
 /*
 * Module:                 NetBlade.dll
@@ -171,10 +187,46 @@ HRESULT bld_send_guaranteed_message(DPID idTo, LPVOID lpData, DWORD wDataSize) {
 * Module:                 NetBlade.dll
 * Entry point:            0x10001BFB
 */
-// TODO implement
-HRESULT bld_create_thread() {
-        assert("bld_create_thread" == NULL);
-        return 0;
+
+HRESULT bld_create_thread()
+{
+        HRESULT hr = DP_OK;
+
+        gbl_dp_lobby = NULL;
+        is_net_game = false;
+        memset(&gbl_unknown_names, 0, sizeof(gbl_unknown_names));
+        memset(&gbl_player_info, 0, sizeof(gbl_player_info));
+
+        gbl_player_info.event = CreateEventA(NULL, FALSE, FALSE, NULL);
+        if (gbl_player_info.event == NULL)
+        {
+                hr = DPERR_NOMEMORY;
+                goto cleanup;
+        }
+
+        gbl_event = CreateEventA(NULL, FALSE, FALSE, NULL);
+        if (gbl_event == NULL)
+        {
+                hr = DPERR_NOMEMORY;
+                goto cleanup;
+        }
+
+        gbl_thread = CreateThread(
+                NULL, 0, bld_thread_start_cb, &gbl_player_info, 0,
+                &gbl_thread_id
+        );
+        if (gbl_thread == NULL)
+        {
+                hr = DPERR_NOMEMORY;
+                goto cleanup;
+        }
+
+        return hr;
+
+cleanup:
+        bld_destroy_handles();
+
+        return hr;
 }
 
 /*
