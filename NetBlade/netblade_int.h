@@ -52,7 +52,13 @@ public:
         virtual bool join_session(int index, const char *player_name);
         virtual bool is_valid_protocol(bool tcp);
         virtual ~bld_net();
+        static void message_received(
+                unsigned long idFrom, unsigned int messageSize,
+                unsigned long idTo
+        );
+        static void player_destroyed(unsigned long playerId);
         static void cb_unknown00C(int i1, int i2, int i3, const char *s);
+        static void player_created(unsigned long playerId, const char *name);
 };
 
 

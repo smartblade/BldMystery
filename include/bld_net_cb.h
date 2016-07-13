@@ -5,9 +5,14 @@
 
 class bld_net_cb {
 public:
-        virtual void unknown000() = 0;
-        virtual void unknown004() = 0;
-        virtual void unknown008() = 0;
+        virtual void message_received(
+                unsigned long idFrom, unsigned int messageSize,
+                unsigned long idTo
+        ) = 0;
+        virtual void player_destroyed(unsigned long playerId) = 0;
+        virtual void player_created(
+                unsigned long playerId, const char *name
+        ) = 0;
         virtual void unknown00C(int i1, int i2, int i3, const char *s) = 0;
 };
 
