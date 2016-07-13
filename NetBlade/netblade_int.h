@@ -53,8 +53,7 @@ public:
         virtual bool is_valid_protocol(bool tcp);
         virtual ~bld_net();
         static void message_received(
-                unsigned long idFrom, unsigned int messageSize,
-                unsigned long idTo
+                unsigned long idFrom, void *message, unsigned int messageSize
         );
         static void player_destroyed(unsigned long playerId);
         static void cb_unknown00C(int i1, int i2, int i3, const char *s);

@@ -6,8 +6,7 @@
 class bld_net_cb {
 public:
         virtual void message_received(
-                unsigned long idFrom, unsigned int messageSize,
-                unsigned long idTo
+                unsigned long idFrom, void *message, unsigned int messageSize
         ) = 0;
         virtual void player_destroyed(unsigned long playerId) = 0;
         virtual void player_created(

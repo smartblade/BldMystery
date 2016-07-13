@@ -118,7 +118,7 @@ cleanup:
 * Module:                 NetBlade.dll
 * Entry point:            0x10001312
 */
-
+// TODO implement
 int bld_destroy_handles() {
         assert("bld_destroy_handles" == NULL);
         return 0;
@@ -130,6 +130,27 @@ int bld_destroy_handles() {
 ................................................................................
 ................................................................................
 */
+
+
+/*
+* Module:                 NetBlade.dll
+* Entry point:            0x10001711
+*/
+
+void bld_user_message_received(
+        PLAYER_INFO playerInfo, LPVOID message, DWORD messageSize,
+        DPID idFrom, DPID idTo
+) {
+        bld_net::message_received(idFrom, message, messageSize);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 
 /*
 * Module:                 NetBlade.dll

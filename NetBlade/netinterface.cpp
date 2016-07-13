@@ -14,9 +14,9 @@ bld_net *gbl_net = NULL;
 */
 
 void bld_net::message_received(
-        unsigned long idFrom, unsigned int messageSize, unsigned long idTo
+        unsigned long idFrom, void *message, unsigned int messageSize
 ) {
-        gbl_net->cb->message_received(idFrom, messageSize, idTo);
+        gbl_net->cb->message_received(idFrom, message, messageSize);
 }
 
 
