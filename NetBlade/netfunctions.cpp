@@ -10,6 +10,16 @@ HANDLE gbl_thread = NULL;
 DWORD gbl_thread_id = 0;
 
 
+static void bld_system_message_received(
+        PLAYER_INFO playerInfo, LPVOID message, DWORD messageSize,
+        DPID idFrom, DPID idTo
+);
+static void bld_user_message_received(
+        PLAYER_INFO playerInfo, LPVOID message, DWORD messageSize,
+        DPID idFrom, DPID idTo
+);
+
+
 /*
 * Module:                 NetBlade.dll
 * Entry point:            0x10001000
@@ -130,6 +140,103 @@ int bld_destroy_handles() {
 ................................................................................
 ................................................................................
 */
+
+
+/*
+* Module:                 NetBlade.dll
+* Entry point:            0x10001547
+*/
+
+void bld_system_message_received(
+        PLAYER_INFO playerInfo, LPVOID message, DWORD messageSize,
+        DPID idFrom, DPID idTo
+) {
+        char *strBuf = NULL;
+        LPDPMSG_CREATEPLAYERORGROUP cpgMsg;
+        const char *cpgFormat;
+        const char *cpgName;
+        LPDPMSG_DESTROYPLAYERORGROUP dpgMsg;
+        const char *dpgFormat;
+        const char *dpgName;
+        LPDPMSG_ADDPLAYERTOGROUP apMsg;
+        LPDPMSG_DELETEPLAYERFROMGROUP dpMsg;
+        LPDPMSG_SESSIONLOST slMsg;
+        LPDPMSG_SETPLAYERORGROUPDATA spgdMsg;
+        LPDPMSG_SETPLAYERORGROUPNAME spgnMsg;
+        DWORD dwType;
+
+        dwType = ((LPDPMSG_GENERIC)message)->dwType;
+
+        switch(dwType)
+        {
+                case DPSYS_CREATEPLAYERORGROUP:
+
+                        cpgMsg = (LPDPMSG_CREATEPLAYERORGROUP)message;
+                        cpgFormat = "%s has joined";
+
+                        if (cpgMsg->dpnName.lpszShortNameA)
+                                cpgName = cpgMsg->dpnName.lpszShortNameA;
+                        else
+                                cpgName = "unknown";
+
+                        strBuf = (char *)GlobalLock(
+                                GlobalAlloc(
+                                        GHND,
+                                        lstrlen(cpgFormat) + lstrlen(cpgName) + 1
+                                )
+                        );
+                        if (strBuf == NULL)
+                                break;
+
+                        wsprintf(strBuf, cpgFormat, cpgName);
+                        bld_shift_unknown_names(strBuf);
+                        bld_net::player_created(cpgMsg->dpId, cpgName);
+                        break;
+
+                case DPSYS_DESTROYPLAYERORGROUP:
+
+                        dpgMsg = (LPDPMSG_DESTROYPLAYERORGROUP)message;
+                        dpgFormat = "%s has left";
+
+                        bld_net::player_destroyed(dpgMsg->dpId);
+                        if (
+                                dpgMsg->dwRemoteDataSize != 0 &&
+                                dpgMsg->lpRemoteData != NULL
+                        )
+                                dpgName = (char *)dpgMsg->lpRemoteData;
+                        else
+                                dpgName = "unknown";
+
+                        strBuf = (char *)GlobalLock(
+                                GlobalAlloc(
+                                        GHND,
+                                        lstrlen(dpgFormat) + lstrlen(dpgName) + 1
+                                )
+                        );
+                        if (strBuf == NULL)
+                                break;
+
+                        wsprintf(strBuf, dpgFormat, dpgName);
+                        bld_shift_unknown_names(strBuf);
+                        break;
+
+                case DPSYS_ADDPLAYERTOGROUP:
+                        apMsg = (LPDPMSG_ADDPLAYERTOGROUP)message;
+                        break;
+                case DPSYS_DELETEPLAYERFROMGROUP:
+                        dpMsg = (LPDPMSG_DELETEPLAYERFROMGROUP)message;
+                        break;
+                case DPSYS_SESSIONLOST:
+                        slMsg = (LPDPMSG_SESSIONLOST)message;
+                        break;
+                case DPSYS_SETPLAYERORGROUPDATA:
+                        spgdMsg = (LPDPMSG_SETPLAYERORGROUPDATA)message;
+                        break;
+                case DPSYS_SETPLAYERORGROUPNAME:
+                        spgnMsg = (LPDPMSG_SETPLAYERORGROUPNAME)message;
+                        break;
+        }
+}
 
 
 /*
