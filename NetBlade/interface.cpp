@@ -8,7 +8,7 @@ static GUID AppGUID = {
         }
 };
 static int gbl_max_players = 5;
-PLAYER_INFO gbl_player_info = {NULL, NULL, NULL, NULL, 0};
+PLAYER_INFO gbl_player_info = {NULL, NULL, NULL, 0, 0};
 LPDIRECTPLAYLOBBY3A gbl_dp_lobby = NULL;
 static int gbl_num_sessions = 0;
 static SESSION_INFO gbl_sessions[MAX_SESSIONS_NUM];
