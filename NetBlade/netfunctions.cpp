@@ -10,12 +10,13 @@ HANDLE gbl_thread = NULL;
 DWORD gbl_thread_id = 0;
 
 
+static int bld_receive(PLAYER_INFO *playerInfo);
 static void bld_system_message_received(
-        PLAYER_INFO playerInfo, LPVOID message, DWORD messageSize,
+        PLAYER_INFO *playerInfo, LPVOID message, DWORD messageSize,
         DPID idFrom, DPID idTo
 );
 static void bld_user_message_received(
-        PLAYER_INFO playerInfo, LPVOID message, DWORD messageSize,
+        PLAYER_INFO *playerInfo, LPVOID message, DWORD messageSize,
         DPID idFrom, DPID idTo
 );
 
@@ -134,12 +135,64 @@ int bld_destroy_handles() {
         return 0;
 }
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 NetBlade.dll
+* Entry point:            0x1000141A
 */
+
+int bld_receive(PLAYER_INFO *playerInfo)
+{
+        DWORD messageSize = 0;
+        LPVOID message = NULL;
+        HRESULT hr;
+        DPID idTo;
+        DPID idFrom;
+
+        while (true)
+        {
+                idFrom = DPID_ALLPLAYERS;
+                idTo = DPID_ALLPLAYERS;
+
+                hr = gbl_player_info.dp_interface->Receive(
+                        &idFrom, &idTo, DPRECEIVE_ALL, message, &messageSize
+                );
+                if (hr == DPERR_BUFFERTOOSMALL) {
+                        if (message != NULL) {
+                                GlobalUnlock(GlobalHandle(message));
+                                GlobalFree(GlobalHandle(message));
+                        }
+                        message = GlobalLock(GlobalAlloc(GHND, messageSize));
+                        if (message == NULL)
+                                hr = DPERR_NOMEMORY;
+                }
+                if (hr == DPERR_BUFFERTOOSMALL)
+                        continue;
+
+                if (SUCCEEDED(hr) && (messageSize >= 4)) {
+                        if (idFrom == DPID_SYSMSG) {
+                                bld_system_message_received(
+                                        playerInfo, message, messageSize,
+                                        idFrom, idTo
+                                );
+                        } else {
+                                bld_user_message_received(
+                                        playerInfo, message, messageSize,
+                                        idFrom, idTo
+                                );
+                        }
+                }
+                if (FAILED(hr))
+                        break;
+        }
+
+        if (message != NULL) {
+                GlobalUnlock(GlobalHandle(message));
+                GlobalFree(GlobalHandle(message));
+        }
+
+        return 0;
+}
 
 
 /*
@@ -148,7 +201,7 @@ int bld_destroy_handles() {
 */
 
 void bld_system_message_received(
-        PLAYER_INFO playerInfo, LPVOID message, DWORD messageSize,
+        PLAYER_INFO *playerInfo, LPVOID message, DWORD messageSize,
         DPID idFrom, DPID idTo
 ) {
         char *strBuf = NULL;
@@ -245,7 +298,7 @@ void bld_system_message_received(
 */
 
 void bld_user_message_received(
-        PLAYER_INFO playerInfo, LPVOID message, DWORD messageSize,
+        PLAYER_INFO *playerInfo, LPVOID message, DWORD messageSize,
         DPID idFrom, DPID idTo
 ) {
         bld_net::message_received(idFrom, message, messageSize);
