@@ -78,10 +78,31 @@ DPID bld_get_player_dpid() {
 * Module:                 NetBlade.dll
 * Entry point:            0x10001203
 */
-// TODO implement
+
 DWORD WINAPI bld_thread_start_cb(LPVOID lpThreadParameter)
 {
-        assert("bld_thread_start_cb" == NULL);
+        HANDLE lpHandles[2];
+        PLAYER_INFO *playerInfo;
+
+        playerInfo = (PLAYER_INFO *)lpThreadParameter;
+
+        lpHandles[0] = gbl_player_info.event;
+        lpHandles[1] = gbl_event;
+
+        while (true)
+        {
+                if (
+                        WaitForMultipleObjects(
+                                2, lpHandles, FALSE, INFINITE
+                        ) != WAIT_OBJECT_0
+                )
+                        break;
+
+                bld_receive(playerInfo);
+        }
+
+        ExitThread(0);
+
         return 0;
 }
 
