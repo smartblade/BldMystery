@@ -1,7 +1,7 @@
 
 #include "netblade_int.h"
 
-static DPID gbl_player_dpid = 1;
+static DPID gbl_player_dpid = DPID_SERVERPLAYER;
 
 
 static BOOL PASCAL bld_enum_players_cb(
