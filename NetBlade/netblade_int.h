@@ -13,7 +13,7 @@
 
 typedef struct {
         LPDIRECTPLAY4A dp_interface;
-        void *unknown04;
+        LPDIRECTPLAYLOBBY3A dp_lobby;
         HANDLE event;
         DPID dpid;
         int unknown10;
@@ -64,7 +64,6 @@ public:
 extern bool is_server;
 extern bool is_net_game;
 extern PLAYER_INFO gbl_player_info;
-extern LPDIRECTPLAYLOBBY3A gbl_dp_lobby;
 extern HANDLE gbl_event;
 extern HANDLE gbl_thread;
 extern DWORD gbl_thread_id;

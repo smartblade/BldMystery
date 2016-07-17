@@ -9,7 +9,6 @@ static GUID AppGUID = {
 };
 static int gbl_max_players = 5;
 PLAYER_INFO gbl_player_info = {NULL, NULL, NULL, 0, 0};
-LPDIRECTPLAYLOBBY3A gbl_dp_lobby = NULL;
 static int gbl_num_sessions = 0;
 static SESSION_INFO gbl_sessions[MAX_SESSIONS_NUM];
 LPDIRECTPLAY4A gbl_dp_interface = NULL;
@@ -248,7 +247,7 @@ bool bld_browse_sessions(const char *ip_address)
 
         if (ip_address)
         {
-                if (gbl_dp_lobby == NULL)
+                if (gbl_player_info.dp_lobby == NULL)
                 {
                         // creating lobby object
                         hr = DirectPlayLobbyCreateA(
@@ -259,7 +258,8 @@ bool bld_browse_sessions(const char *ip_address)
 
                         // get new interface of lobby
 	                    hr = lpdplobby->QueryInterface(
-                                IID_IDirectPlayLobby3A, (LPVOID *)&gbl_dp_lobby
+                                IID_IDirectPlayLobby3A,
+                                (LPVOID *)&gbl_player_info.dp_lobby
                         );
 
                         // release old interface since we have new one
@@ -268,7 +268,7 @@ bool bld_browse_sessions(const char *ip_address)
                                 goto cleanup;
                 }
 
-                hr = gbl_dp_lobby->CreateAddress(
+                hr = gbl_player_info.dp_lobby->CreateAddress(
                         DPSPGUID_TCPIP, DPAID_INet, ip_address,
                         strlen(ip_address), &lpConnection, &lpConnectionSize
                 );
@@ -288,10 +288,10 @@ bool bld_browse_sessions(const char *ip_address)
         return true;
 
 cleanup:
-        if (gbl_dp_lobby)
-                gbl_dp_lobby->Release();
+        if (gbl_player_info.dp_lobby)
+                gbl_player_info.dp_lobby->Release();
 
-        gbl_dp_lobby = NULL;
+        gbl_player_info.dp_lobby = NULL;
 
         bld_destroy_dp_interface(gbl_dp_interface);
 
@@ -452,9 +452,9 @@ bool bld_check_protocol(bool tcp) {
                 if (is_net_game)
                         return false;
 
-                if (gbl_dp_lobby)
-                        gbl_dp_lobby->Release();
-                gbl_dp_lobby = NULL;
+                if (gbl_player_info.dp_lobby)
+                        gbl_player_info.dp_lobby->Release();
+                gbl_player_info.dp_lobby = NULL;
 
                 bld_destroy_dp_interface(gbl_dp_interface);
 

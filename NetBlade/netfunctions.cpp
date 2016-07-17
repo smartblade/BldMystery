@@ -394,7 +394,7 @@ HRESULT bld_create_thread()
 {
         HRESULT hr = DP_OK;
 
-        gbl_dp_lobby = NULL;
+        gbl_player_info.dp_lobby = NULL;
         is_net_game = false;
         memset(&gbl_unknown_names, 0, sizeof(gbl_unknown_names));
         memset(&gbl_player_info, 0, sizeof(gbl_player_info));
