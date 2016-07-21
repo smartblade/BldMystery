@@ -293,6 +293,21 @@
         <Name>gbl_dp_lobby</Name>
       </global>
       <global>
+        <Address>100052A8</Address>
+        <type>HANDLE</type>
+        <Name>gbl_event</Name>
+      </global>
+      <global>
+        <Address>100052AC</Address>
+        <type>HANDLE</type>
+        <Name>gbl_thread</Name>
+      </global>
+      <global>
+        <Address>100052B0</Address>
+        <type>DWORD</type>
+        <Name>gbl_thread_id</Name>
+      </global>
+      <global>
         <Address>10006CD0</Address>
         <type>LPDIRECTPLAY4A</type>
         <Name>gbl_dp_interface</Name>
