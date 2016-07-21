@@ -111,7 +111,7 @@ extern "C" {
 #endif
 
 LIB_EXP bld_abstract_net *GetNetInterface(bld_net_cb *cb, void *module);
-LIB_EXP void CloseConnection(void);
+LIB_EXP void CloseConection(void);
 
 #ifdef __cplusplus
 }

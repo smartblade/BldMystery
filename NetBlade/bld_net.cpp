@@ -133,8 +133,7 @@ bool bld_net::is_valid_protocol(bool tcp) {
 * Module:                 NetBlade.dll
 * Entry point:            0x10003AD0
 */
-// TODO implement
+
 bld_net::~bld_net() {
-        assert("~bld_net" == NULL);
 }
 

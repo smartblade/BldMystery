@@ -97,12 +97,15 @@ bld_abstract_net *GetNetInterface(bld_net_cb *cb, void *module) {
         return gbl_net;
 }
 
+
 /*
 * Module:                 NetBlade.dll
 * Entry point:            0x10003928
 */
-// TODO implement
-void CloseConnection() {
-        assert("CloseConnection" == NULL);
+
+void CloseConection() {
+        bld_destroy_handles();
+        delete gbl_net;
+        gbl_net = NULL;
 }
 
