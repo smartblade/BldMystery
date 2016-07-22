@@ -74,7 +74,7 @@ void bld_net::player_created(unsigned long playerId, const char *name)
 * Module:                 NetBlade.dll
 * Entry point:            0x1000386F
 */
-// TODO implement
+
 bld_abstract_net *GetNetInterface(bld_net_cb *cb, void *module) {
 
         if (gbl_net == NULL) {
@@ -83,12 +83,9 @@ bld_abstract_net *GetNetInterface(bld_net_cb *cb, void *module) {
 
                 gbl_net = new bld_net(cb);
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+                bld_net::cb_unknown00C(0, 0, 2, "");
+
+                bld_create_thread_by_module(module);
 
                 is_valid_ipx = bld_check_protocol(false);
                 is_valid_tcp = bld_check_protocol(true);

@@ -10,6 +10,7 @@ HANDLE gbl_thread = NULL;
 DWORD gbl_thread_id = 0;
 
 
+static DWORD WINAPI bld_thread_start_cb(LPVOID lpThreadParameter);
 static int bld_receive(PLAYER_INFO *playerInfo);
 static void bld_system_message_received(
         PLAYER_INFO *playerInfo, LPVOID message, DWORD messageSize,
@@ -66,12 +67,81 @@ DPID bld_get_player_dpid() {
         return gbl_player_info.dpid;
 }
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 NetBlade.dll
+* Entry point:            0x10001040
 */
+
+HRESULT bld_create_thread_by_module(HMODULE module) {
+        HRESULT hr;
+        char *player_name;
+        LPDPNAME lpdpname;
+
+        is_net_game = false;
+        gbl_player_info.dp_lobby = NULL;
+
+        memset(&gbl_unknown_names, 0, sizeof(gbl_unknown_names));
+        memset(&gbl_player_info, 0, sizeof(gbl_player_info));
+
+        gbl_player_info.event = CreateEvent(NULL, FALSE, FALSE, NULL);
+        if (gbl_player_info.event == NULL)
+        {
+                hr = DPERR_NOMEMORY;
+                goto cleanup;
+        }
+
+        gbl_event = CreateEvent(NULL, FALSE, FALSE, NULL);
+        if (gbl_event == NULL)
+        {
+                hr = DPERR_NOMEMORY;
+                goto cleanup;
+        }
+
+        gbl_thread = CreateThread(
+                NULL, 0, bld_thread_start_cb, &gbl_player_info, 0,
+                &gbl_thread_id
+        );
+        if (gbl_thread == NULL) {
+                hr = DPERR_NOMEMORY;
+                goto cleanup;
+        }
+
+        hr = bld_show_connection_dialog(module, &gbl_player_info);
+        if (FAILED(hr))
+                goto cleanup;
+
+        hr = bld_get_player_name(
+                gbl_player_info.dp_interface, gbl_player_info.dpid, &lpdpname
+        );
+        if (FAILED(hr))
+                goto cleanup;
+
+        if (lpdpname->lpszShortNameA)
+                player_name = lpdpname->lpszShortNameA;
+        else
+                player_name = "unknown";
+
+        hr = gbl_player_info.dp_interface->SetPlayerData(
+                gbl_player_info.dpid, player_name, lstrlenA(player_name),
+                DPSET_GUARANTEED
+        );
+
+        GlobalUnlock(GlobalHandle(lpdpname));
+        GlobalFree(GlobalHandle(lpdpname));
+
+        if (FAILED(hr))
+                goto cleanup;
+
+        bld_shift_unknown_names("Net Game");
+        is_net_game = true;
+        bld_enum_players(gbl_player_info.dp_interface);
+        return DP_OK;
+
+cleanup:
+        bld_destroy_handles();
+        return hr;
+}
 
 
 /*
@@ -440,14 +510,14 @@ HRESULT bld_create_thread()
         memset(&gbl_unknown_names, 0, sizeof(gbl_unknown_names));
         memset(&gbl_player_info, 0, sizeof(gbl_player_info));
 
-        gbl_player_info.event = CreateEventA(NULL, FALSE, FALSE, NULL);
+        gbl_player_info.event = CreateEvent(NULL, FALSE, FALSE, NULL);
         if (gbl_player_info.event == NULL)
         {
                 hr = DPERR_NOMEMORY;
                 goto cleanup;
         }
 
-        gbl_event = CreateEventA(NULL, FALSE, FALSE, NULL);
+        gbl_event = CreateEvent(NULL, FALSE, FALSE, NULL);
         if (gbl_event == NULL)
         {
                 hr = DPERR_NOMEMORY;

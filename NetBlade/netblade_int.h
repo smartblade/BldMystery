@@ -77,6 +77,7 @@ extern bool bld_is_server(void);
 extern bool bld_is_net_game(void);
 extern void bld_set_gbl_player_info(PLAYER_INFO *player_info);
 extern DPID bld_get_player_dpid(void);
+extern HRESULT bld_create_thread_by_module(HMODULE module);
 extern HRESULT bld_get_player_name(
         LPDIRECTPLAY4A dp_interface, DPID dpid, LPDPNAME *lpdpname
 );
@@ -90,6 +91,9 @@ extern HRESULT bld_create_thread(void);
 extern HRESULT bld_update_player_data(void);
 
 extern DPID bld_get_session_player_dpid(void);
+extern HRESULT bld_show_connection_dialog(
+        HMODULE module, PLAYER_INFO *player_info
+);
 extern void bld_enum_players(LPDIRECTPLAY4A dp_interface);
 
 extern bool bld_start_server(

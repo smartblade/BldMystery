@@ -34,6 +34,17 @@ DPID bld_get_session_player_dpid() {
 
 /*
 * Module:                 NetBlade.dll
+* Entry point:            0x10001EAF
+*/
+//TODO implement
+HRESULT bld_show_connection_dialog(HMODULE module, PLAYER_INFO *player_info)
+{
+        return DPERR_USERCANCEL;
+}
+
+
+/*
+* Module:                 NetBlade.dll
 * Entry point:            0x10001EE9
 */
 
