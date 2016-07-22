@@ -150,9 +150,50 @@ cleanup:
 * Module:                 NetBlade.dll
 * Entry point:            0x10001312
 */
-// TODO implement
+
 int bld_destroy_handles() {
-        assert("bld_destroy_handles" == NULL);
+
+        if (gbl_thread != NULL)
+        {
+            SetEvent(gbl_event);
+            WaitForSingleObject(gbl_thread, INFINITE);
+            CloseHandle(gbl_thread);
+            gbl_thread = NULL;
+        }
+
+        if (gbl_event != NULL)
+        {
+            CloseHandle(gbl_event);
+            gbl_event = NULL;
+        }
+
+        if (gbl_player_info.dp_lobby != NULL)
+        {
+            gbl_player_info.dp_lobby->Release();
+            gbl_player_info.dp_lobby = NULL;
+        }
+
+        if (gbl_player_info.dp_interface != NULL)
+        {
+                if (gbl_player_info.dpid != DPID_ALLPLAYERS)
+                {
+                        gbl_player_info.dp_interface->DestroyPlayer(
+                                gbl_player_info.dpid
+                        );
+                        gbl_player_info.dpid = DPID_ALLPLAYERS;
+                }
+
+                gbl_player_info.dp_interface->Close();
+                gbl_player_info.dp_interface->Release();
+                gbl_player_info.dp_interface = NULL;
+        }
+
+        if (gbl_player_info.event != NULL)
+        {
+                CloseHandle(gbl_player_info.event);
+                gbl_player_info.event = NULL;
+        }
+
         return 0;
 }
 
