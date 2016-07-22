@@ -61,7 +61,7 @@ public:
         virtual unsigned long get_all_players_id();
         virtual bool is_net_game();
         virtual bool is_server();
-        virtual void unknown010();
+        virtual unsigned long get_player_dpid();
         virtual long send_message(
                 unsigned long idTo, void *lpData, unsigned long wDataSize);
         virtual long send_guaranteed_message(
@@ -89,8 +89,8 @@ __declspec(naked) bool vc2bc_net::is_net_game()
 __declspec(naked) bool vc2bc_net::is_server()
         DEFINE_VC2BC_METHOD_WRAPPER_RET(0x0C, 0x00, false)
 
-__declspec(naked) void vc2bc_net::unknown010()
-        DEFINE_VC2BC_METHOD_WRAPPER_RET(0x10, 0x00, (void)false)
+__declspec(naked) unsigned long vc2bc_net::get_player_dpid()
+        DEFINE_VC2BC_METHOD_WRAPPER_RET(0x10, 0x00, false)
 
 __declspec(naked) long vc2bc_net::send_message(
         unsigned long idTo, void *lpData, unsigned long wDataSize)

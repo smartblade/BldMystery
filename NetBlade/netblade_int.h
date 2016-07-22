@@ -36,7 +36,7 @@ public:
         virtual unsigned long get_all_players_id();
         virtual bool is_net_game();
         virtual bool is_server();
-        virtual void unknown010();
+        virtual unsigned long get_player_dpid();
         virtual long send_message(
                 unsigned long idTo, void *lpData, unsigned long wDataSize
         );

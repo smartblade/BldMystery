@@ -45,9 +45,9 @@ bool bld_net::is_server() {
 * Module:                 NetBlade.dll
 * Entry point:            0x100039A0
 */
-// TODO implement
-void bld_net::unknown010() {
-        assert("unknown010" == NULL);
+
+unsigned long bld_net::get_player_dpid() {
+        return bld_get_player_dpid();
 }
 
 

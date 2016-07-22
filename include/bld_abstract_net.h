@@ -12,7 +12,7 @@ public:
         virtual unsigned long get_all_players_id() = 0;
         virtual bool is_net_game() = 0;
         virtual bool is_server() = 0;
-        virtual void unknown010() = 0;
+        virtual unsigned long get_player_dpid() = 0;
         virtual long send_message(
                 unsigned long idTo, void *lpData, unsigned long wDataSize
         ) = 0;

@@ -33,7 +33,7 @@ class bcb_net : public bld_abstract_net
         virtual unsigned long get_all_players_id() {return 0;}
         virtual bool is_net_game();
         virtual bool is_server();
-        virtual void unknown010() {}
+        virtual unsigned long get_player_dpid() {return 0;}
         virtual long send_message(
                 unsigned long idTo, void *lpData, unsigned long wDataSize) {return -1;}
         virtual long send_guaranteed_message(
