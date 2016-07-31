@@ -16,7 +16,7 @@ typedef struct {
         LPDIRECTPLAYLOBBY3A dp_lobby;
         HANDLE event;
         DPID dpid;
-        int unknown10;
+        int is_server;
 } PLAYER_INFO;
 
 typedef struct {

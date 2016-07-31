@@ -139,7 +139,7 @@ HRESULT bld_create_player(
 
         player_info->dp_interface = dp_interface;
         player_info->dpid = dpid;
-        player_info->unknown10 = 1;
+        player_info->is_server = 1;
 
         return DP_OK;
 close:
@@ -429,7 +429,7 @@ HRESULT bld_create_client_player(
                 goto close;
 
         player_info->dpid = dpid;
-        player_info->unknown10 = 0;
+        player_info->is_server = 0;
 
         return DP_OK;
 
