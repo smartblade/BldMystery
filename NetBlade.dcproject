@@ -20,6 +20,11 @@
         <address>1000100A</address>
         <CSignature>boolean bld_is_net_game()</CSignature>
       </procedure>
+      <procedure name="bld_get_gbl_player_info">
+        <characteristics />
+        <address>10001014</address>
+        <CSignature>void *bld_get_gbl_player_info()</CSignature>
+      </procedure>
       <procedure name="bld_set_gbl_player_info">
         <characteristics />
         <address>1000101E</address>
@@ -71,10 +76,17 @@
         DPID idFrom, DPID idTo
 )</CSignature>
       </procedure>
+      <procedure name="bld_get_unknown_name">
+        <address>10001734</address>
+        <CSignature>const char *bld_get_unknown_name(int index)</CSignature>
+      </procedure>
       <procedure name="bld_shift_unknown_names">
         <characteristics />
         <address>10001744</address>
         <CSignature>void bld_shift_unknown_names(const char *name)</CSignature>
+      </procedure>
+      <procedure name="fn10001798">
+        <address>10001798</address>
       </procedure>
       <procedure name="bld_send_message">
         <characteristics />
@@ -85,6 +97,15 @@
         <characteristics />
         <address>100018BF</address>
         <CSignature>HRESULT bld_send_guaranteed_message(DPID idTo, LPVOID lpData, DWORD wDataSize)</CSignature>
+      </procedure>
+      <procedure name="fn100018F2">
+        <address>100018F2</address>
+      </procedure>
+      <procedure name="fn100019EA">
+        <address>100019EA</address>
+      </procedure>
+      <procedure name="fn10001B03">
+        <address>10001B03</address>
       </procedure>
       <procedure name="bld_create_thread">
         <characteristics />
@@ -100,6 +121,9 @@
         <characteristics />
         <address>10001DCD</address>
         <CSignature>DPID bld_get_session_player_dpid()</CSignature>
+      </procedure>
+      <procedure name="fn10001DD7">
+        <address>10001DD7</address>
       </procedure>
       <procedure name="bld_show_connection_dialog">
         <characteristics />
@@ -123,6 +147,12 @@
         <characteristics />
         <address>10001F3E</address>
         <CSignature>INT_PTR bld_dialog_proc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);</CSignature>
+      </procedure>
+      <procedure name="fn10002505">
+        <address>10002505</address>
+      </procedure>
+      <procedure name="fn1000284C">
+        <address>1000284C</address>
       </procedure>
       <procedure name="bld_start_server">
         <characteristics />
@@ -196,6 +226,11 @@
         unsigned long idFrom, void *message, unsigned long messageSize
 )</CSignature>
       </procedure>
+      <procedure name="unknown100037F6">
+        <characteristics />
+        <address>100037F6</address>
+        <CSignature>void unknown100037F6()</CSignature>
+      </procedure>
       <procedure name="bld_net__player_destroyed">
         <characteristics />
         <address>100037FB</address>
@@ -205,6 +240,11 @@
         <characteristics />
         <address>1000381B</address>
         <CSignature>void bld_net__cb_unknown00C(int i1, int i2, int i3, char *s)</CSignature>
+      </procedure>
+      <procedure name="unknown10003847">
+        <characteristics />
+        <address>10003847</address>
+        <CSignature>void unknown10003847()</CSignature>
       </procedure>
       <procedure name="bld_net__player_created">
         <characteristics />
