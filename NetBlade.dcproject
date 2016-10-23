@@ -324,34 +324,6 @@
         <decompile>false</decompile>
         <CSignature>BOOL DllMain(HANDLE hModule, DWORD dwReason, LPVOID lpReserved)</CSignature>
       </procedure>
-      <call>
-        <address>10001386</address>
-        <signature stackDelta="4">
-          <arg name="ptrArg00">
-            <ptr size="4">
-              <prim domain="SignedInt" size="4" />
-            </ptr>
-            <stack />
-          </arg>
-        </signature>
-      </call>
-      <call>
-        <address>100013BB</address>
-        <signature stackDelta="4">
-          <arg name="ptrArg00">
-            <ptr size="4">
-              <prim domain="SignedInt" size="4" />
-            </ptr>
-            <stack />
-          </arg>
-          <arg name="ptrArg04">
-            <ptr size="4">
-              <prim domain="SignedInt" size="4" />
-            </ptr>
-            <stack />
-          </arg>
-        </signature>
-      </call>
       <global>
         <Address>100042D0</Address>
         <type>GUID</type>
