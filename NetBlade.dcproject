@@ -324,6 +324,70 @@
         <decompile>false</decompile>
         <CSignature>BOOL DllMain(HANDLE hModule, DWORD dwReason, LPVOID lpReserved)</CSignature>
       </procedure>
+      <call>
+        <address>10003031</address>
+        <signature convention="__stdcall">
+          <return>
+            <type>HRESULT</type>
+          </return>
+          <arg name="This">
+            <type>LPDIRECTPLAY4A</type>
+          </arg>
+          <arg name="riid">
+            <ptr size="4">
+              <type>IID</type>
+            </ptr>
+          </arg>
+          <arg name="ppvObj">
+            <ptr size="4">
+              <type>LPVOID</type>
+            </ptr>
+          </arg>
+        </signature>
+      </call>
+      <call>
+        <address>10003055</address>
+        <signature convention="__stdcall">
+          <return>
+            <type>ULONG</type>
+          </return>
+          <arg name="This">
+            <type>LPDIRECTPLAY4A</type>
+          </arg>
+        </signature>
+      </call>
+      <call>
+        <address>100032B0</address>
+        <signature convention="__stdcall">
+          <return>
+            <type>HRESULT</type>
+          </return>
+          <arg name="This">
+            <type>LPDIRECTPLAY4A</type>
+          </arg>
+          <arg name="riid">
+            <ptr size="4">
+              <type>IID</type>
+            </ptr>
+          </arg>
+          <arg name="ppvObj">
+            <ptr size="4">
+              <type>LPVOID</type>
+            </ptr>
+          </arg>
+        </signature>
+      </call>
+      <call>
+        <address>100032C7</address>
+        <signature convention="__stdcall">
+          <return>
+            <type>ULONG</type>
+          </return>
+          <arg name="This">
+            <type>LPDIRECTPLAY4A</type>
+          </arg>
+        </signature>
+      </call>
       <global>
         <Address>100042D0</Address>
         <type>GUID</type>
