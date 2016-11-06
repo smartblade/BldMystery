@@ -1,0 +1,3657 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemata.jklnet.org/Reko/v4">
+  <arch>x86-protected-32</arch>
+  <platform>win32</platform>
+  <input>
+    <filename>..\Bin\Blade_patched.exe</filename>
+    <disassembly>..\Bin\Blade_patched.asm</disassembly>
+    <intermediate-code>..\Bin\Blade_patched.dis</intermediate-code>
+    <output>..\Bin\Blade_patched.c</output>
+    <types-file>..\Bin\Blade_patched.h</types-file>
+    <global-vars>..\Bin\Blade_patched.globals.c</global-vars>
+    <user>
+      <processor />
+      <procedure name="application_load_level">
+        <address>0041009D</address>
+      </procedure>
+      <procedure name="application_load_level_script">
+        <characteristics />
+        <address>00413256</address>
+      </procedure>
+      <procedure name="application_run_python_file">
+        <characteristics />
+        <address>00415759</address>
+      </procedure>
+      <procedure name="PlayCDTrack">
+        <address>00427750</address>
+        <decompile>false</decompile>
+        <CSignature>
+int PlayCDTrack(int ntrack)</CSignature>
+      </procedure>
+      <procedure name="nCDTracks">
+        <address>00427777</address>
+        <decompile>false</decompile>
+        <CSignature>
+int nCDTracks(void)</CSignature>
+      </procedure>
+      <procedure name="CDLenght">
+        <address>00427799</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CDLenght(void)</CSignature>
+      </procedure>
+      <procedure name="CDTrackLenght">
+        <address>004277BB</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CDTrackLenght(int ntrack)</CSignature>
+      </procedure>
+      <procedure name="CDPresent">
+        <address>004277E2</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CDPresent(void)</CSignature>
+      </procedure>
+      <procedure name="CDStop">
+        <address>00427804</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CDStop(void)</CSignature>
+      </procedure>
+      <procedure name="CDPause">
+        <address>00427826</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CDPause(void)</CSignature>
+      </procedure>
+      <procedure name="CDSetCallBack">
+        <address>00427848</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CDSetCallBack(PyObject *func)</CSignature>
+      </procedure>
+      <procedure name="SetAppMode">
+        <address>00427880</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetAppMode(const char *mode)</CSignature>
+      </procedure>
+      <procedure name="GetAppMode">
+        <address>004278D5</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetAppMode(void)</CSignature>
+      </procedure>
+      <procedure name="BeginLoadGame">
+        <address>00427910</address>
+        <decompile>false</decompile>
+        <CSignature>
+void BeginLoadGame(void)</CSignature>
+      </procedure>
+      <procedure name="DoneLoadGame">
+        <address>00427943</address>
+        <decompile>false</decompile>
+        <CSignature>
+void DoneLoadGame(void)</CSignature>
+      </procedure>
+      <procedure name="SetSaveInfo">
+        <address>00427976</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetSaveInfo(PyObject *info)</CSignature>
+      </procedure>
+      <procedure name="GetSaveInfo">
+        <address>004279E1</address>
+        <decompile>false</decompile>
+        <CSignature>
+PyObject *GetSaveInfo(void)</CSignature>
+      </procedure>
+      <procedure name="SaveEntitiesData">
+        <address>00427A0D</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SaveEntitiesData(const char *filename)</CSignature>
+      </procedure>
+      <procedure name="LoadEntitiesData">
+        <address>00427A20</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LoadEntitiesData(const char *filename)</CSignature>
+      </procedure>
+      <procedure name="SaveParticleSystemsData">
+        <address>00427A33</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SaveParticleSystemsData(const char *filename)</CSignature>
+      </procedure>
+      <procedure name="LoadParticleSystemsData">
+        <address>00427B03</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LoadParticleSystemsData(const char *filename)</CSignature>
+      </procedure>
+      <procedure name="SaveCombustionData">
+        <address>00427DE8</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SaveCombustionData(const char *file_name)</CSignature>
+      </procedure>
+      <procedure name="LoadCombustionData">
+        <address>00427EB7</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LoadCombustionData(const char *file_name)</CSignature>
+      </procedure>
+      <procedure name="ReassignCombustionData">
+        <address>0042819A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int ReassignCombustionData(void)</CSignature>
+      </procedure>
+      <procedure name="SaveAnmRaceData">
+        <address>004281D3</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SaveAnmRaceData(const char *file_name, const char *race)</CSignature>
+      </procedure>
+      <procedure name="LoadAnmRaceData">
+        <address>0042857B</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LoadAnmRaceData(const char *file_name)</CSignature>
+      </procedure>
+      <procedure name="GetnRaces">
+        <address>004289E0</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetnRaces(void)</CSignature>
+      </procedure>
+      <procedure name="GetRaceName">
+        <address>004289EA</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetRaceName(int index)</CSignature>
+      </procedure>
+      <procedure name="SaveAnmSoundData">
+        <address>00428A22</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SaveAnmSoundData(const char *file_name, const char *race)</CSignature>
+      </procedure>
+      <procedure name="LoadAnmSoundData">
+        <address>00428BEE</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LoadAnmSoundData(const char *file_name)</CSignature>
+      </procedure>
+      <procedure name="GetCommandLine">
+        <address>00428FD6</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetCommandLine(void)</CSignature>
+      </procedure>
+      <procedure name="GetCurrentMap">
+        <address>0042900C</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetCurrentMap(void)</CSignature>
+      </procedure>
+      <procedure name="SetCurrentMap">
+        <address>00429049</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetCurrentMap(const char *map)</CSignature>
+      </procedure>
+      <procedure name="LoadWorld">
+        <address>00429086</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LoadWorld(const char *file_name)</CSignature>
+      </procedure>
+      <procedure name="SetListenerMode">
+        <address>004290C0</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetListenerMode(int mode, double x, double y, double z)</CSignature>
+      </procedure>
+      <procedure name="GetListenerMode">
+        <address>00429128</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="Quit">
+        <address>0042915B</address>
+        <decompile>false</decompile>
+        <CSignature>
+int Quit(void)</CSignature>
+      </procedure>
+      <procedure name="SetTime">
+        <address>00429194</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetTime(double time)</CSignature>
+      </procedure>
+      <procedure name="GoToTime">
+        <address>004291D2</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GoToTime(double time)</CSignature>
+      </procedure>
+      <procedure name="GetTime">
+        <address>00429210</address>
+        <decompile>false</decompile>
+        <CSignature>
+double GetTime(void)</CSignature>
+      </procedure>
+      <procedure name="StopTime">
+        <address>0042921F</address>
+        <decompile>false</decompile>
+        <CSignature>
+void StopTime(void)</CSignature>
+      </procedure>
+      <procedure name="RestartTime">
+        <address>00429255</address>
+        <decompile>false</decompile>
+        <CSignature>
+void RestartTime(void)</CSignature>
+      </procedure>
+      <procedure name="SetTimeSpeed">
+        <address>0042928B</address>
+        <decompile>false</decompile>
+        <CSignature>
+void SetTimeSpeed(double speed)</CSignature>
+      </procedure>
+      <procedure name="GetTimeSpeed">
+        <address>004292C9</address>
+        <decompile>false</decompile>
+        <CSignature>
+double GetTimeSpeed(void)</CSignature>
+      </procedure>
+      <procedure name="AddInputAction">
+        <address>004292FF</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddInputAction(const char *action_name, int npi)</CSignature>
+      </procedure>
+      <procedure name="RemoveInputAction">
+        <address>00429342</address>
+        <decompile>false</decompile>
+        <CSignature>
+int RemoveInputAction(const char *action_name)</CSignature>
+      </procedure>
+      <procedure name="AssocKey">
+        <address>00429381</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AssocKey(
+        const char *action, const char *input_device, const char *key,
+        int press
+)</CSignature>
+      </procedure>
+      <procedure name="Bind">
+        <address>004293C7</address>
+        <decompile>false</decompile>
+        <CSignature>
+int Bind(const char *action_name, PyObject *proc)</CSignature>
+      </procedure>
+      <procedure name="UnBind">
+        <address>00429446</address>
+        <decompile>false</decompile>
+        <CSignature>
+int UnBind(const char *action_name, PyObject *proc)</CSignature>
+      </procedure>
+      <procedure name="Bind2">
+        <address>004294C5</address>
+        <decompile>false</decompile>
+        <CSignature>
+int Bind2(
+        const char *action_name1, const char *action_name2,
+        const char *new_action, int unknown
+)</CSignature>
+      </procedure>
+      <procedure name="GetTimeActionHeld">
+        <address>0042956A</address>
+        <decompile>false</decompile>
+        <CSignature>
+double GetTimeActionHeld(const char *action_name)</CSignature>
+      </procedure>
+      <procedure name="BindPred">
+        <address>004295C2</address>
+        <decompile>false</decompile>
+        <CSignature>
+int BindPred(const char *action_name, const char *predproc)</CSignature>
+      </procedure>
+      <procedure name="UnBindPred">
+        <address>00429641</address>
+        <decompile>false</decompile>
+        <CSignature>
+int UnBindPred(const char *action_name, const char *predproc)</CSignature>
+      </procedure>
+      <procedure name="UnBindAll">
+        <address>004296C0</address>
+        <decompile>false</decompile>
+        <CSignature>
+void UnBindAll(void)</CSignature>
+      </procedure>
+      <procedure name="Input">
+        <address>004296F6</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *Input(const char *text)</CSignature>
+      </procedure>
+      <procedure name="MarkLevelToLoad">
+        <address>00429733</address>
+        <decompile>false</decompile>
+        <CSignature>
+void MarkLevelToLoad(const char *dir_name)</CSignature>
+      </procedure>
+      <procedure name="ReadLevel">
+        <address>00429793</address>
+        <decompile>false</decompile>
+        <CSignature>
+void ReadLevel(const char *file_name)</CSignature>
+      </procedure>
+      <procedure name="ReadBitMap">
+        <address>004297F3</address>
+        <decompile>false</decompile>
+        <CSignature>
+void ReadBitMap(const char *file_name, const char *internal_name)</CSignature>
+      </procedure>
+      <procedure name="ReadAlphaBitMap">
+        <address>00429863</address>
+        <decompile>false</decompile>
+        <CSignature>
+void ReadAlphaBitMap(const char *file_name, const char *internal_name)</CSignature>
+      </procedure>
+      <procedure name="CloseLevel">
+        <address>004298D3</address>
+        <decompile>false</decompile>
+        <CSignature>
+void CloseLevel(const char *statement1, const char *statement2)</CSignature>
+      </procedure>
+      <procedure name="StartRecordingDemo">
+        <address>00429914</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="EndRecordingDemo">
+        <address>00429923</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="PlayDemo">
+        <address>00429936</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="DeactivateInput">
+        <address>00429949</address>
+        <decompile>false</decompile>
+        <CSignature>
+int DeactivateInput(void)</CSignature>
+      </procedure>
+      <procedure name="ActivateInput">
+        <address>0042997F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int ActivateInput(void)</CSignature>
+      </procedure>
+      <procedure name="OutSound">
+        <address>004299B5</address>
+        <decompile>false</decompile>
+        <CSignature>
+int OutSound(int soundId, double x, double y, double z, int unknown)</CSignature>
+      </procedure>
+      <procedure name="SetDefaultMass">
+        <address>00429A10</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetDefaultMass(const char *entity_kind, double mass)</CSignature>
+      </procedure>
+      <procedure name="SetDefaultMaterial">
+        <address>00429C4F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetDefaultMaterial(const char *entity_kind, const char *material)</CSignature>
+      </procedure>
+      <procedure name="SetSun">
+        <address>00429F2D</address>
+        <decompile>false</decompile>
+        <CSignature>
+void SetSun(int exists, double x, double y, double z)</CSignature>
+      </procedure>
+      <procedure name="InsideAA">
+        <address>00429F71</address>
+        <decompile>false</decompile>
+        <CSignature>
+int InsideAA(int AA, double x, double y, double z)</CSignature>
+      </procedure>
+      <procedure name="SetDrawObjectShadows">
+        <address>00429FDF</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetDrawObjectShadows(int draw)</CSignature>
+      </procedure>
+      <procedure name="GetDrawObjectShadows">
+        <address>0042A000</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetDrawObjectShadows(void)</CSignature>
+      </procedure>
+      <procedure name="SetAutoEngageCombat">
+        <address>0042A019</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetAutoEngageCombat(int auto_engage_combat)</CSignature>
+      </procedure>
+      <procedure name="GetAutoEngageCombat">
+        <address>0042A03A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetAutoEngageCombat(void)</CSignature>
+      </procedure>
+      <procedure name="SetAecGap">
+        <address>0042A053</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetAecGap(double aec_gap)</CSignature>
+      </procedure>
+      <procedure name="GetAecGap">
+        <address>0042A07D</address>
+        <decompile>false</decompile>
+        <CSignature>
+double GetAecGap(void)</CSignature>
+      </procedure>
+      <procedure name="SetBloodLevel">
+        <address>0042A095</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetBloodLevel(int blood_level)</CSignature>
+      </procedure>
+      <procedure name="GetBloodLevel">
+        <address>0042A0CF</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetBloodLevel(void)</CSignature>
+      </procedure>
+      <procedure name="SetMutilationLevel">
+        <address>0042A105</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetMutilationLevel(int mutilation_level)</CSignature>
+      </procedure>
+      <procedure name="GetMutilationLevel">
+        <address>0042A13F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetMutilationLevel(void)</CSignature>
+      </procedure>
+      <procedure name="AnmAddEvent">
+        <address>0042A175</address>
+        <decompile>false</decompile>
+        <CSignature>
+void AnmAddEvent(const char *anm_name, const char *event_name, double event_frame)</CSignature>
+      </procedure>
+      <procedure name="AnmDelEvent">
+        <address>0042A232</address>
+        <decompile>false</decompile>
+        <CSignature>
+void AnmDelEvent(const char *anm_name, const char *event_name)</CSignature>
+      </procedure>
+      <procedure name="AnmClearEvents">
+        <address>0042A2D0</address>
+        <decompile>false</decompile>
+        <CSignature>
+void AnmClearEvents(const char *anm_name)</CSignature>
+      </procedure>
+      <procedure name="AnmGetEventFrame">
+        <address>0042A354</address>
+        <decompile>false</decompile>
+        <CSignature>
+double AnmGetEventFrame(const char *anm_name, const char *event_name)</CSignature>
+      </procedure>
+      <procedure name="AddParticleGType">
+        <address>0042A400</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddParticleGType(
+        const char *new_type, const char *parent_type, int operation_type,
+        int duration
+)</CSignature>
+      </procedure>
+      <procedure name="SetParticleGVal">
+        <address>0042A697</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetParticleGVal(
+        const char *type, int i, int r, int g, int b, int alpha, double size
+)</CSignature>
+      </procedure>
+      <procedure name="GetnParticleGType">
+        <address>0042A775</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetnParticleGType(void)</CSignature>
+      </procedure>
+      <procedure name="GetParticleGType">
+        <address>0042A77F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetParticleGType(
+        int index, const char **type, const char **parent_type,
+        int *operation_type, int *duration
+)</CSignature>
+      </procedure>
+      <procedure name="GetParticleGVal">
+        <address>0042A82F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetParticleGVal(
+        const char *type, int index, int *r, int *g, int *b, int *alpha,
+        double *size
+)</CSignature>
+      </procedure>
+      <procedure name="SetTurnSpeed">
+        <address>0042A915</address>
+        <decompile>false</decompile>
+        <CSignature>
+void SetTurnSpeed(const char *race_name, double new_speed)</CSignature>
+      </procedure>
+      <procedure name="SetAnimationFactor">
+        <address>0042A930</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetAnimationFactor(const char *mov, double new_speed_factor)</CSignature>
+      </procedure>
+      <procedure name="SetAutoGenTexture">
+        <address>0042A94B</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetAutoGenTexture(const char *textureName, int textureEffect)</CSignature>
+      </procedure>
+      <procedure name="GenerateEntityName">
+        <address>0042A98E</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GenerateEntityName(void)</CSignature>
+      </procedure>
+      <procedure name="AddWatchAnim">
+        <address>0042A9A2</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddWatchAnim(const char *anim)</CSignature>
+      </procedure>
+      <procedure name="AddAnimFlags">
+        <address>0042A9B5</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddAnimFlags(
+        const char *anim, int wuea, int mdf_y, int solf, int copy_rot,
+        int bng_mov, int head_f
+)</CSignature>
+      </procedure>
+      <procedure name="SetActionCameraMovement">
+        <address>0042A9E0</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetActionCameraMovement(
+        const char *action_name, double angle, double start_pos, double end_pos
+)</CSignature>
+      </procedure>
+      <procedure name="SetRootWidget">
+        <address>0042ABBA</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetRootWidget(long int widget)</CSignature>
+      </procedure>
+      <procedure name="GetRootWidget">
+        <address>0042ABF6</address>
+        <decompile>false</decompile>
+        <CSignature>
+long int GetRootWidget(void)</CSignature>
+      </procedure>
+      <procedure name="AddCombustionDataFor">
+        <address>0042AC32</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddCombustionDataFor(
+        const char *object_kind, const char *fire_kind, double upper_treshol,
+        double lower_treshold, double flame_height, double flame_size,
+        double speed, double livetime
+)</CSignature>
+      </procedure>
+      <procedure name="RM_FreeResource">
+        <address>0042AE7A</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="RM_GetResource">
+        <address>0042AEAE</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="UpdateAGTexture">
+        <address>0042B0F4</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="GetWorldFileName">
+        <address>0042B192</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetWorldFileName(void)</CSignature>
+      </procedure>
+      <procedure name="SetAfterFrameFunc">
+        <address>0042B1A5</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetAfterFrameFunc(const char *name, PyObject *function)</CSignature>
+      </procedure>
+      <procedure name="RemoveAfterFrameFunc">
+        <address>0042B1E8</address>
+        <decompile>false</decompile>
+        <CSignature>
+int RemoveAfterFrameFunc(const char *name)</CSignature>
+      </procedure>
+      <procedure name="GetAfterFrameFunc">
+        <address>0042B227</address>
+        <decompile>false</decompile>
+        <CSignature>
+PyObject *GetAfterFrameFunc(const char *name)</CSignature>
+      </procedure>
+      <procedure name="GetAfterFrameFuncName">
+        <address>0042B261</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetAfterFrameFuncName(int index)</CSignature>
+      </procedure>
+      <procedure name="GetnAfterFrameFuncs">
+        <address>0042B29B</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetnAfterFrameFuncs(void)</CSignature>
+      </procedure>
+      <procedure name="SetMenuTgapFunc">
+        <address>0042B2D1</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetMenuTgapFunc(PyObject *func)</CSignature>
+      </procedure>
+      <procedure name="GetMenuTgapFunc">
+        <address>0042B310</address>
+        <decompile>false</decompile>
+        <CSignature>
+PyObject *GetMenuTgapFunc(void)</CSignature>
+      </procedure>
+      <procedure name="SetCallCheck">
+        <address>0042B346</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetCallCheck(int check)</CSignature>
+      </procedure>
+      <procedure name="OpenDebugChannel">
+        <address>0042B366</address>
+        <decompile>false</decompile>
+        <CSignature>
+int OpenDebugChannel(const char *channel_name)</CSignature>
+      </procedure>
+      <procedure name="CloseDebugChannel">
+        <address>0042B39C</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CloseDebugChannel(const char *channel_name)</CSignature>
+      </procedure>
+      <procedure name="SetShowAreas">
+        <address>0042B444</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetShowAreas(int action_areas_bit_mask)</CSignature>
+      </procedure>
+      <procedure name="WriteText">
+        <address>0042B453</address>
+        <decompile>false</decompile>
+        <CSignature>
+int WriteText(double x, double y, const char *text)</CSignature>
+      </procedure>
+      <procedure name="GetTextWH">
+        <address>0042B4EC</address>
+        <decompile>false</decompile>
+        <CSignature>
+void GetTextWH(const char *text, double *w, double *h)</CSignature>
+      </procedure>
+      <procedure name="GetScreenRect">
+        <address>0042B672</address>
+        <decompile>false</decompile>
+        <CSignature>
+void GetScreenRect(
+        double *x_min, double *y_min, double *x_max, double *y_max
+)</CSignature>
+      </procedure>
+      <procedure name="GetScreenXY">
+        <address>0042B795</address>
+        <decompile>false</decompile>
+        <CSignature>
+void GetScreenXY(
+        double map_x, double map_y, double map_z, double *screen_x,
+        double *screen_y
+)</CSignature>
+      </procedure>
+      <procedure name="DrawBOD">
+        <address>0042B8E8</address>
+        <decompile>false</decompile>
+        <CSignature>
+int DrawBOD(
+        const char *BODName, int x, int y, int w, int h, double scale,
+        int i_unknown
+)</CSignature>
+      </procedure>
+      <procedure name="CreateTriggerSector">
+        <address>0042B97A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CreateTriggerSector(
+	const char *trigger_sector_name, const char *group_name,
+	double floor_height, double roof_height, int num_points,
+	point_2d_t *points
+)</CSignature>
+      </procedure>
+      <procedure name="SetTriggerSectorFunc">
+        <address>0042BC9A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetTriggerSectorFunc(
+        const char *trigger_sector_name, const char *func_type, PyObject *func
+)</CSignature>
+      </procedure>
+      <procedure name="GetTriggerSectorFunc">
+        <address>0042BCB5</address>
+        <decompile>false</decompile>
+        <CSignature>
+PyObject *GetTriggerSectorFunc(
+        const char *trigger_sector_name, const char *func_type
+)</CSignature>
+      </procedure>
+      <procedure name="GetTriggerSectorFloorHeight">
+        <address>0042BCCC</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetTriggerSectorFloorHeight(const char *trigger_sector_name)</CSignature>
+      </procedure>
+      <procedure name="GetTriggerSectorRoofHeight">
+        <address>0042BCDF</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetTriggerSectorRoofHeight(const char *trigger_sector_name)</CSignature>
+      </procedure>
+      <procedure name="GetTriggerSectorGroup">
+        <address>0042BCF2</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetTriggerSectorGroup(const char *trigger_sector_name)</CSignature>
+      </procedure>
+      <procedure name="GetTriggerSectorPoints">
+        <address>0042BD05</address>
+        <decompile>false</decompile>
+        <CSignature>
+double *GetTriggerSectorPoints(const char *trigger_sector_name)</CSignature>
+      </procedure>
+      <procedure name="SetTriggerSectorData">
+        <address>0042BD18</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetTriggerSectorData(
+        const char *trigger_sector_name, PyObject *data
+)</CSignature>
+      </procedure>
+      <procedure name="GetTriggerSectorData">
+        <address>0042BD2F</address>
+        <decompile>false</decompile>
+        <CSignature>
+PyObject *GetTriggerSectorData(const char *trigger_sector_name)</CSignature>
+      </procedure>
+      <procedure name="nTriggerSectors">
+        <address>0042BD42</address>
+        <decompile>false</decompile>
+        <CSignature>
+int nTriggerSectors(void)</CSignature>
+      </procedure>
+      <procedure name="GetTriggerSectorName">
+        <address>0042BD55</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetTriggerSectorName(int index)</CSignature>
+      </procedure>
+      <procedure name="GetModelPos">
+        <address>0042BD68</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetModelPos(const char *person, double *x, double *y, double *z)</CSignature>
+      </procedure>
+      <procedure name="GetWindowId">
+        <address>0042BFF8</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetWindowId(void)</CSignature>
+      </procedure>
+      <procedure name="GetProgramId">
+        <address>0042C031</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetProgramId(void)</CSignature>
+      </procedure>
+      <procedure name="TakeSnapShot">
+        <address>0042C06A</address>
+        <decompile>false</decompile>
+        <CSignature>
+void TakeSnapShot(void)</CSignature>
+      </procedure>
+      <procedure name="nSectors">
+        <address>0042C0A5</address>
+        <decompile>false</decompile>
+        <CSignature>
+int nSectors(void)</CSignature>
+      </procedure>
+      <procedure name="SetRunString">
+        <address>0042C0AF</address>
+        <decompile>false</decompile>
+        <CSignature>
+void SetRunString(const char *variable)</CSignature>
+      </procedure>
+      <procedure name="SetStringValue">
+        <address>0042C0EC</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetStringValue(const char *variable, const char *value)</CSignature>
+      </procedure>
+      <procedure name="GetStringValue">
+        <address>0042C12A</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetStringValue(const char *variable)</CSignature>
+      </procedure>
+      <procedure name="DeleteStringValue">
+        <address>0042C164</address>
+        <decompile>false</decompile>
+        <CSignature>
+int DeleteStringValue(const char *variable)</CSignature>
+      </procedure>
+      <procedure name="SaveProfileData">
+        <address>0042C19E</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SaveProfileData(const char *file_name)</CSignature>
+      </procedure>
+      <procedure name="OpenProfileSection">
+        <address>0042C1B9</address>
+        <decompile>false</decompile>
+        <CSignature>
+int OpenProfileSection(int section, const char *comment)</CSignature>
+      </procedure>
+      <procedure name="CloseProfileSection">
+        <address>0042C1D4</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CloseProfileSection(int section)</CSignature>
+      </procedure>
+      <procedure name="StartProfile">
+        <address>0042C1EF</address>
+        <decompile>false</decompile>
+        <CSignature>
+int StartProfile(void)</CSignature>
+      </procedure>
+      <procedure name="EnableProfiler">
+        <address>0042C20A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int EnableProfiler(void)</CSignature>
+      </procedure>
+      <procedure name="DisableProfiler">
+        <address>0042C225</address>
+        <decompile>false</decompile>
+        <CSignature>
+int DisableProfiler(void)</CSignature>
+      </procedure>
+      <procedure name="SetInputMode">
+        <address>0042C240</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetInputMode(const char *device, const char *mode)</CSignature>
+      </procedure>
+      <procedure name="GetInputMode">
+        <address>0042C281</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetInputMode(const char *device)</CSignature>
+      </procedure>
+      <procedure name="GetLastPlayerCType">
+        <address>0042C2BE</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetLastPlayerCType(void)</CSignature>
+      </procedure>
+      <procedure name="WorldToMBW">
+        <address>004431DE</address>
+        <decompile>false</decompile>
+        <CSignature>
+int WorldToMBW(const char *world)</CSignature>
+      </procedure>
+      <procedure name="nMaterials">
+        <address>0044E9A0</address>
+        <decompile>false</decompile>
+        <CSignature>
+int nMaterials(void)</CSignature>
+      </procedure>
+      <procedure name="CreateMaterial">
+        <address>0044E9AA</address>
+        <decompile>false</decompile>
+        <CSignature>
+material_t *CreateMaterial(const char *name)</CSignature>
+      </procedure>
+      <procedure name="GetMaterial">
+        <address>0044EB5A</address>
+        <decompile>false</decompile>
+        <CSignature>
+material_t *GetMaterial(const char *name)</CSignature>
+      </procedure>
+      <procedure name="GetMaterialI">
+        <address>0044EBD3</address>
+        <decompile>false</decompile>
+        <CSignature>
+material_t *GetMaterialI(int index)</CSignature>
+      </procedure>
+      <procedure name="SetMaterialSoundProperty">
+        <address>0044EC02</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetMaterialSoundProperty(
+        material_t *material, int property_kind, int index, int soundID
+)</CSignature>
+      </procedure>
+      <procedure name="GetMaterialSoundProperty">
+        <address>0044EC62</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetMaterialSoundProperty(
+        material_t *material, int property_kind, int index, int *soundID
+)</CSignature>
+      </procedure>
+      <procedure name="GetMaterialStringProperty">
+        <address>0044ECC5</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetMaterialStringProperty(
+        material_t *material, int property_kind, int index, const char **value
+)</CSignature>
+      </procedure>
+      <procedure name="SetMaterialFloatProperty">
+        <address>0044ECF8</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetMaterialFloatProperty(
+        material_t *material, int property_kind, int index, double value
+)</CSignature>
+      </procedure>
+      <procedure name="GetMaterialFloatProperty">
+        <address>0044ED29</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetMaterialFloatProperty(
+        material_t *material, int property_kind, int index, double *value
+)</CSignature>
+      </procedure>
+      <procedure name="AddHitSoundComb">
+        <address>0044ED6A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddHitSoundComb(
+        material_t *material1, material_t *material2, int soundID
+)</CSignature>
+      </procedure>
+      <procedure name="GetSectorByPosition">
+        <address>0045C040</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetSectorByPosition(double x, double y, double z)</CSignature>
+      </procedure>
+      <procedure name="GetSectorByIndex">
+        <address>0045C080</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetSectorByIndex(int index)</CSignature>
+      </procedure>
+      <procedure name="GetNumberOfSectors">
+        <address>0045C0A3</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="InitBreakSector">
+        <address>0045C0AD</address>
+        <decompile>false</decompile>
+        <CSignature>
+int InitBreakSector(
+        int sectorID, double x_vec1, double y_vec1, double z_vec1,
+        double x_vec2, double y_vec2, double z_vec2, double x_vec3,
+        double y_vec3, double z_vec3, const char *s_unknown, double d_unknown,
+        int i_unknown
+)</CSignature>
+      </procedure>
+      <procedure name="DoBreakSector">
+        <address>0045C159</address>
+        <decompile>false</decompile>
+        <CSignature>
+int DoBreakSector(
+        int sectorID, double x_impulse, double y_impulse, double z_impulse,
+        double x, double y, double z, double x_unknown, double y_unknown,
+        double z_unknown
+)</CSignature>
+      </procedure>
+      <procedure name="GetSectorIntProperty">
+        <address>0045C1F5</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetSectorIntProperty(
+        int sectorID, int property_kind, int index, int *value
+)</CSignature>
+      </procedure>
+      <procedure name="SetSectorIntProperty">
+        <address>0045C34D</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetSectorIntProperty(
+        int sectorID, int property_kind, int index, int value
+)</CSignature>
+      </procedure>
+      <procedure name="GetSectorFloatProperty">
+        <address>0045C415</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetSectorFloatProperty(
+        int sectorID, int property_kind, int index, double *value
+)</CSignature>
+      </procedure>
+      <procedure name="SetSectorFloatProperty">
+        <address>0045C5A6</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetSectorFloatProperty(
+        int sectorID, int property_kind, int index, double value
+)</CSignature>
+      </procedure>
+      <procedure name="GetSectorStringProperty">
+        <address>0045C735</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetSectorStringProperty(
+        int sectorID, int property_kind, int index, const char **value
+)</CSignature>
+      </procedure>
+      <procedure name="SetSectorStringProperty">
+        <address>0045C8B0</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetSectorStringProperty(
+        int sectorID, int property_kind, int index, const char *value
+)</CSignature>
+      </procedure>
+      <procedure name="SetSectorVectorProperty">
+        <address>0045C9A0</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetSectorVectorProperty(
+        int sectorID, int property_kind, int index, double x,
+        double y, double z
+)</CSignature>
+      </procedure>
+      <procedure name="GetSectorVectorProperty">
+        <address>0045CA86</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetSectorVectorProperty(
+        int sectorID, int property_kind, int index,
+        double *x, double *y, double *z
+)</CSignature>
+      </procedure>
+      <procedure name="SetSectorFuncProperty">
+        <address>0045CB7C</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetSectorFuncProperty(
+        int sectorID, int property_kind, int index, PyObject *value
+)</CSignature>
+      </procedure>
+      <procedure name="GetSectorFuncProperty">
+        <address>0045CCD8</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetSectorFuncProperty(
+        int sectorID, int property_kind, int index, PyObject **value
+)</CSignature>
+      </procedure>
+      <procedure name="GetAnimationDuration">
+        <address>0046AB6A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetAnimationDuration(const char *animation_name, double *duration)</CSignature>
+      </procedure>
+      <procedure name="RStepEvents">
+        <address>0046AC16</address>
+        <decompile>false</decompile>
+        <CSignature>
+int RStepEvents(const char *s_unknown1, const char *s_unknown2)</CSignature>
+      </procedure>
+      <procedure name="LStepEvents">
+        <address>0046AEEC</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LStepEvents(const char *s_unknown1, const char *s_unknown2)</CSignature>
+      </procedure>
+      <procedure name="LoadSampledAnimation">
+        <address>0046B885</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LoadSampledAnimation(
+        const char *file, const char *internal_name, int type,
+        const char *s_unknown, int i_unknown
+)</CSignature>
+      </procedure>
+      <procedure name="CreateFCAnimation">
+        <address>0046C4D9</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CreateFCAnimation(
+        const char *file, const char *internal_name, int n_armonics
+)</CSignature>
+      </procedure>
+      <procedure name="CreateDFCAnimation">
+        <address>0046CAFB</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CreateDFCAnimation(
+        const char *file1, const char *file2, const char *internal_name,
+        int n_armonics
+)</CSignature>
+      </procedure>
+      <procedure name="AddRStepEvent">
+        <address>0046D1F0</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddRStepEvent(const char *animation_name, double d_unknown)</CSignature>
+      </procedure>
+      <procedure name="AddLStepEvent">
+        <address>0046D3DE</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddLStepEvent(const char *animation_name, double d_unknown)</CSignature>
+      </procedure>
+      <procedure name="AddRReleaseEvent">
+        <address>0046D5CC</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddRReleaseEvent(const char *animation_name, double d_unknown)</CSignature>
+      </procedure>
+      <procedure name="AddLReleaseEvent">
+        <address>0046D7BA</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddLReleaseEvent(const char *animation_name, double d_unknown)</CSignature>
+      </procedure>
+      <procedure name="AddAnmEvent">
+        <address>0046D9A8</address>
+        <decompile>false</decompile>
+        <CSignature>
+void AddAnmEvent(const char *anm_name, const char *event_name, double event_frame)</CSignature>
+      </procedure>
+      <procedure name="AddStopTests">
+        <address>0046E1AB</address>
+        <decompile>false</decompile>
+        <CSignature>
+void AddStopTests(const char *animation_name)</CSignature>
+      </procedure>
+      <procedure name="AddFloorCTolerance">
+        <address>0046E4AC</address>
+        <decompile>false</decompile>
+        <CSignature>
+void AddFloorCTolerance(const char *animation_name, double tolerance)</CSignature>
+      </procedure>
+      <procedure name="AddTranTime">
+        <address>0046E57A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddTranTime(
+        const char *biped_name, const char *next_anm , const char *prev_anm,
+        double time, int unknown
+)</CSignature>
+      </procedure>
+      <procedure name="CheckAnims">
+        <address>0046E93B</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CheckAnims(void)</CSignature>
+      </procedure>
+      <procedure name="GiveAnims">
+        <address>0046EBFD</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GiveAnims(const char *race_name)</CSignature>
+      </procedure>
+      <procedure name="AddStepSound">
+        <address>00491B70</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddStepSound(const char *name, int soundID)</CSignature>
+      </procedure>
+      <procedure name="AddMaterialStepSound">
+        <address>00491E7C</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddMaterialStepSound(
+        const char *table, const char *material, const char *step_sound
+)</CSignature>
+      </procedure>
+      <procedure name="AddTextureMaterial">
+        <address>0049259A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddTextureMaterial(const char *texture, const char *material)</CSignature>
+      </procedure>
+      <procedure name="AddActionStepSound">
+        <address>004929C4</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddActionStepSound(
+        const char *table, const char *action, const char *step_sound_table
+)</CSignature>
+      </procedure>
+      <procedure name="CreateSound">
+        <address>004BF1EF</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CreateSound(const char *file_name, const char *sound_name)</CSignature>
+      </procedure>
+      <procedure name="CreateSoundS">
+        <address>004BF236</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CreateSoundS(int soundID)</CSignature>
+      </procedure>
+      <procedure name="DestroySound">
+        <address>004BF25D</address>
+        <decompile>false</decompile>
+        <CSignature>
+void DestroySound(int soundID)</CSignature>
+      </procedure>
+      <procedure name="SetSoundVolume">
+        <address>004BF2A4</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetSoundVolume(double volume)</CSignature>
+      </procedure>
+      <procedure name="GetSoundVolume">
+        <address>004BF2D8</address>
+        <decompile>false</decompile>
+        <CSignature>
+double GetSoundVolume(void)</CSignature>
+      </procedure>
+      <procedure name="SoundSystemActive">
+        <address>004BF2FE</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SoundSystemActive(void)</CSignature>
+      </procedure>
+      <procedure name="SetSSFrecuency">
+        <address>004BF31A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetSSFrecuency(int frequency)</CSignature>
+      </procedure>
+      <procedure name="SetSS2dChannels">
+        <address>004BF34D</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetSS2dChannels(int num_ch)</CSignature>
+      </procedure>
+      <procedure name="SetSS3dChannels">
+        <address>004BF380</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetSS3dChannels(int num_ch)</CSignature>
+      </procedure>
+      <procedure name="SetSSFilter">
+        <address>004BF3B3</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetSSFilter(int filter_output)</CSignature>
+      </procedure>
+      <procedure name="KillMusic">
+        <address>004BF3E6</address>
+        <decompile>false</decompile>
+        <CSignature>
+int KillMusic(void)</CSignature>
+      </procedure>
+      <procedure name="ShutDownSoundChannels">
+        <address>004BF410</address>
+        <decompile>false</decompile>
+        <CSignature>
+int ShutDownSoundChannels(void)</CSignature>
+      </procedure>
+      <procedure name="PauseSoundSystem">
+        <address>004BF43A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int PauseSoundSystem(void)</CSignature>
+      </procedure>
+      <procedure name="PauseSoundSystemButMusic">
+        <address>004BF470</address>
+        <decompile>false</decompile>
+        <CSignature>
+int PauseSoundSystemButMusic(void)</CSignature>
+      </procedure>
+      <procedure name="ResumeSoundSystem">
+        <address>004BF492</address>
+        <decompile>false</decompile>
+        <CSignature>
+int ResumeSoundSystem(void)</CSignature>
+      </procedure>
+      <procedure name="SetMusicVolume">
+        <address>004BF4C8</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetMusicVolume(float volume)</CSignature>
+      </procedure>
+      <procedure name="GetMusicVolume">
+        <address>004BF4F4</address>
+        <decompile>false</decompile>
+        <CSignature>
+double GetMusicVolume(void)</CSignature>
+      </procedure>
+      <procedure name="GetSSQuality">
+        <address>004BF51A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetSSQuality(void)</CSignature>
+      </procedure>
+      <procedure name="SetSSQuality">
+        <address>004BF53C</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetSSQuality(int SSQuality)</CSignature>
+      </procedure>
+      <procedure name="GetSSSpeakerConfig">
+        <address>004BF563</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetSSSpeakerConfig(void)</CSignature>
+      </procedure>
+      <procedure name="SetEAXOverride">
+        <address>004BF5E2</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetEAXOverride(int EAXOverride)</CSignature>
+      </procedure>
+      <procedure name="GetEAXOverride">
+        <address>004BF63F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetEAXOverride(void)</CSignature>
+      </procedure>
+      <procedure name="SaveSSConfig">
+        <address>004BF656</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SaveSSConfig(void)</CSignature>
+      </procedure>
+      <procedure name="SetSSSpeakerConfig">
+        <address>004BF678</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetSSSpeakerConfig(int config)</CSignature>
+      </procedure>
+      <procedure name="CreateGhostSector">
+        <address>004BF75B</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CreateGhostSector(
+	const char *ghost_sector_name, const char *group_name,
+	double floor_height, double roof_height, int num_points,
+	point_2d_t *points
+)</CSignature>
+      </procedure>
+      <procedure name="SetEAX">
+        <address>004BF957</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetEAX(int eax_flag)</CSignature>
+      </procedure>
+      <procedure name="SetGhostSectorSound">
+        <address>004BF95E</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetGhostSectorSound(
+        const char *aghost_name, const char *file_name, double volume,
+        double base_volume, double min_dist, double max_dist, double v_max_dist,
+        double scale
+)</CSignature>
+      </procedure>
+      <procedure name="GetGhostSectorSound">
+        <address>004BFEAB</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetGhostSectorSound(const char *gs_name)</CSignature>
+      </procedure>
+      <procedure name="SetGhostSectorGroupSound">
+        <address>004BFEEA</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetGhostSectorGroupSound(
+        const char *group_name, const char *file_name, double volume,
+        double base_volume, double min_dist, double max_dist, double unknown,
+        double scale
+)</CSignature>
+      </procedure>
+      <procedure name="SetShowSounds">
+        <address>004BFEF1</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetShowSounds(int showSounds)</CSignature>
+      </procedure>
+      <procedure name="GetSoundDevInstace">
+        <address>004BFEFB</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetSoundDevInstace(void)</CSignature>
+      </procedure>
+      <procedure name="nSounds">
+        <address>004BFF02</address>
+        <decompile>false</decompile>
+        <CSignature>
+int nSounds(void)</CSignature>
+      </procedure>
+      <procedure name="GetSoundName">
+        <address>004BFF27</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetSoundName(int soundId)</CSignature>
+      </procedure>
+      <procedure name="GetSoundFileName">
+        <address>004BFF44</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetSoundFileName(int soundId)</CSignature>
+      </procedure>
+      <procedure name="PlaySoundM">
+        <address>004BFF6E</address>
+        <decompile>false</decompile>
+        <CSignature>
+int PlaySoundM(int soundID, double x, double y, double z, int i_unknown)</CSignature>
+      </procedure>
+      <procedure name="PlaySoundStereo">
+        <address>004BFFEE</address>
+        <decompile>false</decompile>
+        <CSignature>
+int PlaySoundStereo(int soundID, int i_unknown)</CSignature>
+      </procedure>
+      <procedure name="StopSound">
+        <address>004C003B</address>
+        <decompile>false</decompile>
+        <CSignature>
+int StopSound(int soundID)</CSignature>
+      </procedure>
+      <procedure name="GetSoundFloatProperty">
+        <address>004C0082</address>
+        <decompile>false</decompile>
+        <CSignature>
+double GetSoundFloatProperty(int property_kind, int soundID)</CSignature>
+      </procedure>
+      <procedure name="SetSoundFloatProperty">
+        <address>004C0143</address>
+        <decompile>false</decompile>
+        <CSignature>
+void SetSoundFloatProperty(int property_kind, int soundID, double value)</CSignature>
+      </procedure>
+      <procedure name="GetSoundStringProperty">
+        <address>004C0293</address>
+        <decompile>false</decompile>
+        <CSignature>
+char *GetSoundStringProperty(int property_kind, int soundID)</CSignature>
+      </procedure>
+      <procedure name="SetSoundStringProperty">
+        <address>004C02E9</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="GetSoundIntProperty">
+        <address>004C02F0</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="SetSoundIntProperty">
+        <address>004C033D</address>
+        <decompile>false</decompile>
+        <CSignature>
+void SetSoundIntProperty(int property_kind, int soundID, int value)</CSignature>
+      </procedure>
+      <procedure name="SetSoundPitchVar">
+        <address>004C0394</address>
+        <decompile>false</decompile>
+        <CSignature>
+void SetSoundPitchVar(
+        int soundID, int i_unknown, float f_unknown1, float f_unknown2,
+        float f_unknown3, float f_unknown4
+)</CSignature>
+      </procedure>
+      <procedure name="GetSoundFuncProperty">
+        <address>004C03B7</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="SetSoundFuncProperty">
+        <address>004C0436</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="dropDebugInfo">
+        <address>004C0508</address>
+        <decompile>false</decompile>
+        <CSignature>
+int dropDebugInfo(void)</CSignature>
+      </procedure>
+      <procedure name="GetMusicEventPriority">
+        <address>004C052F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetMusicEventPriority(int unknown)</CSignature>
+      </procedure>
+      <procedure name="getMusicEvent">
+        <address>004C0550</address>
+        <decompile>false</decompile>
+        <CSignature>
+int getMusicEvent(const char *event_name)</CSignature>
+      </procedure>
+      <procedure name="exeMusicEvent">
+        <address>004C0571</address>
+        <decompile>false</decompile>
+        <CSignature>
+int exeMusicEvent(int unknown1, int unknown2)</CSignature>
+      </procedure>
+      <procedure name="addMusicEventCD">
+        <address>004C05A0</address>
+        <decompile>false</decompile>
+        <CSignature>
+int addMusicEventCD(
+        const char *lpszEventName, int iTrack, double dFIn, double dFOut,
+        float fVolume, float fPriority, int bBackGround, int iNext
+)</CSignature>
+      </procedure>
+      <procedure name="addMusicEventMP3">
+        <address>004C05F5</address>
+        <decompile>false</decompile>
+        <CSignature>
+int addMusicEventMP3(
+        const char *lpszEventName, const char *lpszFile, double dFIn,
+        float fVolume, double dFOut, float fPriority, int bBackGround,
+        int iNext, int unknown
+)</CSignature>
+      </procedure>
+      <procedure name="addMusicEventWAV">
+        <address>004C064B</address>
+        <decompile>false</decompile>
+        <CSignature>
+int addMusicEventWAV(
+        const char *lpszEventName, const char *lpszFile, double dFIn,
+        float fVolume, double dFOut, float fPriority, int bBackGround,
+        int iNext, int opened
+)</CSignature>
+      </procedure>
+      <procedure name="addMusicEventADPCM">
+        <address>004C06A1</address>
+        <decompile>false</decompile>
+        <CSignature>
+int addMusicEventADPCM(
+        const char *lpszEventName, const char *lpszFile, double dFIn,
+        float fVolume, double dFOut, float fPriority, int bBackGround,
+        int iNext, int unknown
+)</CSignature>
+      </procedure>
+      <procedure name="GetSound">
+        <address>004C06F7</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetSound(const char *sound_name)</CSignature>
+      </procedure>
+      <procedure name="addSoundVar">
+        <address>004C071E</address>
+        <decompile>false</decompile>
+        <CSignature>
+int addSoundVar(int soundID, const char *alt_sound)</CSignature>
+      </procedure>
+      <procedure name="saveSoundStats">
+        <address>004C0750</address>
+        <decompile>false</decompile>
+        <CSignature>
+void saveSoundStats(const char *file_name)</CSignature>
+      </procedure>
+      <procedure name="loadMusicState">
+        <address>004C0779</address>
+        <decompile>false</decompile>
+        <CSignature>
+int loadMusicState(const char *file_name)</CSignature>
+      </procedure>
+      <procedure name="saveMusicState">
+        <address>004C07D1</address>
+        <decompile>false</decompile>
+        <CSignature>
+int saveMusicState(const char *file_name)</CSignature>
+      </procedure>
+      <procedure name="loadSoundDataBase">
+        <address>004C0897</address>
+        <decompile>false</decompile>
+        <CSignature>
+int loadSoundDataBase(const char *file_name)</CSignature>
+      </procedure>
+      <procedure name="saveSoundDataBase">
+        <address>004C08F0</address>
+        <decompile>false</decompile>
+        <CSignature>
+int saveSoundDataBase(const char *file_name)</CSignature>
+      </procedure>
+      <procedure name="fn004DCCC2">
+        <characteristics />
+        <address>004DCCC2</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="fn004E1857">
+        <characteristics />
+        <address>004E1857</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="fn004E3C55">
+        <characteristics />
+        <address>004E3C55</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="GetSplinePos">
+        <address>004FFEA0</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="AddNodeSpline">
+        <address>004FFEBA</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="CloseSpline">
+        <address>004FFEF3</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="ClearSpline">
+        <address>004FFF00</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="CreateSpark">
+        <address>004FFF0D</address>
+        <decompile>false</decompile>
+        <CSignature>
+entity_t *CreateSpark(
+        const char *name, point_3d_t *spark_point, point_3d_t *spark_dir,
+        double d_unknown1, double d_unknown2, double d_unknown3,
+        double d_unknown4, double d_unknown5, int i_unknown6, int i_unknown7,
+        int i_unknown8, int i_unknown9, int i_unknown10, int i_unknown11,
+        float d_unknown12, float d_unknown13, float d_unknown14, int i_unknown15
+)</CSignature>
+      </procedure>
+      <procedure name="CreateEntity">
+        <address>00500036</address>
+        <decompile>false</decompile>
+        <CSignature>
+entity_t *CreateEntity(
+        const char *name, const char *kind, double x, double y, double z,
+        const char *parent_class, const char *unknown
+)</CSignature>
+      </procedure>
+      <procedure name="DeleteEntity">
+        <address>00501FE9</address>
+        <decompile>false</decompile>
+        <CSignature>
+int DeleteEntity(const char *name)</CSignature>
+      </procedure>
+      <procedure name="CreateEntityDecal">
+        <address>00503351</address>
+        <decompile>false</decompile>
+        <CSignature>
+entity_t *CreateEntityDecal(
+        const char *name, double x, double y, double z, int i_unknown,
+        double d_unknown1, double d_unknown2
+)</CSignature>
+      </procedure>
+      <procedure name="GetEntity">
+        <address>0050340C</address>
+        <decompile>false</decompile>
+        <CSignature>
+entity_t *GetEntity(const char *name)</CSignature>
+      </procedure>
+      <procedure name="GetEntityI">
+        <address>0050360D</address>
+        <decompile>false</decompile>
+        <CSignature>
+entity_t *GetEntityI(int index)</CSignature>
+      </procedure>
+      <procedure name="GetEntityName">
+        <address>005036B2</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetEntityName(entity_t *entity)</CSignature>
+      </procedure>
+      <procedure name="GetEntitiesAt">
+        <address>005036E1</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetEntitiesAt(
+        double x, double y, double z, double radius, char ***entity_names
+)</CSignature>
+      </procedure>
+      <procedure name="GetEntitiesVisibleFrom">
+        <address>005039F3</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetEntitiesVisibleFrom(
+        double xc, double yc, double zc, double radius, double xdir,
+        double ydir, double zdir, double angle, char ***entity_names
+)</CSignature>
+      </procedure>
+      <procedure name="GetObjectEntitiesVisibleFrom">
+        <address>00503D6F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetObjectEntitiesVisibleFrom(
+        double xc, double yc, double zc, double radius, double xdir,
+        double ydir, double zdir, double angle, char ***entity_names
+)</CSignature>
+      </procedure>
+      <procedure name="GetEnemiesVisibleFrom">
+        <address>005040EB</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetEnemiesVisibleFrom(
+        double xc, double yc, double zc, double radius, double xdir,
+        double ydir, double zdir, double angle, char ***enemy_names
+)</CSignature>
+      </procedure>
+      <procedure name="SetCombos">
+        <address>00504467</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetCombos(
+        const char *person_name, int num_combos, char **combos_names,
+        int *combos_executed
+)</CSignature>
+      </procedure>
+      <procedure name="GetCombos">
+        <address>00504527</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetCombos(const char *person_name, combo_t **combos)</CSignature>
+      </procedure>
+      <procedure name="GetWeaponCombos">
+        <address>005045A6</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetWeaponCombos(
+        const char *person_name, const char *weapon_kind, combo_t **combos
+)</CSignature>
+      </procedure>
+      <procedure name="nEntities">
+        <address>00504629</address>
+        <decompile>false</decompile>
+        <CSignature>
+int nEntities(void)</CSignature>
+      </procedure>
+      <procedure name="GetNewExclusionGroupId">
+        <address>0050463C</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetNewExclusionGroupId(void)</CSignature>
+      </procedure>
+      <procedure name="AddCameraEvent">
+        <address>00504646</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddCameraEvent(const char *entity_name, int frame, PyObject *func)</CSignature>
+      </procedure>
+      <procedure name="DeleteCameraEvent">
+        <address>00504695</address>
+        <decompile>false</decompile>
+        <CSignature>
+int DeleteCameraEvent(const char *entity_name, int frame)</CSignature>
+      </procedure>
+      <procedure name="CameraAddSourceNode">
+        <address>005046DB</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CameraAddSourceNode(
+        const char *entity_name, float time, double x, double y, double z
+)</CSignature>
+      </procedure>
+      <procedure name="CameraAddTargetNode">
+        <address>0050472F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CameraAddTargetNode(
+        const char *entity_name, float time, double x, double y, double z
+)</CSignature>
+      </procedure>
+      <procedure name="CameraSetStartTangentSourceNode">
+        <address>00504783</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CameraSetStartTangentSourceNode(
+        const char *entity_name, int unknown1, double unknown2, double unknown3,
+        double unknown4
+)</CSignature>
+      </procedure>
+      <procedure name="CameraSetEndTangentSourceNode">
+        <address>005047D2</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CameraSetEndTangentSourceNode(
+        const char *entity_name, int unknown1, double unknown2, double unknown3,
+        double unknown4
+)</CSignature>
+      </procedure>
+      <procedure name="CameraSetStartTangentTargetNode">
+        <address>00504821</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CameraSetStartTangentTargetNode(
+        const char *entity_name, int unknown1, double unknown2, double unknown3,
+        double unknown4
+)</CSignature>
+      </procedure>
+      <procedure name="CameraSetEndTangentTargetNode">
+        <address>00504870</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CameraSetEndTangentTargetNode(
+        const char *entity_name, int unknown1, double unknown2, double unknown3,
+        double unknown4
+)</CSignature>
+      </procedure>
+      <procedure name="CameraSetPersonView">
+        <address>005048BF</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CameraSetPersonView(
+        const char *entity_name, const char *person_name
+)</CSignature>
+      </procedure>
+      <procedure name="CameraSetMaxCamera">
+        <address>00504905</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CameraSetMaxCamera(
+        const char *entity_name, const char *cam_file_name, int i_unknown,
+        int num_frames
+)</CSignature>
+      </procedure>
+      <procedure name="CameraCut">
+        <address>00504953</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CameraCut(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="CameraSetTravelingView">
+        <address>005049E2</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CameraSetTravelingView(
+        const char *entity_name, int unknown1, int unknown2
+)</CSignature>
+      </procedure>
+      <procedure name="CameraClearPath">
+        <address>00504A2C</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CameraClearPath(const char *entity_name, int node)</CSignature>
+      </procedure>
+      <procedure name="CameraStartPath">
+        <address>00504ABA</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CameraStartPath(const char *entity_name, int node)</CSignature>
+      </procedure>
+      <procedure name="UseEntity">
+        <address>00504B29</address>
+        <decompile>false</decompile>
+        <CSignature>
+int UseEntity(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="ChangeEntityStatic">
+        <address>00504B5F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int ChangeEntityStatic(const char *entity_name, int is_static)</CSignature>
+      </procedure>
+      <procedure name="ChangeEntityActor">
+        <address>005050DD</address>
+        <decompile>false</decompile>
+        <CSignature>
+int ChangeEntityActor(const char *entity_name, int is_actor)</CSignature>
+      </procedure>
+      <procedure name="ChangeEntityPerson">
+        <address>00505F63</address>
+        <decompile>false</decompile>
+        <CSignature>
+int ChangeEntityPerson(const char *entity_name, int is_person)</CSignature>
+      </procedure>
+      <procedure name="ChangeEntityWeapon">
+        <address>00506E31</address>
+        <decompile>false</decompile>
+        <CSignature>
+int ChangeEntityWeapon(const char *entity_name, int is_weapon)</CSignature>
+      </procedure>
+      <procedure name="ChangeEntityArrow">
+        <address>00507A06</address>
+        <decompile>false</decompile>
+        <CSignature>
+int ChangeEntityArrow(const char *entity_name, int is_arrow)</CSignature>
+      </procedure>
+      <procedure name="SetNextAttack">
+        <address>0050888E</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetNextAttack(
+        const char *entity_name, const char *attack, int *res
+)</CSignature>
+      </procedure>
+      <procedure name="SeverLimb">
+        <address>005088E8</address>
+        <decompile>false</decompile>
+        <CSignature>
+entity_t *SeverLimb(const char *entity_name, int limb)</CSignature>
+      </procedure>
+      <procedure name="SetCombatGroup">
+        <address>00508935</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="SubscribeEntityToList">
+        <address>00508B11</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SubscribeEntityToList(
+        const char *entity_name, const char *timer_name
+)</CSignature>
+      </procedure>
+      <procedure name="MessageEvent">
+        <address>00508B80</address>
+        <decompile>false</decompile>
+        <CSignature>
+int MessageEvent(
+        const char *entity_name, int message_type, int unknown1, int unknown2
+)</CSignature>
+      </procedure>
+      <procedure name="InterruptCombat">
+        <address>00508BBB</address>
+        <decompile>false</decompile>
+        <CSignature>
+int InterruptCombat(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="GetParticleEntity">
+        <address>00508CD9</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetParticleEntity(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="Rel2AbsVector">
+        <address>00508D4D</address>
+        <decompile>false</decompile>
+        <CSignature>
+int Rel2AbsVector(
+        const char *entity_name, double x_rel, double y_rel, double z_rel,
+        double *x_abs, double *y_abs, double *z_abs
+)</CSignature>
+      </procedure>
+      <procedure name="Rel2AbsPoint">
+        <address>00508E06</address>
+        <decompile>false</decompile>
+        <CSignature>
+int Rel2AbsPoint(
+        const char *entity_name, double x_rel, double y_rel, double z_rel,
+        double *x_abs, double *y_abs, double *z_abs
+)</CSignature>
+      </procedure>
+      <procedure name="Rel2AbsVectorN">
+        <address>00508EBF</address>
+        <decompile>false</decompile>
+        <CSignature>
+int Rel2AbsVectorN(
+        const char *entity_name, double x_rel, double y_rel, double z_rel,
+        const char *anchor_name, double *x_abs, double *y_abs, double *z_abs
+)</CSignature>
+      </procedure>
+      <procedure name="Rel2AbsPointN">
+        <address>0050901D</address>
+        <decompile>false</decompile>
+        <CSignature>
+int Rel2AbsPointN(
+        const char *entity_name, double x_rel, double y_rel, double z_rel,
+        const char *anchor_name, double *x_abs, double *y_abs, double *z_abs
+)</CSignature>
+      </procedure>
+      <procedure name="Abs2RelVector">
+        <address>0050917B</address>
+        <decompile>false</decompile>
+        <CSignature>
+int Abs2RelVector(
+        const char *entity_name, double x_abs, double y_abs, double z_abs,
+        double *x_rel, double *y_rel, double *z_rel
+)</CSignature>
+      </procedure>
+      <procedure name="Abs2RelPoint">
+        <address>00509257</address>
+        <decompile>false</decompile>
+        <CSignature>
+int Abs2RelPoint(
+        const char *entity_name, double x_abs, double y_abs, double z_abs,
+        double *x_rel, double *y_rel, double *z_rel
+)</CSignature>
+      </procedure>
+      <procedure name="Abs2RelVectorN">
+        <address>00509333</address>
+        <decompile>false</decompile>
+        <CSignature>
+int Abs2RelVectorN(
+        const char *entity_name, double x_abs, double y_abs, double z_abs,
+        const char *anchor_name, double *x_rel, double *y_rel, double *z_rel
+)</CSignature>
+      </procedure>
+      <procedure name="Abs2RelPointN">
+        <address>005094D1</address>
+        <decompile>false</decompile>
+        <CSignature>
+int Abs2RelPointN(
+        const char *entity_name, double x_abs, double y_abs, double z_abs,
+        const char *anchor_name, double *x_rel, double *y_rel, double *z_rel
+)</CSignature>
+      </procedure>
+      <procedure name="SQDistance2">
+        <address>0050966F</address>
+        <decompile>false</decompile>
+        <CSignature>
+double SQDistance2(const char *entity_name1, const char *entity_name2)</CSignature>
+      </procedure>
+      <procedure name="RemoveEntityFromList">
+        <address>0050973E</address>
+        <decompile>false</decompile>
+        <CSignature>
+int RemoveEntityFromList(
+        const char *entity_name, const char *timer_name
+)</CSignature>
+      </procedure>
+      <procedure name="CreateTimer">
+        <address>005097AD</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CreateTimer(const char *timer_name, double period)</CSignature>
+      </procedure>
+      <procedure name="GetnTimers">
+        <address>005097EB</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetnTimers(void)</CSignature>
+      </procedure>
+      <procedure name="GetTimerInfo">
+        <address>005097FA</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetTimerInfo(
+        int timer_index, const char **timer_name, double *period
+)</CSignature>
+      </procedure>
+      <procedure name="GetEntityIntProperty">
+        <address>0050981F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetEntityIntProperty(
+        const char *entity_name, int property_kind, int index, int *value
+)</CSignature>
+      </procedure>
+      <procedure name="GetEntityFloatProperty">
+        <address>0050B513</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetEntityFloatProperty(
+        const char *entity_name, int property_kind, int index, double *value
+)</CSignature>
+      </procedure>
+      <procedure name="GetEntityStringProperty">
+        <address>0050D31F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetEntityStringProperty(
+        const char *entity_name, int property_kind, int index,
+        const char **value
+)</CSignature>
+      </procedure>
+      <procedure name="GetEntityVectorProperty">
+        <address>0050E086</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetEntityVectorProperty(
+        const char *entity_name, int property_kind, int index,
+        double *x, double *y, double *z
+)</CSignature>
+      </procedure>
+      <procedure name="GetEntityQuatProperty">
+        <address>0050F6E7</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetEntityQuatProperty(
+        const char *entity_name, int property_kind, int index, double *quat1,
+        double *quat2, double *quat3, double *quat4
+)</CSignature>
+      </procedure>
+      <procedure name="GetEntityFuncProperty">
+        <address>0050F8B9</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetEntityFuncProperty(
+        const char *entity_name, int property_kind, int index, PyObject **func
+)</CSignature>
+      </procedure>
+      <procedure name="SetEntityIntProperty">
+        <address>00510A2A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetEntityIntProperty(
+        const char *entity_name, int property_kind, int index, int value
+)</CSignature>
+      </procedure>
+      <procedure name="SetEntityFloatProperty">
+        <address>00511DB7</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetEntityFloatProperty(
+        const char *entity_name, int property_kind, int index, double value
+)</CSignature>
+      </procedure>
+      <procedure name="SetEntityStringProperty">
+        <address>00513675</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetEntityStringProperty(
+        const char *entity_name, int property_kind, int index,
+        const char *value
+)</CSignature>
+      </procedure>
+      <procedure name="SetEntityVectorProperty">
+        <address>00514C9B</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetEntityVectorProperty(
+        const char *entity_name, int property_kind, int index,
+        double x, double y, double z
+)</CSignature>
+      </procedure>
+      <procedure name="SetEntityQuatProperty">
+        <address>0051603F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetEntityQuatProperty(
+        const char *entity_name, int property_kind, int index, double quat1,
+        double quat2, double quat3, double quat4
+)</CSignature>
+      </procedure>
+      <procedure name="SetEntityData">
+        <address>005163AA</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetEntityData(const char *entity_name, PyObject *data)</CSignature>
+      </procedure>
+      <procedure name="GetEntityData">
+        <address>0051645D</address>
+        <decompile>false</decompile>
+        <CSignature>
+PyObject *GetEntityData(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="SetEntityFuncProperty">
+        <address>005164FD</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetEntityFuncProperty(
+        const char *entity_name, int property_kind, int index, PyObject *func
+)</CSignature>
+      </procedure>
+      <procedure name="SetEntityInternalState">
+        <address>00517526</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetEntityInternalState(
+        const char *entity_name, PyObject *internal_state
+)</CSignature>
+      </procedure>
+      <procedure name="GetEntityInternalState">
+        <address>0051758B</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetEntityInternalState(
+        const char *entity_name, PyObject **internal_state
+)</CSignature>
+      </procedure>
+      <procedure name="AddSoundAnim">
+        <address>005175E8</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddSoundAnim(
+        const char *entity_name, const char *anm_event, double time, int soundID
+)</CSignature>
+      </procedure>
+      <procedure name="AddSoundEvent">
+        <address>00517688</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddSoundEvent(
+        const char *entity_name, const char *event, int soundID
+)</CSignature>
+      </procedure>
+      <procedure name="AddScheduledFunc">
+        <address>00517718</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddScheduledFunc(
+        double time, PyObject *func, PyObject *args, const char *name
+)</CSignature>
+      </procedure>
+      <procedure name="RemoveScheduledFunc">
+        <address>00517740</address>
+        <decompile>false</decompile>
+        <CSignature>
+int RemoveScheduledFunc(const char *name)</CSignature>
+      </procedure>
+      <procedure name="GetnScheduledFuncs">
+        <address>00517758</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetnScheduledFuncs(void)</CSignature>
+      </procedure>
+      <procedure name="GetScheduledFunc">
+        <address>00517767</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetScheduledFunc(
+        int index, PyObject **func, PyObject **args, const char **name,
+        double *time
+)</CSignature>
+      </procedure>
+      <procedure name="EntityRotate">
+        <address>0051778A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int EntityRotate(
+        const char *entity_name, double x_dir, double y_dir, double z_dir,
+        double velocity, int unknown
+)</CSignature>
+      </procedure>
+      <procedure name="EntityRotateAbs">
+        <address>00517867</address>
+        <decompile>false</decompile>
+        <CSignature>
+int EntityRotateAbs(
+        const char *entity_name, double x, double y, double z, double x_dir,
+        double y_dir, double z_dir, double angle, int i_unknown
+)</CSignature>
+      </procedure>
+      <procedure name="EntityRotateRel">
+        <address>005179E7</address>
+        <decompile>false</decompile>
+        <CSignature>
+int EntityRotateRel(
+        const char *entity_name, double x, double y, double z, double x_dir,
+        double y_dir, double z_dir, double angle, int i_unknown
+)</CSignature>
+      </procedure>
+      <procedure name="EntityMove">
+        <address>00517B67</address>
+        <decompile>false</decompile>
+        <CSignature>
+int EntityMove(
+        const char *entity_name, double x, double y, double z, int unknown
+)</CSignature>
+      </procedure>
+      <procedure name="EntitySetPosition">
+        <address>00517C3C</address>
+        <decompile>false</decompile>
+        <CSignature>
+int EntitySetPosition(
+        const char *entity_name, double x, double y, double z, int unknown
+)</CSignature>
+      </procedure>
+      <procedure name="EntitySetOrientation">
+        <address>00517D17</address>
+        <decompile>false</decompile>
+        <CSignature>
+int EntitySetOrientation(
+        const char *entity_name, double quat1, double quat2, double quat3,
+        double quat4, int unknown
+)</CSignature>
+      </procedure>
+      <procedure name="EntityPutToWorld">
+        <address>00517E42</address>
+        <decompile>false</decompile>
+        <CSignature>
+int EntityPutToWorld(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="EntityAddAnmEventFunc">
+        <address>00517E97</address>
+        <decompile>false</decompile>
+        <CSignature>
+int EntityAddAnmEventFunc(
+        const char *entity_name, const char *anm_event, PyObject *func
+)</CSignature>
+      </procedure>
+      <procedure name="EntityDelAnmEventFunc">
+        <address>00517F32</address>
+        <decompile>false</decompile>
+        <CSignature>
+int EntityDelAnmEventFunc(
+        const char *entity_name, const char *anm_event
+)</CSignature>
+      </procedure>
+      <procedure name="EntityClearAnmEventFuncs">
+        <address>00517FB9</address>
+        <decompile>false</decompile>
+        <CSignature>
+int EntityClearAnmEventFuncs(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="ClearActorPath">
+        <address>00518030</address>
+        <decompile>false</decompile>
+        <CSignature>
+int ClearActorPath(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="AddActorPathnode">
+        <address>005180A2</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddActorPathnode(
+        const char *entity_name, double time, double x, double y, double z
+)</CSignature>
+      </procedure>
+      <procedure name="StartActorPath">
+        <address>00518148</address>
+        <decompile>false</decompile>
+        <CSignature>
+int StartActorPath(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="GoToActorPath">
+        <address>005181BA</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GoToActorPath(
+        const char *entity_name, int i_unknown, double d_unknown
+)</CSignature>
+      </procedure>
+      <procedure name="TestPos">
+        <address>00518238</address>
+        <decompile>false</decompile>
+        <CSignature>
+int TestPos(
+        const char *entity_name, double x, double y, double z, double max_fall,
+        int action_area, int *isCorrect
+)</CSignature>
+      </procedure>
+      <procedure name="TestPosInOwnBox">
+        <address>0051831A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int TestPosInOwnBox(
+        const char *entity_name, double x, double y, double z, double box_size,
+        int *isCorrect
+)</CSignature>
+      </procedure>
+      <procedure name="TurnOnActor">
+        <address>005184E8</address>
+        <decompile>false</decompile>
+        <CSignature>
+int TurnOnActor(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="TurnOffActor">
+        <address>0051855A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int TurnOffActor(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="SetAttackList">
+        <address>005185CC</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetAttackList(const char *entity_name, PyObject *attack_list)</CSignature>
+      </procedure>
+      <procedure name="GetAttackList">
+        <address>005186BA</address>
+        <decompile>false</decompile>
+        <CSignature>
+PyObject *GetAttackList(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="GetGroupMembers">
+        <address>0051872A</address>
+        <decompile>false</decompile>
+        <CSignature>
+PyObject *GetGroupMembers(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="GetCombatants">
+        <address>00518910</address>
+        <decompile>false</decompile>
+        <CSignature>
+PyObject *GetCombatants(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="SetActorNodeStartTangent">
+        <address>0051898B</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetActorNodeStartTangent(
+        const char *entity_name, int unknown1, double unknown2, double unknown3,
+        double unknown4
+)</CSignature>
+      </procedure>
+      <procedure name="SetActorNodeEndTangent">
+        <address>00518A2D</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetActorNodeEndTangent(
+        const char *entity_name, int unknown1, double unknown2, double unknown3,
+        double unknown4
+)</CSignature>
+      </procedure>
+      <procedure name="SetSound">
+        <address>00518ACF</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetSound(const char *entity_name, const char *sound)</CSignature>
+      </procedure>
+      <procedure name="SetObjectSound">
+        <address>00518B45</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetObjectSound(const char *entity_name, const char *sound)</CSignature>
+      </procedure>
+      <procedure name="PlayEntitySound">
+        <address>00518BBB</address>
+        <decompile>false</decompile>
+        <CSignature>
+int PlayEntitySound(const char *entity_name, int i_unknown)</CSignature>
+      </procedure>
+      <procedure name="Stop">
+        <address>00518CA3</address>
+        <decompile>false</decompile>
+        <CSignature>
+int Stop(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="StopAt">
+        <address>00518D90</address>
+        <decompile>false</decompile>
+        <CSignature>
+int StopAt(const char *entity_name, double x, double y, double z)</CSignature>
+      </procedure>
+      <procedure name="CheckAnimCol">
+        <address>00518E2E</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CheckAnimCol(
+        const char *entity_name, const char *anm_name, const char *obj_name,
+        int unknown, int *res
+)</CSignature>
+      </procedure>
+      <procedure name="RemoveFromInvent">
+        <address>00518F1A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int RemoveFromInvent(const char *entity_name, const char *obj_name)</CSignature>
+      </procedure>
+      <procedure name="ResetWounds">
+        <address>0051919B</address>
+        <decompile>false</decompile>
+        <CSignature>
+int ResetWounds(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="RemoveFromInventRight">
+        <address>0051920D</address>
+        <decompile>false</decompile>
+        <CSignature>
+int RemoveFromInventRight(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="RemoveFromInventLeft">
+        <address>00519285</address>
+        <decompile>false</decompile>
+        <CSignature>
+int RemoveFromInventLeft(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="RemoveFromInventLeft2">
+        <address>005192FD</address>
+        <decompile>false</decompile>
+        <CSignature>
+int RemoveFromInventLeft2(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="CanISee">
+        <address>00519375</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CanISee(
+        const char *entity_name, const char *seen_entity_name, int *canISee
+)</CSignature>
+      </procedure>
+      <procedure name="CanISeeFrom">
+        <address>0051942F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CanISeeFrom(
+        const char *entity_name, const char *seen_entity_name,
+        double x, double y, double z, int *canISee
+)</CSignature>
+      </procedure>
+      <procedure name="SetActiveEnemy">
+        <address>005194EE</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetActiveEnemy(
+        const char *entity_name, const char *active_enemy_name, int *unknown
+)</CSignature>
+      </procedure>
+      <procedure name="ExcludeHitFor">
+        <address>005195C0</address>
+        <decompile>false</decompile>
+        <CSignature>
+int ExcludeHitFor(
+        const char *entity_name, const char *exclude_hit_for_name,
+        void *unknown
+)</CSignature>
+      </procedure>
+      <procedure name="ExcludeHitInAnimationFor">
+        <address>00519697</address>
+        <decompile>false</decompile>
+        <CSignature>
+int ExcludeHitInAnimationFor(
+        const char *entity_name, const char *exclude_hit_for_name, void *unknown
+)</CSignature>
+      </procedure>
+      <procedure name="Link">
+        <address>00519792</address>
+        <decompile>false</decompile>
+        <CSignature>
+int Link(
+        const char *entity_name, const char *child_entity_name, void *unknown
+)</CSignature>
+      </procedure>
+      <procedure name="LinkToNode">
+        <address>00519833</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LinkToNode(
+        const char *entity_name, const char *child_name, int node_index,
+        void *unknown
+)</CSignature>
+      </procedure>
+      <procedure name="LinkAnchors">
+        <address>0051996F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LinkAnchors(
+        const char *entity_name, const char *entity_anchor_name,
+        const char *child_name, const char *child_anchor_name, void *unknown
+)</CSignature>
+      </procedure>
+      <procedure name="UnlinkChilds">
+        <address>00519A7D</address>
+        <decompile>false</decompile>
+        <CSignature>
+int UnlinkChilds(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="GetNodeIndex">
+        <address>00519ACF</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetNodeIndex(
+        const char *entity_name, const char *node_name, int *index
+)</CSignature>
+      </procedure>
+      <procedure name="UnlinkChild">
+        <address>00519B6F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int UnlinkChild(
+        const char *entity_name, const char *child_entity_name, void *unknown
+)</CSignature>
+      </procedure>
+      <procedure name="InsideActionArea">
+        <address>00519C0D</address>
+        <decompile>false</decompile>
+        <CSignature>
+int InsideActionArea(
+        const char *entity_name, int action_area, int *is_inside
+)</CSignature>
+      </procedure>
+      <procedure name="SetTmpAnmFlags">
+        <address>00519CBF</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetTmpAnmFlags(
+        const char *entity_name, int wuea, int mod_y, int solf, int copy_rot,
+        int bng_mov, int headf, int unknown
+)</CSignature>
+      </procedure>
+      <procedure name="SetAnmFlags">
+        <address>00519D4F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetAnmFlags(
+        const char *entity_name, const char *anm_name, int wuea, int mod_y,
+        int solf, int copy_rot, int bng_mov, int headf
+)</CSignature>
+      </procedure>
+      <procedure name="LaunchAnimation2">
+        <address>00519DDF</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LaunchAnimation2(
+        const char *entity_name, const char *anm_name1, const char *anm_name2
+)</CSignature>
+      </procedure>
+      <procedure name="SetEnemy">
+        <address>00519E5F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetEnemy(const char *entity_name, const char *enemy_name)</CSignature>
+      </procedure>
+      <procedure name="GetEnemy">
+        <address>00519F38</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetEnemy(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="Chase">
+        <address>00519FD6</address>
+        <decompile>false</decompile>
+        <CSignature>
+int Chase(
+        const char *entity_name, const char *enemy_name, int action_area
+)</CSignature>
+      </procedure>
+      <procedure name="ResetChase">
+        <address>0051A0A5</address>
+        <decompile>false</decompile>
+        <CSignature>
+int ResetChase(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="GoTo">
+        <address>0051A14B</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GoTo(const char *entity_name, int x, int y, int z)</CSignature>
+      </procedure>
+      <procedure name="CanGoTo">
+        <address>0051A1FC</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CanGoTo(const char *entity_name, int x, int y, int z)</CSignature>
+      </procedure>
+      <procedure name="QuickFace">
+        <address>0051A2A8</address>
+        <decompile>false</decompile>
+        <CSignature>
+int QuickFace(const char *entity_name, double angle)</CSignature>
+      </procedure>
+      <procedure name="Face">
+        <address>0051A32A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int Face(const char *entity_name, double angle)</CSignature>
+      </procedure>
+      <procedure name="StartLooking">
+        <address>0051A3E3</address>
+        <decompile>false</decompile>
+        <CSignature>
+int StartLooking(const char *entity_name, int x, int y, int z)</CSignature>
+      </procedure>
+      <procedure name="StopLooking">
+        <address>0051A3ED</address>
+        <decompile>false</decompile>
+        <CSignature>
+int StopLooking(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="LookAtEntity">
+        <address>0051A47A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LookAtEntity(
+        const char *entity_name, const char *look_at_entity_name
+)</CSignature>
+      </procedure>
+      <procedure name="LaunchWatch">
+        <address>0051A5D6</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LaunchWatch(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="GetActionMode">
+        <address>0051A68A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetActionMode(const char *entity_name, int *action_mode)</CSignature>
+      </procedure>
+      <procedure name="StartGrabbing">
+        <address>0051A74D</address>
+        <decompile>false</decompile>
+        <CSignature>
+int StartGrabbing(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="StopGrabbing">
+        <address>0051A789</address>
+        <decompile>false</decompile>
+        <CSignature>
+int StopGrabbing(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="AddEntWatchAnim">
+        <address>0051A7C5</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddEntWatchAnim(const char *entity_name, const char *anm_name)</CSignature>
+      </procedure>
+      <procedure name="Freeze">
+        <address>0051A841</address>
+        <decompile>false</decompile>
+        <CSignature>
+int Freeze(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="UnFreeze">
+        <address>0051A8D7</address>
+        <decompile>false</decompile>
+        <CSignature>
+int UnFreeze(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="SwitchTo1H">
+        <address>0051A96A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SwitchTo1H(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="GetDummyAxis">
+        <address>0051A9E2</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetDummyAxis(
+        const char *entity_name, const char *anchor_name, double x_dir,
+        double y_dir, double z_dir, double *x_dummy_axis, double *y_dummy_axis,
+        double *z_dummy_axis, int unknown
+)</CSignature>
+      </procedure>
+      <procedure name="GraspPos">
+        <address>0051AD9B</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GraspPos(
+        const char *entity_name, const char *grasp, double *x, double *y,
+        double *z
+)</CSignature>
+      </procedure>
+      <procedure name="SwitchToBow">
+        <address>0051AF97</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SwitchToBow(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="LaunchBayRoute">
+        <address>0051B00F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LaunchBayRoute(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="EntityCatchOnFire">
+        <address>0051B09A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int EntityCatchOnFire(
+        const char *entity_name, double x, double y, double z
+)</CSignature>
+      </procedure>
+      <procedure name="GetNChildren">
+        <address>0051B18D</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetNChildren(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="GetChild">
+        <address>0051B1DB</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetChild(const char *entity_name, int index)</CSignature>
+      </procedure>
+      <procedure name="CreateBipedData">
+        <address>0051B225</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CreateBipedData(const char *biped_name, const char *kind)</CSignature>
+      </procedure>
+      <procedure name="AddBipedAction">
+        <address>0051B4D3</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddBipedAction(
+        const char *char_name, const char *action_name,
+        const char *animation_name, double d_unknown1, double d_unknown2,
+        int i_unknown
+)</CSignature>
+      </procedure>
+      <procedure name="RemoveBipedAction">
+        <address>0051B971</address>
+        <decompile>false</decompile>
+        <CSignature>
+int RemoveBipedAction(const char *s_unknown1, const char *s_unknown2)</CSignature>
+      </procedure>
+      <procedure name="AddBipedActionC">
+        <address>0051BC8F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddBipedActionC(
+        const char *char_name, const char *action_name,
+        const char *animation_name, const char *s_unknown, double d_unknown1,
+        double d_unknown2, int i_unknown
+)</CSignature>
+      </procedure>
+      <procedure name="SetActionEventTable">
+        <address>0051BEF4</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetActionEventTable(
+        const char *race_name, const char *action_name, const char *table_name
+)</CSignature>
+      </procedure>
+      <procedure name="SetEventTableFuncC">
+        <address>0051C4A4</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetEventTableFuncC(
+        const char *s_unknown1, const char *s_unknown2, const char *s_unknown3
+)</CSignature>
+      </procedure>
+      <procedure name="SetEventTableFunc">
+        <address>0051CA1C</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetEventTableFunc(
+        const char *event_table_name, const char *event_type, PyObject *func
+)</CSignature>
+      </procedure>
+      <procedure name="DoAction">
+        <address>0051CE46</address>
+        <decompile>false</decompile>
+        <CSignature>
+int DoAction(const char *entity_name, const char *action_name)</CSignature>
+      </procedure>
+      <procedure name="DoActionWI">
+        <address>0051CEBC</address>
+        <decompile>false</decompile>
+        <CSignature>
+int DoActionWI(
+        const char *entity_name, const char *action_name,
+        int interpolation_type, double time, double unknown1
+)</CSignature>
+      </procedure>
+      <procedure name="SetOnFloor">
+        <address>0051CF72</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetOnFloor(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="RaiseEvent">
+        <address>0051CFE4</address>
+        <decompile>false</decompile>
+        <CSignature>
+int RaiseEvent(const char *entity_name, const char *event_name)</CSignature>
+      </procedure>
+      <procedure name="SetSolidMask">
+        <address>0051D065</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetSolidMask(const char *kind, int mask)</CSignature>
+      </procedure>
+      <procedure name="IsValidEntity">
+        <address>0051D25D</address>
+        <decompile>false</decompile>
+        <CSignature>
+int IsValidEntity(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="EntityRemoveFromWorld">
+        <address>0051D283</address>
+        <decompile>false</decompile>
+        <CSignature>
+void EntityRemoveFromWorld(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="EntityRemoveFromWorldWithChilds">
+        <address>0051D2D7</address>
+        <decompile>false</decompile>
+        <CSignature>
+void EntityRemoveFromWorldWithChilds(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="ImpulseC">
+        <address>0051D32B</address>
+        <decompile>false</decompile>
+        <CSignature>
+int ImpulseC(
+        const char *entity_name, double x, double y, double z, double x_vec,
+        double y_vec, double z_vec
+)</CSignature>
+      </procedure>
+      <procedure name="SetAuraActive">
+        <address>0051D3FA</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetAuraActive(const char *entity_name, int is_active)</CSignature>
+      </procedure>
+      <procedure name="SetAuraParams">
+        <address>0051D47C</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetAuraParams(
+        const char *entity_name, double size, double alpha,
+        double colour_intensity, int hide_front_faces, int hide_back_faces,
+        int alpha_mode
+)</CSignature>
+      </procedure>
+      <procedure name="SetAuraGradient">
+        <address>0051D554</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetAuraGradient(
+        const char *entity_name, int gap, double r1, double g1, double b1,
+        double alpha1, double starting_point, double r2, double g2, double b2,
+        double alpha2, double ending_point
+)</CSignature>
+      </procedure>
+      <procedure name="GetMouseState">
+        <address>0051D63D</address>
+        <decompile>false</decompile>
+        <CSignature>
+void GetMouseState(int *invert, double *xsens, double *ysens)</CSignature>
+      </procedure>
+      <procedure name="SetMouseState">
+        <address>0051D677</address>
+        <decompile>false</decompile>
+        <CSignature>
+void SetMouseState(int invert, double xsens, double ysens)</CSignature>
+      </procedure>
+      <procedure name="GetPSeconds">
+        <address>0051D6B1</address>
+        <decompile>false</decompile>
+        <CSignature>
+double GetPSeconds(void)</CSignature>
+      </procedure>
+      <procedure name="BodInspector">
+        <address>0051D6D4</address>
+        <decompile>false</decompile>
+        <CSignature>
+void BodInspector(void)</CSignature>
+      </procedure>
+      <procedure name="SaveScreeShoot">
+        <address>0051D6DE</address>
+        <decompile>false</decompile>
+        <CSignature>
+void SaveScreeShoot(const char *filename, int width, int height)</CSignature>
+      </procedure>
+      <procedure name="CleanArea">
+        <address>0051D6FB</address>
+        <decompile>false</decompile>
+        <CSignature>
+void CleanArea(double x, double y, double z, float distance)</CSignature>
+      </procedure>
+      <procedure name="fn005728B0">
+        <characteristics />
+        <address>005728B0</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="GetCharByName">
+        <address>005856A0</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetCharByName(const char *name, const char *short_name)</CSignature>
+      </procedure>
+      <procedure name="LoadAllAnimations">
+        <address>00585715</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LoadAllAnimations(int charID)</CSignature>
+      </procedure>
+      <procedure name="ChangeAnimation">
+        <address>00585758</address>
+        <decompile>false</decompile>
+        <CSignature>
+int ChangeAnimation(
+        int charID, const char *old_anm_name, const char *new_anm_name
+)</CSignature>
+      </procedure>
+      <procedure name="SetAnmDefaultPrefix">
+        <address>00585789</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetAnmDefaultPrefix(int charID, const char *prefix)</CSignature>
+      </procedure>
+      <procedure name="AddAttack">
+        <address>005857C3</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddAttack(int charID, const char *attack_name, const char *anm_name)</CSignature>
+      </procedure>
+      <procedure name="AttackWindow">
+        <address>00585807</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AttackWindow(
+        int charID, const char *anm_name, float window1, float window2,
+        const char *window_name
+)</CSignature>
+      </procedure>
+      <procedure name="AttackLevels">
+        <address>00585853</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AttackLevels(
+        int charID, const char *anm_name, float level1, float level2
+)</CSignature>
+      </procedure>
+      <procedure name="AttackEnergyLevel">
+        <address>0058589B</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AttackEnergyLevel(
+        int charID, const char *anm_name, float  level
+)</CSignature>
+      </procedure>
+      <procedure name="ForwardsOffset">
+        <address>005858DF</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="AttackTypeFlag">
+        <address>00585923</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AttackTypeFlag(int charID, const char *attack_name, int flag)</CSignature>
+      </procedure>
+      <procedure name="AllowAttack">
+        <address>00585967</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AllowAttack(
+        int charID, const char *attack_name, const char *keys,
+        const char *previous, const char *previous_negative,
+        const char *window_name, const char *weapon_kind
+)</CSignature>
+      </procedure>
+      <procedure name="MetaAttack">
+        <address>005859BB</address>
+        <decompile>false</decompile>
+        <CSignature>
+int MetaAttack(
+        int charID, const char *meta_attack_name, const char *attack_name
+)</CSignature>
+      </procedure>
+      <procedure name="AssignTrail">
+        <address>005859FF</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AssignTrail(
+        int charID, const char *attack_name, const char *unknown,
+        const char *trail_name
+)</CSignature>
+      </procedure>
+      <procedure name="SetNCDSpheres">
+        <address>00585A47</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetNCDSpheres(int charID, int NCDSpheres)</CSignature>
+      </procedure>
+      <procedure name="SetCDSphere">
+        <address>00585C53</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetCDSphere(int charID, int index, double h, double r)</CSignature>
+      </procedure>
+      <procedure name="GetCharIntProperty">
+        <address>00585CE3</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetCharIntProperty(int charID, int property_kind, int index, int *value)</CSignature>
+      </procedure>
+      <procedure name="SetCharIntProperty">
+        <address>00585D4E</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetCharIntProperty(int charID, int property_kind, int index, int value)</CSignature>
+      </procedure>
+      <procedure name="GetCharFloatProperty">
+        <address>00585DB4</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetCharFloatProperty(int charID, int property_kind, int index, double *value)</CSignature>
+      </procedure>
+      <procedure name="SetCharFloatProperty">
+        <address>0058616F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetCharFloatProperty(int charID, int property_kind, int index, double value)</CSignature>
+      </procedure>
+      <procedure name="GetCharStringProperty">
+        <address>00586518</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetCharStringProperty(int charID, int property_kind, int index, const char **value)</CSignature>
+      </procedure>
+      <procedure name="SetCharStringProperty">
+        <address>00586614</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetCharStringProperty(int charID, int property_kind, int index, const char *value)</CSignature>
+      </procedure>
+      <procedure name="SetCharFuncProperty">
+        <address>005867AB</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetCharFuncProperty(int charID, int property_kind, int index, PyObject *func)</CSignature>
+      </procedure>
+      <procedure name="GetTrailByName">
+        <address>00596E90</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetTrailByName(const char *name)</CSignature>
+      </procedure>
+      <procedure name="GetTrailIntProperty">
+        <address>00596EFE</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="SetTrailIntProperty">
+        <address>00596F08</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="GetTrailFloatProperty">
+        <address>00596F12</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetTrailFloatProperty(
+        int trailID, int property_kind, int index, double *value
+)</CSignature>
+      </procedure>
+      <procedure name="SetTrailFloatProperty">
+        <address>00596F82</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetTrailFloatProperty(
+        int trailID, int property_kind, int index, double value
+)</CSignature>
+      </procedure>
+      <procedure name="GetTrailStringProperty">
+        <address>00596FFE</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="GetTrailVectorProperty">
+        <address>00597024</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetTrailVectorProperty(
+        int trailID, int property_kind, int index,
+        double *x, double *y, double *z
+)</CSignature>
+      </procedure>
+      <procedure name="SetTrailFuncProperty">
+        <address>005970DE</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="SetTrailVectorProperty">
+        <address>005970FC</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetTrailVectorProperty(
+        int trailID, int property_kind, int index, double x, double y, double z
+)</CSignature>
+      </procedure>
+      <procedure name="GetInventory">
+        <address>0059D660</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="GetInventoryFloatProperty">
+        <address>0059D8A0</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="SetInventoryFloatProperty">
+        <address>0059D8A8</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="GetInventoryStringProperty">
+        <address>0059D8B0</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetInventoryStringProperty(
+	const char *name, int property_kind, const char **value
+)</CSignature>
+      </procedure>
+      <procedure name="SetInventoryStringProperty">
+        <address>0059D937</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="GetInventoryIntProperty">
+        <address>0059D93F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetInventoryIntProperty(
+        const char *name, int property_kind, int *value
+)</CSignature>
+      </procedure>
+      <procedure name="SetInventoryIntProperty">
+        <address>0059DCFF</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetInventoryIntProperty(
+        const char *name, int property_kind, int value
+)</CSignature>
+      </procedure>
+      <procedure name="LinkRightHand">
+        <address>0059DDE6</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LinkRightHand(const char *inv_name, const char *obj_name)</CSignature>
+      </procedure>
+      <procedure name="LinkLeftHand">
+        <address>0059E03F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LinkLeftHand(const char *inv_name, const char *obj_name)</CSignature>
+      </procedure>
+      <procedure name="LinkLeftHand2">
+        <address>0059E298</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LinkLeftHand2(const char *inv_name, const char *obj_name)</CSignature>
+      </procedure>
+      <procedure name="LinkRightBack">
+        <address>0059E4F1</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LinkRightBack(const char *inv_name, const char *obj_name)</CSignature>
+      </procedure>
+      <procedure name="LinkLeftBack">
+        <address>0059E74A</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LinkLeftBack(const char *inv_name, const char *obj_name)</CSignature>
+      </procedure>
+      <procedure name="LinkBack">
+        <address>0059E9A3</address>
+        <decompile>false</decompile>
+        <CSignature>
+int LinkBack(const char *inv_name, const char *obj_name)</CSignature>
+      </procedure>
+      <procedure name="SetCurrentQuiver">
+        <address>0059EBFC</address>
+        <decompile>false</decompile>
+        <CSignature>
+int SetCurrentQuiver(const char *inv_name, const char *quiver_name)</CSignature>
+      </procedure>
+      <procedure name="AddWeapon">
+        <address>0059EE55</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddWeapon(const char *inv_name, int flag, const char *weapon_name)</CSignature>
+      </procedure>
+      <procedure name="AddObject">
+        <address>0059F08C</address>
+        <decompile>false</decompile>
+        <CSignature>
+int AddObject(
+        const char *inv_name, int obj_type, int unknown, const char *obj_name
+)</CSignature>
+      </procedure>
+      <procedure name="RemoveObject">
+        <address>0059F2C7</address>
+        <decompile>false</decompile>
+        <CSignature>
+int RemoveObject(
+        const char *inv_name, int obj_type, const char *obj_name
+)</CSignature>
+      </procedure>
+      <procedure name="GetObject">
+        <address>0059F316</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetObject(const char *inv_name, int obj_type, int index)</CSignature>
+      </procedure>
+      <procedure name="GetObjectByName">
+        <address>0059F362</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetObjectByName(
+        const char *inv_name, int obj_type, const char *obj_name
+)</CSignature>
+      </procedure>
+      <procedure name="GetRightBack">
+        <address>0059F3C4</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetRightBack(const char *inv_name)</CSignature>
+      </procedure>
+      <procedure name="GetLeftBack">
+        <address>0059F406</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetLeftBack(const char *inv_name)</CSignature>
+      </procedure>
+      <procedure name="GetSelectedObject">
+        <address>0059F448</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetSelectedObject(const char *inv_name, int obj_type)</CSignature>
+      </procedure>
+      <procedure name="GetActiveShield">
+        <address>0059F490</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetActiveShield(const char *inv_name)</CSignature>
+      </procedure>
+      <procedure name="GetActiveWeapon">
+        <address>0059F4D4</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetActiveWeapon(const char *inv_name)</CSignature>
+      </procedure>
+      <procedure name="ActiveWeaponActive">
+        <address>0059F518</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="GetActiveQuiver">
+        <address>0059F541</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *GetActiveQuiver(const char *inv_name)</CSignature>
+      </procedure>
+      <procedure name="Cycle">
+        <address>0059F585</address>
+        <decompile>false</decompile>
+        <CSignature>
+void Cycle(const char *inv_name, int obj_type)</CSignature>
+      </procedure>
+      <procedure name="GetNumberObjectsAt">
+        <address>0059F5B0</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetNumberObjectsAt(const char *inv_name, int obj_type, int index)</CSignature>
+      </procedure>
+      <procedure name="GetMaxNumberObjectsAt">
+        <address>0059F5E1</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetMaxNumberObjectsAt(
+        const char *inv_name, int obj_type, int index
+)</CSignature>
+      </procedure>
+      <procedure name="IsSelected">
+        <address>0059F612</address>
+        <decompile>false</decompile>
+        <CSignature>
+int IsSelected(const char *inv_name, int obj_type, int obj_index)</CSignature>
+      </procedure>
+      <procedure name="CarringObject">
+        <address>0059F643</address>
+        <decompile>false</decompile>
+        <CSignature>
+int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
+      </procedure>
+      <procedure name="fn005A01B2">
+        <characteristics />
+        <address>005A01B2</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="get_map_for_net_game">
+        <characteristics />
+        <address>005B143D</address>
+        <CSignature>char *get_map_for_net_game(char *map)</CSignature>
+      </procedure>
+      <procedure name="SetGameSpySupport">
+        <address>005B5340</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="GetGameSpySupport">
+        <address>005B534D</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="StartGSQR">
+        <address>005B5357</address>
+        <decompile>false</decompile>
+        <CSignature>
+void StartGSQR(void)</CSignature>
+      </procedure>
+      <procedure name="EndGSQR">
+        <address>005B5582</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="LoopGSQR">
+        <address>005B55ED</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="PersonChangeAnmSoundIndex">
+        <address>005B5647</address>
+        <decompile>false</decompile>
+        <CSignature>
+void PersonChangeAnmSoundIndex(const char *person_name, int index)</CSignature>
+      </procedure>
+      <procedure name="SetDedicatedServerState">
+        <address>005B565C</address>
+        <decompile>false</decompile>
+        <CSignature>
+void SetDedicatedServerState(int dedicated)</CSignature>
+      </procedure>
+      <procedure name="GetDedicatedServerState">
+        <address>005B5673</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetDedicatedServerState(void)</CSignature>
+      </procedure>
+      <procedure name="SetLocalOptions">
+        <address>005B568F</address>
+        <decompile>false</decompile>
+        <CSignature>
+void SetLocalOptions(
+        const char *name, const char *kind, const char *weapon,
+        const char *shield, const char *map
+)</CSignature>
+      </procedure>
+      <procedure name="ServerInfoBlock">
+        <address>005B5716</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *ServerInfoBlock(void)</CSignature>
+      </procedure>
+      <procedure name="ClientSetPyClientSoundFunc">
+        <address>005B5720</address>
+        <decompile>false</decompile>
+        <CSignature>
+void ClientSetPyClientSoundFunc(PyObject *func)</CSignature>
+      </procedure>
+      <procedure name="CallNetEventSound">
+        <address>005B5731</address>
+        <decompile>false</decompile>
+        <CSignature>
+void CallNetEventSound(const char *entity_name, byte id)</CSignature>
+      </procedure>
+      <procedure name="ClientSetPyClientMutilaFunc">
+        <address>005B5959</address>
+        <decompile>false</decompile>
+        <CSignature>
+void ClientSetPyClientMutilaFunc(PyObject *func)</CSignature>
+      </procedure>
+      <procedure name="ClientSetPyClientDamageFunc">
+        <address>005B596A</address>
+        <decompile>false</decompile>
+        <CSignature>
+void ClientSetPyClientDamageFunc(PyObject *func)</CSignature>
+      </procedure>
+      <procedure name="NetAddSoundToClient">
+        <address>005B597B</address>
+        <decompile>false</decompile>
+        <CSignature>
+void NetAddSoundToClient(
+        const char *entity_name, const char *animation_name,
+        PyObject *sound_object
+)</CSignature>
+      </procedure>
+      <procedure name="NetGetClientId">
+        <address>005B5BB2</address>
+        <decompile>false</decompile>
+        <CSignature>
+const char *NetGetClientId(void)</CSignature>
+      </procedure>
+      <procedure name="NetSetObjectState">
+        <address>005B5BBC</address>
+        <decompile>false</decompile>
+        <CSignature>
+boolean NetSetObjectState(const char *entity_name, boolean state)</CSignature>
+      </procedure>
+      <procedure name="NetAddEventUserFunc">
+        <address>005B5BD1</address>
+        <decompile>false</decompile>
+        <CSignature>
+void NetAddEventUserFunc(
+        const char *action, PyObject *func, int ignore_host
+)</CSignature>
+      </procedure>
+      <procedure name="NetAddPosition">
+        <address>005B5BF0</address>
+        <decompile>false</decompile>
+        <CSignature>
+void NetAddPosition(double x, double y, double z)</CSignature>
+      </procedure>
+      <procedure name="NetSetPersonView">
+        <address>005B5C15</address>
+        <decompile>false</decompile>
+        <CSignature>
+void NetSetPersonView(const char *entity_name)</CSignature>
+      </procedure>
+      <procedure name="GetLocalOptionsNet">
+        <address>005B5DE9</address>
+        <decompile>false</decompile>
+        <CSignature>
+void GetLocalOptionsNet(
+        const char **name, const char **kind, const char **weapon,
+        const char **shield
+)</CSignature>
+      </procedure>
+      <procedure name="GetNextPosition">
+        <address>005B5E06</address>
+        <decompile>false</decompile>
+        <CSignature>
+void GetNextPosition(double *x, double *y, double *z)</CSignature>
+      </procedure>
+      <procedure name="ServerSetPyByePlayerFunc">
+        <address>005B5E74</address>
+        <decompile>false</decompile>
+        <CSignature>
+void ServerSetPyByePlayerFunc(PyObject *func)</CSignature>
+      </procedure>
+      <procedure name="ServerSetPyGetUserString">
+        <address>005B5E85</address>
+        <decompile>false</decompile>
+        <CSignature>
+void ServerSetPyGetUserString(PyObject *func)</CSignature>
+      </procedure>
+      <procedure name="SendNetUserString">
+        <address>005B5E96</address>
+        <decompile>false</decompile>
+        <CSignature>
+void SendNetUserString(
+        short kind, const char *str, int guaranteed, const char *str_unknown
+)</CSignature>
+      </procedure>
+      <procedure name="GetLifeAndLevel">
+        <address>005B5EB4</address>
+        <decompile>false</decompile>
+        <CSignature>
+void GetLifeAndLevel(const char *entity_name, int *energy, int *life)</CSignature>
+      </procedure>
+      <procedure name="ServerSetPyCreatePlayerFunc">
+        <address>005B6146</address>
+        <decompile>false</decompile>
+        <CSignature>
+void ServerSetPyCreatePlayerFunc(PyObject *func)</CSignature>
+      </procedure>
+      <procedure name="ClientStartMainChar">
+        <address>005B6157</address>
+        <decompile>false</decompile>
+        <CSignature>
+boolean ClientStartMainChar(void)</CSignature>
+      </procedure>
+      <procedure name="ServerSetSendDataState">
+        <address>005B6188</address>
+        <decompile>false</decompile>
+        <CSignature>
+int ServerSetSendDataState(int state)</CSignature>
+      </procedure>
+      <procedure name="GetNetState">
+        <address>005B61B6</address>
+        <decompile>false</decompile>
+        <CSignature>
+int GetNetState(void)</CSignature>
+      </procedure>
+      <procedure name="ClearPools">
+        <address>005B61FD</address>
+        <decompile>false</decompile>
+        <CSignature>
+void ClearPools(void)</CSignature>
+      </procedure>
+      <procedure name="StartServer">
+        <address>005B637B</address>
+        <decompile>false</decompile>
+        <CSignature>
+boolean StartServer(
+        const char *game_name, const char *player_name, int max_players,
+        boolean TCP
+)</CSignature>
+      </procedure>
+      <procedure name="BrowseSessions">
+        <address>005B63E4</address>
+        <decompile>false</decompile>
+        <CSignature>
+boolean BrowseSessions(const char *ip_address)</CSignature>
+      </procedure>
+      <procedure name="GetBrowseResult">
+        <address>005B63FE</address>
+        <decompile>false</decompile>
+        <CSignature>
+boolean GetBrowseResult(int index, bld_server_info *info)</CSignature>
+      </procedure>
+      <procedure name="JoinSession">
+        <address>005B641C</address>
+        <decompile>false</decompile>
+        <CSignature>
+boolean JoinSession(int index, const char *player_name)</CSignature>
+      </procedure>
+      <procedure name="RestartNet">
+        <address>005B6448</address>
+        <decompile>false</decompile>
+        <CSignature>
+void RestartNet(void)</CSignature>
+      </procedure>
+      <procedure name="NetServerChangeLevel">
+        <address>005B6464</address>
+        <decompile>false</decompile>
+        <CSignature>
+void NetServerChangeLevel(const char *level_name)</CSignature>
+      </procedure>
+      <procedure name="NetGetTime">
+        <address>005B6475</address>
+        <decompile>false</decompile>
+        <CSignature>
+float NetGetTime(void)</CSignature>
+      </procedure>
+      <procedure name="NetSetPPS">
+        <address>005B647F</address>
+        <decompile>false</decompile>
+        <CSignature>
+int NetSetPPS(int PPS)</CSignature>
+      </procedure>
+      <procedure name="IsValidProtocol">
+        <address>005B6490</address>
+        <decompile>false</decompile>
+        <CSignature>
+int IsValidProtocol(int protocol)</CSignature>
+      </procedure>
+      <procedure name="fn005B7265">
+        <characteristics />
+        <address>005B7265</address>
+        <decompile>false</decompile>
+      </procedure>
+      <registerValues />
+    </user>
+  </input>
+  <metadata>
+    <filename>python.xml</filename>
+  </metadata>
+</project>
