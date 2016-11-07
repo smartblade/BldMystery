@@ -203,10 +203,9 @@ const char *GetCurrentMap(void)</CSignature>
 int SetCurrentMap(const char *map)</CSignature>
       </procedure>
       <procedure name="LoadWorld">
+        <characteristics />
         <address>00429086</address>
-        <decompile>false</decompile>
-        <CSignature>
-int LoadWorld(const char *file_name)</CSignature>
+        <CSignature>int LoadWorld(const char *file_name)</CSignature>
       </procedure>
       <procedure name="SetListenerMode">
         <address>004290C0</address>
@@ -339,16 +338,14 @@ void UnBindAll(void)</CSignature>
 const char *Input(const char *text)</CSignature>
       </procedure>
       <procedure name="MarkLevelToLoad">
+        <characteristics />
         <address>00429733</address>
-        <decompile>false</decompile>
-        <CSignature>
-void MarkLevelToLoad(const char *dir_name)</CSignature>
+        <CSignature>void MarkLevelToLoad(const char *dir_name)</CSignature>
       </procedure>
       <procedure name="ReadLevel">
+        <characteristics />
         <address>00429793</address>
-        <decompile>false</decompile>
-        <CSignature>
-void ReadLevel(const char *file_name)</CSignature>
+        <CSignature>void ReadLevel(const char *file_name)</CSignature>
       </procedure>
       <procedure name="ReadBitMap">
         <address>004297F3</address>
