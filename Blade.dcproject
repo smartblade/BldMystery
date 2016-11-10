@@ -11,16 +11,55 @@
     <global-vars>..\Bin\Blade_patched.globals.c</global-vars>
     <user>
       <processor />
+      <procedure name="startGameLauncher">
+        <characteristics />
+        <address>0040E8E6</address>
+      </procedure>
+      <procedure name="application_init2">
+        <characteristics />
+        <address>0040F040</address>
+      </procedure>
+      <procedure name="application_start">
+        <address>0040F4A4</address>
+      </procedure>
       <procedure name="application_load_level">
         <address>0041009D</address>
+      </procedure>
+      <procedure name="application_exit_with_error">
+        <characteristics />
+        <address>00410B53</address>
+      </procedure>
+      <procedure name="WinMain">
+        <characteristics />
+        <address>00410CC2</address>
+      </procedure>
+      <procedure name="initRaster">
+        <characteristics />
+        <address>00410DC2</address>
+      </procedure>
+      <procedure name="application_init3">
+        <characteristics />
+        <address>004113CE</address>
+      </procedure>
+      <procedure name="application_set_mode">
+        <characteristics />
+        <address>00411EB9</address>
       </procedure>
       <procedure name="application_load_level_script">
         <characteristics />
         <address>00413256</address>
       </procedure>
+      <procedure name="application_prepare_level">
+        <characteristics />
+        <address>00414F7F</address>
+      </procedure>
       <procedure name="application_run_python_file">
         <characteristics />
         <address>00415759</address>
+      </procedure>
+      <procedure name="findEntity">
+        <characteristics />
+        <address>004240F0</address>
       </procedure>
       <procedure name="PlayCDTrack">
         <address>00427750</address>
@@ -919,6 +958,14 @@ const char *GetInputMode(const char *device)</CSignature>
         <CSignature>
 const char *GetLastPlayerCType(void)</CSignature>
       </procedure>
+      <procedure name="init_objects_on_start_app">
+        <characteristics />
+        <address>00439862</address>
+      </procedure>
+      <procedure name="game_state_init">
+        <characteristics />
+        <address>004398A5</address>
+      </procedure>
       <procedure name="WorldToMBW">
         <address>004431DE</address>
         <decompile>false</decompile>
@@ -1639,6 +1686,10 @@ int loadSoundDataBase(const char *file_name)</CSignature>
         <CSignature>
 int saveSoundDataBase(const char *file_name)</CSignature>
       </procedure>
+      <procedure name="biped_entity_init">
+        <characteristics />
+        <address>004D9B47</address>
+      </procedure>
       <procedure name="fn004DCCC2">
         <characteristics />
         <address>004DCCC2</address>
@@ -1653,6 +1704,19 @@ int saveSoundDataBase(const char *file_name)</CSignature>
         <characteristics />
         <address>004E3C55</address>
         <decompile>false</decompile>
+      </procedure>
+      <procedure name="camera_init">
+        <characteristics />
+        <address>004EAD20</address>
+      </procedure>
+      <procedure name="camera_is_type_of">
+        <characteristics />
+        <address>004EAEB3</address>
+        <CSignature>__stdcall boolean camera_is_type_of(int type)</CSignature>
+      </procedure>
+      <procedure name="entity_init">
+        <characteristics />
+        <address>004FCB61</address>
       </procedure>
       <procedure name="GetSplinePos">
         <address>004FFEA0</address>
@@ -2984,10 +3048,23 @@ void SaveScreeShoot(const char *filename, int width, int height)</CSignature>
         <CSignature>
 void CleanArea(double x, double y, double z, float distance)</CSignature>
       </procedure>
+      <procedure name="person_is_type_of">
+        <characteristics />
+        <address>005310B5</address>
+        <CSignature>__stdcall boolean person_is_type_of(int type)</CSignature>
+      </procedure>
+      <procedure name="person_init">
+        <characteristics />
+        <address>00531783</address>
+      </procedure>
       <procedure name="fn005728B0">
         <characteristics />
         <address>005728B0</address>
         <decompile>false</decompile>
+      </procedure>
+      <procedure name="Astar">
+        <characteristics />
+        <address>0058520F</address>
       </procedure>
       <procedure name="GetCharByName">
         <address>005856A0</address>
@@ -3644,6 +3721,30 @@ int IsValidProtocol(int protocol)</CSignature>
         <characteristics />
         <address>005B7265</address>
         <decompile>false</decompile>
+      </procedure>
+      <procedure name="create_app">
+        <characteristics />
+        <address>005B9B60</address>
+      </procedure>
+      <procedure name="GetApplication">
+        <characteristics />
+        <address>005B9BB7</address>
+      </procedure>
+      <procedure name="application_init">
+        <characteristics />
+        <address>005B9BC1</address>
+      </procedure>
+      <procedure name="new">
+        <characteristics />
+        <address>005BBD38</address>
+      </procedure>
+      <procedure name="delete">
+        <characteristics />
+        <address>005BBD3D</address>
+      </procedure>
+      <procedure name="allocMemInStack">
+        <characteristics />
+        <address>005BC260</address>
       </procedure>
       <registerValues />
     </user>
