@@ -25,6 +25,9 @@
       <procedure name="application_load_level">
         <address>0041009D</address>
       </procedure>
+      <procedure name="application_wait_for_event">
+        <address>00410305</address>
+      </procedure>
       <procedure name="application_exit_with_error">
         <characteristics />
         <address>00410B53</address>
@@ -41,9 +44,17 @@
         <characteristics />
         <address>004113CE</address>
       </procedure>
+      <procedure name="application_init_python_path">
+        <characteristics />
+        <address>00411C54</address>
+      </procedure>
       <procedure name="application_set_mode">
         <characteristics />
         <address>00411EB9</address>
+      </procedure>
+      <procedure name="application_mark_level_to_load">
+        <characteristics />
+        <address>0041316C</address>
       </procedure>
       <procedure name="application_load_level_script">
         <characteristics />
@@ -56,6 +67,11 @@
       <procedure name="application_run_python_file">
         <characteristics />
         <address>00415759</address>
+      </procedure>
+      <procedure name="fn004197ED">
+        <characteristics />
+        <address>004197ED</address>
+        <decompile>false</decompile>
       </procedure>
       <procedure name="findEntity">
         <characteristics />
@@ -3057,9 +3073,24 @@ void CleanArea(double x, double y, double z, float distance)</CSignature>
         <characteristics />
         <address>00531783</address>
       </procedure>
+      <procedure name="fn0056A9BF">
+        <characteristics />
+        <address>0056A9BF</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="fn0056B8A5">
+        <characteristics />
+        <address>0056B8A5</address>
+        <decompile>false</decompile>
+      </procedure>
       <procedure name="fn005728B0">
         <characteristics />
         <address>005728B0</address>
+        <decompile>false</decompile>
+      </procedure>
+      <procedure name="fn0057D182">
+        <characteristics />
+        <address>0057D182</address>
         <decompile>false</decompile>
       </procedure>
       <procedure name="Astar">
