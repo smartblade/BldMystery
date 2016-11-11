@@ -269,8 +269,8 @@ int SetCurrentMap(const char *map)</CSignature>
 int SetListenerMode(int mode, double x, double y, double z)</CSignature>
       </procedure>
       <procedure name="GetListenerMode">
+        <characteristics />
         <address>00429128</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="Quit">
         <address>0042915B</address>
@@ -421,16 +421,16 @@ void ReadAlphaBitMap(const char *file_name, const char *internal_name)</CSignatu
 void CloseLevel(const char *statement1, const char *statement2)</CSignature>
       </procedure>
       <procedure name="StartRecordingDemo">
+        <characteristics />
         <address>00429914</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="EndRecordingDemo">
+        <characteristics />
         <address>00429923</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="PlayDemo">
+        <characteristics />
         <address>00429936</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="DeactivateInput">
         <address>00429949</address>
@@ -669,16 +669,16 @@ int AddCombustionDataFor(
 )</CSignature>
       </procedure>
       <procedure name="RM_FreeResource">
+        <characteristics />
         <address>0042AE7A</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="RM_GetResource">
+        <characteristics />
         <address>0042AEAE</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="UpdateAGTexture">
+        <characteristics />
         <address>0042B0F4</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="GetWorldFileName">
         <address>0042B192</address>
@@ -1073,8 +1073,8 @@ int GetSectorByPosition(double x, double y, double z)</CSignature>
 int GetSectorByIndex(int index)</CSignature>
       </procedure>
       <procedure name="GetNumberOfSectors">
+        <characteristics />
         <address>0045C0A3</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="InitBreakSector">
         <address>0045C0AD</address>
@@ -1567,12 +1567,12 @@ void SetSoundFloatProperty(int property_kind, int soundID, double value)</CSigna
 char *GetSoundStringProperty(int property_kind, int soundID)</CSignature>
       </procedure>
       <procedure name="SetSoundStringProperty">
+        <characteristics />
         <address>004C02E9</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="GetSoundIntProperty">
+        <characteristics />
         <address>004C02F0</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="SetSoundIntProperty">
         <address>004C033D</address>
@@ -1590,12 +1590,12 @@ void SetSoundPitchVar(
 )</CSignature>
       </procedure>
       <procedure name="GetSoundFuncProperty">
+        <characteristics />
         <address>004C03B7</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="SetSoundFuncProperty">
+        <characteristics />
         <address>004C0436</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="dropDebugInfo">
         <address>004C0508</address>
@@ -1735,20 +1735,20 @@ int saveSoundDataBase(const char *file_name)</CSignature>
         <address>004FCB61</address>
       </procedure>
       <procedure name="GetSplinePos">
+        <characteristics />
         <address>004FFEA0</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="AddNodeSpline">
+        <characteristics />
         <address>004FFEBA</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="CloseSpline">
+        <characteristics />
         <address>004FFEF3</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="ClearSpline">
+        <characteristics />
         <address>004FFF00</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="CreateSpark">
         <address>004FFF0D</address>
@@ -2032,8 +2032,8 @@ int SetNextAttack(
 entity_t *SeverLimb(const char *entity_name, int limb)</CSignature>
       </procedure>
       <procedure name="SetCombatGroup">
+        <characteristics />
         <address>00508935</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="SubscribeEntityToList">
         <address>00508B11</address>
@@ -3155,8 +3155,8 @@ int AttackEnergyLevel(
 )</CSignature>
       </procedure>
       <procedure name="ForwardsOffset">
+        <characteristics />
         <address>005858DF</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="AttackTypeFlag">
         <address>00585923</address>
@@ -3252,12 +3252,12 @@ int SetCharFuncProperty(int charID, int property_kind, int index, PyObject *func
 int GetTrailByName(const char *name)</CSignature>
       </procedure>
       <procedure name="GetTrailIntProperty">
+        <characteristics />
         <address>00596EFE</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="SetTrailIntProperty">
+        <characteristics />
         <address>00596F08</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="GetTrailFloatProperty">
         <address>00596F12</address>
@@ -3276,8 +3276,8 @@ int SetTrailFloatProperty(
 )</CSignature>
       </procedure>
       <procedure name="GetTrailStringProperty">
+        <characteristics />
         <address>00596FFE</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="GetTrailVectorProperty">
         <address>00597024</address>
@@ -3289,8 +3289,8 @@ int GetTrailVectorProperty(
 )</CSignature>
       </procedure>
       <procedure name="SetTrailFuncProperty">
+        <characteristics />
         <address>005970DE</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="SetTrailVectorProperty">
         <address>005970FC</address>
@@ -3301,16 +3301,16 @@ int SetTrailVectorProperty(
 )</CSignature>
       </procedure>
       <procedure name="GetInventory">
+        <characteristics />
         <address>0059D660</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="GetInventoryFloatProperty">
+        <characteristics />
         <address>0059D8A0</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="SetInventoryFloatProperty">
+        <characteristics />
         <address>0059D8A8</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="GetInventoryStringProperty">
         <address>0059D8B0</address>
@@ -3321,8 +3321,8 @@ int GetInventoryStringProperty(
 )</CSignature>
       </procedure>
       <procedure name="SetInventoryStringProperty">
+        <characteristics />
         <address>0059D937</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="GetInventoryIntProperty">
         <address>0059D93F</address>
@@ -3449,8 +3449,8 @@ const char *GetActiveShield(const char *inv_name)</CSignature>
 const char *GetActiveWeapon(const char *inv_name)</CSignature>
       </procedure>
       <procedure name="ActiveWeaponActive">
+        <characteristics />
         <address>0059F518</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="GetActiveQuiver">
         <address>0059F541</address>
@@ -3501,12 +3501,12 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
         <CSignature>char *get_map_for_net_game(char *map)</CSignature>
       </procedure>
       <procedure name="SetGameSpySupport">
+        <characteristics />
         <address>005B5340</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="GetGameSpySupport">
+        <characteristics />
         <address>005B534D</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="StartGSQR">
         <address>005B5357</address>
@@ -3515,12 +3515,12 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
 void StartGSQR(void)</CSignature>
       </procedure>
       <procedure name="EndGSQR">
+        <characteristics />
         <address>005B5582</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="LoopGSQR">
+        <characteristics />
         <address>005B55ED</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="PersonChangeAnmSoundIndex">
         <address>005B5647</address>
