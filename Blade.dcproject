@@ -982,6 +982,11 @@ const char *GetLastPlayerCType(void)</CSignature>
         <characteristics />
         <address>004398A5</address>
       </procedure>
+      <procedure name="fn00440A5D">
+        <characteristics />
+        <address>00440A5D</address>
+        <decompile>false</decompile>
+      </procedure>
       <procedure name="WorldToMBW">
         <address>004431DE</address>
         <decompile>false</decompile>
@@ -3766,12 +3771,18 @@ int IsValidProtocol(int protocol)</CSignature>
         <address>005B9BC1</address>
       </procedure>
       <procedure name="new">
-        <characteristics />
+        <characteristics>
+          <allocator>true</allocator>
+        </characteristics>
         <address>005BBD38</address>
+        <decompile>false</decompile>
+        <CSignature>void * new(size_t size);</CSignature>
       </procedure>
       <procedure name="delete">
         <characteristics />
         <address>005BBD3D</address>
+        <decompile>false</decompile>
+        <CSignature>void delete(void *ptr);</CSignature>
       </procedure>
       <procedure name="allocMemInStack">
         <characteristics />
