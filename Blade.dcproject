@@ -3777,6 +3777,52 @@ int IsValidProtocol(int protocol)</CSignature>
         <characteristics />
         <address>005BC260</address>
       </procedure>
+      <global>
+        <Address>005BDC1C</Address>
+        <prim domain="Any" size="4" />
+        <Name>game_state_methods</Name>
+      </global>
+      <global>
+        <Address>005C0848</Address>
+        <prim domain="Any" size="4" />
+        <Name>application_methods</Name>
+      </global>
+      <global>
+        <Address>005DF7F8</Address>
+        <ptr size="4">
+          <fn>
+            <return>
+              <void />
+            </return>
+            <arg>
+              <ptr size="4">
+                <void />
+              </ptr>
+            </arg>
+          </fn>
+        </ptr>
+        <Name>free</Name>
+      </global>
+      <global>
+        <Address>005E0B88</Address>
+        <prim domain="Any" size="4" />
+        <Name>game_state</Name>
+      </global>
+      <global>
+        <Address>005E0BA0</Address>
+        <prim domain="SignedInt" size="4" />
+        <Name>world</Name>
+      </global>
+      <global>
+        <Address>007EE2C4</Address>
+        <prim domain="Any" size="4" />
+        <Name>net_data</Name>
+      </global>
+      <global>
+        <Address>007EFC94</Address>
+        <prim domain="Any" size="4" />
+        <Name>application</Name>
+      </global>
       <registerValues />
     </user>
   </input>
