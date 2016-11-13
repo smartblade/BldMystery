@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<library xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemata.jklnet.org/Decompiler">
+  <Types>
+    <struct name="application_t">
+      <field offset="64" name="numArguments">
+        <prim domain="SignedInt" size="4" />
+      </field>
+      <field offset="1542" name="noSound">
+        <prim domain="SignedInt" size="4" />
+      </field>
+    </struct>
+    <typedef name="application_t">
+      <struct name="application_t" />
+    </typedef>
+  </Types>  
+</library>

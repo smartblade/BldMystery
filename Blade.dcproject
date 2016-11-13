@@ -31,7 +31,7 @@
       <procedure name="application_read_arguments">
         <characteristics />
         <address>004103D7</address>
-        <CSignature>void application_read_arguments(char *arguments)</CSignature>
+        <CSignature>void application_read_arguments([[reko::arg(register,"ecx")]]application_t *self, char *arguments)</CSignature>
       </procedure>
       <procedure name="application_exit_with_error">
         <characteristics />
@@ -3844,7 +3844,9 @@ int IsValidProtocol(int protocol)</CSignature>
       </global>
       <global>
         <Address>007EFC94</Address>
-        <prim domain="Any" size="4" />
+        <ptr size="4">
+          <type>application_t</type>
+        </ptr>
         <Name>application</Name>
       </global>
       <registerValues />
@@ -3852,5 +3854,8 @@ int IsValidProtocol(int protocol)</CSignature>
   </input>
   <metadata>
     <filename>python.xml</filename>
+  </metadata>
+  <metadata>
+    <filename>blade.xml</filename>
   </metadata>
 </project>
