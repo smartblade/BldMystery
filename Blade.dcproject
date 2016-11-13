@@ -73,6 +73,9 @@
         <characteristics />
         <address>00415759</address>
       </procedure>
+      <procedure name="application_string_split">
+        <address>004167E1</address>
+      </procedure>
       <procedure name="fn004197ED">
         <characteristics />
         <address>004197ED</address>
