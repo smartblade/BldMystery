@@ -28,6 +28,11 @@
       <procedure name="application_wait_for_event">
         <address>00410305</address>
       </procedure>
+      <procedure name="application_read_arguments">
+        <characteristics />
+        <address>004103D7</address>
+        <CSignature>void application_read_arguments(char *arguments)</CSignature>
+      </procedure>
       <procedure name="application_exit_with_error">
         <characteristics />
         <address>00410B53</address>
@@ -3823,6 +3828,11 @@ int IsValidProtocol(int protocol)</CSignature>
         <Address>005E0BA0</Address>
         <prim domain="SignedInt" size="4" />
         <Name>world</Name>
+      </global>
+      <global>
+        <Address>007C8ED0</Address>
+        <prim domain="Any" size="4" />
+        <Name>sound_device</Name>
       </global>
       <global>
         <Address>007EE2C4</Address>
