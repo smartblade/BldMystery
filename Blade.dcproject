@@ -60,6 +60,7 @@
       <procedure name="application_mark_level_to_load">
         <characteristics />
         <address>0041316C</address>
+        <CSignature>void application_mark_level_to_load([[reko::arg(register,"ecx")]]application_t *self, char *map)</CSignature>
       </procedure>
       <procedure name="application_load_level_script">
         <characteristics />

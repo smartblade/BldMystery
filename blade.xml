@@ -5,6 +5,11 @@
       <field offset="64" name="numArguments">
         <prim domain="SignedInt" size="4" />
       </field>
+      <field offset="1524" name="map_to_load">
+        <ptr size="4">
+          <prim domain="Character" size="1" />
+        </ptr>
+      </field>
       <field offset="1542" name="noSound">
         <prim domain="SignedInt" size="4" />
       </field>
