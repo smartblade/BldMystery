@@ -1,9 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <library xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemata.jklnet.org/Decompiler">
   <Types>
+    <typedef name="application_vtbl">
+      <struct name="application_vtbl" />
+    </typedef>
+    <typedef name="application_t">
+      <struct name="application_t" />
+    </typedef>
+    <struct name="application_vtbl">
+      <field offset="48" name="mark_level_to_load">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <void />
+            </return>
+            <arg>
+              <ptr size="4">
+                 <prim domain="Character" size="1" />
+              </ptr>
+            </arg>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="52" name="unknown_method034">
+          <prim domain="Any" size="4" />
+      </field>
+    </struct>
     <struct name="application_t">
+      <field offset="0" name="vtbl">
+        <ptr size="4">
+          <type>application_vtbl</type>
+        </ptr>
+      </field>
+      <field offset="4" name="unknown004">
+          <prim domain="Any" size="4" />
+      </field>
       <field offset="64" name="numArguments">
         <prim domain="SignedInt" size="4" />
+      </field>
+      <field offset="68" name="unknown044">
+          <prim domain="Any" size="4" />
       </field>
       <field offset="1524" name="map_to_load">
         <ptr size="4">
@@ -14,8 +51,5 @@
         <prim domain="SignedInt" size="4" />
       </field>
     </struct>
-    <typedef name="application_t">
-      <struct name="application_t" />
-    </typedef>
   </Types>  
 </library>

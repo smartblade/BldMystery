@@ -3774,6 +3774,7 @@ int IsValidProtocol(int protocol)</CSignature>
       <procedure name="GetApplication">
         <characteristics />
         <address>005B9BB7</address>
+        <CSignature>application_t *GetApplication()</CSignature>
       </procedure>
       <procedure name="application_init">
         <characteristics />
