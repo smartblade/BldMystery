@@ -48,7 +48,13 @@
         </ptr>
       </field>
       <field offset="1542" name="noSound">
-        <prim domain="SignedInt" size="4" />
+        <prim domain="UnsignedInt" size="1" />
+      </field>
+      <field offset="1544" name="mapName">
+          <prim domain="Any" size="4" />
+      </field>
+      <field offset="1548" name="unknown60C">
+          <prim domain="Any" size="4" />
       </field>
     </struct>
   </Types>  
