@@ -26,6 +26,44 @@
       <field offset="52" name="unknown_method034">
           <prim domain="Any" size="4" />
       </field>
+      <field offset="60" name="read_level">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <void />
+            </return>
+            <arg>
+              <ptr size="4">
+                 <prim domain="Character" size="1" />
+              </ptr>
+            </arg>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="64" name="unknown_method040">
+          <prim domain="Any" size="4" />
+      </field>
+      <field offset="88" name="exit_with_error">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <void />
+            </return>
+            <arg>
+              <ptr size="4">
+                 <prim domain="Character" size="1" />
+              </ptr>
+            </arg>
+            <arg>
+              <ptr size="4">
+                 <prim domain="Character" size="1" />
+              </ptr>
+            </arg>
+          </fn>
+        </ptr>
+      </field>
     </struct>
     <struct name="application_t">
       <field offset="0" name="vtbl">
@@ -48,6 +86,9 @@
         </ptr>
       </field>
       <field offset="1542" name="noSound">
+        <prim domain="UnsignedInt" size="1" />
+      </field>
+      <field offset="1543" name="console">
         <prim domain="UnsignedInt" size="1" />
       </field>
       <field offset="1544" name="mapName">
