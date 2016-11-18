@@ -424,10 +424,9 @@ void ReadBitMap(const char *file_name, const char *internal_name)</CSignature>
 void ReadAlphaBitMap(const char *file_name, const char *internal_name)</CSignature>
       </procedure>
       <procedure name="CloseLevel">
+        <characteristics />
         <address>004298D3</address>
-        <decompile>false</decompile>
-        <CSignature>
-void CloseLevel(const char *statement1, const char *statement2)</CSignature>
+        <CSignature>void CloseLevel(const char *statement1, const char *statement2)</CSignature>
       </procedure>
       <procedure name="StartRecordingDemo">
         <characteristics />
@@ -3509,6 +3508,11 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
         <address>005A01B2</address>
         <decompile>false</decompile>
       </procedure>
+      <procedure name="OnEvent">
+        <characteristics />
+        <address>005AF2CE</address>
+        <CSignature>void OnEvent(float a, float b)</CSignature>
+      </procedure>
       <procedure name="get_map_for_net_game">
         <characteristics />
         <address>005B143D</address>
@@ -3767,9 +3771,10 @@ int IsValidProtocol(int protocol)</CSignature>
         <address>005B7265</address>
         <decompile>false</decompile>
       </procedure>
-      <procedure name="create_app">
+      <procedure name="create_application">
         <characteristics />
         <address>005B9B60</address>
+        <CSignature>application_t *create_application(void *module, int nCmdShow, char *cmdLine)</CSignature>
       </procedure>
       <procedure name="GetApplication">
         <characteristics />

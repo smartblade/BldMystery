@@ -8,6 +8,49 @@
       <struct name="application_t" />
     </typedef>
     <struct name="application_vtbl">
+      <field offset="20" name="delete">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <prim domain="SignedInt" size="4" />
+            </return>
+            <arg>
+              <prim domain="SignedInt" size="4" />
+            </arg>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="24" name="start">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <prim domain="UnsignedInt" size="1" />
+            </return>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="28" name="wait_for_event">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <void />
+            </return>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="32" name="end">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <void />
+            </return>
+          </fn>
+        </ptr>
+      </field>
       <field offset="48" name="mark_level_to_load">
         <ptr size="4">
           <fn convention="__thiscall">
@@ -23,8 +66,25 @@
           </fn>
         </ptr>
       </field>
-      <field offset="52" name="unknown_method034">
-          <prim domain="Any" size="4" />
+      <field offset="52" name="close_level">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <void />
+            </return>
+            <arg>
+              <ptr size="4">
+                 <prim domain="Character" size="1" />
+              </ptr>
+            </arg>
+            <arg>
+              <ptr size="4">
+                 <prim domain="Character" size="1" />
+              </ptr>
+            </arg>
+          </fn>
+        </ptr>
       </field>
       <field offset="60" name="read_level">
         <ptr size="4">
