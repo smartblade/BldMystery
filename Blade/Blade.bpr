@@ -4,7 +4,7 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="..\..\bin\Blade.exe"/>
-    <OBJFILES value="_PT_Unit1.obj _PT_ext_funcs.obj ext.obj net_ext.obj bcb_wrappers.obj"/>
+    <OBJFILES value="main.obj bld_ext_funcs.obj ext.obj net_ext.obj bcb_wrappers.obj"/>
     <RESFILES value="Blade.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -55,8 +55,8 @@
   <FILELIST>
       <FILE FILENAME="Blade.res" FORMNAME="" UNITNAME="Blade.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Blade.bpf" FORMNAME="" UNITNAME="Blade" CONTAINERID="BPF" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="_PT_Unit1.c" FORMNAME="" UNITNAME="_PT_Unit1" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="_PT_ext_funcs.c" FORMNAME="" UNITNAME="_PT_ext_funcs" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="main.c" FORMNAME="" UNITNAME="main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="bld_ext_funcs.c" FORMNAME="" UNITNAME="bld_ext_funcs" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="C:\Program Files (x86)\Borland\CBuilder6\Lib\python15.lib" FORMNAME="" UNITNAME="python15.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="ext.cpp" FORMNAME="" UNITNAME="ext" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="blade.def" FORMNAME="" UNITNAME="blade.def" CONTAINERID="DefTool" DESIGNCLASS="" LOCALCOMMAND=""/>
