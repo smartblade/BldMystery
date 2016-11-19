@@ -69,7 +69,7 @@ EXTERN void __stdcall (*_thiscall_camera_004EB1AA)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_0040AD82)(void) NULL_INIT;
 EXTERN void __stdcall (*_thiscall_0040ADA8)(void) NULL_INIT;
 
-EXTERN int **var007C8ED0 NULL_INIT;
+EXTERN int **sound_device_ptr NULL_INIT;
 EXTERN void **msg_manager_ptr NULL_INIT;
 EXTERN char *client_map_name NULL_INIT;
 EXTERN char *net_game_name NULL_INIT;
@@ -82,6 +82,7 @@ EXTERN game_state_t *game_state_ptr NULL_INIT;
 EXTERN void **var005E24DC NULL_INIT;
 EXTERN void **var005E24F4 NULL_INIT;
 
+#define sound_device (*sound_device_ptr)
 #define message_manager (*msg_manager_ptr)
 #define net_max_players (*net_max_players_ptr)
 #define net_data (*net_data_ptr)

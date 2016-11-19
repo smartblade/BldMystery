@@ -59,9 +59,9 @@ void _impl_application_load_level(application_t *self, char *map)
         message_manager_print(message_manager, buffer);
         message_manager_print(message_manager, "\n");
 
-        if (*var007C8ED0) {
-                (*var007C8ED0)[2] = 1;
-                (*var007C8ED0)[3] = 1;
+        if (sound_device) {
+                sound_device[2] = 1;
+                sound_device[3] = 1;
         }
 
         if (net_data_is_net_game(net_data)) {
@@ -85,9 +85,9 @@ void _impl_application_load_level(application_t *self, char *map)
                 )
         );
 
-        if (*var007C8ED0) {
-                (*var007C8ED0)[2] = 0;
-                (*var007C8ED0)[3] = 0;
+        if (sound_device) {
+                sound_device[2] = 0;
+                sound_device[3] = 0;
         }
 }
 
@@ -270,17 +270,17 @@ void application_load_level_script(application_t *self, const char *script)
 
                 world = &game_state.world;
                 if (
-                        world->player1 &&
+                        world->foundEntity &&
                         !strcmp(
                                 BBlibc_name_string(
                                         BBLibc_named_object_id(
-                                                &world->player1->parent.parent.parent
+                                                &world->foundEntity->parent
                                         )
                                 ),
                                 PLAYER
                         )
                 ) {
-                        player1 = world->player1;
+                        player1 = (person_t *)world->foundEntity;
                 } else {
                         str_ptr = PLAYER;
                         hash_value = 0;
@@ -328,8 +328,8 @@ void application_load_level_script(application_t *self, const char *script)
                         }
 
                         if (foundIndex != -1) {
-                                world->player1 = array->elements[foundIndex];
-                                player1 = world->player1;
+                                world->foundEntity = array->elements[foundIndex];
+                                player1 = (person_t *)world->foundEntity;
                         } else
                                 player1 = NULL;
                 }
@@ -353,17 +353,17 @@ void application_load_level_script(application_t *self, const char *script)
 
                 world = &game_state.world;
                 if (
-                        world->player1 &&
+                        world->foundEntity &&
                         !strcmp(
                                 BBlibc_name_string(
                                         BBLibc_named_object_id(
-                                                &world->player1->parent.parent.parent
+                                                &world->foundEntity->parent
                                         )
                                 ),
                                 PLAYER
                         )
                 ) {
-                        player1 = world->player1;
+                        player1 = (person_t *)world->foundEntity;
                 } else {
                         str_ptr = PLAYER;
                         hash_value = 0;
@@ -411,8 +411,8 @@ void application_load_level_script(application_t *self, const char *script)
                         }
 
                         if (foundIndex != -1) {
-                                world->player1 = array->elements[foundIndex];
-                                player1 = world->player1;
+                                world->foundEntity = array->elements[foundIndex];
+                                player1 = (person_t *)world->foundEntity;
                         } else
                                 player1 = NULL;
                 }
@@ -590,7 +590,7 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         _thiscall_0040AD82 = (void *)((char *)blade + 0x0000AD82);
         _thiscall_0040ADA8 = (void *)((char *)blade + 0x0000ADA8);
 
-        var007C8ED0 = (void *)((char *)blade + 0x003C8ED0);
+        sound_device_ptr = (void *)((char *)blade + 0x003C8ED0);
         msg_manager_ptr = (void *)GetProcAddress(BBLibc, "?mout@@3VB_MessageManager@@A");
         client_map_name = (void *)((char *)blade + 0x003EE018);
         net_game_name = (void *)((char *)blade + 0x003EE0B8);

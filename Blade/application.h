@@ -34,7 +34,11 @@ typedef struct {
         char unknownFields1000[12];
         game_clock_t *clock1;
         game_clock_t *clock2;
-        char unknownFields20[52];
+        void *unknown034;
+        void *argsMethods;
+        BBLibc_name_t **arguments;
+        int numArguments;
+        char unknownFields20[36];
         person_t *player1;
         entity_t *client;
         char unknownFields100[8];

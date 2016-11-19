@@ -12,7 +12,7 @@ typedef struct {
         int numEntities;
         array_t hash[256];
         int unknown1804;
-        person_t *player1;
+        entity_t *foundEntity;
 } world_t;
 
 
