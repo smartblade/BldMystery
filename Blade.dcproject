@@ -36,6 +36,7 @@
       <procedure name="application_exit_with_error">
         <characteristics />
         <address>00410B53</address>
+        <CSignature>void application_exit_with_error([[reko::arg(register,"ecx")]]application_t *self, char *title, char* message)</CSignature>
       </procedure>
       <procedure name="WinMain">
         <characteristics />
@@ -56,6 +57,10 @@
       <procedure name="application_set_mode">
         <characteristics />
         <address>00411EB9</address>
+      </procedure>
+      <procedure name="application_get_mode">
+        <characteristics />
+        <address>00412067</address>
       </procedure>
       <procedure name="application_mark_level_to_load">
         <characteristics />
@@ -135,16 +140,14 @@ int CDPause(void)</CSignature>
 int CDSetCallBack(PyObject *func)</CSignature>
       </procedure>
       <procedure name="SetAppMode">
+        <characteristics />
         <address>00427880</address>
-        <decompile>false</decompile>
-        <CSignature>
-int SetAppMode(const char *mode)</CSignature>
+        <CSignature>int SetAppMode(const char *mode)</CSignature>
       </procedure>
       <procedure name="GetAppMode">
+        <characteristics />
         <address>004278D5</address>
-        <decompile>false</decompile>
-        <CSignature>
-const char *GetAppMode(void)</CSignature>
+        <CSignature>const char *GetAppMode(void)</CSignature>
       </procedure>
       <procedure name="BeginLoadGame">
         <address>00427910</address>

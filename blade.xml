@@ -134,16 +134,52 @@
       <field offset="4" name="unknown004">
           <prim domain="Any" size="4" />
       </field>
+      <field offset="44" name="clock1">
+          <prim domain="Any" size="4" />
+      </field>
+      <field offset="48" name="clock2">
+          <prim domain="Any" size="4" />
+      </field>
+      <field offset="60" name="arguments">
+        <prim domain="Any" size="4" />
+      </field>
       <field offset="64" name="numArguments">
         <prim domain="SignedInt" size="4" />
       </field>
       <field offset="68" name="unknown044">
           <prim domain="Any" size="4" />
       </field>
+      <field offset="104" name="player1">
+          <prim domain="Any" size="4" />
+      </field>
+      <field offset="108" name="client">
+          <prim domain="Any" size="4" />
+      </field>
+      <field offset="112" name="unknown070">
+          <prim domain="Any" size="4" />
+      </field>
+      <field offset="120" name="camera">
+          <prim domain="Any" size="4" />
+      </field>
+      <field offset="124" name="unknown07C">
+          <prim domain="Any" size="4" />
+      </field>
+      <field offset="1490" name="noSleep">
+        <prim domain="UnsignedInt" size="1" />
+      </field>
+      <field offset="1491" name="unknown5D3">
+        <prim domain="UnsignedInt" size="1" />
+      </field>
+      <field offset="1516" name="mode">
+          <prim domain="Any" size="4" />
+      </field>
       <field offset="1524" name="map_to_load">
         <ptr size="4">
           <prim domain="Character" size="1" />
         </ptr>
+      </field>
+      <field offset="1541" name="unknown605">
+        <prim domain="UnsignedInt" size="1" />
       </field>
       <field offset="1542" name="noSound">
         <prim domain="UnsignedInt" size="1" />
@@ -156,6 +192,42 @@
       </field>
       <field offset="1548" name="unknown60C">
           <prim domain="Any" size="4" />
+      </field>
+      <field offset="1932" name="cmdLine">
+          <prim domain="Any" size="4" />
+      </field>
+      <field offset="1976" name="window">
+          <prim domain="Any" size="4" />
+      </field>
+      <field offset="1980" name="module">
+          <prim domain="Any" size="4" />
+      </field>
+      <field offset="1984" name="unknown7C0">
+          <prim domain="Any" size="4" />
+      </field>
+      <field offset="1992" name="noMouse">
+        <prim domain="UnsignedInt" size="1" />
+      </field>
+      <field offset="1993" name="unknown7C9">
+        <prim domain="UnsignedInt" size="1" />
+      </field>
+      <field offset="1994" name="noDInput">
+        <prim domain="UnsignedInt" size="1" />
+      </field>
+      <field offset="1995" name="noExlusiveMouse">
+        <prim domain="UnsignedInt" size="1" />
+      </field>
+      <field offset="1996" name="r3Dfx">
+        <prim domain="UnsignedInt" size="1" />
+      </field>
+      <field offset="1997" name="rsoft16b">
+        <prim domain="UnsignedInt" size="1" />
+      </field>
+      <field offset="1998" name="rOpenGL">
+        <prim domain="UnsignedInt" size="1" />
+      </field>
+      <field offset="1999" name="rD3D">
+        <prim domain="UnsignedInt" size="1" />
       </field>
     </struct>
     <typedef name="entity_t">
