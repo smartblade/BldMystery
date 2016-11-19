@@ -1800,10 +1800,9 @@ entity_t *CreateEntityDecal(
 )</CSignature>
       </procedure>
       <procedure name="GetEntity">
+        <characteristics />
         <address>0050340C</address>
-        <decompile>false</decompile>
-        <CSignature>
-entity_t *GetEntity(const char *name)</CSignature>
+        <CSignature>entity_t *GetEntity(const char *name)</CSignature>
       </procedure>
       <procedure name="GetEntityI">
         <address>0050360D</address>
@@ -1876,10 +1875,9 @@ int GetWeaponCombos(
 )</CSignature>
       </procedure>
       <procedure name="nEntities">
+        <characteristics />
         <address>00504629</address>
-        <decompile>false</decompile>
-        <CSignature>
-int nEntities(void)</CSignature>
+        <CSignature>int nEntities(void)</CSignature>
       </procedure>
       <procedure name="GetNewExclusionGroupId">
         <address>0050463C</address>
@@ -2410,10 +2408,9 @@ int EntitySetOrientation(
 )</CSignature>
       </procedure>
       <procedure name="EntityPutToWorld">
+        <characteristics />
         <address>00517E42</address>
-        <decompile>false</decompile>
-        <CSignature>
-int EntityPutToWorld(const char *entity_name)</CSignature>
+        <CSignature>int EntityPutToWorld(const char *entity_name)</CSignature>
       </procedure>
       <procedure name="EntityAddAnmEventFunc">
         <address>00517E97</address>

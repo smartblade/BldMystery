@@ -158,5 +158,8 @@
           <prim domain="Any" size="4" />
       </field>
     </struct>
+    <typedef name="entity_t">
+      <prim domain="Any" size="4" />
+    </typedef>
   </Types>  
 </library>
