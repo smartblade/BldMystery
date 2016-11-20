@@ -3879,4 +3879,7 @@ int IsValidProtocol(int protocol)</CSignature>
   <metadata>
     <filename>console.xml</filename>
   </metadata>
+  <metadata>
+    <filename>raster.xml</filename>
+  </metadata>
 </project>
