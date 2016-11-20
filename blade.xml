@@ -86,6 +86,21 @@
           </fn>
         </ptr>
       </field>
+      <field offset="56" name="load_level">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <void />
+            </return>
+            <arg>
+              <ptr size="4">
+                 <prim domain="Character" size="1" />
+              </ptr>
+            </arg>
+          </fn>
+        </ptr>
+      </field>
       <field offset="60" name="read_level">
         <ptr size="4">
           <fn convention="__thiscall">
@@ -121,6 +136,16 @@
                  <prim domain="Character" size="1" />
               </ptr>
             </arg>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="108" name="init">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <prim domain="UnsignedInt" size="1" />
+            </return>
           </fn>
         </ptr>
       </field>

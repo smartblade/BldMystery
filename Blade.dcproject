@@ -20,7 +20,9 @@
         <address>0040F040</address>
       </procedure>
       <procedure name="application_start">
+        <characteristics />
         <address>0040F4A4</address>
+        <CSignature>boolean application_start([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
       <procedure name="application_load_level">
         <address>0041009D</address>
@@ -3803,6 +3805,15 @@ int IsValidProtocol(int protocol)</CSignature>
         <characteristics />
         <address>005BC260</address>
       </procedure>
+      <call>
+        <address>0040F674</address>
+        <signature stackDelta="4">
+          <return name="eax">
+            <prim domain="SignedInt" size="4" />
+            <reg>eax</reg>
+          </return>
+        </signature>
+      </call>
       <global>
         <Address>005BDC1C</Address>
         <prim domain="Any" size="4" />
@@ -3864,5 +3875,8 @@ int IsValidProtocol(int protocol)</CSignature>
   </metadata>
   <metadata>
     <filename>blade.xml</filename>
+  </metadata>
+  <metadata>
+    <filename>console.xml</filename>
   </metadata>
 </project>
