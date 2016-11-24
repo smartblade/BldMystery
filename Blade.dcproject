@@ -64,6 +64,10 @@
         <characteristics />
         <address>00412067</address>
       </procedure>
+      <procedure name="application_process_event">
+        <characteristics />
+        <address>004121CE</address>
+      </procedure>
       <procedure name="application_mark_level_to_load">
         <characteristics />
         <address>0041316C</address>
@@ -92,6 +96,11 @@
       <procedure name="findEntity">
         <characteristics />
         <address>004240F0</address>
+      </procedure>
+      <procedure name="fn004246C0">
+        <characteristics />
+        <address>004246C0</address>
+        <CSignature>void __stdcall fn004246C0([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
       <procedure name="PlayCDTrack">
         <address>00427750</address>
@@ -995,6 +1004,11 @@ const char *GetLastPlayerCType(void)</CSignature>
         <characteristics />
         <address>004398A5</address>
       </procedure>
+      <procedure name="fn0043C5FD">
+        <characteristics />
+        <address>0043C5FD</address>
+        <CSignature>void __stdcall fn0043C5FD([[reko::arg(register,"ecx")]]bld_word32 self, bld_word32 a, bld_word32 b, double c, int d)</CSignature>
+      </procedure>
       <procedure name="fn00440A5D">
         <characteristics />
         <address>00440A5D</address>
@@ -1719,6 +1733,11 @@ int loadSoundDataBase(const char *file_name)</CSignature>
         <decompile>false</decompile>
         <CSignature>
 int saveSoundDataBase(const char *file_name)</CSignature>
+      </procedure>
+      <procedure name="fn004CD5EC">
+        <characteristics />
+        <address>004CD5EC</address>
+        <CSignature>bld_word32 __stdcall fn004CD5EC([[reko::arg(register,"ecx")]]bld_word32 self, bld_word32 a, bld_word32 b, bld_word32 c, bld_word32 d, bld_word32 e, bld_word32 f)</CSignature>
       </procedure>
       <procedure name="biped_entity_init">
         <characteristics />
@@ -3260,6 +3279,11 @@ int SetCharStringProperty(int charID, int property_kind, int index, const char *
         <CSignature>
 int SetCharFuncProperty(int charID, int property_kind, int index, PyObject *func)</CSignature>
       </procedure>
+      <procedure name="fn00593CA6">
+        <characteristics />
+        <address>00593CA6</address>
+        <CSignature>void __stdcall fn00593CA6([[reko::arg(register,"ecx")]]bld_word32 self, double a, int b)</CSignature>
+      </procedure>
       <procedure name="GetTrailByName">
         <address>00596E90</address>
         <decompile>false</decompile>
@@ -3541,6 +3565,7 @@ void StartGSQR(void)</CSignature>
       <procedure name="LoopGSQR">
         <characteristics />
         <address>005B55ED</address>
+        <CSignature>void LoopGSQR()</CSignature>
       </procedure>
       <procedure name="PersonChangeAnmSoundIndex">
         <address>005B5647</address>

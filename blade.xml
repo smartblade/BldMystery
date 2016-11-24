@@ -258,5 +258,8 @@
     <typedef name="entity_t">
       <prim domain="Any" size="4" />
     </typedef>
+    <typedef name="bld_word32">
+      <prim domain="Any" size="4" />
+    </typedef>
   </Types>  
 </library>
