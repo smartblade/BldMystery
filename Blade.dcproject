@@ -3907,4 +3907,7 @@ int IsValidProtocol(int protocol)</CSignature>
   <metadata>
     <filename>raster.xml</filename>
   </metadata>
+  <metadata>
+    <filename>python_extra.xml</filename>
+  </metadata>
 </project>

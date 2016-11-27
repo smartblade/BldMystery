@@ -203,6 +203,14 @@
           <prim domain="Character" size="1" />
         </ptr>
       </field>
+      <field offset="1536" name="pyInteractiveString">
+        <ptr size="4">
+          <prim domain="Character" size="1" />
+        </ptr>
+      </field>
+      <field offset="1540" name="unknown604">
+        <prim domain="UnsignedInt" size="1" />
+      </field>
       <field offset="1541" name="unknown605">
         <prim domain="UnsignedInt" size="1" />
       </field>
