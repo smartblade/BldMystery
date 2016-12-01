@@ -165,6 +165,11 @@
       <field offset="48" name="clock2">
           <prim domain="Any" size="4" />
       </field>
+      <field offset="52" name="CDCallback">
+        <ptr size="4">
+          <type>PyObject</type>
+        </ptr>
+      </field>
       <field offset="60" name="arguments">
         <prim domain="Any" size="4" />
       </field>

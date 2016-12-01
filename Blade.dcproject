@@ -85,6 +85,10 @@
         <characteristics />
         <address>00415759</address>
       </procedure>
+      <procedure name="application_set_cd_callback">
+        <characteristics />
+        <address>00416298</address>
+      </procedure>
       <procedure name="application_string_split">
         <address>004167E1</address>
       </procedure>
@@ -103,52 +107,44 @@
         <CSignature>void __stdcall fn004246C0([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
       <procedure name="PlayCDTrack">
+        <characteristics />
         <address>00427750</address>
-        <decompile>false</decompile>
-        <CSignature>
-int PlayCDTrack(int ntrack)</CSignature>
+        <CSignature>int PlayCDTrack(int ntrack)</CSignature>
       </procedure>
       <procedure name="nCDTracks">
+        <characteristics />
         <address>00427777</address>
-        <decompile>false</decompile>
-        <CSignature>
-int nCDTracks(void)</CSignature>
+        <CSignature>int nCDTracks(void)</CSignature>
       </procedure>
       <procedure name="CDLenght">
+        <characteristics />
         <address>00427799</address>
-        <decompile>false</decompile>
-        <CSignature>
-int CDLenght(void)</CSignature>
+        <CSignature>int CDLenght(void)</CSignature>
       </procedure>
       <procedure name="CDTrackLenght">
+        <characteristics />
         <address>004277BB</address>
-        <decompile>false</decompile>
-        <CSignature>
-int CDTrackLenght(int ntrack)</CSignature>
+        <CSignature>int CDTrackLenght(int ntrack)</CSignature>
       </procedure>
       <procedure name="CDPresent">
+        <characteristics />
         <address>004277E2</address>
-        <decompile>false</decompile>
-        <CSignature>
-int CDPresent(void)</CSignature>
+        <CSignature>int CDPresent(void)</CSignature>
       </procedure>
       <procedure name="CDStop">
+        <characteristics />
         <address>00427804</address>
-        <decompile>false</decompile>
-        <CSignature>
-int CDStop(void)</CSignature>
+        <CSignature>int CDStop(void)</CSignature>
       </procedure>
       <procedure name="CDPause">
+        <characteristics />
         <address>00427826</address>
-        <decompile>false</decompile>
-        <CSignature>
-int CDPause(void)</CSignature>
+        <CSignature>int CDPause(void)</CSignature>
       </procedure>
       <procedure name="CDSetCallBack">
+        <characteristics />
         <address>00427848</address>
-        <decompile>false</decompile>
-        <CSignature>
-int CDSetCallBack(PyObject *func)</CSignature>
+        <CSignature>int CDSetCallBack(PyObject *func)</CSignature>
       </procedure>
       <procedure name="SetAppMode">
         <characteristics />
