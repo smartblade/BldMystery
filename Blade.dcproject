@@ -81,6 +81,14 @@
         <characteristics />
         <address>00414F7F</address>
       </procedure>
+      <procedure name="application_done_load_game">
+        <characteristics />
+        <address>004150B4</address>
+      </procedure>
+      <procedure name="application_begin_load_game">
+        <characteristics />
+        <address>00415145</address>
+      </procedure>
       <procedure name="application_run_python_file">
         <characteristics />
         <address>00415759</address>
@@ -157,16 +165,14 @@
         <CSignature>const char *GetAppMode(void)</CSignature>
       </procedure>
       <procedure name="BeginLoadGame">
+        <characteristics />
         <address>00427910</address>
-        <decompile>false</decompile>
-        <CSignature>
-void BeginLoadGame(void)</CSignature>
+        <CSignature>void BeginLoadGame(void)</CSignature>
       </procedure>
       <procedure name="DoneLoadGame">
+        <characteristics />
         <address>00427943</address>
-        <decompile>false</decompile>
-        <CSignature>
-void DoneLoadGame(void)</CSignature>
+        <CSignature>void DoneLoadGame(void)</CSignature>
       </procedure>
       <procedure name="SetSaveInfo">
         <address>00427976</address>
