@@ -60,6 +60,10 @@
         <characteristics />
         <address>00411EB9</address>
       </procedure>
+      <procedure name="application_get_command_line">
+        <characteristics />
+        <address>00412053</address>
+      </procedure>
       <procedure name="application_get_mode">
         <characteristics />
         <address>00412067</address>
@@ -265,22 +269,19 @@ int SaveAnmSoundData(const char *file_name, const char *race)</CSignature>
 int LoadAnmSoundData(const char *file_name)</CSignature>
       </procedure>
       <procedure name="GetCommandLine">
+        <characteristics />
         <address>00428FD6</address>
-        <decompile>false</decompile>
-        <CSignature>
-const char *GetCommandLine(void)</CSignature>
+        <CSignature>const char *GetCommandLine(void)</CSignature>
       </procedure>
       <procedure name="GetCurrentMap">
+        <characteristics />
         <address>0042900C</address>
-        <decompile>false</decompile>
-        <CSignature>
-const char *GetCurrentMap(void)</CSignature>
+        <CSignature>const char *GetCurrentMap(void)</CSignature>
       </procedure>
       <procedure name="SetCurrentMap">
+        <characteristics />
         <address>00429049</address>
-        <decompile>false</decompile>
-        <CSignature>
-int SetCurrentMap(const char *map)</CSignature>
+        <CSignature>int SetCurrentMap(const char *map)</CSignature>
       </procedure>
       <procedure name="LoadWorld">
         <characteristics />

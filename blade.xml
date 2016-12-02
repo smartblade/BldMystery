@@ -139,6 +139,21 @@
           </fn>
         </ptr>
       </field>
+      <field offset="104" name="set_current_map">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <prim domain="SignedInt" size="4" />
+            </return>
+            <arg>
+              <ptr size="4">
+                 <prim domain="Character" size="1" />
+              </ptr>
+            </arg>
+          </fn>
+        </ptr>
+      </field>
       <field offset="108" name="init">
         <ptr size="4">
           <fn convention="__thiscall">
@@ -199,6 +214,11 @@
       </field>
       <field offset="1491" name="unknown5D3">
         <prim domain="UnsignedInt" size="1" />
+      </field>
+      <field offset="1512" name="commandLine">
+        <ptr size="4">
+          <prim domain="Character" size="1" />
+        </ptr>
       </field>
       <field offset="1516" name="mode">
           <prim domain="Any" size="4" />
