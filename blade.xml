@@ -8,6 +8,16 @@
       <struct name="application_t" />
     </typedef>
     <struct name="application_vtbl">
+      <field offset="12" name="unknown_method00C">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <void />
+            </return>
+          </fn>
+        </ptr>
+      </field>
       <field offset="20" name="delete">
         <ptr size="4">
           <fn convention="__thiscall">
