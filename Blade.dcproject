@@ -192,52 +192,50 @@
         <CSignature>void DoneLoadGame(void)</CSignature>
       </procedure>
       <procedure name="SetSaveInfo">
+        <characteristics />
         <address>00427976</address>
-        <decompile>false</decompile>
-        <CSignature>
-int SetSaveInfo(PyObject *info)</CSignature>
+        <CSignature>int SetSaveInfo(PyObject *info)</CSignature>
       </procedure>
       <procedure name="GetSaveInfo">
+        <characteristics />
         <address>004279E1</address>
-        <decompile>false</decompile>
-        <CSignature>
-PyObject *GetSaveInfo(void)</CSignature>
+        <CSignature>PyObject *GetSaveInfo(void)</CSignature>
       </procedure>
       <procedure name="SaveEntitiesData">
+        <characteristics />
         <address>00427A0D</address>
         <decompile>false</decompile>
-        <CSignature>
-int SaveEntitiesData(const char *filename)</CSignature>
+        <CSignature>int SaveEntitiesData(const char *filename)</CSignature>
       </procedure>
       <procedure name="LoadEntitiesData">
+        <characteristics />
         <address>00427A20</address>
         <decompile>false</decompile>
-        <CSignature>
-int LoadEntitiesData(const char *filename)</CSignature>
+        <CSignature>int LoadEntitiesData(const char *filename)</CSignature>
       </procedure>
       <procedure name="SaveParticleSystemsData">
+        <characteristics />
         <address>00427A33</address>
         <decompile>false</decompile>
-        <CSignature>
-int SaveParticleSystemsData(const char *filename)</CSignature>
+        <CSignature>int SaveParticleSystemsData(const char *filename)</CSignature>
       </procedure>
       <procedure name="LoadParticleSystemsData">
+        <characteristics />
         <address>00427B03</address>
         <decompile>false</decompile>
-        <CSignature>
-int LoadParticleSystemsData(const char *filename)</CSignature>
+        <CSignature>int LoadParticleSystemsData(const char *filename)</CSignature>
       </procedure>
       <procedure name="SaveCombustionData">
+        <characteristics />
         <address>00427DE8</address>
         <decompile>false</decompile>
-        <CSignature>
-int SaveCombustionData(const char *file_name)</CSignature>
+        <CSignature>int SaveCombustionData(const char *file_name)</CSignature>
       </procedure>
       <procedure name="LoadCombustionData">
+        <characteristics />
         <address>00427EB7</address>
         <decompile>false</decompile>
-        <CSignature>
-int LoadCombustionData(const char *file_name)</CSignature>
+        <CSignature>int LoadCombustionData(const char *file_name)</CSignature>
       </procedure>
       <procedure name="ReassignCombustionData">
         <address>0042819A</address>
