@@ -61,6 +61,16 @@
           </fn>
         </ptr>
       </field>
+      <field offset="44" name="quit">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <prim domain="SignedInt" size="4" />
+            </return>
+          </fn>
+        </ptr>
+      </field>
       <field offset="48" name="mark_level_to_load">
         <ptr size="4">
           <fn convention="__thiscall">
@@ -128,6 +138,23 @@
       </field>
       <field offset="64" name="unknown_method040">
           <prim domain="Any" size="4" />
+      </field>
+      <field offset="80" name="input">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <ptr size="4">
+                 <prim domain="Character" size="1" />
+              </ptr>
+            </return>
+            <arg>
+              <ptr size="4">
+                 <prim domain="Character" size="1" />
+              </ptr>
+            </arg>
+          </fn>
+        </ptr>
       </field>
       <field offset="88" name="exit_with_error">
         <ptr size="4">

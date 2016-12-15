@@ -60,6 +60,10 @@
         <characteristics />
         <address>00411C54</address>
       </procedure>
+      <procedure name="application_set_listener_mode">
+        <characteristics />
+        <address>00411CC4</address>
+      </procedure>
       <procedure name="application_set_mode">
         <characteristics />
         <address>00411EB9</address>
@@ -71,6 +75,32 @@
       <procedure name="application_get_mode">
         <characteristics />
         <address>00412067</address>
+      </procedure>
+      <procedure name="application_set_time">
+        <characteristics />
+        <address>0041208A</address>
+        <CSignature>int application_set_time([[reko::arg(register,"ecx")]]application_t *self, double time)</CSignature>
+      </procedure>
+      <procedure name="application_go_to_time">
+        <characteristics />
+        <address>004120D3</address>
+        <CSignature>int application_go_to_time([[reko::arg(register,"ecx")]]application_t *self, double time)</CSignature>
+      </procedure>
+      <procedure name="application_stop_time">
+        <characteristics />
+        <address>00412138</address>
+      </procedure>
+      <procedure name="application_restart_time">
+        <characteristics />
+        <address>00412154</address>
+      </procedure>
+      <procedure name="application_get_time_speed">
+        <characteristics />
+        <address>00412170</address>
+      </procedure>
+      <procedure name="application_set_time_speed">
+        <characteristics />
+        <address>0041218C</address>
       </procedure>
       <procedure name="application_process_event">
         <characteristics />
@@ -102,6 +132,46 @@
         <characteristics />
         <address>00415145</address>
       </procedure>
+      <procedure name="application_get_time_action_held">
+        <characteristics />
+        <address>0041526D</address>
+      </procedure>
+      <procedure name="application_add_input_action">
+        <characteristics />
+        <address>0041529D</address>
+      </procedure>
+      <procedure name="application_remove_input_action">
+        <characteristics />
+        <address>004152C0</address>
+      </procedure>
+      <procedure name="application_bind">
+        <characteristics />
+        <address>00415425</address>
+      </procedure>
+      <procedure name="application_bind2">
+        <characteristics />
+        <address>00415471</address>
+      </procedure>
+      <procedure name="application_bind_pred">
+        <characteristics />
+        <address>0041549C</address>
+      </procedure>
+      <procedure name="application_unbind_pred">
+        <characteristics />
+        <address>004154F2</address>
+      </procedure>
+      <procedure name="application_unbind">
+        <characteristics />
+        <address>00415548</address>
+      </procedure>
+      <procedure name="application_assoc_key">
+        <characteristics />
+        <address>004155AE</address>
+      </procedure>
+      <procedure name="application_unbind_all">
+        <characteristics />
+        <address>004155D9</address>
+      </procedure>
       <procedure name="application_run_python_file">
         <characteristics />
         <address>00415759</address>
@@ -121,6 +191,10 @@
         <characteristics />
         <address>004197ED</address>
         <decompile>false</decompile>
+      </procedure>
+      <procedure name="application_find_action_cb">
+        <characteristics />
+        <address>00420980</address>
       </procedure>
       <procedure name="findEntity">
         <characteristics />
@@ -300,134 +374,114 @@ int LoadAnmSoundData(const char *file_name)</CSignature>
         <CSignature>int LoadWorld(const char *file_name)</CSignature>
       </procedure>
       <procedure name="SetListenerMode">
+        <characteristics />
         <address>004290C0</address>
-        <decompile>false</decompile>
-        <CSignature>
-int SetListenerMode(int mode, double x, double y, double z)</CSignature>
+        <CSignature>int SetListenerMode(int mode, double x, double y, double z)</CSignature>
       </procedure>
       <procedure name="GetListenerMode">
         <characteristics />
         <address>00429128</address>
       </procedure>
       <procedure name="Quit">
+        <characteristics />
         <address>0042915B</address>
-        <decompile>false</decompile>
-        <CSignature>
-int Quit(void)</CSignature>
+        <CSignature>int Quit(void)</CSignature>
       </procedure>
       <procedure name="SetTime">
+        <characteristics />
         <address>00429194</address>
-        <decompile>false</decompile>
-        <CSignature>
-int SetTime(double time)</CSignature>
+        <CSignature>int SetTime(double time)</CSignature>
       </procedure>
       <procedure name="GoToTime">
+        <characteristics />
         <address>004291D2</address>
-        <decompile>false</decompile>
-        <CSignature>
-int GoToTime(double time)</CSignature>
+        <CSignature>int GoToTime(double time)</CSignature>
       </procedure>
       <procedure name="GetTime">
+        <characteristics />
         <address>00429210</address>
-        <decompile>false</decompile>
-        <CSignature>
-double GetTime(void)</CSignature>
+        <CSignature>double GetTime(void)</CSignature>
       </procedure>
       <procedure name="StopTime">
+        <characteristics />
         <address>0042921F</address>
-        <decompile>false</decompile>
-        <CSignature>
-void StopTime(void)</CSignature>
+        <CSignature>void StopTime(void)</CSignature>
       </procedure>
       <procedure name="RestartTime">
+        <characteristics />
         <address>00429255</address>
-        <decompile>false</decompile>
-        <CSignature>
-void RestartTime(void)</CSignature>
+        <CSignature>void RestartTime(void)</CSignature>
       </procedure>
       <procedure name="SetTimeSpeed">
+        <characteristics />
         <address>0042928B</address>
-        <decompile>false</decompile>
-        <CSignature>
-void SetTimeSpeed(double speed)</CSignature>
+        <CSignature>void SetTimeSpeed(double speed)</CSignature>
       </procedure>
       <procedure name="GetTimeSpeed">
+        <characteristics />
         <address>004292C9</address>
-        <decompile>false</decompile>
-        <CSignature>
-double GetTimeSpeed(void)</CSignature>
+        <CSignature>double GetTimeSpeed(void)</CSignature>
       </procedure>
       <procedure name="AddInputAction">
+        <characteristics />
         <address>004292FF</address>
-        <decompile>false</decompile>
-        <CSignature>
-int AddInputAction(const char *action_name, int npi)</CSignature>
+        <CSignature>int AddInputAction(const char *action_name, int npi)</CSignature>
       </procedure>
       <procedure name="RemoveInputAction">
+        <characteristics />
         <address>00429342</address>
-        <decompile>false</decompile>
-        <CSignature>
-int RemoveInputAction(const char *action_name)</CSignature>
+        <CSignature>int RemoveInputAction(const char *action_name)</CSignature>
       </procedure>
       <procedure name="AssocKey">
+        <characteristics />
         <address>00429381</address>
-        <decompile>false</decompile>
-        <CSignature>
-int AssocKey(
+        <CSignature>int AssocKey(
         const char *action, const char *input_device, const char *key,
         int press
 )</CSignature>
       </procedure>
       <procedure name="Bind">
+        <characteristics />
         <address>004293C7</address>
-        <decompile>false</decompile>
-        <CSignature>
-int Bind(const char *action_name, PyObject *proc)</CSignature>
+        <CSignature>int Bind(const char *action_name, PyObject *proc)</CSignature>
       </procedure>
       <procedure name="UnBind">
+        <characteristics />
         <address>00429446</address>
-        <decompile>false</decompile>
-        <CSignature>
-int UnBind(const char *action_name, PyObject *proc)</CSignature>
+        <CSignature>int UnBind(const char *action_name, PyObject *proc)</CSignature>
       </procedure>
       <procedure name="Bind2">
+        <characteristics />
         <address>004294C5</address>
-        <decompile>false</decompile>
-        <CSignature>
-int Bind2(
+        <CSignature>int Bind2(
         const char *action_name1, const char *action_name2,
         const char *new_action, int unknown
 )</CSignature>
       </procedure>
       <procedure name="GetTimeActionHeld">
+        <characteristics />
         <address>0042956A</address>
-        <decompile>false</decompile>
-        <CSignature>
-double GetTimeActionHeld(const char *action_name)</CSignature>
+        <CSignature>double GetTimeActionHeld(const char *action_name)</CSignature>
       </procedure>
       <procedure name="BindPred">
+        <characteristics />
         <address>004295C2</address>
-        <decompile>false</decompile>
-        <CSignature>
-int BindPred(const char *action_name, const char *predproc)</CSignature>
+        <CSignature>int BindPred(const char *action_name, const char *predproc)</CSignature>
       </procedure>
       <procedure name="UnBindPred">
+        <characteristics />
         <address>00429641</address>
-        <decompile>false</decompile>
-        <CSignature>
-int UnBindPred(const char *action_name, const char *predproc)</CSignature>
+        <CSignature>int UnBindPred(const char *action_name, const char *predproc)</CSignature>
       </procedure>
       <procedure name="UnBindAll">
+        <characteristics />
         <address>004296C0</address>
-        <decompile>false</decompile>
-        <CSignature>
-void UnBindAll(void)</CSignature>
+        <CSignature>void UnBindAll(void)</CSignature>
       </procedure>
       <procedure name="Input">
+        <characteristics />
         <address>004296F6</address>
-        <decompile>false</decompile>
-        <CSignature>
-const char *Input(const char *text)</CSignature>
+        <CSignature>const char *Input(const char *text)</CSignature>
       </procedure>
       <procedure name="MarkLevelToLoad">
         <characteristics />
@@ -1017,6 +1071,18 @@ const char *GetLastPlayerCType(void)</CSignature>
       <procedure name="game_state_init">
         <characteristics />
         <address>004398A5</address>
+      </procedure>
+      <procedure name="game_state_get_time">
+        <characteristics />
+        <address>0043A6A4</address>
+      </procedure>
+      <procedure name="game_state_set_time">
+        <characteristics />
+        <address>0043A6B8</address>
+      </procedure>
+      <procedure name="game_state_go_to_time">
+        <characteristics />
+        <address>0043AC07</address>
       </procedure>
       <procedure name="fn0043C5FD">
         <characteristics />
