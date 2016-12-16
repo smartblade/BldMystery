@@ -494,16 +494,14 @@ int LoadAnmSoundData(const char *file_name)</CSignature>
         <CSignature>void ReadLevel(const char *file_name)</CSignature>
       </procedure>
       <procedure name="ReadBitMap">
+        <characteristics />
         <address>004297F3</address>
-        <decompile>false</decompile>
-        <CSignature>
-void ReadBitMap(const char *file_name, const char *internal_name)</CSignature>
+        <CSignature>void ReadBitMap(const char *file_name, const char *internal_name)</CSignature>
       </procedure>
       <procedure name="ReadAlphaBitMap">
+        <characteristics />
         <address>00429863</address>
-        <decompile>false</decompile>
-        <CSignature>
-void ReadAlphaBitMap(const char *file_name, const char *internal_name)</CSignature>
+        <CSignature>void ReadAlphaBitMap(const char *file_name, const char *internal_name)</CSignature>
       </procedure>
       <procedure name="CloseLevel">
         <characteristics />
