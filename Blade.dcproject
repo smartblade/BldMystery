@@ -64,6 +64,14 @@
         <characteristics />
         <address>00411CC4</address>
       </procedure>
+      <procedure name="application_deactivate_input">
+        <characteristics />
+        <address>00411D95</address>
+      </procedure>
+      <procedure name="application_activate_input">
+        <characteristics />
+        <address>00411E25</address>
+      </procedure>
       <procedure name="application_set_mode">
         <characteristics />
         <address>00411EB9</address>
@@ -175,6 +183,10 @@
       <procedure name="application_run_python_file">
         <characteristics />
         <address>00415759</address>
+      </procedure>
+      <procedure name="application_out_sound">
+        <characteristics />
+        <address>0041617B</address>
       </procedure>
       <procedure name="application_set_cd_callback">
         <characteristics />
@@ -521,22 +533,19 @@ int LoadAnmSoundData(const char *file_name)</CSignature>
         <address>00429936</address>
       </procedure>
       <procedure name="DeactivateInput">
+        <characteristics />
         <address>00429949</address>
-        <decompile>false</decompile>
-        <CSignature>
-int DeactivateInput(void)</CSignature>
+        <CSignature>int DeactivateInput(void)</CSignature>
       </procedure>
       <procedure name="ActivateInput">
+        <characteristics />
         <address>0042997F</address>
-        <decompile>false</decompile>
-        <CSignature>
-int ActivateInput(void)</CSignature>
+        <CSignature>int ActivateInput(void)</CSignature>
       </procedure>
       <procedure name="OutSound">
+        <characteristics />
         <address>004299B5</address>
-        <decompile>false</decompile>
-        <CSignature>
-int OutSound(int soundId, double x, double y, double z, int unknown)</CSignature>
+        <CSignature>int OutSound(int soundId, double x, double y, double z, int unknown)</CSignature>
       </procedure>
       <procedure name="SetDefaultMass">
         <address>00429A10</address>
