@@ -578,28 +578,24 @@ int LoadAnmSoundData(const char *file_name)</CSignature>
         <CSignature>int GetDrawObjectShadows(void)</CSignature>
       </procedure>
       <procedure name="SetAutoEngageCombat">
+        <characteristics />
         <address>0042A019</address>
-        <decompile>false</decompile>
-        <CSignature>
-int SetAutoEngageCombat(int auto_engage_combat)</CSignature>
+        <CSignature>int SetAutoEngageCombat(int auto_engage_combat)</CSignature>
       </procedure>
       <procedure name="GetAutoEngageCombat">
+        <characteristics />
         <address>0042A03A</address>
-        <decompile>false</decompile>
-        <CSignature>
-int GetAutoEngageCombat(void)</CSignature>
+        <CSignature>int GetAutoEngageCombat(void)</CSignature>
       </procedure>
       <procedure name="SetAecGap">
+        <characteristics />
         <address>0042A053</address>
-        <decompile>false</decompile>
-        <CSignature>
-int SetAecGap(double aec_gap)</CSignature>
+        <CSignature>int SetAecGap(double aec_gap)</CSignature>
       </procedure>
       <procedure name="GetAecGap">
+        <characteristics />
         <address>0042A07D</address>
-        <decompile>false</decompile>
-        <CSignature>
-double GetAecGap(void)</CSignature>
+        <CSignature>double GetAecGap(void)</CSignature>
       </procedure>
       <procedure name="SetBloodLevel">
         <address>0042A095</address>

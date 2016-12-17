@@ -291,7 +291,13 @@
       <field offset="1568" name="drawShadows">
         <prim domain="SignedInt" size="4" />
       </field>
-      <field offset="1572" name="unknown624">
+      <field offset="1572" name="autoEngageCombat">
+        <prim domain="SignedInt" size="4" />
+      </field>
+      <field offset="1576" name="aecGap">
+        <prim domain="Real" size="8" />
+      </field>
+      <field offset="1584" name="unknown630">
         <prim domain="Any" size="4" />
       </field>
       <field offset="1932" name="cmdLine">
