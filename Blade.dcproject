@@ -548,22 +548,19 @@ int LoadAnmSoundData(const char *file_name)</CSignature>
         <CSignature>int OutSound(int soundId, double x, double y, double z, int unknown)</CSignature>
       </procedure>
       <procedure name="SetDefaultMass">
+        <characteristics />
         <address>00429A10</address>
-        <decompile>false</decompile>
-        <CSignature>
-int SetDefaultMass(const char *entity_kind, double mass)</CSignature>
+        <CSignature>int SetDefaultMass(const char *entity_kind, double mass)</CSignature>
       </procedure>
       <procedure name="SetDefaultMaterial">
+        <characteristics />
         <address>00429C4F</address>
-        <decompile>false</decompile>
-        <CSignature>
-int SetDefaultMaterial(const char *entity_kind, const char *material)</CSignature>
+        <CSignature>int SetDefaultMaterial(const char *entity_kind, const char *material)</CSignature>
       </procedure>
       <procedure name="SetSun">
+        <characteristics />
         <address>00429F2D</address>
-        <decompile>false</decompile>
-        <CSignature>
-void SetSun(int exists, double x, double y, double z)</CSignature>
+        <CSignature>void SetSun(int exists, double x, double y, double z)</CSignature>
       </procedure>
       <procedure name="InsideAA">
         <address>00429F71</address>
@@ -1095,6 +1092,10 @@ const char *GetLastPlayerCType(void)</CSignature>
         <characteristics />
         <address>0043C5FD</address>
         <CSignature>void __stdcall fn0043C5FD([[reko::arg(register,"ecx")]]bld_word32 self, bld_word32 a, bld_word32 b, double c, int d)</CSignature>
+      </procedure>
+      <procedure name="game_state_set_sun">
+        <characteristics />
+        <address>0043C8B2</address>
       </procedure>
       <procedure name="fn00440A5D">
         <characteristics />
