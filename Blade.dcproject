@@ -563,22 +563,19 @@ int LoadAnmSoundData(const char *file_name)</CSignature>
         <CSignature>void SetSun(int exists, double x, double y, double z)</CSignature>
       </procedure>
       <procedure name="InsideAA">
+        <characteristics />
         <address>00429F71</address>
-        <decompile>false</decompile>
-        <CSignature>
-int InsideAA(int AA, double x, double y, double z)</CSignature>
+        <CSignature>int InsideAA(int AA, double x, double y, double z)</CSignature>
       </procedure>
       <procedure name="SetDrawObjectShadows">
+        <characteristics />
         <address>00429FDF</address>
-        <decompile>false</decompile>
-        <CSignature>
-int SetDrawObjectShadows(int draw)</CSignature>
+        <CSignature>int SetDrawObjectShadows(int draw)</CSignature>
       </procedure>
       <procedure name="GetDrawObjectShadows">
+        <characteristics />
         <address>0042A000</address>
-        <decompile>false</decompile>
-        <CSignature>
-int GetDrawObjectShadows(void)</CSignature>
+        <CSignature>int GetDrawObjectShadows(void)</CSignature>
       </procedure>
       <procedure name="SetAutoEngageCombat">
         <address>0042A019</address>

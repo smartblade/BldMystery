@@ -283,22 +283,28 @@
         <prim domain="UnsignedInt" size="1" />
       </field>
       <field offset="1544" name="mapName">
-          <prim domain="Any" size="4" />
+        <prim domain="Any" size="4" />
       </field>
       <field offset="1548" name="unknown60C">
-          <prim domain="Any" size="4" />
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="1568" name="drawShadows">
+        <prim domain="SignedInt" size="4" />
+      </field>
+      <field offset="1572" name="unknown624">
+        <prim domain="Any" size="4" />
       </field>
       <field offset="1932" name="cmdLine">
-          <prim domain="Any" size="4" />
+        <prim domain="Any" size="4" />
       </field>
       <field offset="1976" name="window">
-          <prim domain="Any" size="4" />
+        <prim domain="Any" size="4" />
       </field>
       <field offset="1980" name="module">
-          <prim domain="Any" size="4" />
+        <prim domain="Any" size="4" />
       </field>
       <field offset="1984" name="unknown7C0">
-          <prim domain="Any" size="4" />
+        <prim domain="Any" size="4" />
       </field>
       <field offset="1992" name="noMouse">
         <prim domain="UnsignedInt" size="1" />
