@@ -229,22 +229,31 @@
         <prim domain="SignedInt" size="4" />
       </field>
       <field offset="68" name="unknown044">
-          <prim domain="Any" size="4" />
+        <prim domain="Any" size="4" />
       </field>
       <field offset="104" name="player1">
-          <prim domain="Any" size="4" />
+        <prim domain="Any" size="4" />
       </field>
       <field offset="108" name="client">
-          <prim domain="Any" size="4" />
+        <prim domain="Any" size="4" />
       </field>
       <field offset="112" name="unknown070">
-          <prim domain="Any" size="4" />
+        <prim domain="Any" size="4" />
       </field>
       <field offset="120" name="camera">
-          <prim domain="Any" size="4" />
+        <prim domain="Any" size="4" />
       </field>
       <field offset="124" name="unknown07C">
-          <prim domain="Any" size="4" />
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="436" name="bloodLevel">
+        <prim domain="SignedInt" size="4" />
+      </field>
+      <field offset="440" name="mutilationLevel">
+        <prim domain="SignedInt" size="4" />
+      </field>
+      <field offset="444" name="unknown1BC">
+        <prim domain="Any" size="4" />
       </field>
       <field offset="1490" name="noSleep">
         <prim domain="UnsignedInt" size="1" />
@@ -258,7 +267,7 @@
         </ptr>
       </field>
       <field offset="1516" name="mode">
-          <prim domain="Any" size="4" />
+        <prim domain="Any" size="4" />
       </field>
       <field offset="1524" name="map_to_load">
         <ptr size="4">

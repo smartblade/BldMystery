@@ -195,6 +195,22 @@
       <procedure name="application_string_split">
         <address>004167E1</address>
       </procedure>
+      <procedure name="application_set_blood_level">
+        <characteristics />
+        <address>00416C0B</address>
+      </procedure>
+      <procedure name="application_get_blood_level">
+        <characteristics />
+        <address>00416C29</address>
+      </procedure>
+      <procedure name="application_set_mutilation_level">
+        <characteristics />
+        <address>00416C3D</address>
+      </procedure>
+      <procedure name="application_get_mutilation_level">
+        <characteristics />
+        <address>00416C5B</address>
+      </procedure>
       <procedure name="application_load_world">
         <characteristics />
         <address>00416C6F</address>
@@ -598,28 +614,24 @@ int LoadAnmSoundData(const char *file_name)</CSignature>
         <CSignature>double GetAecGap(void)</CSignature>
       </procedure>
       <procedure name="SetBloodLevel">
+        <characteristics />
         <address>0042A095</address>
-        <decompile>false</decompile>
-        <CSignature>
-int SetBloodLevel(int blood_level)</CSignature>
+        <CSignature>int SetBloodLevel(int blood_level)</CSignature>
       </procedure>
       <procedure name="GetBloodLevel">
+        <characteristics />
         <address>0042A0CF</address>
-        <decompile>false</decompile>
-        <CSignature>
-int GetBloodLevel(void)</CSignature>
+        <CSignature>int GetBloodLevel(void)</CSignature>
       </procedure>
       <procedure name="SetMutilationLevel">
+        <characteristics />
         <address>0042A105</address>
-        <decompile>false</decompile>
-        <CSignature>
-int SetMutilationLevel(int mutilation_level)</CSignature>
+        <CSignature>int SetMutilationLevel(int mutilation_level)</CSignature>
       </procedure>
       <procedure name="GetMutilationLevel">
+        <characteristics />
         <address>0042A13F</address>
-        <decompile>false</decompile>
-        <CSignature>
-int GetMutilationLevel(void)</CSignature>
+        <CSignature>int GetMutilationLevel(void)</CSignature>
       </procedure>
       <procedure name="AnmAddEvent">
         <address>0042A175</address>
