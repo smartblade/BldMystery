@@ -1845,6 +1845,7 @@ int saveSoundDataBase(const char *file_name)</CSignature>
         <characteristics />
         <address>004E1857</address>
         <decompile>false</decompile>
+        <CSignature>double fn004E1857([[reko::arg(register,"ecx")]]bld_word32 self, double a)</CSignature>
       </procedure>
       <procedure name="fn004E3C55">
         <characteristics />
@@ -3627,10 +3628,24 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
         <address>005A01B2</address>
         <decompile>false</decompile>
       </procedure>
+      <procedure name="send_message">
+        <characteristics />
+        <address>005AC712</address>
+      </procedure>
+      <procedure name="fn005AC7A7">
+        <characteristics />
+        <address>005AC7A7</address>
+        <CSignature>void fn005AC7A7()</CSignature>
+      </procedure>
       <procedure name="OnEvent">
         <characteristics />
         <address>005AF2CE</address>
         <CSignature>void OnEvent(float a, float b)</CSignature>
+      </procedure>
+      <procedure name="fn005AF453">
+        <characteristics />
+        <address>005AF453</address>
+        <CSignature>void fn005AF453()</CSignature>
       </procedure>
       <procedure name="get_map_for_net_game">
         <characteristics />
@@ -3941,6 +3956,33 @@ int IsValidProtocol(int protocol)</CSignature>
           </return>
         </signature>
       </call>
+      <call>
+        <address>00532E7F</address>
+        <signature stackDelta="12">
+          <return name="eax">
+            <prim domain="SignedInt" size="4" />
+            <reg>eax</reg>
+          </return>
+          <arg name="this">
+            <ptr size="4">
+              <type>application_t</type>
+            </ptr>
+            <reg>ecx</reg>
+          </arg>
+          <arg name="ptrArg04">
+            <ptr size="4">
+              <prim domain="Character" size="1" />
+            </ptr>
+            <stack />
+          </arg>
+          <arg name="ptrArg08">
+            <ptr size="4">
+              <prim domain="Character" size="1" />
+            </ptr>
+            <stack />
+          </arg>
+        </signature>
+      </call>
       <global>
         <Address>005BDC1C</Address>
         <prim domain="Any" size="4" />
@@ -3984,7 +4026,9 @@ int IsValidProtocol(int protocol)</CSignature>
       </global>
       <global>
         <Address>007EE2C4</Address>
-        <prim domain="Any" size="4" />
+        <ptr size="4">
+          <type>bld_abstract_net</type>
+        </ptr>
         <Name>net_data</Name>
       </global>
       <global>
@@ -4011,5 +4055,8 @@ int IsValidProtocol(int protocol)</CSignature>
   </metadata>
   <metadata>
     <filename>python_extra.xml</filename>
+  </metadata>
+  <metadata>
+    <filename>net.xml</filename>
   </metadata>
 </project>

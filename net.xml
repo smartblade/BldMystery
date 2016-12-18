@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<library xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemata.jklnet.org/Decompiler">
+  <Types>
+    <struct name="bld_server_info">
+      <field offset="0" name="name">
+        <arr length="128">
+          <prim domain="Character" size="1" />
+        </arr>
+      </field>
+      <field offset="128" name="num_players">
+        <prim domain="SignedInt" size="4" />
+      </field>
+      <field offset="132" name="max_players">
+        <prim domain="SignedInt" size="4" />
+      </field>
+    </struct>
+    <typedef name="bld_server_info">
+      <struct name="bld_server_info" />
+    </typedef>
+    <typedef name="net_vtbl">
+      <struct name="net_vtbl" />
+    </typedef>
+    <typedef name="bld_abstract_net">
+      <struct name="bld_abstract_net" />
+    </typedef>
+    <struct name="net_vtbl">
+      <field offset="0" name="get_session_player_dpid">
+        <ptr>
+          <fn convention="__thiscall">
+            <type>bld_abstract_net</type>
+            <return>
+              <prim domain="UnsignedInt" size="4" />
+            </return>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="4" name="get_all_players_id">
+        <ptr>
+          <fn convention="__thiscall">
+            <type>bld_abstract_net</type>
+            <return>
+              <prim domain="UnsignedInt" size="4" />
+            </return>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="8" name="is_net_game">
+        <ptr>
+          <fn convention="__thiscall">
+            <type>bld_abstract_net</type>
+            <return>
+              <type>boolean</type>
+            </return>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="12" name="is_server">
+        <ptr>
+          <fn convention="__thiscall">
+            <type>bld_abstract_net</type>
+            <return>
+              <type>boolean</type>
+            </return>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="16" name="get_player_dpid">
+        <ptr>
+          <fn convention="__thiscall">
+            <type>bld_abstract_net</type>
+            <return>
+              <prim domain="UnsignedInt" size="4" />
+            </return>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="20" name="send_message">
+        <ptr>
+          <fn convention="__thiscall">
+            <type>bld_abstract_net</type>
+            <return>
+              <prim domain="SignedInt" size="4" />
+            </return>
+            <arg name="idTo">
+              <prim domain="UnsignedInt" size="4" />
+            </arg>
+            <arg name="lpData">
+              <ptr size="4">
+                <void />
+              </ptr>
+            </arg>
+            <arg name="wDataSize">
+              <prim domain="UnsignedInt" size="4" />
+            </arg>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="24" name="send_guaranteed_message">
+        <ptr>
+          <fn convention="__thiscall">
+            <type>bld_abstract_net</type>
+            <return>
+              <prim domain="SignedInt" size="4" />
+            </return>
+            <arg name="idTo">
+              <prim domain="UnsignedInt" size="4" />
+            </arg>
+            <arg name="lpData">
+              <ptr size="4">
+                <void />
+              </ptr>
+            </arg>
+            <arg name="wDataSize">
+              <prim domain="UnsignedInt" size="4" />
+            </arg>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="28" name="start_server">
+        <ptr>
+          <fn convention="__thiscall">
+            <type>bld_abstract_net</type>
+            <return>
+              <type>boolean</type>
+            </return>
+            <arg name="game_name">
+              <ptr size="4">
+                <prim domain="Character" size="1" />
+              </ptr>
+            </arg>
+            <arg name="player_name">
+              <ptr size="4">
+                <prim domain="Character" size="1" />
+              </ptr>
+            </arg>
+            <arg name="max_players">
+              <prim domain="SignedInt" size="4" />
+            </arg>
+            <arg name="TCP">
+              <type>boolean</type>
+            </arg>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="32" name="browse_sessions">
+        <ptr>
+          <fn convention="__thiscall">
+            <type>bld_abstract_net</type>
+            <return>
+              <type>boolean</type>
+            </return>
+            <arg name="ip_address">
+              <ptr size="4">
+                <prim domain="Character" size="1" />
+              </ptr>
+            </arg>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="36" name="get_browse_result">
+        <ptr>
+          <fn convention="__thiscall">
+            <type>bld_abstract_net</type>
+            <return>
+              <type>boolean</type>
+            </return>
+            <arg name="index">
+              <prim domain="SignedInt" size="4" />
+            </arg>
+            <arg name="info">
+              <ptr size="4">
+                <type>bld_server_info</type>
+              </ptr>
+            </arg>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="40" name="join_session">
+        <ptr>
+          <fn convention="__thiscall">
+            <type>bld_abstract_net</type>
+            <return>
+              <type>boolean</type>
+            </return>
+            <arg name="index">
+              <prim domain="SignedInt" size="4" />
+            </arg>
+            <arg name="player_name">
+              <ptr size="4">
+                <prim domain="Character" size="1" />
+              </ptr>
+            </arg>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="44" name="is_valid_protocol">
+        <ptr>
+          <fn convention="__thiscall">
+            <type>bld_abstract_net</type>
+            <return>
+              <type>boolean</type>
+            </return>
+            <arg name="tcp">
+              <type>boolean</type>
+            </arg>
+          </fn>
+        </ptr>
+      </field>
+    </struct>
+    <struct name="bld_abstract_net">
+      <field offset="0" name="vtbl">
+        <ptr size="4">
+          <type>net_vtbl</type>
+        </ptr>
+      </field>
+    </struct>
+  </Types>
+</library>
