@@ -215,11 +215,6 @@
         <characteristics />
         <address>00416C6F</address>
       </procedure>
-      <procedure name="fn004197ED">
-        <characteristics />
-        <address>004197ED</address>
-        <decompile>false</decompile>
-      </procedure>
       <procedure name="application_find_action_cb">
         <characteristics />
         <address>00420980</address>
@@ -1102,11 +1097,6 @@ const char *GetLastPlayerCType(void)</CSignature>
         <characteristics />
         <address>0043C8B2</address>
       </procedure>
-      <procedure name="fn00440A5D">
-        <characteristics />
-        <address>00440A5D</address>
-        <decompile>false</decompile>
-      </procedure>
       <procedure name="WorldToMBW">
         <address>004431DE</address>
         <decompile>false</decompile>
@@ -1836,21 +1826,11 @@ int saveSoundDataBase(const char *file_name)</CSignature>
         <characteristics />
         <address>004D9B47</address>
       </procedure>
-      <procedure name="fn004DCCC2">
-        <characteristics />
-        <address>004DCCC2</address>
-        <decompile>false</decompile>
-      </procedure>
       <procedure name="fn004E1857">
         <characteristics />
         <address>004E1857</address>
         <decompile>false</decompile>
         <CSignature>double fn004E1857([[reko::arg(register,"ecx")]]bld_word32 self, double a)</CSignature>
-      </procedure>
-      <procedure name="fn004E3C55">
-        <characteristics />
-        <address>004E3C55</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="camera_init">
         <characteristics />
@@ -3201,26 +3181,6 @@ void CleanArea(double x, double y, double z, float distance)</CSignature>
         <characteristics />
         <address>00531783</address>
       </procedure>
-      <procedure name="fn0056A9BF">
-        <characteristics />
-        <address>0056A9BF</address>
-        <decompile>false</decompile>
-      </procedure>
-      <procedure name="fn0056B8A5">
-        <characteristics />
-        <address>0056B8A5</address>
-        <decompile>false</decompile>
-      </procedure>
-      <procedure name="fn005728B0">
-        <characteristics />
-        <address>005728B0</address>
-        <decompile>false</decompile>
-      </procedure>
-      <procedure name="fn0057D182">
-        <characteristics />
-        <address>0057D182</address>
-        <decompile>false</decompile>
-      </procedure>
       <procedure name="Astar">
         <characteristics />
         <address>0058520F</address>
@@ -3623,11 +3583,6 @@ int IsSelected(const char *inv_name, int obj_type, int obj_index)</CSignature>
         <CSignature>
 int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
       </procedure>
-      <procedure name="fn005A01B2">
-        <characteristics />
-        <address>005A01B2</address>
-        <decompile>false</decompile>
-      </procedure>
       <procedure name="send_message">
         <characteristics />
         <address>005AC712</address>
@@ -3900,11 +3855,6 @@ int NetSetPPS(int PPS)</CSignature>
         <decompile>false</decompile>
         <CSignature>
 int IsValidProtocol(int protocol)</CSignature>
-      </procedure>
-      <procedure name="fn005B7265">
-        <characteristics />
-        <address>005B7265</address>
-        <decompile>false</decompile>
       </procedure>
       <procedure name="create_application">
         <characteristics />
