@@ -3605,6 +3605,11 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
         <characteristics />
         <address>005A7550</address>
       </procedure>
+      <procedure name="server_info_block">
+        <characteristics />
+        <address>005AC4F0</address>
+        <CSignature>char *server_info_block()</CSignature>
+      </procedure>
       <procedure name="send_message">
         <characteristics />
         <address>005AC712</address>
@@ -3613,6 +3618,63 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
         <characteristics />
         <address>005AC7A7</address>
         <CSignature>void fn005AC7A7()</CSignature>
+      </procedure>
+      <procedure name="net_get_time">
+        <characteristics />
+        <address>005ACBC0</address>
+      </procedure>
+      <procedure name="set_py_client_sound_func">
+        <characteristics />
+        <address>005ACC28</address>
+      </procedure>
+      <procedure name="set_py_object">
+        <characteristics />
+        <address>005ACC3E</address>
+        <CSignature>int set_py_object(PyObject **dst, PyObject *src)</CSignature>
+      </procedure>
+      <procedure name="set_py_client_mutila_func">
+        <characteristics />
+        <address>005ACCC2</address>
+      </procedure>
+      <procedure name="set_py_client_damage_func">
+        <characteristics />
+        <address>005ACCD8</address>
+      </procedure>
+      <procedure name="set_py_create_player_func">
+        <characteristics />
+        <address>005ACCEE</address>
+      </procedure>
+      <procedure name="set_py_bye_player_func">
+        <characteristics />
+        <address>005ACD04</address>
+      </procedure>
+      <procedure name="set_py_get_user_string">
+        <characteristics />
+        <address>005ACDCB</address>
+      </procedure>
+      <procedure name="send_net_user_string">
+        <characteristics />
+        <address>005ACDE1</address>
+      </procedure>
+      <procedure name="get_next_position">
+        <characteristics />
+        <address>005ACF3D</address>
+      </procedure>
+      <procedure name="net_add_position">
+        <characteristics />
+        <address>005ACF84</address>
+      </procedure>
+      <procedure name="set_send_data_state">
+        <characteristics />
+        <address>005AD39A</address>
+      </procedure>
+      <procedure name="net_set_object_state">
+        <characteristics />
+        <address>005ADA60</address>
+      </procedure>
+      <procedure name="net_set_pps">
+        <characteristics />
+        <address>005AF271</address>
       </procedure>
       <procedure name="OnEvent">
         <characteristics />
@@ -3624,10 +3686,23 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
         <address>005AF453</address>
         <CSignature>void fn005AF453()</CSignature>
       </procedure>
+      <procedure name="net_server_change_level">
+        <characteristics />
+        <address>005B11FF</address>
+      </procedure>
+      <procedure name="person_change_anm_sound_index">
+        <characteristics />
+        <address>005B1221</address>
+      </procedure>
       <procedure name="get_map_for_net_game">
         <characteristics />
         <address>005B143D</address>
         <CSignature>char *get_map_for_net_game(char *map)</CSignature>
+      </procedure>
+      <procedure name="get_client_id">
+        <characteristics />
+        <address>005B2D5D</address>
+        <CSignature>char *get_client_id()</CSignature>
       </procedure>
       <procedure name="SetGameSpySupport">
         <characteristics />
@@ -3636,12 +3711,12 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
       <procedure name="GetGameSpySupport">
         <characteristics />
         <address>005B534D</address>
+        <CSignature>boolean GetGameSpySupport()</CSignature>
       </procedure>
       <procedure name="StartGSQR">
+        <characteristics />
         <address>005B5357</address>
-        <decompile>false</decompile>
-        <CSignature>
-void StartGSQR(void)</CSignature>
+        <CSignature>void StartGSQR(void)</CSignature>
       </procedure>
       <procedure name="EndGSQR">
         <characteristics />
@@ -3653,230 +3728,211 @@ void StartGSQR(void)</CSignature>
         <CSignature>void LoopGSQR()</CSignature>
       </procedure>
       <procedure name="PersonChangeAnmSoundIndex">
+        <characteristics />
         <address>005B5647</address>
-        <decompile>false</decompile>
-        <CSignature>
-void PersonChangeAnmSoundIndex(const char *person_name, int index)</CSignature>
+        <CSignature>void PersonChangeAnmSoundIndex(const char *person_name, int index)</CSignature>
       </procedure>
       <procedure name="SetDedicatedServerState">
+        <characteristics />
         <address>005B565C</address>
-        <decompile>false</decompile>
-        <CSignature>
-void SetDedicatedServerState(int dedicated)</CSignature>
+        <CSignature>void SetDedicatedServerState(int dedicated)</CSignature>
       </procedure>
       <procedure name="GetDedicatedServerState">
+        <characteristics />
         <address>005B5673</address>
-        <decompile>false</decompile>
-        <CSignature>
-int GetDedicatedServerState(void)</CSignature>
+        <CSignature>int GetDedicatedServerState(void)</CSignature>
       </procedure>
       <procedure name="SetLocalOptions">
+        <characteristics />
         <address>005B568F</address>
-        <decompile>false</decompile>
-        <CSignature>
-void SetLocalOptions(
+        <CSignature>void SetLocalOptions(
         const char *name, const char *kind, const char *weapon,
         const char *shield, const char *map
 )</CSignature>
       </procedure>
       <procedure name="ServerInfoBlock">
+        <characteristics />
         <address>005B5716</address>
-        <decompile>false</decompile>
-        <CSignature>
-const char *ServerInfoBlock(void)</CSignature>
+        <CSignature>const char *ServerInfoBlock(void)</CSignature>
       </procedure>
       <procedure name="ClientSetPyClientSoundFunc">
+        <characteristics />
         <address>005B5720</address>
-        <decompile>false</decompile>
-        <CSignature>
-void ClientSetPyClientSoundFunc(PyObject *func)</CSignature>
+        <CSignature>void ClientSetPyClientSoundFunc(PyObject *func)</CSignature>
       </procedure>
       <procedure name="CallNetEventSound">
+        <characteristics />
         <address>005B5731</address>
-        <decompile>false</decompile>
-        <CSignature>
-void CallNetEventSound(const char *entity_name, byte id)</CSignature>
+        <CSignature>void CallNetEventSound(const char *entity_name, byte id)</CSignature>
       </procedure>
       <procedure name="ClientSetPyClientMutilaFunc">
+        <characteristics />
         <address>005B5959</address>
-        <decompile>false</decompile>
-        <CSignature>
-void ClientSetPyClientMutilaFunc(PyObject *func)</CSignature>
+        <CSignature>void ClientSetPyClientMutilaFunc(PyObject *func)</CSignature>
       </procedure>
       <procedure name="ClientSetPyClientDamageFunc">
+        <characteristics />
         <address>005B596A</address>
-        <decompile>false</decompile>
-        <CSignature>
-void ClientSetPyClientDamageFunc(PyObject *func)</CSignature>
+        <CSignature>void ClientSetPyClientDamageFunc(PyObject *func)</CSignature>
       </procedure>
       <procedure name="NetAddSoundToClient">
+        <characteristics />
         <address>005B597B</address>
-        <decompile>false</decompile>
-        <CSignature>
-void NetAddSoundToClient(
+        <CSignature>void NetAddSoundToClient(
         const char *entity_name, const char *animation_name,
         PyObject *sound_object
 )</CSignature>
       </procedure>
       <procedure name="NetGetClientId">
+        <characteristics />
         <address>005B5BB2</address>
-        <decompile>false</decompile>
-        <CSignature>
-const char *NetGetClientId(void)</CSignature>
+        <CSignature>const char *NetGetClientId(void)</CSignature>
       </procedure>
       <procedure name="NetSetObjectState">
+        <characteristics />
         <address>005B5BBC</address>
-        <decompile>false</decompile>
-        <CSignature>
-boolean NetSetObjectState(const char *entity_name, boolean state)</CSignature>
+        <CSignature>boolean NetSetObjectState(const char *entity_name, boolean state)</CSignature>
       </procedure>
       <procedure name="NetAddEventUserFunc">
+        <characteristics />
         <address>005B5BD1</address>
-        <decompile>false</decompile>
-        <CSignature>
-void NetAddEventUserFunc(
+        <CSignature>void NetAddEventUserFunc(
         const char *action, PyObject *func, int ignore_host
 )</CSignature>
       </procedure>
       <procedure name="NetAddPosition">
+        <characteristics />
         <address>005B5BF0</address>
-        <decompile>false</decompile>
-        <CSignature>
-void NetAddPosition(double x, double y, double z)</CSignature>
+        <CSignature>void NetAddPosition(double x, double y, double z)</CSignature>
       </procedure>
       <procedure name="NetSetPersonView">
+        <characteristics />
         <address>005B5C15</address>
-        <decompile>false</decompile>
-        <CSignature>
-void NetSetPersonView(const char *entity_name)</CSignature>
+        <CSignature>void NetSetPersonView(const char *entity_name)</CSignature>
       </procedure>
       <procedure name="GetLocalOptionsNet">
+        <characteristics />
         <address>005B5DE9</address>
-        <decompile>false</decompile>
-        <CSignature>
-void GetLocalOptionsNet(
+        <CSignature>void GetLocalOptionsNet(
         const char **name, const char **kind, const char **weapon,
         const char **shield
 )</CSignature>
       </procedure>
       <procedure name="GetNextPosition">
+        <characteristics />
         <address>005B5E06</address>
-        <decompile>false</decompile>
-        <CSignature>
-void GetNextPosition(double *x, double *y, double *z)</CSignature>
+        <CSignature>void GetNextPosition(double *x, double *y, double *z)</CSignature>
       </procedure>
       <procedure name="ServerSetPyByePlayerFunc">
+        <characteristics />
         <address>005B5E74</address>
-        <decompile>false</decompile>
-        <CSignature>
-void ServerSetPyByePlayerFunc(PyObject *func)</CSignature>
+        <CSignature>void ServerSetPyByePlayerFunc(PyObject *func)</CSignature>
       </procedure>
       <procedure name="ServerSetPyGetUserString">
+        <characteristics />
         <address>005B5E85</address>
-        <decompile>false</decompile>
-        <CSignature>
-void ServerSetPyGetUserString(PyObject *func)</CSignature>
+        <CSignature>void ServerSetPyGetUserString(PyObject *func)</CSignature>
       </procedure>
       <procedure name="SendNetUserString">
+        <characteristics />
         <address>005B5E96</address>
-        <decompile>false</decompile>
-        <CSignature>
-void SendNetUserString(
+        <CSignature>void SendNetUserString(
         short kind, const char *str, int guaranteed, const char *str_unknown
 )</CSignature>
       </procedure>
       <procedure name="GetLifeAndLevel">
+        <characteristics />
         <address>005B5EB4</address>
-        <decompile>false</decompile>
-        <CSignature>
-void GetLifeAndLevel(const char *entity_name, int *energy, int *life)</CSignature>
+        <CSignature>void GetLifeAndLevel(const char *entity_name, int *energy, int *life)</CSignature>
       </procedure>
       <procedure name="ServerSetPyCreatePlayerFunc">
+        <characteristics />
         <address>005B6146</address>
-        <decompile>false</decompile>
-        <CSignature>
-void ServerSetPyCreatePlayerFunc(PyObject *func)</CSignature>
+        <CSignature>void ServerSetPyCreatePlayerFunc(PyObject *func)</CSignature>
       </procedure>
       <procedure name="ClientStartMainChar">
+        <characteristics />
         <address>005B6157</address>
-        <decompile>false</decompile>
-        <CSignature>
-boolean ClientStartMainChar(void)</CSignature>
+        <CSignature>boolean ClientStartMainChar(void)</CSignature>
       </procedure>
       <procedure name="ServerSetSendDataState">
+        <characteristics />
         <address>005B6188</address>
-        <decompile>false</decompile>
-        <CSignature>
-int ServerSetSendDataState(int state)</CSignature>
+        <CSignature>int ServerSetSendDataState(int state)</CSignature>
       </procedure>
       <procedure name="GetNetState">
+        <characteristics />
         <address>005B61B6</address>
-        <decompile>false</decompile>
-        <CSignature>
-int GetNetState(void)</CSignature>
+        <CSignature>int GetNetState(void)</CSignature>
       </procedure>
       <procedure name="ClearPools">
+        <characteristics />
         <address>005B61FD</address>
-        <decompile>false</decompile>
-        <CSignature>
-void ClearPools(void)</CSignature>
+        <CSignature>void ClearPools(void)</CSignature>
       </procedure>
       <procedure name="StartServer">
+        <characteristics />
         <address>005B637B</address>
-        <decompile>false</decompile>
-        <CSignature>
-boolean StartServer(
+        <CSignature>boolean StartServer(
         const char *game_name, const char *player_name, int max_players,
         boolean TCP
 )</CSignature>
       </procedure>
       <procedure name="BrowseSessions">
+        <characteristics />
         <address>005B63E4</address>
-        <decompile>false</decompile>
-        <CSignature>
-boolean BrowseSessions(const char *ip_address)</CSignature>
+        <CSignature>boolean BrowseSessions(const char *ip_address)</CSignature>
       </procedure>
       <procedure name="GetBrowseResult">
+        <characteristics />
         <address>005B63FE</address>
-        <decompile>false</decompile>
-        <CSignature>
-boolean GetBrowseResult(int index, bld_server_info *info)</CSignature>
+        <CSignature>boolean GetBrowseResult(int index, bld_server_info *info)</CSignature>
       </procedure>
       <procedure name="JoinSession">
+        <characteristics />
         <address>005B641C</address>
-        <decompile>false</decompile>
-        <CSignature>
-boolean JoinSession(int index, const char *player_name)</CSignature>
+        <CSignature>boolean JoinSession(int index, const char *player_name)</CSignature>
       </procedure>
       <procedure name="RestartNet">
+        <characteristics />
         <address>005B6448</address>
-        <decompile>false</decompile>
-        <CSignature>
-void RestartNet(void)</CSignature>
+        <CSignature>void RestartNet(void)</CSignature>
       </procedure>
       <procedure name="NetServerChangeLevel">
+        <characteristics />
         <address>005B6464</address>
-        <decompile>false</decompile>
-        <CSignature>
-void NetServerChangeLevel(const char *level_name)</CSignature>
+        <CSignature>void NetServerChangeLevel(const char *level_name)</CSignature>
       </procedure>
       <procedure name="NetGetTime">
+        <characteristics />
         <address>005B6475</address>
-        <decompile>false</decompile>
-        <CSignature>
-float NetGetTime(void)</CSignature>
+        <CSignature>float NetGetTime(void)</CSignature>
       </procedure>
       <procedure name="NetSetPPS">
+        <characteristics />
         <address>005B647F</address>
-        <decompile>false</decompile>
-        <CSignature>
-int NetSetPPS(int PPS)</CSignature>
+        <CSignature>int NetSetPPS(int PPS)</CSignature>
       </procedure>
       <procedure name="IsValidProtocol">
+        <characteristics />
         <address>005B6490</address>
-        <decompile>false</decompile>
-        <CSignature>
-int IsValidProtocol(int protocol)</CSignature>
+        <CSignature>int IsValidProtocol(int protocol)</CSignature>
+      </procedure>
+      <procedure name="set_dedicated_server_state">
+        <characteristics />
+        <address>005B64C0</address>
+      </procedure>
+      <procedure name="get_dedicated_server_state">
+        <characteristics />
+        <address>005B64CD</address>
+      </procedure>
+      <procedure name="get_local_options_net">
+        <characteristics />
+        <address>005B659F</address>
+      </procedure>
+      <procedure name="net_add_event_user_func">
+        <characteristics />
+        <address>005B6B35</address>
       </procedure>
       <procedure name="create_application">
         <characteristics />
@@ -3891,6 +3947,22 @@ int IsValidProtocol(int protocol)</CSignature>
       <procedure name="application_init">
         <characteristics />
         <address>005B9BC1</address>
+      </procedure>
+      <procedure name="init_win_sockets">
+        <characteristics />
+        <address>005BA50A</address>
+      </procedure>
+      <procedure name="cleanup_win_sockets">
+        <characteristics />
+        <address>005BA528</address>
+      </procedure>
+      <procedure name="start_game_spy">
+        <characteristics />
+        <address>005BA8A0</address>
+      </procedure>
+      <procedure name="loop_game_spy">
+        <characteristics />
+        <address>005BAAE6</address>
       </procedure>
       <procedure name="new">
         <characteristics>
