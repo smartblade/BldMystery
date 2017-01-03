@@ -180,6 +180,11 @@
         <characteristics />
         <address>004155D9</address>
       </procedure>
+      <procedure name="application_set_auto_gen_texture">
+        <characteristics />
+        <address>00415610</address>
+        <CSignature>int __stdcall application_set_auto_gen_texture([[reko::arg(register,"ecx")]]application_t *self, char *textureName, int textureEffect)</CSignature>
+      </procedure>
       <procedure name="application_run_python_file">
         <characteristics />
         <address>00415759</address>
@@ -694,28 +699,24 @@ int GetParticleGVal(
 )</CSignature>
       </procedure>
       <procedure name="SetTurnSpeed">
+        <characteristics />
         <address>0042A915</address>
-        <decompile>false</decompile>
-        <CSignature>
-void SetTurnSpeed(const char *race_name, double new_speed)</CSignature>
+        <CSignature>void SetTurnSpeed(const char *race_name, double new_speed)</CSignature>
       </procedure>
       <procedure name="SetAnimationFactor">
+        <characteristics />
         <address>0042A930</address>
-        <decompile>false</decompile>
-        <CSignature>
-int SetAnimationFactor(const char *mov, double new_speed_factor)</CSignature>
+        <CSignature>int SetAnimationFactor(const char *mov, double new_speed_factor)</CSignature>
       </procedure>
       <procedure name="SetAutoGenTexture">
+        <characteristics />
         <address>0042A94B</address>
-        <decompile>false</decompile>
-        <CSignature>
-int SetAutoGenTexture(const char *textureName, int textureEffect)</CSignature>
+        <CSignature>int SetAutoGenTexture(const char *textureName, int textureEffect)</CSignature>
       </procedure>
       <procedure name="GenerateEntityName">
+        <characteristics />
         <address>0042A98E</address>
-        <decompile>false</decompile>
-        <CSignature>
-const char *GenerateEntityName(void)</CSignature>
+        <CSignature>const char *GenerateEntityName(void)</CSignature>
       </procedure>
       <procedure name="AddWatchAnim">
         <address>0042A9A2</address>
@@ -1096,6 +1097,11 @@ const char *GetLastPlayerCType(void)</CSignature>
       <procedure name="game_state_set_sun">
         <characteristics />
         <address>0043C8B2</address>
+      </procedure>
+      <procedure name="game_state_generate_entity_name">
+        <characteristics />
+        <address>0043E8E8</address>
+        <CSignature>char * __stdcall game_state_generate_entity_name([[reko::arg(register,"ecx")]]bld_word32 *self, const char *prefix)</CSignature>
       </procedure>
       <procedure name="WorldToMBW">
         <address>004431DE</address>
@@ -3338,6 +3344,18 @@ int SetCharFuncProperty(int charID, int property_kind, int index, PyObject *func
         <address>00593CA6</address>
         <CSignature>void __stdcall fn00593CA6([[reko::arg(register,"ecx")]]bld_word32 self, double a, int b)</CSignature>
       </procedure>
+      <procedure name="enemy_control_get_race_by_name">
+        <characteristics />
+        <address>00594CC5</address>
+      </procedure>
+      <procedure name="enemy_control_set_turn_speed">
+        <characteristics />
+        <address>00595124</address>
+      </procedure>
+      <procedure name="enemy_control_set_animation_factor">
+        <characteristics />
+        <address>00595166</address>
+      </procedure>
       <procedure name="GetTrailByName">
         <address>00596E90</address>
         <decompile>false</decompile>
@@ -3582,6 +3600,10 @@ int IsSelected(const char *inv_name, int obj_type, int obj_index)</CSignature>
         <decompile>false</decompile>
         <CSignature>
 int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
+      </procedure>
+      <procedure name="ag_texture_init">
+        <characteristics />
+        <address>005A7550</address>
       </procedure>
       <procedure name="send_message">
         <characteristics />
