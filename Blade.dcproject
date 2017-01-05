@@ -3610,6 +3610,22 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
         <address>005AC4F0</address>
         <CSignature>char *server_info_block()</CSignature>
       </procedure>
+      <procedure name="set_message_byte">
+        <characteristics />
+        <address>005AC628</address>
+      </procedure>
+      <procedure name="append_data_to_message">
+        <characteristics />
+        <address>005AC63F</address>
+      </procedure>
+      <procedure name="remove_bytes_from_message">
+        <characteristics />
+        <address>005AC699</address>
+      </procedure>
+      <procedure name="append_byte_to_message">
+        <characteristics />
+        <address>005AC6CD</address>
+      </procedure>
       <procedure name="send_message">
         <characteristics />
         <address>005AC712</address>
@@ -3693,6 +3709,10 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
       <procedure name="person_change_anm_sound_index">
         <characteristics />
         <address>005B1221</address>
+      </procedure>
+      <procedure name="reset_client_map_name">
+        <characteristics />
+        <address>005B1431</address>
       </procedure>
       <procedure name="get_map_for_net_game">
         <characteristics />
@@ -4020,6 +4040,16 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
         <Name>application_methods</Name>
       </global>
       <global>
+        <Address>005DEDE0</Address>
+        <prim domain="SignedInt" size="4" />
+        <Name>send_data_state</Name>
+      </global>
+      <global>
+        <Address>005DF1D4</Address>
+        <type>boolean</type>
+        <Name>game_spy_support</Name>
+      </global>
+      <global>
         <Address>005DF7F8</Address>
         <ptr size="4">
           <fn>
@@ -4049,6 +4079,117 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
         <Address>007C8ED0</Address>
         <prim domain="Any" size="4" />
         <Name>sound_device</Name>
+      </global>
+      <global>
+        <Address>007E98E0</Address>
+        <arr length="4">
+          <prim domain="Character" size="1" />
+        </arr>
+        <Name>net_message</Name>
+      </global>
+      <global>
+        <Address>007EA8E8</Address>
+        <prim domain="SignedInt" size="4" />
+        <Name>message_len</Name>
+      </global>
+      <global>
+        <Address>007EA8EC</Address>
+        <prim domain="Character" size="1" />
+        <Name>server_info_block</Name>
+      </global>
+      <global>
+        <Address>007EA974</Address>
+        <prim domain="SignedInt" size="4" />
+        <Name>secure_message_len</Name>
+      </global>
+      <global>
+        <Address>007EA978</Address>
+        <prim domain="SignedInt" size="4" />
+        <Name>unsecure_message_len</Name>
+      </global>
+      <global>
+        <Address>007EC1A8</Address>
+        <arr length="192">
+          <prim domain="Real" size="8" />
+        </arr>
+        <Name>posistions</Name>
+      </global>
+      <global>
+        <Address>007EDFE0</Address>
+        <ptr size="4">
+          <type>PyObject</type>
+        </ptr>
+        <Name>py_get_user_string</Name>
+      </global>
+      <global>
+        <Address>007EDFE4</Address>
+        <ptr size="4">
+          <type>PyObject</type>
+        </ptr>
+        <Name>py_bye_player_func</Name>
+      </global>
+      <global>
+        <Address>007EDFE8</Address>
+        <ptr size="4">
+          <type>PyObject</type>
+        </ptr>
+        <Name>py_client_damage_func</Name>
+      </global>
+      <global>
+        <Address>007EDFEC</Address>
+        <ptr size="4">
+          <type>PyObject</type>
+        </ptr>
+        <Name>py_client_mutila_func</Name>
+      </global>
+      <global>
+        <Address>007EDFF0</Address>
+        <ptr size="4">
+          <type>PyObject</type>
+        </ptr>
+        <Name>py_client_sound_func</Name>
+      </global>
+      <global>
+        <Address>007EDFF4</Address>
+        <ptr size="4">
+          <type>PyObject</type>
+        </ptr>
+        <Name>py_create_player_func</Name>
+      </global>
+      <global>
+        <Address>007EE000</Address>
+        <prim domain="SignedInt" size="4" />
+        <Name>net_num_positions</Name>
+      </global>
+      <global>
+        <Address>007EE004</Address>
+        <prim domain="SignedInt" size="4" />
+        <Name>net_cur_position</Name>
+      </global>
+      <global>
+        <Address>007EE018</Address>
+        <prim domain="Character" size="1" />
+        <Name>client_map_name</Name>
+      </global>
+      <global>
+        <Address>007EE098</Address>
+        <prim domain="Character" size="1" />
+        <Name>client_id</Name>
+      </global>
+      <global>
+        <Address>007EE0B8</Address>
+        <prim domain="Character" size="1" />
+        <Name>net_game_name</Name>
+      </global>
+      <global>
+        <Address>007EE138</Address>
+        <prim domain="SignedInt" size="4" />
+        <Name>net_max_players</Name>
+      </global>
+      <global>
+        <Address>007EE13C</Address>
+        <type>boolean</type>
+        <Name>gsqr_started</Name>
       </global>
       <global>
         <Address>007EE1C0</Address>
@@ -4095,6 +4236,11 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
           </fn>
         </ptr>
         <Name>get_net_interface</Name>
+      </global>
+      <global>
+        <Address>007EE3D4</Address>
+        <type>boolean</type>
+        <Name>dedicated_server_state</Name>
       </global>
       <global>
         <Address>007EFC94</Address>
