@@ -4009,33 +4009,6 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
           </return>
         </signature>
       </call>
-      <call>
-        <address>00532E7F</address>
-        <signature stackDelta="12">
-          <return name="eax">
-            <prim domain="SignedInt" size="4" />
-            <reg>eax</reg>
-          </return>
-          <arg name="this">
-            <ptr size="4">
-              <type>application_t</type>
-            </ptr>
-            <reg>ecx</reg>
-          </arg>
-          <arg name="ptrArg04">
-            <ptr size="4">
-              <prim domain="Character" size="1" />
-            </ptr>
-            <stack />
-          </arg>
-          <arg name="ptrArg08">
-            <ptr size="4">
-              <prim domain="Character" size="1" />
-            </ptr>
-            <stack />
-          </arg>
-        </signature>
-      </call>
       <global>
         <Address>005BDC1C</Address>
         <prim domain="Any" size="4" />
