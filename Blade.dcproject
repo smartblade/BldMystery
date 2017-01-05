@@ -3930,6 +3930,15 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
         <characteristics />
         <address>005B659F</address>
       </procedure>
+      <procedure name="load_net_library">
+        <characteristics />
+        <address>005B65D2</address>
+        <CSignature>boolean load_net_library(char *libraryName)</CSignature>
+      </procedure>
+      <procedure name="free_net_library">
+        <characteristics />
+        <address>005B668D</address>
+      </procedure>
       <procedure name="net_add_event_user_func">
         <characteristics />
         <address>005B6B35</address>
@@ -4069,11 +4078,50 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
         <Name>sound_device</Name>
       </global>
       <global>
+        <Address>007EE1C0</Address>
+        <type>HMODULE</type>
+        <Name>net_library</Name>
+      </global>
+      <global>
         <Address>007EE2C4</Address>
         <ptr size="4">
           <type>bld_abstract_net</type>
         </ptr>
         <Name>net_data</Name>
+      </global>
+      <global>
+        <Address>007EE2C8</Address>
+        <ptr size="4">
+          <fn>
+            <return>
+              <void />
+            </return>
+          </fn>
+        </ptr>
+        <Name>close_connection</Name>
+      </global>
+      <global>
+        <Address>007EE350</Address>
+        <ptr size="4">
+          <fn>
+            <return>
+              <ptr size="4">
+                <type>bld_abstract_net</type>
+              </ptr>
+            </return>
+            <arg name="cb">
+              <ptr size="4">
+                <void />
+              </ptr>
+            </arg>
+            <arg name="module">
+              <ptr size="4">
+                <void />
+              </ptr>
+            </arg>
+          </fn>
+        </ptr>
+        <Name>get_net_interface</Name>
       </global>
       <global>
         <Address>007EFC94</Address>
