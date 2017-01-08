@@ -94,6 +94,10 @@
         <address>004120D3</address>
         <CSignature>int application_go_to_time([[reko::arg(register,"ecx")]]application_t *self, double time)</CSignature>
       </procedure>
+      <procedure name="application_get_time">
+        <characteristics />
+        <address>0041211C</address>
+      </procedure>
       <procedure name="application_stop_time">
         <characteristics />
         <address>00412138</address>
