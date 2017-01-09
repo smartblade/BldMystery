@@ -28,13 +28,16 @@
           </fn>
         </ptr>
       </field>
-      <field offset="8" name="unknown008">
+      <field offset="8" name="raster_unknown008">
         <ptr>
           <fn convention="__thiscall">
             <type>B_3DRasterDevice</type>
             <return>
               <void />
             </return>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
           </fn>
         </ptr>
       </field>
@@ -179,13 +182,22 @@
           </fn>
         </ptr>
       </field>
-      <field offset="60" name="unknown03C">
+      <field offset="60" name="raster_unknown03C">
         <ptr>
           <fn convention="__thiscall">
             <type>B_3DRasterDevice</type>
             <return>
               <void />
             </return>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
           </fn>
         </ptr>
       </field>
@@ -204,13 +216,16 @@
           </fn>
         </ptr>
       </field>
-      <field offset="68" name="unknown044">
+      <field offset="68" name="raster_unknown044">
         <ptr>
           <fn convention="__thiscall">
             <type>B_3DRasterDevice</type>
             <return>
               <void />
             </return>
+            <arg name="unknown_B_Name">
+              <prim domain="Any" size="4" />
+            </arg>
           </fn>
         </ptr>
       </field>
@@ -239,7 +254,7 @@
           </fn>
         </ptr>
       </field>
-      <field offset="80" name="unknown050">
+      <field offset="80" name="raster_unknown050">
         <ptr>
           <fn convention="__thiscall">
             <type>B_3DRasterDevice</type>
@@ -287,13 +302,22 @@
           </fn>
         </ptr>
       </field>
-      <field offset="92" name="unknown05C">
+      <field offset="92" name="raster_unknown05C">
         <ptr>
           <fn convention="__thiscall">
             <type>B_3DRasterDevice</type>
             <return>
               <void />
             </return>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
           </fn>
         </ptr>
       </field>
@@ -387,7 +411,7 @@
           </fn>
         </ptr>
       </field>
-      <field offset="132" name="unknown084">
+      <field offset="132" name="raster_unknown084">
         <ptr>
           <fn convention="__thiscall">
             <type>B_3DRasterDevice</type>
@@ -427,17 +451,20 @@
           </fn>
         </ptr>
       </field>
-      <field offset="148" name="unknown094">
+      <field offset="148" name="raster_unknown094">
         <ptr>
           <fn convention="__thiscall">
             <type>B_3DRasterDevice</type>
             <return>
               <void />
             </return>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
           </fn>
         </ptr>
       </field>
-      <field offset="152" name="unknown098">
+      <field offset="152" name="raster_unknown098">
         <ptr>
           <fn convention="__thiscall">
             <type>B_3DRasterDevice</type>
@@ -466,7 +493,7 @@
           </fn>
         </ptr>
       </field>
-      <field offset="160" name="unknown0A0">
+      <field offset="160" name="raster_unknown0A0">
         <ptr>
           <fn convention="__thiscall">
             <type>B_3DRasterDevice</type>
@@ -690,13 +717,22 @@
           </fn>
         </ptr>
       </field>
-      <field offset="240" name="unknown0F0">
+      <field offset="240" name="raster_unknown0F0">
         <ptr>
           <fn convention="__thiscall">
             <type>B_3DRasterDevice</type>
             <return>
               <void />
             </return>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
           </fn>
         </ptr>
       </field>
@@ -710,13 +746,16 @@
           </fn>
         </ptr>
       </field>
-      <field offset="248" name="unknown0F8">
+      <field offset="248" name="raster_unknown0F8">
         <ptr>
           <fn convention="__thiscall">
             <type>B_3DRasterDevice</type>
             <return>
               <void />
             </return>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
           </fn>
         </ptr>
       </field>
@@ -790,23 +829,38 @@
           </fn>
         </ptr>
       </field>
-      <field offset="272" name="unknown110">
+      <field offset="272" name="raster_unknown110">
         <ptr>
           <fn convention="__thiscall">
             <type>B_3DRasterDevice</type>
             <return>
               <void />
             </return>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
           </fn>
         </ptr>
       </field>
-      <field offset="276" name="unknown114">
+      <field offset="276" name="raster_unknown114">
         <ptr>
           <fn convention="__thiscall">
             <type>B_3DRasterDevice</type>
             <return>
               <void />
             </return>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
           </fn>
         </ptr>
       </field>
@@ -850,12 +904,12 @@
           </fn>
         </ptr>
       </field>
-      <field offset="296" name="unknown128">
+      <field offset="296" name="raster_unknown128">
         <ptr>
           <fn convention="__thiscall">
             <type>B_3DRasterDevice</type>
             <return>
-              <void />
+              <prim domain="Any" size="4" />
             </return>
           </fn>
         </ptr>
@@ -945,7 +999,7 @@
           </fn>
         </ptr>
       </field>
-      <field offset="320" name="unknown140">
+      <field offset="320" name="raster_unknown140">
         <ptr>
           <fn convention="__thiscall">
             <type>B_3DRasterDevice</type>
@@ -955,7 +1009,7 @@
           </fn>
         </ptr>
       </field>
-      <field offset="324" name="unknown144">
+      <field offset="324" name="raster_unknown144">
         <ptr>
           <fn convention="__thiscall">
             <type>B_3DRasterDevice</type>
@@ -1923,4 +1977,9 @@
       </field>
     </struct>
   </Types>
+  <global name="?B_3D_raster_device@@3PAVB_3DRasterDevice@@A">
+    <ptr>
+      <type>B_3DRasterDevice</type>
+    </ptr>
+  </global>
 </library>
