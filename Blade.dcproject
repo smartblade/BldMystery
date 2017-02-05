@@ -4011,6 +4011,12 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
         <decompile>false</decompile>
         <CSignature>void delete(void *ptr);</CSignature>
       </procedure>
+      <procedure name="shi_free">
+        <characteristics />
+        <address>005BBD83</address>
+        <decompile>false</decompile>
+        <CSignature>void shi_free(void *)</CSignature>
+      </procedure>
       <procedure name="allocMemInStack">
         <characteristics />
         <address>005BC260</address>
