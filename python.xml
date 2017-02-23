@@ -6320,4 +6320,13 @@
   <global name="_Py_NoneStruct">
     <type>PyObject</type>
   </global>
+  <global name="PyInt_Type">
+    <type>PyTypeObject</type>
+  </global>
+  <global name="PyString_Type">
+    <type>PyTypeObject</type>
+  </global>
+  <global name="PyTuple_Type">
+    <type>PyTypeObject</type>
+  </global>
 </library>
