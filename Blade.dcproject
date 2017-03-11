@@ -48,9 +48,10 @@
         <characteristics />
         <address>00410CC2</address>
       </procedure>
-      <procedure name="initRaster">
+      <procedure name="win_application_init_raster">
         <characteristics />
         <address>00410DC2</address>
+        <CSignature>int win_application_init_raster([[reko::arg(register,"ecx")]]application_t *self, char *libName)</CSignature>
       </procedure>
       <procedure name="application_init3">
         <characteristics />

@@ -309,6 +309,38 @@
       <field offset="1584" name="unknown630">
         <prim domain="Any" size="4" />
       </field>
+      <field offset="1904" name="rasterLibName">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="1912" name="startPath">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="1920" name="destroyRasterCB">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="1924" name="createRasterCB">
+        <ptr size="4">
+          <fn>
+            <return>
+              <ptr size="4">
+                <type>B_3DRasterDevice</type>
+              </ptr>
+            </return>
+            <arg name="window">
+              <prim domain="Any" size="4" />
+            </arg>
+            <arg name="module">
+              <prim domain="Any" size="4" />
+            </arg>
+            <arg name="raterLibrary">
+              <prim domain="Any" size="4" />
+            </arg>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="1928" name="rasterLibrary">
+        <prim domain="Any" size="4" />
+      </field>
       <field offset="1932" name="cmdLine">
         <prim domain="Any" size="4" />
       </field>
