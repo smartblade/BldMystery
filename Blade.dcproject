@@ -15,34 +15,36 @@
         <characteristics />
         <address>0040E8E6</address>
       </procedure>
-      <procedure name="application_init2">
+      <procedure name="win_application_init">
         <characteristics />
         <address>0040F040</address>
       </procedure>
-      <procedure name="application_start">
+      <procedure name="win_application_start">
         <characteristics />
         <address>0040F4A4</address>
-        <CSignature>boolean application_start([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
+        <CSignature>boolean win_application_start([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
-      <procedure name="application_load_level">
+      <procedure name="win_application_load_level">
+        <characteristics />
         <address>0041009D</address>
       </procedure>
-      <procedure name="application_wait_for_event">
+      <procedure name="win_application_wait_for_event">
+        <characteristics />
         <address>00410305</address>
       </procedure>
-      <procedure name="application_read_arguments">
+      <procedure name="win_application_read_arguments">
         <characteristics />
         <address>004103D7</address>
-        <CSignature>void application_read_arguments([[reko::arg(register,"ecx")]]application_t *self, char *arguments)</CSignature>
+        <CSignature>void win_application_read_arguments([[reko::arg(register,"ecx")]]application_t *self, char *arguments)</CSignature>
       </procedure>
       <procedure name="win_application_read_level">
         <characteristics />
         <address>004106F2</address>
       </procedure>
-      <procedure name="application_exit_with_error">
+      <procedure name="win_application_exit_with_error">
         <characteristics />
         <address>00410B53</address>
-        <CSignature>void application_exit_with_error([[reko::arg(register,"ecx")]]application_t *self, char *title, char* message)</CSignature>
+        <CSignature>void win_application_exit_with_error([[reko::arg(register,"ecx")]]application_t *self, char *title, char* message)</CSignature>
       </procedure>
       <procedure name="WinMain">
         <characteristics />
@@ -193,6 +195,11 @@
       <procedure name="application_run_python_file">
         <characteristics />
         <address>00415759</address>
+      </procedure>
+      <procedure name="application_read_arguments">
+        <characteristics />
+        <address>00415811</address>
+        <CSignature>void application_read_arguments([[reko::arg(register,"ecx")]]application_t *self, char *arguments)</CSignature>
       </procedure>
       <procedure name="application_out_sound">
         <characteristics />

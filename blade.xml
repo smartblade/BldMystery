@@ -8,6 +8,29 @@
       <struct name="application_t" />
     </typedef>
     <struct name="application_vtbl">
+      <field offset="4" name="string_split">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <void />
+            </return>
+            <arg>
+              <ptr size="4">
+                 <prim domain="Character" size="1" />
+              </ptr>
+            </arg>
+            <arg>
+              <ptr size="4">
+                 <prim domain="Character" size="1" />
+              </ptr>
+            </arg>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
+          </fn>
+        </ptr>
+      </field>
       <field offset="12" name="unknown_method00C">
         <ptr size="4">
           <fn convention="__thiscall">
@@ -222,13 +245,22 @@
           <type>PyObject</type>
         </ptr>
       </field>
+      <field offset="56" name="argumentsVtbl">
+        <prim domain="Any" size="4" />
+      </field>
       <field offset="60" name="arguments">
         <prim domain="Any" size="4" />
       </field>
       <field offset="64" name="numArguments">
         <prim domain="SignedInt" size="4" />
       </field>
-      <field offset="68" name="unknown044">
+      <field offset="68" name="argumentsInc">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="72" name="argumentsAlloc">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="76" name="argumentsUnknown04C">
         <prim domain="Any" size="4" />
       </field>
       <field offset="80" name="consoleChannel">
