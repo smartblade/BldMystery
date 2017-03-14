@@ -28,7 +28,7 @@
         <characteristics />
         <address>0041009D</address>
       </procedure>
-      <procedure name="win_application_wait_for_event">
+      <procedure name="win_application_process_events">
         <characteristics />
         <address>00410305</address>
       </procedure>
@@ -55,9 +55,13 @@
         <address>00410DC2</address>
         <CSignature>int win_application_init_raster([[reko::arg(register,"ecx")]]application_t *self, char *libName)</CSignature>
       </procedure>
-      <procedure name="application_init3">
+      <procedure name="application_init">
         <characteristics />
         <address>004113CE</address>
+      </procedure>
+      <procedure name="application_start">
+        <characteristics />
+        <address>00411C2E</address>
       </procedure>
       <procedure name="application_init_python_path">
         <characteristics />
@@ -117,7 +121,7 @@
         <characteristics />
         <address>0041218C</address>
       </procedure>
-      <procedure name="application_process_event">
+      <procedure name="application_process_events">
         <characteristics />
         <address>004121CE</address>
       </procedure>
@@ -126,7 +130,7 @@
         <address>0041316C</address>
         <CSignature>void application_mark_level_to_load([[reko::arg(register,"ecx")]]application_t *self, char *map)</CSignature>
       </procedure>
-      <procedure name="application_load_level_script">
+      <procedure name="application_load_level">
         <characteristics />
         <address>00413256</address>
       </procedure>
@@ -3980,12 +3984,12 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
         <address>005B9B60</address>
         <CSignature>application_t *create_application(void *module, int nCmdShow, char *cmdLine)</CSignature>
       </procedure>
-      <procedure name="GetApplication">
+      <procedure name="get_application">
         <characteristics />
         <address>005B9BB7</address>
-        <CSignature>application_t *GetApplication()</CSignature>
+        <CSignature>application_t *get_application()</CSignature>
       </procedure>
-      <procedure name="application_init">
+      <procedure name="application_impl_init">
         <characteristics />
         <address>005B9BC1</address>
       </procedure>
