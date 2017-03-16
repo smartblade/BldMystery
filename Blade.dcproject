@@ -19,6 +19,10 @@
         <characteristics />
         <address>0040F040</address>
       </procedure>
+      <procedure name="win_application_clear">
+        <characteristics />
+        <address>0040F1B4</address>
+      </procedure>
       <procedure name="win_application_start">
         <characteristics />
         <address>0040F4A4</address>
@@ -31,6 +35,10 @@
       <procedure name="win_application_process_events">
         <characteristics />
         <address>00410305</address>
+      </procedure>
+      <procedure name="win_application_end">
+        <characteristics />
+        <address>00410384</address>
       </procedure>
       <procedure name="win_application_read_arguments">
         <characteristics />
@@ -55,9 +63,16 @@
         <address>00410DC2</address>
         <CSignature>int win_application_init_raster([[reko::arg(register,"ecx")]]application_t *self, char *libName)</CSignature>
       </procedure>
+      <procedure name="win_application_delete">
+        <address>00411140</address>
+      </procedure>
       <procedure name="application_init">
         <characteristics />
         <address>004113CE</address>
+      </procedure>
+      <procedure name="application_clear">
+        <characteristics />
+        <address>00411843</address>
       </procedure>
       <procedure name="application_start">
         <characteristics />
@@ -124,6 +139,10 @@
       <procedure name="application_process_events">
         <characteristics />
         <address>004121CE</address>
+      </procedure>
+      <procedure name="application_end">
+        <characteristics />
+        <address>00413121</address>
       </procedure>
       <procedure name="application_mark_level_to_load">
         <characteristics />
@@ -235,6 +254,9 @@
       <procedure name="application_load_world">
         <characteristics />
         <address>00416C6F</address>
+      </procedure>
+      <procedure name="application_delete">
+        <address>00417470</address>
       </procedure>
       <procedure name="application_find_action_cb">
         <characteristics />
@@ -3992,6 +4014,20 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
       <procedure name="application_impl_init">
         <characteristics />
         <address>005B9BC1</address>
+      </procedure>
+      <procedure name="application_impl_start">
+        <address>005B9BF0</address>
+      </procedure>
+      <procedure name="application_impl_process_events">
+        <address>005B9C03</address>
+      </procedure>
+      <procedure name="application_impl_end">
+        <characteristics />
+        <address>005B9C16</address>
+      </procedure>
+      <procedure name="application_impl_delete">
+        <characteristics />
+        <address>005B9C30</address>
       </procedure>
       <procedure name="init_win_sockets">
         <characteristics />
