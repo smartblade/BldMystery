@@ -22,6 +22,7 @@
       <procedure name="win_application_clear">
         <characteristics />
         <address>0040F1B4</address>
+        <CSignature>void win_application_clear([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
       <procedure name="win_application_start">
         <characteristics />

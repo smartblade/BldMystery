@@ -28,4 +28,14 @@
       </arg>
     </signature>
   </procedure>
+  <procedure name="DestroyConsole">
+    <signature>
+      <return>
+        <void />
+      </return>
+      <arg>
+        <prim domain="Any" size="4" />
+      </arg>
+    </signature>
+  </procedure>
 </library>

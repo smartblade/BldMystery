@@ -369,7 +369,18 @@
         <prim domain="Any" size="4" />
       </field>
       <field offset="1920" name="destroyRasterCB">
-        <prim domain="Any" size="4" />
+        <ptr size="4">
+          <fn>
+            <return>
+              <void />
+            </return>
+            <arg name="raster">
+              <ptr size="4">
+                <type>B_3DRasterDevice</type>
+              </ptr>
+            </arg>
+          </fn>
+        </ptr>
       </field>
       <field offset="1924" name="createRasterCB">
         <ptr size="4">
@@ -385,7 +396,7 @@
             <arg name="module">
               <prim domain="Any" size="4" />
             </arg>
-            <arg name="raterLibrary">
+            <arg name="rasterLibrary">
               <prim domain="Any" size="4" />
             </arg>
           </fn>
