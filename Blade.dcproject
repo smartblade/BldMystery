@@ -74,6 +74,7 @@
       <procedure name="application_clear">
         <characteristics />
         <address>00411843</address>
+        <CSignature>void application_clear([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
       <procedure name="application_start">
         <characteristics />
