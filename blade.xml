@@ -8,6 +8,21 @@
       <struct name="application_t" />
     </typedef>
     <struct name="application_vtbl">
+      <field offset="0" name="read_arguments">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <void />
+            </return>
+            <arg>
+              <ptr size="4">
+                 <prim domain="Character" size="1" />
+              </ptr>
+            </arg>
+          </fn>
+        </ptr>
+      </field>
       <field offset="4" name="string_split">
         <ptr size="4">
           <fn convention="__thiscall">
