@@ -4062,6 +4062,12 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
         <decompile>false</decompile>
         <CSignature>void delete(void *ptr);</CSignature>
       </procedure>
+      <procedure name="shi_malloc">
+        <characteristics />
+        <address>005BBD74</address>
+        <decompile>false</decompile>
+        <CSignature>void *shi_malloc(size_t size)</CSignature>
+      </procedure>
       <procedure name="shi_free">
         <characteristics />
         <address>005BBD83</address>
@@ -4109,6 +4115,22 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
         <Address>005DF1D4</Address>
         <type>boolean</type>
         <Name>game_spy_support</Name>
+      </global>
+      <global>
+        <Address>005DF7EC</Address>
+        <ptr size="4">
+          <fn>
+            <return>
+              <ptr size="4">
+                <void />
+              </ptr>
+            </return>
+            <arg name="size">
+              <type>size_t</type>
+            </arg>
+          </fn>
+        </ptr>
+        <Name>malloc</Name>
       </global>
       <global>
         <Address>005DF7F8</Address>
