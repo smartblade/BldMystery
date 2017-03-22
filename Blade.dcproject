@@ -84,6 +84,7 @@
       <procedure name="application_init_python_path">
         <characteristics />
         <address>00411C54</address>
+        <CSignature>boolean application_init_python_path([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
       <procedure name="application_set_listener_mode">
         <characteristics />
