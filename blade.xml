@@ -480,6 +480,9 @@
         <prim domain="UnsignedInt" size="1" />
       </field>
     </struct>
+    <typedef name="clock_t">
+      <prim domain="Any" size="4" />
+    </typedef>
     <typedef name="entity_t">
       <prim domain="Any" size="4" />
     </typedef>

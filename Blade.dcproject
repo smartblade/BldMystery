@@ -51,7 +51,9 @@
         <address>004106F2</address>
       </procedure>
       <procedure name="win_application_exit_with_error">
-        <characteristics />
+        <characteristics>
+          <terminates>true</terminates>
+        </characteristics>
         <address>00410B53</address>
         <CSignature>void __stdcall win_application_exit_with_error([[reko::arg(register,"ecx")]]application_t *self, char *title, char* message)</CSignature>
       </procedure>
@@ -1871,6 +1873,11 @@ int loadSoundDataBase(const char *file_name)</CSignature>
         <decompile>false</decompile>
         <CSignature>
 int saveSoundDataBase(const char *file_name)</CSignature>
+      </procedure>
+      <procedure name="clock_init">
+        <characteristics />
+        <address>004CC1C0</address>
+        <CSignature>clock_t * __stdcall clock_init([[reko::arg(register,"ecx")]]clock_t *self)</CSignature>
       </procedure>
       <procedure name="fn004CD5EC">
         <characteristics />
