@@ -22,12 +22,12 @@
       <procedure name="win_application_clear">
         <characteristics />
         <address>0040F1B4</address>
-        <CSignature>void win_application_clear([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
+        <CSignature>void __stdcall win_application_clear([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
       <procedure name="win_application_start">
         <characteristics />
         <address>0040F4A4</address>
-        <CSignature>boolean win_application_start([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
+        <CSignature>boolean __stdcall win_application_start([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
       <procedure name="win_application_load_level">
         <characteristics />
@@ -44,7 +44,7 @@
       <procedure name="win_application_read_arguments">
         <characteristics />
         <address>004103D7</address>
-        <CSignature>void win_application_read_arguments([[reko::arg(register,"ecx")]]application_t *self, char *arguments)</CSignature>
+        <CSignature>void __stdcall win_application_read_arguments([[reko::arg(register,"ecx")]]application_t *self, char *arguments)</CSignature>
       </procedure>
       <procedure name="win_application_read_level">
         <characteristics />
@@ -53,7 +53,7 @@
       <procedure name="win_application_exit_with_error">
         <characteristics />
         <address>00410B53</address>
-        <CSignature>void win_application_exit_with_error([[reko::arg(register,"ecx")]]application_t *self, char *title, char* message)</CSignature>
+        <CSignature>void __stdcall win_application_exit_with_error([[reko::arg(register,"ecx")]]application_t *self, char *title, char* message)</CSignature>
       </procedure>
       <procedure name="WinMain">
         <characteristics />
@@ -62,7 +62,7 @@
       <procedure name="win_application_init_raster">
         <characteristics />
         <address>00410DC2</address>
-        <CSignature>int win_application_init_raster([[reko::arg(register,"ecx")]]application_t *self, char *libName)</CSignature>
+        <CSignature>int __stdcall win_application_init_raster([[reko::arg(register,"ecx")]]application_t *self, char *libName)</CSignature>
       </procedure>
       <procedure name="win_application_delete">
         <address>00411140</address>
@@ -74,17 +74,17 @@
       <procedure name="application_clear">
         <characteristics />
         <address>00411843</address>
-        <CSignature>void application_clear([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
+        <CSignature>void __stdcall application_clear([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
       <procedure name="application_start">
         <characteristics />
         <address>00411C2E</address>
-        <CSignature>boolean application_start([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
+        <CSignature>boolean __stdcall application_start([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
       <procedure name="application_init_python_path">
         <characteristics />
         <address>00411C54</address>
-        <CSignature>boolean application_init_python_path([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
+        <CSignature>boolean __stdcall application_init_python_path([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
       <procedure name="application_set_listener_mode">
         <characteristics />
@@ -113,12 +113,12 @@
       <procedure name="application_set_time">
         <characteristics />
         <address>0041208A</address>
-        <CSignature>int application_set_time([[reko::arg(register,"ecx")]]application_t *self, double time)</CSignature>
+        <CSignature>int __stdcall application_set_time([[reko::arg(register,"ecx")]]application_t *self, double time)</CSignature>
       </procedure>
       <procedure name="application_go_to_time">
         <characteristics />
         <address>004120D3</address>
-        <CSignature>int application_go_to_time([[reko::arg(register,"ecx")]]application_t *self, double time)</CSignature>
+        <CSignature>int __stdcall application_go_to_time([[reko::arg(register,"ecx")]]application_t *self, double time)</CSignature>
       </procedure>
       <procedure name="application_get_time">
         <characteristics />
@@ -151,7 +151,7 @@
       <procedure name="application_mark_level_to_load">
         <characteristics />
         <address>0041316C</address>
-        <CSignature>void application_mark_level_to_load([[reko::arg(register,"ecx")]]application_t *self, char *map)</CSignature>
+        <CSignature>void __stdcall application_mark_level_to_load([[reko::arg(register,"ecx")]]application_t *self, char *map)</CSignature>
       </procedure>
       <procedure name="application_load_level">
         <characteristics />
@@ -234,7 +234,7 @@
       <procedure name="application_read_arguments">
         <characteristics />
         <address>00415811</address>
-        <CSignature>void application_read_arguments([[reko::arg(register,"ecx")]]application_t *self, char *arguments)</CSignature>
+        <CSignature>void __stdcall application_read_arguments([[reko::arg(register,"ecx")]]application_t *self, char *arguments)</CSignature>
       </procedure>
       <procedure name="application_out_sound">
         <characteristics />
