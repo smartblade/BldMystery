@@ -311,11 +311,23 @@
       <field offset="444" name="unknown1BC">
         <prim domain="Any" size="4" />
       </field>
+      <field offset="1489" name="bUnknown5D1">
+        <prim domain="UnsignedInt" size="1" />
+      </field>
       <field offset="1490" name="noSleep">
         <prim domain="UnsignedInt" size="1" />
       </field>
-      <field offset="1491" name="unknown5D3">
+      <field offset="1491" name="bUnknown5D3">
         <prim domain="UnsignedInt" size="1" />
+      </field>
+      <field offset="1492" name="bUnknown5D4">
+        <prim domain="UnsignedInt" size="1" />
+      </field>
+      <field offset="1496" name="fSaveToBmp">
+        <prim domain="Real" size="4" />
+      </field>
+      <field offset="1500" name="numSavedBMPs">
+        <prim domain="SignedInt" size="4" />
       </field>
       <field offset="1512" name="commandLine">
         <ptr size="4">
@@ -376,6 +388,17 @@
       </field>
       <field offset="1584" name="unknown630">
         <prim domain="Any" size="4" />
+      </field>
+      <field offset="1640" name="screenShotFileName">
+        <arr length="256">
+          <prim domain="Character" size="1" />
+        </arr>
+      </field>
+      <field offset="1896" name="screenShotWidth">
+        <prim domain="UnsignedInt" size="4" />
+      </field>
+      <field offset="1900" name="screenShotHeight">
+        <prim domain="UnsignedInt" size="4" />
       </field>
       <field offset="1904" name="rasterLibName">
         <prim domain="Any" size="4" />

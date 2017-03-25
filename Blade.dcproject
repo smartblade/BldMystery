@@ -157,6 +157,14 @@
         <characteristics />
         <address>00413256</address>
       </procedure>
+      <procedure name="application_save_screen_shot">
+        <characteristics />
+        <address>00413840</address>
+      </procedure>
+      <procedure name="application_take_snap_shot">
+        <characteristics />
+        <address>004138A0</address>
+      </procedure>
       <procedure name="application_read_level">
         <characteristics />
         <address>004138B8</address>
@@ -1022,10 +1030,9 @@ int GetWindowId(void)</CSignature>
 int GetProgramId(void)</CSignature>
       </procedure>
       <procedure name="TakeSnapShot">
+        <characteristics />
         <address>0042C06A</address>
-        <decompile>false</decompile>
-        <CSignature>
-void TakeSnapShot(void)</CSignature>
+        <CSignature>void TakeSnapShot(void)</CSignature>
       </procedure>
       <procedure name="nSectors">
         <address>0042C0A5</address>
@@ -3209,10 +3216,9 @@ double GetPSeconds(void)</CSignature>
 void BodInspector(void)</CSignature>
       </procedure>
       <procedure name="SaveScreeShoot">
+        <characteristics />
         <address>0051D6DE</address>
-        <decompile>false</decompile>
-        <CSignature>
-void SaveScreeShoot(const char *filename, int width, int height)</CSignature>
+        <CSignature>void SaveScreeShoot(const char *filename, int width, int height)</CSignature>
       </procedure>
       <procedure name="CleanArea">
         <address>0051D6FB</address>
@@ -4097,6 +4103,16 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
           </return>
         </signature>
       </call>
+      <global>
+        <Address>005BD738</Address>
+        <prim domain="Real" size="4" />
+        <Name>fVal0</Name>
+      </global>
+      <global>
+        <Address>005BD778</Address>
+        <prim domain="Real" size="4" />
+        <Name>fVal1</Name>
+      </global>
       <global>
         <Address>005BDC1C</Address>
         <prim domain="Any" size="4" />
