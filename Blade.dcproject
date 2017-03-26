@@ -145,6 +145,7 @@
       <procedure name="application_process_events">
         <characteristics />
         <address>004121CE</address>
+        <CSignature>boolean __stdcall application_process_events([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
       <procedure name="application_end">
         <characteristics />
@@ -154,6 +155,11 @@
         <characteristics />
         <address>0041316C</address>
         <CSignature>void __stdcall application_mark_level_to_load([[reko::arg(register,"ecx")]]application_t *self, char *map)</CSignature>
+      </procedure>
+      <procedure name="application_close_level">
+        <characteristics />
+        <address>004131BB</address>
+        <CSignature>void __stdcall application_close_level([[reko::arg(register,"ecx")]]application_t *self, char *command, char *map)</CSignature>
       </procedure>
       <procedure name="application_load_level">
         <characteristics />
@@ -171,6 +177,11 @@
         <characteristics />
         <address>004138B8</address>
         <CSignature>void __stdcall application_read_level([[reko::arg(register,"ecx")]]application_t *self, const char *file_name)</CSignature>
+      </procedure>
+      <procedure name="application_clear_level">
+        <characteristics />
+        <address>0041412A</address>
+        <CSignature>void __stdcall application_clear_level([[reko::arg(register,"ecx")]]application_t *self, int flag)</CSignature>
       </procedure>
       <procedure name="application_prepare_level">
         <characteristics />

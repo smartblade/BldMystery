@@ -177,6 +177,19 @@
       <field offset="64" name="unknown_method040">
           <prim domain="Any" size="4" />
       </field>
+      <field offset="72" name="clear_level">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <void />
+            </return>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
+          </fn>
+        </ptr>
+      </field>
       <field offset="80" name="input">
         <ptr size="4">
           <fn convention="__thiscall">
@@ -337,7 +350,17 @@
       <field offset="1516" name="mode">
         <prim domain="Any" size="4" />
       </field>
-      <field offset="1524" name="map_to_load">
+      <field offset="1524" name="mapToLoad">
+        <ptr size="4">
+          <prim domain="Character" size="1" />
+        </ptr>
+      </field>
+      <field offset="1528" name="newLevelCommand">
+        <ptr size="4">
+          <prim domain="Character" size="1" />
+        </ptr>
+      </field>
+      <field offset="1532" name="newLevelMap">
         <ptr size="4">
           <prim domain="Character" size="1" />
         </ptr>
@@ -347,7 +370,7 @@
           <prim domain="Character" size="1" />
         </ptr>
       </field>
-      <field offset="1540" name="unknown604">
+      <field offset="1540" name="needClearLevel">
         <prim domain="UnsignedInt" size="1" />
       </field>
       <field offset="1541" name="unknown605">
