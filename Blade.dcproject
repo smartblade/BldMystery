@@ -24,6 +24,10 @@
         <address>0040F1B4</address>
         <CSignature>void __stdcall win_application_clear([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
+      <procedure name="win_application_process_message">
+        <characteristics />
+        <address>0040F388</address>
+      </procedure>
       <procedure name="win_application_start">
         <characteristics />
         <address>0040F4A4</address>
@@ -41,6 +45,9 @@
         <characteristics />
         <address>00410384</address>
       </procedure>
+      <procedure name="win_application_quit">
+        <address>004103A1</address>
+      </procedure>
       <procedure name="win_application_read_arguments">
         <characteristics />
         <address>004103D7</address>
@@ -56,6 +63,10 @@
         </characteristics>
         <address>00410B53</address>
         <CSignature>void __stdcall win_application_exit_with_error([[reko::arg(register,"ecx")]]application_t *self, char *title, char* message)</CSignature>
+      </procedure>
+      <procedure name="win_application_input">
+        <characteristics />
+        <address>00410C3D</address>
       </procedure>
       <procedure name="WinMain">
         <characteristics />
@@ -177,6 +188,9 @@
         <characteristics />
         <address>004138B8</address>
         <CSignature>void __stdcall application_read_level([[reko::arg(register,"ecx")]]application_t *self, const char *file_name)</CSignature>
+      </procedure>
+      <procedure name="application_00413EE1">
+        <address>00413EE1</address>
       </procedure>
       <procedure name="application_clear_level">
         <characteristics />

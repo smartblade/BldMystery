@@ -46,7 +46,7 @@
           </fn>
         </ptr>
       </field>
-      <field offset="12" name="unknown_method00C">
+      <field offset="12" name="process_message">
         <ptr size="4">
           <fn convention="__thiscall">
             <type>application_t</type>
@@ -175,7 +175,14 @@
         </ptr>
       </field>
       <field offset="64" name="unknown_method040">
-          <prim domain="Any" size="4" />
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <void />
+            </return>
+          </fn>
+        </ptr>
       </field>
       <field offset="72" name="clear_level">
         <ptr size="4">
