@@ -34,9 +34,19 @@
         <address>0040F1B4</address>
         <CSignature>void __stdcall win_application_clear([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
+      <procedure name="win_application_init_window">
+        <characteristics />
+        <address>0040F256</address>
+        <CSignature>boolean __stdcall win_application_init_window([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
+      </procedure>
       <procedure name="win_application_process_message">
         <characteristics />
         <address>0040F388</address>
+      </procedure>
+      <procedure name="win_application_create_window">
+        <characteristics />
+        <address>0040F403</address>
+        <CSignature>HWND  __stdcall win_application_create_window([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
       <procedure name="win_application_start">
         <characteristics />
@@ -89,6 +99,11 @@
         <characteristics />
         <address>00410DC2</address>
         <CSignature>int __stdcall win_application_init_raster([[reko::arg(register,"ecx")]]application_t *self, char *libName)</CSignature>
+      </procedure>
+      <procedure name="win_application_set_current_map">
+        <characteristics />
+        <address>00410F6F</address>
+        <CSignature>int __stdcall win_application_set_current_map([[reko::arg(register,"ecx")]]application_t *self, char *map)</CSignature>
       </procedure>
       <procedure name="win_application_delete">
         <address>00411140</address>

@@ -249,12 +249,22 @@
           </fn>
         </ptr>
       </field>
-      <field offset="108" name="init">
+      <field offset="108" name="init_window">
         <ptr size="4">
           <fn convention="__thiscall">
             <type>application_t</type>
             <return>
               <prim domain="UnsignedInt" size="1" />
+            </return>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="116" name="create_window">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <prim domain="Any" size="4" />
             </return>
           </fn>
         </ptr>
@@ -473,7 +483,37 @@
       <field offset="1928" name="rasterLibrary">
         <prim domain="Any" size="4" />
       </field>
-      <field offset="1932" name="cmdLine">
+      <field offset="1932" name="winProc">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="1936" name="windowClass_style">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="1940" name="windowClass_lpfnWndProc">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="1944" name="windowClass_cbClsExtra">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="1948" name="windowClass_cbWndExtra">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="1952" name="windowClass_hInstance">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="1956" name="windowClass_hIcon">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="1960" name="windowClass_hCursor">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="1964" name="windowClass_hbrBackground">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="1968" name="windowClass_lpszMenuName">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="1972" name="windowClass_lpszClassName">
         <prim domain="Any" size="4" />
       </field>
       <field offset="1976" name="window">
