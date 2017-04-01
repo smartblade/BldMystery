@@ -11,6 +11,16 @@
     <global-vars>..\Bin\Blade_patched.globals.c</global-vars>
     <user>
       <processor />
+      <procedure name="show_input_dialog">
+        <characteristics />
+        <address>0040CF10</address>
+        <CSignature>char *show_input_dialog(HINSTANCE module, HWND window, char * text)</CSignature>
+      </procedure>
+      <procedure name="input_dialog_proc">
+        <characteristics />
+        <address>0040CF49</address>
+        <CSignature>INT_PTR input_dialog_proc( HWND hwndDlg, UINT uMsg, WPARAM wParam,  LPARAM lParam)</CSignature>
+      </procedure>
       <procedure name="startGameLauncher">
         <characteristics />
         <address>0040E8E6</address>
@@ -67,6 +77,7 @@
       <procedure name="win_application_input">
         <characteristics />
         <address>00410C3D</address>
+        <CSignature>char * __stdcall win_application_input([[reko::arg(register,"ecx")]]application_t *self, char *text)</CSignature>
       </procedure>
       <procedure name="WinMain">
         <characteristics />
@@ -4196,6 +4207,20 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
           </fn>
         </ptr>
         <Name>free</Name>
+      </global>
+      <global>
+        <Address>005DF950</Address>
+        <arr length="256">
+          <prim domain="Character" size="1" />
+        </arr>
+        <Name>input_dlg_result</Name>
+      </global>
+      <global>
+        <Address>005DFA50</Address>
+        <ptr size="4">
+          <prim domain="Character" size="1" />
+        </ptr>
+        <Name>input_dlg_text</Name>
       </global>
       <global>
         <Address>005E0B88</Address>
