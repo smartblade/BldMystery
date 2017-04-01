@@ -56,7 +56,9 @@
         <address>00410384</address>
       </procedure>
       <procedure name="win_application_quit">
+        <characteristics />
         <address>004103A1</address>
+        <CSignature>int __stdcall win_application_quit([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
       <procedure name="win_application_read_arguments">
         <characteristics />
@@ -133,6 +135,11 @@
       <procedure name="application_get_mode">
         <characteristics />
         <address>00412067</address>
+      </procedure>
+      <procedure name="application_0041207A">
+        <characteristics />
+        <address>0041207A</address>
+        <CSignature>int __stdcall application_0041207A([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
       <procedure name="application_set_time">
         <characteristics />
