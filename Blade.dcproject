@@ -19,11 +19,21 @@
       <procedure name="input_dialog_proc">
         <characteristics />
         <address>0040CF49</address>
-        <CSignature>INT_PTR input_dialog_proc( HWND hwndDlg, UINT uMsg, WPARAM wParam,  LPARAM lParam)</CSignature>
+        <CSignature>INT_PTR __stdcall input_dialog_proc( HWND hwndDlg, UINT uMsg, WPARAM wParam,  LPARAM lParam)</CSignature>
+      </procedure>
+      <procedure name="game_launcher_proc">
+        <characteristics />
+        <address>0040D988</address>
+        <CSignature>INT_PTR __stdcall game_launcher_proc( HWND hwndDlg, UINT uMsg, WPARAM wParam,  LPARAM lParam)</CSignature>
       </procedure>
       <procedure name="startGameLauncher">
         <characteristics />
         <address>0040E8E6</address>
+      </procedure>
+      <procedure name="open_direct_draw">
+        <characteristics />
+        <address>0040EE2B</address>
+        <CSignature>void open_direct_draw(int arg04, int arg08)</CSignature>
       </procedure>
       <procedure name="win_application_init">
         <characteristics />
@@ -85,10 +95,10 @@
         <characteristics />
         <address>004106F2</address>
       </procedure>
-      <procedure name="win_application_do_action">
+      <procedure name="win_application_window_procedure">
         <characteristics />
         <address>0041073A</address>
-        <CSignature>void __stdcall win_application_do_action([[reko::arg(register,"ecx")]]application_t *self, int arg04, int actionType, int arg0C, int arg10)</CSignature>
+        <CSignature>LRESULT __stdcall win_application_window_procedure([[reko::arg(register,"ecx")]]application_t *self, HWND hwnd, UINT uMsg, WPARAM wParam,  LPARAM lParam)</CSignature>
       </procedure>
       <procedure name="win_application_mouse">
         <characteristics />
@@ -110,6 +120,15 @@
         <characteristics />
         <address>00410C3D</address>
         <CSignature>char * __stdcall win_application_input([[reko::arg(register,"ecx")]]application_t *self, char *text)</CSignature>
+      </procedure>
+      <procedure name="window_procedure">
+        <characteristics />
+        <address>00410C77</address>
+        <CSignature>LRESULT __stdcall window_procedure(
+  HWND hwnd,
+  UINT uMsg,
+  WPARAM wParam,
+  LPARAM lParam);</CSignature>
       </procedure>
       <procedure name="WinMain">
         <characteristics />
@@ -4137,6 +4156,11 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
         <characteristics />
         <address>005B9B60</address>
         <CSignature>application_t *create_application(void *module, int nCmdShow, char *cmdLine)</CSignature>
+      </procedure>
+      <procedure name="get_application2">
+        <characteristics />
+        <address>005B9BAD</address>
+        <CSignature>application_t *get_application2()</CSignature>
       </procedure>
       <procedure name="get_application">
         <characteristics />

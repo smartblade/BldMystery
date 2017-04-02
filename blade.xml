@@ -411,12 +411,12 @@
           </fn>
         </ptr>
       </field>
-      <field offset="124" name="do_action">
+      <field offset="124" name="window_procedure">
         <ptr size="4">
           <fn convention="__thiscall">
             <type>application_t</type>
             <return>
-              <void />
+              <prim domain="Any" size="4" />
             </return>
             <arg>
               <prim domain="Any" size="4" />
