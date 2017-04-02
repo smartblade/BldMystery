@@ -43,6 +43,9 @@
         <characteristics />
         <address>0040F388</address>
       </procedure>
+      <procedure name="win_application_0040F3BB">
+        <address>0040F3BB</address>
+      </procedure>
       <procedure name="win_application_create_window">
         <characteristics />
         <address>0040F403</address>
@@ -75,9 +78,22 @@
         <address>004103D7</address>
         <CSignature>void __stdcall win_application_read_arguments([[reko::arg(register,"ecx")]]application_t *self, char *arguments)</CSignature>
       </procedure>
+      <procedure name="win_application_00410640">
+        <address>00410640</address>
+      </procedure>
       <procedure name="win_application_read_level">
         <characteristics />
         <address>004106F2</address>
+      </procedure>
+      <procedure name="win_application_do_action">
+        <characteristics />
+        <address>0041073A</address>
+        <CSignature>void __stdcall win_application_do_action([[reko::arg(register,"ecx")]]application_t *self, int arg04, int actionType, int arg0C, int arg10)</CSignature>
+      </procedure>
+      <procedure name="win_application_mouse">
+        <characteristics />
+        <address>00410AF5</address>
+        <CSignature>void __stdcall win_application_mouse([[reko::arg(register,"ecx")]]application_t *self, boolean acquireFlag)</CSignature>
       </procedure>
       <procedure name="win_application_exit_with_error">
         <characteristics>
@@ -85,6 +101,10 @@
         </characteristics>
         <address>00410B53</address>
         <CSignature>void __stdcall win_application_exit_with_error([[reko::arg(register,"ecx")]]application_t *self, char *title, char* message)</CSignature>
+      </procedure>
+      <procedure name="win_application_print_warning">
+        <characteristics />
+        <address>00410BBE</address>
       </procedure>
       <procedure name="win_application_input">
         <characteristics />
@@ -105,8 +125,24 @@
         <address>00410F6F</address>
         <CSignature>int __stdcall win_application_set_current_map([[reko::arg(register,"ecx")]]application_t *self, char *map)</CSignature>
       </procedure>
+      <procedure name="win_application_00411034">
+        <address>00411034</address>
+      </procedure>
+      <procedure name="win_application_00411043">
+        <address>00411043</address>
+      </procedure>
       <procedure name="win_application_delete">
         <address>00411140</address>
+      </procedure>
+      <procedure name="win_application_get_window">
+        <characteristics />
+        <address>00411170</address>
+        <CSignature>HWND __stdcall win_application_get_window([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
+      </procedure>
+      <procedure name="win_application_get_module">
+        <characteristics />
+        <address>00411190</address>
+        <CSignature>HMODULE __stdcall win_application_get_module([[reko::arg(register,"ecx")]]application_t *self)</CSignature>
       </procedure>
       <procedure name="application_init">
         <characteristics />
@@ -225,6 +261,9 @@
       <procedure name="application_00413EE1">
         <address>00413EE1</address>
       </procedure>
+      <procedure name="application_00413FB6">
+        <address>00413FB6</address>
+      </procedure>
       <procedure name="application_clear_level">
         <characteristics />
         <address>0041412A</address>
@@ -241,6 +280,14 @@
       <procedure name="application_begin_load_game">
         <characteristics />
         <address>00415145</address>
+      </procedure>
+      <procedure name="application_get_attached_device">
+        <characteristics />
+        <address>00415236</address>
+      </procedure>
+      <procedure name="application_get_input_actions">
+        <characteristics />
+        <address>00415255</address>
       </procedure>
       <procedure name="application_get_time_action_held">
         <characteristics />
@@ -300,6 +347,11 @@
         <characteristics />
         <address>0041617B</address>
       </procedure>
+      <procedure name="application_call_CD_cb">
+        <characteristics />
+        <address>004161EA</address>
+        <CSignature>void __stdcall application_call_CD_cb([[reko::arg(register,"ecx")]]application_t *self, int arg)</CSignature>
+      </procedure>
       <procedure name="application_set_cd_callback">
         <characteristics />
         <address>00416298</address>
@@ -326,6 +378,11 @@
       <procedure name="application_load_world">
         <characteristics />
         <address>00416C6F</address>
+      </procedure>
+      <procedure name="application_set_py_interactive_string">
+        <characteristics />
+        <address>00416EAB</address>
+        <CSignature>void __stdcall application_set_py_interactive_string([[reko::arg(register,"ecx")]]application_t *self, char *str)</CSignature>
       </procedure>
       <procedure name="application_delete">
         <address>00417470</address>

@@ -46,6 +46,16 @@
           </fn>
         </ptr>
       </field>
+      <field offset="8" name="init_python_path">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <prim domain="UnsignedInt" size="1" />
+            </return>
+          </fn>
+        </ptr>
+      </field>
       <field offset="12" name="process_message">
         <ptr size="4">
           <fn convention="__thiscall">
@@ -53,6 +63,19 @@
             <return>
               <void />
             </return>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="16" name="unknown_method010">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <prim domain="Any" size="4" />
+            </return>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
           </fn>
         </ptr>
       </field>
@@ -79,7 +102,7 @@
           </fn>
         </ptr>
       </field>
-      <field offset="28" name="wait_for_event">
+      <field offset="28" name="process_events">
         <ptr size="4">
           <fn convention="__thiscall">
             <type>application_t</type>
@@ -95,6 +118,26 @@
             <type>application_t</type>
             <return>
               <void />
+            </return>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="36" name="unknown_method024">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <prim domain="Any" size="4" />
+            </return>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="40" name="unknown_method028">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <prim domain="Any" size="4" />
             </return>
           </fn>
         </ptr>
@@ -184,7 +227,30 @@
           </fn>
         </ptr>
       </field>
+      <field offset="68" name="unknown_method044">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <prim domain="Any" size="4" />
+            </return>
+          </fn>
+        </ptr>
+      </field>
       <field offset="72" name="clear_level">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <void />
+            </return>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="76" name="set_py_interactive_string">
         <ptr size="4">
           <fn convention="__thiscall">
             <type>application_t</type>
@@ -214,6 +280,19 @@
           </fn>
         </ptr>
       </field>
+      <field offset="84" name="call_CD_cb">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <void />
+            </return>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
+          </fn>
+        </ptr>
+      </field>
       <field offset="88" name="exit_with_error">
         <ptr size="4">
           <fn convention="__thiscall">
@@ -231,6 +310,46 @@
                  <prim domain="Character" size="1" />
               </ptr>
             </arg>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="92" name="print_warning">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <void />
+            </return>
+            <arg>
+              <ptr size="4">
+                 <prim domain="Character" size="1" />
+              </ptr>
+            </arg>
+            <arg>
+              <ptr size="4">
+                 <prim domain="Character" size="1" />
+              </ptr>
+            </arg>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="96" name="get_window">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <prim domain="Any" size="4" />
+            </return>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="100" name="get_module">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <prim domain="Any" size="4" />
+            </return>
           </fn>
         </ptr>
       </field>
@@ -259,6 +378,16 @@
           </fn>
         </ptr>
       </field>
+      <field offset="112" name="unknown_method070">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <prim domain="Any" size="4" />
+            </return>
+          </fn>
+        </ptr>
+      </field>
       <field offset="116" name="create_window">
         <ptr size="4">
           <fn convention="__thiscall">
@@ -266,6 +395,41 @@
             <return>
               <prim domain="Any" size="4" />
             </return>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="120" name="mouse">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <void />
+            </return>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
+          </fn>
+        </ptr>
+      </field>
+      <field offset="124" name="do_action">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>application_t</type>
+            <return>
+              <void />
+            </return>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
+            <arg>
+              <prim domain="Any" size="4" />
+            </arg>
           </fn>
         </ptr>
       </field>
