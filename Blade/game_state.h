@@ -6,6 +6,7 @@
 
 #include "array.h"
 #include "entity.h"
+#include "atmosphere.h"
 
 
 typedef struct {
@@ -26,6 +27,8 @@ typedef struct {
         world_t world;
         void *unknown1824;
         array_t unknown1828;
+        char unknownFields1840[108];
+        array_t atmospheres;
 } game_state_t;
 
 

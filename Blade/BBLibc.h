@@ -6,6 +6,11 @@
 
 
 typedef struct {
+        void *methods;
+        byte r, g, b;
+} BBLibc_color_t;
+
+typedef struct {
         char *string;
         int len;
 } BBLibc_name_t;
