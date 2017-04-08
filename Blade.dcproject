@@ -1254,6 +1254,17 @@ const char *GetInputMode(const char *device)</CSignature>
         <CSignature>
 const char *GetLastPlayerCType(void)</CSignature>
       </procedure>
+      <procedure name="atmosphere_init">
+        <characteristics />
+        <address>0042D090</address>
+      </procedure>
+      <procedure name="read_atmosphere">
+        <characteristics />
+        <address>0042D175</address>
+      </procedure>
+      <procedure name="atmosphere_delete">
+        <address>0042D1B0</address>
+      </procedure>
       <procedure name="init_objects_on_start_app">
         <characteristics />
         <address>00439862</address>
@@ -1287,6 +1298,11 @@ const char *GetLastPlayerCType(void)</CSignature>
         <characteristics />
         <address>0043E8E8</address>
         <CSignature>char * __stdcall game_state_generate_entity_name([[reko::arg(register,"ecx")]]bld_word32 *self, const char *prefix)</CSignature>
+      </procedure>
+      <procedure name="read_world">
+        <characteristics />
+        <address>00440A5D</address>
+        <CSignature>void read_world(bld_word32 *file,bld_word32 *game_state)</CSignature>
       </procedure>
       <procedure name="WorldToMBW">
         <address>004431DE</address>
@@ -4247,6 +4263,23 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
             <prim domain="SignedInt" size="4" />
             <reg>eax</reg>
           </return>
+        </signature>
+      </call>
+      <call>
+        <address>00440AED</address>
+        <signature stackDelta="8">
+          <return name="eax">
+            <prim domain="Any" size="4" />
+            <reg>eax</reg>
+          </return>
+          <arg name="ecx">
+            <prim domain="Any" size="4" />
+            <reg>ecx</reg>
+          </arg>
+          <arg name="deleteFlag">
+            <prim domain="Any" size="4" />
+            <stack />
+          </arg>
         </signature>
       </call>
       <global>
