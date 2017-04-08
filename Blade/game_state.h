@@ -10,6 +10,14 @@
 
 
 typedef struct {
+        double x;
+        double y;
+        double z;
+        int unknown10;
+        int unknown14;
+} world_point_t;
+
+typedef struct {
         int numEntities;
         array_t hash[256];
         int unknown1804;
@@ -29,6 +37,7 @@ typedef struct {
         array_t unknown1828;
         char unknownFields1840[108];
         array_t atmospheres;
+        array_t sectors;
 } game_state_t;
 
 

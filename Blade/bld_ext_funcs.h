@@ -79,6 +79,7 @@ EXTERN bld_abstract_net *net NULL_INIT;
 EXTERN application_t **application_ptr NULL_INIT;
 EXTERN application_methods_t *application_methods_ptr NULL_INIT;
 EXTERN game_state_t *game_state_ptr NULL_INIT;
+EXTERN array_t *world_points_ptr NULL_INIT;
 EXTERN void **var005E24DC NULL_INIT;
 EXTERN void **var005E24F4 NULL_INIT;
 
@@ -88,6 +89,7 @@ EXTERN void **var005E24F4 NULL_INIT;
 #define net_data (*net_data_ptr)
 #define application (*application_ptr)
 #define game_state (*game_state_ptr)
+#define world_points (*world_points_ptr)
 
 
 #define CALL_THISCALL_VOID_0(self, funcPtr)\
