@@ -7,24 +7,30 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bladex", "Bladex\Bladex.vcp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "netgame", "netgame\netgame.vcproj", "{71413378-43EF-4477-8F17-290FA1F773C9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Blade", "Blade\Blade.vcproj", "{F18446DB-7027-4330-BB0F-3D133E659CA5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{15817D0C-F1B7-40B7-A229-706AB72278A8}.Debug|Win32.ActiveCfg = Release|Win32
-		{15817D0C-F1B7-40B7-A229-706AB72278A8}.Debug|Win32.Build.0 = Release|Win32
+		{15817D0C-F1B7-40B7-A229-706AB72278A8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{15817D0C-F1B7-40B7-A229-706AB72278A8}.Debug|Win32.Build.0 = Debug|Win32
 		{15817D0C-F1B7-40B7-A229-706AB72278A8}.Release|Win32.ActiveCfg = Release|Win32
 		{15817D0C-F1B7-40B7-A229-706AB72278A8}.Release|Win32.Build.0 = Release|Win32
-		{45BBCEFB-81A4-4FDB-832A-027D0A5B991A}.Debug|Win32.ActiveCfg = Release|Win32
-		{45BBCEFB-81A4-4FDB-832A-027D0A5B991A}.Debug|Win32.Build.0 = Release|Win32
+		{45BBCEFB-81A4-4FDB-832A-027D0A5B991A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{45BBCEFB-81A4-4FDB-832A-027D0A5B991A}.Debug|Win32.Build.0 = Debug|Win32
 		{45BBCEFB-81A4-4FDB-832A-027D0A5B991A}.Release|Win32.ActiveCfg = Release|Win32
 		{45BBCEFB-81A4-4FDB-832A-027D0A5B991A}.Release|Win32.Build.0 = Release|Win32
-		{71413378-43EF-4477-8F17-290FA1F773C9}.Debug|Win32.ActiveCfg = Release|Win32
-		{71413378-43EF-4477-8F17-290FA1F773C9}.Debug|Win32.Build.0 = Release|Win32
+		{71413378-43EF-4477-8F17-290FA1F773C9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{71413378-43EF-4477-8F17-290FA1F773C9}.Debug|Win32.Build.0 = Debug|Win32
 		{71413378-43EF-4477-8F17-290FA1F773C9}.Release|Win32.ActiveCfg = Release|Win32
 		{71413378-43EF-4477-8F17-290FA1F773C9}.Release|Win32.Build.0 = Release|Win32
+		{F18446DB-7027-4330-BB0F-3D133E659CA5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F18446DB-7027-4330-BB0F-3D133E659CA5}.Debug|Win32.Build.0 = Debug|Win32
+		{F18446DB-7027-4330-BB0F-3D133E659CA5}.Release|Win32.ActiveCfg = Release|Win32
+		{F18446DB-7027-4330-BB0F-3D133E659CA5}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

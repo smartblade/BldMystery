@@ -1,10 +1,8 @@
 //---------------------------------------------------------------------------
 
-#include <windows.h>
-#include <stdio.h>
-#include <assert.h>
 #include <float.h>
-#include <Python.h>
+#include <bld_system.h>
+#include <bld_python.h>
 #include <blade_ext.h>
 #include "application.h"
 #include "BBLibc.h"
@@ -522,6 +520,10 @@ application_t* application_init(
         self->methods = &application_methods;
         return self;
 }
+
+#ifdef _MSC_VER
+    int _fltused = 0;
+#endif
 
 
 void startup_cb(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)

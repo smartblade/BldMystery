@@ -5,7 +5,11 @@
 
 
 #include <windows.h>
-#include <assert.h>
+#ifdef _MSC_VER
+    #include <bld_assert.h>
+#else
+    #include <assert.h>
+#endif
 
 
 #define BLD_MAX_DOUBLE 1.7976931348623157e+308

@@ -1,5 +1,5 @@
 
-#include <windows.h>
+#include <bld_system.h>
 #include <stdio.h>
 #include "application.h"
 #include "game_state.h"
@@ -44,30 +44,34 @@ EXTERN int (*msvcrt_fclose)(FILE*) NULL_INIT;
 #endif
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 EXTERN HMODULE blade NULL_INIT;
 EXTERN void (*LoadNetModule)(char *) NULL_INIT;
 EXTERN void (*Set007EA988To01)(void) NULL_INIT;
 EXTERN void (*reset_client_map_name)(void) NULL_INIT;
 EXTERN void (*OnEvent)(int a, int b) NULL_INIT;
 EXTERN char *(*get_map_for_net_game)(char *map) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_BBlibc_name_set)(char *string) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_BBlibc_name_clear)(void) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_BBlibc_name_copy)(BBLibc_name_t *name) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_BBlibc_name_string)(void) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_BBlibc_name_is_equal_string)(void) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_BBLibc_named_object_id)(void) NULL_INIT;
+EXTERN void (__stdcall *_thiscall_BBlibc_name_set)(char *string) NULL_INIT;
+EXTERN void (__stdcall *_thiscall_BBlibc_name_clear)(void) NULL_INIT;
+EXTERN void (__stdcall *_thiscall_BBlibc_name_copy)(BBLibc_name_t *name) NULL_INIT;
+EXTERN void (__stdcall *_thiscall_BBlibc_name_string)(void) NULL_INIT;
+EXTERN void (__stdcall *_thiscall_BBlibc_name_is_equal_string)(void) NULL_INIT;
+EXTERN void (__stdcall *_thiscall_BBLibc_named_object_id)(void) NULL_INIT;
 EXTERN char * (*BBlibc_format_string)(const char *format, ...) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_application_set_mode)(void) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_application_init2)(void) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_application_prepare_level)(void) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_application_process_event)(void) NULL_INIT;
+EXTERN void (__stdcall *_thiscall_application_set_mode)(void) NULL_INIT;
+EXTERN void (__stdcall *_thiscall_application_init2)(void) NULL_INIT;
+EXTERN void (__stdcall *_thiscall_application_prepare_level)(void) NULL_INIT;
+EXTERN void (__stdcall *_thiscall_application_process_event)(void) NULL_INIT;
 EXTERN void (*message_manager_print)(void *message_manager, char *message) NULL_INIT;
 EXTERN void * (*bld_new)(size_t size) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_camera_init)(void) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_00439F5D)(void) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_camera_004EB1AA)(void) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_0040AD82)(void) NULL_INIT;
-EXTERN void __stdcall (*_thiscall_0040ADA8)(void) NULL_INIT;
+EXTERN void (__stdcall *_thiscall_camera_init)(void) NULL_INIT;
+EXTERN void (__stdcall *_thiscall_00439F5D)(void) NULL_INIT;
+EXTERN void (__stdcall *_thiscall_camera_004EB1AA)(void) NULL_INIT;
+EXTERN void (__stdcall *_thiscall_0040AD82)(void) NULL_INIT;
+EXTERN void (__stdcall *_thiscall_0040ADA8)(void) NULL_INIT;
 
 EXTERN int **sound_device_ptr NULL_INIT;
 EXTERN void **msg_manager_ptr NULL_INIT;
@@ -75,7 +79,9 @@ EXTERN char *client_map_name NULL_INIT;
 EXTERN char *net_game_name NULL_INIT;
 EXTERN int *net_max_players_ptr NULL_INIT;
 EXTERN bld_abstract_net **net_data_ptr NULL_INIT;
-EXTERN bld_abstract_net *net NULL_INIT;
+#ifdef __BORLANDC__
+        EXTERN bld_abstract_net *net NULL_INIT;
+#endif
 EXTERN application_t **application_ptr NULL_INIT;
 EXTERN application_methods_t *application_methods_ptr NULL_INIT;
 EXTERN game_state_t *game_state_ptr NULL_INIT;
@@ -83,10 +89,17 @@ EXTERN array_t *world_points_ptr NULL_INIT;
 EXTERN void **var005E24DC NULL_INIT;
 EXTERN void **var005E24F4 NULL_INIT;
 
+#ifdef __cplusplus
+}
+#endif
+
 #define sound_device (*sound_device_ptr)
 #define message_manager (*msg_manager_ptr)
 #define net_max_players (*net_max_players_ptr)
 #define net_data (*net_data_ptr)
+#ifdef _MSC_VER
+        #define net (*net_data_ptr)
+#endif
 #define application (*application_ptr)
 #define game_state (*game_state_ptr)
 #define world_points (*world_points_ptr)
