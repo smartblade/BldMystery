@@ -130,7 +130,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="winmm.lib bicrt.lib"
+				AdditionalDependencies="winmm.lib bicrt.lib BBLibc.lib"
 				AdditionalLibraryDirectories="C:\Program Files (x86)\Python\libs;..\lib"
 				IgnoreDefaultLibraryNames="msvcrt.lib"
 				GenerateDebugInformation="true"

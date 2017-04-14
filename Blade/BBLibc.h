@@ -3,6 +3,8 @@
 
 #define BBLIBC_H
 
+#include <fcntl.h>
+#include <export.h>
 
 
 typedef struct {
@@ -19,6 +21,48 @@ typedef struct {
         void *methods;
         BBLibc_name_t name;
 } BBLibc_named_object_t;
+
+
+#ifdef __cplusplus
+
+
+class LIB_EXP B_Color {
+public:
+        virtual ~B_Color();
+private:
+        byte r, g, b;
+};
+
+
+class LIB_EXP B_NamedObj
+{
+public:
+        virtual ~B_NamedObj();
+private:
+        BBLibc_name_t name;
+};
+
+
+class LIB_EXP B_IDataFile
+{
+public:
+        B_IDataFile(const char *file_name, int flags);
+
+public:
+        int fd;
+private:
+        char *file_name;
+        int file_size;
+        char unknown_fields[16396];
+};
+
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, unsigned int &i);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, float &f);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_NamedObj &named_obj);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_Color &color);
+
+
+#endif
 
 
 #ifndef BLD_EXT_FUNCS
