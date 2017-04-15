@@ -11,6 +11,19 @@
     <global-vars>..\Bin\Blade_patched.globals.c</global-vars>
     <user>
       <processor />
+      <procedure name="read_ext_point">
+        <characteristics />
+        <address>00408631</address>
+      </procedure>
+      <procedure name="read_points">
+        <characteristics />
+        <address>004088F4</address>
+        <CSignature>bld_word32 *read_points(bld_word32 *file, bld_word32 *points)</CSignature>
+      </procedure>
+      <procedure name="read_point">
+        <characteristics />
+        <address>0040ACDD</address>
+      </procedure>
       <procedure name="show_input_dialog">
         <characteristics />
         <address>0040CF10</address>
