@@ -481,7 +481,7 @@ boolean StartServer(
 {
         bool status;
 
-        status = net->start_server(game_name, player_name, max_players, TCP);
+        status = net->start_server(game_name, player_name, max_players, TCP != FALSE);
 
         strcpy(net_game_name, (game_name + 3));
         net_max_players = max_players - 1;
@@ -588,6 +588,6 @@ int NetSetPPS(int PPS)
 
 int IsValidProtocol(int protocol)
 {
-        return net->is_valid_protocol(protocol);
+        return net->is_valid_protocol(protocol != FALSE);
 }
 

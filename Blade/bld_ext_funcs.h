@@ -186,6 +186,6 @@ NEW_OBJECT3(result, application_t, application_init, module, nCmdShow, cmdLine)\
 NEW_OBJECT2(result, camera_t, camera_init, unknown, name)
 
 
-#define NUM_3F266666 0.65
+#define NUM_3F266666 0.65f
 
 

@@ -3,6 +3,7 @@
 #include <float.h>
 #include <bld_system.h>
 #include <bld_python.h>
+#define BUILD_LIB
 #include <blade_ext.h>
 #include "application.h"
 #include "BBLibc.h"
@@ -552,7 +553,6 @@ void LoadMsvcrtFunctions(void)
 }
 
 
-#pragma argsused
 WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
         HMODULE BBLibc, shw32;
