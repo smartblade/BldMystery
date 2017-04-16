@@ -28,9 +28,22 @@ typedef struct {
 
 class LIB_EXP B_Color {
 public:
-        virtual ~B_Color();
+        virtual void MakeCons();
 private:
         byte r, g, b;
+};
+
+
+class LIB_EXP B_Name
+{
+public:
+        B_Name();
+        B_Name(const char* str);
+        ~B_Name();
+        B_Name &operator =(const B_Name &src);
+private:
+        char *string;
+        int len;
 };
 
 
@@ -39,14 +52,27 @@ class LIB_EXP B_NamedObj
 public:
         virtual ~B_NamedObj();
 private:
-        BBLibc_name_t name;
+        B_Name name;
 };
+
+
+class LIB_EXP B_MessageManager
+{
+};
+
+LIB_EXP B_MessageManager &operator <<(B_MessageManager &mout, const char *str);
+
+LIB_EXP B_MessageManager mout;
+
+
+const char *vararg(const char *format, ...);
 
 
 class LIB_EXP B_IDataFile
 {
 public:
         B_IDataFile(const char *file_name, int flags);
+        ~B_IDataFile();
 
 public:
         int fd;

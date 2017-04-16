@@ -115,6 +115,7 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="..\include;&quot;C:\Program Files (x86)\Python\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE"
+				ExceptionHandling="0"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="false"
 				RuntimeTypeInfo="false"
@@ -176,6 +177,14 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\application.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\atmosphere.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\bld_ext_funcs.c"
 				>
 			</File>
@@ -184,11 +193,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\game_state.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\main.c"
 				>
 			</File>
 			<File
 				RelativePath=".\net_ext.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\obj_ext.cpp"
 				>
 			</File>
 		</Filter>

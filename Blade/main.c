@@ -216,7 +216,7 @@ void application_load_level_script(application_t *self, const char *script)
         int foundIndex;
         int hash_value;
         char *str_ptr;
-        int i;
+        unsigned int i;
         array_t *array;
         world_t *world;
         person_t *player1;
@@ -484,11 +484,11 @@ boolean application_run_python_file(application_t *self, const char *file_name)
 ................................................................................
 */
 
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B9B60
 */
-
 
 application_t* create_application(void *module, int nCmdShow, char *cmdLine)
 {
@@ -507,6 +507,17 @@ application_t* create_application(void *module, int nCmdShow, char *cmdLine)
 ................................................................................
 ................................................................................
 */
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x005B9BB7
+*/
+
+application_t* get_application()
+{
+        return application;
+}
 
 
 /*
@@ -584,6 +595,7 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         _thiscall_application_init2 = (void *)((char *)blade + 0x0000F040);
         _thiscall_application_prepare_level = (void *)((char *)blade + 0x00014F7F);
         _thiscall_application_process_event = (void *)((char *)blade + 0x000121CE);
+        _thiscall_application_load_world = (void *)((char *)blade + 0x00016C6F);
         message_manager_print = (void *)GetProcAddress(BBLibc, "??6@YAAAVB_MessageManager@@AAV0@PBD@Z");
         bld_new = (void *)GetProcAddress(shw32, "shi_new");
         _thiscall_camera_init = (void *)((char *)blade + 0x000EAD20);

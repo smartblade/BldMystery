@@ -35,10 +35,19 @@ typedef struct {
         world_t world;
         void *unknown1824;
         array_t unknown1828;
-        char unknownFields1840[108];
+        char unknownFields1840[60];
+        int unknown187C;
+        int unknown1880;
+        char unknownFields1884[40];
         array_t atmospheres;
         array_t sectors;
 } game_state_t;
+
+#ifdef __cplusplus
+
+B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs);
+
+#endif
 
 
 #endif /* GAME_STATE_H */

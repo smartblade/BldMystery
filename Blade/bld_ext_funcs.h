@@ -65,6 +65,7 @@ EXTERN void (__stdcall *_thiscall_application_set_mode)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_application_init2)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_application_prepare_level)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_application_process_event)(void) NULL_INIT;
+EXTERN void (__stdcall *_thiscall_application_load_world)(void) NULL_INIT;
 EXTERN void (*message_manager_print)(void *message_manager, char *message) NULL_INIT;
 EXTERN void * (*bld_new)(size_t size) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_camera_init)(void) NULL_INIT;

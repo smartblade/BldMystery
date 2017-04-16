@@ -585,25 +585,6 @@ int SetCurrentMap(const char *map)
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x00429086
-*/
-// TODO implement
-int LoadWorld(const char *file_name)
-{
-        int (*bld_proc)(const char *file_name);
-        bld_proc = (int (*)(const char *file_name))GetProcAddress(blade, "LoadWorld");
-        return bld_proc(file_name);
-}
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
-* Module:                 Blade.exe
 * Entry point:            0x004290C0
 */
 // TODO implement

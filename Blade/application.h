@@ -67,6 +67,10 @@ typedef struct {
 
 #ifndef BLD_EXT_FUNCS
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern void application_init_python_path(application_t *self);
 extern int application_destroy(application_t *self, int a);
 extern boolean application_start(application_t *self);
@@ -85,11 +89,17 @@ extern application_t *application_init2(
         void *unknown
 );
 extern boolean application_run_python_file(application_t *self, const char *file_name);
+extern int application_load_world(application_t *self, const char *file_name);
 extern void application_prepare_level(application_t *self);
 extern boolean application_process_event(application_t *self);
 
 
 extern application_t *create_application(void *module, int nCmdShow, char *cmdLine);
+extern application_t* get_application();
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

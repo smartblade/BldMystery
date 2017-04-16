@@ -85,6 +85,9 @@ CALL_THISCALL_FUNC_1(application_t, _thiscall_application_set_mode, application_
 CALL_THISCALL_FUNC_4(application_t, _thiscall_application_init2, application_init2)
 CALL_THISCALL_FUNC_0(application_t, _thiscall_application_prepare_level, application_prepare_level)
 CALL_THISCALL_FUNC_0(application_t, _thiscall_application_process_event, application_process_event)
+#ifdef __BORLANDC__
+    CALL_THISCALL_FUNC_1(application_t, _thiscall_application_load_world, application_load_world)
+#endif
 DEFINE_THISCALL_FUNC_1(application_t, _impl_application_mark_level_to_load, _thiscall_application_mark_level_to_load)
 DEFINE_THISCALL_FUNC_1(application_t, _impl_application_load_level, _thiscall_application_load_level)
 DEFINE_THISCALL_FUNC_0(application_t, _impl_application_wait_for_event, _thiscall_application_wait_for_event)

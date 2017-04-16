@@ -6,7 +6,7 @@
 typedef struct {
         void *methods;
         void **elements;
-        int size;
+        unsigned int size;
         int increment;
         int num_alloc;
         int unknown14;
