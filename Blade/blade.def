@@ -1,4 +1,9 @@
 LIBRARY     BLADE.EXE
 
 EXPORTS
+    GetEntityIntProperty = _GetEntityIntProperty
     GetEntityVectorProperty = _GetEntityVectorProperty
+    GetSplinePos = _GetSplinePos
+    AddNodeSpline = _AddNodeSpline
+    CloseSpline = _CloseSpline
+    ClearSpline = _ClearSpline

@@ -1377,6 +1377,14 @@ LIB_EXP int GetDedicatedServerState(void);
 LIB_EXP void SetDedicatedServerState(int dedicated);
 LIB_EXP void PersonChangeAnmSoundIndex(const char *person_name, int index);
 LIB_EXP void StartGSQR(void);
+LIB_EXP int GetSplinePos(void *spline, float time, void *pos);
+LIB_EXP int AddNodeSpline(
+        void *spline, int num_node, double time, double pos_x, double pos_y,
+        double pos_z, double tang_i_x, double tang_i_y, double tang_i_z,
+        double tang_j_x, double tang_j_y, double tang_j_z
+);
+LIB_EXP int CloseSpline(void *spline);
+LIB_EXP int ClearSpline(void *spline);
 
 #ifdef __cplusplus
 }

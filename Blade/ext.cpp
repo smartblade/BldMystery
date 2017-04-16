@@ -5146,10 +5146,12 @@ int saveSoundDataBase(const char *file_name)
 * Module:                 Blade.exe
 * Entry point:            0x004FFEA0
 */
-// TODO fix prototype
-void GetSplinePos()
+// TODO implement
+int GetSplinePos(void *spline, float time, void *pos)
 {
-        assert("GetSplinePos" == NULL);
+        int (*bld_proc)(void *spline, float time, void *pos);
+        bld_proc = (int (*)(void *spline, float time, void *pos))GetProcAddress(blade, "GetSplinePos");
+        return bld_proc(spline, time, pos);
 }
 /*
 ................................................................................
@@ -5162,10 +5164,21 @@ void GetSplinePos()
 * Module:                 Blade.exe
 * Entry point:            0x004FFEBA
 */
-// TODO fix prototype
-void AddNodeSpline()
+// TODO implement
+int AddNodeSpline(
+        void *spline, int num_node, double time, double pos_x, double pos_y,
+        double pos_z, double tang_i_x, double tang_i_y, double tang_i_z,
+        double tang_j_x, double tang_j_y, double tang_j_z)
 {
-        assert("AddNodeSpline" == NULL);
+        int (*bld_proc)(void *spline, int num_node, double time, double pos_x, double pos_y,
+        double pos_z, double tang_i_x, double tang_i_y, double tang_i_z,
+        double tang_j_x, double tang_j_y, double tang_j_z);
+        bld_proc = (int (*)(void *spline, int num_node, double time, double pos_x, double pos_y,
+        double pos_z, double tang_i_x, double tang_i_y, double tang_i_z,
+        double tang_j_x, double tang_j_y, double tang_j_z))GetProcAddress(blade, "AddNodeSpline");
+        return bld_proc(spline, num_node, time, pos_x, pos_y,
+                pos_z, tang_i_x, tang_i_y, tang_i_z,
+                tang_j_x, tang_j_y, tang_j_z);
 }
 /*
 ................................................................................
@@ -5178,10 +5191,12 @@ void AddNodeSpline()
 * Module:                 Blade.exe
 * Entry point:            0x004FFEF3
 */
-// TODO fix prototype
-void CloseSpline()
+// TODO implement
+int CloseSpline(void *spline)
 {
-        assert("CloseSpline" == NULL);
+        int (*bld_proc)(void *spline);
+        bld_proc = (int (*)(void *spline))GetProcAddress(blade, "CloseSpline");
+        return bld_proc(spline);
 }
 /*
 ................................................................................
@@ -5194,10 +5209,12 @@ void CloseSpline()
 * Module:                 Blade.exe
 * Entry point:            0x004FFF00
 */
-// TODO fix prototype
-void ClearSpline()
+// TODO implement
+int ClearSpline(void *spline)
 {
-        assert("ClearSpline" == NULL);
+        int (*bld_proc)(void *spline);
+        bld_proc = (int (*)(void *spline))GetProcAddress(blade, "ClearSpline");
+        return bld_proc(spline);
 }
 /*
 ................................................................................
