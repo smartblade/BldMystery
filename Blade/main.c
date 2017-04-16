@@ -533,9 +533,6 @@ application_t* application_init(
         return self;
 }
 
-#ifdef _MSC_VER
-    int _fltused = 0;
-#endif
 
 
 void startup_cb(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)

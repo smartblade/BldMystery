@@ -118,7 +118,6 @@
 				ExceptionHandling="0"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="false"
-				RuntimeTypeInfo="false"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
@@ -138,7 +137,7 @@
 				AdditionalLibraryDirectories="C:\Program Files (x86)\Python\libs;..\lib"
 				IgnoreDefaultLibraryNames="msvcrt.lib"
 				GenerateDebugInformation="true"
-				EntryPointSymbol="WinMain"
+				EntryPointSymbol=""
 				ImportLibrary="..\lib\$(TargetName).lib"
 				TargetMachine="1"
 			/>
