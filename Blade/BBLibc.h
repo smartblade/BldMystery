@@ -88,6 +88,10 @@ LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_NamedObj &named_obj);
 LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_Color &color);
 
 
+#else
+
+typedef struct B_IDataFile B_IDataFile;
+
 #endif
 
 

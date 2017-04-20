@@ -18,6 +18,12 @@ typedef struct {
 } world_point_t;
 
 typedef struct {
+        double x;
+        double y;
+        double z;
+} point_t;
+
+typedef struct {
         int numEntities;
         array_t hash[256];
         int unknown1804;
@@ -41,6 +47,11 @@ typedef struct {
         char unknownFields1884[40];
         array_t atmospheres;
         array_t sectors;
+        char unknownFields18DC[68];
+        array_t lights;
+        char unknownFields1938[28];
+        point_t initial_point_position;
+        point_t initial_point_orientation;
 } game_state_t;
 
 #ifdef __cplusplus

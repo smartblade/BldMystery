@@ -576,6 +576,8 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         BBLibc = LoadLibrary("BBLibc.dll");
         shw32 = LoadLibrary("Shw32.dll");
 
+        _cdecl_read_points = (void *)((char *)blade + 0x000088F4);
+        _cdecl_read_point = (void *)((char *)blade + 0x0000ACDD);
         LoadNetModule = (void *)((char *)blade + 0x001B65D2);
         Set007EA988To01 = (void *)((char *)blade + 0x001AC791);
         reset_client_map_name = (void *)((char *)blade + 0x001B1431);
@@ -593,6 +595,8 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         _thiscall_application_prepare_level = (void *)((char *)blade + 0x00014F7F);
         _thiscall_application_process_event = (void *)((char *)blade + 0x000121CE);
         _thiscall_application_load_world = (void *)((char *)blade + 0x00016C6F);
+        _cdecl_read_sectors = (void *)((char *)blade + 0x00032379);
+        _cdecl_read_light = (void *)((char *)blade + 0x0004AD38);
         message_manager_print = (void *)GetProcAddress(BBLibc, "??6@YAAAVB_MessageManager@@AAV0@PBD@Z");
         bld_new = (void *)GetProcAddress(shw32, "shi_new");
         _thiscall_camera_init = (void *)((char *)blade + 0x000EAD20);

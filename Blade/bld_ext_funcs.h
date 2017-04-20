@@ -73,6 +73,10 @@ EXTERN void (__stdcall *_thiscall_00439F5D)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_camera_004EB1AA)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_0040AD82)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_0040ADA8)(void) NULL_INIT;
+EXTERN B_IDataFile * (*_cdecl_read_points)(B_IDataFile *file, array_t *points) NULL_INIT;
+EXTERN B_IDataFile * (*_cdecl_read_point)(B_IDataFile *file, point_t *point) NULL_INIT;
+EXTERN B_IDataFile * (*_cdecl_read_sectors)(B_IDataFile *file, array_t *sectors) NULL_INIT;
+EXTERN B_IDataFile * (*_cdecl_read_light)(B_IDataFile *file) NULL_INIT;
 
 EXTERN int **sound_device_ptr NULL_INIT;
 EXTERN void **msg_manager_ptr NULL_INIT;
@@ -104,6 +108,16 @@ EXTERN void **var005E24F4 NULL_INIT;
 #define application (*application_ptr)
 #define game_state (*game_state_ptr)
 #define world_points (*world_points_ptr)
+
+
+#ifdef __cplusplus
+
+__inline B_IDataFile& operator >>(B_IDataFile& file, point_t *point)
+{
+        return *_cdecl_read_point(&file, point);
+}
+
+#endif
 
 
 #define CALL_THISCALL_VOID_0(self, funcPtr)\

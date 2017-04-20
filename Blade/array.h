@@ -8,7 +8,7 @@ typedef struct {
         void **elements;
         unsigned int size;
         int increment;
-        int num_alloc;
+        unsigned int num_alloc;
         int unknown14;
 } array_t;
 
