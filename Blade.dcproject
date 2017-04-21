@@ -1278,6 +1278,11 @@ const char *GetLastPlayerCType(void)</CSignature>
       <procedure name="atmosphere_delete">
         <address>0042D1B0</address>
       </procedure>
+      <procedure name="read_sectors">
+        <characteristics />
+        <address>00432379</address>
+        <CSignature>bld_word32 *read_sectors (bld_word32 *file,bld_word32 *sectors)</CSignature>
+      </procedure>
       <procedure name="init_objects_on_start_app">
         <characteristics />
         <address>00439862</address>
