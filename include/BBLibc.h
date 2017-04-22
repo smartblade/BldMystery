@@ -51,6 +51,7 @@ class LIB_EXP B_NamedObj
 {
 public:
         virtual ~B_NamedObj();
+        const B_Name &Id() const;
 private:
         B_Name name;
 };

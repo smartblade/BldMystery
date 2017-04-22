@@ -5,6 +5,9 @@
 #include <bld_system.h>
 #include <export.h>
 
+class B_Name;
+class B_Color;
+
 class B_3DRasterDevice {
 public:
         virtual void unknown000() = 0;
@@ -24,7 +27,7 @@ public:
         virtual void unknown030() = 0;
         virtual void unknown034() = 0;
         virtual void unknown038() = 0;
-        virtual void unknown03C() = 0;
+        virtual void add_atmosphere(const B_Name &name, const B_Color &color, float intensity) = 0;
         virtual long bmp_handle(const char *bmp_name) = 0;
         virtual void unknown044() = 0;
         virtual const char *bmp_name(long handle) = 0;

@@ -1,5 +1,6 @@
 
 #include <bld_system.h>
+#include <raster_device.h>
 #include "game_state.h"
 #include "light.h"
 #include "bld_ext_funcs.h"
@@ -49,11 +50,14 @@ B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs)
                 }
         }
 
-        /*
-        ......
-        Raster
-        ......
-        */
+        if (B_3D_raster_device)
+                B_3D_raster_device->unknown084();
+
+        for(unsigned int i = 0; i < atms->size; i++)
+        {
+                atmosphere_t * atm = (atmosphere_t *)atms->elements[i];
+                B_3D_raster_device->add_atmosphere(atm->Id(), atm->color, atm->intensity);
+        }
 
         _cdecl_read_points(&file, &world_points);
         _cdecl_read_sectors(&file, &gs->sectors);
