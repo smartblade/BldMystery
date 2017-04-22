@@ -578,11 +578,39 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
 
         _cdecl_read_points = (void *)((char *)blade + 0x000088F4);
         _cdecl_read_point = (void *)((char *)blade + 0x0000ACDD);
-        LoadNetModule = (void *)((char *)blade + 0x001B65D2);
+        _thiscall_0040AD82 = (void *)((char *)blade + 0x0000AD82);
+        _thiscall_0040ADA8 = (void *)((char *)blade + 0x0000ADA8);
+        _thiscall_application_init2 = (void *)((char *)blade + 0x0000F040);
+        _thiscall_application_set_mode = (void *)((char *)blade + 0x00011EB9);
+        _thiscall_application_process_event = (void *)((char *)blade + 0x000121CE);
+        _thiscall_application_prepare_level = (void *)((char *)blade + 0x00014F7F);
+        _thiscall_application_load_world = (void *)((char *)blade + 0x00016C6F);
+        _cdecl_read_sectors = (void *)((char *)blade + 0x00032379);
+        _thiscall_00439F5D = (void *)((char *)blade + 0x00039F5D);
+        _cdecl_read_light = (void *)((char *)blade + 0x0004AD38);
+        _thiscall_00451A21 = (void *)((char *)blade + 0x00051A21);
+        _thiscall_camera_init = (void *)((char *)blade + 0x000EAD20);
+        _thiscall_camera_004EB1AA = (void *)((char *)blade + 0x000EB1AA);
         Set007EA988To01 = (void *)((char *)blade + 0x001AC791);
-        reset_client_map_name = (void *)((char *)blade + 0x001B1431);
         OnEvent = (void *)((char *)blade + 0x001AF2CE);
+        reset_client_map_name = (void *)((char *)blade + 0x001B1431);
         get_map_for_net_game = (void *)((char *)blade + 0x001B143D);
+        LoadNetModule = (void *)((char *)blade + 0x001B65D2);
+
+        application_methods_ptr = (void *)((char *)blade + 0x001C0848);
+        world_points_ptr = (void *)((char *)blade + 0x001DF898);
+        game_state_ptr = (void *)((char *)blade + 0x001E0B88);
+        var005E24DC = (void *)((char *)blade + 0x001E24DC);
+        var005E24F4 = (void *)((char *)blade + 0x001E24F4);
+        sound_device_ptr = (void *)((char *)blade + 0x003C8ED0);
+        client_map_name = (void *)((char *)blade + 0x003EE018);
+        net_game_name = (void *)((char *)blade + 0x003EE0B8);
+        net_max_players_ptr = (void *)((char *)blade + 0x003EE138);
+        net_data_ptr = (void *)((char *)blade + 0x003EE2C4);
+        application_ptr = (void *)((char *)blade + 0x003EFC94);
+
+        BldStartup = (void *)((char *)blade + 0x001BC34A);
+
         _thiscall_BBlibc_name_set = (void *)GetProcAddress(BBLibc, "??0B_Name@@QAE@PBD@Z");
         _thiscall_BBlibc_name_clear = (void *)GetProcAddress(BBLibc, "??1B_Name@@QAE@XZ");
         _thiscall_BBlibc_name_copy = (void *)GetProcAddress(BBLibc, "??4B_Name@@QAEAAV0@ABV0@@Z");
@@ -590,36 +618,10 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         _thiscall_BBlibc_name_is_equal_string = (void *)GetProcAddress(BBLibc, "??8B_Name@@QBEIPBD@Z");
         _thiscall_BBLibc_named_object_id = (void *)GetProcAddress(BBLibc, "?Id@B_NamedObj@@QBEABVB_Name@@XZ");
         BBlibc_format_string = (void *)GetProcAddress(BBLibc, "?vararg@@YAPBDPBDZZ");
-        _thiscall_application_set_mode = (void *)((char *)blade + 0x00011EB9);
-        _thiscall_application_init2 = (void *)((char *)blade + 0x0000F040);
-        _thiscall_application_prepare_level = (void *)((char *)blade + 0x00014F7F);
-        _thiscall_application_process_event = (void *)((char *)blade + 0x000121CE);
-        _thiscall_application_load_world = (void *)((char *)blade + 0x00016C6F);
-        _cdecl_read_sectors = (void *)((char *)blade + 0x00032379);
-        _cdecl_read_light = (void *)((char *)blade + 0x0004AD38);
-        _thiscall_00451A21 = (void *)((char *)blade + 0x00051A21);
         message_manager_print = (void *)GetProcAddress(BBLibc, "??6@YAAAVB_MessageManager@@AAV0@PBD@Z");
-        bld_new = (void *)GetProcAddress(shw32, "shi_new");
-        _thiscall_camera_init = (void *)((char *)blade + 0x000EAD20);
-        _thiscall_00439F5D = (void *)((char *)blade + 0x00039F5D);
-        _thiscall_camera_004EB1AA = (void *)((char *)blade + 0x000EB1AA);
-        _thiscall_0040AD82 = (void *)((char *)blade + 0x0000AD82);
-        _thiscall_0040ADA8 = (void *)((char *)blade + 0x0000ADA8);
-
-        sound_device_ptr = (void *)((char *)blade + 0x003C8ED0);
         msg_manager_ptr = (void *)GetProcAddress(BBLibc, "?mout@@3VB_MessageManager@@A");
-        client_map_name = (void *)((char *)blade + 0x003EE018);
-        net_game_name = (void *)((char *)blade + 0x003EE0B8);
-        net_max_players_ptr = (void *)((char *)blade + 0x003EE138);
-        net_data_ptr = (void *)((char *)blade + 0x003EE2C4);
-        application_ptr = (void *)((char *)blade + 0x003EFC94);
-        application_methods_ptr = (void *)((char *)blade + 0x001C0848);
-        game_state_ptr = (void *)((char *)blade + 0x001E0B88);
-        world_points_ptr = (void *)((char *)blade + 0x001DF898);
-        var005E24DC = (void *)((char *)blade + 0x001E24DC);
-        var005E24F4 = (void *)((char *)blade + 0x001E24F4);
 
-        BldStartup = (void *)((char *)blade + 0x001BC34A);
+        bld_new = (void *)GetProcAddress(shw32, "shi_new");
 
 #ifdef __BORLANDC__
 
