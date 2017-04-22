@@ -23,6 +23,7 @@
       <procedure name="read_point">
         <characteristics />
         <address>0040ACDD</address>
+        <CSignature>bld_word32 *read_point(bld_word32 *file, bld_word32 *point)</CSignature>
       </procedure>
       <procedure name="show_input_dialog">
         <characteristics />
@@ -1328,6 +1329,11 @@ const char *GetLastPlayerCType(void)</CSignature>
         <CSignature>
 int WorldToMBW(const char *world)</CSignature>
       </procedure>
+      <procedure name="read_light">
+        <characteristics />
+        <address>0044AD38</address>
+        <CSignature>bld_word32 * read_light(bld_word32 *file)</CSignature>
+      </procedure>
       <procedure name="nMaterials">
         <address>0044E9A0</address>
         <decompile>false</decompile>
@@ -1399,6 +1405,11 @@ int GetMaterialFloatProperty(
 int AddHitSoundComb(
         material_t *material1, material_t *material2, int soundID
 )</CSignature>
+      </procedure>
+      <procedure name="fn00451A21">
+        <characteristics />
+        <address>00451A21</address>
+        <CSignature>void __stdcall fn00451A21([[reko::arg(register,"ecx")]]bld_word32 *self, bld_word32 *sectors, bld_word32 *a, float f)</CSignature>
       </procedure>
       <procedure name="GetSectorByPosition">
         <address>0045C040</address>
