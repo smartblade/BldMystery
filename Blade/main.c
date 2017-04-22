@@ -597,6 +597,7 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         _thiscall_application_load_world = (void *)((char *)blade + 0x00016C6F);
         _cdecl_read_sectors = (void *)((char *)blade + 0x00032379);
         _cdecl_read_light = (void *)((char *)blade + 0x0004AD38);
+        _thiscall_00451A21 = (void *)((char *)blade + 0x00051A21);
         message_manager_print = (void *)GetProcAddress(BBLibc, "??6@YAAAVB_MessageManager@@AAV0@PBD@Z");
         bld_new = (void *)GetProcAddress(shw32, "shi_new");
         _thiscall_camera_init = (void *)((char *)blade + 0x000EAD20);

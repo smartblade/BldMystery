@@ -3,6 +3,7 @@
 #include <raster_device.h>
 #include "game_state.h"
 #include "light.h"
+#include "sector.h"
 #include "bld_ext_funcs.h"
 
 
@@ -112,13 +113,13 @@ B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs)
 
         file >> &gs->initial_point_position >> &gs->initial_point_orientation;
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-        assert("read world" == NULL);
+        for(unsigned int i = 0; i < gs->sectors.size; i++)
+        {
+                sector_t *sector = (sector_t *)gs->sectors.elements[i];
+                file >> sector->groupId;
+        }
+
+        CALL_THISCALL_VOID_3(&gs->unknown18F8, _thiscall_00451A21, &gs->sectors, 0, 0x40B38800);
 
         return file;
 }

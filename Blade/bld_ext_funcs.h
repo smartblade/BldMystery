@@ -77,6 +77,7 @@ EXTERN B_IDataFile * (*_cdecl_read_points)(B_IDataFile *file, array_t *points) N
 EXTERN B_IDataFile * (*_cdecl_read_point)(B_IDataFile *file, point_t *point) NULL_INIT;
 EXTERN B_IDataFile * (*_cdecl_read_sectors)(B_IDataFile *file, array_t *sectors) NULL_INIT;
 EXTERN B_IDataFile * (*_cdecl_read_light)(B_IDataFile *file) NULL_INIT;
+EXTERN void (*_thiscall_00451A21)(array_t sectors, int a, int b) NULL_INIT;
 
 EXTERN int **sound_device_ptr NULL_INIT;
 EXTERN void **msg_manager_ptr NULL_INIT;
@@ -134,6 +135,20 @@ __inline B_IDataFile& operator >>(B_IDataFile& file, point_t *point)
         void *selfPtr = self;\
         void *arg = arg1;\
         _asm { push arg }\
+        _asm { mov ecx, selfPtr }\
+        _asm { call fnPtr }\
+}
+
+#define CALL_THISCALL_VOID_3(self, funcPtr, arg1, arg2, arg3)\
+{\
+        void *fnPtr = funcPtr;\
+        void *selfPtr = self;\
+        void *arg01 = (void *)arg1;\
+        void *arg02 = (void *)arg2;\
+        void *arg03 = (void *)arg3;\
+        _asm { push arg03 }\
+        _asm { push arg02 }\
+        _asm { push arg01 }\
         _asm { mov ecx, selfPtr }\
         _asm { call fnPtr }\
 }

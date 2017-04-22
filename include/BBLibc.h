@@ -84,6 +84,7 @@ private:
 };
 
 LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, unsigned int &i);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, unsigned long &i);
 LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, float &f);
 LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_NamedObj &named_obj);
 LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_Color &color);
