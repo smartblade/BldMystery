@@ -90,6 +90,27 @@ LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_NamedObj &named_obj);
 LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_Color &color);
 
 
+struct B_ElementCSV
+{
+};
+
+template<class T> class B_NDataBase
+{
+};
+
+LIB_EXP B_NDataBase<B_ElementCSV> B_csvs;
+
+LIB_EXP unsigned int ReadCSV(const char *file_name, B_NDataBase<B_ElementCSV> *csvs);
+
+class LIB_EXP B_ResourceManager
+{
+public:
+        unsigned int LocateResourceIn(const B_Name &id, const B_Name *, int );
+};
+
+LIB_EXP B_ResourceManager B_resource_manager;
+
+
 #else
 
 typedef struct B_IDataFile B_IDataFile;

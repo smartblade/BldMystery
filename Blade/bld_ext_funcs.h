@@ -158,16 +158,18 @@ __inline B_IDataFile& operator >>(B_IDataFile& file, point_t *point)
 #ifndef BLD_EXT_FUNCS
 extern void _thiscall_application_mark_level_to_load(char *map);
 extern void _thiscall_application_load_level(char *map);
+extern void _thiscall_application_read_level(char *file_name);
 extern void _thiscall_application_wait_for_event(void);
 #endif
-
-extern void _impl_application_mark_level_to_load(application_t *self, char *map);
-extern void _impl_application_load_level(application_t *self, char *map);
-extern void _impl_application_wait_for_event(application_t *self);
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+extern void _impl_application_mark_level_to_load(application_t *self, char *map);
+extern void _impl_application_load_level(application_t *self, char *map);
+extern void _impl_application_read_level(application_t *self, const char *file_name);
+extern void _impl_application_wait_for_event(application_t *self);
 
 extern void create_bcb_wrappers(void);
 

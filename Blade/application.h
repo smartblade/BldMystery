@@ -21,7 +21,8 @@ typedef struct {
         void (*mark_level_to_load)(char *);
         void *unknownFuncs2[1];
         void (*load_level)(char *);
-        void *unknownFuncs3[7];
+        void (*read_level)(char *);
+        void *unknownFuncs3[6];
         void (*exit_with_error)(char *, char *);/*0x00410A93*/
         void *unknownFuncs4[9];
 } application_methods_t;
