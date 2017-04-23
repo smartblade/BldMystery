@@ -51,12 +51,11 @@ int application_load_world(application_t *self, const char *file_name)
 
                 timeBefore = timeGetTime();
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+                sound_device->set_world_size(
+                        game_state.unknown18FC.x, game_state.unknown18FC.y,
+                        game_state.unknown18FC.z, game_state.unknown1914,
+                        5000.0);
+
                 timeAfter = timeGetTime();
                 mout << vararg(
                         "set world size done (%f seconds).\n",

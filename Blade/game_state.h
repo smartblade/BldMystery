@@ -49,7 +49,9 @@ typedef struct {
         array_t sectors;
         char unknownFields18DC[28];
         void *unknown18F8;
-        char unknownFields18FC[36];
+        point_t unknown18FC;
+        double unknown1914;
+        void *unknown191C;
         array_t lights;
         char unknownFields1938[28];
         point_t initial_point_position;

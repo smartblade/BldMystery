@@ -119,7 +119,7 @@ B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs)
                 file >> sector->groupId;
         }
 
-        CALL_THISCALL_VOID_3(&gs->unknown18F8, _thiscall_00451A21, &gs->sectors, 0, 0x40B38800);
+        CALL_THISCALL_VOID_3(&gs->unknown18F8, _thiscall_00451A21, &gs->sectors, 0, 0x40B38800/*30000.0lf*/);
 
         return file;
 }

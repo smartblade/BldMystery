@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "application.h"
 #include "game_state.h"
+#include "sound_device.h"
 #include "net_data.h"
 
 
@@ -79,7 +80,7 @@ EXTERN B_IDataFile * (*_cdecl_read_sectors)(B_IDataFile *file, array_t *sectors)
 EXTERN B_IDataFile * (*_cdecl_read_light)(B_IDataFile *file) NULL_INIT;
 EXTERN void (*_thiscall_00451A21)(array_t sectors, int a, int b) NULL_INIT;
 
-EXTERN int **sound_device_ptr NULL_INIT;
+EXTERN sound_t **sound_device_ptr NULL_INIT;
 EXTERN void **msg_manager_ptr NULL_INIT;
 EXTERN char *client_map_name NULL_INIT;
 EXTERN char *net_game_name NULL_INIT;
