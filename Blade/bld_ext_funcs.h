@@ -87,7 +87,7 @@ EXTERN char *net_game_name NULL_INIT;
 EXTERN int *net_max_players_ptr NULL_INIT;
 EXTERN bld_abstract_net **net_data_ptr NULL_INIT;
 #ifdef __BORLANDC__
-        EXTERN bld_abstract_net *net NULL_INIT;
+        EXTERN bld_abstract_net *gbl_net NULL_INIT;
 #endif
 EXTERN application_t **application_ptr NULL_INIT;
 EXTERN application_methods_t *application_methods_ptr NULL_INIT;
@@ -100,16 +100,16 @@ EXTERN void **var005E24F4 NULL_INIT;
 }
 #endif
 
-#define sound_device (*sound_device_ptr)
+#define gbl_sound_device (*sound_device_ptr)
 #define message_manager (*msg_manager_ptr)
-#define net_max_players (*net_max_players_ptr)
-#define net_data (*net_data_ptr)
+#define gbl_net_max_players (*net_max_players_ptr)
+#define gbl_net_data (*net_data_ptr)
 #ifdef _MSC_VER
-        #define net (*net_data_ptr)
+        #define gbl_net (*net_data_ptr)
 #endif
-#define application (*application_ptr)
-#define game_state (*game_state_ptr)
-#define world_points (*world_points_ptr)
+#define gbl_application (*application_ptr)
+#define gbl_game_state (*game_state_ptr)
+#define gbl_world_points (*world_points_ptr)
 
 
 #ifdef __cplusplus

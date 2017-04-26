@@ -61,13 +61,13 @@ void _impl_application_load_level(application_t *self, char *map)
         message_manager_print(message_manager, buffer);
         message_manager_print(message_manager, "\n");
 
-        if (sound_device) {
-                sound_device[2] = 1;
-                sound_device[3] = 1;
+        if (gbl_sound_device) {
+                gbl_sound_device[2] = 1;
+                gbl_sound_device[3] = 1;
         }
 
-        if (net_data_is_net_game(net_data)) {
-                if (net_data_is_server(net_data)) {
+        if (net_data_is_net_game(gbl_net_data)) {
+                if (net_data_is_server(gbl_net_data)) {
                         application_load_level_script(self, "Server.py");
                         Set007EA988To01();
                 } else {
@@ -87,9 +87,9 @@ void _impl_application_load_level(application_t *self, char *map)
                 )
         );
 
-        if (sound_device) {
-                sound_device[2] = 0;
-                sound_device[3] = 0;
+        if (gbl_sound_device) {
+                gbl_sound_device[2] = 0;
+                gbl_sound_device[3] = 0;
         }
 }
 
@@ -192,11 +192,11 @@ int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, 
 
 void _impl_application_mark_level_to_load(application_t *self, char *map)
 {
-        if (application->map_to_load) {
-                free(application->map_to_load);
-                application->map_to_load = NULL;
+        if (self->map_to_load) {
+                free(self->map_to_load);
+                self->map_to_load = NULL;
         }
-        application->map_to_load = strdup(map);
+        self->map_to_load = strdup(map);
 }
 
 /*
@@ -242,7 +242,7 @@ void application_load_level_script(application_t *self, const char *script)
 
         self->unknownPtrForCamera = NUM_3F266666;
 
-        CALL_THISCALL_VOID_0(&game_state, _thiscall_00439F5D)
+        CALL_THISCALL_VOID_0(&gbl_game_state, _thiscall_00439F5D)
 
         self->player1 = NULL;
 
@@ -266,11 +266,11 @@ void application_load_level_script(application_t *self, const char *script)
 
         application_prepare_level(self);
 
-        if (!net_data_is_net_game(net_data) || net_data_is_server(net_data)) {
+        if (!net_data_is_net_game(gbl_net_data) || net_data_is_server(gbl_net_data)) {
 
                 assert(PLAYER);
 
-                world = &game_state.world;
+                world = &gbl_game_state.world;
                 if (
                         world->foundEntity &&
                         !strcmp(
@@ -353,7 +353,7 @@ void application_load_level_script(application_t *self, const char *script)
         } else {
                 self->player1 = NULL;
 
-                world = &game_state.world;
+                world = &gbl_game_state.world;
                 if (
                         world->foundEntity &&
                         !strcmp(
@@ -499,9 +499,9 @@ application_t* create_application(void *module, int nCmdShow, char *cmdLine)
 
         NEW_APPLICATION(new_application, module, nCmdShow, cmdLine)
 
-        application = new_application;
+        gbl_application = new_application;
 
-        return application;
+        return gbl_application;
 }
 
 /*
@@ -519,7 +519,7 @@ application_t* create_application(void *module, int nCmdShow, char *cmdLine)
 
 application_t* get_application()
 {
-        return application;
+        return gbl_application;
 }
 
 

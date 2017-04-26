@@ -439,8 +439,8 @@ int ServerSetSendDataState(int state)
 
 int GetNetState(void)
 {
-        if (net->is_net_game()) {
-                if (net->is_server())
+        if (gbl_net->is_net_game()) {
+                if (gbl_net->is_server())
                         return 1;
 
                 return 2;
@@ -481,10 +481,10 @@ boolean StartServer(
 {
         bool status;
 
-        status = net->start_server(game_name, player_name, max_players, TCP != FALSE);
+        status = gbl_net->start_server(game_name, player_name, max_players, TCP != FALSE);
 
         strcpy(net_game_name, (game_name + 3));
-        net_max_players = max_players - 1;
+        gbl_net_max_players = max_players - 1;
 
         return status;
 }
@@ -497,7 +497,7 @@ boolean StartServer(
 
 boolean BrowseSessions(const char *ip_address)
 {
-        return net->browse_sessions(ip_address);
+        return gbl_net->browse_sessions(ip_address);
 }
 
 
@@ -508,7 +508,7 @@ boolean BrowseSessions(const char *ip_address)
 
 boolean GetBrowseResult(int index, bld_server_info *info)
 {
-        return net->get_browse_result(index, info);
+        return gbl_net->get_browse_result(index, info);
 }
 
 
@@ -523,7 +523,7 @@ boolean JoinSession(int index, const char *player_name)
 
         reset_client_map_name();
 
-        status = net->join_session(index, player_name);
+        status = gbl_net->join_session(index, player_name);
 
         return status;
 }
@@ -588,6 +588,6 @@ int NetSetPPS(int PPS)
 
 int IsValidProtocol(int protocol)
 {
-        return net->is_valid_protocol(protocol != FALSE);
+        return gbl_net->is_valid_protocol(protocol != FALSE);
 }
 

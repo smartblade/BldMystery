@@ -60,7 +60,7 @@ B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs)
                 B_3D_raster_device->add_atmosphere(atm->Id(), atm->color, atm->intensity);
         }
 
-        _cdecl_read_points(&file, &world_points);
+        _cdecl_read_points(&file, &gbl_world_points);
         _cdecl_read_sectors(&file, &gs->sectors);
 
         array_t *lights = &gs->lights;

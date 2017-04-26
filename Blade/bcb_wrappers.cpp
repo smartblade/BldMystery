@@ -76,6 +76,6 @@ __declspec(naked) bool bcb_net::is_valid_protocol(bool tcp)
 
 void create_bcb_wrappers()
 {
-        net = new bcb_net();
+        gbl_net = new bcb_net();
 }
 

@@ -11,7 +11,7 @@ extern B_Name gbl_world_file_name;
 * Module:                 Blade.exe
 * Entry point:            0x004138B8
 */
-
+// TODO finish implementation
 void _impl_application_read_level(application_t * self, const char * file_name)
 {
         double timeBefore, timeAfter;
@@ -109,7 +109,7 @@ int application_load_world(application_t *self, const char *file_name)
                 mout << "B_App::LoadWorld() -> Error trying to load map.\n";
                 return 0;
         }
-        *file >> &game_state;
+        *file >> &gbl_game_state;
         delete file;
 
         timeAfter = timeGetTime();
@@ -122,15 +122,15 @@ int application_load_world(application_t *self, const char *file_name)
 
         gbl_world_file_name = B_Name(file_name);
 
-        if (sound_device)
+        if (gbl_sound_device)
         {
                 mout << "About to set world size for sound device\n";
 
                 timeBefore = timeGetTime();
 
-                sound_device->set_world_size(
-                        game_state.unknown18FC.x, game_state.unknown18FC.y,
-                        game_state.unknown18FC.z, game_state.unknown1914,
+                gbl_sound_device->set_world_size(
+                        gbl_game_state.unknown18FC.x, gbl_game_state.unknown18FC.y,
+                        gbl_game_state.unknown18FC.z, gbl_game_state.unknown1914,
                         5000.0);
 
                 timeAfter = timeGetTime();
