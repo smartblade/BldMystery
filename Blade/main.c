@@ -11,14 +11,17 @@
 #include "bld_ext_funcs.h"
 #pragma hdrstop
 
+static void *gbl_ebx;
+static void *gbl_esi;
+
 //---------------------------------------------------------------------------
 
 
 static application_methods_t application_methods = {
         NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-        _thiscall_application_wait_for_event,
+        NULL/*_thiscall_application_wait_for_event*/,
         NULL, NULL, NULL, NULL,
-        _thiscall_application_mark_level_to_load,
+        NULL/*_thiscall_application_mark_level_to_load*/,
          NULL,
         _thiscall_application_load_level,
 #ifdef _MSC_VER
@@ -138,6 +141,7 @@ int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, 
         char *cmd;
         MSG msg;
         int code;
+        static void *oldApp;
 
         cmd = lpCmdLine;
 
@@ -145,10 +149,13 @@ int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, 
         App = create_application(hInstance, nCmdShow, cmd);
 
         assert(App);
-
+        oldApp = App;
+_asm { mov gbl_esi, esi }
+_asm { mov gbl_ebx, ebx }
         if (application_start(App) == 0)
                 return 0;
-
+_asm { mov gbl_esi, esi }
+_asm { mov gbl_ebx, ebx }
         Set007EA988To01();
         for(;;) {
                 if (PeekMessage(&msg, NULL, WM_NULL, WM_NULL, PM_REMOVE)) {
@@ -169,10 +176,14 @@ int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, 
                         }
                 } else {
                         /* wait for event */
-
+if ( oldApp != App)
+        ;
+_asm { mov gbl_esi, esi }
+_asm { mov gbl_ebx, ebx }
                         application_wait_for_event(App);
-
+_asm { mov gbl_ebx, ebx }
                         OnEvent(0, 0xbff00000);
+_asm { mov gbl_ebx, ebx }
                 }
         }
 }
@@ -227,6 +238,7 @@ void application_load_level_script(application_t *self, const char *script)
         char *str1;
         char *str2;
         int cmp_result;
+        static void *oldCamera;
 
         BBlibc_name_set(&mode, "Game");
         application_set_mode(self, &mode);
@@ -234,7 +246,11 @@ void application_load_level_script(application_t *self, const char *script)
 
         application_init_python_path(self);
 
+        oldCamera = self;
+
         CALL_THISCALL_VOID_0(self->clock1, self->clock1->methods->unknown18)
+
+        printf("tmp777\n");
 
         self->unknown5C8 = NULL;
 
@@ -258,7 +274,11 @@ void application_load_level_script(application_t *self, const char *script)
         self->camera->unknownValueFromApplication = self->unknownPtrForCamera;
         self->bUnknown01C = TRUE;
 
+        _asm { mov gbl_ebx, ebx }
+
         application_run_python_file(self, script);
+
+        _asm { mov gbl_ebx, ebx }
 
         CALL_THISCALL_VOID_1(&self->unknown7C, _thiscall_0040AD82, var005E24DC)
 
@@ -344,6 +364,11 @@ void application_load_level_script(application_t *self, const char *script)
                 }
 
                 CALL_THISCALL_VOID_1(self->camera, _thiscall_camera_004EB1AA, self->player1)
+
+                /*if (self != oldCamera)
+                {
+                        exit(1);
+                }*/
 
                 self->camera->unknownPtrFromApplication = &self->unknownPtrForCamera;
                 self->camera->unknownValueFromApplication = self->unknownPtrForCamera;

@@ -4,6 +4,7 @@
 	Version="8.00"
 	Name="Blade"
 	ProjectGUID="{F18446DB-7027-4330-BB0F-3D133E659CA5}"
+	RootNamespace="Blade"
 	>
 	<Platforms>
 		<Platform
@@ -112,7 +113,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="0"
+				Optimization="2"
 				AdditionalIncludeDirectories="..\include;&quot;C:\Program Files (x86)\Python\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE"
 				ExceptionHandling="0"

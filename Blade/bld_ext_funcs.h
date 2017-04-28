@@ -126,6 +126,7 @@ __inline B_IDataFile& operator >>(B_IDataFile& file, point_t *point)
 {\
         void *fnPtr = funcPtr;\
         void *selfPtr = self;\
+        _asm { mov gbl_ebx, ebx }\
         _asm { mov ecx, selfPtr }\
         _asm { call fnPtr }\
 }
@@ -135,6 +136,7 @@ __inline B_IDataFile& operator >>(B_IDataFile& file, point_t *point)
         void *fnPtr = funcPtr;\
         void *selfPtr = self;\
         void *arg = arg1;\
+        _asm { mov gbl_ebx, ebx }\
         _asm { push arg }\
         _asm { mov ecx, selfPtr }\
         _asm { call fnPtr }\

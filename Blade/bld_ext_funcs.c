@@ -9,8 +9,12 @@
 #define DEFINE_METHOD_OF_CLASS_0(class, method, func_name)\
 void func_name(class *self) {\
         void *funcPtr = self->methods->method;\
+        _asm { push esi }\
+        _asm { push ebx }\
         _asm { mov ecx, self }\
         _asm { call funcPtr }\
+        _asm { pop ebx }\
+        _asm { pop esi }\
 }
 
 #define DEFINE_METHOD_OF_CLASS_1(class, method, func_name)\
