@@ -976,10 +976,9 @@ int AddCombustionDataFor(
         <address>0042B0F4</address>
       </procedure>
       <procedure name="GetWorldFileName">
+        <characteristics />
         <address>0042B192</address>
-        <decompile>false</decompile>
-        <CSignature>
-const char *GetWorldFileName(void)</CSignature>
+        <CSignature>const char *GetWorldFileName(void)</CSignature>
       </procedure>
       <procedure name="SetAfterFrameFunc">
         <address>0042B1A5</address>
@@ -4426,6 +4425,13 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
         <Address>005E0BA0</Address>
         <prim domain="SignedInt" size="4" />
         <Name>world</Name>
+      </global>
+      <global>
+        <Address>005E23E4</Address>
+        <ptr size="4">
+          <prim domain="Character" size="1" />
+        </ptr>
+        <Name>gbl_world_file_name</Name>
       </global>
       <global>
         <Address>007C8ED0</Address>
