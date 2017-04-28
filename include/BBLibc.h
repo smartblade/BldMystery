@@ -41,6 +41,7 @@ public:
         B_Name(const char* str);
         ~B_Name();
         B_Name &operator =(const B_Name &src);
+        operator const char *() const { return string; }
 private:
         char *string;
         int len;
@@ -113,6 +114,7 @@ LIB_EXP B_ResourceManager B_resource_manager;
 
 #else
 
+typedef struct B_Name B_Name;
 typedef struct B_IDataFile B_IDataFile;
 
 #endif

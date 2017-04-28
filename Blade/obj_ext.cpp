@@ -2,6 +2,7 @@
 #include <bld_system.h>
 #include <bld_python.h>
 #include "application.h"
+#include "bld_ext_funcs.h"
 #define BUILD_LIB
 #include <blade_ext.h>
 
@@ -27,6 +28,23 @@ int LoadWorld(const char *file_name)
         application_t * app = get_application();
         assert(app);
         return application_load_world(app, file_name);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0042B192
+*/
+
+const char *GetWorldFileName(void)
+{
+        return gbl_world_file_name;
 }
 
 /*
