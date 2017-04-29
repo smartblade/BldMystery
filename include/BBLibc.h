@@ -7,22 +7,6 @@
 #include <export.h>
 
 
-typedef struct {
-        void *methods;
-        byte r, g, b;
-} BBLibc_color_t;
-
-typedef struct {
-        char *string;
-        int len;
-} BBLibc_name_t;
-
-typedef struct {
-        void *methods;
-        BBLibc_name_t name;
-} BBLibc_named_object_t;
-
-
 #ifdef __cplusplus
 
 
@@ -114,7 +98,21 @@ LIB_EXP B_ResourceManager B_resource_manager;
 
 #else
 
-typedef struct B_Name B_Name;
+typedef struct {
+        void *methods;
+        byte r, g, b;
+} B_Color;
+
+typedef struct {
+        char *string;
+        int len;
+} B_Name;
+
+typedef struct {
+        void *methods;
+        B_Name name;
+} B_NamedObj;
+
 typedef struct B_IDataFile B_IDataFile;
 
 #endif
@@ -122,13 +120,13 @@ typedef struct B_IDataFile B_IDataFile;
 
 #ifndef BLD_EXT_FUNCS
 
-extern void BBlibc_name_set(BBLibc_name_t *self, const char *string);
-extern void BBlibc_name_clear(BBLibc_name_t *self);
-extern void BBlibc_name_copy(BBLibc_name_t *self, BBLibc_name_t *name);
-extern char *BBlibc_name_string(BBLibc_name_t *self);
-extern int BBlibc_name_is_equal_string(BBLibc_name_t *self, const char *string);
+extern void BBlibc_name_set(B_Name *self, const char *string);
+extern void BBlibc_name_clear(B_Name *self);
+extern void BBlibc_name_copy(B_Name *self, B_Name *name);
+extern char *BBlibc_name_string(B_Name *self);
+extern int BBlibc_name_is_equal_string(B_Name *self, const char *string);
 
-extern BBLibc_name_t *BBLibc_named_object_id(BBLibc_named_object_t *self);
+extern B_Name *BBLibc_named_object_id(B_NamedObj *self);
 
 #endif
 

@@ -7,6 +7,14 @@
 
 #define PLAYER "Player1"
 
+#ifdef __cplusplus
+
+class entity_t;
+class biped_entity_t;
+class person_t;
+class camera_t;
+
+#else
 
 typedef struct {
         void *unknownFuncs[4];
@@ -16,7 +24,7 @@ typedef struct {
 typedef struct _entity_t {
         union {
                 entity_methods_t *methods;
-                BBLibc_named_object_t parent;
+                B_NamedObj parent;
         };
         char unknownFields[404];
 } entity_t;
@@ -48,9 +56,11 @@ typedef struct {
         char unknownFields2[72];
 } camera_t;
 
+#endif /*__cplusplus*/
+
 #ifndef BLD_EXT_FUNCS
 
-camera_t* camera_init(camera_t *self, int unknown, BBLibc_name_t *name);
+camera_t* camera_init(camera_t *self, int unknown, B_Name *name);
 
 #endif
 

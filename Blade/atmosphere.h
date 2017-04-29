@@ -21,8 +21,8 @@ B_IDataFile &operator >>(B_IDataFile &file, atmosphere_t *atm);
 #else
 
 typedef struct {
-        BBLibc_named_object_t parent;
-        BBLibc_color_t color;
+        B_NamedObj parent;
+        B_Color color;
         float intensity;
 } atmosphere_t;
 

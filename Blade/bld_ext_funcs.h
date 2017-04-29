@@ -57,7 +57,7 @@ EXTERN void (*OnEvent)(int a, int b) NULL_INIT;
 EXTERN char *(*get_map_for_net_game)(char *map) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_BBlibc_name_set)(char *string) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_BBlibc_name_clear)(void) NULL_INIT;
-EXTERN void (__stdcall *_thiscall_BBlibc_name_copy)(BBLibc_name_t *name) NULL_INIT;
+EXTERN void (__stdcall *_thiscall_BBlibc_name_copy)(B_Name *name) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_BBlibc_name_string)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_BBlibc_name_is_equal_string)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_BBLibc_named_object_id)(void) NULL_INIT;

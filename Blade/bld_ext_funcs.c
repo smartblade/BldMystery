@@ -96,13 +96,13 @@ DEFINE_THISCALL_FUNC_1(application_t, _impl_application_load_level, _thiscall_ap
 DEFINE_THISCALL_FUNC_0(application_t, _impl_application_wait_for_event, _thiscall_application_wait_for_event)
 
 
-CALL_THISCALL_FUNC_1(BBLibc_name_t, _thiscall_BBlibc_name_set, BBlibc_name_set)
-CALL_THISCALL_FUNC_0(BBLibc_name_t, _thiscall_BBlibc_name_clear, BBlibc_name_clear)
-CALL_THISCALL_FUNC_1(BBLibc_name_t, _thiscall_BBlibc_name_copy, BBlibc_name_copy)
-CALL_THISCALL_FUNC_0(BBLibc_name_t, _thiscall_BBlibc_name_string, BBlibc_name_string)
-CALL_THISCALL_FUNC_1(BBLibc_name_t, _thiscall_BBlibc_name_is_equal_string, BBlibc_name_is_equal_string)
+CALL_THISCALL_FUNC_1(B_Name, _thiscall_BBlibc_name_set, BBlibc_name_set)
+CALL_THISCALL_FUNC_0(B_Name, _thiscall_BBlibc_name_clear, BBlibc_name_clear)
+CALL_THISCALL_FUNC_1(B_Name, _thiscall_BBlibc_name_copy, BBlibc_name_copy)
+CALL_THISCALL_FUNC_0(B_Name, _thiscall_BBlibc_name_string, BBlibc_name_string)
+CALL_THISCALL_FUNC_1(B_Name, _thiscall_BBlibc_name_is_equal_string, BBlibc_name_is_equal_string)
 
-CALL_THISCALL_FUNC_0(BBLibc_named_object_t, _thiscall_BBLibc_named_object_id, BBLibc_named_object_id)
+CALL_THISCALL_FUNC_0(B_NamedObj, _thiscall_BBLibc_named_object_id, BBLibc_named_object_id)
 
 DEFINE_METHOD_OF_CLASS_0(net_data_t, is_net_game, net_data_is_net_game)
 DEFINE_METHOD_OF_CLASS_0(net_data_t, is_server, net_data_is_server)

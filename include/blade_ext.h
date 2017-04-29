@@ -22,9 +22,17 @@
 
 #endif
 
+#ifdef __cplusplus
+
+class entity_t;
+class material_t;
+
+#else
 
 typedef struct _entity_t entity_t;
 typedef struct _material_t material_t;
+
+#endif
 
 typedef struct {
         const char *name;

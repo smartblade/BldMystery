@@ -36,7 +36,7 @@ void _impl_application_load_level(application_t *self, char *map)
 {
         char buffer[260];
         double timeBefore, timeAfter;
-        BBLibc_name_t mapName;
+        B_Name mapName;
         static loadLevelCounter = 0;
 
         timeBefore = timeGetTime();
@@ -214,8 +214,8 @@ void _impl_application_mark_level_to_load(application_t *self, char *map)
 
 void application_load_level_script(application_t *self, const char *script)
 {
-        BBLibc_name_t mode;
-        BBLibc_name_t camera_name;
+        B_Name mode;
+        B_Name camera_name;
         int foundIndex;
         int hash_value;
         char *str_ptr;

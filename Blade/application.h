@@ -37,7 +37,7 @@ typedef struct {
         game_clock_t *clock2;
         void *unknown034;
         void *argsMethods;
-        BBLibc_name_t **arguments;
+        B_Name **arguments;
         int numArguments;
         char unknownFields20[36];
         person_t *player1;
@@ -55,10 +55,10 @@ typedef struct {
         char unknownFields310[6];
         boolean no_sleep;
         char unknownFields320[24];
-        BBLibc_name_t mode;
+        B_Name mode;
         char *map_to_load;
         char unknownFields10[16];
-        BBLibc_name_t mapName;
+        B_Name mapName;
         char unknownFields2[424];
         void *window;
         void *module;
@@ -80,7 +80,7 @@ extern void application_end(application_t *self);
 extern void application_exit_with_error(
         application_t *self, const char *title, const char *message
 );
-extern void application_set_mode(application_t *self, BBLibc_name_t *mode);
+extern void application_set_mode(application_t *self, B_Name *mode);
 extern void application_load_level_script(application_t *self, const char *script);
 extern application_t* application_init(
         application_t *self, void *module, int nCmdShow, char *cmdLine
