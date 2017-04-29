@@ -9,12 +9,16 @@ MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
 DCC = $(ROOT)\bin\dcc32.exe $**
 BRCC = $(ROOT)\bin\brcc32.exe $**
 #------------------------------------------------------------------------------
-PROJECTS = Blade.exe Bladex.dll Raster.dll netgame.dll NetBlade.dll
+PROJECTS = Blade.exe BladeDummyLib.dll Bladex.dll Raster.dll netgame.dll NetBlade.dll
 #------------------------------------------------------------------------------
 default: $(PROJECTS)
 #------------------------------------------------------------------------------
 
 Blade.exe: Blade\Blade.bpr
+  $(ROOT)\bin\bpr2mak $**
+  $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
+
+BladeDummyLib.dll: BladeDummyLib\Blade.bpr
   $(ROOT)\bin\bpr2mak $**
   $(ROOT)\bin\make -$(MAKEFLAGS) -f$*.mak
 
