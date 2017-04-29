@@ -4,10 +4,19 @@ Microsoft Visual Studio Solution File, Format Version 9.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Raster", "Raster\Raster.vcproj", "{15817D0C-F1B7-40B7-A229-706AB72278A8}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bladex", "Bladex\Bladex.vcproj", "{45BBCEFB-81A4-4FDB-832A-027D0A5B991A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F18446DB-7027-4330-BB0F-3D133E659CA5} = {F18446DB-7027-4330-BB0F-3D133E659CA5}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "netgame", "netgame\netgame.vcproj", "{71413378-43EF-4477-8F17-290FA1F773C9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F18446DB-7027-4330-BB0F-3D133E659CA5} = {F18446DB-7027-4330-BB0F-3D133E659CA5}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Blade", "Blade\Blade.vcproj", "{F18446DB-7027-4330-BB0F-3D133E659CA5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{15817D0C-F1B7-40B7-A229-706AB72278A8} = {15817D0C-F1B7-40B7-A229-706AB72278A8}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
