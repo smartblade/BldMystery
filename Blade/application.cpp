@@ -4,8 +4,6 @@
 #include "application.h"
 #include "bld_ext_funcs.h"
 
-extern B_Name gbl_world_file_name;
-
 
 /*
 * Module:                 Blade.exe
@@ -120,7 +118,7 @@ int application_load_world(application_t *self, const char *file_name)
                 (timeAfter - timeBefore)/1000.0
         );
 
-        gbl_world_file_name = B_Name(file_name);
+        gbl_game_state.world_file_name = B_Name(file_name);
 
         if (gbl_sound_device)
         {

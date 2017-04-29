@@ -603,7 +603,6 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         application_methods_ptr = (void *)((char *)blade + 0x001C0848);
         world_points_ptr = (void *)((char *)blade + 0x001DF898);
         game_state_ptr = (void *)((char *)blade + 0x001E0B88);
-        world_file_name_ptr = (void *)((char *)blade + 0x00001E23E4);
         var005E24DC = (void *)((char *)blade + 0x001E24DC);
         var005E24F4 = (void *)((char *)blade + 0x001E24F4);
         sound_device_ptr = (void *)((char *)blade + 0x003C8ED0);

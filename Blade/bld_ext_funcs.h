@@ -92,7 +92,6 @@ EXTERN bld_abstract_net **net_data_ptr NULL_INIT;
 EXTERN application_t **application_ptr NULL_INIT;
 EXTERN application_methods_t *application_methods_ptr NULL_INIT;
 EXTERN game_state_t *game_state_ptr NULL_INIT;
-EXTERN B_Name *world_file_name_ptr;
 EXTERN array_t *world_points_ptr NULL_INIT;
 EXTERN void **var005E24DC NULL_INIT;
 EXTERN void **var005E24F4 NULL_INIT;
@@ -110,9 +109,6 @@ EXTERN void **var005E24F4 NULL_INIT;
 #endif
 #define gbl_application (*application_ptr)
 #define gbl_game_state (*game_state_ptr)
-#ifdef __BORLANDC__
-        #define gbl_world_file_name (*world_file_name_ptr)
-#endif
 #define gbl_world_points (*world_points_ptr)
 
 

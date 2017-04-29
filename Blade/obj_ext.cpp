@@ -6,10 +6,6 @@
 #define BUILD_LIB
 #include <blade_ext.h>
 
-#ifdef _MSC_VER
-B_Name gbl_world_file_name;
-#endif
-
 /*
 ................................................................................
 ................................................................................
@@ -44,7 +40,7 @@ int LoadWorld(const char *file_name)
 
 const char *GetWorldFileName(void)
 {
-        return gbl_world_file_name;
+        return gbl_game_state.world_file_name;
 }
 
 /*
