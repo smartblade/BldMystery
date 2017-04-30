@@ -79,6 +79,7 @@ EXTERN B_IDataFile * (*_cdecl_read_point)(B_IDataFile *file, point_t *point) NUL
 EXTERN B_IDataFile * (*_cdecl_read_sectors)(B_IDataFile *file, array_t *sectors) NULL_INIT;
 EXTERN B_IDataFile * (*_cdecl_read_light)(B_IDataFile *file) NULL_INIT;
 EXTERN void (*_thiscall_00451A21)(array_t sectors, int a, int b) NULL_INIT;
+EXTERN void (*BldStartup)(void *) NULL_INIT;
 
 EXTERN sound_t **sound_device_ptr NULL_INIT;
 EXTERN void **msg_manager_ptr NULL_INIT;
@@ -91,10 +92,13 @@ EXTERN bld_abstract_net **net_data_ptr NULL_INIT;
 #endif
 EXTERN application_t **application_ptr NULL_INIT;
 EXTERN application_methods_t *application_methods_ptr NULL_INIT;
+EXTERN void (**init_start)(void) NULL_INIT;
+EXTERN void (**init_end)(void) NULL_INIT;
 EXTERN game_state_t *game_state_ptr NULL_INIT;
 EXTERN array_t *world_points_ptr NULL_INIT;
 EXTERN void **var005E24DC NULL_INIT;
 EXTERN void **var005E24F4 NULL_INIT;
+EXTERN void **__onexitbegin_ptr NULL_INIT;
 
 #ifdef __cplusplus
 }

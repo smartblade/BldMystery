@@ -537,23 +537,6 @@ application_t* application_init(
 }
 
 
-
-void startup_cb(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
-{
-        if (!blade)
-                return;
-
-        /*
-         * Pass blade dll module pointer to blade main function instead of exe process
-         * handler to avoid following error from DialogBoxParam function when game
-         * launcher starting:
-         *   error 1813: ”казанный тип ресурса в файле образа отсутствует
-        */
-
-        BladeWinMain(blade, hPrevInstance, lpCmdLine, nCmdShow);
-}
-
-
 void LoadMsvcrtFunctions(void)
 {
         HMODULE msvcrt = NULL;
@@ -564,10 +547,21 @@ void LoadMsvcrtFunctions(void)
 }
 
 
+void DoInitializers(void)
+{
+        void (**init_fn)(void);
+
+        for(init_fn = init_start; init_fn <= init_end; init_fn++)
+        {
+                if (*init_fn)
+                        (*init_fn)();
+        }
+}
+
+
 WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
         HMODULE BBLibc, shw32;
-        void (*BldStartup)(void *) = NULL;
 
         LoadMsvcrtFunctions();
 
@@ -599,8 +593,11 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         reset_client_map_name = (void *)((char *)blade + 0x001B1431);
         get_map_for_net_game = (void *)((char *)blade + 0x001B143D);
         LoadNetModule = (void *)((char *)blade + 0x001B65D2);
+        BldStartup = (void *)((char *)blade + 0x001BC34A);
 
         application_methods_ptr = (void *)((char *)blade + 0x001C0848);
+        init_start = (void *)((char *)blade + 0x001C8000);
+        init_end = (void *)((char *)blade + 0x001C8240);
         world_points_ptr = (void *)((char *)blade + 0x001DF898);
         game_state_ptr = (void *)((char *)blade + 0x001E0B88);
         var005E24DC = (void *)((char *)blade + 0x001E24DC);
@@ -611,8 +608,7 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         net_max_players_ptr = (void *)((char *)blade + 0x003EE138);
         net_data_ptr = (void *)((char *)blade + 0x003EE2C4);
         application_ptr = (void *)((char *)blade + 0x003EFC94);
-
-        BldStartup = (void *)((char *)blade + 0x001BC34A);
+        __onexitbegin_ptr = (void *)((char *)blade + 0x003F00EC);
 
         _thiscall_BBlibc_name_set = (void *)GetProcAddress(BBLibc, "??0B_Name@@QAE@PBD@Z");
         _thiscall_BBlibc_name_clear = (void *)GetProcAddress(BBLibc, "??1B_Name@@QAE@XZ");
@@ -638,7 +634,19 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
 
 #endif
 
-        BldStartup(startup_cb);
+        /* __onexitbegin should be -1 on EXE module */
+        *__onexitbegin_ptr = (void *)-1;
+
+        DoInitializers();
+
+        /*
+         * Pass blade dll module pointer to blade main function instead of exe process
+         * handler to avoid following error from DialogBoxParam function when game
+         * launcher starting:
+         *   error 1813: ”казанный тип ресурса в файле образа отсутствует
+        */
+
+        BladeWinMain(blade, hPrevInstance, lpCmdLine, nCmdShow);
 
         return 0;
 }
