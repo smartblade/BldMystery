@@ -2,6 +2,7 @@
 #include <bld_system.h>
 #include <raster_device.h>
 #include "application.h"
+#include "anim.h"
 #include "bld_ext_funcs.h"
 
 
@@ -9,7 +10,7 @@
 * Module:                 Blade.exe
 * Entry point:            0x004138B8
 */
-// TODO finish implementation
+
 void _impl_application_read_level(application_t * self, const char * file_name)
 {
         double timeBefore, timeAfter;
@@ -55,12 +56,37 @@ void _impl_application_read_level(application_t * self, const char * file_name)
                 }
                 else if (!strcmp(itemKind, "ANM"))
                 {
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+                        B_IDataFile * file = new B_IDataFile(itemName, O_BINARY);
+                        if (file->fd != -1)
+                        {
+                                anim_t *anim = new anim_t();
+                                (*file) >> anim;
+                                if (gbl_anims.num_alloc <= gbl_anims.size)
+                                {
+                                        gbl_anims.num_alloc += gbl_anims.increment;
+                                        if (gbl_anims.size != 0)
+                                        {
+                                                void **elements = new void *[gbl_anims.num_alloc];
+                                                for(unsigned int i = 0; i < gbl_anims.size; i++)
+                                                {
+                                                        elements[i] = gbl_anims.elements[i];
+                                                }
+                                                delete gbl_anims.elements;
+                                                gbl_anims.elements = elements;
+                                        }
+                                        else
+                                        {
+                                                gbl_anims.elements = new void *[gbl_anims.num_alloc];
+                                        }
+                                }
+                                gbl_anims.elements[gbl_anims.size] = anim;
+                                gbl_anims.size++;
+                        }
+                        else
+                        {
+                                mout << vararg("ERROR opening animation %s\n", itemName);
+                        }
+                        delete file;
                 }
                 else if (!strcmp(itemKind, "Objs"))
                 {

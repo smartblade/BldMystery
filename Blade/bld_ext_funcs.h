@@ -98,6 +98,7 @@ EXTERN game_state_t *game_state_ptr NULL_INIT;
 EXTERN array_t *world_points_ptr NULL_INIT;
 EXTERN void **var005E24DC NULL_INIT;
 EXTERN void **var005E24F4 NULL_INIT;
+EXTERN array_t *anims_ptr NULL_INIT;
 EXTERN void **__onexitbegin_ptr NULL_INIT;
 
 #ifdef __cplusplus
@@ -114,6 +115,7 @@ EXTERN void **__onexitbegin_ptr NULL_INIT;
 #define gbl_application (*application_ptr)
 #define gbl_game_state (*game_state_ptr)
 #define gbl_world_points (*world_points_ptr)
+#define gbl_anims (*anims_ptr)
 
 
 #ifdef __cplusplus
