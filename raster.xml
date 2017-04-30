@@ -254,7 +254,7 @@
           </fn>
         </ptr>
       </field>
-      <field offset="80" name="raster_unknown050">
+      <field offset="80" name="update_dome">
         <ptr>
           <fn convention="__thiscall">
             <type>B_3DRasterDevice</type>

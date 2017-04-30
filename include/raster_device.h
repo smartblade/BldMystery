@@ -32,7 +32,7 @@ public:
         virtual void unknown044() = 0;
         virtual const char *bmp_name(long handle) = 0;
         virtual void unknown04C() = 0;
-        virtual void unknown050() = 0;
+        virtual void update_dome() = 0;
         virtual int get_texture_info(
                 int index, int &w, int &h, int &depth
         ) = 0;

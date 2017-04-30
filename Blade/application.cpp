@@ -48,7 +48,7 @@ void _impl_application_read_level(application_t * self, const char * file_name)
                 else if (!strcmp(itemKind, "WorldDome"))
                 {
                         B_resource_manager.LocateResourceIn(B_Name(itemName), NULL, 2);
-                        B_3D_raster_device->unknown050();
+                        B_3D_raster_device->update_dome();
                 }
                 else if (!strcmp(itemKind, "World"))
                 {
