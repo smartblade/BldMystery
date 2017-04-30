@@ -7,6 +7,7 @@
 #include "BBLibc.h"
 #include "entity.h"
 #include "game_clock.h"
+#include "array.h"
 
 
 typedef struct {
@@ -27,6 +28,82 @@ typedef struct {
         void *unknownFuncs4[9];
 } application_methods_t;
 
+#ifdef __cplusplus
+
+class application_t
+{
+public:
+        virtual void read_arguments(const char *arguments);
+        virtual void string_split(
+                const char *str, const char *sep, array_t *tokens);
+        virtual bool init_python_path();
+        virtual void process_message();
+        virtual void *unknown_method010(void *);
+        virtual ~application_t();
+        virtual bool start();
+        virtual void process_events();
+        virtual void end();
+        virtual void *unknown_method024();
+        virtual void *unknown_method028();
+        virtual int quit();
+        virtual void mark_level_to_load(const char *map);
+        virtual void close_level(const char *command, const char *map);
+        virtual void load_level(const char *map);
+        virtual void read_level(const char *file_name);
+        virtual void unknown_method040();
+        virtual void *unknown_method044();
+        virtual void clear_level(int flag);
+        virtual void set_py_interactive_string(const char *str);
+        virtual const char *input(const char *text);
+        virtual void call_CD_cb(int arg);
+        virtual void exit_with_error(char *title, char* message);
+        virtual void print_warning(const char *, const char *);
+        virtual void *get_window();
+        virtual void *get_module();
+        virtual int set_current_map(const char *map);
+        virtual bool init_window();
+        virtual void *unknown_method070();
+        virtual void *create_window();
+        virtual void mouse(bool acquireFlag);
+        virtual LRESULT window_procedure(
+                HWND hwnd, UINT uMsg, WPARAM wParam,  LPARAM lParam);
+
+        char unknownFields1[24];
+        boolean bUnknown01C;
+        char unknownFields1000[12];
+        game_clock_t *clock1;
+        game_clock_t *clock2;
+        void *unknown034;
+        void *argsMethods;
+        B_Name **arguments;
+        int numArguments;
+        char unknownFields20[36];
+        person_t *player1;
+        entity_t *client;
+        char unknownFields100[8];
+        camera_t *camera;
+        void *unknown7C;
+        char unknownFields200[300];
+        float unknown1AC;
+        float unknownPtrForCamera;
+        char unknownFields300[1036];
+        float fUnknown5C0;
+        char unknownFields400[4];
+        void *unknown5C8;
+        char unknownFields310[6];
+        boolean no_sleep;
+        char unknownFields320[24];
+        B_Name mode;
+        char *map_to_load;
+        char unknownFields10[16];
+        B_Name mapName;
+        char unknownFields2[424];
+        void *window;
+        void *module;
+        char unknownFields3[16];
+};
+
+#else /*__cplusplus*/
 
 typedef struct {
         application_methods_t *methods;
@@ -64,6 +141,8 @@ typedef struct {
         void *module;
         char unknownFields3[16];
 } application_t;
+
+#endif /*__cplusplus*/
 
 
 #ifndef BLD_EXT_FUNCS

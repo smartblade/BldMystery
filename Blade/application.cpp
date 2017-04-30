@@ -42,7 +42,7 @@ void _impl_application_read_level(application_t * self, const char * file_name)
                 }
                 else if (!strcmp(itemKind, "ChromaBitmaps"))
                 {
-                        self->methods->exit_with_error("Blade", "ChromaBitmaps no longer supported.");
+                        self->exit_with_error("Blade", "ChromaBitmaps no longer supported.");
                 }
                 else if (!strcmp(itemKind, "WorldDome"))
                 {
@@ -64,14 +64,14 @@ void _impl_application_read_level(application_t * self, const char * file_name)
                 }
                 else if (!strcmp(itemKind, "Objs"))
                 {
-                        self->methods->exit_with_error("Blade", "Objs no longer supported.");
+                        self->exit_with_error("Blade", "Objs no longer supported.");
                 }
                 else if (!strcmp(itemKind, "LoadGammaC"))
                 {
-                        self->methods->exit_with_error("Blade", "LoadGammaC no longer supported.");
+                        self->exit_with_error("Blade", "LoadGammaC no longer supported.");
                 }
                 status = fscanf(file, "%s -> %s", itemKind, itemName);
-                //self->methods->process_message(self);
+                self->process_message();
         }
         fclose(file);
         timeAfter = timeGetTime();
