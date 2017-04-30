@@ -57,7 +57,7 @@ void _impl_application_read_level(application_t * self, const char * file_name)
                 else if (!strcmp(itemKind, "ANM"))
                 {
                         B_IDataFile * file = new B_IDataFile(itemName, O_BINARY);
-                        if (file->fd != -1)
+                        if (file->OK())
                         {
                                 anim_t *anim = new anim_t();
                                 (*file) >> anim;
@@ -128,7 +128,7 @@ int application_load_world(application_t *self, const char *file_name)
         timeBefore = timeGetTime();
 
         B_IDataFile * file = new B_IDataFile(file_name, O_BINARY);
-        if (file->fd == -1)
+        if (!file->OK())
         {
                 mout << "B_App::LoadWorld() -> Error trying to load map.\n";
                 return 0;

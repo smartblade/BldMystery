@@ -59,10 +59,10 @@ class LIB_EXP B_IDataFile
 public:
         B_IDataFile(const char *file_name, int flags);
         ~B_IDataFile();
+        unsigned int OK() const { return fd != -1;}
 
-public:
-        int fd;
 private:
+        int fd;
         char *file_name;
         int file_size;
         char unknown_fields[16396];
