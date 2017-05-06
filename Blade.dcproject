@@ -20,6 +20,26 @@
         <address>004088F4</address>
         <CSignature>bld_word32 *read_points(bld_word32 *file, bld_word32 *points)</CSignature>
       </procedure>
+      <procedure name="multiply_const_by_vector3d">
+        <characteristics />
+        <address>0040A375</address>
+        <CSignature>bld_word32 *multiply_const_by_vector3d(bld_word32 *result, double c, bld_word32 *vec)</CSignature>
+      </procedure>
+      <procedure name="vector3d_multiply_const">
+        <characteristics />
+        <address>0040A3D1</address>
+        <CSignature>bld_word32 * __stdcall vector3d_multiply_const([[reko::arg(register,"ecx")]]bld_word32 *self, bld_word32 *result, double c)</CSignature>
+      </procedure>
+      <procedure name="vector3d_add">
+        <characteristics />
+        <address>0040A567</address>
+        <CSignature>bld_word32 * __stdcall vector3d_add([[reko::arg(register,"ecx")]]bld_word32 *self, bld_word32 *result, bld_word32 *addendum)</CSignature>
+      </procedure>
+      <procedure name="vector3d_subtract">
+        <characteristics />
+        <address>0040A5D0</address>
+        <CSignature>bld_word32 * __stdcall vector3d_subtract([[reko::arg(register,"ecx")]]bld_word32 *self, bld_word32 *result, bld_word32 *subtrahend)</CSignature>
+      </procedure>
       <procedure name="read_point">
         <characteristics />
         <address>0040ACDD</address>
