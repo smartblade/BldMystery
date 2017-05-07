@@ -1425,10 +1425,25 @@ int AddHitSoundComb(
         material_t *material1, material_t *material2, int soundID
 )</CSignature>
       </procedure>
-      <procedure name="fn00451A21">
+      <procedure name="bounding_box_is_sector_inside">
+        <characteristics />
+        <address>0044F052</address>
+        <CSignature>int __stdcall bounding_box_is_sector_inside([[reko::arg(register,"ecx")]]bld_word32 *self, bld_word32 *sector)</CSignature>
+      </procedure>
+      <procedure name="bounding_box_get_sectors_inside">
+        <characteristics />
+        <address>004501C1</address>
+        <CSignature>void __stdcall bounding_box_get_sectors_inside([[reko::arg(register,"ecx")]]bld_word32 *self, bld_word32 *sectors, bld_word32 *sectors_inside)</CSignature>
+      </procedure>
+      <procedure name="calc_oct_tree_node">
+        <characteristics />
+        <address>00450823</address>
+        <CSignature>bld_word32 *calc_oct_tree_node(bld_word32 *sectors, double d, bld_word32 *bounding_box)</CSignature>
+      </procedure>
+      <procedure name="oct_tree_build">
         <characteristics />
         <address>00451A21</address>
-        <CSignature>void __stdcall fn00451A21([[reko::arg(register,"ecx")]]bld_word32 *self, bld_word32 *sectors, bld_word32 *a, float f)</CSignature>
+        <CSignature>void __stdcall oct_tree_build([[reko::arg(register,"ecx")]]bld_word32 *self, bld_word32 *sectors, double d)</CSignature>
       </procedure>
       <procedure name="GetSectorByPosition">
         <address>0045C040</address>
