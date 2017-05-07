@@ -1438,12 +1438,12 @@ int AddHitSoundComb(
       <procedure name="calc_oct_tree_node">
         <characteristics />
         <address>00450823</address>
-        <CSignature>bld_word32 *calc_oct_tree_node(bld_word32 *sectors, double d, bld_word32 *bounding_box)</CSignature>
+        <CSignature>oct_tree_node_t *calc_oct_tree_node(bld_word32 *sectors, double size, bld_word32 *bounding_box)</CSignature>
       </procedure>
       <procedure name="oct_tree_build">
         <characteristics />
         <address>00451A21</address>
-        <CSignature>void __stdcall oct_tree_build([[reko::arg(register,"ecx")]]bld_word32 *self, bld_word32 *sectors, double d)</CSignature>
+        <CSignature>void __stdcall oct_tree_build([[reko::arg(register,"ecx")]]oct_tree_t *self, bld_word32 *sectors, double size)</CSignature>
       </procedure>
       <procedure name="GetSectorByPosition">
         <address>0045C040</address>

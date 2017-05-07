@@ -714,6 +714,44 @@
         <prim domain="UnsignedInt" size="1" />
       </field>
     </struct>
+    <typedef name="oct_tree_node_vtbl">
+      <struct name="oct_tree_node_vtbl" />
+    </typedef>
+    <typedef name="oct_tree_node_t">
+      <struct name="oct_tree_node_t" />
+    </typedef>
+    <struct name="oct_tree_node_vtbl">
+      <field offset="4" name="delete">
+        <ptr size="4">
+          <fn convention="__thiscall">
+            <type>oct_tree_node_t</type>
+            <return>
+              <prim domain="Any" size="4" />
+            </return>
+            <arg>
+              <prim domain="SignedInt" size="4" />
+            </arg>
+          </fn>
+        </ptr>
+      </field>
+    </struct>
+    <struct name="oct_tree_node_t">
+      <field offset="0" name="vtbl">
+        <ptr size="4">
+          <type>oct_tree_node_vtbl</type>
+        </ptr>
+      </field>
+    </struct>
+    <typedef name="oct_tree_t">
+      <struct name="oct_tree_t" />
+    </typedef>
+    <struct name="oct_tree_t">
+      <field offset="36" name="head">
+        <ptr size="4">
+          <type>oct_tree_node_t</type>
+        </ptr>
+      </field>
+    </struct>
     <typedef name="clock_t">
       <prim domain="Any" size="4" />
     </typedef>
