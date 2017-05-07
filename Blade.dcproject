@@ -1435,6 +1435,18 @@ int AddHitSoundComb(
         <address>004501C1</address>
         <CSignature>void __stdcall bounding_box_get_sectors_inside([[reko::arg(register,"ecx")]]bld_word32 *self, bld_word32 *sectors, bld_word32 *sectors_inside)</CSignature>
       </procedure>
+      <procedure name="oct_tree_node_group_init">
+        <characteristics />
+        <address>00450327</address>
+      </procedure>
+      <procedure name="oct_tree_node_single_sector_init">
+        <characteristics />
+        <address>00450417</address>
+      </procedure>
+      <procedure name="oct_tree_node_multiple_sectors_init">
+        <characteristics />
+        <address>0045048C</address>
+      </procedure>
       <procedure name="calc_oct_tree_node">
         <characteristics />
         <address>00450823</address>
