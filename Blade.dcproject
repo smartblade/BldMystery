@@ -1428,12 +1428,12 @@ int AddHitSoundComb(
       <procedure name="bounding_box_is_sector_inside">
         <characteristics />
         <address>0044F052</address>
-        <CSignature>int __stdcall bounding_box_is_sector_inside([[reko::arg(register,"ecx")]]bld_word32 *self, bld_word32 *sector)</CSignature>
+        <CSignature>int __stdcall bounding_box_is_sector_inside([[reko::arg(register,"ecx")]]bounding_box_t *self, bld_word32 *sector)</CSignature>
       </procedure>
       <procedure name="bounding_box_get_sectors_inside">
         <characteristics />
         <address>004501C1</address>
-        <CSignature>void __stdcall bounding_box_get_sectors_inside([[reko::arg(register,"ecx")]]bld_word32 *self, bld_word32 *sectors, bld_word32 *sectors_inside)</CSignature>
+        <CSignature>void __stdcall bounding_box_get_sectors_inside([[reko::arg(register,"ecx")]]bounding_box_t *self, bld_word32 *sectors, bld_word32 *sectors_inside)</CSignature>
       </procedure>
       <procedure name="oct_tree_node_group_init">
         <characteristics />
@@ -1450,7 +1450,7 @@ int AddHitSoundComb(
       <procedure name="calc_oct_tree_node">
         <characteristics />
         <address>00450823</address>
-        <CSignature>oct_tree_node_t *calc_oct_tree_node(bld_word32 *sectors, double size, bld_word32 *bounding_box)</CSignature>
+        <CSignature>oct_tree_node_t *calc_oct_tree_node(bld_word32 *sectors, double size, bounding_box_t *bounding_box)</CSignature>
       </procedure>
       <procedure name="oct_tree_build">
         <characteristics />

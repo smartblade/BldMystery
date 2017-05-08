@@ -752,6 +752,29 @@
         </ptr>
       </field>
     </struct>
+    <typedef name="bounding_box_t">
+      <struct name="bounding_box_t" />
+    </typedef>
+    <struct name="bounding_box_t">
+      <field offset="0" name="x_min">
+          <prim domain="Real" size="8" />
+      </field>
+      <field offset="8" name="y_min">
+          <prim domain="Real" size="8" />
+      </field>
+      <field offset="16" name="z_min">
+          <prim domain="Real" size="8" />
+      </field>
+      <field offset="24" name="x_max">
+          <prim domain="Real" size="8" />
+      </field>
+      <field offset="32" name="y_max">
+          <prim domain="Real" size="8" />
+      </field>
+      <field offset="40" name="z_max">
+          <prim domain="Real" size="8" />
+      </field>
+    </struct>
     <typedef name="clock_t">
       <prim domain="Any" size="4" />
     </typedef>
