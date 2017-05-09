@@ -4388,6 +4388,16 @@ int CarringObject(const char *inv_name, const char *obj_name)</CSignature>
         </signature>
       </call>
       <global>
+        <Address>005BD710</Address>
+        <prim domain="Real" size="8" />
+        <Name>dVal2</Name>
+      </global>
+      <global>
+        <Address>005BD720</Address>
+        <prim domain="Real" size="8" />
+        <Name>dHalf</Name>
+      </global>
+      <global>
         <Address>005BD738</Address>
         <prim domain="Real" size="4" />
         <Name>fVal0</Name>
