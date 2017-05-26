@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <library xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemata.jklnet.org/Decompiler">
   <Types>
+    <typedef name="array_t">
+      <struct name="array_t" />
+    </typedef>
+    <struct name="array_t">
+      <field offset="0" name="vtbl">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="4" name="elements">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="8" name="size">
+        <prim domain="SignedInt" size="4" />
+      </field>
+      <field offset="12" name="inc">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="16" name="numAlloc">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="20" name="unknown014">
+        <prim domain="Any" size="4" />
+      </field>
+    </struct>
     <typedef name="application_vtbl">
       <struct name="application_vtbl" />
     </typedef>
@@ -454,23 +477,8 @@
           <type>PyObject</type>
         </ptr>
       </field>
-      <field offset="56" name="argumentsVtbl">
-        <prim domain="Any" size="4" />
-      </field>
-      <field offset="60" name="arguments">
-        <prim domain="Any" size="4" />
-      </field>
-      <field offset="64" name="numArguments">
-        <prim domain="SignedInt" size="4" />
-      </field>
-      <field offset="68" name="argumentsInc">
-        <prim domain="Any" size="4" />
-      </field>
-      <field offset="72" name="argumentsAlloc">
-        <prim domain="Any" size="4" />
-      </field>
-      <field offset="76" name="argumentsUnknown04C">
-        <prim domain="Any" size="4" />
+      <field offset="56" name="arguments">
+        <type>array_t</type>
       </field>
       <field offset="80" name="consoleChannel">
         <prim domain="Any" size="4" />
