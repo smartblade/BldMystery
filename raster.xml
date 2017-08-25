@@ -1977,9 +1977,4 @@
       </field>
     </struct>
   </Types>
-  <global name="?B_3D_raster_device@@3PAVB_3DRasterDevice@@A">
-    <ptr>
-      <type>B_3DRasterDevice</type>
-    </ptr>
-  </global>
 </library>
