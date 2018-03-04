@@ -795,5 +795,16 @@
     <typedef name="bld_word32">
       <prim domain="Any" size="4" />
     </typedef>
+    <typedef name="B_Name">
+      <struct name="B_Name" />
+    </typedef>
+    <struct name="B_Name">
+      <field offset="0" name="string">
+        <prim domain="Any" size="4" />
+      </field>
+      <field offset="4" name="len">
+        <prim domain="Any" size="4" />
+      </field>
+    </struct>
   </Types>  
 </library>
