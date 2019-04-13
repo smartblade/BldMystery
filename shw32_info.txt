@@ -1,0 +1,4 @@
+Company: MicroQuill
+Product: SmartHeap
+Site:    http://www.microquill.com/kb/01_intro.html
+File:    shw32.dll
