@@ -51,6 +51,8 @@ class AsmInstruction:
             if a in reloc:
                 targetAddr = fromHex(reloc[a])
                 label = "l{}".format(toHex(targetAddr))
+                if self._instr.find("[{}]".format(reloc[a])) < 0:
+                    label = "offset {}".format(label)
                 (self._instr, count) = re.subn(reloc[a], label, self._instr, 1)
                 if count == 0:
                     self._instr += "; Failed to apply reloc"
