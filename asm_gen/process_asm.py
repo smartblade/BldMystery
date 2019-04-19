@@ -1,5 +1,6 @@
 
 import re
+import time
 
 num_regexp = re.compile('(?P<number>[\dABCDEF]+)')
 cmds = 'call|jmp|je|jne|jb|jnb|jbe|jl|jnl|jle|jg|ja|js|jns|jp|jnp|jo|jno|loop|loopnz'
@@ -92,6 +93,7 @@ def readRelocations(relocFileName):
     return reloc
 
 if __name__ == '__main__':
+    start_time = time.time()
     f = open("Blade_patched.txt")
     lines = f.readlines()
     f.close()
@@ -126,3 +128,4 @@ if __name__ == '__main__':
     for addr in sorted(unresolvedAddresses):
         f.write(";{}\n".format(toHex(addr)))
     f.close()
+    print("Converted in %.2f seconds" % (time.time() - start_time))
