@@ -75,14 +75,12 @@ class DataItem:
 class AsmInstruction:
     _addr = None
     _instr = None
-    _bytes = None
     _length = 0
     _showLabel = False
-    def __init__(self, addr, instr, bytes):
+    def __init__(self, addr, instr, length):
         self._addr = addr
         self._instr = instr
-        self._bytes = bytes
-        self._length = len(bytes) / 2
+        self._length = length
 
     def showLabel(self):
         self._showLabel = True
@@ -142,6 +140,22 @@ class ImageMap:
     def add(self, addr, item):
         self._items[addr] = item
 
+    def dasm(self, addr):
+        patterns = {
+            "55" : "push ebp",
+            "8BEC" : "mov ebp, esp",
+        }
+        length = 1
+        instruction = "invalid {}".format(self._mem.bytes(addr, addr + length))
+        for (pattern, instr) in patterns.items():
+            l = len(pattern) / 2
+            bytes = self._mem.bytes(addr, addr + l)
+            if (bytes == pattern):
+                instruction = instr
+                length = l
+                break
+        return AsmInstruction(addr, instruction, length)
+
     def mergeUserData(self, userMap):
         self._items = self._mergeUserData(self._items, userMap)
 
@@ -149,11 +163,18 @@ class ImageMap:
         result = dict()
         nextAddr = 0
         for addr in sorted(set(imageMap.keys() + userMap.keys())):
-            if (userMap.get(addr) != None):
-                result[addr] = userMap[addr]
-                nextAddr = userMap[addr].endAddress()
-            elif (imageMap.get(addr) != None and addr >= nextAddr):
-                result[addr] = imageMap[addr]
+            item = imageMap.get(addr)
+            usrItem = userMap.get(addr)
+            if (usrItem != None):
+                result[addr] = usrItem
+                nextAddr = usrItem.endAddress()
+            elif (item != None and item.endAddress() > nextAddr):
+                if addr >= nextAddr:
+                    result[addr] = item
+                elif isinstance(item, AsmInstruction):
+                    while nextAddr < item.endAddress():
+                        result[nextAddr] = self.dasm(nextAddr)
+                        nextAddr = result[nextAddr].endAddress()
         return result
 
     def splitDataItems(self, unresolvedAddresses):
@@ -244,7 +265,7 @@ if __name__ == '__main__':
             memIntv = MemoryInterval(imageMap = imageMap, addr = addr, length = length)
             lineItems.append(memIntv)
             if instr is not None:
-                item = AsmInstruction(addr, instr.rstrip(), bytes)
+                item = AsmInstruction(addr, instr.rstrip(), length)
             else:
                 item = DataItem(mem, addr, addr + length)
             imageMap.add(addr, item)
