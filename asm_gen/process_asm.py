@@ -17,7 +17,7 @@ def resolveAddress(addr, instrMap, unresolvedAddresses):
     if addr in instrMap:
         instrMap[addr].showLabel()
     else:
-        unresolvedAddresses.append(addr)
+        unresolvedAddresses.add(addr)
 
 class CommentLine:
     _line = None
@@ -27,6 +27,46 @@ class CommentLine:
     def toString(self):
         return ";{}".format(self._line)
 
+class MemoryInterval:
+    def __init__(self, imageMap, addr, length):
+        self._imageMap = imageMap
+        self._addr = addr
+        self._length = length
+
+    def toString(self):
+        line = ""
+        curAddr = self._addr
+        endAddr = self._addr + self._length
+        while curAddr < endAddr:
+            item = self._imageMap.itemsMap().get(curAddr)
+            if item is not None:
+                line += item.toString()
+                curAddr = item.endAddress()
+            else:
+                curAddr += 1
+        return line
+
+class DataItem:
+    _addr = None
+    _length = 0
+    def __init__(self, startAddr, endAddr):
+        self._addr = startAddr
+        self._length = endAddr - startAddr
+
+    def showLabel(self):
+        pass
+
+    def startAddress(self):
+        return self._addr
+
+    def endAddress(self):
+        return self._addr + self._length
+
+    def length(self):
+        return self._length
+
+    def toString(self):
+        return ";{} {}\n".format(toHex(self._addr), toHex(self._addr + self._length))
 
 class AsmInstruction:
     _addr = None
@@ -42,6 +82,12 @@ class AsmInstruction:
 
     def showLabel(self):
         self._showLabel = True
+
+    def endAddress(self):
+        return self._addr + self._length
+
+    def length(self):
+        return self._length
 
     def addHexPrefix(self):
         self._instr = num_regexp.sub('0x\g<number>', self._instr)
@@ -81,6 +127,43 @@ class AsmInstruction:
             label = "          "
         return "{} {}\n".format(label, self._instr)
 
+class ImageMap:
+    def __init__(self):
+        self._items = {}
+
+    def itemsMap(self):
+        return self._items
+
+    def add(self, addr, item):
+        self._items[addr] = item
+
+    def mergeUserData(self, userMap):
+        self._items = self._mergeUserData(self._items, userMap)
+
+    def _mergeUserData(self, imageMap, userMap):
+        result = dict()
+        nextAddr = 0
+        for addr in sorted(set(imageMap.keys() + userMap.keys())):
+            if (userMap.get(addr) != None):
+                result[addr] = userMap[addr]
+                nextAddr = userMap[addr].endAddress()
+            elif (imageMap.get(addr) != None and addr >= nextAddr):
+                result[addr] = imageMap[addr]
+        return result
+
+    def splitDataItems(self, unresolvedAddresses):
+        curItem = None
+        for addr in sorted(set(self._items.keys() + list(unresolvedAddresses))):
+            item = self._items.get(addr)
+            if (item != None):
+                curItem = item
+            elif isinstance(curItem, DataItem) and addr < curItem.endAddress():
+                itemLeft = DataItem(curItem.startAddress(), addr)
+                itemRight = DataItem(addr, curItem.endAddress())
+                self._items[curItem.startAddress()] = itemLeft
+                self._items[addr] = itemRight
+                curItem = itemRight
+
 def readRelocations(relocFileName):
     addr_value_regexp = re.compile('^;;\s(?P<addr>0x[\dABCDEF]+)\s(?P<value>0x[\dABCDEF]+)')
     reloc = dict()
@@ -94,16 +177,30 @@ def readRelocations(relocFileName):
     f.close()
     return reloc
 
+def readDataItems(dataFileName):
+    addr_inv_regexp = re.compile('^;;\s(?P<startAddr>0x[\dABCDEF]+)\s(?P<endAddr>0x[\dABCDEF]+)')
+    dataItems = dict()
+    f = open(dataFileName)
+    for line in f.readlines():
+        match = re.search(addr_inv_regexp, line)
+        if match:
+            startAddr = fromHex(match.group('startAddr'))
+            endAddr = fromHex(match.group('endAddr'))
+            dataItems[startAddr] = DataItem(startAddr, endAddr)
+    f.close()
+    return dataItems
+
 if __name__ == '__main__':
     start_time = time.time()
     f = open("Blade_patched.txt")
     lines = f.readlines()
     f.close()
     reloc = readRelocations("reloc.txt")
+    userData = readDataItems("data.txt")
     addr_label_regexp = re.compile('^(?P<addr>[\dABCDEF]+):\s+(?P<bytes>[\dABCDEF]+)\s+(?P<instr>\S.*)$')
     print("Fill data structures...")
     lineItems = []
-    instrMap = {}
+    imageMap = ImageMap()
     for line in lines:
         match = re.search(addr_label_regexp, line)
         if not match:
@@ -113,16 +210,22 @@ if __name__ == '__main__':
             instr = match.group('instr').rstrip()
             bytes = match.group('bytes')
             asmInstruction = AsmInstruction(addr = addr, instr = instr, bytes = bytes)
-            instrMap[addr] = asmInstruction
-            lineItems.append(asmInstruction)
+            imageMap.add(addr, asmInstruction)
+            memIntv = MemoryInterval(imageMap = imageMap, addr = addr, length = len(bytes) / 2)
+            lineItems.append(memIntv)
+    print("Merging user data...")
+    imageMap.mergeUserData(userData)
     print("Processing data...")
-    unresolvedAddresses = []
-    for lineItem in lineItems:
-        if isinstance(lineItem, AsmInstruction):
-            lineItem.resolveExternalCalls()
-            lineItem.addHexPrefix()
-            lineItem.applyRelocs(reloc, instrMap, unresolvedAddresses)
-            lineItem.resolveDirectTransferAddress(instrMap, unresolvedAddresses)
+    unresolvedAddresses = set()
+    for imageItem in imageMap.itemsMap().values():
+        if isinstance(imageItem, AsmInstruction):
+            imageItem.resolveExternalCalls()
+            imageItem.addHexPrefix()
+            imageItem.applyRelocs(reloc, imageMap.itemsMap(), unresolvedAddresses)
+            imageItem.resolveDirectTransferAddress(imageMap.itemsMap(), unresolvedAddresses)
+    print("Splitting data items...")
+    imageMap.splitDataItems(unresolvedAddresses)
+    unresolvedAddresses = unresolvedAddresses - set(imageMap.itemsMap())
     print("Writing data...")
     f = open("Blade_patched_converted.txt", "wt")
     for lineItem in lineItems:
