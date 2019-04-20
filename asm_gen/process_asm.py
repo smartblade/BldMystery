@@ -227,7 +227,7 @@ if __name__ == '__main__':
     mem = MemoryArea()
     reloc = readRelocations("reloc.txt")
     userData = readDataItems("data.txt", mem)
-    addr_label_regexp = re.compile('^(?P<addr>[\dABCDEF]+):\s+(?P<bytes>[\dABCDEF]+)\s+(?P<instr>\S.*)$')
+    addr_label_regexp = re.compile('^(?P<addr>[\dABCDEF]+):\s+(?P<bytes>[\dABCDEF]+)\s+(?P<instr>\S.*)?$')
     print("Fill data structures...")
     lineItems = []
     imageMap = ImageMap(mem)
@@ -237,13 +237,17 @@ if __name__ == '__main__':
             lineItems.append(CommentLine(line))
         else:
             addr = fromHex(match.group('addr'))
-            instr = match.group('instr').rstrip()
+            instr = match.group('instr')
             bytes = match.group('bytes')
+            length = len(bytes) / 2
             mem.addBytes(addr, bytes)
-            asmInstruction = AsmInstruction(addr = addr, instr = instr, bytes = bytes)
-            imageMap.add(addr, asmInstruction)
-            memIntv = MemoryInterval(imageMap = imageMap, addr = addr, length = len(bytes) / 2)
+            memIntv = MemoryInterval(imageMap = imageMap, addr = addr, length = length)
             lineItems.append(memIntv)
+            if instr is not None:
+                item = AsmInstruction(addr, instr.rstrip(), bytes)
+            else:
+                item = DataItem(mem, addr, addr + length)
+            imageMap.add(addr, item)
     print("Merging user data...")
     imageMap.mergeUserData(userData)
     print("Processing data...")
