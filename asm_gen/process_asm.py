@@ -178,7 +178,10 @@ class MemoryArea:
             self._bytes = list(bytes)
         else:
             expectedSize = 2 * (addr - self._addr)
-            self._bytes.extend(" " * (expectedSize - len(self._bytes)))
+            delta = expectedSize - len(self._bytes)
+            if (delta < 0):
+                del self._bytes[delta]
+            self._bytes.extend(" " * delta)
             self._bytes.extend(bytes)
 
     def bytes(self, startAddress, endAddress):
