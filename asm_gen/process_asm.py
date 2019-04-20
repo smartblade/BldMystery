@@ -49,7 +49,8 @@ class MemoryInterval:
 class DataItem:
     _addr = None
     _length = 0
-    def __init__(self, startAddr, endAddr):
+    def __init__(self, mem, startAddr, endAddr):
+        self._mem = mem
         self._addr = startAddr
         self._length = endAddr - startAddr
 
@@ -66,7 +67,10 @@ class DataItem:
         return self._length
 
     def toString(self):
-        return ";{} {}\n".format(toHex(self._addr), toHex(self._addr + self._length))
+        bytes = mem.bytes(self.startAddress(), self.endAddress())
+        startAddr = toHex(self.startAddress())
+        endAddr = toHex(self.endAddress())
+        return ";{}-{}\n;{}{}\n;\n".format(startAddr, endAddr, " " * 10, bytes)
 
 class AsmInstruction:
     _addr = None
@@ -128,7 +132,8 @@ class AsmInstruction:
         return "{} {}\n".format(label, self._instr)
 
 class ImageMap:
-    def __init__(self):
+    def __init__(self, mem):
+        self._mem = mem
         self._items = {}
 
     def itemsMap(self):
@@ -158,11 +163,32 @@ class ImageMap:
             if (item != None):
                 curItem = item
             elif isinstance(curItem, DataItem) and addr < curItem.endAddress():
-                itemLeft = DataItem(curItem.startAddress(), addr)
-                itemRight = DataItem(addr, curItem.endAddress())
+                itemLeft = DataItem(self._mem, curItem.startAddress(), addr)
+                itemRight = DataItem(self._mem, addr, curItem.endAddress())
                 self._items[curItem.startAddress()] = itemLeft
                 self._items[addr] = itemRight
                 curItem = itemRight
+
+class MemoryArea:
+    _addr = None
+    _bytes = None
+    def addBytes(self, addr, bytes):
+        if self._addr is None:
+            self._addr = addr
+            self._bytes = list(bytes)
+        else:
+            expectedSize = 2 * (addr - self._addr)
+            self._bytes.extend(" " * (expectedSize - len(self._bytes)))
+            self._bytes.extend(bytes)
+
+    def bytes(self, startAddress, endAddress):
+        curAddr = startAddress
+        bytes = []
+        while curAddr < endAddress:
+            bytes.append(self._bytes[2 * (curAddr - self._addr)])
+            bytes.append(self._bytes[2 * (curAddr - self._addr) + 1])
+            curAddr += 1
+        return "".join(bytes)
 
 def readRelocations(relocFileName):
     addr_value_regexp = re.compile('^;;\s(?P<addr>0x[\dABCDEF]+)\s(?P<value>0x[\dABCDEF]+)')
@@ -177,7 +203,7 @@ def readRelocations(relocFileName):
     f.close()
     return reloc
 
-def readDataItems(dataFileName):
+def readDataItems(dataFileName, mem):
     addr_inv_regexp = re.compile('^;;\s(?P<startAddr>0x[\dABCDEF]+)\s(?P<endAddr>0x[\dABCDEF]+)')
     dataItems = dict()
     f = open(dataFileName)
@@ -186,7 +212,7 @@ def readDataItems(dataFileName):
         if match:
             startAddr = fromHex(match.group('startAddr'))
             endAddr = fromHex(match.group('endAddr'))
-            dataItems[startAddr] = DataItem(startAddr, endAddr)
+            dataItems[startAddr] = DataItem(mem, startAddr, endAddr)
     f.close()
     return dataItems
 
@@ -195,12 +221,13 @@ if __name__ == '__main__':
     f = open("Blade_patched.txt")
     lines = f.readlines()
     f.close()
+    mem = MemoryArea()
     reloc = readRelocations("reloc.txt")
-    userData = readDataItems("data.txt")
+    userData = readDataItems("data.txt", mem)
     addr_label_regexp = re.compile('^(?P<addr>[\dABCDEF]+):\s+(?P<bytes>[\dABCDEF]+)\s+(?P<instr>\S.*)$')
     print("Fill data structures...")
     lineItems = []
-    imageMap = ImageMap()
+    imageMap = ImageMap(mem)
     for line in lines:
         match = re.search(addr_label_regexp, line)
         if not match:
@@ -209,6 +236,7 @@ if __name__ == '__main__':
             addr = fromHex(match.group('addr'))
             instr = match.group('instr').rstrip()
             bytes = match.group('bytes')
+            mem.addBytes(addr, bytes)
             asmInstruction = AsmInstruction(addr = addr, instr = instr, bytes = bytes)
             imageMap.add(addr, asmInstruction)
             memIntv = MemoryInterval(imageMap = imageMap, addr = addr, length = len(bytes) / 2)
