@@ -14,6 +14,14 @@ num_regexp = re.compile('(?P<prefix>[^\w])(?P<number>[\dABCDEF]+)')
 cmds = 'call|jmp|je|jne|jb|jnb|jbe|jl|jnl|jle|jg|ja|js|jns|jp|jnp|jo|jno|loop|loopnz'
 direct_transfer_regexp = re.compile('^(?P<cmd>{})\s+(?P<target>[\dABCDEF]+)\W*$'.format(cmds))
 external_ref_regexp = re.compile('(?P<extern>\w+\.\S+)')
+byteReg = 'al|cl|dl'
+wordReg = 'ax|cx|dx'
+access = '\[.*\]'
+regLeft = '((?P<byteLeft>{})|(?P<wordLeft>{}))'.format(byteReg, wordReg)
+regRight = '((?P<byteRight>{})|(?P<wordRight>{}))'.format(byteReg, wordReg)
+accessLeft = '(?P<accessLeft>{})'.format(access)
+accessRight = '(?P<accessRight>{})'.format(access)
+byte_memory_access_regexp = re.compile('^mov\s+(({},\s+{})|({},\s+{}))$'.format(regLeft, accessRight, accessLeft, regRight))
 
 def toHex(n):
     return format(n, '08X')
@@ -102,6 +110,17 @@ class AsmInstruction:
 
     def addHexPrefix(self):
         self._instr = num_regexp.sub('\g<prefix>0\g<number>h', self._instr)
+
+    def fixByteMemoryAccess(self):
+        match = re.search(byte_memory_access_regexp, self._instr)
+        if match:
+            access = match.group('accessLeft') or match.group('accessRight')
+            byte = match.group('byteLeft') or match.group('byteRight')
+            word = match.group('wordLeft') or match.group('wordRight')
+            size = None
+            size = 'byte ptr' if byte is not None else size
+            size = 'word ptr' if word is not None else size
+            self._instr = self._instr.replace(access, '{} {}'.format(size, access))
 
     def applyRelocs(self, reloc, instrMap, unresolvedAddresses):
         for a in range(self._addr, self._addr + self._length):
@@ -300,6 +319,7 @@ if __name__ == '__main__':
     if options.show_hex_prefix:
         for imageItem in imageMap.itemsMap().values():
             if isinstance(imageItem, AsmInstruction):
+                imageItem.fixByteMemoryAccess()
                 imageItem.addHexPrefix()
     f = open("Blade_patched_converted.txt", "wt")
     for lineItem in lineItems:
