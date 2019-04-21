@@ -1,10 +1,18 @@
 
+from optparse import OptionParser
 import re
 import time
 
-num_regexp = re.compile('(?P<number>[\dABCDEF]+)')
+parser = OptionParser()
+parser.add_option("--show-hex-prefix", dest="show_hex_prefix",
+                  help="show '0x' prefix for hex numbers (yes, no)",
+                  default="yes")
+(options, args) = parser.parse_args()
+options.show_hex_prefix = (options.show_hex_prefix != 'no')
+
+num_regexp = re.compile('(?P<prefix>[^\w])(?P<number>[\dABCDEF]+)')
 cmds = 'call|jmp|je|jne|jb|jnb|jbe|jl|jnl|jle|jg|ja|js|jns|jp|jnp|jo|jno|loop|loopnz'
-direct_transfer_regexp = re.compile('^(?P<cmd>{})\s+(?P<target>0x[\dABCDEF]+)\W*$'.format(cmds))
+direct_transfer_regexp = re.compile('^(?P<cmd>{})\s+(?P<target>[\dABCDEF]+)\W*$'.format(cmds))
 external_ref_regexp = re.compile('(?P<extern>\w+\.\S+)')
 
 def toHex(n):
@@ -77,6 +85,7 @@ class AsmInstruction:
     _instr = None
     _length = 0
     _showLabel = False
+    _message = ""
     def __init__(self, addr, instr, length):
         self._addr = addr
         self._instr = instr
@@ -92,20 +101,23 @@ class AsmInstruction:
         return self._length
 
     def addHexPrefix(self):
-        self._instr = num_regexp.sub('0x\g<number>', self._instr)
+        self._instr = num_regexp.sub('\g<prefix>0x\g<number>', self._instr)
 
     def applyRelocs(self, reloc, instrMap, unresolvedAddresses):
         for a in range(self._addr, self._addr + self._length):
             if a in reloc:
                 targetAddr = fromHex(reloc[a])
                 label = "l{}".format(toHex(targetAddr))
-                if self._instr.find("[{}]".format(reloc[a])) < 0:
+                if self._instr.find("[{}]".format(toHex(targetAddr))) < 0:
                     label = "offset {}".format(label)
-                (self._instr, count) = re.subn(reloc[a], label, self._instr, 1)
+                (self._instr, count) = re.subn(toHex(targetAddr), label, self._instr, 1)
                 if count == 0:
-                    self._instr += "; Failed to apply reloc"
+                    self.printErrorMessage("Failed to apply reloc")
                 else:
                     resolveAddress(targetAddr, instrMap, unresolvedAddresses)
+
+    def printErrorMessage(self, msg):
+        self._message += " {}.".format(msg)
 
     def resolveDirectTransferAddress(self, instrMap, unresolvedAddresses):
         match = re.search(direct_transfer_regexp, self._instr)
@@ -127,7 +139,10 @@ class AsmInstruction:
         label = "l{}:".format(toHex(self._addr))
         if (not self._showLabel):
             label = "          "
-        return "{} {}\n".format(label, self._instr)
+        msg = ""
+        if (self._message):
+            msg = "; {}".format(self._message.lstrip())
+        return "{} {}{}\n".format(label, self._instr, msg)
 
 class ImageMap:
     def __init__(self, mem):
@@ -276,13 +291,16 @@ if __name__ == '__main__':
     for imageItem in imageMap.itemsMap().values():
         if isinstance(imageItem, AsmInstruction):
             imageItem.resolveExternalCalls()
-            imageItem.addHexPrefix()
             imageItem.applyRelocs(reloc, imageMap.itemsMap(), unresolvedAddresses)
             imageItem.resolveDirectTransferAddress(imageMap.itemsMap(), unresolvedAddresses)
     print("Splitting data items...")
     imageMap.splitDataItems(unresolvedAddresses)
     unresolvedAddresses = unresolvedAddresses - set(imageMap.itemsMap())
     print("Writing data...")
+    if options.show_hex_prefix:
+        for imageItem in imageMap.itemsMap().values():
+            if isinstance(imageItem, AsmInstruction):
+                imageItem.addHexPrefix()
     f = open("Blade_patched_converted.txt", "wt")
     for lineItem in lineItems:
         f.write(lineItem.toString())
