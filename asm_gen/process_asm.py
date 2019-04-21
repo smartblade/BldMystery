@@ -5,7 +5,7 @@ import time
 
 parser = OptionParser()
 parser.add_option("--show-hex-prefix", dest="show_hex_prefix",
-                  help="show '0x' prefix for hex numbers (yes, no)",
+                  help="show '0' prefix and 'h' suffix for hex numbers (yes, no)",
                   default="yes")
 (options, args) = parser.parse_args()
 options.show_hex_prefix = (options.show_hex_prefix != 'no')
@@ -101,7 +101,7 @@ class AsmInstruction:
         return self._length
 
     def addHexPrefix(self):
-        self._instr = num_regexp.sub('\g<prefix>0x\g<number>', self._instr)
+        self._instr = num_regexp.sub('\g<prefix>0\g<number>h', self._instr)
 
     def applyRelocs(self, reloc, instrMap, unresolvedAddresses):
         for a in range(self._addr, self._addr + self._length):
