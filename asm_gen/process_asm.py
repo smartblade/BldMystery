@@ -304,7 +304,9 @@ if __name__ == '__main__':
     f = open("Blade_patched_converted.txt", "wt")
     for lineItem in lineItems:
         f.write(lineItem.toString())
+    f.write("; Unresolved addresses:\n")
     for addr in sorted(unresolvedAddresses):
-        f.write(";{}\n".format(toHex(addr)))
+        f.write("l{} dd 012345678h\n".format(toHex(addr)))
+    f.write("external_symbol dd 012345678h\n")
     f.close()
     print("Converted in %.2f seconds" % (time.time() - start_time))
