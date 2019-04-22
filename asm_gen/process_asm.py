@@ -49,6 +49,12 @@ class MemoryInterval:
         self._addr = addr
         self._length = length
 
+    def startAddress(self):
+        return self._addr
+
+    def endAddress(self):
+        return self._addr + self._length
+
     def toString(self):
         line = ""
         curAddr = self._addr
@@ -101,6 +107,9 @@ class AsmInstruction:
 
     def showLabel(self):
         self._showLabel = True
+
+    def startAddress(self):
+        return self._addr
 
     def endAddress(self):
         return self._addr + self._length
@@ -190,6 +199,14 @@ class ImageMap:
                 break
         return AsmInstruction(addr, instruction, length)
 
+    def removeOverlappedItems(self):
+        prevItem = None
+        for addr in sorted(self._items.keys()):
+            item = self._items[addr]
+            if (prevItem is not None and prevItem.endAddress() > item.startAddress()):
+                self._items[prevItem.startAddress()] = DataItem(self._mem, prevItem.startAddress(), item.startAddress())
+            prevItem = item
+
     def mergeUserData(self, userMap):
         self._items = self._mergeUserData(self._items, userMap)
 
@@ -248,6 +265,22 @@ class MemoryArea:
             curAddr += 1
         return "".join(bytes)
 
+def removeOverlappedMemoryIntervals(imageMap, lineItems):
+    prevIndex = -1
+    for (i, lineItem) in enumerate(lineItems):
+        if isinstance(lineItem, MemoryInterval):
+            if (
+                prevIndex > 0 and
+                lineItems[prevIndex].endAddress() > lineItem.startAddress()
+            ):
+                startAddress = lineItems[prevIndex].startAddress()
+                length = lineItem.startAddress() - startAddress
+                lineItems[prevIndex] = MemoryInterval(
+                    imageMap = imageMap,
+                    addr = startAddress,
+                    length = length)
+            prevIndex = i
+
 def readRelocations(relocFileName):
     addr_value_regexp = re.compile('^;;\s(?P<addr>0x[\dABCDEF]+)\s(?P<value>0x[\dABCDEF]+)')
     reloc = dict()
@@ -303,6 +336,9 @@ if __name__ == '__main__':
             else:
                 item = DataItem(mem, addr, addr + length)
             imageMap.add(addr, item)
+    print("Removing overlapped items...")
+    removeOverlappedMemoryIntervals(imageMap, lineItems)
+    imageMap.removeOverlappedItems()
     print("Merging user data...")
     imageMap.mergeUserData(userData)
     print("Processing data...")
