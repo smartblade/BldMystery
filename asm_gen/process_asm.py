@@ -29,12 +29,6 @@ def toHex(n):
 def fromHex(h):
     return int(h, 16)
 
-def resolveAddress(addr, instrMap, unresolvedAddresses):
-    if addr in instrMap:
-        instrMap[addr].showLabel()
-    else:
-        unresolvedAddresses.add(addr)
-
 class CommentLine:
     _line = None
     def __init__(self, line):
@@ -75,6 +69,8 @@ class DataItem:
         self._mem = mem
         self._addr = startAddr
         self._length = endAddr - startAddr
+        self._ptrs = {}
+        self._messages = {}
 
     def showLabel(self):
         pass
@@ -88,11 +84,49 @@ class DataItem:
     def length(self):
         return self._length
 
+    def applyRelocs(self, imageMap):
+        reloc = imageMap.relocations()
+        addr = self.startAddress()
+        while addr < self.endAddress():
+            if addr in reloc:
+                targetAddr = reloc[addr]
+                length = 4
+                addrStr = ""
+                for i in range(length, 0, -1):
+                    addrStr += self._mem.bytes(addr + i - 1, addr + i)
+                if (
+                    fromHex(addrStr) != targetAddr or
+                    (addr + length > self.endAddress())
+                ):
+                    self._messages[addr] = "Failed to apply reloc."
+                else:
+                    self._ptrs[addr] = targetAddr
+                    imageMap.resolveAddress(targetAddr)
+            else:
+                length = 1
+            addr += length
+
     def toString(self):
-        bytes = mem.bytes(self.startAddress(), self.endAddress())
-        startAddr = toHex(self.startAddress())
-        endAddr = toHex(self.endAddress())
-        return ";{}-{}\n;{}{}\n;\n".format(startAddr, endAddr, " " * 10, bytes)
+        lines = ""
+        addr = self.startAddress()
+        while addr < self.endAddress():
+            error = ""
+            if addr in self._messages:
+                error = "; {}".format(self._messages[addr])
+            label = " " * 9
+            if addr == self.startAddress():
+                label = "l{}".format(toHex(addr))
+            if addr in self._ptrs:
+                length = 4
+                dataSize = "dd"
+                data = "l{}".format(toHex(self._ptrs[addr]))
+            else:
+                length = 1
+                dataSize = "db"
+                data = "0{}h".format(self._mem.bytes(addr, addr + length))
+            lines += "{}  {} {}{}\n".format(label, dataSize, data, error)
+            addr += length
+        return lines
 
 class AsmInstruction:
     _addr = None
@@ -131,10 +165,11 @@ class AsmInstruction:
             size = 'word ptr' if word is not None else size
             self._instr = self._instr.replace(access, '{} {}'.format(size, access))
 
-    def applyRelocs(self, reloc, instrMap, unresolvedAddresses):
+    def applyRelocs(self, imageMap):
+        reloc = imageMap.relocations()
         for a in range(self._addr, self._addr + self._length):
             if a in reloc:
-                targetAddr = fromHex(reloc[a])
+                targetAddr = reloc[a]
                 label = "l{}".format(toHex(targetAddr))
                 if self._instr.find("[{}]".format(toHex(targetAddr))) < 0:
                     label = "offset {}".format(label)
@@ -142,19 +177,19 @@ class AsmInstruction:
                 if count == 0:
                     self.printErrorMessage("Failed to apply reloc")
                 else:
-                    resolveAddress(targetAddr, instrMap, unresolvedAddresses)
+                    imageMap.resolveAddress(targetAddr)
 
     def printErrorMessage(self, msg):
         self._message += " {}.".format(msg)
 
-    def resolveDirectTransferAddress(self, instrMap, unresolvedAddresses):
+    def resolveDirectTransferAddress(self, imageMap):
         match = re.search(direct_transfer_regexp, self._instr)
         if match:
             cmd = match.group('cmd')
             targetAddr = fromHex(match.group('target'))
             label = "l{}".format(toHex(targetAddr))
             self._instr = "{} {}".format(cmd, label)
-            resolveAddress(targetAddr, instrMap, unresolvedAddresses)
+            imageMap.resolveAddress(targetAddr)
 
     def resolveExternalCalls(self):
         match = re.search(external_ref_regexp, self._instr)
@@ -176,9 +211,16 @@ class ImageMap:
     def __init__(self, mem):
         self._mem = mem
         self._items = {}
+        self._unresolvedAddresses = set()
 
     def itemsMap(self):
         return self._items
+
+    def unresolvedAddresses(self):
+        return self._unresolvedAddresses
+
+    def relocations(self):
+        return self._mem.relocations()
 
     def add(self, addr, item):
         self._items[addr] = item
@@ -228,7 +270,8 @@ class ImageMap:
                         nextAddr = result[nextAddr].endAddress()
         return result
 
-    def splitDataItems(self, unresolvedAddresses):
+    def splitDataItems(self):
+        unresolvedAddresses = self._unresolvedAddresses
         curItem = None
         for addr in sorted(set(self._items.keys() + list(unresolvedAddresses))):
             item = self._items.get(addr)
@@ -240,10 +283,24 @@ class ImageMap:
                 self._items[curItem.startAddress()] = itemLeft
                 self._items[addr] = itemRight
                 curItem = itemRight
+        self._unresolvedAddresses -= set(self._items)
+
+    def resolveAddress(self, addr):
+        if addr in self._items:
+            self._items[addr].showLabel()
+        else:
+            self._unresolvedAddresses.add(addr)
 
 class MemoryArea:
     _addr = None
     _bytes = None
+    _reloc = None
+    def __init__(self, reloc):
+        self._reloc = reloc
+
+    def relocations(self):
+        return self._reloc
+
     def addBytes(self, addr, bytes):
         if self._addr is None:
             self._addr = addr
@@ -290,7 +347,7 @@ def readRelocations(relocFileName):
         if match:
             addr = match.group('addr')
             value = match.group('value')
-            reloc[fromHex(addr)] = value
+            reloc[fromHex(addr)] = fromHex(value)
     f.close()
     return reloc
 
@@ -312,8 +369,8 @@ if __name__ == '__main__':
     f = open("Blade_patched.txt")
     lines = f.readlines()
     f.close()
-    mem = MemoryArea()
     reloc = readRelocations("reloc.txt")
+    mem = MemoryArea(reloc)
     userData = readDataItems("data.txt", mem)
     addr_label_regexp = re.compile('^(?P<addr>[\dABCDEF]+):\s+(?P<bytes>[\dABCDEF]+)\s+(?P<instr>\S.*)?$')
     print("Fill data structures...")
@@ -342,15 +399,16 @@ if __name__ == '__main__':
     print("Merging user data...")
     imageMap.mergeUserData(userData)
     print("Processing data...")
-    unresolvedAddresses = set()
     for imageItem in imageMap.itemsMap().values():
         if isinstance(imageItem, AsmInstruction):
             imageItem.resolveExternalCalls()
-            imageItem.applyRelocs(reloc, imageMap.itemsMap(), unresolvedAddresses)
-            imageItem.resolveDirectTransferAddress(imageMap.itemsMap(), unresolvedAddresses)
+            imageItem.applyRelocs(imageMap)
+            imageItem.resolveDirectTransferAddress(imageMap)
     print("Splitting data items...")
-    imageMap.splitDataItems(unresolvedAddresses)
-    unresolvedAddresses = unresolvedAddresses - set(imageMap.itemsMap())
+    imageMap.splitDataItems()
+    for imageItem in imageMap.itemsMap().values():
+        if isinstance(imageItem, DataItem):
+            imageItem.applyRelocs(imageMap)
     print("Writing data...")
     if options.show_hex_prefix:
         for imageItem in imageMap.itemsMap().values():
@@ -361,7 +419,7 @@ if __name__ == '__main__':
     for lineItem in lineItems:
         f.write(lineItem.toString())
     f.write("; Unresolved addresses:\n")
-    for addr in sorted(unresolvedAddresses):
+    for addr in sorted(imageMap.unresolvedAddresses()):
         f.write("l{} dd 012345678h\n".format(toHex(addr)))
     f.write("external_symbol dd 012345678h\n")
     f.close()
