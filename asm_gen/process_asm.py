@@ -310,7 +310,7 @@ class MemoryArea:
             delta = expectedSize - len(self._bytes)
             if (delta < 0):
                 del self._bytes[delta]
-            self._bytes.extend(" " * delta)
+            self._bytes.extend("0" * delta)
             self._bytes.extend(bytes)
 
     def bytes(self, startAddress, endAddress):
