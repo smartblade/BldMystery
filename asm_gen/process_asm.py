@@ -191,12 +191,45 @@ class AsmInstruction:
             self._instr = "{} {}".format(cmd, label)
             imageMap.resolveAddress(targetAddr)
 
-    def resolveExternalCalls(self):
+    def resolveExternalCalls(self, imageMap):
         match = re.search(external_ref_regexp, self._instr)
         if match:
-            target = match.group('extern')
-            # TODO keep external symbol name
-            self._instr = self._instr.replace(target, 'external_symbol')
+            externalSym = match.group('extern')
+            targetAddr = self.extractTargetAddress(imageMap)
+            if targetAddr is None:
+                targetAddr = 'external_symbol'
+            self.printErrorMessage("[{}]".format(externalSym))
+            self._instr = self._instr.replace(externalSym, targetAddr)
+
+    def extractTargetAddress(self, imageMap):
+        bytes = imageMap.bytes(self.startAddress(), self.endAddress())
+        prefixes = [
+            '(?P<directCall>E8)', # call ptr
+            'FF15', # call [ptr]
+            'FF25', # jmp [ptr]
+            'A1', # mov eax, [ptr]
+            '8B0D', # mov ecx, [ptr]
+            '8B15', # mov edx, [ptr]
+            '3B05', # cmp eax, [ptr]
+            '3B0D', # cmp ecx, [ptr]
+            '3B15', # cmp edx, [ptr]
+        ]
+        prefix = '|'.join(prefixes)
+        match = re.search('^({})(?P<addr>........)$'.format(prefix), bytes)
+        if match:
+            addr = self.reverseAddressBytes(match.group('addr'))
+            if match.group('directCall'):
+                return toHex(self.endAddress() + fromHex(addr))
+            else:
+                return "[{}]".format(addr)
+        return None
+
+    def reverseAddressBytes(self, bytes):
+        length = 4
+        addr = ""
+        for i in range(length, 0, -1):
+            addr += bytes[2 * i - 2] + bytes[2 * i - 1]
+        return addr
 
     def toString(self):
         label = "l{}:".format(toHex(self._addr))
@@ -224,6 +257,9 @@ class ImageMap:
 
     def add(self, addr, item):
         self._items[addr] = item
+
+    def bytes(self, startAddress, endAddress):
+        return self._mem.bytes(startAddress, endAddress)
 
     def dasm(self, addr):
         patterns = {
@@ -401,7 +437,7 @@ if __name__ == '__main__':
     print("Processing data...")
     for imageItem in imageMap.itemsMap().values():
         if isinstance(imageItem, AsmInstruction):
-            imageItem.resolveExternalCalls()
+            imageItem.resolveExternalCalls(imageMap)
             imageItem.applyRelocs(imageMap)
             imageItem.resolveDirectTransferAddress(imageMap)
     print("Splitting data items...")
@@ -421,6 +457,5 @@ if __name__ == '__main__':
     f.write("; Unresolved addresses:\n")
     for addr in sorted(imageMap.unresolvedAddresses()):
         f.write("l{} dd 012345678h\n".format(toHex(addr)))
-    f.write("external_symbol dd 012345678h\n")
     f.close()
     print("Converted in %.2f seconds" % (time.time() - start_time))
