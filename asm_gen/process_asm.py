@@ -56,7 +56,7 @@ class MemoryInterval:
         while curAddr < endAddr:
             item = self._imageMap.itemsMap().get(curAddr)
             if item is not None:
-                line += item.toString()
+                line += item.toString(self._imageMap)
                 curAddr = item.endAddress()
             else:
                 curAddr += 1
@@ -74,6 +74,9 @@ class DataItem:
 
     def showLabel(self):
         pass
+
+    def label(self):
+        return "g{}".format(toHex(self._addr))
 
     def startAddress(self):
         return self._addr
@@ -106,7 +109,7 @@ class DataItem:
                 length = 1
             addr += length
 
-    def toString(self):
+    def toString(self, imageMap):
         lines = ""
         addr = self.startAddress()
         while addr < self.endAddress():
@@ -115,11 +118,11 @@ class DataItem:
                 error = "; {}".format(self._messages[addr])
             label = " " * 9
             if addr == self.startAddress():
-                label = "l{}".format(toHex(addr))
+                label = self.label()
             if addr in self._ptrs:
                 length = 4
                 dataSize = "dd"
-                data = "l{}".format(toHex(self._ptrs[addr]))
+                data = imageMap.label(self._ptrs[addr])
             else:
                 length = 1
                 dataSize = "db"
@@ -138,9 +141,13 @@ class AsmInstruction:
         self._addr = addr
         self._instr = instr
         self._length = length
+        self._pointers = []
 
     def showLabel(self):
         self._showLabel = True
+
+    def label(self):
+        return "l{}".format(toHex(self._addr))
 
     def startAddress(self):
         return self._addr
@@ -151,8 +158,8 @@ class AsmInstruction:
     def length(self):
         return self._length
 
-    def addHexPrefix(self):
-        self._instr = num_regexp.sub('\g<prefix>0\g<number>h', self._instr)
+    def addHexPrefix(self, instr):
+        return num_regexp.sub('\g<prefix>0\g<number>h', instr)
 
     def fixByteMemoryAccess(self):
         match = re.search(byte_memory_access_regexp, self._instr)
@@ -169,15 +176,12 @@ class AsmInstruction:
         reloc = imageMap.relocations()
         for a in range(self._addr, self._addr + self._length):
             if a in reloc:
-                targetAddr = reloc[a]
-                label = "l{}".format(toHex(targetAddr))
-                if self._instr.find("[{}]".format(toHex(targetAddr))) < 0:
-                    label = "offset {}".format(label)
-                (self._instr, count) = re.subn(toHex(targetAddr), label, self._instr, 1)
-                if count == 0:
+                targetAddr = reloc[a]          
+                if self._instr.find(toHex(targetAddr)) < 0:
                     self.printErrorMessage("Failed to apply reloc")
                 else:
                     imageMap.resolveAddress(targetAddr)
+                    self._pointers.append(targetAddr)
 
     def printErrorMessage(self, msg):
         self._message += " {}.".format(msg)
@@ -187,7 +191,7 @@ class AsmInstruction:
         if match:
             cmd = match.group('cmd')
             targetAddr = fromHex(match.group('target'))
-            label = "l{}".format(toHex(targetAddr))
+            label = imageMap.label(targetAddr)
             self._instr = "{} {}".format(cmd, label)
             imageMap.resolveAddress(targetAddr)
 
@@ -231,14 +235,28 @@ class AsmInstruction:
             addr += bytes[2 * i - 2] + bytes[2 * i - 1]
         return addr
 
-    def toString(self):
-        label = "l{}:".format(toHex(self._addr))
+    def replacePointers(self, imageMap):
+        instr = self._instr
+        for addr in self._pointers:
+            label = imageMap.label(addr)
+            if instr.find("[{}]".format(toHex(addr))) < 0:
+                label = "offset {}".format(label)
+            (instr, count) = re.subn(toHex(addr), label, instr, 1)
+            if count == 0:
+                self.printErrorMessage("Failed to replace number with label")
+        return instr
+
+    def toString(self, imageMap):
+        label = "{}:".format(self.label())
         if (not self._showLabel):
             label = "          "
         msg = ""
         if (self._message):
             msg = "; {}".format(self._message.lstrip())
-        return "{} {}{}\n".format(label, self._instr, msg)
+        instr = self.replacePointers(imageMap)
+        if options.show_hex_prefix:
+            instr = self.addHexPrefix(instr)
+        return "{} {}{}\n".format(label, instr, msg)
 
 class ImageMap:
     def __init__(self, mem):
@@ -254,6 +272,11 @@ class ImageMap:
 
     def relocations(self):
         return self._mem.relocations()
+
+    def label(self, addr):
+        if addr in self._items:
+            return self._items[addr].label()
+        return "l{}".format(toHex(addr))
 
     def add(self, addr, item):
         self._items[addr] = item
@@ -446,11 +469,9 @@ if __name__ == '__main__':
         if isinstance(imageItem, DataItem):
             imageItem.applyRelocs(imageMap)
     print("Writing data...")
-    if options.show_hex_prefix:
-        for imageItem in imageMap.itemsMap().values():
-            if isinstance(imageItem, AsmInstruction):
-                imageItem.fixByteMemoryAccess()
-                imageItem.addHexPrefix()
+    for imageItem in imageMap.itemsMap().values():
+        if isinstance(imageItem, AsmInstruction):
+            imageItem.fixByteMemoryAccess()
     f = open("Blade_patched_converted.txt", "wt")
     for lineItem in lineItems:
         f.write(lineItem.toString())
