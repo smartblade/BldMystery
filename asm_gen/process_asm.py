@@ -522,7 +522,9 @@ if __name__ == '__main__':
     f.write("; Unresolved addresses:\n")
     for addr in sorted(imageMap.unresolvedAddresses()):
         f.write("l{} dd 012345678h\n".format(toHex(addr)))
+    f.close()
+    f = open("Blade_patched_import.inc", "wt")
     for impref in imageMap.importReferences():
-        f.write("{} dd 012345678h\n".format(impref.label()))
+        f.write("externdef {}: ptr\n".format(impref.label()))
     f.close()
     print("Converted in %.2f seconds" % (time.time() - start_time))
