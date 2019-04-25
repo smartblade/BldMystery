@@ -1,0 +1,25 @@
+LIBRARY     DDRAW.DLL
+
+EXPORTS
+    AcquireDDThreadLock            @1   ; AcquireDDThreadLock
+    CompleteCreateSysmemSurface    @2   ; CompleteCreateSysmemSurface
+    D3DParseUnknownCommand         @3   ; D3DParseUnknownCommand
+    DDGetAttachedSurfaceLcl        @4   ; DDGetAttachedSurfaceLcl
+    DDInternalLock                 @5   ; DDInternalLock
+    DDInternalUnlock               @6   ; DDInternalUnlock
+    DSoundHelp                     @7   ; DSoundHelp
+    DirectDrawCreate               @8   ; DirectDrawCreate
+    DirectDrawCreateClipper        @9   ; DirectDrawCreateClipper
+    DirectDrawCreateEx             @10  ; DirectDrawCreateEx
+    DirectDrawEnumerateA           @11  ; DirectDrawEnumerateA
+    DirectDrawEnumerateExA         @12  ; DirectDrawEnumerateExA
+    DirectDrawEnumerateExW         @13  ; DirectDrawEnumerateExW
+    DirectDrawEnumerateW           @14  ; DirectDrawEnumerateW
+    DllCanUnloadNow                @15  ; DllCanUnloadNow
+    DllGetClassObject              @16  ; DllGetClassObject
+    GetDDSurfaceLocal              @17  ; GetDDSurfaceLocal
+    GetOLEThunkData                @18  ; GetOLEThunkData
+    GetSurfaceFromDC               @19  ; GetSurfaceFromDC
+    RegisterSpecialCase            @20  ; RegisterSpecialCase
+    ReleaseDDThreadLock            @21  ; ReleaseDDThreadLock
+    SetAppCompatData               @22  ; SetAppCompatData

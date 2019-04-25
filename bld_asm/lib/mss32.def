@@ -1,0 +1,112 @@
+LIBRARY     MSS32.DLL
+
+EXPORTS
+    AIL_debug_printf               @61  ; AIL_debug_printf
+    AIL_sprintf                    @272 ; AIL_sprintf
+    DLSClose                       @301 ; DLSClose
+    DLSCompactMemory               @302 ; DLSCompactMemory
+    DLSGetInfo                     @303 ; DLSGetInfo
+    DLSLoadFile                    @304 ; DLSLoadFile
+    DLSLoadMemFile                 @305 ; DLSLoadMemFile
+    DLSMSSOpen                     @307 ; DLSMSSOpen
+    DLSSetAttribute                @308 ; DLSSetAttribute
+    DLSUnloadAll                   @309 ; DLSUnloadAll
+    DLSUnloadFile                  @310 ; DLSUnloadFile
+    RIB_alloc_provider_handle      @312 ; RIB_alloc_provider_handle
+    RIB_enumerate_interface        @313 ; RIB_enumerate_interface
+    RIB_error                      @315 ; RIB_error
+    RIB_find_file_provider         @316 ; RIB_find_file_provider
+    RIB_free_provider_handle       @319 ; RIB_free_provider_handle
+    RIB_free_provider_library      @320 ; RIB_free_provider_library
+    RIB_load_provider_library      @322 ; RIB_load_provider_library
+    RIB_register_interface         @326 ; RIB_register_interface
+    RIB_request_interface          @327 ; RIB_request_interface
+    RIB_request_interface_entry    @328 ; RIB_request_interface_entry
+    RIB_type_string                @331 ; RIB_type_string
+    RIB_unregister_interface       @332 ; RIB_unregister_interface
+    _AIL_3D_speaker_type@4
+    _AIL_close_3D_provider@4
+    _AIL_close_3D_listener@4
+    _AIL_quick_shutdown@0
+    _AIL_quick_startup@20
+    _AIL_open_3D_provider@4
+    _AIL_digital_master_volume@4
+    _AIL_quick_handles@12
+    _AIL_allocate_3D_sample_handle@4
+    _AIL_allocate_sample_handle@4
+    _AIL_open_3D_listener@4
+    _AIL_3D_room_type@4
+    _AIL_set_preference@8
+    _AIL_get_preference@4
+    _AIL_last_error@0
+    _AIL_shutdown@0
+    _AIL_set_redist_directory@4
+    _AIL_startup@0
+    _AIL_enumerate_3D_providers@12
+    _AIL_end_3D_sample@4
+    _AIL_3D_sample_status@4
+    _AIL_open_stream@12
+    _AIL_set_stream_volume@8
+    _AIL_set_stream_loop_count@8
+    _AIL_set_stream_playback_rate@8
+    _AIL_stream_playback_rate@4
+    _AIL_stream_info@20
+    _AIL_start_stream@4
+    _AIL_pause_stream@8
+    _AIL_close_stream@4
+    _AIL_stream_position@4
+    _AIL_set_stream_position@8
+    _AIL_stream_status@4
+    _AIL_start_sample@4
+    _AIL_set_3D_speaker_type@8
+    _AIL_set_3D_provider_preference@12
+    _AIL_set_3D_sample_effects_level@8
+    _AIL_start_3D_sample@4
+    _AIL_set_3D_sample_loop_count@8
+    _AIL_set_3D_sample_file@8
+    _AIL_3D_sample_loop_count@4
+    _AIL_set_sample_volume@8
+    _AIL_set_3D_sample_volume@8
+    _AIL_stop_sample@4
+    _AIL_resume_3D_sample@4
+    _AIL_stop_3D_sample@4
+    _AIL_sample_playback_rate@4
+    _AIL_set_sample_playback_rate@8
+    _AIL_set_sample_reverb@16
+    _AIL_set_3D_velocity_vector@16
+    _AIL_set_3D_sample_cone@16
+    _AIL_set_3D_sample_playback_rate@8
+    _AIL_3D_sample_playback_rate@4
+    _AIL_set_3D_sample_distances@12
+    _AIL_redbook_open_drive@4
+    _AIL_redbook_open@4
+    _AIL_redbook_play@12
+    _AIL_redbook_track_info@16
+    _AIL_redbook_tracks@4
+    _AIL_redbook_position@4
+    _AIL_redbook_volume@4
+    _AIL_redbook_set_volume@8
+    _AIL_redbook_status@4
+    _AIL_redbook_pause@4
+    _AIL_redbook_resume@4
+    _AIL_redbook_stop@4
+    _AIL_redbook_close@4
+    _AIL_redbook_eject@4
+    _AIL_redbook_retract@4
+    _AIL_set_digital_master_volume@8
+    _AIL_set_3D_room_type@8
+    _AIL_decompress_ASI@24
+    _AIL_mem_free_lock@4
+    _AIL_decompress_ADPCM@12
+    _AIL_WAV_info@8
+    _AIL_file_type@8
+    _AIL_file_read@8
+    _AIL_file_size@4
+    _AIL_set_3D_orientation@28
+    _AIL_set_3D_position@16
+    _AIL_end_sample@4
+    _AIL_sample_status@4
+    _AIL_set_sample_loop_count@8
+    _AIL_set_sample_file@12
+    _AIL_redbook_track@4
+    _AIL_resume_sample@4

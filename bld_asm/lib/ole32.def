@@ -1,0 +1,463 @@
+LIBRARY     OLE32.DLL
+
+EXPORTS
+    BindMoniker                    @843 ; BindMoniker
+    CLIPFORMAT_UserFree            @844 ; CLIPFORMAT_UserFree
+    CLIPFORMAT_UserFreeExt         @805 ; CLIPFORMAT_UserFreeExt
+    CLIPFORMAT_UserMarshal         @845 ; CLIPFORMAT_UserMarshal
+    CLIPFORMAT_UserMarshalExt      @806 ; CLIPFORMAT_UserMarshalExt
+    CLIPFORMAT_UserSize            @846 ; CLIPFORMAT_UserSize
+    CLIPFORMAT_UserSizeExt         @807 ; CLIPFORMAT_UserSizeExt
+    CLIPFORMAT_UserUnmarshal       @847 ; CLIPFORMAT_UserUnmarshal
+    CLIPFORMAT_UserUnmarshalExt    @808 ; CLIPFORMAT_UserUnmarshalExt
+    CLSIDFromOle1Class             @848 ; CLSIDFromOle1Class
+    CLSIDFromProgID                @849 ; CLSIDFromProgID
+    CLSIDFromProgIDEx              @850 ; CLSIDFromProgIDEx
+    CLSIDFromString                @851 ; CLSIDFromString
+    CheckInitDde                   @809 ; CheckInitDde
+    CleanROTForApartment           @810 ; CleanROTForApartment
+    ClipboardProcessUninitialize   @811 ; ClipboardProcessUninitialize
+    CoAddRefServerProcess          @852 ; CoAddRefServerProcess
+    CoAicGetTokenForCOM            @853 ; CoAicGetTokenForCOM
+    CoAllowSetForegroundWindow     @854 ; CoAllowSetForegroundWindow
+    CoAllowUnmarshalerCLSID        @855 ; CoAllowUnmarshalerCLSID
+    CoBuildVersion                 @856 ; CoBuildVersion
+    CoCancelCall                   @857 ; CoCancelCall
+    CoCheckElevationEnabled        @858 ; CoCheckElevationEnabled
+    CoCopyProxy                    @859 ; CoCopyProxy
+    CoCreateFreeThreadedMarshaler  @860 ; CoCreateFreeThreadedMarshaler
+    CoCreateGuid                   @861 ; CoCreateGuid
+    CoCreateInstance               @862 ; CoCreateInstance
+    CoCreateInstanceEx             @863 ; CoCreateInstanceEx
+    CoCreateInstanceFromApp        @864 ; CoCreateInstanceFromApp
+    CoCreateObjectInContext        @865 ; CoCreateObjectInContext
+    CoDeactivateObject             @866 ; CoDeactivateObject
+    CoDecodeProxy                  @867 ; CoDecodeProxy
+    CoDecrementMTAUsage            @868 ; CoDecrementMTAUsage
+    CoDisableCallCancellation      @869 ; CoDisableCallCancellation
+    CoDisconnectContext            @870 ; CoDisconnectContext
+    CoDisconnectObject             @871 ; CoDisconnectObject
+    CoDosDateTimeToFileTime        @872 ; CoDosDateTimeToFileTime
+    CoEnableCallCancellation       @873 ; CoEnableCallCancellation
+    CoFileTimeNow                  @874 ; CoFileTimeNow
+    CoFileTimeToDosDateTime        @875 ; CoFileTimeToDosDateTime
+    CoFreeAllLibraries             @876 ; CoFreeAllLibraries
+    CoFreeLibrary                  @877 ; CoFreeLibrary
+    CoFreeUnusedLibraries          @878 ; CoFreeUnusedLibraries
+    CoFreeUnusedLibrariesEx        @879 ; CoFreeUnusedLibrariesEx
+    CoGetActivationState           @880 ; CoGetActivationState
+    CoGetApartmentID               @881 ; CoGetApartmentID
+    CoGetApartmentType             @882 ; CoGetApartmentType
+    CoGetCallContext               @883 ; CoGetCallContext
+    CoGetCallState                 @884 ; CoGetCallState
+    CoGetCallerTID                 @885 ; CoGetCallerTID
+    CoGetCancelObject              @886 ; CoGetCancelObject
+    CoGetClassObject               @887 ; CoGetClassObject
+    CoGetClassVersion              @888 ; CoGetClassVersion
+    CoGetComCatalog                @889 ; CoGetComCatalog
+    CoGetContextToken              @890 ; CoGetContextToken
+    CoGetCurrentLogicalThreadId    @891 ; CoGetCurrentLogicalThreadId
+    CoGetCurrentProcess            @892 ; CoGetCurrentProcess
+    CoGetDefaultContext            @893 ; CoGetDefaultContext
+    CoGetInstanceFromFile          @894 ; CoGetInstanceFromFile
+    CoGetInstanceFromIStorage      @895 ; CoGetInstanceFromIStorage
+    CoGetInterceptor               @896 ; CoGetInterceptor
+    CoGetInterceptorForOle32       @897 ; CoGetInterceptorForOle32
+    CoGetInterceptorFromTypeInfo   @898 ; CoGetInterceptorFromTypeInfo
+    CoGetInterfaceAndReleaseStream @899 ; CoGetInterfaceAndReleaseStream
+    CoGetMalloc                    @900 ; CoGetMalloc
+    CoGetMarshalSizeMax            @901 ; CoGetMarshalSizeMax
+    CoGetModuleType                @902 ; CoGetModuleType
+    CoGetObject                    @903 ; CoGetObject
+    CoGetObjectContext             @904 ; CoGetObjectContext
+    CoGetPSClsid                   @905 ; CoGetPSClsid
+    CoGetProcessIdentifier         @906 ; CoGetProcessIdentifier
+    CoGetStandardMarshal           @907 ; CoGetStandardMarshal
+    CoGetStdMarshalEx              @908 ; CoGetStdMarshalEx
+    CoGetSystemSecurityPermissions @909 ; CoGetSystemSecurityPermissions
+    CoGetSystemWow64DirectoryW     @910 ; CoGetSystemWow64DirectoryW
+    CoGetTreatAsClass              @911 ; CoGetTreatAsClass
+    CoHandlePriorityEventsFromMessagePump @912 ; CoHandlePriorityEventsFromMessagePump
+    CoImpersonateClient            @913 ; CoImpersonateClient
+    CoIncrementMTAUsage            @914 ; CoIncrementMTAUsage
+    CoInitialize                   @915 ; CoInitialize
+    CoInitializeEx                 @916 ; CoInitializeEx
+    CoInitializeSecurity           @917 ; CoInitializeSecurity
+    CoInitializeWOW                @918 ; CoInitializeWOW
+    CoInstall                      @919 ; CoInstall
+    CoInvalidateRemoteMachineBindings @920 ; CoInvalidateRemoteMachineBindings
+    CoIsHandlerConnected           @921 ; CoIsHandlerConnected
+    CoIsOle1Class                  @922 ; CoIsOle1Class
+    CoLoadLibrary                  @923 ; CoLoadLibrary
+    CoLockObjectExternal           @924 ; CoLockObjectExternal
+    CoMarshalHresult               @925 ; CoMarshalHresult
+    CoMarshalInterThreadInterfaceInStream @926 ; CoMarshalInterThreadInterfaceInStream
+    CoMarshalInterface             @927 ; CoMarshalInterface
+    CoPopServiceDomain             @928 ; CoPopServiceDomain
+    CoPushServiceDomain            @929 ; CoPushServiceDomain
+    CoQueryAuthenticationServices  @930 ; CoQueryAuthenticationServices
+    CoQueryClientBlanket           @931 ; CoQueryClientBlanket
+    CoQueryProxyBlanket            @932 ; CoQueryProxyBlanket
+    CoQueryReleaseObject           @933 ; CoQueryReleaseObject
+    CoReactivateObject             @934 ; CoReactivateObject
+    CoRegisterActivationFilter     @935 ; CoRegisterActivationFilter
+    CoRegisterChannelHook          @936 ; CoRegisterChannelHook
+    CoRegisterClassObject          @937 ; CoRegisterClassObject
+    CoRegisterInitializeSpy        @938 ; CoRegisterInitializeSpy
+    CoRegisterMallocSpy            @939 ; CoRegisterMallocSpy
+    CoRegisterMessageFilter        @940 ; CoRegisterMessageFilter
+    CoRegisterPSClsid              @941 ; CoRegisterPSClsid
+    CoRegisterSurrogate            @942 ; CoRegisterSurrogate
+    CoRegisterSurrogateEx          @943 ; CoRegisterSurrogateEx
+    CoReleaseMarshalData           @944 ; CoReleaseMarshalData
+    CoReleaseServerProcess         @945 ; CoReleaseServerProcess
+    CoResumeClassObjects           @946 ; CoResumeClassObjects
+    CoRetireServer                 @947 ; CoRetireServer
+    CoRevertToSelf                 @948 ; CoRevertToSelf
+    CoRevokeClassObject            @949 ; CoRevokeClassObject
+    CoRevokeInitializeSpy          @950 ; CoRevokeInitializeSpy
+    CoRevokeMallocSpy              @951 ; CoRevokeMallocSpy
+    CoSetCancelObject              @952 ; CoSetCancelObject
+    CoSetMessageDispatcher         @953 ; CoSetMessageDispatcher
+    CoSetProxyBlanket              @954 ; CoSetProxyBlanket
+    CoSetState                     @955 ; CoSetState
+    CoSuspendClassObjects          @956 ; CoSuspendClassObjects
+    CoSwitchCallContext            @957 ; CoSwitchCallContext
+    CoTaskMemAlloc                 @958 ; CoTaskMemAlloc
+    CoTaskMemFree                  @959 ; CoTaskMemFree
+    CoTaskMemRealloc               @960 ; CoTaskMemRealloc
+    CoTestCancel                   @961 ; CoTestCancel
+    CoTreatAsClass                 @962 ; CoTreatAsClass
+    CoUninitialize                 @963 ; CoUninitialize
+    CoUnloadingWOW                 @964 ; CoUnloadingWOW
+    CoUnmarshalHresult             @965 ; CoUnmarshalHresult
+    CoUnmarshalInterface           @966 ; CoUnmarshalInterface
+    CoVrfCheckThreadState          @967 ; CoVrfCheckThreadState
+    CoVrfGetThreadState            @968 ; CoVrfGetThreadState
+    CoVrfReleaseThreadState        @969 ; CoVrfReleaseThreadState
+    CoWaitForMultipleHandles       @970 ; CoWaitForMultipleHandles
+    CoWaitForMultipleObjects       @971 ; CoWaitForMultipleObjects
+    ComPs_NdrDllCanUnloadNow       @972 ; ComPs_NdrDllCanUnloadNow
+    ComPs_NdrDllGetClassObject     @973 ; ComPs_NdrDllGetClassObject
+    ComPs_NdrDllRegisterProxy      @974 ; ComPs_NdrDllRegisterProxy
+    ComPs_NdrDllUnregisterProxy    @975 ; ComPs_NdrDllUnregisterProxy
+    CreateAntiMoniker              @976 ; CreateAntiMoniker
+    CreateBindCtx                  @977 ; CreateBindCtx
+    CreateClassMoniker             @978 ; CreateClassMoniker
+    CreateDataAdviseHolder         @979 ; CreateDataAdviseHolder
+    CreateDataCache                @980 ; CreateDataCache
+    CreateErrorInfo                @981 ; CreateErrorInfo
+    CreateFileMoniker              @982 ; CreateFileMoniker
+    CreateGenericComposite         @983 ; CreateGenericComposite
+    CreateILockBytesOnHGlobal      @984 ; CreateILockBytesOnHGlobal
+    CreateItemMoniker              @985 ; CreateItemMoniker
+    CreateObjrefMoniker            @986 ; CreateObjrefMoniker
+    CreateOleAdviseHolder          @987 ; CreateOleAdviseHolder
+    CreatePointerMoniker           @988 ; CreatePointerMoniker
+    CreateStdProgressIndicator     @989 ; CreateStdProgressIndicator
+    CreateStreamOnHGlobal          @990 ; CreateStreamOnHGlobal
+    DcomChannelSetHResult          @991 ; DcomChannelSetHResult
+    DdeBindToObject                @812 ; DdeBindToObject
+    DeletePatternAndExtensionTables @992 ; DeletePatternAndExtensionTables
+    DestroyRunningObjectTable      @813 ; DestroyRunningObjectTable
+    DllDebugObjectRPCHook          @993 ; DllDebugObjectRPCHook
+    DllGetClassObject              @994 ; DllGetClassObject
+    DllGetClassObjectWOW           @995 ; DllGetClassObjectWOW
+    DllRegisterServer              @996 ; DllRegisterServer
+    DoDragDrop                     @997 ; DoDragDrop
+    DragDropSetFDT                 @998 ; DragDropSetFDT
+    EnableHookObject               @999 ; EnableHookObject
+    FindExt                        @814 ; FindExt
+    FmtIdToPropStgName             @1000; FmtIdToPropStgName
+    FreePropVariantArray           @1001; FreePropVariantArray
+    GetActiveObjectExt             @1002; GetActiveObjectExt
+    GetClassFile                   @1003; GetClassFile
+    GetConvertStg                  @1004; GetConvertStg
+    GetDocumentBitStg              @1005; GetDocumentBitStg
+    GetErrorInfo                   @1006; GetErrorInfo
+    GetHGlobalFromILockBytes       @1007; GetHGlobalFromILockBytes
+    GetHGlobalFromStream           @1008; GetHGlobalFromStream
+    GetHookInterface               @1009; GetHookInterface
+    GetObjectFromRotByPath         @815 ; GetObjectFromRotByPath
+    GetRunningObjectTable          @1010; GetRunningObjectTable
+    HACCEL_UserFree                @1011; HACCEL_UserFree
+    HACCEL_UserMarshal             @1012; HACCEL_UserMarshal
+    HACCEL_UserSize                @1013; HACCEL_UserSize
+    HACCEL_UserUnmarshal           @1014; HACCEL_UserUnmarshal
+    HBITMAP_UserFree               @1015; HBITMAP_UserFree
+    HBITMAP_UserMarshal            @1016; HBITMAP_UserMarshal
+    HBITMAP_UserSize               @1017; HBITMAP_UserSize
+    HBITMAP_UserUnmarshal          @1018; HBITMAP_UserUnmarshal
+    HBRUSH_UserFree                @1019; HBRUSH_UserFree
+    HBRUSH_UserMarshal             @1020; HBRUSH_UserMarshal
+    HBRUSH_UserSize                @1021; HBRUSH_UserSize
+    HBRUSH_UserUnmarshal           @1022; HBRUSH_UserUnmarshal
+    HDC_UserFree                   @1023; HDC_UserFree
+    HDC_UserMarshal                @1024; HDC_UserMarshal
+    HDC_UserSize                   @1025; HDC_UserSize
+    HDC_UserUnmarshal              @1026; HDC_UserUnmarshal
+    HENHMETAFILE_UserFree          @1027; HENHMETAFILE_UserFree
+    HENHMETAFILE_UserMarshal       @1028; HENHMETAFILE_UserMarshal
+    HENHMETAFILE_UserSize          @1029; HENHMETAFILE_UserSize
+    HENHMETAFILE_UserUnmarshal     @1030; HENHMETAFILE_UserUnmarshal
+    HGLOBAL_UserFree               @1031; HGLOBAL_UserFree
+    HGLOBAL_UserMarshal            @1032; HGLOBAL_UserMarshal
+    HGLOBAL_UserSize               @1033; HGLOBAL_UserSize
+    HGLOBAL_UserUnmarshal          @1034; HGLOBAL_UserUnmarshal
+    HICON_UserFree                 @1035; HICON_UserFree
+    HICON_UserMarshal              @1036; HICON_UserMarshal
+    HICON_UserSize                 @1037; HICON_UserSize
+    HICON_UserUnmarshal            @1038; HICON_UserUnmarshal
+    HMENU_UserFree                 @1039; HMENU_UserFree
+    HMENU_UserMarshal              @1040; HMENU_UserMarshal
+    HMENU_UserSize                 @1041; HMENU_UserSize
+    HMENU_UserUnmarshal            @1042; HMENU_UserUnmarshal
+    HMETAFILEPICT_UserFree         @1043; HMETAFILEPICT_UserFree
+    HMETAFILEPICT_UserMarshal      @1044; HMETAFILEPICT_UserMarshal
+    HMETAFILEPICT_UserSize         @1045; HMETAFILEPICT_UserSize
+    HMETAFILEPICT_UserUnmarshal    @1046; HMETAFILEPICT_UserUnmarshal
+    HMETAFILE_UserFree             @1047; HMETAFILE_UserFree
+    HMETAFILE_UserMarshal          @1048; HMETAFILE_UserMarshal
+    HMETAFILE_UserSize             @1049; HMETAFILE_UserSize
+    HMETAFILE_UserUnmarshal        @1050; HMETAFILE_UserUnmarshal
+    HMONITOR_UserFree              @1051; HMONITOR_UserFree
+    HMONITOR_UserMarshal           @1052; HMONITOR_UserMarshal
+    HMONITOR_UserSize              @1053; HMONITOR_UserSize
+    HMONITOR_UserUnmarshal         @1054; HMONITOR_UserUnmarshal
+    HPALETTE_UserFree              @1055; HPALETTE_UserFree
+    HPALETTE_UserFreeExt           @816 ; HPALETTE_UserFreeExt
+    HPALETTE_UserMarshal           @1056; HPALETTE_UserMarshal
+    HPALETTE_UserMarshalExt        @817 ; HPALETTE_UserMarshalExt
+    HPALETTE_UserSize              @1057; HPALETTE_UserSize
+    HPALETTE_UserSizeExt           @818 ; HPALETTE_UserSizeExt
+    HPALETTE_UserUnmarshal         @1058; HPALETTE_UserUnmarshal
+    HPALETTE_UserUnmarshalExt      @819 ; HPALETTE_UserUnmarshalExt
+    HRGN_UserFree                  @824 ; HRGN_UserFree
+    HRGN_UserMarshal               @825 ; HRGN_UserMarshal
+    HRGN_UserSize                  @826 ; HRGN_UserSize
+    HRGN_UserUnmarshal             @827 ; HRGN_UserUnmarshal
+    HWND_UserFree                  @1059; HWND_UserFree
+    HWND_UserFreeExt               @828 ; HWND_UserFreeExt
+    HWND_UserMarshal               @1060; HWND_UserMarshal
+    HWND_UserMarshalExt            @829 ; HWND_UserMarshalExt
+    HWND_UserSize                  @1061; HWND_UserSize
+    HWND_UserSizeExt               @830 ; HWND_UserSizeExt
+    HWND_UserUnmarshal             @1062; HWND_UserUnmarshal
+    HWND_UserUnmarshalExt          @831 ; HWND_UserUnmarshalExt
+    HkOleRegisterObject            @1063; HkOleRegisterObject
+    IIDFromString                  @1064; IIDFromString
+    IsAccelerator                  @1065; IsAccelerator
+    IsEqualGUID                    @1066; IsEqualGUID
+    IsRoInitializeASTAAllowedInDesktop @1067; IsRoInitializeASTAAllowedInDesktop
+    IsValidIid                     @1068; IsValidIid
+    IsValidInterface               @1069; IsValidInterface
+    IsValidPtrIn                   @1070; IsValidPtrIn
+    IsValidPtrOut                  @1071; IsValidPtrOut
+    MkParseDisplayName             @1072; MkParseDisplayName
+    MonikerCommonPrefixWith        @1073; MonikerCommonPrefixWith
+    MonikerLoadTypeLib             @832 ; MonikerLoadTypeLib
+    MonikerRelativePathTo          @1074; MonikerRelativePathTo
+    NdrOleInitializeExtension      @1075; NdrOleInitializeExtension
+    NdrProxyForwardingFunction10   @1076; NdrProxyForwardingFunction10
+    NdrProxyForwardingFunction11   @1077; NdrProxyForwardingFunction11
+    NdrProxyForwardingFunction12   @1078; NdrProxyForwardingFunction12
+    NdrProxyForwardingFunction13   @1079; NdrProxyForwardingFunction13
+    NdrProxyForwardingFunction14   @1080; NdrProxyForwardingFunction14
+    NdrProxyForwardingFunction15   @1081; NdrProxyForwardingFunction15
+    NdrProxyForwardingFunction16   @1082; NdrProxyForwardingFunction16
+    NdrProxyForwardingFunction17   @1083; NdrProxyForwardingFunction17
+    NdrProxyForwardingFunction18   @1084; NdrProxyForwardingFunction18
+    NdrProxyForwardingFunction19   @1085; NdrProxyForwardingFunction19
+    NdrProxyForwardingFunction20   @1086; NdrProxyForwardingFunction20
+    NdrProxyForwardingFunction21   @1087; NdrProxyForwardingFunction21
+    NdrProxyForwardingFunction22   @1088; NdrProxyForwardingFunction22
+    NdrProxyForwardingFunction23   @1089; NdrProxyForwardingFunction23
+    NdrProxyForwardingFunction24   @1090; NdrProxyForwardingFunction24
+    NdrProxyForwardingFunction25   @1091; NdrProxyForwardingFunction25
+    NdrProxyForwardingFunction26   @1092; NdrProxyForwardingFunction26
+    NdrProxyForwardingFunction27   @1093; NdrProxyForwardingFunction27
+    NdrProxyForwardingFunction28   @1094; NdrProxyForwardingFunction28
+    NdrProxyForwardingFunction29   @1095; NdrProxyForwardingFunction29
+    NdrProxyForwardingFunction3    @1099; NdrProxyForwardingFunction3
+    NdrProxyForwardingFunction30   @1096; NdrProxyForwardingFunction30
+    NdrProxyForwardingFunction31   @1097; NdrProxyForwardingFunction31
+    NdrProxyForwardingFunction32   @1098; NdrProxyForwardingFunction32
+    NdrProxyForwardingFunction4    @1100; NdrProxyForwardingFunction4
+    NdrProxyForwardingFunction5    @1101; NdrProxyForwardingFunction5
+    NdrProxyForwardingFunction6    @1102; NdrProxyForwardingFunction6
+    NdrProxyForwardingFunction7    @1103; NdrProxyForwardingFunction7
+    NdrProxyForwardingFunction8    @1104; NdrProxyForwardingFunction8
+    NdrProxyForwardingFunction9    @1105; NdrProxyForwardingFunction9
+    ObjectStublessClient10         @1106; ObjectStublessClient10
+    ObjectStublessClient11         @1107; ObjectStublessClient11
+    ObjectStublessClient12         @1108; ObjectStublessClient12
+    ObjectStublessClient13         @1109; ObjectStublessClient13
+    ObjectStublessClient14         @1110; ObjectStublessClient14
+    ObjectStublessClient15         @1111; ObjectStublessClient15
+    ObjectStublessClient16         @1112; ObjectStublessClient16
+    ObjectStublessClient17         @1113; ObjectStublessClient17
+    ObjectStublessClient18         @1114; ObjectStublessClient18
+    ObjectStublessClient19         @1115; ObjectStublessClient19
+    ObjectStublessClient20         @1116; ObjectStublessClient20
+    ObjectStublessClient21         @1117; ObjectStublessClient21
+    ObjectStublessClient22         @1118; ObjectStublessClient22
+    ObjectStublessClient23         @1119; ObjectStublessClient23
+    ObjectStublessClient24         @1120; ObjectStublessClient24
+    ObjectStublessClient25         @1121; ObjectStublessClient25
+    ObjectStublessClient26         @1122; ObjectStublessClient26
+    ObjectStublessClient27         @1123; ObjectStublessClient27
+    ObjectStublessClient28         @1124; ObjectStublessClient28
+    ObjectStublessClient29         @1125; ObjectStublessClient29
+    ObjectStublessClient3          @1129; ObjectStublessClient3
+    ObjectStublessClient30         @1126; ObjectStublessClient30
+    ObjectStublessClient31         @1127; ObjectStublessClient31
+    ObjectStublessClient32         @1128; ObjectStublessClient32
+    ObjectStublessClient4          @1130; ObjectStublessClient4
+    ObjectStublessClient5          @1131; ObjectStublessClient5
+    ObjectStublessClient6          @1132; ObjectStublessClient6
+    ObjectStublessClient7          @1133; ObjectStublessClient7
+    ObjectStublessClient8          @1134; ObjectStublessClient8
+    ObjectStublessClient9          @1135; ObjectStublessClient9
+    Ole32DllGetClassObject         @1136; Ole32DllGetClassObject
+    OleBuildVersion                @1137; OleBuildVersion
+    OleConvertIStorageToOLESTREAM  @1138; OleConvertIStorageToOLESTREAM
+    OleConvertIStorageToOLESTREAMEx @1139; OleConvertIStorageToOLESTREAMEx
+    OleConvertOLESTREAMToIStorage  @1140; OleConvertOLESTREAMToIStorage
+    OleConvertOLESTREAMToIStorageEx @1141; OleConvertOLESTREAMToIStorageEx
+    OleCreate                      @1142; OleCreate
+    OleCreateDefaultHandler        @1143; OleCreateDefaultHandler
+    OleCreateEmbeddingHelper       @1144; OleCreateEmbeddingHelper
+    OleCreateEx                    @1145; OleCreateEx
+    OleCreateFontIndirectExt       @1146; OleCreateFontIndirectExt
+    OleCreateFromData              @1147; OleCreateFromData
+    OleCreateFromDataEx            @1148; OleCreateFromDataEx
+    OleCreateFromFile              @1149; OleCreateFromFile
+    OleCreateFromFileEx            @1150; OleCreateFromFileEx
+    OleCreateLink                  @1151; OleCreateLink
+    OleCreateLinkEx                @1152; OleCreateLinkEx
+    OleCreateLinkFromData          @1153; OleCreateLinkFromData
+    OleCreateLinkFromDataEx        @1154; OleCreateLinkFromDataEx
+    OleCreateLinkToFile            @1155; OleCreateLinkToFile
+    OleCreateLinkToFileEx          @1156; OleCreateLinkToFileEx
+    OleCreateMenuDescriptor        @1157; OleCreateMenuDescriptor
+    OleCreatePictureIndirectExt    @1158; OleCreatePictureIndirectExt
+    OleCreatePropertyFrameIndirectExt @1159; OleCreatePropertyFrameIndirectExt
+    OleCreateStaticFromData        @1160; OleCreateStaticFromData
+    OleDestroyMenuDescriptor       @1161; OleDestroyMenuDescriptor
+    OleDoAutoConvert               @1162; OleDoAutoConvert
+    OleDraw                        @1163; OleDraw
+    OleDuplicateData               @1164; OleDuplicateData
+    OleFlushClipboard              @1165; OleFlushClipboard
+    OleGetAutoConvert              @1166; OleGetAutoConvert
+    OleGetClipboard                @1167; OleGetClipboard
+    OleGetIconOfClass              @1168; OleGetIconOfClass
+    OleGetIconOfFile               @1169; OleGetIconOfFile
+    OleGetPackageClipboardOwner    @802 ; OleGetPackageClipboardOwner
+    OleIconToCursorExt             @1170; OleIconToCursorExt
+    OleInitialize                  @1171; OleInitialize
+    OleInitializeWOW               @1172; OleInitializeWOW
+    OleIsCurrentClipboard          @1173; OleIsCurrentClipboard
+    OleIsRunning                   @1174; OleIsRunning
+    OleLoad                        @1175; OleLoad
+    OleLoadFromStream              @1176; OleLoadFromStream
+    OleLoadPictureExt              @1177; OleLoadPictureExt
+    OleLoadPictureFileExt          @1178; OleLoadPictureFileExt
+    OleLoadPicturePathExt          @1179; OleLoadPicturePathExt
+    OleLockRunning                 @1180; OleLockRunning
+    OleMetafilePictFromIconAndLabel @1181; OleMetafilePictFromIconAndLabel
+    OleNoteObjectVisible           @1182; OleNoteObjectVisible
+    OleQueryCreateFromData         @1183; OleQueryCreateFromData
+    OleQueryLinkFromData           @1184; OleQueryLinkFromData
+    OleRegEnumFormatEtc            @1185; OleRegEnumFormatEtc
+    OleRegEnumVerbs                @1186; OleRegEnumVerbs
+    OleRegGetMiscStatus            @1187; OleRegGetMiscStatus
+    OleRegGetUserType              @1188; OleRegGetUserType
+    OleReleaseEnumVerbCache        @1189; OleReleaseEnumVerbCache
+    OleRun                         @1190; OleRun
+    OleSave                        @1191; OleSave
+    OleSavePictureFileExt          @1192; OleSavePictureFileExt
+    OleSaveToStream                @1193; OleSaveToStream
+    OleSetAutoConvert              @1194; OleSetAutoConvert
+    OleSetClipboard                @1195; OleSetClipboard
+    OleSetContainedObject          @1196; OleSetContainedObject
+    OleSetMenuDescriptor           @1197; OleSetMenuDescriptor
+    OleTranslateAccelerator        @1198; OleTranslateAccelerator
+    OleTranslateColorExt           @1199; OleTranslateColorExt
+    OleUninitialize                @1200; OleUninitialize
+    OpenOrCreateStream             @1201; OpenOrCreateStream
+    ProgIDFromCLSID                @1202; ProgIDFromCLSID
+    PropStgNameToFmtId             @1203; PropStgNameToFmtId
+    PropSysAllocString             @1204; PropSysAllocString
+    PropSysFreeString              @1205; PropSysFreeString
+    PropVariantChangeType          @833 ; PropVariantChangeType
+    PropVariantClear               @1206; PropVariantClear
+    PropVariantCopy                @1207; PropVariantCopy
+    ReadClassStg                   @1208; ReadClassStg
+    ReadClassStm                   @1209; ReadClassStm
+    ReadFmtUserTypeStg             @1210; ReadFmtUserTypeStg
+    ReadOleStg                     @1211; ReadOleStg
+    ReadStorageProperties          @834 ; ReadStorageProperties
+    ReadStringStream               @1212; ReadStringStream
+    RegisterActiveObjectExt        @1213; RegisterActiveObjectExt
+    RegisterDragDrop               @1214; RegisterDragDrop
+    ReleaseStgMedium               @1215; ReleaseStgMedium
+    RevokeActiveObjectExt          @1216; RevokeActiveObjectExt
+    RevokeDragDrop                 @1217; RevokeDragDrop
+    RoGetAgileReference            @1218; RoGetAgileReference
+    SNB_UserFree                   @1219; SNB_UserFree
+    SNB_UserMarshal                @1220; SNB_UserMarshal
+    SNB_UserSize                   @1221; SNB_UserSize
+    SNB_UserUnmarshal              @1222; SNB_UserUnmarshal
+    STGMEDIUM_UserFree             @1223; STGMEDIUM_UserFree
+    STGMEDIUM_UserFreeExt          @835 ; STGMEDIUM_UserFreeExt
+    STGMEDIUM_UserMarshal          @1224; STGMEDIUM_UserMarshal
+    STGMEDIUM_UserMarshalExt       @836 ; STGMEDIUM_UserMarshalExt
+    STGMEDIUM_UserSize             @1225; STGMEDIUM_UserSize
+    STGMEDIUM_UserSizeExt          @837 ; STGMEDIUM_UserSizeExt
+    STGMEDIUM_UserUnmarshal        @1226; STGMEDIUM_UserUnmarshal
+    STGMEDIUM_UserUnmarshalExt     @838 ; STGMEDIUM_UserUnmarshalExt
+    SetConvertStg                  @1227; SetConvertStg
+    SetDocumentBitStg              @1228; SetDocumentBitStg
+    SetErrorInfo                   @1229; SetErrorInfo
+    SetOleautModule                @839 ; SetOleautModule
+    SetWOWThunkGlobalPtr           @1230; SetWOWThunkGlobalPtr
+    StdTypesGetClassObject         @840 ; StdTypesGetClassObject
+    StdTypesRegisterServer         @841 ; StdTypesRegisterServer
+    StgConvertPropertyToVariant    @1231; StgConvertPropertyToVariant
+    StgConvertVariantToProperty    @1232; StgConvertVariantToProperty
+    StgCreateDocfile               @1233; StgCreateDocfile
+    StgCreateDocfileOnILockBytes   @1234; StgCreateDocfileOnILockBytes
+    StgCreatePropSetStg            @1235; StgCreatePropSetStg
+    StgCreatePropStg               @1236; StgCreatePropStg
+    StgCreateStorageEx             @1237; StgCreateStorageEx
+    StgGetIFillLockBytesOnFile     @1238; StgGetIFillLockBytesOnFile
+    StgGetIFillLockBytesOnILockBytes @1239; StgGetIFillLockBytesOnILockBytes
+    StgIsStorageFile               @1240; StgIsStorageFile
+    StgIsStorageILockBytes         @1241; StgIsStorageILockBytes
+    StgOpenAsyncDocfileOnIFillLockBytes @1242; StgOpenAsyncDocfileOnIFillLockBytes
+    StgOpenPropStg                 @1243; StgOpenPropStg
+    StgOpenStorage                 @1244; StgOpenStorage
+    StgOpenStorageEx               @1245; StgOpenStorageEx
+    StgOpenStorageOnHandle         @1246; StgOpenStorageOnHandle
+    StgOpenStorageOnILockBytes     @1247; StgOpenStorageOnILockBytes
+    StgPropertyLengthAsVariant     @1248; StgPropertyLengthAsVariant
+    StgSetTimes                    @1249; StgSetTimes
+    StringFromCLSID                @1250; StringFromCLSID
+    StringFromGUID2                @1251; StringFromGUID2
+    StringFromIID                  @1252; StringFromIID
+    UpdateDCOMSettings             @1253; UpdateDCOMSettings
+    UpdateProcessTracing           @1254; UpdateProcessTracing
+    UtConvertDvtd16toDvtd32        @1255; UtConvertDvtd16toDvtd32
+    UtConvertDvtd32toDvtd16        @1256; UtConvertDvtd32toDvtd16
+    UtGetDvtd16Info                @1257; UtGetDvtd16Info
+    UtGetDvtd32Info                @1258; UtGetDvtd32Info
+    WdtpInterfacePointer_UserFree  @1259; WdtpInterfacePointer_UserFree
+    WdtpInterfacePointer_UserMarshal @1260; WdtpInterfacePointer_UserMarshal
+    WdtpInterfacePointer_UserSize  @1261; WdtpInterfacePointer_UserSize
+    WdtpInterfacePointer_UserUnmarshal @1262; WdtpInterfacePointer_UserUnmarshal
+    WriteClassStg                  @1263; WriteClassStg
+    WriteClassStm                  @1264; WriteClassStm
+    WriteFmtUserTypeStg            @1265; WriteFmtUserTypeStg
+    WriteOleStg                    @1266; WriteOleStg
+    WriteStorageProperties         @842 ; WriteStorageProperties
+    WriteStringStream              @1267; WriteStringStream

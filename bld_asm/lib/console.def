@@ -1,0 +1,6 @@
+LIBRARY     CONSOLE.DLL
+
+EXPORTS
+    CreateConsole
+    DestroyConsole
+    initConsole

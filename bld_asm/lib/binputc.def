@@ -1,0 +1,45 @@
+LIBRARY     BINPUTC.DLL
+
+EXPORTS
+    ??0B_DInputKeyb@@QAE@PAUHINSTANCE__@@PAUHWND__@@@Z @1   ; ??0B_DInputKeyb@@QAE@PAUHINSTANCE__@@PAUHWND__@@@Z
+    ??0B_InputManager@@QAE@XZ      @2   ; ??0B_InputManager@@QAE@XZ
+    ??0B_WinMouse@@QAE@_NPAUHINSTANCE__@@PAUHWND__@@@Z @3   ; ??0B_WinMouse@@QAE@_NPAUHINSTANCE__@@PAUHWND__@@@Z
+    ??0B_WinPad@@QAE@PAUHINSTANCE__@@PAUHWND__@@@Z @4   ; ??0B_WinPad@@QAE@PAUHINSTANCE__@@PAUHWND__@@@Z
+    ??1B_DInputKeyb@@UAE@XZ        @5   ; ??1B_DInputKeyb@@UAE@XZ
+    ??1B_InputManager@@UAE@XZ      @6   ; ??1B_InputManager@@UAE@XZ
+    ??1B_WinMouse@@UAE@XZ          @7   ; ??1B_WinMouse@@UAE@XZ
+    ??1B_WinPad@@UAE@XZ            @8   ; ??1B_WinPad@@UAE@XZ
+    ?Acquire@B_DInputKeyb@@QAE_NXZ @9   ; ?Acquire@B_DInputKeyb@@QAE_NXZ
+    ?Acquire@B_WinMouse@@QAE_NXZ   @10  ; ?Acquire@B_WinMouse@@QAE_NXZ
+    ?Acquire@B_WinPad@@QAE_NXZ     @11  ; ?Acquire@B_WinPad@@QAE_NXZ
+    ?AddDevice@B_InputManager@@QAEXPAVB_InputDevice@@@Z @12  ; ?AddDevice@B_InputManager@@QAEXPAVB_InputDevice@@@Z
+    ?AddInputAction@B_InputManager@@QAEHPBDH@Z @13  ; ?AddInputAction@B_InputManager@@QAEHPBDH@Z
+    ?AddInputActionsSet@B_InputManager@@QAEHPBD@Z @14  ; ?AddInputActionsSet@B_InputManager@@QAEHPBD@Z
+    ?AssocKey@B_InputManager@@QAEIPBD00H@Z @15  ; ?AssocKey@B_InputManager@@QAEIPBD00H@Z
+    ?Bind2@B_InputManager@@QAEIPBD00H@Z @16  ; ?Bind2@B_InputManager@@QAEIPBD00H@Z
+    ?BindInputEvent@B_InputManager@@QAE_NPBDP6AXABVB_Name@@MMPAX@Z2@Z @17  ; ?BindInputEvent@B_InputManager@@QAE_NPBDP6AXABVB_Name@@MMPAX@Z2@Z
+    ?Close@B_InputManager@@UAEXXZ  @18  ; ?Close@B_InputManager@@UAEXXZ
+    ?GetAttachedDevice@B_InputManager@@QAEPAVB_InputDevice@@PBD@Z @19  ; ?GetAttachedDevice@B_InputManager@@QAEPAVB_InputDevice@@PBD@Z
+    ?GetInputActions@B_InputManager@@QAEPAVB_InputActions@@XZ @20  ; ?GetInputActions@B_InputManager@@QAEPAVB_InputActions@@XZ
+    ?GetInputActions@B_InputManager@@QBEPBVB_InputActions@@XZ @21  ; ?GetInputActions@B_InputManager@@QBEPBVB_InputActions@@XZ
+    ?GetInputActionsSet@B_InputManager@@QBEPBDXZ @22  ; ?GetInputActionsSet@B_InputManager@@QBEPBDXZ
+    ?GetRegCode@B_InputReader@@QBEHPBD@Z @23  ; ?GetRegCode@B_InputReader@@QBEHPBD@Z
+    ?GetTimeActionActivated@B_InputManager@@QAEMPBD@Z @24  ; ?GetTimeActionActivated@B_InputManager@@QAEMPBD@Z
+    ?GetTimeActionHeld@B_InputManager@@QAEMPBDM@Z @25  ; ?GetTimeActionHeld@B_InputManager@@QAEMPBDM@Z
+    ?GetTimeHeld@B_InputReader@@QBEKH@Z @26  ; ?GetTimeHeld@B_InputReader@@QBEKH@Z
+    ?InputManager@@3PAVB_InputManager@@A @27  ; ?InputManager@@3PAVB_InputManager@@A
+    ?LastInputTimeGap@B_InputManager@@QAEMXZ @28  ; ?LastInputTimeGap@B_InputManager@@QAEMXZ
+    ?LastInputTimeGap@B_InputManager@@QAEXM@Z @29  ; ?LastInputTimeGap@B_InputManager@@QAEXM@Z
+    ?LaunchBinding@B_InputDevice@@QAEXPBD@Z @30  ; ?LaunchBinding@B_InputDevice@@QAEXPBD@Z
+    ?ProcessInput@B_InputManager@@QAEXM@Z @31  ; ?ProcessInput@B_InputManager@@QAEXM@Z
+    ?RemoveInputAction@B_InputManager@@QAEHPBD@Z @32  ; ?RemoveInputAction@B_InputManager@@QAEHPBD@Z
+    ?SetInputActionsSet@B_InputManager@@QAEHPBD@Z @33  ; ?SetInputActionsSet@B_InputManager@@QAEHPBD@Z
+    ?SetInputReader@B_InputDevice@@QAEXPAVB_InputReader@@@Z @34  ; ?SetInputReader@B_InputDevice@@QAEXPAVB_InputReader@@@Z
+    ?TestBinding@B_InputDevice@@QBEIPBD@Z @35  ; ?TestBinding@B_InputDevice@@QBEIPBD@Z
+    ?UnAcquire@B_DInputKeyb@@QAEXXZ @36  ; ?UnAcquire@B_DInputKeyb@@QAEXXZ
+    ?UnAcquire@B_WinMouse@@QAEXXZ  @37  ; ?UnAcquire@B_WinMouse@@QAEXXZ
+    ?UnAcquire@B_WinPad@@QAEXXZ    @38  ; ?UnAcquire@B_WinPad@@QAEXXZ
+    ?UnBindAll@B_InputManager@@QAEXXZ @39  ; ?UnBindAll@B_InputManager@@QAEXXZ
+    ?UnBindInputEvent@B_InputManager@@QAE_NPBDP6AXABVB_Name@@MMPAX@Z2@Z @40  ; ?UnBindInputEvent@B_InputManager@@QAE_NPBDP6AXABVB_Name@@MMPAX@Z2@Z
+    initBInputc                    @41  ; initBInputc
+    strdup                         @42  ; strdup

@@ -66,9 +66,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="BBLibc.lib"
+				AdditionalDependencies="BBLibc.lib binputc.lib console.lib raster.lib python15.lib mss32.lib shw32.lib bicrt.lib k32.lib u32.lib o32.lib ws32.lib wmm.lib s32.lib g32.lib ddrw.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;C:\Games\Severence - Blade of Darkness\src\lib&quot;"
+				AdditionalLibraryDirectories="&quot;..\lib&quot;"
 				IgnoreAllDefaultLibraries="false"
 				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="true"
