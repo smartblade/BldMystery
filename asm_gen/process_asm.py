@@ -10,10 +10,10 @@ parser.add_option("--show-hex-prefix", dest="show_hex_prefix",
 (options, args) = parser.parse_args()
 options.show_hex_prefix = (options.show_hex_prefix != 'no')
 
-num_regexp = re.compile('(?P<prefix>[^\w])(?P<number>[\dABCDEF]+)')
+num_regexp = re.compile('(?P<prefix>[^\w\?\.@$])(?P<number>[\dABCDEF]+)')
 cmds = 'call|jmp|je|jne|jb|jnb|jbe|jl|jnl|jle|jg|ja|js|jns|jp|jnp|jo|jno|loop|loopnz'
 direct_transfer_regexp = re.compile('^(?P<cmd>{})\s+(?P<target>[\dABCDEF]+)\W*$'.format(cmds))
-external_ref_regexp = re.compile('(?P<extern>\w+\.\S+)')
+external_ref_regexp = re.compile('(?P<extern>\w+\.(?P<name>\S+))')
 byteReg = 'al|cl|dl'
 wordReg = 'ax|cx|dx'
 access = '\[.*\]'
@@ -61,6 +61,29 @@ class MemoryInterval:
             else:
                 curAddr += 1
         return line
+
+class ImportReference:
+    def __init__(self, addr, name):
+        self._addr = addr
+        self._name = name
+
+    def showLabel(self):
+        pass
+
+    def label(self):
+        return "__imp_{}".format(self._name)
+
+    def startAddress(self):
+        return self._addr
+
+    def endAddress(self):
+        return self._addr + self.length()
+
+    def length(self):
+        return 4
+
+    def toString(self, imageMap):
+        return ""
 
 class DataItem:
     _addr = None
@@ -199,11 +222,21 @@ class AsmInstruction:
         match = re.search(external_ref_regexp, self._instr)
         if match:
             externalSym = match.group('extern')
-            targetAddr = self.extractTargetAddress(imageMap)
-            if targetAddr is None:
-                targetAddr = 'external_symbol'
+            symbolName = match.group('name')
+            (targetAddr, isDirectCall) = self.extractTargetAddress(imageMap)
+            if targetAddr is not None and not isDirectCall:
+                imageMap.addImportReference(targetAddr, symbolName)
             self.printErrorMessage("[{}]".format(externalSym))
-            self._instr = self._instr.replace(externalSym, targetAddr)
+            target = self.buildTargetOperand(targetAddr, isDirectCall)
+            self._instr = self._instr.replace(externalSym, target)
+
+    def buildTargetOperand(self, targetAddr, isDirectCall):
+        if targetAddr is None:
+            return 'external_symbol'
+        elif isDirectCall:
+            return toHex(targetAddr)
+        else:
+            return "[{}]".format(toHex(targetAddr))
 
     def extractTargetAddress(self, imageMap):
         bytes = imageMap.bytes(self.startAddress(), self.endAddress())
@@ -223,10 +256,10 @@ class AsmInstruction:
         if match:
             addr = self.reverseAddressBytes(match.group('addr'))
             if match.group('directCall'):
-                return toHex(self.endAddress() + fromHex(addr))
+                return (self.endAddress() + fromHex(addr), True)
             else:
-                return "[{}]".format(addr)
-        return None
+                return (fromHex(addr), False)
+        return (None, False)
 
     def reverseAddressBytes(self, bytes):
         length = 4
@@ -273,6 +306,14 @@ class ImageMap:
     def relocations(self):
         return self._mem.relocations()
 
+    def importReferences(self):
+        importReferences = []
+        for addr in sorted(self._items.keys()):
+            item = self._items[addr]
+            if (isinstance(item, ImportReference)):
+                importReferences.append(item)
+        return importReferences
+
     def label(self, addr):
         if addr in self._items:
             return self._items[addr].label()
@@ -280,6 +321,9 @@ class ImageMap:
 
     def add(self, addr, item):
         self._items[addr] = item
+
+    def addImportReference(self, addr, name):
+        self.add(addr, ImportReference(addr, name))
 
     def bytes(self, startAddress, endAddress):
         return self._mem.bytes(startAddress, endAddress)
@@ -478,5 +522,7 @@ if __name__ == '__main__':
     f.write("; Unresolved addresses:\n")
     for addr in sorted(imageMap.unresolvedAddresses()):
         f.write("l{} dd 012345678h\n".format(toHex(addr)))
+    for impref in imageMap.importReferences():
+        f.write("{} dd 012345678h\n".format(impref.label()))
     f.close()
     print("Converted in %.2f seconds" % (time.time() - start_time))
