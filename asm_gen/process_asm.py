@@ -352,6 +352,53 @@ class ImageMap:
                 self._items[prevItem.startAddress()] = DataItem(self._mem, prevItem.startAddress(), item.startAddress())
             prevItem = item
 
+    def isInvalidInstruction(self, item, relAddr):
+        relLength = 4
+        relStart = relAddr
+        relEnd = relAddr + relLength
+        return relAddr < item.startAddress() or relEnd > item.endAddress()
+
+    def removeInvalidInstructions(self):
+        invalidInstructions = set()
+        for addr in sorted(self._items.keys()):
+            item = self._items[addr]
+            if isinstance(item, AsmInstruction):
+                for relAddr in range(item.startAddress(), item.endAddress()):
+                    if (relAddr in self.relocations()):
+                        if self.isInvalidInstruction(item, relAddr):
+                            invalidInstructions.add(item)
+        relLength = 4
+        for relAddr in sorted(self.relocations().keys()):
+            for addr in range(relAddr, relAddr + relLength):
+                item = self._items.get(addr)
+                if isinstance(item, AsmInstruction):
+                        if self.isInvalidInstruction(item, relAddr):
+                            invalidInstructions.add(item)
+        for item in invalidInstructions:
+            startAddr = item.startAddress()
+            endAddr = item.endAddress()
+            self._items[startAddr] = DataItem(self._mem, startAddr, endAddr)
+
+    def endAddressOfAdjacentDataItems(self, addr):
+        item = self._items[addr]
+        if not isinstance(item, DataItem):
+            return item.startAddress()
+        nextItem = self._items.get(item.endAddress())
+        while isinstance(nextItem, DataItem):
+            item = nextItem
+            nextItem = self._items.get(item.endAddress())
+        return item.endAddress()
+
+    def mergeAdjacentDataItems(self):
+        endAddr = None
+        for addr in sorted(self._items.keys()):
+            if endAddr is not None and addr < endAddr:
+                del self._items[addr]
+            else:
+                endAddr = self.endAddressOfAdjacentDataItems(addr)
+                if (endAddr > self._items[addr].endAddress()):
+                    self._items[addr] = DataItem(self._mem, addr, endAddr)
+
     def mergeUserData(self, userMap):
         self._items = self._mergeUserData(self._items, userMap)
 
@@ -501,6 +548,10 @@ if __name__ == '__main__':
     imageMap.removeOverlappedItems()
     print("Merging user data...")
     imageMap.mergeUserData(userData)
+    print("Removing invalid instructions...")
+    imageMap.removeInvalidInstructions()
+    print("Merge adjacent data iiems...")
+    imageMap.mergeAdjacentDataItems()
     print("Processing data...")
     for imageItem in imageMap.itemsMap().values():
         if isinstance(imageItem, AsmInstruction):
