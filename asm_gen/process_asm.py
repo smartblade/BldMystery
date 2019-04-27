@@ -23,6 +23,10 @@ regRight = '((?P<byteRight>{})|(?P<wordRight>{}))'.format(byteReg, wordReg)
 accessLeft = '(?P<accessLeft>{})'.format(access)
 accessRight = '(?P<accessRight>{})'.format(access)
 byte_memory_access_regexp = re.compile('^mov\s+(({},\s+{})|({},\s+{}))$'.format(regLeft, accessRight, accessLeft, regRight))
+noFWAIT = {
+    'fstsw' : 'fnstsw',
+}
+fwait_regexp = re.compile('^(?P<cmd>{})'.format("|".join(noFWAIT.keys())))
 
 def toHex(n):
     return format(n, '08X')
@@ -197,6 +201,12 @@ class AsmInstruction:
             size = 'byte ptr' if byte is not None else size
             size = 'word ptr' if word is not None else size
             self._instr = self._instr.replace(access, '{} {}'.format(size, access))
+
+    def avoidEmittingOfFWAIT(self):
+        match = re.search(fwait_regexp, self._instr)
+        if match:
+            cmd = match.group('cmd')
+            self._instr = self._instr.replace(cmd, noFWAIT[cmd])
 
     def applyRelocs(self, imageMap):
         reloc = imageMap.relocations()
@@ -579,6 +589,7 @@ if __name__ == '__main__':
     for imageItem in imageMap.itemsMap().values():
         if isinstance(imageItem, AsmInstruction):
             imageItem.fixByteMemoryAccess()
+            imageItem.avoidEmittingOfFWAIT()
     f = open("Blade_patched_converted.txt", "wt")
     for lineItem in lineItems:
         f.write(lineItem.toString())
