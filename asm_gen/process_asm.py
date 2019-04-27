@@ -10,6 +10,7 @@ parser.add_option("--show-hex-prefix", dest="show_hex_prefix",
 (options, args) = parser.parse_args()
 options.show_hex_prefix = (options.show_hex_prefix != 'no')
 
+entry_point_regexp = re.compile('Entry\s+Point:\s+(?P<entryPoint>[\dABCDEF]+)')
 num_regexp = re.compile('(?P<prefix>[^\w\?\.@$])(?P<number>[\dABCDEF]+)')
 cmds = 'call|jmp|je|jne|jb|jnb|jbe|jl|jnl|jle|jg|ja|js|jns|jp|jnp|jo|jno|loop|loopnz'
 direct_transfer_regexp = re.compile('^(?P<cmd>{})\s+(?P<target>[\dABCDEF]+)\W*$'.format(cmds))
@@ -67,7 +68,7 @@ class ImportReference:
         self._addr = addr
         self._name = name
 
-    def showLabel(self):
+    def showLabel(self, name):
         pass
 
     def label(self):
@@ -95,7 +96,7 @@ class DataItem:
         self._ptrs = {}
         self._messages = {}
 
-    def showLabel(self):
+    def showLabel(self, name):
         pass
 
     def label(self):
@@ -159,6 +160,7 @@ class AsmInstruction:
     _instr = None
     _length = 0
     _showLabel = False
+    _name = None
     _message = ""
     def __init__(self, addr, instr, length):
         self._addr = addr
@@ -166,11 +168,12 @@ class AsmInstruction:
         self._length = length
         self._pointers = []
 
-    def showLabel(self):
+    def showLabel(self, name):
         self._showLabel = True
+        self._name = name
 
     def label(self):
-        return "l{}".format(toHex(self._addr))
+        return self._name or "l{}".format(toHex(self._addr))
 
     def startAddress(self):
         return self._addr
@@ -435,9 +438,9 @@ class ImageMap:
                 curItem = itemRight
         self._unresolvedAddresses -= set(self._items)
 
-    def resolveAddress(self, addr):
+    def resolveAddress(self, addr, name = None):
         if addr in self._items:
-            self._items[addr].showLabel()
+            self._items[addr].showLabel(name)
         else:
             self._unresolvedAddresses.add(addr)
 
@@ -471,6 +474,12 @@ class MemoryArea:
             bytes.append(self._bytes[2 * (curAddr - self._addr) + 1])
             curAddr += 1
         return "".join(bytes)
+
+def extractEntryPoint(line):
+    match = re.search(entry_point_regexp, line)
+    if match:
+        return fromHex(match.group('entryPoint'))
+    return None
 
 def removeOverlappedMemoryIntervals(imageMap, lineItems):
     prevIndex = -1
@@ -524,12 +533,14 @@ if __name__ == '__main__':
     userData = readDataItems("data.txt", mem)
     addr_label_regexp = re.compile('^(?P<addr>[\dABCDEF]+):\s+(?P<bytes>[\dABCDEF]+)\s+(?P<instr>\S.*)?$')
     print("Fill data structures...")
+    entryPoint = None
     lineItems = []
     imageMap = ImageMap(mem)
     for line in lines:
         match = re.search(addr_label_regexp, line)
         if not match:
             lineItems.append(CommentLine(line))
+            entryPoint = entryPoint or extractEntryPoint(line)
         else:
             addr = fromHex(match.group('addr'))
             instr = match.group('instr')
@@ -543,6 +554,7 @@ if __name__ == '__main__':
             else:
                 item = DataItem(mem, addr, addr + length)
             imageMap.add(addr, item)
+    imageMap.resolveAddress(entryPoint, '__startup')
     print("Removing overlapped items...")
     removeOverlappedMemoryIntervals(imageMap, lineItems)
     imageMap.removeOverlappedItems()
