@@ -121,9 +121,7 @@ class DataItem:
             if addr in reloc:
                 targetAddr = reloc[addr]
                 length = 4
-                addrStr = ""
-                for i in range(length, 0, -1):
-                    addrStr += imageMap.bytes(addr + i - 1, addr + i)
+                addrStr = reverseBytes(imageMap.bytes(addr, addr + length))
                 if (
                     fromHex(addrStr) != targetAddr or
                     (addr + length > self.endAddress())
@@ -135,6 +133,15 @@ class DataItem:
             else:
                 length = 1
             addr += length
+
+    def canRead32Bit(self, addr):
+        length = 4
+        if addr + length > self.endAddress():
+            return False
+        for i in range(addr, addr + length):
+            if i in self._ptrs:
+                return False
+        return True
 
     def toString(self, imageMap):
         lines = ""
@@ -150,6 +157,11 @@ class DataItem:
                 length = 4
                 dataSize = "dd"
                 data = imageMap.label(self._ptrs[addr])
+            elif self.canRead32Bit(addr):
+                length = 4
+                dataSize = "dd"
+                num = reverseBytes(imageMap.bytes(addr, addr + length))
+                data = "0{}h".format(num)
             else:
                 length = 1
                 dataSize = "db"
@@ -271,19 +283,12 @@ class AsmInstruction:
         prefix = '|'.join(prefixes)
         match = re.search('^({})(?P<addr>........)$'.format(prefix), bytes)
         if match:
-            addr = self.reverseAddressBytes(match.group('addr'))
+            addr = reverseBytes(match.group('addr'))
             if match.group('directCall'):
                 return (self.endAddress() + fromHex(addr), True)
             else:
                 return (fromHex(addr), False)
         return (None, False)
-
-    def reverseAddressBytes(self, bytes):
-        length = 4
-        addr = ""
-        for i in range(length, 0, -1):
-            addr += bytes[2 * i - 2] + bytes[2 * i - 1]
-        return addr
 
     def replacePointers(self, imageMap):
         instr = self._instr
@@ -540,6 +545,13 @@ def readDataItems(dataFileName):
             dataItems[startAddr] = DataItem(startAddr, endAddr)
     f.close()
     return dataItems
+
+def reverseBytes(bytes):
+    length = len(bytes) / 2
+    num = ""
+    for i in range(length, 0, -1):
+        num += bytes[2 * i - 2] + bytes[2 * i - 1]
+    return num
 
 if __name__ == '__main__':
     start_time = time.time()
