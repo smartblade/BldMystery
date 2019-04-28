@@ -93,8 +93,7 @@ class ImportReference:
 class DataItem:
     _addr = None
     _length = 0
-    def __init__(self, mem, startAddr, endAddr):
-        self._mem = mem
+    def __init__(self, startAddr, endAddr):
         self._addr = startAddr
         self._length = endAddr - startAddr
         self._ptrs = {}
@@ -124,7 +123,7 @@ class DataItem:
                 length = 4
                 addrStr = ""
                 for i in range(length, 0, -1):
-                    addrStr += self._mem.bytes(addr + i - 1, addr + i)
+                    addrStr += imageMap.bytes(addr + i - 1, addr + i)
                 if (
                     fromHex(addrStr) != targetAddr or
                     (addr + length > self.endAddress())
@@ -154,7 +153,7 @@ class DataItem:
             else:
                 length = 1
                 dataSize = "db"
-                data = "0{}h".format(self._mem.bytes(addr, addr + length))
+                data = "0{}h".format(imageMap.bytes(addr, addr + length))
             lines += "{}  {} {}{}\n".format(label, dataSize, data, error)
             addr += length
         return lines
@@ -371,7 +370,7 @@ class ImageMap:
         for addr in sorted(self._items.keys()):
             item = self._items[addr]
             if (prevItem is not None and prevItem.endAddress() > item.startAddress()):
-                self._items[prevItem.startAddress()] = DataItem(self._mem, prevItem.startAddress(), item.startAddress())
+                self._items[prevItem.startAddress()] = DataItem(prevItem.startAddress(), item.startAddress())
             prevItem = item
 
     def isInvalidInstruction(self, item, relAddr):
@@ -399,7 +398,7 @@ class ImageMap:
         for item in invalidInstructions:
             startAddr = item.startAddress()
             endAddr = item.endAddress()
-            self._items[startAddr] = DataItem(self._mem, startAddr, endAddr)
+            self._items[startAddr] = DataItem(startAddr, endAddr)
 
     def endAddressOfAdjacentDataItems(self, addr):
         item = self._items[addr]
@@ -419,7 +418,7 @@ class ImageMap:
             else:
                 endAddr = self.endAddressOfAdjacentDataItems(addr)
                 if (endAddr > self._items[addr].endAddress()):
-                    self._items[addr] = DataItem(self._mem, addr, endAddr)
+                    self._items[addr] = DataItem(addr, endAddr)
 
     def mergeUserData(self, userMap):
         self._items = self._mergeUserData(self._items, userMap)
@@ -450,8 +449,8 @@ class ImageMap:
             if (item != None):
                 curItem = item
             elif isinstance(curItem, DataItem) and addr < curItem.endAddress():
-                itemLeft = DataItem(self._mem, curItem.startAddress(), addr)
-                itemRight = DataItem(self._mem, addr, curItem.endAddress())
+                itemLeft = DataItem(curItem.startAddress(), addr)
+                itemRight = DataItem(addr, curItem.endAddress())
                 self._items[curItem.startAddress()] = itemLeft
                 self._items[addr] = itemRight
                 curItem = itemRight
@@ -529,7 +528,7 @@ def readRelocations(relocFileName):
     f.close()
     return reloc
 
-def readDataItems(dataFileName, mem):
+def readDataItems(dataFileName):
     addr_inv_regexp = re.compile('^;;\s(?P<startAddr>0x[\dABCDEF]+)\s(?P<endAddr>0x[\dABCDEF]+)')
     dataItems = dict()
     f = open(dataFileName)
@@ -538,7 +537,7 @@ def readDataItems(dataFileName, mem):
         if match:
             startAddr = fromHex(match.group('startAddr'))
             endAddr = fromHex(match.group('endAddr'))
-            dataItems[startAddr] = DataItem(mem, startAddr, endAddr)
+            dataItems[startAddr] = DataItem(startAddr, endAddr)
     f.close()
     return dataItems
 
@@ -548,12 +547,12 @@ if __name__ == '__main__':
     lines = f.readlines()
     f.close()
     reloc = readRelocations("reloc.txt")
-    mem = MemoryArea(reloc)
-    userData = readDataItems("data.txt", mem)
+    userData = readDataItems("data.txt")
     addr_label_regexp = re.compile('^(?P<addr>[\dABCDEF]+):\s+(?P<bytes>[\dABCDEF]+)\s+(?P<instr>\S.*)?$')
     print("Fill data structures...")
     entryPoint = None
     lineItems = []
+    mem = MemoryArea(reloc)
     imageMap = ImageMap(mem)
     for line in lines:
         match = re.search(addr_label_regexp, line)
@@ -571,7 +570,7 @@ if __name__ == '__main__':
             if instr is not None:
                 item = AsmInstruction(addr, instr.rstrip(), length)
             else:
-                item = DataItem(mem, addr, addr + length)
+                item = DataItem(addr, addr + length)
             imageMap.add(addr, item)
     imageMap.resolveAddress(entryPoint, '__startup')
     print("Removing overlapped items...")
