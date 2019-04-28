@@ -202,6 +202,11 @@ class AsmInstruction:
             size = 'word ptr' if word is not None else size
             self._instr = self._instr.replace(access, '{} {}'.format(size, access))
 
+    def addNearJumpModifier(self, imageMap):
+        opcode = imageMap.bytes(self._addr, self._addr + 1)
+        if opcode == "E9":
+            self._instr = self._instr.replace('jmp', 'jmp near ptr')
+
     def avoidEmittingOfFWAIT(self):
         match = re.search(fwait_regexp, self._instr)
         if match:
@@ -593,6 +598,7 @@ if __name__ == '__main__':
     for imageItem in imageMap.itemsMap().values():
         if isinstance(imageItem, AsmInstruction):
             imageItem.fixByteMemoryAccess()
+            imageItem.addNearJumpModifier(imageMap)
             imageItem.avoidEmittingOfFWAIT()
     f = open("Blade_patched_converted.txt", "wt")
     for lineItem in lineItems:
