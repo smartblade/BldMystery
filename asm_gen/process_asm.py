@@ -504,13 +504,13 @@ def extractEntryPoint(line):
         return fromHex(match.group('entryPoint'))
     return None
 
-def removeOverlappedMemoryIntervals(imageMap, lineItems):
+def makeMemoryIntervalsAdjacent(imageMap, lineItems):
     prevIndex = -1
     for (i, lineItem) in enumerate(lineItems):
         if isinstance(lineItem, MemoryInterval):
             if (
                 prevIndex > 0 and
-                lineItems[prevIndex].endAddress() > lineItem.startAddress()
+                lineItems[prevIndex].endAddress() != lineItem.startAddress()
             ):
                 startAddress = lineItems[prevIndex].startAddress()
                 length = lineItem.startAddress() - startAddress
@@ -586,7 +586,7 @@ if __name__ == '__main__':
             imageMap.add(addr, item)
     imageMap.resolveAddress(entryPoint, '__startup')
     print("Removing overlapped items...")
-    removeOverlappedMemoryIntervals(imageMap, lineItems)
+    makeMemoryIntervalsAdjacent(imageMap, lineItems)
     imageMap.removeOverlappedItems()
     print("Merging user data...")
     imageMap.mergeUserData(userData)
