@@ -1,8 +1,3 @@
-;; This is actually code:
-;;     81E9A0010000           sub ecx, 000001A0
-;;     E9A5FFFFFF             jmp 0054FD80
-;; 0x0054FDD0 0x0054FDDB
-
 ;; 0x0040C5F9 0x0040CEA8
 ;; 0x0040ED75 0x0040EE2B
 ;; 0x00410A9D 0x00410AF5
