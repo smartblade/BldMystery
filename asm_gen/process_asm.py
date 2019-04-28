@@ -344,7 +344,11 @@ class ImageMap:
     def dasm(self, addr):
         patterns = {
             "55" : "push ebp",
+            "56" : "push esi",
+            "57" : "push edi",
             "8BEC" : "mov ebp, esp",
+            "83EC4C" : "sub esp, 0000004C",
+            "81EC44040000" : "sub esp, 00000444",
         }
         length = 1
         instruction = "invalid {}".format(self._mem.bytes(addr, addr + length))
