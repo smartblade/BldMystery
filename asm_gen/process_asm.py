@@ -88,7 +88,9 @@ class ImportReference:
         return 4
 
     def toString(self, imageMap):
-        return ""
+        label = "g{}".format(toHex(self._addr))
+        data = "0{}h".format(imageMap.bytes(self._addr, self.endAddress()))
+        return "{}  dd {}; {}\n".format(label, data, self._name)
 
 class DataItem:
     _addr = None
@@ -332,6 +334,7 @@ class ImageMap:
     def __init__(self, mem):
         self._mem = mem
         self._items = {}
+        self._importReferences = {}
         self._unresolvedAddresses = set()
 
     def itemsMap(self):
@@ -360,7 +363,7 @@ class ImageMap:
         self._items[addr] = item
 
     def addImportReference(self, addr, name):
-        self.add(addr, ImportReference(addr, name))
+        self._importReferences[addr] = ImportReference(addr, name)
 
     def bytes(self, startAddress, endAddress):
         return self._mem.bytes(startAddress, endAddress)
@@ -463,8 +466,15 @@ class ImageMap:
 
     def splitDataItems(self):
         unresolvedAddresses = self._unresolvedAddresses
+        importReferences = self._importReferences.values()
+        addresses = (
+            self._items.keys() +
+            list(unresolvedAddresses) +
+            map(lambda ref : ref.startAddress(), importReferences) +
+            map(lambda ref : ref.endAddress(), importReferences)
+        )
         curItem = None
-        for addr in sorted(set(self._items.keys() + list(unresolvedAddresses))):
+        for addr in sorted(set(addresses)):
             item = self._items.get(addr)
             if (item != None):
                 curItem = item
@@ -474,6 +484,14 @@ class ImageMap:
                 self._items[curItem.startAddress()] = itemLeft
                 self._items[addr] = itemRight
                 curItem = itemRight
+        for addr in sorted(self._items.keys()):
+            item = self._items[addr]
+            importRef = self._importReferences.get(addr)
+            if (importRef is not None and
+                isinstance(item, DataItem) and
+                item.endAddress() == importRef.endAddress()
+            ):
+                self._items[addr] = importRef
         self._unresolvedAddresses -= set(self._items)
 
     def resolveAddress(self, addr, name = None):
