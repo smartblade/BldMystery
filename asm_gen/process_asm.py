@@ -143,6 +143,16 @@ class DataItem:
                 return False
         return True
 
+    def zeroFilledDataLen(self, startAddr):
+        curAddr = startAddr
+        while curAddr < self.endAddress():
+            if imageMap.bytes(curAddr, curAddr + 1) != "00":
+                break
+            if curAddr in self._ptrs:
+                break
+            curAddr += 1
+        return (curAddr - startAddr)
+
     def toString(self, imageMap):
         lines = ""
         addr = self.startAddress()
@@ -157,6 +167,11 @@ class DataItem:
                 length = 4
                 dataSize = "dd"
                 data = imageMap.label(self._ptrs[addr])
+            elif self.zeroFilledDataLen(addr) >= 8:
+                numElements = self.zeroFilledDataLen(addr) / 4
+                length = numElements * 4
+                dataSize = "dd"
+                data = "{} dup (0)".format(numElements)
             elif self.canRead32Bit(addr):
                 length = 4
                 dataSize = "dd"
