@@ -17,9 +17,10 @@ direct_transfer_regexp = re.compile('^(?P<cmd>{})\s+(?P<target>[\dABCDEF]+)\W*$'
 external_ref_regexp = re.compile('(?P<extern>\w+\.(?P<name>\S+))')
 byteReg = 'al|cl|dl'
 wordReg = 'ax|cx|dx'
+dwordReg = 'eax|ecx|edx'
 access = '\[.*\]'
-regLeft = '((?P<byteLeft>{})|(?P<wordLeft>{}))'.format(byteReg, wordReg)
-regRight = '((?P<byteRight>{})|(?P<wordRight>{}))'.format(byteReg, wordReg)
+regLeft = '((?P<byteLeft>{})|(?P<wordLeft>{})|(?P<dwordLeft>{}))'.format(byteReg, wordReg, dwordReg)
+regRight = '((?P<byteRight>{})|(?P<wordRight>{})|(?P<dwordRight>{}))'.format(byteReg, wordReg, dwordReg)
 accessLeft = '(?P<accessLeft>{})'.format(access)
 accessRight = '(?P<accessRight>{})'.format(access)
 byte_memory_access_regexp = re.compile('^mov\s+(({},\s+{})|({},\s+{}))$'.format(regLeft, accessRight, accessLeft, regRight))
@@ -225,9 +226,11 @@ class AsmInstruction:
             access = match.group('accessLeft') or match.group('accessRight')
             byte = match.group('byteLeft') or match.group('byteRight')
             word = match.group('wordLeft') or match.group('wordRight')
+            dword = match.group('dwordLeft') or match.group('dwordRight')
             size = None
             size = 'byte ptr' if byte is not None else size
             size = 'word ptr' if word is not None else size
+            size = 'dword ptr' if dword is not None else size
             self._instr = self._instr.replace(access, '{} {}'.format(size, access))
 
     def addNearJumpModifier(self, imageMap):
