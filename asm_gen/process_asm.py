@@ -88,6 +88,14 @@ class ImportReference:
     def length(self):
         return 4
 
+    def demangleStdcall(self):
+        match = re.search('^_(?P<name>\w+)@(?P<size>\d+)$', self._name)
+        if match:
+            name = match.group('name')
+            size = int(match.group('size'))
+            return (name, size)
+        return (None, None)
+
     def toString(self, imageMap):
         label = "g{}".format(toHex(self._addr))
         data = "0{}h".format(imageMap.bytes(self._addr, self.endAddress()))
@@ -589,6 +597,38 @@ def reverseBytes(bytes):
         num += bytes[2 * i - 2] + bytes[2 * i - 1]
     return num
 
+def stdcallPrototype(name, size):
+    if size != 0:
+        params = "Params{} params".format(size)
+    else:
+        params = ""
+    return "void __stdcall {}({})".format(name, params)
+
+def writeStdcallFunctions(importReferences):
+    f = open("stdcallDefs.cpp", "wt")
+    stdcalls = []
+    sizes = set()
+    for impref in importReferences:
+        (name, size) = impref.demangleStdcall()
+        if name is not None:
+            stdcalls.append((name, size))
+            if size != 0:
+                sizes.add(size)
+    f.write('\nextern "C" {\n\n')
+    for size in sizes:
+        fields = "    char params[{}];\n".format(size)
+        name = "Params{}".format(size)
+        strucureDef = "typedef struct\n{{\n{}}} {};\n\n".format(fields, name)
+        f.write(strucureDef)
+    for (name, size) in stdcalls:
+        decl = "__declspec(dllexport) {};".format(stdcallPrototype(name, size))
+        f.write("{}\n".format(decl))
+    f.write('\n}/* extern "C" */\n')
+    for (name, size) in stdcalls:
+        definition = "{}\n{{\n}}\n".format(stdcallPrototype(name, size))
+        f.write("\n{}".format(definition))
+    f.close()
+
 if __name__ == '__main__':
     start_time = time.time()
     f = open("Blade_patched.txt")
@@ -658,4 +698,5 @@ if __name__ == '__main__':
     for impref in imageMap.importReferences():
         f.write("externdef {}: ptr\n".format(impref.label()))
     f.close()
+    writeStdcallFunctions(imageMap.importReferences())
     print("Converted in %.2f seconds" % (time.time() - start_time))
