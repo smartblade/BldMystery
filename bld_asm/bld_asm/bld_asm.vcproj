@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8,00"
-	Name="bld_asm"
+	Name="Blade"
 	ProjectGUID="{F5010DEA-6476-4F83-BF18-66752F600163}"
 	RootNamespace="bld_asm"
 	Keyword="Win32Proj"
