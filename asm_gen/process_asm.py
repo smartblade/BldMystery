@@ -11,6 +11,7 @@ parser.add_option("--show-hex-prefix", dest="show_hex_prefix",
 options.show_hex_prefix = (options.show_hex_prefix != 'no')
 
 entry_point_regexp = re.compile('Entry\s+Point:\s+(?P<entryPoint>[\dABCDEF]+)')
+export_regexp = re.compile('\*\s+Export:\s+(?P<export>\S+),\s+(?P<ordinal>\d+)')
 num_regexp = re.compile('(?P<prefix>[^\w\?\.@$])(?P<number>[\dABCDEF]+)')
 cmds = 'call|jmp|je|jne|jb|jnb|jbe|jl|jnl|jle|jg|ja|js|jns|jp|jnp|jo|jno|loop|loopnz'
 direct_transfer_regexp = re.compile('^(?P<cmd>{})\s+(?P<target>[\dABCDEF]+)\W*$'.format(cmds))
@@ -346,6 +347,7 @@ class ImageMap:
         self._mem = mem
         self._items = {}
         self._importReferences = {}
+        self._exports = {}
         self._unresolvedAddresses = set()
 
     def itemsMap(self):
@@ -365,6 +367,9 @@ class ImageMap:
                 importReferences.append(item)
         return importReferences
 
+    def exports(self):
+        return self._exports
+
     def label(self, addr):
         if addr in self._items:
             return self._items[addr].label()
@@ -375,6 +380,10 @@ class ImageMap:
 
     def addImportReference(self, addr, name):
         self._importReferences[addr] = ImportReference(addr, name)
+
+    def addExport(self, addr, name):
+        self._exports[addr] = name
+        self.resolveAddress(addr)
 
     def bytes(self, startAddress, endAddress):
         return self._mem.bytes(startAddress, endAddress)
@@ -548,6 +557,12 @@ def extractEntryPoint(line):
         return fromHex(match.group('entryPoint'))
     return None
 
+def extractExport(line):
+    match = re.search(export_regexp, line)
+    if match:
+        return match.group('export')
+    return None
+
 def makeMemoryIntervalsAdjacent(imageMap, lineItems):
     prevIndex = -1
     for (i, lineItem) in enumerate(lineItems):
@@ -629,9 +644,23 @@ def writeStdcallFunctions(importReferences):
         f.write("\n{}".format(definition))
     f.close()
 
+def writeExportDeclarations(binName, imageMap):
+    f = open("{}_export.inc".format(binName), "wt")
+    for addr in sorted(imageMap.exports().keys()):
+        f.write("public {}\n".format(imageMap.label(addr)))
+    f.close()
+
+def writeExportCmd(binName, imageMap):
+    f = open("{}_export_cmd.txt".format(binName), "wt")
+    for addr in sorted(imageMap.exports().keys()):
+        export = imageMap.exports()[addr]
+        f.write("/EXPORT:{}={}\n".format(export, imageMap.label(addr)))
+    f.close()
+
 if __name__ == '__main__':
     start_time = time.time()
-    f = open("Blade_patched.txt")
+    binName = 'Blade_patched'
+    f = open("{}.txt".format(binName))
     lines = f.readlines()
     f.close()
     reloc = readRelocations("reloc.txt")
@@ -639,6 +668,7 @@ if __name__ == '__main__':
     addr_label_regexp = re.compile('^(?P<addr>[\dABCDEF]+):\s+(?P<bytes>[\dABCDEF]+)\s+(?P<instr>\S.*)?$')
     print("Fill data structures...")
     entryPoint = None
+    export = None
     lineItems = []
     mem = MemoryArea(reloc)
     imageMap = ImageMap(mem)
@@ -647,6 +677,7 @@ if __name__ == '__main__':
         if not match:
             lineItems.append(CommentLine(line))
             entryPoint = entryPoint or extractEntryPoint(line)
+            export = export or extractExport(line)
         else:
             addr = fromHex(match.group('addr'))
             instr = match.group('instr')
@@ -660,6 +691,9 @@ if __name__ == '__main__':
             else:
                 item = DataItem(addr, addr + length)
             imageMap.add(addr, item)
+            if export is not None:
+                imageMap.addExport(addr, export)
+                export = None
     imageMap.resolveAddress(entryPoint, '__startup')
     print("Removing overlapped items...")
     makeMemoryIntervalsAdjacent(imageMap, lineItems)
@@ -687,16 +721,18 @@ if __name__ == '__main__':
             imageItem.fixByteMemoryAccess()
             imageItem.addNearJumpModifier(imageMap)
             imageItem.avoidEmittingOfFWAIT()
-    f = open("Blade_patched_converted.txt", "wt")
+    f = open("{}_converted.txt".format(binName), "wt")
     for lineItem in lineItems:
         f.write(lineItem.toString())
     f.write("; Unresolved addresses:\n")
     for addr in sorted(imageMap.unresolvedAddresses()):
         f.write("l{} dd 012345678h\n".format(toHex(addr)))
     f.close()
-    f = open("Blade_patched_import.inc", "wt")
+    f = open("{}_import.inc".format(binName), "wt")
     for impref in imageMap.importReferences():
         f.write("externdef {}: ptr\n".format(impref.label()))
     f.close()
+    writeExportDeclarations(binName, imageMap)
+    writeExportCmd(binName, imageMap)
     writeStdcallFunctions(imageMap.importReferences())
     print("Converted in %.2f seconds" % (time.time() - start_time))
