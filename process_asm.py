@@ -1,5 +1,6 @@
 
 from optparse import OptionParser
+import os
 import re
 import time
 
@@ -233,6 +234,9 @@ class AsmInstruction:
     def showLabel(self, name):
         self._showLabel = True
         self._name = name
+
+    def hideLabel(self):
+        self._showLabel = False
 
     def label(self):
         return self._name or "l{}".format(toHex(self._addr))
@@ -687,6 +691,47 @@ def writeExportCmd(imageMap):
         f.write("/EXPORT:{}={}\n".format(export, imageMap.label(addr)))
     f.close()
 
+def collectProceduresFromFile(fileName):
+    mangledNames = {}
+    nativeProcedures = set()
+    f = open(fileName)
+    lines = f.readlines()
+    addr_regexp = re.compile('Entry\s+point:\s+0x(?P<addr>[\dABCDEF]+)')
+    mangling_regexp = re.compile('VC\+\+\s+mangling:\s+(?P<mangling>[\S]+)')
+    meta = False
+    for line in lines:
+        if line.find("/*") >= 0:
+            meta = True
+            addr = None
+            mangling = None
+        if line.find("*/") >= 0:
+            meta = False
+            if addr is not None:
+                mangledNames[addr] = mangling or "fn{}".format(toHex(addr))
+        if line.find("BLD_NATIVE") >= 0:
+            nativeProcedures.add(addr)
+        if meta:
+            match = re.search(addr_regexp, line)
+            if match:
+                addr = fromHex(match.group('addr'))
+            match = re.search(mangling_regexp, line)
+            if match:
+                mangling = match.group('mangling')
+    f.close()
+    return (mangledNames, set(mangledNames.keys()) - nativeProcedures)
+
+def collectProceduresFromSources():
+    mangledNames = {}
+    implementedProcedures = []
+    for (root, dirs, files) in os.walk('..'):
+        for file in files:
+            if file.endswith(".cpp") or file.endswith(".h"):
+                fileName = os.path.join(root, file)
+                (names, implemented) = collectProceduresFromFile(fileName)
+                mangledNames.update(names)
+                implementedProcedures += implemented
+    return (mangledNames, implementedProcedures)
+
 if __name__ == '__main__':
     start_time = time.time()
     f = open("raw.txt")
@@ -744,6 +789,11 @@ if __name__ == '__main__':
     for imageItem in imageMap.itemsMap().values():
         if isinstance(imageItem, DataItem):
             imageItem.applyRelocs(imageMap)
+    print("Collect procedures from sources...")
+    (mangledNames, implementedProcedures) = collectProceduresFromSources()
+    print("Hide implemented procedures...")
+    for addr in implementedProcedures:
+        imageMap.itemsMap()[addr].hideLabel()
     print("Writing data...")
     for imageItem in imageMap.itemsMap().values():
         if isinstance(imageItem, AsmInstruction):
@@ -764,4 +814,10 @@ if __name__ == '__main__':
     writeExportDeclarations(imageMap)
     writeExportCmd(imageMap)
     writeStdcallFunctions(imageMap.importReferences())
+    f = open("procedures.inc", "wt")
+    for addr in sorted(mangledNames.keys()):
+        name = mangledNames[addr]
+        label = imageMap.label(addr)
+        f.write("externdef {}: near\n{} equ {}\n".format(name, label, name))
+    f.close()
     print("Converted in %.2f seconds" % (time.time() - start_time))
