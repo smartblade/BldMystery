@@ -146,21 +146,31 @@ class DataItem:
                 length = 1
             addr += length
 
-    def canRead32Bit(self, addr):
+    def canRead32Bit(self, imageMap, addr):
         length = 4
         if addr + length > self.endAddress():
             return False
         for i in range(addr, addr + length):
             if i in self._ptrs:
                 return False
+            if imageMap.isUninitialisedByte(i):
+                return False
         return True
 
-    def zeroFilledDataLen(self, startAddr):
+    def zeroFilledDataLen(self, imageMap, startAddr):
         curAddr = startAddr
         while curAddr < self.endAddress():
             if imageMap.bytes(curAddr, curAddr + 1) != "00":
                 break
             if curAddr in self._ptrs:
+                break
+            curAddr += 1
+        return (curAddr - startAddr)
+
+    def uninitialisedDataLen(self, imageMap, startAddr):
+        curAddr = startAddr
+        while curAddr < self.endAddress():
+            if not imageMap.isUninitialisedByte(curAddr):
                 break
             curAddr += 1
         return (curAddr - startAddr)
@@ -179,12 +189,22 @@ class DataItem:
                 length = 4
                 dataSize = "dd"
                 data = imageMap.label(self._ptrs[addr])
-            elif self.zeroFilledDataLen(addr) >= 8:
-                numElements = self.zeroFilledDataLen(addr) / 4
+            elif self.uninitialisedDataLen(imageMap, addr) > 0:
+                length = self.uninitialisedDataLen(imageMap, addr)
+                if length < 4:
+                    dataSize = "db"
+                    numElements = length
+                else:
+                    dataSize = "dd"
+                    numElements = length / 4
+                    length = numElements * 4
+                data = "{} dup (?)".format(numElements)
+            elif self.zeroFilledDataLen(imageMap, addr) >= 8:
+                numElements = self.zeroFilledDataLen(imageMap, addr) / 4
                 length = numElements * 4
                 dataSize = "dd"
                 data = "{} dup (0)".format(numElements)
-            elif self.canRead32Bit(addr):
+            elif self.canRead32Bit(imageMap, addr):
                 length = 4
                 dataSize = "dd"
                 num = reverseBytes(imageMap.bytes(addr, addr + length))
@@ -388,6 +408,9 @@ class ImageMap:
     def bytes(self, startAddress, endAddress):
         return self._mem.bytes(startAddress, endAddress)
 
+    def isUninitialisedByte(self, address):
+        return self._mem.isUninitialisedByte(address)
+
     def dasm(self, addr):
         patterns = {
             "55" : "push ebp",
@@ -539,17 +562,23 @@ class MemoryArea:
             delta = expectedSize - len(self._bytes)
             if (delta < 0):
                 del self._bytes[delta]
-            self._bytes.extend("0" * delta)
+            for i in range(delta):
+                self._bytes.append(None)
             self._bytes.extend(bytes)
 
     def bytes(self, startAddress, endAddress):
         curAddr = startAddress
         bytes = []
         while curAddr < endAddress:
-            bytes.append(self._bytes[2 * (curAddr - self._addr)])
-            bytes.append(self._bytes[2 * (curAddr - self._addr) + 1])
+            index = 2 * (curAddr - self._addr)
+            bytes.append(self._bytes[index] or "?")
+            bytes.append(self._bytes[index + 1] or "?")
             curAddr += 1
         return "".join(bytes)
+
+    def isUninitialisedByte(self, address):
+        index = 2 * (address - self._addr)
+        return self._bytes[index] is None and self._bytes[index + 1] is None
 
 def extractEntryPoint(line):
     match = re.search(entry_point_regexp, line)
