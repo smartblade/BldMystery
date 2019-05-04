@@ -513,6 +513,7 @@ class ImageMap:
         addresses = (
             self._items.keys() +
             list(unresolvedAddresses) +
+            self.relocations().values() +
             map(lambda ref : ref.startAddress(), importReferences) +
             map(lambda ref : ref.endAddress(), importReferences)
         )
