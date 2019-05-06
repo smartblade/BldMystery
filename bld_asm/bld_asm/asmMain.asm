@@ -5,9 +5,9 @@ option casemap:none
 assume fs: nothing
 
 image segment write execute PUBLIC
-include ../../asm_gen/Blade_patched_export.inc
-include ../../asm_gen/Blade_patched_import.inc
-include ../../asm_gen/Blade_patched_converted.txt
+include Blade_patched_export.inc
+include Blade_patched_import.inc
+include Blade_patched_converted.txt
 image ends
 
 END __startup

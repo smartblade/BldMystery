@@ -33,6 +33,7 @@
 			/>
 			<Tool
 				Name="MASM"
+				IncludePaths="../../asm_gen"
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
