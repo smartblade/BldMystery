@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bld_asm", "bld_asm\bld_asm.vcproj", "{F5010DEA-6476-4F83-BF18-66752F600163}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Blade", "Blade\BladeAsm.vcproj", "{F5010DEA-6476-4F83-BF18-66752F600163}"
 	ProjectSection(ProjectDependencies) = postProject
 		{053BBB0B-DCF7-4CA4-9D80-E85CE067DA6D} = {053BBB0B-DCF7-4CA4-9D80-E85CE067DA6D}
 	EndProjectSection
