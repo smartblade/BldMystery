@@ -3,7 +3,7 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.06.00"/>
-    <PROJECT value="..\..\bin\NetBlade\NetBlade.dll"/>
+    <PROJECT value="..\install\bin\NetBlade\NetBlade.dll"/>
     <OBJFILES value="netinterface.obj netfunctions.obj bld_net.obj interface.obj netdialog.obj 
       bcb_wrappers.obj"/>
     <RESFILES value="NetBlade.res"/>
@@ -31,13 +31,13 @@
     <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="NO_STRICT;_NO_VCL;_RTLDLL;USEPACKAGES"/>
     <MAINSOURCE value="NetBlade.bpf"/>
-    <INCLUDEPATH value="..\;NetBlade;$(BCB)\include;$(BCB)\include\vcl;..\include"/>
-    <LIBPATH value="..\;NetBlade;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <INCLUDEPATH value="..;NetBlade;$(BCB)\include;$(BCB)\include\vcl;..\include"/>
+    <LIBPATH value="..;NetBlade;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
     <OTHERFILES value=""/>
   </MACROS>
   <OPTIONS>
-    <IDLCFLAGS value="-I..\. -INetBlade -I$(BCB)\include -I$(BCB)\include\vcl -I..\include 
+    <IDLCFLAGS value="-I.. -INetBlade -I$(BCB)\include -I$(BCB)\include\vcl -I..\include 
       -src_suffix cpp -D_DEBUG -boa"/>
     <CFLAG1 value="-WD -Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- 
       -tWD -tWM- -c"/>
@@ -97,13 +97,15 @@ ProductVersion=1.0.0.0
 Comments=
 
 [HistoryLists\hlIncludePath]
-Count=2
-Item0=NetBlade;$(BCB)\include;$(BCB)\include\vcl;..\include
-Item1=NetBlade;$(BCB)\include;$(BCB)\include\vcl
+Count=3
+Item0=..\;NetBlade;$(BCB)\include;$(BCB)\include\vcl;..\include
+Item1=NetBlade;$(BCB)\include;$(BCB)\include\vcl;..\include
+Item2=NetBlade;$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
-Count=1
-Item0=NetBlade;$(BCB)\lib\obj;$(BCB)\lib
+Count=2
+Item0=..\;NetBlade;$(BCB)\lib\obj;$(BCB)\lib
+Item1=NetBlade;$(BCB)\lib\obj;$(BCB)\lib
 
 [HistoryLists\hlDebugSourcePath]
 Count=1
@@ -114,9 +116,10 @@ Count=1
 Item0=_DEBUG
 
 [HistoryLists\hlFinalOutputDir]
-Count=2
-Item0=..\..\bin\NetBlade\
-Item1=..\..\bin\NetBlade
+Count=3
+Item0=..\install\bin\NetBlade\
+Item1=..\..\bin\NetBlade\
+Item2=..\..\bin\NetBlade
 
 [HistoryLists\hIBPIOutputDir]
 Count=1

@@ -3,14 +3,14 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.06.00"/>
-    <PROJECT value="..\..\bin\Raster.dll"/>
+    <PROJECT value="..\install\bin\Raster.dll"/>
     <OBJFILES value="py_raster.obj raster_device.obj"/>
     <RESFILES value="Raster.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
-    <LIBFILES value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Lib\python15.lib&quot;"/>
+    <LIBFILES value="..\lib\python15.lib"/>
     <LIBRARIES value=""/>
     <SPARELIBS value=""/>
     <PACKAGES value="vcl.bpi rtl.bpi dbrtl.bpi adortl.bpi vcldb.bpi vclx.bpi bdertl.bpi 
@@ -30,14 +30,14 @@
     <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="NO_STRICT;_NO_VCL;_RTLDLL;USEPACKAGES"/>
     <MAINSOURCE value="Raster.bpf"/>
-    <INCLUDEPATH value="Raster;$(BCB)\include;$(BCB)\include\vcl;..\include"/>
+    <INCLUDEPATH value="Raster;$(BCB)\include;$(BCB)\include\vcl;..\include;&quot;C:\Program Files (x86)\Python\include&quot;"/>
     <LIBPATH value="Raster;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
     <OTHERFILES value=""/>
   </MACROS>
   <OPTIONS>
-    <IDLCFLAGS value="-IRaster -I$(BCB)\include -I$(BCB)\include\vcl -I..\include -src_suffix 
-      cpp -D_DEBUG -boa"/>
+    <IDLCFLAGS value="-IRaster -I$(BCB)\include -I$(BCB)\include\vcl -I..\include 
+      -I&quot;C:\Program Files (x86)\Python\include&quot; -src_suffix cpp -D_DEBUG -boa"/>
     <CFLAG1 value="-WD -Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- 
       -tWD -tWM- -c"/>
     <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
@@ -57,7 +57,7 @@
       <FILE FILENAME="Raster.bpf" FORMNAME="" UNITNAME="Raster" CONTAINERID="BPF" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="py_raster.cpp" FORMNAME="" UNITNAME="py_raster" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="raster_device.cpp" FORMNAME="" UNITNAME="raster_device" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="C:\Program Files (x86)\Borland\CBuilder6\Lib\python15.lib" FORMNAME="" UNITNAME="python15.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\lib\python15.lib" FORMNAME="" UNITNAME="python15.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
@@ -91,9 +91,10 @@ ProductVersion=1.0.0.0
 Comments=
 
 [HistoryLists\hlIncludePath]
-Count=2
-Item0=Raster;$(BCB)\include;$(BCB)\include\vcl;..\include
-Item1=Raster;$(BCB)\include;$(BCB)\include\vcl
+Count=3
+Item0=Raster;$(BCB)\include;$(BCB)\include\vcl;..\include;C:\Program Files (x86)\Python\include
+Item1=Raster;$(BCB)\include;$(BCB)\include\vcl;..\include
+Item2=Raster;$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
 Count=1
@@ -108,8 +109,9 @@ Count=1
 Item0=_DEBUG
 
 [HistoryLists\hlFinalOutputDir]
-Count=1
-Item0=..\..\bin\
+Count=2
+Item0=..\install\bin\
+Item1=..\..\bin\
 
 [HistoryLists\hIBPIOutputDir]
 Count=1

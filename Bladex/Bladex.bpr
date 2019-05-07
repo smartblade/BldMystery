@@ -3,7 +3,7 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.06.00"/>
-    <PROJECT value="..\..\bin\Bladex.dll"/>
+    <PROJECT value="..\install\bin\Bladex.dll"/>
     <OBJFILES value="Bladex.obj Character.obj Trail.obj HeapCheck.obj Utils.obj Route.obj 
       Sound.obj Material.obj Sector.obj Inventory.obj Entity.obj"/>
     <RESFILES value="Bladex.res"/>
@@ -11,7 +11,7 @@
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
-    <LIBFILES value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Lib\python15.lib&quot; ..\lib\blade.lib"/>
+    <LIBFILES value="..\lib\python15.lib ..\lib\blade.lib"/>
     <LIBRARIES value=""/>
     <SPARELIBS value=""/>
     <PACKAGES value="vcl.bpi rtl.bpi dbrtl.bpi adortl.bpi vcldb.bpi vclx.bpi bdertl.bpi 
@@ -31,14 +31,14 @@
     <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="NO_STRICT;_NO_VCL;_RTLDLL;USEPACKAGES"/>
     <MAINSOURCE value="Bladex.bpf"/>
-    <INCLUDEPATH value="Bladex;$(BCB)\include;$(BCB)\include\vcl;..\include"/>
+    <INCLUDEPATH value="Bladex;$(BCB)\include;$(BCB)\include\vcl;..\include;&quot;C:\Program Files (x86)\Python\include&quot;"/>
     <LIBPATH value="Bladex;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
     <OTHERFILES value=""/>
   </MACROS>
   <OPTIONS>
-    <IDLCFLAGS value="-IBladex -I$(BCB)\include -I$(BCB)\include\vcl -I..\include -src_suffix 
-      cpp -D_DEBUG -boa"/>
+    <IDLCFLAGS value="-IBladex -I$(BCB)\include -I$(BCB)\include\vcl -I..\include 
+      -I&quot;C:\Program Files (x86)\Python\include&quot; -src_suffix cpp -D_DEBUG -boa"/>
     <CFLAG1 value="-WD -Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- 
       -tWD -tWM- -c"/>
     <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
@@ -57,7 +57,7 @@
       <FILE FILENAME="Bladex.res" FORMNAME="" UNITNAME="Bladex.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Bladex.bpf" FORMNAME="" UNITNAME="Bladex" CONTAINERID="BPF" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Bladex.c" FORMNAME="" UNITNAME="Bladex" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="C:\Program Files (x86)\Borland\CBuilder6\Lib\python15.lib" FORMNAME="" UNITNAME="python15.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\lib\python15.lib" FORMNAME="" UNITNAME="python15.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="..\lib\blade.lib" FORMNAME="" UNITNAME="blade.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Character.c" FORMNAME="" UNITNAME="Character" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Trail.c" FORMNAME="" UNITNAME="Trail" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
@@ -102,9 +102,10 @@ ProductVersion=1.0.0.0
 Comments=
 
 [HistoryLists\hlIncludePath]
-Count=2
-Item0=Bladex;$(BCB)\include;$(BCB)\include\vcl;..\include
-Item1=Bladex;$(BCB)\include;$(BCB)\include\vcl
+Count=3
+Item0=Bladex;$(BCB)\include;$(BCB)\include\vcl;..\include;C:\Program Files (x86)\Python\include
+Item1=Bladex;$(BCB)\include;$(BCB)\include\vcl;..\include
+Item2=Bladex;$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
 Count=1
@@ -119,9 +120,10 @@ Count=1
 Item0=_DEBUG
 
 [HistoryLists\hlFinalOutputDir]
-Count=2
-Item0=..\..\bin\
-Item1=..\bin\
+Count=3
+Item0=..\install\bin\
+Item1=..\..\bin\
+Item2=..\bin\
 
 [HistoryLists\hIBPIOutputDir]
 Count=2

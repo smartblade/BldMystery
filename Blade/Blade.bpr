@@ -3,14 +3,14 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.06.00"/>
-    <PROJECT value="..\..\bin\Blade.exe"/>
+    <PROJECT value="..\install\bin\Blade.exe"/>
     <OBJFILES value="main.obj bld_ext_funcs.obj ext.obj net_ext.obj bcb_wrappers.obj obj_ext.obj"/>
     <RESFILES value="Blade.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
     <DEFFILE value="blade.def"/>
     <RESDEPEN value="$(RESFILES)"/>
-    <LIBFILES value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Lib\python15.lib&quot;"/>
+    <LIBFILES value="..\lib\python15.lib"/>
     <LIBRARIES value=""/>
     <SPARELIBS value=""/>
     <PACKAGES value="vcl.bpi rtl.bpi dbrtl.bpi adortl.bpi vcldb.bpi vclx.bpi bdertl.bpi 
@@ -30,20 +30,21 @@
     <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="NO_STRICT;_NO_VCL;_RTLDLL;USEPACKAGES"/>
     <MAINSOURCE value="Blade.bpf"/>
-    <INCLUDEPATH value="..\;&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot;;&quot;C:\Games\Severence - Blade of Darkness\Bin&quot;;$(BCB)\include;$(BCB)\include\vcl;..\include"/>
-    <LIBPATH value="..\;&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot;;&quot;C:\Games\Severence - Blade of Darkness\Bin&quot;;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <INCLUDEPATH value="..;&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot;;&quot;C:\Games\Severence - Blade of Darkness\Bin&quot;;$(BCB)\include;$(BCB)\include\vcl;..\include;&quot;C:\Program Files (x86)\Python\include&quot;"/>
+    <LIBPATH value="..;&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot;;&quot;C:\Games\Severence - Blade of Darkness\Bin&quot;;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
     <OTHERFILES value=""/>
   </MACROS>
   <OPTIONS>
-    <IDLCFLAGS value="-I..\. -I&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot; 
+    <IDLCFLAGS value="-I.. -I&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot; 
       -I&quot;C:\Games\Severence - Blade of Darkness\Bin&quot; -I$(BCB)\include 
-      -I$(BCB)\include\vcl -I..\include -src_suffix cpp -D_DEBUG -boa"/>
+      -I$(BCB)\include\vcl -I..\include 
+      -I&quot;C:\Program Files (x86)\Python\include&quot; -src_suffix cpp -D_DEBUG -boa"/>
     <CFLAG1 value="-Od -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -tW -tWM- -c"/>
     <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>
     <AFLAGS value="/mx /w2 /zd"/>
-    <LFLAGS value="-l..\..\lib -D&quot;&quot; -aa -Tpe -x -Gn -v"/>
+    <LFLAGS value="-l..\lib -D&quot;&quot; -aa -Tpe -x -Gn -v"/>
     <OTHERFILES value=""/>
   </OPTIONS>
   <LINKER>
@@ -57,7 +58,7 @@
       <FILE FILENAME="Blade.bpf" FORMNAME="" UNITNAME="Blade" CONTAINERID="BPF" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="main.c" FORMNAME="" UNITNAME="main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="bld_ext_funcs.c" FORMNAME="" UNITNAME="bld_ext_funcs" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="C:\Program Files (x86)\Borland\CBuilder6\Lib\python15.lib" FORMNAME="" UNITNAME="python15.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\lib\python15.lib" FORMNAME="" UNITNAME="python15.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="ext.cpp" FORMNAME="" UNITNAME="ext" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="blade.def" FORMNAME="" UNITNAME="blade.def" CONTAINERID="DefTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="net_ext.cpp" FORMNAME="" UNITNAME="net_ext" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
@@ -96,13 +97,16 @@ ProductVersion=1.0.0.0
 Comments=
 
 [HistoryLists\hlIncludePath]
-Count=2
-Item0=C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl;..\include
-Item1=C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl
+Count=4
+Item0=..\;C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl;..\include;C:\Program Files (x86)\Python\include
+Item1=..\;C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl;..\include
+Item2=C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl;..\include
+Item3=C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
-Count=1
-Item0=C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\lib\obj;$(BCB)\lib
+Count=2
+Item0=..\;C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\lib\obj;$(BCB)\lib
+Item1=C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\lib\obj;$(BCB)\lib
 
 [HistoryLists\hlDebugSourcePath]
 Count=1
@@ -113,12 +117,14 @@ Count=1
 Item0=_DEBUG
 
 [HistoryLists\hlFinalOutputDir]
-Count=1
-Item0=..\..\bin\
+Count=2
+Item0=..\install\bin\
+Item1=..\..\bin\
 
 [HistoryLists\hIBPIOutputDir]
-Count=1
-Item0=..\..\lib
+Count=2
+Item0=..\lib
+Item1=..\..\lib
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl
