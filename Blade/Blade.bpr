@@ -10,7 +10,7 @@
     <IDLGENFILES value=""/>
     <DEFFILE value="blade.def"/>
     <RESDEPEN value="$(RESFILES)"/>
-    <LIBFILES value="..\lib\python15.lib"/>
+    <LIBFILES value="..\bc_lib\python15.lib"/>
     <LIBRARIES value=""/>
     <SPARELIBS value=""/>
     <PACKAGES value="vcl.bpi rtl.bpi dbrtl.bpi adortl.bpi vcldb.bpi vclx.bpi bdertl.bpi 
@@ -58,7 +58,7 @@
       <FILE FILENAME="Blade.bpf" FORMNAME="" UNITNAME="Blade" CONTAINERID="BPF" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="main.c" FORMNAME="" UNITNAME="main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="bld_ext_funcs.c" FORMNAME="" UNITNAME="bld_ext_funcs" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="..\lib\python15.lib" FORMNAME="" UNITNAME="python15.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\bc_lib\python15.lib" FORMNAME="" UNITNAME="python15.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="ext.cpp" FORMNAME="" UNITNAME="ext" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="blade.def" FORMNAME="" UNITNAME="blade.def" CONTAINERID="DefTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="net_ext.cpp" FORMNAME="" UNITNAME="net_ext" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>

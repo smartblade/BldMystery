@@ -10,7 +10,7 @@
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES)"/>
-    <LIBFILES value="..\lib\blade.lib ..\lib\python15.lib"/>
+    <LIBFILES value="..\lib\blade.lib ..\bc_lib\python15.lib"/>
     <LIBRARIES value=""/>
     <SPARELIBS value=""/>
     <PACKAGES value="vcl.bpi rtl.bpi dbrtl.bpi adortl.bpi vcldb.bpi vclx.bpi bdertl.bpi 
@@ -57,7 +57,7 @@
       <FILE FILENAME="netgame.bpf" FORMNAME="" UNITNAME="netgame" CONTAINERID="BPF" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="netgame.c" FORMNAME="" UNITNAME="netgame" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="..\lib\blade.lib" FORMNAME="" UNITNAME="blade.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="..\lib\python15.lib" FORMNAME="" UNITNAME="python15.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\bc_lib\python15.lib" FORMNAME="" UNITNAME="python15.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
