@@ -87,8 +87,13 @@ CALL_THISCALL_FUNC_0(application_t, _thiscall_application_prepare_level, applica
 CALL_THISCALL_FUNC_0(application_t, _thiscall_application_process_event, application_process_event)
 #ifdef __BORLANDC__
         CALL_THISCALL_FUNC_1(application_t, _thiscall_application_load_world, application_load_world)
+        void application_load_level_script(application_t *self, const char *script)
+        {
+        }
 #endif
-DEFINE_THISCALL_FUNC_1(application_t, _impl_application_mark_level_to_load, _thiscall_application_mark_level_to_load)
+#ifdef _MSC_VER
+        DEFINE_THISCALL_FUNC_1(application_t, _impl_application_mark_level_to_load, _thiscall_application_mark_level_to_load)
+#endif
 DEFINE_THISCALL_FUNC_1(application_t, _impl_application_load_level, _thiscall_application_load_level)
 #ifdef _MSC_VER
         DEFINE_THISCALL_FUNC_1(application_t, _impl_application_read_level, _thiscall_application_read_level)

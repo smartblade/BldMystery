@@ -16,12 +16,12 @@
 
 static application_methods_t application_methods = {
         NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+#ifdef _MSC_VER
         _thiscall_application_wait_for_event,
         NULL, NULL, NULL, NULL,
         _thiscall_application_mark_level_to_load,
          NULL,
         _thiscall_application_load_level,
-#ifdef _MSC_VER
         _thiscall_application_read_level,
 #endif
 };

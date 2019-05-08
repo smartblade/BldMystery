@@ -1,9 +1,12 @@
 
 #include <bld_system.h>
+#include <bld_python.h>
 #include <raster_device.h>
 #include "application.h"
 #include "anim.h"
 #include "bld_ext_funcs.h"
+#define BUILD_LIB
+#include <blade_ext.h>
 
 
 /*
@@ -35,8 +38,6 @@ void _impl_application_mark_level_to_load(application_t *self, char *map)
 
 void application_load_level_script(application_t *self, const char *script)
 {
-        B_Name mode;
-        B_Name camera_name;
         int foundIndex;
         int hash_value;
         char *str_ptr;
@@ -45,13 +46,11 @@ void application_load_level_script(application_t *self, const char *script)
         world_t *world;
         person_t *player1;
         camera_t *camera;
-        char *str1;
+        const char *str1;
         char *str2;
         int cmp_result;
 
-        BBlibc_name_set(&mode, "Game");
-        application_set_mode(self, &mode);
-        BBlibc_name_clear(&mode);
+        application_set_mode(self, &B_Name("Game"));
 
         application_init_python_path(self);
 
@@ -68,9 +67,7 @@ void application_load_level_script(application_t *self, const char *script)
         self->player1 = NULL;
 
         if (!self->camera) {
-                BBlibc_name_set(&camera_name, "Camera");
-                NEW_CAMERA(camera, 0, &camera_name)
-                BBlibc_name_clear(&camera_name);
+                NEW_CAMERA(camera, 0, &B_Name("Camera"))
 
                 self->camera = camera;
                 self->camera->unknownPtrFromApplication = &self->unknownPtrForCamera;
@@ -87,21 +84,14 @@ void application_load_level_script(application_t *self, const char *script)
 
         application_prepare_level(self);
 
-        if (!net_data_is_net_game(gbl_net_data) || net_data_is_server(gbl_net_data)) {
+        if (!gbl_net->is_net_game() || gbl_net->is_server()) {
 
                 assert(PLAYER);
 
                 world = &gbl_game_state.world;
                 if (
                         world->foundEntity &&
-                        !strcmp(
-                                BBlibc_name_string(
-                                        BBLibc_named_object_id(
-                                                &world->foundEntity->parent
-                                        )
-                                ),
-                                PLAYER
-                        )
+                        !strcmp(world->foundEntity->Id(), PLAYER)
                 ) {
                         player1 = (person_t *)world->foundEntity;
                 } else {
@@ -118,11 +108,7 @@ void application_load_level_script(application_t *self, const char *script)
                         foundIndex = -1;
                         for(i = 0; i < array->size; i++) {
 
-                                str1 = BBlibc_name_string(
-                                        BBLibc_named_object_id(
-                                                array->elements[i]
-                                        )
-                                );
+                                str1 = ((B_NamedObj *)array->elements[i])->Id();
                                 str2 = PLAYER;
 
                                 for(;;) {
@@ -151,7 +137,7 @@ void application_load_level_script(application_t *self, const char *script)
                         }
 
                         if (foundIndex != -1) {
-                                world->foundEntity = array->elements[foundIndex];
+                                world->foundEntity = (entity_t *)array->elements[foundIndex];
                                 player1 = (person_t *)world->foundEntity;
                         } else
                                 player1 = NULL;
@@ -177,14 +163,7 @@ void application_load_level_script(application_t *self, const char *script)
                 world = &gbl_game_state.world;
                 if (
                         world->foundEntity &&
-                        !strcmp(
-                                BBlibc_name_string(
-                                        BBLibc_named_object_id(
-                                                &world->foundEntity->parent
-                                        )
-                                ),
-                                PLAYER
-                        )
+                        !strcmp(world->foundEntity->Id(), PLAYER)
                 ) {
                         player1 = (person_t *)world->foundEntity;
                 } else {
@@ -201,11 +180,7 @@ void application_load_level_script(application_t *self, const char *script)
                         foundIndex = -1;
                         for(i = 0; i < array->size; i++) {
 
-                                str1 = BBlibc_name_string(
-                                        BBLibc_named_object_id(
-                                                array->elements[i]
-                                        )
-                                );
+                                str1 = ((B_NamedObj *)array->elements[i])->Id();
                                 str2 = PLAYER;
 
                                 for(;;) {
@@ -234,7 +209,7 @@ void application_load_level_script(application_t *self, const char *script)
                         }
 
                         if (foundIndex != -1) {
-                                world->foundEntity = array->elements[foundIndex];
+                                world->foundEntity = (entity_t*)array->elements[foundIndex];
                                 player1 = (person_t *)world->foundEntity;
                         } else
                                 player1 = NULL;
@@ -242,7 +217,7 @@ void application_load_level_script(application_t *self, const char *script)
                 self->client = (entity_t *) player1;
         }
 
-        if (BBlibc_name_is_equal_string(&self->mode, "Game")) {
+        if (self->mode == "Game") {
                 CALL_THISCALL_VOID_0(self->clock1, self->clock1->methods->unknown20)
         }
 
