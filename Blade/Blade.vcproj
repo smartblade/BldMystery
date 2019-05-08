@@ -208,6 +208,10 @@
 				RelativePath=".\obj_ext.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\WinApp.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
