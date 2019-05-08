@@ -9,20 +9,16 @@
 * Entry point:            0x0041009D
 */
 
-void _impl_application_load_level(application_t *self, char *map)
+void _impl_application_load_level(application_t *self, const char *map)
 {
         char buffer[260];
         double timeBefore, timeAfter;
-        B_Name mapName;
-        static loadLevelCounter = 0;
+        static int loadLevelCounter = 0;
 
         timeBefore = timeGetTime();
 
-        BBlibc_name_set(&mapName, get_map_for_net_game(map));
-        BBlibc_name_copy(&self->mapName, &mapName);
-        BBlibc_name_clear(&mapName);
-
-        map = self->mapName.string;
+        self->mapName = get_map_for_net_game(map);
+        map = self->mapName;
 
         GetCurrentDirectory(sizeof(buffer), buffer);
         message_manager_print(message_manager, buffer);
@@ -39,12 +35,12 @@ void _impl_application_load_level(application_t *self, char *map)
         message_manager_print(message_manager, "\n");
 
         if (gbl_sound_device) {
-                gbl_sound_device[2] = 1;
-                gbl_sound_device[3] = 1;
+                gbl_sound_device->unknown08 = 1;
+                gbl_sound_device->unknown0C = 1;
         }
 
-        if (net_data_is_net_game(gbl_net_data)) {
-                if (net_data_is_server(gbl_net_data)) {
+        if (gbl_net_data->is_net_game()) {
+                if (gbl_net_data->is_server()) {
                         application_load_level_script(self, "Server.py");
                         Set007EA988To01();
                 } else {
@@ -65,8 +61,8 @@ void _impl_application_load_level(application_t *self, char *map)
         );
 
         if (gbl_sound_device) {
-                gbl_sound_device[2] = 0;
-                gbl_sound_device[3] = 0;
+                gbl_sound_device->unknown08 = 0;
+                gbl_sound_device->unknown0C = 0;
         }
 }
 
@@ -84,7 +80,7 @@ void _impl_application_wait_for_event(application_t *self) {
 
         if (counter == 60) {
                 SetWindowText(
-                        self->window,
+                        (HWND)self->window,
                         BBlibc_format_string(
                                 "%s %.1f", "Blade", self->fUnknown5C0
                         )

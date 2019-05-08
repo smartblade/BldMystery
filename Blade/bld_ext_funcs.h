@@ -54,7 +54,7 @@ EXTERN void (*LoadNetModule)(char *) NULL_INIT;
 EXTERN void (*Set007EA988To01)(void) NULL_INIT;
 EXTERN void (*reset_client_map_name)(void) NULL_INIT;
 EXTERN void (*OnEvent)(int a, int b) NULL_INIT;
-EXTERN char *(*get_map_for_net_game)(char *map) NULL_INIT;
+EXTERN char *(*get_map_for_net_game)(const char *map) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_BBlibc_name_set)(char *string) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_BBlibc_name_clear)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_BBlibc_name_copy)(B_Name *name) NULL_INIT;
@@ -80,6 +80,11 @@ EXTERN B_IDataFile * (*_cdecl_read_sectors)(B_IDataFile *file, array_t *sectors)
 EXTERN B_IDataFile * (*_cdecl_read_light)(B_IDataFile *file) NULL_INIT;
 EXTERN void (*_thiscall_00451A21)(array_t sectors, int a, int b) NULL_INIT;
 EXTERN void (*BldStartup)(void *) NULL_INIT;
+EXTERN int (__stdcall *_stdcall_BladeWinMain)(
+    HINSTANCE hInstance,
+    HINSTANCE hPrevInstance,
+    LPSTR lpCmdLine,
+    int nCmdShow) NULL_INIT;
 
 EXTERN sound_t **sound_device_ptr NULL_INIT;
 EXTERN void **msg_manager_ptr NULL_INIT;
@@ -173,9 +178,11 @@ extern "C" {
 #endif
 
 extern void _impl_application_mark_level_to_load(application_t *self, char *map);
-extern void _impl_application_load_level(application_t *self, char *map);
+extern void _impl_application_load_level(application_t *self, const char *map);
 extern void _impl_application_read_level(application_t *self, const char *file_name);
 extern void _impl_application_wait_for_event(application_t *self);
+
+int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow);
 
 extern void create_bcb_wrappers(void);
 

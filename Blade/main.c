@@ -133,6 +133,7 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         get_map_for_net_game = (void *)((char *)blade + 0x001B143D);
         LoadNetModule = (void *)((char *)blade + 0x001B65D2);
         BldStartup = (void *)((char *)blade + 0x001BC34A);
+        _stdcall_BladeWinMain = (void *)((char *)blade + 0x00010CC2);
 
         application_methods_ptr = (void *)((char *)blade + 0x001C0848);
         init_start = (void *)((char *)blade + 0x001C8000);
@@ -185,8 +186,11 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
          * launcher starting:
          *   error 1813: ”казанный тип ресурса в файле образа отсутствует
         */
-
+#ifdef __BORLANDC__
+        _stdcall_BladeWinMain(blade, hPrevInstance, lpCmdLine, nCmdShow);
+#else
         BladeWinMain(blade, hPrevInstance, lpCmdLine, nCmdShow);
+#endif
 
         return 0;
 }
