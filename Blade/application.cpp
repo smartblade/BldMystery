@@ -8,6 +8,257 @@
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x0041316C
+*/
+
+void _impl_application_mark_level_to_load(application_t *self, char *map)
+{
+        if (self->map_to_load) {
+                free(self->map_to_load);
+                self->map_to_load = NULL;
+        }
+        self->map_to_load = strdup(map);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00413256
+*/
+
+void application_load_level_script(application_t *self, const char *script)
+{
+        B_Name mode;
+        B_Name camera_name;
+        int foundIndex;
+        int hash_value;
+        char *str_ptr;
+        unsigned int i;
+        array_t *array;
+        world_t *world;
+        person_t *player1;
+        camera_t *camera;
+        char *str1;
+        char *str2;
+        int cmp_result;
+
+        BBlibc_name_set(&mode, "Game");
+        application_set_mode(self, &mode);
+        BBlibc_name_clear(&mode);
+
+        application_init_python_path(self);
+
+        CALL_THISCALL_VOID_0(self->clock1, self->clock1->methods->unknown18)
+
+        self->unknown5C8 = NULL;
+
+        CALL_THISCALL_VOID_0(self->clock1, self->clock1->methods->unknown1C)
+
+        self->unknownPtrForCamera = NUM_3F266666;
+
+        CALL_THISCALL_VOID_0(&gbl_game_state, _thiscall_00439F5D)
+
+        self->player1 = NULL;
+
+        if (!self->camera) {
+                BBlibc_name_set(&camera_name, "Camera");
+                NEW_CAMERA(camera, 0, &camera_name)
+                BBlibc_name_clear(&camera_name);
+
+                self->camera = camera;
+                self->camera->unknownPtrFromApplication = &self->unknownPtrForCamera;
+        }
+
+        self->camera->unknownValueFromApplication = self->unknownPtrForCamera;
+        self->bUnknown01C = TRUE;
+
+        application_run_python_file(self, script);
+
+        CALL_THISCALL_VOID_1(&self->unknown7C, _thiscall_0040AD82, var005E24DC)
+
+        CALL_THISCALL_VOID_1(&self->unknown7C, _thiscall_0040ADA8, var005E24F4)
+
+        application_prepare_level(self);
+
+        if (!net_data_is_net_game(gbl_net_data) || net_data_is_server(gbl_net_data)) {
+
+                assert(PLAYER);
+
+                world = &gbl_game_state.world;
+                if (
+                        world->foundEntity &&
+                        !strcmp(
+                                BBlibc_name_string(
+                                        BBLibc_named_object_id(
+                                                &world->foundEntity->parent
+                                        )
+                                ),
+                                PLAYER
+                        )
+                ) {
+                        player1 = (person_t *)world->foundEntity;
+                } else {
+                        str_ptr = PLAYER;
+                        hash_value = 0;
+                        while (*str_ptr) {
+                                hash_value += *str_ptr;
+                                str_ptr++;
+                        }
+                        hash_value = hash_value & 0xFF;
+
+                        array = &world->hash[hash_value];
+
+                        foundIndex = -1;
+                        for(i = 0; i < array->size; i++) {
+
+                                str1 = BBlibc_name_string(
+                                        BBLibc_named_object_id(
+                                                array->elements[i]
+                                        )
+                                );
+                                str2 = PLAYER;
+
+                                for(;;) {
+                                        if (
+                                                (str1[0] != str2[0]) ||
+                                                (str2[0] && (str1[1] != str2[1]))
+                                        ) {
+                                                cmp_result = 1;
+                                                break;
+                                        }
+                                        if (
+                                                (str2[0] == '\0') ||
+                                                (str2[1] == '\0')
+                                        ) {
+                                                cmp_result = 0;
+                                                break;
+                                        }
+                                        str2 += 2;
+                                        str1 += 2;
+                                }
+
+                                if (!cmp_result) {
+                                        foundIndex = i;
+                                        break;
+                                }
+                        }
+
+                        if (foundIndex != -1) {
+                                world->foundEntity = array->elements[foundIndex];
+                                player1 = (person_t *)world->foundEntity;
+                        } else
+                                player1 = NULL;
+                }
+                self->player1 = player1;
+
+                if (!self->player1) {
+                        application_exit_with_error(
+                                self, "Error", "Player1 not declared in pj.py"
+                        );
+                }
+
+                CALL_THISCALL_VOID_1(self->camera, _thiscall_camera_004EB1AA, self->player1)
+
+                self->camera->unknownPtrFromApplication = &self->unknownPtrForCamera;
+                self->camera->unknownValueFromApplication = self->unknownPtrForCamera;
+
+                self->client = NULL;
+
+        } else {
+                self->player1 = NULL;
+
+                world = &gbl_game_state.world;
+                if (
+                        world->foundEntity &&
+                        !strcmp(
+                                BBlibc_name_string(
+                                        BBLibc_named_object_id(
+                                                &world->foundEntity->parent
+                                        )
+                                ),
+                                PLAYER
+                        )
+                ) {
+                        player1 = (person_t *)world->foundEntity;
+                } else {
+                        str_ptr = PLAYER;
+                        hash_value = 0;
+                        while (*str_ptr) {
+                                hash_value += *str_ptr;
+                                str_ptr++;
+                        }
+                        hash_value = hash_value & 0xFF;
+
+                        array = &world->hash[hash_value];
+
+                        foundIndex = -1;
+                        for(i = 0; i < array->size; i++) {
+
+                                str1 = BBlibc_name_string(
+                                        BBLibc_named_object_id(
+                                                array->elements[i]
+                                        )
+                                );
+                                str2 = PLAYER;
+
+                                for(;;) {
+                                        if (
+                                                (str1[0] != str2[0]) ||
+                                                (str2[0] && (str1[1] != str2[1]))
+                                        ) {
+                                                cmp_result = 1;
+                                                break;
+                                        }
+                                        if (
+                                                (str2[0] == '\0') ||
+                                                (str2[1] == '\0')
+                                        ) {
+                                                cmp_result = 0;
+                                                break;
+                                        }
+                                        str2 += 2;
+                                        str1 += 2;
+                                }
+
+                                if (!cmp_result) {
+                                        foundIndex = i;
+                                        break;
+                                }
+                        }
+
+                        if (foundIndex != -1) {
+                                world->foundEntity = array->elements[foundIndex];
+                                player1 = (person_t *)world->foundEntity;
+                        } else
+                                player1 = NULL;
+                }
+                self->client = (entity_t *) player1;
+        }
+
+        if (BBlibc_name_is_equal_string(&self->mode, "Game")) {
+                CALL_THISCALL_VOID_0(self->clock1, self->clock1->methods->unknown20)
+        }
+
+        StartGSQR();
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x004138B8
 */
 
@@ -107,6 +358,7 @@ void _impl_application_read_level(application_t * self, const char * file_name)
                 (timeAfter - timeBefore)/1000.0);
 }
 
+
 /*
 ................................................................................
 ................................................................................
@@ -114,6 +366,56 @@ void _impl_application_read_level(application_t * self, const char * file_name)
 ................................................................................
 */
 
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00415759
+*/
+
+boolean application_run_python_file(application_t *self, const char *file_name)
+{
+        FILE *file;
+
+        file = fopen(file_name, "rt");
+
+        if (!file) {
+                message_manager_print(
+                        message_manager,
+                        BBlibc_format_string(
+                                "No se ha podido encontrar %s\n",
+                                file_name
+                        )
+                );
+
+                return FALSE;
+        }
+
+        if (PyRun_SimpleFile(file, (char *)file_name) == -1) {
+                message_manager_print(
+                        message_manager,
+                        BBlibc_format_string(
+                                "B_App::RunScriptFile() -> Error ejecutando %s\n",
+                                file_name
+                        )
+                );
+        }
+
+        if (PyErr_Occurred()) {
+                PyErr_Print();
+                PyErr_Clear();
+        }
+
+        fclose(file);
+
+        return TRUE;
+}
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
 
 /*
 * Module:                 Blade.exe
