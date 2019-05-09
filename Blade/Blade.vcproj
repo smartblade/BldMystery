@@ -185,6 +185,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BladeApp.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\bld_ext_funcs.c"
 				>
 			</File>
