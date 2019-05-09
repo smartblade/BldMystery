@@ -103,7 +103,6 @@ int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, 
         application_t *App;
         char *cmd;
         MSG msg;
-        int code;
 
         cmd = lpCmdLine;
 
@@ -112,7 +111,7 @@ int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, 
 
         assert(App);
 
-        if (application_start(App) == 0)
+        if (!App->start())
                 return 0;
 
         Set007EA988To01();
@@ -120,23 +119,15 @@ int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, 
                 if (PeekMessage(&msg, NULL, WM_NULL, WM_NULL, PM_REMOVE)) {
 
                         if (msg.message == WM_QUIT) {
-                                application_end(App);
-
-                                if (App) {
-                                        code = application_destroy(App, 1);
-                                } else {
-                                        code = 0;
-                                }
-
+                                App->end();
+                                delete App;
                                 return msg.wParam;
                         } else {
                                 TranslateMessage(&msg);
                                 DispatchMessage(&msg);
                         }
                 } else {
-                        /* wait for event */
-
-                        application_wait_for_event(App);
+                        App->process_events();
 
                         OnEvent(0, 0xbff00000);
                 }

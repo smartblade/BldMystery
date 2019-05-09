@@ -52,7 +52,7 @@ void application_load_level_script(application_t *self, const char *script)
 
         application_set_mode(self, &B_Name("Game"));
 
-        application_init_python_path(self);
+        self->init_python_path();
 
         CALL_THISCALL_VOID_0(self->clock1, self->clock1->methods->unknown18)
 
@@ -145,8 +145,9 @@ void application_load_level_script(application_t *self, const char *script)
                 self->player1 = player1;
 
                 if (!self->player1) {
-                        application_exit_with_error(
-                                self, "Error", "Player1 not declared in pj.py"
+                        self->exit_with_error(
+                            "Error",
+                            "Player1 not declared in pj.py"
                         );
                 }
 

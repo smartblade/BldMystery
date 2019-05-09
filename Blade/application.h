@@ -90,14 +90,6 @@ public:
 extern "C" {
 #endif
 
-extern void application_init_python_path(application_t *self);
-extern int application_destroy(application_t *self, int a);
-extern boolean application_start(application_t *self);
-extern void application_wait_for_event(application_t *self);
-extern void application_end(application_t *self);
-extern void application_exit_with_error(
-        application_t *self, const char *title, const char *message
-);
 extern void application_set_mode(application_t *self, B_Name *mode);
 extern void application_load_level_script(application_t *self, const char *script);
 extern application_t* application_init(

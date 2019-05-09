@@ -2,30 +2,6 @@
 #define BLD_EXT_FUNCS
 #include "bld_ext_funcs.h"
 
-#define DEFINE_METHOD_OF_CLASS_0(class, method, func_name)\
-void func_name(class *self) {\
-        void *funcPtr = self->methods->method;\
-        _asm { mov ecx, self }\
-        _asm { call funcPtr }\
-}
-
-#define DEFINE_METHOD_OF_CLASS_1(class, method, func_name)\
-void func_name(class *self, void *arg1) {\
-        void *funcPtr = self->methods->method;\
-        _asm { push arg1 }\
-        _asm { mov ecx, self }\
-        _asm { call funcPtr }\
-}
-
-#define DEFINE_METHOD_OF_CLASS_2(class, method, func_name)\
-void func_name(class *self, void *arg1, void *arg2) {\
-        void *funcPtr = self->methods->method;\
-        _asm { push arg2 }\
-        _asm { push arg1 }\
-        _asm { mov ecx, self }\
-        _asm { call funcPtr }\
-}
-
 #define CALL_THISCALL_FUNC_0(class, funcPtr, func_name)\
 void func_name(class *self) {\
         _asm { mov ecx, self }\
@@ -71,12 +47,6 @@ void func_name(void *arg1) {\
         funcPtr(self, arg1);\
 }
 
-DEFINE_METHOD_OF_CLASS_0(application_t, init_python_path, application_init_python_path)
-DEFINE_METHOD_OF_CLASS_1(application_t, destroy, application_destroy)
-DEFINE_METHOD_OF_CLASS_0(application_t, start, application_start)
-DEFINE_METHOD_OF_CLASS_0(application_t, end, application_end)
-DEFINE_METHOD_OF_CLASS_0(application_t, wait_for_event, application_wait_for_event)
-DEFINE_METHOD_OF_CLASS_2(application_t, exit_with_error, application_exit_with_error)
 CALL_THISCALL_FUNC_1(application_t, _thiscall_application_set_mode, application_set_mode)
 CALL_THISCALL_FUNC_4(application_t, _thiscall_application_init2, application_init2)
 CALL_THISCALL_FUNC_0(application_t, _thiscall_application_prepare_level, application_prepare_level)
