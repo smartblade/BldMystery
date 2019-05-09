@@ -3,8 +3,6 @@
 
 #define SOUND_DEVICE_H
 
-#ifdef __cplusplus
-
 class sound_t
 {
 public:
@@ -27,11 +25,5 @@ public:
         int unknown08;
         int unknown0C;
 };
-
-#else
-
-typedef int sound_t;
-
-#endif
 
 #endif

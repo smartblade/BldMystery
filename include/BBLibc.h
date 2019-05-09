@@ -7,9 +7,6 @@
 #include <export.h>
 
 
-#ifdef __cplusplus
-
-
 class LIB_EXP B_Color {
 public:
         virtual void MakeCons();
@@ -95,28 +92,5 @@ public:
 };
 
 LIB_EXP B_ResourceManager B_resource_manager;
-
-
-#else
-
-typedef struct {
-        void *methods;
-        byte r, g, b;
-} B_Color;
-
-typedef struct {
-        char *string;
-        int len;
-} B_Name;
-
-typedef struct {
-        void *methods;
-        B_Name name;
-} B_NamedObj;
-
-typedef struct B_IDataFile B_IDataFile;
-
-#endif
-
 
 #endif /* BBLIBC_H */

@@ -1,9 +1,5 @@
 
 #define BLD_EXT_FUNCS
-#include <windows.h>
-#include "application.h"
-#include "BBLibc.h"
-#include "net_data.h"
 #include "bld_ext_funcs.h"
 
 #define DEFINE_METHOD_OF_CLASS_0(class, method, func_name)\
@@ -94,9 +90,6 @@ CALL_THISCALL_FUNC_0(application_t, _thiscall_application_process_event, applica
         DEFINE_THISCALL_FUNC_1(application_t, _impl_application_read_level, _thiscall_application_read_level)
         DEFINE_THISCALL_FUNC_0(application_t, _impl_application_wait_for_event, _thiscall_application_wait_for_event)
 #endif
-
-DEFINE_METHOD_OF_CLASS_0(net_data_t, is_net_game, net_data_is_net_game)
-DEFINE_METHOD_OF_CLASS_0(net_data_t, is_server, net_data_is_server)
 
 CALL_THISCALL_FUNC_2(camera_t, _thiscall_camera_init, camera_init)
 

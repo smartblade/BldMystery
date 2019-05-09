@@ -1,19 +1,46 @@
 
 #include <bld_system.h>
-#include <stdio.h>
-#include "application.h"
-#include "game_state.h"
-#include "sound_device.h"
-#include "net_data.h"
 
+
+typedef struct {
+        void *unknownFuncs10[2];
+        void (*init_python_path)(void); /*0x00411B94*/
+        void *unknownFuncs20[2];
+        int  (*destroy)(int); /*0x005B8E00*/
+        boolean (*start)(void);
+        void (*wait_for_event)(void);/*0x005B8DD3*/
+        void (*end)(void);
+        void *unknownFuncs1[3];
+        void (*mark_level_to_load)(char *);
+        void *unknownFuncs2[1];
+        void (*load_level)(char *);
+        void (*read_level)(char *);
+        void *unknownFuncs3[6];
+        void (*exit_with_error)(char *, char *);/*0x00410A93*/
+        void *unknownFuncs4[9];
+} application_methods_t;
+
+typedef struct {
+        application_methods_t *methods;
+} application_raw_t;
 
 #ifdef __cplusplus
 
+#include "application.h"
+#include "game_state.h"
+#include "sound_device.h"
 #include <bld_abstract_net.h>
 
 #else
 
-typedef net_data_t bld_abstract_net;  
+typedef struct B_IDataFile B_IDataFile;
+typedef struct array_t array_t;
+typedef struct point_t point_t;
+typedef application_raw_t application_t;
+typedef struct camera_t camera_t;
+typedef struct game_state_t game_state_t;
+typedef struct net_data_t bld_abstract_net;
+typedef int sound_t;
 
 #endif
 

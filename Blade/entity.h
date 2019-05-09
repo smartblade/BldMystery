@@ -7,8 +7,6 @@
 
 #define PLAYER "Player1"
 
-#ifdef __cplusplus
-
 class entity_t :  public B_NamedObj
 {
 public:
@@ -21,8 +19,15 @@ public:
     char unknownFields[404];
 };
 
-class biped_entity_t;
-class person_t;
+class biped_entity_t : public entity_t
+{
+    char unknownFields[4220];
+};
+
+class person_t : public biped_entity_t
+{
+    char unknownFields[3676];
+};
 
 class camera_t : public entity_t
 {
@@ -33,49 +38,6 @@ public:
     char unknownFields2[72];
 };
 
-#else
-
-typedef struct {
-        void *unknownFuncs[4];
-        int (*is_type_of)(int type); /*person: 0x005305D5, camera: 0x004EACB3*/
-} entity_methods_t;
-
-typedef struct _entity_t {
-        union {
-                entity_methods_t *methods;
-                B_NamedObj parent;
-        };
-        char unknownFields[404];
-} entity_t;
-
-typedef struct {
-        union {
-                entity_methods_t *methods;
-                entity_t parent;
-        };
-        char unknownFields[4220];
-} biped_entity_t;
-
-typedef struct {
-        union {
-                entity_methods_t *methods;
-                biped_entity_t parent;
-        };
-        char unknownFields[3676];
-} person_t;
-
-typedef struct {
-        union {
-                entity_methods_t *methods;
-                entity_t parent;
-        };
-        char unknownFields1[588];
-        float unknownValueFromApplication;
-        float *unknownPtrFromApplication;
-        char unknownFields2[72];
-} camera_t;
-
-#endif /*__cplusplus*/
 
 #ifndef BLD_EXT_FUNCS
 
