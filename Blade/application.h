@@ -28,6 +28,10 @@ typedef struct {
         void *unknownFuncs4[9];
 } application_methods_t;
 
+typedef struct {
+        application_methods_t *methods;
+} application_raw_t;
+
 #ifdef __cplusplus
 
 class application_t
@@ -105,42 +109,7 @@ public:
 
 #else /*__cplusplus*/
 
-typedef struct {
-        application_methods_t *methods;
-        char unknownFields1[24];
-        boolean bUnknown01C;
-        char unknownFields1000[12];
-        game_clock_t *clock1;
-        game_clock_t *clock2;
-        void *unknown034;
-        void *argsMethods;
-        B_Name **arguments;
-        int numArguments;
-        char unknownFields20[36];
-        person_t *player1;
-        entity_t *client;
-        char unknownFields100[8];
-        camera_t *camera;
-        void *unknown7C;
-        char unknownFields200[300];
-        float unknown1AC;
-        float unknownPtrForCamera;
-        char unknownFields300[1036];
-        float fUnknown5C0;
-        char unknownFields400[4];
-        void *unknown5C8;
-        char unknownFields310[6];
-        boolean no_sleep;
-        char unknownFields320[24];
-        B_Name mode;
-        char *map_to_load;
-        char unknownFields10[16];
-        B_Name mapName;
-        char unknownFields2[424];
-        void *window;
-        void *module;
-        char unknownFields3[16];
-} application_t;
+typedef application_raw_t application_t;
 
 #endif /*__cplusplus*/
 

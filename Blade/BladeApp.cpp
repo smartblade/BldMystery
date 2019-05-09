@@ -61,6 +61,6 @@ application_t* application_init(
         application_t *self, void *module, int nCmdShow, char *cmdLine
 ) {
         application_init2(self, module, nCmdShow, cmdLine, NULL);
-        self->methods = &application_methods;
+        ((application_raw_t *)self)->methods = &application_methods;
         return self;
 }

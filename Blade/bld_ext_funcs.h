@@ -166,15 +166,15 @@ __inline B_IDataFile& operator >>(B_IDataFile& file, point_t *point)
 }
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef BLD_EXT_FUNCS
 extern void _thiscall_application_mark_level_to_load(char *map);
 extern void _thiscall_application_load_level(char *map);
 extern void _thiscall_application_read_level(char *file_name);
 extern void _thiscall_application_wait_for_event(void);
-#endif
-
-#ifdef __cplusplus
-extern "C" {
 #endif
 
 extern void _impl_application_mark_level_to_load(application_t *self, char *map);
@@ -219,7 +219,7 @@ NEW_OBJECT3(result, application_t, application_init, module, nCmdShow, cmdLine)\
         void **src_ptr, **dst_ptr;\
         int i;\
         src_ptr = (void **)application_methods_ptr;\
-        dst_ptr = (void **)result->methods;\
+        dst_ptr = (void **)((application_raw_t *)result)->methods;\
         for( i = 0; i < sizeof(application_methods_t)/sizeof(void *); i++) {\
                 if (*dst_ptr == NULL)\
                         *dst_ptr = *src_ptr;\
