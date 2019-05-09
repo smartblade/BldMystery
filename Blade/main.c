@@ -6,16 +6,6 @@
 //---------------------------------------------------------------------------
 
 
-void LoadMsvcrtFunctions(void)
-{
-        HMODULE msvcrt = NULL;
-        msvcrt = LoadLibrary("bicrt.dll");
-
-        msvcrt_fopen = (void *)GetProcAddress(msvcrt, "fopen");
-        msvcrt_fclose = (void *)GetProcAddress(msvcrt, "fclose");
-}
-
-
 void DoInitializers(void)
 {
         void (**init_fn)(void);
@@ -31,8 +21,6 @@ void DoInitializers(void)
 WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
         HMODULE shw32;
-
-        LoadMsvcrtFunctions();
 
         blade = LoadLibrary("Blade.dll");
 

@@ -32,19 +32,6 @@ typedef net_data_t bld_abstract_net;
 #endif
 
 
-
-/*msvcrt functions */
-EXTERN FILE* (*msvcrt_fopen)(const char *, const char *) NULL_INIT;
-EXTERN int (*msvcrt_fclose)(FILE*) NULL_INIT;
-
-#ifdef __BORLANDC__
-
-#define fopen msvcrt_fopen
-#define fclose msvcrt_fclose
-
-#endif
-
-
 #ifdef __cplusplus
 extern "C" {
 #endif
