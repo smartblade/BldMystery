@@ -32,26 +32,14 @@ class person_t : public biped_entity_t
 class camera_t : public entity_t
 {
 public:
+    camera_t *init(int unknown, const B_Name &name);
+
     char unknownFields1[588];
     float unknownValueFromApplication;
     float *unknownPtrFromApplication;
     char unknownFields2[72];
 };
 
-
-#ifndef BLD_EXT_FUNCS
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-camera_t* camera_init(camera_t *self, int unknown, B_Name *name);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* BLD_EXT_FUNCS */
 
 #endif /* ENTITY_H */
 

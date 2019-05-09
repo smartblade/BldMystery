@@ -1,6 +1,7 @@
 //---------------------------------------------------------------------------
 
 #include <float.h>
+#define BLD_EXT_FUNCS
 #include "bld_ext_funcs.h"
 
 //---------------------------------------------------------------------------
@@ -37,7 +38,6 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         _thiscall_application_set_mode = (void *)((char *)blade + 0x00011EB9);
         _thiscall_application_process_event = (void *)((char *)blade + 0x000121CE);
         _thiscall_application_prepare_level = (void *)((char *)blade + 0x00014F7F);
-        _thiscall_application_load_world = (void *)((char *)blade + 0x00016C6F);
         _cdecl_read_sectors = (void *)((char *)blade + 0x00032379);
         _thiscall_00439F5D = (void *)((char *)blade + 0x00039F5D);
         _cdecl_read_light = (void *)((char *)blade + 0x0004AD38);

@@ -6,10 +6,32 @@
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x0040F040
+*/
+
+#ifdef BLD_NATIVE
+
+__declspec(naked) B_WinApp *B_WinApp::init(void *module, int nCmdShow, char *cmdLine, void *unknown)
+{
+    _asm { jmp _thiscall_application_init2}
+}
+
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x0041009D
 */
 
-void _impl_application_load_level(application_t *self, const char *map)
+void B_WinApp::load_level(const char *map)
 {
         char buffer[260];
         double timeBefore, timeAfter;
@@ -17,8 +39,8 @@ void _impl_application_load_level(application_t *self, const char *map)
 
         timeBefore = timeGetTime();
 
-        self->mapName = get_map_for_net_game(map);
-        map = self->mapName;
+        this->mapName = get_map_for_net_game(map);
+        map = this->mapName;
 
         GetCurrentDirectory(sizeof(buffer), buffer);
         mout << buffer;
@@ -41,15 +63,15 @@ void _impl_application_load_level(application_t *self, const char *map)
 
         if (gbl_net_data->is_net_game()) {
                 if (gbl_net_data->is_server()) {
-                        application_load_level_script(self, "Server.py");
+                        application_t::load_level("Server.py");
                         Set007EA988To01();
                 } else {
-                        application_load_level_script(self, "Client.py");
+                        application_t::load_level("Client.py");
                 }
         } else {
                 loadLevelCounter++;
 
-                application_load_level_script(self, "Cfg.py");
+                application_t::load_level("Cfg.py");
         }
 
         timeAfter = timeGetTime();
@@ -67,22 +89,22 @@ void _impl_application_load_level(application_t *self, const char *map)
 * Entry point:            0x00410305
 */
 
-void _impl_application_wait_for_event(application_t *self) {
+void B_WinApp::process_events() {
         static int counter = 0;
 
-        if (!self->no_sleep)
+        if (!this->no_sleep)
                 Sleep(50);
 
         if (counter == 60) {
                 SetWindowText(
-                        (HWND)self->window,
-                        vararg("%s %.1f", "Blade", self->fUnknown5C0)
+                        (HWND)this->window,
+                        vararg("%s %.1f", "Blade", this->fUnknown5C0)
                 );
                 counter = 0;
         }
 
         counter++;
-        application_process_event(self);
+        application_t::process_events();
 }
 
 

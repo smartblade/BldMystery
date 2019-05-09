@@ -73,7 +73,6 @@ EXTERN void (__stdcall *_thiscall_application_set_mode)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_application_init2)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_application_prepare_level)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_application_process_event)(void) NULL_INIT;
-EXTERN void (__stdcall *_thiscall_application_load_world)(void) NULL_INIT;
 EXTERN void * (*bld_new)(size_t size) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_camera_init)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_00439F5D)(void) NULL_INIT;
@@ -174,17 +173,10 @@ __inline B_IDataFile& operator >>(B_IDataFile& file, point_t *point)
 extern "C" {
 #endif
 
-#ifndef BLD_EXT_FUNCS
 extern void _thiscall_application_mark_level_to_load(char *map);
 extern void _thiscall_application_load_level(char *map);
 extern void _thiscall_application_read_level(char *file_name);
 extern void _thiscall_application_wait_for_event(void);
-#endif
-
-extern void _impl_application_mark_level_to_load(application_t *self, char *map);
-extern void _impl_application_load_level(application_t *self, const char *map);
-extern void _impl_application_read_level(application_t *self, const char *file_name);
-extern void _impl_application_wait_for_event(application_t *self);
 
 int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow);
 
@@ -200,40 +192,14 @@ extern void create_bcb_wrappers(void);
         class *new_memory;\
         new_memory = (class *)bld_new(sizeof(class));\
         if (new_memory) {\
-                result = init_func(new_memory, arg1, arg2);\
+                result = new_memory->init_func(arg1, arg2);\
         } else {\
                 result = NULL;\
         }\
 }
-
-#define NEW_OBJECT3(result, class, init_func, arg1, arg2, arg3)\
-{\
-        class *new_memory;\
-        new_memory = (class *)bld_new(sizeof(class));\
-        if (new_memory) {\
-                result = init_func(new_memory, arg1, arg2, arg3);\
-        } else {\
-                result = NULL;\
-        }\
-}
-
-#define NEW_APPLICATION(result, module, nCmdShow, cmdLine)\
-NEW_OBJECT3(result, application_t, application_init, module, nCmdShow, cmdLine)\
-{\
-        void **src_ptr, **dst_ptr;\
-        int i;\
-        src_ptr = (void **)application_methods_ptr;\
-        dst_ptr = (void **)((application_raw_t *)result)->methods;\
-        for( i = 0; i < sizeof(application_methods_t)/sizeof(void *); i++) {\
-                if (*dst_ptr == NULL)\
-                        *dst_ptr = *src_ptr;\
-                src_ptr++;\
-                dst_ptr++;\
-        }\
-}\
 
 #define NEW_CAMERA(result, unknown, name)\
-NEW_OBJECT2(result, camera_t, camera_init, unknown, name)
+NEW_OBJECT2(result, camera_t, init, unknown, name)
 
 
 #define NUM_3F266666 0.65f

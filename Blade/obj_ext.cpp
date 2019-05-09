@@ -23,7 +23,7 @@ int LoadWorld(const char *file_name)
 {
         application_t * app = get_application();
         assert(app);
-        return application_load_world(app, file_name);
+        return app->load_world(file_name);
 }
 
 /*

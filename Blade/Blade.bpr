@@ -4,7 +4,7 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="..\install\bin\Blade.exe"/>
-    <OBJFILES value="main.obj bld_ext_funcs.obj ext.obj net_ext.obj bcb_wrappers.obj bcb_ext.obj"/>
+    <OBJFILES value="main.obj ext.obj net_ext.obj bcb_wrappers.obj bcb_ext.obj"/>
     <RESFILES value="Blade.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -57,7 +57,6 @@
       <FILE FILENAME="Blade.res" FORMNAME="" UNITNAME="Blade.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Blade.bpf" FORMNAME="" UNITNAME="Blade" CONTAINERID="BPF" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="main.c" FORMNAME="" UNITNAME="main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="bld_ext_funcs.c" FORMNAME="" UNITNAME="bld_ext_funcs" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="..\bc_lib\python15.lib" FORMNAME="" UNITNAME="python15.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="ext.cpp" FORMNAME="" UNITNAME="ext" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="blade.def" FORMNAME="" UNITNAME="blade.def" CONTAINERID="DefTool" DESIGNCLASS="" LOCALCOMMAND=""/>

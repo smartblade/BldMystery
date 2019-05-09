@@ -24,10 +24,7 @@ static application_methods_t application_methods = {
 
 application_t* create_application(void *module, int nCmdShow, char *cmdLine)
 {
-        application_t *new_application;
-
-        NEW_APPLICATION(new_application, module, nCmdShow, cmdLine)
-
+        application_t *new_application = (application_t *)new B_BladeApp(module, nCmdShow, cmdLine);
         gbl_application = new_application;
 
         return gbl_application;
@@ -57,10 +54,25 @@ application_t* get_application()
 * Entry point:            0x005B9BC1
 */
 
-application_t* application_init(
-        application_t *self, void *module, int nCmdShow, char *cmdLine
-) {
-        application_init2(self, module, nCmdShow, cmdLine, NULL);
-        ((application_raw_t *)self)->methods = &application_methods;
-        return self;
+#ifdef BLD_NATIVE
+
+B_BladeApp::B_BladeApp(void *module, int nCmdShow, char *cmdLine)
+{
+        ((B_WinApp *)this)->init(module, nCmdShow, cmdLine, NULL);
+        ((application_raw_t *)this)->methods = &application_methods;
+        {
+            void **src_ptr, **dst_ptr;
+            int i;
+            src_ptr = (void **)application_methods_ptr;
+            dst_ptr = (void **)((application_raw_t *)this)->methods;
+            for( i = 0; i < sizeof(application_methods_t)/sizeof(void *); i++)
+            {
+                if (*dst_ptr == NULL)
+                    *dst_ptr = *src_ptr;
+                 src_ptr++;
+                 dst_ptr++;
+            }
+        }
 }
+
+#endif

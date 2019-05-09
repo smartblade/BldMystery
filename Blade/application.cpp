@@ -11,16 +11,59 @@
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00411EB9
+*/
+
+#ifdef BLD_NATIVE
+
+__declspec(naked) void application_t::set_mode(const B_Name &mode)
+{
+    _asm { jmp _thiscall_application_set_mode}
+}
+
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004121CE
+*/
+
+#ifdef BLD_NATIVE
+
+__declspec(naked) void application_t::process_events()
+{
+    _asm { jmp _thiscall_application_process_event}
+}
+
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x0041316C
 */
 
-void _impl_application_mark_level_to_load(application_t *self, char *map)
+void application_t::mark_level_to_load(const char *map)
 {
-        if (self->map_to_load) {
-                free(self->map_to_load);
-                self->map_to_load = NULL;
+        if (this->map_to_load) {
+                free(this->map_to_load);
+                this->map_to_load = NULL;
         }
-        self->map_to_load = strdup(map);
+        this->map_to_load = strdup(map);
 }
 
 /*
@@ -36,7 +79,7 @@ void _impl_application_mark_level_to_load(application_t *self, char *map)
 * Entry point:            0x00413256
 */
 
-void application_load_level_script(application_t *self, const char *script)
+void application_t::load_level(const char *script)
 {
         int foundIndex;
         int hash_value;
@@ -50,39 +93,39 @@ void application_load_level_script(application_t *self, const char *script)
         char *str2;
         int cmp_result;
 
-        application_set_mode(self, &B_Name("Game"));
+        this->set_mode("Game");
 
-        self->init_python_path();
+        this->init_python_path();
 
-        CALL_THISCALL_VOID_0(self->clock1, self->clock1->methods->unknown18)
+        CALL_THISCALL_VOID_0(this->clock1, this->clock1->methods->unknown18)
 
-        self->unknown5C8 = NULL;
+        this->unknown5C8 = NULL;
 
-        CALL_THISCALL_VOID_0(self->clock1, self->clock1->methods->unknown1C)
+        CALL_THISCALL_VOID_0(this->clock1, this->clock1->methods->unknown1C)
 
-        self->unknownPtrForCamera = NUM_3F266666;
+        this->unknownPtrForCamera = NUM_3F266666;
 
         CALL_THISCALL_VOID_0(&gbl_game_state, _thiscall_00439F5D)
 
-        self->player1 = NULL;
+        this->player1 = NULL;
 
-        if (!self->camera) {
-                NEW_CAMERA(camera, 0, &B_Name("Camera"))
+        if (!this->camera) {
+                NEW_CAMERA(camera, 0, "Camera")
 
-                self->camera = camera;
-                self->camera->unknownPtrFromApplication = &self->unknownPtrForCamera;
+                this->camera = camera;
+                this->camera->unknownPtrFromApplication = &this->unknownPtrForCamera;
         }
 
-        self->camera->unknownValueFromApplication = self->unknownPtrForCamera;
-        self->bUnknown01C = TRUE;
+        this->camera->unknownValueFromApplication = this->unknownPtrForCamera;
+        this->bUnknown01C = TRUE;
 
-        application_run_python_file(self, script);
+        this->run_python_file(script);
 
-        CALL_THISCALL_VOID_1(&self->unknown7C, _thiscall_0040AD82, var005E24DC)
+        CALL_THISCALL_VOID_1(&this->unknown7C, _thiscall_0040AD82, var005E24DC)
 
-        CALL_THISCALL_VOID_1(&self->unknown7C, _thiscall_0040ADA8, var005E24F4)
+        CALL_THISCALL_VOID_1(&this->unknown7C, _thiscall_0040ADA8, var005E24F4)
 
-        application_prepare_level(self);
+        this->prepare_level();
 
         if (!gbl_net->is_net_game() || gbl_net->is_server()) {
 
@@ -142,24 +185,24 @@ void application_load_level_script(application_t *self, const char *script)
                         } else
                                 player1 = NULL;
                 }
-                self->player1 = player1;
+                this->player1 = player1;
 
-                if (!self->player1) {
-                        self->exit_with_error(
+                if (!this->player1) {
+                        this->exit_with_error(
                             "Error",
                             "Player1 not declared in pj.py"
                         );
                 }
 
-                CALL_THISCALL_VOID_1(self->camera, _thiscall_camera_004EB1AA, self->player1)
+                CALL_THISCALL_VOID_1(this->camera, _thiscall_camera_004EB1AA, this->player1)
 
-                self->camera->unknownPtrFromApplication = &self->unknownPtrForCamera;
-                self->camera->unknownValueFromApplication = self->unknownPtrForCamera;
+                this->camera->unknownPtrFromApplication = &this->unknownPtrForCamera;
+                this->camera->unknownValueFromApplication = this->unknownPtrForCamera;
 
-                self->client = NULL;
+                this->client = NULL;
 
         } else {
-                self->player1 = NULL;
+                this->player1 = NULL;
 
                 world = &gbl_game_state.world;
                 if (
@@ -215,11 +258,11 @@ void application_load_level_script(application_t *self, const char *script)
                         } else
                                 player1 = NULL;
                 }
-                self->client = (entity_t *) player1;
+                this->client = (entity_t *) player1;
         }
 
-        if (self->mode == "Game") {
-                CALL_THISCALL_VOID_0(self->clock1, self->clock1->methods->unknown20)
+        if (this->mode == "Game") {
+                CALL_THISCALL_VOID_0(this->clock1, this->clock1->methods->unknown20)
         }
 
         StartGSQR();
@@ -238,7 +281,7 @@ void application_load_level_script(application_t *self, const char *script)
 * Entry point:            0x004138B8
 */
 
-void _impl_application_read_level(application_t * self, const char * file_name)
+void application_t::read_level(const char * file_name)
 {
         double timeBefore, timeAfter;
         char itemKind[256], itemName[256];
@@ -270,7 +313,7 @@ void _impl_application_read_level(application_t * self, const char * file_name)
                 }
                 else if (!strcmp(itemKind, "ChromaBitmaps"))
                 {
-                        self->exit_with_error("Blade", "ChromaBitmaps no longer supported.");
+                        this->exit_with_error("Blade", "ChromaBitmaps no longer supported.");
                 }
                 else if (!strcmp(itemKind, "WorldDome"))
                 {
@@ -279,7 +322,7 @@ void _impl_application_read_level(application_t * self, const char * file_name)
                 }
                 else if (!strcmp(itemKind, "World"))
                 {
-                        application_load_world(self, itemName);
+                        this->load_world(itemName);
                 }
                 else if (!strcmp(itemKind, "ANM"))
                 {
@@ -317,14 +360,14 @@ void _impl_application_read_level(application_t * self, const char * file_name)
                 }
                 else if (!strcmp(itemKind, "Objs"))
                 {
-                        self->exit_with_error("Blade", "Objs no longer supported.");
+                        this->exit_with_error("Blade", "Objs no longer supported.");
                 }
                 else if (!strcmp(itemKind, "LoadGammaC"))
                 {
-                        self->exit_with_error("Blade", "LoadGammaC no longer supported.");
+                        this->exit_with_error("Blade", "LoadGammaC no longer supported.");
                 }
                 status = fscanf(file, "%s -> %s", itemKind, itemName);
-                self->process_message();
+                this->process_message();
         }
         fclose(file);
         timeAfter = timeGetTime();
@@ -344,10 +387,32 @@ void _impl_application_read_level(application_t * self, const char * file_name)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00414F7F
+*/
+
+#ifdef BLD_NATIVE
+
+_declspec(naked) void application_t::prepare_level()
+{
+    _asm { jmp _thiscall_application_prepare_level}
+}
+
+#endif
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x00415759
 */
 
-boolean application_run_python_file(application_t *self, const char *file_name)
+bool application_t::run_python_file(const char *file_name)
 {
         FILE *file;
 
@@ -387,7 +452,7 @@ boolean application_run_python_file(application_t *self, const char *file_name)
 * Entry point:            0x00416C6F
 */
 
-int application_load_world(application_t *self, const char *file_name)
+int application_t::load_world(const char *file_name)
 {
         double timeBefore, timeAfter;
 

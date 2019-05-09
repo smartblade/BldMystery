@@ -47,6 +47,10 @@ public:
         virtual void mouse(bool acquireFlag);
         virtual LRESULT window_procedure(
                 HWND hwnd, UINT uMsg, WPARAM wParam,  LPARAM lParam);
+        int load_world(const char *file_name);
+        bool run_python_file(const char *file_name);
+        void set_mode(const B_Name &mode);
+        void prepare_level();
 
         char unknownFields1[24];
         boolean bUnknown01C;
@@ -83,35 +87,30 @@ public:
         char unknownFields3[16];
 };
 
+class B_WinApp : public application_t
+{
+public:
+    virtual void process_events();
+    virtual void load_level(const char *map);
+    B_WinApp *init(void *module, int nCmdShow, char *cmdLine, void *unknown);
+};
 
-#ifndef BLD_EXT_FUNCS
+class B_BladeApp/* : public B_WinApp*/
+{
+public:
+    B_BladeApp(void *module, int nCmdShow, char *cmdLine);
+    char unknownFields[0x7D0];
+};
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-extern void application_set_mode(application_t *self, B_Name *mode);
-extern void application_load_level_script(application_t *self, const char *script);
-extern application_t* application_init(
-        application_t *self, void *module, int nCmdShow, char *cmdLine
-);
-extern application_t *application_init2(
-        application_t *self, void *module, int nCmdShow, char *cmdLine,
-        void *unknown
-);
-extern boolean application_run_python_file(application_t *self, const char *file_name);
-extern int application_load_world(application_t *self, const char *file_name);
-extern void application_prepare_level(application_t *self);
-extern boolean application_process_event(application_t *self);
-
 
 extern application_t *create_application(void *module, int nCmdShow, char *cmdLine);
 extern application_t* get_application();
 
 #ifdef __cplusplus
 }
-#endif
-
 #endif
 
 #endif /* APPLICATION_H */
