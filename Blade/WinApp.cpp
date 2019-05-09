@@ -21,18 +21,18 @@ void _impl_application_load_level(application_t *self, const char *map)
         map = self->mapName;
 
         GetCurrentDirectory(sizeof(buffer), buffer);
-        message_manager_print(message_manager, buffer);
-        message_manager_print(message_manager, "\n");
+        mout << buffer;
+        mout << "\n";
 
         if (loadLevelCounter) {
-                SetCurrentDirectory(BBlibc_format_string("..\\%s", map));
+                SetCurrentDirectory(vararg("..\\%s", map));
         } else {
-                SetCurrentDirectory(BBlibc_format_string("..\\Maps\\%s", map));
+                SetCurrentDirectory(vararg("..\\Maps\\%s", map));
         }
 
         GetCurrentDirectory(sizeof(buffer), buffer);
-        message_manager_print(message_manager, buffer);
-        message_manager_print(message_manager, "\n");
+        mout << buffer;
+        mout << "\n";
 
         if (gbl_sound_device) {
                 gbl_sound_device->unknown08 = 1;
@@ -53,12 +53,7 @@ void _impl_application_load_level(application_t *self, const char *map)
         }
 
         timeAfter = timeGetTime();
-        message_manager_print(
-                message_manager,
-                BBlibc_format_string(
-                        "Load Time = %f\n", (timeAfter - timeBefore)/1000.0
-                )
-        );
+        mout << vararg("Load Time = %f\n", (timeAfter - timeBefore)/1000.0);
 
         if (gbl_sound_device) {
                 gbl_sound_device->unknown08 = 0;
@@ -81,9 +76,7 @@ void _impl_application_wait_for_event(application_t *self) {
         if (counter == 60) {
                 SetWindowText(
                         (HWND)self->window,
-                        BBlibc_format_string(
-                                "%s %.1f", "Blade", self->fUnknown5C0
-                        )
+                        vararg("%s %.1f", "Blade", self->fUnknown5C0)
                 );
                 counter = 0;
         }

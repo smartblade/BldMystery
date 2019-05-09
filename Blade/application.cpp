@@ -353,25 +353,14 @@ boolean application_run_python_file(application_t *self, const char *file_name)
         file = fopen(file_name, "rt");
 
         if (!file) {
-                message_manager_print(
-                        message_manager,
-                        BBlibc_format_string(
-                                "No se ha podido encontrar %s\n",
-                                file_name
-                        )
-                );
-
+                mout << vararg("No se ha podido encontrar %s\n", file_name);
                 return FALSE;
         }
 
         if (PyRun_SimpleFile(file, (char *)file_name) == -1) {
-                message_manager_print(
-                        message_manager,
-                        BBlibc_format_string(
-                                "B_App::RunScriptFile() -> Error ejecutando %s\n",
-                                file_name
-                        )
-                );
+                mout << vararg(
+                        "B_App::RunScriptFile() -> Error ejecutando %s\n",
+                        file_name);
         }
 
         if (PyErr_Occurred()) {

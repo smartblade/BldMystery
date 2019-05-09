@@ -55,19 +55,11 @@ EXTERN void (*Set007EA988To01)(void) NULL_INIT;
 EXTERN void (*reset_client_map_name)(void) NULL_INIT;
 EXTERN void (*OnEvent)(int a, int b) NULL_INIT;
 EXTERN char *(*get_map_for_net_game)(const char *map) NULL_INIT;
-EXTERN void (__stdcall *_thiscall_BBlibc_name_set)(char *string) NULL_INIT;
-EXTERN void (__stdcall *_thiscall_BBlibc_name_clear)(void) NULL_INIT;
-EXTERN void (__stdcall *_thiscall_BBlibc_name_copy)(B_Name *name) NULL_INIT;
-EXTERN void (__stdcall *_thiscall_BBlibc_name_string)(void) NULL_INIT;
-EXTERN void (__stdcall *_thiscall_BBlibc_name_is_equal_string)(void) NULL_INIT;
-EXTERN void (__stdcall *_thiscall_BBLibc_named_object_id)(void) NULL_INIT;
-EXTERN char * (*BBlibc_format_string)(const char *format, ...) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_application_set_mode)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_application_init2)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_application_prepare_level)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_application_process_event)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_application_load_world)(void) NULL_INIT;
-EXTERN void (*message_manager_print)(void *message_manager, char *message) NULL_INIT;
 EXTERN void * (*bld_new)(size_t size) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_camera_init)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_00439F5D)(void) NULL_INIT;
@@ -87,7 +79,6 @@ EXTERN int (__stdcall *_stdcall_BladeWinMain)(
     int nCmdShow) NULL_INIT;
 
 EXTERN sound_t **sound_device_ptr NULL_INIT;
-EXTERN void **msg_manager_ptr NULL_INIT;
 EXTERN char *client_map_name NULL_INIT;
 EXTERN char *net_game_name NULL_INIT;
 EXTERN int *net_max_players_ptr NULL_INIT;
@@ -111,7 +102,6 @@ EXTERN void **__onexitbegin_ptr NULL_INIT;
 #endif
 
 #define gbl_sound_device (*sound_device_ptr)
-#define message_manager (*msg_manager_ptr)
 #define gbl_net_max_players (*net_max_players_ptr)
 #define gbl_net_data (*net_data_ptr)
 #ifdef _MSC_VER

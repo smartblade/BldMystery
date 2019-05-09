@@ -119,16 +119,4 @@ typedef struct B_IDataFile B_IDataFile;
 #endif
 
 
-#ifndef BLD_EXT_FUNCS
-
-extern void BBlibc_name_set(B_Name *self, const char *string);
-extern void BBlibc_name_clear(B_Name *self);
-extern void BBlibc_name_copy(B_Name *self, B_Name *name);
-extern char *BBlibc_name_string(B_Name *self);
-extern int BBlibc_name_is_equal_string(B_Name *self, const char *string);
-
-extern B_Name *BBLibc_named_object_id(B_NamedObj *self);
-
-#endif
-
 #endif /* BBLIBC_H */

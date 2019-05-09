@@ -30,7 +30,7 @@ void DoInitializers(void)
 
 WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-        HMODULE BBLibc, shw32;
+        HMODULE shw32;
 
         LoadMsvcrtFunctions();
 
@@ -39,7 +39,6 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         if (!blade)
                 return 1;
 
-        BBLibc = LoadLibrary("BBLibc.dll");
         shw32 = LoadLibrary("Shw32.dll");
 
         _cdecl_read_points = (void *)((char *)blade + 0x000088F4);
@@ -80,16 +79,6 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         net_data_ptr = (void *)((char *)blade + 0x003EE2C4);
         application_ptr = (void *)((char *)blade + 0x003EFC94);
         __onexitbegin_ptr = (void *)((char *)blade + 0x003F00EC);
-
-        _thiscall_BBlibc_name_set = (void *)GetProcAddress(BBLibc, "??0B_Name@@QAE@PBD@Z");
-        _thiscall_BBlibc_name_clear = (void *)GetProcAddress(BBLibc, "??1B_Name@@QAE@XZ");
-        _thiscall_BBlibc_name_copy = (void *)GetProcAddress(BBLibc, "??4B_Name@@QAEAAV0@ABV0@@Z");
-        _thiscall_BBlibc_name_string = (void *)GetProcAddress(BBLibc, "?String@B_Name@@QBEQADXZ");
-        _thiscall_BBlibc_name_is_equal_string = (void *)GetProcAddress(BBLibc, "??8B_Name@@QBEIPBD@Z");
-        _thiscall_BBLibc_named_object_id = (void *)GetProcAddress(BBLibc, "?Id@B_NamedObj@@QBEABVB_Name@@XZ");
-        BBlibc_format_string = (void *)GetProcAddress(BBLibc, "?vararg@@YAPBDPBDZZ");
-        message_manager_print = (void *)GetProcAddress(BBLibc, "??6@YAAAVB_MessageManager@@AAV0@PBD@Z");
-        msg_manager_ptr = (void *)GetProcAddress(BBLibc, "?mout@@3VB_MessageManager@@A");
 
         bld_new = (void *)GetProcAddress(shw32, "shi_new");
 
