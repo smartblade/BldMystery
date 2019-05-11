@@ -674,14 +674,14 @@ def writeStdcallFunctions(importReferences):
         f.write("\n{}".format(definition))
     f.close()
 
-def writeExportDeclarations(binName, imageMap):
-    f = open("{}_export.inc".format(binName), "wt")
+def writeExportDeclarations(imageMap):
+    f = open("export.inc", "wt")
     for addr in sorted(imageMap.exports().keys()):
         f.write("public {}\n".format(imageMap.label(addr)))
     f.close()
 
-def writeExportCmd(binName, imageMap):
-    f = open("{}_export_cmd.txt".format(binName), "wt")
+def writeExportCmd(imageMap):
+    f = open("export_cmd.txt", "wt")
     for addr in sorted(imageMap.exports().keys()):
         export = imageMap.exports()[addr]
         f.write("/EXPORT:{}={}\n".format(export, imageMap.label(addr)))
@@ -689,8 +689,7 @@ def writeExportCmd(binName, imageMap):
 
 if __name__ == '__main__':
     start_time = time.time()
-    binName = 'Blade_patched'
-    f = open("{}.txt".format(binName))
+    f = open("raw.txt")
     lines = f.readlines()
     f.close()
     reloc = readRelocations("reloc.txt")
@@ -751,18 +750,18 @@ if __name__ == '__main__':
             imageItem.fixByteMemoryAccess()
             imageItem.addNearJumpModifier(imageMap)
             imageItem.avoidEmittingOfFWAIT()
-    f = open("{}_converted.txt".format(binName), "wt")
+    f = open("native.asm", "wt")
     for lineItem in lineItems:
         f.write(lineItem.toString())
     f.write("; Unresolved addresses:\n")
     for addr in sorted(imageMap.unresolvedAddresses()):
         f.write("l{} dd 012345678h\n".format(toHex(addr)))
     f.close()
-    f = open("{}_import.inc".format(binName), "wt")
+    f = open("import.inc", "wt")
     for impref in imageMap.importReferences():
         f.write("externdef {}: ptr\n".format(impref.label()))
     f.close()
-    writeExportDeclarations(binName, imageMap)
-    writeExportCmd(binName, imageMap)
+    writeExportDeclarations(imageMap)
+    writeExportCmd(imageMap)
     writeStdcallFunctions(imageMap.importReferences())
     print("Converted in %.2f seconds" % (time.time() - start_time))
