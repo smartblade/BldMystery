@@ -26,7 +26,7 @@ typedef struct {
 
 #ifdef __cplusplus
 
-#include "application.h"
+#include "App.h"
 #include "game_state.h"
 #include "sound_device.h"
 #include <bld_abstract_net.h>
@@ -36,7 +36,7 @@ typedef struct {
 typedef struct B_IDataFile B_IDataFile;
 typedef struct array_t array_t;
 typedef struct point_t point_t;
-typedef application_raw_t application_t;
+typedef application_raw_t B_App;
 typedef struct camera_t camera_t;
 typedef struct game_state_t game_state_t;
 typedef struct net_data_t bld_abstract_net;
@@ -99,7 +99,7 @@ EXTERN bld_abstract_net **net_data_ptr NULL_INIT;
 #ifdef __BORLANDC__
         EXTERN bld_abstract_net *gbl_net NULL_INIT;
 #endif
-EXTERN application_t **application_ptr NULL_INIT;
+EXTERN B_App **application_ptr NULL_INIT;
 EXTERN application_methods_t *application_methods_ptr NULL_INIT;
 EXTERN void (**init_start)(void) NULL_INIT;
 EXTERN void (**init_end)(void) NULL_INIT;

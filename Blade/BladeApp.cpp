@@ -1,6 +1,6 @@
 
 #include <bld_system.h>
-#include "application.h"
+#include "App.h"
 #include "bld_ext_funcs.h"
 
 
@@ -22,9 +22,9 @@ static application_methods_t application_methods = {
 * Entry point:            0x005B9B60
 */
 
-application_t* create_application(void *module, int nCmdShow, char *cmdLine)
+B_App* create_application(void *module, int nCmdShow, char *cmdLine)
 {
-        application_t *new_application = (application_t *)new B_BladeApp(module, nCmdShow, cmdLine);
+        B_App *new_application = (B_App *)new B_BladeApp(module, nCmdShow, cmdLine);
         gbl_application = new_application;
 
         return gbl_application;
@@ -43,7 +43,7 @@ application_t* create_application(void *module, int nCmdShow, char *cmdLine)
 * Entry point:            0x005B9BB7
 */
 
-application_t* get_application()
+B_App* get_application()
 {
         return gbl_application;
 }

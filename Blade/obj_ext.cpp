@@ -1,7 +1,7 @@
 
 #include <bld_system.h>
 #include <bld_python.h>
-#include "application.h"
+#include "App.h"
 #include "bld_ext_funcs.h"
 #define BUILD_LIB
 #include <blade_ext.h>
@@ -21,7 +21,7 @@
 
 int LoadWorld(const char *file_name)
 {
-        application_t * app = get_application();
+        B_App * app = get_application();
         assert(app);
         return app->load_world(file_name);
 }

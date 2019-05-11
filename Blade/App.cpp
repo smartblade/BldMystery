@@ -2,7 +2,7 @@
 #include <bld_system.h>
 #include <bld_python.h>
 #include <raster_device.h>
-#include "application.h"
+#include "App.h"
 #include "anim.h"
 #include "bld_ext_funcs.h"
 #define BUILD_LIB
@@ -16,7 +16,7 @@
 
 #ifdef BLD_NATIVE
 
-__declspec(naked) void application_t::set_mode(const B_Name &mode)
+__declspec(naked) void B_App::set_mode(const B_Name &mode)
 {
     _asm { jmp _thiscall_application_set_mode}
 }
@@ -38,7 +38,7 @@ __declspec(naked) void application_t::set_mode(const B_Name &mode)
 
 #ifdef BLD_NATIVE
 
-__declspec(naked) void application_t::process_events()
+__declspec(naked) void B_App::process_events()
 {
     _asm { jmp _thiscall_application_process_event}
 }
@@ -57,7 +57,7 @@ __declspec(naked) void application_t::process_events()
 * Entry point:            0x0041316C
 */
 
-void application_t::mark_level_to_load(const char *map)
+void B_App::mark_level_to_load(const char *map)
 {
         if (this->map_to_load) {
                 free(this->map_to_load);
@@ -79,7 +79,7 @@ void application_t::mark_level_to_load(const char *map)
 * Entry point:            0x00413256
 */
 
-void application_t::load_level(const char *script)
+void B_App::load_level(const char *script)
 {
         int foundIndex;
         int hash_value;
@@ -281,7 +281,7 @@ void application_t::load_level(const char *script)
 * Entry point:            0x004138B8
 */
 
-void application_t::read_level(const char * file_name)
+void B_App::read_level(const char * file_name)
 {
         double timeBefore, timeAfter;
         char itemKind[256], itemName[256];
@@ -392,7 +392,7 @@ void application_t::read_level(const char * file_name)
 
 #ifdef BLD_NATIVE
 
-_declspec(naked) void application_t::prepare_level()
+_declspec(naked) void B_App::prepare_level()
 {
     _asm { jmp _thiscall_application_prepare_level}
 }
@@ -412,7 +412,7 @@ _declspec(naked) void application_t::prepare_level()
 * Entry point:            0x00415759
 */
 
-bool application_t::run_python_file(const char *file_name)
+bool B_App::run_python_file(const char *file_name)
 {
         FILE *file;
 
@@ -452,7 +452,7 @@ bool application_t::run_python_file(const char *file_name)
 * Entry point:            0x00416C6F
 */
 
-int application_t::load_world(const char *file_name)
+int B_App::load_world(const char *file_name)
 {
         double timeBefore, timeAfter;
 

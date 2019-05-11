@@ -1,6 +1,6 @@
 
 #include <bld_system.h>
-#include "application.h"
+#include "App.h"
 #include "bld_ext_funcs.h"
 
 __declspec(naked) void _thiscall_application_load_level(char *map)
@@ -15,12 +15,12 @@ __declspec(naked) void _thiscall_application_wait_for_event(void)
 
 __declspec(naked) void _thiscall_application_mark_level_to_load(char *map)
 {
-    _asm { jmp application_t::mark_level_to_load}
+    _asm { jmp B_App::mark_level_to_load}
 }
 
 __declspec(naked) void _thiscall_application_read_level(char *file_name)
 {
-    _asm { jmp application_t::read_level}
+    _asm { jmp B_App::read_level}
 }
 
 /*

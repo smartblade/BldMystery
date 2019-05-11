@@ -10,7 +10,7 @@
 #include "array.h"
 
 
-class application_t
+class B_App
 {
 public:
         virtual void read_arguments(const char *arguments);
@@ -19,7 +19,7 @@ public:
         virtual bool init_python_path();
         virtual void process_message();
         virtual void *unknown_method010(void *);
-        virtual ~application_t();
+        virtual ~B_App();
         virtual bool start();
         virtual void process_events();
         virtual void end();
@@ -87,7 +87,7 @@ public:
         char unknownFields3[16];
 };
 
-class B_WinApp : public application_t
+class B_WinApp : public B_App
 {
 public:
     virtual void process_events();
@@ -106,8 +106,8 @@ public:
 extern "C" {
 #endif
 
-extern application_t *create_application(void *module, int nCmdShow, char *cmdLine);
-extern application_t* get_application();
+extern B_App *create_application(void *module, int nCmdShow, char *cmdLine);
+extern B_App* get_application();
 
 #ifdef __cplusplus
 }

@@ -1,6 +1,6 @@
 
 #include <bld_system.h>
-#include "application.h"
+#include "App.h"
 #include "bld_ext_funcs.h"
 
 
@@ -63,15 +63,15 @@ void B_WinApp::load_level(const char *map)
 
         if (gbl_net_data->is_net_game()) {
                 if (gbl_net_data->is_server()) {
-                        application_t::load_level("Server.py");
+                        B_App::load_level("Server.py");
                         Set007EA988To01();
                 } else {
-                        application_t::load_level("Client.py");
+                        B_App::load_level("Client.py");
                 }
         } else {
                 loadLevelCounter++;
 
-                application_t::load_level("Cfg.py");
+                B_App::load_level("Cfg.py");
         }
 
         timeAfter = timeGetTime();
@@ -104,7 +104,7 @@ void B_WinApp::process_events() {
         }
 
         counter++;
-        application_t::process_events();
+        B_App::process_events();
 }
 
 
@@ -122,7 +122,7 @@ void B_WinApp::process_events() {
 
 int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-        application_t *App;
+        B_App *App;
         char *cmd;
         MSG msg;
 
