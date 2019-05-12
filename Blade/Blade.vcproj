@@ -11,6 +11,9 @@
 		/>
 	</Platforms>
 	<ToolFiles>
+		<DefaultToolFile
+			FileName="masm.rules"
+		/>
 	</ToolFiles>
 	<Configurations>
 		<Configuration
@@ -24,6 +27,10 @@
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="MASM"
+				IncludePaths="asm"
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
@@ -102,6 +109,10 @@
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
+				Name="MASM"
+				IncludePaths="asm"
+			/>
+			<Tool
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
@@ -135,8 +146,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="winmm.lib bicrt.lib BBLibc.lib raster.lib"
-				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\Python\libs&quot;;..\lib;..\lib\VC"
+				AdditionalDependencies="bicrt.lib BBLibc.lib raster.lib binputc.lib console.lib python15.lib mss32.lib shw32.lib wsock32.lib winmm.lib ddraw.lib"
+				AdditionalLibraryDirectories="..\lib;..\lib\VC"
 				IgnoreDefaultLibraryNames="msvcrt.lib"
 				GenerateDebugInformation="true"
 				EntryPointSymbol=""
@@ -179,6 +190,10 @@
 			>
 			<File
 				RelativePath=".\App.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\asmMain.asm"
 				>
 			</File>
 			<File
