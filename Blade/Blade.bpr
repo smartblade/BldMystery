@@ -27,7 +27,7 @@
     <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
     <RELEASELIBPATH value="$(BCB)\lib\release"/>
     <LINKER value="ilink32"/>
-    <USERDEFINES value="_DEBUG"/>
+    <USERDEFINES value="_DEBUG;BLD_NATIVE"/>
     <SYSDEFINES value="NO_STRICT;_NO_VCL;_RTLDLL;USEPACKAGES"/>
     <MAINSOURCE value="Blade.bpf"/>
     <INCLUDEPATH value="..;&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot;;&quot;C:\Games\Severence - Blade of Darkness\Bin&quot;;$(BCB)\include;$(BCB)\include\vcl;..\include;&quot;C:\Program Files (x86)\Python\include&quot;"/>
@@ -39,7 +39,8 @@
     <IDLCFLAGS value="-I.. -I&quot;C:\Program Files (x86)\Borland\CBuilder6\Bin&quot; 
       -I&quot;C:\Games\Severence - Blade of Darkness\Bin&quot; -I$(BCB)\include 
       -I$(BCB)\include\vcl -I..\include 
-      -I&quot;C:\Program Files (x86)\Python\include&quot; -src_suffix cpp -D_DEBUG -boa"/>
+      -I&quot;C:\Program Files (x86)\Python\include&quot; -src_suffix cpp -D_DEBUG 
+      -DBLD_NATIVE -boa"/>
     <CFLAG1 value="-Od -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -tW -tWM- -c"/>
     <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>
@@ -96,24 +97,27 @@ ProductVersion=1.0.0.0
 Comments=
 
 [HistoryLists\hlIncludePath]
-Count=4
-Item0=..\;C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl;..\include;C:\Program Files (x86)\Python\include
-Item1=..\;C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl;..\include
-Item2=C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl;..\include
-Item3=C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl
+Count=5
+Item0=..;C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl;..\include;C:\Program Files (x86)\Python\include
+Item1=..\;C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl;..\include;C:\Program Files (x86)\Python\include
+Item2=..\;C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl;..\include
+Item3=C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl;..\include
+Item4=C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
-Count=2
-Item0=..\;C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\lib\obj;$(BCB)\lib
-Item1=C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\lib\obj;$(BCB)\lib
+Count=3
+Item0=..;C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\lib\obj;$(BCB)\lib
+Item1=..\;C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\lib\obj;$(BCB)\lib
+Item2=C:\Program Files (x86)\Borland\CBuilder6\Bin;C:\Games\Severence - Blade of Darkness\Bin;$(BCB)\lib\obj;$(BCB)\lib
 
 [HistoryLists\hlDebugSourcePath]
 Count=1
 Item0=$(BCB)\source\vcl
 
 [HistoryLists\hlConditionals]
-Count=1
-Item0=_DEBUG
+Count=2
+Item0=_DEBUG;BLD_NATIVE
+Item1=_DEBUG
 
 [HistoryLists\hlFinalOutputDir]
 Count=2
