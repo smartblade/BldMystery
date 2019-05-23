@@ -18,6 +18,7 @@
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00440A5D
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@PAUgame_state_t@@@Z
 */
 
 B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs)

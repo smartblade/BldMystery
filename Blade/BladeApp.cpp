@@ -20,6 +20,7 @@ static application_methods_t application_methods = {
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B9B60
+* VC++ mangling:          _create_application
 */
 
 B_App* create_application(void *module, int nCmdShow, char *cmdLine)
@@ -41,6 +42,7 @@ B_App* create_application(void *module, int nCmdShow, char *cmdLine)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B9BB7
+* VC++ mangling:          _get_application
 */
 
 B_App* get_application()

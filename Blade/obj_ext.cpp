@@ -17,6 +17,7 @@
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00429086
+* VC++ mangling:          _LoadWorld
 */
 
 int LoadWorld(const char *file_name)
@@ -36,6 +37,7 @@ int LoadWorld(const char *file_name)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0042B192
+* VC++ mangling:          _GetWorldFileName
 */
 
 const char *GetWorldFileName(void)

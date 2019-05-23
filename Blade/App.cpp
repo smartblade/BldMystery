@@ -55,6 +55,7 @@ __declspec(naked) void B_App::process_events()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0041316C
+* VC++ mangling:          ?mark_level_to_load@B_App@@UAEXPBD@Z
 */
 
 void B_App::mark_level_to_load(const char *map)
@@ -77,6 +78,7 @@ void B_App::mark_level_to_load(const char *map)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00413256
+* VC++ mangling:          ?load_level@B_App@@UAEXPBD@Z
 */
 
 void B_App::load_level(const char *script)
@@ -279,6 +281,7 @@ void B_App::load_level(const char *script)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004138B8
+* VC++ mangling:          ?read_level@B_App@@UAEXPBD@Z
 */
 
 void B_App::read_level(const char * file_name)
@@ -410,6 +413,7 @@ _declspec(naked) void B_App::prepare_level()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00415759
+* VC++ mangling:          ?run_python_file@B_App@@QAE_NPBD@Z
 */
 
 bool B_App::run_python_file(const char *file_name)
@@ -450,6 +454,7 @@ bool B_App::run_python_file(const char *file_name)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00416C6F
+* VC++ mangling:          ?load_world@B_App@@QAEHPBD@Z
 */
 
 int B_App::load_world(const char *file_name)

@@ -29,6 +29,7 @@ __declspec(naked) B_WinApp *B_WinApp::init(void *module, int nCmdShow, char *cmd
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0041009D
+* VC++ mangling:          ?load_level@B_WinApp@@UAEXPBD@Z
 */
 
 void B_WinApp::load_level(const char *map)
@@ -87,6 +88,7 @@ void B_WinApp::load_level(const char *map)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00410305
+* VC++ mangling:          ?process_events@B_WinApp@@UAEXXZ
 */
 
 void B_WinApp::process_events() {
@@ -118,6 +120,7 @@ void B_WinApp::process_events() {
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00410CC2
+* VC++ mangling:          _BladeWinMain
 */
 
 int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
