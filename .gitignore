@@ -1,4 +1,5 @@
 /install
+lib/*.lib
 *.exe
 *.dll
 *.obj
@@ -8,7 +9,6 @@
 *.pdb
 *.idb
 *.dep
-*.lib
 *.res
 *.ddp
 *.tds
