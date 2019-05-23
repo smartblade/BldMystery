@@ -1,7 +1,6 @@
 /install
 lib/*.lib
 *.exe
-*.dll
 *.obj
 *.exp
 *.ilk
