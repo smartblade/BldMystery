@@ -1,816 +1,1189 @@
 LIBRARY     GDI32.DLL
 
 EXPORTS
-    AbortDoc                       @1011; AbortDoc
-    AbortPath                      @1012; AbortPath
-    AddFontMemResourceEx           @1015; AddFontMemResourceEx
-    AddFontResourceA               @1016; AddFontResourceA
-    AddFontResourceExA             @1017; AddFontResourceExA
-    AddFontResourceExW             @1018; AddFontResourceExW
-    AddFontResourceTracking        @1019; AddFontResourceTracking
-    AddFontResourceW               @1020; AddFontResourceW
-    AngleArc                       @1021; AngleArc
-    AnimatePalette                 @1022; AnimatePalette
-    AnyLinkedFonts                 @1023; AnyLinkedFonts
-    Arc                            @1024; Arc
-    ArcTo                          @1025; ArcTo
-    BRUSHOBJ_hGetColorTransform    @1026; BRUSHOBJ_hGetColorTransform
-    BRUSHOBJ_pvAllocRbrush         @1027; BRUSHOBJ_pvAllocRbrush
-    BRUSHOBJ_pvGetRbrush           @1028; BRUSHOBJ_pvGetRbrush
-    BRUSHOBJ_ulGetBrushColor       @1029; BRUSHOBJ_ulGetBrushColor
-    BeginGdiRendering              @1030; BeginGdiRendering
-    BeginPath                      @1031; BeginPath
-    BitBlt                         @1032; BitBlt
-    CLIPOBJ_bEnum                  @1033; CLIPOBJ_bEnum
-    CLIPOBJ_cEnumStart             @1034; CLIPOBJ_cEnumStart
-    CLIPOBJ_ppoGetPath             @1035; CLIPOBJ_ppoGetPath
-    CancelDC                       @1036; CancelDC
-    CheckColorsInGamut             @1037; CheckColorsInGamut
-    ChoosePixelFormat              @1038; ChoosePixelFormat
-    Chord                          @1039; Chord
-    ClearBitmapAttributes          @1040; ClearBitmapAttributes
-    ClearBrushAttributes           @1041; ClearBrushAttributes
-    CloseEnhMetaFile               @1042; CloseEnhMetaFile
-    CloseFigure                    @1043; CloseFigure
-    CloseMetaFile                  @1044; CloseMetaFile
-    ColorCorrectPalette            @1045; ColorCorrectPalette
-    ColorMatchToTarget             @1046; ColorMatchToTarget
-    CombineRgn                     @1047; CombineRgn
-    CombineTransform               @1048; CombineTransform
-    ConfigureOPMProtectedOutput    @1049; ConfigureOPMProtectedOutput
-    CopyEnhMetaFileA               @1050; CopyEnhMetaFileA
-    CopyEnhMetaFileW               @1051; CopyEnhMetaFileW
-    CopyMetaFileA                  @1052; CopyMetaFileA
-    CopyMetaFileW                  @1053; CopyMetaFileW
-    CreateBitmap                   @1054; CreateBitmap
-    CreateBitmapFromDxSurface      @1056; CreateBitmapFromDxSurface
-    CreateBitmapFromDxSurface2     @1055; CreateBitmapFromDxSurface2
-    CreateBitmapIndirect           @1057; CreateBitmapIndirect
-    CreateBrushIndirect            @1058; CreateBrushIndirect
-    CreateColorSpaceA              @1059; CreateColorSpaceA
-    CreateColorSpaceW              @1060; CreateColorSpaceW
-    CreateCompatibleBitmap         @1061; CreateCompatibleBitmap
-    CreateCompatibleDC             @1062; CreateCompatibleDC
-    CreateDCA                      @1063; CreateDCA
-    CreateDCW                      @1064; CreateDCW
-    CreateDIBPatternBrush          @1065; CreateDIBPatternBrush
-    CreateDIBPatternBrushPt        @1066; CreateDIBPatternBrushPt
-    CreateDIBSection               @1067; CreateDIBSection
-    CreateDIBitmap                 @1068; CreateDIBitmap
-    CreateDiscardableBitmap        @1069; CreateDiscardableBitmap
-    CreateEllipticRgn              @1070; CreateEllipticRgn
-    CreateEllipticRgnIndirect      @1071; CreateEllipticRgnIndirect
-    CreateEnhMetaFileA             @1072; CreateEnhMetaFileA
-    CreateEnhMetaFileW             @1073; CreateEnhMetaFileW
-    CreateFontA                    @1074; CreateFontA
-    CreateFontIndirectA            @1075; CreateFontIndirectA
-    CreateFontIndirectExA          @1076; CreateFontIndirectExA
-    CreateFontIndirectExW          @1077; CreateFontIndirectExW
-    CreateFontIndirectW            @1078; CreateFontIndirectW
-    CreateFontW                    @1079; CreateFontW
-    CreateHalftonePalette          @1080; CreateHalftonePalette
-    CreateHatchBrush               @1081; CreateHatchBrush
-    CreateICA                      @1082; CreateICA
-    CreateICW                      @1083; CreateICW
-    CreateMetaFileA                @1084; CreateMetaFileA
-    CreateMetaFileW                @1085; CreateMetaFileW
-    CreateOPMProtectedOutputs      @1086; CreateOPMProtectedOutputs
-    CreatePalette                  @1087; CreatePalette
-    CreatePatternBrush             @1088; CreatePatternBrush
-    CreatePen                      @1089; CreatePen
-    CreatePenIndirect              @1090; CreatePenIndirect
-    CreatePolyPolygonRgn           @1091; CreatePolyPolygonRgn
-    CreatePolygonRgn               @1092; CreatePolygonRgn
-    CreateRectRgn                  @1093; CreateRectRgn
-    CreateRectRgnIndirect          @1094; CreateRectRgnIndirect
-    CreateRoundRectRgn             @1095; CreateRoundRectRgn
-    CreateScalableFontResourceA    @1096; CreateScalableFontResourceA
-    CreateScalableFontResourceW    @1097; CreateScalableFontResourceW
-    CreateSessionMappedDIBSection  @1098; CreateSessionMappedDIBSection
-    CreateSolidBrush               @1099; CreateSolidBrush
-    D3DKMTAcquireKeyedMutex        @1101; D3DKMTAcquireKeyedMutex
-    D3DKMTAcquireKeyedMutex2       @1100; D3DKMTAcquireKeyedMutex2
-    D3DKMTCacheHybridQueryValue    @1102; D3DKMTCacheHybridQueryValue
-    D3DKMTCheckExclusiveOwnership  @1103; D3DKMTCheckExclusiveOwnership
-    D3DKMTCheckMonitorPowerState   @1104; D3DKMTCheckMonitorPowerState
-    D3DKMTCheckMultiPlaneOverlaySupport @1105; D3DKMTCheckMultiPlaneOverlaySupport
-    D3DKMTCheckOcclusion           @1106; D3DKMTCheckOcclusion
-    D3DKMTCheckSharedResourceAccess @1107; D3DKMTCheckSharedResourceAccess
-    D3DKMTCheckVidPnExclusiveOwnership @1108; D3DKMTCheckVidPnExclusiveOwnership
-    D3DKMTCloseAdapter             @1109; D3DKMTCloseAdapter
-    D3DKMTConfigureSharedResource  @1110; D3DKMTConfigureSharedResource
-    D3DKMTCreateAllocation         @1112; D3DKMTCreateAllocation
-    D3DKMTCreateAllocation2        @1111; D3DKMTCreateAllocation2
-    D3DKMTCreateContext            @1113; D3DKMTCreateContext
-    D3DKMTCreateDCFromMemory       @1114; D3DKMTCreateDCFromMemory
-    D3DKMTCreateDevice             @1115; D3DKMTCreateDevice
-    D3DKMTCreateKeyedMutex         @1117; D3DKMTCreateKeyedMutex
-    D3DKMTCreateKeyedMutex2        @1116; D3DKMTCreateKeyedMutex2
-    D3DKMTCreateOutputDupl         @1118; D3DKMTCreateOutputDupl
-    D3DKMTCreateOverlay            @1119; D3DKMTCreateOverlay
-    D3DKMTCreateSynchronizationObject @1121; D3DKMTCreateSynchronizationObject
-    D3DKMTCreateSynchronizationObject2 @1120; D3DKMTCreateSynchronizationObject2
-    D3DKMTDestroyAllocation        @1122; D3DKMTDestroyAllocation
-    D3DKMTDestroyContext           @1123; D3DKMTDestroyContext
-    D3DKMTDestroyDCFromMemory      @1124; D3DKMTDestroyDCFromMemory
-    D3DKMTDestroyDevice            @1125; D3DKMTDestroyDevice
-    D3DKMTDestroyKeyedMutex        @1126; D3DKMTDestroyKeyedMutex
-    D3DKMTDestroyOutputDupl        @1127; D3DKMTDestroyOutputDupl
-    D3DKMTDestroyOverlay           @1128; D3DKMTDestroyOverlay
-    D3DKMTDestroySynchronizationObject @1129; D3DKMTDestroySynchronizationObject
-    D3DKMTEnumAdapters             @1130; D3DKMTEnumAdapters
-    D3DKMTEscape                   @1131; D3DKMTEscape
-    D3DKMTFlipOverlay              @1132; D3DKMTFlipOverlay
-    D3DKMTGetCachedHybridQueryValue @1133; D3DKMTGetCachedHybridQueryValue
-    D3DKMTGetContextInProcessSchedulingPriority @1134; D3DKMTGetContextInProcessSchedulingPriority
-    D3DKMTGetContextSchedulingPriority @1135; D3DKMTGetContextSchedulingPriority
-    D3DKMTGetDeviceState           @1136; D3DKMTGetDeviceState
-    D3DKMTGetDisplayModeList       @1137; D3DKMTGetDisplayModeList
-    D3DKMTGetMultisampleMethodList @1138; D3DKMTGetMultisampleMethodList
-    D3DKMTGetOverlayState          @1139; D3DKMTGetOverlayState
-    D3DKMTGetPresentHistory        @1140; D3DKMTGetPresentHistory
-    D3DKMTGetPresentQueueEvent     @1141; D3DKMTGetPresentQueueEvent
-    D3DKMTGetProcessSchedulingPriorityClass @1142; D3DKMTGetProcessSchedulingPriorityClass
-    D3DKMTGetRuntimeData           @1143; D3DKMTGetRuntimeData
-    D3DKMTGetScanLine              @1144; D3DKMTGetScanLine
-    D3DKMTGetSharedPrimaryHandle   @1145; D3DKMTGetSharedPrimaryHandle
-    D3DKMTGetSharedResourceAdapterLuid @1146; D3DKMTGetSharedResourceAdapterLuid
-    D3DKMTInvalidateActiveVidPn    @1147; D3DKMTInvalidateActiveVidPn
-    D3DKMTLock                     @1148; D3DKMTLock
-    D3DKMTNetDispGetNextChunkInfo  @1149; D3DKMTNetDispGetNextChunkInfo
-    D3DKMTNetDispQueryMiracastDisplayDeviceStatus @1150; D3DKMTNetDispQueryMiracastDisplayDeviceStatus
-    D3DKMTNetDispQueryMiracastDisplayDeviceSupport @1151; D3DKMTNetDispQueryMiracastDisplayDeviceSupport
-    D3DKMTNetDispStartMiracastDisplayDevice @1153; D3DKMTNetDispStartMiracastDisplayDevice
-    D3DKMTNetDispStartMiracastDisplayDevice2 @1152; D3DKMTNetDispStartMiracastDisplayDevice2
-    D3DKMTNetDispStopMiracastDisplayDevice @1154; D3DKMTNetDispStopMiracastDisplayDevice
-    D3DKMTOfferAllocations         @1155; D3DKMTOfferAllocations
-    D3DKMTOpenAdapterFromDeviceName @1156; D3DKMTOpenAdapterFromDeviceName
-    D3DKMTOpenAdapterFromGdiDisplayName @1157; D3DKMTOpenAdapterFromGdiDisplayName
-    D3DKMTOpenAdapterFromHdc       @1158; D3DKMTOpenAdapterFromHdc
-    D3DKMTOpenAdapterFromLuid      @1159; D3DKMTOpenAdapterFromLuid
-    D3DKMTOpenKeyedMutex           @1161; D3DKMTOpenKeyedMutex
-    D3DKMTOpenKeyedMutex2          @1160; D3DKMTOpenKeyedMutex2
-    D3DKMTOpenNtHandleFromName     @1162; D3DKMTOpenNtHandleFromName
-    D3DKMTOpenResource             @1164; D3DKMTOpenResource
-    D3DKMTOpenResource2            @1163; D3DKMTOpenResource2
-    D3DKMTOpenResourceFromNtHandle @1165; D3DKMTOpenResourceFromNtHandle
-    D3DKMTOpenSyncObjectFromNtHandle @1166; D3DKMTOpenSyncObjectFromNtHandle
-    D3DKMTOpenSynchronizationObject @1167; D3DKMTOpenSynchronizationObject
-    D3DKMTOutputDuplGetFrameInfo   @1168; D3DKMTOutputDuplGetFrameInfo
-    D3DKMTOutputDuplGetMetaData    @1169; D3DKMTOutputDuplGetMetaData
-    D3DKMTOutputDuplGetPointerShapeData @1170; D3DKMTOutputDuplGetPointerShapeData
-    D3DKMTOutputDuplPresent        @1171; D3DKMTOutputDuplPresent
-    D3DKMTOutputDuplReleaseFrame   @1172; D3DKMTOutputDuplReleaseFrame
-    D3DKMTPinDirectFlipResources   @1173; D3DKMTPinDirectFlipResources
-    D3DKMTPollDisplayChildren      @1174; D3DKMTPollDisplayChildren
-    D3DKMTPresent                  @1175; D3DKMTPresent
-    D3DKMTPresentMultiPlaneOverlay @1176; D3DKMTPresentMultiPlaneOverlay
-    D3DKMTQueryAdapterInfo         @1177; D3DKMTQueryAdapterInfo
-    D3DKMTQueryAllocationResidency @1178; D3DKMTQueryAllocationResidency
-    D3DKMTQueryRemoteVidPnSourceFromGdiDisplayName @1179; D3DKMTQueryRemoteVidPnSourceFromGdiDisplayName
-    D3DKMTQueryResourceInfo        @1180; D3DKMTQueryResourceInfo
-    D3DKMTQueryResourceInfoFromNtHandle @1181; D3DKMTQueryResourceInfoFromNtHandle
-    D3DKMTQueryStatistics          @1182; D3DKMTQueryStatistics
-    D3DKMTReclaimAllocations       @1183; D3DKMTReclaimAllocations
-    D3DKMTReleaseKeyedMutex        @1185; D3DKMTReleaseKeyedMutex
-    D3DKMTReleaseKeyedMutex2       @1184; D3DKMTReleaseKeyedMutex2
-    D3DKMTReleaseProcessVidPnSourceOwners @1186; D3DKMTReleaseProcessVidPnSourceOwners
-    D3DKMTRender                   @1187; D3DKMTRender
-    D3DKMTSetAllocationPriority    @1188; D3DKMTSetAllocationPriority
-    D3DKMTSetContextInProcessSchedulingPriority @1189; D3DKMTSetContextInProcessSchedulingPriority
-    D3DKMTSetContextSchedulingPriority @1190; D3DKMTSetContextSchedulingPriority
-    D3DKMTSetDisplayMode           @1191; D3DKMTSetDisplayMode
-    D3DKMTSetDisplayPrivateDriverFormat @1192; D3DKMTSetDisplayPrivateDriverFormat
-    D3DKMTSetGammaRamp             @1193; D3DKMTSetGammaRamp
-    D3DKMTSetProcessSchedulingPriorityClass @1194; D3DKMTSetProcessSchedulingPriorityClass
-    D3DKMTSetQueuedLimit           @1195; D3DKMTSetQueuedLimit
-    D3DKMTSetStereoEnabled         @1196; D3DKMTSetStereoEnabled
-    D3DKMTSetVidPnSourceOwner      @1198; D3DKMTSetVidPnSourceOwner
-    D3DKMTSetVidPnSourceOwner1     @1197; D3DKMTSetVidPnSourceOwner1
-    D3DKMTShareObjects             @1199; D3DKMTShareObjects
-    D3DKMTSharedPrimaryLockNotification @1200; D3DKMTSharedPrimaryLockNotification
-    D3DKMTSharedPrimaryUnLockNotification @1201; D3DKMTSharedPrimaryUnLockNotification
-    D3DKMTSignalSynchronizationObject @1203; D3DKMTSignalSynchronizationObject
-    D3DKMTSignalSynchronizationObject2 @1202; D3DKMTSignalSynchronizationObject2
-    D3DKMTUnlock                   @1204; D3DKMTUnlock
-    D3DKMTUnpinDirectFlipResources @1205; D3DKMTUnpinDirectFlipResources
-    D3DKMTUpdateOverlay            @1206; D3DKMTUpdateOverlay
-    D3DKMTWaitForIdle              @1207; D3DKMTWaitForIdle
-    D3DKMTWaitForSynchronizationObject @1209; D3DKMTWaitForSynchronizationObject
-    D3DKMTWaitForSynchronizationObject2 @1208; D3DKMTWaitForSynchronizationObject2
-    D3DKMTWaitForVerticalBlankEvent @1211; D3DKMTWaitForVerticalBlankEvent
-    D3DKMTWaitForVerticalBlankEvent2 @1210; D3DKMTWaitForVerticalBlankEvent2
-    DDCCIGetCapabilitiesString     @1212; DDCCIGetCapabilitiesString
-    DDCCIGetCapabilitiesStringLength @1213; DDCCIGetCapabilitiesStringLength
-    DDCCIGetTimingReport           @1214; DDCCIGetTimingReport
-    DDCCIGetVCPFeature             @1215; DDCCIGetVCPFeature
-    DDCCISaveCurrentSettings       @1216; DDCCISaveCurrentSettings
-    DDCCISetVCPFeature             @1217; DDCCISetVCPFeature
-    DPtoLP                         @1218; DPtoLP
-    DdCreateFullscreenSprite       @1219; DdCreateFullscreenSprite
-    DdDestroyFullscreenSprite      @1220; DdDestroyFullscreenSprite
-    DdEntry0                       @1221; DdEntry0
-    DdEntry1                       @1232; DdEntry1
-    DdEntry10                      @1222; DdEntry10
-    DdEntry11                      @1223; DdEntry11
-    DdEntry12                      @1224; DdEntry12
-    DdEntry13                      @1225; DdEntry13
-    DdEntry14                      @1226; DdEntry14
-    DdEntry15                      @1227; DdEntry15
-    DdEntry16                      @1228; DdEntry16
-    DdEntry17                      @1229; DdEntry17
-    DdEntry18                      @1230; DdEntry18
-    DdEntry19                      @1231; DdEntry19
-    DdEntry2                       @1243; DdEntry2
-    DdEntry20                      @1233; DdEntry20
-    DdEntry21                      @1234; DdEntry21
-    DdEntry22                      @1235; DdEntry22
-    DdEntry23                      @1236; DdEntry23
-    DdEntry24                      @1237; DdEntry24
-    DdEntry25                      @1238; DdEntry25
-    DdEntry26                      @1239; DdEntry26
-    DdEntry27                      @1240; DdEntry27
-    DdEntry28                      @1241; DdEntry28
-    DdEntry29                      @1242; DdEntry29
-    DdEntry3                       @1254; DdEntry3
-    DdEntry30                      @1244; DdEntry30
-    DdEntry31                      @1245; DdEntry31
-    DdEntry32                      @1246; DdEntry32
-    DdEntry33                      @1247; DdEntry33
-    DdEntry34                      @1248; DdEntry34
-    DdEntry35                      @1249; DdEntry35
-    DdEntry36                      @1250; DdEntry36
-    DdEntry37                      @1251; DdEntry37
-    DdEntry38                      @1252; DdEntry38
-    DdEntry39                      @1253; DdEntry39
-    DdEntry4                       @1265; DdEntry4
-    DdEntry40                      @1255; DdEntry40
-    DdEntry41                      @1256; DdEntry41
-    DdEntry42                      @1257; DdEntry42
-    DdEntry43                      @1258; DdEntry43
-    DdEntry44                      @1259; DdEntry44
-    DdEntry45                      @1260; DdEntry45
-    DdEntry46                      @1261; DdEntry46
-    DdEntry47                      @1262; DdEntry47
-    DdEntry48                      @1263; DdEntry48
-    DdEntry49                      @1264; DdEntry49
-    DdEntry5                       @1273; DdEntry5
-    DdEntry50                      @1266; DdEntry50
-    DdEntry51                      @1267; DdEntry51
-    DdEntry52                      @1268; DdEntry52
-    DdEntry53                      @1269; DdEntry53
-    DdEntry54                      @1270; DdEntry54
-    DdEntry55                      @1271; DdEntry55
-    DdEntry56                      @1272; DdEntry56
-    DdEntry6                       @1274; DdEntry6
-    DdEntry7                       @1275; DdEntry7
-    DdEntry8                       @1276; DdEntry8
-    DdEntry9                       @1277; DdEntry9
-    DdNotifyFullscreenSpriteUpdate @1278; DdNotifyFullscreenSpriteUpdate
-    DdQueryVisRgnUniqueness        @1279; DdQueryVisRgnUniqueness
-    DeleteColorSpace               @1280; DeleteColorSpace
-    DeleteDC                       @1281; DeleteDC
-    DeleteEnhMetaFile              @1282; DeleteEnhMetaFile
-    DeleteMetaFile                 @1283; DeleteMetaFile
-    DeleteObject                   @1284; DeleteObject
-    DescribePixelFormat            @1285; DescribePixelFormat
-    DestroyOPMProtectedOutput      @1286; DestroyOPMProtectedOutput
-    DestroyPhysicalMonitorInternal @1287; DestroyPhysicalMonitorInternal
-    DeviceCapabilitiesExA          @1288; DeviceCapabilitiesExA
-    DeviceCapabilitiesExW          @1289; DeviceCapabilitiesExW
-    DrawEscape                     @1290; DrawEscape
-    Ellipse                        @1291; Ellipse
-    EnableEUDC                     @1292; EnableEUDC
-    EndDoc                         @1293; EndDoc
-    EndFormPage                    @1294; EndFormPage
-    EndGdiRendering                @1295; EndGdiRendering
-    EndPage                        @1296; EndPage
-    EndPath                        @1297; EndPath
-    EngAcquireSemaphore            @1298; EngAcquireSemaphore
-    EngAlphaBlend                  @1299; EngAlphaBlend
-    EngAssociateSurface            @1300; EngAssociateSurface
-    EngBitBlt                      @1301; EngBitBlt
-    EngCheckAbort                  @1302; EngCheckAbort
-    EngComputeGlyphSet             @1303; EngComputeGlyphSet
-    EngCopyBits                    @1304; EngCopyBits
-    EngCreateBitmap                @1305; EngCreateBitmap
-    EngCreateClip                  @1306; EngCreateClip
-    EngCreateDeviceBitmap          @1307; EngCreateDeviceBitmap
-    EngCreateDeviceSurface         @1308; EngCreateDeviceSurface
-    EngCreatePalette               @1309; EngCreatePalette
-    EngCreateSemaphore             @1310; EngCreateSemaphore
-    EngDeleteClip                  @1311; EngDeleteClip
-    EngDeletePalette               @1312; EngDeletePalette
-    EngDeletePath                  @1313; EngDeletePath
-    EngDeleteSemaphore             @1314; EngDeleteSemaphore
-    EngDeleteSurface               @1315; EngDeleteSurface
-    EngEraseSurface                @1316; EngEraseSurface
-    EngFillPath                    @1317; EngFillPath
-    EngFindResource                @1318; EngFindResource
-    EngFreeModule                  @1319; EngFreeModule
-    EngGetCurrentCodePage          @1320; EngGetCurrentCodePage
-    EngGetDriverName               @1321; EngGetDriverName
-    EngGetPrinterDataFileName      @1322; EngGetPrinterDataFileName
-    EngGradientFill                @1323; EngGradientFill
-    EngLineTo                      @1324; EngLineTo
-    EngLoadModule                  @1325; EngLoadModule
-    EngLockSurface                 @1326; EngLockSurface
-    EngMarkBandingSurface          @1327; EngMarkBandingSurface
-    EngMultiByteToUnicodeN         @1328; EngMultiByteToUnicodeN
-    EngMultiByteToWideChar         @1329; EngMultiByteToWideChar
-    EngPaint                       @1330; EngPaint
-    EngPlgBlt                      @1331; EngPlgBlt
-    EngQueryEMFInfo                @1332; EngQueryEMFInfo
-    EngQueryLocalTime              @1333; EngQueryLocalTime
-    EngReleaseSemaphore            @1334; EngReleaseSemaphore
-    EngStretchBlt                  @1335; EngStretchBlt
-    EngStretchBltROP               @1336; EngStretchBltROP
-    EngStrokeAndFillPath           @1337; EngStrokeAndFillPath
-    EngStrokePath                  @1338; EngStrokePath
-    EngTextOut                     @1339; EngTextOut
-    EngTransparentBlt              @1340; EngTransparentBlt
-    EngUnicodeToMultiByteN         @1341; EngUnicodeToMultiByteN
-    EngUnlockSurface               @1342; EngUnlockSurface
-    EngWideCharToMultiByte         @1343; EngWideCharToMultiByte
-    EnumEnhMetaFile                @1344; EnumEnhMetaFile
-    EnumFontFamiliesA              @1345; EnumFontFamiliesA
-    EnumFontFamiliesExA            @1346; EnumFontFamiliesExA
-    EnumFontFamiliesExW            @1347; EnumFontFamiliesExW
-    EnumFontFamiliesW              @1348; EnumFontFamiliesW
-    EnumFontsA                     @1349; EnumFontsA
-    EnumFontsW                     @1350; EnumFontsW
-    EnumICMProfilesA               @1351; EnumICMProfilesA
-    EnumICMProfilesW               @1352; EnumICMProfilesW
-    EnumMetaFile                   @1353; EnumMetaFile
-    EnumObjects                    @1354; EnumObjects
-    EqualRgn                       @1355; EqualRgn
-    Escape                         @1356; Escape
-    EudcLoadLinkW                  @1357; EudcLoadLinkW
-    EudcUnloadLinkW                @1358; EudcUnloadLinkW
-    ExcludeClipRect                @1359; ExcludeClipRect
-    ExtCreatePen                   @1360; ExtCreatePen
-    ExtCreateRegion                @1361; ExtCreateRegion
-    ExtEscape                      @1362; ExtEscape
-    ExtFloodFill                   @1363; ExtFloodFill
-    ExtSelectClipRgn               @1364; ExtSelectClipRgn
-    ExtTextOutA                    @1365; ExtTextOutA
-    ExtTextOutW                    @1366; ExtTextOutW
-    FONTOBJ_cGetAllGlyphHandles    @1367; FONTOBJ_cGetAllGlyphHandles
-    FONTOBJ_cGetGlyphs             @1368; FONTOBJ_cGetGlyphs
-    FONTOBJ_pQueryGlyphAttrs       @1369; FONTOBJ_pQueryGlyphAttrs
-    FONTOBJ_pfdg                   @1370; FONTOBJ_pfdg
-    FONTOBJ_pifi                   @1371; FONTOBJ_pifi
-    FONTOBJ_pvTrueTypeFontFile     @1372; FONTOBJ_pvTrueTypeFontFile
-    FONTOBJ_pxoGetXform            @1373; FONTOBJ_pxoGetXform
-    FONTOBJ_vGetInfo               @1374; FONTOBJ_vGetInfo
-    FillPath                       @1375; FillPath
-    FillRgn                        @1376; FillRgn
-    FixBrushOrgEx                  @1377; FixBrushOrgEx
-    FlattenPath                    @1378; FlattenPath
-    FloodFill                      @1379; FloodFill
-    FontIsLinked                   @1380; FontIsLinked
-    FrameRgn                       @1381; FrameRgn
-    GdiAddFontResourceW            @1382; GdiAddFontResourceW
-    GdiAddGlsBounds                @1383; GdiAddGlsBounds
-    GdiAddGlsRecord                @1384; GdiAddGlsRecord
-    GdiAlphaBlend                  @1385; GdiAlphaBlend
-    GdiArtificialDecrementDriver   @1386; GdiArtificialDecrementDriver
-    GdiCleanCacheDC                @1387; GdiCleanCacheDC
-    GdiClearStockObjectCache       @1388; GdiClearStockObjectCache
-    GdiComment                     @1389; GdiComment
-    GdiConsoleTextOut              @1390; GdiConsoleTextOut
-    GdiConvertAndCheckDC           @1391; GdiConvertAndCheckDC
-    GdiConvertBitmap               @1392; GdiConvertBitmap
-    GdiConvertBitmapV5             @1393; GdiConvertBitmapV5
-    GdiConvertBrush                @1394; GdiConvertBrush
-    GdiConvertDC                   @1395; GdiConvertDC
-    GdiConvertEnhMetaFile          @1396; GdiConvertEnhMetaFile
-    GdiConvertFont                 @1397; GdiConvertFont
-    GdiConvertMetaFilePict         @1398; GdiConvertMetaFilePict
-    GdiConvertPalette              @1399; GdiConvertPalette
-    GdiConvertRegion               @1400; GdiConvertRegion
-    GdiConvertToDevmodeW           @1401; GdiConvertToDevmodeW
-    GdiCreateLocalEnhMetaFile      @1402; GdiCreateLocalEnhMetaFile
-    GdiCreateLocalMetaFilePict     @1403; GdiCreateLocalMetaFilePict
-    GdiDeleteLocalDC               @1404; GdiDeleteLocalDC
-    GdiDeleteSpoolFileHandle       @1405; GdiDeleteSpoolFileHandle
-    GdiDescribePixelFormat         @1406; GdiDescribePixelFormat
-    GdiDllInitialize               @1407; GdiDllInitialize
-    GdiDrawStream                  @1408; GdiDrawStream
-    GdiEndDocEMF                   @1409; GdiEndDocEMF
-    GdiEndPageEMF                  @1410; GdiEndPageEMF
-    GdiEntry1                      @1418; GdiEntry1
-    GdiEntry10                     @1411; GdiEntry10
-    GdiEntry11                     @1412; GdiEntry11
-    GdiEntry12                     @1413; GdiEntry12
-    GdiEntry13                     @1414; GdiEntry13
-    GdiEntry14                     @1415; GdiEntry14
-    GdiEntry15                     @1416; GdiEntry15
-    GdiEntry16                     @1417; GdiEntry16
-    GdiEntry2                      @1419; GdiEntry2
-    GdiEntry3                      @1420; GdiEntry3
-    GdiEntry4                      @1421; GdiEntry4
-    GdiEntry5                      @1422; GdiEntry5
-    GdiEntry6                      @1423; GdiEntry6
-    GdiEntry7                      @1424; GdiEntry7
-    GdiEntry8                      @1425; GdiEntry8
-    GdiEntry9                      @1426; GdiEntry9
-    GdiFixUpHandle                 @1427; GdiFixUpHandle
-    GdiFlush                       @1428; GdiFlush
-    GdiFullscreenControl           @1429; GdiFullscreenControl
-    GdiGetBatchLimit               @1430; GdiGetBatchLimit
-    GdiGetBitmapBitsSize           @1431; GdiGetBitmapBitsSize
-    GdiGetCharDimensions           @1432; GdiGetCharDimensions
-    GdiGetCodePage                 @1433; GdiGetCodePage
-    GdiGetDC                       @1434; GdiGetDC
-    GdiGetDevmodeForPage           @1435; GdiGetDevmodeForPage
-    GdiGetLocalBrush               @1436; GdiGetLocalBrush
-    GdiGetLocalDC                  @1437; GdiGetLocalDC
-    GdiGetLocalFont                @1438; GdiGetLocalFont
-    GdiGetPageCount                @1439; GdiGetPageCount
-    GdiGetPageHandle               @1440; GdiGetPageHandle
-    GdiGetSpoolFileHandle          @1441; GdiGetSpoolFileHandle
-    GdiGetSpoolMessage             @1442; GdiGetSpoolMessage
-    GdiGradientFill                @1443; GdiGradientFill
-    GdiInitSpool                   @1444; GdiInitSpool
-    GdiInitializeLanguagePack      @1445; GdiInitializeLanguagePack
-    GdiIsMetaFileDC                @1446; GdiIsMetaFileDC
-    GdiIsMetaPrintDC               @1447; GdiIsMetaPrintDC
-    GdiIsPlayMetafileDC            @1448; GdiIsPlayMetafileDC
-    GdiIsScreenDC                  @1449; GdiIsScreenDC
-    GdiIsUMPDSandboxingEnabled     @1450; GdiIsUMPDSandboxingEnabled
-    GdiLoadType1Fonts              @1451; GdiLoadType1Fonts
-    GdiPlayDCScript                @1452; GdiPlayDCScript
-    GdiPlayEMF                     @1453; GdiPlayEMF
-    GdiPlayJournal                 @1454; GdiPlayJournal
-    GdiPlayPageEMF                 @1455; GdiPlayPageEMF
-    GdiPlayPrivatePageEMF          @1456; GdiPlayPrivatePageEMF
-    GdiPlayScript                  @1457; GdiPlayScript
-    GdiPrinterThunk                @1458; GdiPrinterThunk
-    GdiProcessSetup                @1459; GdiProcessSetup
-    GdiQueryFonts                  @1460; GdiQueryFonts
-    GdiQueryTable                  @1461; GdiQueryTable
-    GdiRealizationInfo             @1462; GdiRealizationInfo
-    GdiReleaseDC                   @1463; GdiReleaseDC
-    GdiReleaseLocalDC              @1464; GdiReleaseLocalDC
-    GdiResetDCEMF                  @1465; GdiResetDCEMF
-    GdiSetAttrs                    @1466; GdiSetAttrs
-    GdiSetBatchLimit               @1467; GdiSetBatchLimit
-    GdiSetLastError                @1468; GdiSetLastError
-    GdiSetPixelFormat              @1469; GdiSetPixelFormat
-    GdiSetServerAttr               @1470; GdiSetServerAttr
-    GdiStartDocEMF                 @1471; GdiStartDocEMF
-    GdiStartPageEMF                @1472; GdiStartPageEMF
-    GdiSwapBuffers                 @1473; GdiSwapBuffers
-    GdiTransparentBlt              @1474; GdiTransparentBlt
-    GdiValidateHandle              @1475; GdiValidateHandle
-    GetArcDirection                @1476; GetArcDirection
-    GetAspectRatioFilterEx         @1477; GetAspectRatioFilterEx
-    GetBitmapAttributes            @1478; GetBitmapAttributes
-    GetBitmapBits                  @1479; GetBitmapBits
-    GetBitmapDimensionEx           @1480; GetBitmapDimensionEx
-    GetBkColor                     @1481; GetBkColor
-    GetBkMode                      @1482; GetBkMode
-    GetBoundsRect                  @1483; GetBoundsRect
-    GetBrushAttributes             @1484; GetBrushAttributes
-    GetBrushOrgEx                  @1485; GetBrushOrgEx
-    GetCOPPCompatibleOPMInformation @1486; GetCOPPCompatibleOPMInformation
-    GetCertificate                 @1487; GetCertificate
-    GetCertificateSize             @1488; GetCertificateSize
-    GetCharABCWidthsA              @1489; GetCharABCWidthsA
-    GetCharABCWidthsFloatA         @1490; GetCharABCWidthsFloatA
-    GetCharABCWidthsFloatW         @1491; GetCharABCWidthsFloatW
-    GetCharABCWidthsI              @1492; GetCharABCWidthsI
-    GetCharABCWidthsW              @1493; GetCharABCWidthsW
-    GetCharWidth32A                @1494; GetCharWidth32A
-    GetCharWidth32W                @1495; GetCharWidth32W
-    GetCharWidthA                  @1496; GetCharWidthA
-    GetCharWidthFloatA             @1497; GetCharWidthFloatA
-    GetCharWidthFloatW             @1498; GetCharWidthFloatW
-    GetCharWidthI                  @1499; GetCharWidthI
-    GetCharWidthInfo               @1500; GetCharWidthInfo
-    GetCharWidthW                  @1501; GetCharWidthW
-    GetCharacterPlacementA         @1502; GetCharacterPlacementA
-    GetCharacterPlacementW         @1503; GetCharacterPlacementW
-    GetClipBox                     @1504; GetClipBox
-    GetClipRgn                     @1505; GetClipRgn
-    GetColorAdjustment             @1506; GetColorAdjustment
-    GetColorSpace                  @1507; GetColorSpace
-    GetCurrentDpiInfo              @1508; GetCurrentDpiInfo
-    GetCurrentObject               @1509; GetCurrentObject
-    GetCurrentPositionEx           @1510; GetCurrentPositionEx
-    GetDCBrushColor                @1511; GetDCBrushColor
-    GetDCOrgEx                     @1512; GetDCOrgEx
-    GetDCPenColor                  @1513; GetDCPenColor
-    GetDIBColorTable               @1514; GetDIBColorTable
-    GetDIBits                      @1515; GetDIBits
-    GetDeviceCaps                  @1516; GetDeviceCaps
-    GetDeviceGammaRamp             @1517; GetDeviceGammaRamp
-    GetETM                         @1518; GetETM
-    GetEUDCTimeStamp               @1519; GetEUDCTimeStamp
-    GetEUDCTimeStampExW            @1520; GetEUDCTimeStampExW
-    GetEnhMetaFileA                @1521; GetEnhMetaFileA
-    GetEnhMetaFileBits             @1522; GetEnhMetaFileBits
-    GetEnhMetaFileDescriptionA     @1523; GetEnhMetaFileDescriptionA
-    GetEnhMetaFileDescriptionW     @1524; GetEnhMetaFileDescriptionW
-    GetEnhMetaFileHeader           @1525; GetEnhMetaFileHeader
-    GetEnhMetaFilePaletteEntries   @1526; GetEnhMetaFilePaletteEntries
-    GetEnhMetaFilePixelFormat      @1527; GetEnhMetaFilePixelFormat
-    GetEnhMetaFileW                @1528; GetEnhMetaFileW
-    GetFontAssocStatus             @1529; GetFontAssocStatus
-    GetFontData                    @1530; GetFontData
-    GetFontFileData                @1531; GetFontFileData
-    GetFontFileInfo                @1532; GetFontFileInfo
-    GetFontLanguageInfo            @1533; GetFontLanguageInfo
-    GetFontRealizationInfo         @1534; GetFontRealizationInfo
-    GetFontResourceInfoW           @1535; GetFontResourceInfoW
-    GetFontUnicodeRanges           @1536; GetFontUnicodeRanges
-    GetGlyphIndicesA               @1537; GetGlyphIndicesA
-    GetGlyphIndicesW               @1538; GetGlyphIndicesW
-    GetGlyphOutline                @1539; GetGlyphOutline
-    GetGlyphOutlineA               @1540; GetGlyphOutlineA
-    GetGlyphOutlineW               @1541; GetGlyphOutlineW
-    GetGlyphOutlineWow             @1542; GetGlyphOutlineWow
-    GetGraphicsMode                @1543; GetGraphicsMode
-    GetHFONT                       @1544; GetHFONT
-    GetICMProfileA                 @1545; GetICMProfileA
-    GetICMProfileW                 @1546; GetICMProfileW
-    GetKerningPairs                @1547; GetKerningPairs
-    GetKerningPairsA               @1548; GetKerningPairsA
-    GetKerningPairsW               @1549; GetKerningPairsW
-    GetLayout                      @1550; GetLayout
-    GetLogColorSpaceA              @1551; GetLogColorSpaceA
-    GetLogColorSpaceW              @1552; GetLogColorSpaceW
-    GetMapMode                     @1553; GetMapMode
-    GetMetaFileA                   @1554; GetMetaFileA
-    GetMetaFileBitsEx              @1555; GetMetaFileBitsEx
-    GetMetaFileW                   @1556; GetMetaFileW
-    GetMetaRgn                     @1557; GetMetaRgn
-    GetMiterLimit                  @1558; GetMiterLimit
-    GetNearestColor                @1559; GetNearestColor
-    GetNearestPaletteIndex         @1560; GetNearestPaletteIndex
-    GetNumberOfPhysicalMonitors    @1561; GetNumberOfPhysicalMonitors
-    GetOPMInformation              @1562; GetOPMInformation
-    GetOPMRandomNumber             @1563; GetOPMRandomNumber
-    GetObjectA                     @1564; GetObjectA
-    GetObjectType                  @1565; GetObjectType
-    GetObjectW                     @1566; GetObjectW
-    GetOutlineTextMetricsA         @1567; GetOutlineTextMetricsA
-    GetOutlineTextMetricsW         @1568; GetOutlineTextMetricsW
-    GetPaletteEntries              @1569; GetPaletteEntries
-    GetPath                        @1570; GetPath
-    GetPhysicalMonitorDescription  @1571; GetPhysicalMonitorDescription
-    GetPhysicalMonitors            @1572; GetPhysicalMonitors
-    GetPixel                       @1573; GetPixel
-    GetPixelFormat                 @1574; GetPixelFormat
-    GetPolyFillMode                @1575; GetPolyFillMode
-    GetROP2                        @1576; GetROP2
-    GetRandomRgn                   @1577; GetRandomRgn
-    GetRasterizerCaps              @1578; GetRasterizerCaps
-    GetRegionData                  @1579; GetRegionData
-    GetRelAbs                      @1580; GetRelAbs
-    GetRgnBox                      @1581; GetRgnBox
-    GetStockObject                 @1582; GetStockObject
-    GetStretchBltMode              @1583; GetStretchBltMode
-    GetStringBitmapA               @1584; GetStringBitmapA
-    GetStringBitmapW               @1585; GetStringBitmapW
-    GetSuggestedOPMProtectedOutputArraySize @1586; GetSuggestedOPMProtectedOutputArraySize
-    GetSystemPaletteEntries        @1587; GetSystemPaletteEntries
-    GetSystemPaletteUse            @1588; GetSystemPaletteUse
-    GetTextAlign                   @1589; GetTextAlign
-    GetTextCharacterExtra          @1590; GetTextCharacterExtra
-    GetTextCharset                 @1591; GetTextCharset
-    GetTextCharsetInfo             @1592; GetTextCharsetInfo
-    GetTextColor                   @1593; GetTextColor
-    GetTextExtentExPointA          @1594; GetTextExtentExPointA
-    GetTextExtentExPointI          @1595; GetTextExtentExPointI
-    GetTextExtentExPointW          @1596; GetTextExtentExPointW
-    GetTextExtentExPointWPri       @1597; GetTextExtentExPointWPri
-    GetTextExtentPoint32A          @1598; GetTextExtentPoint32A
-    GetTextExtentPoint32W          @1599; GetTextExtentPoint32W
-    GetTextExtentPointA            @1600; GetTextExtentPointA
-    GetTextExtentPointI            @1601; GetTextExtentPointI
-    GetTextExtentPointW            @1602; GetTextExtentPointW
-    GetTextFaceA                   @1603; GetTextFaceA
-    GetTextFaceAliasW              @1604; GetTextFaceAliasW
-    GetTextFaceW                   @1605; GetTextFaceW
-    GetTextMetricsA                @1606; GetTextMetricsA
-    GetTextMetricsW                @1607; GetTextMetricsW
-    GetTransform                   @1608; GetTransform
-    GetViewportExtEx               @1609; GetViewportExtEx
-    GetViewportOrgEx               @1610; GetViewportOrgEx
-    GetWinMetaFileBits             @1611; GetWinMetaFileBits
-    GetWindowExtEx                 @1612; GetWindowExtEx
-    GetWindowOrgEx                 @1613; GetWindowOrgEx
-    GetWorldTransform              @1614; GetWorldTransform
-    HT_Get8BPPFormatPalette        @1615; HT_Get8BPPFormatPalette
-    HT_Get8BPPMaskPalette          @1616; HT_Get8BPPMaskPalette
-    IntersectClipRect              @1617; IntersectClipRect
-    InvertRgn                      @1618; InvertRgn
-    IsValidEnhMetaRecord           @1619; IsValidEnhMetaRecord
-    IsValidEnhMetaRecordOffExt     @1620; IsValidEnhMetaRecordOffExt
-    LPtoDP                         @1621; LPtoDP
-    LineDDA                        @1622; LineDDA
-    LineTo                         @1623; LineTo
-    LpkDrawTextEx                  @1624; LpkDrawTextEx
-    LpkEditControl                 @1625; LpkEditControl
-    LpkExtTextOut                  @1626; LpkExtTextOut
-    LpkGetCharacterPlacement       @1627; LpkGetCharacterPlacement
-    LpkGetTextExtentExPoint        @1628; LpkGetTextExtentExPoint
-    LpkInitialize                  @1629; LpkInitialize
-    LpkPSMTextOut                  @1630; LpkPSMTextOut
-    LpkPresent                     @1631; LpkPresent
-    LpkTabbedTextOut               @1632; LpkTabbedTextOut
-    LpkUseGDIWidthCache            @1633; LpkUseGDIWidthCache
-    MaskBlt                        @1634; MaskBlt
-    MirrorRgn                      @1635; MirrorRgn
-    ModifyWorldTransform           @1636; ModifyWorldTransform
-    MoveToEx                       @1637; MoveToEx
-    NamedEscape                    @1638; NamedEscape
-    OffsetClipRgn                  @1639; OffsetClipRgn
-    OffsetRgn                      @1640; OffsetRgn
-    OffsetViewportOrgEx            @1641; OffsetViewportOrgEx
-    OffsetWindowOrgEx              @1642; OffsetWindowOrgEx
-    PATHOBJ_bEnum                  @1643; PATHOBJ_bEnum
-    PATHOBJ_bEnumClipLines         @1644; PATHOBJ_bEnumClipLines
-    PATHOBJ_vEnumStart             @1645; PATHOBJ_vEnumStart
-    PATHOBJ_vEnumStartClipLines    @1646; PATHOBJ_vEnumStartClipLines
-    PATHOBJ_vGetBounds             @1647; PATHOBJ_vGetBounds
-    PaintRgn                       @1648; PaintRgn
-    PatBlt                         @1649; PatBlt
-    PathToRegion                   @1650; PathToRegion
-    Pie                            @1651; Pie
-    PlayEnhMetaFile                @1652; PlayEnhMetaFile
-    PlayEnhMetaFileRecord          @1653; PlayEnhMetaFileRecord
-    PlayMetaFile                   @1654; PlayMetaFile
-    PlayMetaFileRecord             @1655; PlayMetaFileRecord
-    PlgBlt                         @1656; PlgBlt
-    PolyBezier                     @1657; PolyBezier
-    PolyBezierTo                   @1658; PolyBezierTo
-    PolyDraw                       @1659; PolyDraw
-    PolyPatBlt                     @1660; PolyPatBlt
-    PolyPolygon                    @1661; PolyPolygon
-    PolyPolyline                   @1662; PolyPolyline
-    PolyTextOutA                   @1663; PolyTextOutA
-    PolyTextOutW                   @1664; PolyTextOutW
-    Polygon                        @1665; Polygon
-    Polyline                       @1666; Polyline
-    PolylineTo                     @1667; PolylineTo
-    PtInRegion                     @1668; PtInRegion
-    PtVisible                      @1669; PtVisible
-    QueryFontAssocStatus           @1670; QueryFontAssocStatus
-    RealizePalette                 @1671; RealizePalette
-    RectInRegion                   @1672; RectInRegion
-    RectVisible                    @1673; RectVisible
-    Rectangle                      @1674; Rectangle
-    RemoveFontMemResourceEx        @1675; RemoveFontMemResourceEx
-    RemoveFontResourceA            @1676; RemoveFontResourceA
-    RemoveFontResourceExA          @1677; RemoveFontResourceExA
-    RemoveFontResourceExW          @1678; RemoveFontResourceExW
-    RemoveFontResourceTracking     @1679; RemoveFontResourceTracking
-    RemoveFontResourceW            @1680; RemoveFontResourceW
-    ResetDCA                       @1681; ResetDCA
-    ResetDCW                       @1682; ResetDCW
-    ResizePalette                  @1683; ResizePalette
-    RestoreDC                      @1684; RestoreDC
-    RoundRect                      @1685; RoundRect
-    STROBJ_bEnum                   @1686; STROBJ_bEnum
-    STROBJ_bEnumPositionsOnly      @1687; STROBJ_bEnumPositionsOnly
-    STROBJ_bGetAdvanceWidths       @1688; STROBJ_bGetAdvanceWidths
-    STROBJ_dwGetCodePage           @1689; STROBJ_dwGetCodePage
-    STROBJ_vEnumStart              @1690; STROBJ_vEnumStart
-    SaveDC                         @1691; SaveDC
-    ScaleViewportExtEx             @1692; ScaleViewportExtEx
-    ScaleWindowExtEx               @1693; ScaleWindowExtEx
-    ScriptApplyDigitSubstitution   @1694; ScriptApplyDigitSubstitution
-    ScriptApplyLogicalWidth        @1695; ScriptApplyLogicalWidth
-    ScriptBreak                    @1696; ScriptBreak
-    ScriptCPtoX                    @1697; ScriptCPtoX
-    ScriptCacheGetHeight           @1698; ScriptCacheGetHeight
-    ScriptFreeCache                @1699; ScriptFreeCache
-    ScriptGetCMap                  @1700; ScriptGetCMap
-    ScriptGetFontAlternateGlyphs   @1701; ScriptGetFontAlternateGlyphs
-    ScriptGetFontFeatureTags       @1702; ScriptGetFontFeatureTags
-    ScriptGetFontLanguageTags      @1703; ScriptGetFontLanguageTags
-    ScriptGetFontProperties        @1704; ScriptGetFontProperties
-    ScriptGetFontScriptTags        @1705; ScriptGetFontScriptTags
-    ScriptGetGlyphABCWidth         @1706; ScriptGetGlyphABCWidth
-    ScriptGetLogicalWidths         @1707; ScriptGetLogicalWidths
-    ScriptGetProperties            @1708; ScriptGetProperties
-    ScriptIsComplex                @1709; ScriptIsComplex
-    ScriptItemize                  @1710; ScriptItemize
-    ScriptItemizeOpenType          @1711; ScriptItemizeOpenType
-    ScriptJustify                  @1712; ScriptJustify
-    ScriptLayout                   @1713; ScriptLayout
-    ScriptPlace                    @1714; ScriptPlace
-    ScriptPlaceOpenType            @1715; ScriptPlaceOpenType
-    ScriptPositionSingleGlyph      @1716; ScriptPositionSingleGlyph
-    ScriptRecordDigitSubstitution  @1717; ScriptRecordDigitSubstitution
-    ScriptShape                    @1718; ScriptShape
-    ScriptShapeOpenType            @1719; ScriptShapeOpenType
-    ScriptStringAnalyse            @1720; ScriptStringAnalyse
-    ScriptStringCPtoX              @1721; ScriptStringCPtoX
-    ScriptStringFree               @1722; ScriptStringFree
-    ScriptStringGetLogicalWidths   @1723; ScriptStringGetLogicalWidths
-    ScriptStringGetOrder           @1724; ScriptStringGetOrder
-    ScriptStringOut                @1725; ScriptStringOut
-    ScriptStringValidate           @1726; ScriptStringValidate
-    ScriptStringXtoCP              @1727; ScriptStringXtoCP
-    ScriptString_pLogAttr          @1728; ScriptString_pLogAttr
-    ScriptString_pSize             @1729; ScriptString_pSize
-    ScriptString_pcOutChars        @1730; ScriptString_pcOutChars
-    ScriptSubstituteSingleGlyph    @1731; ScriptSubstituteSingleGlyph
-    ScriptTextOut                  @1732; ScriptTextOut
-    ScriptXtoCP                    @1733; ScriptXtoCP
-    SelectBrushLocal               @1734; SelectBrushLocal
-    SelectClipPath                 @1735; SelectClipPath
-    SelectClipRgn                  @1736; SelectClipRgn
-    SelectFontLocal                @1737; SelectFontLocal
-    SelectObject                   @1738; SelectObject
-    SelectPalette                  @1739; SelectPalette
-    SetAbortProc                   @1740; SetAbortProc
-    SetArcDirection                @1741; SetArcDirection
-    SetBitmapAttributes            @1742; SetBitmapAttributes
-    SetBitmapBits                  @1743; SetBitmapBits
-    SetBitmapDimensionEx           @1744; SetBitmapDimensionEx
-    SetBkColor                     @1745; SetBkColor
-    SetBkMode                      @1746; SetBkMode
-    SetBoundsRect                  @1747; SetBoundsRect
-    SetBrushAttributes             @1748; SetBrushAttributes
-    SetBrushOrgEx                  @1749; SetBrushOrgEx
-    SetColorAdjustment             @1750; SetColorAdjustment
-    SetColorSpace                  @1751; SetColorSpace
-    SetDCBrushColor                @1752; SetDCBrushColor
-    SetDCPenColor                  @1753; SetDCPenColor
-    SetDIBColorTable               @1754; SetDIBColorTable
-    SetDIBits                      @1755; SetDIBits
-    SetDIBitsToDevice              @1756; SetDIBitsToDevice
-    SetDeviceGammaRamp             @1757; SetDeviceGammaRamp
-    SetEnhMetaFileBits             @1758; SetEnhMetaFileBits
-    SetFontEnumeration             @1759; SetFontEnumeration
-    SetGraphicsMode                @1760; SetGraphicsMode
-    SetICMMode                     @1761; SetICMMode
-    SetICMProfileA                 @1762; SetICMProfileA
-    SetICMProfileW                 @1763; SetICMProfileW
-    SetLayout                      @1764; SetLayout
-    SetLayoutWidth                 @1765; SetLayoutWidth
-    SetMagicColors                 @1766; SetMagicColors
-    SetMapMode                     @1767; SetMapMode
-    SetMapperFlags                 @1768; SetMapperFlags
-    SetMetaFileBitsEx              @1769; SetMetaFileBitsEx
-    SetMetaRgn                     @1770; SetMetaRgn
-    SetMiterLimit                  @1771; SetMiterLimit
-    SetOPMSigningKeyAndSequenceNumbers @1772; SetOPMSigningKeyAndSequenceNumbers
-    SetPaletteEntries              @1773; SetPaletteEntries
-    SetPixel                       @1774; SetPixel
-    SetPixelFormat                 @1775; SetPixelFormat
-    SetPixelV                      @1776; SetPixelV
-    SetPolyFillMode                @1777; SetPolyFillMode
-    SetROP2                        @1778; SetROP2
-    SetRectRgn                     @1779; SetRectRgn
-    SetRelAbs                      @1780; SetRelAbs
-    SetStretchBltMode              @1781; SetStretchBltMode
-    SetSystemPaletteUse            @1782; SetSystemPaletteUse
-    SetTextAlign                   @1783; SetTextAlign
-    SetTextCharacterExtra          @1784; SetTextCharacterExtra
-    SetTextColor                   @1785; SetTextColor
-    SetTextJustification           @1786; SetTextJustification
-    SetViewportExtEx               @1787; SetViewportExtEx
-    SetViewportOrgEx               @1788; SetViewportOrgEx
-    SetVirtualResolution           @1789; SetVirtualResolution
-    SetWinMetaFileBits             @1790; SetWinMetaFileBits
-    SetWindowExtEx                 @1791; SetWindowExtEx
-    SetWindowOrgEx                 @1792; SetWindowOrgEx
-    SetWorldTransform              @1793; SetWorldTransform
-    StartDocA                      @1794; StartDocA
-    StartDocW                      @1795; StartDocW
-    StartFormPage                  @1796; StartFormPage
-    StartPage                      @1797; StartPage
-    StretchBlt                     @1798; StretchBlt
-    StretchDIBits                  @1799; StretchDIBits
-    StrokeAndFillPath              @1800; StrokeAndFillPath
-    StrokePath                     @1801; StrokePath
-    SwapBuffers                    @1802; SwapBuffers
-    TextOutA                       @1803; TextOutA
-    TextOutW                       @1804; TextOutW
-    TranslateCharsetInfo           @1805; TranslateCharsetInfo
-    UnloadNetworkFonts             @1806; UnloadNetworkFonts
-    UnrealizeObject                @1807; UnrealizeObject
-    UpdateColors                   @1808; UpdateColors
-    UpdateICMRegKeyA               @1809; UpdateICMRegKeyA
-    UpdateICMRegKeyW               @1810; UpdateICMRegKeyW
-    UspAllocCache                  @1811; UspAllocCache
-    UspAllocTemp                   @1812; UspAllocTemp
-    UspFreeMem                     @1813; UspFreeMem
-    WidenPath                      @1814; WidenPath
-    XFORMOBJ_bApplyXform           @1815; XFORMOBJ_bApplyXform
-    XFORMOBJ_iGetXform             @1816; XFORMOBJ_iGetXform
-    XLATEOBJ_cGetPalette           @1817; XLATEOBJ_cGetPalette
-    XLATEOBJ_hGetColorTransform    @1818; XLATEOBJ_hGetColorTransform
-    XLATEOBJ_iXlate                @1819; XLATEOBJ_iXlate
-    XLATEOBJ_piVector              @1820; XLATEOBJ_piVector
-    bInitSystemAndFontsDirectoriesW @1821; bInitSystemAndFontsDirectoriesW
-    bMakePathNameW                 @1822; bMakePathNameW
-    cGetTTFFromFOT                 @1823; cGetTTFFromFOT
-    ftsWordBreak                   @1824; ftsWordBreak
-    gdiPlaySpoolStream             @1825; gdiPlaySpoolStream
+    AbortDoc
+    AbortPath
+    AddFontMemResourceEx
+    AddFontResourceA
+    AddFontResourceExA
+    AddFontResourceExW
+    AddFontResourceTracking
+    AddFontResourceW
+    AngleArc
+    AnimatePalette
+    AnyLinkedFonts
+    Arc
+    ArcTo
+    BRUSHOBJ_hGetColorTransform
+    BRUSHOBJ_pvAllocRbrush
+    BRUSHOBJ_pvGetRbrush
+    BRUSHOBJ_ulGetBrushColor
+    BeginGdiRendering
+    BeginPath
+    BitBlt
+    CLIPOBJ_bEnum
+    CLIPOBJ_cEnumStart
+    CLIPOBJ_ppoGetPath
+    CancelDC
+    CheckColorsInGamut
+    ChoosePixelFormat
+    Chord
+    ClearBitmapAttributes
+    ClearBrushAttributes
+    CloseEnhMetaFile
+    CloseFigure
+    CloseMetaFile
+    ColorCorrectPalette
+    ColorMatchToTarget
+    CombineRgn
+    CombineTransform
+    ConfigureOPMProtectedOutput
+    CopyEnhMetaFileA
+    CopyEnhMetaFileW
+    CopyMetaFileA
+    CopyMetaFileW
+    CreateBitmap
+    CreateBitmapFromDxSurface
+    CreateBitmapFromDxSurface2
+    CreateBitmapIndirect
+    CreateBrushIndirect
+    CreateColorSpaceA
+    CreateColorSpaceW
+    CreateCompatibleBitmap
+    CreateCompatibleDC
+    CreateDCA
+    CreateDCW
+    CreateDIBPatternBrush
+    CreateDIBPatternBrushPt
+    CreateDIBSection
+    CreateDIBitmap
+    CreateDiscardableBitmap
+    CreateEllipticRgn
+    CreateEllipticRgnIndirect
+    CreateEnhMetaFileA
+    CreateEnhMetaFileW
+    CreateFontA
+    CreateFontIndirectA
+    CreateFontIndirectExA
+    CreateFontIndirectExW
+    CreateFontIndirectW
+    CreateFontW
+    CreateHalftonePalette
+    CreateHatchBrush
+    CreateICA
+    CreateICW
+    CreateMetaFileA
+    CreateMetaFileW
+    CreateOPMProtectedOutputs
+    CreatePalette
+    CreatePatternBrush
+    CreatePen
+    CreatePenIndirect
+    CreatePolyPolygonRgn
+    CreatePolygonRgn
+    CreateRectRgn
+    CreateRectRgnIndirect
+    CreateRoundRectRgn
+    CreateScalableFontResourceA
+    CreateScalableFontResourceW
+    CreateSessionMappedDIBSection
+    CreateSolidBrush
+    D3DKMTAcquireKeyedMutex
+    D3DKMTAcquireKeyedMutex2
+    D3DKMTCacheHybridQueryValue
+    D3DKMTCheckExclusiveOwnership
+    D3DKMTCheckMonitorPowerState
+    D3DKMTCheckMultiPlaneOverlaySupport
+    D3DKMTCheckOcclusion
+    D3DKMTCheckSharedResourceAccess
+    D3DKMTCheckVidPnExclusiveOwnership
+    D3DKMTCloseAdapter
+    D3DKMTConfigureSharedResource
+    D3DKMTCreateAllocation
+    D3DKMTCreateAllocation2
+    D3DKMTCreateContext
+    D3DKMTCreateDCFromMemory
+    D3DKMTCreateDevice
+    D3DKMTCreateKeyedMutex
+    D3DKMTCreateKeyedMutex2
+    D3DKMTCreateOutputDupl
+    D3DKMTCreateOverlay
+    D3DKMTCreateSynchronizationObject
+    D3DKMTCreateSynchronizationObject2
+    D3DKMTDestroyAllocation
+    D3DKMTDestroyContext
+    D3DKMTDestroyDCFromMemory
+    D3DKMTDestroyDevice
+    D3DKMTDestroyKeyedMutex
+    D3DKMTDestroyOutputDupl
+    D3DKMTDestroyOverlay
+    D3DKMTDestroySynchronizationObject
+    D3DKMTEnumAdapters
+    D3DKMTEscape
+    D3DKMTFlipOverlay
+    D3DKMTGetCachedHybridQueryValue
+    D3DKMTGetContextInProcessSchedulingPriority
+    D3DKMTGetContextSchedulingPriority
+    D3DKMTGetDeviceState
+    D3DKMTGetDisplayModeList
+    D3DKMTGetMultisampleMethodList
+    D3DKMTGetOverlayState
+    D3DKMTGetPresentHistory
+    D3DKMTGetPresentQueueEvent
+    D3DKMTGetProcessSchedulingPriorityClass
+    D3DKMTGetRuntimeData
+    D3DKMTGetScanLine
+    D3DKMTGetSharedPrimaryHandle
+    D3DKMTGetSharedResourceAdapterLuid
+    D3DKMTInvalidateActiveVidPn
+    D3DKMTLock
+    D3DKMTNetDispGetNextChunkInfo
+    D3DKMTNetDispQueryMiracastDisplayDeviceStatus
+    D3DKMTNetDispQueryMiracastDisplayDeviceSupport
+    D3DKMTNetDispStartMiracastDisplayDevice
+    D3DKMTNetDispStartMiracastDisplayDevice2
+    D3DKMTNetDispStopMiracastDisplayDevice
+    D3DKMTOfferAllocations
+    D3DKMTOpenAdapterFromDeviceName
+    D3DKMTOpenAdapterFromGdiDisplayName
+    D3DKMTOpenAdapterFromHdc
+    D3DKMTOpenAdapterFromLuid
+    D3DKMTOpenKeyedMutex
+    D3DKMTOpenKeyedMutex2
+    D3DKMTOpenNtHandleFromName
+    D3DKMTOpenResource
+    D3DKMTOpenResource2
+    D3DKMTOpenResourceFromNtHandle
+    D3DKMTOpenSyncObjectFromNtHandle
+    D3DKMTOpenSynchronizationObject
+    D3DKMTOutputDuplGetFrameInfo
+    D3DKMTOutputDuplGetMetaData
+    D3DKMTOutputDuplGetPointerShapeData
+    D3DKMTOutputDuplPresent
+    D3DKMTOutputDuplReleaseFrame
+    D3DKMTPinDirectFlipResources
+    D3DKMTPollDisplayChildren
+    D3DKMTPresent
+    D3DKMTPresentMultiPlaneOverlay
+    D3DKMTQueryAdapterInfo
+    D3DKMTQueryAllocationResidency
+    D3DKMTQueryRemoteVidPnSourceFromGdiDisplayName
+    D3DKMTQueryResourceInfo
+    D3DKMTQueryResourceInfoFromNtHandle
+    D3DKMTQueryStatistics
+    D3DKMTReclaimAllocations
+    D3DKMTReleaseKeyedMutex
+    D3DKMTReleaseKeyedMutex2
+    D3DKMTReleaseProcessVidPnSourceOwners
+    D3DKMTRender
+    D3DKMTSetAllocationPriority
+    D3DKMTSetContextInProcessSchedulingPriority
+    D3DKMTSetContextSchedulingPriority
+    D3DKMTSetDisplayMode
+    D3DKMTSetDisplayPrivateDriverFormat
+    D3DKMTSetGammaRamp
+    D3DKMTSetProcessSchedulingPriorityClass
+    D3DKMTSetQueuedLimit
+    D3DKMTSetStereoEnabled
+    D3DKMTSetVidPnSourceOwner
+    D3DKMTSetVidPnSourceOwner1
+    D3DKMTShareObjects
+    D3DKMTSharedPrimaryLockNotification
+    D3DKMTSharedPrimaryUnLockNotification
+    D3DKMTSignalSynchronizationObject
+    D3DKMTSignalSynchronizationObject2
+    D3DKMTUnlock
+    D3DKMTUnpinDirectFlipResources
+    D3DKMTUpdateOverlay
+    D3DKMTWaitForIdle
+    D3DKMTWaitForSynchronizationObject
+    D3DKMTWaitForSynchronizationObject2
+    D3DKMTWaitForVerticalBlankEvent
+    D3DKMTWaitForVerticalBlankEvent2
+    DDCCIGetCapabilitiesString
+    DDCCIGetCapabilitiesStringLength
+    DDCCIGetTimingReport
+    DDCCIGetVCPFeature
+    DDCCISaveCurrentSettings
+    DDCCISetVCPFeature
+    DPtoLP
+    DdCreateFullscreenSprite
+    DdDestroyFullscreenSprite
+    DdEntry0
+    DdEntry1
+    DdEntry10
+    DdEntry11
+    DdEntry12
+    DdEntry13
+    DdEntry14
+    DdEntry15
+    DdEntry16
+    DdEntry17
+    DdEntry18
+    DdEntry19
+    DdEntry2
+    DdEntry20
+    DdEntry21
+    DdEntry22
+    DdEntry23
+    DdEntry24
+    DdEntry25
+    DdEntry26
+    DdEntry27
+    DdEntry28
+    DdEntry29
+    DdEntry3
+    DdEntry30
+    DdEntry31
+    DdEntry32
+    DdEntry33
+    DdEntry34
+    DdEntry35
+    DdEntry36
+    DdEntry37
+    DdEntry38
+    DdEntry39
+    DdEntry4
+    DdEntry40
+    DdEntry41
+    DdEntry42
+    DdEntry43
+    DdEntry44
+    DdEntry45
+    DdEntry46
+    DdEntry47
+    DdEntry48
+    DdEntry49
+    DdEntry5
+    DdEntry50
+    DdEntry51
+    DdEntry52
+    DdEntry53
+    DdEntry54
+    DdEntry55
+    DdEntry56
+    DdEntry6
+    DdEntry7
+    DdEntry8
+    DdEntry9
+    DdNotifyFullscreenSpriteUpdate
+    DdQueryVisRgnUniqueness
+    DeleteColorSpace
+    DeleteDC
+    DeleteEnhMetaFile
+    DeleteMetaFile
+    DeleteObject
+    DescribePixelFormat
+    DestroyOPMProtectedOutput
+    DestroyPhysicalMonitorInternal
+    DeviceCapabilitiesExA
+    DeviceCapabilitiesExW
+    DrawEscape
+    Ellipse
+    EnableEUDC
+    EndDoc
+    EndFormPage
+    EndGdiRendering
+    EndPage
+    EndPath
+    EngAcquireSemaphore
+    EngAlphaBlend
+    EngAssociateSurface
+    EngBitBlt
+    EngCheckAbort
+    EngComputeGlyphSet
+    EngCopyBits
+    EngCreateBitmap
+    EngCreateClip
+    EngCreateDeviceBitmap
+    EngCreateDeviceSurface
+    EngCreatePalette
+    EngCreateSemaphore
+    EngDeleteClip
+    EngDeletePalette
+    EngDeletePath
+    EngDeleteSemaphore
+    EngDeleteSurface
+    EngEraseSurface
+    EngFillPath
+    EngFindResource
+    EngFreeModule
+    EngGetCurrentCodePage
+    EngGetDriverName
+    EngGetPrinterDataFileName
+    EngGradientFill
+    EngLineTo
+    EngLoadModule
+    EngLockSurface
+    EngMarkBandingSurface
+    EngMultiByteToUnicodeN
+    EngMultiByteToWideChar
+    EngPaint
+    EngPlgBlt
+    EngQueryEMFInfo
+    EngQueryLocalTime
+    EngReleaseSemaphore
+    EngStretchBlt
+    EngStretchBltROP
+    EngStrokeAndFillPath
+    EngStrokePath
+    EngTextOut
+    EngTransparentBlt
+    EngUnicodeToMultiByteN
+    EngUnlockSurface
+    EngWideCharToMultiByte
+    EnumEnhMetaFile
+    EnumFontFamiliesA
+    EnumFontFamiliesExA
+    EnumFontFamiliesExW
+    EnumFontFamiliesW
+    EnumFontsA
+    EnumFontsW
+    EnumICMProfilesA
+    EnumICMProfilesW
+    EnumMetaFile
+    EnumObjects
+    EqualRgn
+    Escape
+    EudcLoadLinkW
+    EudcUnloadLinkW
+    ExcludeClipRect
+    ExtCreatePen
+    ExtCreateRegion
+    ExtEscape
+    ExtFloodFill
+    ExtSelectClipRgn
+    ExtTextOutA
+    ExtTextOutW
+    FONTOBJ_cGetAllGlyphHandles
+    FONTOBJ_cGetGlyphs
+    FONTOBJ_pQueryGlyphAttrs
+    FONTOBJ_pfdg
+    FONTOBJ_pifi
+    FONTOBJ_pvTrueTypeFontFile
+    FONTOBJ_pxoGetXform
+    FONTOBJ_vGetInfo
+    FillPath
+    FillRgn
+    FixBrushOrgEx
+    FlattenPath
+    FloodFill
+    FontIsLinked
+    FrameRgn
+    GdiAddFontResourceW
+    GdiAddGlsBounds
+    GdiAddGlsRecord
+    GdiAlphaBlend
+    GdiArtificialDecrementDriver
+    GdiCleanCacheDC
+    GdiClearStockObjectCache
+    GdiComment
+    GdiConsoleTextOut
+    GdiConvertAndCheckDC
+    GdiConvertBitmap
+    GdiConvertBitmapV5
+    GdiConvertBrush
+    GdiConvertDC
+    GdiConvertEnhMetaFile
+    GdiConvertFont
+    GdiConvertMetaFilePict
+    GdiConvertPalette
+    GdiConvertRegion
+    GdiConvertToDevmodeW
+    GdiCreateLocalEnhMetaFile
+    GdiCreateLocalMetaFilePict
+    GdiDeleteLocalDC
+    GdiDeleteSpoolFileHandle
+    GdiDescribePixelFormat
+    GdiDllInitialize
+    GdiDrawStream
+    GdiEndDocEMF
+    GdiEndPageEMF
+    GdiEntry1
+    GdiEntry10
+    GdiEntry11
+    GdiEntry12
+    GdiEntry13
+    GdiEntry14
+    GdiEntry15
+    GdiEntry16
+    GdiEntry2
+    GdiEntry3
+    GdiEntry4
+    GdiEntry5
+    GdiEntry6
+    GdiEntry7
+    GdiEntry8
+    GdiEntry9
+    GdiFixUpHandle
+    GdiFlush
+    GdiFullscreenControl
+    GdiGetBatchLimit
+    GdiGetBitmapBitsSize
+    GdiGetCharDimensions
+    GdiGetCodePage
+    GdiGetDC
+    GdiGetDevmodeForPage
+    GdiGetLocalBrush
+    GdiGetLocalDC
+    GdiGetLocalFont
+    GdiGetPageCount
+    GdiGetPageHandle
+    GdiGetSpoolFileHandle
+    GdiGetSpoolMessage
+    GdiGradientFill
+    GdiInitSpool
+    GdiInitializeLanguagePack
+    GdiIsMetaFileDC
+    GdiIsMetaPrintDC
+    GdiIsPlayMetafileDC
+    GdiIsScreenDC
+    GdiIsUMPDSandboxingEnabled
+    GdiLoadType1Fonts
+    GdiPlayDCScript
+    GdiPlayEMF
+    GdiPlayJournal
+    GdiPlayPageEMF
+    GdiPlayPrivatePageEMF
+    GdiPlayScript
+    GdiPrinterThunk
+    GdiProcessSetup
+    GdiQueryFonts
+    GdiQueryTable
+    GdiRealizationInfo
+    GdiReleaseDC
+    GdiReleaseLocalDC
+    GdiResetDCEMF
+    GdiSetAttrs
+    GdiSetBatchLimit
+    GdiSetLastError
+    GdiSetPixelFormat
+    GdiSetServerAttr
+    GdiStartDocEMF
+    GdiStartPageEMF
+    GdiSwapBuffers
+    GdiTransparentBlt
+    GdiValidateHandle
+    GetArcDirection
+    GetAspectRatioFilterEx
+    GetBitmapAttributes
+    GetBitmapBits
+    GetBitmapDimensionEx
+    GetBkColor
+    GetBkMode
+    GetBoundsRect
+    GetBrushAttributes
+    GetBrushOrgEx
+    GetCOPPCompatibleOPMInformation
+    GetCertificate
+    GetCertificateSize
+    GetCharABCWidthsA
+    GetCharABCWidthsFloatA
+    GetCharABCWidthsFloatW
+    GetCharABCWidthsI
+    GetCharABCWidthsW
+    GetCharWidth32A
+    GetCharWidth32W
+    GetCharWidthA
+    GetCharWidthFloatA
+    GetCharWidthFloatW
+    GetCharWidthI
+    GetCharWidthInfo
+    GetCharWidthW
+    GetCharacterPlacementA
+    GetCharacterPlacementW
+    GetClipBox
+    GetClipRgn
+    GetColorAdjustment
+    GetColorSpace
+    GetCurrentDpiInfo
+    GetCurrentObject
+    GetCurrentPositionEx
+    GetDCBrushColor
+    GetDCOrgEx
+    GetDCPenColor
+    GetDIBColorTable
+    GetDIBits
+    GetDeviceCaps
+    GetDeviceGammaRamp
+    GetETM
+    GetEUDCTimeStamp
+    GetEUDCTimeStampExW
+    GetEnhMetaFileA
+    GetEnhMetaFileBits
+    GetEnhMetaFileDescriptionA
+    GetEnhMetaFileDescriptionW
+    GetEnhMetaFileHeader
+    GetEnhMetaFilePaletteEntries
+    GetEnhMetaFilePixelFormat
+    GetEnhMetaFileW
+    GetFontAssocStatus
+    GetFontData
+    GetFontFileData
+    GetFontFileInfo
+    GetFontLanguageInfo
+    GetFontRealizationInfo
+    GetFontResourceInfoW
+    GetFontUnicodeRanges
+    GetGlyphIndicesA
+    GetGlyphIndicesW
+    GetGlyphOutline
+    GetGlyphOutlineA
+    GetGlyphOutlineW
+    GetGlyphOutlineWow
+    GetGraphicsMode
+    GetHFONT
+    GetICMProfileA
+    GetICMProfileW
+    GetKerningPairs
+    GetKerningPairsA
+    GetKerningPairsW
+    GetLayout
+    GetLogColorSpaceA
+    GetLogColorSpaceW
+    GetMapMode
+    GetMetaFileA
+    GetMetaFileBitsEx
+    GetMetaFileW
+    GetMetaRgn
+    GetMiterLimit
+    GetNearestColor
+    GetNearestPaletteIndex
+    GetNumberOfPhysicalMonitors
+    GetOPMInformation
+    GetOPMRandomNumber
+    GetObjectA
+    GetObjectType
+    GetObjectW
+    GetOutlineTextMetricsA
+    GetOutlineTextMetricsW
+    GetPaletteEntries
+    GetPath
+    GetPhysicalMonitorDescription
+    GetPhysicalMonitors
+    GetPixel
+    GetPixelFormat
+    GetPolyFillMode
+    GetROP2
+    GetRandomRgn
+    GetRasterizerCaps
+    GetRegionData
+    GetRelAbs
+    GetRgnBox
+    GetStockObject
+    GetStretchBltMode
+    GetStringBitmapA
+    GetStringBitmapW
+    GetSuggestedOPMProtectedOutputArraySize
+    GetSystemPaletteEntries
+    GetSystemPaletteUse
+    GetTextAlign
+    GetTextCharacterExtra
+    GetTextCharset
+    GetTextCharsetInfo
+    GetTextColor
+    GetTextExtentExPointA
+    GetTextExtentExPointI
+    GetTextExtentExPointW
+    GetTextExtentExPointWPri
+    GetTextExtentPoint32A
+    GetTextExtentPoint32W
+    GetTextExtentPointA
+    GetTextExtentPointI
+    GetTextExtentPointW
+    GetTextFaceA
+    GetTextFaceAliasW
+    GetTextFaceW
+    GetTextMetricsA
+    GetTextMetricsW
+    GetTransform
+    GetViewportExtEx
+    GetViewportOrgEx
+    GetWinMetaFileBits
+    GetWindowExtEx
+    GetWindowOrgEx
+    GetWorldTransform
+    HT_Get8BPPFormatPalette
+    HT_Get8BPPMaskPalette
+    IntersectClipRect
+    InvertRgn
+    IsValidEnhMetaRecord
+    IsValidEnhMetaRecordOffExt
+    LPtoDP
+    LineDDA
+    LineTo
+    LpkDrawTextEx
+    LpkEditControl
+    LpkExtTextOut
+    LpkGetCharacterPlacement
+    LpkGetTextExtentExPoint
+    LpkInitialize
+    LpkPSMTextOut
+    LpkPresent
+    LpkTabbedTextOut
+    LpkUseGDIWidthCache
+    MaskBlt
+    MirrorRgn
+    ModifyWorldTransform
+    MoveToEx
+    NamedEscape
+    OffsetClipRgn
+    OffsetRgn
+    OffsetViewportOrgEx
+    OffsetWindowOrgEx
+    PATHOBJ_bEnum
+    PATHOBJ_bEnumClipLines
+    PATHOBJ_vEnumStart
+    PATHOBJ_vEnumStartClipLines
+    PATHOBJ_vGetBounds
+    PaintRgn
+    PatBlt
+    PathToRegion
+    Pie
+    PlayEnhMetaFile
+    PlayEnhMetaFileRecord
+    PlayMetaFile
+    PlayMetaFileRecord
+    PlgBlt
+    PolyBezier
+    PolyBezierTo
+    PolyDraw
+    PolyPatBlt
+    PolyPolygon
+    PolyPolyline
+    PolyTextOutA
+    PolyTextOutW
+    Polygon
+    Polyline
+    PolylineTo
+    PtInRegion
+    PtVisible
+    QueryFontAssocStatus
+    RealizePalette
+    RectInRegion
+    RectVisible
+    Rectangle
+    RemoveFontMemResourceEx
+    RemoveFontResourceA
+    RemoveFontResourceExA
+    RemoveFontResourceExW
+    RemoveFontResourceTracking
+    RemoveFontResourceW
+    ResetDCA
+    ResetDCW
+    ResizePalette
+    RestoreDC
+    RoundRect
+    STROBJ_bEnum
+    STROBJ_bEnumPositionsOnly
+    STROBJ_bGetAdvanceWidths
+    STROBJ_dwGetCodePage
+    STROBJ_vEnumStart
+    SaveDC
+    ScaleViewportExtEx
+    ScaleWindowExtEx
+    ScriptApplyDigitSubstitution
+    ScriptApplyLogicalWidth
+    ScriptBreak
+    ScriptCPtoX
+    ScriptCacheGetHeight
+    ScriptFreeCache
+    ScriptGetCMap
+    ScriptGetFontAlternateGlyphs
+    ScriptGetFontFeatureTags
+    ScriptGetFontLanguageTags
+    ScriptGetFontProperties
+    ScriptGetFontScriptTags
+    ScriptGetGlyphABCWidth
+    ScriptGetLogicalWidths
+    ScriptGetProperties
+    ScriptIsComplex
+    ScriptItemize
+    ScriptItemizeOpenType
+    ScriptJustify
+    ScriptLayout
+    ScriptPlace
+    ScriptPlaceOpenType
+    ScriptPositionSingleGlyph
+    ScriptRecordDigitSubstitution
+    ScriptShape
+    ScriptShapeOpenType
+    ScriptStringAnalyse
+    ScriptStringCPtoX
+    ScriptStringFree
+    ScriptStringGetLogicalWidths
+    ScriptStringGetOrder
+    ScriptStringOut
+    ScriptStringValidate
+    ScriptStringXtoCP
+    ScriptString_pLogAttr
+    ScriptString_pSize
+    ScriptString_pcOutChars
+    ScriptSubstituteSingleGlyph
+    ScriptTextOut
+    ScriptXtoCP
+    SelectBrushLocal
+    SelectClipPath
+    SelectClipRgn
+    SelectFontLocal
+    SelectObject
+    SelectPalette
+    SetAbortProc
+    SetArcDirection
+    SetBitmapAttributes
+    SetBitmapBits
+    SetBitmapDimensionEx
+    SetBkColor
+    SetBkMode
+    SetBoundsRect
+    SetBrushAttributes
+    SetBrushOrgEx
+    SetColorAdjustment
+    SetColorSpace
+    SetDCBrushColor
+    SetDCPenColor
+    SetDIBColorTable
+    SetDIBits
+    SetDIBitsToDevice
+    SetDeviceGammaRamp
+    SetEnhMetaFileBits
+    SetFontEnumeration
+    SetGraphicsMode
+    SetICMMode
+    SetICMProfileA
+    SetICMProfileW
+    SetLayout
+    SetLayoutWidth
+    SetMagicColors
+    SetMapMode
+    SetMapperFlags
+    SetMetaFileBitsEx
+    SetMetaRgn
+    SetMiterLimit
+    SetOPMSigningKeyAndSequenceNumbers
+    SetPaletteEntries
+    SetPixel
+    SetPixelFormat
+    SetPixelV
+    SetPolyFillMode
+    SetROP2
+    SetRectRgn
+    SetRelAbs
+    SetStretchBltMode
+    SetSystemPaletteUse
+    SetTextAlign
+    SetTextCharacterExtra
+    SetTextColor
+    SetTextJustification
+    SetViewportExtEx
+    SetViewportOrgEx
+    SetVirtualResolution
+    SetWinMetaFileBits
+    SetWindowExtEx
+    SetWindowOrgEx
+    SetWorldTransform
+    StartDocA
+    StartDocW
+    StartFormPage
+    StartPage
+    StretchBlt
+    StretchDIBits
+    StrokeAndFillPath
+    StrokePath
+    SwapBuffers
+    TextOutA
+    TextOutW
+    TranslateCharsetInfo
+    UnloadNetworkFonts
+    UnrealizeObject
+    UpdateColors
+    UpdateICMRegKeyA
+    UpdateICMRegKeyW
+    UspAllocCache
+    UspAllocTemp
+    UspFreeMem
+    WidenPath
+    XFORMOBJ_bApplyXform
+    XFORMOBJ_iGetXform
+    XLATEOBJ_cGetPalette
+    XLATEOBJ_hGetColorTransform
+    XLATEOBJ_iXlate
+    XLATEOBJ_piVector
+    bInitSystemAndFontsDirectoriesW
+    bMakePathNameW
+    cGetTTFFromFOT
+    ftsWordBreak
+    gdiPlaySpoolStream
+    _AbortDoc@4 = AbortDoc
+    _AbortPath@4 = AbortPath
+    _AddFontMemResourceEx@16 = AddFontMemResourceEx
+    _AddFontResourceA@4 = AddFontResourceA
+    _AddFontResourceExA@12 = AddFontResourceExA
+    _AddFontResourceExW@12 = AddFontResourceExW
+    _AddFontResourceW@4 = AddFontResourceW
+    _AngleArc@24 = AngleArc
+    _AnimatePalette@16 = AnimatePalette
+    _Arc@36 = Arc
+    _ArcTo@36 = ArcTo
+    _BeginPath@4 = BeginPath
+    _BitBlt@36 = BitBlt
+    _CancelDC@4 = CancelDC
+    _CheckColorsInGamut@16 = CheckColorsInGamut
+    _ChoosePixelFormat@8 = ChoosePixelFormat
+    _Chord@36 = Chord
+    _CloseEnhMetaFile@4 = CloseEnhMetaFile
+    _CloseFigure@4 = CloseFigure
+    _CloseMetaFile@4 = CloseMetaFile
+    _ColorCorrectPalette@16 = ColorCorrectPalette
+    _ColorMatchToTarget@12 = ColorMatchToTarget
+    _CombineRgn@16 = CombineRgn
+    _CombineTransform@12 = CombineTransform
+    _CopyEnhMetaFileA@8 = CopyEnhMetaFileA
+    _CopyEnhMetaFileW@8 = CopyEnhMetaFileW
+    _CopyMetaFileA@8 = CopyMetaFileA
+    _CopyMetaFileW@8 = CopyMetaFileW
+    _CreateBitmap@20 = CreateBitmap
+    _CreateBitmapIndirect@4 = CreateBitmapIndirect
+    _CreateBrushIndirect@4 = CreateBrushIndirect
+    _CreateColorSpaceA@4 = CreateColorSpaceA
+    _CreateColorSpaceW@4 = CreateColorSpaceW
+    _CreateCompatibleBitmap@12 = CreateCompatibleBitmap
+    _CreateCompatibleDC@4 = CreateCompatibleDC
+    _CreateDCA@16 = CreateDCA
+    _CreateDCW@16 = CreateDCW
+    _CreateDIBPatternBrush@8 = CreateDIBPatternBrush
+    _CreateDIBPatternBrushPt@8 = CreateDIBPatternBrushPt
+    _CreateDIBSection@24 = CreateDIBSection
+    _CreateDIBitmap@24 = CreateDIBitmap
+    _CreateDiscardableBitmap@12 = CreateDiscardableBitmap
+    _CreateEllipticRgn@16 = CreateEllipticRgn
+    _CreateEllipticRgnIndirect@4 = CreateEllipticRgnIndirect
+    _CreateEnhMetaFileA@16 = CreateEnhMetaFileA
+    _CreateEnhMetaFileW@16 = CreateEnhMetaFileW
+    _CreateFontA@56 = CreateFontA
+    _CreateFontIndirectA@4 = CreateFontIndirectA
+    _CreateFontIndirectExA@4 = CreateFontIndirectExA
+    _CreateFontIndirectExW@4 = CreateFontIndirectExW
+    _CreateFontIndirectW@4 = CreateFontIndirectW
+    _CreateFontW@56 = CreateFontW
+    _CreateHalftonePalette@4 = CreateHalftonePalette
+    _CreateHatchBrush@8 = CreateHatchBrush
+    _CreateICA@16 = CreateICA
+    _CreateICW@16 = CreateICW
+    _CreateMetaFileA@4 = CreateMetaFileA
+    _CreateMetaFileW@4 = CreateMetaFileW
+    _CreatePalette@4 = CreatePalette
+    _CreatePatternBrush@4 = CreatePatternBrush
+    _CreatePen@12 = CreatePen
+    _CreatePenIndirect@4 = CreatePenIndirect
+    _CreatePolyPolygonRgn@16 = CreatePolyPolygonRgn
+    _CreatePolygonRgn@12 = CreatePolygonRgn
+    _CreateRectRgn@16 = CreateRectRgn
+    _CreateRectRgnIndirect@4 = CreateRectRgnIndirect
+    _CreateRoundRectRgn@24 = CreateRoundRectRgn
+    _CreateScalableFontResourceA@16 = CreateScalableFontResourceA
+    _CreateScalableFontResourceW@16 = CreateScalableFontResourceW
+    _CreateSolidBrush@4 = CreateSolidBrush
+    _DPtoLP@12 = DPtoLP
+    _DeleteColorSpace@4 = DeleteColorSpace
+    _DeleteDC@4 = DeleteDC
+    _DeleteEnhMetaFile@4 = DeleteEnhMetaFile
+    _DeleteMetaFile@4 = DeleteMetaFile
+    _DeleteObject@4 = DeleteObject
+    _DescribePixelFormat@16 = DescribePixelFormat
+    _DeviceCapabilitiesExA@24 = DeviceCapabilitiesExA
+    _DeviceCapabilitiesExW@24 = DeviceCapabilitiesExW
+    _DrawEscape@16 = DrawEscape
+    _Ellipse@20 = Ellipse
+    _EnableEUDC@4 = EnableEUDC
+    _EndDoc@4 = EndDoc
+    _EndFormPage@4 = EndFormPage
+    _EndPage@4 = EndPage
+    _EndPath@4 = EndPath
+    _EnumEnhMetaFile@20 = EnumEnhMetaFile
+    _EnumFontFamiliesA@16 = EnumFontFamiliesA
+    _EnumFontFamiliesExA@20 = EnumFontFamiliesExA
+    _EnumFontFamiliesExW@20 = EnumFontFamiliesExW
+    _EnumFontFamiliesW@16 = EnumFontFamiliesW
+    _EnumFontsA@16 = EnumFontsA
+    _EnumFontsW@16 = EnumFontsW
+    _EnumICMProfilesA@12 = EnumICMProfilesA
+    _EnumICMProfilesW@12 = EnumICMProfilesW
+    _EnumMetaFile@16 = EnumMetaFile
+    _EnumObjects@16 = EnumObjects
+    _EqualRgn@8 = EqualRgn
+    _Escape@20 = Escape
+    _EudcLoadLinkW@16 = EudcLoadLinkW
+    _EudcUnloadLinkW@8 = EudcUnloadLinkW
+    _ExcludeClipRect@20 = ExcludeClipRect
+    _ExtCreatePen@20 = ExtCreatePen
+    _ExtCreateRegion@12 = ExtCreateRegion
+    _ExtEscape@24 = ExtEscape
+    _ExtFloodFill@20 = ExtFloodFill
+    _ExtSelectClipRgn@12 = ExtSelectClipRgn
+    _ExtTextOutA@32 = ExtTextOutA
+    _ExtTextOutW@32 = ExtTextOutW
+    _FillPath@4 = FillPath
+    _FillRgn@12 = FillRgn
+    _FixBrushOrgEx@16 = FixBrushOrgEx
+    _FlattenPath@4 = FlattenPath
+    _FloodFill@16 = FloodFill
+    _FrameRgn@20 = FrameRgn
+    _GdiArtificialDecrementDriver@8 = GdiArtificialDecrementDriver
+    _GdiComment@12 = GdiComment
+    _GdiDeleteSpoolFileHandle@4 = GdiDeleteSpoolFileHandle
+    _GdiEndDocEMF@4 = GdiEndDocEMF
+    _GdiEndPageEMF@8 = GdiEndPageEMF
+    _GdiFlush@0 = GdiFlush
+    _GdiGetBatchLimit@0 = GdiGetBatchLimit
+    _GdiGetDC@4 = GdiGetDC
+    _GdiGetDevmodeForPage@16 = GdiGetDevmodeForPage
+    _GdiGetPageCount@4 = GdiGetPageCount
+    _GdiGetPageHandle@12 = GdiGetPageHandle
+    _GdiGetSpoolFileHandle@12 = GdiGetSpoolFileHandle
+    _GdiPlayDCScript@24 = GdiPlayDCScript
+    _GdiPlayEMF@20 = GdiPlayEMF
+    _GdiPlayJournal@20 = GdiPlayJournal
+    _GdiPlayPageEMF@20 = GdiPlayPageEMF
+    _GdiPlayPrivatePageEMF@12 = GdiPlayPrivatePageEMF
+    _GdiPlayScript@28 = GdiPlayScript
+    _GdiResetDCEMF@8 = GdiResetDCEMF
+    _GdiSetBatchLimit@4 = GdiSetBatchLimit
+    _GdiStartDocEMF@8 = GdiStartDocEMF
+    _GdiStartPageEMF@4 = GdiStartPageEMF
+    _GetArcDirection@4 = GetArcDirection
+    _GetAspectRatioFilterEx@8 = GetAspectRatioFilterEx
+    _GetBitmapBits@12 = GetBitmapBits
+    _GetBitmapDimensionEx@8 = GetBitmapDimensionEx
+    _GetBkColor@4 = GetBkColor
+    _GetBkMode@4 = GetBkMode
+    _GetBoundsRect@12 = GetBoundsRect
+    _GetBrushOrgEx@8 = GetBrushOrgEx
+    _GetCharABCWidthsA@16 = GetCharABCWidthsA
+    _GetCharABCWidthsFloatA@16 = GetCharABCWidthsFloatA
+    _GetCharABCWidthsFloatW@16 = GetCharABCWidthsFloatW
+    _GetCharABCWidthsI@20 = GetCharABCWidthsI
+    _GetCharABCWidthsW@16 = GetCharABCWidthsW
+    _GetCharWidth32A@16 = GetCharWidth32A
+    _GetCharWidth32W@16 = GetCharWidth32W
+    _GetCharWidthA@16 = GetCharWidthA
+    _GetCharWidthFloatA@16 = GetCharWidthFloatA
+    _GetCharWidthFloatW@16 = GetCharWidthFloatW
+    _GetCharWidthI@20 = GetCharWidthI
+    _GetCharWidthW@16 = GetCharWidthW
+    _GetCharacterPlacementA@24 = GetCharacterPlacementA
+    _GetCharacterPlacementW@24 = GetCharacterPlacementW
+    _GetClipBox@8 = GetClipBox
+    _GetClipRgn@8 = GetClipRgn
+    _GetColorAdjustment@8 = GetColorAdjustment
+    _GetColorSpace@4 = GetColorSpace
+    _GetCurrentObject@8 = GetCurrentObject
+    _GetCurrentPositionEx@8 = GetCurrentPositionEx
+    _GetDCBrushColor@4 = GetDCBrushColor
+    _GetDCOrgEx@8 = GetDCOrgEx
+    _GetDCPenColor@4 = GetDCPenColor
+    _GetDIBColorTable@16 = GetDIBColorTable
+    _GetDIBits@28 = GetDIBits
+    _GetDeviceCaps@8 = GetDeviceCaps
+    _GetDeviceGammaRamp@8 = GetDeviceGammaRamp
+    _GetEnhMetaFileA@4 = GetEnhMetaFileA
+    _GetEnhMetaFileBits@12 = GetEnhMetaFileBits
+    _GetEnhMetaFileDescriptionA@12 = GetEnhMetaFileDescriptionA
+    _GetEnhMetaFileDescriptionW@12 = GetEnhMetaFileDescriptionW
+    _GetEnhMetaFileHeader@12 = GetEnhMetaFileHeader
+    _GetEnhMetaFilePaletteEntries@12 = GetEnhMetaFilePaletteEntries
+    _GetEnhMetaFilePixelFormat@12 = GetEnhMetaFilePixelFormat
+    _GetEnhMetaFileW@4 = GetEnhMetaFileW
+    _GetFontAssocStatus@4 = GetFontAssocStatus
+    _GetFontData@20 = GetFontData
+    _GetFontLanguageInfo@4 = GetFontLanguageInfo
+    _GetFontResourceInfoW@16 = GetFontResourceInfoW
+    _GetFontUnicodeRanges@8 = GetFontUnicodeRanges
+    _GetGlyphIndicesA@20 = GetGlyphIndicesA
+    _GetGlyphIndicesW@20 = GetGlyphIndicesW
+    _GetGlyphOutline@28 = GetGlyphOutline
+    _GetGlyphOutlineA@28 = GetGlyphOutlineA
+    _GetGlyphOutlineW@28 = GetGlyphOutlineW
+    _GetGraphicsMode@4 = GetGraphicsMode
+    _GetICMProfileA@12 = GetICMProfileA
+    _GetICMProfileW@12 = GetICMProfileW
+    _GetKerningPairs@12 = GetKerningPairs
+    _GetKerningPairsA@12 = GetKerningPairsA
+    _GetKerningPairsW@12 = GetKerningPairsW
+    _GetLayout@4 = GetLayout
+    _GetLogColorSpaceA@12 = GetLogColorSpaceA
+    _GetLogColorSpaceW@12 = GetLogColorSpaceW
+    _GetMapMode@4 = GetMapMode
+    _GetMetaFileA@4 = GetMetaFileA
+    _GetMetaFileBitsEx@12 = GetMetaFileBitsEx
+    _GetMetaFileW@4 = GetMetaFileW
+    _GetMetaRgn@8 = GetMetaRgn
+    _GetMiterLimit@8 = GetMiterLimit
+    _GetNearestColor@8 = GetNearestColor
+    _GetNearestPaletteIndex@8 = GetNearestPaletteIndex
+    _GetObjectA@12 = GetObjectA
+    _GetObjectType@4 = GetObjectType
+    _GetObjectW@12 = GetObjectW
+    _GetOutlineTextMetricsA@12 = GetOutlineTextMetricsA
+    _GetOutlineTextMetricsW@12 = GetOutlineTextMetricsW
+    _GetPaletteEntries@16 = GetPaletteEntries
+    _GetPath@16 = GetPath
+    _GetPixel@12 = GetPixel
+    _GetPixelFormat@4 = GetPixelFormat
+    _GetPolyFillMode@4 = GetPolyFillMode
+    _GetROP2@4 = GetROP2
+    _GetRandomRgn@12 = GetRandomRgn
+    _GetRasterizerCaps@8 = GetRasterizerCaps
+    _GetRegionData@12 = GetRegionData
+    _GetRelAbs@8 = GetRelAbs
+    _GetRgnBox@8 = GetRgnBox
+    _GetStockObject@4 = GetStockObject
+    _GetStretchBltMode@4 = GetStretchBltMode
+    _GetSystemPaletteEntries@16 = GetSystemPaletteEntries
+    _GetSystemPaletteUse@4 = GetSystemPaletteUse
+    _GetTextAlign@4 = GetTextAlign
+    _GetTextCharacterExtra@4 = GetTextCharacterExtra
+    _GetTextCharset@4 = GetTextCharset
+    _GetTextCharsetInfo@12 = GetTextCharsetInfo
+    _GetTextColor@4 = GetTextColor
+    _GetTextExtentExPointA@28 = GetTextExtentExPointA
+    _GetTextExtentExPointI@28 = GetTextExtentExPointI
+    _GetTextExtentExPointW@28 = GetTextExtentExPointW
+    _GetTextExtentPoint32A@16 = GetTextExtentPoint32A
+    _GetTextExtentPoint32W@16 = GetTextExtentPoint32W
+    _GetTextExtentPointA@16 = GetTextExtentPointA
+    _GetTextExtentPointI@16 = GetTextExtentPointI
+    _GetTextExtentPointW@16 = GetTextExtentPointW
+    _GetTextFaceA@12 = GetTextFaceA
+    _GetTextFaceW@12 = GetTextFaceW
+    _GetTextMetricsA@8 = GetTextMetricsA
+    _GetTextMetricsW@8 = GetTextMetricsW
+    _GetViewportExtEx@8 = GetViewportExtEx
+    _GetViewportOrgEx@8 = GetViewportOrgEx
+    _GetWinMetaFileBits@20 = GetWinMetaFileBits
+    _GetWindowExtEx@8 = GetWindowExtEx
+    _GetWindowOrgEx@8 = GetWindowOrgEx
+    _GetWorldTransform@8 = GetWorldTransform
+    _IntersectClipRect@20 = IntersectClipRect
+    _InvertRgn@8 = InvertRgn
+    _LPtoDP@12 = LPtoDP
+    _LineDDA@24 = LineDDA
+    _LineTo@12 = LineTo
+    _MaskBlt@48 = MaskBlt
+    _ModifyWorldTransform@12 = ModifyWorldTransform
+    _MoveToEx@16 = MoveToEx
+    _OffsetClipRgn@12 = OffsetClipRgn
+    _OffsetRgn@12 = OffsetRgn
+    _OffsetViewportOrgEx@16 = OffsetViewportOrgEx
+    _OffsetWindowOrgEx@16 = OffsetWindowOrgEx
+    _PaintRgn@8 = PaintRgn
+    _PatBlt@24 = PatBlt
+    _PathToRegion@4 = PathToRegion
+    _Pie@36 = Pie
+    _PlayEnhMetaFile@12 = PlayEnhMetaFile
+    _PlayEnhMetaFileRecord@16 = PlayEnhMetaFileRecord
+    _PlayMetaFile@8 = PlayMetaFile
+    _PlayMetaFileRecord@16 = PlayMetaFileRecord
+    _PlgBlt@40 = PlgBlt
+    _PolyBezier@12 = PolyBezier
+    _PolyBezierTo@12 = PolyBezierTo
+    _PolyDraw@16 = PolyDraw
+    _PolyPolygon@16 = PolyPolygon
+    _PolyPolyline@16 = PolyPolyline
+    _PolyTextOutA@12 = PolyTextOutA
+    _PolyTextOutW@12 = PolyTextOutW
+    _Polygon@12 = Polygon
+    _Polyline@12 = Polyline
+    _PolylineTo@12 = PolylineTo
+    _PtInRegion@12 = PtInRegion
+    _PtVisible@12 = PtVisible
+    _RealizePalette@4 = RealizePalette
+    _RectInRegion@8 = RectInRegion
+    _RectVisible@8 = RectVisible
+    _Rectangle@20 = Rectangle
+    _RemoveFontMemResourceEx@4 = RemoveFontMemResourceEx
+    _RemoveFontResourceA@4 = RemoveFontResourceA
+    _RemoveFontResourceExA@12 = RemoveFontResourceExA
+    _RemoveFontResourceExW@12 = RemoveFontResourceExW
+    _RemoveFontResourceW@4 = RemoveFontResourceW
+    _ResetDCA@8 = ResetDCA
+    _ResetDCW@8 = ResetDCW
+    _ResizePalette@8 = ResizePalette
+    _RestoreDC@8 = RestoreDC
+    _RoundRect@28 = RoundRect
+    _SaveDC@4 = SaveDC
+    _ScaleViewportExtEx@24 = ScaleViewportExtEx
+    _ScaleWindowExtEx@24 = ScaleWindowExtEx
+    _SelectBrushLocal@8 = SelectBrushLocal
+    _SelectClipPath@8 = SelectClipPath
+    _SelectClipRgn@8 = SelectClipRgn
+    _SelectFontLocal@8 = SelectFontLocal
+    _SelectObject@8 = SelectObject
+    _SelectPalette@12 = SelectPalette
+    _SetAbortProc@8 = SetAbortProc
+    _SetArcDirection@8 = SetArcDirection
+    _SetBitmapBits@12 = SetBitmapBits
+    _SetBitmapDimensionEx@16 = SetBitmapDimensionEx
+    _SetBkColor@8 = SetBkColor
+    _SetBkMode@8 = SetBkMode
+    _SetBoundsRect@12 = SetBoundsRect
+    _SetBrushOrgEx@16 = SetBrushOrgEx
+    _SetColorAdjustment@8 = SetColorAdjustment
+    _SetColorSpace@8 = SetColorSpace
+    _SetDCBrushColor@8 = SetDCBrushColor
+    _SetDCPenColor@8 = SetDCPenColor
+    _SetDIBColorTable@16 = SetDIBColorTable
+    _SetDIBits@28 = SetDIBits
+    _SetDIBitsToDevice@48 = SetDIBitsToDevice
+    _SetDeviceGammaRamp@8 = SetDeviceGammaRamp
+    _SetEnhMetaFileBits@8 = SetEnhMetaFileBits
+    _SetFontEnumeration@4 = SetFontEnumeration
+    _SetGraphicsMode@8 = SetGraphicsMode
+    _SetICMMode@8 = SetICMMode
+    _SetICMProfileA@8 = SetICMProfileA
+    _SetICMProfileW@8 = SetICMProfileW
+    _SetLayout@8 = SetLayout
+    _SetMagicColors@12 = SetMagicColors
+    _SetMapMode@8 = SetMapMode
+    _SetMapperFlags@8 = SetMapperFlags
+    _SetMetaFileBitsEx@8 = SetMetaFileBitsEx
+    _SetMetaRgn@4 = SetMetaRgn
+    _SetMiterLimit@12 = SetMiterLimit
+    _SetPaletteEntries@16 = SetPaletteEntries
+    _SetPixel@16 = SetPixel
+    _SetPixelFormat@12 = SetPixelFormat
+    _SetPixelV@16 = SetPixelV
+    _SetPolyFillMode@8 = SetPolyFillMode
+    _SetROP2@8 = SetROP2
+    _SetRectRgn@20 = SetRectRgn
+    _SetRelAbs@8 = SetRelAbs
+    _SetStretchBltMode@8 = SetStretchBltMode
+    _SetSystemPaletteUse@8 = SetSystemPaletteUse
+    _SetTextAlign@8 = SetTextAlign
+    _SetTextCharacterExtra@8 = SetTextCharacterExtra
+    _SetTextColor@8 = SetTextColor
+    _SetTextJustification@12 = SetTextJustification
+    _SetViewportExtEx@16 = SetViewportExtEx
+    _SetViewportOrgEx@16 = SetViewportOrgEx
+    _SetWinMetaFileBits@16 = SetWinMetaFileBits
+    _SetWindowExtEx@16 = SetWindowExtEx
+    _SetWindowOrgEx@16 = SetWindowOrgEx
+    _SetWorldTransform@8 = SetWorldTransform
+    _StartDocA@8 = StartDocA
+    _StartDocW@8 = StartDocW
+    _StartFormPage@4 = StartFormPage
+    _StartPage@4 = StartPage
+    _StretchBlt@44 = StretchBlt
+    _StretchDIBits@52 = StretchDIBits
+    _StrokeAndFillPath@4 = StrokeAndFillPath
+    _StrokePath@4 = StrokePath
+    _SwapBuffers@4 = SwapBuffers
+    _TextOutA@20 = TextOutA
+    _TextOutW@20 = TextOutW
+    _TranslateCharsetInfo@12 = TranslateCharsetInfo
+    _UnrealizeObject@4 = UnrealizeObject
+    _UpdateColors@4 = UpdateColors
+    _UpdateICMRegKeyA@16 = UpdateICMRegKeyA
+    _UpdateICMRegKeyW@16 = UpdateICMRegKeyW
+    _WidenPath@4 = WidenPath
+    _gdiPlaySpoolStream@24 = gdiPlaySpoolStream

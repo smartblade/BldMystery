@@ -1,25 +1,35 @@
 LIBRARY     DDRAW.DLL
 
 EXPORTS
-    AcquireDDThreadLock            @1   ; AcquireDDThreadLock
-    CompleteCreateSysmemSurface    @2   ; CompleteCreateSysmemSurface
-    D3DParseUnknownCommand         @3   ; D3DParseUnknownCommand
-    DDGetAttachedSurfaceLcl        @4   ; DDGetAttachedSurfaceLcl
-    DDInternalLock                 @5   ; DDInternalLock
-    DDInternalUnlock               @6   ; DDInternalUnlock
-    DSoundHelp                     @7   ; DSoundHelp
-    DirectDrawCreate               @8   ; DirectDrawCreate
-    DirectDrawCreateClipper        @9   ; DirectDrawCreateClipper
-    DirectDrawCreateEx             @10  ; DirectDrawCreateEx
-    DirectDrawEnumerateA           @11  ; DirectDrawEnumerateA
-    DirectDrawEnumerateExA         @12  ; DirectDrawEnumerateExA
-    DirectDrawEnumerateExW         @13  ; DirectDrawEnumerateExW
-    DirectDrawEnumerateW           @14  ; DirectDrawEnumerateW
-    DllCanUnloadNow                @15  ; DllCanUnloadNow
-    DllGetClassObject              @16  ; DllGetClassObject
-    GetDDSurfaceLocal              @17  ; GetDDSurfaceLocal
-    GetOLEThunkData                @18  ; GetOLEThunkData
-    GetSurfaceFromDC               @19  ; GetSurfaceFromDC
-    RegisterSpecialCase            @20  ; RegisterSpecialCase
-    ReleaseDDThreadLock            @21  ; ReleaseDDThreadLock
-    SetAppCompatData               @22  ; SetAppCompatData
+    AcquireDDThreadLock
+    CompleteCreateSysmemSurface
+    D3DParseUnknownCommand
+    DDGetAttachedSurfaceLcl
+    DDInternalLock
+    DDInternalUnlock
+    DSoundHelp
+    DirectDrawCreate
+    DirectDrawCreateClipper
+    DirectDrawCreateEx
+    DirectDrawEnumerateA
+    DirectDrawEnumerateExA
+    DirectDrawEnumerateExW
+    DirectDrawEnumerateW
+    DllCanUnloadNow
+    DllGetClassObject
+    GetDDSurfaceLocal
+    GetOLEThunkData
+    GetSurfaceFromDC
+    RegisterSpecialCase
+    ReleaseDDThreadLock
+    SetAppCompatData
+    _AcquireDDThreadLock@0 = AcquireDDThreadLock
+    _DDInternalLock@8 = DDInternalLock
+    _DDInternalUnlock@4 = DDInternalUnlock
+    _DSoundHelp@12 = DSoundHelp
+    _DirectDrawCreate@12 = DirectDrawCreate
+    _DirectDrawCreateClipper@12 = DirectDrawCreateClipper
+    _DirectDrawEnumerateA@8 = DirectDrawEnumerateA
+    _DirectDrawEnumerateW@8 = DirectDrawEnumerateW
+    _GetSurfaceFromDC@12 = GetSurfaceFromDC
+    _ReleaseDDThreadLock@0 = ReleaseDDThreadLock

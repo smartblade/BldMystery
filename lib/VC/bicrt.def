@@ -1,55 +1,55 @@
 LIBRARY     BICRT.DLL
 
 EXPORTS
-    $I10_OUTPUT                    @49  ; $I10_OUTPUT
-    ??0__non_rtti_object@@QAE@ABV0@@Z @1   ; ??0__non_rtti_object@@QAE@ABV0@@Z
-    ??0__non_rtti_object@@QAE@PBD@Z @2   ; ??0__non_rtti_object@@QAE@PBD@Z
-    ??0bad_cast@@QAE@ABQBD@Z       @3   ; ??0bad_cast@@QAE@ABQBD@Z
-    ??0bad_cast@@QAE@ABV0@@Z       @4   ; ??0bad_cast@@QAE@ABV0@@Z
-    ??0bad_typeid@@QAE@ABV0@@Z     @5   ; ??0bad_typeid@@QAE@ABV0@@Z
-    ??0bad_typeid@@QAE@PBD@Z       @6   ; ??0bad_typeid@@QAE@PBD@Z
-    ??0exception@@QAE@ABQBD@Z      @7   ; ??0exception@@QAE@ABQBD@Z
-    ??0exception@@QAE@ABV0@@Z      @8   ; ??0exception@@QAE@ABV0@@Z
-    ??0exception@@QAE@XZ           @9   ; ??0exception@@QAE@XZ
-    ??1__non_rtti_object@@UAE@XZ   @10  ; ??1__non_rtti_object@@UAE@XZ
-    ??1bad_cast@@UAE@XZ            @11  ; ??1bad_cast@@UAE@XZ
-    ??1bad_typeid@@UAE@XZ          @12  ; ??1bad_typeid@@UAE@XZ
-    ??1exception@@UAE@XZ           @13  ; ??1exception@@UAE@XZ
-    ??1type_info@@UAE@XZ           @14  ; ??1type_info@@UAE@XZ
-    ??2@YAPAXI@Z                   @15  ; ??2@YAPAXI@Z
-    ??3@YAXPAX@Z                   @16  ; ??3@YAXPAX@Z
-    ??4__non_rtti_object@@QAEAAV0@ABV0@@Z @17  ; ??4__non_rtti_object@@QAEAAV0@ABV0@@Z
-    ??4bad_cast@@QAEAAV0@ABV0@@Z   @18  ; ??4bad_cast@@QAEAAV0@ABV0@@Z
-    ??4bad_typeid@@QAEAAV0@ABV0@@Z @19  ; ??4bad_typeid@@QAEAAV0@ABV0@@Z
-    ??4exception@@QAEAAV0@ABV0@@Z  @20  ; ??4exception@@QAEAAV0@ABV0@@Z
-    ??8type_info@@QBEHABV0@@Z      @21  ; ??8type_info@@QBEHABV0@@Z
-    ??9type_info@@QBEHABV0@@Z      @22  ; ??9type_info@@QBEHABV0@@Z
-    ??_7__non_rtti_object@@6B@     @23  ; ??_7__non_rtti_object@@6B@
-    ??_7bad_cast@@6B@              @24  ; ??_7bad_cast@@6B@
-    ??_7bad_typeid@@6B@            @25  ; ??_7bad_typeid@@6B@
-    ??_7exception@@6B@             @26  ; ??_7exception@@6B@
-    ??_E__non_rtti_object@@UAEPAXI@Z @27  ; ??_E__non_rtti_object@@UAEPAXI@Z
-    ??_Ebad_cast@@UAEPAXI@Z        @28  ; ??_Ebad_cast@@UAEPAXI@Z
-    ??_Ebad_typeid@@UAEPAXI@Z      @29  ; ??_Ebad_typeid@@UAEPAXI@Z
-    ??_Eexception@@UAEPAXI@Z       @30  ; ??_Eexception@@UAEPAXI@Z
-    ??_G__non_rtti_object@@UAEPAXI@Z @31  ; ??_G__non_rtti_object@@UAEPAXI@Z
-    ??_Gbad_cast@@UAEPAXI@Z        @32  ; ??_Gbad_cast@@UAEPAXI@Z
-    ??_Gbad_typeid@@UAEPAXI@Z      @33  ; ??_Gbad_typeid@@UAEPAXI@Z
-    ??_Gexception@@UAEPAXI@Z       @34  ; ??_Gexception@@UAEPAXI@Z
-    ?_query_new_handler@@YAP6AHI@ZXZ @35  ; ?_query_new_handler@@YAP6AHI@ZXZ
-    ?_query_new_mode@@YAHXZ        @36  ; ?_query_new_mode@@YAHXZ
-    ?_set_new_handler@@YAP6AHI@ZP6AHI@Z@Z @37  ; ?_set_new_handler@@YAP6AHI@ZP6AHI@Z@Z
-    ?_set_new_mode@@YAHH@Z         @38  ; ?_set_new_mode@@YAHH@Z
-    ?_set_se_translator@@YAP6AXIPAU_EXCEPTION_POINTERS@@@ZP6AXI0@Z@Z @39  ; ?_set_se_translator@@YAP6AXIPAU_EXCEPTION_POINTERS@@@ZP6AXI0@Z@Z
-    ?before@type_info@@QBEHABV1@@Z @40  ; ?before@type_info@@QBEHABV1@@Z
-    ?name@type_info@@QBEPBDXZ      @41  ; ?name@type_info@@QBEPBDXZ
-    ?raw_name@type_info@@QBEPBDXZ  @42  ; ?raw_name@type_info@@QBEPBDXZ
-    ?set_new_handler@@YAP6AXXZP6AXXZ@Z @43  ; ?set_new_handler@@YAP6AXXZP6AXXZ@Z
-    ?set_terminate@@YAP6AXXZP6AXXZ@Z @44  ; ?set_terminate@@YAP6AXXZP6AXXZ@Z
-    ?set_unexpected@@YAP6AXXZP6AXXZ@Z @45  ; ?set_unexpected@@YAP6AXXZP6AXXZ@Z
-    ?terminate@@YAXXZ              @46  ; ?terminate@@YAXXZ
-    ?unexpected@@YAXXZ             @47  ; ?unexpected@@YAXXZ
-    ?what@exception@@UBEPBDXZ      @48  ; ?what@exception@@UBEPBDXZ
+    $I10_OUTPUT
+    ??0__non_rtti_object@@QAE@ABV0@@Z
+    ??0__non_rtti_object@@QAE@PBD@Z
+    ??0bad_cast@@QAE@ABQBD@Z
+    ??0bad_cast@@QAE@ABV0@@Z
+    ??0bad_typeid@@QAE@ABV0@@Z
+    ??0bad_typeid@@QAE@PBD@Z
+    ??0exception@@QAE@ABQBD@Z
+    ??0exception@@QAE@ABV0@@Z
+    ??0exception@@QAE@XZ
+    ??1__non_rtti_object@@UAE@XZ
+    ??1bad_cast@@UAE@XZ
+    ??1bad_typeid@@UAE@XZ
+    ??1exception@@UAE@XZ
+    ??1type_info@@UAE@XZ
+    ??2@YAPAXI@Z
+    ??3@YAXPAX@Z
+    ??4__non_rtti_object@@QAEAAV0@ABV0@@Z
+    ??4bad_cast@@QAEAAV0@ABV0@@Z
+    ??4bad_typeid@@QAEAAV0@ABV0@@Z
+    ??4exception@@QAEAAV0@ABV0@@Z
+    ??8type_info@@QBEHABV0@@Z
+    ??9type_info@@QBEHABV0@@Z
+    ??_7__non_rtti_object@@6B@
+    ??_7bad_cast@@6B@
+    ??_7bad_typeid@@6B@
+    ??_7exception@@6B@
+    ??_E__non_rtti_object@@UAEPAXI@Z
+    ??_Ebad_cast@@UAEPAXI@Z
+    ??_Ebad_typeid@@UAEPAXI@Z
+    ??_Eexception@@UAEPAXI@Z
+    ??_G__non_rtti_object@@UAEPAXI@Z
+    ??_Gbad_cast@@UAEPAXI@Z
+    ??_Gbad_typeid@@UAEPAXI@Z
+    ??_Gexception@@UAEPAXI@Z
+    ?_query_new_handler@@YAP6AHI@ZXZ
+    ?_query_new_mode@@YAHXZ
+    ?_set_new_handler@@YAP6AHI@ZP6AHI@Z@Z
+    ?_set_new_mode@@YAHH@Z
+    ?_set_se_translator@@YAP6AXIPAU_EXCEPTION_POINTERS@@@ZP6AXI0@Z@Z
+    ?before@type_info@@QBEHABV1@@Z
+    ?name@type_info@@QBEPBDXZ
+    ?raw_name@type_info@@QBEPBDXZ
+    ?set_new_handler@@YAP6AXXZP6AXXZ@Z
+    ?set_terminate@@YAP6AXXZP6AXXZ@Z
+    ?set_unexpected@@YAP6AXXZP6AXXZ@Z
+    ?terminate@@YAXXZ
+    ?unexpected@@YAXXZ
+    ?what@exception@@UBEPBDXZ
     _CIacos                        @50  ; _CIacos
     _CIasin                        @51  ; _CIasin
     _CIatan                        @52  ; _CIatan
@@ -565,198 +565,908 @@ EXPORTS
     _y0                            @562 ; _y0
     _y1                            @563 ; _y1
     _yn                            @564 ; _yn
-    abort                          @565 ; abort
-    abs                            @566 ; abs
-    acos                           @567 ; acos
-    asctime                        @568 ; asctime
-    asin                           @569 ; asin
-    atan                           @570 ; atan
-    atan2                          @571 ; atan2
-    atexit                         @572 ; atexit
-    atof                           @573 ; atof
-    atoi                           @574 ; atoi
-    atol                           @575 ; atol
-    bsearch                        @576 ; bsearch
-    calloc                         @577 ; calloc
-    ceil                           @578 ; ceil
-    clearerr                       @579 ; clearerr
-    clock                          @580 ; clock
-    cos                            @581 ; cos
-    cosh                           @582 ; cosh
-    ctime                          @583 ; ctime
-    difftime                       @584 ; difftime
-    div                            @585 ; div
-    exit                           @586 ; exit
-    exp                            @587 ; exp
-    fabs                           @588 ; fabs
-    fclose                         @589 ; fclose
-    feof                           @590 ; feof
-    ferror                         @591 ; ferror
-    fflush                         @592 ; fflush
-    fgetc                          @593 ; fgetc
-    fgetpos                        @594 ; fgetpos
-    fgets                          @595 ; fgets
-    fgetwc                         @596 ; fgetwc
-    fgetws                         @597 ; fgetws
-    floor                          @598 ; floor
-    fmod                           @599 ; fmod
-    fopen                          @600 ; fopen
-    fprintf                        @601 ; fprintf
-    fputc                          @602 ; fputc
-    fputs                          @603 ; fputs
-    fputwc                         @604 ; fputwc
-    fputws                         @605 ; fputws
-    fread                          @606 ; fread
-    free                           @607 ; free
-    freopen                        @608 ; freopen
-    frexp                          @609 ; frexp
-    fscanf                         @610 ; fscanf
-    fseek                          @611 ; fseek
-    fsetpos                        @612 ; fsetpos
-    ftell                          @613 ; ftell
-    fwprintf                       @614 ; fwprintf
-    fwrite                         @615 ; fwrite
-    fwscanf                        @616 ; fwscanf
-    getc                           @617 ; getc
-    getchar                        @618 ; getchar
-    getenv                         @619 ; getenv
-    gets                           @620 ; gets
-    getwc                          @621 ; getwc
-    getwchar                       @622 ; getwchar
-    gmtime                         @623 ; gmtime
-    is_wctype                      @624 ; is_wctype
-    isalnum                        @625 ; isalnum
-    isalpha                        @626 ; isalpha
-    iscntrl                        @627 ; iscntrl
-    isdigit                        @628 ; isdigit
-    isgraph                        @629 ; isgraph
-    isleadbyte                     @630 ; isleadbyte
-    islower                        @631 ; islower
-    isprint                        @632 ; isprint
-    ispunct                        @633 ; ispunct
-    isspace                        @634 ; isspace
-    isupper                        @635 ; isupper
-    iswalnum                       @636 ; iswalnum
-    iswalpha                       @637 ; iswalpha
-    iswascii                       @638 ; iswascii
-    iswcntrl                       @639 ; iswcntrl
-    iswctype                       @640 ; iswctype
-    iswdigit                       @641 ; iswdigit
-    iswgraph                       @642 ; iswgraph
-    iswlower                       @643 ; iswlower
-    iswprint                       @644 ; iswprint
-    iswpunct                       @645 ; iswpunct
-    iswspace                       @646 ; iswspace
-    iswupper                       @647 ; iswupper
-    iswxdigit                      @648 ; iswxdigit
-    isxdigit                       @649 ; isxdigit
-    labs                           @650 ; labs
-    ldexp                          @651 ; ldexp
-    ldiv                           @652 ; ldiv
-    localeconv                     @653 ; localeconv
-    localtime                      @654 ; localtime
-    log                            @655 ; log
-    log10                          @656 ; log10
-    longjmp                        @657 ; longjmp
-    malloc                         @658 ; malloc
-    mblen                          @659 ; mblen
-    mbstowcs                       @660 ; mbstowcs
-    mbtowc                         @661 ; mbtowc
-    memchr                         @662 ; memchr
-    memcmp                         @663 ; memcmp
-    memcpy                         @664 ; memcpy
-    memmove                        @665 ; memmove
-    memset                         @666 ; memset
-    mktime                         @667 ; mktime
-    modf                           @668 ; modf
-    perror                         @669 ; perror
-    pow                            @670 ; pow
-    printf                         @671 ; printf
-    putc                           @672 ; putc
-    putchar                        @673 ; putchar
-    puts                           @674 ; puts
-    putwc                          @675 ; putwc
-    putwchar                       @676 ; putwchar
-    qsort                          @677 ; qsort
-    raise                          @678 ; raise
-    rand                           @679 ; rand
-    realloc                        @680 ; realloc
-    remove                         @681 ; remove
-    rename                         @682 ; rename
-    rewind                         @683 ; rewind
-    scanf                          @684 ; scanf
-    setbuf                         @685 ; setbuf
-    setlocale                      @686 ; setlocale
-    setvbuf                        @687 ; setvbuf
-    signal                         @688 ; signal
-    sin                            @689 ; sin
-    sinh                           @690 ; sinh
-    sprintf                        @691 ; sprintf
-    sqrt                           @692 ; sqrt
-    srand                          @693 ; srand
-    sscanf                         @694 ; sscanf
-    strcat                         @695 ; strcat
-    strchr                         @696 ; strchr
-    strcmp                         @697 ; strcmp
-    strcoll                        @698 ; strcoll
-    strcpy                         @699 ; strcpy
-    strcspn                        @700 ; strcspn
-    strerror                       @701 ; strerror
-    strftime                       @702 ; strftime
-    strlen                         @703 ; strlen
-    strncat                        @704 ; strncat
-    strncmp                        @705 ; strncmp
-    strncpy                        @706 ; strncpy
-    strpbrk                        @707 ; strpbrk
-    strrchr                        @708 ; strrchr
-    strspn                         @709 ; strspn
-    strstr                         @710 ; strstr
-    strtod                         @711 ; strtod
-    strtok                         @712 ; strtok
-    strtol                         @713 ; strtol
-    strtoul                        @714 ; strtoul
-    strxfrm                        @715 ; strxfrm
-    swprintf                       @716 ; swprintf
-    swscanf                        @717 ; swscanf
-    system                         @718 ; system
-    tan                            @719 ; tan
-    tanh                           @720 ; tanh
-    time                           @721 ; time
-    tmpfile                        @722 ; tmpfile
-    tmpnam                         @723 ; tmpnam
-    tolower                        @724 ; tolower
-    toupper                        @725 ; toupper
-    towlower                       @726 ; towlower
-    towupper                       @727 ; towupper
-    ungetc                         @728 ; ungetc
-    ungetwc                        @729 ; ungetwc
-    vfprintf                       @730 ; vfprintf
-    vfwprintf                      @731 ; vfwprintf
-    vprintf                        @732 ; vprintf
-    vsprintf                       @733 ; vsprintf
-    vswprintf                      @734 ; vswprintf
-    vwprintf                       @735 ; vwprintf
-    wcscat                         @736 ; wcscat
-    wcschr                         @737 ; wcschr
-    wcscmp                         @738 ; wcscmp
-    wcscoll                        @739 ; wcscoll
-    wcscpy                         @740 ; wcscpy
-    wcscspn                        @741 ; wcscspn
-    wcsftime                       @742 ; wcsftime
-    wcslen                         @743 ; wcslen
-    wcsncat                        @744 ; wcsncat
-    wcsncmp                        @745 ; wcsncmp
-    wcsncpy                        @746 ; wcsncpy
-    wcspbrk                        @747 ; wcspbrk
-    wcsrchr                        @748 ; wcsrchr
-    wcsspn                         @749 ; wcsspn
-    wcsstr                         @750 ; wcsstr
-    wcstod                         @751 ; wcstod
-    wcstok                         @752 ; wcstok
-    wcstol                         @753 ; wcstol
-    wcstombs                       @754 ; wcstombs
-    wcstoul                        @755 ; wcstoul
-    wcsxfrm                        @756 ; wcsxfrm
-    wctomb                         @757 ; wctomb
-    wprintf                        @758 ; wprintf
-    wscanf                         @759 ; wscanf
+    abort
+    abs
+    acos
+    asctime
+    asin
+    atan
+    atan2
+    atexit
+    atof
+    atoi
+    atol
+    bsearch
+    calloc
+    ceil
+    clearerr
+    clock
+    cos
+    cosh
+    ctime
+    difftime
+    div
+    exit
+    exp
+    fabs
+    fclose
+    feof
+    ferror
+    fflush
+    fgetc
+    fgetpos
+    fgets
+    fgetwc
+    fgetws
+    floor
+    fmod
+    fopen
+    fprintf
+    fputc
+    fputs
+    fputwc
+    fputws
+    fread
+    free
+    freopen
+    frexp
+    fscanf
+    fseek
+    fsetpos
+    ftell
+    fwprintf
+    fwrite
+    fwscanf
+    getc
+    getchar
+    getenv
+    gets
+    getwc
+    getwchar
+    gmtime
+    is_wctype
+    isalnum
+    isalpha
+    iscntrl
+    isdigit
+    isgraph
+    isleadbyte
+    islower
+    isprint
+    ispunct
+    isspace
+    isupper
+    iswalnum
+    iswalpha
+    iswascii
+    iswcntrl
+    iswctype
+    iswdigit
+    iswgraph
+    iswlower
+    iswprint
+    iswpunct
+    iswspace
+    iswupper
+    iswxdigit
+    isxdigit
+    labs
+    ldexp
+    ldiv
+    localeconv
+    localtime
+    log
+    log10
+    longjmp
+    malloc
+    mblen
+    mbstowcs
+    mbtowc
+    memchr
+    memcmp
+    memcpy
+    memmove
+    memset
+    mktime
+    modf
+    perror
+    pow
+    printf
+    putc
+    putchar
+    puts
+    putwc
+    putwchar
+    qsort
+    raise
+    rand
+    realloc
+    remove
+    rename
+    rewind
+    scanf
+    setbuf
+    setlocale
+    setvbuf
+    signal
+    sin
+    sinh
+    sprintf
+    sqrt
+    srand
+    sscanf
+    strcat
+    strchr
+    strcmp
+    strcoll
+    strcpy
+    strcspn
+    strerror
+    strftime
+    strlen
+    strncat
+    strncmp
+    strncpy
+    strpbrk
+    strrchr
+    strspn
+    strstr
+    strtod
+    strtok
+    strtol
+    strtoul
+    strxfrm
+    swprintf
+    swscanf
+    system
+    tan
+    tanh
+    time
+    tmpfile
+    tmpnam
+    tolower
+    toupper
+    towlower
+    towupper
+    ungetc
+    ungetwc
+    vfprintf
+    vfwprintf
+    vprintf
+    vsprintf
+    vswprintf
+    vwprintf
+    wcscat
+    wcschr
+    wcscmp
+    wcscoll
+    wcscpy
+    wcscspn
+    wcsftime
+    wcslen
+    wcsncat
+    wcsncmp
+    wcsncpy
+    wcspbrk
+    wcsrchr
+    wcsspn
+    wcsstr
+    wcstod
+    wcstok
+    wcstol
+    wcstombs
+    wcstoul
+    wcsxfrm
+    wctomb
+    wprintf
+    wscanf
+    __CIacos = _CIacos
+    __CIasin = _CIasin
+    __CIatan = _CIatan
+    __CIatan2 = _CIatan2
+    __CIcos = _CIcos
+    __CIcosh = _CIcosh
+    __CIexp = _CIexp
+    __CIfmod = _CIfmod
+    __CIlog = _CIlog
+    __CIlog10 = _CIlog10
+    __CIpow = _CIpow
+    __CIsin = _CIsin
+    __CIsinh = _CIsinh
+    __CIsqrt = _CIsqrt
+    __CItan = _CItan
+    __CItanh = _CItanh
+    __CxxThrowException = _CxxThrowException
+    __EH_prolog = _EH_prolog
+    __Getdays = _Getdays
+    __Getmonths = _Getmonths
+    __Gettnames = _Gettnames
+    __HUGE = _HUGE
+    __Strftime = _Strftime
+    __XcptFilter = _XcptFilter
+    ___CxxFrameHandler = __CxxFrameHandler
+    ___CxxLongjmpUnwind = __CxxLongjmpUnwind
+    ___RTCastToVoid = __RTCastToVoid
+    ___RTDynamicCast = __RTDynamicCast
+    ___RTtypeid = __RTtypeid
+    ___STRINGTOLD = __STRINGTOLD
+    ___argc = __argc
+    ___argv = __argv
+    ___badioinfo = __badioinfo
+    ___crtCompareStringA = __crtCompareStringA
+    ___crtGetLocaleInfoW = __crtGetLocaleInfoW
+    ___crtLCMapStringA = __crtLCMapStringA
+    ___dllonexit = __dllonexit
+    ___doserrno = __doserrno
+    ___fpecode = __fpecode
+    ___getmainargs = __getmainargs
+    ___initenv = __initenv
+    ___isascii = __isascii
+    ___iscsym = __iscsym
+    ___iscsymf = __iscsymf
+    ___lc_codepage = __lc_codepage
+    ___lc_collate_cp = __lc_collate_cp
+    ___lc_handle = __lc_handle
+    ___lconv_init = __lconv_init
+    ___mb_cur_max = __mb_cur_max
+    ___p___argc = __p___argc
+    ___p___argv = __p___argv
+    ___p___initenv = __p___initenv
+    ___p___mb_cur_max = __p___mb_cur_max
+    ___p___wargv = __p___wargv
+    ___p___winitenv = __p___winitenv
+    ___p__acmdln = __p__acmdln
+    ___p__amblksiz = __p__amblksiz
+    ___p__commode = __p__commode
+    ___p__daylight = __p__daylight
+    ___p__dstbias = __p__dstbias
+    ___p__environ = __p__environ
+    ___p__fileinfo = __p__fileinfo
+    ___p__fmode = __p__fmode
+    ___p__iob = __p__iob
+    ___p__mbcasemap = __p__mbcasemap
+    ___p__mbctype = __p__mbctype
+    ___p__osver = __p__osver
+    ___p__pctype = __p__pctype
+    ___p__pgmptr = __p__pgmptr
+    ___p__pwctype = __p__pwctype
+    ___p__timezone = __p__timezone
+    ___p__tzname = __p__tzname
+    ___p__wcmdln = __p__wcmdln
+    ___p__wenviron = __p__wenviron
+    ___p__winmajor = __p__winmajor
+    ___p__winminor = __p__winminor
+    ___p__winver = __p__winver
+    ___p__wpgmptr = __p__wpgmptr
+    ___pioinfo = __pioinfo
+    ___pxcptinfoptrs = __pxcptinfoptrs
+    ___set_app_type = __set_app_type
+    ___setlc_active = __setlc_active
+    ___setusermatherr = __setusermatherr
+    ___threadhandle = __threadhandle
+    ___threadid = __threadid
+    ___toascii = __toascii
+    ___unDName = __unDName
+    ___unDNameEx = __unDNameEx
+    ___unguarded_readlc_active = __unguarded_readlc_active
+    ___wargv = __wargv
+    ___wgetmainargs = __wgetmainargs
+    ___winitenv = __winitenv
+    __abnormal_termination = _abnormal_termination
+    __access = _access
+    __acmdln = _acmdln
+    __adj_fdiv_m16i = _adj_fdiv_m16i
+    __adj_fdiv_m32 = _adj_fdiv_m32
+    __adj_fdiv_m32i = _adj_fdiv_m32i
+    __adj_fdiv_m64 = _adj_fdiv_m64
+    __adj_fdiv_r = _adj_fdiv_r
+    __adj_fdivr_m16i = _adj_fdivr_m16i
+    __adj_fdivr_m32 = _adj_fdivr_m32
+    __adj_fdivr_m32i = _adj_fdivr_m32i
+    __adj_fdivr_m64 = _adj_fdivr_m64
+    __adj_fpatan = _adj_fpatan
+    __adj_fprem = _adj_fprem
+    __adj_fprem1 = _adj_fprem1
+    __adj_fptan = _adj_fptan
+    __adjust_fdiv = _adjust_fdiv
+    __aexit_rtn = _aexit_rtn
+    __amsg_exit = _amsg_exit
+    __assert = _assert
+    __atodbl = _atodbl
+    __atoi64 = _atoi64
+    __atoldbl = _atoldbl
+    __beep = _beep
+    __beginthread = _beginthread
+    __beginthreadex = _beginthreadex
+    __c_exit = _c_exit
+    __cabs = _cabs
+    __callnewh = _callnewh
+    __cexit = _cexit
+    __cgets = _cgets
+    __chdir = _chdir
+    __chdrive = _chdrive
+    __chgsign = _chgsign
+    __chkesp = _chkesp
+    __chmod = _chmod
+    __chsize = _chsize
+    __clearfp = _clearfp
+    __close = _close
+    __commit = _commit
+    __commode = _commode
+    __control87 = _control87
+    __controlfp = _controlfp
+    __copysign = _copysign
+    __cprintf = _cprintf
+    __cputs = _cputs
+    __creat = _creat
+    __cscanf = _cscanf
+    __ctype = _ctype
+    __cwait = _cwait
+    __daylight = _daylight
+    __dstbias = _dstbias
+    __dup = _dup
+    __dup2 = _dup2
+    __ecvt = _ecvt
+    __endthread = _endthread
+    __endthreadex = _endthreadex
+    __environ = _environ
+    __eof = _eof
+    __errno = _errno
+    __except_handler2 = _except_handler2
+    __except_handler3 = _except_handler3
+    __execl = _execl
+    __execle = _execle
+    __execlp = _execlp
+    __execlpe = _execlpe
+    __execv = _execv
+    __execve = _execve
+    __execvp = _execvp
+    __execvpe = _execvpe
+    __exit = _exit
+    __expand = _expand
+    __fcloseall = _fcloseall
+    __fcvt = _fcvt
+    __fdopen = _fdopen
+    __fgetchar = _fgetchar
+    __fgetwchar = _fgetwchar
+    __filbuf = _filbuf
+    __fileinfo = _fileinfo
+    __filelength = _filelength
+    __filelengthi64 = _filelengthi64
+    __fileno = _fileno
+    __findclose = _findclose
+    __findfirst = _findfirst
+    __findfirsti64 = _findfirsti64
+    __findnext = _findnext
+    __findnexti64 = _findnexti64
+    __finite = _finite
+    __flsbuf = _flsbuf
+    __flushall = _flushall
+    __fmode = _fmode
+    __fpclass = _fpclass
+    __fpieee_flt = _fpieee_flt
+    __fpreset = _fpreset
+    __fputchar = _fputchar
+    __fputwchar = _fputwchar
+    __fsopen = _fsopen
+    __fstat = _fstat
+    __fstati64 = _fstati64
+    __ftime = _ftime
+    __ftol = _ftol
+    __fullpath = _fullpath
+    __futime = _futime
+    __gcvt = _gcvt
+    __get_osfhandle = _get_osfhandle
+    __get_sbh_threshold = _get_sbh_threshold
+    __getch = _getch
+    __getche = _getche
+    __getcwd = _getcwd
+    __getdcwd = _getdcwd
+    __getdiskfree = _getdiskfree
+    __getdllprocaddr = _getdllprocaddr
+    __getdrive = _getdrive
+    __getdrives = _getdrives
+    __getmaxstdio = _getmaxstdio
+    __getmbcp = _getmbcp
+    __getpid = _getpid
+    __getsystime = _getsystime
+    __getw = _getw
+    __getws = _getws
+    __global_unwind2 = _global_unwind2
+    __heapadd = _heapadd
+    __heapchk = _heapchk
+    __heapmin = _heapmin
+    __heapset = _heapset
+    __heapused = _heapused
+    __heapwalk = _heapwalk
+    __hypot = _hypot
+    __i64toa = _i64toa
+    __i64tow = _i64tow
+    __initterm = _initterm
+    __inp = _inp
+    __inpd = _inpd
+    __inpw = _inpw
+    __iob = _iob
+    __isatty = _isatty
+    __isctype = _isctype
+    __ismbbalnum = _ismbbalnum
+    __ismbbalpha = _ismbbalpha
+    __ismbbgraph = _ismbbgraph
+    __ismbbkalnum = _ismbbkalnum
+    __ismbbkana = _ismbbkana
+    __ismbbkprint = _ismbbkprint
+    __ismbbkpunct = _ismbbkpunct
+    __ismbblead = _ismbblead
+    __ismbbprint = _ismbbprint
+    __ismbbpunct = _ismbbpunct
+    __ismbbtrail = _ismbbtrail
+    __ismbcalnum = _ismbcalnum
+    __ismbcalpha = _ismbcalpha
+    __ismbcdigit = _ismbcdigit
+    __ismbcgraph = _ismbcgraph
+    __ismbchira = _ismbchira
+    __ismbckata = _ismbckata
+    __ismbcl0 = _ismbcl0
+    __ismbcl1 = _ismbcl1
+    __ismbcl2 = _ismbcl2
+    __ismbclegal = _ismbclegal
+    __ismbclower = _ismbclower
+    __ismbcprint = _ismbcprint
+    __ismbcpunct = _ismbcpunct
+    __ismbcspace = _ismbcspace
+    __ismbcsymbol = _ismbcsymbol
+    __ismbcupper = _ismbcupper
+    __ismbslead = _ismbslead
+    __ismbstrail = _ismbstrail
+    __isnan = _isnan
+    __itoa = _itoa
+    __itow = _itow
+    __j0 = _j0
+    __j1 = _j1
+    __jn = _jn
+    __kbhit = _kbhit
+    __lfind = _lfind
+    __loaddll = _loaddll
+    __local_unwind2 = _local_unwind2
+    __lock = _lock
+    __locking = _locking
+    __logb = _logb
+    __longjmpex = _longjmpex
+    __lrotl = _lrotl
+    __lrotr = _lrotr
+    __lsearch = _lsearch
+    __lseek = _lseek
+    __lseeki64 = _lseeki64
+    __ltoa = _ltoa
+    __ltow = _ltow
+    __makepath = _makepath
+    __mbbtombc = _mbbtombc
+    __mbbtype = _mbbtype
+    __mbcasemap = _mbcasemap
+    __mbccpy = _mbccpy
+    __mbcjistojms = _mbcjistojms
+    __mbcjmstojis = _mbcjmstojis
+    __mbclen = _mbclen
+    __mbctohira = _mbctohira
+    __mbctokata = _mbctokata
+    __mbctolower = _mbctolower
+    __mbctombb = _mbctombb
+    __mbctoupper = _mbctoupper
+    __mbctype = _mbctype
+    __mbsbtype = _mbsbtype
+    __mbscat = _mbscat
+    __mbschr = _mbschr
+    __mbscmp = _mbscmp
+    __mbscoll = _mbscoll
+    __mbscpy = _mbscpy
+    __mbscspn = _mbscspn
+    __mbsdec = _mbsdec
+    __mbsdup = _mbsdup
+    __mbsicmp = _mbsicmp
+    __mbsicoll = _mbsicoll
+    __mbsinc = _mbsinc
+    __mbslen = _mbslen
+    __mbslwr = _mbslwr
+    __mbsnbcat = _mbsnbcat
+    __mbsnbcmp = _mbsnbcmp
+    __mbsnbcnt = _mbsnbcnt
+    __mbsnbcoll = _mbsnbcoll
+    __mbsnbcpy = _mbsnbcpy
+    __mbsnbicmp = _mbsnbicmp
+    __mbsnbicoll = _mbsnbicoll
+    __mbsnbset = _mbsnbset
+    __mbsncat = _mbsncat
+    __mbsnccnt = _mbsnccnt
+    __mbsncmp = _mbsncmp
+    __mbsncoll = _mbsncoll
+    __mbsncpy = _mbsncpy
+    __mbsnextc = _mbsnextc
+    __mbsnicmp = _mbsnicmp
+    __mbsnicoll = _mbsnicoll
+    __mbsninc = _mbsninc
+    __mbsnset = _mbsnset
+    __mbspbrk = _mbspbrk
+    __mbsrchr = _mbsrchr
+    __mbsrev = _mbsrev
+    __mbsset = _mbsset
+    __mbsspn = _mbsspn
+    __mbsspnp = _mbsspnp
+    __mbsstr = _mbsstr
+    __mbstok = _mbstok
+    __mbstrlen = _mbstrlen
+    __mbsupr = _mbsupr
+    __memccpy = _memccpy
+    __memicmp = _memicmp
+    __mkdir = _mkdir
+    __mktemp = _mktemp
+    __msize = _msize
+    __nextafter = _nextafter
+    __onexit = _onexit
+    __open = _open
+    __open_osfhandle = _open_osfhandle
+    __osver = _osver
+    __outp = _outp
+    __outpd = _outpd
+    __outpw = _outpw
+    __pclose = _pclose
+    __pctype = _pctype
+    __pgmptr = _pgmptr
+    __pipe = _pipe
+    __popen = _popen
+    __purecall = _purecall
+    __putch = _putch
+    __putenv = _putenv
+    __putw = _putw
+    __putws = _putws
+    __pwctype = _pwctype
+    __read = _read
+    __rmdir = _rmdir
+    __rmtmp = _rmtmp
+    __rotl = _rotl
+    __rotr = _rotr
+    __safe_fdiv = _safe_fdiv
+    __safe_fdivr = _safe_fdivr
+    __safe_fprem = _safe_fprem
+    __safe_fprem1 = _safe_fprem1
+    __scalb = _scalb
+    __searchenv = _searchenv
+    __seh_longjmp_unwind = _seh_longjmp_unwind
+    __set_error_mode = _set_error_mode
+    __set_sbh_threshold = _set_sbh_threshold
+    __seterrormode = _seterrormode
+    __setjmp = _setjmp
+    __setjmp3 = _setjmp3
+    __setmaxstdio = _setmaxstdio
+    __setmbcp = _setmbcp
+    __setmode = _setmode
+    __setsystime = _setsystime
+    __sleep = _sleep
+    __snprintf = _snprintf
+    __snwprintf = _snwprintf
+    __sopen = _sopen
+    __spawnl = _spawnl
+    __spawnle = _spawnle
+    __spawnlp = _spawnlp
+    __spawnlpe = _spawnlpe
+    __spawnv = _spawnv
+    __spawnve = _spawnve
+    __spawnvp = _spawnvp
+    __spawnvpe = _spawnvpe
+    __splitpath = _splitpath
+    __stat = _stat
+    __stati64 = _stati64
+    __statusfp = _statusfp
+    __strcmpi = _strcmpi
+    __strdate = _strdate
+    __strdup = _strdup
+    __strerror = _strerror
+    __stricmp = _stricmp
+    __stricoll = _stricoll
+    __strlwr = _strlwr
+    __strncoll = _strncoll
+    __strnicmp = _strnicmp
+    __strnicoll = _strnicoll
+    __strnset = _strnset
+    __strrev = _strrev
+    __strset = _strset
+    __strtime = _strtime
+    __strupr = _strupr
+    __swab = _swab
+    __sys_errlist = _sys_errlist
+    __sys_nerr = _sys_nerr
+    __tell = _tell
+    __telli64 = _telli64
+    __tempnam = _tempnam
+    __timezone = _timezone
+    __tolower = _tolower
+    __toupper = _toupper
+    __tzname = _tzname
+    __tzset = _tzset
+    __ui64toa = _ui64toa
+    __ui64tow = _ui64tow
+    __ultoa = _ultoa
+    __ultow = _ultow
+    __umask = _umask
+    __ungetch = _ungetch
+    __unlink = _unlink
+    __unloaddll = _unloaddll
+    __unlock = _unlock
+    __utime = _utime
+    __vsnprintf = _vsnprintf
+    __vsnwprintf = _vsnwprintf
+    __waccess = _waccess
+    __wasctime = _wasctime
+    __wchdir = _wchdir
+    __wchmod = _wchmod
+    __wcmdln = _wcmdln
+    __wcreat = _wcreat
+    __wcsdup = _wcsdup
+    __wcsicmp = _wcsicmp
+    __wcsicoll = _wcsicoll
+    __wcslwr = _wcslwr
+    __wcsncoll = _wcsncoll
+    __wcsnicmp = _wcsnicmp
+    __wcsnicoll = _wcsnicoll
+    __wcsnset = _wcsnset
+    __wcsrev = _wcsrev
+    __wcsset = _wcsset
+    __wcsupr = _wcsupr
+    __wctime = _wctime
+    __wenviron = _wenviron
+    __wexecl = _wexecl
+    __wexecle = _wexecle
+    __wexeclp = _wexeclp
+    __wexeclpe = _wexeclpe
+    __wexecv = _wexecv
+    __wexecve = _wexecve
+    __wexecvp = _wexecvp
+    __wexecvpe = _wexecvpe
+    __wfdopen = _wfdopen
+    __wfindfirst = _wfindfirst
+    __wfindfirsti64 = _wfindfirsti64
+    __wfindnext = _wfindnext
+    __wfindnexti64 = _wfindnexti64
+    __wfopen = _wfopen
+    __wfreopen = _wfreopen
+    __wfsopen = _wfsopen
+    __wfullpath = _wfullpath
+    __wgetcwd = _wgetcwd
+    __wgetdcwd = _wgetdcwd
+    __wgetenv = _wgetenv
+    __winmajor = _winmajor
+    __winminor = _winminor
+    __winver = _winver
+    __wmakepath = _wmakepath
+    __wmkdir = _wmkdir
+    __wmktemp = _wmktemp
+    __wopen = _wopen
+    __wperror = _wperror
+    __wpgmptr = _wpgmptr
+    __wpopen = _wpopen
+    __wputenv = _wputenv
+    __wremove = _wremove
+    __wrename = _wrename
+    __write = _write
+    __wrmdir = _wrmdir
+    __wsearchenv = _wsearchenv
+    __wsetlocale = _wsetlocale
+    __wsopen = _wsopen
+    __wspawnl = _wspawnl
+    __wspawnle = _wspawnle
+    __wspawnlp = _wspawnlp
+    __wspawnlpe = _wspawnlpe
+    __wspawnv = _wspawnv
+    __wspawnve = _wspawnve
+    __wspawnvp = _wspawnvp
+    __wspawnvpe = _wspawnvpe
+    __wsplitpath = _wsplitpath
+    __wstat = _wstat
+    __wstati64 = _wstati64
+    __wstrdate = _wstrdate
+    __wstrtime = _wstrtime
+    __wsystem = _wsystem
+    __wtempnam = _wtempnam
+    __wtmpnam = _wtmpnam
+    __wtoi = _wtoi
+    __wtoi64 = _wtoi64
+    __wtol = _wtol
+    __wunlink = _wunlink
+    __wutime = _wutime
+    __y0 = _y0
+    __y1 = _y1
+    __yn = _yn
+    _abort = abort
+    _abs = abs
+    _acos = acos
+    _asctime = asctime
+    _asin = asin
+    _atan = atan
+    _atan2 = atan2
+    _atexit = atexit
+    _atof = atof
+    _atoi = atoi
+    _atol = atol
+    _bsearch = bsearch
+    _calloc = calloc
+    _ceil = ceil
+    _clearerr = clearerr
+    _clock = clock
+    _cos = cos
+    _cosh = cosh
+    _ctime = ctime
+    _difftime = difftime
+    _div = div
+    _exit = exit
+    _exp = exp
+    _fabs = fabs
+    _fclose = fclose
+    _feof = feof
+    _ferror = ferror
+    _fflush = fflush
+    _fgetc = fgetc
+    _fgetpos = fgetpos
+    _fgets = fgets
+    _fgetwc = fgetwc
+    _fgetws = fgetws
+    _floor = floor
+    _fmod = fmod
+    _fopen = fopen
+    _fprintf = fprintf
+    _fputc = fputc
+    _fputs = fputs
+    _fputwc = fputwc
+    _fputws = fputws
+    _fread = fread
+    _free = free
+    _freopen = freopen
+    _frexp = frexp
+    _fscanf = fscanf
+    _fseek = fseek
+    _fsetpos = fsetpos
+    _ftell = ftell
+    _fwprintf = fwprintf
+    _fwrite = fwrite
+    _fwscanf = fwscanf
+    _getc = getc
+    _getchar = getchar
+    _getenv = getenv
+    _gets = gets
+    _getwc = getwc
+    _getwchar = getwchar
+    _gmtime = gmtime
+    _is_wctype = is_wctype
+    _isalnum = isalnum
+    _isalpha = isalpha
+    _iscntrl = iscntrl
+    _isdigit = isdigit
+    _isgraph = isgraph
+    _isleadbyte = isleadbyte
+    _islower = islower
+    _isprint = isprint
+    _ispunct = ispunct
+    _isspace = isspace
+    _isupper = isupper
+    _iswalnum = iswalnum
+    _iswalpha = iswalpha
+    _iswascii = iswascii
+    _iswcntrl = iswcntrl
+    _iswctype = iswctype
+    _iswdigit = iswdigit
+    _iswgraph = iswgraph
+    _iswlower = iswlower
+    _iswprint = iswprint
+    _iswpunct = iswpunct
+    _iswspace = iswspace
+    _iswupper = iswupper
+    _iswxdigit = iswxdigit
+    _isxdigit = isxdigit
+    _labs = labs
+    _ldexp = ldexp
+    _ldiv = ldiv
+    _localeconv = localeconv
+    _localtime = localtime
+    _log = log
+    _log10 = log10
+    _longjmp = longjmp
+    _malloc = malloc
+    _mblen = mblen
+    _mbstowcs = mbstowcs
+    _mbtowc = mbtowc
+    _memchr = memchr
+    _memcmp = memcmp
+    _memcpy = memcpy
+    _memmove = memmove
+    _memset = memset
+    _mktime = mktime
+    _modf = modf
+    _perror = perror
+    _pow = pow
+    _printf = printf
+    _putc = putc
+    _putchar = putchar
+    _puts = puts
+    _putwc = putwc
+    _putwchar = putwchar
+    _qsort = qsort
+    _raise = raise
+    _rand = rand
+    _realloc = realloc
+    _remove = remove
+    _rename = rename
+    _rewind = rewind
+    _scanf = scanf
+    _setbuf = setbuf
+    _setlocale = setlocale
+    _setvbuf = setvbuf
+    _signal = signal
+    _sin = sin
+    _sinh = sinh
+    _sprintf = sprintf
+    _sqrt = sqrt
+    _srand = srand
+    _sscanf = sscanf
+    _strcat = strcat
+    _strchr = strchr
+    _strcmp = strcmp
+    _strcoll = strcoll
+    _strcpy = strcpy
+    _strcspn = strcspn
+    _strerror = strerror
+    _strftime = strftime
+    _strlen = strlen
+    _strncat = strncat
+    _strncmp = strncmp
+    _strncpy = strncpy
+    _strpbrk = strpbrk
+    _strrchr = strrchr
+    _strspn = strspn
+    _strstr = strstr
+    _strtod = strtod
+    _strtok = strtok
+    _strtol = strtol
+    _strtoul = strtoul
+    _strxfrm = strxfrm
+    _swprintf = swprintf
+    _swscanf = swscanf
+    _system = system
+    _tan = tan
+    _tanh = tanh
+    _time = time
+    _tmpfile = tmpfile
+    _tmpnam = tmpnam
+    _tolower = tolower
+    _toupper = toupper
+    _towlower = towlower
+    _towupper = towupper
+    _ungetc = ungetc
+    _ungetwc = ungetwc
+    _vfprintf = vfprintf
+    _vfwprintf = vfwprintf
+    _vprintf = vprintf
+    _vsprintf = vsprintf
+    _vswprintf = vswprintf
+    _vwprintf = vwprintf
+    _wcscat = wcscat
+    _wcschr = wcschr
+    _wcscmp = wcscmp
+    _wcscoll = wcscoll
+    _wcscpy = wcscpy
+    _wcscspn = wcscspn
+    _wcsftime = wcsftime
+    _wcslen = wcslen
+    _wcsncat = wcsncat
+    _wcsncmp = wcsncmp
+    _wcsncpy = wcsncpy
+    _wcspbrk = wcspbrk
+    _wcsrchr = wcsrchr
+    _wcsspn = wcsspn
+    _wcsstr = wcsstr
+    _wcstod = wcstod
+    _wcstok = wcstok
+    _wcstol = wcstol
+    _wcstombs = wcstombs
+    _wcstoul = wcstoul
+    _wcsxfrm = wcsxfrm
+    _wctomb = wctomb
+    _wprintf = wprintf
+    _wscanf = wscanf

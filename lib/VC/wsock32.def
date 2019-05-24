@@ -1,78 +1,153 @@
 LIBRARY     WSOCK32.DLL
 
 EXPORTS
-    AcceptEx                       @1141; AcceptEx
-    EnumProtocolsA                 @1111; EnumProtocolsA
-    EnumProtocolsW                 @1112; EnumProtocolsW
-    GetAcceptExSockaddrs           @1142; GetAcceptExSockaddrs
-    GetAddressByNameA              @1109; GetAddressByNameA
-    GetAddressByNameW              @1110; GetAddressByNameW
-    GetNameByTypeA                 @1115; GetNameByTypeA
-    GetNameByTypeW                 @1116; GetNameByTypeW
-    GetServiceA                    @1119; GetServiceA
-    GetServiceW                    @1120; GetServiceW
-    GetTypeByNameA                 @1113; GetTypeByNameA
-    GetTypeByNameW                 @1114; GetTypeByNameW
-    MigrateWinsockConfiguration    @24  ; MigrateWinsockConfiguration
-    NPLoadNameSpaces               @1130; NPLoadNameSpaces
-    SetServiceA                    @1117; SetServiceA
-    SetServiceW                    @1118; SetServiceW
-    TransmitFile                   @1140; TransmitFile
-    WEP                            @500 ; WEP
-    WSAAsyncGetHostByAddr          @102 ; WSAAsyncGetHostByAddr
-    WSAAsyncGetHostByName          @103 ; WSAAsyncGetHostByName
-    WSAAsyncGetProtoByName         @105 ; WSAAsyncGetProtoByName
-    WSAAsyncGetProtoByNumber       @104 ; WSAAsyncGetProtoByNumber
-    WSAAsyncGetServByName          @107 ; WSAAsyncGetServByName
-    WSAAsyncGetServByPort          @106 ; WSAAsyncGetServByPort
-    WSAAsyncSelect                 @101 ; WSAAsyncSelect
-    WSACancelAsyncRequest          @108 ; WSACancelAsyncRequest
-    WSACancelBlockingCall          @113 ; WSACancelBlockingCall
-    WSACleanup                     @116 ; WSACleanup
-    WSAGetLastError                @111 ; WSAGetLastError
-    WSAIsBlocking                  @114 ; WSAIsBlocking
-    WSARecvEx                      @1107; WSARecvEx
-    WSASetBlockingHook             @109 ; WSASetBlockingHook
-    WSASetLastError                @112 ; WSASetLastError
-    WSAStartup                     @115 ; WSAStartup
-    WSAUnhookBlockingHook          @110 ; WSAUnhookBlockingHook
-    WSApSetPostRoutine             @1000; WSApSetPostRoutine
-    __WSAFDIsSet                   @151 ; __WSAFDIsSet
-    accept                         @1   ; accept
-    bind                           @2   ; bind
-    closesocket                    @3   ; closesocket
-    connect                        @4   ; connect
-    dn_expand                      @1106; dn_expand
-    gethostbyaddr                  @51  ; gethostbyaddr
-    gethostbyname                  @52  ; gethostbyname
-    gethostname                    @57  ; gethostname
-    getnetbyname                   @1101; getnetbyname
-    getpeername                    @5   ; getpeername
-    getprotobyname                 @53  ; getprotobyname
-    getprotobynumber               @54  ; getprotobynumber
-    getservbyname                  @55  ; getservbyname
-    getservbyport                  @56  ; getservbyport
-    getsockname                    @6   ; getsockname
-    getsockopt                     @7   ; getsockopt
-    htonl                          @8   ; htonl
-    htons                          @9   ; htons
-    inet_addr                      @10  ; inet_addr
-    inet_network                   @1100; inet_network
-    inet_ntoa                      @11  ; inet_ntoa
-    ioctlsocket                    @12  ; ioctlsocket
-    listen                         @13  ; listen
-    ntohl                          @14  ; ntohl
-    ntohs                          @15  ; ntohs
-    rcmd                           @1102; rcmd
-    recv                           @16  ; recv
-    recvfrom                       @17  ; recvfrom
-    rexec                          @1103; rexec
-    rresvport                      @1104; rresvport
-    s_perror                       @1108; s_perror
-    select                         @18  ; select
-    send                           @19  ; send
-    sendto                         @20  ; sendto
-    sethostname                    @1105; sethostname
-    setsockopt                     @21  ; setsockopt
-    shutdown                       @22  ; shutdown
-    socket                         @23  ; socket
+    AcceptEx
+    EnumProtocolsA
+    EnumProtocolsW
+    GetAcceptExSockaddrs
+    GetAddressByNameA
+    GetAddressByNameW
+    GetNameByTypeA
+    GetNameByTypeW
+    GetServiceA
+    GetServiceW
+    GetTypeByNameA
+    GetTypeByNameW
+    MigrateWinsockConfiguration
+    NPLoadNameSpaces
+    SetServiceA
+    SetServiceW
+    TransmitFile
+    WEP
+    WSAAsyncGetHostByAddr
+    WSAAsyncGetHostByName
+    WSAAsyncGetProtoByName
+    WSAAsyncGetProtoByNumber
+    WSAAsyncGetServByName
+    WSAAsyncGetServByPort
+    WSAAsyncSelect
+    WSACancelAsyncRequest
+    WSACancelBlockingCall
+    WSACleanup
+    WSAGetLastError
+    WSAIsBlocking
+    WSARecvEx
+    WSASetBlockingHook
+    WSASetLastError
+    WSAStartup
+    WSAUnhookBlockingHook
+    WSApSetPostRoutine
+    __WSAFDIsSet
+    accept
+    bind
+    closesocket
+    connect
+    dn_expand
+    gethostbyaddr
+    gethostbyname
+    gethostname
+    getnetbyname
+    getpeername
+    getprotobyname
+    getprotobynumber
+    getservbyname
+    getservbyport
+    getsockname
+    getsockopt
+    htonl
+    htons
+    inet_addr
+    inet_network
+    inet_ntoa
+    ioctlsocket
+    listen
+    ntohl
+    ntohs
+    rcmd
+    recv
+    recvfrom
+    rexec
+    rresvport
+    s_perror
+    select
+    send
+    sendto
+    sethostname
+    setsockopt
+    shutdown
+    socket
+    ?WSApSetPostRoutine@@YGHPAX@Z = WSApSetPostRoutine
+    _AcceptEx@32 = AcceptEx
+    _EnumProtocolsA@12 = EnumProtocolsA
+    _EnumProtocolsW@12 = EnumProtocolsW
+    _GetAcceptExSockaddrs@32 = GetAcceptExSockaddrs
+    _GetAddressByNameA@40 = GetAddressByNameA
+    _GetAddressByNameW@40 = GetAddressByNameW
+    _GetNameByTypeA@12 = GetNameByTypeA
+    _GetNameByTypeW@12 = GetNameByTypeW
+    _GetServiceA@28 = GetServiceA
+    _GetServiceW@28 = GetServiceW
+    _GetTypeByNameA@8 = GetTypeByNameA
+    _GetTypeByNameW@8 = GetTypeByNameW
+    _MigrateWinsockConfiguration@12 = MigrateWinsockConfiguration
+    _NPLoadNameSpaces@12 = NPLoadNameSpaces
+    _SetServiceA@24 = SetServiceA
+    _SetServiceW@24 = SetServiceW
+    _TransmitFile@28 = TransmitFile
+    _WEP@0 = WEP
+    _WSAAsyncGetHostByAddr@28 = WSAAsyncGetHostByAddr
+    _WSAAsyncGetHostByName@20 = WSAAsyncGetHostByName
+    _WSAAsyncGetProtoByName@20 = WSAAsyncGetProtoByName
+    _WSAAsyncGetProtoByNumber@20 = WSAAsyncGetProtoByNumber
+    _WSAAsyncGetServByName@24 = WSAAsyncGetServByName
+    _WSAAsyncGetServByPort@24 = WSAAsyncGetServByPort
+    _WSAAsyncSelect@16 = WSAAsyncSelect
+    _WSACancelAsyncRequest@4 = WSACancelAsyncRequest
+    _WSACancelBlockingCall@0 = WSACancelBlockingCall
+    _WSACleanup@0 = WSACleanup
+    _WSAGetLastError@0 = WSAGetLastError
+    _WSAIsBlocking@0 = WSAIsBlocking
+    _WSARecvEx@16 = WSARecvEx
+    _WSASetBlockingHook@4 = WSASetBlockingHook
+    _WSASetLastError@4 = WSASetLastError
+    _WSAStartup@8 = WSAStartup
+    _WSAUnhookBlockingHook@0 = WSAUnhookBlockingHook
+    ___WSAFDIsSet@8 = __WSAFDIsSet
+    _accept@12 = accept
+    _bind@12 = bind
+    _closesocket@4 = closesocket
+    _connect@12 = connect
+    _dn_expand@20 = dn_expand
+    _gethostbyaddr@12 = gethostbyaddr
+    _gethostbyname@4 = gethostbyname
+    _gethostname@8 = gethostname
+    _getnetbyname@4 = getnetbyname
+    _getpeername@12 = getpeername
+    _getprotobyname@4 = getprotobyname
+    _getprotobynumber@4 = getprotobynumber
+    _getservbyname@8 = getservbyname
+    _getservbyport@8 = getservbyport
+    _getsockname@12 = getsockname
+    _getsockopt@20 = getsockopt
+    _htonl@4 = htonl
+    _htons@4 = htons
+    _inet_addr@4 = inet_addr
+    _inet_network@4 = inet_network
+    _inet_ntoa@4 = inet_ntoa
+    _ioctlsocket@12 = ioctlsocket
+    _listen@8 = listen
+    _ntohl@4 = ntohl
+    _ntohs@4 = ntohs
+    _rcmd@24 = rcmd
+    _recv@16 = recv
+    _recvfrom@24 = recvfrom
+    _rexec@24 = rexec
+    _rresvport@4 = rresvport
+    _s_perror@8 = s_perror
+    _select@20 = select
+    _send@16 = send
+    _sendto@24 = sendto
+    _sethostname@8 = sethostname
+    _setsockopt@20 = setsockopt
+    _shutdown@8 = shutdown
+    _socket@12 = socket

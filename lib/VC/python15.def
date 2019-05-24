@@ -1,411 +1,411 @@
 LIBRARY     PYTHON15.DLL
 
 EXPORTS
-    PyArg_Parse                    @1   ; PyArg_Parse
-    PyArg_ParseTuple               @2   ; PyArg_ParseTuple
-    PyArg_ParseTupleAndKeywords    @3   ; PyArg_ParseTupleAndKeywords
-    PyArg_VaParse                  @4   ; PyArg_VaParse
-    PyBuffer_FromMemory            @5   ; PyBuffer_FromMemory
-    PyBuffer_FromObject            @6   ; PyBuffer_FromObject
-    PyBuffer_FromReadWriteMemory   @7   ; PyBuffer_FromReadWriteMemory
-    PyBuffer_FromReadWriteObject   @8   ; PyBuffer_FromReadWriteObject
-    PyBuffer_New                   @9   ; PyBuffer_New
-    PyBuffer_Type                  @10  ; PyBuffer_Type
-    PyCFunction_Fini               @11  ; PyCFunction_Fini
-    PyCFunction_GetFlags           @12  ; PyCFunction_GetFlags
-    PyCFunction_GetFunction        @13  ; PyCFunction_GetFunction
-    PyCFunction_GetSelf            @14  ; PyCFunction_GetSelf
-    PyCFunction_New                @15  ; PyCFunction_New
-    PyCFunction_Type               @16  ; PyCFunction_Type
-    PyCObject_AsVoidPtr            @17  ; PyCObject_AsVoidPtr
-    PyCObject_FromVoidPtr          @18  ; PyCObject_FromVoidPtr
-    PyCObject_FromVoidPtrAndDesc   @19  ; PyCObject_FromVoidPtrAndDesc
-    PyCObject_GetDesc              @20  ; PyCObject_GetDesc
-    PyCObject_Import               @21  ; PyCObject_Import
-    PyCObject_Type                 @22  ; PyCObject_Type
-    PyCallable_Check               @23  ; PyCallable_Check
-    PyClass_IsSubclass             @24  ; PyClass_IsSubclass
-    PyClass_New                    @25  ; PyClass_New
-    PyClass_Type                   @26  ; PyClass_Type
-    PyCode_Addr2Line               @27  ; PyCode_Addr2Line
-    PyCode_New                     @28  ; PyCode_New
-    PyCode_Type                    @29  ; PyCode_Type
-    PyComplex_AsCComplex           @30  ; PyComplex_AsCComplex
-    PyComplex_FromCComplex         @31  ; PyComplex_FromCComplex
-    PyComplex_FromDoubles          @32  ; PyComplex_FromDoubles
-    PyComplex_ImagAsDouble         @33  ; PyComplex_ImagAsDouble
-    PyComplex_RealAsDouble         @34  ; PyComplex_RealAsDouble
-    PyComplex_Type                 @35  ; PyComplex_Type
-    PyDict_Clear                   @36  ; PyDict_Clear
-    PyDict_DelItem                 @37  ; PyDict_DelItem
-    PyDict_DelItemString           @38  ; PyDict_DelItemString
-    PyDict_GetItem                 @39  ; PyDict_GetItem
-    PyDict_GetItemString           @40  ; PyDict_GetItemString
-    PyDict_Items                   @41  ; PyDict_Items
-    PyDict_Keys                    @42  ; PyDict_Keys
-    PyDict_New                     @43  ; PyDict_New
-    PyDict_Next                    @44  ; PyDict_Next
-    PyDict_SetItem                 @45  ; PyDict_SetItem
-    PyDict_SetItemString           @46  ; PyDict_SetItemString
-    PyDict_Size                    @47  ; PyDict_Size
-    PyDict_Type                    @48  ; PyDict_Type
-    PyDict_Values                  @49  ; PyDict_Values
-    PyErr_BadArgument              @50  ; PyErr_BadArgument
-    PyErr_BadInternalCall          @51  ; PyErr_BadInternalCall
-    PyErr_CheckSignals             @52  ; PyErr_CheckSignals
-    PyErr_Clear                    @53  ; PyErr_Clear
-    PyErr_ExceptionMatches         @54  ; PyErr_ExceptionMatches
-    PyErr_Fetch                    @55  ; PyErr_Fetch
-    PyErr_Format                   @56  ; PyErr_Format
-    PyErr_GivenExceptionMatches    @57  ; PyErr_GivenExceptionMatches
-    PyErr_NewException             @58  ; PyErr_NewException
-    PyErr_NoMemory                 @59  ; PyErr_NoMemory
-    PyErr_NormalizeException       @60  ; PyErr_NormalizeException
-    PyErr_Occurred                 @61  ; PyErr_Occurred
-    PyErr_Print                    @62  ; PyErr_Print
-    PyErr_PrintEx                  @63  ; PyErr_PrintEx
-    PyErr_Restore                  @64  ; PyErr_Restore
-    PyErr_SetFromErrno             @65  ; PyErr_SetFromErrno
-    PyErr_SetFromErrnoWithFilename @66  ; PyErr_SetFromErrnoWithFilename
-    PyErr_SetInterrupt             @67  ; PyErr_SetInterrupt
-    PyErr_SetNone                  @68  ; PyErr_SetNone
-    PyErr_SetObject                @69  ; PyErr_SetObject
-    PyErr_SetString                @70  ; PyErr_SetString
-    PyEval_AcquireLock             @71  ; PyEval_AcquireLock
-    PyEval_AcquireThread           @72  ; PyEval_AcquireThread
-    PyEval_CallFunction            @73  ; PyEval_CallFunction
-    PyEval_CallMethod              @74  ; PyEval_CallMethod
-    PyEval_CallObject              @75  ; PyEval_CallObject
-    PyEval_CallObjectWithKeywords  @76  ; PyEval_CallObjectWithKeywords
-    PyEval_EvalCode                @77  ; PyEval_EvalCode
-    PyEval_GetBuiltins             @78  ; PyEval_GetBuiltins
-    PyEval_GetFrame                @79  ; PyEval_GetFrame
-    PyEval_GetGlobals              @80  ; PyEval_GetGlobals
-    PyEval_GetLocals               @81  ; PyEval_GetLocals
-    PyEval_GetRestricted           @82  ; PyEval_GetRestricted
-    PyEval_InitThreads             @83  ; PyEval_InitThreads
-    PyEval_ReleaseLock             @84  ; PyEval_ReleaseLock
-    PyEval_ReleaseThread           @85  ; PyEval_ReleaseThread
-    PyEval_RestoreThread           @86  ; PyEval_RestoreThread
-    PyEval_SaveThread              @87  ; PyEval_SaveThread
-    PyExc_ArithmeticError          @88  ; PyExc_ArithmeticError
-    PyExc_AssertionError           @89  ; PyExc_AssertionError
-    PyExc_AttributeError           @90  ; PyExc_AttributeError
-    PyExc_EOFError                 @91  ; PyExc_EOFError
-    PyExc_EnvironmentError         @92  ; PyExc_EnvironmentError
-    PyExc_Exception                @93  ; PyExc_Exception
-    PyExc_FloatingPointError       @94  ; PyExc_FloatingPointError
-    PyExc_IOError                  @95  ; PyExc_IOError
-    PyExc_ImportError              @96  ; PyExc_ImportError
-    PyExc_IndexError               @97  ; PyExc_IndexError
-    PyExc_KeyError                 @98  ; PyExc_KeyError
-    PyExc_KeyboardInterrupt        @99  ; PyExc_KeyboardInterrupt
-    PyExc_LookupError              @100 ; PyExc_LookupError
-    PyExc_MemoryError              @101 ; PyExc_MemoryError
-    PyExc_MemoryErrorInst          @102 ; PyExc_MemoryErrorInst
-    PyExc_NameError                @103 ; PyExc_NameError
-    PyExc_NotImplementedError      @104 ; PyExc_NotImplementedError
-    PyExc_OSError                  @105 ; PyExc_OSError
-    PyExc_OverflowError            @106 ; PyExc_OverflowError
-    PyExc_RuntimeError             @107 ; PyExc_RuntimeError
-    PyExc_StandardError            @108 ; PyExc_StandardError
-    PyExc_SyntaxError              @109 ; PyExc_SyntaxError
-    PyExc_SystemError              @110 ; PyExc_SystemError
-    PyExc_SystemExit               @111 ; PyExc_SystemExit
-    PyExc_TypeError                @112 ; PyExc_TypeError
-    PyExc_ValueError               @113 ; PyExc_ValueError
-    PyExc_ZeroDivisionError        @114 ; PyExc_ZeroDivisionError
-    PyFile_AsFile                  @115 ; PyFile_AsFile
-    PyFile_FromFile                @116 ; PyFile_FromFile
-    PyFile_FromString              @117 ; PyFile_FromString
-    PyFile_GetLine                 @118 ; PyFile_GetLine
-    PyFile_Name                    @119 ; PyFile_Name
-    PyFile_SetBufSize              @120 ; PyFile_SetBufSize
-    PyFile_SoftSpace               @121 ; PyFile_SoftSpace
-    PyFile_Type                    @122 ; PyFile_Type
-    PyFile_WriteObject             @123 ; PyFile_WriteObject
-    PyFile_WriteString             @124 ; PyFile_WriteString
-    PyFloat_AsDouble               @125 ; PyFloat_AsDouble
-    PyFloat_Fini                   @126 ; PyFloat_Fini
-    PyFloat_FromDouble             @127 ; PyFloat_FromDouble
-    PyFloat_Type                   @128 ; PyFloat_Type
-    PyFrame_BlockPop               @129 ; PyFrame_BlockPop
-    PyFrame_BlockSetup             @130 ; PyFrame_BlockSetup
-    PyFrame_FastToLocals           @131 ; PyFrame_FastToLocals
-    PyFrame_Fini                   @132 ; PyFrame_Fini
-    PyFrame_LocalsToFast           @133 ; PyFrame_LocalsToFast
-    PyFrame_New                    @134 ; PyFrame_New
-    PyFrame_Type                   @135 ; PyFrame_Type
-    PyFunction_GetCode             @136 ; PyFunction_GetCode
-    PyFunction_GetDefaults         @137 ; PyFunction_GetDefaults
-    PyFunction_GetGlobals          @138 ; PyFunction_GetGlobals
-    PyFunction_New                 @139 ; PyFunction_New
-    PyFunction_SetDefaults         @140 ; PyFunction_SetDefaults
-    PyFunction_Type                @141 ; PyFunction_Type
-    PyImport_AddModule             @142 ; PyImport_AddModule
-    PyImport_AppendInittab         @143 ; PyImport_AppendInittab
-    PyImport_Cleanup               @144 ; PyImport_Cleanup
-    PyImport_ExecCodeModule        @145 ; PyImport_ExecCodeModule
-    PyImport_ExecCodeModuleEx      @146 ; PyImport_ExecCodeModuleEx
-    PyImport_ExtendInittab         @147 ; PyImport_ExtendInittab
-    PyImport_FrozenModules         @148 ; PyImport_FrozenModules
-    PyImport_GetMagicNumber        @149 ; PyImport_GetMagicNumber
-    PyImport_GetModuleDict         @150 ; PyImport_GetModuleDict
-    PyImport_Import                @151 ; PyImport_Import
-    PyImport_ImportFrozenModule    @152 ; PyImport_ImportFrozenModule
-    PyImport_ImportModule          @153 ; PyImport_ImportModule
-    PyImport_ImportModuleEx        @154 ; PyImport_ImportModuleEx
-    PyImport_Inittab               @155 ; PyImport_Inittab
-    PyImport_ReloadModule          @156 ; PyImport_ReloadModule
-    PyInstance_DoBinOp             @157 ; PyInstance_DoBinOp
-    PyInstance_New                 @158 ; PyInstance_New
-    PyInstance_Type                @159 ; PyInstance_Type
-    PyInt_AsLong                   @160 ; PyInt_AsLong
-    PyInt_Fini                     @161 ; PyInt_Fini
-    PyInt_FromLong                 @162 ; PyInt_FromLong
-    PyInt_GetMax                   @163 ; PyInt_GetMax
-    PyInt_Type                     @164 ; PyInt_Type
-    PyInterpreterState_Clear       @165 ; PyInterpreterState_Clear
-    PyInterpreterState_Delete      @166 ; PyInterpreterState_Delete
-    PyInterpreterState_New         @167 ; PyInterpreterState_New
-    PyList_Append                  @168 ; PyList_Append
-    PyList_AsTuple                 @169 ; PyList_AsTuple
-    PyList_GetItem                 @170 ; PyList_GetItem
-    PyList_GetSlice                @171 ; PyList_GetSlice
-    PyList_Insert                  @172 ; PyList_Insert
-    PyList_New                     @173 ; PyList_New
-    PyList_Reverse                 @174 ; PyList_Reverse
-    PyList_SetItem                 @175 ; PyList_SetItem
-    PyList_SetSlice                @176 ; PyList_SetSlice
-    PyList_Size                    @177 ; PyList_Size
-    PyList_Sort                    @178 ; PyList_Sort
-    PyList_Type                    @179 ; PyList_Type
-    PyLong_AsDouble                @180 ; PyLong_AsDouble
-    PyLong_AsLong                  @181 ; PyLong_AsLong
-    PyLong_AsLongLong              @182 ; PyLong_AsLongLong
-    PyLong_AsUnsignedLong          @183 ; PyLong_AsUnsignedLong
-    PyLong_AsUnsignedLongLong      @184 ; PyLong_AsUnsignedLongLong
-    PyLong_AsVoidPtr               @185 ; PyLong_AsVoidPtr
-    PyLong_FromDouble              @186 ; PyLong_FromDouble
-    PyLong_FromLong                @187 ; PyLong_FromLong
-    PyLong_FromLongLong            @188 ; PyLong_FromLongLong
-    PyLong_FromString              @189 ; PyLong_FromString
-    PyLong_FromUnsignedLong        @190 ; PyLong_FromUnsignedLong
-    PyLong_FromUnsignedLongLong    @191 ; PyLong_FromUnsignedLongLong
-    PyLong_FromVoidPtr             @192 ; PyLong_FromVoidPtr
-    PyLong_Type                    @193 ; PyLong_Type
-    PyMapping_Check                @194 ; PyMapping_Check
-    PyMapping_GetItemString        @195 ; PyMapping_GetItemString
-    PyMapping_HasKey               @196 ; PyMapping_HasKey
-    PyMapping_HasKeyString         @197 ; PyMapping_HasKeyString
-    PyMapping_Length               @198 ; PyMapping_Length
-    PyMapping_SetItemString        @199 ; PyMapping_SetItemString
-    PyMarshal_ReadLongFromFile     @200 ; PyMarshal_ReadLongFromFile
-    PyMarshal_ReadObjectFromFile   @201 ; PyMarshal_ReadObjectFromFile
-    PyMarshal_ReadObjectFromString @202 ; PyMarshal_ReadObjectFromString
-    PyMarshal_WriteLongToFile      @203 ; PyMarshal_WriteLongToFile
-    PyMarshal_WriteObjectToFile    @204 ; PyMarshal_WriteObjectToFile
-    PyMarshal_WriteObjectToString  @205 ; PyMarshal_WriteObjectToString
-    PyMem_Free                     @206 ; PyMem_Free
-    PyMem_Malloc                   @207 ; PyMem_Malloc
-    PyMem_Realloc                  @208 ; PyMem_Realloc
-    PyMember_Get                   @209 ; PyMember_Get
-    PyMember_Set                   @210 ; PyMember_Set
-    PyMethod_Class                 @211 ; PyMethod_Class
-    PyMethod_Fini                  @212 ; PyMethod_Fini
-    PyMethod_Function              @213 ; PyMethod_Function
-    PyMethod_New                   @214 ; PyMethod_New
-    PyMethod_Self                  @215 ; PyMethod_Self
-    PyMethod_Type                  @216 ; PyMethod_Type
-    PyModule_GetDict               @217 ; PyModule_GetDict
-    PyModule_GetFilename           @218 ; PyModule_GetFilename
-    PyModule_GetName               @219 ; PyModule_GetName
-    PyModule_New                   @220 ; PyModule_New
-    PyModule_Type                  @221 ; PyModule_Type
-    PyNode_AddChild                @222 ; PyNode_AddChild
-    PyNode_Compile                 @223 ; PyNode_Compile
-    PyNode_Free                    @224 ; PyNode_Free
-    PyNode_ListTree                @225 ; PyNode_ListTree
-    PyNode_New                     @226 ; PyNode_New
-    PyNumber_Absolute              @227 ; PyNumber_Absolute
-    PyNumber_Add                   @228 ; PyNumber_Add
-    PyNumber_And                   @229 ; PyNumber_And
-    PyNumber_Check                 @230 ; PyNumber_Check
-    PyNumber_Coerce                @231 ; PyNumber_Coerce
-    PyNumber_CoerceEx              @232 ; PyNumber_CoerceEx
-    PyNumber_Divide                @233 ; PyNumber_Divide
-    PyNumber_Divmod                @234 ; PyNumber_Divmod
-    PyNumber_Float                 @235 ; PyNumber_Float
-    PyNumber_Int                   @236 ; PyNumber_Int
-    PyNumber_Invert                @237 ; PyNumber_Invert
-    PyNumber_Long                  @238 ; PyNumber_Long
-    PyNumber_Lshift                @239 ; PyNumber_Lshift
-    PyNumber_Multiply              @240 ; PyNumber_Multiply
-    PyNumber_Negative              @241 ; PyNumber_Negative
-    PyNumber_Or                    @242 ; PyNumber_Or
-    PyNumber_Positive              @243 ; PyNumber_Positive
-    PyNumber_Power                 @244 ; PyNumber_Power
-    PyNumber_Remainder             @245 ; PyNumber_Remainder
-    PyNumber_Rshift                @246 ; PyNumber_Rshift
-    PyNumber_Subtract              @247 ; PyNumber_Subtract
-    PyNumber_Xor                   @248 ; PyNumber_Xor
-    PyOS_AfterFork                 @249 ; PyOS_AfterFork
-    PyOS_FiniInterrupts            @250 ; PyOS_FiniInterrupts
-    PyOS_InitInterrupts            @251 ; PyOS_InitInterrupts
-    PyOS_InputHook                 @252 ; PyOS_InputHook
-    PyOS_InterruptOccurred         @253 ; PyOS_InterruptOccurred
-    PyOS_Readline                  @254 ; PyOS_Readline
-    PyOS_ReadlineFunctionPointer   @255 ; PyOS_ReadlineFunctionPointer
-    PyOS_strtol                    @256 ; PyOS_strtol
-    PyOS_strtoul                   @257 ; PyOS_strtoul
-    PyObject_CallFunction          @258 ; PyObject_CallFunction
-    PyObject_CallMethod            @259 ; PyObject_CallMethod
-    PyObject_CallObject            @260 ; PyObject_CallObject
-    PyObject_Cmp                   @261 ; PyObject_Cmp
-    PyObject_Compare               @262 ; PyObject_Compare
-    PyObject_DelItem               @263 ; PyObject_DelItem
-    PyObject_GetAttr               @264 ; PyObject_GetAttr
-    PyObject_GetAttrString         @265 ; PyObject_GetAttrString
-    PyObject_GetItem               @266 ; PyObject_GetItem
-    PyObject_HasAttr               @267 ; PyObject_HasAttr
-    PyObject_HasAttrString         @268 ; PyObject_HasAttrString
-    PyObject_Hash                  @269 ; PyObject_Hash
-    PyObject_IsTrue                @270 ; PyObject_IsTrue
-    PyObject_Length                @271 ; PyObject_Length
-    PyObject_Not                   @272 ; PyObject_Not
-    PyObject_Print                 @273 ; PyObject_Print
-    PyObject_Repr                  @274 ; PyObject_Repr
-    PyObject_SetAttr               @275 ; PyObject_SetAttr
-    PyObject_SetAttrString         @276 ; PyObject_SetAttrString
-    PyObject_SetItem               @277 ; PyObject_SetItem
-    PyObject_Str                   @278 ; PyObject_Str
-    PyObject_Type                  @279 ; PyObject_Type
-    PyParser_ParseFile             @280 ; PyParser_ParseFile
-    PyParser_ParseString           @281 ; PyParser_ParseString
-    PyParser_SimpleParseFile       @282 ; PyParser_SimpleParseFile
-    PyParser_SimpleParseString     @283 ; PyParser_SimpleParseString
-    PyRange_New                    @284 ; PyRange_New
-    PyRange_Type                   @285 ; PyRange_Type
-    PyRun_AnyFile                  @286 ; PyRun_AnyFile
-    PyRun_File                     @287 ; PyRun_File
-    PyRun_InteractiveLoop          @288 ; PyRun_InteractiveLoop
-    PyRun_InteractiveOne           @289 ; PyRun_InteractiveOne
-    PyRun_InteractiveString        @290 ; PyRun_InteractiveString
-    PyRun_SimpleFile               @291 ; PyRun_SimpleFile
-    PyRun_SimpleString             @292 ; PyRun_SimpleString
-    PyRun_String                   @293 ; PyRun_String
-    PySequence_Check               @294 ; PySequence_Check
-    PySequence_Concat              @295 ; PySequence_Concat
-    PySequence_Contains            @296 ; PySequence_Contains
-    PySequence_Count               @297 ; PySequence_Count
-    PySequence_DelItem             @298 ; PySequence_DelItem
-    PySequence_DelSlice            @299 ; PySequence_DelSlice
-    PySequence_GetItem             @300 ; PySequence_GetItem
-    PySequence_GetSlice            @301 ; PySequence_GetSlice
-    PySequence_In                  @302 ; PySequence_In
-    PySequence_Index               @303 ; PySequence_Index
-    PySequence_Length              @304 ; PySequence_Length
-    PySequence_List                @305 ; PySequence_List
-    PySequence_Repeat              @306 ; PySequence_Repeat
-    PySequence_SetItem             @307 ; PySequence_SetItem
-    PySequence_SetSlice            @308 ; PySequence_SetSlice
-    PySequence_Tuple               @309 ; PySequence_Tuple
-    PySlice_GetIndices             @310 ; PySlice_GetIndices
-    PySlice_New                    @311 ; PySlice_New
-    PySlice_Type                   @312 ; PySlice_Type
-    PyString_AsString              @313 ; PyString_AsString
-    PyString_Concat                @314 ; PyString_Concat
-    PyString_ConcatAndDel          @315 ; PyString_ConcatAndDel
-    PyString_Fini                  @316 ; PyString_Fini
-    PyString_Format                @317 ; PyString_Format
-    PyString_FromString            @318 ; PyString_FromString
-    PyString_FromStringAndSize     @319 ; PyString_FromStringAndSize
-    PyString_InternFromString      @320 ; PyString_InternFromString
-    PyString_InternInPlace         @321 ; PyString_InternInPlace
-    PyString_Size                  @322 ; PyString_Size
-    PyString_Type                  @323 ; PyString_Type
-    PySys_GetFile                  @324 ; PySys_GetFile
-    PySys_GetObject                @325 ; PySys_GetObject
-    PySys_SetArgv                  @326 ; PySys_SetArgv
-    PySys_SetObject                @327 ; PySys_SetObject
-    PySys_SetPath                  @328 ; PySys_SetPath
-    PySys_WriteStderr              @329 ; PySys_WriteStderr
-    PySys_WriteStdout              @330 ; PySys_WriteStdout
-    PyThreadState_Clear            @331 ; PyThreadState_Clear
-    PyThreadState_Delete           @332 ; PyThreadState_Delete
-    PyThreadState_Get              @333 ; PyThreadState_Get
-    PyThreadState_GetDict          @334 ; PyThreadState_GetDict
-    PyThreadState_New              @335 ; PyThreadState_New
-    PyThreadState_Swap             @336 ; PyThreadState_Swap
-    PyThread_acquire_lock          @337 ; PyThread_acquire_lock
-    PyThread_allocate_lock         @338 ; PyThread_allocate_lock
-    PyThread_allocate_sema         @339 ; PyThread_allocate_sema
-    PyThread_down_sema             @340 ; PyThread_down_sema
-    PyThread_exit_thread           @341 ; PyThread_exit_thread
-    PyThread_free_lock             @342 ; PyThread_free_lock
-    PyThread_free_sema             @343 ; PyThread_free_sema
-    PyThread_get_thread_ident      @344 ; PyThread_get_thread_ident
-    PyThread_init_thread           @345 ; PyThread_init_thread
-    PyThread_release_lock          @346 ; PyThread_release_lock
-    PyThread_start_new_thread      @347 ; PyThread_start_new_thread
-    PyThread_up_sema               @348 ; PyThread_up_sema
-    PyToken_OneChar                @349 ; PyToken_OneChar
-    PyToken_TwoChars               @350 ; PyToken_TwoChars
-    PyTraceBack_Here               @351 ; PyTraceBack_Here
-    PyTraceBack_Print              @352 ; PyTraceBack_Print
-    PyTraceBack_Type               @353 ; PyTraceBack_Type
-    PyTuple_Fini                   @354 ; PyTuple_Fini
-    PyTuple_GetItem                @355 ; PyTuple_GetItem
-    PyTuple_GetSlice               @356 ; PyTuple_GetSlice
-    PyTuple_New                    @357 ; PyTuple_New
-    PyTuple_SetItem                @358 ; PyTuple_SetItem
-    PyTuple_Size                   @359 ; PyTuple_Size
-    PyTuple_Type                   @360 ; PyTuple_Type
-    PyType_Type                    @361 ; PyType_Type
-    Py_AddPendingCall              @362 ; Py_AddPendingCall
-    Py_AtExit                      @363 ; Py_AtExit
-    Py_BuildValue                  @364 ; Py_BuildValue
-    Py_CompileString               @365 ; Py_CompileString
-    Py_DebugFlag                   @366 ; Py_DebugFlag
-    Py_EndInterpreter              @367 ; Py_EndInterpreter
-    Py_Exit                        @368 ; Py_Exit
-    Py_FatalError                  @369 ; Py_FatalError
-    Py_FdIsInteractive             @370 ; Py_FdIsInteractive
-    Py_Finalize                    @371 ; Py_Finalize
-    Py_FindMethod                  @372 ; Py_FindMethod
-    Py_FindMethodInChain           @373 ; Py_FindMethodInChain
-    Py_FlushLine                   @374 ; Py_FlushLine
-    Py_Free                        @375 ; Py_Free
-    Py_FrozenFlag                  @376 ; Py_FrozenFlag
-    Py_GetCompiler                 @377 ; Py_GetCompiler
-    Py_GetCopyright                @378 ; Py_GetCopyright
-    Py_GetExecPrefix               @379 ; Py_GetExecPrefix
-    Py_GetPath                     @380 ; Py_GetPath
-    Py_GetPlatform                 @381 ; Py_GetPlatform
-    Py_GetPrefix                   @382 ; Py_GetPrefix
-    Py_GetProgramFullPath          @383 ; Py_GetProgramFullPath
-    Py_GetProgramName              @384 ; Py_GetProgramName
-    Py_GetPythonHome               @385 ; Py_GetPythonHome
-    Py_GetVersion                  @386 ; Py_GetVersion
-    Py_InitModule4                 @387 ; Py_InitModule4
-    Py_Initialize                  @388 ; Py_Initialize
-    Py_InteractiveFlag             @389 ; Py_InteractiveFlag
-    Py_IsInitialized               @390 ; Py_IsInitialized
-    Py_Main                        @391 ; Py_Main
-    Py_MakePendingCalls            @392 ; Py_MakePendingCalls
-    Py_Malloc                      @393 ; Py_Malloc
-    Py_NewInterpreter              @394 ; Py_NewInterpreter
-    Py_NoSiteFlag                  @395 ; Py_NoSiteFlag
-    Py_OptimizeFlag                @396 ; Py_OptimizeFlag
-    Py_Realloc                     @397 ; Py_Realloc
-    Py_ReprEnter                   @398 ; Py_ReprEnter
-    Py_ReprLeave                   @399 ; Py_ReprLeave
-    Py_SetProgramName              @400 ; Py_SetProgramName
-    Py_SetPythonHome               @401 ; Py_SetPythonHome
-    Py_TabcheckFlag                @402 ; Py_TabcheckFlag
-    Py_UseClassExceptionsFlag      @403 ; Py_UseClassExceptionsFlag
-    Py_VaBuildValue                @404 ; Py_VaBuildValue
-    Py_VerboseFlag                 @405 ; Py_VerboseFlag
+    PyArg_Parse
+    PyArg_ParseTuple
+    PyArg_ParseTupleAndKeywords
+    PyArg_VaParse
+    PyBuffer_FromMemory
+    PyBuffer_FromObject
+    PyBuffer_FromReadWriteMemory
+    PyBuffer_FromReadWriteObject
+    PyBuffer_New
+    PyBuffer_Type
+    PyCFunction_Fini
+    PyCFunction_GetFlags
+    PyCFunction_GetFunction
+    PyCFunction_GetSelf
+    PyCFunction_New
+    PyCFunction_Type
+    PyCObject_AsVoidPtr
+    PyCObject_FromVoidPtr
+    PyCObject_FromVoidPtrAndDesc
+    PyCObject_GetDesc
+    PyCObject_Import
+    PyCObject_Type
+    PyCallable_Check
+    PyClass_IsSubclass
+    PyClass_New
+    PyClass_Type
+    PyCode_Addr2Line
+    PyCode_New
+    PyCode_Type
+    PyComplex_AsCComplex
+    PyComplex_FromCComplex
+    PyComplex_FromDoubles
+    PyComplex_ImagAsDouble
+    PyComplex_RealAsDouble
+    PyComplex_Type
+    PyDict_Clear
+    PyDict_DelItem
+    PyDict_DelItemString
+    PyDict_GetItem
+    PyDict_GetItemString
+    PyDict_Items
+    PyDict_Keys
+    PyDict_New
+    PyDict_Next
+    PyDict_SetItem
+    PyDict_SetItemString
+    PyDict_Size
+    PyDict_Type
+    PyDict_Values
+    PyErr_BadArgument
+    PyErr_BadInternalCall
+    PyErr_CheckSignals
+    PyErr_Clear
+    PyErr_ExceptionMatches
+    PyErr_Fetch
+    PyErr_Format
+    PyErr_GivenExceptionMatches
+    PyErr_NewException
+    PyErr_NoMemory
+    PyErr_NormalizeException
+    PyErr_Occurred
+    PyErr_Print
+    PyErr_PrintEx
+    PyErr_Restore
+    PyErr_SetFromErrno
+    PyErr_SetFromErrnoWithFilename
+    PyErr_SetInterrupt
+    PyErr_SetNone
+    PyErr_SetObject
+    PyErr_SetString
+    PyEval_AcquireLock
+    PyEval_AcquireThread
+    PyEval_CallFunction
+    PyEval_CallMethod
+    PyEval_CallObject
+    PyEval_CallObjectWithKeywords
+    PyEval_EvalCode
+    PyEval_GetBuiltins
+    PyEval_GetFrame
+    PyEval_GetGlobals
+    PyEval_GetLocals
+    PyEval_GetRestricted
+    PyEval_InitThreads
+    PyEval_ReleaseLock
+    PyEval_ReleaseThread
+    PyEval_RestoreThread
+    PyEval_SaveThread
+    PyExc_ArithmeticError
+    PyExc_AssertionError
+    PyExc_AttributeError
+    PyExc_EOFError
+    PyExc_EnvironmentError
+    PyExc_Exception
+    PyExc_FloatingPointError
+    PyExc_IOError
+    PyExc_ImportError
+    PyExc_IndexError
+    PyExc_KeyError
+    PyExc_KeyboardInterrupt
+    PyExc_LookupError
+    PyExc_MemoryError
+    PyExc_MemoryErrorInst
+    PyExc_NameError
+    PyExc_NotImplementedError
+    PyExc_OSError
+    PyExc_OverflowError
+    PyExc_RuntimeError
+    PyExc_StandardError
+    PyExc_SyntaxError
+    PyExc_SystemError
+    PyExc_SystemExit
+    PyExc_TypeError
+    PyExc_ValueError
+    PyExc_ZeroDivisionError
+    PyFile_AsFile
+    PyFile_FromFile
+    PyFile_FromString
+    PyFile_GetLine
+    PyFile_Name
+    PyFile_SetBufSize
+    PyFile_SoftSpace
+    PyFile_Type
+    PyFile_WriteObject
+    PyFile_WriteString
+    PyFloat_AsDouble
+    PyFloat_Fini
+    PyFloat_FromDouble
+    PyFloat_Type
+    PyFrame_BlockPop
+    PyFrame_BlockSetup
+    PyFrame_FastToLocals
+    PyFrame_Fini
+    PyFrame_LocalsToFast
+    PyFrame_New
+    PyFrame_Type
+    PyFunction_GetCode
+    PyFunction_GetDefaults
+    PyFunction_GetGlobals
+    PyFunction_New
+    PyFunction_SetDefaults
+    PyFunction_Type
+    PyImport_AddModule
+    PyImport_AppendInittab
+    PyImport_Cleanup
+    PyImport_ExecCodeModule
+    PyImport_ExecCodeModuleEx
+    PyImport_ExtendInittab
+    PyImport_FrozenModules
+    PyImport_GetMagicNumber
+    PyImport_GetModuleDict
+    PyImport_Import
+    PyImport_ImportFrozenModule
+    PyImport_ImportModule
+    PyImport_ImportModuleEx
+    PyImport_Inittab
+    PyImport_ReloadModule
+    PyInstance_DoBinOp
+    PyInstance_New
+    PyInstance_Type
+    PyInt_AsLong
+    PyInt_Fini
+    PyInt_FromLong
+    PyInt_GetMax
+    PyInt_Type
+    PyInterpreterState_Clear
+    PyInterpreterState_Delete
+    PyInterpreterState_New
+    PyList_Append
+    PyList_AsTuple
+    PyList_GetItem
+    PyList_GetSlice
+    PyList_Insert
+    PyList_New
+    PyList_Reverse
+    PyList_SetItem
+    PyList_SetSlice
+    PyList_Size
+    PyList_Sort
+    PyList_Type
+    PyLong_AsDouble
+    PyLong_AsLong
+    PyLong_AsLongLong
+    PyLong_AsUnsignedLong
+    PyLong_AsUnsignedLongLong
+    PyLong_AsVoidPtr
+    PyLong_FromDouble
+    PyLong_FromLong
+    PyLong_FromLongLong
+    PyLong_FromString
+    PyLong_FromUnsignedLong
+    PyLong_FromUnsignedLongLong
+    PyLong_FromVoidPtr
+    PyLong_Type
+    PyMapping_Check
+    PyMapping_GetItemString
+    PyMapping_HasKey
+    PyMapping_HasKeyString
+    PyMapping_Length
+    PyMapping_SetItemString
+    PyMarshal_ReadLongFromFile
+    PyMarshal_ReadObjectFromFile
+    PyMarshal_ReadObjectFromString
+    PyMarshal_WriteLongToFile
+    PyMarshal_WriteObjectToFile
+    PyMarshal_WriteObjectToString
+    PyMem_Free
+    PyMem_Malloc
+    PyMem_Realloc
+    PyMember_Get
+    PyMember_Set
+    PyMethod_Class
+    PyMethod_Fini
+    PyMethod_Function
+    PyMethod_New
+    PyMethod_Self
+    PyMethod_Type
+    PyModule_GetDict
+    PyModule_GetFilename
+    PyModule_GetName
+    PyModule_New
+    PyModule_Type
+    PyNode_AddChild
+    PyNode_Compile
+    PyNode_Free
+    PyNode_ListTree
+    PyNode_New
+    PyNumber_Absolute
+    PyNumber_Add
+    PyNumber_And
+    PyNumber_Check
+    PyNumber_Coerce
+    PyNumber_CoerceEx
+    PyNumber_Divide
+    PyNumber_Divmod
+    PyNumber_Float
+    PyNumber_Int
+    PyNumber_Invert
+    PyNumber_Long
+    PyNumber_Lshift
+    PyNumber_Multiply
+    PyNumber_Negative
+    PyNumber_Or
+    PyNumber_Positive
+    PyNumber_Power
+    PyNumber_Remainder
+    PyNumber_Rshift
+    PyNumber_Subtract
+    PyNumber_Xor
+    PyOS_AfterFork
+    PyOS_FiniInterrupts
+    PyOS_InitInterrupts
+    PyOS_InputHook
+    PyOS_InterruptOccurred
+    PyOS_Readline
+    PyOS_ReadlineFunctionPointer
+    PyOS_strtol
+    PyOS_strtoul
+    PyObject_CallFunction
+    PyObject_CallMethod
+    PyObject_CallObject
+    PyObject_Cmp
+    PyObject_Compare
+    PyObject_DelItem
+    PyObject_GetAttr
+    PyObject_GetAttrString
+    PyObject_GetItem
+    PyObject_HasAttr
+    PyObject_HasAttrString
+    PyObject_Hash
+    PyObject_IsTrue
+    PyObject_Length
+    PyObject_Not
+    PyObject_Print
+    PyObject_Repr
+    PyObject_SetAttr
+    PyObject_SetAttrString
+    PyObject_SetItem
+    PyObject_Str
+    PyObject_Type
+    PyParser_ParseFile
+    PyParser_ParseString
+    PyParser_SimpleParseFile
+    PyParser_SimpleParseString
+    PyRange_New
+    PyRange_Type
+    PyRun_AnyFile
+    PyRun_File
+    PyRun_InteractiveLoop
+    PyRun_InteractiveOne
+    PyRun_InteractiveString
+    PyRun_SimpleFile
+    PyRun_SimpleString
+    PyRun_String
+    PySequence_Check
+    PySequence_Concat
+    PySequence_Contains
+    PySequence_Count
+    PySequence_DelItem
+    PySequence_DelSlice
+    PySequence_GetItem
+    PySequence_GetSlice
+    PySequence_In
+    PySequence_Index
+    PySequence_Length
+    PySequence_List
+    PySequence_Repeat
+    PySequence_SetItem
+    PySequence_SetSlice
+    PySequence_Tuple
+    PySlice_GetIndices
+    PySlice_New
+    PySlice_Type
+    PyString_AsString
+    PyString_Concat
+    PyString_ConcatAndDel
+    PyString_Fini
+    PyString_Format
+    PyString_FromString
+    PyString_FromStringAndSize
+    PyString_InternFromString
+    PyString_InternInPlace
+    PyString_Size
+    PyString_Type
+    PySys_GetFile
+    PySys_GetObject
+    PySys_SetArgv
+    PySys_SetObject
+    PySys_SetPath
+    PySys_WriteStderr
+    PySys_WriteStdout
+    PyThreadState_Clear
+    PyThreadState_Delete
+    PyThreadState_Get
+    PyThreadState_GetDict
+    PyThreadState_New
+    PyThreadState_Swap
+    PyThread_acquire_lock
+    PyThread_allocate_lock
+    PyThread_allocate_sema
+    PyThread_down_sema
+    PyThread_exit_thread
+    PyThread_free_lock
+    PyThread_free_sema
+    PyThread_get_thread_ident
+    PyThread_init_thread
+    PyThread_release_lock
+    PyThread_start_new_thread
+    PyThread_up_sema
+    PyToken_OneChar
+    PyToken_TwoChars
+    PyTraceBack_Here
+    PyTraceBack_Print
+    PyTraceBack_Type
+    PyTuple_Fini
+    PyTuple_GetItem
+    PyTuple_GetSlice
+    PyTuple_New
+    PyTuple_SetItem
+    PyTuple_Size
+    PyTuple_Type
+    PyType_Type
+    Py_AddPendingCall
+    Py_AtExit
+    Py_BuildValue
+    Py_CompileString
+    Py_DebugFlag
+    Py_EndInterpreter
+    Py_Exit
+    Py_FatalError
+    Py_FdIsInteractive
+    Py_Finalize
+    Py_FindMethod
+    Py_FindMethodInChain
+    Py_FlushLine
+    Py_Free
+    Py_FrozenFlag
+    Py_GetCompiler
+    Py_GetCopyright
+    Py_GetExecPrefix
+    Py_GetPath
+    Py_GetPlatform
+    Py_GetPrefix
+    Py_GetProgramFullPath
+    Py_GetProgramName
+    Py_GetPythonHome
+    Py_GetVersion
+    Py_InitModule4
+    Py_Initialize
+    Py_InteractiveFlag
+    Py_IsInitialized
+    Py_Main
+    Py_MakePendingCalls
+    Py_Malloc
+    Py_NewInterpreter
+    Py_NoSiteFlag
+    Py_OptimizeFlag
+    Py_Realloc
+    Py_ReprEnter
+    Py_ReprLeave
+    Py_SetProgramName
+    Py_SetPythonHome
+    Py_TabcheckFlag
+    Py_UseClassExceptionsFlag
+    Py_VaBuildValue
+    Py_VerboseFlag
     _PyBuiltin_Fini_1              @406 ; _PyBuiltin_Fini_1
     _PyBuiltin_Fini_2              @407 ; _PyBuiltin_Fini_2
     _PyBuiltin_Init_1              @408 ; _PyBuiltin_Init_1
@@ -434,33 +434,496 @@ EXPORTS
     _Py_c_prod                     @431 ; _Py_c_prod
     _Py_c_quot                     @432 ; _Py_c_quot
     _Py_c_sum                      @433 ; _Py_c_sum
-    init_locale                    @434 ; init_locale
-    init_socket                    @435 ; init_socket
-    initarray                      @436 ; initarray
-    initaudioop                    @437 ; initaudioop
-    initbinascii                   @438 ; initbinascii
-    initcPickle                    @439 ; initcPickle
-    initcStringIO                  @440 ; initcStringIO
-    initcmath                      @441 ; initcmath
-    initerrno                      @442 ; initerrno
-    initfpectl                     @443 ; initfpectl
-    initfpetest                    @444 ; initfpetest
-    initimageop                    @445 ; initimageop
-    initmath                       @446 ; initmath
-    initmd5                        @447 ; initmd5
-    initmsvcrt                     @448 ; initmsvcrt
-    initnew                        @449 ; initnew
-    initnt                         @450 ; initnt
-    initoperator                   @451 ; initoperator
-    initpcre                       @452 ; initpcre
-    initregex                      @453 ; initregex
-    initrgbimg                     @454 ; initrgbimg
-    initrotor                      @455 ; initrotor
-    initselect                     @456 ; initselect
-    initsignal                     @457 ; initsignal
-    initsoundex                    @458 ; initsoundex
-    initstrop                      @459 ; initstrop
-    initstruct                     @460 ; initstruct
-    initthread                     @461 ; initthread
-    inittime                       @462 ; inittime
-    initwinsound                   @463 ; initwinsound
+    init_locale
+    init_socket
+    initarray
+    initaudioop
+    initbinascii
+    initcPickle
+    initcStringIO
+    initcmath
+    initerrno
+    initfpectl
+    initfpetest
+    initimageop
+    initmath
+    initmd5
+    initmsvcrt
+    initnew
+    initnt
+    initoperator
+    initpcre
+    initregex
+    initrgbimg
+    initrotor
+    initselect
+    initsignal
+    initsoundex
+    initstrop
+    initstruct
+    initthread
+    inittime
+    initwinsound
+    _PyArg_Parse = PyArg_Parse
+    _PyArg_ParseTuple = PyArg_ParseTuple
+    _PyArg_ParseTupleAndKeywords = PyArg_ParseTupleAndKeywords
+    _PyArg_VaParse = PyArg_VaParse
+    _PyBuffer_FromMemory = PyBuffer_FromMemory
+    _PyBuffer_FromObject = PyBuffer_FromObject
+    _PyBuffer_FromReadWriteMemory = PyBuffer_FromReadWriteMemory
+    _PyBuffer_FromReadWriteObject = PyBuffer_FromReadWriteObject
+    _PyBuffer_New = PyBuffer_New
+    _PyBuffer_Type = PyBuffer_Type
+    _PyCFunction_Fini = PyCFunction_Fini
+    _PyCFunction_GetFlags = PyCFunction_GetFlags
+    _PyCFunction_GetFunction = PyCFunction_GetFunction
+    _PyCFunction_GetSelf = PyCFunction_GetSelf
+    _PyCFunction_New = PyCFunction_New
+    _PyCFunction_Type = PyCFunction_Type
+    _PyCObject_AsVoidPtr = PyCObject_AsVoidPtr
+    _PyCObject_FromVoidPtr = PyCObject_FromVoidPtr
+    _PyCObject_FromVoidPtrAndDesc = PyCObject_FromVoidPtrAndDesc
+    _PyCObject_GetDesc = PyCObject_GetDesc
+    _PyCObject_Import = PyCObject_Import
+    _PyCObject_Type = PyCObject_Type
+    _PyCallable_Check = PyCallable_Check
+    _PyClass_IsSubclass = PyClass_IsSubclass
+    _PyClass_New = PyClass_New
+    _PyClass_Type = PyClass_Type
+    _PyCode_Addr2Line = PyCode_Addr2Line
+    _PyCode_New = PyCode_New
+    _PyCode_Type = PyCode_Type
+    _PyComplex_AsCComplex = PyComplex_AsCComplex
+    _PyComplex_FromCComplex = PyComplex_FromCComplex
+    _PyComplex_FromDoubles = PyComplex_FromDoubles
+    _PyComplex_ImagAsDouble = PyComplex_ImagAsDouble
+    _PyComplex_RealAsDouble = PyComplex_RealAsDouble
+    _PyComplex_Type = PyComplex_Type
+    _PyDict_Clear = PyDict_Clear
+    _PyDict_DelItem = PyDict_DelItem
+    _PyDict_DelItemString = PyDict_DelItemString
+    _PyDict_GetItem = PyDict_GetItem
+    _PyDict_GetItemString = PyDict_GetItemString
+    _PyDict_Items = PyDict_Items
+    _PyDict_Keys = PyDict_Keys
+    _PyDict_New = PyDict_New
+    _PyDict_Next = PyDict_Next
+    _PyDict_SetItem = PyDict_SetItem
+    _PyDict_SetItemString = PyDict_SetItemString
+    _PyDict_Size = PyDict_Size
+    _PyDict_Type = PyDict_Type
+    _PyDict_Values = PyDict_Values
+    _PyErr_BadArgument = PyErr_BadArgument
+    _PyErr_BadInternalCall = PyErr_BadInternalCall
+    _PyErr_CheckSignals = PyErr_CheckSignals
+    _PyErr_Clear = PyErr_Clear
+    _PyErr_ExceptionMatches = PyErr_ExceptionMatches
+    _PyErr_Fetch = PyErr_Fetch
+    _PyErr_Format = PyErr_Format
+    _PyErr_GivenExceptionMatches = PyErr_GivenExceptionMatches
+    _PyErr_NewException = PyErr_NewException
+    _PyErr_NoMemory = PyErr_NoMemory
+    _PyErr_NormalizeException = PyErr_NormalizeException
+    _PyErr_Occurred = PyErr_Occurred
+    _PyErr_Print = PyErr_Print
+    _PyErr_PrintEx = PyErr_PrintEx
+    _PyErr_Restore = PyErr_Restore
+    _PyErr_SetFromErrno = PyErr_SetFromErrno
+    _PyErr_SetFromErrnoWithFilename = PyErr_SetFromErrnoWithFilename
+    _PyErr_SetInterrupt = PyErr_SetInterrupt
+    _PyErr_SetNone = PyErr_SetNone
+    _PyErr_SetObject = PyErr_SetObject
+    _PyErr_SetString = PyErr_SetString
+    _PyEval_AcquireLock = PyEval_AcquireLock
+    _PyEval_AcquireThread = PyEval_AcquireThread
+    _PyEval_CallFunction = PyEval_CallFunction
+    _PyEval_CallMethod = PyEval_CallMethod
+    _PyEval_CallObject = PyEval_CallObject
+    _PyEval_CallObjectWithKeywords = PyEval_CallObjectWithKeywords
+    _PyEval_EvalCode = PyEval_EvalCode
+    _PyEval_GetBuiltins = PyEval_GetBuiltins
+    _PyEval_GetFrame = PyEval_GetFrame
+    _PyEval_GetGlobals = PyEval_GetGlobals
+    _PyEval_GetLocals = PyEval_GetLocals
+    _PyEval_GetRestricted = PyEval_GetRestricted
+    _PyEval_InitThreads = PyEval_InitThreads
+    _PyEval_ReleaseLock = PyEval_ReleaseLock
+    _PyEval_ReleaseThread = PyEval_ReleaseThread
+    _PyEval_RestoreThread = PyEval_RestoreThread
+    _PyEval_SaveThread = PyEval_SaveThread
+    _PyExc_ArithmeticError = PyExc_ArithmeticError
+    _PyExc_AssertionError = PyExc_AssertionError
+    _PyExc_AttributeError = PyExc_AttributeError
+    _PyExc_EOFError = PyExc_EOFError
+    _PyExc_EnvironmentError = PyExc_EnvironmentError
+    _PyExc_Exception = PyExc_Exception
+    _PyExc_FloatingPointError = PyExc_FloatingPointError
+    _PyExc_IOError = PyExc_IOError
+    _PyExc_ImportError = PyExc_ImportError
+    _PyExc_IndexError = PyExc_IndexError
+    _PyExc_KeyError = PyExc_KeyError
+    _PyExc_KeyboardInterrupt = PyExc_KeyboardInterrupt
+    _PyExc_LookupError = PyExc_LookupError
+    _PyExc_MemoryError = PyExc_MemoryError
+    _PyExc_MemoryErrorInst = PyExc_MemoryErrorInst
+    _PyExc_NameError = PyExc_NameError
+    _PyExc_NotImplementedError = PyExc_NotImplementedError
+    _PyExc_OSError = PyExc_OSError
+    _PyExc_OverflowError = PyExc_OverflowError
+    _PyExc_RuntimeError = PyExc_RuntimeError
+    _PyExc_StandardError = PyExc_StandardError
+    _PyExc_SyntaxError = PyExc_SyntaxError
+    _PyExc_SystemError = PyExc_SystemError
+    _PyExc_SystemExit = PyExc_SystemExit
+    _PyExc_TypeError = PyExc_TypeError
+    _PyExc_ValueError = PyExc_ValueError
+    _PyExc_ZeroDivisionError = PyExc_ZeroDivisionError
+    _PyFile_AsFile = PyFile_AsFile
+    _PyFile_FromFile = PyFile_FromFile
+    _PyFile_FromString = PyFile_FromString
+    _PyFile_GetLine = PyFile_GetLine
+    _PyFile_Name = PyFile_Name
+    _PyFile_SetBufSize = PyFile_SetBufSize
+    _PyFile_SoftSpace = PyFile_SoftSpace
+    _PyFile_Type = PyFile_Type
+    _PyFile_WriteObject = PyFile_WriteObject
+    _PyFile_WriteString = PyFile_WriteString
+    _PyFloat_AsDouble = PyFloat_AsDouble
+    _PyFloat_Fini = PyFloat_Fini
+    _PyFloat_FromDouble = PyFloat_FromDouble
+    _PyFloat_Type = PyFloat_Type
+    _PyFrame_BlockPop = PyFrame_BlockPop
+    _PyFrame_BlockSetup = PyFrame_BlockSetup
+    _PyFrame_FastToLocals = PyFrame_FastToLocals
+    _PyFrame_Fini = PyFrame_Fini
+    _PyFrame_LocalsToFast = PyFrame_LocalsToFast
+    _PyFrame_New = PyFrame_New
+    _PyFrame_Type = PyFrame_Type
+    _PyFunction_GetCode = PyFunction_GetCode
+    _PyFunction_GetDefaults = PyFunction_GetDefaults
+    _PyFunction_GetGlobals = PyFunction_GetGlobals
+    _PyFunction_New = PyFunction_New
+    _PyFunction_SetDefaults = PyFunction_SetDefaults
+    _PyFunction_Type = PyFunction_Type
+    _PyImport_AddModule = PyImport_AddModule
+    _PyImport_AppendInittab = PyImport_AppendInittab
+    _PyImport_Cleanup = PyImport_Cleanup
+    _PyImport_ExecCodeModule = PyImport_ExecCodeModule
+    _PyImport_ExecCodeModuleEx = PyImport_ExecCodeModuleEx
+    _PyImport_ExtendInittab = PyImport_ExtendInittab
+    _PyImport_FrozenModules = PyImport_FrozenModules
+    _PyImport_GetMagicNumber = PyImport_GetMagicNumber
+    _PyImport_GetModuleDict = PyImport_GetModuleDict
+    _PyImport_Import = PyImport_Import
+    _PyImport_ImportFrozenModule = PyImport_ImportFrozenModule
+    _PyImport_ImportModule = PyImport_ImportModule
+    _PyImport_ImportModuleEx = PyImport_ImportModuleEx
+    _PyImport_Inittab = PyImport_Inittab
+    _PyImport_ReloadModule = PyImport_ReloadModule
+    _PyInstance_DoBinOp = PyInstance_DoBinOp
+    _PyInstance_New = PyInstance_New
+    _PyInstance_Type = PyInstance_Type
+    _PyInt_AsLong = PyInt_AsLong
+    _PyInt_Fini = PyInt_Fini
+    _PyInt_FromLong = PyInt_FromLong
+    _PyInt_GetMax = PyInt_GetMax
+    _PyInt_Type = PyInt_Type
+    _PyInterpreterState_Clear = PyInterpreterState_Clear
+    _PyInterpreterState_Delete = PyInterpreterState_Delete
+    _PyInterpreterState_New = PyInterpreterState_New
+    _PyList_Append = PyList_Append
+    _PyList_AsTuple = PyList_AsTuple
+    _PyList_GetItem = PyList_GetItem
+    _PyList_GetSlice = PyList_GetSlice
+    _PyList_Insert = PyList_Insert
+    _PyList_New = PyList_New
+    _PyList_Reverse = PyList_Reverse
+    _PyList_SetItem = PyList_SetItem
+    _PyList_SetSlice = PyList_SetSlice
+    _PyList_Size = PyList_Size
+    _PyList_Sort = PyList_Sort
+    _PyList_Type = PyList_Type
+    _PyLong_AsDouble = PyLong_AsDouble
+    _PyLong_AsLong = PyLong_AsLong
+    _PyLong_AsLongLong = PyLong_AsLongLong
+    _PyLong_AsUnsignedLong = PyLong_AsUnsignedLong
+    _PyLong_AsUnsignedLongLong = PyLong_AsUnsignedLongLong
+    _PyLong_AsVoidPtr = PyLong_AsVoidPtr
+    _PyLong_FromDouble = PyLong_FromDouble
+    _PyLong_FromLong = PyLong_FromLong
+    _PyLong_FromLongLong = PyLong_FromLongLong
+    _PyLong_FromString = PyLong_FromString
+    _PyLong_FromUnsignedLong = PyLong_FromUnsignedLong
+    _PyLong_FromUnsignedLongLong = PyLong_FromUnsignedLongLong
+    _PyLong_FromVoidPtr = PyLong_FromVoidPtr
+    _PyLong_Type = PyLong_Type
+    _PyMapping_Check = PyMapping_Check
+    _PyMapping_GetItemString = PyMapping_GetItemString
+    _PyMapping_HasKey = PyMapping_HasKey
+    _PyMapping_HasKeyString = PyMapping_HasKeyString
+    _PyMapping_Length = PyMapping_Length
+    _PyMapping_SetItemString = PyMapping_SetItemString
+    _PyMarshal_ReadLongFromFile = PyMarshal_ReadLongFromFile
+    _PyMarshal_ReadObjectFromFile = PyMarshal_ReadObjectFromFile
+    _PyMarshal_ReadObjectFromString = PyMarshal_ReadObjectFromString
+    _PyMarshal_WriteLongToFile = PyMarshal_WriteLongToFile
+    _PyMarshal_WriteObjectToFile = PyMarshal_WriteObjectToFile
+    _PyMarshal_WriteObjectToString = PyMarshal_WriteObjectToString
+    _PyMem_Free = PyMem_Free
+    _PyMem_Malloc = PyMem_Malloc
+    _PyMem_Realloc = PyMem_Realloc
+    _PyMember_Get = PyMember_Get
+    _PyMember_Set = PyMember_Set
+    _PyMethod_Class = PyMethod_Class
+    _PyMethod_Fini = PyMethod_Fini
+    _PyMethod_Function = PyMethod_Function
+    _PyMethod_New = PyMethod_New
+    _PyMethod_Self = PyMethod_Self
+    _PyMethod_Type = PyMethod_Type
+    _PyModule_GetDict = PyModule_GetDict
+    _PyModule_GetFilename = PyModule_GetFilename
+    _PyModule_GetName = PyModule_GetName
+    _PyModule_New = PyModule_New
+    _PyModule_Type = PyModule_Type
+    _PyNode_AddChild = PyNode_AddChild
+    _PyNode_Compile = PyNode_Compile
+    _PyNode_Free = PyNode_Free
+    _PyNode_ListTree = PyNode_ListTree
+    _PyNode_New = PyNode_New
+    _PyNumber_Absolute = PyNumber_Absolute
+    _PyNumber_Add = PyNumber_Add
+    _PyNumber_And = PyNumber_And
+    _PyNumber_Check = PyNumber_Check
+    _PyNumber_Coerce = PyNumber_Coerce
+    _PyNumber_CoerceEx = PyNumber_CoerceEx
+    _PyNumber_Divide = PyNumber_Divide
+    _PyNumber_Divmod = PyNumber_Divmod
+    _PyNumber_Float = PyNumber_Float
+    _PyNumber_Int = PyNumber_Int
+    _PyNumber_Invert = PyNumber_Invert
+    _PyNumber_Long = PyNumber_Long
+    _PyNumber_Lshift = PyNumber_Lshift
+    _PyNumber_Multiply = PyNumber_Multiply
+    _PyNumber_Negative = PyNumber_Negative
+    _PyNumber_Or = PyNumber_Or
+    _PyNumber_Positive = PyNumber_Positive
+    _PyNumber_Power = PyNumber_Power
+    _PyNumber_Remainder = PyNumber_Remainder
+    _PyNumber_Rshift = PyNumber_Rshift
+    _PyNumber_Subtract = PyNumber_Subtract
+    _PyNumber_Xor = PyNumber_Xor
+    _PyOS_AfterFork = PyOS_AfterFork
+    _PyOS_FiniInterrupts = PyOS_FiniInterrupts
+    _PyOS_InitInterrupts = PyOS_InitInterrupts
+    _PyOS_InputHook = PyOS_InputHook
+    _PyOS_InterruptOccurred = PyOS_InterruptOccurred
+    _PyOS_Readline = PyOS_Readline
+    _PyOS_ReadlineFunctionPointer = PyOS_ReadlineFunctionPointer
+    _PyOS_strtol = PyOS_strtol
+    _PyOS_strtoul = PyOS_strtoul
+    _PyObject_CallFunction = PyObject_CallFunction
+    _PyObject_CallMethod = PyObject_CallMethod
+    _PyObject_CallObject = PyObject_CallObject
+    _PyObject_Cmp = PyObject_Cmp
+    _PyObject_Compare = PyObject_Compare
+    _PyObject_DelItem = PyObject_DelItem
+    _PyObject_GetAttr = PyObject_GetAttr
+    _PyObject_GetAttrString = PyObject_GetAttrString
+    _PyObject_GetItem = PyObject_GetItem
+    _PyObject_HasAttr = PyObject_HasAttr
+    _PyObject_HasAttrString = PyObject_HasAttrString
+    _PyObject_Hash = PyObject_Hash
+    _PyObject_IsTrue = PyObject_IsTrue
+    _PyObject_Length = PyObject_Length
+    _PyObject_Not = PyObject_Not
+    _PyObject_Print = PyObject_Print
+    _PyObject_Repr = PyObject_Repr
+    _PyObject_SetAttr = PyObject_SetAttr
+    _PyObject_SetAttrString = PyObject_SetAttrString
+    _PyObject_SetItem = PyObject_SetItem
+    _PyObject_Str = PyObject_Str
+    _PyObject_Type = PyObject_Type
+    _PyParser_ParseFile = PyParser_ParseFile
+    _PyParser_ParseString = PyParser_ParseString
+    _PyParser_SimpleParseFile = PyParser_SimpleParseFile
+    _PyParser_SimpleParseString = PyParser_SimpleParseString
+    _PyRange_New = PyRange_New
+    _PyRange_Type = PyRange_Type
+    _PyRun_AnyFile = PyRun_AnyFile
+    _PyRun_File = PyRun_File
+    _PyRun_InteractiveLoop = PyRun_InteractiveLoop
+    _PyRun_InteractiveOne = PyRun_InteractiveOne
+    _PyRun_InteractiveString = PyRun_InteractiveString
+    _PyRun_SimpleFile = PyRun_SimpleFile
+    _PyRun_SimpleString = PyRun_SimpleString
+    _PyRun_String = PyRun_String
+    _PySequence_Check = PySequence_Check
+    _PySequence_Concat = PySequence_Concat
+    _PySequence_Contains = PySequence_Contains
+    _PySequence_Count = PySequence_Count
+    _PySequence_DelItem = PySequence_DelItem
+    _PySequence_DelSlice = PySequence_DelSlice
+    _PySequence_GetItem = PySequence_GetItem
+    _PySequence_GetSlice = PySequence_GetSlice
+    _PySequence_In = PySequence_In
+    _PySequence_Index = PySequence_Index
+    _PySequence_Length = PySequence_Length
+    _PySequence_List = PySequence_List
+    _PySequence_Repeat = PySequence_Repeat
+    _PySequence_SetItem = PySequence_SetItem
+    _PySequence_SetSlice = PySequence_SetSlice
+    _PySequence_Tuple = PySequence_Tuple
+    _PySlice_GetIndices = PySlice_GetIndices
+    _PySlice_New = PySlice_New
+    _PySlice_Type = PySlice_Type
+    _PyString_AsString = PyString_AsString
+    _PyString_Concat = PyString_Concat
+    _PyString_ConcatAndDel = PyString_ConcatAndDel
+    _PyString_Fini = PyString_Fini
+    _PyString_Format = PyString_Format
+    _PyString_FromString = PyString_FromString
+    _PyString_FromStringAndSize = PyString_FromStringAndSize
+    _PyString_InternFromString = PyString_InternFromString
+    _PyString_InternInPlace = PyString_InternInPlace
+    _PyString_Size = PyString_Size
+    _PyString_Type = PyString_Type
+    _PySys_GetFile = PySys_GetFile
+    _PySys_GetObject = PySys_GetObject
+    _PySys_SetArgv = PySys_SetArgv
+    _PySys_SetObject = PySys_SetObject
+    _PySys_SetPath = PySys_SetPath
+    _PySys_WriteStderr = PySys_WriteStderr
+    _PySys_WriteStdout = PySys_WriteStdout
+    _PyThreadState_Clear = PyThreadState_Clear
+    _PyThreadState_Delete = PyThreadState_Delete
+    _PyThreadState_Get = PyThreadState_Get
+    _PyThreadState_GetDict = PyThreadState_GetDict
+    _PyThreadState_New = PyThreadState_New
+    _PyThreadState_Swap = PyThreadState_Swap
+    _PyThread_acquire_lock = PyThread_acquire_lock
+    _PyThread_allocate_lock = PyThread_allocate_lock
+    _PyThread_allocate_sema = PyThread_allocate_sema
+    _PyThread_down_sema = PyThread_down_sema
+    _PyThread_exit_thread = PyThread_exit_thread
+    _PyThread_free_lock = PyThread_free_lock
+    _PyThread_free_sema = PyThread_free_sema
+    _PyThread_get_thread_ident = PyThread_get_thread_ident
+    _PyThread_init_thread = PyThread_init_thread
+    _PyThread_release_lock = PyThread_release_lock
+    _PyThread_start_new_thread = PyThread_start_new_thread
+    _PyThread_up_sema = PyThread_up_sema
+    _PyToken_OneChar = PyToken_OneChar
+    _PyToken_TwoChars = PyToken_TwoChars
+    _PyTraceBack_Here = PyTraceBack_Here
+    _PyTraceBack_Print = PyTraceBack_Print
+    _PyTraceBack_Type = PyTraceBack_Type
+    _PyTuple_Fini = PyTuple_Fini
+    _PyTuple_GetItem = PyTuple_GetItem
+    _PyTuple_GetSlice = PyTuple_GetSlice
+    _PyTuple_New = PyTuple_New
+    _PyTuple_SetItem = PyTuple_SetItem
+    _PyTuple_Size = PyTuple_Size
+    _PyTuple_Type = PyTuple_Type
+    _PyType_Type = PyType_Type
+    _Py_AddPendingCall = Py_AddPendingCall
+    _Py_AtExit = Py_AtExit
+    _Py_BuildValue = Py_BuildValue
+    _Py_CompileString = Py_CompileString
+    _Py_DebugFlag = Py_DebugFlag
+    _Py_EndInterpreter = Py_EndInterpreter
+    _Py_Exit = Py_Exit
+    _Py_FatalError = Py_FatalError
+    _Py_FdIsInteractive = Py_FdIsInteractive
+    _Py_Finalize = Py_Finalize
+    _Py_FindMethod = Py_FindMethod
+    _Py_FindMethodInChain = Py_FindMethodInChain
+    _Py_FlushLine = Py_FlushLine
+    _Py_Free = Py_Free
+    _Py_FrozenFlag = Py_FrozenFlag
+    _Py_GetCompiler = Py_GetCompiler
+    _Py_GetCopyright = Py_GetCopyright
+    _Py_GetExecPrefix = Py_GetExecPrefix
+    _Py_GetPath = Py_GetPath
+    _Py_GetPlatform = Py_GetPlatform
+    _Py_GetPrefix = Py_GetPrefix
+    _Py_GetProgramFullPath = Py_GetProgramFullPath
+    _Py_GetProgramName = Py_GetProgramName
+    _Py_GetPythonHome = Py_GetPythonHome
+    _Py_GetVersion = Py_GetVersion
+    _Py_InitModule4 = Py_InitModule4
+    _Py_Initialize = Py_Initialize
+    _Py_InteractiveFlag = Py_InteractiveFlag
+    _Py_IsInitialized = Py_IsInitialized
+    _Py_Main = Py_Main
+    _Py_MakePendingCalls = Py_MakePendingCalls
+    _Py_Malloc = Py_Malloc
+    _Py_NewInterpreter = Py_NewInterpreter
+    _Py_NoSiteFlag = Py_NoSiteFlag
+    _Py_OptimizeFlag = Py_OptimizeFlag
+    _Py_Realloc = Py_Realloc
+    _Py_ReprEnter = Py_ReprEnter
+    _Py_ReprLeave = Py_ReprLeave
+    _Py_SetProgramName = Py_SetProgramName
+    _Py_SetPythonHome = Py_SetPythonHome
+    _Py_TabcheckFlag = Py_TabcheckFlag
+    _Py_UseClassExceptionsFlag = Py_UseClassExceptionsFlag
+    _Py_VaBuildValue = Py_VaBuildValue
+    _Py_VerboseFlag = Py_VerboseFlag
+    __PyBuiltin_Fini_1 = _PyBuiltin_Fini_1
+    __PyBuiltin_Fini_2 = _PyBuiltin_Fini_2
+    __PyBuiltin_Init_1 = _PyBuiltin_Init_1
+    __PyBuiltin_Init_2 = _PyBuiltin_Init_2
+    __PyImport_FindExtension = _PyImport_FindExtension
+    __PyImport_Fini = _PyImport_Fini
+    __PyImport_FixupExtension = _PyImport_FixupExtension
+    __PyImport_Init = _PyImport_Init
+    __PyLong_New = _PyLong_New
+    __PyModule_Clear = _PyModule_Clear
+    __PyObject_New = _PyObject_New
+    __PyObject_NewVar = _PyObject_NewVar
+    __PyParser_TokenNames = _PyParser_TokenNames
+    __PyString_Resize = _PyString_Resize
+    __PySys_Init = _PySys_Init
+    __PyThreadState_Current = _PyThreadState_Current
+    __PyTuple_Resize = _PyTuple_Resize
+    __Py_EllipsisObject = _Py_EllipsisObject
+    __Py_NoneStruct = _Py_NoneStruct
+    __Py_PackageContext = _Py_PackageContext
+    __Py_TrueStruct = _Py_TrueStruct
+    __Py_ZeroStruct = _Py_ZeroStruct
+    __Py_c_diff = _Py_c_diff
+    __Py_c_neg = _Py_c_neg
+    __Py_c_pow = _Py_c_pow
+    __Py_c_prod = _Py_c_prod
+    __Py_c_quot = _Py_c_quot
+    __Py_c_sum = _Py_c_sum
+    _init_locale = init_locale
+    _init_socket = init_socket
+    _initarray = initarray
+    _initaudioop = initaudioop
+    _initbinascii = initbinascii
+    _initcPickle = initcPickle
+    _initcStringIO = initcStringIO
+    _initcmath = initcmath
+    _initerrno = initerrno
+    _initfpectl = initfpectl
+    _initfpetest = initfpetest
+    _initimageop = initimageop
+    _initmath = initmath
+    _initmd5 = initmd5
+    _initmsvcrt = initmsvcrt
+    _initnew = initnew
+    _initnt = initnt
+    _initoperator = initoperator
+    _initpcre = initpcre
+    _initregex = initregex
+    _initrgbimg = initrgbimg
+    _initrotor = initrotor
+    _initselect = initselect
+    _initsignal = initsignal
+    _initsoundex = initsoundex
+    _initstrop = initstrop
+    _initstruct = initstruct
+    _initthread = initthread
+    _inittime = inittime
+    _initwinsound = initwinsound
