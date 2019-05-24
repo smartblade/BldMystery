@@ -1,6 +1,5 @@
 /install
 lib/*.lib
-*.exe
 *.obj
 *.exp
 *.ilk
@@ -13,7 +12,6 @@ lib/*.lib
 *.tds
 *.str
 *.suo
-*.pch
 *.embed.manifest
 *.intermediate.manifest
 *.vcproj.*user
