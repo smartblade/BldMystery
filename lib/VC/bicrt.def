@@ -868,7 +868,7 @@ EXPORTS
     __adj_fprem = _adj_fprem
     __adj_fprem1 = _adj_fprem1
     __adj_fptan = _adj_fptan
-    __adjust_fdiv = _adjust_fdiv
+    __adjust_fdiv = _adjust_fdiv DATA
     __aexit_rtn = _aexit_rtn
     __amsg_exit = _amsg_exit
     __assert = _assert
@@ -892,7 +892,7 @@ EXPORTS
     __clearfp = _clearfp
     __close = _close
     __commit = _commit
-    __commode = _commode
+    __commode = _commode DATA
     __control87 = _control87
     __controlfp = _controlfp
     __copysign = _copysign
@@ -942,7 +942,7 @@ EXPORTS
     __finite = _finite
     __flsbuf = _flsbuf
     __flushall = _flushall
-    __fmode = _fmode
+    __fmode = _fmode DATA
     __fpclass = _fpclass
     __fpieee_flt = _fpieee_flt
     __fpreset = _fpreset
@@ -1101,7 +1101,7 @@ EXPORTS
     __mktemp = _mktemp
     __msize = _msize
     __nextafter = _nextafter
-    __onexit = _onexit
+    __onexit = _onexit DATA
     __open = _open
     __open_osfhandle = _open_osfhandle
     __osver = _osver
@@ -1282,7 +1282,7 @@ EXPORTS
     _asin = asin
     _atan = atan
     _atan2 = atan2
-    _atexit = atexit
+    _atexit = atexit DATA
     _atof = atof
     _atoi = atoi
     _atol = atol
