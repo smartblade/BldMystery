@@ -24,6 +24,4 @@ lib/*.lib
 *.~ddp
 *.~bpf
 *.~def
-*_origin.*
-*_patched.*
 BuildLog.htm
