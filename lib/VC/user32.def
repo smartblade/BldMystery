@@ -1,0 +1,1543 @@
+LIBRARY     USER32.DLL
+
+EXPORTS
+    ActivateKeyboardLayout
+    AddClipboardFormatListener
+    AdjustWindowRect
+    AdjustWindowRectEx
+    AlignRects
+    AllowForegroundActivation
+    AllowSetForegroundWindow
+    AnimateWindow
+    AnyPopup
+    AppendMenuA
+    AppendMenuW
+    ArrangeIconicWindows
+    AttachThreadInput
+    BeginDeferWindowPos
+    BeginPaint
+    BlockInput
+    BringWindowToTop
+    BroadcastSystemMessage
+    BroadcastSystemMessageA
+    BroadcastSystemMessageExA
+    BroadcastSystemMessageExW
+    BroadcastSystemMessageW
+    BuildReasonArray
+    CalcMenuBar
+    CalculatePopupWindowPosition
+    CallMsgFilter
+    CallMsgFilterA
+    CallMsgFilterW
+    CallNextHookEx
+    CallWindowProcA
+    CallWindowProcW
+    CancelShutdown
+    CascadeChildWindows
+    CascadeWindows
+    ChangeClipboardChain
+    ChangeDisplaySettingsA
+    ChangeDisplaySettingsExA
+    ChangeDisplaySettingsExW
+    ChangeDisplaySettingsW
+    ChangeMenuA
+    ChangeMenuW
+    ChangeWindowMessageFilter
+    ChangeWindowMessageFilterEx
+    CharLowerA
+    CharLowerBuffA
+    CharLowerBuffW
+    CharLowerW
+    CharNextA
+    CharNextExA
+    CharNextW
+    CharPrevA
+    CharPrevExA
+    CharPrevW
+    CharToOemA
+    CharToOemBuffA
+    CharToOemBuffW
+    CharToOemW
+    CharUpperA
+    CharUpperBuffA
+    CharUpperBuffW
+    CharUpperW
+    CheckDBCSEnabledExt
+    CheckDlgButton
+    CheckMenuItem
+    CheckMenuRadioItem
+    CheckProcessForClipboardAccess
+    CheckProcessSession
+    CheckRadioButton
+    CheckWindowThreadDesktop
+    ChildWindowFromPoint
+    ChildWindowFromPointEx
+    CliImmSetHotKey
+    ClientThreadSetup
+    ClientToScreen
+    ClipCursor
+    CloseClipboard
+    CloseDesktop
+    CloseGestureInfoHandle
+    CloseTouchInputHandle
+    CloseWindow
+    CloseWindowStation
+    ConsoleControl
+    ControlMagnification
+    CopyAcceleratorTableA
+    CopyAcceleratorTableW
+    CopyIcon
+    CopyImage
+    CopyRect
+    CountClipboardFormats
+    CreateAcceleratorTableA
+    CreateAcceleratorTableW
+    CreateCaret
+    CreateCursor
+    CreateDCompositionHwndTarget
+    CreateDesktopA
+    CreateDesktopExA
+    CreateDesktopExW
+    CreateDesktopW
+    CreateDialogIndirectParamA
+    CreateDialogIndirectParamAorW
+    CreateDialogIndirectParamW
+    CreateDialogParamA
+    CreateDialogParamW
+    CreateIcon
+    CreateIconFromResource
+    CreateIconFromResourceEx
+    CreateIconIndirect
+    CreateMDIWindowA
+    CreateMDIWindowW
+    CreateMenu
+    CreatePopupMenu
+    CreateSystemThreads
+    CreateWindowExA
+    CreateWindowExW
+    CreateWindowInBand
+    CreateWindowIndirect
+    CreateWindowStationA
+    CreateWindowStationW
+    CsrBroadcastSystemMessageExW
+    CtxInitUser32
+    DdeAbandonTransaction
+    DdeAccessData
+    DdeAddData
+    DdeClientTransaction
+    DdeCmpStringHandles
+    DdeConnect
+    DdeConnectList
+    DdeCreateDataHandle
+    DdeCreateStringHandleA
+    DdeCreateStringHandleW
+    DdeDisconnect
+    DdeDisconnectList
+    DdeEnableCallback
+    DdeFreeDataHandle
+    DdeFreeStringHandle
+    DdeGetData
+    DdeGetLastError
+    DdeGetQualityOfService
+    DdeImpersonateClient
+    DdeInitializeA
+    DdeInitializeW
+    DdeKeepStringHandle
+    DdeNameService
+    DdePostAdvise
+    DdeQueryConvInfo
+    DdeQueryNextServer
+    DdeQueryStringA
+    DdeQueryStringW
+    DdeReconnect
+    DdeSetQualityOfService
+    DdeSetUserHandle
+    DdeUnaccessData
+    DdeUninitialize
+    DefDlgProcA
+    DefDlgProcW
+    DefFrameProcA
+    DefFrameProcW
+    DefMDIChildProcA
+    DefMDIChildProcW
+    DefRawInputProc
+    DefWindowProcA
+    DefWindowProcW
+    DeferWindowPos
+    DeferWindowPosAndBand
+    DeleteMenu
+    DeregisterShellHookWindow
+    DestroyAcceleratorTable
+    DestroyCaret
+    DestroyCursor
+    DestroyDCompositionHwndTarget
+    DestroyIcon
+    DestroyMenu
+    DestroyReasons
+    DestroyWindow
+    DialogBoxIndirectParamA
+    DialogBoxIndirectParamAorW
+    DialogBoxIndirectParamW
+    DialogBoxParamA
+    DialogBoxParamW
+    DisableProcessWindowsGhosting
+    DispatchMessageA
+    DispatchMessageW
+    DisplayConfigGetDeviceInfo
+    DisplayConfigSetDeviceInfo
+    DisplayExitWindowsWarnings
+    DlgDirListA
+    DlgDirListComboBoxA
+    DlgDirListComboBoxW
+    DlgDirListW
+    DlgDirSelectComboBoxExA
+    DlgDirSelectComboBoxExW
+    DlgDirSelectExA
+    DlgDirSelectExW
+    DoSoundConnect
+    DoSoundDisconnect
+    DragDetect
+    DragObject
+    DrawAnimatedRects
+    DrawCaption
+    DrawCaptionTempA
+    DrawCaptionTempW
+    DrawEdge
+    DrawFocusRect
+    DrawFrame
+    DrawFrameControl
+    DrawIcon
+    DrawIconEx
+    DrawMenuBar
+    DrawMenuBarTemp
+    DrawStateA
+    DrawStateW
+    DrawTextA
+    DrawTextExA
+    DrawTextExW
+    DrawTextW
+    DwmGetDxSharedSurface
+    DwmGetRemoteSessionOcclusionEvent
+    DwmGetRemoteSessionOcclusionState
+    DwmLockScreenUpdates
+    DwmStartRedirection
+    DwmStopRedirection
+    DwmValidateWindow
+    EditWndProc
+    EmptyClipboard
+    EnableMenuItem
+    EnableMouseInPointer
+    EnableScrollBar
+    EnableSessionForMMCSS
+    EnableWindow
+    EndDeferWindowPos
+    EndDeferWindowPosEx
+    EndDialog
+    EndMenu
+    EndPaint
+    EndTask
+    EnterReaderModeHelper
+    EnumChildWindows
+    EnumClipboardFormats
+    EnumDesktopWindows
+    EnumDesktopsA
+    EnumDesktopsW
+    EnumDisplayDevicesA
+    EnumDisplayDevicesW
+    EnumDisplayMonitors
+    EnumDisplaySettingsA
+    EnumDisplaySettingsExA
+    EnumDisplaySettingsExW
+    EnumDisplaySettingsW
+    EnumPropsA
+    EnumPropsExA
+    EnumPropsExW
+    EnumPropsW
+    EnumThreadWindows
+    EnumWindowStationsA
+    EnumWindowStationsW
+    EnumWindows
+    EqualRect
+    EvaluateProximityToPolygon
+    EvaluateProximityToRect
+    ExcludeUpdateRgn
+    ExitWindowsEx
+    FillRect
+    FindWindowA
+    FindWindowExA
+    FindWindowExW
+    FindWindowW
+    FlashWindow
+    FlashWindowEx
+    FrameRect
+    FreeDDElParam
+    FrostCrashedWindow
+    GetActiveWindow
+    GetAltTabInfo
+    GetAltTabInfoA
+    GetAltTabInfoW
+    GetAncestor
+    GetAppCompatFlags
+    GetAppCompatFlags2
+    GetAsyncKeyState
+    GetAutoRotationState
+    GetCIMSSM
+    GetCapture
+    GetCaretBlinkTime
+    GetCaretPos
+    GetClassInfoA
+    GetClassInfoExA
+    GetClassInfoExW
+    GetClassInfoW
+    GetClassLongA
+    GetClassLongW
+    GetClassNameA
+    GetClassNameW
+    GetClassWord
+    GetClientRect
+    GetClipCursor
+    GetClipboardAccessToken
+    GetClipboardData
+    GetClipboardFormatNameA
+    GetClipboardFormatNameW
+    GetClipboardOwner
+    GetClipboardSequenceNumber
+    GetClipboardViewer
+    GetComboBoxInfo
+    GetCurrentInputMessageSource
+    GetCursor
+    GetCursorFrameInfo
+    GetCursorInfo
+    GetCursorPos
+    GetDC
+    GetDCEx
+    GetDesktopID
+    GetDesktopWindow
+    GetDialogBaseUnits
+    GetDisplayAutoRotationPreferences
+    GetDisplayConfigBufferSizes
+    GetDlgCtrlID
+    GetDlgItem
+    GetDlgItemInt
+    GetDlgItemTextA
+    GetDlgItemTextW
+    GetDoubleClickTime
+    GetDpiForMonitorInternal
+    GetFocus
+    GetForegroundWindow
+    GetGUIThreadInfo
+    GetGestureConfig
+    GetGestureExtraArgs
+    GetGestureInfo
+    GetGuiResources
+    GetIconInfo
+    GetIconInfoExA
+    GetIconInfoExW
+    GetInputDesktop
+    GetInputLocaleInfo
+    GetInputState
+    GetInternalWindowPos
+    GetKBCodePage
+    GetKeyNameTextA
+    GetKeyNameTextW
+    GetKeyState
+    GetKeyboardLayout
+    GetKeyboardLayoutList
+    GetKeyboardLayoutNameA
+    GetKeyboardLayoutNameW
+    GetKeyboardState
+    GetKeyboardType
+    GetLastActivePopup
+    GetLastInputInfo
+    GetLayeredWindowAttributes
+    GetListBoxInfo
+    GetMagnificationDesktopColorEffect
+    GetMagnificationDesktopMagnification
+    GetMagnificationLensCtxInformation
+    GetMenu
+    GetMenuBarInfo
+    GetMenuCheckMarkDimensions
+    GetMenuContextHelpId
+    GetMenuDefaultItem
+    GetMenuInfo
+    GetMenuItemCount
+    GetMenuItemID
+    GetMenuItemInfoA
+    GetMenuItemInfoW
+    GetMenuItemRect
+    GetMenuState
+    GetMenuStringA
+    GetMenuStringW
+    GetMessageA
+    GetMessageExtraInfo
+    GetMessagePos
+    GetMessageTime
+    GetMessageW
+    GetMonitorInfoA
+    GetMonitorInfoW
+    GetMouseMovePointsEx
+    GetNextDlgGroupItem
+    GetNextDlgTabItem
+    GetOpenClipboardWindow
+    GetParent
+    GetPhysicalCursorPos
+    GetPointerCursorId
+    GetPointerDevice
+    GetPointerDeviceCursors
+    GetPointerDeviceProperties
+    GetPointerDeviceRects
+    GetPointerDevices
+    GetPointerFrameInfo
+    GetPointerFrameInfoHistory
+    GetPointerFramePenInfo
+    GetPointerFramePenInfoHistory
+    GetPointerFrameTouchInfo
+    GetPointerFrameTouchInfoHistory
+    GetPointerInfo
+    GetPointerInfoHistory
+    GetPointerInputTransform
+    GetPointerPenInfo
+    GetPointerPenInfoHistory
+    GetPointerTouchInfo
+    GetPointerTouchInfoHistory
+    GetPointerType
+    GetPriorityClipboardFormat
+    GetProcessDefaultLayout
+    GetProcessDpiAwarenessInternal
+    GetProcessWindowStation
+    GetProgmanWindow
+    GetPropA
+    GetPropW
+    GetQueueStatus
+    GetRawInputBuffer
+    GetRawInputData
+    GetRawInputDeviceInfoA
+    GetRawInputDeviceInfoW
+    GetRawInputDeviceList
+    GetRawPointerDeviceData
+    GetReasonTitleFromReasonCode
+    GetRegisteredRawInputDevices
+    GetScrollBarInfo
+    GetScrollInfo
+    GetScrollPos
+    GetScrollRange
+    GetSendMessageReceiver
+    GetShellWindow
+    GetSubMenu
+    GetSysColor
+    GetSysColorBrush
+    GetSystemMenu
+    GetSystemMetrics
+    GetTabbedTextExtentA
+    GetTabbedTextExtentW
+    GetTaskmanWindow
+    GetThreadDesktop
+    GetTitleBarInfo
+    GetTopLevelWindow
+    GetTopWindow
+    GetTouchInputInfo
+    GetUnpredictedMessagePos
+    GetUpdateRect
+    GetUpdateRgn
+    GetUpdatedClipboardFormats
+    GetUserObjectInformationA
+    GetUserObjectInformationW
+    GetUserObjectSecurity
+    GetWinStationInfo
+    GetWindow
+    GetWindowBand
+    GetWindowCompositionAttribute
+    GetWindowCompositionInfo
+    GetWindowContextHelpId
+    GetWindowDC
+    GetWindowDisplayAffinity
+    GetWindowFeedbackSetting
+    GetWindowInfo
+    GetWindowLongA
+    GetWindowLongW
+    GetWindowMinimizeRect
+    GetWindowModuleFileName
+    GetWindowModuleFileNameA
+    GetWindowModuleFileNameW
+    GetWindowPlacement
+    GetWindowRect
+    GetWindowRgn
+    GetWindowRgnBox
+    GetWindowRgnEx
+    GetWindowTextA
+    GetWindowTextLengthA
+    GetWindowTextLengthW
+    GetWindowTextW
+    GetWindowThreadProcessId
+    GetWindowWord
+    GhostWindowFromHungWindow
+    GrayStringA
+    GrayStringW
+    HideCaret
+    HiliteMenuItem
+    HungWindowFromGhostWindow
+    IMPGetIMEA
+    IMPGetIMEW
+    IMPQueryIMEA
+    IMPQueryIMEW
+    IMPSetIMEA
+    IMPSetIMEW
+    ImpersonateDdeClientWindow
+    InSendMessage
+    InSendMessageEx
+    InflateRect
+    InitializeLpkHooks
+    InitializeTouchInjection
+    InjectTouchInput
+    InsertMenuA
+    InsertMenuItemA
+    InsertMenuItemW
+    InsertMenuW
+    InternalGetWindowIcon
+    InternalGetWindowText
+    IntersectRect
+    InvalidateRect
+    InvalidateRgn
+    InvertRect
+    IsCharAlphaA
+    IsCharAlphaNumericA
+    IsCharAlphaNumericW
+    IsCharAlphaW
+    IsCharLowerA
+    IsCharLowerW
+    IsCharUpperA
+    IsCharUpperW
+    IsChild
+    IsClipboardFormatAvailable
+    IsDialogMessage
+    IsDialogMessageA
+    IsDialogMessageW
+    IsDlgButtonChecked
+    IsGUIThread
+    IsHungAppWindow
+    IsIconic
+    IsImmersiveProcess
+    IsInDesktopWindowBand
+    IsMenu
+    IsMouseInPointerEnabled
+    IsProcessDPIAware
+    IsQueueAttached
+    IsRectEmpty
+    IsSETEnabled
+    IsServerSideWindow
+    IsThreadDesktopComposited
+    IsThreadMessageQueueAttached
+    IsTopLevelWindow
+    IsTouchWindow
+    IsWinEventHookInstalled
+    IsWindow
+    IsWindowEnabled
+    IsWindowInDestroy
+    IsWindowRedirectedForPrint
+    IsWindowUnicode
+    IsWindowVisible
+    IsWow64Message
+    IsZoomed
+    KillTimer
+    LoadAcceleratorsA
+    LoadAcceleratorsW
+    LoadBitmapA
+    LoadBitmapW
+    LoadCursorA
+    LoadCursorFromFileA
+    LoadCursorFromFileW
+    LoadCursorW
+    LoadIconA
+    LoadIconW
+    LoadImageA
+    LoadImageW
+    LoadKeyboardLayoutA
+    LoadKeyboardLayoutEx
+    LoadKeyboardLayoutW
+    LoadLocalFonts
+    LoadMenuA
+    LoadMenuIndirectA
+    LoadMenuIndirectW
+    LoadMenuW
+    LoadRemoteFonts
+    LoadStringA
+    LoadStringW
+    LockSetForegroundWindow
+    LockWindowStation
+    LockWindowUpdate
+    LockWorkStation
+    LogicalToPhysicalPoint
+    LogicalToPhysicalPointForPerMonitorDPI
+    LookupIconIdFromDirectory
+    LookupIconIdFromDirectoryEx
+    MBToWCSEx
+    MBToWCSExt
+    MB_GetString
+    MapDialogRect
+    MapVirtualKeyA
+    MapVirtualKeyExA
+    MapVirtualKeyExW
+    MapVirtualKeyW
+    MapWindowPoints
+    MenuItemFromPoint
+    MenuWindowProcA
+    MenuWindowProcW
+    MessageBeep
+    MessageBoxA
+    MessageBoxExA
+    MessageBoxExW
+    MessageBoxIndirectA
+    MessageBoxIndirectW
+    MessageBoxTimeoutA
+    MessageBoxTimeoutW
+    MessageBoxW
+    ModifyMenuA
+    ModifyMenuW
+    MonitorFromPoint
+    MonitorFromRect
+    MonitorFromWindow
+    MoveWindow
+    MsgWaitForMultipleObjects
+    MsgWaitForMultipleObjectsEx
+    NotifyOverlayWindow
+    NotifyWinEvent
+    OemKeyScan
+    OemToCharA
+    OemToCharBuffA
+    OemToCharBuffW
+    OemToCharW
+    OffsetRect
+    OpenClipboard
+    OpenDesktopA
+    OpenDesktopW
+    OpenIcon
+    OpenInputDesktop
+    OpenThreadDesktop
+    OpenWindowStationA
+    OpenWindowStationW
+    PackDDElParam
+    PackTouchHitTestingProximityEvaluation
+    PaintDesktop
+    PaintMenuBar
+    PaintMonitor
+    PeekMessageA
+    PeekMessageW
+    PhysicalToLogicalPoint
+    PhysicalToLogicalPointForPerMonitorDPI
+    PostMessageA
+    PostMessageW
+    PostQuitMessage
+    PostThreadMessageA
+    PostThreadMessageW
+    PrintWindow
+    PrivateExtractIconExA
+    PrivateExtractIconExW
+    PrivateExtractIconsA
+    PrivateExtractIconsW
+    PrivateRegisterICSProc
+    PtInRect
+    QueryBSDRWindow
+    QueryDisplayConfig
+    QuerySendMessage
+    RealChildWindowFromPoint
+    RealGetWindowClass
+    RealGetWindowClassA
+    RealGetWindowClassW
+    ReasonCodeNeedsBugID
+    ReasonCodeNeedsComment
+    RecordShutdownReason
+    RedrawWindow
+    RegisterBSDRWindow
+    RegisterClassA
+    RegisterClassExA
+    RegisterClassExW
+    RegisterClassW
+    RegisterClipboardFormatA
+    RegisterClipboardFormatW
+    RegisterDeviceNotificationA
+    RegisterDeviceNotificationW
+    RegisterErrorReportingDialog
+    RegisterFrostWindow
+    RegisterGhostWindow
+    RegisterHotKey
+    RegisterLogonProcess
+    RegisterMessagePumpHook
+    RegisterPointerDeviceNotifications
+    RegisterPointerInputTarget
+    RegisterPowerSettingNotification
+    RegisterRawInputDevices
+    RegisterServicesProcess
+    RegisterSessionPort
+    RegisterShellHookWindow
+    RegisterSuspendResumeNotification
+    RegisterSystemThread
+    RegisterTasklist
+    RegisterTouchHitTestingWindow
+    RegisterTouchWindow
+    RegisterUserApiHook
+    RegisterWindowMessageA
+    RegisterWindowMessageW
+    ReleaseCapture
+    ReleaseDC
+    RemoveClipboardFormatListener
+    RemoveMenu
+    RemovePropA
+    RemovePropW
+    ReplyMessage
+    ResolveDesktopForWOW
+    ReuseDDElParam
+    ScreenToClient
+    ScrollChildren
+    ScrollDC
+    ScrollWindow
+    ScrollWindowEx
+    SendDlgItemMessageA
+    SendDlgItemMessageW
+    SendIMEMessageExA
+    SendIMEMessageExW
+    SendInput
+    SendMessageA
+    SendMessageCallbackA
+    SendMessageCallbackW
+    SendMessageTimeoutA
+    SendMessageTimeoutW
+    SendMessageW
+    SendNotifyMessageA
+    SendNotifyMessageW
+    SetActiveWindow
+    SetCapture
+    SetCaretBlinkTime
+    SetCaretPos
+    SetClassLongA
+    SetClassLongW
+    SetClassWord
+    SetClipboardData
+    SetClipboardViewer
+    SetCoalescableTimer
+    SetCursor
+    SetCursorContents
+    SetCursorPos
+    SetDebugErrorLevel
+    SetDeskWallpaper
+    SetDisplayAutoRotationPreferences
+    SetDisplayConfig
+    SetDlgItemInt
+    SetDlgItemTextA
+    SetDlgItemTextW
+    SetDoubleClickTime
+    SetFocus
+    SetForegroundWindow
+    SetGestureConfig
+    SetImmersiveBackgroundWindow
+    SetInternalWindowPos
+    SetKeyboardState
+    SetLastErrorEx
+    SetLayeredWindowAttributes
+    SetMagnificationDesktopColorEffect
+    SetMagnificationDesktopMagnification
+    SetMagnificationLensCtxInformation
+    SetMenu
+    SetMenuContextHelpId
+    SetMenuDefaultItem
+    SetMenuInfo
+    SetMenuItemBitmaps
+    SetMenuItemInfoA
+    SetMenuItemInfoW
+    SetMessageExtraInfo
+    SetMessageQueue
+    SetMirrorRendering
+    SetParent
+    SetPhysicalCursorPos
+    SetProcessDPIAware
+    SetProcessDefaultLayout
+    SetProcessDpiAwarenessInternal
+    SetProcessRestrictionExemption
+    SetProcessWindowStation
+    SetProgmanWindow
+    SetPropA
+    SetPropW
+    SetRect
+    SetRectEmpty
+    SetScrollInfo
+    SetScrollPos
+    SetScrollRange
+    SetShellWindow
+    SetShellWindowEx
+    SetSysColors
+    SetSysColorsTemp
+    SetSystemCursor
+    SetSystemMenu
+    SetTaskmanWindow
+    SetThreadDesktop
+    SetThreadInputBlocked
+    SetTimer
+    SetUserObjectInformationA
+    SetUserObjectInformationW
+    SetUserObjectSecurity
+    SetWinEventHook
+    SetWindowBand
+    SetWindowCompositionAttribute
+    SetWindowCompositionTransition
+    SetWindowContextHelpId
+    SetWindowDisplayAffinity
+    SetWindowFeedbackSetting
+    SetWindowLongA
+    SetWindowLongW
+    SetWindowPlacement
+    SetWindowPos
+    SetWindowRgn
+    SetWindowRgnEx
+    SetWindowStationUser
+    SetWindowTextA
+    SetWindowTextW
+    SetWindowWord
+    SetWindowsHookA
+    SetWindowsHookExA
+    SetWindowsHookExW
+    SetWindowsHookW
+    ShowCaret
+    ShowCursor
+    ShowOwnedPopups
+    ShowScrollBar
+    ShowStartGlass
+    ShowSystemCursor
+    ShowWindow
+    ShowWindowAsync
+    ShutdownBlockReasonCreate
+    ShutdownBlockReasonDestroy
+    ShutdownBlockReasonQuery
+    SignalRedirectionStartComplete
+    SkipPointerFrameMessages
+    SoftModalMessageBox
+    SoundSentry
+    SubtractRect
+    SwapMouseButton
+    SwitchDesktop
+    SwitchDesktopWithFade
+    SwitchToThisWindow
+    SystemParametersInfoA
+    SystemParametersInfoW
+    TabbedTextOutA
+    TabbedTextOutW
+    TileChildWindows
+    TileWindows
+    ToAscii
+    ToAsciiEx
+    ToUnicode
+    ToUnicodeEx
+    TrackMouseEvent
+    TrackPopupMenu
+    TrackPopupMenuEx
+    TranslateAccelerator
+    TranslateAcceleratorA
+    TranslateAcceleratorW
+    TranslateMDISysAccel
+    TranslateMessage
+    TranslateMessageEx
+    UnhookWinEvent
+    UnhookWindowsHook
+    UnhookWindowsHookEx
+    UnionRect
+    UnloadKeyboardLayout
+    UnlockWindowStation
+    UnpackDDElParam
+    UnregisterClassA
+    UnregisterClassW
+    UnregisterDeviceNotification
+    UnregisterHotKey
+    UnregisterMessagePumpHook
+    UnregisterPointerInputTarget
+    UnregisterPowerSettingNotification
+    UnregisterSessionPort
+    UnregisterSuspendResumeNotification
+    UnregisterTouchWindow
+    UnregisterUserApiHook
+    UpdateDefaultDesktopThumbnail
+    UpdateLayeredWindow
+    UpdateLayeredWindowIndirect
+    UpdatePerUserSystemParameters
+    UpdateWindow
+    UpdateWindowInputSinkHints
+    UpdateWindowTransform
+    User32InitializeImmEntryTable
+    UserClientDllInitialize
+    UserHandleGrantAccess
+    UserLpkPSMTextOut
+    UserLpkTabbedTextOut
+    UserRealizePalette
+    UserRegisterWowHandlers
+    VRipOutput
+    VTagOutput
+    ValidateRect
+    ValidateRgn
+    VkKeyScanA
+    VkKeyScanExA
+    VkKeyScanExW
+    VkKeyScanW
+    WCSToMBEx
+    WINNLSEnableIME
+    WINNLSGetEnableStatus
+    WINNLSGetIMEHotkey
+    WaitForInputIdle
+    WaitForRedirectionStartComplete
+    WaitMessage
+    WinHelpA
+    WinHelpW
+    WindowFromDC
+    WindowFromPhysicalPoint
+    WindowFromPoint
+    _UserTestTokenForInteractive
+    gSharedInfo
+    gapfnScSendMessage
+    keybd_event
+    mouse_event
+    wsprintfA
+    wsprintfW
+    wvsprintfA
+    wvsprintfW
+    _ActivateKeyboardLayout@8 = ActivateKeyboardLayout
+    _AdjustWindowRect@12 = AdjustWindowRect
+    _AdjustWindowRectEx@16 = AdjustWindowRectEx
+    _AllowSetForegroundWindow@4 = AllowSetForegroundWindow
+    _AnimateWindow@12 = AnimateWindow
+    _AnyPopup@0 = AnyPopup
+    _AppendMenuA@16 = AppendMenuA
+    _AppendMenuW@16 = AppendMenuW
+    _ArrangeIconicWindows@4 = ArrangeIconicWindows
+    _AttachThreadInput@12 = AttachThreadInput
+    _BeginDeferWindowPos@4 = BeginDeferWindowPos
+    _BeginPaint@8 = BeginPaint
+    _BlockInput@4 = BlockInput
+    _BringWindowToTop@4 = BringWindowToTop
+    _BroadcastSystemMessage@20 = BroadcastSystemMessage
+    _BroadcastSystemMessageA@20 = BroadcastSystemMessageA
+    _BroadcastSystemMessageExA@24 = BroadcastSystemMessageExA
+    _BroadcastSystemMessageExW@24 = BroadcastSystemMessageExW
+    _BroadcastSystemMessageW@20 = BroadcastSystemMessageW
+    _CallMsgFilter@8 = CallMsgFilter
+    _CallMsgFilterA@8 = CallMsgFilterA
+    _CallMsgFilterW@8 = CallMsgFilterW
+    _CallNextHookEx@16 = CallNextHookEx
+    _CallWindowProcA@20 = CallWindowProcA
+    _CallWindowProcW@20 = CallWindowProcW
+    _CascadeChildWindows@8 = CascadeChildWindows
+    _CascadeWindows@20 = CascadeWindows
+    _ChangeClipboardChain@8 = ChangeClipboardChain
+    _ChangeDisplaySettingsA@8 = ChangeDisplaySettingsA
+    _ChangeDisplaySettingsExA@20 = ChangeDisplaySettingsExA
+    _ChangeDisplaySettingsExW@20 = ChangeDisplaySettingsExW
+    _ChangeDisplaySettingsW@8 = ChangeDisplaySettingsW
+    _ChangeMenuA@20 = ChangeMenuA
+    _ChangeMenuW@20 = ChangeMenuW
+    _CharLowerA@4 = CharLowerA
+    _CharLowerBuffA@8 = CharLowerBuffA
+    _CharLowerBuffW@8 = CharLowerBuffW
+    _CharLowerW@4 = CharLowerW
+    _CharNextA@4 = CharNextA
+    _CharNextExA@12 = CharNextExA
+    _CharNextW@4 = CharNextW
+    _CharPrevA@8 = CharPrevA
+    _CharPrevExA@16 = CharPrevExA
+    _CharPrevW@8 = CharPrevW
+    _CharToOemA@8 = CharToOemA
+    _CharToOemBuffA@12 = CharToOemBuffA
+    _CharToOemBuffW@12 = CharToOemBuffW
+    _CharToOemW@8 = CharToOemW
+    _CharUpperA@4 = CharUpperA
+    _CharUpperBuffA@8 = CharUpperBuffA
+    _CharUpperBuffW@8 = CharUpperBuffW
+    _CharUpperW@4 = CharUpperW
+    _CheckDlgButton@12 = CheckDlgButton
+    _CheckMenuItem@12 = CheckMenuItem
+    _CheckMenuRadioItem@20 = CheckMenuRadioItem
+    _CheckRadioButton@16 = CheckRadioButton
+    _ChildWindowFromPoint@12 = ChildWindowFromPoint
+    _ChildWindowFromPointEx@16 = ChildWindowFromPointEx
+    _ClientToScreen@8 = ClientToScreen
+    _ClipCursor@4 = ClipCursor
+    _CloseClipboard@0 = CloseClipboard
+    _CloseDesktop@4 = CloseDesktop
+    _CloseWindow@4 = CloseWindow
+    _CloseWindowStation@4 = CloseWindowStation
+    _CopyAcceleratorTableA@12 = CopyAcceleratorTableA
+    _CopyAcceleratorTableW@12 = CopyAcceleratorTableW
+    _CopyIcon@4 = CopyIcon
+    _CopyImage@20 = CopyImage
+    _CopyRect@8 = CopyRect
+    _CountClipboardFormats@0 = CountClipboardFormats
+    _CreateAcceleratorTableA@8 = CreateAcceleratorTableA
+    _CreateAcceleratorTableW@8 = CreateAcceleratorTableW
+    _CreateCaret@16 = CreateCaret
+    _CreateCursor@28 = CreateCursor
+    _CreateDesktopA@24 = CreateDesktopA
+    _CreateDesktopW@24 = CreateDesktopW
+    _CreateDialogIndirectParamA@20 = CreateDialogIndirectParamA
+    _CreateDialogIndirectParamW@20 = CreateDialogIndirectParamW
+    _CreateDialogParamA@20 = CreateDialogParamA
+    _CreateDialogParamW@20 = CreateDialogParamW
+    _CreateIcon@28 = CreateIcon
+    _CreateIconFromResource@16 = CreateIconFromResource
+    _CreateIconFromResourceEx@28 = CreateIconFromResourceEx
+    _CreateIconIndirect@4 = CreateIconIndirect
+    _CreateMDIWindowA@40 = CreateMDIWindowA
+    _CreateMDIWindowW@40 = CreateMDIWindowW
+    _CreateMenu@0 = CreateMenu
+    _CreatePopupMenu@0 = CreatePopupMenu
+    _CreateWindowExA@48 = CreateWindowExA
+    _CreateWindowExW@48 = CreateWindowExW
+    _CreateWindowStationA@16 = CreateWindowStationA
+    _CreateWindowStationW@16 = CreateWindowStationW
+    _DdeAbandonTransaction@12 = DdeAbandonTransaction
+    _DdeAccessData@8 = DdeAccessData
+    _DdeAddData@16 = DdeAddData
+    _DdeClientTransaction@32 = DdeClientTransaction
+    _DdeCmpStringHandles@8 = DdeCmpStringHandles
+    _DdeConnect@16 = DdeConnect
+    _DdeConnectList@20 = DdeConnectList
+    _DdeCreateDataHandle@28 = DdeCreateDataHandle
+    _DdeCreateStringHandleA@12 = DdeCreateStringHandleA
+    _DdeCreateStringHandleW@12 = DdeCreateStringHandleW
+    _DdeDisconnect@4 = DdeDisconnect
+    _DdeDisconnectList@4 = DdeDisconnectList
+    _DdeEnableCallback@12 = DdeEnableCallback
+    _DdeFreeDataHandle@4 = DdeFreeDataHandle
+    _DdeFreeStringHandle@8 = DdeFreeStringHandle
+    _DdeGetData@16 = DdeGetData
+    _DdeGetLastError@4 = DdeGetLastError
+    _DdeImpersonateClient@4 = DdeImpersonateClient
+    _DdeInitializeA@16 = DdeInitializeA
+    _DdeInitializeW@16 = DdeInitializeW
+    _DdeKeepStringHandle@8 = DdeKeepStringHandle
+    _DdeNameService@16 = DdeNameService
+    _DdePostAdvise@12 = DdePostAdvise
+    _DdeQueryConvInfo@12 = DdeQueryConvInfo
+    _DdeQueryNextServer@8 = DdeQueryNextServer
+    _DdeQueryStringA@20 = DdeQueryStringA
+    _DdeQueryStringW@20 = DdeQueryStringW
+    _DdeReconnect@4 = DdeReconnect
+    _DdeSetQualityOfService@12 = DdeSetQualityOfService
+    _DdeSetUserHandle@12 = DdeSetUserHandle
+    _DdeUnaccessData@4 = DdeUnaccessData
+    _DdeUninitialize@4 = DdeUninitialize
+    _DefDlgProcA@16 = DefDlgProcA
+    _DefDlgProcW@16 = DefDlgProcW
+    _DefFrameProcA@20 = DefFrameProcA
+    _DefFrameProcW@20 = DefFrameProcW
+    _DefMDIChildProcA@16 = DefMDIChildProcA
+    _DefMDIChildProcW@16 = DefMDIChildProcW
+    _DefRawInputProc@12 = DefRawInputProc
+    _DefWindowProcA@16 = DefWindowProcA
+    _DefWindowProcW@16 = DefWindowProcW
+    _DeferWindowPos@32 = DeferWindowPos
+    _DeleteMenu@12 = DeleteMenu
+    _DeregisterShellHookWindow@4 = DeregisterShellHookWindow
+    _DestroyAcceleratorTable@4 = DestroyAcceleratorTable
+    _DestroyCaret@0 = DestroyCaret
+    _DestroyCursor@4 = DestroyCursor
+    _DestroyIcon@4 = DestroyIcon
+    _DestroyMenu@4 = DestroyMenu
+    _DestroyWindow@4 = DestroyWindow
+    _DialogBoxIndirectParamA@20 = DialogBoxIndirectParamA
+    _DialogBoxIndirectParamW@20 = DialogBoxIndirectParamW
+    _DialogBoxParamA@20 = DialogBoxParamA
+    _DialogBoxParamW@20 = DialogBoxParamW
+    _DisableProcessWindowsGhosting@0 = DisableProcessWindowsGhosting
+    _DispatchMessageA@4 = DispatchMessageA
+    _DispatchMessageW@4 = DispatchMessageW
+    _DlgDirListA@20 = DlgDirListA
+    _DlgDirListComboBoxA@20 = DlgDirListComboBoxA
+    _DlgDirListComboBoxW@20 = DlgDirListComboBoxW
+    _DlgDirListW@20 = DlgDirListW
+    _DlgDirSelectComboBoxExA@16 = DlgDirSelectComboBoxExA
+    _DlgDirSelectComboBoxExW@16 = DlgDirSelectComboBoxExW
+    _DlgDirSelectExA@16 = DlgDirSelectExA
+    _DlgDirSelectExW@16 = DlgDirSelectExW
+    _DragDetect@12 = DragDetect
+    _DragObject@20 = DragObject
+    _DrawAnimatedRects@16 = DrawAnimatedRects
+    _DrawCaption@16 = DrawCaption
+    _DrawEdge@16 = DrawEdge
+    _DrawFocusRect@8 = DrawFocusRect
+    _DrawFrame@16 = DrawFrame
+    _DrawFrameControl@16 = DrawFrameControl
+    _DrawIcon@16 = DrawIcon
+    _DrawIconEx@36 = DrawIconEx
+    _DrawMenuBar@4 = DrawMenuBar
+    _DrawStateA@40 = DrawStateA
+    _DrawStateW@40 = DrawStateW
+    _DrawTextA@20 = DrawTextA
+    _DrawTextExA@24 = DrawTextExA
+    _DrawTextExW@24 = DrawTextExW
+    _DrawTextW@20 = DrawTextW
+    _EditWndProc@16 = EditWndProc
+    _EmptyClipboard@0 = EmptyClipboard
+    _EnableMenuItem@12 = EnableMenuItem
+    _EnableScrollBar@12 = EnableScrollBar
+    _EnableWindow@8 = EnableWindow
+    _EndDeferWindowPos@4 = EndDeferWindowPos
+    _EndDialog@8 = EndDialog
+    _EndMenu@0 = EndMenu
+    _EndPaint@8 = EndPaint
+    _EndTask@12 = EndTask
+    _EnumChildWindows@12 = EnumChildWindows
+    _EnumClipboardFormats@4 = EnumClipboardFormats
+    _EnumDesktopWindows@12 = EnumDesktopWindows
+    _EnumDesktopsA@12 = EnumDesktopsA
+    _EnumDesktopsW@12 = EnumDesktopsW
+    _EnumDisplayDevicesA@16 = EnumDisplayDevicesA
+    _EnumDisplayDevicesW@16 = EnumDisplayDevicesW
+    _EnumDisplayMonitors@16 = EnumDisplayMonitors
+    _EnumDisplaySettingsA@12 = EnumDisplaySettingsA
+    _EnumDisplaySettingsExA@16 = EnumDisplaySettingsExA
+    _EnumDisplaySettingsExW@16 = EnumDisplaySettingsExW
+    _EnumDisplaySettingsW@12 = EnumDisplaySettingsW
+    _EnumPropsA@8 = EnumPropsA
+    _EnumPropsExA@12 = EnumPropsExA
+    _EnumPropsExW@12 = EnumPropsExW
+    _EnumPropsW@8 = EnumPropsW
+    _EnumThreadWindows@12 = EnumThreadWindows
+    _EnumWindowStationsA@8 = EnumWindowStationsA
+    _EnumWindowStationsW@8 = EnumWindowStationsW
+    _EnumWindows@8 = EnumWindows
+    _EqualRect@8 = EqualRect
+    _ExcludeUpdateRgn@8 = ExcludeUpdateRgn
+    _ExitWindowsEx@8 = ExitWindowsEx
+    _FillRect@12 = FillRect
+    _FindWindowA@8 = FindWindowA
+    _FindWindowExA@16 = FindWindowExA
+    _FindWindowExW@16 = FindWindowExW
+    _FindWindowW@8 = FindWindowW
+    _FlashWindow@8 = FlashWindow
+    _FlashWindowEx@4 = FlashWindowEx
+    _FrameRect@12 = FrameRect
+    _FreeDDElParam@8 = FreeDDElParam
+    _GetActiveWindow@0 = GetActiveWindow
+    _GetAltTabInfo@20 = GetAltTabInfo
+    _GetAltTabInfoA@20 = GetAltTabInfoA
+    _GetAltTabInfoW@20 = GetAltTabInfoW
+    _GetAncestor@8 = GetAncestor
+    _GetAsyncKeyState@4 = GetAsyncKeyState
+    _GetCapture@0 = GetCapture
+    _GetCaretBlinkTime@0 = GetCaretBlinkTime
+    _GetCaretPos@4 = GetCaretPos
+    _GetClassInfoA@12 = GetClassInfoA
+    _GetClassInfoExA@12 = GetClassInfoExA
+    _GetClassInfoExW@12 = GetClassInfoExW
+    _GetClassInfoW@12 = GetClassInfoW
+    _GetClassLongA@8 = GetClassLongA
+    _GetClassLongW@8 = GetClassLongW
+    _GetClassNameA@12 = GetClassNameA
+    _GetClassNameW@12 = GetClassNameW
+    _GetClassWord@8 = GetClassWord
+    _GetClientRect@8 = GetClientRect
+    _GetClipCursor@4 = GetClipCursor
+    _GetClipboardData@4 = GetClipboardData
+    _GetClipboardFormatNameA@12 = GetClipboardFormatNameA
+    _GetClipboardFormatNameW@12 = GetClipboardFormatNameW
+    _GetClipboardOwner@0 = GetClipboardOwner
+    _GetClipboardSequenceNumber@0 = GetClipboardSequenceNumber
+    _GetClipboardViewer@0 = GetClipboardViewer
+    _GetComboBoxInfo@8 = GetComboBoxInfo
+    _GetCursor@0 = GetCursor
+    _GetCursorInfo@4 = GetCursorInfo
+    _GetCursorPos@4 = GetCursorPos
+    _GetDC@4 = GetDC
+    _GetDCEx@12 = GetDCEx
+    _GetDesktopWindow@0 = GetDesktopWindow
+    _GetDialogBaseUnits@0 = GetDialogBaseUnits
+    _GetDlgCtrlID@4 = GetDlgCtrlID
+    _GetDlgItem@8 = GetDlgItem
+    _GetDlgItemInt@16 = GetDlgItemInt
+    _GetDlgItemTextA@16 = GetDlgItemTextA
+    _GetDlgItemTextW@16 = GetDlgItemTextW
+    _GetDoubleClickTime@0 = GetDoubleClickTime
+    _GetFocus@0 = GetFocus
+    _GetForegroundWindow@0 = GetForegroundWindow
+    _GetGUIThreadInfo@8 = GetGUIThreadInfo
+    _GetGuiResources@8 = GetGuiResources
+    _GetIconInfo@8 = GetIconInfo
+    _GetInputDesktop@0 = GetInputDesktop
+    _GetInputState@0 = GetInputState
+    _GetKBCodePage@0 = GetKBCodePage
+    _GetKeyNameTextA@12 = GetKeyNameTextA
+    _GetKeyNameTextW@12 = GetKeyNameTextW
+    _GetKeyState@4 = GetKeyState
+    _GetKeyboardLayout@4 = GetKeyboardLayout
+    _GetKeyboardLayoutList@8 = GetKeyboardLayoutList
+    _GetKeyboardLayoutNameA@4 = GetKeyboardLayoutNameA
+    _GetKeyboardLayoutNameW@4 = GetKeyboardLayoutNameW
+    _GetKeyboardState@4 = GetKeyboardState
+    _GetKeyboardType@4 = GetKeyboardType
+    _GetLastActivePopup@4 = GetLastActivePopup
+    _GetLastInputInfo@4 = GetLastInputInfo
+    _GetLayeredWindowAttributes@16 = GetLayeredWindowAttributes
+    _GetListBoxInfo@4 = GetListBoxInfo
+    _GetMenu@4 = GetMenu
+    _GetMenuBarInfo@16 = GetMenuBarInfo
+    _GetMenuCheckMarkDimensions@0 = GetMenuCheckMarkDimensions
+    _GetMenuContextHelpId@4 = GetMenuContextHelpId
+    _GetMenuDefaultItem@12 = GetMenuDefaultItem
+    _GetMenuInfo@8 = GetMenuInfo
+    _GetMenuItemCount@4 = GetMenuItemCount
+    _GetMenuItemID@8 = GetMenuItemID
+    _GetMenuItemInfoA@16 = GetMenuItemInfoA
+    _GetMenuItemInfoW@16 = GetMenuItemInfoW
+    _GetMenuItemRect@16 = GetMenuItemRect
+    _GetMenuState@12 = GetMenuState
+    _GetMenuStringA@20 = GetMenuStringA
+    _GetMenuStringW@20 = GetMenuStringW
+    _GetMessageA@16 = GetMessageA
+    _GetMessageExtraInfo@0 = GetMessageExtraInfo
+    _GetMessagePos@0 = GetMessagePos
+    _GetMessageTime@0 = GetMessageTime
+    _GetMessageW@16 = GetMessageW
+    _GetMonitorInfoA@8 = GetMonitorInfoA
+    _GetMonitorInfoW@8 = GetMonitorInfoW
+    _GetMouseMovePointsEx@20 = GetMouseMovePointsEx
+    _GetNextDlgGroupItem@12 = GetNextDlgGroupItem
+    _GetNextDlgTabItem@12 = GetNextDlgTabItem
+    _GetOpenClipboardWindow@0 = GetOpenClipboardWindow
+    _GetParent@4 = GetParent
+    _GetPriorityClipboardFormat@8 = GetPriorityClipboardFormat
+    _GetProcessDefaultLayout@4 = GetProcessDefaultLayout
+    _GetProcessWindowStation@0 = GetProcessWindowStation
+    _GetPropA@8 = GetPropA
+    _GetPropW@8 = GetPropW
+    _GetQueueStatus@4 = GetQueueStatus
+    _GetRawInputBuffer@12 = GetRawInputBuffer
+    _GetRawInputData@20 = GetRawInputData
+    _GetRawInputDeviceInfoA@16 = GetRawInputDeviceInfoA
+    _GetRawInputDeviceInfoW@16 = GetRawInputDeviceInfoW
+    _GetRawInputDeviceList@12 = GetRawInputDeviceList
+    _GetRegisteredRawInputDevices@12 = GetRegisteredRawInputDevices
+    _GetScrollBarInfo@12 = GetScrollBarInfo
+    _GetScrollInfo@12 = GetScrollInfo
+    _GetScrollPos@8 = GetScrollPos
+    _GetScrollRange@16 = GetScrollRange
+    _GetShellWindow@0 = GetShellWindow
+    _GetSubMenu@8 = GetSubMenu
+    _GetSysColor@4 = GetSysColor
+    _GetSysColorBrush@4 = GetSysColorBrush
+    _GetSystemMenu@8 = GetSystemMenu
+    _GetSystemMetrics@4 = GetSystemMetrics
+    _GetTabbedTextExtentA@20 = GetTabbedTextExtentA
+    _GetTabbedTextExtentW@20 = GetTabbedTextExtentW
+    _GetThreadDesktop@4 = GetThreadDesktop
+    _GetTitleBarInfo@8 = GetTitleBarInfo
+    _GetTopWindow@4 = GetTopWindow
+    _GetUpdateRect@12 = GetUpdateRect
+    _GetUpdateRgn@12 = GetUpdateRgn
+    _GetUserObjectInformationA@20 = GetUserObjectInformationA
+    _GetUserObjectInformationW@20 = GetUserObjectInformationW
+    _GetUserObjectSecurity@20 = GetUserObjectSecurity
+    _GetWindow@8 = GetWindow
+    _GetWindowContextHelpId@4 = GetWindowContextHelpId
+    _GetWindowDC@4 = GetWindowDC
+    _GetWindowInfo@8 = GetWindowInfo
+    _GetWindowLongA@8 = GetWindowLongA
+    _GetWindowLongW@8 = GetWindowLongW
+    _GetWindowModuleFileName@12 = GetWindowModuleFileName
+    _GetWindowModuleFileNameA@12 = GetWindowModuleFileNameA
+    _GetWindowModuleFileNameW@12 = GetWindowModuleFileNameW
+    _GetWindowPlacement@8 = GetWindowPlacement
+    _GetWindowRect@8 = GetWindowRect
+    _GetWindowRgn@8 = GetWindowRgn
+    _GetWindowRgnBox@8 = GetWindowRgnBox
+    _GetWindowTextA@12 = GetWindowTextA
+    _GetWindowTextLengthA@4 = GetWindowTextLengthA
+    _GetWindowTextLengthW@4 = GetWindowTextLengthW
+    _GetWindowTextW@12 = GetWindowTextW
+    _GetWindowThreadProcessId@8 = GetWindowThreadProcessId
+    _GetWindowWord@8 = GetWindowWord
+    _GrayStringA@36 = GrayStringA
+    _GrayStringW@36 = GrayStringW
+    _HideCaret@4 = HideCaret
+    _HiliteMenuItem@16 = HiliteMenuItem
+    _IMPGetIMEA@8 = IMPGetIMEA
+    _IMPGetIMEW@8 = IMPGetIMEW
+    _IMPQueryIMEA@4 = IMPQueryIMEA
+    _IMPQueryIMEW@4 = IMPQueryIMEW
+    _IMPSetIMEA@8 = IMPSetIMEA
+    _IMPSetIMEW@8 = IMPSetIMEW
+    _ImpersonateDdeClientWindow@8 = ImpersonateDdeClientWindow
+    _InSendMessage@0 = InSendMessage
+    _InSendMessageEx@4 = InSendMessageEx
+    _InflateRect@12 = InflateRect
+    _InsertMenuA@20 = InsertMenuA
+    _InsertMenuItemA@16 = InsertMenuItemA
+    _InsertMenuItemW@16 = InsertMenuItemW
+    _InsertMenuW@20 = InsertMenuW
+    _InternalGetWindowText@12 = InternalGetWindowText
+    _IntersectRect@12 = IntersectRect
+    _InvalidateRect@12 = InvalidateRect
+    _InvalidateRgn@12 = InvalidateRgn
+    _InvertRect@8 = InvertRect
+    _IsCharAlphaA@4 = IsCharAlphaA
+    _IsCharAlphaNumericA@4 = IsCharAlphaNumericA
+    _IsCharAlphaNumericW@4 = IsCharAlphaNumericW
+    _IsCharAlphaW@4 = IsCharAlphaW
+    _IsCharLowerA@4 = IsCharLowerA
+    _IsCharLowerW@4 = IsCharLowerW
+    _IsCharUpperA@4 = IsCharUpperA
+    _IsCharUpperW@4 = IsCharUpperW
+    _IsChild@8 = IsChild
+    _IsClipboardFormatAvailable@4 = IsClipboardFormatAvailable
+    _IsDialogMessage@8 = IsDialogMessage
+    _IsDialogMessageA@8 = IsDialogMessageA
+    _IsDialogMessageW@8 = IsDialogMessageW
+    _IsDlgButtonChecked@8 = IsDlgButtonChecked
+    _IsGUIThread@4 = IsGUIThread
+    _IsHungAppWindow@4 = IsHungAppWindow
+    _IsIconic@4 = IsIconic
+    _IsMenu@4 = IsMenu
+    _IsRectEmpty@4 = IsRectEmpty
+    _IsWinEventHookInstalled@4 = IsWinEventHookInstalled
+    _IsWindow@4 = IsWindow
+    _IsWindowEnabled@4 = IsWindowEnabled
+    _IsWindowUnicode@4 = IsWindowUnicode
+    _IsWindowVisible@4 = IsWindowVisible
+    _IsWow64Message@0 = IsWow64Message
+    _IsZoomed@4 = IsZoomed
+    _KillTimer@8 = KillTimer
+    _LoadAcceleratorsA@8 = LoadAcceleratorsA
+    _LoadAcceleratorsW@8 = LoadAcceleratorsW
+    _LoadBitmapA@8 = LoadBitmapA
+    _LoadBitmapW@8 = LoadBitmapW
+    _LoadCursorA@8 = LoadCursorA
+    _LoadCursorFromFileA@4 = LoadCursorFromFileA
+    _LoadCursorFromFileW@4 = LoadCursorFromFileW
+    _LoadCursorW@8 = LoadCursorW
+    _LoadIconA@8 = LoadIconA
+    _LoadIconW@8 = LoadIconW
+    _LoadImageA@24 = LoadImageA
+    _LoadImageW@24 = LoadImageW
+    _LoadKeyboardLayoutA@8 = LoadKeyboardLayoutA
+    _LoadKeyboardLayoutW@8 = LoadKeyboardLayoutW
+    _LoadMenuA@8 = LoadMenuA
+    _LoadMenuIndirectA@4 = LoadMenuIndirectA
+    _LoadMenuIndirectW@4 = LoadMenuIndirectW
+    _LoadMenuW@8 = LoadMenuW
+    _LoadStringA@16 = LoadStringA
+    _LoadStringW@16 = LoadStringW
+    _LockSetForegroundWindow@4 = LockSetForegroundWindow
+    _LockWindowUpdate@4 = LockWindowUpdate
+    _LockWorkStation@0 = LockWorkStation
+    _LookupIconIdFromDirectory@8 = LookupIconIdFromDirectory
+    _LookupIconIdFromDirectoryEx@20 = LookupIconIdFromDirectoryEx
+    _MapDialogRect@8 = MapDialogRect
+    _MapVirtualKeyA@8 = MapVirtualKeyA
+    _MapVirtualKeyExA@12 = MapVirtualKeyExA
+    _MapVirtualKeyExW@12 = MapVirtualKeyExW
+    _MapVirtualKeyW@8 = MapVirtualKeyW
+    _MapWindowPoints@16 = MapWindowPoints
+    _MenuItemFromPoint@16 = MenuItemFromPoint
+    _MessageBeep@4 = MessageBeep
+    _MessageBoxA@16 = MessageBoxA
+    _MessageBoxExA@20 = MessageBoxExA
+    _MessageBoxExW@20 = MessageBoxExW
+    _MessageBoxIndirectA@4 = MessageBoxIndirectA
+    _MessageBoxIndirectW@4 = MessageBoxIndirectW
+    _MessageBoxTimeoutA@24 = MessageBoxTimeoutA
+    _MessageBoxTimeoutW@24 = MessageBoxTimeoutW
+    _MessageBoxW@16 = MessageBoxW
+    _ModifyMenuA@20 = ModifyMenuA
+    _ModifyMenuW@20 = ModifyMenuW
+    _MonitorFromPoint@12 = MonitorFromPoint
+    _MonitorFromRect@8 = MonitorFromRect
+    _MonitorFromWindow@8 = MonitorFromWindow
+    _MoveWindow@24 = MoveWindow
+    _MsgWaitForMultipleObjects@20 = MsgWaitForMultipleObjects
+    _MsgWaitForMultipleObjectsEx@20 = MsgWaitForMultipleObjectsEx
+    _NotifyWinEvent@16 = NotifyWinEvent
+    _OemKeyScan@4 = OemKeyScan
+    _OemToCharA@8 = OemToCharA
+    _OemToCharBuffA@12 = OemToCharBuffA
+    _OemToCharBuffW@12 = OemToCharBuffW
+    _OemToCharW@8 = OemToCharW
+    _OffsetRect@12 = OffsetRect
+    _OpenClipboard@4 = OpenClipboard
+    _OpenDesktopA@16 = OpenDesktopA
+    _OpenDesktopW@16 = OpenDesktopW
+    _OpenIcon@4 = OpenIcon
+    _OpenInputDesktop@12 = OpenInputDesktop
+    _OpenWindowStationA@12 = OpenWindowStationA
+    _OpenWindowStationW@12 = OpenWindowStationW
+    _PackDDElParam@12 = PackDDElParam
+    _PaintDesktop@4 = PaintDesktop
+    _PeekMessageA@20 = PeekMessageA
+    _PeekMessageW@20 = PeekMessageW
+    _PostMessageA@16 = PostMessageA
+    _PostMessageW@16 = PostMessageW
+    _PostQuitMessage@4 = PostQuitMessage
+    _PostThreadMessageA@16 = PostThreadMessageA
+    _PostThreadMessageW@16 = PostThreadMessageW
+    _PrintWindow@12 = PrintWindow
+    _PrivateExtractIconsA@32 = PrivateExtractIconsA
+    _PrivateExtractIconsW@32 = PrivateExtractIconsW
+    _PtInRect@12 = PtInRect
+    _RealChildWindowFromPoint@12 = RealChildWindowFromPoint
+    _RealGetWindowClass@12 = RealGetWindowClass
+    _RealGetWindowClassA@12 = RealGetWindowClassA
+    _RealGetWindowClassW@12 = RealGetWindowClassW
+    _RedrawWindow@16 = RedrawWindow
+    _RegisterClassA@4 = RegisterClassA
+    _RegisterClassExA@4 = RegisterClassExA
+    _RegisterClassExW@4 = RegisterClassExW
+    _RegisterClassW@4 = RegisterClassW
+    _RegisterClipboardFormatA@4 = RegisterClipboardFormatA
+    _RegisterClipboardFormatW@4 = RegisterClipboardFormatW
+    _RegisterDeviceNotificationA@12 = RegisterDeviceNotificationA
+    _RegisterDeviceNotificationW@12 = RegisterDeviceNotificationW
+    _RegisterHotKey@16 = RegisterHotKey
+    _RegisterRawInputDevices@12 = RegisterRawInputDevices
+    _RegisterShellHookWindow@4 = RegisterShellHookWindow
+    _RegisterWindowMessageA@4 = RegisterWindowMessageA
+    _RegisterWindowMessageW@4 = RegisterWindowMessageW
+    _ReleaseCapture@0 = ReleaseCapture
+    _ReleaseDC@8 = ReleaseDC
+    _RemoveMenu@12 = RemoveMenu
+    _RemovePropA@8 = RemovePropA
+    _RemovePropW@8 = RemovePropW
+    _ReplyMessage@4 = ReplyMessage
+    _ReuseDDElParam@20 = ReuseDDElParam
+    _ScreenToClient@8 = ScreenToClient
+    _ScrollDC@28 = ScrollDC
+    _ScrollWindow@20 = ScrollWindow
+    _ScrollWindowEx@32 = ScrollWindowEx
+    _SendDlgItemMessageA@20 = SendDlgItemMessageA
+    _SendDlgItemMessageW@20 = SendDlgItemMessageW
+    _SendIMEMessageExA@8 = SendIMEMessageExA
+    _SendIMEMessageExW@8 = SendIMEMessageExW
+    _SendInput@12 = SendInput
+    _SendMessageA@16 = SendMessageA
+    _SendMessageCallbackA@24 = SendMessageCallbackA
+    _SendMessageCallbackW@24 = SendMessageCallbackW
+    _SendMessageTimeoutA@28 = SendMessageTimeoutA
+    _SendMessageTimeoutW@28 = SendMessageTimeoutW
+    _SendMessageW@16 = SendMessageW
+    _SendNotifyMessageA@16 = SendNotifyMessageA
+    _SendNotifyMessageW@16 = SendNotifyMessageW
+    _SetActiveWindow@4 = SetActiveWindow
+    _SetCapture@4 = SetCapture
+    _SetCaretBlinkTime@4 = SetCaretBlinkTime
+    _SetCaretPos@8 = SetCaretPos
+    _SetClassLongA@12 = SetClassLongA
+    _SetClassLongW@12 = SetClassLongW
+    _SetClassWord@12 = SetClassWord
+    _SetClipboardData@8 = SetClipboardData
+    _SetClipboardViewer@4 = SetClipboardViewer
+    _SetCursor@4 = SetCursor
+    _SetCursorPos@8 = SetCursorPos
+    _SetDebugErrorLevel@4 = SetDebugErrorLevel
+    _SetDeskWallpaper@4 = SetDeskWallpaper
+    _SetDlgItemInt@16 = SetDlgItemInt
+    _SetDlgItemTextA@12 = SetDlgItemTextA
+    _SetDlgItemTextW@12 = SetDlgItemTextW
+    _SetDoubleClickTime@4 = SetDoubleClickTime
+    _SetFocus@4 = SetFocus
+    _SetForegroundWindow@4 = SetForegroundWindow
+    _SetKeyboardState@4 = SetKeyboardState
+    _SetLastErrorEx@8 = SetLastErrorEx
+    _SetLayeredWindowAttributes@16 = SetLayeredWindowAttributes
+    _SetMenu@8 = SetMenu
+    _SetMenuContextHelpId@8 = SetMenuContextHelpId
+    _SetMenuDefaultItem@12 = SetMenuDefaultItem
+    _SetMenuInfo@8 = SetMenuInfo
+    _SetMenuItemBitmaps@20 = SetMenuItemBitmaps
+    _SetMenuItemInfoA@16 = SetMenuItemInfoA
+    _SetMenuItemInfoW@16 = SetMenuItemInfoW
+    _SetMessageExtraInfo@4 = SetMessageExtraInfo
+    _SetMessageQueue@4 = SetMessageQueue
+    _SetParent@8 = SetParent
+    _SetProcessDefaultLayout@4 = SetProcessDefaultLayout
+    _SetProcessWindowStation@4 = SetProcessWindowStation
+    _SetPropA@12 = SetPropA
+    _SetPropW@12 = SetPropW
+    _SetRect@20 = SetRect
+    _SetRectEmpty@4 = SetRectEmpty
+    _SetScrollInfo@16 = SetScrollInfo
+    _SetScrollPos@16 = SetScrollPos
+    _SetScrollRange@20 = SetScrollRange
+    _SetShellWindow@4 = SetShellWindow
+    _SetSysColors@12 = SetSysColors
+    _SetSystemCursor@8 = SetSystemCursor
+    _SetThreadDesktop@4 = SetThreadDesktop
+    _SetTimer@16 = SetTimer
+    _SetUserObjectInformationA@16 = SetUserObjectInformationA
+    _SetUserObjectInformationW@16 = SetUserObjectInformationW
+    _SetUserObjectSecurity@12 = SetUserObjectSecurity
+    _SetWinEventHook@28 = SetWinEventHook
+    _SetWindowContextHelpId@8 = SetWindowContextHelpId
+    _SetWindowLongA@12 = SetWindowLongA
+    _SetWindowLongW@12 = SetWindowLongW
+    _SetWindowPlacement@8 = SetWindowPlacement
+    _SetWindowPos@28 = SetWindowPos
+    _SetWindowRgn@12 = SetWindowRgn
+    _SetWindowTextA@8 = SetWindowTextA
+    _SetWindowTextW@8 = SetWindowTextW
+    _SetWindowWord@12 = SetWindowWord
+    _SetWindowsHookA@8 = SetWindowsHookA
+    _SetWindowsHookExA@16 = SetWindowsHookExA
+    _SetWindowsHookExW@16 = SetWindowsHookExW
+    _SetWindowsHookW@8 = SetWindowsHookW
+    _ShowCaret@4 = ShowCaret
+    _ShowCursor@4 = ShowCursor
+    _ShowOwnedPopups@8 = ShowOwnedPopups
+    _ShowScrollBar@12 = ShowScrollBar
+    _ShowWindow@8 = ShowWindow
+    _ShowWindowAsync@8 = ShowWindowAsync
+    _SubtractRect@12 = SubtractRect
+    _SwapMouseButton@4 = SwapMouseButton
+    _SwitchDesktop@4 = SwitchDesktop
+    _SwitchToThisWindow@8 = SwitchToThisWindow
+    _SystemParametersInfoA@16 = SystemParametersInfoA
+    _SystemParametersInfoW@16 = SystemParametersInfoW
+    _TabbedTextOutA@32 = TabbedTextOutA
+    _TabbedTextOutW@32 = TabbedTextOutW
+    _TileChildWindows@8 = TileChildWindows
+    _TileWindows@20 = TileWindows
+    _ToAscii@20 = ToAscii
+    _ToAsciiEx@24 = ToAsciiEx
+    _ToUnicode@24 = ToUnicode
+    _ToUnicodeEx@28 = ToUnicodeEx
+    _TrackMouseEvent@4 = TrackMouseEvent
+    _TrackPopupMenu@28 = TrackPopupMenu
+    _TrackPopupMenuEx@24 = TrackPopupMenuEx
+    _TranslateAccelerator@12 = TranslateAccelerator
+    _TranslateAcceleratorA@12 = TranslateAcceleratorA
+    _TranslateAcceleratorW@12 = TranslateAcceleratorW
+    _TranslateMDISysAccel@8 = TranslateMDISysAccel
+    _TranslateMessage@4 = TranslateMessage
+    _UnhookWinEvent@4 = UnhookWinEvent
+    _UnhookWindowsHook@8 = UnhookWindowsHook
+    _UnhookWindowsHookEx@4 = UnhookWindowsHookEx
+    _UnionRect@12 = UnionRect
+    _UnloadKeyboardLayout@4 = UnloadKeyboardLayout
+    _UnpackDDElParam@16 = UnpackDDElParam
+    _UnregisterClassA@8 = UnregisterClassA
+    _UnregisterClassW@8 = UnregisterClassW
+    _UnregisterDeviceNotification@4 = UnregisterDeviceNotification
+    _UnregisterHotKey@8 = UnregisterHotKey
+    _UpdateLayeredWindow@36 = UpdateLayeredWindow
+    _UpdateLayeredWindowIndirect@8 = UpdateLayeredWindowIndirect
+    _UpdateWindow@4 = UpdateWindow
+    _UserHandleGrantAccess@12 = UserHandleGrantAccess
+    _ValidateRect@8 = ValidateRect
+    _ValidateRgn@8 = ValidateRgn
+    _VkKeyScanA@4 = VkKeyScanA
+    _VkKeyScanExA@8 = VkKeyScanExA
+    _VkKeyScanExW@8 = VkKeyScanExW
+    _VkKeyScanW@4 = VkKeyScanW
+    _WINNLSEnableIME@8 = WINNLSEnableIME
+    _WINNLSGetEnableStatus@4 = WINNLSGetEnableStatus
+    _WINNLSGetIMEHotkey@4 = WINNLSGetIMEHotkey
+    _WaitForInputIdle@8 = WaitForInputIdle
+    _WaitMessage@0 = WaitMessage
+    _WinHelpA@16 = WinHelpA
+    _WinHelpW@16 = WinHelpW
+    _WindowFromDC@4 = WindowFromDC
+    _WindowFromPoint@8 = WindowFromPoint
+    _keybd_event@16 = keybd_event
+    _mouse_event@20 = mouse_event
+    _wvsprintfA@12 = wvsprintfA
+    _wvsprintfW@12 = wvsprintfW
