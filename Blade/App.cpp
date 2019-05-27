@@ -4,7 +4,7 @@
 #include <raster_device.h>
 #include "App.h"
 #include "anim.h"
-#include "bld_ext_funcs.h"
+#include "bld_misc_funcs.h"
 #define BUILD_LIB
 #include <blade_ext.h>
 
@@ -107,7 +107,7 @@ void B_App::load_level(const char *script)
 
         this->unknownPtrForCamera = NUM_3F266666;
 
-        CALL_THISCALL_VOID_0(&gbl_game_state, _thiscall_00439F5D)
+        gbl_game_state.unknown_00439F5D();
 
         this->player1 = NULL;
 
@@ -195,7 +195,7 @@ void B_App::load_level(const char *script)
                         );
                 }
 
-                CALL_THISCALL_VOID_1(this->camera, _thiscall_camera_004EB1AA, this->player1)
+                this->camera->unknown_004EB1AA(this->player1);
 
                 this->camera->unknownPtrFromApplication = &this->unknownPtrForCamera;
                 this->camera->unknownValueFromApplication = this->unknownPtrForCamera;

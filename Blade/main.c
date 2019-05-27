@@ -44,11 +44,11 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         _thiscall_00451A21 = (void *)((char *)blade + 0x00051A21);
         _thiscall_camera_init = (void *)((char *)blade + 0x000EAD20);
         _thiscall_camera_004EB1AA = (void *)((char *)blade + 0x000EB1AA);
-        Set007EA988To01 = (void *)((char *)blade + 0x001AC791);
-        OnEvent = (void *)((char *)blade + 0x001AF2CE);
-        reset_client_map_name = (void *)((char *)blade + 0x001B1431);
-        get_map_for_net_game = (void *)((char *)blade + 0x001B143D);
-        LoadNetModule = (void *)((char *)blade + 0x001B65D2);
+        _cdecl_Set007EA988To01 = (void *)((char *)blade + 0x001AC791);
+        _cdecl_OnEvent = (void *)((char *)blade + 0x001AF2CE);
+        _cdecl_reset_client_map_name = (void *)((char *)blade + 0x001B1431);
+        _cdecl_get_map_for_net_game = (void *)((char *)blade + 0x001B143D);
+        _cdecl_LoadNetModule = (void *)((char *)blade + 0x001B65D2);
         BldStartup = (void *)((char *)blade + 0x001BC34A);
         _stdcall_BladeWinMain = (void *)((char *)blade + 0x00010CC2);
 

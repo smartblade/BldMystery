@@ -1,6 +1,6 @@
 #include <bld_system.h>
 #include "Location.h"
-#include "bld_ext_funcs.h"
+#include "bld_misc_funcs.h"
 
 /*
 * Module:                 Blade.exe

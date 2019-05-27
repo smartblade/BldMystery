@@ -30,6 +30,7 @@ typedef struct {
 #include "game_state.h"
 #include "sound_device.h"
 #include <bld_abstract_net.h>
+#include "light.h"
 
 #else
 
@@ -63,17 +64,18 @@ typedef int sound_t;
 extern "C" {
 #endif
 
+#ifdef BLD_NATIVE
+
 EXTERN HMODULE blade NULL_INIT;
-EXTERN void (*LoadNetModule)(char *) NULL_INIT;
-EXTERN void (*Set007EA988To01)(void) NULL_INIT;
-EXTERN void (*reset_client_map_name)(void) NULL_INIT;
-EXTERN void (*OnEvent)(int a, int b) NULL_INIT;
-EXTERN char *(*get_map_for_net_game)(const char *map) NULL_INIT;
+EXTERN void (*_cdecl_LoadNetModule)(char *) NULL_INIT;
+EXTERN void (*_cdecl_Set007EA988To01)(void) NULL_INIT;
+EXTERN void (*_cdecl_reset_client_map_name)(void) NULL_INIT;
+EXTERN void (*_cdecl_OnEvent)(int a, int b) NULL_INIT;
+EXTERN char *(*_cdecl_get_map_for_net_game)(const char *map) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_application_set_mode)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_application_init2)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_application_prepare_level)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_application_process_event)(void) NULL_INIT;
-EXTERN void * (*bld_new)(size_t size) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_camera_init)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_00439F5D)(void) NULL_INIT;
 EXTERN void (__stdcall *_thiscall_camera_004EB1AA)(void) NULL_INIT;
@@ -90,6 +92,10 @@ EXTERN int (__stdcall *_stdcall_BladeWinMain)(
     HINSTANCE hPrevInstance,
     LPSTR lpCmdLine,
     int nCmdShow) NULL_INIT;
+
+#endif
+
+EXTERN void * (*bld_new)(size_t size) NULL_INIT;
 
 EXTERN sound_t **sound_device_ptr NULL_INIT;
 EXTERN char *client_map_name NULL_INIT;
@@ -124,44 +130,10 @@ EXTERN void **__onexitbegin_ptr NULL_INIT;
 #define gbl_anims (*anims_ptr)
 
 
-#ifdef __cplusplus
-
-__inline B_IDataFile& operator >>(B_IDataFile& file, point_t *point)
-{
-        return *_cdecl_read_point(&file, point);
-}
-
-#endif
-
-
 #define CALL_THISCALL_VOID_0(self, funcPtr)\
 {\
         void *fnPtr = funcPtr;\
         void *selfPtr = self;\
-        _asm { mov ecx, selfPtr }\
-        _asm { call fnPtr }\
-}
-
-#define CALL_THISCALL_VOID_1(self, funcPtr, arg1)\
-{\
-        void *fnPtr = funcPtr;\
-        void *selfPtr = self;\
-        void *arg = arg1;\
-        _asm { push arg }\
-        _asm { mov ecx, selfPtr }\
-        _asm { call fnPtr }\
-}
-
-#define CALL_THISCALL_VOID_3(self, funcPtr, arg1, arg2, arg3)\
-{\
-        void *fnPtr = funcPtr;\
-        void *selfPtr = self;\
-        void *arg01 = (void *)arg1;\
-        void *arg02 = (void *)arg2;\
-        void *arg03 = (void *)arg3;\
-        _asm { push arg03 }\
-        _asm { push arg02 }\
-        _asm { push arg01 }\
         _asm { mov ecx, selfPtr }\
         _asm { call fnPtr }\
 }

@@ -1,3 +1,7 @@
+externdef fn004088F4: near
+l004088F4 equ fn004088F4
+externdef fn0040ACDD: near
+l0040ACDD equ fn0040ACDD
 externdef fn0040AD82: near
 l0040AD82 equ fn0040AD82
 externdef fn0040ADA8: near
@@ -322,10 +326,16 @@ externdef ??5@YAAAVB_IDataFile@@AAV0@PAVatmosphere_t@@@Z: near
 l0042D175 equ ??5@YAAAVB_IDataFile@@AAV0@PAVatmosphere_t@@@Z
 externdef ??1atmosphere_t@@UAE@XZ: near
 l0042D1B0 equ ??1atmosphere_t@@UAE@XZ
+externdef fn00432379: near
+l00432379 equ fn00432379
+externdef fn00439F5D: near
+l00439F5D equ fn00439F5D
 externdef ??5@YAAAVB_IDataFile@@AAV0@PAVgame_state_t@@@Z: near
 l00440A5D equ ??5@YAAAVB_IDataFile@@AAV0@PAVgame_state_t@@@Z
 externdef fn004431DE: near
 l004431DE equ fn004431DE
+externdef fn0044AD38: near
+l0044AD38 equ fn0044AD38
 externdef fn0044E9A0: near
 l0044E9A0 equ fn0044E9A0
 externdef fn0044E9AA: near
@@ -346,6 +356,8 @@ externdef fn0044ED29: near
 l0044ED29 equ fn0044ED29
 externdef fn0044ED6A: near
 l0044ED6A equ fn0044ED6A
+externdef fn00451A21: near
+l00451A21 equ fn00451A21
 externdef fn0045C040: near
 l0045C040 equ fn0045C040
 externdef fn0045C080: near
@@ -540,6 +552,8 @@ externdef fn004C08F0: near
 l004C08F0 equ fn004C08F0
 externdef fn004EAD20: near
 l004EAD20 equ fn004EAD20
+externdef fn004EB1AA: near
+l004EB1AA equ fn004EB1AA
 externdef fn004FFEA0: near
 l004FFEA0 equ fn004FFEA0
 externdef fn004FFEBA: near
@@ -1030,6 +1044,14 @@ externdef fn0059F612: near
 l0059F612 equ fn0059F612
 externdef fn0059F643: near
 l0059F643 equ fn0059F643
+externdef fn005AC791: near
+l005AC791 equ fn005AC791
+externdef fn005AF2CE: near
+l005AF2CE equ fn005AF2CE
+externdef fn005B1431: near
+l005B1431 equ fn005B1431
+externdef fn005B143D: near
+l005B143D equ fn005B143D
 externdef fn005B5340: near
 l005B5340 equ fn005B5340
 externdef fn005B534D: near
@@ -1110,6 +1132,8 @@ externdef fn005B647F: near
 l005B647F equ fn005B647F
 externdef _IsValidProtocol: near
 l005B6490 equ _IsValidProtocol
+externdef fn005B65D2: near
+l005B65D2 equ fn005B65D2
 externdef _create_application: near
 l005B9B60 equ _create_application
 externdef _get_application: near

@@ -190,7 +190,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\bld_ext_funcs.cpp"
+				RelativePath=".\bld_misc_funcs.cpp"
 				>
 			</File>
 			<File

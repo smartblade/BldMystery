@@ -33,6 +33,7 @@ class camera_t : public entity_t
 {
 public:
     camera_t *init(int unknown, const B_Name &name);
+    void unknown_004EB1AA(void *);
 
     char unknownFields1[588];
     float unknownValueFromApplication;
