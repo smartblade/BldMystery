@@ -123,9 +123,8 @@ void B_App::load_level(const char *script)
 
         this->run_python_file(script);
 
-        CALL_THISCALL_VOID_1(&this->unknown7C, _thiscall_0040AD82, var005E24DC)
-
-        CALL_THISCALL_VOID_1(&this->unknown7C, _thiscall_0040ADA8, var005E24F4)
+        this->location.setPosition(gbl_game_state.initial_point_position);
+        this->location.setOrientation(gbl_game_state.initial_point_orientation);
 
         this->prepare_level();
 

@@ -57,8 +57,6 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
         init_end = (void *)((char *)blade + 0x001C8240);
         world_points_ptr = (void *)((char *)blade + 0x001DF898);
         game_state_ptr = (void *)((char *)blade + 0x001E0B88);
-        var005E24DC = (void *)((char *)blade + 0x001E24DC);
-        var005E24F4 = (void *)((char *)blade + 0x001E24F4);
         anims_ptr = (void *)((char *)blade + 0x003072A8);
         sound_device_ptr = (void *)((char *)blade + 0x003C8ED0);
         client_map_name = (void *)((char *)blade + 0x003EE018);

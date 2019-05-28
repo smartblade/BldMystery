@@ -8,6 +8,7 @@
 #include "entity.h"
 #include "game_clock.h"
 #include "array.h"
+#include "Location.h"
 
 
 class B_App
@@ -66,8 +67,8 @@ public:
         entity_t *client;
         char unknownFields100[8];
         camera_t *camera;
-        void *unknown7C;
-        char unknownFields200[300];
+        location_t location;
+        char unknownFields200[280];
         float unknown1AC;
         float unknownPtrForCamera;
         char unknownFields300[1036];

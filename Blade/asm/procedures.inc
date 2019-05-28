@@ -1,3 +1,7 @@
+externdef fn0040AD82: near
+l0040AD82 equ fn0040AD82
+externdef fn0040ADA8: near
+l0040ADA8 equ fn0040ADA8
 externdef fn0040F040: near
 l0040F040 equ fn0040F040
 externdef ?load_level@B_WinApp@@UAEXPBD@Z: near

@@ -105,8 +105,6 @@ EXTERN void (**init_start)(void) NULL_INIT;
 EXTERN void (**init_end)(void) NULL_INIT;
 EXTERN game_state_t *game_state_ptr NULL_INIT;
 EXTERN array_t *world_points_ptr NULL_INIT;
-EXTERN void **var005E24DC NULL_INIT;
-EXTERN void **var005E24F4 NULL_INIT;
 EXTERN array_t *anims_ptr NULL_INIT;
 EXTERN void **__onexitbegin_ptr NULL_INIT;
 
