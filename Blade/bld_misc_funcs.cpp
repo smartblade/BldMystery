@@ -1,6 +1,8 @@
 
 #include <bld_system.h>
 #include "App.h"
+#define BLD_EXT_FUNCS
+#include "bld_ext_funcs.h"
 #include "bld_misc_funcs.h"
 
 __declspec(naked) void _thiscall_application_load_level(char *map)

@@ -1,4 +1,8 @@
 
+#ifndef BLD_EXT_FUNCS_H
+
+#define BLD_EXT_FUNCS_H
+
 #include <bld_system.h>
 
 
@@ -175,3 +179,4 @@ NEW_OBJECT2(result, camera_t, init, unknown, name)
 #define NUM_3F266666 0.65f
 
 
+#endif

@@ -67,6 +67,7 @@
 				AdditionalLibraryDirectories="C:\Program Files (x86)\Python\libs;..\lib"
 				IgnoreDefaultLibraryNames="msvcrt.lib"
 				GenerateDebugInformation="true"
+				SubSystem="2"
 				EntryPointSymbol="WinMain"
 				ImportLibrary="..\lib\$(TargetName).lib"
 				TargetMachine="1"
@@ -150,6 +151,7 @@
 				AdditionalLibraryDirectories="..\lib;..\lib\VC"
 				IgnoreDefaultLibraryNames="msvcrt.lib"
 				GenerateDebugInformation="true"
+				SubSystem="2"
 				EntryPointSymbol=""
 				ImportLibrary="..\lib\$(TargetName).lib"
 				TargetMachine="1"
@@ -218,10 +220,6 @@
 			</File>
 			<File
 				RelativePath=".\Location.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\main.c"
 				>
 			</File>
 			<File
