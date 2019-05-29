@@ -47,6 +47,7 @@ void GetGameSpySupport()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B5357
+* VC++ mangling:          _StartGSQR
 */
 
 #ifdef BLD_NATIVE

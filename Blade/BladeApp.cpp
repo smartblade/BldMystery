@@ -54,6 +54,7 @@ B_App* get_application()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B9BC1
+* VC++ mangling:          ??0B_BladeApp@@QAE@PAXHPAD@Z
 */
 
 #ifdef BLD_NATIVE

@@ -12,6 +12,7 @@
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00411EB9
+* VC++ mangling:          ?set_mode@B_App@@QAEXABVB_Name@@@Z
 */
 
 #ifdef BLD_NATIVE
@@ -34,6 +35,7 @@ __declspec(naked) void B_App::set_mode(const B_Name &mode)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004121CE
+* VC++ mangling:          ?process_events@B_App@@UAEXXZ
 */
 
 #ifdef BLD_NATIVE
@@ -390,6 +392,7 @@ void B_App::read_level(const char * file_name)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00414F7F
+* VC++ mangling:          ?prepare_level@B_App@@QAEXXZ
 */
 
 #ifdef BLD_NATIVE

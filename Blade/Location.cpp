@@ -5,6 +5,7 @@
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0040AD82
+* VC++ mangling:          ?setPosition@location_t@@QAEXABUpoint_t@@@Z
 */
 
 #ifdef BLD_NATIVE
@@ -20,6 +21,7 @@ __declspec(naked) void location_t::setPosition(const point_t &pos)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0040ADA8
+* VC++ mangling:          ?setOrientation@location_t@@QAEXABUpoint_t@@@Z
 */
 
 #ifdef BLD_NATIVE

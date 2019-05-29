@@ -17,6 +17,7 @@
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00439F5D
+* VC++ mangling:          ?unknown_00439F5D@game_state_t@@QAEXXZ
 */
 
 #ifdef BLD_NATIVE
