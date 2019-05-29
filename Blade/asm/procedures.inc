@@ -322,8 +322,8 @@ externdef ??5@YAAAVB_IDataFile@@AAV0@PAVatmosphere_t@@@Z: near
 l0042D175 equ ??5@YAAAVB_IDataFile@@AAV0@PAVatmosphere_t@@@Z
 externdef ??1atmosphere_t@@UAE@XZ: near
 l0042D1B0 equ ??1atmosphere_t@@UAE@XZ
-externdef ??5@YAAAVB_IDataFile@@AAV0@PAUgame_state_t@@@Z: near
-l00440A5D equ ??5@YAAAVB_IDataFile@@AAV0@PAUgame_state_t@@@Z
+externdef ??5@YAAAVB_IDataFile@@AAV0@PAVgame_state_t@@@Z: near
+l00440A5D equ ??5@YAAAVB_IDataFile@@AAV0@PAVgame_state_t@@@Z
 externdef fn004431DE: near
 l004431DE equ fn004431DE
 externdef fn0044E9A0: near

@@ -35,7 +35,9 @@ typedef struct {
         void *unknown_methods[1];
 } game_state_methods_t;
 
-typedef struct {
+class game_state_t
+{
+public:
         game_state_methods_t *methods;
         char unknownFields[20];
         world_t world;
@@ -58,7 +60,7 @@ typedef struct {
         char unknownFields1938[28];
         point_t initial_point_position;
         point_t initial_point_orientation;
-} game_state_t;
+};
 
 #ifdef __cplusplus
 
