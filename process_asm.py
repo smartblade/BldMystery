@@ -699,11 +699,22 @@ def writeExportDeclarations(imageMap):
         f.write("public {}\n".format(imageMap.label(addr)))
     f.close()
 
-def writeExportCmd(imageMap):
+def isCdeclMangling(exportName, internalName):
+    return (internalName == '_' + exportName)
+
+def writeExportCmd(imageMap, mangledNames, implementedProcedures):
     f = open("export_cmd.txt", "wt")
-    for addr in sorted(imageMap.exports().keys()):
-        export = imageMap.exports()[addr]
-        f.write("/EXPORT:{}={}\n".format(export, imageMap.label(addr)))
+    exportAddrs = set(imageMap.exports().keys()) - set(implementedProcedures)
+    for addr in sorted(exportAddrs):
+        exportName = imageMap.exports()[addr]
+        internalName = imageMap.label(addr)
+        if addr in mangledNames:
+            internalName = mangledNames[addr]
+        if isCdeclMangling(exportName, internalName):
+            symbolName = "{}".format(exportName)
+        else:
+            symbolName = "{}={}".format(exportName, internalName)
+        f.write("/EXPORT:{}\n".format(symbolName))
     f.close()
 
 def collectProceduresFromFile(fileName):
@@ -862,7 +873,7 @@ if __name__ == '__main__':
         f.write("externdef {}: ptr\n".format(impref.label()))
     f.close()
     writeExportDeclarations(imageMap)
-    writeExportCmd(imageMap)
+    writeExportCmd(imageMap, mangledNames, implementedProcedures)
     writeStdcallFunctions(imageMap.importReferences())
     f = open("procedures.inc", "wt")
     for addr in sorted(mangledNames.keys()):
