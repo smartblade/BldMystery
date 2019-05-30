@@ -1,0 +1,18 @@
+public _gbl_world_points
+g005DF898 equ _gbl_world_points
+public _gbl_game_state
+g005E0B88 equ _gbl_game_state
+public _gbl_anims
+g007072A8 equ _gbl_anims
+public _gbl_sound_device
+g007C8ED0 equ _gbl_sound_device
+public _client_map_name
+g007EE018 equ _client_map_name
+public _net_game_name
+g007EE0B8 equ _net_game_name
+public _gbl_net_max_players
+g007EE138 equ _gbl_net_max_players
+public _gbl_net
+g007EE2C4 equ _gbl_net
+public _gbl_application
+g007EFC94 equ _gbl_application

@@ -62,8 +62,8 @@ void B_WinApp::load_level(const char *map)
                 gbl_sound_device->unknown0C = 1;
         }
 
-        if (gbl_net_data->is_net_game()) {
-                if (gbl_net_data->is_server()) {
+        if (gbl_net->is_net_game()) {
+                if (gbl_net->is_server()) {
                         B_App::load_level("Server.py");
                         Set007EA988To01();
                 } else {

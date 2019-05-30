@@ -735,7 +735,27 @@ def collectProceduresFromFile(fileName):
     f.close()
     return (mangledNames, set(mangledNames.keys()) - nativeProcedures)
 
-def collectProceduresFromSources():
+def collectVariablesFromFile(fileName):
+    varNames = {}
+    f = open(fileName)
+    lines = f.readlines()
+    addr_regexp = re.compile('Data\s+address:\s+0x(?P<addr>[\dABCDEF]+)')
+    name_regexp = re.compile('(\W+(?P<name>\w+)(\s*\[\s*\d*\s*\])*\s*)?;')
+    addr = None
+    for line in lines:
+        match = re.search(addr_regexp, line)
+        if match:
+            addr = fromHex(match.group('addr'))
+        if addr is not None:
+            match = re.search(name_regexp, line)
+            if match:
+                varNames[addr] = match.group('name')
+                addr = None
+    f.close()
+    return varNames
+
+def collectSymbolsFromSources():
+    varNames = {}
     mangledNames = {}
     implementedProcedures = []
     for (root, dirs, files) in os.walk('..'):
@@ -745,7 +765,8 @@ def collectProceduresFromSources():
                 (names, implemented) = collectProceduresFromFile(fileName)
                 mangledNames.update(names)
                 implementedProcedures += implemented
-    return (mangledNames, implementedProcedures)
+                varNames.update(collectVariablesFromFile(fileName))
+    return (varNames, mangledNames, implementedProcedures)
 
 if __name__ == '__main__':
     start_time = time.time()
@@ -804,8 +825,8 @@ if __name__ == '__main__':
     for imageItem in imageMap.itemsMap().values():
         if isinstance(imageItem, DataItem):
             imageItem.applyRelocs(imageMap)
-    print("Collect procedures from sources...")
-    (mangledNames, implementedProcedures) = collectProceduresFromSources()
+    print("Collect symbols from sources...")
+    (varNames, mangledNames, implementedProcedures) = collectSymbolsFromSources()
     print("Hide implemented procedures...")
     for addr in implementedProcedures:
         imageMap.itemsMap()[addr].hideLabel()
@@ -835,5 +856,11 @@ if __name__ == '__main__':
         name = mangledNames[addr]
         label = imageMap.label(addr)
         f.write("externdef {}: near\n{} equ {}\n".format(name, label, name))
+    f.close()
+    f = open("variables.inc", "wt")
+    for addr in sorted(varNames.keys()):
+        name = varNames[addr]
+        label = imageMap.label(addr)
+        f.write("public _{}\n{} equ _{}\n".format(name, label, name))
     f.close()
     print("Converted in %.2f seconds" % (time.time() - start_time))

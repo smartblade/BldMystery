@@ -101,6 +101,8 @@ EXTERN int (__stdcall *_stdcall_BladeWinMain)(
 
 EXTERN void * (*bld_new)(size_t size) NULL_INIT;
 
+#ifdef BLD_NATIVE
+
 EXTERN sound_t **sound_device_ptr NULL_INIT;
 EXTERN char *client_map_name NULL_INIT;
 EXTERN char *net_game_name NULL_INIT;
@@ -118,10 +120,13 @@ EXTERN array_t *world_points_ptr NULL_INIT;
 EXTERN array_t *anims_ptr NULL_INIT;
 EXTERN void **__onexitbegin_ptr NULL_INIT;
 
+#endif
+
 #ifdef __cplusplus
 }
 #endif
 
+#ifdef BLD_NATIVE
 #define gbl_sound_device (*sound_device_ptr)
 #define gbl_net_max_players (*net_max_players_ptr)
 #define gbl_net_data (*net_data_ptr)
@@ -132,7 +137,7 @@ EXTERN void **__onexitbegin_ptr NULL_INIT;
 #define gbl_game_state (*game_state_ptr)
 #define gbl_world_points (*world_points_ptr)
 #define gbl_anims (*anims_ptr)
-
+#endif
 
 #define CALL_THISCALL_VOID_0(self, funcPtr)\
 {\

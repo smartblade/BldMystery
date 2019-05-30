@@ -6,6 +6,7 @@ assume fs: nothing
 
 image segment write execute PUBLIC
 include procedures.inc
+include variables.inc
 include export.inc
 include import.inc
 include native.asm
