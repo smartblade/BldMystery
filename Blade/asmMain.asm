@@ -10,5 +10,7 @@ include export.inc
 include import.inc
 include native.asm
 image ends
+.data?
+include uninitialised.asm
 
 END __startup

@@ -9,5 +9,7 @@ include export.inc
 include import.inc
 include full.asm
 image ends
+.data?
+include uninitialised.asm
 
 END __startup

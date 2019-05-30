@@ -576,13 +576,19 @@ class MemoryArea:
         bytes = []
         while curAddr < endAddress:
             index = 2 * (curAddr - self._addr)
-            bytes.append(self._bytes[index] or "?")
-            bytes.append(self._bytes[index + 1] or "?")
+            if index < len(self._bytes):
+                bytes.append(self._bytes[index] or "?")
+                bytes.append(self._bytes[index + 1] or "?")
+            else:
+                bytes.append("?")
+                bytes.append("?")
             curAddr += 1
         return "".join(bytes)
 
     def isUninitialisedByte(self, address):
         index = 2 * (address - self._addr)
+        if index >= len(self._bytes):
+            return True
         return self._bytes[index] is None and self._bytes[index + 1] is None
 
 def extractEntryPoint(line):
@@ -652,6 +658,15 @@ def stdcallPrototype(name, size):
     else:
         params = ""
     return "void __stdcall {}({})".format(name, params)
+
+def writeUninitialisedData(imageMap, endDataAdddress):
+    f = open("uninitialised.asm", "wt")
+    for addr in sorted(imageMap.itemsMap().keys()):
+        imageItem = imageMap.itemsMap()[addr]
+        if imageItem.startAddress() >= endDataAdddress:
+            f.write(imageItem.toString(imageMap))
+    f.close()
+
 
 def writeStdcallFunctions(importReferences):
     f = open("stdcallDefs.cpp", "wt")
@@ -807,6 +822,7 @@ if __name__ == '__main__':
     for addr in sorted(imageMap.unresolvedAddresses()):
         f.write("l{} dd 012345678h\n".format(toHex(addr)))
     f.close()
+    writeUninitialisedData(imageMap, lineItems[-1].endAddress())
     f = open("import.inc", "wt")
     for impref in imageMap.importReferences():
         f.write("externdef {}: ptr\n".format(impref.label()))
