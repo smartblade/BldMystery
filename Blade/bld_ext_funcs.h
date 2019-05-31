@@ -153,8 +153,6 @@ extern void _thiscall_application_wait_for_event(void);
 
 int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow);
 
-extern void create_bcb_wrappers(void);
-
 #ifdef __cplusplus
 }
 #endif
