@@ -133,15 +133,6 @@ EXTERN void **__onexitbegin_ptr NULL_INIT;
 
 #endif
 
-#define CALL_THISCALL_VOID_0(self, funcPtr)\
-{\
-        void *fnPtr = funcPtr;\
-        void *selfPtr = self;\
-        _asm { mov ecx, selfPtr }\
-        _asm { call fnPtr }\
-}
-
-
 #ifdef __cplusplus
 extern "C" {
 #endif

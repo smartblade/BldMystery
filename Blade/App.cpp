@@ -101,11 +101,11 @@ void B_App::load_level(const char *script)
 
         this->init_python_path();
 
-        CALL_THISCALL_VOID_0(this->clock1, this->clock1->methods->unknown18)
+        this->clock1->unknown018();
 
         this->unknown5C8 = NULL;
 
-        CALL_THISCALL_VOID_0(this->clock1, this->clock1->methods->unknown1C)
+        this->clock1->unknown01C();
 
         this->unknownPtrForCamera = NUM_3F266666;
 
@@ -265,7 +265,7 @@ void B_App::load_level(const char *script)
         }
 
         if (this->mode == "Game") {
-                CALL_THISCALL_VOID_0(this->clock1, this->clock1->methods->unknown20)
+                this->clock1->unknown020();
         }
 
         StartGSQR();
