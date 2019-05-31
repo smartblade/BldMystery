@@ -105,7 +105,7 @@ __declspec(naked) void unknown_18F8_class::unknown_00451A21(void *, int, int)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004EAD20
-* VC++ mangling:          ?init@camera_t@@QAEPAV1@HABVB_Name@@@Z
+* VC++ mangling:          ??0camera_t@@QAE@HABVB_Name@@@Z
 */
 
 #ifdef BLD_NATIVE

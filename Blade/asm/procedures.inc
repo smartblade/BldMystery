@@ -550,8 +550,8 @@ externdef _loadSoundDataBase: near
 l004C0897 equ _loadSoundDataBase
 externdef _saveSoundDataBase: near
 l004C08F0 equ _saveSoundDataBase
-externdef ?init@camera_t@@QAEPAV1@HABVB_Name@@@Z: near
-l004EAD20 equ ?init@camera_t@@QAEPAV1@HABVB_Name@@@Z
+externdef ??0camera_t@@QAE@HABVB_Name@@@Z: near
+l004EAD20 equ ??0camera_t@@QAE@HABVB_Name@@@Z
 externdef ?unknown_004EB1AA@camera_t@@QAEXPAX@Z: near
 l004EB1AA equ ?unknown_004EB1AA@camera_t@@QAEXPAX@Z
 externdef _GetSplinePos: near

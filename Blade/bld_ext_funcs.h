@@ -64,11 +64,11 @@ typedef int sound_t;
 #endif
 
 
+#ifdef BLD_NATIVE
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#ifdef BLD_NATIVE
 
 EXTERN HMODULE blade NULL_INIT;
 EXTERN void (*_cdecl_LoadNetModule)(char *) NULL_INIT;
@@ -97,11 +97,7 @@ EXTERN int (__stdcall *_stdcall_BladeWinMain)(
     LPSTR lpCmdLine,
     int nCmdShow) NULL_INIT;
 
-#endif
-
 EXTERN void * (*bld_new)(size_t size) NULL_INIT;
-
-#ifdef BLD_NATIVE
 
 EXTERN sound_t **sound_device_ptr NULL_INIT;
 EXTERN char *client_map_name NULL_INIT;
@@ -120,13 +116,10 @@ EXTERN array_t *world_points_ptr NULL_INIT;
 EXTERN array_t *anims_ptr NULL_INIT;
 EXTERN void **__onexitbegin_ptr NULL_INIT;
 
-#endif
-
 #ifdef __cplusplus
 }
 #endif
 
-#ifdef BLD_NATIVE
 #define gbl_sound_device (*sound_device_ptr)
 #define gbl_net_max_players (*net_max_players_ptr)
 #define gbl_net_data (*net_data_ptr)
@@ -137,6 +130,7 @@ EXTERN void **__onexitbegin_ptr NULL_INIT;
 #define gbl_game_state (*game_state_ptr)
 #define gbl_world_points (*world_points_ptr)
 #define gbl_anims (*anims_ptr)
+
 #endif
 
 #define CALL_THISCALL_VOID_0(self, funcPtr)\
@@ -166,6 +160,8 @@ extern void create_bcb_wrappers(void);
 #endif
 
 
+#ifdef BLD_NATIVE
+
 #define NEW_OBJECT2(result, class, init_func, arg1, arg2)\
 {\
         class *new_memory;\
@@ -179,6 +175,12 @@ extern void create_bcb_wrappers(void);
 
 #define NEW_CAMERA(result, unknown, name)\
 NEW_OBJECT2(result, camera_t, init, unknown, name)
+
+#else
+
+#define NEW_CAMERA(result, unknown, name) result = new camera_t(unknown, name);
+
+#endif
 
 
 #define NUM_3F266666 0.65f
