@@ -28,7 +28,6 @@ __declspec(naked) void _thiscall_application_read_level(char *file_name)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004088F4
-* VC++ mangling:          _read_points
 */
 
 #ifdef BLD_NATIVE
@@ -60,7 +59,6 @@ __declspec(naked) B_IDataFile& operator >>(B_IDataFile& file, point_t &point)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00432379
-* VC++ mangling:          _read_sectors
 */
 
 #ifdef BLD_NATIVE
@@ -76,7 +74,6 @@ __declspec(naked) B_IDataFile * read_sectors(B_IDataFile *file, array_t *sectors
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0044AD38
-* VC++ mangling:          _read_light
 */
 
 #ifdef BLD_NATIVE
@@ -142,7 +139,6 @@ __declspec(naked) void camera_t::unknown_004EB1AA(void *)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005AC791
-* VC++ mangling:          _Set007EA988To01
 */
 
 #ifdef BLD_NATIVE
@@ -159,7 +155,6 @@ __declspec(naked) void Set007EA988To01()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005AF2CE
-* VC++ mangling:          _OnEvent
 */
 
 #ifdef BLD_NATIVE
@@ -176,7 +171,6 @@ __declspec(naked) void OnEvent(int a, int b)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B1431
-* VC++ mangling:          _reset_client_map_name
 */
 
 #ifdef BLD_NATIVE
@@ -193,7 +187,6 @@ __declspec(naked) void reset_client_map_name()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B143D
-* VC++ mangling:          _get_map_for_net_game
 */
 
 #ifdef BLD_NATIVE
@@ -210,7 +203,6 @@ __declspec(naked) char *get_map_for_net_game(const char *map)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B65D2
-* VC++ mangling:          _LoadNetModule
 */
 
 #ifdef BLD_NATIVE

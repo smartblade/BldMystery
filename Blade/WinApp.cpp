@@ -120,7 +120,6 @@ void B_WinApp::process_events() {
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00410CC2
-* VC++ mangling:          _BladeWinMain
 */
 
 int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)

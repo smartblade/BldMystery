@@ -47,7 +47,6 @@ void GetGameSpySupport()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B5357
-* VC++ mangling:          _StartGSQR
 */
 
 #ifdef BLD_NATIVE
@@ -581,7 +580,6 @@ int ServerSetSendDataState(int state)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B61B6
-* VC++ mangling:          _GetNetState
 */
 
 int GetNetState(void)
@@ -624,7 +622,6 @@ void ClearPools(void)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B637B
-* VC++ mangling:          _StartServer
 */
 
 boolean StartServer(
@@ -646,7 +643,6 @@ boolean StartServer(
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B63E4
-* VC++ mangling:          _BrowseSessions
 */
 
 boolean BrowseSessions(const char *ip_address)
@@ -658,7 +654,6 @@ boolean BrowseSessions(const char *ip_address)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B63FE
-* VC++ mangling:          _GetBrowseResult
 */
 
 boolean GetBrowseResult(int index, bld_server_info *info)
@@ -670,7 +665,6 @@ boolean GetBrowseResult(int index, bld_server_info *info)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B641C
-* VC++ mangling:          _JoinSession
 */
 
 boolean JoinSession(int index, const char *player_name)
@@ -760,7 +754,6 @@ int NetSetPPS(int PPS)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B6490
-* VC++ mangling:          _IsValidProtocol
 */
 
 int IsValidProtocol(int protocol)

@@ -713,7 +713,9 @@ def collectProceduresFromFile(fileName):
     lines = f.readlines()
     addr_regexp = re.compile('Entry\s+point:\s+0x(?P<addr>[\dABCDEF]+)')
     mangling_regexp = re.compile('VC\+\+\s+mangling:\s+(?P<mangling>[\S]+)')
+    proc_regexp = re.compile('\W(?P<proc>\w+)\s*\([^\(\)]*\)\s*\{')
     meta = False
+    addr = None
     for line in lines:
         if line.find("/*") >= 0:
             meta = True
@@ -721,8 +723,9 @@ def collectProceduresFromFile(fileName):
             mangling = None
         if line.find("*/") >= 0:
             meta = False
+            definition = ""
             if addr is not None:
-                mangledNames[addr] = mangling or "fn{}".format(toHex(addr))
+                mangledNames[addr] = mangling
         if line.find("BLD_NATIVE") >= 0:
             nativeProcedures.add(addr)
         if meta:
@@ -732,6 +735,16 @@ def collectProceduresFromFile(fileName):
             match = re.search(mangling_regexp, line)
             if match:
                 mangling = match.group('mangling')
+        elif addr is not None and mangledNames[addr] is None:
+            definition += line
+            if line.find("{") >= 0:
+                cdecl_mangling = None
+                match = re.search(proc_regexp, definition)
+                if match:
+                    proc_name = match.group('proc')
+                    cdecl_mangling = "_{}".format(proc_name)
+                fallback = "fn{}".format(toHex(addr))
+                mangledNames[addr] = cdecl_mangling or fallback
     f.close()
     return (mangledNames, set(mangledNames.keys()) - nativeProcedures)
 
