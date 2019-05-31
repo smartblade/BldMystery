@@ -243,11 +243,55 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\anim.h"
+				>
+			</File>
+			<File
+				RelativePath=".\App.h"
+				>
+			</File>
+			<File
+				RelativePath=".\array.h"
+				>
+			</File>
+			<File
+				RelativePath=".\atmosphere.h"
+				>
+			</File>
+			<File
+				RelativePath=".\bld_ext_funcs.h"
+				>
+			</File>
+			<File
 				RelativePath=".\bld_misc_funcs.h"
 				>
 			</File>
 			<File
+				RelativePath=".\entity.h"
+				>
+			</File>
+			<File
+				RelativePath=".\game_clock.h"
+				>
+			</File>
+			<File
+				RelativePath=".\game_state.h"
+				>
+			</File>
+			<File
+				RelativePath=".\light.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Location.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sector.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sound_device.h"
 				>
 			</File>
 		</Filter>
