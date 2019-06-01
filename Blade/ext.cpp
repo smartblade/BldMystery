@@ -1,10 +1,10 @@
 
 #include <bld_system.h>
 #include <bld_python.h>
-#include "bld_misc_funcs.h"
 #define BUILD_LIB
 #include <blade_ext.h>
 
+extern HMODULE blade;
 
 /*
 ................................................................................

@@ -4,21 +4,6 @@
 #include "bld_misc_funcs.h"
 
 
-#ifdef BLD_NATIVE
-
-static application_methods_t application_methods = {
-        NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-        _thiscall_application_wait_for_event,
-        NULL, NULL, NULL, NULL,
-        _thiscall_application_mark_level_to_load,
-         NULL,
-        _thiscall_application_load_level,
-        _thiscall_application_read_level,
-};
-
-#endif
-
-
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B9B60
@@ -61,21 +46,6 @@ B_App* get_application()
 
 B_BladeApp::B_BladeApp(void *module, int nCmdShow, char *cmdLine)
 {
-        ((B_WinApp *)this)->init(module, nCmdShow, cmdLine, NULL);
-        ((application_raw_t *)this)->methods = &application_methods;
-        {
-            void **src_ptr, **dst_ptr;
-            int i;
-            src_ptr = (void **)application_methods_ptr;
-            dst_ptr = (void **)((application_raw_t *)this)->methods;
-            for( i = 0; i < sizeof(application_methods_t)/sizeof(void *); i++)
-            {
-                if (*dst_ptr == NULL)
-                    *dst_ptr = *src_ptr;
-                 src_ptr++;
-                 dst_ptr++;
-            }
-        }
 }
 
 #endif

@@ -1,9 +1,10 @@
 
 #include <bld_system.h>
 #include <bld_python.h>
-#include "bld_ext_funcs.h"
 #define BUILD_LIB
 #include <blade_ext.h>
+
+extern HMODULE blade;
 
 
 int LoadWorld(const char *file_name)

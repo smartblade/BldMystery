@@ -11,9 +11,8 @@
 
 #ifdef BLD_NATIVE
 
-__declspec(naked) B_WinApp *B_WinApp::init(void *module, int nCmdShow, char *cmdLine, void *unknown)
+B_WinApp::B_WinApp(void *module, int nCmdShow, char *cmdLine, void *unknown)
 {
-    _asm { jmp _thiscall_application_init2}
 }
 
 #endif

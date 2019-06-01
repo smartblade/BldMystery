@@ -4,6 +4,7 @@
 	Version="8,00"
 	Name="Blade"
 	ProjectGUID="{F18446DB-7027-4330-BB0F-3D133E659CA5}"
+	RootNamespace="Blade"
 	>
 	<Platforms>
 		<Platform
@@ -213,10 +214,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\ext.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\game_state.cpp"
 				>
 			</File>
@@ -256,10 +253,6 @@
 			</File>
 			<File
 				RelativePath=".\atmosphere.h"
-				>
-			</File>
-			<File
-				RelativePath=".\bld_ext_funcs.h"
 				>
 			</File>
 			<File

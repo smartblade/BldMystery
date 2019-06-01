@@ -6,8 +6,8 @@ externdef ?setPosition@location_t@@QAEXABUpoint_t@@@Z: near
 l0040AD82 equ ?setPosition@location_t@@QAEXABUpoint_t@@@Z
 externdef ?setOrientation@location_t@@QAEXABUpoint_t@@@Z: near
 l0040ADA8 equ ?setOrientation@location_t@@QAEXABUpoint_t@@@Z
-externdef _init: near
-l0040F040 equ _init
+externdef _B_WinApp: near
+l0040F040 equ _B_WinApp
 externdef ?load_level@B_WinApp@@UAEXPBD@Z: near
 l0041009D equ ?load_level@B_WinApp@@UAEXPBD@Z
 externdef ?process_events@B_WinApp@@UAEXXZ: near

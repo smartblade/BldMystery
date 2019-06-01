@@ -10,9 +10,8 @@
 
 #ifdef BLD_NATIVE
 
-__declspec(naked) void location_t::setPosition(const point_t &pos)
+void location_t::setPosition(const point_t &pos)
 {
-    _asm { jmp _thiscall_0040AD82}
 }
 
 #endif
@@ -26,9 +25,8 @@ __declspec(naked) void location_t::setPosition(const point_t &pos)
 
 #ifdef BLD_NATIVE
 
-__declspec(naked) void location_t::setOrientation(const point_t &orientation)
+void location_t::setOrientation(const point_t &orientation)
 {
-    _asm { jmp _thiscall_0040ADA8}
 }
 
 #endif

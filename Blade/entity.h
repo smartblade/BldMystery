@@ -32,7 +32,6 @@ class person_t : public biped_entity_t
 class camera_t : public entity_t
 {
 public:
-    camera_t *init(int unknown, const B_Name &name);
     camera_t(int unknown, const B_Name &name);
     void unknown_004EB1AA(void *);
 

@@ -22,9 +22,8 @@
 
 #ifdef BLD_NATIVE
 
-__declspec(naked) void game_state_t::unknown_00439F5D()
+void game_state_t::unknown_00439F5D()
 {
-    _asm { jmp _thiscall_00439F5D }
 }
 
 #endif

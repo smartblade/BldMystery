@@ -93,7 +93,7 @@ class B_WinApp : public B_App
 public:
     virtual void process_events();
     virtual void load_level(const char *map);
-    B_WinApp *init(void *module, int nCmdShow, char *cmdLine, void *unknown);
+    B_WinApp(void *module, int nCmdShow, char *cmdLine, void *unknown);
 };
 
 class B_BladeApp/* : public B_WinApp*/

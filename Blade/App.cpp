@@ -17,9 +17,8 @@
 
 #ifdef BLD_NATIVE
 
-__declspec(naked) void B_App::set_mode(const B_Name &mode)
+void B_App::set_mode(const B_Name &mode)
 {
-    _asm { jmp _thiscall_application_set_mode}
 }
 
 #endif
@@ -40,9 +39,8 @@ __declspec(naked) void B_App::set_mode(const B_Name &mode)
 
 #ifdef BLD_NATIVE
 
-__declspec(naked) void B_App::process_events()
+void B_App::process_events()
 {
-    _asm { jmp _thiscall_application_process_event}
 }
 
 #endif
@@ -114,7 +112,7 @@ void B_App::load_level(const char *script)
         this->player1 = NULL;
 
         if (!this->camera) {
-                NEW_CAMERA(camera, 0, "Camera")
+                camera = new camera_t(0, "Camera");
 
                 this->camera = camera;
                 this->camera->unknownPtrFromApplication = &this->unknownPtrForCamera;
@@ -397,9 +395,8 @@ void B_App::read_level(const char * file_name)
 
 #ifdef BLD_NATIVE
 
-_declspec(naked) void B_App::prepare_level()
+void B_App::prepare_level()
 {
-    _asm { jmp _thiscall_application_prepare_level}
 }
 
 #endif

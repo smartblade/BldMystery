@@ -53,9 +53,6 @@ void GetGameSpySupport()
 
 void StartGSQR(void)
 {
-        void (*bld_proc)(void);
-        bld_proc = (void (*)(void))GetProcAddress(blade, "StartGSQR");
-        bld_proc();
 }
 
 #endif
@@ -109,9 +106,6 @@ void LoopGSQR()
 
 void PersonChangeAnmSoundIndex(const char *person_name, int index)
 {
-        void (*bld_proc)(const char *person_name, int index);
-        bld_proc = (void (*)(const char *person_name, int index))GetProcAddress(blade, "PersonChangeAnmSoundIndex");
-        bld_proc(person_name, index);
 }
 
 #endif
@@ -127,9 +121,6 @@ void PersonChangeAnmSoundIndex(const char *person_name, int index)
 
 void SetDedicatedServerState(int dedicated)
 {
-        void (*bld_proc)(int dedicated);
-        bld_proc = (void (*)(int dedicated))GetProcAddress(blade, "SetDedicatedServerState");
-        bld_proc(dedicated);
 }
 
 #endif
@@ -145,9 +136,7 @@ void SetDedicatedServerState(int dedicated)
 
 int GetDedicatedServerState(void)
 {
-        int (*bld_proc)(void);
-        bld_proc = (int (*)(void))GetProcAddress(blade, "GetDedicatedServerState");
-        return bld_proc();
+    return 0;
 }
 
 #endif
@@ -166,15 +155,6 @@ void SetLocalOptions(
         const char *shield, const char *map
 )
 {
-        void (*bld_proc)(
-        const char *name, const char *kind, const char *weapon,
-        const char *shield, const char *map
-);
-        bld_proc = (void (*)(
-        const char *name, const char *kind, const char *weapon,
-        const char *shield, const char *map
-))GetProcAddress(blade, "SetLocalOptions");
-        bld_proc(name, kind, weapon, shield, map);
 }
 
 #endif
@@ -190,9 +170,7 @@ void SetLocalOptions(
 
 const char *ServerInfoBlock(void)
 {
-        const char *(*bld_proc)(void);
-        bld_proc = (const char *(*)(void))GetProcAddress(blade, "ServerInfoBlock");
-        return bld_proc();
+    return NULL;
 }
 
 #endif
@@ -208,9 +186,6 @@ const char *ServerInfoBlock(void)
 
 void ClientSetPyClientSoundFunc(PyObject *func)
 {
-        void (*bld_proc)(PyObject *func);
-        bld_proc = (void (*)(PyObject *func))GetProcAddress(blade, "ClientSetPyClientSoundFunc");
-        bld_proc(func);
 }
 
 #endif
@@ -226,9 +201,6 @@ void ClientSetPyClientSoundFunc(PyObject *func)
 
 void CallNetEventSound(const char *entity_name, byte id)
 {
-        void (*bld_proc)(const char *entity_name, byte id);
-        bld_proc = (void (*)(const char *entity_name, byte id))GetProcAddress(blade, "CallNetEventSound");
-        bld_proc(entity_name, id);
 }
 
 #endif
@@ -244,9 +216,6 @@ void CallNetEventSound(const char *entity_name, byte id)
 
 void ClientSetPyClientMutilaFunc(PyObject *func)
 {
-        void (*bld_proc)(PyObject *func);
-        bld_proc = (void (*)(PyObject *func))GetProcAddress(blade, "ClientSetPyClientMutilaFunc");
-        bld_proc(func);
 }
 
 #endif
@@ -262,9 +231,6 @@ void ClientSetPyClientMutilaFunc(PyObject *func)
 
 void ClientSetPyClientDamageFunc(PyObject *func)
 {
-        void (*bld_proc)(PyObject *func);
-        bld_proc = (void (*)(PyObject *func))GetProcAddress(blade, "ClientSetPyClientDamageFunc");
-        bld_proc(func);
 }
 
 #endif
@@ -283,15 +249,6 @@ void NetAddSoundToClient(
         PyObject *sound_object
 )
 {
-        void (*bld_proc)(
-        const char *entity_name, const char *animation_name,
-        PyObject *sound_object
-);
-        bld_proc = (void (*)(
-        const char *entity_name, const char *animation_name,
-        PyObject *sound_object
-))GetProcAddress(blade, "NetAddSoundToClient");
-        bld_proc(entity_name, animation_name, sound_object);
 }
 
 #endif
@@ -307,9 +264,7 @@ void NetAddSoundToClient(
 
 const char *NetGetClientId(void)
 {
-        const char *(*bld_proc)(void);
-        bld_proc = (const char *(*)(void))GetProcAddress(blade, "NetGetClientId");
-        return bld_proc();
+    return NULL;
 }
 
 #endif
@@ -325,9 +280,7 @@ const char *NetGetClientId(void)
 
 boolean NetSetObjectState(const char *entity_name, boolean state)
 {
-        boolean (*bld_proc)(const char *entity_name, boolean state);
-        bld_proc = (boolean (*)(const char *entity_name, boolean state))GetProcAddress(blade, "NetSetObjectState");
-        return bld_proc(entity_name, state);
+    return false;
 }
 
 #endif
@@ -345,13 +298,6 @@ void NetAddEventUserFunc(
         const char *action, PyObject *func, int ignore_host
 )
 {
-        void (*bld_proc)(
-        const char *action, PyObject *func, int ignore_host
-);
-        bld_proc = (void (*)(
-        const char *action, PyObject *func, int ignore_host
-))GetProcAddress(blade, "NetAddEventUserFunc");
-        bld_proc(action, func, ignore_host);
 }
 
 #endif
@@ -367,9 +313,6 @@ void NetAddEventUserFunc(
 
 void NetAddPosition(double x, double y, double z)
 {
-        void (*bld_proc)(double x, double y, double z);
-        bld_proc = (void (*)(double x, double y, double z))GetProcAddress(blade, "NetAddPosition");
-        bld_proc(x, y, z);
 }
 
 #endif
@@ -385,9 +328,6 @@ void NetAddPosition(double x, double y, double z)
 
 void NetSetPersonView(const char *entity_name)
 {
-        void (*bld_proc)(const char *entity_name);
-        bld_proc = (void (*)(const char *entity_name))GetProcAddress(blade, "NetSetPersonView");
-        bld_proc(entity_name);
 }
 
 #endif
@@ -406,15 +346,6 @@ void GetLocalOptionsNet(
         const char **shield
 )
 {
-        void (*bld_proc)(
-        const char **name, const char **kind, const char **weapon,
-        const char **shield
-);
-        bld_proc = (void (*)(
-        const char **name, const char **kind, const char **weapon,
-        const char **shield
-))GetProcAddress(blade, "GetLocalOptionsNet");
-        bld_proc(name, kind, weapon, shield);
 }
 
 #endif
@@ -430,9 +361,6 @@ void GetLocalOptionsNet(
 
 void GetNextPosition(double *x, double *y, double *z)
 {
-        void (*bld_proc)(double *x, double *y, double *z);
-        bld_proc = (void (*)(double *x, double *y, double *z))GetProcAddress(blade, "GetNextPosition");
-        bld_proc(x, y, z);
 }
 
 #endif
@@ -448,9 +376,6 @@ void GetNextPosition(double *x, double *y, double *z)
 
 void ServerSetPyByePlayerFunc(PyObject *func)
 {
-        void (*bld_proc)(PyObject *func);
-        bld_proc = (void (*)(PyObject *func))GetProcAddress(blade, "ServerSetPyByePlayerFunc");
-        bld_proc(func);
 }
 
 #endif
@@ -466,9 +391,6 @@ void ServerSetPyByePlayerFunc(PyObject *func)
 
 void ServerSetPyGetUserString(PyObject *func)
 {
-        void (*bld_proc)(PyObject *func);
-        bld_proc = (void (*)(PyObject *func))GetProcAddress(blade, "ServerSetPyGetUserString");
-        bld_proc(func);
 }
 
 #endif
@@ -486,13 +408,6 @@ void SendNetUserString(
         short kind, const char *str, int guaranteed, const char *str_unknown
 )
 {
-        void (*bld_proc)(
-        short kind, const char *str, int guaranteed, const char *str_unknown
-);
-        bld_proc = (void (*)(
-        short kind, const char *str, int guaranteed, const char *str_unknown
-))GetProcAddress(blade, "SendNetUserString");
-        bld_proc(kind, str, guaranteed, str_unknown);
 }
 
 #endif
@@ -508,9 +423,6 @@ void SendNetUserString(
 
 void GetLifeAndLevel(const char *entity_name, int *energy, int *life)
 {
-        void (*bld_proc)(const char *entity_name, int *energy, int *life);
-        bld_proc = (void (*)(const char *entity_name, int *energy, int *life))GetProcAddress(blade, "GetLifeAndLevel");
-        bld_proc(entity_name, energy, life);
 }
 
 #endif
@@ -526,9 +438,6 @@ void GetLifeAndLevel(const char *entity_name, int *energy, int *life)
 
 void ServerSetPyCreatePlayerFunc(PyObject *func)
 {
-        void (*bld_proc)(PyObject *func);
-        bld_proc = (void (*)(PyObject *func))GetProcAddress(blade, "ServerSetPyCreatePlayerFunc");
-        bld_proc(func);
 }
 
 #endif
@@ -544,9 +453,7 @@ void ServerSetPyCreatePlayerFunc(PyObject *func)
 
 boolean ClientStartMainChar(void)
 {
-        boolean (*bld_proc)(void);
-        bld_proc = (boolean (*)(void))GetProcAddress(blade, "ClientStartMainChar");
-        return bld_proc();
+    return false;
 }
 
 #endif
@@ -562,9 +469,7 @@ boolean ClientStartMainChar(void)
 
 int ServerSetSendDataState(int state)
 {
-        int (*bld_proc)(int state);
-        bld_proc = (int (*)(int state))GetProcAddress(blade, "ServerSetSendDataState");
-        return bld_proc(state);
+    return 0;
 }
 
 #endif
@@ -604,9 +509,6 @@ int GetNetState(void)
 
 void ClearPools(void)
 {
-        void (*bld_proc)(void);
-        bld_proc = (void (*)(void))GetProcAddress(blade, "ClearPools");
-        bld_proc();
 }
 
 #endif
@@ -688,9 +590,6 @@ boolean JoinSession(int index, const char *player_name)
 
 void RestartNet(void)
 {
-        void (*bld_proc)(void);
-        bld_proc = (void (*)(void))GetProcAddress(blade, "RestartNet");
-        bld_proc();
 }
 
 #endif
@@ -706,9 +605,6 @@ void RestartNet(void)
 
 void NetServerChangeLevel(const char *level_name)
 {
-        void (*bld_proc)(const char *level_name);
-        bld_proc = (void (*)(const char *level_name))GetProcAddress(blade, "NetServerChangeLevel");
-        bld_proc(level_name);
 }
 
 #endif
@@ -724,9 +620,7 @@ void NetServerChangeLevel(const char *level_name)
 
 float NetGetTime(void)
 {
-        float (*bld_proc)(void);
-        bld_proc = (float (*)(void))GetProcAddress(blade, "NetGetTime");
-        return bld_proc();
+    return 0.0;
 }
 
 #endif
@@ -742,9 +636,7 @@ float NetGetTime(void)
 
 int NetSetPPS(int PPS)
 {
-        int (*bld_proc)(int PPS);
-        bld_proc = (int (*)(int PPS))GetProcAddress(blade, "NetSetPPS");
-        return bld_proc(PPS);
+    return 0;
 }
 
 #endif
