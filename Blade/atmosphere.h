@@ -4,8 +4,6 @@
 
 #include "BBLibc.h"
 
-#ifdef __cplusplus
-
 class atmosphere_t : public B_NamedObj
 {
 public:
@@ -17,15 +15,5 @@ public:
 };
 
 B_IDataFile &operator >>(B_IDataFile &file, atmosphere_t *atm);
-
-#else
-
-typedef struct {
-        B_NamedObj parent;
-        B_Color color;
-        float intensity;
-} atmosphere_t;
-
-#endif
 
 #endif

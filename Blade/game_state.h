@@ -35,7 +35,18 @@ typedef struct {
         void *unknown_methods[1];
 } game_state_methods_t;
 
-typedef struct {
+class unknown_18F8_class
+{
+public:
+    void unknown_00451A21(void *, int, int);
+    int field;
+};
+
+class game_state_t
+{
+public:
+        void unknown_00439F5D();
+
         game_state_methods_t *methods;
         char unknownFields[20];
         world_t world;
@@ -50,7 +61,7 @@ typedef struct {
         array_t atmospheres;
         array_t sectors;
         char unknownFields18DC[28];
-        void *unknown18F8;
+        unknown_18F8_class unknown18F8;
         point_t unknown18FC;
         double unknown1914;
         void *unknown191C;
@@ -58,7 +69,7 @@ typedef struct {
         char unknownFields1938[28];
         point_t initial_point_position;
         point_t initial_point_orientation;
-} game_state_t;
+};
 
 #ifdef __cplusplus
 

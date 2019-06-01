@@ -7,9 +7,6 @@
 #include <export.h>
 
 
-#ifdef __cplusplus
-
-
 class LIB_EXP B_Color {
 public:
         virtual void MakeCons();
@@ -25,6 +22,7 @@ public:
         B_Name(const char* str);
         ~B_Name();
         B_Name &operator =(const B_Name &src);
+        unsigned int operator ==(const char *str) const;
         operator const char *() const { return string; }
 private:
         char *string;
@@ -94,40 +92,5 @@ public:
 };
 
 LIB_EXP B_ResourceManager B_resource_manager;
-
-
-#else
-
-typedef struct {
-        void *methods;
-        byte r, g, b;
-} B_Color;
-
-typedef struct {
-        char *string;
-        int len;
-} B_Name;
-
-typedef struct {
-        void *methods;
-        B_Name name;
-} B_NamedObj;
-
-typedef struct B_IDataFile B_IDataFile;
-
-#endif
-
-
-#ifndef BLD_EXT_FUNCS
-
-extern void BBlibc_name_set(B_Name *self, const char *string);
-extern void BBlibc_name_clear(B_Name *self);
-extern void BBlibc_name_copy(B_Name *self, B_Name *name);
-extern char *BBlibc_name_string(B_Name *self);
-extern int BBlibc_name_is_equal_string(B_Name *self, const char *string);
-
-extern B_Name *BBLibc_named_object_id(B_NamedObj *self);
-
-#endif
 
 #endif /* BBLIBC_H */

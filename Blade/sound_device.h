@@ -3,8 +3,6 @@
 
 #define SOUND_DEVICE_H
 
-#ifdef __cplusplus
-
 class sound_t
 {
 public:
@@ -22,12 +20,10 @@ public:
         virtual void unknown02C();
         virtual bool set_world_size(
                 double a, double b, double x, double d, double e);
+
+        int unknown04;
+        int unknown08;
+        int unknown0C;
 };
-
-#else
-
-typedef int sound_t;
-
-#endif
 
 #endif

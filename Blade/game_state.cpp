@@ -4,8 +4,29 @@
 #include "game_state.h"
 #include "light.h"
 #include "sector.h"
-#include "bld_ext_funcs.h"
+#include "bld_misc_funcs.h"
 
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00439F5D
+* VC++ mangling:          ?unknown_00439F5D@game_state_t@@QAEXXZ
+*/
+
+#ifdef BLD_NATIVE
+
+void game_state_t::unknown_00439F5D()
+{
+}
+
+#endif
 
 /*
 ................................................................................
@@ -18,6 +39,7 @@
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00440A5D
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@PAVgame_state_t@@@Z
 */
 
 B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs)
@@ -60,8 +82,8 @@ B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs)
                 B_3D_raster_device->add_atmosphere(atm->Id(), atm->color, atm->intensity);
         }
 
-        _cdecl_read_points(&file, &gbl_world_points);
-        _cdecl_read_sectors(&file, &gs->sectors);
+        read_points(&file, &gbl_world_points);
+        read_sectors(&file, &gs->sectors);
 
         array_t *lights = &gs->lights;
         if (lights->num_alloc != 0)
@@ -81,7 +103,7 @@ B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs)
 
         for(unsigned int i = 0; i < num_lights; i++)
         {
-                light_t *light = (light_t *)_cdecl_read_light(&file);
+                light_t *light = read_light(&file);
                 array_t *lights = &gs->lights;
                 if (lights->num_alloc <= lights->size)
                 {
@@ -111,7 +133,7 @@ B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs)
                 light->unknown008();
         }
 
-        file >> &gs->initial_point_position >> &gs->initial_point_orientation;
+        file >> gs->initial_point_position >> gs->initial_point_orientation;
 
         for(unsigned int i = 0; i < gs->sectors.size; i++)
         {
@@ -119,7 +141,7 @@ B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs)
                 file >> sector->groupId;
         }
 
-        CALL_THISCALL_VOID_3(&gs->unknown18F8, _thiscall_00451A21, &gs->sectors, 0, 0x40B38800/*30000.0lf*/);
+        gs->unknown18F8.unknown_00451A21(&gs->sectors, 0, 0x40B38800/*30000.0lf*/);
 
         return file;
 }
