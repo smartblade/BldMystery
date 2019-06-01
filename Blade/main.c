@@ -67,18 +67,6 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
 
         bld_new = (void *)GetProcAddress(shw32, "shi_new");
 
-#ifdef __BORLANDC__
-
-        create_bcb_wrappers();
-
-        /*
-         * Disable floating point exceptions to avoid throwing division
-         * by zero exception when using OpenGL raster
-         */
-        _control87(MCW_EM,MCW_EM);
-
-#endif
-
         /* __onexitbegin should be -1 on EXE module */
         *__onexitbegin_ptr = (void *)-1;
 
@@ -90,11 +78,7 @@ WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, in
          * launcher starting:
          *   error 1813: ”казанный тип ресурса в файле образа отсутствует
         */
-#ifdef __BORLANDC__
-        _stdcall_BladeWinMain(blade, hPrevInstance, lpCmdLine, nCmdShow);
-#else
         BladeWinMain(blade, hPrevInstance, lpCmdLine, nCmdShow);
-#endif
 
         return 0;
 }
