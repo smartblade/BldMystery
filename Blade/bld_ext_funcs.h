@@ -64,8 +64,6 @@ typedef int sound_t;
 #endif
 
 
-#ifdef BLD_NATIVE
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -131,8 +129,6 @@ EXTERN void **__onexitbegin_ptr NULL_INIT;
 #define gbl_world_points (*world_points_ptr)
 #define gbl_anims (*anims_ptr)
 
-#endif
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -149,8 +145,6 @@ int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, 
 #endif
 
 
-#ifdef BLD_NATIVE
-
 #define NEW_OBJECT2(result, class, init_func, arg1, arg2)\
 {\
         class *new_memory;\
@@ -164,12 +158,6 @@ int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, 
 
 #define NEW_CAMERA(result, unknown, name)\
 NEW_OBJECT2(result, camera_t, init, unknown, name)
-
-#else
-
-#define NEW_CAMERA(result, unknown, name) result = new camera_t(unknown, name);
-
-#endif
 
 
 #define NUM_3F266666 0.65f

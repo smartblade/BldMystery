@@ -1,5 +1,17 @@
 
+#ifdef BLD_NATIVE
+
 #include "bld_ext_funcs.h"
+
+#else
+
+#include "App.h"
+#include "game_state.h"
+#include "sound_device.h"
+#include <bld_abstract_net.h>
+#include "light.h"
+
+#endif
 
 extern B_IDataFile& operator >>(B_IDataFile& file, point_t &point);
 
@@ -15,6 +27,7 @@ extern void OnEvent(int a, int b);
 extern void reset_client_map_name(void);
 extern char *get_map_for_net_game(const char *map);
 extern void LoadNetModule(char *fileName);
+int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow);
 
 #ifndef BLD_NATIVE
 
@@ -72,6 +85,10 @@ extern bld_abstract_net *gbl_net;
 * Data address:           0x007EFC94
 */
 extern B_App *gbl_application;
+
+#define NEW_CAMERA(result, unknown, name) result = new camera_t(unknown, name);
+
+#define NUM_3F266666 0.65f
 
 #endif
 
