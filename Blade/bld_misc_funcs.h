@@ -19,7 +19,6 @@ extern void OnEvent(int a, int b);
 extern void reset_client_map_name(void);
 extern char *get_map_for_net_game(const char *map);
 extern void LoadNetModule(char *fileName);
-int BladeWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow);
 
 /*
 * Module:                 Blade.exe

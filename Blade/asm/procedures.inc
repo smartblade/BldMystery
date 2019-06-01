@@ -12,8 +12,8 @@ externdef ?load_level@B_WinApp@@UAEXPBD@Z: near
 l0041009D equ ?load_level@B_WinApp@@UAEXPBD@Z
 externdef ?process_events@B_WinApp@@UAEXXZ: near
 l00410305 equ ?process_events@B_WinApp@@UAEXXZ
-externdef _BladeWinMain: near
-l00410CC2 equ _BladeWinMain
+externdef _WinMain@16: near
+l00410CC2 equ _WinMain@16
 externdef ?set_mode@B_App@@QAEXABVB_Name@@@Z: near
 l00411EB9 equ ?set_mode@B_App@@QAEXABVB_Name@@@Z
 externdef ?process_events@B_App@@UAEXXZ: near
