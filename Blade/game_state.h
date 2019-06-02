@@ -7,6 +7,7 @@
 #include "array.h"
 #include "entity.h"
 #include "atmosphere.h"
+#include "vector.h"
 
 
 typedef struct {
@@ -16,12 +17,6 @@ typedef struct {
         int unknown10;
         int unknown14;
 } world_point_t;
-
-typedef struct {
-        double x;
-        double y;
-        double z;
-} point_t;
 
 typedef struct {
         int numEntities;
@@ -62,13 +57,13 @@ public:
         array_t sectors;
         char unknownFields18DC[28];
         unknown_18F8_class unknown18F8;
-        point_t unknown18FC;
+        B_Vector unknown18FC;
         double unknown1914;
         void *unknown191C;
         array_t lights;
         char unknownFields1938[28];
-        point_t initial_point_position;
-        point_t initial_point_orientation;
+        B_Vector initial_point_position;
+        B_Vector initial_point_orientation;
 };
 
 #ifdef __cplusplus

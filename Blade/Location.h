@@ -2,15 +2,15 @@
 
 #define LOCATION_H
 
-#include "game_state.h"
+#include "Vector.h"
 
 class location_t
 {
 public:
-    void setPosition(const point_t &pos);
-    void setOrientation(const point_t &orientation);
+    void setPosition(const B_Vector &pos);
+    void setOrientation(const B_Vector &orientation);
 private:
-    point_t position;
+    B_Vector position;
 };
 
 #endif

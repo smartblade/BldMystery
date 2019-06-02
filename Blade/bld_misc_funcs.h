@@ -5,7 +5,7 @@
 #include <bld_abstract_net.h>
 #include "light.h"
 
-extern B_IDataFile& operator >>(B_IDataFile& file, point_t &point);
+extern B_IDataFile& operator >>(B_IDataFile& file, B_Vector &point);
 
 #ifdef __cplusplus
 extern "C" {

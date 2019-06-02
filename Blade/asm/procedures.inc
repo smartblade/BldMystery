@@ -1,11 +1,11 @@
 externdef _read_points: near
 l004088F4 equ _read_points
-externdef ??5@YAAAVB_IDataFile@@AAV0@AAUpoint_t@@@Z: near
-l0040ACDD equ ??5@YAAAVB_IDataFile@@AAV0@AAUpoint_t@@@Z
-externdef ?setPosition@location_t@@QAEXABUpoint_t@@@Z: near
-l0040AD82 equ ?setPosition@location_t@@QAEXABUpoint_t@@@Z
-externdef ?setOrientation@location_t@@QAEXABUpoint_t@@@Z: near
-l0040ADA8 equ ?setOrientation@location_t@@QAEXABUpoint_t@@@Z
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z: near
+l0040ACDD equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z
+externdef ?setPosition@location_t@@QAEXABVB_Vector@@@Z: near
+l0040AD82 equ ?setPosition@location_t@@QAEXABVB_Vector@@@Z
+externdef ?setOrientation@location_t@@QAEXABVB_Vector@@@Z: near
+l0040ADA8 equ ?setOrientation@location_t@@QAEXABVB_Vector@@@Z
 externdef _B_WinApp: near
 l0040F040 equ _B_WinApp
 externdef ?load_level@B_WinApp@@UAEXPBD@Z: near

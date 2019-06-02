@@ -22,12 +22,12 @@ B_IDataFile * read_points(B_IDataFile *file, array_t *points)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0040ACDD
-* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAUpoint_t@@@Z
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z
 */
 
 #ifdef BLD_NATIVE
 
-B_IDataFile& operator >>(B_IDataFile& file, point_t &point)
+B_IDataFile& operator >>(B_IDataFile& file, B_Vector &point)
 {
     return file;
 }
