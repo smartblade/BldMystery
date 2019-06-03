@@ -14,6 +14,13 @@ int LoadWorld(const char *file_name)
         return bld_proc(file_name);
 }
 
+int BindPred(const char *action_name, const char *predproc)
+{
+        int (*bld_proc)(const char *action_name, const char *predproc);
+        bld_proc = (int (*)(const char *action_name, const char *predproc))GetProcAddress(blade, "BindPred");
+        return bld_proc(action_name, predproc);
+}
+
 const char *GetWorldFileName(void)
 {
         const char * (*bld_proc)(void);

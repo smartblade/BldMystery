@@ -45,7 +45,6 @@
 /EXPORT:UnBind
 /EXPORT:Bind2
 /EXPORT:GetTimeActionHeld
-/EXPORT:BindPred
 /EXPORT:UnBindPred
 /EXPORT:UnBindAll
 /EXPORT:Input

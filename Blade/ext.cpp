@@ -1158,30 +1158,6 @@ double GetTimeActionHeld(const char *action_name)
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x004295C2
-*/
-
-#ifdef BLD_NATIVE
-
-int BindPred(const char *action_name, const char *predproc)
-{
-        int (*bld_proc)(const char *action_name, const char *predproc);
-        bld_proc = (int (*)(const char *action_name, const char *predproc))GetProcAddress(blade, "BindPred");
-        return bld_proc(action_name, predproc);
-}
-
-#endif
-
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
-* Module:                 Blade.exe
 * Entry point:            0x00429641
 */
 

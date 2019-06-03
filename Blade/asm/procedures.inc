@@ -26,6 +26,8 @@ externdef ?read_level@B_App@@UAEXPBD@Z: near
 l004138B8 equ ?read_level@B_App@@UAEXPBD@Z
 externdef ?prepare_level@B_App@@QAEXXZ: near
 l00414F7F equ ?prepare_level@B_App@@QAEXXZ
+externdef ?bind_pred@B_App@@QAE_NPBD0@Z: near
+l0041549C equ ?bind_pred@B_App@@QAE_NPBD0@Z
 externdef ?run_python_file@B_App@@QAE_NPBD@Z: near
 l00415759 equ ?run_python_file@B_App@@QAE_NPBD@Z
 externdef ?load_world@B_App@@QAEHPBD@Z: near

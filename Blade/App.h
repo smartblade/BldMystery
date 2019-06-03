@@ -52,6 +52,7 @@ public:
         bool run_python_file(const char *file_name);
         void set_mode(const B_Name &mode);
         void prepare_level();
+        bool bind_pred(const char *key, const char *pred);
 
         char unknownFields1[24];
         boolean bUnknown01C;
