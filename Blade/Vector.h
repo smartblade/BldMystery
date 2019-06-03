@@ -5,6 +5,8 @@
 class B_Vector
 {
 public:
+        B_Vector operator-() const;
+
         double x;
         double y;
         double z;

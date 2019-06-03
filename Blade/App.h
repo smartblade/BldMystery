@@ -100,7 +100,6 @@ public:
         char unknownFields100[8];
         B_CameraEntity *camera;
         location_t location;
-        char unknownFields200[280];
         float unknown1AC;
         float unknownPtrForCamera;
         char unknownFields300[1036];

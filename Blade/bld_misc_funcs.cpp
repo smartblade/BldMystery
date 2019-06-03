@@ -4,6 +4,8 @@
 #include "bld_misc_funcs.h"
 
 
+//l00404F2F matrix multiply
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004088F4
@@ -18,6 +20,21 @@ B_IDataFile * read_points(B_IDataFile *file, array_t<world_point_t *> *points)
 
 #endif
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0040A509
+* VC++ mangling:          ??GB_Vector@@QBE?AV0@XZ
+*/
+
+#ifdef BLD_NATIVE
+
+B_Vector B_Vector::operator -() const;
+{
+    return *this;
+}
+
+#endif
 
 /*
 * Module:                 Blade.exe

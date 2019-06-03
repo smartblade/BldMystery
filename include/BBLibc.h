@@ -129,4 +129,13 @@ public:
 
 LIB_EXP B_ResourceManager B_resource_manager;
 
+class LIB_EXP B_InputManager
+{
+public:
+    bool BindInputEvent(
+        char const *key,
+        void (*func)(B_Name const &, float, float, void *),
+        void *);
+};
+
 #endif /* BBLIBC_H */

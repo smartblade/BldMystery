@@ -34,7 +34,9 @@ class B_CameraEntity : public B_Entity
 public:
     B_CameraEntity(int unknown, const B_Name &name);
     void unknown_004EB1AA(void *);
-
+/*
+    ....1A0
+    B_Camera camera(240 : location);*/
     char unknownFields1[588];
     float unknownValueFromApplication;
     float *unknownPtrFromApplication;

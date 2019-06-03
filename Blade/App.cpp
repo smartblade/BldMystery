@@ -475,6 +475,9 @@ void B_App::ReadLevel(const char * file_name)
 
         mout << vararg("Abriendo archivo csv.dat\n");
         timeBefore = timeGetTime();
+        // TODO create unit test for SetDefaultMaterial
+        SetDefaultMaterial("name", "material");
+        B_NDataBase<B_ElementCSV> * csvs = &B_csvs;
         ReadCSV("..\\csv.dat", &B_csvs);
         timeAfter = timeGetTime();
         mout << vararg(

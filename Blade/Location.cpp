@@ -8,13 +8,11 @@
 * VC++ mangling:          ?setPosition@location_t@@QAEXABVB_Vector@@@Z
 */
 
-#ifdef BLD_NATIVE
-
 void location_t::setPosition(const B_Vector &pos)
 {
+    this->position = pos;
+    updateMatrix();
 }
-
-#endif
 
 
 /*
@@ -26,6 +24,21 @@ void location_t::setPosition(const B_Vector &pos)
 #ifdef BLD_NATIVE
 
 void location_t::setOrientation(const B_Vector &orientation)
+{
+}
+
+#endif
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0040AE60
+* VC++ mangling:          ?updateMatrix@location_t@@QAEXXZ
+*/
+
+#ifdef BLD_NATIVE
+
+void location_t::updateMatrix()
 {
 }
 

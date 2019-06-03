@@ -292,6 +292,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\transform_matrix.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Vector.h"
 				>
 			</File>
