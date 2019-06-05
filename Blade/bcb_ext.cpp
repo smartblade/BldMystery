@@ -21,6 +21,13 @@ int SetListenerMode(int mode, double x, double y, double z)
         return bld_proc(mode, x, y, z);
 }
 
+int Quit(void)
+{
+        int (*bld_proc)(void);
+        bld_proc = (int (*)(void))GetProcAddress(blade, "Quit");
+        return bld_proc();
+}
+
 int BindPred(const char *action_name, const char *predproc)
 {
         int (*bld_proc)(const char *action_name, const char *predproc);

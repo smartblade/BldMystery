@@ -56,6 +56,19 @@ int GetListenerMode()
     return 1;
 }
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0042915B
+*/
+
+int Quit()
+{
+    B_App *App = get_application();
+    assert(App);
+    return App->quit();
+}
+
 /*
 ................................................................................
 ................................................................................
