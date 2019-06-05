@@ -54,6 +54,7 @@ public:
         void prepare_level();
         bool bind_pred(const char *key, const char *pred);
         int set_listener_mode(int mode, const B_Vector &v);
+        int set_time(double time);
 
         char unknownFields1[24];
         boolean bUnknown01C;
@@ -77,7 +78,7 @@ public:
         char unknownFields300[1036];
         float fUnknown5C0;
         char unknownFields400[4];
-        void *unknown5C8;
+        float time;
         char unknownFields310[6];
         boolean no_sleep;
         char unknownFields320[24];

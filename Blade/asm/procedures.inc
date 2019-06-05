@@ -18,6 +18,8 @@ externdef ?set_listener_mode@B_App@@QAEHHABVB_Vector@@@Z: near
 l00411CC4 equ ?set_listener_mode@B_App@@QAEHHABVB_Vector@@@Z
 externdef ?set_mode@B_App@@QAEXABVB_Name@@@Z: near
 l00411EB9 equ ?set_mode@B_App@@QAEXABVB_Name@@@Z
+externdef ?set_time@B_App@@QAEHN@Z: near
+l0041208A equ ?set_time@B_App@@QAEHN@Z
 externdef ?process_events@B_App@@UAEXXZ: near
 l004121CE equ ?process_events@B_App@@UAEXXZ
 externdef ?mark_level_to_load@B_App@@UAEXPBD@Z: near

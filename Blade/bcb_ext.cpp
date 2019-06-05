@@ -28,6 +28,13 @@ int Quit(void)
         return bld_proc();
 }
 
+int SetTime(double time)
+{
+        int (*bld_proc)(double time);
+        bld_proc = (int (*)(double time))GetProcAddress(blade, "SetTime");
+        return bld_proc(time);
+}
+
 int BindPred(const char *action_name, const char *predproc)
 {
         int (*bld_proc)(const char *action_name, const char *predproc);

@@ -69,6 +69,19 @@ int Quit()
     return App->quit();
 }
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00429194
+*/
+
+int SetTime(double time)
+{
+    B_App *App = get_application();
+    assert(App);
+    return App->set_time(time);
+}
+
 /*
 ................................................................................
 ................................................................................
