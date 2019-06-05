@@ -11,6 +11,20 @@
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00411CC4
+* VC++ mangling:          ?set_listener_mode@B_App@@QAEHHABVB_Vector@@@Z
+*/
+
+#ifdef BLD_NATIVE
+
+int B_App::set_listener_mode(int mode, const B_Vector &v)
+{
+}
+
+#endif
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x00411EB9
 * VC++ mangling:          ?set_mode@B_App@@QAEXABVB_Name@@@Z
 */

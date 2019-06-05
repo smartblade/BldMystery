@@ -53,10 +53,12 @@ public:
         void set_mode(const B_Name &mode);
         void prepare_level();
         bool bind_pred(const char *key, const char *pred);
+        int set_listener_mode(int mode, const B_Vector &v);
 
         char unknownFields1[24];
         boolean bUnknown01C;
-        char unknownFields1000[12];
+        int listenerMode;
+        char unknownFields1000[8];
         game_clock_t *clock1;
         game_clock_t *clock2;
         void *unknown034;

@@ -14,6 +14,8 @@ externdef ?process_events@B_WinApp@@UAEXXZ: near
 l00410305 equ ?process_events@B_WinApp@@UAEXXZ
 externdef _WinMain@16: near
 l00410CC2 equ _WinMain@16
+externdef ?set_listener_mode@B_App@@QAEHHABVB_Vector@@@Z: near
+l00411CC4 equ ?set_listener_mode@B_App@@QAEHHABVB_Vector@@@Z
 externdef ?set_mode@B_App@@QAEXABVB_Name@@@Z: near
 l00411EB9 equ ?set_mode@B_App@@QAEXABVB_Name@@@Z
 externdef ?process_events@B_App@@UAEXXZ: near

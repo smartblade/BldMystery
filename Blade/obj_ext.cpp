@@ -26,6 +26,23 @@ int LoadWorld(const char *file_name)
         return app->load_world(file_name);
 }
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004290C0
+*/
+
+int SetListenerMode(int mode, double x, double y, double z)
+{
+    B_App *App = get_application();
+    assert(App);
+    B_Vector v;
+    v.x = x;
+    v.y = y;
+    v.z = z;
+    return App->set_listener_mode(mode, v);
+}
+
 /*
 ................................................................................
 ................................................................................

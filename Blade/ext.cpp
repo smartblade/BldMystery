@@ -735,30 +735,6 @@ int SetCurrentMap(const char *map)
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x004290C0
-*/
-
-#ifdef BLD_NATIVE
-
-int SetListenerMode(int mode, double x, double y, double z)
-{
-        int (*bld_proc)(int mode, double x, double y, double z);
-        bld_proc = (int (*)(int mode, double x, double y, double z))GetProcAddress(blade, "SetListenerMode");
-        return bld_proc(mode, x, y, z);
-}
-
-#endif
-
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
-* Module:                 Blade.exe
 * Entry point:            0x00429128
 */
 

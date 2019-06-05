@@ -28,7 +28,6 @@
 /EXPORT:GetCommandLine
 /EXPORT:GetCurrentMap
 /EXPORT:SetCurrentMap
-/EXPORT:SetListenerMode
 /EXPORT:GetListenerMode
 /EXPORT:Quit
 /EXPORT:SetTime

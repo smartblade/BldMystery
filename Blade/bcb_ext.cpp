@@ -14,6 +14,13 @@ int LoadWorld(const char *file_name)
         return bld_proc(file_name);
 }
 
+int SetListenerMode(int mode, double x, double y, double z)
+{
+        int (*bld_proc)(int mode, double x, double y, double z);
+        bld_proc = (int (*)(int mode, double x, double y, double z))GetProcAddress(blade, "SetListenerMode");
+        return bld_proc(mode, x, y, z);
+}
+
 int BindPred(const char *action_name, const char *predproc)
 {
         int (*bld_proc)(const char *action_name, const char *predproc);
