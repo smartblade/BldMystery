@@ -735,30 +735,6 @@ int SetCurrentMap(const char *map)
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x004291D2
-*/
-
-#ifdef BLD_NATIVE
-
-int GoToTime(double time)
-{
-        int (*bld_proc)(double time);
-        bld_proc = (int (*)(double time))GetProcAddress(blade, "GoToTime");
-        return bld_proc(time);
-}
-
-#endif
-
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
-* Module:                 Blade.exe
 * Entry point:            0x00429210
 */
 

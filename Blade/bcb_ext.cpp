@@ -35,6 +35,13 @@ int SetTime(double time)
         return bld_proc(time);
 }
 
+int GoToTime(double time)
+{
+        int (*bld_proc)(double time);
+        bld_proc = (int (*)(double time))GetProcAddress(blade, "GoToTime");
+        return bld_proc(time);
+}
+
 int BindPred(const char *action_name, const char *predproc)
 {
         int (*bld_proc)(const char *action_name, const char *predproc);

@@ -55,6 +55,7 @@ public:
         bool bind_pred(const char *key, const char *pred);
         int set_listener_mode(int mode, const B_Vector &v);
         int set_time(double time);
+        int go_to_time(double time);
 
         char unknownFields1[24];
         boolean bUnknown01C;

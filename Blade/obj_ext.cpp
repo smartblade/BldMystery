@@ -82,6 +82,20 @@ int SetTime(double time)
     return App->set_time(time);
 }
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004291D2
+*/
+
+int GoToTime(double time)
+{
+    B_App *App = get_application();
+    assert(App);
+    return App->go_to_time(time);
+}
+
+
 /*
 ................................................................................
 ................................................................................
