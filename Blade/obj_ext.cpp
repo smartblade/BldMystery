@@ -43,6 +43,19 @@ int SetListenerMode(int mode, double x, double y, double z)
     return App->set_listener_mode(mode, v);
 }
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00429128
+*/
+
+int GetListenerMode()
+{
+    B_App *App = get_application();
+    assert(App);
+    return 1;
+}
+
 /*
 ................................................................................
 ................................................................................

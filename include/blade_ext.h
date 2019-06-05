@@ -879,6 +879,7 @@ LIB_EXP int SetInventoryIntProperty(
         const char *name, int property_kind, int value
 );
 LIB_EXP int SetListenerMode(int mode, double x, double y, double z);
+LIB_EXP int GetListenerMode();
 LIB_EXP int GetSectorByIndex(int index);
 LIB_EXP int GetSectorByPosition(double x, double y, double z);
 LIB_EXP int InitBreakSector(
