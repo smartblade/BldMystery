@@ -528,6 +528,21 @@ void B_App::prepare_level()
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x0041526D
+* VC++ mangling:          ?GetTimeActionHeld@B_App@@QAENPBD@Z
+*/
+
+#ifdef BLD_NATIVE
+
+double B_App::GetTimeActionHeld(const char *action)
+{
+}
+
+#endif
+
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x0041529D
 * VC++ mangling:          ?AddInputAction@B_App@@QAEXPBDH@Z
 */

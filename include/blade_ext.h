@@ -1023,7 +1023,7 @@ LIB_EXP int AssocKey(
         const char *action, const char *input_device, const char *key,
         int press
 );
-LIB_EXP double GetTimeActionHeld(const char *action_name);
+LIB_EXP double GetTimeActionHeld(const char *Action);
 LIB_EXP int AddInputAction(const char *action_name, int npi);
 LIB_EXP int RemoveInputAction(const char *action_name);
 LIB_EXP int Bind(const char *key, PyObject *proc);

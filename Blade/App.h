@@ -73,6 +73,7 @@ public:
             const char *act, const char *subact1,
             const char *subact2, int unknown
         );
+        double GetTimeActionHeld(const char *action);
 
         char unknownFields1[24];
         boolean bUnknown01C;

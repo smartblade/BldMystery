@@ -735,30 +735,6 @@ int SetCurrentMap(const char *map)
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x0042956A
-*/
-
-#ifdef BLD_NATIVE
-
-double GetTimeActionHeld(const char *action_name)
-{
-        double (*bld_proc)(const char *action_name);
-        bld_proc = (double (*)(const char *action_name))GetProcAddress(blade, "GetTimeActionHeld");
-        return bld_proc(action_name);
-}
-
-#endif
-
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
-* Module:                 Blade.exe
 * Entry point:            0x00429641
 */
 
