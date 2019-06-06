@@ -46,6 +46,8 @@ externdef ?RemoveInputAction@B_App@@QAEXPBD@Z: near
 l004152C0 equ ?RemoveInputAction@B_App@@QAEXPBD@Z
 externdef ?bind_pred@B_App@@QAE_NPBD0@Z: near
 l0041549C equ ?bind_pred@B_App@@QAE_NPBD0@Z
+externdef ?AssocKey@B_App@@QAEHPBD00H@Z: near
+l004155AE equ ?AssocKey@B_App@@QAEHPBD00H@Z
 externdef ?run_python_file@B_App@@QAE_NPBD@Z: near
 l00415759 equ ?run_python_file@B_App@@QAE_NPBD@Z
 externdef ?load_world@B_App@@QAEHPBD@Z: near

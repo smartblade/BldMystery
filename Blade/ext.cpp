@@ -735,39 +735,6 @@ int SetCurrentMap(const char *map)
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x00429381
-*/
-
-#ifdef BLD_NATIVE
-
-int AssocKey(
-        const char *action, const char *input_device, const char *key,
-        int press
-)
-{
-        int (*bld_proc)(
-        const char *action, const char *input_device, const char *key,
-        int press
-);
-        bld_proc = (int (*)(
-        const char *action, const char *input_device, const char *key,
-        int press
-))GetProcAddress(blade, "AssocKey");
-        return bld_proc(action, input_device, key, press);
-}
-
-#endif
-
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
-* Module:                 Blade.exe
 * Entry point:            0x004293C7
 */
 

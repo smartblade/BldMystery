@@ -62,6 +62,10 @@ public:
         double GetTimeSpeed();
         void AddInputAction(const char *action_name, int npi);
         void RemoveInputAction(const char *action_name);
+        int AssocKey(
+            const char *action, const char *input_device, const char *key,
+            int press
+        );
 
         char unknownFields1[24];
         boolean bUnknown01C;

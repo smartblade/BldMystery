@@ -188,6 +188,22 @@ int RemoveInputAction(const char *action_name)
 
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x00429381
+*/
+
+int AssocKey(
+    const char *action, const char *input_device, const char *key,
+    int press
+)
+{
+    B_App *App = get_application();
+    assert(App);
+    return App->AssocKey(action, input_device, key, press);
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
