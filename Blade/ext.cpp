@@ -735,30 +735,6 @@ int SetCurrentMap(const char *map)
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x00429342
-*/
-
-#ifdef BLD_NATIVE
-
-int RemoveInputAction(const char *action_name)
-{
-        int (*bld_proc)(const char *action_name);
-        bld_proc = (int (*)(const char *action_name))GetProcAddress(blade, "RemoveInputAction");
-        return bld_proc(action_name);
-}
-
-#endif
-
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
-* Module:                 Blade.exe
 * Entry point:            0x00429381
 */
 

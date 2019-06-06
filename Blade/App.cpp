@@ -540,6 +540,21 @@ void B_App::AddInputAction(const char *action_name, int npi)
 
 #endif
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004152C0
+* VC++ mangling:          ?RemoveInputAction@B_App@@QAEXPBD@Z
+*/
+
+#ifdef BLD_NATIVE
+
+void B_App::RemoveInputAction(const char *action_name)
+{
+}
+
+#endif
+
 /*
 ................................................................................
 ................................................................................

@@ -61,6 +61,7 @@ public:
         void SetTimeSpeed(double speed);
         double GetTimeSpeed();
         void AddInputAction(const char *action_name, int npi);
+        void RemoveInputAction(const char *action_name);
 
         char unknownFields1[24];
         boolean bUnknown01C;

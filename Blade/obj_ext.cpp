@@ -174,6 +174,20 @@ int AddInputAction(const char *action_name, int npi)
 
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x00429342
+*/
+
+int RemoveInputAction(const char *action_name)
+{
+    B_App *App = get_application();
+    assert(App);
+    App->RemoveInputAction(action_name);
+    return 1;
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
