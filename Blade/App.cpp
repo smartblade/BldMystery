@@ -96,6 +96,20 @@ void B_App::stop_time()
 #endif
 
 
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00412154
+* VC++ mangling:          ?RestartTime@B_App@@QAEXXZ
+*/
+
+#ifdef BLD_NATIVE
+
+void B_App::RestartTime()
+{
+}
+
+#endif
+
 
 /*
 ................................................................................
