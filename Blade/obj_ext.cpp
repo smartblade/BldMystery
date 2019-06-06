@@ -234,6 +234,26 @@ int UnBind(const char *key, PyObject *proc)
 
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x004294C5
+*/
+
+int Bind2(
+    const char *act, const char *subact1,
+    const char *subact2, int unknown
+)
+{
+    B_App *App = get_application();
+    assert(App);
+    assert(act);
+    assert(subact1);
+    assert(subact2);
+    App->Bind2(act, subact1, subact2, unknown);
+    return 1;
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................

@@ -46,6 +46,8 @@ externdef ?RemoveInputAction@B_App@@QAEXPBD@Z: near
 l004152C0 equ ?RemoveInputAction@B_App@@QAEXPBD@Z
 externdef ?Bind@B_App@@QAE_NPBDPAU_object@@@Z: near
 l00415425 equ ?Bind@B_App@@QAE_NPBDPAU_object@@@Z
+externdef ?Bind2@B_App@@QAEXPBD00H@Z: near
+l00415471 equ ?Bind2@B_App@@QAEXPBD00H@Z
 externdef ?bind_pred@B_App@@QAE_NPBD0@Z: near
 l0041549C equ ?bind_pred@B_App@@QAE_NPBD0@Z
 externdef ?UnBind@B_App@@QAE_NPBDPAU_object@@@Z: near

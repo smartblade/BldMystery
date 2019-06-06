@@ -577,12 +577,24 @@ bool B_App::Bind(const char *key, PyObject *proc)
 
 #endif
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x00415471
+* VC++ mangling:          ?Bind2@B_App@@QAEXPBD00H@Z
 */
+
+#ifdef BLD_NATIVE
+
+void B_App::Bind2(
+    const char *act, const char *subact1,
+    const char *subact2, int unknown
+)
+{
+}
+
+#endif
+
 
 /*
 * Module:                 Blade.exe

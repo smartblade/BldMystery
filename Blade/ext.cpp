@@ -735,39 +735,6 @@ int SetCurrentMap(const char *map)
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x004294C5
-*/
-
-#ifdef BLD_NATIVE
-
-int Bind2(
-        const char *action_name1, const char *action_name2,
-        const char *new_action, int unknown
-)
-{
-        int (*bld_proc)(
-        const char *action_name1, const char *action_name2,
-        const char *new_action, int unknown
-);
-        bld_proc = (int (*)(
-        const char *action_name1, const char *action_name2,
-        const char *new_action, int unknown
-))GetProcAddress(blade, "Bind2");
-        return bld_proc(action_name1, action_name2, new_action, unknown);
-}
-
-#endif
-
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
-* Module:                 Blade.exe
 * Entry point:            0x0042956A
 */
 

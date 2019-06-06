@@ -69,6 +69,10 @@ public:
         );
         bool Bind(const char *key, PyObject *proc);
         bool UnBind(const char *key, PyObject *proc);
+        void Bind2(
+            const char *act, const char *subact1,
+            const char *subact2, int unknown
+        );
 
         char unknownFields1[24];
         boolean bUnknown01C;
