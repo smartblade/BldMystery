@@ -60,6 +60,7 @@ public:
         void RestartTime();
         void SetTimeSpeed(double speed);
         double GetTimeSpeed();
+        void AddInputAction(const char *action_name, int npi);
 
         char unknownFields1[24];
         boolean bUnknown01C;

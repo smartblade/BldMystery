@@ -160,6 +160,20 @@ double GetTimeSpeed()
 
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x004292FF
+*/
+
+int AddInputAction(const char *action_name, int npi)
+{
+    B_App *App = get_application();
+    assert(App);
+    App->AddInputAction(action_name, npi);
+    return 1;
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
