@@ -113,6 +113,21 @@ void B_App::RestartTime()
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00412170
+* VC++ mangling:          ?GetTimeSpeed@B_App@@QAENXZ
+*/
+
+#ifdef BLD_NATIVE
+
+double B_App::GetTimeSpeed()
+{
+}
+
+#endif
+
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x0041218C
 * VC++ mangling:          ?SetTimeSpeed@B_App@@QAEXN@Z
 */

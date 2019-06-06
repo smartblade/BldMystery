@@ -59,6 +59,7 @@ public:
         void stop_time();
         void RestartTime();
         void SetTimeSpeed(double speed);
+        double GetTimeSpeed();
 
         char unknownFields1[24];
         boolean bUnknown01C;
