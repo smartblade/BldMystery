@@ -56,6 +56,7 @@ public:
         int set_listener_mode(int mode, const B_Vector &v);
         int set_time(double time);
         int go_to_time(double time);
+        void stop_time();
 
         char unknownFields1[24];
         boolean bUnknown01C;

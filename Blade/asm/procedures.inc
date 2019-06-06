@@ -22,6 +22,8 @@ externdef ?set_time@B_App@@QAEHN@Z: near
 l0041208A equ ?set_time@B_App@@QAEHN@Z
 externdef ?go_to_time@B_App@@QAEHN@Z: near
 l004120D3 equ ?go_to_time@B_App@@QAEHN@Z
+externdef ?stop_time@B_App@@QAEXXZ: near
+l00412138 equ ?stop_time@B_App@@QAEXXZ
 externdef ?process_events@B_App@@UAEXXZ: near
 l004121CE equ ?process_events@B_App@@UAEXXZ
 externdef ?mark_level_to_load@B_App@@UAEXPBD@Z: near
