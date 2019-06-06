@@ -133,6 +133,18 @@ void RestartTime()
 }
 
 
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0042928B
+*/
+
+void SetTimeSpeed(double speed)
+{
+    B_App *App = get_application();
+    assert(App);
+    App->SetTimeSpeed(speed);
+}
+
 
 /*
 ................................................................................

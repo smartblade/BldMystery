@@ -26,6 +26,8 @@ externdef ?stop_time@B_App@@QAEXXZ: near
 l00412138 equ ?stop_time@B_App@@QAEXXZ
 externdef ?RestartTime@B_App@@QAEXXZ: near
 l00412154 equ ?RestartTime@B_App@@QAEXXZ
+externdef ?SetTimeSpeed@B_App@@QAEXN@Z: near
+l0041218C equ ?SetTimeSpeed@B_App@@QAEXN@Z
 externdef ?process_events@B_App@@UAEXXZ: near
 l004121CE equ ?process_events@B_App@@UAEXXZ
 externdef ?mark_level_to_load@B_App@@UAEXPBD@Z: near

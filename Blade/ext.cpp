@@ -735,30 +735,6 @@ int SetCurrentMap(const char *map)
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x0042928B
-*/
-
-#ifdef BLD_NATIVE
-
-void SetTimeSpeed(double speed)
-{
-        void (*bld_proc)(double speed);
-        bld_proc = (void (*)(double speed))GetProcAddress(blade, "SetTimeSpeed");
-        bld_proc(speed);
-}
-
-#endif
-
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
-* Module:                 Blade.exe
 * Entry point:            0x004292C9
 */
 
