@@ -4,6 +4,7 @@
 #define APPLICATION_H
 
 
+#include <bld_python.h>
 #include "BBLibc.h"
 #include "entity.h"
 #include "game_clock.h"
@@ -66,6 +67,7 @@ public:
             const char *action, const char *input_device, const char *key,
             int press
         );
+        bool Bind(const char *key, PyObject *proc);
 
         char unknownFields1[24];
         boolean bUnknown01C;

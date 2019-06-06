@@ -28,7 +28,6 @@
 /EXPORT:GetCommandLine
 /EXPORT:GetCurrentMap
 /EXPORT:SetCurrentMap
-/EXPORT:Bind
 /EXPORT:UnBind
 /EXPORT:Bind2
 /EXPORT:GetTimeActionHeld

@@ -735,30 +735,6 @@ int SetCurrentMap(const char *map)
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x004293C7
-*/
-
-#ifdef BLD_NATIVE
-
-int Bind(const char *action_name, PyObject *proc)
-{
-        int (*bld_proc)(const char *action_name, PyObject *proc);
-        bld_proc = (int (*)(const char *action_name, PyObject *proc))GetProcAddress(blade, "Bind");
-        return bld_proc(action_name, proc);
-}
-
-#endif
-
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
-* Module:                 Blade.exe
 * Entry point:            0x00429446
 */
 
