@@ -608,6 +608,21 @@ bool B_App::bind_pred(const char *key, const char *pred)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00415548
+* VC++ mangling:          ?UnBind@B_App@@QAE_NPBDPAU_object@@@Z
+*/
+
+#ifdef BLD_NATIVE
+
+bool UnBind(const char *key, PyObject *proc)
+{
+}
+
+#endif
+
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x004155AE
 * VC++ mangling:          ?AssocKey@B_App@@QAEHPBD00H@Z
 */

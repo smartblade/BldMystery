@@ -48,6 +48,8 @@ externdef ?Bind@B_App@@QAE_NPBDPAU_object@@@Z: near
 l00415425 equ ?Bind@B_App@@QAE_NPBDPAU_object@@@Z
 externdef ?bind_pred@B_App@@QAE_NPBD0@Z: near
 l0041549C equ ?bind_pred@B_App@@QAE_NPBD0@Z
+externdef ?UnBind@B_App@@QAE_NPBDPAU_object@@@Z: near
+l00415548 equ ?UnBind@B_App@@QAE_NPBDPAU_object@@@Z
 externdef ?AssocKey@B_App@@QAEHPBD00H@Z: near
 l004155AE equ ?AssocKey@B_App@@QAEHPBD00H@Z
 externdef ?run_python_file@B_App@@QAE_NPBD@Z: near

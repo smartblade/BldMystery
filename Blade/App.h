@@ -68,6 +68,7 @@ public:
             int press
         );
         bool Bind(const char *key, PyObject *proc);
+        bool UnBind(const char *key, PyObject *proc);
 
         char unknownFields1[24];
         boolean bUnknown01C;

@@ -219,6 +219,21 @@ int Bind(const char *key, PyObject *proc)
 
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x00429446
+*/
+
+int UnBind(const char *key, PyObject *proc)
+{
+    assert(key);
+    assert(proc);
+    B_App *App = get_application();
+    assert(App);
+    return App->UnBind(key, proc);
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
