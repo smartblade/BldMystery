@@ -338,6 +338,8 @@ externdef _read_sectors: near
 l00432379 equ _read_sectors
 externdef ?unknown_00439F5D@game_state_t@@QAEXXZ: near
 l00439F5D equ ?unknown_00439F5D@game_state_t@@QAEXXZ
+externdef ?get_time@game_state_t@@QAENXZ: near
+l0043A6A4 equ ?get_time@game_state_t@@QAENXZ
 externdef ??5@YAAAVB_IDataFile@@AAV0@PAVgame_state_t@@@Z: near
 l00440A5D equ ??5@YAAAVB_IDataFile@@AAV0@PAVgame_state_t@@@Z
 externdef _WorldToMBW: near

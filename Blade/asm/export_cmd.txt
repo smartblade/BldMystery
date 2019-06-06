@@ -28,7 +28,6 @@
 /EXPORT:GetCommandLine
 /EXPORT:GetCurrentMap
 /EXPORT:SetCurrentMap
-/EXPORT:GetTime
 /EXPORT:StopTime
 /EXPORT:RestartTime
 /EXPORT:SetTimeSpeed
