@@ -6,7 +6,6 @@
 /EXPORT:CDStop
 /EXPORT:CDPause
 /EXPORT:CDSetCallBack
-/EXPORT:DoneLoadGame
 /EXPORT:SetSaveInfo
 /EXPORT:GetSaveInfo
 /EXPORT:SaveEntitiesData

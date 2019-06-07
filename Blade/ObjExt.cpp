@@ -52,13 +52,14 @@ void BeginLoadGame()
 * Module:                 Blade.exe
 * Entry point:            0x00427943
 */
-#ifdef BLD_NATIVE
-void DoneLoadGame(void)
+
+void DoneLoadGame()
 {
-    void (*bld_proc)(void);
-    bld_proc();
+    B_App * App = get_application();
+    assert(App);
+    App->DoneLoadGame();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
