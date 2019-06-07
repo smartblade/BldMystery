@@ -278,9 +278,9 @@ int SetCurrentMap(const char *map)
 
 int LoadWorld(const char *file_name)
 {
-        B_App * app = get_application();
-        assert(app);
-        return app->load_world(file_name);
+    B_App * app = get_application();
+    assert(app);
+    return app->load_world(file_name);
 }
 
 
@@ -1210,7 +1210,7 @@ void UpdateAGTexture()
 
 const char *GetWorldFileName(void)
 {
-        return gbl_game_state.world_file_name;
+    return gbl_game_state.world_file_name;
 }
 
 
