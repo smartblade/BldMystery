@@ -11,13 +11,16 @@
 * Module:                 Blade.exe
 * Entry point:            0x00427880
 */
-#ifdef BLD_NATIVE
+
 int SetAppMode(const char *mode)
 {
-    int (*bld_proc)(const char *mode);
-    return bld_proc(mode);
+    B_App * App = get_application();
+    int code;
+    assert(App);
+    code = App->SetAppMode(mode);
+    return code;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

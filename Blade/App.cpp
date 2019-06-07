@@ -26,12 +26,12 @@ int B_App::set_listener_mode(int mode, const B_Vector &v)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00411EB9
-* VC++ mangling:          ?set_mode@B_App@@QAEXABVB_Name@@@Z
+* VC++ mangling:          ?SetAppMode@B_App@@QAEHABVB_Name@@@Z
 */
 
 #ifdef BLD_NATIVE
 
-void B_App::set_mode(const B_Name &mode)
+int B_App::SetAppMode(const B_Name &mode)
 {
 }
 
@@ -212,7 +212,7 @@ void B_App::load_level(const char *script)
         char *str2;
         int cmp_result;
 
-        this->set_mode("Game");
+        this->SetAppMode("Game");
 
         this->init_python_path();
 

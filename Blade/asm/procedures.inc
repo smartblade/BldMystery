@@ -16,8 +16,8 @@ externdef _WinMain@16: near
 l00410CC2 equ _WinMain@16
 externdef ?set_listener_mode@B_App@@QAEHHABVB_Vector@@@Z: near
 l00411CC4 equ ?set_listener_mode@B_App@@QAEHHABVB_Vector@@@Z
-externdef ?set_mode@B_App@@QAEXABVB_Name@@@Z: near
-l00411EB9 equ ?set_mode@B_App@@QAEXABVB_Name@@@Z
+externdef ?SetAppMode@B_App@@QAEHABVB_Name@@@Z: near
+l00411EB9 equ ?SetAppMode@B_App@@QAEHABVB_Name@@@Z
 externdef ?set_time@B_App@@QAEHN@Z: near
 l0041208A equ ?set_time@B_App@@QAEHN@Z
 externdef ?go_to_time@B_App@@QAEHN@Z: near

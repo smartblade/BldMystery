@@ -51,7 +51,7 @@ public:
                 HWND hwnd, UINT uMsg, WPARAM wParam,  LPARAM lParam);
         int load_world(const char *file_name);
         bool run_python_file(const char *file_name);
-        void set_mode(const B_Name &mode);
+        int SetAppMode(const B_Name &mode);
         void prepare_level();
         bool bind_pred(const char *key, const char *pred);
         int set_listener_mode(int mode, const B_Vector &v);
