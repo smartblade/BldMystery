@@ -1,0 +1,13 @@
+image:
+- Visual Studio 2015
+configuration:
+- Release
+before_build:
+# setup Visual C++ build environment
+- call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
+# upgrade projects
+- devenv /Upgrade BOD.sln
+- devenv /Upgrade BODASM.sln
+build_script:
+- msbuild /p:Configuration=Debug BODASM.sln
+- msbuild BOD.sln
