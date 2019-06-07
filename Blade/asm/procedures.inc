@@ -42,6 +42,8 @@ externdef ?read_level@B_App@@UAEXPBD@Z: near
 l004138B8 equ ?read_level@B_App@@UAEXPBD@Z
 externdef ?prepare_level@B_App@@QAEXXZ: near
 l00414F7F equ ?prepare_level@B_App@@QAEXXZ
+externdef ?BeginLoadGame@B_App@@QAEXXZ: near
+l00415145 equ ?BeginLoadGame@B_App@@QAEXXZ
 externdef ?GetTimeActionHeld@B_App@@QAENPBD@Z: near
 l0041526D equ ?GetTimeActionHeld@B_App@@QAENPBD@Z
 externdef ?AddInputAction@B_App@@QAEXPBDH@Z: near

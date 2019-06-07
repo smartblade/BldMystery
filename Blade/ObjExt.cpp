@@ -39,13 +39,14 @@ const char *GetAppMode()
 * Module:                 Blade.exe
 * Entry point:            0x00427910
 */
-#ifdef BLD_NATIVE
-void BeginLoadGame(void)
+
+void BeginLoadGame()
 {
-    void (*bld_proc)(void);
-    bld_proc();
+    B_App * App = get_application();
+    assert(App);
+    App->BeginLoadGame();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
