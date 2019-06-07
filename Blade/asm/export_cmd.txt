@@ -6,7 +6,6 @@
 /EXPORT:CDStop
 /EXPORT:CDPause
 /EXPORT:CDSetCallBack
-/EXPORT:GetAppMode
 /EXPORT:BeginLoadGame
 /EXPORT:DoneLoadGame
 /EXPORT:SetSaveInfo

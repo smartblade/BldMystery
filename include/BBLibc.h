@@ -24,6 +24,7 @@ public:
         B_Name &operator =(const B_Name &src);
         unsigned int operator ==(const char *str) const;
         operator const char *() const { return string; }
+        char * const String() const;
 private:
         char *string;
         int len;

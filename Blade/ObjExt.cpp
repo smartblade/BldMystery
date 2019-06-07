@@ -26,13 +26,14 @@ int SetAppMode(const char *mode)
 * Module:                 Blade.exe
 * Entry point:            0x004278D5
 */
-#ifdef BLD_NATIVE
-const char *GetAppMode(void)
+
+const char *GetAppMode()
 {
-    const char *(*bld_proc)(void);
-    return bld_proc();
+    B_App * App = get_application();
+    assert(App);
+    return App->GetAppMode().String();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

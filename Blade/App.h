@@ -52,6 +52,7 @@ public:
         int load_world(const char *file_name);
         bool run_python_file(const char *file_name);
         int SetAppMode(const B_Name &mode);
+        const B_Name &GetAppMode();
         void prepare_level();
         bool bind_pred(const char *key, const char *pred);
         int set_listener_mode(int mode, const B_Vector &v);
