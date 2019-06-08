@@ -46,7 +46,7 @@ public:
         game_state_methods_t *methods;
         char unknownFields[20];
         world_t world;
-        void *unknown1824;
+        int nextEntitySuffix;
         array_t unknown1828;
         char unknownFields1840[28];
         B_Name world_file_name;

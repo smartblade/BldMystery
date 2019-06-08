@@ -65,13 +65,22 @@ void DoneLoadGame()
 * Module:                 Blade.exe
 * Entry point:            0x00427976
 */
-#ifdef BLD_NATIVE
+
 int SetSaveInfo(PyObject *info)
 {
-    int (*bld_proc)(PyObject *info);
-    return bld_proc(info);
+    int saveInfoFlag;
+    PyObject *data;
+    int nextEntitySuffix;
+    if (!PyArg_ParseTuple(info, "iO", &saveInfoFlag, &data))
+        return 0;
+    if (saveInfoFlag != 1)
+        return 0;
+    if (!PyArg_ParseTuple(data, "i", &nextEntitySuffix))
+        return 0;
+    gbl_game_state.nextEntitySuffix = nextEntitySuffix;
+    return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
