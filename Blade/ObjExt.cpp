@@ -101,13 +101,12 @@ PyObject *GetSaveInfo()
 * Module:                 Blade.exe
 * Entry point:            0x00427A0D
 */
-#ifdef BLD_NATIVE
+
 int SaveEntitiesData(const char *filename)
 {
-    int (*bld_proc)(const char *filename);
-    return bld_proc(filename);
+    return gbl_game_state.SaveEntitiesData(filename);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

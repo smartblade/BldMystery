@@ -42,6 +42,7 @@ class game_state_t
 public:
         void unknown_00439F5D();
         double get_time();
+        int SaveEntitiesData(const char *filename);
 
         game_state_methods_t *methods;
         char unknownFields[20];
