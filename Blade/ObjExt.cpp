@@ -86,13 +86,16 @@ int SetSaveInfo(PyObject *info)
 * Module:                 Blade.exe
 * Entry point:            0x004279E1
 */
-#ifdef BLD_NATIVE
-PyObject *GetSaveInfo(void)
+
+PyObject *GetSaveInfo()
 {
-    PyObject *(*bld_proc)(void);
-    return bld_proc();
+    PyObject *info;
+    int nextEntitySuffix;
+    nextEntitySuffix = gbl_game_state.nextEntitySuffix;
+    info = Py_BuildValue("(i,(i))", 1, nextEntitySuffix);
+    return info;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
