@@ -58,6 +58,20 @@ double game_state_t::get_time()
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x000043F98A
+* VC++ mangling:          ?LoadEntitiesData@game_state_t@@QAEHPBD@Z
+*/
+
+#ifdef BLD_NATIVE
+
+int game_state_t::LoadEntitiesData(const char *filename)
+{
+}
+
+#endif
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x0043FD82
 * VC++ mangling:          ?SaveEntitiesData@game_state_t@@QAEHPBD@Z
 */

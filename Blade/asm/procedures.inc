@@ -368,6 +368,8 @@ externdef ?unknown_00439F5D@game_state_t@@QAEXXZ: near
 l00439F5D equ ?unknown_00439F5D@game_state_t@@QAEXXZ
 externdef ?get_time@game_state_t@@QAENXZ: near
 l0043A6A4 equ ?get_time@game_state_t@@QAENXZ
+externdef ?LoadEntitiesData@game_state_t@@QAEHPBD@Z: near
+l0043F98A equ ?LoadEntitiesData@game_state_t@@QAEHPBD@Z
 externdef ?SaveEntitiesData@game_state_t@@QAEHPBD@Z: near
 l0043FD82 equ ?SaveEntitiesData@game_state_t@@QAEHPBD@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@PAVgame_state_t@@@Z: near

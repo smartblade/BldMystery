@@ -112,13 +112,12 @@ int SaveEntitiesData(const char *filename)
 * Module:                 Blade.exe
 * Entry point:            0x00427A20
 */
-#ifdef BLD_NATIVE
+
 int LoadEntitiesData(const char *filename)
 {
-    int (*bld_proc)(const char *filename);
-    return bld_proc(filename);
+    return gbl_game_state.LoadEntitiesData(filename);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
