@@ -282,13 +282,14 @@ const char *GetCurrentMap(void)
 * Module:                 Blade.exe
 * Entry point:            0x00429049
 */
-#ifdef BLD_NATIVE
+
 int SetCurrentMap(const char *map)
 {
-    int (*bld_proc)(const char *map);
-    return bld_proc(map);
+    B_App *App = get_application();
+    assert(App);
+    return App->set_current_map(map);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

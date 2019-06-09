@@ -16,7 +16,6 @@
 /EXPORT:GetRaceName
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:SetCurrentMap
 /EXPORT:UnBindPred
 /EXPORT:UnBindAll
 /EXPORT:Input
