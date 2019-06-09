@@ -124,7 +124,7 @@ public:
     B_WinApp(void *module, int nCmdShow, char *cmdLine, void *unknown);
 };
 
-class B_BladeApp/* : public B_WinApp*/
+class B_BladeApp : public B_WinApp
 {
 public:
     B_BladeApp(void *module, int nCmdShow, char *cmdLine);

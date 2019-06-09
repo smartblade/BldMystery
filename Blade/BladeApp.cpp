@@ -11,7 +11,7 @@
 
 B_App* create_application(void *module, int nCmdShow, char *cmdLine)
 {
-        B_App *new_application = (B_App *)new B_BladeApp(module, nCmdShow, cmdLine);
+        B_App *new_application = new B_BladeApp(module, nCmdShow, cmdLine);
         gbl_application = new_application;
 
         return gbl_application;
