@@ -171,13 +171,14 @@ int LoadCombustionData(const char *file_name)
 * Module:                 Blade.exe
 * Entry point:            0x0042819A
 */
-#ifdef BLD_NATIVE
-int ReassignCombustionData(void)
+
+int ReassignCombustionData()
 {
-    int (*bld_proc)(void);
-    return bld_proc();
+    B_App * App = get_application();
+    assert(App);
+    return App->ReassignCombustionData();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

@@ -10,7 +10,6 @@
 /EXPORT:LoadParticleSystemsData
 /EXPORT:SaveCombustionData
 /EXPORT:LoadCombustionData
-/EXPORT:ReassignCombustionData
 /EXPORT:SaveAnmRaceData
 /EXPORT:LoadAnmRaceData
 /EXPORT:GetnRaces

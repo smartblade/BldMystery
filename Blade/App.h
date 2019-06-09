@@ -33,7 +33,7 @@ public:
         virtual void load_level(const char *map);
         virtual void read_level(const char *file_name);
         virtual void unknown_method040();
-        virtual void *unknown_method044();
+        virtual int ReassignCombustionData();
         virtual void clear_level(int flag);
         virtual void set_py_interactive_string(const char *str);
         virtual const char *input(const char *text);
