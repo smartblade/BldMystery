@@ -55,6 +55,7 @@ public:
         const B_Name &GetAppMode();
         void BeginLoadGame();
         void DoneLoadGame();
+        const char *GetCmdLine();
         void prepare_level();
         bool bind_pred(const char *key, const char *pred);
         int set_listener_mode(int mode, const B_Vector &v);
@@ -103,7 +104,8 @@ public:
         float time;
         char unknownFields310[6];
         boolean no_sleep;
-        char unknownFields320[24];
+        char unknownFields320[20];
+        const char *commandLine;
         B_Name mode;
         char *map_to_load;
         char unknownFields10[16];

@@ -256,13 +256,14 @@ int LoadAnmSoundData(const char *file_name)
 * Module:                 Blade.exe
 * Entry point:            0x00428FD6
 */
-#ifdef BLD_NATIVE
-const char *GetCommandLine(void)
+
+const char *GetCommandLine()
 {
-    const char *(*bld_proc)(void);
-    return bld_proc();
+    B_App *App = get_application();
+    assert(App);
+    return App->GetCmdLine();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
