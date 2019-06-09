@@ -269,13 +269,14 @@ const char *GetCommandLine()
 * Module:                 Blade.exe
 * Entry point:            0x0042900C
 */
-#ifdef BLD_NATIVE
+
 const char *GetCurrentMap(void)
 {
-    const char *(*bld_proc)(void);
-    return bld_proc();
+    B_App *App = get_application();
+    assert(App);
+    return App->mapName.String();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
