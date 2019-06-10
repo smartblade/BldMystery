@@ -17,7 +17,7 @@ class B_App
 public:
         virtual void read_arguments(const char *arguments);
         virtual void string_split(
-                const char *str, const char *sep, array_t *tokens);
+                const char *str, const char *sep, array_t<B_Name*> *tokens);
         virtual bool init_python_path();
         virtual void process_message();
         virtual void *unknown_method010(void *);

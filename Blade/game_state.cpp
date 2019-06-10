@@ -104,12 +104,12 @@ B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs)
 
         gs->unknown187C = 0;
         gs->unknown1880 = 0;
-        array_t *atms = &gs->atmospheres;
+        array_t<atmosphere_t *> *atms = &gs->atmospheres;
         if (atms->num_alloc != 0)
         {
                 for (unsigned int i = 0; i < atms->size; i++)
                 {
-                        atmosphere_t * atm = (atmosphere_t *)atms->elements[i];
+                        atmosphere_t * atm = atms->elements[i];
                         delete atm;
                 }
                 delete(atms->elements);
@@ -121,11 +121,11 @@ B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs)
         atms->num_alloc = ((atms->increment + atms->size - 1) / atms->increment) * atms->increment;
         if (atms->num_alloc != 0)
         {
-                atms->elements = (void **)new atmosphere_t * [atms->num_alloc];
+                atms->elements = new atmosphere_t * [atms->num_alloc];
                 for(unsigned int i = 0; i < atms->size; i++)
                 {
                         atms->elements[i] = new atmosphere_t();
-                        file >> (atmosphere_t *)atms->elements[i];
+                        file >> atms->elements[i];
                 }
         }
 
@@ -141,7 +141,7 @@ B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs)
         read_points(&file, &gbl_world_points);
         read_sectors(&file, &gs->sectors);
 
-        array_t *lights = &gs->lights;
+        array_t<light_t *> *lights = &gs->lights;
         if (lights->num_alloc != 0)
         {
                 for (unsigned int i = 0; i < lights->size; i++)
@@ -160,13 +160,13 @@ B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs)
         for(unsigned int i = 0; i < num_lights; i++)
         {
                 light_t *light = read_light(&file);
-                array_t *lights = &gs->lights;
+                array_t<light_t *> *lights = &gs->lights;
                 if (lights->num_alloc <= lights->size)
                 {
                         lights->num_alloc += lights->increment;
                         if (lights->size != 0)
                         {
-                                void **elements = new void *[lights->num_alloc];
+                                light_t **elements = new light_t *[lights->num_alloc];
                                 for(unsigned int j = 0; j < lights->size; j++)
                                 {
                                         elements[j] = lights->elements[j]; 
@@ -176,7 +176,7 @@ B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs)
                         }
                         else
                         {
-                                lights->elements = new void *[lights->num_alloc];
+                                lights->elements = new light_t *[lights->num_alloc];
                         }
                 }
                 lights->elements[i] = light;
@@ -185,7 +185,7 @@ B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs)
 
         for(unsigned int i = 0; i < num_lights; i++)
         {
-                light_t *light = (light_t *)gs->lights.elements[i];
+                light_t *light = gs->lights.elements[i];
                 light->unknown008();
         }
 
@@ -193,7 +193,7 @@ B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs)
 
         for(unsigned int i = 0; i < gs->sectors.size; i++)
         {
-                sector_t *sector = (sector_t *)gs->sectors.elements[i];
+                sector_t *sector = gs->sectors.elements[i];
                 file >> sector->groupId;
         }
 

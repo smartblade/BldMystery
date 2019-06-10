@@ -3,14 +3,18 @@
 
 #define ARRAY_H
 
-typedef struct {
-        void *methods;
-        void **elements;
+template<class TYPE>
+class array_t
+{
+public:
+        virtual ~array_t();
+
+        TYPE *elements;
         unsigned int size;
         int increment;
         unsigned int num_alloc;
         int unknown14;
-} array_t;
+};
 
 
 #endif /* ARRAY_H */

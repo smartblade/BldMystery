@@ -234,7 +234,7 @@ void B_App::load_level(const char *script)
         int hash_value;
         char *str_ptr;
         unsigned int i;
-        array_t *array;
+        array_t<entity_t *> *array;
         world_t *world;
         person_t *player1;
         camera_t *camera;
@@ -299,7 +299,7 @@ void B_App::load_level(const char *script)
                         foundIndex = -1;
                         for(i = 0; i < array->size; i++) {
 
-                                str1 = ((B_NamedObj *)array->elements[i])->Id();
+                                str1 = array->elements[i]->Id();
                                 str2 = PLAYER;
 
                                 for(;;) {
@@ -328,7 +328,7 @@ void B_App::load_level(const char *script)
                         }
 
                         if (foundIndex != -1) {
-                                world->foundEntity = (entity_t *)array->elements[foundIndex];
+                                world->foundEntity = array->elements[foundIndex];
                                 player1 = (person_t *)world->foundEntity;
                         } else
                                 player1 = NULL;
@@ -372,7 +372,7 @@ void B_App::load_level(const char *script)
                         foundIndex = -1;
                         for(i = 0; i < array->size; i++) {
 
-                                str1 = ((B_NamedObj *)array->elements[i])->Id();
+                                str1 = array->elements[i]->Id();
                                 str2 = PLAYER;
 
                                 for(;;) {
@@ -401,12 +401,12 @@ void B_App::load_level(const char *script)
                         }
 
                         if (foundIndex != -1) {
-                                world->foundEntity = (entity_t*)array->elements[foundIndex];
+                                world->foundEntity = array->elements[foundIndex];
                                 player1 = (person_t *)world->foundEntity;
                         } else
                                 player1 = NULL;
                 }
-                this->client = (entity_t *) player1;
+                this->client = player1;
         }
 
         if (this->mode == "Game") {
@@ -485,7 +485,7 @@ void B_App::read_level(const char * file_name)
                                         gbl_anims.num_alloc += gbl_anims.increment;
                                         if (gbl_anims.size != 0)
                                         {
-                                                void **elements = new void *[gbl_anims.num_alloc];
+                                                anim_t **elements = new anim_t *[gbl_anims.num_alloc];
                                                 for(unsigned int i = 0; i < gbl_anims.size; i++)
                                                 {
                                                         elements[i] = gbl_anims.elements[i];
@@ -495,7 +495,7 @@ void B_App::read_level(const char * file_name)
                                         }
                                         else
                                         {
-                                                gbl_anims.elements = new void *[gbl_anims.num_alloc];
+                                                gbl_anims.elements = new anim_t *[gbl_anims.num_alloc];
                                         }
                                 }
                                 gbl_anims.elements[gbl_anims.size] = anim;

@@ -7,6 +7,8 @@
 #include "array.h"
 #include "entity.h"
 #include "atmosphere.h"
+#include "sector.h"
+#include "light.h"
 #include "vector.h"
 
 
@@ -20,7 +22,7 @@ typedef struct {
 
 typedef struct {
         int numEntities;
-        array_t hash[256];
+        array_t<entity_t *> hash[256];
         int unknown1804;
         entity_t *foundEntity;
 } world_t;
@@ -49,21 +51,21 @@ public:
         char unknownFields[20];
         world_t world;
         int nextEntitySuffix;
-        array_t unknown1828;
+        array_t<int> unknown1828;
         char unknownFields1840[28];
         B_Name world_file_name;
         char unknownFields1864[24];
         int unknown187C;
         int unknown1880;
         char unknownFields1884[40];
-        array_t atmospheres;
-        array_t sectors;
+        array_t<atmosphere_t *> atmospheres;
+        array_t<sector_t *> sectors;
         char unknownFields18DC[28];
         unknown_18F8_class unknown18F8;
         B_Vector unknown18FC;
         double unknown1914;
         void *unknown191C;
-        array_t lights;
+        array_t<light_t *> lights;
         char unknownFields1938[28];
         B_Vector initial_point_position;
         B_Vector initial_point_orientation;

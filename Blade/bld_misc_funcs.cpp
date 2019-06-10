@@ -11,7 +11,7 @@
 
 #ifdef BLD_NATIVE
 
-B_IDataFile * read_points(B_IDataFile *file, array_t *points)
+B_IDataFile * read_points(B_IDataFile *file, array_t<world_point_t *> *points)
 {
     return NULL;
 }
@@ -42,7 +42,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_Vector &point)
 
 #ifdef BLD_NATIVE
 
-B_IDataFile * read_sectors(B_IDataFile *file, array_t *sectors)
+B_IDataFile * read_sectors(B_IDataFile *file, array_t<sector_t *> *sectors)
 {
     return NULL;
 }
