@@ -208,13 +208,12 @@ int LoadAnmRaceData(const char *file_name)
 * Module:                 Blade.exe
 * Entry point:            0x004289E0
 */
-#ifdef BLD_NATIVE
-int GetnRaces(void)
+
+int GetnRaces()
 {
-    int (*bld_proc)(void);
-    return bld_proc();
+    return gbl_races.size;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

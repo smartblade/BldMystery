@@ -7,6 +7,10 @@
 
 class anim_t;
 
+class B_Race : public B_NamedObj
+{
+};
+
 extern B_IDataFile& operator >>(B_IDataFile& file, B_Vector &point);
 
 #ifdef __cplusplus
@@ -46,6 +50,12 @@ extern array_t<anim_t *> gbl_anims;
 * Data address:           0x007C8ED0
 */
 extern sound_t *gbl_sound_device;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x007C9878
+*/
+extern array_t<B_Race *> gbl_races;
 
 /*
 * Module:                 Blade.exe

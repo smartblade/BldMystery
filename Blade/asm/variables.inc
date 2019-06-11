@@ -6,6 +6,8 @@ public _gbl_anims
 g007072A8 equ _gbl_anims
 public _gbl_sound_device
 g007C8ED0 equ _gbl_sound_device
+public _gbl_races
+g007C9878 equ _gbl_races
 public _client_map_name
 g007EE018 equ _client_map_name
 public _net_game_name
