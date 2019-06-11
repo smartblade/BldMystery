@@ -219,13 +219,17 @@ int GetnRaces()
 * Module:                 Blade.exe
 * Entry point:            0x004289EA
 */
-#ifdef BLD_NATIVE
+
 const char *GetRaceName(int index)
 {
-    const char *(*bld_proc)(int index);
-    return bld_proc(index);
+    if (index >= 0 && index < gbl_races.size)
+    {
+        B_Race *race = gbl_races.elements[index];
+        return race->Id().String();
+    }
+    return NULL;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

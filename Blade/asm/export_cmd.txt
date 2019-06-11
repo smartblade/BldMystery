@@ -12,7 +12,6 @@
 /EXPORT:LoadCombustionData
 /EXPORT:SaveAnmRaceData
 /EXPORT:LoadAnmRaceData
-/EXPORT:GetRaceName
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
 /EXPORT:UnBindPred
