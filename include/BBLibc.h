@@ -89,6 +89,23 @@ LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_Color &color);
 LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_ParticleGType &particleType);
 
 
+class LIB_EXP B_ODataFile
+{
+public:
+        B_ODataFile(const char *file_name, int flags);
+        ~B_ODataFile();
+        unsigned int OK() const { return fd != -1;}
+
+private:
+        int fd;
+        char *file_name;
+        char unknown_fields[16392];
+};
+
+LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const unsigned int &i);
+LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const B_ParticleGType &particleType);
+
+
 struct B_ElementCSV
 {
 };

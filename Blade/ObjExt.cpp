@@ -123,13 +123,20 @@ int LoadEntitiesData(const char *filename)
 * Module:                 Blade.exe
 * Entry point:            0x00427A33
 */
-#ifdef BLD_NATIVE
+
 int SaveParticleSystemsData(const char *filename)
 {
-    int (*bld_proc)(const char *filename);
-    return bld_proc(filename);
+    B_ODataFile file(filename, O_BINARY);
+    if (!file.OK())
+        return 0;
+    file << gbl_particle_types.size;
+    for (unsigned int i = 0; i < gbl_particle_types.size; i++)
+    {
+        file << *gbl_particle_types.elements[i];
+    }
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
