@@ -5,7 +5,7 @@
 
 #include <fcntl.h>
 #include <export.h>
-#include "array.h"
+#include <array.h>
 
 
 class LIB_EXP B_Color {

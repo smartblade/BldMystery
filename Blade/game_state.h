@@ -4,7 +4,7 @@
 #define GAME_STATE_H
 
 
-#include "array.h"
+#include <array.h>
 #include "entity.h"
 #include "atmosphere.h"
 #include "sector.h"

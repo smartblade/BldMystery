@@ -8,7 +8,7 @@
 #include "BBLibc.h"
 #include "entity.h"
 #include "game_clock.h"
-#include "array.h"
+#include <array.h>
 #include "Location.h"
 
 
