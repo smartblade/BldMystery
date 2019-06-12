@@ -7,7 +7,6 @@
 /EXPORT:CDPause
 /EXPORT:CDSetCallBack
 /EXPORT:SaveParticleSystemsData
-/EXPORT:LoadParticleSystemsData
 /EXPORT:SaveCombustionData
 /EXPORT:LoadCombustionData
 /EXPORT:SaveAnmRaceData

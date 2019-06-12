@@ -47,6 +47,12 @@ extern array_t<anim_t *> gbl_anims;
 
 /*
 * Module:                 Blade.exe
+* Data address:           0x00736158
+*/
+extern array_t<B_ParticleGType *> gbl_particle_types;
+
+/*
+* Module:                 Blade.exe
 * Data address:           0x007C8ED0
 */
 extern sound_t *gbl_sound_device;

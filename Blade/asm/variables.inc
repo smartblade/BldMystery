@@ -4,6 +4,8 @@ public _gbl_game_state
 g005E0B88 equ _gbl_game_state
 public _gbl_anims
 g007072A8 equ _gbl_anims
+public _gbl_particle_types
+g00736158 equ _gbl_particle_types
 public _gbl_sound_device
 g007C8ED0 equ _gbl_sound_device
 public _gbl_races

@@ -135,13 +135,38 @@ int SaveParticleSystemsData(const char *filename)
 * Module:                 Blade.exe
 * Entry point:            0x00427B03
 */
-#ifdef BLD_NATIVE
+
 int LoadParticleSystemsData(const char *filename)
 {
-    int (*bld_proc)(const char *filename);
-    return bld_proc(filename);
+    B_IDataFile file(filename, O_BINARY);
+    if (!file.OK())
+        return 0;
+    if (gbl_particle_types.num_alloc != 0)
+    {
+            for (unsigned int i = 0; i < gbl_particle_types.size; i++)
+            {
+                    B_ParticleGType * p_type = gbl_particle_types.elements[i];
+                    delete p_type;
+            }
+            delete(gbl_particle_types.elements);
+            gbl_particle_types.elements = NULL;
+            gbl_particle_types.size = 0;
+            gbl_particle_types.num_alloc = 0;
+    }
+    file >> gbl_particle_types.size;
+    gbl_particle_types.num_alloc = ((gbl_particle_types.increment + gbl_particle_types.size - 1) / gbl_particle_types.increment) * gbl_particle_types.increment;
+    if (gbl_particle_types.num_alloc != 0)
+    {
+        gbl_particle_types.elements = new B_ParticleGType * [gbl_particle_types.num_alloc];
+        for(unsigned int i = 0; i < gbl_particle_types.size; i++)
+        {
+            gbl_particle_types.elements[i] = new B_ParticleGType();
+            file >> *gbl_particle_types.elements[i];
+        }
+    }
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

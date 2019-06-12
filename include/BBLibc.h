@@ -5,6 +5,7 @@
 
 #include <fcntl.h>
 #include <export.h>
+#include "array.h"
 
 
 class LIB_EXP B_Color {
@@ -40,6 +41,19 @@ private:
         B_Name name;
 };
 
+class B_ParticleGType : public B_NamedObj
+{
+public:
+    virtual ~B_ParticleGType();
+    B_ParticleGType() : unknown0024(-1), unknown0028(0)
+    {
+    }
+private:
+    array_t<double> a00C;
+    int unknown0024;
+    int unknown0028;
+};
+
 
 class LIB_EXP B_MessageManager
 {
@@ -72,6 +86,7 @@ LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, unsigned long &i);
 LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, float &f);
 LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_NamedObj &named_obj);
 LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_Color &color);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_ParticleGType &particleType);
 
 
 struct B_ElementCSV
