@@ -110,6 +110,20 @@ void camera_t::unknown_004EB1AA(void *)
 
 #endif
 
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004F6C54
+* VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABVB_Combustion@@@Z
+*/
+
+#ifdef BLD_NATIVE
+
+B_ODataFile& operator <<(B_ODataFile &file, const B_Combustion &combustion)
+{
+    return file;
+}
+
+#endif
 
 
 /*

@@ -179,13 +179,20 @@ int LoadParticleSystemsData(const char *filename)
 * Module:                 Blade.exe
 * Entry point:            0x00427DE8
 */
-#ifdef BLD_NATIVE
+
 int SaveCombustionData(const char *file_name)
 {
-    int (*bld_proc)(const char *file_name);
-    return bld_proc(file_name);
+    B_ODataFile file(file_name, O_BINARY);
+    if (!file.OK())
+        return 0;
+    file << gbl_combustion_data.size;
+    for (unsigned int i = 0; i < gbl_combustion_data.size; i++)
+    {
+        file << *gbl_combustion_data.elements[i];
+    }
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

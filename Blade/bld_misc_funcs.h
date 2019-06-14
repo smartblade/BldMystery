@@ -11,7 +11,14 @@ class B_Race : public B_NamedObj
 {
 };
 
+class B_Combustion : public B_NamedObj
+{
+};
+
 extern B_IDataFile& operator >>(B_IDataFile& file, B_Vector &point);
+extern B_ODataFile& operator <<(
+    B_ODataFile &file,
+    const B_Combustion &combustion);
 
 #ifdef __cplusplus
 extern "C" {
@@ -62,6 +69,12 @@ extern sound_t *gbl_sound_device;
 * Data address:           0x007C9878
 */
 extern array_t<B_Race *> gbl_races;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x007D1650
+*/
+extern array_t<B_Combustion *> gbl_combustion_data;
 
 /*
 * Module:                 Blade.exe
