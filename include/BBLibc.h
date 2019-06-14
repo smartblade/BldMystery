@@ -45,7 +45,7 @@ class B_ParticleGType : public B_NamedObj
 {
 public:
     virtual ~B_ParticleGType();
-    B_ParticleGType() : unknown0024(-1), unknown0028(0)
+    B_ParticleGType() : a00C(1, 0), unknown0024(-1), unknown0028(0)
     {
     }
 private:

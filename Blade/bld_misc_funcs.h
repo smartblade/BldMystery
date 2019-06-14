@@ -13,9 +13,18 @@ class B_Race : public B_NamedObj
 
 class B_Combustion : public B_NamedObj
 {
+public:
+    B_Combustion() : a00C(16, 1), unknown0024(0)
+    {
+    }
+private:
+    array_t<void *> a00C;
+    int unknown0024;
+    char unknown_fields[52];
 };
 
 extern B_IDataFile& operator >>(B_IDataFile& file, B_Vector &point);
+extern B_IDataFile& operator >>(B_IDataFile& file, B_Combustion &combustion);
 extern B_ODataFile& operator <<(
     B_ODataFile &file,
     const B_Combustion &combustion);

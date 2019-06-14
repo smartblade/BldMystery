@@ -18,13 +18,13 @@ public:
             }
         }
 
-        array_t()
+        array_t(int increment, int unknown14)
         {
             elements = NULL;
             size = 0;
-            increment = 1;
+            this->increment = increment;
             num_alloc = 0;
-            unknown14 = 0;
+            this->unknown14 = unknown14;
         }
 
         TYPE *elements;

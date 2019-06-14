@@ -598,6 +598,8 @@ externdef ??0camera_t@@QAE@HABVB_Name@@@Z: near
 l004EAD20 equ ??0camera_t@@QAE@HABVB_Name@@@Z
 externdef ?unknown_004EB1AA@camera_t@@QAEXPAX@Z: near
 l004EB1AA equ ?unknown_004EB1AA@camera_t@@QAEXPAX@Z
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Combustion@@@Z: near
+l004F69A4 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Combustion@@@Z
 externdef ??6@YAAAVB_ODataFile@@AAV0@ABVB_Combustion@@@Z: near
 l004F6C54 equ ??6@YAAAVB_ODataFile@@AAV0@ABVB_Combustion@@@Z
 externdef _GetSplinePos: near

@@ -198,13 +198,38 @@ int SaveCombustionData(const char *file_name)
 * Module:                 Blade.exe
 * Entry point:            0x00427EB7
 */
-#ifdef BLD_NATIVE
+
 int LoadCombustionData(const char *file_name)
 {
-    int (*bld_proc)(const char *file_name);
-    return bld_proc(file_name);
+    B_IDataFile file(file_name, O_BINARY);
+    if (!file.OK())
+        return 0;
+    if (gbl_combustion_data.num_alloc != 0)
+    {
+            for (unsigned int i = 0; i < gbl_combustion_data.size; i++)
+            {
+                    B_Combustion * comb = gbl_combustion_data.elements[i];
+                    delete comb;
+            }
+            delete(gbl_combustion_data.elements);
+            gbl_combustion_data.elements = NULL;
+            gbl_combustion_data.size = 0;
+            gbl_combustion_data.num_alloc = 0;
+    }
+    file >> gbl_combustion_data.size;
+    gbl_combustion_data.num_alloc = ((gbl_combustion_data.increment + gbl_combustion_data.size - 1) / gbl_combustion_data.increment) * gbl_combustion_data.increment;
+    if (gbl_combustion_data.num_alloc != 0)
+    {
+        gbl_combustion_data.elements = new B_Combustion * [gbl_combustion_data.num_alloc];
+        for(unsigned int i = 0; i < gbl_combustion_data.size; i++)
+        {
+            gbl_combustion_data.elements[i] = new B_Combustion();
+            file >> *gbl_combustion_data.elements[i];
+        }
+    }
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
