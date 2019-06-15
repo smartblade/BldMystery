@@ -760,12 +760,12 @@ int EndRecordingDemo(const char *name)
 * Module:                 Blade.exe
 * Entry point:            0x00429936
 */
-#ifdef BLD_NATIVE// TODO fix prototype
-void PlayDemo()
+
+int PlayDemo(const char *name)
 {
-        assert("PlayDemo" == NULL);
+    return gbl_en_control.PlayDemo(name);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

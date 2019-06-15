@@ -1020,6 +1020,8 @@ externdef ?StartRecordingDemo@EnControl@@QAEHXZ: near
 l0059650C equ ?StartRecordingDemo@EnControl@@QAEHXZ
 externdef ?EndRecordingDemo@EnControl@@QAEHPBD@Z: near
 l0059654C equ ?EndRecordingDemo@EnControl@@QAEHPBD@Z
+externdef ?PlayDemo@EnControl@@QAEHPBD@Z: near
+l005967DD equ ?PlayDemo@EnControl@@QAEHPBD@Z
 externdef _GetTrailByName: near
 l00596E90 equ _GetTrailByName
 externdef _GetTrailIntProperty: near

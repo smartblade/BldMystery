@@ -10,7 +10,6 @@
 /EXPORT:LoadAnmRaceData
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:PlayDemo
 /EXPORT:DeactivateInput
 /EXPORT:ActivateInput
 /EXPORT:OutSound
