@@ -214,6 +214,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\en_control.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\game_state.cpp"
 				>
 			</File>
@@ -253,6 +257,10 @@
 			</File>
 			<File
 				RelativePath=".\bld_misc_funcs.h"
+				>
+			</File>
+			<File
+				RelativePath=".\en_control.h"
 				>
 			</File>
 			<File

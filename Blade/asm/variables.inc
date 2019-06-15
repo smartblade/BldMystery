@@ -12,6 +12,8 @@ public _gbl_races
 g007C9878 equ _gbl_races
 public _gbl_combustion_data
 g007D1650 equ _gbl_combustion_data
+public _gbl_en_control
+g007E93B8 equ _gbl_en_control
 public _client_map_name
 g007EE018 equ _client_map_name
 public _net_game_name

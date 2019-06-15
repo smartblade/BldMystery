@@ -1016,6 +1016,8 @@ externdef _SetCharStringProperty: near
 l00586614 equ _SetCharStringProperty
 externdef _SetCharFuncProperty: near
 l005867AB equ _SetCharFuncProperty
+externdef ?StartRecordingDemo@EnControl@@QAEHXZ: near
+l0059650C equ ?StartRecordingDemo@EnControl@@QAEHXZ
 externdef _GetTrailByName: near
 l00596E90 equ _GetTrailByName
 externdef _GetTrailIntProperty: near

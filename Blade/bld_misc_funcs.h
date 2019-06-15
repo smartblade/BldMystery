@@ -4,6 +4,7 @@
 #include "sound_device.h"
 #include <bld_abstract_net.h>
 #include "light.h"
+#include "en_control.h"
 
 class anim_t;
 
@@ -84,6 +85,12 @@ extern array_t<B_Race *> gbl_races;
 * Data address:           0x007D1650
 */
 extern array_t<B_Combustion *> gbl_combustion_data;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x007E93B8
+*/
+extern EnControl gbl_en_control;
 
 /*
 * Module:                 Blade.exe

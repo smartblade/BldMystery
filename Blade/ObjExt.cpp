@@ -738,12 +738,12 @@ void CloseLevel(const char *statement, const char *auxText)
 * Module:                 Blade.exe
 * Entry point:            0x00429914
 */
-#ifdef BLD_NATIVE// TODO fix prototype
-void StartRecordingDemo()
+
+int StartRecordingDemo()
 {
-        assert("StartRecordingDemo" == NULL);
+    return gbl_en_control.StartRecordingDemo();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
