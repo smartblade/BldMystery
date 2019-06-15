@@ -713,13 +713,13 @@ unsigned int ReadBitMap(const char *filename, const char *internalname)
 * Module:                 Blade.exe
 * Entry point:            0x00429863
 */
-#ifdef BLD_NATIVE
-void ReadAlphaBitMap(const char *file_name, const char *internal_name)
+
+unsigned int ReadAlphaBitMap(const char *filename, const char *internalname)
 {
-    void (*bld_proc)(const char *file_name, const char *internal_name);
-    bld_proc(file_name, internal_name);
+    assert(filename);
+    return B_resource_manager.LocateResourceIn(filename, &B_Name(internalname), 4);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
