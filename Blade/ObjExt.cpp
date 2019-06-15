@@ -671,13 +671,16 @@ const char *Input(const char *text)
 * Module:                 Blade.exe
 * Entry point:            0x00429733
 */
-#ifdef BLD_NATIVE
-void MarkLevelToLoad(const char *dir_name)
+
+int MarkLevelToLoad(const char *filename)
 {
-    void (*bld_proc)(const char *dir_name);
-    bld_proc(dir_name);
+    assert(filename);
+    B_App *App = get_application();
+    assert(App);
+    App->mark_level_to_load(filename);
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

@@ -10,7 +10,6 @@
 /EXPORT:LoadAnmRaceData
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:MarkLevelToLoad
 /EXPORT:ReadLevel
 /EXPORT:ReadBitMap
 /EXPORT:ReadAlphaBitMap
