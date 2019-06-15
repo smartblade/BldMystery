@@ -29,7 +29,7 @@ public:
         virtual void *unknown_method028();
         virtual int quit();
         virtual void mark_level_to_load(const char *map);
-        virtual void close_level(const char *command, const char *map);
+        virtual void close_level(const char *statement, const char *auxText);
         virtual void load_level(const char *map);
         virtual void read_level(const char *file_name);
         virtual void unknown_method040();
@@ -110,7 +110,9 @@ public:
         const char *commandLine;
         B_Name mode;
         char *map_to_load;
-        char unknownFields10[16];
+        char *pyStatement;
+        char *auxText;
+        char unknownFields10[8];
         B_Name mapName;
         char unknownFields2[424];
         void *window;

@@ -1038,7 +1038,7 @@ LIB_EXP void UnBindAll(void);
 LIB_EXP const char *Input(const char *text);
 LIB_EXP int MarkLevelToLoad(const char *filename);
 LIB_EXP int ReadLevel(const char *filename);
-LIB_EXP void CloseLevel(const char *statement1, const char *statement2);
+LIB_EXP void CloseLevel(const char *statement, const char *auxText);
 LIB_EXP int OutSound(int soundId, double x, double y, double z, int unknown);
 LIB_EXP int SetShowSounds(int showSounds);
 LIB_EXP int nSounds(void);

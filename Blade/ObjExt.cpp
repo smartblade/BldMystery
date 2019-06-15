@@ -725,13 +725,14 @@ unsigned int ReadAlphaBitMap(const char *filename, const char *internalname)
 * Module:                 Blade.exe
 * Entry point:            0x004298D3
 */
-#ifdef BLD_NATIVE
-void CloseLevel(const char *statement1, const char *statement2)
+
+void CloseLevel(const char *statement, const char *auxText)
 {
-    void (*bld_proc)(const char *statement1, const char *statement2);
-    bld_proc(statement1, statement2);
+    B_App *App = get_application();
+    assert(App);
+    App->close_level(statement, auxText);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
