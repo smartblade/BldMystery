@@ -701,13 +701,13 @@ int ReadLevel(const char *filename)
 * Module:                 Blade.exe
 * Entry point:            0x004297F3
 */
-#ifdef BLD_NATIVE
-void ReadBitMap(const char *file_name, const char *internal_name)
+
+unsigned int ReadBitMap(const char *filename, const char *internalname)
 {
-    void (*bld_proc)(const char *file_name, const char *internal_name);
-    bld_proc(file_name, internal_name);
+    assert(filename);
+    return B_resource_manager.LocateResourceIn(filename, &B_Name(internalname), 3);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

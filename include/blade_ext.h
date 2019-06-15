@@ -1044,7 +1044,7 @@ LIB_EXP int SetShowSounds(int showSounds);
 LIB_EXP int nSounds(void);
 LIB_EXP const char *GetSoundName(int soundId);
 LIB_EXP const char *GetSoundFileName(int soundId);
-LIB_EXP void ReadBitMap(const char *file_name, const char *internal_name);
+LIB_EXP unsigned int ReadBitMap(const char *filename, const char *internalname);
 LIB_EXP void ReadAlphaBitMap(const char *file_name, const char *internal_name);
 LIB_EXP void SetSun(int exists, double x, double y, double z);
 LIB_EXP int InsideAA(int AA, double x, double y, double z);
