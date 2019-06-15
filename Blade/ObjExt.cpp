@@ -686,13 +686,16 @@ int MarkLevelToLoad(const char *filename)
 * Module:                 Blade.exe
 * Entry point:            0x00429793
 */
-#ifdef BLD_NATIVE
-void ReadLevel(const char *file_name)
+
+int ReadLevel(const char *filename)
 {
-    void (*bld_proc)(const char *file_name);
-    bld_proc(file_name);
+    assert(filename);
+    B_App *App = get_application();
+    assert(App);
+    App->read_level(filename);
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
