@@ -14,7 +14,7 @@ class B_Race : public B_NamedObj
 class B_Combustion : public B_NamedObj
 {
 public:
-    B_Combustion() : a00C(16, 1), unknown0024(0)
+    B_Combustion() : unknown0024(0)
     {
     }
 private:
