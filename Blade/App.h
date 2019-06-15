@@ -79,6 +79,7 @@ public:
         );
         double GetTimeActionHeld(const char *action);
         bool UnBindPred(const char *key, const char *pred);
+        void UnBindAll();
 
         char unknownFields1[24];
         boolean bUnknown01C;

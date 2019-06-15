@@ -733,6 +733,21 @@ int B_App::AssocKey(
 
 #endif
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004155D9
+* VC++ mangling:          ?UnBindAll@B_App@@QAEXXZ
+*/
+
+#ifdef BLD_NATIVE
+
+void B_App::UnBindAll()
+{
+}
+
+#endif
+
 /*
 ................................................................................
 ................................................................................

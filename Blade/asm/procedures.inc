@@ -66,6 +66,8 @@ externdef ?UnBind@B_App@@QAE_NPBDPAU_object@@@Z: near
 l00415548 equ ?UnBind@B_App@@QAE_NPBDPAU_object@@@Z
 externdef ?AssocKey@B_App@@QAEHPBD00H@Z: near
 l004155AE equ ?AssocKey@B_App@@QAEHPBD00H@Z
+externdef ?UnBindAll@B_App@@QAEXXZ: near
+l004155D9 equ ?UnBindAll@B_App@@QAEXXZ
 externdef ?run_python_file@B_App@@QAE_NPBD@Z: near
 l00415759 equ ?run_python_file@B_App@@QAE_NPBD@Z
 externdef ?load_world@B_App@@QAEHPBD@Z: near

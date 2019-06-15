@@ -645,13 +645,14 @@ int UnBindPred(const char *key, const char *pred)
 * Module:                 Blade.exe
 * Entry point:            0x004296C0
 */
-#ifdef BLD_NATIVE
-void UnBindAll(void)
+
+void UnBindAll()
 {
-    void (*bld_proc)(void);
-    bld_proc();
+    B_App *App = get_application();
+    assert(App);
+    App->UnBindAll();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
