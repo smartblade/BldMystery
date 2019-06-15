@@ -1033,7 +1033,7 @@ LIB_EXP int Bind2(
         const char *subact2, int unknown
 );
 LIB_EXP int UnBind(const char *key, PyObject *proc);
-LIB_EXP int UnBindPred(const char *action_name, const char *predproc);
+LIB_EXP int UnBindPred(const char *key, const char *pred);
 LIB_EXP void UnBindAll(void);
 LIB_EXP const char *Input(const char *text);
 LIB_EXP void MarkLevelToLoad(const char *dir_name);

@@ -626,20 +626,20 @@ int BindPred(const char *key, const char *pred)
 }
 
 
-
-
-
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00429641
 */
-#ifdef BLD_NATIVE
-int UnBindPred(const char *action_name, const char *predproc)
+
+int UnBindPred(const char *key, const char *pred)
 {
-    int (*bld_proc)(const char *action_name, const char *predproc);
-    return bld_proc(action_name, predproc);
+    assert(key);
+    assert(pred);
+    B_App *App = get_application();
+    assert(App);
+    return App->UnBindPred(key, pred);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

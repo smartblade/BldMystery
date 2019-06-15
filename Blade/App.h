@@ -78,6 +78,7 @@ public:
             const char *subact2, int unknown
         );
         double GetTimeActionHeld(const char *action);
+        bool UnBindPred(const char *key, const char *pred);
 
         char unknownFields1[24];
         boolean bUnknown01C;

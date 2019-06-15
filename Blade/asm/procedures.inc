@@ -60,6 +60,8 @@ externdef ?Bind2@B_App@@QAEXPBD00H@Z: near
 l00415471 equ ?Bind2@B_App@@QAEXPBD00H@Z
 externdef ?bind_pred@B_App@@QAE_NPBD0@Z: near
 l0041549C equ ?bind_pred@B_App@@QAE_NPBD0@Z
+externdef ?UnBindPred@B_App@@QAE_NPBD0@Z: near
+l004154F2 equ ?UnBindPred@B_App@@QAE_NPBD0@Z
 externdef ?UnBind@B_App@@QAE_NPBDPAU_object@@@Z: near
 l00415548 equ ?UnBind@B_App@@QAE_NPBDPAU_object@@@Z
 externdef ?AssocKey@B_App@@QAEHPBD00H@Z: near
