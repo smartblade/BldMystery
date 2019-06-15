@@ -23,6 +23,22 @@ int EnControl::StartRecordingDemo()
 
 #endif
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0059654C
+* VC++ mangling:          ?EndRecordingDemo@EnControl@@QAEHPBD@Z
+*/
+
+#ifdef BLD_NATIVE
+
+int EnControl::EndRecordingDemo(const char *name)
+{
+    return 0;
+}
+
+#endif
+
 /*
 ................................................................................
 ................................................................................

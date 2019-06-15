@@ -749,12 +749,12 @@ int StartRecordingDemo()
 * Module:                 Blade.exe
 * Entry point:            0x00429923
 */
-#ifdef BLD_NATIVE// TODO fix prototype
-void EndRecordingDemo()
+
+int EndRecordingDemo(const char *name)
 {
-        assert("EndRecordingDemo" == NULL);
+    return gbl_en_control.EndRecordingDemo(name);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

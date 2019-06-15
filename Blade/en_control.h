@@ -6,6 +6,7 @@ class EnControl
 {
 public:
     int StartRecordingDemo();
+    int EndRecordingDemo(const char *name);
 };
 
 #endif /* EN_CONTROL_H */
