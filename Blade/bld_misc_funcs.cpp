@@ -82,6 +82,37 @@ void unknown_18F8_class::unknown_00451A21(void *, int, int)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00475B9C
+* VC++ mangling:          ??0anim_t@@QAE@XZ
+*/
+
+#ifdef BLD_NATIVE
+
+anim_t::anim_t()
+{
+}
+
+#endif
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004760A2
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z
+*/
+
+#ifdef BLD_NATIVE
+
+B_IDataFile &operator >>(B_IDataFile &file, anim_t *anim)
+{
+    return file;
+}
+
+#endif
+
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x004EAD20
 * VC++ mangling:          ??0camera_t@@QAE@HABVB_Name@@@Z
 */

@@ -468,6 +468,10 @@ externdef _CheckAnims: near
 l0046E93B equ _CheckAnims
 externdef _GiveAnims: near
 l0046EBFD equ _GiveAnims
+externdef ??0anim_t@@QAE@XZ: near
+l00475B9C equ ??0anim_t@@QAE@XZ
+externdef ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z: near
+l004760A2 equ ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z
 externdef _AddStepSound: near
 l00491B70 equ _AddStepSound
 externdef _AddMaterialStepSound: near

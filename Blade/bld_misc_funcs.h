@@ -3,10 +3,9 @@
 #include "game_state.h"
 #include "sound_device.h"
 #include <bld_abstract_net.h>
+#include "anim.h"
 #include "light.h"
 #include "en_control.h"
-
-class anim_t;
 
 class B_Race : public B_NamedObj
 {

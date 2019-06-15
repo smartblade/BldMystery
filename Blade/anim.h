@@ -7,9 +7,9 @@
 class anim_t : public B_NamedObj
 {
 public:
-        anim_t() {assert("anim_t::anim_t" == NULL);} // TODO implement
+    anim_t();
 };
 
-B_IDataFile &operator >>(B_IDataFile &file, anim_t *anim) {assert("anim_t::<<" == NULL); return file;} // TODO implement
+B_IDataFile &operator >>(B_IDataFile &file, anim_t *anim);
 
 #endif
