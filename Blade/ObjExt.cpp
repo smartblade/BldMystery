@@ -658,13 +658,14 @@ void UnBindAll()
 * Module:                 Blade.exe
 * Entry point:            0x004296F6
 */
-#ifdef BLD_NATIVE
+
 const char *Input(const char *text)
 {
-    const char *(*bld_proc)(const char *text);
-    return bld_proc(text);
+    B_App *App = get_application();
+    assert(App);
+    return App->input(text);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
