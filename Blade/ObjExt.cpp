@@ -286,7 +286,7 @@ int GetnRaces()
 
 const char *GetRaceName(int index)
 {
-    if (index >= 0 && index < gbl_races.size)
+    if (index >= 0 && (unsigned int)index < gbl_races.size)
     {
         B_Race *race = gbl_races.elements[index];
         return race->Id().String();
