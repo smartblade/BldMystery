@@ -16,8 +16,10 @@ EXPORTS
     ??1bad_typeid@@UAE@XZ
     ??1exception@@UAE@XZ
     ??1type_info@@UAE@XZ
-    ??2@YAPAXI@Z
-    ??3@YAXPAX@Z
+    ??2@YAPAXI@Z                   @15  ; void * operator new(unsigned int)
+    ??_U@YAPAXI@Z                  @15  ; void * operator new[](unsigned int)
+    ??3@YAXPAX@Z                   @16  ; void operator delete(void *)
+    ??3@YAXPAXI@Z                  @16  ; void operator delete(void *,unsigned int)
     ??4__non_rtti_object@@QAEAAV0@ABV0@@Z
     ??4bad_cast@@QAEAAV0@ABV0@@Z
     ??4bad_typeid@@QAEAAV0@ABV0@@Z

@@ -1,0 +1,22 @@
+image:
+- Visual Studio 2015
+configuration:
+- Release
+before_build:
+# install python 1.5
+- 7z x -o"C:\Program Files (x86)\Python" python-1.5.2.zip
+# setup Visual C++ build environment
+- call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
+# upgrade projects
+- devenv /Upgrade BOD.sln
+- devenv /Upgrade BODASM.sln
+# set environment variables for additional properties of Visual C++ projects
+- set NOSAFESEH=/p:ForceImportBeforeCppTargets=%APPVEYOR_BUILD_FOLDER%\nosafeseh.props
+build_script:
+- msbuild %NOSAFESEH% /p:Configuration=Debug BODASM.sln
+- msbuild %NOSAFESEH% BOD.sln
+artifacts:
+- path: install/bin/*.exe
+  name: Blade of Darkness main executable
+- path: install/bin/**/*.dll
+  name: Blade of Darkness library
