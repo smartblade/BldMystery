@@ -15,3 +15,8 @@ before_build:
 build_script:
 - msbuild %NOSAFESEH% /p:Configuration=Debug BODASM.sln
 - msbuild %NOSAFESEH% BOD.sln
+artifacts:
+- path: install/bin/*.exe
+  name: Blade of Darkness main executable
+- path: install/bin/**/*.dll
+  name: Blade of Darkness library
