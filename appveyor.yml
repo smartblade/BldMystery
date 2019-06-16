@@ -8,6 +8,8 @@ before_build:
 # upgrade projects
 - devenv /Upgrade BOD.sln
 - devenv /Upgrade BODASM.sln
+# set environment variables for additional properties of Visual C++ projects
+- set NOSAFESEH=/p:ForceImportBeforeCppTargets=%APPVEYOR_BUILD_FOLDER%\nosafeseh.props
 build_script:
-- msbuild /p:Configuration=Debug BODASM.sln
-- msbuild BOD.sln
+- msbuild %NOSAFESEH% /p:Configuration=Debug BODASM.sln
+- msbuild %NOSAFESEH% BOD.sln
