@@ -10,11 +10,13 @@ before_build:
 # upgrade projects
 - devenv /Upgrade BOD.sln
 - devenv /Upgrade BODASM.sln
+- devenv /Upgrade tests/UnitTests.sln
 # set environment variables for additional properties of Visual C++ projects
 - set NOSAFESEH=/p:ForceImportBeforeCppTargets=%APPVEYOR_BUILD_FOLDER%\nosafeseh.props
 build_script:
 - msbuild %NOSAFESEH% /p:Configuration=Debug BODASM.sln
 - msbuild %NOSAFESEH% BOD.sln
+- msbuild %NOSAFESEH% tests/UnitTests.sln
 artifacts:
 - path: install/bin/*.exe
   name: Blade of Darkness main executable

@@ -25,3 +25,6 @@ lib/*.lib
 *.~bpf
 *.~def
 BuildLog.htm
+# MSVC build directories
+**/Debug
+**/Release
