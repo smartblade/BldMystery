@@ -132,7 +132,6 @@ class B_BladeApp : public B_WinApp
 {
 public:
     B_BladeApp(void *module, int nCmdShow, char *cmdLine);
-    char unknownFields[0x7D0];
 };
 
 #ifdef __cplusplus
