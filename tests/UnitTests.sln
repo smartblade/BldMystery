@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtest", "gtest\gtest.vcproj", "{F1B72C20-DE70-4E02-8DCE-201F5FC11AA0}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTests", "UnitTests\UnitTests.vcproj", "{02FA2B83-E813-40CC-9523-B85E09EA9EE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +15,10 @@ Global
 		{F1B72C20-DE70-4E02-8DCE-201F5FC11AA0}.Debug|Win32.Build.0 = Debug|Win32
 		{F1B72C20-DE70-4E02-8DCE-201F5FC11AA0}.Release|Win32.ActiveCfg = Release|Win32
 		{F1B72C20-DE70-4E02-8DCE-201F5FC11AA0}.Release|Win32.Build.0 = Release|Win32
+		{02FA2B83-E813-40CC-9523-B85E09EA9EE7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{02FA2B83-E813-40CC-9523-B85E09EA9EE7}.Debug|Win32.Build.0 = Debug|Win32
+		{02FA2B83-E813-40CC-9523-B85E09EA9EE7}.Release|Win32.ActiveCfg = Release|Win32
+		{02FA2B83-E813-40CC-9523-B85E09EA9EE7}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

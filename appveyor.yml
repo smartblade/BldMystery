@@ -17,6 +17,8 @@ build_script:
 - msbuild %NOSAFESEH% /p:Configuration=Debug BODASM.sln
 - msbuild %NOSAFESEH% BOD.sln
 - msbuild %NOSAFESEH% tests/UnitTests.sln
+test_script:
+- tests\%CONFIGURATION%\UnitTests.exe
 artifacts:
 - path: install/bin/*.exe
   name: Blade of Darkness main executable
