@@ -188,6 +188,10 @@
 				RelativePath=".\Blade\BladeAppTests.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\Blade\CameraEntityTests.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
