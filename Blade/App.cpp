@@ -12,12 +12,12 @@
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00411CC4
-* VC++ mangling:          ?set_listener_mode@B_App@@QAEHHABVB_Vector@@@Z
+* VC++ mangling:          ?SetListenerMode@B_App@@QAEHHABVB_Vector@@@Z
 */
 
 #ifdef BLD_NATIVE
 
-int B_App::set_listener_mode(int mode, const B_Vector &v)
+int B_App::SetListenerMode(int mode, const B_Vector &v)
 {
 }
 
@@ -77,12 +77,12 @@ const B_Name &GetAppMode()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0041208A
-* VC++ mangling:          ?set_time@B_App@@QAEHN@Z
+* VC++ mangling:          ?SetTime@B_App@@QAEHN@Z
 */
 
 #ifdef BLD_NATIVE
 
-int B_App::set_time(double time)
+int B_App::SetTime(double time)
 {
 }
 
@@ -92,12 +92,12 @@ int B_App::set_time(double time)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004120D3
-* VC++ mangling:          ?go_to_time@B_App@@QAEHN@Z
+* VC++ mangling:          ?GoToTime@B_App@@QAEHN@Z
 */
 
 #ifdef BLD_NATIVE
 
-int B_App::go_to_time(double time)
+int B_App::GoToTime(double time)
 {
 }
 
@@ -114,12 +114,12 @@ int B_App::go_to_time(double time)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00412138
-* VC++ mangling:          ?stop_time@B_App@@QAEXXZ
+* VC++ mangling:          ?StopTime@B_App@@QAEXXZ
 */
 
 #ifdef BLD_NATIVE
 
-void B_App::stop_time()
+void B_App::StopTime()
 {
 }
 
@@ -181,12 +181,12 @@ void B_App::SetTimeSpeed(double speed)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004121CE
-* VC++ mangling:          ?process_events@B_App@@UAEXXZ
+* VC++ mangling:          ?ProcessEvents@B_App@@UAEXXZ
 */
 
 #ifdef BLD_NATIVE
 
-void B_App::process_events()
+void B_App::ProcessEvents()
 {
 }
 
@@ -202,10 +202,10 @@ void B_App::process_events()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0041316C
-* VC++ mangling:          ?mark_level_to_load@B_App@@UAEXPBD@Z
+* VC++ mangling:          ?MarkLevelToLoad@B_App@@UAEXPBD@Z
 */
 
-void B_App::mark_level_to_load(const char *map)
+void B_App::MarkLevelToLoad(const char *map)
 {
         if (this->map_to_load) {
                 free(this->map_to_load);
@@ -225,10 +225,10 @@ void B_App::mark_level_to_load(const char *map)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00413256
-* VC++ mangling:          ?load_level@B_App@@UAEXPBD@Z
+* VC++ mangling:          ?LoadLevel@B_App@@UAEXPBD@Z
 */
 
-void B_App::load_level(const char *script)
+void B_App::LoadLevel(const char *script)
 {
         int foundIndex;
         int hash_value;
@@ -244,7 +244,7 @@ void B_App::load_level(const char *script)
 
         this->SetAppMode("Game");
 
-        this->init_python_path();
+        this->InitPythonPath();
 
         this->clock1->unknown018();
 
@@ -268,12 +268,12 @@ void B_App::load_level(const char *script)
         this->camera->unknownValueFromApplication = this->unknownPtrForCamera;
         this->bUnknown01C = TRUE;
 
-        this->run_python_file(script);
+        this->RunPythonFile(script);
 
         this->location.setPosition(gbl_game_state.initial_point_position);
         this->location.setOrientation(gbl_game_state.initial_point_orientation);
 
-        this->prepare_level();
+        this->PrepareLevel();
 
         if (!gbl_net->is_net_game() || gbl_net->is_server()) {
 
@@ -336,7 +336,7 @@ void B_App::load_level(const char *script)
                 this->player1 = player1;
 
                 if (!this->player1) {
-                        this->exit_with_error(
+                        this->ExitWithError(
                             "Error",
                             "Player1 not declared in pj.py"
                         );
@@ -427,10 +427,10 @@ void B_App::load_level(const char *script)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004138B8
-* VC++ mangling:          ?read_level@B_App@@UAEXPBD@Z
+* VC++ mangling:          ?ReadLevel@B_App@@UAEXPBD@Z
 */
 
-void B_App::read_level(const char * file_name)
+void B_App::ReadLevel(const char * file_name)
 {
         double timeBefore, timeAfter;
         char itemKind[256], itemName[256];
@@ -462,7 +462,7 @@ void B_App::read_level(const char * file_name)
                 }
                 else if (!strcmp(itemKind, "ChromaBitmaps"))
                 {
-                        this->exit_with_error("Blade", "ChromaBitmaps no longer supported.");
+                        this->ExitWithError("Blade", "ChromaBitmaps no longer supported.");
                 }
                 else if (!strcmp(itemKind, "WorldDome"))
                 {
@@ -471,7 +471,7 @@ void B_App::read_level(const char * file_name)
                 }
                 else if (!strcmp(itemKind, "World"))
                 {
-                        this->load_world(itemName);
+                        this->LoadWorld(itemName);
                 }
                 else if (!strcmp(itemKind, "ANM"))
                 {
@@ -509,14 +509,14 @@ void B_App::read_level(const char * file_name)
                 }
                 else if (!strcmp(itemKind, "Objs"))
                 {
-                        this->exit_with_error("Blade", "Objs no longer supported.");
+                        this->ExitWithError("Blade", "Objs no longer supported.");
                 }
                 else if (!strcmp(itemKind, "LoadGammaC"))
                 {
-                        this->exit_with_error("Blade", "LoadGammaC no longer supported.");
+                        this->ExitWithError("Blade", "LoadGammaC no longer supported.");
                 }
                 status = fscanf(file, "%s -> %s", itemKind, itemName);
-                this->process_message();
+                this->ProcessMessage();
         }
         fclose(file);
         timeAfter = timeGetTime();
@@ -537,12 +537,12 @@ void B_App::read_level(const char * file_name)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00414F7F
-* VC++ mangling:          ?prepare_level@B_App@@QAEXXZ
+* VC++ mangling:          ?PrepareLevel@B_App@@QAEXXZ
 */
 
 #ifdef BLD_NATIVE
 
-void B_App::prepare_level()
+void B_App::PrepareLevel()
 {
 }
 
@@ -674,12 +674,12 @@ void B_App::Bind2(
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0041549C
-* VC++ mangling:          ?bind_pred@B_App@@QAE_NPBD0@Z
+* VC++ mangling:          ?BindPred@B_App@@QAE_NPBD0@Z
 */
 
 #ifdef BLD_NATIVE
 
-bool B_App::bind_pred(const char *key, const char *pred)
+bool B_App::BindPred(const char *key, const char *pred)
 {
 }
 
@@ -758,10 +758,10 @@ void B_App::UnBindAll()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00415759
-* VC++ mangling:          ?run_python_file@B_App@@QAE_NPBD@Z
+* VC++ mangling:          ?RunPythonFile@B_App@@QAE_NPBD@Z
 */
 
-bool B_App::run_python_file(const char *file_name)
+bool B_App::RunPythonFile(const char *file_name)
 {
         FILE *file;
 
@@ -799,10 +799,10 @@ bool B_App::run_python_file(const char *file_name)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00416C6F
-* VC++ mangling:          ?load_world@B_App@@QAEHPBD@Z
+* VC++ mangling:          ?LoadWorld@B_App@@QAEHPBD@Z
 */
 
-int B_App::load_world(const char *file_name)
+int B_App::LoadWorld(const char *file_name)
 {
         double timeBefore, timeAfter;
 

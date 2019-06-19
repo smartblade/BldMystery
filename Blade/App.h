@@ -15,53 +15,53 @@
 class B_App
 {
 public:
-        virtual void read_arguments(const char *arguments);
-        virtual void string_split(
+        virtual void ReadArguments(const char *arguments);
+        virtual void StringSplit(
                 const char *str, const char *sep, array_t<B_Name*> *tokens);
-        virtual bool init_python_path();
-        virtual void process_message();
+        virtual bool InitPythonPath();
+        virtual void ProcessMessage();
         virtual void *unknown_method010(void *);
         virtual ~B_App();
-        virtual bool start();
-        virtual void process_events();
-        virtual void end();
+        virtual bool Start();
+        virtual void ProcessEvents();
+        virtual void End();
         virtual void *unknown_method024();
         virtual void *unknown_method028();
-        virtual int quit();
-        virtual void mark_level_to_load(const char *map);
-        virtual void close_level(const char *statement, const char *auxText);
-        virtual void load_level(const char *map);
-        virtual void read_level(const char *file_name);
+        virtual int Quit();
+        virtual void MarkLevelToLoad(const char *map);
+        virtual void CloseLevel(const char *statement, const char *auxText);
+        virtual void LoadLevel(const char *map);
+        virtual void ReadLevel(const char *file_name);
         virtual void unknown_method040();
         virtual int ReassignCombustionData();
-        virtual void clear_level(int flag);
-        virtual void set_py_interactive_string(const char *str);
-        virtual const char *input(const char *text);
-        virtual void call_CD_cb(int arg);
-        virtual void exit_with_error(char *title, char* message);
-        virtual void print_warning(const char *, const char *);
-        virtual void *get_window();
-        virtual void *get_module();
-        virtual int set_current_map(const char *map);
-        virtual bool init_window();
+        virtual void ClearLevel(int flag);
+        virtual void SetPyInteractiveString(const char *str);
+        virtual const char *Input(const char *text);
+        virtual void CallCdCb(int arg);
+        virtual void ExitWithError(char *title, char* message);
+        virtual void PrintWarning(const char *, const char *);
+        virtual void *GetWindow();
+        virtual void *GetModule();
+        virtual int SetCurrentMap(const char *map);
+        virtual bool InitWindow();
         virtual void *unknown_method070();
-        virtual void *create_window();
-        virtual void mouse(bool acquireFlag);
-        virtual LRESULT window_procedure(
+        virtual void *NewWindow();
+        virtual void Mouse(bool acquireFlag);
+        virtual LRESULT WindowProcedure(
                 HWND hwnd, UINT uMsg, WPARAM wParam,  LPARAM lParam);
-        int load_world(const char *file_name);
-        bool run_python_file(const char *file_name);
+        int LoadWorld(const char *file_name);
+        bool RunPythonFile(const char *file_name);
         int SetAppMode(const B_Name &mode);
         const B_Name &GetAppMode();
         void BeginLoadGame();
         void DoneLoadGame();
         const char *GetCmdLine();
-        void prepare_level();
-        bool bind_pred(const char *key, const char *pred);
-        int set_listener_mode(int mode, const B_Vector &v);
-        int set_time(double time);
-        int go_to_time(double time);
-        void stop_time();
+        void PrepareLevel();
+        bool BindPred(const char *key, const char *pred);
+        int SetListenerMode(int mode, const B_Vector &v);
+        int SetTime(double time);
+        int GoToTime(double time);
+        void StopTime();
         void RestartTime();
         void SetTimeSpeed(double speed);
         double GetTimeSpeed();
@@ -123,8 +123,8 @@ public:
 class B_WinApp : public B_App
 {
 public:
-    virtual void process_events();
-    virtual void load_level(const char *map);
+    virtual void ProcessEvents();
+    virtual void LoadLevel(const char *map);
     B_WinApp(void *module, int nCmdShow, char *cmdLine, void *unknown);
 };
 

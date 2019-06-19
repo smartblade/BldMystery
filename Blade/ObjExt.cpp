@@ -354,7 +354,7 @@ int SetCurrentMap(const char *map)
 {
     B_App *App = get_application();
     assert(App);
-    return App->set_current_map(map);
+    return App->SetCurrentMap(map);
 }
 
 
@@ -367,7 +367,7 @@ int LoadWorld(const char *file_name)
 {
     B_App * app = get_application();
     assert(app);
-    return app->load_world(file_name);
+    return app->LoadWorld(file_name);
 }
 
 
@@ -384,7 +384,7 @@ int SetListenerMode(int mode, double x, double y, double z)
     v.x = x;
     v.y = y;
     v.z = z;
-    return App->set_listener_mode(mode, v);
+    return App->SetListenerMode(mode, v);
 }
 
 
@@ -410,7 +410,7 @@ int Quit()
 {
     B_App *App = get_application();
     assert(App);
-    return App->quit();
+    return App->Quit();
 }
 
 
@@ -423,7 +423,7 @@ int SetTime(double time)
 {
     B_App *App = get_application();
     assert(App);
-    return App->set_time(time);
+    return App->SetTime(time);
 }
 
 
@@ -436,7 +436,7 @@ int GoToTime(double time)
 {
     B_App *App = get_application();
     assert(App);
-    return App->go_to_time(time);
+    return App->GoToTime(time);
 }
 
 
@@ -460,7 +460,7 @@ void StopTime()
 {
     B_App *App = get_application();
     assert(App);
-    return App->stop_time();
+    return App->StopTime();
 }
 
 
@@ -622,7 +622,7 @@ int BindPred(const char *key, const char *pred)
     assert(pred);
     B_App *App = get_application();
     assert(App);
-    return App->bind_pred(key, pred);
+    return App->BindPred(key, pred);
 }
 
 
@@ -663,7 +663,7 @@ const char *Input(const char *text)
 {
     B_App *App = get_application();
     assert(App);
-    return App->input(text);
+    return App->Input(text);
 }
 
 
@@ -677,7 +677,7 @@ int MarkLevelToLoad(const char *filename)
     assert(filename);
     B_App *App = get_application();
     assert(App);
-    App->mark_level_to_load(filename);
+    App->MarkLevelToLoad(filename);
     return 1;
 }
 
@@ -692,7 +692,7 @@ int ReadLevel(const char *filename)
     assert(filename);
     B_App *App = get_application();
     assert(App);
-    App->read_level(filename);
+    App->ReadLevel(filename);
     return 1;
 }
 
@@ -730,7 +730,7 @@ void CloseLevel(const char *statement, const char *auxText)
 {
     B_App *App = get_application();
     assert(App);
-    App->close_level(statement, auxText);
+    App->CloseLevel(statement, auxText);
 }
 
 

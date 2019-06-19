@@ -28,10 +28,10 @@ B_WinApp::B_WinApp(void *module, int nCmdShow, char *cmdLine, void *unknown)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0041009D
-* VC++ mangling:          ?load_level@B_WinApp@@UAEXPBD@Z
+* VC++ mangling:          ?LoadLevel@B_WinApp@@UAEXPBD@Z
 */
 
-void B_WinApp::load_level(const char *map)
+void B_WinApp::LoadLevel(const char *map)
 {
         char buffer[260];
         double timeBefore, timeAfter;
@@ -63,15 +63,15 @@ void B_WinApp::load_level(const char *map)
 
         if (gbl_net->is_net_game()) {
                 if (gbl_net->is_server()) {
-                        B_App::load_level("Server.py");
+                        B_App::LoadLevel("Server.py");
                         Set007EA988To01();
                 } else {
-                        B_App::load_level("Client.py");
+                        B_App::LoadLevel("Client.py");
                 }
         } else {
                 loadLevelCounter++;
 
-                B_App::load_level("Cfg.py");
+                B_App::LoadLevel("Cfg.py");
         }
 
         timeAfter = timeGetTime();
@@ -87,10 +87,10 @@ void B_WinApp::load_level(const char *map)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00410305
-* VC++ mangling:          ?process_events@B_WinApp@@UAEXXZ
+* VC++ mangling:          ?ProcessEvents@B_WinApp@@UAEXXZ
 */
 
-void B_WinApp::process_events() {
+void B_WinApp::ProcessEvents() {
         static int counter = 0;
 
         if (!this->no_sleep)
@@ -105,7 +105,7 @@ void B_WinApp::process_events() {
         }
 
         counter++;
-        B_App::process_events();
+        B_App::ProcessEvents();
 }
 
 
@@ -135,7 +135,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
         assert(App);
 
-        if (!App->start())
+        if (!App->Start())
                 return 0;
 
         Set007EA988To01();
@@ -143,7 +143,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
                 if (PeekMessage(&msg, NULL, WM_NULL, WM_NULL, PM_REMOVE)) {
 
                         if (msg.message == WM_QUIT) {
-                                App->end();
+                                App->End();
                                 delete App;
                                 return msg.wParam;
                         } else {
@@ -151,7 +151,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
                                 DispatchMessage(&msg);
                         }
                 } else {
-                        App->process_events();
+                        App->ProcessEvents();
 
                         OnEvent(0, 0xbff00000);
                 }
