@@ -29,10 +29,10 @@ class person_t : public biped_entity_t
     char unknownFields[3676];
 };
 
-class camera_t : public entity_t
+class B_CameraEntity : public entity_t
 {
 public:
-    camera_t(int unknown, const B_Name &name);
+    B_CameraEntity(int unknown, const B_Name &name);
     void unknown_004EB1AA(void *);
 
     char unknownFields1[588];

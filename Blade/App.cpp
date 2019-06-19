@@ -237,7 +237,7 @@ void B_App::LoadLevel(const char *script)
         array_t<entity_t *> *array;
         world_t *world;
         person_t *player1;
-        camera_t *camera;
+        B_CameraEntity *camera;
         const char *str1;
         char *str2;
         int cmp_result;
@@ -259,7 +259,7 @@ void B_App::LoadLevel(const char *script)
         this->player1 = NULL;
 
         if (!this->camera) {
-                camera = new camera_t(0, "Camera");
+                camera = new B_CameraEntity(0, "Camera");
 
                 this->camera = camera;
                 this->camera->unknownPtrFromApplication = &this->unknownPtrForCamera;

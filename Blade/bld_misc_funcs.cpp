@@ -114,12 +114,12 @@ B_IDataFile &operator >>(B_IDataFile &file, anim_t *anim)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004EAD20
-* VC++ mangling:          ??0camera_t@@QAE@HABVB_Name@@@Z
+* VC++ mangling:          ??0B_CameraEntity@@QAE@HABVB_Name@@@Z
 */
 
 #ifdef BLD_NATIVE
 
-camera_t::camera_t(int unknown, const B_Name &name)
+B_CameraEntity::B_CameraEntity(int unknown, const B_Name &name)
 {
 }
 
@@ -130,12 +130,12 @@ camera_t::camera_t(int unknown, const B_Name &name)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004EB1AA
-* VC++ mangling:          ?unknown_004EB1AA@camera_t@@QAEXPAX@Z
+* VC++ mangling:          ?unknown_004EB1AA@B_CameraEntity@@QAEXPAX@Z
 */
 
 #ifdef BLD_NATIVE
 
-void camera_t::unknown_004EB1AA(void *)
+void B_CameraEntity::unknown_004EB1AA(void *)
 {
 }
 

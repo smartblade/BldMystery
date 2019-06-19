@@ -95,7 +95,7 @@ public:
         person_t *player1;
         entity_t *client;
         char unknownFields100[8];
-        camera_t *camera;
+        B_CameraEntity *camera;
         location_t location;
         char unknownFields200[280];
         float unknown1AC;
