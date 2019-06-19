@@ -7,10 +7,10 @@
 
 #define PLAYER "Player1"
 
-class entity_t :  public B_NamedObj
+class B_Entity :  public B_NamedObj
 {
 public:
-    virtual ~entity_t();
+    virtual ~B_Entity();
     virtual void *unknown_method004();
     virtual void *unknown_method008();
     virtual void *unknown_method00C();
@@ -19,7 +19,7 @@ public:
     char unknownFields[404];
 };
 
-class biped_entity_t : public entity_t
+class biped_entity_t : public B_Entity
 {
     char unknownFields[4220];
 };
@@ -29,7 +29,7 @@ class person_t : public biped_entity_t
     char unknownFields[3676];
 };
 
-class B_CameraEntity : public entity_t
+class B_CameraEntity : public B_Entity
 {
 public:
     B_CameraEntity(int unknown, const B_Name &name);

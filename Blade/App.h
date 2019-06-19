@@ -93,7 +93,7 @@ public:
         int numArguments;
         char unknownFields20[36];
         person_t *player1;
-        entity_t *client;
+        B_Entity *client;
         char unknownFields100[8];
         B_CameraEntity *camera;
         location_t location;

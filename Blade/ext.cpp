@@ -3130,7 +3130,7 @@ int ClearSpline(void *spline)
 
 #ifdef BLD_NATIVE
 
-entity_t *CreateSpark(
+B_Entity *CreateSpark(
         const char *name, point_3d_t *spark_point, point_3d_t *spark_dir,
         double d_unknown1, double d_unknown2, double d_unknown3,
         double d_unknown4, double d_unknown5, int i_unknown6, int i_unknown7,
@@ -3138,14 +3138,14 @@ entity_t *CreateSpark(
         float d_unknown12, float d_unknown13, float d_unknown14, int i_unknown15
 )
 {
-        entity_t *(*bld_proc)(
+        B_Entity *(*bld_proc)(
         const char *name, point_3d_t *spark_point, point_3d_t *spark_dir,
         double d_unknown1, double d_unknown2, double d_unknown3,
         double d_unknown4, double d_unknown5, int i_unknown6, int i_unknown7,
         int i_unknown8, int i_unknown9, int i_unknown10, int i_unknown11,
         float d_unknown12, float d_unknown13, float d_unknown14, int i_unknown15
 );
-        bld_proc = (entity_t *(*)(
+        bld_proc = (B_Entity *(*)(
         const char *name, point_3d_t *spark_point, point_3d_t *spark_dir,
         double d_unknown1, double d_unknown2, double d_unknown3,
         double d_unknown4, double d_unknown5, int i_unknown6, int i_unknown7,
@@ -3172,16 +3172,16 @@ entity_t *CreateSpark(
 
 #ifdef BLD_NATIVE
 
-entity_t *CreateEntity(
+B_Entity *CreateEntity(
         const char *name, const char *kind, double x, double y, double z,
         const char *parent_class, const char *unknown
 )
 {
-        entity_t *(*bld_proc)(
+        B_Entity *(*bld_proc)(
         const char *name, const char *kind, double x, double y, double z,
         const char *parent_class, const char *unknown
 );
-        bld_proc = (entity_t *(*)(
+        bld_proc = (B_Entity *(*)(
         const char *name, const char *kind, double x, double y, double z,
         const char *parent_class, const char *unknown
 ))GetProcAddress(blade, "CreateEntity");
@@ -3229,16 +3229,16 @@ int DeleteEntity(const char *name)
 
 #ifdef BLD_NATIVE
 
-entity_t *CreateEntityDecal(
+B_Entity *CreateEntityDecal(
         const char *name, double x, double y, double z, int i_unknown,
         double d_unknown1, double d_unknown2
 )
 {
-        entity_t *(*bld_proc)(
+        B_Entity *(*bld_proc)(
         const char *name, double x, double y, double z, int i_unknown,
         double d_unknown1, double d_unknown2
 );
-        bld_proc = (entity_t *(*)(
+        bld_proc = (B_Entity *(*)(
         const char *name, double x, double y, double z, int i_unknown,
         double d_unknown1, double d_unknown2
 ))GetProcAddress(blade, "CreateEntityDecal");
@@ -3262,10 +3262,10 @@ entity_t *CreateEntityDecal(
 
 #ifdef BLD_NATIVE
 
-entity_t *GetEntity(const char *name)
+B_Entity *GetEntity(const char *name)
 {
-        entity_t *(*bld_proc)(const char *name);
-        bld_proc = (entity_t *(*)(const char *name))GetProcAddress(blade, "GetEntity");
+        B_Entity *(*bld_proc)(const char *name);
+        bld_proc = (B_Entity *(*)(const char *name))GetProcAddress(blade, "GetEntity");
         return bld_proc(name);
 }
 
@@ -3286,10 +3286,10 @@ entity_t *GetEntity(const char *name)
 
 #ifdef BLD_NATIVE
 
-entity_t *GetEntityI(int index)
+B_Entity *GetEntityI(int index)
 {
-        entity_t *(*bld_proc)(int index);
-        bld_proc = (entity_t *(*)(int index))GetProcAddress(blade, "GetEntityI");
+        B_Entity *(*bld_proc)(int index);
+        bld_proc = (B_Entity *(*)(int index))GetProcAddress(blade, "GetEntityI");
         return bld_proc(index);
 }
 
@@ -3310,10 +3310,10 @@ entity_t *GetEntityI(int index)
 
 #ifdef BLD_NATIVE
 
-const char *GetEntityName(entity_t *entity)
+const char *GetEntityName(B_Entity *entity)
 {
-        const char *(*bld_proc)(entity_t *entity);
-        bld_proc = (const char *(*)(entity_t *entity))GetProcAddress(blade, "GetEntityName");
+        const char *(*bld_proc)(B_Entity *entity);
+        bld_proc = (const char *(*)(B_Entity *entity))GetProcAddress(blade, "GetEntityName");
         return bld_proc(entity);
 }
 
@@ -4177,10 +4177,10 @@ int SetNextAttack(
 
 #ifdef BLD_NATIVE
 
-entity_t *SeverLimb(const char *entity_name, int limb)
+B_Entity *SeverLimb(const char *entity_name, int limb)
 {
-        entity_t *(*bld_proc)(const char *entity_name, int limb);
-        bld_proc = (entity_t *(*)(const char *entity_name, int limb))GetProcAddress(blade, "SeverLimb");
+        B_Entity *(*bld_proc)(const char *entity_name, int limb);
+        bld_proc = (B_Entity *(*)(const char *entity_name, int limb))GetProcAddress(blade, "SeverLimb");
         return bld_proc(entity_name, limb);
 }
 

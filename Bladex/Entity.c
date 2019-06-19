@@ -396,7 +396,7 @@ static PyMethodDef entity_methods[] = {
 */
 
 PyObject *get_entity_by_name(const char *name) {
-        entity_t *entity;
+        B_Entity *entity;
         bld_py_entity_t *entity_obj;
 
         entity = GetEntity(name);
@@ -419,7 +419,7 @@ PyObject *get_entity_by_name(const char *name) {
 */
 
 PyObject *get_entity_by_index(int index) {
-        entity_t *entity;
+        B_Entity *entity;
         bld_py_entity_t *entity_obj;
 
         entity = GetEntityI(index);
@@ -446,7 +446,7 @@ PyObject *create_entity(
         const char *name, const char *kind, double x, double y, double z,
         const char *parent_class, const char *unknown
 ) {
-        entity_t *entity;
+        B_Entity *entity;
         bld_py_entity_t *entity_obj;
 
         entity_obj = PyObject_NEW(bld_py_entity_t, &entityTypeObject);
@@ -471,7 +471,7 @@ PyObject *create_entity_decal(
         const char *name, double x, double y, double z, int i_unknown,
         double d_unknown1, double d_unknown2
 ) {
-        entity_t *entity;
+        B_Entity *entity;
         bld_py_entity_t *entity_obj;
 
         entity_obj = PyObject_NEW(bld_py_entity_t, &entityTypeObject);
@@ -504,7 +504,7 @@ PyObject *create_spark(
         int i_unknown9, int i_unknown10, int i_unknown11, double d_unknown12,
         double d_unknown13, double d_unknown14, int i_unknown15
 ) {
-        entity_t *entity;
+        B_Entity *entity;
         bld_py_entity_t *entity_obj;
         point_3d_t spark_point, spark_dir;
 
@@ -542,7 +542,7 @@ PyObject *create_spark(
 
 PyObject *bex_ent_SeverLimb(PyObject *self, PyObject *args) {
         bld_py_entity_t *entity = (bld_py_entity_t *)self;
-        entity_t *limb_entity;
+        B_Entity *limb_entity;
         bld_py_entity_t *limb_entity_obj;
         int limb;
 

@@ -234,7 +234,7 @@ void B_App::LoadLevel(const char *script)
         int hash_value;
         char *str_ptr;
         unsigned int i;
-        array_t<entity_t *> *array;
+        array_t<B_Entity *> *array;
         world_t *world;
         person_t *player1;
         B_CameraEntity *camera;

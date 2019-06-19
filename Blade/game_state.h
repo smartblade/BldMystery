@@ -22,9 +22,9 @@ typedef struct {
 
 typedef struct {
         int numEntities;
-        array_t<entity_t *> hash[256];
+        array_t<B_Entity *> hash[256];
         int unknown1804;
-        entity_t *foundEntity;
+        B_Entity *foundEntity;
 } world_t;
 
 

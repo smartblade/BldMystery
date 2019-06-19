@@ -24,12 +24,12 @@
 
 #ifdef __cplusplus
 
-class entity_t;
+class B_Entity;
 class material_t;
 
 #else
 
-typedef struct _entity_t entity_t;
+typedef struct _B_Entity B_Entity;
 typedef struct _material_t material_t;
 
 #endif
@@ -485,24 +485,24 @@ LIB_EXP int GiveAnims(const char *race_name);
 LIB_EXP int GetAnimationDuration(const char *animation_name, double *duration);
 LIB_EXP int SetAnimationFactor(const char *mov, double new_speed_factor);
 LIB_EXP void SetTurnSpeed(const char *race_name, double new_speed);
-LIB_EXP entity_t *GetEntity(const char *name);
-LIB_EXP entity_t *GetEntityI(int index);
-LIB_EXP entity_t *CreateEntity(
+LIB_EXP B_Entity *GetEntity(const char *name);
+LIB_EXP B_Entity *GetEntityI(int index);
+LIB_EXP B_Entity *CreateEntity(
         const char *name, const char *kind, double x, double y, double z,
         const char *parent_class, const char *unknown
 );
-LIB_EXP entity_t *CreateEntityDecal(
+LIB_EXP B_Entity *CreateEntityDecal(
         const char *name, double x, double y, double z, int i_unknown,
         double d_unknown1, double d_unknown2
 );
-LIB_EXP entity_t *CreateSpark(
+LIB_EXP B_Entity *CreateSpark(
         const char *name, point_3d_t *spark_point, point_3d_t *spark_dir,
         double d_unknown1, double d_unknown2, double d_unknown3,
         double d_unknown4, double d_unknown5, int i_unknown6, int i_unknown7,
         int i_unknown8, int i_unknown9, int i_unknown10, int i_unknown11,
         float d_unknown12, float d_unknown13, float d_unknown14, int i_unknown15
 );
-LIB_EXP const char *GetEntityName(entity_t *entity);
+LIB_EXP const char *GetEntityName(B_Entity *entity);
 LIB_EXP int DeleteEntity(const char *name);
 LIB_EXP int GetEntityStringProperty(
         const char *entity_name, int property_kind, int index,
@@ -546,7 +546,7 @@ LIB_EXP int SetEntityQuatProperty(
         const char *entity_name, int property_kind, int index, double quat1,
         double quat2, double quat3, double quat4
 );
-LIB_EXP entity_t *SeverLimb(const char *entity_name, int limb);
+LIB_EXP B_Entity *SeverLimb(const char *entity_name, int limb);
 LIB_EXP int ResetWounds(const char *entity_name);
 LIB_EXP int ImpulseC(
         const char *entity_name, double x, double y, double z, double x_vec,
