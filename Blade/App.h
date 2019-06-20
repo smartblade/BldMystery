@@ -81,6 +81,7 @@ public:
         bool UnBindPred(const char *key, const char *pred);
         void UnBindAll();
         int DeactivateInput();
+        int ActivateInput();
 
         char unknownFields1[24];
         boolean bUnknown01C;

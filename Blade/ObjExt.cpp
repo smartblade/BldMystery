@@ -784,13 +784,14 @@ int DeactivateInput()
 * Module:                 Blade.exe
 * Entry point:            0x0042997F
 */
-#ifdef BLD_NATIVE
-int ActivateInput(void)
+
+int ActivateInput()
 {
-    int (*bld_proc)(void);
-    return bld_proc();
+    B_App *App = get_application();
+    assert(App);
+    return App->ActivateInput();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

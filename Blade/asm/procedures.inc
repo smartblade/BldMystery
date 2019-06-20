@@ -18,6 +18,8 @@ externdef ?SetListenerMode@B_App@@QAEHHABVB_Vector@@@Z: near
 l00411CC4 equ ?SetListenerMode@B_App@@QAEHHABVB_Vector@@@Z
 externdef ?DeactivateInput@B_App@@QAEHXZ: near
 l00411D95 equ ?DeactivateInput@B_App@@QAEHXZ
+externdef ?ActivateInput@B_App@@QAEHXZ: near
+l00411E25 equ ?ActivateInput@B_App@@QAEHXZ
 externdef ?SetAppMode@B_App@@QAEHABVB_Name@@@Z: near
 l00411EB9 equ ?SetAppMode@B_App@@QAEHABVB_Name@@@Z
 externdef ?GetCmdLine@B_App@@QAEPBDXZ: near
