@@ -771,13 +771,14 @@ int PlayDemo(const char *name)
 * Module:                 Blade.exe
 * Entry point:            0x00429949
 */
-#ifdef BLD_NATIVE
-int DeactivateInput(void)
+
+int DeactivateInput()
 {
-    int (*bld_proc)(void);
-    return bld_proc();
+    B_App *App = get_application();
+    assert(App);
+    return App->DeactivateInput();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
