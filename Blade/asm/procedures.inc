@@ -74,6 +74,8 @@ externdef ?UnBindAll@B_App@@QAEXXZ: near
 l004155D9 equ ?UnBindAll@B_App@@QAEXXZ
 externdef ?RunPythonFile@B_App@@QAE_NPBD@Z: near
 l00415759 equ ?RunPythonFile@B_App@@QAE_NPBD@Z
+externdef ?OutSound@B_App@@QAE_NHNNNH@Z: near
+l0041617B equ ?OutSound@B_App@@QAE_NHNNNH@Z
 externdef ?LoadWorld@B_App@@QAEHPBD@Z: near
 l00416C6F equ ?LoadWorld@B_App@@QAEHPBD@Z
 externdef _PlayCDTrack: near

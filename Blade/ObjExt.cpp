@@ -797,13 +797,14 @@ int ActivateInput()
 * Module:                 Blade.exe
 * Entry point:            0x004299B5
 */
-#ifdef BLD_NATIVE
+
 int OutSound(int soundId, double x, double y, double z, int unknown)
 {
-    int (*bld_proc)(int soundId, double x, double y, double z, int unknown);
-    return bld_proc(soundId, x, y, z, unknown);
+    B_App *App = get_application();
+    assert(App);
+    return App->OutSound(soundId, x, y, z, unknown);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

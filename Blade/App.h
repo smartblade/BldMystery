@@ -82,6 +82,7 @@ public:
         void UnBindAll();
         int DeactivateInput();
         int ActivateInput();
+        bool OutSound(int soundId, double x, double y, double z, int unknown);
 
         char unknownFields1[24];
         boolean bUnknown01C;
