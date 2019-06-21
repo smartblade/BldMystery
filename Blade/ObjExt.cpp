@@ -870,13 +870,61 @@ after_search:
 * Module:                 Blade.exe
 * Entry point:            0x00429C4F
 */
-#ifdef BLD_NATIVE
+
 int SetDefaultMaterial(const char *entity_kind, const char *material)
 {
-    int (*bld_proc)(const char *entity_kind, const char *material);
-    return bld_proc(entity_kind, material);
+    B_ElementCSV *foundElement;
+    B_Name kind(entity_kind);
+    B_NDataBase<B_ElementCSV> * array = &B_csvs;
+    for (unsigned int i = 0; i < array->size; i++)
+    {
+        if (kind == array->elements[i]->Id())
+        {
+            foundElement = array->elements[i];
+            goto after_search;
+        }
+    }
+    foundElement = NULL;
+
+after_search:
+    if (foundElement)
+    {
+        foundElement->material = material;
+        return 1;
+    }
+    B_ElementCSV * newElement = new B_ElementCSV();
+    newElement->name = entity_kind;
+    newElement->mass = 10.0;
+    newElement->material = material;
+    B_NDataBase<B_ElementCSV> * csvs = &B_csvs;
+    if (csvs->num_alloc > csvs->size)
+    {
+        csvs->elements[csvs->size] = newElement;
+        csvs->size++;
+    }
+    else
+    {
+        csvs->num_alloc += csvs->increment;
+        if (csvs->size != 0)
+        {
+            B_ElementCSV ** elements = new B_ElementCSV *[csvs->num_alloc];
+            for (unsigned int i = 0; i < csvs->size; i++)
+            {
+                elements[i] = csvs->elements[i];
+            }
+            delete csvs->elements;
+            csvs->elements = elements;
+        }
+        else
+        {
+            csvs->elements = new B_ElementCSV *[csvs->num_alloc];
+        }
+        csvs->elements[csvs->size] = newElement;
+        csvs->size++;
+    }
+    return 0;
 }
-#endif
+
 
 /*
 ................................................................................
