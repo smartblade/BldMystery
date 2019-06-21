@@ -37,7 +37,7 @@ class LIB_EXP B_NamedObj
 public:
         virtual ~B_NamedObj();
         const B_Name &Id() const;
-private:
+public:
         B_Name name;
 };
 
@@ -106,11 +106,14 @@ LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const unsigned int &i);
 LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const B_ParticleGType &particleType);
 
 
-struct B_ElementCSV
+struct B_ElementCSV : public B_NamedObj
 {
+    virtual ~B_ElementCSV();
+    float mass;
+    B_Name material;
 };
 
-template<class T> class B_NDataBase
+template<class T> class B_NDataBase : public array_t<T*>
 {
 };
 

@@ -10,7 +10,6 @@
 /EXPORT:LoadAnmRaceData
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:SetDefaultMass
 /EXPORT:SetDefaultMaterial
 /EXPORT:SetSun
 /EXPORT:InsideAA
