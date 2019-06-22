@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../gtest/include;../../include;../../Blade;&quot;C:\Program Files (x86)\Python\include&quot;"
+				AdditionalIncludeDirectories="../gtest/include;.;../../include;../../Blade;&quot;C:\Program Files (x86)\Python\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -118,7 +118,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="../gtest/include;../../include;../../Blade;&quot;C:\Program Files (x86)\Python\include&quot;"
+				AdditionalIncludeDirectories="../gtest/include;.;../../include;../../Blade;&quot;C:\Program Files (x86)\Python\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE"
 				RuntimeLibrary="2"
 				StructMemberAlignment="3"
@@ -192,12 +192,20 @@
 				RelativePath=".\Blade\CameraEntityTests.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\BBLibc\ElementCSVTests.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
+			<File
+				RelativePath=".\Utils\FieldOffset.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
