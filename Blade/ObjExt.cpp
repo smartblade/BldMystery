@@ -937,13 +937,16 @@ after_search:
 * Module:                 Blade.exe
 * Entry point:            0x00429F2D
 */
-#ifdef BLD_NATIVE
+
 void SetSun(int exists, double x, double y, double z)
 {
-    void (*bld_proc)(int exists, double x, double y, double z);
-    bld_proc(exists, x, y, z);
+    B_Vector sunPosition;
+    sunPosition.x = x;
+    sunPosition.y = y;
+    sunPosition.z = z;
+    gbl_game_state.SetSun(exists, sunPosition);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

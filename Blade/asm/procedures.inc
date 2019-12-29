@@ -380,6 +380,8 @@ externdef ?unknown_00439F5D@game_state_t@@QAEXXZ: near
 l00439F5D equ ?unknown_00439F5D@game_state_t@@QAEXXZ
 externdef ?get_time@game_state_t@@QAENXZ: near
 l0043A6A4 equ ?get_time@game_state_t@@QAENXZ
+externdef ?SetSun@game_state_t@@QAEXHABVB_Vector@@@Z: near
+l0043C8B2 equ ?SetSun@game_state_t@@QAEXHABVB_Vector@@@Z
 externdef ?LoadEntitiesData@game_state_t@@QAEHPBD@Z: near
 l0043F98A equ ?LoadEntitiesData@game_state_t@@QAEHPBD@Z
 externdef ?SaveEntitiesData@game_state_t@@QAEHPBD@Z: near

@@ -10,7 +10,6 @@
 /EXPORT:LoadAnmRaceData
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:SetSun
 /EXPORT:InsideAA
 /EXPORT:SetDrawObjectShadows
 /EXPORT:GetDrawObjectShadows
