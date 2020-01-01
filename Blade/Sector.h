@@ -15,10 +15,10 @@ public:
 class B_Sector
 {
 public:
-        char unknownFields[32];
-        unsigned long groupId;
-        char unknownFields24[480];
-        unknown204 unknown204;
+    char unknownFields[32];
+    unsigned long groupId;
+    char unknownFields24[480];
+    unknown204 unknown204;
 };
 
 #endif
