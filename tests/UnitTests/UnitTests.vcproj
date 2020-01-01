@@ -196,6 +196,10 @@
 				RelativePath=".\BBLibc\ElementCSVTests.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\Blade\SectorTests.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
