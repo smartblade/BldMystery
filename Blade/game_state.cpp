@@ -238,7 +238,7 @@ B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs)
 
         for(unsigned int i = 0; i < gs->sectors.size; i++)
         {
-                sector_t *sector = gs->sectors.elements[i];
+                B_Sector *sector = gs->sectors.elements[i];
                 file >> sector->groupId;
         }
 

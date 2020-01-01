@@ -61,7 +61,7 @@ public:
         int unknown1880;
         char unknownFields1884[40];
         array_t<atmosphere_t *> atmospheres;
-        array_t<sector_t *> sectors;
+        array_t<B_Sector *> sectors;
         char unknownFields18DC[28];
         unknown_18F8_class unknown18F8;
         B_Vector unknown18FC;

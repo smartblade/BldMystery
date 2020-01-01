@@ -2,17 +2,17 @@
 
 #define SECTOR_H
 
-class sector_t;
+class B_Sector;
 
 class unknown204
 {
 public:
     int InsideAA(int AA);
 
-    sector_t *sector;
+    B_Sector *sector;
 };
 
-class sector_t
+class B_Sector
 {
 public:
         char unknownFields[32];

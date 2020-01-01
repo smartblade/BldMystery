@@ -34,7 +34,7 @@ extern "C" {
 #endif
 
 extern B_IDataFile * read_points(B_IDataFile *file, array_t<world_point_t *> *points);
-extern B_IDataFile * read_sectors(B_IDataFile *file, array_t<sector_t *> *sectors);
+extern B_IDataFile * read_sectors(B_IDataFile *file, array_t<B_Sector *> *sectors);
 extern light_t *read_light(B_IDataFile *file);
 extern void Set007EA988To01(void);
 extern void OnEvent(int a, int b);

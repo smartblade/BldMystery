@@ -955,7 +955,7 @@ void SetSun(int exists, double x, double y, double z)
 
 int InsideAA(int AA, double x, double y, double z)
 {
-    sector_t *sector;
+    B_Sector *sector;
     int sectorIndex;
     B_Vector point;
     point.x = x;
