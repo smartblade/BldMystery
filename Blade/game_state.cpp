@@ -78,6 +78,29 @@ int game_state_t::SetSun(int exists, const B_Vector &position)
 ................................................................................
 */
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043DBBE
+* VC++ mangling:          ?FindSectorIndex@game_state_t@@QAEHABVB_Vector@@@Z
+*/
+
+#ifdef BLD_NATIVE
+
+int game_state_t::FindSectorIndex(const B_Vector &point)
+{
+    return -1;
+}
+
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x000043F98A

@@ -382,6 +382,8 @@ externdef ?get_time@game_state_t@@QAENXZ: near
 l0043A6A4 equ ?get_time@game_state_t@@QAENXZ
 externdef ?SetSun@game_state_t@@QAEXHABVB_Vector@@@Z: near
 l0043C8B2 equ ?SetSun@game_state_t@@QAEXHABVB_Vector@@@Z
+externdef ?FindSectorIndex@game_state_t@@QAEHABVB_Vector@@@Z: near
+l0043DBBE equ ?FindSectorIndex@game_state_t@@QAEHABVB_Vector@@@Z
 externdef ?LoadEntitiesData@game_state_t@@QAEHPBD@Z: near
 l0043F98A equ ?LoadEntitiesData@game_state_t@@QAEHPBD@Z
 externdef ?SaveEntitiesData@game_state_t@@QAEHPBD@Z: near
@@ -984,6 +986,8 @@ externdef _SaveScreeShoot: near
 l0051D6DE equ _SaveScreeShoot
 externdef _CleanArea: near
 l0051D6FB equ _CleanArea
+externdef ?InsideAA@unknown204@@QAEHH@Z: near
+l00572D73 equ ?InsideAA@unknown204@@QAEHH@Z
 externdef _GetCharByName: near
 l005856A0 equ _GetCharByName
 externdef _LoadAllAnimations: near

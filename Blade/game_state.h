@@ -45,6 +45,7 @@ public:
         void unknown_00439F5D();
         double get_time();
         void SetSun(int exists, const B_Vector &position);
+        int FindSectorIndex(const B_Vector &point);
         int SaveEntitiesData(const char *filename);
         int LoadEntitiesData(const char *filename);
 

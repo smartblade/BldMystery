@@ -952,13 +952,22 @@ void SetSun(int exists, double x, double y, double z)
 * Module:                 Blade.exe
 * Entry point:            0x00429F71
 */
-#ifdef BLD_NATIVE
+
 int InsideAA(int AA, double x, double y, double z)
 {
-    int (*bld_proc)(int AA, double x, double y, double z);
-    return bld_proc(AA, x, y, z);
+    sector_t *sector;
+    int sectorIndex;
+    B_Vector point;
+    point.x = x;
+    point.y = y;
+    point.z = z;
+    sectorIndex = gbl_game_state.FindSectorIndex(point);
+    if (sectorIndex == -1)
+        return 0;
+    sector = gbl_game_state.sectors.elements[sectorIndex];
+    return sector->unknown204.InsideAA(AA);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

@@ -172,6 +172,21 @@ B_ODataFile& operator <<(B_ODataFile &file, const B_Combustion &combustion)
 
 #endif
 
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00572D73
+* VC++ mangling:          ?InsideAA@unknown204@@QAEHH@Z
+*/
+
+#ifdef BLD_NATIVE
+
+int unknown204::InsideAA(int AA);
+{
+    return 0;
+}
+
+#endif
+
 
 /*
 * Module:                 Blade.exe
