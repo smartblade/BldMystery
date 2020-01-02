@@ -1048,13 +1048,14 @@ double GetAecGap()
 * Module:                 Blade.exe
 * Entry point:            0x0042A095
 */
-#ifdef BLD_NATIVE
+
 int SetBloodLevel(int blood_level)
 {
-    int (*bld_proc)(int blood_level);
-    return bld_proc(blood_level);
+    B_App *App = get_application();
+    assert(App);
+    return App->SetBloodLevel(blood_level);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

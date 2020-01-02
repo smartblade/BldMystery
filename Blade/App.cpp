@@ -858,6 +858,27 @@ bool B_App::OutSound(int soundId, double x, double y, double z, int unknown)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00416C0B
+* VC++ mangling:          ?SetBloodLevel@B_App@@QAEHH@Z
+*/
+
+#ifdef BLD_NATIVE
+
+int B_App::SetBloodLevel(int blood_level)
+{
+}
+
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x00416C6F
 * VC++ mangling:          ?LoadWorld@B_App@@QAEHPBD@Z
 */
