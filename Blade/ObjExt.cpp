@@ -973,13 +973,14 @@ int InsideAA(int AA, double x, double y, double z)
 * Module:                 Blade.exe
 * Entry point:            0x00429FDF
 */
-#ifdef BLD_NATIVE
+
 int SetDrawObjectShadows(int draw)
 {
-    int (*bld_proc)(int draw);
-    return bld_proc(draw);
+    B_App *App = get_application();
+    App->drawShadows = draw;
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

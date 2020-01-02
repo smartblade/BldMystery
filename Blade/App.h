@@ -117,7 +117,9 @@ public:
         char *auxText;
         char unknownFields10[8];
         B_Name mapName;
-        char unknownFields2[424];
+        char unknownFields610[16];
+        int drawShadows;
+        char unknownFields624[404];
         void *window;
         void *module;
         char unknownFields3[16];
