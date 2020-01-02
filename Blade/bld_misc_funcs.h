@@ -36,6 +36,7 @@ extern "C" {
 extern B_IDataFile * read_points(B_IDataFile *file, array_t<world_point_t *> *points);
 extern B_IDataFile * read_sectors(B_IDataFile *file, array_t<B_Sector *> *sectors);
 extern light_t *read_light(B_IDataFile *file);
+extern anim_t *LoadFromHDAnim(const char *anm_name);
 extern void Set007EA988To01(void);
 extern void OnEvent(int a, int b);
 extern void reset_client_map_name(void);

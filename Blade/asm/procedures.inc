@@ -488,6 +488,8 @@ externdef _GiveAnims: near
 l0046EBFD equ _GiveAnims
 externdef ??0anim_t@@QAE@XZ: near
 l00475B9C equ ??0anim_t@@QAE@XZ
+externdef ?AddEvent@anim_t@@QAEXABVB_Name@@M@Z: near
+l00475EEB equ ?AddEvent@anim_t@@QAEXABVB_Name@@M@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z: near
 l004760A2 equ ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z
 externdef _AddStepSound: near
@@ -1040,6 +1042,8 @@ externdef _SetCharStringProperty: near
 l00586614 equ _SetCharStringProperty
 externdef _SetCharFuncProperty: near
 l005867AB equ _SetCharFuncProperty
+externdef _LoadFromHDAnim: near
+l00588F43 equ _LoadFromHDAnim
 externdef ?StartRecordingDemo@EnControl@@QAEHXZ: near
 l0059650C equ ?StartRecordingDemo@EnControl@@QAEHXZ
 externdef ?EndRecordingDemo@EnControl@@QAEHPBD@Z: near

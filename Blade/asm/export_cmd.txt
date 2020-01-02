@@ -10,7 +10,6 @@
 /EXPORT:LoadAnmRaceData
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:AnmAddEvent
 /EXPORT:AnmDelEvent
 /EXPORT:AnmClearEvents
 /EXPORT:AnmGetEventFrame

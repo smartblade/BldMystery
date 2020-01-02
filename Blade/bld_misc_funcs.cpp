@@ -97,6 +97,18 @@ anim_t::anim_t()
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00475EEB
+* VC++ mangling:          ?AddEvent@anim_t@@QAEXABVB_Name@@M@Z
+*/
+#ifdef BLD_NATIVE
+void anim_t::AddEvent(const B_Name &event_name, float event_frame)
+{
+    return NULL;
+}
+#endif
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x004760A2
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z
 */
@@ -187,6 +199,17 @@ int unknown204::InsideAA(int AA);
 
 #endif
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00588F43
+*/
+#ifdef BLD_NATIVE
+anim_t *LoadFromHDAnim(const char *anm_name)
+{
+    return NULL;
+}
+#endif
 
 /*
 * Module:                 Blade.exe

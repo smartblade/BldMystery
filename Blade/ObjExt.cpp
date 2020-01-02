@@ -1100,13 +1100,32 @@ int GetMutilationLevel()
 * Module:                 Blade.exe
 * Entry point:            0x0042A175
 */
-#ifdef BLD_NATIVE
+
 void AnmAddEvent(const char *anm_name, const char *event_name, double event_frame)
 {
-    void (*bld_proc)(const char *anm_name, const char *event_name, double event_frame);
-    bld_proc(anm_name, event_name, event_frame);
+    anim_t *foundAnim;
+    B_Name name(anm_name);
+    for (unsigned int i = 0; i < gbl_anims.size; i++)
+    {
+        if (name == gbl_anims.elements[i]->Id())
+        {
+            foundAnim = gbl_anims.elements[i];
+            goto after_search;
+        }
+    }
+    foundAnim = NULL;
+
+after_search:
+    if (foundAnim == NULL)
+    {
+        foundAnim = LoadFromHDAnim(anm_name);
+    }
+    if (foundAnim != NULL)
+    {
+        foundAnim->AddEvent(event_name, event_frame);
+    }
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
