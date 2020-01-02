@@ -1011,13 +1011,13 @@ int SetAutoEngageCombat(int auto_engage_combat)
 * Module:                 Blade.exe
 * Entry point:            0x0042A03A
 */
-#ifdef BLD_NATIVE
-int GetAutoEngageCombat(void)
+
+int GetAutoEngageCombat()
 {
-    int (*bld_proc)(void);
-    return bld_proc();
+    int autoEngageCombat = get_application()->autoEngageCombat;
+    return autoEngageCombat;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
