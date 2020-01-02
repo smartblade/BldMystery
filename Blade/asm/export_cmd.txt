@@ -10,7 +10,6 @@
 /EXPORT:LoadAnmRaceData
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:AnmDelEvent
 /EXPORT:AnmClearEvents
 /EXPORT:AnmGetEventFrame
 /EXPORT:AddParticleGType

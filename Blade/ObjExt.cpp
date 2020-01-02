@@ -1131,13 +1131,28 @@ after_search:
 * Module:                 Blade.exe
 * Entry point:            0x0042A232
 */
-#ifdef BLD_NATIVE
+
 void AnmDelEvent(const char *anm_name, const char *event_name)
 {
-    void (*bld_proc)(const char *anm_name, const char *event_name);
-    bld_proc(anm_name, event_name);
+    anim_t *foundAnim;
+    B_Name name(anm_name);
+    for (unsigned int i = 0; i < gbl_anims.size; i++)
+    {
+        if (name == gbl_anims.elements[i]->Id())
+        {
+            foundAnim = gbl_anims.elements[i];
+            goto after_search;
+        }
+    }
+    foundAnim = NULL;
+
+after_search:
+    if (foundAnim != NULL)
+    {
+        foundAnim->DelEvent(event_name);
+    }
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

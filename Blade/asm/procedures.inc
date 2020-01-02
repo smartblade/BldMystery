@@ -490,6 +490,8 @@ externdef ??0anim_t@@QAE@XZ: near
 l00475B9C equ ??0anim_t@@QAE@XZ
 externdef ?AddEvent@anim_t@@QAEXABVB_Name@@M@Z: near
 l00475EEB equ ?AddEvent@anim_t@@QAEXABVB_Name@@M@Z
+externdef ?DelEvent@anim_t@@QAEXABVB_Name@@@Z: near
+l00475F86 equ ?DelEvent@anim_t@@QAEXABVB_Name@@@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z: near
 l004760A2 equ ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z
 externdef _AddStepSound: near

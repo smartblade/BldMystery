@@ -109,6 +109,17 @@ void anim_t::AddEvent(const B_Name &event_name, float event_frame)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00475F86
+* VC++ mangling:          ?DelEvent@anim_t@@QAEXABVB_Name@@@Z
+*/
+#ifdef BLD_NATIVE
+void anim_t::DelEvent(const B_Name &event_name)
+{
+}
+#endif
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x004760A2
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z
 */
