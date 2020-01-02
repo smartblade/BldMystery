@@ -84,6 +84,7 @@ public:
         int ActivateInput();
         bool OutSound(int soundId, double x, double y, double z, int unknown);
         int SetBloodLevel(int blood_level);
+        int GetBloodLevel();
 
         char unknownFields1[24];
         boolean bUnknown01C;

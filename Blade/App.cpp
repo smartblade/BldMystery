@@ -871,6 +871,18 @@ int B_App::SetBloodLevel(int blood_level)
 #endif
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x00416C29
+* VC++ mangling:          ?GetBloodLevel@B_App@@QAEHXZ
+*/
+#ifdef BLD_NATIVE
+int B_App::GetBloodLevel()
+{
+    return 0;
+}
+#endif
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................

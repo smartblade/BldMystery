@@ -78,6 +78,8 @@ externdef ?OutSound@B_App@@QAE_NHNNNH@Z: near
 l0041617B equ ?OutSound@B_App@@QAE_NHNNNH@Z
 externdef ?SetBloodLevel@B_App@@QAEHH@Z: near
 l00416C0B equ ?SetBloodLevel@B_App@@QAEHH@Z
+externdef ?GetBloodLevel@B_App@@QAEHXZ: near
+l00416C29 equ ?GetBloodLevel@B_App@@QAEHXZ
 externdef ?LoadWorld@B_App@@QAEHPBD@Z: near
 l00416C6F equ ?LoadWorld@B_App@@QAEHPBD@Z
 externdef _PlayCDTrack: near

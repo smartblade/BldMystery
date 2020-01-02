@@ -1061,13 +1061,14 @@ int SetBloodLevel(int blood_level)
 * Module:                 Blade.exe
 * Entry point:            0x0042A0CF
 */
-#ifdef BLD_NATIVE
-int GetBloodLevel(void)
+
+int GetBloodLevel()
 {
-    int (*bld_proc)(void);
-    return bld_proc();
+    B_App *App = get_application();
+    assert(App);
+    return App->GetBloodLevel();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
