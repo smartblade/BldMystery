@@ -120,7 +120,8 @@ public:
         char unknownFields610[16];
         int drawShadows;
         int autoEngageCombat;
-        char unknownFields628[400];
+        double aecGap;
+        char unknownFields630[392];
         void *window;
         void *module;
         char unknownFields3[16];

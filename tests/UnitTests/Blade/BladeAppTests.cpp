@@ -28,6 +28,7 @@ TEST(BladeAppTests, Fields)
     EXPECT_OFFSET_EQ(B_BladeApp, mapName, 0x608);
     EXPECT_OFFSET_EQ(B_BladeApp, drawShadows, 0x620);
     EXPECT_OFFSET_EQ(B_BladeApp, autoEngageCombat, 0x624);
+    EXPECT_OFFSET_EQ(B_BladeApp, aecGap, 0x628);
     EXPECT_OFFSET_EQ(B_BladeApp, window, 0x7B8);
     EXPECT_OFFSET_EQ(B_BladeApp, module, 0x7BC);
 }

@@ -1023,13 +1023,14 @@ int GetAutoEngageCombat()
 * Module:                 Blade.exe
 * Entry point:            0x0042A053
 */
-#ifdef BLD_NATIVE
+
 int SetAecGap(double aec_gap)
 {
-    int (*bld_proc)(double aec_gap);
-    return bld_proc(aec_gap);
+    B_App *App = get_application();
+    App->aecGap = aec_gap;
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
