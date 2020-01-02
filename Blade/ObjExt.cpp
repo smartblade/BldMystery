@@ -998,13 +998,14 @@ int GetDrawObjectShadows()
 * Module:                 Blade.exe
 * Entry point:            0x0042A019
 */
-#ifdef BLD_NATIVE
+
 int SetAutoEngageCombat(int auto_engage_combat)
 {
-    int (*bld_proc)(int auto_engage_combat);
-    return bld_proc(auto_engage_combat);
+    B_App *App = get_application();
+    App->autoEngageCombat = auto_engage_combat;
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

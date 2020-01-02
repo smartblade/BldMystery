@@ -119,7 +119,8 @@ public:
         B_Name mapName;
         char unknownFields610[16];
         int drawShadows;
-        char unknownFields624[404];
+        int autoEngageCombat;
+        char unknownFields628[400];
         void *window;
         void *module;
         char unknownFields3[16];
