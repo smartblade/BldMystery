@@ -82,6 +82,8 @@ externdef ?GetBloodLevel@B_App@@QAEHXZ: near
 l00416C29 equ ?GetBloodLevel@B_App@@QAEHXZ
 externdef ?SetMutilationLevel@B_App@@QAEHH@Z: near
 l00416C3D equ ?SetMutilationLevel@B_App@@QAEHH@Z
+externdef ?GetMutilationLevel@B_App@@QAEHXZ: near
+l00416C5B equ ?GetMutilationLevel@B_App@@QAEHXZ
 externdef ?LoadWorld@B_App@@QAEHPBD@Z: near
 l00416C6F equ ?LoadWorld@B_App@@QAEHPBD@Z
 externdef _PlayCDTrack: near

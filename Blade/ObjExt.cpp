@@ -1087,13 +1087,14 @@ int SetMutilationLevel(int mutilation_level)
 * Module:                 Blade.exe
 * Entry point:            0x0042A13F
 */
-#ifdef BLD_NATIVE
-int GetMutilationLevel(void)
+
+int GetMutilationLevel()
 {
-    int (*bld_proc)(void);
-    return bld_proc();
+    B_App *App = get_application();
+    assert(App);
+    return App->GetMutilationLevel();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

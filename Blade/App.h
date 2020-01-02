@@ -86,6 +86,7 @@ public:
         int SetBloodLevel(int blood_level);
         int GetBloodLevel();
         int SetMutilationLevel(int mutilation_level);
+        int GetMutilationLevel();
 
         char unknownFields1[24];
         boolean bUnknown01C;
