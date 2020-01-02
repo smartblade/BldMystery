@@ -883,6 +883,18 @@ int B_App::GetBloodLevel()
 #endif
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x00416C3D
+* VC++ mangling:          ?SetMutilationLevel@B_App@@QAEHH@Z
+*/
+#ifdef BLD_NATIVE
+int B_App::SetMutilationLevel(int mutilation_level)
+{
+    return 0;
+}
+#endif
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................

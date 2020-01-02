@@ -1074,13 +1074,14 @@ int GetBloodLevel()
 * Module:                 Blade.exe
 * Entry point:            0x0042A105
 */
-#ifdef BLD_NATIVE
+
 int SetMutilationLevel(int mutilation_level)
 {
-    int (*bld_proc)(int mutilation_level);
-    return bld_proc(mutilation_level);
+    B_App *App = get_application();
+    assert(App);
+    return App->SetMutilationLevel(mutilation_level);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
