@@ -986,13 +986,13 @@ int SetDrawObjectShadows(int draw)
 * Module:                 Blade.exe
 * Entry point:            0x0042A000
 */
-#ifdef BLD_NATIVE
-int GetDrawObjectShadows(void)
+
+int GetDrawObjectShadows()
 {
-    int (*bld_proc)(void);
-    return bld_proc();
+    int drawShadows = get_application()->drawShadows;
+    return drawShadows;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
