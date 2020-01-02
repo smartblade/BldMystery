@@ -10,7 +10,6 @@
 /EXPORT:LoadAnmRaceData
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:GetAecGap
 /EXPORT:SetBloodLevel
 /EXPORT:GetBloodLevel
 /EXPORT:SetMutilationLevel

@@ -1036,13 +1036,13 @@ int SetAecGap(double aec_gap)
 * Module:                 Blade.exe
 * Entry point:            0x0042A07D
 */
-#ifdef BLD_NATIVE
-double GetAecGap(void)
+
+double GetAecGap()
 {
-    double (*bld_proc)(void);
-    return bld_proc();
+    double aecGap = get_application()->aecGap;
+    return aecGap;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
