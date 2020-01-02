@@ -120,6 +120,17 @@ void anim_t::DelEvent(const B_Name &event_name)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00476014
+* VC++ mangling:          ?ClearEvents@anim_t@@QAEXXZ
+*/
+#ifdef BLD_NATIVE
+void anim_t::ClearEvents();
+{
+}
+#endif
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x004760A2
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z
 */

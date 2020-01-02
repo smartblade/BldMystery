@@ -10,6 +10,7 @@ public:
     anim_t();
     void AddEvent(const B_Name &event_name, float event_frame);
     void DelEvent(const B_Name &event_name);
+    void ClearEvents();
 };
 
 B_IDataFile &operator >>(B_IDataFile &file, anim_t *anim);
