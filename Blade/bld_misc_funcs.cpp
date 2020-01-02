@@ -131,6 +131,18 @@ void anim_t::ClearEvents();
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00476057
+* VC++ mangling:          ?GetEventFrame@anim_t@@QAEMABVB_Name@@@Z
+*/
+#ifdef BLD_NATIVE
+float anim_t::GetEventFrame(const B_Name &event_name))
+{
+    return -1.0;
+}
+#endif
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x004760A2
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z
 */

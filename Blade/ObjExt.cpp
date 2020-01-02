@@ -1185,13 +1185,27 @@ after_search:
 * Module:                 Blade.exe
 * Entry point:            0x0042A354
 */
-#ifdef BLD_NATIVE
+
 double AnmGetEventFrame(const char *anm_name, const char *event_name)
 {
-    double (*bld_proc)(const char *anm_name, const char *event_name);
-    return bld_proc(anm_name, event_name);
+    anim_t *foundAnim;
+    B_Name name(anm_name);
+    for (unsigned int i = 0; i < gbl_anims.size; i++)
+    {
+        if (name == gbl_anims.elements[i]->Id())
+        {
+            foundAnim = gbl_anims.elements[i];
+            goto after_search;
+        }
+    }
+    foundAnim = NULL;
+
+after_search:
+    if (foundAnim != NULL)
+        return foundAnim->GetEventFrame(event_name);
+    return -1.0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

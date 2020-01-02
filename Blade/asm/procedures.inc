@@ -494,6 +494,8 @@ externdef ?DelEvent@anim_t@@QAEXABVB_Name@@@Z: near
 l00475F86 equ ?DelEvent@anim_t@@QAEXABVB_Name@@@Z
 externdef ?ClearEvents@anim_t@@QAEXXZ: near
 l00476014 equ ?ClearEvents@anim_t@@QAEXXZ
+externdef ?GetEventFrame@anim_t@@QAEMABVB_Name@@@Z: near
+l00476057 equ ?GetEventFrame@anim_t@@QAEMABVB_Name@@@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z: near
 l004760A2 equ ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z
 externdef _AddStepSound: near
