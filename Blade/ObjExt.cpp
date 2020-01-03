@@ -1,6 +1,7 @@
 
 #include <bld_system.h>
 #include <bld_python.h>
+#include <raster_device.h>
 #include "App.h"
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
@@ -1331,22 +1332,24 @@ int GetnParticleGType()
 * Module:                 Blade.exe
 * Entry point:            0x0042A77F
 */
-#ifdef BLD_NATIVE
+
 int GetParticleGType(
-        int index, const char **type, const char **parent_type,
-        int *operation_type, int *duration
+    int index, const char **type, const char **parent_type,
+    int *operation_type, int *duration
 )
 {
-    int (*bld_proc)(
-        int index, const char **type, const char **parent_type,
-        int *operation_type, int *duration
-);
-        int index, const char **type, const char **parent_type,
-        int *operation_type, int *duration
-))GetProcAddress(blade, "GetParticleGType");
-    return bld_proc(index, type, parent_type, operation_type, duration);
+    if (index >= 0 && (unsigned int)index < gbl_particle_types.size)
+    {
+        B_ParticleGType *particleType = gbl_particle_types.elements[index];
+        *type = particleType->name.String();
+        *parent_type = B_3D_raster_device->bmp_name(particleType->unknown0024);
+        *operation_type = particleType->unknown0028;
+        *duration = particleType->a00C.unknown14;
+        return 1;
+    }
+    return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
