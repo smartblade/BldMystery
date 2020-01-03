@@ -197,6 +197,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BBLibc\ParticleGTypeTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\SectorTests.cpp"
 				>
 			</File>
