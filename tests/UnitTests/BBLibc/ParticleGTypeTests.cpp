@@ -13,6 +13,6 @@ TEST(ParticleGTypeTests, SizeOf)
 TEST(ParticleGTypeTests, Fields)
 {
     EXPECT_OFFSET_EQ(B_ParticleGType, a00C, 0x00C);
-    EXPECT_OFFSET_EQ(B_ParticleGType, unknown0024, 0x024);
-    EXPECT_OFFSET_EQ(B_ParticleGType, unknown0028, 0x028);
+    EXPECT_OFFSET_EQ(B_ParticleGType, bmp_handle, 0x024);
+    EXPECT_OFFSET_EQ(B_ParticleGType, operation_type, 0x028);
 }

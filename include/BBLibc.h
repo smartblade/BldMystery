@@ -56,7 +56,7 @@ class B_ParticleGType : public B_NamedObj
 {
 public:
     virtual ~B_ParticleGType();
-    B_ParticleGType() : unknown0024(-1), unknown0028(0)
+    B_ParticleGType() : bmp_handle(-1), operation_type(0)
     {
     }
     B_ParticleGType(
@@ -64,8 +64,8 @@ public:
         unsigned long operation_type, unsigned int duration);
 public:
     array_t<B_ParticleElement> a00C;
-    int unknown0024;
-    int unknown0028;
+    int bmp_handle;
+    int operation_type;
 };
 
 
