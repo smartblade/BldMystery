@@ -1320,13 +1320,12 @@ after_search:
 * Module:                 Blade.exe
 * Entry point:            0x0042A775
 */
-#ifdef BLD_NATIVE
-int GetnParticleGType(void)
+
+int GetnParticleGType()
 {
-    int (*bld_proc)(void);
-    return bld_proc();
+    return gbl_particle_types.size;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
