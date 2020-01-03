@@ -1211,22 +1211,74 @@ after_search:
 * Module:                 Blade.exe
 * Entry point:            0x0042A400
 */
-#ifdef BLD_NATIVE
+
 int AddParticleGType(
-        const char *new_type, const char *parent_type, int operation_type,
-        int duration
+    const char *new_type, const char *parent_type, int operation_type,
+    int duration
 )
 {
-    int (*bld_proc)(
-        const char *new_type, const char *parent_type, int operation_type,
-        int duration
-);
-        const char *new_type, const char *parent_type, int operation_type,
-        int duration
-))GetProcAddress(blade, "AddParticleGType");
-    return bld_proc(new_type, parent_type, operation_type, duration);
+    bool found;
+    {
+        int foundIndex;
+        B_Name name(new_type);
+        for (unsigned int i = 0; i < gbl_particle_types.size; i++)
+        {
+            if (name == gbl_particle_types.elements[i]->Id())
+            {
+                foundIndex = i;
+                goto after_search;
+            }
+        }
+        foundIndex = -1;
+
+after_search:
+        found = (foundIndex != -1);
+    }
+    if (found)
+        return 1;
+    B_ParticleGType *newParticleType = new B_ParticleGType(
+        new_type,
+        parent_type,
+        operation_type,
+        duration);
+    if (newParticleType == NULL)
+        return 0;
+    for (int i = 0; i < duration + 1; i++)
+    {
+        newParticleType->a00C.elements[i].r = 128;
+        newParticleType->a00C.elements[i].g = 128;
+        newParticleType->a00C.elements[i].b = 128;
+        newParticleType->a00C.elements[i].alpha = 128;
+        newParticleType->a00C.elements[i].size = 100.0f;
+    }
+    if (gbl_particle_types.num_alloc > gbl_particle_types.size)
+    {
+        gbl_particle_types.elements[gbl_particle_types.size] = newParticleType;
+        gbl_particle_types.size++;
+    }
+    else
+    {
+        gbl_particle_types.num_alloc += gbl_particle_types.increment;
+        if (gbl_particle_types.size != 0)
+        {
+            B_ParticleGType ** elements = new B_ParticleGType *[gbl_particle_types.num_alloc];
+            for (unsigned int i = 0; i < gbl_particle_types.size; i++)
+            {
+                elements[i] = gbl_particle_types.elements[i];
+            }
+            delete gbl_particle_types.elements;
+            gbl_particle_types.elements = elements;
+        }
+        else
+        {
+            gbl_particle_types.elements = new B_ParticleGType *[gbl_particle_types.num_alloc];
+        }
+        gbl_particle_types.elements[gbl_particle_types.size] = newParticleType;
+        gbl_particle_types.size++;
+    }
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

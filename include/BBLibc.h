@@ -24,6 +24,7 @@ public:
         ~B_Name();
         B_Name &operator =(const B_Name &src);
         unsigned int operator ==(const char *str) const;
+        unsigned int operator ==(const B_Name &str) const;
         operator const char *() const { return string; }
         char * const String() const;
 private:
@@ -41,6 +42,16 @@ public:
         B_Name name;
 };
 
+struct B_ParticleElement
+{
+public:
+    byte r;
+    byte g;
+    byte b;
+    byte alpha;
+    float size;
+};
+
 class B_ParticleGType : public B_NamedObj
 {
 public:
@@ -48,8 +59,11 @@ public:
     B_ParticleGType() : unknown0024(-1), unknown0028(0)
     {
     }
-private:
-    array_t<double> a00C;
+    B_ParticleGType(
+        const B_Name &new_type, const B_Name &parent_type,
+        unsigned long operation_type, unsigned int duration);
+public:
+    array_t<B_ParticleElement> a00C;
     int unknown0024;
     int unknown0028;
 };
