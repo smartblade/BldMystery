@@ -1790,19 +1790,19 @@ int DrawBOD(
 */
 #ifdef BLD_NATIVE
 int CreateTriggerSector(
-	const char *trigger_sector_name, const char *group_name,
-	double floor_height, double roof_height, int num_points,
-	point_2d_t *points
+    const char *trigger_sector_name, const char *group_name,
+    double floor_height, double roof_height, int num_points,
+    point_2d_t *points
 )
 {
     int (*bld_proc)(
-	const char *trigger_sector_name, const char *group_name,
-	double floor_height, double roof_height, int num_points,
-	point_2d_t *points
+    const char *trigger_sector_name, const char *group_name,
+    double floor_height, double roof_height, int num_points,
+    point_2d_t *points
 );
-	const char *trigger_sector_name, const char *group_name,
-	double floor_height, double roof_height, int num_points,
-	point_2d_t *points
+    const char *trigger_sector_name, const char *group_name,
+    double floor_height, double roof_height, int num_points,
+    point_2d_t *points
 ))GetProcAddress(blade, "CreateTriggerSector");
     return bld_proc(trigger_sector_name, group_name, floor_height, roof_height, num_points, points);
 }
