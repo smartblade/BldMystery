@@ -1355,22 +1355,39 @@ int GetParticleGType(
 * Module:                 Blade.exe
 * Entry point:            0x0042A82F
 */
-#ifdef BLD_NATIVE
+
 int GetParticleGVal(
-        const char *type, int index, int *r, int *g, int *b, int *alpha,
-        double *size
+    const char *type, int index, int *r, int *g, int *b, int *alpha,
+    double *size
 )
 {
-    int (*bld_proc)(
-        const char *type, int index, int *r, int *g, int *b, int *alpha,
-        double *size
-);
-        const char *type, int index, int *r, int *g, int *b, int *alpha,
-        double *size
-))GetProcAddress(blade, "GetParticleGVal");
-    return bld_proc(type, index, r, g, b, alpha, size);
+    B_ParticleGType *foundElement;
+    {
+        B_Name name(type);
+        for (unsigned int i = 0; i < gbl_particle_types.size; i++)
+        {
+            if (name == gbl_particle_types.elements[i]->Id())
+            {
+                foundElement = gbl_particle_types.elements[i];
+                goto after_search;
+            }
+        }
+        foundElement = NULL;
+after_search:
+        ;
+    }
+    if (foundElement != NULL)
+    {
+        *r = foundElement->a00C.elements[index].r;
+        *g = foundElement->a00C.elements[index].g;
+        *b = foundElement->a00C.elements[index].b;
+        *alpha = foundElement->a00C.elements[index].alpha;
+        *size = foundElement->a00C.elements[index].size;
+        return 1;
+    }
+    return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
