@@ -1284,19 +1284,37 @@ after_search:
 * Module:                 Blade.exe
 * Entry point:            0x0042A697
 */
-#ifdef BLD_NATIVE
+
 int SetParticleGVal(
-        const char *type, int i, int r, int g, int b, int alpha, double size
+    const char *type, int i, int r, int g, int b, int alpha, double size
 )
 {
-    int (*bld_proc)(
-        const char *type, int i, int r, int g, int b, int alpha, double size
-);
-        const char *type, int i, int r, int g, int b, int alpha, double size
-))GetProcAddress(blade, "SetParticleGVal");
-    return bld_proc(type, i, r, g, b, alpha, size);
+    B_ParticleGType *foundElement;
+    {
+        B_Name name(type);
+        for (unsigned int i = 0; i < gbl_particle_types.size; i++)
+        {
+            if (name == gbl_particle_types.elements[i]->Id())
+            {
+                foundElement = gbl_particle_types.elements[i];
+                goto after_search;
+            }
+        }
+        foundElement = NULL;
+after_search:
+        ;
+    }
+    if (foundElement != NULL && (unsigned int)i < foundElement->a00C.size)
+    {
+        foundElement->a00C.elements[i].r = r;
+        foundElement->a00C.elements[i].g = g;
+        foundElement->a00C.elements[i].b = b;
+        foundElement->a00C.elements[i].alpha = alpha;
+        foundElement->a00C.elements[i].size = size;
+    }
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
