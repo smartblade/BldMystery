@@ -193,6 +193,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\CameraMovementTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\BBLibc\ElementCSVTests.cpp"
 				>
 			</File>

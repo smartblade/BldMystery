@@ -1466,19 +1466,48 @@ int AddAnimFlags(
 * Module:                 Blade.exe
 * Entry point:            0x0042A9E0
 */
-#ifdef BLD_NATIVE
+
 int SetActionCameraMovement(
-        const char *action_name, double angle, double start_pos, double end_pos
+    const char *action_name, double angle, double start_pos, double end_pos
 )
 {
-    int (*bld_proc)(
-        const char *action_name, double angle, double start_pos, double end_pos
-);
-        const char *action_name, double angle, double start_pos, double end_pos
-))GetProcAddress(blade, "SetActionCameraMovement");
-    return bld_proc(action_name, angle, start_pos, end_pos);
+    B_App *App = get_application();
+    assert(App);
+    B_CameraEntity *camera = App->camera;
+    if (camera != NULL)
+    {
+        B_CameraMovement *movement = new B_CameraMovement(
+            action_name, angle, start_pos, end_pos);
+        array_t<B_CameraMovement *> *array = &camera->movements;
+        if (array->num_alloc > array->size)
+        {
+            array->elements[array->size] = movement;
+            array->size++;
+        }
+        else
+        {
+            array->num_alloc += array->increment;
+            if (array->size != 0)
+            {
+                B_CameraMovement ** elements = new B_CameraMovement *[array->num_alloc];
+                for (unsigned int i = 0; i < array->size; i++)
+                {
+                    elements[i] = array->elements[i];
+                }
+                delete array->elements;
+                array->elements = elements;
+            }
+            else
+            {
+                array->elements = new B_CameraMovement *[array->num_alloc];
+            }
+            array->elements[array->size] = movement;
+            array->size++;
+        }
+    }
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
