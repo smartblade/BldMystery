@@ -1060,6 +1060,8 @@ externdef ?SetAnimationFactor@EnControl@@QAEHPBDN@Z: near
 l00595166 equ ?SetAnimationFactor@EnControl@@QAEHPBDN@Z
 externdef ?AddWatchAnim@EnControl@@QAEHPBD@Z: near
 l005954F7 equ ?AddWatchAnim@EnControl@@QAEHPBD@Z
+externdef ?AddAnimFlags@EnControl@@QAEHPBDHHHHHH@Z: near
+l005956B0 equ ?AddAnimFlags@EnControl@@QAEHPBDHHHHHH@Z
 externdef ?StartRecordingDemo@EnControl@@QAEHXZ: near
 l0059650C equ ?StartRecordingDemo@EnControl@@QAEHXZ
 externdef ?EndRecordingDemo@EnControl@@QAEHPBD@Z: near

@@ -1451,22 +1451,16 @@ int AddWatchAnim(const char *anim)
 * Module:                 Blade.exe
 * Entry point:            0x0042A9B5
 */
-#ifdef BLD_NATIVE
+
 int AddAnimFlags(
-        const char *anim, int wuea, int mdf_y, int solf, int copy_rot,
-        int bng_mov, int head_f
+    const char *anim, int wuea, int mdf_y, int solf, int copy_rot,
+    int bng_mov, int head_f
 )
 {
-    int (*bld_proc)(
-        const char *anim, int wuea, int mdf_y, int solf, int copy_rot,
-        int bng_mov, int head_f
-);
-        const char *anim, int wuea, int mdf_y, int solf, int copy_rot,
-        int bng_mov, int head_f
-))GetProcAddress(blade, "AddAnimFlags");
-    return bld_proc(anim, wuea, mdf_y, solf, copy_rot, bng_mov, head_f);
+    return gbl_en_control.AddAnimFlags(
+        anim, wuea, mdf_y, solf, copy_rot, bng_mov, head_f);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

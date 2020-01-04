@@ -52,6 +52,21 @@ int EnControl::AddWatchAnim(const char *anim)
 #endif
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x005956B0
+* VC++ mangling:          ?AddAnimFlags@EnControl@@QAEHPBDHHHHHH@Z
+*/
+#ifdef BLD_NATIVE
+int EnControl::AddAnimFlags(
+    const char *anim, int wuea, int mdf_y, int solf, int copy_rot,
+    int bng_mov, int head_f
+)
+{
+    return 0;
+}
+#endif
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
