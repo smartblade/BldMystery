@@ -101,6 +101,26 @@ int game_state_t::FindSectorIndex(const B_Vector &point)
 ................................................................................
 */
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043E8E8
+* VC++ mangling:          ?GenerateEntityName@game_state_t@@QAEPBDPBD@Z
+*/
+#ifdef BLD_NATIVE
+const char *GenerateEntityName(const char *prefix)
+{
+    return NULL;
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x000043F98A

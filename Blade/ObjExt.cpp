@@ -1429,13 +1429,12 @@ int SetAutoGenTexture(const char *textureName, int textureEffect)
 * Module:                 Blade.exe
 * Entry point:            0x0042A98E
 */
-#ifdef BLD_NATIVE
-const char *GenerateEntityName(void)
+
+const char *GenerateEntityName()
 {
-    const char *(*bld_proc)(void);
-    return bld_proc();
+    return gbl_game_state.GenerateEntityName("Entity");
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

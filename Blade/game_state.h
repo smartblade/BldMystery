@@ -46,6 +46,7 @@ public:
         double get_time();
         void SetSun(int exists, const B_Vector &position);
         int FindSectorIndex(const B_Vector &point);
+        const char *GenerateEntityName(const char *prefix);
         int SaveEntitiesData(const char *filename);
         int LoadEntitiesData(const char *filename);
 

@@ -394,6 +394,8 @@ externdef ?SetSun@game_state_t@@QAEXHABVB_Vector@@@Z: near
 l0043C8B2 equ ?SetSun@game_state_t@@QAEXHABVB_Vector@@@Z
 externdef ?FindSectorIndex@game_state_t@@QAEHABVB_Vector@@@Z: near
 l0043DBBE equ ?FindSectorIndex@game_state_t@@QAEHABVB_Vector@@@Z
+externdef ?GenerateEntityName@game_state_t@@QAEPBDPBD@Z: near
+l0043E8E8 equ ?GenerateEntityName@game_state_t@@QAEPBDPBD@Z
 externdef ?LoadEntitiesData@game_state_t@@QAEHPBD@Z: near
 l0043F98A equ ?LoadEntitiesData@game_state_t@@QAEHPBD@Z
 externdef ?SaveEntitiesData@game_state_t@@QAEHPBD@Z: near
