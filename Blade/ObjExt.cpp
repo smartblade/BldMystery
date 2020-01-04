@@ -1527,13 +1527,15 @@ int SetRootWidget(long int widget)
 * Module:                 Blade.exe
 * Entry point:            0x0042ABF6
 */
-#ifdef BLD_NATIVE
-long int GetRootWidget(void)
+
+long int GetRootWidget()
 {
-    long int (*bld_proc)(void);
-    return bld_proc();
+    B_App *App = get_application();
+    assert(App);
+    long int rootWidget = App->rootWidget;
+    return rootWidget;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

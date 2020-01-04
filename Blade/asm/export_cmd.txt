@@ -10,7 +10,6 @@
 /EXPORT:LoadAnmRaceData
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:GetRootWidget
 /EXPORT:AddCombustionDataFor
 /EXPORT:RM_FreeResource
 /EXPORT:RM_GetResource
