@@ -41,6 +41,25 @@ int EnControl::SetAnimationFactor(const char *mov, double new_speed_factor)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x005954F7
+* VC++ mangling:          ?AddWatchAnim@EnControl@@QAEHPBD@Z
+*/
+#ifdef BLD_NATIVE
+int EnControl::AddWatchAnim(const char *anim)
+{
+    return 0;
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x0059650C
 * VC++ mangling:          ?StartRecordingDemo@EnControl@@QAEHXZ
 */

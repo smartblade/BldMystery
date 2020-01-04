@@ -10,7 +10,6 @@
 /EXPORT:LoadAnmRaceData
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:AddWatchAnim
 /EXPORT:AddAnimFlags
 /EXPORT:SetActionCameraMovement
 /EXPORT:SetRootWidget

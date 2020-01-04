@@ -1440,13 +1440,12 @@ const char *GenerateEntityName()
 * Module:                 Blade.exe
 * Entry point:            0x0042A9A2
 */
-#ifdef BLD_NATIVE
+
 int AddWatchAnim(const char *anim)
 {
-    int (*bld_proc)(const char *anim);
-    return bld_proc(anim);
+    return gbl_en_control.AddWatchAnim(anim);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
