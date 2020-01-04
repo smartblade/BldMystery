@@ -1415,13 +1415,15 @@ int SetAnimationFactor(const char *mov, double new_speed_factor)
 * Module:                 Blade.exe
 * Entry point:            0x0042A94B
 */
-#ifdef BLD_NATIVE
+
 int SetAutoGenTexture(const char *textureName, int textureEffect)
 {
-    int (*bld_proc)(const char *textureName, int textureEffect);
-    return bld_proc(textureName, textureEffect);
+    B_App *App = get_application();
+    assert(App);
+    App->SetAutoGenTexture(textureName, textureEffect);
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

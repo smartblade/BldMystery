@@ -793,6 +793,18 @@ void B_App::UnBindAll()
 ................................................................................
 */
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00415610
+* VC++ mangling:          ?SetAutoGenTexture@B_App@@QAEHPBDH@Z
+*/
+#ifdef BLD_NATIVE
+int B_App::SetAutoGenTexture(const char *textureName, int textureEffect)
+{
+}
+#endif
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00415759

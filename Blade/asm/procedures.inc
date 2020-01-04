@@ -72,6 +72,8 @@ externdef ?AssocKey@B_App@@QAEHPBD00H@Z: near
 l004155AE equ ?AssocKey@B_App@@QAEHPBD00H@Z
 externdef ?UnBindAll@B_App@@QAEXXZ: near
 l004155D9 equ ?UnBindAll@B_App@@QAEXXZ
+externdef ?SetAutoGenTexture@B_App@@QAEHPBDH@Z: near
+l00415610 equ ?SetAutoGenTexture@B_App@@QAEHPBDH@Z
 externdef ?RunPythonFile@B_App@@QAE_NPBD@Z: near
 l00415759 equ ?RunPythonFile@B_App@@QAE_NPBD@Z
 externdef ?OutSound@B_App@@QAE_NHNNNH@Z: near

@@ -80,6 +80,7 @@ public:
         double GetTimeActionHeld(const char *action);
         bool UnBindPred(const char *key, const char *pred);
         void UnBindAll();
+        int SetAutoGenTexture(const char *textureName, int textureEffect);
         int DeactivateInput();
         int ActivateInput();
         bool OutSound(int soundId, double x, double y, double z, int unknown);

@@ -10,7 +10,6 @@
 /EXPORT:LoadAnmRaceData
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:SetAutoGenTexture
 /EXPORT:GenerateEntityName
 /EXPORT:AddWatchAnim
 /EXPORT:AddAnimFlags
