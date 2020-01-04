@@ -1393,13 +1393,12 @@ after_search:
 * Module:                 Blade.exe
 * Entry point:            0x0042A915
 */
-#ifdef BLD_NATIVE
-void SetTurnSpeed(const char *race_name, double new_speed)
+
+int SetTurnSpeed(const char *race_name, double new_speed)
 {
-    void (*bld_proc)(const char *race_name, double new_speed);
-    bld_proc(race_name, new_speed);
+    return gbl_en_control.SetTurnSpeed(race_name, new_speed);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

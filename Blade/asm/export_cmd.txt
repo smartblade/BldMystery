@@ -10,7 +10,6 @@
 /EXPORT:LoadAnmRaceData
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:SetTurnSpeed
 /EXPORT:SetAnimationFactor
 /EXPORT:SetAutoGenTexture
 /EXPORT:GenerateEntityName

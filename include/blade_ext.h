@@ -484,7 +484,7 @@ LIB_EXP int CheckAnims(void);
 LIB_EXP int GiveAnims(const char *race_name);
 LIB_EXP int GetAnimationDuration(const char *animation_name, double *duration);
 LIB_EXP int SetAnimationFactor(const char *mov, double new_speed_factor);
-LIB_EXP void SetTurnSpeed(const char *race_name, double new_speed);
+LIB_EXP int SetTurnSpeed(const char *race_name, double new_speed);
 LIB_EXP B_Entity *GetEntity(const char *name);
 LIB_EXP B_Entity *GetEntityI(int index);
 LIB_EXP B_Entity *CreateEntity(

@@ -10,6 +10,25 @@
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00595124
+* VC++ mangling:          ?SetTurnSpeed@EnControl@@QAEHPBDN@Z
+*/
+#ifdef BLD_NATIVE
+int EnControl::SetTurnSpeed(const char *race_name, double new_speed)
+{
+    return 0;
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x0059650C
 * VC++ mangling:          ?StartRecordingDemo@EnControl@@QAEHXZ
 */
