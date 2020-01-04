@@ -21,6 +21,18 @@ int EnControl::SetTurnSpeed(const char *race_name, double new_speed)
 #endif
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x00595166
+* VC++ mangling:          ?SetAnimationFactor@EnControl@@QAEHPBDN@Z
+*/
+#ifdef BLD_NATIVE
+int EnControl::SetAnimationFactor(const char *mov, double new_speed_factor)
+{
+    return 0;
+}
+#endif
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................

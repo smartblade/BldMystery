@@ -1052,6 +1052,8 @@ externdef _LoadFromHDAnim: near
 l00588F43 equ _LoadFromHDAnim
 externdef ?SetTurnSpeed@EnControl@@QAEHPBDN@Z: near
 l00595124 equ ?SetTurnSpeed@EnControl@@QAEHPBDN@Z
+externdef ?SetAnimationFactor@EnControl@@QAEHPBDN@Z: near
+l00595166 equ ?SetAnimationFactor@EnControl@@QAEHPBDN@Z
 externdef ?StartRecordingDemo@EnControl@@QAEHXZ: near
 l0059650C equ ?StartRecordingDemo@EnControl@@QAEHXZ
 externdef ?EndRecordingDemo@EnControl@@QAEHPBD@Z: near

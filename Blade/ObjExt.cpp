@@ -1404,13 +1404,12 @@ int SetTurnSpeed(const char *race_name, double new_speed)
 * Module:                 Blade.exe
 * Entry point:            0x0042A930
 */
-#ifdef BLD_NATIVE
+
 int SetAnimationFactor(const char *mov, double new_speed_factor)
 {
-    int (*bld_proc)(const char *mov, double new_speed_factor);
-    return bld_proc(mov, new_speed_factor);
+    return gbl_en_control.SetAnimationFactor(mov, new_speed_factor);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
