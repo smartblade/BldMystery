@@ -1513,13 +1513,15 @@ int SetActionCameraMovement(
 * Module:                 Blade.exe
 * Entry point:            0x0042ABBA
 */
-#ifdef BLD_NATIVE
+
 int SetRootWidget(long int widget)
 {
-    int (*bld_proc)(long int widget);
-    return bld_proc(widget);
+    B_App *App = get_application();
+    assert(App);
+    App->rootWidget = widget;
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

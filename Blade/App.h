@@ -99,7 +99,9 @@ public:
         void *argsMethods;
         B_Name **arguments;
         int numArguments;
-        char unknownFields20[36];
+        char unknownFields44[16];
+        long int rootWidget;
+        char unknownFields58[16];
         person_t *player1;
         B_Entity *client;
         char unknownFields100[8];
