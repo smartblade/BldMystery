@@ -197,6 +197,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\CombustionTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\BBLibc\ElementCSVTests.cpp"
 				>
 			</File>
