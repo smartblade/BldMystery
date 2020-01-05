@@ -185,6 +185,14 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\BBLibc\BitMap24Tests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BBLibc\BitMapTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\BladeAppTests.cpp"
 				>
 			</File>
@@ -206,6 +214,10 @@
 			</File>
 			<File
 				RelativePath=".\BBLibc\ParticleGTypeTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BBLibc\ResourceTests.cpp"
 				>
 			</File>
 			<File

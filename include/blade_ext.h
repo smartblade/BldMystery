@@ -24,12 +24,14 @@
 
 #ifdef __cplusplus
 
+class B_BitMap;
 class B_Entity;
 class material_t;
 class B_Resource;
 
 #else
 
+typedef struct _B_BitMap B_BitMap;
 typedef struct _B_Entity B_Entity;
 typedef struct _material_t material_t;
 typedef struct _B_Resource B_Resource;
@@ -1187,6 +1189,7 @@ LIB_EXP int AddCombustionDataFor(
         double speed, double livetime
 );
 LIB_EXP void RM_FreeResource(B_Resource *resource);
+LIB_EXP B_BitMap *RM_GetResource(const char *name);
 LIB_EXP int SetAfterFrameFunc(const char *name, PyObject *function);
 LIB_EXP PyObject *GetAfterFrameFunc(const char *name);
 LIB_EXP int GetnAfterFrameFuncs(void);

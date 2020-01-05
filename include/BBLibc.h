@@ -135,14 +135,51 @@ LIB_EXP B_NDataBase<B_ElementCSV> B_csvs;
 
 LIB_EXP unsigned int ReadCSV(const char *file_name, B_NDataBase<B_ElementCSV> *csvs);
 
+class LIB_EXP B_BitMap24
+{
+public:
+    virtual ~B_BitMap24();
+
+    unsigned int dimension1;
+    unsigned int dimension2;
+    void *data;
+};
+
+class LIB_EXP B_Pal
+{
+};
+
+class LIB_EXP B_BitMap
+{
+public:
+    enum BitMapType
+    {
+        BitMapType2 = 2,
+        BitMapType4 = 4,
+    };
+    virtual ~B_BitMap();
+    B_BitMap(const B_BitMap &src);
+    B_BitMap(BitMapType type, unsigned int, unsigned int, const B_Pal *pal);
+
+    BitMapType type;
+    unsigned int dimension1;
+    unsigned int dimension2;
+    void *data;
+    B_Pal *pal;
+};
+
 class LIB_EXP B_Resource : public B_NamedObj
 {
+public:
+    void *data;
 };
 
 class LIB_EXP B_ResourceManager
 {
 public:
-        unsigned int LocateResourceIn(const B_Name &id, const B_Name *, int );
+    B_Resource *GetResource(unsigned short type, const B_Name &name);
+    void FreeResource(B_Resource *resource);
+    unsigned int LocateResourceIn(const B_Name &id, const B_Name *, int );
 };
 
 LIB_EXP B_ResourceManager B_resource_manager;

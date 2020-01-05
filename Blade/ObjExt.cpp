@@ -1616,12 +1616,47 @@ void RM_FreeResource(B_Resource *resource)
 * Module:                 Blade.exe
 * Entry point:            0x0042AEAE
 */
-#ifdef BLD_NATIVE// TODO fix prototype
-void RM_GetResource()
+
+B_BitMap *RM_GetResource(const char *name)
 {
-        assert("RM_GetResource" == NULL);
+    B_Resource *resource;
+    resource = B_resource_manager.GetResource(2, name);
+    if (resource != NULL)
+    {
+        B_BitMap *bitMap = new B_BitMap((B_BitMap &)resource->data);
+        B_resource_manager.FreeResource(resource);
+        return bitMap;
+    }
+    resource = B_resource_manager.GetResource(3, name);
+    if (resource != NULL)
+    {
+        B_BitMap24 *bitMap24 = (B_BitMap24 *)&resource->data;
+        B_BitMap *bitMap = new B_BitMap(
+            B_BitMap::BitMapType4, bitMap24->dimension1, bitMap24->dimension2,
+            NULL);
+        memcpy(
+            bitMap->data, bitMap24->data,
+            bitMap->dimension1 * bitMap->dimension2 * 3);
+        B_resource_manager.FreeResource(resource);
+        return bitMap;
+    }
+    resource = B_resource_manager.GetResource(4, name);
+    if (resource != NULL)
+    {
+        B_BitMap24 *bitMap24 = (B_BitMap24 *)&resource->data;
+        B_BitMap *bitMap = new B_BitMap(
+            B_BitMap::BitMapType2, bitMap24->dimension1, bitMap24->dimension2,
+            NULL);
+        for(unsigned int i = 0; i < bitMap->dimension1 * bitMap->dimension2; i++)
+        {
+            ((byte *)bitMap->data)[i] = ((byte *)bitMap24->data)[i * 3];
+        }
+        B_resource_manager.FreeResource(resource);
+        return bitMap;
+    }
+    return NULL;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
