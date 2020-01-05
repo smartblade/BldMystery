@@ -1541,25 +1541,65 @@ long int GetRootWidget()
 * Module:                 Blade.exe
 * Entry point:            0x0042AC32
 */
-#ifdef BLD_NATIVE
+
 int AddCombustionDataFor(
         const char *object_kind, const char *fire_kind, double upper_treshol,
         double lower_treshold, double flame_height, double flame_size,
         double speed, double livetime
 )
 {
-    int (*bld_proc)(
-        const char *object_kind, const char *fire_kind, double upper_treshol,
-        double lower_treshold, double flame_height, double flame_size,
-        double speed, double livetime
-);
-        const char *object_kind, const char *fire_kind, double upper_treshol,
-        double lower_treshold, double flame_height, double flame_size,
-        double speed, double livetime
-))GetProcAddress(blade, "AddCombustionDataFor");
-    return bld_proc(object_kind, fire_kind, upper_treshol, lower_treshold, flame_height, flame_size, speed, livetime);
+    bool notFound;
+    {
+        B_Combustion *foundElement;
+        B_Name name(object_kind);
+        for (unsigned int i = 0; i < gbl_combustion_data.size; i++)
+        {
+            if (name == gbl_combustion_data.elements[i]->Id())
+            {
+                foundElement = gbl_combustion_data.elements[i];
+                goto after_search;
+            }
+        }
+        foundElement = NULL;
+after_search:
+        notFound = (foundElement == NULL);
+    }
+    if (notFound)
+    {
+        B_Combustion *newCombustion = new B_Combustion(
+            object_kind, fire_kind, upper_treshol, lower_treshold,
+            flame_height, flame_size, speed, livetime);
+        array_t<B_Combustion *> *array = &gbl_combustion_data;
+        if (array->num_alloc > array->size)
+        {
+            array->elements[array->size] = newCombustion;
+            array->size++;
+        }
+        else
+        {
+            array->num_alloc += array->increment;
+            if (array->size != 0)
+            {
+                B_Combustion ** elements = new B_Combustion *[array->num_alloc];
+                for (unsigned int i = 0; i < array->size; i++)
+                {
+                    elements[i] = array->elements[i];
+                }
+                delete array->elements;
+                array->elements = elements;
+            }
+            else
+            {
+                array->elements = new B_Combustion *[array->num_alloc];
+            }
+            array->elements[array->size] = newCombustion;
+            array->size++;
+        }
+        return 1;
+    }
+    return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

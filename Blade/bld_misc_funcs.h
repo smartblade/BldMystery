@@ -17,6 +17,11 @@ public:
     B_Combustion() : unknown0024(0)
     {
     }
+    B_Combustion(
+        const B_Name &object_kind, const B_Name &fire_kind, double upper_treshol,
+        double lower_treshold, double flame_height, double flame_size,
+        double speed, double livetime
+    );
 private:
     array_t<void *> a00C;
     int unknown0024;

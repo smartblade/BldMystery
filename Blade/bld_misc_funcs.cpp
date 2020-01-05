@@ -187,6 +187,21 @@ void B_CameraEntity::unknown_004EB1AA(void *)
 
 #endif
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004F65BE
+* VC++ mangling:          ??0B_Combustion@@QAE@ABVB_Name@@0NNNNNN@Z
+*/
+#ifdef BLD_NATIVE
+B_Combustion::B_Combustion(
+    const B_Name &object_kind, const B_Name &fire_kind, double upper_treshol,
+    double lower_treshold, double flame_height, double flame_size,
+    double speed, double livetime)
+{
+}
+#endif
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004F69A4
