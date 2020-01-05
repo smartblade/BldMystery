@@ -135,6 +135,10 @@ LIB_EXP B_NDataBase<B_ElementCSV> B_csvs;
 
 LIB_EXP unsigned int ReadCSV(const char *file_name, B_NDataBase<B_ElementCSV> *csvs);
 
+class LIB_EXP B_Resource : public B_NamedObj
+{
+};
+
 class LIB_EXP B_ResourceManager
 {
 public:

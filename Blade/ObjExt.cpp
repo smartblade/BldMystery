@@ -1605,12 +1605,12 @@ after_search:
 * Module:                 Blade.exe
 * Entry point:            0x0042AE7A
 */
-#ifdef BLD_NATIVE// TODO fix prototype
-void RM_FreeResource()
+
+void RM_FreeResource(B_Resource *resource)
 {
-        assert("RM_FreeResource" == NULL);
+    delete resource;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
