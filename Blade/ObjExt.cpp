@@ -1846,13 +1846,13 @@ int CloseDebugChannel(const char *channel_name)
 * Module:                 Blade.exe
 * Entry point:            0x0042B444
 */
-#ifdef BLD_NATIVE
+
 int SetShowAreas(int action_areas_bit_mask)
 {
-    int (*bld_proc)(int action_areas_bit_mask);
-    return bld_proc(action_areas_bit_mask);
+    gbl_action_areas_bit_mask = action_areas_bit_mask;
+    return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

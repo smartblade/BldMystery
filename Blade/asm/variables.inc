@@ -2,6 +2,8 @@ public _gbl_world_points
 g005DF898 equ _gbl_world_points
 public _gbl_game_state
 g005E0B88 equ _gbl_game_state
+public _gbl_action_areas_bit_mask
+g005E2514 equ _gbl_action_areas_bit_mask
 public _gbl_anims
 g007072A8 equ _gbl_anims
 public _gbl_particle_types

@@ -78,6 +78,11 @@ extern array_t<world_point_t*> gbl_world_points;
 */
 extern game_state_t gbl_game_state;
 
+/*
+* Module:                 Blade.exe
+* Data address:           0x005E2514
+*/
+extern int gbl_action_areas_bit_mask;
 
 /*
 * Module:                 Blade.exe
