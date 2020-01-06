@@ -1815,13 +1815,13 @@ int SetCallCheck(int check)
 * Module:                 Blade.exe
 * Entry point:            0x0042B366
 */
-#ifdef BLD_NATIVE
+
 int OpenDebugChannel(const char *channel_name)
 {
-    int (*bld_proc)(const char *channel_name);
-    return bld_proc(channel_name);
+    int result = mout.OpenChannel(channel_name);
+    return result;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
