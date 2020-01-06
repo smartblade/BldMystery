@@ -86,6 +86,7 @@ public:
         bool OutSound(int soundId, double x, double y, double z, int unknown);
         void SetAfterFrameFunc(const char *name, PyObject *function);
         PyObject *GetAfterFrameFunc(const char *name);
+        const char *GetAfterFrameFuncName(int index);
         int RemoveAfterFrameFunc(const char *name);
         int SetBloodLevel(int blood_level);
         int GetBloodLevel();

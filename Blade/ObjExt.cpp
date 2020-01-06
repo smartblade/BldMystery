@@ -1749,13 +1749,14 @@ PyObject *GetAfterFrameFunc(const char *name)
 * Module:                 Blade.exe
 * Entry point:            0x0042B261
 */
-#ifdef BLD_NATIVE
+
 const char *GetAfterFrameFuncName(int index)
 {
-    const char *(*bld_proc)(int index);
-    return bld_proc(index);
+    B_App *App = get_application();
+    assert(App);
+    return App->GetAfterFrameFuncName(index);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

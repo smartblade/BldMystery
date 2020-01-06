@@ -892,6 +892,18 @@ PyObject *B_App::GetAfterFrameFunc(const char *name)
 #endif
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x004165D8
+* VC++ mangling:          ?GetAfterFrameFuncName@B_App@@QAEPBDH@Z
+*/
+#ifdef BLD_NATIVE
+const char *B_App::GetAfterFrameFuncName(int index)
+{
+    return NULL;
+}
+#endif
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
