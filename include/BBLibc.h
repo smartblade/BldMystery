@@ -184,4 +184,6 @@ public:
 
 LIB_EXP B_ResourceManager B_resource_manager;
 
+LIB_EXP int CheckErrors;
+
 #endif /* BBLIBC_H */

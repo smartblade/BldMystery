@@ -1802,13 +1802,14 @@ PyObject *GetMenuTgapFunc()
 * Module:                 Blade.exe
 * Entry point:            0x0042B346
 */
-#ifdef BLD_NATIVE
+
 int SetCallCheck(int check)
 {
-    int (*bld_proc)(int check);
-    return bld_proc(check);
+    int checkErrorsPrev = CheckErrors;
+    CheckErrors = check;
+    return checkErrorsPrev;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

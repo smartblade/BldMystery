@@ -10,7 +10,6 @@
 /EXPORT:LoadAnmRaceData
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:SetCallCheck
 /EXPORT:OpenDebugChannel
 /EXPORT:CloseDebugChannel
 /EXPORT:SetShowAreas
