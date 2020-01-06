@@ -10,7 +10,6 @@
 /EXPORT:LoadAnmRaceData
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:GetTextWH
 /EXPORT:GetScreenRect
 /EXPORT:GetScreenXY
 /EXPORT:DrawBOD

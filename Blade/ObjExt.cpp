@@ -1873,13 +1873,43 @@ int WriteText(double x, double y, const char *text)
 * Module:                 Blade.exe
 * Entry point:            0x0042B4EC
 */
-#ifdef BLD_NATIVE
-void GetTextWH(const char *text, double *w, double *h)
+
+int GetTextWH(const char *text, double *w, double *h)
 {
-    void (*bld_proc)(const char *text, double *w, double *h);
-    bld_proc(text, w, h);
+    *w = 0;
+    *h = 0;
+    B_Name txt(text);
+    B_Font *font = B_3D_raster_device->GetFont();
+    if (font == NULL)
+    {
+        mout << "WARNING: GetTextWH fails because Font can't be found.";
+        return 0;
+    }
+    B_CharData *charData = font->charData;
+    if (font == NULL)/*FIXME should be charData*/
+    {
+        mout << "TERRIBLE WARNING: GetTextWH fails because CharData can't be found.";
+        return 0;
+    }
+    for(unsigned int i = 0; i < txt.Length(); i++)
+    {
+        double height;
+        *w += charData->charSize[text[i]].width;
+        if (charData->charSize[text[i]].height < *h)
+        {
+            height = *h;
+        }
+        else
+        {
+            height = charData->charSize[text[i]].height;
+        }
+        *h = height;
+    }
+    *w /= 640.0;
+    *h /= 640.0;
+    return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

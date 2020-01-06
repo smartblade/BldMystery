@@ -46,6 +46,26 @@ public:
     long bmp_handle;
 };
 
+struct B_CharSize
+{
+    char unknown_fields[8];
+    float width;
+    float height;
+};
+
+class B_CharData
+{
+public:
+    B_CharSize charSize[255];
+};
+
+class B_Font
+{
+public:
+    char unknown_fields[40];
+    B_CharData *charData;
+};
+
 extern B_IDataFile& operator >>(B_IDataFile& file, B_Vector &point);
 extern B_IDataFile& operator >>(B_IDataFile& file, B_Combustion &combustion);
 extern B_ODataFile& operator <<(

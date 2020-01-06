@@ -7,6 +7,7 @@
 
 class B_Name;
 class B_Color;
+class B_Font;
 
 class B_3DRasterDevice {
 public:
@@ -114,7 +115,7 @@ public:
         virtual void unknown17C() = 0;
         virtual float get_alpha() = 0;
         virtual void set_font(long font_pointer) = 0;
-        virtual void unknown188() = 0;
+        virtual B_Font *GetFont() = 0;
         virtual void set_text_mode(int text_mode) = 0;
         virtual int get_text_mode() = 0;
         virtual void unknown194() = 0;

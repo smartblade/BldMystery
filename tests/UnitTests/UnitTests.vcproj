@@ -209,11 +209,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\CharSizeTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\CombustionTests.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\BBLibc\ElementCSVTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Blade\FontTests.cpp"
 				>
 			</File>
 			<File

@@ -27,6 +27,7 @@ public:
         unsigned int operator ==(const B_Name &str) const;
         operator const char *() const { return string; }
         char * const String() const;
+        unsigned int Length() const { return len; }
 private:
         char *string;
         int len;
