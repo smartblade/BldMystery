@@ -927,11 +927,16 @@ void B_App::SetMenuTgapFunc(PyObject *func)
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x00416678
+* VC++ mangling:          ?GetMenuTgapFunc@B_App@@QAEPAU_object@@XZ
 */
+#ifdef BLD_NATIVE
+PyObject *B_App::GetMenuTgapFunc()
+{
+    return NULL;
+}
+#endif
 
 /*
 * Module:                 Blade.exe

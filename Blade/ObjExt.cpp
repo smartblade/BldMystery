@@ -1789,13 +1789,14 @@ int SetMenuTgapFunc(PyObject *func)
 * Module:                 Blade.exe
 * Entry point:            0x0042B310
 */
-#ifdef BLD_NATIVE
-PyObject *GetMenuTgapFunc(void)
+
+PyObject *GetMenuTgapFunc()
 {
-    PyObject *(*bld_proc)(void);
-    return bld_proc();
+    B_App *App = get_application();
+    assert(App);
+    return App->GetMenuTgapFunc();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
