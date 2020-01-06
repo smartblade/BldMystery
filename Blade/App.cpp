@@ -888,6 +888,24 @@ void B_App::SetAfterFrameFunc(const char *name, PyObject *function)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x0041668C
+* VC++ mangling:          ?RemoveAfterFrameFunc@B_App@@QAEHPBD@Z
+*/
+#ifdef BLD_NATIVE
+int B_App::RemoveAfterFrameFunc(const char *name);
+{
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x00416C0B
 * VC++ mangling:          ?SetBloodLevel@B_App@@QAEHH@Z
 */
