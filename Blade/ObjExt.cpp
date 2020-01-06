@@ -1827,13 +1827,13 @@ int OpenDebugChannel(const char *channel_name)
 * Module:                 Blade.exe
 * Entry point:            0x0042B39C
 */
-#ifdef BLD_NATIVE
+
 int CloseDebugChannel(const char *channel_name)
 {
-    int (*bld_proc)(const char *channel_name);
-    return bld_proc(channel_name);
+    int result = mout.CloseChannel(channel_name);
+    return result;
 }
-#endif
+
 
 /*
 ................................................................................
