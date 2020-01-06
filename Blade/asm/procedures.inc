@@ -80,6 +80,8 @@ externdef ?OutSound@B_App@@QAE_NHNNNH@Z: near
 l0041617B equ ?OutSound@B_App@@QAE_NHNNNH@Z
 externdef ?SetAfterFrameFunc@B_App@@QAEXPBDPAU_object@@@Z: near
 l00416309 equ ?SetAfterFrameFunc@B_App@@QAEXPBDPAU_object@@@Z
+externdef ?GetAfterFrameFunc@B_App@@QAEPAU_object@@PBD@Z: near
+l0041653E equ ?GetAfterFrameFunc@B_App@@QAEPAU_object@@PBD@Z
 externdef ?RemoveAfterFrameFunc@B_App@@QAEHPBD@Z: near
 l0041668C equ ?RemoveAfterFrameFunc@B_App@@QAEHPBD@Z
 externdef ?SetBloodLevel@B_App@@QAEHH@Z: near

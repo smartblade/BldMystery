@@ -1736,13 +1736,14 @@ int RemoveAfterFrameFunc(const char *name)
 * Module:                 Blade.exe
 * Entry point:            0x0042B227
 */
-#ifdef BLD_NATIVE
+
 PyObject *GetAfterFrameFunc(const char *name)
 {
-    PyObject *(*bld_proc)(const char *name);
-    return bld_proc(name);
+    B_App *App = get_application();
+    assert(App);
+    return App->GetAfterFrameFunc(name);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
