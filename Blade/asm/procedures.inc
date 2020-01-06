@@ -86,6 +86,8 @@ externdef ?GetAfterFrameFuncName@B_App@@QAEPBDH@Z: near
 l004165D8 equ ?GetAfterFrameFuncName@B_App@@QAEPBDH@Z
 externdef ?GetnAfterFrameFuncs@B_App@@QAEHXZ: near
 l0041661D equ ?GetnAfterFrameFuncs@B_App@@QAEHXZ
+externdef ?SetMenuTgapFunc@B_App@@QAEXPAU_object@@@Z: near
+l00416631 equ ?SetMenuTgapFunc@B_App@@QAEXPAU_object@@@Z
 externdef ?RemoveAfterFrameFunc@B_App@@QAEHPBD@Z: near
 l0041668C equ ?RemoveAfterFrameFunc@B_App@@QAEHPBD@Z
 externdef ?SetBloodLevel@B_App@@QAEHH@Z: near

@@ -1775,13 +1775,15 @@ int GetnAfterFrameFuncs()
 * Module:                 Blade.exe
 * Entry point:            0x0042B2D1
 */
-#ifdef BLD_NATIVE
+
 int SetMenuTgapFunc(PyObject *func)
 {
-    int (*bld_proc)(PyObject *func);
-    return bld_proc(func);
+    B_App *App = get_application();
+    assert(App);
+    App->SetMenuTgapFunc(func);
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

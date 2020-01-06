@@ -88,6 +88,7 @@ public:
         PyObject *GetAfterFrameFunc(const char *name);
         const char *GetAfterFrameFuncName(int index);
         int GetnAfterFrameFuncs();
+        void SetMenuTgapFunc(PyObject *func);
         int RemoveAfterFrameFunc(const char *name);
         int SetBloodLevel(int blood_level);
         int GetBloodLevel();
