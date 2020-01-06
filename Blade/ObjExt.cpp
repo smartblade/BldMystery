@@ -1858,13 +1858,16 @@ int SetShowAreas(int action_areas_bit_mask)
 * Module:                 Blade.exe
 * Entry point:            0x0042B453
 */
-#ifdef BLD_NATIVE
+
 int WriteText(double x, double y, const char *text)
 {
-    int (*bld_proc)(double x, double y, const char *text);
-    return bld_proc(x, y, text);
+    int w, h;
+    B_3D_raster_device->get_size(w, h);
+    B_3D_raster_device->set_position((w / 2) + w * x, (h / 2) + w * y);
+    B_3D_raster_device->write_text(text);
+    return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
