@@ -78,6 +78,8 @@ externdef ?RunPythonFile@B_App@@QAE_NPBD@Z: near
 l00415759 equ ?RunPythonFile@B_App@@QAE_NPBD@Z
 externdef ?OutSound@B_App@@QAE_NHNNNH@Z: near
 l0041617B equ ?OutSound@B_App@@QAE_NHNNNH@Z
+externdef ?SetAfterFrameFunc@B_App@@QAEXPBDPAU_object@@@Z: near
+l00416309 equ ?SetAfterFrameFunc@B_App@@QAEXPBDPAU_object@@@Z
 externdef ?SetBloodLevel@B_App@@QAEHH@Z: near
 l00416C0B equ ?SetBloodLevel@B_App@@QAEHH@Z
 externdef ?GetBloodLevel@B_App@@QAEHXZ: near

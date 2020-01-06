@@ -1708,13 +1708,15 @@ const char *GetWorldFileName(void)
 * Module:                 Blade.exe
 * Entry point:            0x0042B1A5
 */
-#ifdef BLD_NATIVE
+
 int SetAfterFrameFunc(const char *name, PyObject *function)
 {
-    int (*bld_proc)(const char *name, PyObject *function);
-    return bld_proc(name, function);
+    B_App *App = get_application();
+    assert(App);
+    App->SetAfterFrameFunc(name, function);
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

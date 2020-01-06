@@ -870,6 +870,24 @@ bool B_App::OutSound(int soundId, double x, double y, double z, int unknown)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00416309
+* VC++ mangling:          ?SetAfterFrameFunc@B_App@@QAEXPBDPAU_object@@@Z
+*/
+#ifdef BLD_NATIVE
+void B_App::SetAfterFrameFunc(const char *name, PyObject *function)
+{
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x00416C0B
 * VC++ mangling:          ?SetBloodLevel@B_App@@QAEHH@Z
 */

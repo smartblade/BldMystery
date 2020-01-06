@@ -10,7 +10,6 @@
 /EXPORT:LoadAnmRaceData
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:SetAfterFrameFunc
 /EXPORT:RemoveAfterFrameFunc
 /EXPORT:GetAfterFrameFunc
 /EXPORT:GetAfterFrameFuncName

@@ -84,6 +84,7 @@ public:
         int DeactivateInput();
         int ActivateInput();
         bool OutSound(int soundId, double x, double y, double z, int unknown);
+        void SetAfterFrameFunc(const char *name, PyObject *function);
         int SetBloodLevel(int blood_level);
         int GetBloodLevel();
         int SetMutilationLevel(int mutilation_level);
