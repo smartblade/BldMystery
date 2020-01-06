@@ -14,6 +14,8 @@ public _gbl_combustion_data
 g007D1650 equ _gbl_combustion_data
 public _gbl_en_control
 g007E93B8 equ _gbl_en_control
+public _gbl_ag_textures
+g007E988C equ _gbl_ag_textures
 public _client_map_name
 g007EE018 equ _client_map_name
 public _net_game_name

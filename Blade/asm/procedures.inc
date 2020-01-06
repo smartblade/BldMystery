@@ -1150,6 +1150,8 @@ externdef _IsSelected: near
 l0059F612 equ _IsSelected
 externdef _CarringObject: near
 l0059F643 equ _CarringObject
+externdef ?Update@B_ProcTexture@@QAEXXZ: near
+l005AA881 equ ?Update@B_ProcTexture@@QAEXXZ
 externdef _Set007EA988To01: near
 l005AC791 equ _Set007EA988To01
 externdef _OnEvent: near

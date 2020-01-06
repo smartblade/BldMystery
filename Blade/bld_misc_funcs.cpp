@@ -274,6 +274,16 @@ void Set007EA988To01()
 #endif
 
 
+/*
+* Module:                 Blade.exe
+* Entry point:            0x005AA881
+* VC++ mangling:          ?Update@B_ProcTexture@@QAEXXZ
+*/
+#ifdef BLD_NATIVE
+void B_ProcTexture::Update()
+{
+}
+#endif
 
 /*
 * Module:                 Blade.exe

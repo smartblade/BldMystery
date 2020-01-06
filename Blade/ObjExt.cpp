@@ -1662,12 +1662,36 @@ B_BitMap *RM_GetResource(const char *name)
 * Module:                 Blade.exe
 * Entry point:            0x0042B0F4
 */
-#ifdef BLD_NATIVE// TODO fix prototype
-void UpdateAGTexture()
+
+void UpdateAGTexture(long bmp_handle)
 {
-        assert("UpdateAGTexture" == NULL);
+    B_AGTexture *texture;
+    {
+        for (unsigned int i = 0; i < gbl_ag_textures.size; i++)
+        {
+            B_AGTexture *currentTexture = gbl_ag_textures.elements[i];
+            long currentHandle = currentTexture->bmp_handle;
+            if (currentHandle == bmp_handle)
+            {
+                B_AGTexture *foundTexture = gbl_ag_textures.elements[i];
+                texture = foundTexture;
+                goto after_search;
+            }
+        }
+        texture = NULL;
+after_search:
+        ;
+    }
+    if (
+        (texture != NULL) &&
+        (texture->procTexture->data != NULL) &&
+        (texture->needUpdate))
+    {
+        texture->procTexture->Update();
+        texture->needUpdate = 0;
+    }
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

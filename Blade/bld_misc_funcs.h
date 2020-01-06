@@ -28,6 +28,24 @@ private:
     char unknown_fields[52];
 };
 
+class B_ProcTexture
+{
+public:
+    virtual ~B_ProcTexture();
+    void Update();
+
+    void *data;
+};
+
+class B_AGTexture
+{
+public:
+    int textureEffect;
+    int needUpdate;
+    B_ProcTexture *procTexture;
+    long bmp_handle;
+};
+
 extern B_IDataFile& operator >>(B_IDataFile& file, B_Vector &point);
 extern B_IDataFile& operator >>(B_IDataFile& file, B_Combustion &combustion);
 extern B_ODataFile& operator <<(
@@ -96,6 +114,12 @@ extern array_t<B_Combustion *> gbl_combustion_data;
 * Data address:           0x007E93B8
 */
 extern EnControl gbl_en_control;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x007E988C
+*/
+extern array_t<B_AGTexture *> gbl_ag_textures;
 
 /*
 * Module:                 Blade.exe
