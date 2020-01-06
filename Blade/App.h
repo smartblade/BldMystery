@@ -87,6 +87,7 @@ public:
         void SetAfterFrameFunc(const char *name, PyObject *function);
         PyObject *GetAfterFrameFunc(const char *name);
         const char *GetAfterFrameFuncName(int index);
+        int GetnAfterFrameFuncs();
         int RemoveAfterFrameFunc(const char *name);
         int SetBloodLevel(int blood_level);
         int GetBloodLevel();

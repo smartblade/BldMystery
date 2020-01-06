@@ -1762,13 +1762,14 @@ const char *GetAfterFrameFuncName(int index)
 * Module:                 Blade.exe
 * Entry point:            0x0042B29B
 */
-#ifdef BLD_NATIVE
-int GetnAfterFrameFuncs(void)
+
+int GetnAfterFrameFuncs()
 {
-    int (*bld_proc)(void);
-    return bld_proc();
+    B_App *App = get_application();
+    assert(App);
+    return App->GetnAfterFrameFuncs();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
