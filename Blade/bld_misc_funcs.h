@@ -81,7 +81,6 @@ public:
     char unknown_fields[772];
 };
 
-extern B_IDataFile& operator >>(B_IDataFile& file, B_Vector &point);
 extern B_IDataFile& operator >>(B_IDataFile& file, B_Combustion &combustion);
 extern B_ODataFile& operator <<(
     B_ODataFile &file,

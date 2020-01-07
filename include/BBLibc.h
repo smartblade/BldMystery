@@ -91,6 +91,7 @@ public:
         B_IDataFile(const char *file_name, int flags);
         ~B_IDataFile();
         unsigned int OK() const { return fd != -1;}
+        void Read(void *data, unsigned int size);
 
 private:
         int fd;

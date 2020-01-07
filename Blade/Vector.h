@@ -2,6 +2,8 @@
 
 #define VECTOR_H
 
+class B_IDataFile;
+
 class B_Vector
 {
 public:
@@ -9,5 +11,7 @@ public:
         double y;
         double z;
 };
+
+extern B_IDataFile& operator >>(B_IDataFile& file, B_Vector &vector);
 
 #endif /* VECTOR_H */
