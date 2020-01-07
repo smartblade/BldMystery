@@ -234,6 +234,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Vector.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\WinApp.cpp"
 				>
 			</File>
