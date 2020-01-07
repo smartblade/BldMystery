@@ -2,6 +2,8 @@ externdef _read_points: near
 l004088F4 equ _read_points
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z: near
 l0040ACDD equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z
+externdef ??6@YAAAVB_ODataFile@@AAV0@AAVB_Vector@@@Z: near
+l0040ACF4 equ ??6@YAAAVB_ODataFile@@AAV0@AAVB_Vector@@@Z
 externdef ?setPosition@location_t@@QAEXABVB_Vector@@@Z: near
 l0040AD82 equ ?setPosition@location_t@@QAEXABVB_Vector@@@Z
 externdef ?setOrientation@location_t@@QAEXABVB_Vector@@@Z: near

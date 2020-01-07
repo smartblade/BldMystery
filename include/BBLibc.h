@@ -114,6 +114,7 @@ public:
         B_ODataFile(const char *file_name, int flags);
         ~B_ODataFile();
         unsigned int OK() const { return fd != -1;}
+        void Write(const void *data, unsigned int size);
 
 private:
         int fd;

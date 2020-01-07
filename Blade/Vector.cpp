@@ -24,8 +24,13 @@ B_IDataFile& operator >>(B_IDataFile& file, B_Vector &vector)
 
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x0040ACF4
+* VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@AAVB_Vector@@@Z
 */
+
+B_ODataFile& operator <<(B_ODataFile& file, B_Vector &vector)
+{
+    file.Write(&vector, sizeof(B_Vector));
+    return file;
+}
