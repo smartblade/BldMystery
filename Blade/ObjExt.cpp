@@ -1915,19 +1915,29 @@ int GetTextWH(const char *text, double *w, double *h)
 * Module:                 Blade.exe
 * Entry point:            0x0042B672
 */
-#ifdef BLD_NATIVE
-void GetScreenRect(
-        double *x_min, double *y_min, double *x_max, double *y_max
+
+int GetScreenRect(
+    double *x_min, double *y_min, double *x_max, double *y_max
 )
 {
-    void (*bld_proc)(
-        double *x_min, double *y_min, double *x_max, double *y_max
-);
-        double *x_min, double *y_min, double *x_max, double *y_max
-))GetProcAddress(blade, "GetScreenRect");
-    bld_proc(x_min, y_min, x_max, y_max);
+    Unknown004CD5EC unknown(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+    float coef1 = 1.0f;
+    float coef2 = 1.0f;
+    unknown.unknown000 = (1.0f - coef1) * 0.5f + 0.001f;
+    unknown.unknown004 = (1.0f - coef1) * 0.5f * 0.75f + 0.001f;
+    unknown.unknown008 = 0.998f * coef1;
+    unknown.unknown00C = 0.748f * coef1;
+    unknown.unknown010 = coef2;
+    unknown.unknown014 = 0.65 * coef1;
+    unknown.unknown004CD634();
+    *x_min = unknown.unknown000 - unknown.unknown008 * 0.5;
+    *y_min = unknown.unknown004 - unknown.unknown00C * 0.5;
+    *x_max = unknown.unknown000 + unknown.unknown008 * 0.5;
+    *y_max = unknown.unknown004 + unknown.unknown00C * 0.5;
+    int result = 0;
+    return result;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

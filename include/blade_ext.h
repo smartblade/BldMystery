@@ -1206,7 +1206,7 @@ LIB_EXP int DrawBOD(
 LIB_EXP int SetShowAreas(int action_areas_bit_mask);
 LIB_EXP int WriteText(double x, double y, const char *text);
 LIB_EXP int GetTextWH(const char *text, double *w, double *h);
-LIB_EXP void GetScreenRect(
+LIB_EXP int GetScreenRect(
         double *x_min, double *y_min, double *x_max, double *y_max
 );
 LIB_EXP void GetScreenXY(

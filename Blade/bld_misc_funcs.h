@@ -66,6 +66,21 @@ public:
     B_CharData *charData;
 };
 
+class Unknown004CD5EC
+{
+public:
+    Unknown004CD5EC(float a, float b, float c, float d, float e, float f);
+    void unknown004CD634();
+
+    float unknown000;
+    float unknown004;
+    float unknown008;
+    float unknown00C;
+    float unknown010;
+    float unknown014;
+    char unknown_fields[772];
+};
+
 extern B_IDataFile& operator >>(B_IDataFile& file, B_Vector &point);
 extern B_IDataFile& operator >>(B_IDataFile& file, B_Combustion &combustion);
 extern B_ODataFile& operator <<(

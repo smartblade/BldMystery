@@ -159,6 +159,28 @@ B_IDataFile &operator >>(B_IDataFile &file, anim_t *anim)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x004CD5EC
+* VC++ mangling:          ??0Unknown004CD5EC@@QAE@MMMMMM@Z
+*/
+#ifdef BLD_NATIVE
+Unknown004CD5EC::Unknown004CD5EC(float a, float b, float c, float d, float e, float f)
+{
+}
+#endif
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004CD634
+* VC++ mangling:          ?unknown004CD634@Unknown004CD5EC@@QAEXXZ
+*/
+#ifdef BLD_NATIVE
+void Unknown004CD5EC::unknown004CD634()
+{
+}
+#endif
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x004EAD20
 * VC++ mangling:          ??0B_CameraEntity@@QAE@HABVB_Name@@@Z
 */

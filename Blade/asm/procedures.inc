@@ -646,6 +646,10 @@ externdef _loadSoundDataBase: near
 l004C0897 equ _loadSoundDataBase
 externdef _saveSoundDataBase: near
 l004C08F0 equ _saveSoundDataBase
+externdef ??0Unknown004CD5EC@@QAE@MMMMMM@Z: near
+l004CD5EC equ ??0Unknown004CD5EC@@QAE@MMMMMM@Z
+externdef ?unknown004CD634@Unknown004CD5EC@@QAEXXZ: near
+l004CD634 equ ?unknown004CD634@Unknown004CD5EC@@QAEXXZ
 externdef ??0B_CameraEntity@@QAE@HABVB_Name@@@Z: near
 l004EAD20 equ ??0B_CameraEntity@@QAE@HABVB_Name@@@Z
 externdef ?unknown_004EB1AA@B_CameraEntity@@QAEXPAX@Z: near

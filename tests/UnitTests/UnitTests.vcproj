@@ -240,6 +240,10 @@
 				RelativePath=".\Blade\SectorTests.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\Blade\Unknown004CD5ECTests.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
