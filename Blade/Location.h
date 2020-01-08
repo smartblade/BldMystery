@@ -3,6 +3,7 @@
 #define LOCATION_H
 
 #include "Vector.h"
+#include "Matrix.h"
 
 class location_t
 {
@@ -11,6 +12,11 @@ public:
     void setOrientation(const B_Vector &orientation);
 private:
     B_Vector position;
+    double rotationX;
+    double rotationY;
+    double rotationZ;
+    B_Matrix matrix0030;
+    B_Matrix matrix00B0;
 };
 
 #endif

@@ -288,6 +288,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Matrix.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Sector.h"
 				>
 			</File>

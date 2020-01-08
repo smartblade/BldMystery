@@ -225,6 +225,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\LocationTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\BBLibc\ParticleGTypeTests.cpp"
 				>
 			</File>
