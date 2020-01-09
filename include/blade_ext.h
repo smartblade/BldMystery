@@ -1209,7 +1209,7 @@ LIB_EXP int GetTextWH(const char *text, double *w, double *h);
 LIB_EXP int GetScreenRect(
         double *x_min, double *y_min, double *x_max, double *y_max
 );
-LIB_EXP void GetScreenXY(
+LIB_EXP int GetScreenXY(
         double map_x, double map_y, double map_z, double *screen_x,
         double *screen_y
 );

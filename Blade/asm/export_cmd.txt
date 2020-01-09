@@ -10,7 +10,6 @@
 /EXPORT:LoadAnmRaceData
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:GetScreenXY
 /EXPORT:DrawBOD
 /EXPORT:CreateTriggerSector
 /EXPORT:SetTriggerSectorFunc

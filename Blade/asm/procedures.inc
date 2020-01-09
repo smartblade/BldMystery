@@ -1,3 +1,5 @@
+externdef ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z: near
+l00406903 equ ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z
 externdef _read_points: near
 l004088F4 equ _read_points
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z: near

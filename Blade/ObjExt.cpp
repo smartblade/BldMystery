@@ -6,6 +6,7 @@
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
 #include <blade_ext.h>
+#include <math.h>
 
 
 /*
@@ -1943,22 +1944,36 @@ int GetScreenRect(
 * Module:                 Blade.exe
 * Entry point:            0x0042B795
 */
-#ifdef BLD_NATIVE
-void GetScreenXY(
-        double map_x, double map_y, double map_z, double *screen_x,
-        double *screen_y
+
+int GetScreenXY(
+    double map_x, double map_y, double map_z, double *screen_x,
+    double *screen_y
 )
 {
-    void (*bld_proc)(
-        double map_x, double map_y, double map_z, double *screen_x,
-        double *screen_y
-);
-        double map_x, double map_y, double map_z, double *screen_x,
-        double *screen_y
-))GetProcAddress(blade, "GetScreenXY");
-    bld_proc(map_x, map_y, map_z, screen_x, screen_y);
+    Unknown004CD5EC unknown(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+    float coef1 = 1.0f;
+    float coef2 = 1.0f;
+    unknown.unknown000 = (1.0f - coef1) * 0.5f + 0.001f;
+    unknown.unknown004 = (1.0f - coef1) * 0.5f * 0.75f + 0.001f;
+    unknown.unknown008 = 0.998f * coef1;
+    unknown.unknown00C = 0.748f * coef1;
+    unknown.unknown010 = coef2;
+    unknown.unknown014 = 0.65 * coef1;
+    unknown.unknown004CD634();
+    B_Vector map_point;
+    map_point.x = map_x;
+    map_point.y = map_y;
+    map_point.z = map_z;
+    B_Vector screenPoint = map_point * get_application()->location.matrix0030;
+    if (fabs(screenPoint.z) < 0.01)
+        screenPoint.z = 0.01;
+    double factor = unknown.unknown014 / screenPoint.z;
+    *screen_x = screenPoint.x * factor;
+    *screen_y = screenPoint.y * factor;
+    int result = 0;
+    return result;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

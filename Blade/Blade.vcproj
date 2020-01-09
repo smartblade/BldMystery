@@ -226,6 +226,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Matrix.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\net_ext.cpp"
 				>
 			</File>
