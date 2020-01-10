@@ -1,6 +1,6 @@
 
 #include "App.h"
-#include "game_state.h"
+#include "BWorld.h"
 #include "sound_device.h"
 #include <bld_abstract_net.h>
 #include "anim.h"
@@ -110,7 +110,7 @@ extern array_t<world_point_t*> gbl_world_points;
 * Module:                 Blade.exe
 * Data address:           0x005E0B88
 */
-extern game_state_t gbl_game_state;
+extern B_World B_world;
 
 /*
 * Module:                 Blade.exe

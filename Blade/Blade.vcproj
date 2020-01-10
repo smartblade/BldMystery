@@ -214,11 +214,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\en_control.cpp"
+				RelativePath=".\BWorld.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\game_state.cpp"
+				RelativePath=".\en_control.cpp"
 				>
 			</File>
 			<File
@@ -268,6 +268,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BWorld.h"
+				>
+			</File>
+			<File
 				RelativePath=".\en_control.h"
 				>
 			</File>
@@ -277,10 +281,6 @@
 			</File>
 			<File
 				RelativePath=".\game_clock.h"
-				>
-			</File>
-			<File
-				RelativePath=".\game_state.h"
 				>
 			</File>
 			<File

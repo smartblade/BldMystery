@@ -79,7 +79,7 @@ int SetSaveInfo(PyObject *info)
         return 0;
     if (!PyArg_ParseTuple(data, "i", &nextEntitySuffix))
         return 0;
-    gbl_game_state.nextEntitySuffix = nextEntitySuffix;
+    B_world.nextEntitySuffix = nextEntitySuffix;
     return 0;
 }
 
@@ -93,7 +93,7 @@ PyObject *GetSaveInfo()
 {
     PyObject *info;
     int nextEntitySuffix;
-    nextEntitySuffix = gbl_game_state.nextEntitySuffix;
+    nextEntitySuffix = B_world.nextEntitySuffix;
     info = Py_BuildValue("(i,(i))", 1, nextEntitySuffix);
     return info;
 }
@@ -106,7 +106,7 @@ PyObject *GetSaveInfo()
 
 int SaveEntitiesData(const char *filename)
 {
-    return gbl_game_state.SaveEntitiesData(filename);
+    return B_world.SaveEntitiesData(filename);
 }
 
 
@@ -117,7 +117,7 @@ int SaveEntitiesData(const char *filename)
 
 int LoadEntitiesData(const char *filename)
 {
-    return gbl_game_state.LoadEntitiesData(filename);
+    return B_world.LoadEntitiesData(filename);
 }
 
 
@@ -449,7 +449,7 @@ int GoToTime(double time)
 
 double GetTime()
 {
-    return gbl_game_state.get_time();
+    return B_world.get_time();
 }
 
 
@@ -946,7 +946,7 @@ void SetSun(int exists, double x, double y, double z)
     sunPosition.x = x;
     sunPosition.y = y;
     sunPosition.z = z;
-    gbl_game_state.SetSun(exists, sunPosition);
+    B_world.SetSun(exists, sunPosition);
 }
 
 
@@ -963,10 +963,10 @@ int InsideAA(int AA, double x, double y, double z)
     point.x = x;
     point.y = y;
     point.z = z;
-    sectorIndex = gbl_game_state.FindSectorIndex(point);
+    sectorIndex = B_world.FindSectorIndex(point);
     if (sectorIndex == -1)
         return 0;
-    sector = gbl_game_state.sectors.elements[sectorIndex];
+    sector = B_world.sectors.elements[sectorIndex];
     return sector->unknown204.InsideAA(AA);
 }
 
@@ -1433,7 +1433,7 @@ int SetAutoGenTexture(const char *textureName, int textureEffect)
 
 const char *GenerateEntityName()
 {
-    return gbl_game_state.GenerateEntityName("Entity");
+    return B_world.GenerateEntityName("Entity");
 }
 
 
@@ -1701,7 +1701,7 @@ after_search:
 
 const char *GetWorldFileName(void)
 {
-    return gbl_game_state.world_file_name;
+    return B_world.world_file_name;
 }
 
 

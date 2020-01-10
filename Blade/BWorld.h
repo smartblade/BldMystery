@@ -39,7 +39,7 @@ public:
     int field;
 };
 
-class game_state_t
+class B_World
 {
 public:
         void unknown_00439F5D();
@@ -76,7 +76,7 @@ public:
 
 #ifdef __cplusplus
 
-B_IDataFile& operator >>(B_IDataFile& file, game_state_t *gs);
+B_IDataFile& operator >>(B_IDataFile& file, B_World *gs);
 
 #endif
 

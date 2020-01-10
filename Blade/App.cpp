@@ -292,7 +292,7 @@ void B_App::LoadLevel(const char *script)
 
         this->unknownPtrForCamera = NUM_3F266666;
 
-        gbl_game_state.unknown_00439F5D();
+        B_world.unknown_00439F5D();
 
         this->player1 = NULL;
 
@@ -308,8 +308,8 @@ void B_App::LoadLevel(const char *script)
 
         this->RunPythonFile(script);
 
-        this->location.setPosition(gbl_game_state.initial_point_position);
-        this->location.setOrientation(gbl_game_state.initial_point_orientation);
+        this->location.setPosition(B_world.initial_point_position);
+        this->location.setOrientation(B_world.initial_point_orientation);
 
         this->PrepareLevel();
 
@@ -317,7 +317,7 @@ void B_App::LoadLevel(const char *script)
 
                 assert(PLAYER);
 
-                world = &gbl_game_state.world;
+                world = &B_world.world;
                 if (
                         world->foundEntity &&
                         !strcmp(world->foundEntity->Id(), PLAYER)
@@ -390,7 +390,7 @@ void B_App::LoadLevel(const char *script)
         } else {
                 this->player1 = NULL;
 
-                world = &gbl_game_state.world;
+                world = &B_world.world;
                 if (
                         world->foundEntity &&
                         !strcmp(world->foundEntity->Id(), PLAYER)
@@ -1025,7 +1025,7 @@ int B_App::LoadWorld(const char *file_name)
                 mout << "B_App::LoadWorld() -> Error trying to load map.\n";
                 return 0;
         }
-        *file >> &gbl_game_state;
+        *file >> &B_world;
         delete file;
 
         timeAfter = timeGetTime();
@@ -1036,7 +1036,7 @@ int B_App::LoadWorld(const char *file_name)
                 (timeAfter - timeBefore)/1000.0
         );
 
-        gbl_game_state.world_file_name = B_Name(file_name);
+        B_world.world_file_name = B_Name(file_name);
 
         if (gbl_sound_device)
         {
@@ -1045,8 +1045,8 @@ int B_App::LoadWorld(const char *file_name)
                 timeBefore = timeGetTime();
 
                 gbl_sound_device->set_world_size(
-                        gbl_game_state.unknown18FC.x, gbl_game_state.unknown18FC.y,
-                        gbl_game_state.unknown18FC.z, gbl_game_state.unknown1914,
+                        B_world.unknown18FC.x, B_world.unknown18FC.y,
+                        B_world.unknown18FC.z, B_world.unknown1914,
                         5000.0);
 
                 timeAfter = timeGetTime();
