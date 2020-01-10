@@ -1979,22 +1979,19 @@ int GetScreenXY(
 * Module:                 Blade.exe
 * Entry point:            0x0042B8E8
 */
-#ifdef BLD_NATIVE
+
 int DrawBOD(
-        const char *BODName, int x, int y, int w, int h, double scale,
-        int i_unknown
+    const char *BODName, int x, int y, int w, int h, double scale,
+    int i_unknown
 )
 {
-    int (*bld_proc)(
-        const char *BODName, int x, int y, int w, int h, double scale,
-        int i_unknown
-);
-        const char *BODName, int x, int y, int w, int h, double scale,
-        int i_unknown
-))GetProcAddress(blade, "DrawBOD");
-    return bld_proc(BODName, x, y, w, h, scale, i_unknown);
+    B_ObjDscr *bod = (B_ObjDscr *)B_resource_manager.GetResource(1, BODName);
+    if (bod == NULL)
+        return 0;
+    bod->Draw(B_3D_raster_device, x, y, (x + w), (y + h), scale, i_unknown);
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

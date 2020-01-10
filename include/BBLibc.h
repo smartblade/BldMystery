@@ -7,6 +7,8 @@
 #include <export.h>
 #include <array.h>
 
+class B_3DRasterDevice;
+
 
 class LIB_EXP B_Color {
 public:
@@ -178,6 +180,14 @@ class LIB_EXP B_Resource : public B_NamedObj
 {
 public:
     void *data;
+};
+
+class LIB_EXP B_ObjDscr : public B_Resource
+{
+public:
+    void Draw(
+        B_3DRasterDevice *raster, float x1, float y1, float x2, float y2,
+        float scale, int i_unknown);
 };
 
 class LIB_EXP B_ResourceManager
