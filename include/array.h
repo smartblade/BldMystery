@@ -24,14 +24,12 @@ public:
             size = 0;
             increment = 1;
             num_alloc = 0;
-            unknown14 = 0;
         }
 
         TYPE *elements;
         unsigned int size;
         int increment;
         unsigned int num_alloc;
-        int unknown14;
 };
 
 template<class TYPE>

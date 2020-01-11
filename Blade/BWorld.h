@@ -54,7 +54,7 @@ public:
         char unknownFields[20];
         world_t world;
         int nextEntitySuffix;
-        array_t<int> unknown1828;
+        array_t<void *> unknown1828;
         char unknownFields1840[28];
         B_Name world_file_name;
         char unknownFields1864[24];

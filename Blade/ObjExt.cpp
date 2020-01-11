@@ -1345,7 +1345,7 @@ int GetParticleGType(
         *type = particleType->name.String();
         *parent_type = B_3D_raster_device->bmp_name(particleType->bmp_handle);
         *operation_type = particleType->operation_type;
-        *duration = particleType->a00C.unknown14;
+        *duration = particleType->duration;
         return 1;
     }
     return 0;
