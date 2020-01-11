@@ -10,7 +10,6 @@
 /EXPORT:LoadAnmRaceData
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:CreateTriggerSector
 /EXPORT:SetTriggerSectorFunc
 /EXPORT:GetTriggerSectorFunc
 /EXPORT:GetTriggerSectorFloorHeight

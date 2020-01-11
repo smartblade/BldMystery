@@ -1997,25 +1997,60 @@ int DrawBOD(
 * Module:                 Blade.exe
 * Entry point:            0x0042B97A
 */
-#ifdef BLD_NATIVE
+
 int CreateTriggerSector(
     const char *trigger_sector_name, const char *group_name,
     double floor_height, double roof_height, int num_points,
     point_2d_t *points
 )
 {
-    int (*bld_proc)(
-    const char *trigger_sector_name, const char *group_name,
-    double floor_height, double roof_height, int num_points,
-    point_2d_t *points
-);
-    const char *trigger_sector_name, const char *group_name,
-    double floor_height, double roof_height, int num_points,
-    point_2d_t *points
-))GetProcAddress(blade, "CreateTriggerSector");
-    return bld_proc(trigger_sector_name, group_name, floor_height, roof_height, num_points, points);
+    B_TriggerSector *TS = new B_TriggerSector(
+        trigger_sector_name, group_name, floor_height, roof_height);
+    if (TS == NULL)
+        return 0;
+    for (int i = 0; i < num_points; i++)
+    {
+        double y = points[i].y;
+        double x = points[i].x;
+        B_Vector point;
+        point.x = x;
+        point.y = floor_height;
+        point.z = y;
+        TS->AddPoint(point, num_points);
+    }
+    assert(TS);
+    char * name = TS->Id().String();
+    assert(name);
+
+    bool found;
+    {
+        B_TriggerSector *foundElement;
+        B_Name tsName(name);
+        for (unsigned int i = 0; i < B_world.triggerSectors.size; i++)
+        {
+            if (tsName == B_world.triggerSectors.elements[i]->Id())
+            {
+                foundElement = B_world.triggerSectors.elements[i];
+                goto after_search;
+            }
+        }
+        foundElement = NULL;
+after_search:
+        found = (foundElement != NULL);
+    }
+    int code;
+    if (!found)
+    {
+        B_world.triggerSectors.addElement(TS);
+        code = 1;
+    }
+    else
+    {
+        code = 0;
+    }
+    return code;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

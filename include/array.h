@@ -63,6 +63,36 @@ public:
         unknown14 = 1;
     }
 
+    int addElement(TYPE *newElement)
+    {
+        if (num_alloc > size)
+        {
+            this->elements[size] = newElement;
+            size++;
+        }
+        else
+        {
+            num_alloc += increment;
+            if (size != 0)
+            {
+                TYPE ** elements = new TYPE *[num_alloc];
+                for (unsigned int i = 0; i < size; i++)
+                {
+                    elements[i] = this->elements[i];
+                }
+                delete this->elements;
+                this->elements = elements;
+            }
+            else
+            {
+                this->elements = new TYPE *[num_alloc];
+            }
+            this->elements[size] = newElement;
+            size++;
+        }
+        return size - 1;
+    }
+
     TYPE **elements;
     unsigned int size;
     int increment;

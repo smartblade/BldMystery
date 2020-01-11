@@ -10,6 +10,7 @@
 #include "sector.h"
 #include "light.h"
 #include "vector.h"
+#include <bld_python.h>
 
 
 typedef struct {
@@ -28,15 +29,48 @@ typedef struct {
 } world_t;
 
 
-typedef struct {
-        void *unknown_methods[1];
-} game_state_methods_t;
-
 class unknown_18F8_class
 {
 public:
     void unknown_00451A21(void *, int, int);
     int field;
+};
+
+class B_TriggerSector : public B_NamedObj
+{
+public:
+    B_TriggerSector(
+        const char *trigger_sector_name, const char *group_name,
+        float floor_height, float roof_height)
+    :
+    B_NamedObj(trigger_sector_name)
+    {
+        this->floorHeight = floor_height;
+        this->minH = floor_height;
+        this->roofHeight = roof_height;
+        this->maxH = roof_height;
+        this->onEnter = NULL;
+        this->onLeave = NULL;
+        this->data = NULL;
+        this->groupName = group_name;
+    }
+    void AddPoint(const B_Vector& point, int numPoints);
+
+    float minX;
+    float minY;
+    float maxX;
+    float maxY;
+    float maxH;
+    float minH;
+    float floorHeight;
+    float roofHeight;
+    array_t<B_Vector> points;
+    array_t<B_Vector> a040;
+    array_t<void *> a054;
+    PyObject *onEnter;
+    PyObject *onLeave;
+    PyObject *data;
+    B_Name groupName;
 };
 
 class B_World
@@ -50,8 +84,7 @@ public:
         int SaveEntitiesData(const char *filename);
         int LoadEntitiesData(const char *filename);
 
-        game_state_methods_t *methods;
-        char unknownFields[20];
+        array_t<B_TriggerSector *> triggerSectors;
         world_t world;
         int nextEntitySuffix;
         array_t<void *> unknown1828;
