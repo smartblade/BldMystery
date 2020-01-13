@@ -2140,13 +2140,12 @@ int SetTriggerSectorData(
 * Module:                 Blade.exe
 * Entry point:            0x0042BD2F
 */
-#ifdef BLD_NATIVE
+
 PyObject *GetTriggerSectorData(const char *trigger_sector_name)
 {
-    PyObject *(*bld_proc)(const char *trigger_sector_name);
-    return bld_proc(trigger_sector_name);
+    return B_world.GetTriggerSectorData(trigger_sector_name);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
