@@ -2127,19 +2127,14 @@ double *GetTriggerSectorPoints(const char *trigger_sector_name)
 * Module:                 Blade.exe
 * Entry point:            0x0042BD18
 */
-#ifdef BLD_NATIVE
+
 int SetTriggerSectorData(
-        const char *trigger_sector_name, PyObject *data
+    const char *trigger_sector_name, PyObject *data
 )
 {
-    int (*bld_proc)(
-        const char *trigger_sector_name, PyObject *data
-);
-        const char *trigger_sector_name, PyObject *data
-))GetProcAddress(blade, "SetTriggerSectorData");
-    return bld_proc(trigger_sector_name, data);
+    return B_world.SetTriggerSectorData(trigger_sector_name, data);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

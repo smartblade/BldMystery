@@ -92,6 +92,9 @@ public:
     PyObject *GetTriggerSectorFunc(
         const char *trigger_sector_name, const char *func_type
     );
+    int SetTriggerSectorData(
+        const char *trigger_sector_name, PyObject *data
+    );
     int SaveEntitiesData(const char *filename);
     int LoadEntitiesData(const char *filename);
 

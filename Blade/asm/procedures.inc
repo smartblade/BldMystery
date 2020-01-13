@@ -426,6 +426,8 @@ externdef ?GetTriggerSectorPoints@B_World@@QAEPANPBD@Z: near
 l0043F332 equ ?GetTriggerSectorPoints@B_World@@QAEPANPBD@Z
 externdef ?GetTriggerSectorFunc@B_World@@QAEPAU_object@@PBD0@Z: near
 l0043F467 equ ?GetTriggerSectorFunc@B_World@@QAEPAU_object@@PBD0@Z
+externdef ?SetTriggerSectorData@B_World@@QAEHPBDPAU_object@@@Z: near
+l0043F56D equ ?SetTriggerSectorData@B_World@@QAEHPBDPAU_object@@@Z
 externdef ?LoadEntitiesData@B_World@@QAEHPBD@Z: near
 l0043F98A equ ?LoadEntitiesData@B_World@@QAEHPBD@Z
 externdef ?SaveEntitiesData@B_World@@QAEHPBD@Z: near

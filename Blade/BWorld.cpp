@@ -199,6 +199,20 @@ PyObject *B_World::GetTriggerSectorFunc(
 }
 #endif
 
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043F56D
+* VC++ mangling:          ?SetTriggerSectorData@B_World@@QAEHPBDPAU_object@@@Z
+*/
+#ifdef BLD_NATIVE
+int B_World::SetTriggerSectorData(
+    const char *trigger_sector_name, PyObject *data
+)
+{
+    return 0;
+}
+#endif
+
 
 /*
 ................................................................................
