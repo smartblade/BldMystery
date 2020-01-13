@@ -138,6 +138,18 @@ int B_World::SetTriggerSectorFunc(
 #endif
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x0043F172
+* VC++ mangling:          ?GetTriggerSectorFloorHeight@B_World@@QAEHPBD@Z
+*/
+#ifdef BLD_NATIVE
+int B_World::GetTriggerSectorFloorHeight(const char *trigger_sector_name)
+{
+    return 0;
+}
+#endif
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................

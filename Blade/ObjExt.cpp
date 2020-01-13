@@ -2083,13 +2083,12 @@ PyObject *GetTriggerSectorFunc(
 * Module:                 Blade.exe
 * Entry point:            0x0042BCCC
 */
-#ifdef BLD_NATIVE
+
 int GetTriggerSectorFloorHeight(const char *trigger_sector_name)
 {
-    int (*bld_proc)(const char *trigger_sector_name);
-    return bld_proc(trigger_sector_name);
+    return B_world.GetTriggerSectorFloorHeight(trigger_sector_name);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

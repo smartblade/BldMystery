@@ -416,6 +416,8 @@ externdef ?GenerateEntityName@B_World@@QAEPBDPBD@Z: near
 l0043E8E8 equ ?GenerateEntityName@B_World@@QAEPBDPBD@Z
 externdef ?SetTriggerSectorFunc@B_World@@QAEHPBD0PAU_object@@@Z: near
 l0043EF43 equ ?SetTriggerSectorFunc@B_World@@QAEHPBD0PAU_object@@@Z
+externdef ?GetTriggerSectorFloorHeight@B_World@@QAEHPBD@Z: near
+l0043F172 equ ?GetTriggerSectorFloorHeight@B_World@@QAEHPBD@Z
 externdef ?GetTriggerSectorFunc@B_World@@QAEPAU_object@@PBD0@Z: near
 l0043F467 equ ?GetTriggerSectorFunc@B_World@@QAEPAU_object@@PBD0@Z
 externdef ?LoadEntitiesData@B_World@@QAEHPBD@Z: near
