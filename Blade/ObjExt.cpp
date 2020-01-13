@@ -2046,6 +2046,7 @@ after_search:
     }
     else
     {
+        /* FIXME memory leak (TS was not deleted) */
         code = 0;
     }
     return code;
