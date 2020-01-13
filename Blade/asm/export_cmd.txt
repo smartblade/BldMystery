@@ -10,7 +10,6 @@
 /EXPORT:LoadAnmRaceData
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:GetTriggerSectorPoints
 /EXPORT:SetTriggerSectorData
 /EXPORT:GetTriggerSectorData
 /EXPORT:nTriggerSectors

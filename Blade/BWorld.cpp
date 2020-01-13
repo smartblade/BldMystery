@@ -174,12 +174,16 @@ const char *B_World::GetTriggerSectorGroup(const char *trigger_sector_name)
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x0043F332
+* VC++ mangling:          ?GetTriggerSectorPoints@B_World@@QAEPANPBD@Z
 */
-
+#ifdef BLD_NATIVE
+double *B_World::GetTriggerSectorPoints(const char *trigger_sector_name)
+{
+    return NULL;
+}
+#endif
 
 /*
 * Module:                 Blade.exe

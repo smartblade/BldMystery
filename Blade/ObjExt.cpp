@@ -2116,13 +2116,12 @@ const char *GetTriggerSectorGroup(const char *trigger_sector_name)
 * Module:                 Blade.exe
 * Entry point:            0x0042BD05
 */
-#ifdef BLD_NATIVE
+
 double *GetTriggerSectorPoints(const char *trigger_sector_name)
 {
-    double *(*bld_proc)(const char *trigger_sector_name);
-    return bld_proc(trigger_sector_name);
+    return B_world.GetTriggerSectorPoints(trigger_sector_name);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
