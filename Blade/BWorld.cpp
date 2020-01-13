@@ -121,6 +121,30 @@ const char *GenerateEntityName(const char *prefix)
 ................................................................................
 */
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043EF43
+* VC++ mangling:          ?SetTriggerSectorFunc@B_World@@QAEHPBD0PAU_object@@@Z
+*/
+#ifdef BLD_NATIVE
+int B_World::SetTriggerSectorFunc(
+    const char *trigger_sector_name, const char *func_type,
+    PyObject *func
+)
+{
+    return 0;
+}
+#endif
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x000043F98A

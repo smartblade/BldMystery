@@ -2057,19 +2057,14 @@ after_search:
 * Module:                 Blade.exe
 * Entry point:            0x0042BC9A
 */
-#ifdef BLD_NATIVE
+
 int SetTriggerSectorFunc(
-        const char *trigger_sector_name, const char *func_type, PyObject *func
+    const char *trigger_sector_name, const char *func_type, PyObject *func
 )
 {
-    int (*bld_proc)(
-        const char *trigger_sector_name, const char *func_type, PyObject *func
-);
-        const char *trigger_sector_name, const char *func_type, PyObject *func
-))GetProcAddress(blade, "SetTriggerSectorFunc");
-    return bld_proc(trigger_sector_name, func_type, func);
+    return B_world.SetTriggerSectorFunc(trigger_sector_name, func_type, func);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

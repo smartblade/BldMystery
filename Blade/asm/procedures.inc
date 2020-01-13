@@ -414,6 +414,8 @@ externdef ?FindSectorIndex@B_World@@QAEHABVB_Vector@@@Z: near
 l0043DBBE equ ?FindSectorIndex@B_World@@QAEHABVB_Vector@@@Z
 externdef ?GenerateEntityName@B_World@@QAEPBDPBD@Z: near
 l0043E8E8 equ ?GenerateEntityName@B_World@@QAEPBDPBD@Z
+externdef ?SetTriggerSectorFunc@B_World@@QAEHPBD0PAU_object@@@Z: near
+l0043EF43 equ ?SetTriggerSectorFunc@B_World@@QAEHPBD0PAU_object@@@Z
 externdef ?LoadEntitiesData@B_World@@QAEHPBD@Z: near
 l0043F98A equ ?LoadEntitiesData@B_World@@QAEHPBD@Z
 externdef ?SaveEntitiesData@B_World@@QAEHPBD@Z: near

@@ -81,6 +81,10 @@ public:
         void SetSun(int exists, const B_Vector &position);
         int FindSectorIndex(const B_Vector &point);
         const char *GenerateEntityName(const char *prefix);
+        int SetTriggerSectorFunc(
+            const char *trigger_sector_name, const char *func_type,
+            PyObject *func
+        );
         int SaveEntitiesData(const char *filename);
         int LoadEntitiesData(const char *filename);
 
