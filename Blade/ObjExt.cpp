@@ -2070,19 +2070,14 @@ int SetTriggerSectorFunc(
 * Module:                 Blade.exe
 * Entry point:            0x0042BCB5
 */
-#ifdef BLD_NATIVE
+
 PyObject *GetTriggerSectorFunc(
-        const char *trigger_sector_name, const char *func_type
+    const char *trigger_sector_name, const char *func_type
 )
 {
-    PyObject *(*bld_proc)(
-        const char *trigger_sector_name, const char *func_type
-);
-        const char *trigger_sector_name, const char *func_type
-))GetProcAddress(blade, "GetTriggerSectorFunc");
-    return bld_proc(trigger_sector_name, func_type);
+    return B_world.GetTriggerSectorFunc(trigger_sector_name, func_type);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
