@@ -150,6 +150,18 @@ int B_World::GetTriggerSectorFloorHeight(const char *trigger_sector_name)
 #endif
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x0043F209
+* VC++ mangling:          ?GetTriggerSectorRoofHeight@B_World@@QAEHPBD@Z
+*/
+#ifdef BLD_NATIVE
+int B_World::GetTriggerSectorRoofHeight(const char *trigger_sector_name)
+{
+    return 0;
+}
+#endif
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
