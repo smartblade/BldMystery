@@ -87,6 +87,7 @@ public:
         );
         int GetTriggerSectorFloorHeight(const char *trigger_sector_name);
         int GetTriggerSectorRoofHeight(const char *trigger_sector_name);
+        const char *GetTriggerSectorGroup(const char *trigger_sector_name);
         PyObject *GetTriggerSectorFunc(
             const char *trigger_sector_name, const char *func_type
         );

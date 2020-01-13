@@ -2105,13 +2105,12 @@ int GetTriggerSectorRoofHeight(const char *trigger_sector_name)
 * Module:                 Blade.exe
 * Entry point:            0x0042BCF2
 */
-#ifdef BLD_NATIVE
+
 const char *GetTriggerSectorGroup(const char *trigger_sector_name)
 {
-    const char *(*bld_proc)(const char *trigger_sector_name);
-    return bld_proc(trigger_sector_name);
+    return B_world.GetTriggerSectorGroup(trigger_sector_name);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

@@ -420,6 +420,8 @@ externdef ?GetTriggerSectorFloorHeight@B_World@@QAEHPBD@Z: near
 l0043F172 equ ?GetTriggerSectorFloorHeight@B_World@@QAEHPBD@Z
 externdef ?GetTriggerSectorRoofHeight@B_World@@QAEHPBD@Z: near
 l0043F209 equ ?GetTriggerSectorRoofHeight@B_World@@QAEHPBD@Z
+externdef ?GetTriggerSectorGroup@B_World@@QAEPBDPBD@Z: near
+l0043F2A0 equ ?GetTriggerSectorGroup@B_World@@QAEPBDPBD@Z
 externdef ?GetTriggerSectorFunc@B_World@@QAEPAU_object@@PBD0@Z: near
 l0043F467 equ ?GetTriggerSectorFunc@B_World@@QAEPAU_object@@PBD0@Z
 externdef ?LoadEntitiesData@B_World@@QAEHPBD@Z: near
