@@ -289,6 +289,18 @@ void B_World::AddPoint(const B_Vector& point, int numPoints)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00440A19
+* VC++ mangling:          ?GetTriggerSectorName@B_World@@QAEPBDH@Z
+*/
+#ifdef BLD_NATIVE
+const char *B_World::GetTriggerSectorName(int index)
+{
+    return NULL;
+}
+#endif
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x00440A5D
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@PAVB_World@@@Z
 */

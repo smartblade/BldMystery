@@ -98,6 +98,7 @@ public:
     PyObject *GetTriggerSectorData(const char *trigger_sector_name);
     int SaveEntitiesData(const char *filename);
     int LoadEntitiesData(const char *filename);
+    const char *GetTriggerSectorName(int index);
 
     array_t<B_TriggerSector *> triggerSectors;
     world_t world;

@@ -436,6 +436,8 @@ externdef ?SaveEntitiesData@B_World@@QAEHPBD@Z: near
 l0043FD82 equ ?SaveEntitiesData@B_World@@QAEHPBD@Z
 externdef ?AddPoint@B_TriggerSector@@QAEXABVB_Vector@@H@Z: near
 l0044008F equ ?AddPoint@B_TriggerSector@@QAEXABVB_Vector@@H@Z
+externdef ?GetTriggerSectorName@B_World@@QAEPBDH@Z: near
+l00440A19 equ ?GetTriggerSectorName@B_World@@QAEPBDH@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@PAVB_World@@@Z: near
 l00440A5D equ ??5@YAAAVB_IDataFile@@AAV0@PAVB_World@@@Z
 externdef _WorldToMBW: near
