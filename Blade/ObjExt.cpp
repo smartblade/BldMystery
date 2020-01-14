@@ -2186,13 +2186,14 @@ int GetModelPos(const char *person, double *x, double *y, double *z)
 * Module:                 Blade.exe
 * Entry point:            0x0042BFF8
 */
-#ifdef BLD_NATIVE
-int GetWindowId(void)
+
+int GetWindowId()
 {
-    int (*bld_proc)(void);
-    return bld_proc();
+    B_App *App = get_application();
+    assert(App);
+    return App->GetWindow();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
