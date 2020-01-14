@@ -64,6 +64,7 @@ public:
         void StopTime();
         void RestartTime();
         void SetTimeSpeed(double speed);
+        void TakeSnapShot();
         double GetTimeSpeed();
         void AddInputAction(const char *action_name, int npi);
         void RemoveInputAction(const char *action_name);

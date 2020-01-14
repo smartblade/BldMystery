@@ -48,6 +48,8 @@ externdef ?MarkLevelToLoad@B_App@@UAEXPBD@Z: near
 l0041316C equ ?MarkLevelToLoad@B_App@@UAEXPBD@Z
 externdef ?LoadLevel@B_App@@UAEXPBD@Z: near
 l00413256 equ ?LoadLevel@B_App@@UAEXPBD@Z
+externdef ?TakeSnapShot@B_App@@QAEXXZ: near
+l004138A0 equ ?TakeSnapShot@B_App@@QAEXXZ
 externdef ?ReadLevel@B_App@@UAEXPBD@Z: near
 l004138B8 equ ?ReadLevel@B_App@@UAEXPBD@Z
 externdef ?PrepareLevel@B_App@@QAEXXZ: near

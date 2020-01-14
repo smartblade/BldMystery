@@ -1309,7 +1309,7 @@ LIB_EXP int loadSoundDataBase(const char *file_name);
 LIB_EXP int saveSoundDataBase(const char *file_name);
 LIB_EXP int loadMusicState(const char *file_name);
 LIB_EXP int saveMusicState(const char *file_name);
-LIB_EXP void TakeSnapShot(void);
+LIB_EXP int TakeSnapShot(void);
 LIB_EXP void saveSoundStats(const char *file_name);
 LIB_EXP void GetMouseState(int *invert, double *xsens, double *ysens);
 LIB_EXP void SetMouseState(int invert, double xsens, double ysens);

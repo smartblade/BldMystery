@@ -2212,13 +2212,15 @@ int GetProgramId()
 * Module:                 Blade.exe
 * Entry point:            0x0042C06A
 */
-#ifdef BLD_NATIVE
-void TakeSnapShot(void)
+
+int TakeSnapShot()
 {
-    void (*bld_proc)(void);
-    bld_proc();
+    B_App *App = get_application();
+    assert(App);
+    App->TakeSnapShot();
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

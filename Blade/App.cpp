@@ -464,6 +464,18 @@ void B_App::LoadLevel(const char *script)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x004138A0
+* VC++ mangling:          ?TakeSnapShot@B_App@@QAEXXZ
+*/
+
+#ifdef BLD_NATIVE
+void B_App::TakeSnapShot()
+{
+}
+#endif
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x004138B8
 * VC++ mangling:          ?ReadLevel@B_App@@UAEXPBD@Z
 */
