@@ -41,7 +41,7 @@ public:
         virtual void ExitWithError(char *title, char* message);
         virtual void PrintWarning(const char *, const char *);
         virtual int GetWindow();
-        virtual void *GetModule();
+        virtual int GetModule();
         virtual int SetCurrentMap(const char *map);
         virtual bool InitWindow();
         virtual void *unknown_method070();

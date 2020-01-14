@@ -2199,13 +2199,14 @@ int GetWindowId()
 * Module:                 Blade.exe
 * Entry point:            0x0042C031
 */
-#ifdef BLD_NATIVE
-int GetProgramId(void)
+
+int GetProgramId()
 {
-    int (*bld_proc)(void);
-    return bld_proc();
+    B_App *App = get_application();
+    assert(App);
+    return App->GetModule();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
