@@ -2226,13 +2226,12 @@ int TakeSnapShot()
 * Module:                 Blade.exe
 * Entry point:            0x0042C0A5
 */
-#ifdef BLD_NATIVE
-int nSectors(void)
+
+int nSectors()
 {
-    int (*bld_proc)(void);
-    return bld_proc();
+    return B_world.sectors.size;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
