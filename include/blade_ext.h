@@ -1317,7 +1317,7 @@ LIB_EXP double GetPSeconds(void);
 LIB_EXP int GetnRaces(void);
 LIB_EXP const char *GetRaceName(int index);
 LIB_EXP void BodInspector(void);
-LIB_EXP void SetRunString(const char *variable);
+LIB_EXP void SetRunString(const char *str);
 LIB_EXP int SetStringValue(const char *variable, const char *value);
 LIB_EXP const char *GetStringValue(const char *variable);
 LIB_EXP int DeleteStringValue(const char *variable);

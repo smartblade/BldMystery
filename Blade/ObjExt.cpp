@@ -2237,13 +2237,14 @@ int nSectors()
 * Module:                 Blade.exe
 * Entry point:            0x0042C0AF
 */
-#ifdef BLD_NATIVE
-void SetRunString(const char *variable)
+
+void SetRunString(const char *str)
 {
-    void (*bld_proc)(const char *variable);
-    bld_proc(variable);
+    B_App *App = get_application();
+    assert(App);
+    App->SetPyInteractiveString(str);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
