@@ -108,6 +108,8 @@ externdef ?GetMutilationLevel@B_App@@QAEHXZ: near
 l00416C5B equ ?GetMutilationLevel@B_App@@QAEHXZ
 externdef ?LoadWorld@B_App@@QAEHPBD@Z: near
 l00416C6F equ ?LoadWorld@B_App@@QAEHPBD@Z
+externdef ?SetStringValue@B_App@@QAEHPBD0@Z: near
+l00416EFA equ ?SetStringValue@B_App@@QAEHPBD0@Z
 externdef _PlayCDTrack: near
 l00427750 equ _PlayCDTrack
 externdef _nCDTracks: near

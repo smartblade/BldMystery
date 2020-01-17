@@ -2250,13 +2250,14 @@ void SetRunString(const char *str)
 * Module:                 Blade.exe
 * Entry point:            0x0042C0EC
 */
-#ifdef BLD_NATIVE
+
 int SetStringValue(const char *variable, const char *value)
 {
-    int (*bld_proc)(const char *variable, const char *value);
-    return bld_proc(variable, value);
+    B_App *App = get_application();
+    assert(App);
+    return App->SetStringValue(variable, value);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
