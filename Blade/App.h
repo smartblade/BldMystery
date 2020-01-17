@@ -98,6 +98,7 @@ public:
         int GetMutilationLevel();
         int SetStringValue(const char *variable, const char *value);
         const char *GetStringValue(const char *variable);
+        int DeleteStringValue(const char *variable);
 
         char unknownFields1[24];
         boolean bUnknown01C;

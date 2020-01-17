@@ -112,6 +112,8 @@ externdef ?SetStringValue@B_App@@QAEHPBD0@Z: near
 l00416EFA equ ?SetStringValue@B_App@@QAEHPBD0@Z
 externdef ?GetStringValue@B_App@@QAEPBDPBD@Z: near
 l0041712A equ ?GetStringValue@B_App@@QAEPBDPBD@Z
+externdef ?DeleteStringValue@B_App@@QAEHPBD@Z: near
+l004171D1 equ ?DeleteStringValue@B_App@@QAEHPBD@Z
 externdef _PlayCDTrack: near
 l00427750 equ _PlayCDTrack
 externdef _nCDTracks: near

@@ -1105,6 +1105,19 @@ const char *B_App::GetStringValue(const char *variable)
 }
 #endif
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004171D1
+* VC++ mangling:          ?DeleteStringValue@B_App@@QAEHPBD@Z
+*/
+#ifdef BLD_NATIVE
+int B_App::DeleteStringValue(const char *variable)
+{
+    return 0;
+}
+#endif
+
 /*
 ................................................................................
 ................................................................................

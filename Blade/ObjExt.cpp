@@ -2276,13 +2276,14 @@ const char *GetStringValue(const char *variable)
 * Module:                 Blade.exe
 * Entry point:            0x0042C164
 */
-#ifdef BLD_NATIVE
+
 int DeleteStringValue(const char *variable)
 {
-    int (*bld_proc)(const char *variable);
-    return bld_proc(variable);
+    B_App *App = get_application();
+    assert(App);
+    return App->DeleteStringValue(variable);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
