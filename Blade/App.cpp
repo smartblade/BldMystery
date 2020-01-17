@@ -1094,6 +1094,18 @@ int B_App::SetStringValue(const char *variable, const char *value)
 #endif
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x0041712A
+* VC++ mangling:          ?GetStringValue@B_App@@QAEPBDPBD@Z
+*/
+#ifdef BLD_NATIVE
+const char *B_App::GetStringValue(const char *variable)
+{
+    return NULL;
+}
+#endif
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................

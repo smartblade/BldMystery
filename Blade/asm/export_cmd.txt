@@ -11,7 +11,6 @@
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
 /EXPORT:GetModelPos
-/EXPORT:GetStringValue
 /EXPORT:DeleteStringValue
 /EXPORT:SaveProfileData
 /EXPORT:OpenProfileSection

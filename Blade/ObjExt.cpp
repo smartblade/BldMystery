@@ -2263,13 +2263,14 @@ int SetStringValue(const char *variable, const char *value)
 * Module:                 Blade.exe
 * Entry point:            0x0042C12A
 */
-#ifdef BLD_NATIVE
+
 const char *GetStringValue(const char *variable)
 {
-    const char *(*bld_proc)(const char *variable);
-    return bld_proc(variable);
+    B_App *App = get_application();
+    assert(App);
+    return App->GetStringValue(variable);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
