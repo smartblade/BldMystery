@@ -2361,13 +2361,14 @@ int DisableProfiler()
 * Module:                 Blade.exe
 * Entry point:            0x0042C240
 */
-#ifdef BLD_NATIVE
+
 int SetInputMode(const char *device, const char *mode)
 {
-    int (*bld_proc)(const char *device, const char *mode);
-    return bld_proc(device, mode);
+    B_App *App = get_application();
+    assert(App);
+    return App->SetInputMode(device, mode);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
