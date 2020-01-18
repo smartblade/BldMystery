@@ -2289,13 +2289,13 @@ int DeleteStringValue(const char *variable)
 * Module:                 Blade.exe
 * Entry point:            0x0042C19E
 */
-#ifdef BLD_NATIVE
+
 int SaveProfileData(const char *file_name)
 {
-    int (*bld_proc)(const char *file_name);
-    return bld_proc(file_name);
+    mout << "Profiling NOT active.\n";
+    return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
