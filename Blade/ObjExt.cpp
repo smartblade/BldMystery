@@ -2349,13 +2349,13 @@ int EnableProfiler(void)
 * Module:                 Blade.exe
 * Entry point:            0x0042C225
 */
-#ifdef BLD_NATIVE
-int DisableProfiler(void)
+
+int DisableProfiler()
 {
-    int (*bld_proc)(void);
-    return bld_proc();
+    mout << "Profiling NOT active.\n";
+    return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
