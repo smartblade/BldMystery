@@ -2301,13 +2301,13 @@ int SaveProfileData(const char *file_name)
 * Module:                 Blade.exe
 * Entry point:            0x0042C1B9
 */
-#ifdef BLD_NATIVE
+
 int OpenProfileSection(int section, const char *comment)
 {
-    int (*bld_proc)(int section, const char *comment);
-    return bld_proc(section, comment);
+    mout << "Profiling NOT active.\n";
+    return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
