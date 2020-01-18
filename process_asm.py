@@ -3,6 +3,8 @@ from optparse import OptionParser
 import os
 import re
 import time
+import pickle
+import zlib
 
 parser = OptionParser()
 parser.add_option("--show-hex-prefix", dest="show_hex_prefix",
@@ -792,8 +794,7 @@ def collectSymbolsFromSources():
                 varNames.update(collectVariablesFromFile(fileName))
     return (varNames, mangledNames, implementedProcedures)
 
-if __name__ == '__main__':
-    start_time = time.time()
+def processAsmFile():
     f = open("raw.txt")
     lines = f.readlines()
     f.close()
@@ -849,6 +850,18 @@ if __name__ == '__main__':
     for imageItem in imageMap.itemsMap().values():
         if isinstance(imageItem, DataItem):
             imageItem.applyRelocs(imageMap)
+    return (imageMap, lineItems)
+
+if __name__ == '__main__':
+    start_time = time.time()
+    #(imageMap, lineItems) = processAsmFile()
+    #print("Dump image map to binary file...")
+    #f = open("imageMap.dump", "wb")
+    #f.write(zlib.compress(pickle.dumps((imageMap, lineItems))))
+    #f.close()
+    print("Read image map from binary file...")
+    f = open("imageMap.dump", "rb")
+    (imageMap, lineItems) = pickle.loads(zlib.decompress(f.read()))
     print("Collect symbols from sources...")
     (varNames, mangledNames, implementedProcedures) = collectSymbolsFromSources()
     print("Hide implemented procedures...")
