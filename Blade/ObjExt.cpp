@@ -2325,13 +2325,13 @@ int CloseProfileSection(int section)
 * Module:                 Blade.exe
 * Entry point:            0x0042C1EF
 */
-#ifdef BLD_NATIVE
-int StartProfile(void)
+
+int StartProfile()
 {
-    int (*bld_proc)(void);
-    return bld_proc();
+    mout << "Profiling NOT active.\n";
+    return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
