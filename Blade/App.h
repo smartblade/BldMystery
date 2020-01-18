@@ -25,7 +25,7 @@ public:
         virtual bool Start();
         virtual void ProcessEvents();
         virtual void End();
-        virtual void *unknown_method024();
+        virtual const char *GetInputMode(const char *device);
         virtual int SetInputMode(const char *device, const char *mode);
         virtual int Quit();
         virtual void MarkLevelToLoad(const char *map);

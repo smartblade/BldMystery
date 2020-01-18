@@ -2374,13 +2374,14 @@ int SetInputMode(const char *device, const char *mode)
 * Module:                 Blade.exe
 * Entry point:            0x0042C281
 */
-#ifdef BLD_NATIVE
+
 const char *GetInputMode(const char *device)
 {
-    const char *(*bld_proc)(const char *device);
-    return bld_proc(device);
+    B_App *App = get_application();
+    assert(App);
+    return App->GetInputMode(device);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
