@@ -10,6 +10,7 @@
 #include "game_clock.h"
 #include <array.h>
 #include "Location.h"
+#include "StringValue.h"
 
 
 class B_App
@@ -139,7 +140,9 @@ public:
         int drawShadows;
         int autoEngageCombat;
         double aecGap;
-        char unknownFields630[392];
+        char unknownFields630[32];
+        array_t<B_StringValue *> values;
+        char unknownFields668[336];
         void *window;
         void *module;
         char unknownFields3[16];

@@ -245,6 +245,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\StringValue.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\TriggerSectorTests.cpp"
 				>
 			</File>

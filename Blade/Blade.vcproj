@@ -304,6 +304,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\StringValue.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Vector.h"
 				>
 			</File>
