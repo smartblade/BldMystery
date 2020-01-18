@@ -15,6 +15,7 @@ TEST(BladeAppTests, Fields)
     EXPECT_OFFSET_EQ(B_BladeApp, clock1, 0x02C);
     EXPECT_OFFSET_EQ(B_BladeApp, clock2, 0x030);
     EXPECT_OFFSET_EQ(B_BladeApp, rootWidget, 0x054);
+    EXPECT_OFFSET_EQ(B_BladeApp, lastPlayerCType, 0x060);
     EXPECT_OFFSET_EQ(B_BladeApp, player1, 0x068);
     EXPECT_OFFSET_EQ(B_BladeApp, client, 0x06C);
     EXPECT_OFFSET_EQ(B_BladeApp, camera, 0x078);

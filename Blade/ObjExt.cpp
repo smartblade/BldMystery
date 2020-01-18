@@ -2387,10 +2387,10 @@ const char *GetInputMode(const char *device)
 * Module:                 Blade.exe
 * Entry point:            0x0042C2BE
 */
-#ifdef BLD_NATIVE
-const char *GetLastPlayerCType(void)
+
+const char *GetLastPlayerCType()
 {
-    const char *(*bld_proc)(void);
-    return bld_proc();
+    B_App *App = get_application();
+    assert(App);
+    return App->lastPlayerCType;
 }
-#endif

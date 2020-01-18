@@ -112,7 +112,8 @@ public:
         int numArguments;
         char unknownFields44[16];
         long int rootWidget;
-        char unknownFields58[16];
+        char unknownFields58[8];
+        B_Name lastPlayerCType;
         person_t *player1;
         B_Entity *client;
         char unknownFields100[8];
