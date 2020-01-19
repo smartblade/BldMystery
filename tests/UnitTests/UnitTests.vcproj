@@ -233,6 +233,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\PersonEntityTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\ProcTextureTests.cpp"
 				>
 			</File>

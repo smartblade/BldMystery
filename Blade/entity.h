@@ -26,7 +26,7 @@ class biped_entity_t : public B_Entity
 
 class B_PersonEntity : public biped_entity_t
 {
-    char unknownFields[3676];
+    char unknownFields[3684];
 };
 
 class B_CameraMovement : public B_NamedObj
