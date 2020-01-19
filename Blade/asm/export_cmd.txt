@@ -10,7 +10,6 @@
 /EXPORT:LoadAnmRaceData
 /EXPORT:SaveAnmSoundData
 /EXPORT:LoadAnmSoundData
-/EXPORT:GetModelPos
 /EXPORT:WorldToMBW
 /EXPORT:nMaterials
 /EXPORT:CreateMaterial

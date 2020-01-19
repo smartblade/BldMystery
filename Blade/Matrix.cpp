@@ -10,6 +10,25 @@
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x0040571F
+* VC++ mangling:          ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ
+*/
+#ifdef BLD_NATIVE
+B_Vector B_Matrix::TranslationVector() const
+{
+    return B_Vector();
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x406903
 * VC++ mangling:          ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z
 */

@@ -1,3 +1,5 @@
+externdef ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ: near
+l0040571F equ ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ
 externdef ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z: near
 l00406903 equ ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z
 externdef _read_points: near

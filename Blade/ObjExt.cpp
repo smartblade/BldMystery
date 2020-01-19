@@ -2174,13 +2174,65 @@ const char *GetTriggerSectorName(int index)
 * Module:                 Blade.exe
 * Entry point:            0x0042BD68
 */
-#ifdef BLD_NATIVE
+
 int GetModelPos(const char *person, double *x, double *y, double *z)
 {
-    int (*bld_proc)(const char *person, double *x, double *y, double *z);
-    return bld_proc(person, x, y, z);
+    B_Entity *entity;
+    {
+        const char *name = person;
+        assert(name);
+        B_Entities *entities = &B_world.entities;
+        if (
+            entities->foundEntity &&
+            !strcmp(entities->foundEntity->Id().String(), name))
+        {
+            entity = entities->foundEntity;
+        }
+        else
+        {
+            const char *str_ptr = name;
+            int hash_value = 0;
+            while (*str_ptr)
+            {
+                hash_value += *str_ptr;
+                str_ptr++;
+            }
+            hash_value = hash_value & 0xFF;
+            array_t<B_Entity *> *array = &entities->hash[hash_value];
+            int foundIndex = -1;
+            for(unsigned int i = 0; i < array->size; i++)
+            {
+                if (!strcmp(array->elements[i]->Id().String(), name))
+                {
+                    foundIndex = i;
+                    break;
+                }
+            }
+            if (foundIndex != -1)
+            {
+                entities->foundEntity = array->elements[foundIndex];
+                entity = entities->foundEntity;
+            }
+            else
+            {
+                entity = NULL;
+            }
+        }
+    }
+    if (entity != NULL && entity->ClassId() == B_ENTITY_CID_PERSON)
+    {
+        B_PersonEntity *person = (B_PersonEntity *)entity;
+        Unknown0049A1EF *unknown = person->unknown01AC;
+        B_Vector position = unknown->transform.TranslationVector();
+        *x = position.x;
+        *y = position.y;
+        *z = position.z;
+        return 1;
+    }
+    mout << vararg("La entidad %s no existe o no es un person_entity\n", person);
+    return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

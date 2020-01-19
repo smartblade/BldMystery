@@ -6,6 +6,8 @@ class B_Vector;
 
 class B_Matrix
 {
+public:
+    B_Vector TranslationVector() const;
 private:
     double v[4][4];
 };
