@@ -24,7 +24,7 @@ class biped_entity_t : public B_Entity
     char unknownFields[4220];
 };
 
-class person_t : public biped_entity_t
+class B_PersonEntity : public biped_entity_t
 {
     char unknownFields[3676];
 };

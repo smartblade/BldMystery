@@ -115,7 +115,7 @@ public:
         long int rootWidget;
         char unknownFields58[8];
         B_Name lastPlayerCType;
-        person_t *player1;
+        B_PersonEntity *player1;
         B_Entity *client;
         char unknownFields100[8];
         B_CameraEntity *camera;

@@ -274,7 +274,7 @@ void B_App::LoadLevel(const char *script)
         unsigned int i;
         array_t<B_Entity *> *array;
         world_t *world;
-        person_t *player1;
+        B_PersonEntity *player1;
         B_CameraEntity *camera;
         const char *str1;
         char *str2;
@@ -322,7 +322,7 @@ void B_App::LoadLevel(const char *script)
                         world->foundEntity &&
                         !strcmp(world->foundEntity->Id(), PLAYER)
                 ) {
-                        player1 = (person_t *)world->foundEntity;
+                        player1 = (B_PersonEntity *)world->foundEntity;
                 } else {
                         str_ptr = PLAYER;
                         hash_value = 0;
@@ -367,7 +367,7 @@ void B_App::LoadLevel(const char *script)
 
                         if (foundIndex != -1) {
                                 world->foundEntity = array->elements[foundIndex];
-                                player1 = (person_t *)world->foundEntity;
+                                player1 = (B_PersonEntity *)world->foundEntity;
                         } else
                                 player1 = NULL;
                 }
@@ -395,7 +395,7 @@ void B_App::LoadLevel(const char *script)
                         world->foundEntity &&
                         !strcmp(world->foundEntity->Id(), PLAYER)
                 ) {
-                        player1 = (person_t *)world->foundEntity;
+                        player1 = (B_PersonEntity *)world->foundEntity;
                 } else {
                         str_ptr = PLAYER;
                         hash_value = 0;
@@ -440,7 +440,7 @@ void B_App::LoadLevel(const char *script)
 
                         if (foundIndex != -1) {
                                 world->foundEntity = array->elements[foundIndex];
-                                player1 = (person_t *)world->foundEntity;
+                                player1 = (B_PersonEntity *)world->foundEntity;
                         } else
                                 player1 = NULL;
                 }
