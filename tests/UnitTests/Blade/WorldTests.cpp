@@ -6,7 +6,7 @@
 
 TEST(WorldTests, Fields)
 {
-    EXPECT_OFFSET_EQ(B_World, world, 0x0018);
+    EXPECT_OFFSET_EQ(B_World, entities, 0x0018);
     EXPECT_OFFSET_EQ(B_World, nextEntitySuffix, 0x1824);
     EXPECT_OFFSET_EQ(B_World, unknown1828, 0x1828);
     EXPECT_OFFSET_EQ(B_World, world_file_name, 0x185C);

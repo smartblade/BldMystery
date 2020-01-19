@@ -273,7 +273,7 @@ void B_App::LoadLevel(const char *script)
         char *str_ptr;
         unsigned int i;
         array_t<B_Entity *> *array;
-        world_t *world;
+        B_Entities *entities;
         B_PersonEntity *player1;
         B_CameraEntity *camera;
         const char *str1;
@@ -317,12 +317,12 @@ void B_App::LoadLevel(const char *script)
 
                 assert(PLAYER);
 
-                world = &B_world.world;
+                entities = &B_world.entities;
                 if (
-                        world->foundEntity &&
-                        !strcmp(world->foundEntity->Id(), PLAYER)
+                        entities->foundEntity &&
+                        !strcmp(entities->foundEntity->Id(), PLAYER)
                 ) {
-                        player1 = (B_PersonEntity *)world->foundEntity;
+                        player1 = (B_PersonEntity *)entities->foundEntity;
                 } else {
                         str_ptr = PLAYER;
                         hash_value = 0;
@@ -332,7 +332,7 @@ void B_App::LoadLevel(const char *script)
                         }
                         hash_value = hash_value & 0xFF;
 
-                        array = &world->hash[hash_value];
+                        array = &entities->hash[hash_value];
 
                         foundIndex = -1;
                         for(i = 0; i < array->size; i++) {
@@ -366,8 +366,8 @@ void B_App::LoadLevel(const char *script)
                         }
 
                         if (foundIndex != -1) {
-                                world->foundEntity = array->elements[foundIndex];
-                                player1 = (B_PersonEntity *)world->foundEntity;
+                                entities->foundEntity = array->elements[foundIndex];
+                                player1 = (B_PersonEntity *)entities->foundEntity;
                         } else
                                 player1 = NULL;
                 }
@@ -390,12 +390,12 @@ void B_App::LoadLevel(const char *script)
         } else {
                 this->player1 = NULL;
 
-                world = &B_world.world;
+                entities = &B_world.entities;
                 if (
-                        world->foundEntity &&
-                        !strcmp(world->foundEntity->Id(), PLAYER)
+                        entities->foundEntity &&
+                        !strcmp(entities->foundEntity->Id(), PLAYER)
                 ) {
-                        player1 = (B_PersonEntity *)world->foundEntity;
+                        player1 = (B_PersonEntity *)entities->foundEntity;
                 } else {
                         str_ptr = PLAYER;
                         hash_value = 0;
@@ -405,7 +405,7 @@ void B_App::LoadLevel(const char *script)
                         }
                         hash_value = hash_value & 0xFF;
 
-                        array = &world->hash[hash_value];
+                        array = &entities->hash[hash_value];
 
                         foundIndex = -1;
                         for(i = 0; i < array->size; i++) {
@@ -439,8 +439,8 @@ void B_App::LoadLevel(const char *script)
                         }
 
                         if (foundIndex != -1) {
-                                world->foundEntity = array->elements[foundIndex];
-                                player1 = (B_PersonEntity *)world->foundEntity;
+                                entities->foundEntity = array->elements[foundIndex];
+                                player1 = (B_PersonEntity *)entities->foundEntity;
                         } else
                                 player1 = NULL;
                 }

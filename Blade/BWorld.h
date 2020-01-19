@@ -26,7 +26,7 @@ typedef struct {
     array_t<B_Entity *> hash[256];
     int unknown1804;
     B_Entity *foundEntity;
-} world_t;
+} B_Entities;
 
 
 class unknown_18F8_class
@@ -101,7 +101,7 @@ public:
     const char *GetTriggerSectorName(int index);
 
     array_t<B_TriggerSector *> triggerSectors;
-    world_t world;
+    B_Entities entities;
     int nextEntitySuffix;
     array_t<void *> unknown1828;
     char unknownFields1840[28];
