@@ -87,7 +87,6 @@ anim_t::anim_t()
 #ifdef BLD_NATIVE
 void anim_t::AddEvent(const B_Name &event_name, float event_frame)
 {
-    return NULL;
 }
 #endif
 
@@ -108,7 +107,7 @@ void anim_t::DelEvent(const B_Name &event_name)
 * VC++ mangling:          ?ClearEvents@anim_t@@QAEXXZ
 */
 #ifdef BLD_NATIVE
-void anim_t::ClearEvents();
+void anim_t::ClearEvents()
 {
 }
 #endif
@@ -119,7 +118,7 @@ void anim_t::ClearEvents();
 * VC++ mangling:          ?GetEventFrame@anim_t@@QAEMABVB_Name@@@Z
 */
 #ifdef BLD_NATIVE
-float anim_t::GetEventFrame(const B_Name &event_name))
+float anim_t::GetEventFrame(const B_Name &event_name)
 {
     return -1.0;
 }
@@ -247,7 +246,7 @@ B_ODataFile& operator <<(B_ODataFile &file, const B_Combustion &combustion)
 
 #ifdef BLD_NATIVE
 
-int unknown204::InsideAA(int AA);
+int unknown204::InsideAA(int AA)
 {
     return 0;
 }

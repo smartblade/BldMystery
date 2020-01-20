@@ -19,6 +19,7 @@
 
 int B_App::SetListenerMode(int mode, const B_Vector &v)
 {
+    return 0;
 }
 
 #endif
@@ -56,6 +57,7 @@ int B_App::DeactivateInput()
 
 int B_App::ActivateInput()
 {
+    return 0;
 }
 
 #endif
@@ -71,6 +73,7 @@ int B_App::ActivateInput()
 
 int B_App::SetAppMode(const B_Name &mode)
 {
+    return 0;
 }
 
 #endif
@@ -86,6 +89,7 @@ int B_App::SetAppMode(const B_Name &mode)
 
 const char *B_App::GetCmdLine()
 {
+    return NULL;
 }
 
 #endif
@@ -99,8 +103,9 @@ const char *B_App::GetCmdLine()
 
 #ifdef BLD_NATIVE
 
-const B_Name &GetAppMode()
+const B_Name &B_App::GetAppMode()
 {
+    return *(new B_Name());
 }
 
 #endif
@@ -122,6 +127,7 @@ const B_Name &GetAppMode()
 
 int B_App::SetTime(double time)
 {
+    return 0;
 }
 
 #endif
@@ -137,6 +143,7 @@ int B_App::SetTime(double time)
 
 int B_App::GoToTime(double time)
 {
+    return 0;
 }
 
 #endif
@@ -189,6 +196,7 @@ void B_App::RestartTime()
 
 double B_App::GetTimeSpeed()
 {
+    return 0.0;
 }
 
 #endif
@@ -646,6 +654,7 @@ void B_App::BeginLoadGame()
 
 double B_App::GetTimeActionHeld(const char *action)
 {
+    return 0.0;
 }
 
 #endif
@@ -698,6 +707,7 @@ void B_App::RemoveInputAction(const char *action_name)
 
 bool B_App::Bind(const char *key, PyObject *proc)
 {
+    return false;
 }
 
 #endif
@@ -731,6 +741,7 @@ void B_App::Bind2(
 
 bool B_App::BindPred(const char *key, const char *pred)
 {
+    return false;
 }
 
 #endif
@@ -746,6 +757,7 @@ bool B_App::BindPred(const char *key, const char *pred)
 
 bool B_App::UnBindPred(const char *key, const char *pred)
 {
+    return false;
 }
 
 #endif
@@ -759,8 +771,9 @@ bool B_App::UnBindPred(const char *key, const char *pred)
 
 #ifdef BLD_NATIVE
 
-bool UnBind(const char *key, PyObject *proc)
+bool B_App::UnBind(const char *key, PyObject *proc)
 {
+    return false;
 }
 
 #endif
@@ -779,6 +792,7 @@ int B_App::AssocKey(
     int press
 )
 {
+    return 0;
 }
 
 #endif
@@ -814,6 +828,7 @@ void B_App::UnBindAll()
 #ifdef BLD_NATIVE
 int B_App::SetAutoGenTexture(const char *textureName, int textureEffect)
 {
+    return 0;
 }
 #endif
 
@@ -869,6 +884,7 @@ bool B_App::RunPythonFile(const char *file_name)
 
 bool B_App::OutSound(int soundId, double x, double y, double z, int unknown)
 {
+    return false;
 }
 
 #endif
@@ -900,6 +916,7 @@ void B_App::SetAfterFrameFunc(const char *name, PyObject *function)
 #ifdef BLD_NATIVE
 PyObject *B_App::GetAfterFrameFunc(const char *name)
 {
+    return NULL;
 }
 #endif
 
@@ -956,8 +973,9 @@ PyObject *B_App::GetMenuTgapFunc()
 * VC++ mangling:          ?RemoveAfterFrameFunc@B_App@@QAEHPBD@Z
 */
 #ifdef BLD_NATIVE
-int B_App::RemoveAfterFrameFunc(const char *name);
+int B_App::RemoveAfterFrameFunc(const char *name)
 {
+    return 0;
 }
 #endif
 
@@ -978,6 +996,7 @@ int B_App::RemoveAfterFrameFunc(const char *name);
 
 int B_App::SetBloodLevel(int blood_level)
 {
+    return 0;
 }
 
 #endif

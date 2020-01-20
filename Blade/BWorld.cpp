@@ -45,6 +45,7 @@ void B_World::unknown_00439F5D()
 
 double B_World::get_time()
 {
+    return 0.0;
 }
 
 #endif
@@ -65,7 +66,7 @@ double B_World::get_time()
 
 #ifdef BLD_NATIVE
 
-int B_World::SetSun(int exists, const B_Vector &position)
+void B_World::SetSun(int exists, const B_Vector &position)
 {
 }
 
@@ -108,7 +109,7 @@ int B_World::FindSectorIndex(const B_Vector &point)
 * VC++ mangling:          ?GenerateEntityName@B_World@@QAEPBDPBD@Z
 */
 #ifdef BLD_NATIVE
-const char *GenerateEntityName(const char *prefix)
+const char *B_World::GenerateEntityName(const char *prefix)
 {
     return NULL;
 }
@@ -243,6 +244,7 @@ PyObject *B_World::GetTriggerSectorData(const char *trigger_sector_name)
 
 int B_World::LoadEntitiesData(const char *filename)
 {
+    return 0;
 }
 
 #endif
@@ -257,6 +259,7 @@ int B_World::LoadEntitiesData(const char *filename)
 
 int B_World::SaveEntitiesData(const char *filename)
 {
+    return 0;
 }
 
 #endif
@@ -274,7 +277,7 @@ int B_World::SaveEntitiesData(const char *filename)
 * VC++ mangling:          ?AddPoint@B_TriggerSector@@QAEXABVB_Vector@@H@Z
 */
 #ifdef BLD_NATIVE
-void B_World::AddPoint(const B_Vector& point, int numPoints)
+void B_TriggerSector::AddPoint(const B_Vector& point, int numPoints)
 {
 }
 #endif
