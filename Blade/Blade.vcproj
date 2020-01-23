@@ -221,6 +221,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CDExt.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\en_control.cpp"
 				>
 			</File>
