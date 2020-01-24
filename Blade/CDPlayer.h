@@ -8,7 +8,7 @@ class CDPlayer
 public:
     virtual void unknown0000();
     virtual int PlayCDTrack(int ntrack);
-    virtual void unknown0008();
+    virtual int CDStop();
     virtual void unknown000C();
     virtual int CDPresent();
     virtual void unknown0014();
