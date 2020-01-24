@@ -86,6 +86,7 @@ public:
         int DeactivateInput();
         int ActivateInput();
         bool OutSound(int soundId, double x, double y, double z, int unknown);
+        int CDSetCallBack(PyObject *func);
         void SetAfterFrameFunc(const char *name, PyObject *function);
         PyObject *GetAfterFrameFunc(const char *name);
         const char *GetAfterFrameFuncName(int index);

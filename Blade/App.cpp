@@ -898,6 +898,18 @@ bool B_App::OutSound(int soundId, double x, double y, double z, int unknown)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00416298
+* VC++ mangling:          ?CDSetCallBack@B_App@@QAEHPAU_object@@@Z
+*/
+#ifdef BLD_NATIVE
+int B_App::CDSetCallBack(PyObject *func)
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x00416309
 * VC++ mangling:          ?SetAfterFrameFunc@B_App@@QAEXPBDPAU_object@@@Z
 */

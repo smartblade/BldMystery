@@ -1,6 +1,7 @@
 
 #include <bld_system.h>
 #include "CDPlayer.h"
+#include "App.h"
 #define BUILD_LIB
 #include <blade_ext.h>
 
@@ -99,11 +100,14 @@ int CDPause()
 * Module:                 Blade.exe
 * Entry point:            0x00427848
 */
-#ifdef BLD_NATIVE
+
 int CDSetCallBack(PyObject *func)
 {
-        int (*bld_proc)(PyObject *func);
-        bld_proc = (int (*)(PyObject *func))GetProcAddress(blade, "CDSetCallBack");
-        return bld_proc(func);
+    B_App *App = get_application();
+    if (App != NULL)
+    {
+        App->CDSetCallBack(func);
+        return 1;
+    }
+    return 0;
 }
-#endif

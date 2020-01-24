@@ -86,6 +86,8 @@ externdef ?RunPythonFile@B_App@@QAE_NPBD@Z: near
 l00415759 equ ?RunPythonFile@B_App@@QAE_NPBD@Z
 externdef ?OutSound@B_App@@QAE_NHNNNH@Z: near
 l0041617B equ ?OutSound@B_App@@QAE_NHNNNH@Z
+externdef ?CDSetCallBack@B_App@@QAEHPAU_object@@@Z: near
+l00416298 equ ?CDSetCallBack@B_App@@QAEHPAU_object@@@Z
 externdef ?SetAfterFrameFunc@B_App@@QAEXPBDPAU_object@@@Z: near
 l00416309 equ ?SetAfterFrameFunc@B_App@@QAEXPBDPAU_object@@@Z
 externdef ?GetAfterFrameFunc@B_App@@QAEPAU_object@@PBD@Z: near
