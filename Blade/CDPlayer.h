@@ -14,6 +14,7 @@ public:
     virtual void unknown0014();
     virtual int nCDTracks();
     virtual int CDLenght();
+    virtual int CDTrackLenght(int ntrack);
 };
 
 extern "C"

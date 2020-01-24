@@ -47,14 +47,14 @@ int CDLenght()
 * Module:                 Blade.exe
 * Entry point:            0x004277BB
 */
-#ifdef BLD_NATIVE
+
 int CDTrackLenght(int ntrack)
 {
-        int (*bld_proc)(int ntrack);
-        bld_proc = (int (*)(int ntrack))GetProcAddress(blade, "CDTrackLenght");
-        return bld_proc(ntrack);
+    if (cdPlayer != NULL)
+        return cdPlayer->CDTrackLenght(ntrack);
+    return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
