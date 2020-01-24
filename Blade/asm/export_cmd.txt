@@ -1,4 +1,3 @@
-/EXPORT:CDPause
 /EXPORT:CDSetCallBack
 /EXPORT:SaveAnmRaceData
 /EXPORT:LoadAnmRaceData

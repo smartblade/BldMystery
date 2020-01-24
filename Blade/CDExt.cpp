@@ -86,14 +86,14 @@ int CDStop()
 * Module:                 Blade.exe
 * Entry point:            0x00427826
 */
-#ifdef BLD_NATIVE
-int CDPause(void)
+
+int CDPause()
 {
-        int (*bld_proc)(void);
-        bld_proc = (int (*)(void))GetProcAddress(blade, "CDPause");
-        return bld_proc();
+    if (cdPlayer != NULL)
+        return cdPlayer->CDPause();
+    return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
