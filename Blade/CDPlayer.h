@@ -10,7 +10,7 @@ public:
     virtual int PlayCDTrack(int ntrack);
     virtual void unknown0008();
     virtual void unknown000C();
-    virtual void unknown0010();
+    virtual int CDPresent();
     virtual void unknown0014();
     virtual int nCDTracks();
     virtual int CDLenght();

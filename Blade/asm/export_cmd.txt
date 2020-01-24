@@ -1,4 +1,3 @@
-/EXPORT:CDPresent
 /EXPORT:CDStop
 /EXPORT:CDPause
 /EXPORT:CDSetCallBack
