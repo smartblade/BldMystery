@@ -10,6 +10,8 @@ public _gbl_particle_types
 g00736158 equ _gbl_particle_types
 public _gbl_sound_device
 g007C8ED0 equ _gbl_sound_device
+public _cdPlayer
+g007C91B0 equ _cdPlayer
 public _gbl_races
 g007C9878 equ _gbl_races
 public _gbl_combustion_data

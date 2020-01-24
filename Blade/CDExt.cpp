@@ -1,16 +1,21 @@
 
+#include <bld_system.h>
+#include "CDPlayer.h"
+#define BUILD_LIB
+#include <blade_ext.h>
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00427750
 */
-#ifdef BLD_NATIVE
+
 int PlayCDTrack(int ntrack)
 {
-        int (*bld_proc)(int ntrack);
-        bld_proc = (int (*)(int ntrack))GetProcAddress(blade, "PlayCDTrack");
-        return bld_proc(ntrack);
+    if (cdPlayer != NULL)
+        return cdPlayer->PlayCDTrack(ntrack);
+    return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

@@ -1,4 +1,3 @@
-/EXPORT:PlayCDTrack
 /EXPORT:nCDTracks
 /EXPORT:CDLenght
 /EXPORT:CDTrackLenght

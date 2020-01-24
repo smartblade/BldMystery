@@ -279,6 +279,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CDPlayer.h"
+				>
+			</File>
+			<File
 				RelativePath=".\en_control.h"
 				>
 			</File>

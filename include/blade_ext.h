@@ -3,6 +3,7 @@
 
 #define BLADE_EXT_H
 
+#include <bld_python.h>
 #include <bld_server_info.h>
 #include <export.h>
 
