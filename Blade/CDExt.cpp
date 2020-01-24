@@ -21,14 +21,14 @@ int PlayCDTrack(int ntrack)
 * Module:                 Blade.exe
 * Entry point:            0x00427777
 */
-#ifdef BLD_NATIVE
-int nCDTracks(void)
+
+int nCDTracks()
 {
-        int (*bld_proc)(void);
-        bld_proc = (int (*)(void))GetProcAddress(blade, "nCDTracks");
-        return bld_proc();
+    if (cdPlayer != NULL)
+        return cdPlayer->nCDTracks();
+    return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

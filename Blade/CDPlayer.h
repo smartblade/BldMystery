@@ -8,6 +8,11 @@ class CDPlayer
 public:
     virtual void unknown0000();
     virtual int PlayCDTrack(int ntrack);
+    virtual void unknown0008();
+    virtual void unknown000C();
+    virtual void unknown0010();
+    virtual void unknown0014();
+    virtual int nCDTracks();
 };
 
 extern "C"
