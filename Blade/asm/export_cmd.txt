@@ -1,4 +1,3 @@
-/EXPORT:CDLenght
 /EXPORT:CDTrackLenght
 /EXPORT:CDPresent
 /EXPORT:CDStop

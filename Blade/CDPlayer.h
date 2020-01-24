@@ -13,6 +13,7 @@ public:
     virtual void unknown0010();
     virtual void unknown0014();
     virtual int nCDTracks();
+    virtual int CDLenght();
 };
 
 extern "C"
