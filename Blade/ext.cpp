@@ -15,30 +15,6 @@ extern HMODULE blade;
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x004431DE
-*/
-
-#ifdef BLD_NATIVE
-
-int WorldToMBW(const char *world)
-{
-        int (*bld_proc)(const char *world);
-        bld_proc = (int (*)(const char *world))GetProcAddress(blade, "WorldToMBW");
-        return bld_proc(world);
-}
-
-#endif
-
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
-* Module:                 Blade.exe
 * Entry point:            0x0044E9A0
 */
 
