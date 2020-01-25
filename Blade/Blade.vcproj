@@ -233,6 +233,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MaterialExt.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Matrix.cpp"
 				>
 			</File>
