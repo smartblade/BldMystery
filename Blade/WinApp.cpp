@@ -9,7 +9,7 @@
 * Entry point:            0x0040F040
 */
 
-#ifdef BLD_NATIVE
+#ifdef BLD_NATIVE_CONSTRUCTOR
 
 B_WinApp::B_WinApp(void *module, int nCmdShow, char *cmdLine, void *unknown)
 {

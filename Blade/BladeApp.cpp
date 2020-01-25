@@ -42,7 +42,7 @@ B_App* get_application()
 * VC++ mangling:          ??0B_BladeApp@@QAE@PAXHPAD@Z
 */
 
-#ifdef BLD_NATIVE
+#ifdef BLD_NATIVE_CONSTRUCTOR
 
 B_BladeApp::B_BladeApp(void *module, int nCmdShow, char *cmdLine)
 {

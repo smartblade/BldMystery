@@ -7,7 +7,7 @@
 * Entry point:            0x004EAD20
 * VC++ mangling:          ??0B_CameraEntity@@QAE@HABVB_Name@@@Z
 */
-#ifdef BLD_NATIVE
+#ifdef BLD_NATIVE_CONSTRUCTOR
 B_CameraEntity::B_CameraEntity(int unknown, const B_Name &name)
 {
 }

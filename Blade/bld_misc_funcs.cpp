@@ -316,3 +316,46 @@ void LoadNetModule(char *fileName)
 }
 
 #endif
+
+#ifdef BLD_NATIVE
+
+class B_BladeApp
+{
+public:
+    B_BladeApp(void *, int, char *);
+};
+
+B_BladeApp::B_BladeApp(void *, int, char *)
+{
+}
+
+class B_CameraEntity
+{
+public:
+    B_CameraEntity(int, const B_Name &);
+};
+
+B_CameraEntity::B_CameraEntity(int, const B_Name &)
+{
+}
+
+#include "CDPlayer.h"
+
+B_PtrArray<world_point_t> gbl_world_points;
+B_World B_world;
+int gbl_action_areas_bit_mask;
+B_PtrArray<anim_t> gbl_anims;
+B_PtrArray<B_ParticleGType> gbl_particle_types;
+sound_t *gbl_sound_device;
+B_PtrArray<B_Race> gbl_races;
+B_PtrArray<B_Combustion> gbl_combustion_data;
+EnControl gbl_en_control;
+B_PtrArray<B_AGTexture> gbl_ag_textures;
+char client_map_name[128];
+char net_game_name[128];
+int gbl_net_max_players;
+bld_abstract_net *gbl_net;
+B_App *gbl_application;
+CDPlayer *cdPlayer;
+
+#endif
