@@ -311,13 +311,14 @@ const char *B_World::GetTriggerSectorName(int index)
 B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
 {
         unsigned int num_lights;
+        unsigned int i;
 
         world->unknown187C = 0;
         world->unknown1880 = 0;
         B_PtrArray<atmosphere_t> *atms = &world->atmospheres;
         if (atms->num_alloc != 0)
         {
-                for (unsigned int i = 0; i < atms->size; i++)
+                for (i = 0; i < atms->size; i++)
                 {
                         atmosphere_t * atm = atms->elements[i];
                         delete atm;
@@ -332,7 +333,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
         if (atms->num_alloc != 0)
         {
                 atms->elements = new atmosphere_t * [atms->num_alloc];
-                for(unsigned int i = 0; i < atms->size; i++)
+                for(i = 0; i < atms->size; i++)
                 {
                         atms->elements[i] = new atmosphere_t();
                         file >> atms->elements[i];
@@ -342,7 +343,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
         if (B_3D_raster_device)
                 B_3D_raster_device->unknown084();
 
-        for(unsigned int i = 0; i < atms->size; i++)
+        for(i = 0; i < atms->size; i++)
         {
                 atmosphere_t * atm = (atmosphere_t *)atms->elements[i];
                 B_3D_raster_device->add_atmosphere(atm->Id(), atm->color, atm->intensity);
@@ -354,7 +355,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
         B_PtrArray<light_t> *lights = &world->lights;
         if (lights->num_alloc != 0)
         {
-                for (unsigned int i = 0; i < lights->size; i++)
+                for (i = 0; i < lights->size; i++)
                 {
                         light_t * light = (light_t *)lights->elements[i];
                         delete light;
@@ -367,7 +368,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
 
         file >> num_lights;
 
-        for(unsigned int i = 0; i < num_lights; i++)
+        for(i = 0; i < num_lights; i++)
         {
                 light_t *light = read_light(&file);
                 B_PtrArray<light_t> *lights = &world->lights;
@@ -393,7 +394,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
                 lights->size++;
         }
 
-        for(unsigned int i = 0; i < num_lights; i++)
+        for(i = 0; i < num_lights; i++)
         {
                 light_t *light = world->lights.elements[i];
                 light->unknown008();
@@ -401,7 +402,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
 
         file >> world->initial_point_position >> world->initial_point_orientation;
 
-        for(unsigned int i = 0; i < world->sectors.size; i++)
+        for(i = 0; i < world->sectors.size; i++)
         {
                 B_Sector *sector = world->sectors.elements[i];
                 file >> sector->groupId;
