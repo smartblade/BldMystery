@@ -1,6 +1,7 @@
 /install
 lib/*.lib
 *.obj
+*.opt
 *.exp
 *.ilk
 *.ncb
