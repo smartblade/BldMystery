@@ -280,7 +280,7 @@ void B_App::LoadLevel(const char *script)
         int hash_value;
         char *str_ptr;
         unsigned int i;
-        array_t<B_Entity *> *array;
+        B_PtrArray<B_Entity> *array;
         B_Entities *entities;
         B_PersonEntity *player1;
         B_CameraEntity *camera;

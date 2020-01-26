@@ -18,7 +18,7 @@ class B_App
 public:
         virtual void ReadArguments(const char *arguments);
         virtual void StringSplit(
-                const char *str, const char *sep, array_t<B_Name*> *tokens);
+                const char *str, const char *sep, B_PtrArray<B_Name> *tokens);
         virtual bool InitPythonPath();
         virtual void ProcessMessage();
         virtual void *unknown_method010(void *);
@@ -142,7 +142,7 @@ public:
         int autoEngageCombat;
         double aecGap;
         char unknownFields630[32];
-        array_t<B_StringValue *> values;
+        B_PtrArray<B_StringValue> values;
         char unknownFields668[336];
         void *window;
         void *module;

@@ -33,10 +33,10 @@ public:
 };
 
 template<class TYPE>
-class array_t<TYPE*>
+class B_PtrArray
 {
 public:
-    virtual ~array_t()
+    virtual ~B_PtrArray()
     {
         if (num_alloc != 0)
         {
@@ -54,7 +54,7 @@ public:
         }
     }
 
-    array_t()
+    B_PtrArray()
     {
         elements = NULL;
         size = 0;

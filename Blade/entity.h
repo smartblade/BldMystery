@@ -68,7 +68,7 @@ public:
     B_CameraEntity(int unknown, const B_Name &name);
     void unknown_004EB1AA(void *);
 
-    array_t<B_CameraMovement *> movements;
+    B_PtrArray<B_CameraMovement> movements;
     char unknownFields1B8[564];
     float unknownValueFromApplication;
     float *unknownPtrFromApplication;

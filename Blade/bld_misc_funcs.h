@@ -23,7 +23,7 @@ public:
         double speed, double livetime
     );
 private:
-    array_t<void *> a00C;
+    B_PtrArray<void> a00C;
     int unknown0024;
     char unknown_fields[52];
 };
@@ -90,8 +90,8 @@ extern B_ODataFile& operator <<(
 extern "C" {
 #endif
 
-extern B_IDataFile * read_points(B_IDataFile *file, array_t<world_point_t *> *points);
-extern B_IDataFile * read_sectors(B_IDataFile *file, array_t<B_Sector *> *sectors);
+extern B_IDataFile * read_points(B_IDataFile *file, B_PtrArray<world_point_t> *points);
+extern B_IDataFile * read_sectors(B_IDataFile *file, B_PtrArray<B_Sector> *sectors);
 extern light_t *read_light(B_IDataFile *file);
 extern anim_t *LoadFromHDAnim(const char *anm_name);
 extern void Set007EA988To01(void);
@@ -104,7 +104,7 @@ extern void LoadNetModule(char *fileName);
 * Module:                 Blade.exe
 * Data address:           0x005DF898
 */
-extern array_t<world_point_t*> gbl_world_points;
+extern B_PtrArray<world_point_t> gbl_world_points;
 
 /*
 * Module:                 Blade.exe
@@ -122,13 +122,13 @@ extern int gbl_action_areas_bit_mask;
 * Module:                 Blade.exe
 * Data address:           0x007072A8
 */
-extern array_t<anim_t *> gbl_anims;
+extern B_PtrArray<anim_t> gbl_anims;
 
 /*
 * Module:                 Blade.exe
 * Data address:           0x00736158
 */
-extern array_t<B_ParticleGType *> gbl_particle_types;
+extern B_PtrArray<B_ParticleGType> gbl_particle_types;
 
 /*
 * Module:                 Blade.exe
@@ -140,13 +140,13 @@ extern sound_t *gbl_sound_device;
 * Module:                 Blade.exe
 * Data address:           0x007C9878
 */
-extern array_t<B_Race *> gbl_races;
+extern B_PtrArray<B_Race> gbl_races;
 
 /*
 * Module:                 Blade.exe
 * Data address:           0x007D1650
 */
-extern array_t<B_Combustion *> gbl_combustion_data;
+extern B_PtrArray<B_Combustion> gbl_combustion_data;
 
 /*
 * Module:                 Blade.exe
@@ -158,7 +158,7 @@ extern EnControl gbl_en_control;
 * Module:                 Blade.exe
 * Data address:           0x007E988C
 */
-extern array_t<B_AGTexture *> gbl_ag_textures;
+extern B_PtrArray<B_AGTexture> gbl_ag_textures;
 
 /*
 * Module:                 Blade.exe

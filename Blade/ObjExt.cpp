@@ -1479,7 +1479,7 @@ int SetActionCameraMovement(
     {
         B_CameraMovement *movement = new B_CameraMovement(
             action_name, angle, start_pos, end_pos);
-        array_t<B_CameraMovement *> *array = &camera->movements;
+        B_PtrArray<B_CameraMovement> *array = &camera->movements;
         if (array->num_alloc > array->size)
         {
             array->elements[array->size] = movement;
@@ -1570,7 +1570,7 @@ after_search:
         B_Combustion *newCombustion = new B_Combustion(
             object_kind, fire_kind, upper_treshol, lower_treshold,
             flame_height, flame_size, speed, livetime);
-        array_t<B_Combustion *> *array = &gbl_combustion_data;
+        B_PtrArray<B_Combustion> *array = &gbl_combustion_data;
         if (array->num_alloc > array->size)
         {
             array->elements[array->size] = newCombustion;
@@ -2198,7 +2198,7 @@ int GetModelPos(const char *person, double *x, double *y, double *z)
                 str_ptr++;
             }
             hash_value = hash_value & 0xFF;
-            array_t<B_Entity *> *array = &entities->hash[hash_value];
+            B_PtrArray<B_Entity> *array = &entities->hash[hash_value];
             int foundIndex = -1;
             for(unsigned int i = 0; i < array->size; i++)
             {

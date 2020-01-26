@@ -138,7 +138,7 @@ struct B_ElementCSV : public B_NamedObj
     B_Name material;
 };
 
-template<class T> class B_NDataBase : public array_t<T*>
+template<class T> class B_NDataBase : public B_PtrArray<T>
 {
 };
 

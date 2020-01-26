@@ -23,7 +23,7 @@ typedef struct {
 
 typedef struct {
     int numEntities;
-    array_t<B_Entity *> hash[256];
+    B_PtrArray<B_Entity> hash[256];
     int unknown1804;
     B_Entity *foundEntity;
 } B_Entities;
@@ -66,7 +66,7 @@ public:
     float roofHeight;
     array_t<B_Vector> points;
     array_t<B_Vector> a040;
-    array_t<void *> a054;
+    B_PtrArray<void> a054;
     PyObject *onEnter;
     PyObject *onLeave;
     PyObject *data;
@@ -100,24 +100,24 @@ public:
     int LoadEntitiesData(const char *filename);
     const char *GetTriggerSectorName(int index);
 
-    array_t<B_TriggerSector *> triggerSectors;
+    B_PtrArray<B_TriggerSector> triggerSectors;
     B_Entities entities;
     int nextEntitySuffix;
-    array_t<void *> unknown1828;
+    B_PtrArray<void> unknown1828;
     char unknownFields1840[28];
     B_Name world_file_name;
     char unknownFields1864[24];
     int unknown187C;
     int unknown1880;
     char unknownFields1884[40];
-    array_t<atmosphere_t *> atmospheres;
-    array_t<B_Sector *> sectors;
+    B_PtrArray<atmosphere_t> atmospheres;
+    B_PtrArray<B_Sector> sectors;
     char unknownFields18DC[28];
     unknown_18F8_class unknown18F8;
     B_Vector unknown18FC;
     double unknown1914;
     void *unknown191C;
-    array_t<light_t *> lights;
+    B_PtrArray<light_t> lights;
     char unknownFields1938[28];
     B_Vector initial_point_position;
     B_Vector initial_point_orientation;

@@ -314,7 +314,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
 
         world->unknown187C = 0;
         world->unknown1880 = 0;
-        array_t<atmosphere_t *> *atms = &world->atmospheres;
+        B_PtrArray<atmosphere_t> *atms = &world->atmospheres;
         if (atms->num_alloc != 0)
         {
                 for (unsigned int i = 0; i < atms->size; i++)
@@ -351,7 +351,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
         read_points(&file, &gbl_world_points);
         read_sectors(&file, &world->sectors);
 
-        array_t<light_t *> *lights = &world->lights;
+        B_PtrArray<light_t> *lights = &world->lights;
         if (lights->num_alloc != 0)
         {
                 for (unsigned int i = 0; i < lights->size; i++)
@@ -370,7 +370,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
         for(unsigned int i = 0; i < num_lights; i++)
         {
                 light_t *light = read_light(&file);
-                array_t<light_t *> *lights = &world->lights;
+                B_PtrArray<light_t> *lights = &world->lights;
                 if (lights->num_alloc <= lights->size)
                 {
                         lights->num_alloc += lights->increment;
