@@ -462,7 +462,7 @@ void StopTime()
 {
     B_App *App = get_application();
     assert(App);
-    return App->StopTime();
+    App->StopTime();
 }
 
 
