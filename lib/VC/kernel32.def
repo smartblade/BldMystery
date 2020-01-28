@@ -1507,11 +1507,6 @@ EXPORTS
     lstrlen
     lstrlenA
     lstrlenW
-    timeBeginPeriod
-    timeEndPeriod
-    timeGetDevCaps
-    timeGetSystemTime
-    timeGetTime
     _ActivateActCtx@8 = ActivateActCtx
     _AddAtomA@4 = AddAtomA
     _AddAtomW@4 = AddAtomW
