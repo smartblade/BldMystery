@@ -1109,47 +1109,6 @@ EXPORTS
     ReadFileScatter
     ReadProcessMemory
     ReadThreadProfilingData
-    RegCloseKey
-    RegCopyTreeW
-    RegCreateKeyExA
-    RegCreateKeyExW
-    RegDeleteKeyExA
-    RegDeleteKeyExW
-    RegDeleteTreeA
-    RegDeleteTreeW
-    RegDeleteValueA
-    RegDeleteValueW
-    RegDisablePredefinedCacheEx
-    RegEnumKeyExA
-    RegEnumKeyExW
-    RegEnumValueA
-    RegEnumValueW
-    RegFlushKey
-    RegGetKeySecurity
-    RegGetValueA
-    RegGetValueW
-    RegLoadKeyA
-    RegLoadKeyW
-    RegLoadMUIStringA
-    RegLoadMUIStringW
-    RegNotifyChangeKeyValue
-    RegOpenCurrentUser
-    RegOpenKeyExA
-    RegOpenKeyExW
-    RegOpenUserClassesRoot
-    RegQueryInfoKeyA
-    RegQueryInfoKeyW
-    RegQueryValueExA
-    RegQueryValueExW
-    RegRestoreKeyA
-    RegRestoreKeyW
-    RegSaveKeyExA
-    RegSaveKeyExW
-    RegSetKeySecurity
-    RegSetValueExA
-    RegSetValueExW
-    RegUnLoadKeyA
-    RegUnLoadKeyW
     RegisterApplicationRecoveryCallback
     RegisterApplicationRestart
     RegisterBadMemoryNotification
