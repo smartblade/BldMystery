@@ -1,11 +1,13 @@
 
-#include "App.h"
 #include "BWorld.h"
 #include "sound_device.h"
 #include <bld_abstract_net.h>
 #include "anim.h"
 #include "light.h"
 #include "en_control.h"
+
+class B_App;
+
 
 class B_Race : public B_NamedObj
 {
