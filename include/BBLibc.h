@@ -3,6 +3,7 @@
 
 #define BBLIBC_H
 
+#include <bld_system.h>
 #include <fcntl.h>
 #include <export.h>
 #include <array.h>

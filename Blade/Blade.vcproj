@@ -221,6 +221,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CameraEntity.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\CDExt.cpp"
 				>
 			</File>
@@ -284,6 +288,10 @@
 			</File>
 			<File
 				RelativePath=".\BWorld.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CameraEntity.h"
 				>
 			</File>
 			<File

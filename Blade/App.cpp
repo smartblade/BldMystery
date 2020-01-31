@@ -4,6 +4,7 @@
 #include <raster_device.h>
 #include "App.h"
 #include "anim.h"
+#include "CameraEntity.h"
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
 #include <blade_ext.h>

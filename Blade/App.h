@@ -13,6 +13,8 @@
 #include "StringValue.h"
 
 
+class B_CameraEntity;
+
 class B_App
 {
 public:
