@@ -11,7 +11,7 @@
 
 #ifdef BLD_NATIVE
 
-B_IDataFile * read_points(B_IDataFile *file, array_t<world_point_t *> *points)
+B_IDataFile * read_points(B_IDataFile *file, B_PtrArray<world_point_t> *points)
 {
     return NULL;
 }
@@ -26,7 +26,7 @@ B_IDataFile * read_points(B_IDataFile *file, array_t<world_point_t *> *points)
 
 #ifdef BLD_NATIVE
 
-B_IDataFile * read_sectors(B_IDataFile *file, array_t<B_Sector *> *sectors)
+B_IDataFile * read_sectors(B_IDataFile *file, B_PtrArray<B_Sector> *sectors)
 {
     return NULL;
 }
