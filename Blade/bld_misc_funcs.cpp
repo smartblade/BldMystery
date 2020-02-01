@@ -319,13 +319,18 @@ void LoadNetModule(char *fileName)
 
 #ifdef BLD_NATIVE
 
-class B_BladeApp
+class B_WinApp
 {
 public:
-    B_BladeApp(void *, int, char *);
+    B_WinApp(void *, int, char *, void *);
+    virtual ~B_WinApp();
 };
 
-B_BladeApp::B_BladeApp(void *, int, char *)
+B_WinApp::B_WinApp(void *, int, char *, void *)
+{
+}
+
+B_WinApp::~B_WinApp()
 {
 }
 

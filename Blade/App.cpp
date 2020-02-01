@@ -11,6 +11,25 @@
 
 
 /*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00411C54
+* VC++ mangling:          ?InitPythonPath@B_App@@UAE_NXZ
+*/
+#ifdef BLD_NATIVE
+bool B_App::InitPythonPath()
+{
+    return false;
+}
+#endif
+
+/*
 * Module:                 Blade.exe
 * Entry point:            0x00411CC4
 * VC++ mangling:          ?SetListenerMode@B_App@@QAEHHABVB_Vector@@@Z
@@ -261,13 +280,17 @@ void B_App::MarkLevelToLoad(const char *map)
         this->map_to_load = strdup(map);
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004131BB
+* VC++ mangling:          ?CloseLevel@B_App@@UAEXPBD0@Z
+*/
+#ifdef BLD_NATIVE
+void B_App::CloseLevel(const char *statement, const char *auxText)
+{
+}
+#endif
 
 /*
 * Module:                 Blade.exe
@@ -587,6 +610,40 @@ void B_App::ReadLevel(const char * file_name)
 
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x00413EE1
+* VC++ mangling:          ?unknown_method040@B_App@@UAEXXZ
+*/
+#ifdef BLD_NATIVE
+void B_App::unknown_method040()
+{
+}
+#endif
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00413FB6
+* VC++ mangling:          ?ReassignCombustionData@B_App@@UAEHXZ
+*/
+#ifdef BLD_NATIVE
+int B_App::ReassignCombustionData()
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0041412A
+* VC++ mangling:          ?ClearLevel@B_App@@UAEXH@Z
+*/
+#ifdef BLD_NATIVE
+void B_App::ClearLevel(int flag)
+{
+}
+#endif
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
@@ -891,11 +948,15 @@ bool B_App::OutSound(int soundId, double x, double y, double z, int unknown)
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x004161EA
+* VC++ mangling:          ?CallCdCb@B_App@@UAEXH@Z
 */
+#ifdef BLD_NATIVE
+void B_App::CallCdCb(int arg)
+{
+}
+#endif
 
 /*
 * Module:                 Blade.exe
@@ -989,6 +1050,25 @@ PyObject *B_App::GetMenuTgapFunc()
 int B_App::RemoveAfterFrameFunc(const char *name)
 {
     return 0;
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004167E1
+* VC++ mangling:          ?StringSplit@B_App@@UAEXPBD0PAV?$B_PtrArray@VB_Name@@@@@Z
+*/
+#ifdef BLD_NATIVE
+void B_App::StringSplit(
+    const char *str, const char *sep, B_PtrArray<B_Name> *tokens)
+{
 }
 #endif
 
@@ -1105,13 +1185,17 @@ int B_App::LoadWorld(const char *file_name)
         return 1;
 }
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00416EAB
+* VC++ mangling:          ?SetPyInteractiveString@B_App@@UAEXPBD@Z
+*/
+#ifdef BLD_NATIVE
+void B_App::SetPyInteractiveString(const char *str)
+{
+}
+#endif
 
 /*
 * Module:                 Blade.exe

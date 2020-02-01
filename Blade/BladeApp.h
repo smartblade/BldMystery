@@ -8,6 +8,9 @@
 class B_BladeApp : public B_WinApp
 {
 public:
+    virtual bool Start();
+    virtual void ProcessEvents();
+    virtual void End();
     B_BladeApp(void *module, int nCmdShow, char *cmdLine);
 };
 
