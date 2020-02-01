@@ -1,6 +1,6 @@
 
 #include <bld_system.h>
-#include "App.h"
+#include "BladeApp.h"
 #include "bld_misc_funcs.h"
 
 

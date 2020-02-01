@@ -386,6 +386,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BladeApp.h"
+				>
+			</File>
+			<File
 				RelativePath=".\bld_misc_funcs.h"
 				>
 			</File>

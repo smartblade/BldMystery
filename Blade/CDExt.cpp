@@ -1,7 +1,7 @@
 
 #include <bld_system.h>
 #include "CDPlayer.h"
-#include "App.h"
+#include "BladeApp.h"
 #define BUILD_LIB
 #include <blade_ext.h>
 

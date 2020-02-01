@@ -159,22 +159,5 @@ public:
     B_WinApp(void *module, int nCmdShow, char *cmdLine, void *unknown);
 };
 
-class B_BladeApp : public B_WinApp
-{
-public:
-    B_BladeApp(void *module, int nCmdShow, char *cmdLine);
-};
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-extern B_App *create_application(void *module, int nCmdShow, char *cmdLine);
-extern B_App* get_application();
-
-#ifdef __cplusplus
-}
-#endif
-
 #endif /* APPLICATION_H */
 

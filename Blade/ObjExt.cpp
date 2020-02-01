@@ -2,7 +2,7 @@
 #include <bld_system.h>
 #include <bld_python.h>
 #include <raster_device.h>
-#include "App.h"
+#include "BladeApp.h"
 #include "CameraEntity.h"
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
