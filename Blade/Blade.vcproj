@@ -233,6 +233,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ext.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Location.cpp"
 				>
 			</File>
