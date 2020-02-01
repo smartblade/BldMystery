@@ -1,5 +1,7 @@
 
 #include <bld_system.h>
+#define BUILD_LIB
+#include <blade_ext.h>
 
 /*
 ................................................................................
