@@ -54,12 +54,12 @@ B_WinApp(module, nCmdShow, cmdLine, NULL)
 * Entry point:            0x005B9BF0
 * VC++ mangling:          ?Start@B_BladeApp@@UAE_NXZ
 */
-#ifdef BLD_NATIVE
+
 bool B_BladeApp::Start()
 {
-    return false;
+    return B_WinApp::Start();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
