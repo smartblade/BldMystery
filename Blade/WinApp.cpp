@@ -163,10 +163,10 @@ void B_WinApp::LoadLevel(const char *map)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00410305
-* VC++ mangling:          ?ProcessEvents@B_WinApp@@UAEXXZ
+* VC++ mangling:          ?ProcessEvents@B_WinApp@@UAE_NXZ
 */
 
-void B_WinApp::ProcessEvents() {
+bool B_WinApp::ProcessEvents() {
         static int counter = 0;
 
         if (!this->no_sleep)
@@ -181,7 +181,7 @@ void B_WinApp::ProcessEvents() {
         }
 
         counter++;
-        B_App::ProcessEvents();
+        return B_App::ProcessEvents();
 }
 
 

@@ -64,13 +64,14 @@ bool B_BladeApp::Start()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B9C03
-* VC++ mangling:          ?ProcessEvents@B_BladeApp@@UAEXXZ
+* VC++ mangling:          ?ProcessEvents@B_BladeApp@@UAE_NXZ
 */
-#ifdef BLD_NATIVE
-void B_BladeApp::ProcessEvents()
+
+bool B_BladeApp::ProcessEvents()
 {
+    return B_WinApp::ProcessEvents();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

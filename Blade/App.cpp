@@ -265,15 +265,13 @@ void B_App::SetTimeSpeed(double speed)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004121CE
-* VC++ mangling:          ?ProcessEvents@B_App@@UAEXXZ
+* VC++ mangling:          ?ProcessEvents@B_App@@UAE_NXZ
 */
-
 #ifdef BLD_NATIVE
-
-void B_App::ProcessEvents()
+bool B_App::ProcessEvents()
 {
+    return false;
 }
-
 #endif
 
 /*

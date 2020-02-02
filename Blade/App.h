@@ -26,7 +26,7 @@ public:
         virtual void *unknown_method010(void *);
         virtual ~B_App();
         virtual bool Start();
-        virtual void ProcessEvents();
+        virtual bool ProcessEvents();
         virtual void End();
         virtual const char *GetInputMode(const char *device);
         virtual int SetInputMode(const char *device, const char *mode);
@@ -152,7 +152,7 @@ public:
     virtual void *unknown_method010(void *);
     virtual ~B_WinApp();
     virtual bool Start();
-    virtual void ProcessEvents();
+    virtual bool ProcessEvents();
     virtual void End();
     virtual const char *GetInputMode(const char *device);
     virtual int SetInputMode(const char *device, const char *mode);

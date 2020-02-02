@@ -28,8 +28,8 @@ externdef ?Start@B_WinApp@@UAE_NXZ: near
 l0040F4A4 equ ?Start@B_WinApp@@UAE_NXZ
 externdef ?LoadLevel@B_WinApp@@UAEXPBD@Z: near
 l0041009D equ ?LoadLevel@B_WinApp@@UAEXPBD@Z
-externdef ?ProcessEvents@B_WinApp@@UAEXXZ: near
-l00410305 equ ?ProcessEvents@B_WinApp@@UAEXXZ
+externdef ?ProcessEvents@B_WinApp@@UAE_NXZ: near
+l00410305 equ ?ProcessEvents@B_WinApp@@UAE_NXZ
 externdef ?End@B_WinApp@@UAEXXZ: near
 l00410384 equ ?End@B_WinApp@@UAEXXZ
 externdef ?Quit@B_WinApp@@UAEHXZ: near
@@ -90,8 +90,8 @@ externdef ?GetTimeSpeed@B_App@@QAENXZ: near
 l00412170 equ ?GetTimeSpeed@B_App@@QAENXZ
 externdef ?SetTimeSpeed@B_App@@QAEXN@Z: near
 l0041218C equ ?SetTimeSpeed@B_App@@QAEXN@Z
-externdef ?ProcessEvents@B_App@@UAEXXZ: near
-l004121CE equ ?ProcessEvents@B_App@@UAEXXZ
+externdef ?ProcessEvents@B_App@@UAE_NXZ: near
+l004121CE equ ?ProcessEvents@B_App@@UAE_NXZ
 externdef ?MarkLevelToLoad@B_App@@UAEXPBD@Z: near
 l0041316C equ ?MarkLevelToLoad@B_App@@UAEXPBD@Z
 externdef ?CloseLevel@B_App@@UAEXPBD0@Z: near
@@ -1364,7 +1364,7 @@ externdef ??0B_BladeApp@@QAE@PAXHPAD@Z: near
 l005B9BC1 equ ??0B_BladeApp@@QAE@PAXHPAD@Z
 externdef ?Start@B_BladeApp@@UAE_NXZ: near
 l005B9BF0 equ ?Start@B_BladeApp@@UAE_NXZ
-externdef ?ProcessEvents@B_BladeApp@@UAEXXZ: near
-l005B9C03 equ ?ProcessEvents@B_BladeApp@@UAEXXZ
+externdef ?ProcessEvents@B_BladeApp@@UAE_NXZ: near
+l005B9C03 equ ?ProcessEvents@B_BladeApp@@UAE_NXZ
 externdef ?End@B_BladeApp@@UAEXXZ: near
 l005B9C16 equ ?End@B_BladeApp@@UAEXXZ
