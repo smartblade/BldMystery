@@ -78,8 +78,8 @@ bool B_BladeApp::ProcessEvents()
 * Entry point:            0x005B9C16
 * VC++ mangling:          ?End@B_BladeApp@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+
 void B_BladeApp::End()
 {
+    B_WinApp::End();
 }
-#endif
