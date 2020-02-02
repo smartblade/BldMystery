@@ -14,6 +14,7 @@ TEST(BladeAppTests, Fields)
     EXPECT_OFFSET_EQ(B_BladeApp, listenerMode, 0x020);
     EXPECT_OFFSET_EQ(B_BladeApp, clock1, 0x02C);
     EXPECT_OFFSET_EQ(B_BladeApp, clock2, 0x030);
+    EXPECT_OFFSET_EQ(B_BladeApp, console, 0x050);
     EXPECT_OFFSET_EQ(B_BladeApp, rootWidget, 0x054);
     EXPECT_OFFSET_EQ(B_BladeApp, lastPlayerCType, 0x060);
     EXPECT_OFFSET_EQ(B_BladeApp, player1, 0x068);
@@ -27,11 +28,16 @@ TEST(BladeAppTests, Fields)
     EXPECT_OFFSET_EQ(B_BladeApp, map_to_load, 0x5F4);
     EXPECT_OFFSET_EQ(B_BladeApp, pyStatement, 0x5F8);
     EXPECT_OFFSET_EQ(B_BladeApp, auxText, 0x5FC);
+    EXPECT_OFFSET_EQ(B_BladeApp, showConsole, 0x607);
     EXPECT_OFFSET_EQ(B_BladeApp, mapName, 0x608);
     EXPECT_OFFSET_EQ(B_BladeApp, drawShadows, 0x620);
     EXPECT_OFFSET_EQ(B_BladeApp, autoEngageCombat, 0x624);
     EXPECT_OFFSET_EQ(B_BladeApp, aecGap, 0x628);
     EXPECT_OFFSET_EQ(B_BladeApp, values, 0x650);
+    EXPECT_OFFSET_EQ(B_BladeApp, rasterLibraryName, 0x770);
+    EXPECT_OFFSET_EQ(B_BladeApp, startPath, 0x778);
+    EXPECT_OFFSET_EQ(B_BladeApp, destroyRasterCB, 0x780);
+    EXPECT_OFFSET_EQ(B_BladeApp, rasterLibrary, 0x788);
     EXPECT_OFFSET_EQ(B_BladeApp, window, 0x7B8);
     EXPECT_OFFSET_EQ(B_BladeApp, module, 0x7BC);
 }

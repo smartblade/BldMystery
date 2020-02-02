@@ -1,5 +1,7 @@
 
 #include <bld_system.h>
+#include <console.h>
+#include <raster_device.h>
 #include "BladeApp.h"
 #include "bld_misc_funcs.h"
 
@@ -23,11 +25,22 @@ B_WinApp::B_WinApp(void *module, int nCmdShow, char *cmdLine, void *unknown)
 * Entry point:            0x0040F1B4
 * VC++ mangling:          ??1B_WinApp@@UAE@XZ
 */
-#ifdef BLD_NATIVE_DESTRUCTOR
+
 B_WinApp::~B_WinApp()
 {
+    if (destroyRasterCB != NULL)
+    {
+        destroyRasterCB(B_3D_raster_device);
+        B_3D_raster_device = NULL;
+        FreeLibrary(rasterLibrary);
+        this->rasterLibrary = NULL;
+    }
+    if (showConsole)
+    {
+        DestroyConsole(console);
+    }
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
@@ -77,12 +90,16 @@ void *B_WinApp::NewWindow()
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x0040F4A4
+* VC++ mangling:          ?Start@B_WinApp@@UAE_NXZ
 */
-
+#ifdef BLD_NATIVE
+bool B_WinApp::Start()
+{
+    return false;
+}
+#endif
 
 /*
 * Module:                 Blade.exe
@@ -167,12 +184,17 @@ void B_WinApp::ProcessEvents() {
         B_App::ProcessEvents();
 }
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x00410384
+* VC++ mangling:          ?End@B_WinApp@@UAEXXZ
 */
+#ifdef BLD_NATIVE
+void B_WinApp::End()
+{
+}
+#endif
 
 /*
 * Module:                 Blade.exe

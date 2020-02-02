@@ -24,10 +24,14 @@ externdef ?unknown_method070@B_WinApp@@UAEPAXXZ: near
 l0040F3BB equ ?unknown_method070@B_WinApp@@UAEPAXXZ
 externdef ?NewWindow@B_WinApp@@UAEPAXXZ: near
 l0040F403 equ ?NewWindow@B_WinApp@@UAEPAXXZ
+externdef ?Start@B_WinApp@@UAE_NXZ: near
+l0040F4A4 equ ?Start@B_WinApp@@UAE_NXZ
 externdef ?LoadLevel@B_WinApp@@UAEXPBD@Z: near
 l0041009D equ ?LoadLevel@B_WinApp@@UAEXPBD@Z
 externdef ?ProcessEvents@B_WinApp@@UAEXXZ: near
 l00410305 equ ?ProcessEvents@B_WinApp@@UAEXXZ
+externdef ?End@B_WinApp@@UAEXXZ: near
+l00410384 equ ?End@B_WinApp@@UAEXXZ
 externdef ?Quit@B_WinApp@@UAEHXZ: near
 l004103A1 equ ?Quit@B_WinApp@@UAEHXZ
 externdef ?ReadArguments@B_WinApp@@UAEXPBD@Z: near
@@ -58,6 +62,8 @@ externdef ?GetWindow@B_WinApp@@UAEHXZ: near
 l00411170 equ ?GetWindow@B_WinApp@@UAEHXZ
 externdef ?GetModule@B_WinApp@@UAEHXZ: near
 l00411190 equ ?GetModule@B_WinApp@@UAEHXZ
+externdef ??1B_App@@UAE@XZ: near
+l00411843 equ ??1B_App@@UAE@XZ
 externdef ?InitPythonPath@B_App@@UAE_NXZ: near
 l00411C54 equ ?InitPythonPath@B_App@@UAE_NXZ
 externdef ?SetListenerMode@B_App@@QAEHHABVB_Vector@@@Z: near

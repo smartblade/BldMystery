@@ -323,14 +323,19 @@ class B_WinApp
 {
 public:
     B_WinApp(void *, int, char *, void *);
-    virtual ~B_WinApp();
 };
 
 B_WinApp::B_WinApp(void *, int, char *, void *)
 {
 }
 
-B_WinApp::~B_WinApp()
+class B_App
+{
+public:
+    virtual ~B_App();
+};
+
+B_App::~B_App()
 {
 }
 

@@ -108,7 +108,8 @@ public:
         void *argsMethods;
         B_Name **arguments;
         int numArguments;
-        char unknownFields44[16];
+        char unknownFields44[12];
+        void *console;
         long int rootWidget;
         char unknownFields58[8];
         B_Name lastPlayerCType;
@@ -131,7 +132,8 @@ public:
         char *map_to_load;
         char *pyStatement;
         char *auxText;
-        char unknownFields10[8];
+        char unknownFields10[7];
+        bool showConsole;
         B_Name mapName;
         char unknownFields610[16];
         int drawShadows;
@@ -139,10 +141,7 @@ public:
         double aecGap;
         char unknownFields630[32];
         B_PtrArray<B_StringValue> values;
-        char unknownFields668[336];
-        void *window;
-        void *module;
-        char unknownFields3[16];
+        char unknownFields668[264];
 };
 
 class B_WinApp : public B_App
@@ -152,7 +151,9 @@ public:
     virtual void ProcessMessage();
     virtual void *unknown_method010(void *);
     virtual ~B_WinApp();
+    virtual bool Start();
     virtual void ProcessEvents();
+    virtual void End();
     virtual const char *GetInputMode(const char *device);
     virtual int SetInputMode(const char *device, const char *mode);
     virtual int Quit();
@@ -171,6 +172,16 @@ public:
     virtual LRESULT WindowProcedure(
         HWND hwnd, UINT uMsg, WPARAM wParam,  LPARAM lParam);
     B_WinApp(void *module, int nCmdShow, char *cmdLine, void *unknown);
+
+    B_Name rasterLibraryName;
+    B_Name startPath;
+    void (*destroyRasterCB)(B_3DRasterDevice *raster);
+    char unknownFields784[4];
+    HMODULE rasterLibrary;
+    char unknownFields78C[44];
+    void *window;
+    void *module;
+    char unknownFields3[16];
 };
 
 #endif /* APPLICATION_H */
