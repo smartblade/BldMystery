@@ -445,6 +445,10 @@
 				RelativePath=".\Vector.h"
 				>
 			</File>
+			<File
+				RelativePath=".\WinApp.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
