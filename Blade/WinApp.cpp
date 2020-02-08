@@ -84,10 +84,10 @@ void *B_WinApp::unknown_method070()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0040F403
-* VC++ mangling:          ?NewWindow@B_WinApp@@UAEPAXXZ
+* VC++ mangling:          ?NewWindowForClientRectangle@B_WinApp@@UAEPAUHWND__@@XZ
 */
 #ifdef BLD_NATIVE
-void *B_WinApp::NewWindow()
+HWND B_WinApp::NewWindowForClientRectangle()
 {
     return NULL;
 }

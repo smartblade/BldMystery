@@ -167,7 +167,7 @@ public:
     virtual int SetCurrentMap(const char *map);
     virtual bool InitWindow();
     virtual void *unknown_method070();
-    virtual void *NewWindow();
+    virtual HWND NewWindowForClientRectangle();
     virtual void Mouse(bool acquireFlag);
     virtual LRESULT WindowProcedure(
         HWND hwnd, UINT uMsg, WPARAM wParam,  LPARAM lParam);
