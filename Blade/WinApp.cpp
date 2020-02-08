@@ -59,11 +59,15 @@ bool B_WinApp::InitWindow()
 * Entry point:            0x0040F388
 * VC++ mangling:          ?ProcessMessage@B_WinApp@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+
 void B_WinApp::ProcessMessage()
 {
+    MSG msg;
+    PeekMessage(&msg, NULL, WM_NULL, WM_NULL, PM_REMOVE);
+    TranslateMessage(&msg);
+    DispatchMessage(&msg);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
