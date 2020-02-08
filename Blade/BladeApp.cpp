@@ -30,7 +30,7 @@ B_App* create_application(void *module, int nCmdShow, char *cmdLine)
 * Entry point:            0x005B9BB7
 */
 
-B_App* get_application()
+B_App* GetApplication()
 {
     return gbl_application;
 }

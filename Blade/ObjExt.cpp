@@ -17,7 +17,7 @@
 
 int SetAppMode(const char *mode)
 {
-    B_App * App = get_application();
+    B_App * App = GetApplication();
     int code;
     assert(App);
     code = App->SetAppMode(mode);
@@ -32,7 +32,7 @@ int SetAppMode(const char *mode)
 
 const char *GetAppMode()
 {
-    B_App * App = get_application();
+    B_App * App = GetApplication();
     assert(App);
     return App->GetAppMode().String();
 }
@@ -45,7 +45,7 @@ const char *GetAppMode()
 
 void BeginLoadGame()
 {
-    B_App * App = get_application();
+    B_App * App = GetApplication();
     assert(App);
     App->BeginLoadGame();
 }
@@ -58,7 +58,7 @@ void BeginLoadGame()
 
 void DoneLoadGame()
 {
-    B_App * App = get_application();
+    B_App * App = GetApplication();
     assert(App);
     App->DoneLoadGame();
 }
@@ -241,7 +241,7 @@ int LoadCombustionData(const char *file_name)
 
 int ReassignCombustionData()
 {
-    B_App * App = get_application();
+    B_App * App = GetApplication();
     assert(App);
     return App->ReassignCombustionData();
 }
@@ -329,7 +329,7 @@ int LoadAnmSoundData(const char *file_name)
 
 const char *GetCommandLine()
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->GetCmdLine();
 }
@@ -342,7 +342,7 @@ const char *GetCommandLine()
 
 const char *GetCurrentMap(void)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->mapName.String();
 }
@@ -355,7 +355,7 @@ const char *GetCurrentMap(void)
 
 int SetCurrentMap(const char *map)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->SetCurrentMap(map);
 }
@@ -368,7 +368,7 @@ int SetCurrentMap(const char *map)
 
 int LoadWorld(const char *file_name)
 {
-    B_App * app = get_application();
+    B_App * app = GetApplication();
     assert(app);
     return app->LoadWorld(file_name);
 }
@@ -381,7 +381,7 @@ int LoadWorld(const char *file_name)
 
 int SetListenerMode(int mode, double x, double y, double z)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     B_Vector v;
     v.x = x;
@@ -398,7 +398,7 @@ int SetListenerMode(int mode, double x, double y, double z)
 
 int GetListenerMode()
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return 1;
 }
@@ -411,7 +411,7 @@ int GetListenerMode()
 
 int Quit()
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->Quit();
 }
@@ -424,7 +424,7 @@ int Quit()
 
 int SetTime(double time)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->SetTime(time);
 }
@@ -437,7 +437,7 @@ int SetTime(double time)
 
 int GoToTime(double time)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->GoToTime(time);
 }
@@ -461,7 +461,7 @@ double GetTime()
 
 void StopTime()
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     App->StopTime();
 }
@@ -474,7 +474,7 @@ void StopTime()
 
 void RestartTime()
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     App->RestartTime();
 }
@@ -487,7 +487,7 @@ void RestartTime()
 
 void SetTimeSpeed(double speed)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     App->SetTimeSpeed(speed);
 }
@@ -500,7 +500,7 @@ void SetTimeSpeed(double speed)
 
 double GetTimeSpeed()
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->GetTimeSpeed();
 }
@@ -513,7 +513,7 @@ double GetTimeSpeed()
 
 int AddInputAction(const char *action_name, int npi)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     App->AddInputAction(action_name, npi);
     return 1;
@@ -527,7 +527,7 @@ int AddInputAction(const char *action_name, int npi)
 
 int RemoveInputAction(const char *action_name)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     App->RemoveInputAction(action_name);
     return 1;
@@ -544,7 +544,7 @@ int AssocKey(
     int press
 )
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->AssocKey(action, input_device, key, press);
 }
@@ -559,7 +559,7 @@ int Bind(const char *key, PyObject *proc)
 {
     assert(key);
     assert(proc);
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->Bind(key, proc);
 }
@@ -574,7 +574,7 @@ int UnBind(const char *key, PyObject *proc)
 {
     assert(key);
     assert(proc);
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->UnBind(key, proc);
 }
@@ -590,7 +590,7 @@ int Bind2(
     const char *subact2, int unknown
 )
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     assert(act);
     assert(subact1);
@@ -608,7 +608,7 @@ int Bind2(
 double GetTimeActionHeld(const char *Action)
 {
     assert(Action);
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->GetTimeActionHeld(Action);
 }
@@ -623,7 +623,7 @@ int BindPred(const char *key, const char *pred)
 {
     assert(key);
     assert(pred);
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->BindPred(key, pred);
 }
@@ -638,7 +638,7 @@ int UnBindPred(const char *key, const char *pred)
 {
     assert(key);
     assert(pred);
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->UnBindPred(key, pred);
 }
@@ -651,7 +651,7 @@ int UnBindPred(const char *key, const char *pred)
 
 void UnBindAll()
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     App->UnBindAll();
 }
@@ -664,7 +664,7 @@ void UnBindAll()
 
 const char *Input(const char *text)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->Input(text);
 }
@@ -678,7 +678,7 @@ const char *Input(const char *text)
 int MarkLevelToLoad(const char *filename)
 {
     assert(filename);
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     App->MarkLevelToLoad(filename);
     return 1;
@@ -693,7 +693,7 @@ int MarkLevelToLoad(const char *filename)
 int ReadLevel(const char *filename)
 {
     assert(filename);
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     App->ReadLevel(filename);
     return 1;
@@ -731,7 +731,7 @@ unsigned int ReadAlphaBitMap(const char *filename, const char *internalname)
 
 void CloseLevel(const char *statement, const char *auxText)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     App->CloseLevel(statement, auxText);
 }
@@ -777,7 +777,7 @@ int PlayDemo(const char *name)
 
 int DeactivateInput()
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->DeactivateInput();
 }
@@ -790,7 +790,7 @@ int DeactivateInput()
 
 int ActivateInput()
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->ActivateInput();
 }
@@ -803,7 +803,7 @@ int ActivateInput()
 
 int OutSound(int soundId, double x, double y, double z, int unknown)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->OutSound(soundId, x, y, z, unknown);
 }
@@ -979,7 +979,7 @@ int InsideAA(int AA, double x, double y, double z)
 
 int SetDrawObjectShadows(int draw)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     App->drawShadows = draw;
     return 1;
 }
@@ -992,7 +992,7 @@ int SetDrawObjectShadows(int draw)
 
 int GetDrawObjectShadows()
 {
-    int drawShadows = get_application()->drawShadows;
+    int drawShadows = GetApplication()->drawShadows;
     return drawShadows;
 }
 
@@ -1004,7 +1004,7 @@ int GetDrawObjectShadows()
 
 int SetAutoEngageCombat(int auto_engage_combat)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     App->autoEngageCombat = auto_engage_combat;
     return 1;
 }
@@ -1017,7 +1017,7 @@ int SetAutoEngageCombat(int auto_engage_combat)
 
 int GetAutoEngageCombat()
 {
-    int autoEngageCombat = get_application()->autoEngageCombat;
+    int autoEngageCombat = GetApplication()->autoEngageCombat;
     return autoEngageCombat;
 }
 
@@ -1029,7 +1029,7 @@ int GetAutoEngageCombat()
 
 int SetAecGap(double aec_gap)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     App->aecGap = aec_gap;
     return 1;
 }
@@ -1042,7 +1042,7 @@ int SetAecGap(double aec_gap)
 
 double GetAecGap()
 {
-    double aecGap = get_application()->aecGap;
+    double aecGap = GetApplication()->aecGap;
     return aecGap;
 }
 
@@ -1054,7 +1054,7 @@ double GetAecGap()
 
 int SetBloodLevel(int blood_level)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->SetBloodLevel(blood_level);
 }
@@ -1067,7 +1067,7 @@ int SetBloodLevel(int blood_level)
 
 int GetBloodLevel()
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->GetBloodLevel();
 }
@@ -1080,7 +1080,7 @@ int GetBloodLevel()
 
 int SetMutilationLevel(int mutilation_level)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->SetMutilationLevel(mutilation_level);
 }
@@ -1093,7 +1093,7 @@ int SetMutilationLevel(int mutilation_level)
 
 int GetMutilationLevel()
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->GetMutilationLevel();
 }
@@ -1420,7 +1420,7 @@ int SetAnimationFactor(const char *mov, double new_speed_factor)
 
 int SetAutoGenTexture(const char *textureName, int textureEffect)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     App->SetAutoGenTexture(textureName, textureEffect);
     return 1;
@@ -1473,7 +1473,7 @@ int SetActionCameraMovement(
     const char *action_name, double angle, double start_pos, double end_pos
 )
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     B_CameraEntity *camera = App->camera;
     if (camera != NULL)
@@ -1518,7 +1518,7 @@ int SetActionCameraMovement(
 
 int SetRootWidget(long int widget)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     App->rootWidget = widget;
     return 1;
@@ -1532,7 +1532,7 @@ int SetRootWidget(long int widget)
 
 long int GetRootWidget()
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     long int rootWidget = App->rootWidget;
     return rootWidget;
@@ -1713,7 +1713,7 @@ const char *GetWorldFileName(void)
 
 int SetAfterFrameFunc(const char *name, PyObject *function)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     App->SetAfterFrameFunc(name, function);
     return 1;
@@ -1727,7 +1727,7 @@ int SetAfterFrameFunc(const char *name, PyObject *function)
 
 int RemoveAfterFrameFunc(const char *name)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     App->RemoveAfterFrameFunc(name);
     return 1;
@@ -1741,7 +1741,7 @@ int RemoveAfterFrameFunc(const char *name)
 
 PyObject *GetAfterFrameFunc(const char *name)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->GetAfterFrameFunc(name);
 }
@@ -1754,7 +1754,7 @@ PyObject *GetAfterFrameFunc(const char *name)
 
 const char *GetAfterFrameFuncName(int index)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->GetAfterFrameFuncName(index);
 }
@@ -1767,7 +1767,7 @@ const char *GetAfterFrameFuncName(int index)
 
 int GetnAfterFrameFuncs()
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->GetnAfterFrameFuncs();
 }
@@ -1780,7 +1780,7 @@ int GetnAfterFrameFuncs()
 
 int SetMenuTgapFunc(PyObject *func)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     App->SetMenuTgapFunc(func);
     return 1;
@@ -1794,7 +1794,7 @@ int SetMenuTgapFunc(PyObject *func)
 
 PyObject *GetMenuTgapFunc()
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->GetMenuTgapFunc();
 }
@@ -1965,7 +1965,7 @@ int GetScreenXY(
     map_point.x = map_x;
     map_point.y = map_y;
     map_point.z = map_z;
-    B_Vector screenPoint = map_point * get_application()->location.matrix0030;
+    B_Vector screenPoint = map_point * GetApplication()->location.matrix0030;
     if (fabs(screenPoint.z) < 0.01)
         screenPoint.z = 0.01;
     double factor = unknown.unknown014 / screenPoint.z;
@@ -2242,7 +2242,7 @@ int GetModelPos(const char *person, double *x, double *y, double *z)
 
 int GetWindowId()
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->GetWindow();
 }
@@ -2255,7 +2255,7 @@ int GetWindowId()
 
 int GetProgramId()
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->GetModule();
 }
@@ -2268,7 +2268,7 @@ int GetProgramId()
 
 int TakeSnapShot()
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     App->TakeSnapShot();
     return 1;
@@ -2293,7 +2293,7 @@ int nSectors()
 
 void SetRunString(const char *str)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     App->SetPyInteractiveString(str);
 }
@@ -2306,7 +2306,7 @@ void SetRunString(const char *str)
 
 int SetStringValue(const char *variable, const char *value)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->SetStringValue(variable, value);
 }
@@ -2319,7 +2319,7 @@ int SetStringValue(const char *variable, const char *value)
 
 const char *GetStringValue(const char *variable)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->GetStringValue(variable);
 }
@@ -2332,7 +2332,7 @@ const char *GetStringValue(const char *variable)
 
 int DeleteStringValue(const char *variable)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->DeleteStringValue(variable);
 }
@@ -2417,7 +2417,7 @@ int DisableProfiler()
 
 int SetInputMode(const char *device, const char *mode)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->SetInputMode(device, mode);
 }
@@ -2430,7 +2430,7 @@ int SetInputMode(const char *device, const char *mode)
 
 const char *GetInputMode(const char *device)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->GetInputMode(device);
 }
@@ -2443,7 +2443,7 @@ const char *GetInputMode(const char *device)
 
 const char *GetLastPlayerCType()
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     assert(App);
     return App->lastPlayerCType;
 }

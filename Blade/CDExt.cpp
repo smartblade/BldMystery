@@ -103,7 +103,7 @@ int CDPause()
 
 int CDSetCallBack(PyObject *func)
 {
-    B_App *App = get_application();
+    B_App *App = GetApplication();
     if (App != NULL)
     {
         App->CDSetCallBack(func);

@@ -1360,8 +1360,8 @@ externdef _LoadNetModule: near
 l005B65D2 equ _LoadNetModule
 externdef _create_application: near
 l005B9B60 equ _create_application
-externdef _get_application: near
-l005B9BB7 equ _get_application
+externdef _GetApplication: near
+l005B9BB7 equ _GetApplication
 externdef ??0B_BladeApp@@QAE@PAXHPAD@Z: near
 l005B9BC1 equ ??0B_BladeApp@@QAE@PAXHPAD@Z
 externdef ?Start@B_BladeApp@@UAE_NXZ: near
