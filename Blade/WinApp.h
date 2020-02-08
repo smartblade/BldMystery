@@ -41,7 +41,7 @@ public:
     HMODULE rasterLibrary;
     char unknownFields78C[44];
     void *window;
-    void *module;
+    HINSTANCE module;
     char unknownFields3[16];
 };
 

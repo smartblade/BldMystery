@@ -74,12 +74,18 @@ void B_WinApp::ProcessMessage()
 * Entry point:            0x0040F3BB
 * VC++ mangling:          ?NewWindow@B_WinApp@@UAEPAUHWND__@@XZ
 */
-#ifdef BLD_NATIVE
+
 HWND B_WinApp::NewWindow()
 {
-    return NULL;
+    HWND window = CreateWindowExA(
+        WS_EX_LEFT, "Blade", "Blade",
+        (
+            WS_POPUP | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN |
+            WS_EX_TRANSPARENT/*TODO Find correct constant for 0x20*/),
+        0, 0, 640, 480, NULL, NULL, module, NULL);
+    return window;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
