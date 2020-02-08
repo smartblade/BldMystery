@@ -92,12 +92,34 @@ HWND B_WinApp::NewWindow()
 * Entry point:            0x0040F403
 * VC++ mangling:          ?NewWindowForClientRectangle@B_WinApp@@UAEPAUHWND__@@XZ
 */
-#ifdef BLD_NATIVE
+
 HWND B_WinApp::NewWindowForClientRectangle()
 {
-    return NULL;
+    int width, height;
+    RECT rect;
+    rect.left = 0;
+    rect.top = 0;
+    rect.right = clientRectWidth;
+    rect.bottom = clientRectHeight;
+    if (AdjustWindowRectEx(
+        &rect, (WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME),
+        false, WS_EX_LEFT))
+    {
+        width = rect.right - rect.left;
+        height = rect.bottom - rect.top;
+    }
+    else
+    {
+        width = clientRectWidth;
+        height = clientRectHeight;
+    }
+    HWND window = CreateWindowExA(
+        WS_EX_LEFT, "Blade", "Blade",
+        (WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_OVERLAPPEDWINDOW),
+        0, 0, width, height, NULL, NULL, module, NULL);
+    return window;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

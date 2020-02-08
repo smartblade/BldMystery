@@ -351,6 +351,8 @@ B_CameraEntity::B_CameraEntity(int, const B_Name &)
 
 #include "CDPlayer.h"
 
+int clientRectWidth;
+int clientRectHeight;
 B_PtrArray<world_point_t> gbl_world_points;
 B_World B_world;
 int gbl_action_areas_bit_mask;

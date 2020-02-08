@@ -104,6 +104,18 @@ extern void LoadNetModule(char *fileName);
 
 /*
 * Module:                 Blade.exe
+* Data address:           0x005CCEBC
+*/
+extern int clientRectWidth;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x005CCEC0
+*/
+extern int clientRectHeight;
+
+/*
+* Module:                 Blade.exe
 * Data address:           0x005DF898
 */
 extern B_PtrArray<world_point_t> gbl_world_points;

@@ -1,3 +1,7 @@
+public _clientRectWidth
+g005CCEBC equ _clientRectWidth
+public _clientRectHeight
+g005CCEC0 equ _clientRectHeight
 public _gbl_world_points
 g005DF898 equ _gbl_world_points
 public _B_world
