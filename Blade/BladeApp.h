@@ -17,7 +17,7 @@ public:
 extern "C"
 {
 
-extern B_App *create_application(void *module, int nCmdShow, char *cmdLine);
+extern B_App *CreateApplication(void *module, int nCmdShow, char *cmdLine);
 extern B_App* GetApplication();
 
 }

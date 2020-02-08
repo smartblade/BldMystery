@@ -387,7 +387,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         cmd = lpCmdLine;
 
         LoadNetModule("NetBlade\\Netblade.dll");
-        App = create_application(hInstance, nCmdShow, cmd);
+        App = CreateApplication(hInstance, nCmdShow, cmd);
 
         assert(App);
 

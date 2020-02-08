@@ -9,7 +9,7 @@
 * Entry point:            0x005B9B60
 */
 
-B_App* create_application(void *module, int nCmdShow, char *cmdLine)
+B_App* CreateApplication(void *module, int nCmdShow, char *cmdLine)
 {
     B_App *new_application = new B_BladeApp(module, nCmdShow, cmdLine);
     gbl_application = new_application;

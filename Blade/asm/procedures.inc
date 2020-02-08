@@ -1358,8 +1358,8 @@ externdef _IsValidProtocol: near
 l005B6490 equ _IsValidProtocol
 externdef _LoadNetModule: near
 l005B65D2 equ _LoadNetModule
-externdef _create_application: near
-l005B9B60 equ _create_application
+externdef _CreateApplication: near
+l005B9B60 equ _CreateApplication
 externdef _GetApplication: near
 l005B9BB7 equ _GetApplication
 externdef ??0B_BladeApp@@QAE@PAXHPAD@Z: near
