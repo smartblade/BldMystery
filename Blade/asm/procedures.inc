@@ -50,6 +50,8 @@ externdef ?PrintWarning@B_WinApp@@UAEXPBD0@Z: near
 l00410BBE equ ?PrintWarning@B_WinApp@@UAEXPBD0@Z
 externdef ?Input@B_WinApp@@UAEPBDPBD@Z: near
 l00410C3D equ ?Input@B_WinApp@@UAEPBDPBD@Z
+externdef ?WindowProcedure@@YGJPAUHWND__@@IIJ@Z: near
+l00410C77 equ ?WindowProcedure@@YGJPAUHWND__@@IIJ@Z
 externdef _WinMain@16: near
 l00410CC2 equ _WinMain@16
 externdef ?SetCurrentMap@B_WinApp@@UAEHPBD@Z: near

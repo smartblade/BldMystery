@@ -39,10 +39,14 @@ public:
     void (*destroyRasterCB)(B_3DRasterDevice *raster);
     char unknownFields784[4];
     HMODULE rasterLibrary;
-    char unknownFields78C[44];
-    void *window;
+    WNDPROC winProc;
+    WNDCLASS windowClass;
+    HWND window;
     HINSTANCE module;
     char unknownFields3[16];
 };
+
+LRESULT CALLBACK WindowProcedure(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 #endif /* WIN_APP_H */

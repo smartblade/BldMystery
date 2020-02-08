@@ -47,12 +47,32 @@ B_WinApp::~B_WinApp()
 * Entry point:            0x0040F256
 * VC++ mangling:          ?InitWindow@B_WinApp@@UAE_NXZ
 */
-#ifdef BLD_NATIVE
+
 bool B_WinApp::InitWindow()
 {
-    return false;
+    this->windowClass.hCursor = LoadCursor(NULL, IDC_ARROW);
+    this->windowClass.hIcon = LoadIcon(this->module, MAKEINTRESOURCE(109));
+    this->windowClass.lpszMenuName = NULL;
+    this->windowClass.lpszClassName = "Blade";
+    this->windowClass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
+    this->windowClass.hInstance = this->module;
+    this->windowClass.style = CS_OWNDC;
+    if (this->winProc != NULL)
+        this->windowClass.lpfnWndProc = this->winProc;
+    else
+        this->windowClass.lpfnWndProc = ::WindowProcedure;
+    this->windowClass.cbClsExtra = 0;
+    this->windowClass.cbWndExtra = 0;
+    if (!RegisterClass(&this->windowClass))
+        return false;
+    this->window = this->NewWindowForClientRectangle();
+    if (this->window == NULL)
+        return false;
+    ShowWindow(this->window, SW_HIDE);
+    UpdateWindow(this->window);
+    return true;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
@@ -338,6 +358,19 @@ const char *B_WinApp::Input(const char *text)
 ................................................................................
 ................................................................................
 */
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00410C77
+* VC++ mangling:          ?WindowProcedure@@YGJPAUHWND__@@IIJ@Z
+*/
+#ifdef BLD_NATIVE
+LRESULT CALLBACK WindowProcedure(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    return 0;
+}
+#endif
 
 /*
 * Module:                 Blade.exe
