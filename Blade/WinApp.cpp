@@ -364,13 +364,16 @@ const char *B_WinApp::Input(const char *text)
 * Entry point:            0x00410C77
 * VC++ mangling:          ?WindowProcedure@@YGJPAUHWND__@@IIJ@Z
 */
-#ifdef BLD_NATIVE
+
 LRESULT CALLBACK WindowProcedure(
     HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-    return 0;
+    B_WinApp *App = GetWinApplication();
+    if (App != NULL)
+        return App->WindowProcedure(hwnd, uMsg, wParam, lParam);
+    return DefWindowProc(hwnd, uMsg, wParam, lParam);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
