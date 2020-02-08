@@ -166,7 +166,7 @@ public:
     virtual int GetModule();
     virtual int SetCurrentMap(const char *map);
     virtual bool InitWindow();
-    virtual void *unknown_method070();
+    virtual HWND NewWindow();
     virtual HWND NewWindowForClientRectangle();
     virtual void Mouse(bool acquireFlag);
     virtual LRESULT WindowProcedure(

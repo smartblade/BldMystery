@@ -72,10 +72,10 @@ void B_WinApp::ProcessMessage()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0040F3BB
-* VC++ mangling:          ?unknown_method070@B_WinApp@@UAEPAXXZ
+* VC++ mangling:          ?NewWindow@B_WinApp@@UAEPAUHWND__@@XZ
 */
 #ifdef BLD_NATIVE
-void *B_WinApp::unknown_method070()
+HWND B_WinApp::NewWindow()
 {
     return NULL;
 }

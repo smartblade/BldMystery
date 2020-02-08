@@ -20,8 +20,8 @@ externdef ?InitWindow@B_WinApp@@UAE_NXZ: near
 l0040F256 equ ?InitWindow@B_WinApp@@UAE_NXZ
 externdef ?ProcessMessage@B_WinApp@@UAEXXZ: near
 l0040F388 equ ?ProcessMessage@B_WinApp@@UAEXXZ
-externdef ?unknown_method070@B_WinApp@@UAEPAXXZ: near
-l0040F3BB equ ?unknown_method070@B_WinApp@@UAEPAXXZ
+externdef ?NewWindow@B_WinApp@@UAEPAUHWND__@@XZ: near
+l0040F3BB equ ?NewWindow@B_WinApp@@UAEPAUHWND__@@XZ
 externdef ?NewWindowForClientRectangle@B_WinApp@@UAEPAUHWND__@@XZ: near
 l0040F403 equ ?NewWindowForClientRectangle@B_WinApp@@UAEPAUHWND__@@XZ
 externdef ?Start@B_WinApp@@UAE_NXZ: near
