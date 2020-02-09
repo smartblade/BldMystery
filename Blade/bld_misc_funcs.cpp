@@ -367,7 +367,7 @@ char client_map_name[128];
 char net_game_name[128];
 int gbl_net_max_players;
 bld_abstract_net *gbl_net;
-B_App *gbl_application;
+B_WinApp *gbl_application;
 CDPlayer *cdPlayer;
 
 #endif

@@ -11,7 +11,7 @@
 
 B_App* CreateApplication(void *module, int nCmdShow, char *cmdLine)
 {
-    B_App *new_application = new B_BladeApp(module, nCmdShow, cmdLine);
+    B_BladeApp *new_application = new B_BladeApp(module, nCmdShow, cmdLine);
     gbl_application = new_application;
 
     return gbl_application;
@@ -21,12 +21,12 @@ B_App* CreateApplication(void *module, int nCmdShow, char *cmdLine)
 * Module:                 Blade.exe
 * Entry point:            0x005B9BAD
 */
-#ifdef BLD_NATIVE
+
 B_WinApp *GetWinApplication()
 {
-    return NULL;
+    return gbl_application;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

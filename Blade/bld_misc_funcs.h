@@ -6,7 +6,7 @@
 #include "light.h"
 #include "en_control.h"
 
-class B_App;
+class B_WinApp;
 
 
 class B_Race : public B_NamedObj
@@ -202,7 +202,7 @@ extern bld_abstract_net *gbl_net;
 * Module:                 Blade.exe
 * Data address:           0x007EFC94
 */
-extern B_App *gbl_application;
+extern B_WinApp *gbl_application;
 
 #define NUM_3F266666 0.65f
 
