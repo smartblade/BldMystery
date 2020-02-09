@@ -242,11 +242,13 @@ bool B_WinApp::ProcessEvents() {
 * Entry point:            0x00410384
 * VC++ mangling:          ?End@B_WinApp@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+
 void B_WinApp::End()
 {
+    B_App::End();
+    FreeNetData(true);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

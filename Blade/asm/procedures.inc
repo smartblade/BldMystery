@@ -1374,6 +1374,8 @@ externdef _IsValidProtocol: near
 l005B6490 equ _IsValidProtocol
 externdef _LoadNetModule: near
 l005B65D2 equ _LoadNetModule
+externdef _FreeNetData: near
+l005B668D equ _FreeNetData
 externdef _CreateApplication: near
 l005B9B60 equ _CreateApplication
 externdef _GetWinApplication: near

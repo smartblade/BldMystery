@@ -317,6 +317,17 @@ void LoadNetModule(char *fileName)
 
 #endif
 
+/*
+* Module:                 Blade.exe
+* Entry point:            0x005B668D
+*/
+#ifdef BLD_NATIVE
+bool FreeNetData(bool freeNetLibrary)
+{
+    return false;
+}
+#endif
+
 #ifdef BLD_NATIVE
 
 class B_WinApp
