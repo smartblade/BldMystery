@@ -255,12 +255,17 @@ void B_WinApp::End()
 * Entry point:            0x004103A1
 * VC++ mangling:          ?Quit@B_WinApp@@UAEHXZ
 */
-#ifdef BLD_NATIVE
+
 int B_WinApp::Quit()
 {
-    return 0;
+    if (B_App::Quit())
+    {
+        PostMessage(this->window, WM_QUIT, 0, 0);
+        return true;
+    }
+    return false;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
