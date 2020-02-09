@@ -8,7 +8,7 @@ class game_clock_t
 {
 public:
         virtual void unknown000();
-        virtual void unknown004();
+        virtual ~game_clock_t();
         virtual void unknown008();
         virtual void unknown00C();
         virtual void unknown010();

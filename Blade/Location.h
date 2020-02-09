@@ -8,6 +8,7 @@
 class location_t
 {
 public:
+    ~location_t();
     void setPosition(const B_Vector &pos);
     void setOrientation(const B_Vector &orientation);
 

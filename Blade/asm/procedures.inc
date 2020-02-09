@@ -8,6 +8,8 @@ externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z: near
 l0040ACDD equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z
 externdef ??6@YAAAVB_ODataFile@@AAV0@AAVB_Vector@@@Z: near
 l0040ACF4 equ ??6@YAAAVB_ODataFile@@AAV0@AAVB_Vector@@@Z
+externdef ??1location_t@@QAE@XZ: near
+l0040AD77 equ ??1location_t@@QAE@XZ
 externdef ?setPosition@location_t@@QAEXABVB_Vector@@@Z: near
 l0040AD82 equ ?setPosition@location_t@@QAEXABVB_Vector@@@Z
 externdef ?setOrientation@location_t@@QAEXABVB_Vector@@@Z: near
@@ -66,6 +68,8 @@ externdef ?GetModule@B_WinApp@@UAEHXZ: near
 l00411190 equ ?GetModule@B_WinApp@@UAEHXZ
 externdef ??1B_App@@UAE@XZ: near
 l00411843 equ ??1B_App@@UAE@XZ
+externdef ?Start@B_App@@UAE_NXZ: near
+l00411C2E equ ?Start@B_App@@UAE_NXZ
 externdef ?InitPythonPath@B_App@@UAE_NXZ: near
 l00411C54 equ ?InitPythonPath@B_App@@UAE_NXZ
 externdef ?SetListenerMode@B_App@@QAEHHABVB_Vector@@@Z: near
@@ -80,6 +84,8 @@ externdef ?GetCmdLine@B_App@@QAEPBDXZ: near
 l00412053 equ ?GetCmdLine@B_App@@QAEPBDXZ
 externdef ?GetAppMode@B_App@@QAEABVB_Name@@XZ: near
 l00412067 equ ?GetAppMode@B_App@@QAEABVB_Name@@XZ
+externdef ?Quit@B_App@@UAEHXZ: near
+l0041207A equ ?Quit@B_App@@UAEHXZ
 externdef ?SetTime@B_App@@QAEHN@Z: near
 l0041208A equ ?SetTime@B_App@@QAEHN@Z
 externdef ?GoToTime@B_App@@QAEHN@Z: near
@@ -94,6 +100,8 @@ externdef ?SetTimeSpeed@B_App@@QAEXN@Z: near
 l0041218C equ ?SetTimeSpeed@B_App@@QAEXN@Z
 externdef ?ProcessEvents@B_App@@UAE_NXZ: near
 l004121CE equ ?ProcessEvents@B_App@@UAE_NXZ
+externdef ?End@B_App@@UAEXXZ: near
+l00413121 equ ?End@B_App@@UAEXXZ
 externdef ?MarkLevelToLoad@B_App@@UAEXPBD@Z: near
 l0041316C equ ?MarkLevelToLoad@B_App@@UAEXPBD@Z
 externdef ?CloseLevel@B_App@@UAEXPBD0@Z: near
@@ -140,6 +148,8 @@ externdef ?SetAutoGenTexture@B_App@@QAEHPBDH@Z: near
 l00415610 equ ?SetAutoGenTexture@B_App@@QAEHPBDH@Z
 externdef ?RunPythonFile@B_App@@QAE_NPBD@Z: near
 l00415759 equ ?RunPythonFile@B_App@@QAE_NPBD@Z
+externdef ?ReadArguments@B_App@@UAEXPBD@Z: near
+l00415811 equ ?ReadArguments@B_App@@UAEXPBD@Z
 externdef ?OutSound@B_App@@QAE_NHNNNH@Z: near
 l0041617B equ ?OutSound@B_App@@QAE_NHNNNH@Z
 externdef ?CallCdCb@B_App@@UAEXH@Z: near
@@ -180,6 +190,12 @@ externdef ?GetStringValue@B_App@@QAEPBDPBD@Z: near
 l0041712A equ ?GetStringValue@B_App@@QAEPBDPBD@Z
 externdef ?DeleteStringValue@B_App@@QAEHPBD@Z: near
 l004171D1 equ ?DeleteStringValue@B_App@@QAEHPBD@Z
+externdef ?GetInputMode@B_App@@UAEPBDPBD@Z: near
+l00417417 equ ?GetInputMode@B_App@@UAEPBDPBD@Z
+externdef ?SetInputMode@B_App@@UAEHPBD0@Z: near
+l00417426 equ ?SetInputMode@B_App@@UAEHPBD0@Z
+externdef ?unknown_method010@B_App@@UAEPAXPAX@Z: near
+l004179B0 equ ?unknown_method010@B_App@@UAEPAXPAX@Z
 externdef _PlayCDTrack: near
 l00427750 equ _PlayCDTrack
 externdef _nCDTracks: near

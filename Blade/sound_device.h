@@ -7,7 +7,7 @@ class sound_t
 {
 public:
         virtual void unknown000();
-        virtual void unknown004();
+        virtual ~sound_t();
         virtual void unknown008();
         virtual void unknown00C();
         virtual void unknown010();

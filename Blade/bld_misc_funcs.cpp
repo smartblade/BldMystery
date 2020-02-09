@@ -329,16 +329,6 @@ B_WinApp::B_WinApp(void *, int, char *, void *)
 {
 }
 
-class B_App
-{
-public:
-    virtual ~B_App();
-};
-
-B_App::~B_App()
-{
-}
-
 class B_CameraEntity
 {
 public:

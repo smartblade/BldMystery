@@ -22,18 +22,33 @@
 * Entry point:            0x00411843
 * VC++ mangling:          ??1B_App@@UAE@XZ
 */
-#ifdef BLD_NATIVE_DESTRUCTOR
+
 B_App::~B_App()
 {
+    ClearLevel(true);
+    Py_XDECREF(this->CDCallback);
+    delete gbl_sound_device;
+    gbl_sound_device = NULL;
+    delete this->clock1;
+    delete this->clock2;
+    this->clock1 = NULL;
+    delete this->unknownPtr070;
+    delete this->unknownPtr074;
+    Py_Finalize();
 }
-#endif
+
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x00411C2E
+* VC++ mangling:          ?Start@B_App@@UAE_NXZ
 */
+#ifdef BLD_NATIVE
+bool B_App::Start()
+{
+    return false;
+}
+#endif
 
 /*
 * Module:                 Blade.exe
@@ -149,11 +164,16 @@ const B_Name &B_App::GetAppMode()
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x0041207A
+* VC++ mangling:          ?Quit@B_App@@UAEHXZ
 */
+#ifdef BLD_NATIVE
+int B_App::Quit()
+{
+    return 0;
+}
+#endif
 
 /*
 * Module:                 Blade.exe
@@ -275,11 +295,15 @@ bool B_App::ProcessEvents()
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x00413121
+* VC++ mangling:          ?End@B_App@@UAEXXZ
 */
+#ifdef BLD_NATIVE
+void B_App::End()
+{
+}
+#endif
 
 /*
 * Module:                 Blade.exe
@@ -940,6 +964,16 @@ bool B_App::RunPythonFile(const char *file_name)
 }
 
 
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00415811
+* VC++ mangling:          ?ReadArguments@B_App@@UAEXPBD@Z
+*/
+#ifdef BLD_NATIVE
+void B_App::ReadArguments(const char *arguments)
+{
+}
+#endif
 
 /*
 ................................................................................
@@ -1251,8 +1285,44 @@ int B_App::DeleteStringValue(const char *variable)
 #endif
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x00417417
+* VC++ mangling:          ?GetInputMode@B_App@@UAEPBDPBD@Z
+*/
+#ifdef BLD_NATIVE
+const char *B_App::GetInputMode(const char *device)
+{
+    return NULL;
+}
+#endif
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00417426
+* VC++ mangling:          ?SetInputMode@B_App@@UAEHPBD0@Z
+*/
+#ifdef BLD_NATIVE
+int B_App::SetInputMode(const char *device, const char *mode)
+{
+    return 0;
+}
+#endif
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
 ................................................................................
 */
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004179B0
+* VC++ mangling:          ?unknown_method010@B_App@@UAEPAXPAX@Z
+*/
+#ifdef BLD_NATIVE
+void *B_App::unknown_method010(void *)
+{
+    return NULL;
+}
+#endif
