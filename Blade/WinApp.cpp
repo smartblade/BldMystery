@@ -295,11 +295,16 @@ void *B_WinApp::unknown_method010(void *)
 * Entry point:            0x004106F2
 * VC++ mangling:          ?ReadLevel@B_WinApp@@UAEXPBD@Z
 */
-#ifdef BLD_NATIVE
+
 void B_WinApp::ReadLevel(const char *file_name)
 {
+    HCURSOR waitCursor = LoadCursor(NULL, IDC_WAIT);
+    HCURSOR currentCursor = GetCursor();
+    SetCursor(waitCursor);
+    B_App::ReadLevel(file_name);
+    SetCursor(currentCursor);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
