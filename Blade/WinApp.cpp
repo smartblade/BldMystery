@@ -349,11 +349,15 @@ void B_WinApp::Mouse(bool acquire)
 * Entry point:            0x00410B53
 * VC++ mangling:          ?ExitWithError@B_WinApp@@UAEXPAD0@Z
 */
-#ifdef BLD_NATIVE
-void B_WinApp::ExitWithError(char *title, char* message)
+
+void B_WinApp::ExitWithError(char *Title, char *Message)
 {
+    assert(Title);
+    assert(Message);
+    MessageBox(this->window, Message, Title, MB_ICONERROR);
+    exit(1);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
