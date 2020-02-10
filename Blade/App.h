@@ -43,7 +43,7 @@ public:
     virtual const char *Input(const char *text) = 0;
     virtual void CallCdCb(int arg);
     virtual void ExitWithError(char *title, char* message) = 0;
-    virtual void PrintWarning(const char *, const char *) = 0;
+    virtual void PrintWarning(const char *Title, const char *Message) = 0;
     virtual int GetWindow() = 0;
     virtual int GetModule() = 0;
     virtual int SetCurrentMap(const char *map) = 0;

@@ -364,11 +364,16 @@ void B_WinApp::ExitWithError(char *Title, char *Message)
 * Entry point:            0x00410BBE
 * VC++ mangling:          ?PrintWarning@B_WinApp@@UAEXPBD0@Z
 */
-#ifdef BLD_NATIVE
-void B_WinApp::PrintWarning(const char *, const char *)
+
+void B_WinApp::PrintWarning(const char *Title, const char *Message)
 {
+    assert(Title);
+    assert(Message);
+    FILE *file = fopen("WarningLog.txt", "a+");
+    fputs(Message, file);
+    fclose(file);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
