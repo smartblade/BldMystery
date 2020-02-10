@@ -29,7 +29,7 @@ public:
     virtual bool InitWindow();
     virtual HWND NewWindow();
     virtual HWND NewWindowForClientRectangle();
-    virtual void Mouse(bool acquireFlag);
+    virtual void Mouse(bool acquire);
     virtual LRESULT WindowProcedure(
         HWND hwnd, UINT uMsg, WPARAM wParam,  LPARAM lParam);
     B_WinApp(void *module, int nCmdShow, char *cmdLine, void *unknown);

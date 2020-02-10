@@ -3,6 +3,7 @@
 #include <console.h>
 #include <raster_device.h>
 #include "BladeApp.h"
+#include <BInputc.h>
 #include "bld_misc_funcs.h"
 
 
@@ -324,11 +325,24 @@ LRESULT B_WinApp::WindowProcedure(
 * Entry point:            0x00410AF5
 * VC++ mangling:          ?Mouse@B_WinApp@@UAEX_N@Z
 */
-#ifdef BLD_NATIVE
-void B_WinApp::Mouse(bool acquireFlag)
+
+void B_WinApp::Mouse(bool acquire)
 {
+    B_WinMouse *mouse = static_cast<B_WinMouse *>(
+        this->GetAttachedDevice("Mouse"));
+    if (!acquire)
+    {
+        if (mouse != NULL)
+        {
+            mouse->UnAcquire();
+        }
+    }
+    else if (mouse != NULL && !mouse->Acquire())
+    {
+        this->no_sleep = false;
+    }
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

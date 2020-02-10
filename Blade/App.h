@@ -14,6 +14,7 @@
 
 
 class B_CameraEntity;
+class B_InputDevice;
 
 class B_App
 {
@@ -63,6 +64,7 @@ public:
     void SetTimeSpeed(double speed);
     void TakeSnapShot();
     double GetTimeSpeed();
+    B_InputDevice *GetAttachedDevice(const char *device);
     void AddInputAction(const char *action_name, int npi);
     void RemoveInputAction(const char *action_name);
     int AssocKey(
@@ -123,7 +125,7 @@ public:
     char unknownFields400[4];
     float time;
     char unknownFields310[6];
-    boolean no_sleep;
+    bool no_sleep;
     char unknownFields320[20];
     const char *commandLine;
     B_Name mode;

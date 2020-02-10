@@ -124,6 +124,8 @@ externdef ?DoneLoadGame@B_App@@QAEXXZ: near
 l004150B4 equ ?DoneLoadGame@B_App@@QAEXXZ
 externdef ?BeginLoadGame@B_App@@QAEXXZ: near
 l00415145 equ ?BeginLoadGame@B_App@@QAEXXZ
+externdef ?GetAttachedDevice@B_App@@QAEPAVB_InputDevice@@PBD@Z: near
+l00415236 equ ?GetAttachedDevice@B_App@@QAEPAVB_InputDevice@@PBD@Z
 externdef ?GetTimeActionHeld@B_App@@QAENPBD@Z: near
 l0041526D equ ?GetTimeActionHeld@B_App@@QAENPBD@Z
 externdef ?AddInputAction@B_App@@QAEXPBDH@Z: near
