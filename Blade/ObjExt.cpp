@@ -2253,7 +2253,7 @@ size_t GetWindowId()
 * Entry point:            0x0042C031
 */
 
-int GetProgramId()
+size_t GetProgramId()
 {
     B_App *App = GetApplication();
     assert(App);

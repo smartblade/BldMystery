@@ -36,7 +36,18 @@ public:
         return reinterpret_cast<size_t>(this->window);
     }
 
-    virtual int GetModule();
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00411190
+* VC++ mangling:          ?GetModule@B_WinApp@@UAEIXZ
+*/
+
+    virtual size_t GetModule()
+    {
+        return reinterpret_cast<size_t>(this->module);
+    }
+
     virtual int SetDirMap(const char *map);
     virtual bool InitWindow();
     virtual HWND NewWindow();

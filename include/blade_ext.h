@@ -1274,7 +1274,7 @@ LIB_EXP int LoadWorld(const char *file_name);
 LIB_EXP void DoneLoadGame(void);
 LIB_EXP void BeginLoadGame(void);
 LIB_EXP size_t GetWindowId(void);
-LIB_EXP int GetProgramId(void);
+LIB_EXP size_t GetProgramId(void);
 LIB_EXP int AddStepSound(const char *name, int soundID);
 LIB_EXP int AddMaterialStepSound(
         const char *table, const char *material, const char *step_sound

@@ -45,7 +45,7 @@ public:
     virtual void ExitWithError(char *title, char* message) = 0;
     virtual void PrintWarning(const char *Title, const char *Message) = 0;
     virtual size_t GetWindow() = 0;
-    virtual int GetModule() = 0;
+    virtual size_t GetModule() = 0;
     virtual int SetDirMap(const char *map) = 0;
     int LoadWorld(const char *file_name);
     bool RunPythonFile(const char *file_name);
