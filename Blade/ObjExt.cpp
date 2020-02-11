@@ -2240,7 +2240,7 @@ int GetModelPos(const char *person, double *x, double *y, double *z)
 * Entry point:            0x0042BFF8
 */
 
-int GetWindowId()
+size_t GetWindowId()
 {
     B_App *App = GetApplication();
     assert(App);

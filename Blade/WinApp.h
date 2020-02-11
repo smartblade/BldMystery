@@ -23,7 +23,19 @@ public:
     virtual const char *Input(const char *text);
     virtual void ExitWithError(char *title, char* message);
     virtual void PrintWarning(const char *Title, const char *Message);
-    virtual int GetWindow();
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00411170
+* VC++ mangling:          ?GetWindow@B_WinApp@@UAEIXZ
+*/
+
+    virtual size_t GetWindow()
+    {
+        return reinterpret_cast<size_t>(this->window);
+    }
+
     virtual int GetModule();
     virtual int SetDirMap(const char *map);
     virtual bool InitWindow();

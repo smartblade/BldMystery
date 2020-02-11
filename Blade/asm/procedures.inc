@@ -64,8 +64,8 @@ externdef ?GetInputMode@B_WinApp@@UAEPBDPBD@Z: near
 l00411034 equ ?GetInputMode@B_WinApp@@UAEPBDPBD@Z
 externdef ?SetInputMode@B_WinApp@@UAEHPBD0@Z: near
 l00411043 equ ?SetInputMode@B_WinApp@@UAEHPBD0@Z
-externdef ?GetWindow@B_WinApp@@UAEHXZ: near
-l00411170 equ ?GetWindow@B_WinApp@@UAEHXZ
+externdef ?GetWindow@B_WinApp@@UAEIXZ: near
+l00411170 equ ?GetWindow@B_WinApp@@UAEIXZ
 externdef ?GetModule@B_WinApp@@UAEHXZ: near
 l00411190 equ ?GetModule@B_WinApp@@UAEHXZ
 externdef ??1B_App@@UAE@XZ: near
