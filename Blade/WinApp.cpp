@@ -464,12 +464,24 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 * Entry point:            0x00410F6F
 * VC++ mangling:          ?SetDirMap@B_WinApp@@UAEHPBD@Z
 */
-#ifdef BLD_NATIVE
+
 int B_WinApp::SetDirMap(const char *map)
 {
-    return 0;
+    char buffer[260];
+
+    GetCurrentDirectory(sizeof(buffer), buffer);
+    mout << buffer;
+    mout << "\n";
+    if (SetCurrentDirectory(vararg("..\\%s", map)))
+    {
+        this->mapName = map;
+        return true;
+    }
+    OutputWin32Error(
+        vararg("B_WinApp::SetDirMap() -> Error setting directory.\n"));
+    return false;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

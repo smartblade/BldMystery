@@ -206,4 +206,6 @@ LIB_EXP B_ResourceManager B_resource_manager;
 
 LIB_EXP int CheckErrors;
 
+LIB_EXP void OutputWin32Error(char const *message);
+
 #endif /* BBLIBC_H */
