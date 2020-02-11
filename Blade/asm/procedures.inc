@@ -58,8 +58,8 @@ externdef ?WindowProcedure@@YGJPAUHWND__@@IIJ@Z: near
 l00410C77 equ ?WindowProcedure@@YGJPAUHWND__@@IIJ@Z
 externdef _WinMain@16: near
 l00410CC2 equ _WinMain@16
-externdef ?SetCurrentMap@B_WinApp@@UAEHPBD@Z: near
-l00410F6F equ ?SetCurrentMap@B_WinApp@@UAEHPBD@Z
+externdef ?SetDirMap@B_WinApp@@UAEHPBD@Z: near
+l00410F6F equ ?SetDirMap@B_WinApp@@UAEHPBD@Z
 externdef ?GetInputMode@B_WinApp@@UAEPBDPBD@Z: near
 l00411034 equ ?GetInputMode@B_WinApp@@UAEPBDPBD@Z
 externdef ?SetInputMode@B_WinApp@@UAEHPBD0@Z: near

@@ -357,7 +357,7 @@ int SetCurrentMap(const char *map)
 {
     B_App *App = GetApplication();
     assert(App);
-    return App->SetCurrentMap(map);
+    return App->SetDirMap(map);
 }
 
 

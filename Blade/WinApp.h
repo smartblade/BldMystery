@@ -25,7 +25,7 @@ public:
     virtual void PrintWarning(const char *Title, const char *Message);
     virtual int GetWindow();
     virtual int GetModule();
-    virtual int SetCurrentMap(const char *map);
+    virtual int SetDirMap(const char *map);
     virtual bool InitWindow();
     virtual HWND NewWindow();
     virtual HWND NewWindowForClientRectangle();

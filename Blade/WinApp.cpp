@@ -462,10 +462,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00410F6F
-* VC++ mangling:          ?SetCurrentMap@B_WinApp@@UAEHPBD@Z
+* VC++ mangling:          ?SetDirMap@B_WinApp@@UAEHPBD@Z
 */
 #ifdef BLD_NATIVE
-int B_WinApp::SetCurrentMap(const char *map)
+int B_WinApp::SetDirMap(const char *map)
 {
     return 0;
 }

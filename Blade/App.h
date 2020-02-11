@@ -46,7 +46,7 @@ public:
     virtual void PrintWarning(const char *Title, const char *Message) = 0;
     virtual int GetWindow() = 0;
     virtual int GetModule() = 0;
-    virtual int SetCurrentMap(const char *map) = 0;
+    virtual int SetDirMap(const char *map) = 0;
     int LoadWorld(const char *file_name);
     bool RunPythonFile(const char *file_name);
     int SetAppMode(const B_Name &mode);
