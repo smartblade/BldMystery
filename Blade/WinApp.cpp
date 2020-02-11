@@ -488,12 +488,12 @@ int B_WinApp::SetDirMap(const char *map)
 * Entry point:            0x00411034
 * VC++ mangling:          ?GetInputMode@B_WinApp@@UAEPBDPBD@Z
 */
-#ifdef BLD_NATIVE
+
 const char *B_WinApp::GetInputMode(const char *device)
 {
     return NULL;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
