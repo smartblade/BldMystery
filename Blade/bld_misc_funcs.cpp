@@ -17,6 +17,16 @@ B_IDataFile * read_points(B_IDataFile *file, B_PtrArray<world_point_t> *points)
 
 #endif
 
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0040CF10
+*/
+#ifdef BLD_NATIVE
+const char *ShowInputDialog(HINSTANCE module, HWND window, const char *text)
+{
+    return NULL;
+}
+#endif
 
 /*
 * Module:                 Blade.exe

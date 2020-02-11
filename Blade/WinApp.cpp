@@ -380,12 +380,12 @@ void B_WinApp::PrintWarning(const char *Title, const char *Message)
 * Entry point:            0x00410C3D
 * VC++ mangling:          ?Input@B_WinApp@@UAEPBDPBD@Z
 */
-#ifdef BLD_NATIVE
+
 const char *B_WinApp::Input(const char *text)
 {
-    return NULL;
+    return ShowInputDialog(this->module, this->window, text);
 }
-#endif
+
 
 /*
 ................................................................................

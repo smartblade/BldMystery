@@ -14,6 +14,8 @@ externdef ?setPosition@location_t@@QAEXABVB_Vector@@@Z: near
 l0040AD82 equ ?setPosition@location_t@@QAEXABVB_Vector@@@Z
 externdef ?setOrientation@location_t@@QAEXABVB_Vector@@@Z: near
 l0040ADA8 equ ?setOrientation@location_t@@QAEXABVB_Vector@@@Z
+externdef _ShowInputDialog: near
+l0040CF10 equ _ShowInputDialog
 externdef ??0B_WinApp@@QAE@PAXHPAD0@Z: near
 l0040F040 equ ??0B_WinApp@@QAE@PAXHPAD0@Z
 externdef ??1B_WinApp@@UAE@XZ: near

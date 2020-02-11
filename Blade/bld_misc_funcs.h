@@ -93,6 +93,7 @@ extern "C" {
 #endif
 
 extern B_IDataFile * read_points(B_IDataFile *file, B_PtrArray<world_point_t> *points);
+extern const char *ShowInputDialog(HINSTANCE module, HWND window, const char *text);
 extern B_IDataFile * read_sectors(B_IDataFile *file, B_PtrArray<B_Sector> *sectors);
 extern light_t *read_light(B_IDataFile *file);
 extern anim_t *LoadFromHDAnim(const char *anm_name);
