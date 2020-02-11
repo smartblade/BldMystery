@@ -16,4 +16,11 @@ public:
     void UnAcquire();
 };
 
+class LIB_EXP B_DInputKeyb : public B_InputDevice
+{
+public:
+    bool Acquire();
+    void UnAcquire();
+};
+
 #endif /* BINPUTC_H */

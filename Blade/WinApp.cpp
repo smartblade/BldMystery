@@ -500,12 +500,48 @@ const char *B_WinApp::GetInputMode(const char *device)
 * Entry point:            0x00411043
 * VC++ mangling:          ?SetInputMode@B_WinApp@@UAEHPBD0@Z
 */
-#ifdef BLD_NATIVE
+
 int B_WinApp::SetInputMode(const char *device, const char *mode)
 {
-    return 0;
+    if (!strcmp(device, "Mouse"))
+    {
+        B_WinMouse *mouse = static_cast<B_WinMouse *>(
+            this->GetAttachedDevice(device));
+        if (mouse != NULL)
+        {
+            if (!strcmp(mode, "ACQUIRE"))
+            {
+                mouse->Acquire();
+                ShowCursor(false);
+            }
+            if (!strcmp(mode, "UNACQUIRE"))
+            {
+                mouse->UnAcquire();
+                ShowCursor(true);
+            }
+            return true;
+        }
+    }
+    if (!strcmp(device, "Keyboard"))
+    {
+        B_DInputKeyb *keyboard = static_cast<B_DInputKeyb *>(
+            this->GetAttachedDevice(device));
+        if (keyboard != NULL)
+        {
+            if (!strcmp(mode, "ACQUIRE"))
+            {
+                keyboard->Acquire();
+            }
+            if (!strcmp(mode, "UNACQUIRE"))
+            {
+                keyboard->UnAcquire();
+            }
+            return true;
+        }
+    }
+    return false;
 }
-#endif
+
 
 /*
 ................................................................................
