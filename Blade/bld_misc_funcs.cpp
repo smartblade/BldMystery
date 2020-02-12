@@ -362,6 +362,7 @@ B_CameraEntity::B_CameraEntity(int, const B_Name &)
 
 #include "CDPlayer.h"
 
+bool showStartupDialog;
 int clientRectWidth;
 int clientRectHeight;
 B_PtrArray<world_point_t> gbl_world_points;

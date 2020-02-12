@@ -1,3 +1,5 @@
+public _showStartupDialog
+g005CCEB8 equ _showStartupDialog
 public _clientRectWidth
 g005CCEBC equ _clientRectWidth
 public _clientRectHeight

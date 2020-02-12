@@ -273,11 +273,60 @@ int B_WinApp::Quit()
 * Entry point:            0x004103D7
 * VC++ mangling:          ?ReadArguments@B_WinApp@@UAEXPBD@Z
 */
-#ifdef BLD_NATIVE
+
 void B_WinApp::ReadArguments(const char *arguments)
 {
+    B_App::ReadArguments(arguments);
+    for(unsigned int i = 0; i < this->arguments.size; i++)
+    {
+        if (*this->arguments.elements[i] == "nomouse")
+        {
+            this->noMouse = true;
+        }
+        else if (*this->arguments.elements[i] == "nodinput")
+        {
+            this->noDInput = true;
+            this->noMouse = true;
+        }
+        else if (*this->arguments.elements[i] == "noexclusivemouse")
+        {
+            this->noExclusiveMouse = true;
+        }
+        else if (*this->arguments.elements[i] == "rsoft16b")
+        {
+            this->rsoft16b = true;
+        }
+        else if (*this->arguments.elements[i] == "rOpenGL")
+        {
+            this->rOpenGL = true;
+        }
+        else if (*this->arguments.elements[i] == "r3Dfx")
+        {
+            this->r3Dfx = true;
+        }
+        else if (*this->arguments.elements[i] == "rD3D")
+        {
+            this->rD3D = true;
+        }
+        else if (*this->arguments.elements[i] == "dedicated")
+        {
+            this->noMouse = true;
+        }
+        else if (*this->arguments.elements[i] == "quick")
+        {
+            showStartupDialog = false;
+        }
+        else if (!strncmp(
+            this->arguments.elements[i]->String(),
+            "startpath:",
+            sizeof("startpath:") - 1))
+        {
+            const char *startPathArg = this->arguments.elements[i]->String();
+            this->startPath = startPathArg + sizeof("startpath:") - 1;
+        }
+    }
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

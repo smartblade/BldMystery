@@ -49,4 +49,12 @@ TEST(BladeAppTests, Fields)
     EXPECT_OFFSET_EQ(B_BladeApp, windowClass, 0x790);
     EXPECT_OFFSET_EQ(B_BladeApp, window, 0x7B8);
     EXPECT_OFFSET_EQ(B_BladeApp, module, 0x7BC);
+    EXPECT_OFFSET_EQ(B_BladeApp, noMouse, 0x7C8);
+    EXPECT_OFFSET_EQ(B_BladeApp, b07C9, 0x7C9);
+    EXPECT_OFFSET_EQ(B_BladeApp, noDInput, 0x7CA);
+    EXPECT_OFFSET_EQ(B_BladeApp, noExclusiveMouse, 0x7CB);
+    EXPECT_OFFSET_EQ(B_BladeApp, r3Dfx, 0x7CC);
+    EXPECT_OFFSET_EQ(B_BladeApp, rsoft16b, 0x7CD);
+    EXPECT_OFFSET_EQ(B_BladeApp, rOpenGL, 0x7CE);
+    EXPECT_OFFSET_EQ(B_BladeApp, rD3D, 0x7CF);
 }

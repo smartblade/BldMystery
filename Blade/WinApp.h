@@ -66,7 +66,15 @@ public:
     WNDCLASS windowClass;
     HWND window;
     HINSTANCE module;
-    char unknownFields3[16];
+    char unknownFields7C0[8];
+    bool noMouse;
+    bool b07C9;
+    bool noDInput;
+    bool noExclusiveMouse;
+    bool r3Dfx;
+    bool rsoft16b;
+    bool rOpenGL;
+    bool rD3D;
 };
 
 LRESULT CALLBACK WindowProcedure(

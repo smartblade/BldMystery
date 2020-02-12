@@ -106,6 +106,12 @@ extern bool FreeNetData(bool freeNetLibrary);
 
 /*
 * Module:                 Blade.exe
+* Data address:           0x005CCEB8
+*/
+extern bool showStartupDialog;
+
+/*
+* Module:                 Blade.exe
 * Data address:           0x005CCEBC
 */
 extern int clientRectWidth;
