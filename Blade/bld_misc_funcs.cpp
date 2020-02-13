@@ -312,7 +312,16 @@ char *get_map_for_net_game(const char *map)
 
 #endif
 
-
+/*
+* Module:                 Blade.exe
+* Entry point:            0x005B64CD
+*/
+#ifdef BLD_NATIVE
+bool IsDedicatedServer()
+{
+    return false;
+}
+#endif
 
 /*
 * Module:                 Blade.exe

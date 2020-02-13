@@ -13,7 +13,7 @@ class B_3DRasterDevice {
 public:
         virtual void unknown000() = 0;
         virtual void swap_buffers() = 0;
-        virtual void unknown008() = 0;
+        virtual void unknown008(void *) = 0;
         virtual void set_gamma_correction(float gamma) = 0;
         virtual float get_gamma_correction() = 0;
         virtual void set_contrast(float contrast) = 0;
@@ -161,7 +161,7 @@ public:
         ) = 0;
         virtual const char *get_raster_parameter(const char *parameter) = 0;
         virtual void get_size(int &w, int &h) = 0;
-        virtual void unknown204() = 0;
+        virtual void unknown204(int) = 0;
         virtual int set_window_size(int w, int h) = 0;
         virtual int get_window_size(int &w, int &h) = 0;
         virtual int n_video_modes() = 0;
@@ -177,7 +177,7 @@ public:
         ) = 0;
         virtual int full_screen() = 0;
         virtual void unknown228() = 0;
-        virtual void unknown22C() = 0;
+        virtual int unknown22C() = 0;
         virtual const char *class_id_name() = 0;
 };
 

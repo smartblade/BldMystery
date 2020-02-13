@@ -1376,6 +1376,8 @@ externdef _NetSetPPS: near
 l005B647F equ _NetSetPPS
 externdef _IsValidProtocol: near
 l005B6490 equ _IsValidProtocol
+externdef _IsDedicatedServer: near
+l005B64CD equ _IsDedicatedServer
 externdef _LoadNetModule: near
 l005B65D2 equ _LoadNetModule
 externdef _FreeNetData: near

@@ -361,13 +361,97 @@ void B_WinApp::ReadLevel(const char *file_name)
 * Entry point:            0x0041073A
 * VC++ mangling:          ?WindowProcedure@B_WinApp@@UAEJPAUHWND__@@IIJ@Z
 */
-#ifdef BLD_NATIVE
+
 LRESULT B_WinApp::WindowProcedure(
     HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-    return 0;
+    switch (uMsg)
+    {
+        case WM_SIZING:
+        {
+            this->ProcessEvents();
+            PRECT rect = reinterpret_cast<PRECT>(lParam);
+            SetWindowText(
+                this->window,
+                vararg(
+                    "Size %dx%d",
+                    rect->right - rect->left,
+                    rect->bottom - rect->top));
+            return true;
+        }
+        case WM_MOVING:
+            this->ProcessEvents();
+            return true;
+        case WM_ACTIVATEAPP:
+            if (IsDedicatedServer())
+                break;
+            if ((B_3D_raster_device != NULL) &&
+                (B_3D_raster_device->unknown22C() == 3))
+            {
+                break;
+            }
+            this->isActive = this->no_sleep = (wParam != 0);
+            this->Mouse(this->no_sleep);
+            if (!this->isActive)
+            {
+                this->StopTime();
+            }
+            else if (this->b05D4)
+            {
+                this->RestartTime();
+            }
+            if (B_3D_raster_device != NULL)
+            {
+                if (B_3D_raster_device->full_screen())
+                {
+                    if (!this->isActive)
+                    {
+                        B_3D_raster_device->unknown204(wParam);
+                        CloseWindow(this->window);
+                    }
+                    else
+                    {
+                        OpenIcon(this->window);
+                        B_3D_raster_device->unknown204(wParam);
+                    }
+                }
+                Unknown004CD5EC unknown(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                this->unknown_method010(&unknown);
+                B_3D_raster_device->unknown008(&unknown);
+            }
+            return false;
+        case WM_SYSKEYDOWN:
+            return false;
+        case WM_SYSCHAR:
+            return false;
+        case WM_HELP:
+            return false;
+        case WM_CLOSE:
+            PostMessage(hwnd, WM_QUIT, 0, 0);
+            break;
+        case WM_COPYDATA:
+        {
+            PCOPYDATASTRUCT copyData = reinterpret_cast<PCOPYDATASTRUCT>(
+                lParam);
+            if (copyData->dwData == 101)
+            {
+                PyRun_InteractiveString(reinterpret_cast<char *>(
+                    copyData->lpData));
+            }
+            break;
+        }
+        case WM_COMMAND:
+        {
+            int menuId = LOWORD(wParam);
+            if (menuId != 40001/*File->Exit*/)
+                break;
+            PostQuitMessage(0);
+            break;
+        }
+    }
+    return DefWindowProc(hwnd, uMsg, wParam, lParam);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

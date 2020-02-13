@@ -126,7 +126,9 @@ public:
     float time;
     char unknownFields310[6];
     bool no_sleep;
-    char unknownFields320[20];
+    bool isActive;
+    bool b05D4;
+    char unknownFields320[16];
     const char *commandLine;
     B_Name mode;
     char *map_to_load;
