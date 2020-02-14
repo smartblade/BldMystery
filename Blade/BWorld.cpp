@@ -51,6 +51,18 @@ double B_World::get_time()
 #endif
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x0043A6B8
+* VC++ mangling:          ?SetTime@B_World@@QAEHN@Z
+*/
+#ifdef BLD_NATIVE
+int B_World::SetTime(double time)
+{
+    return true;
+}
+#endif
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................

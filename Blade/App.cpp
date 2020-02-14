@@ -181,15 +181,13 @@ int B_App::Quit()
 * VC++ mangling:          ?SetTime@B_App@@QAEHN@Z
 */
 
-#ifdef BLD_NATIVE
-
 int B_App::SetTime(double time)
 {
-    return 0;
+    B_world.SetTime(time);
+    this->clock1->SetTime(time);
+    this->time = time;
+    return true;
 }
-
-#endif
-
 
 /*
 * Module:                 Blade.exe

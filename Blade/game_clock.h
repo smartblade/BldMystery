@@ -12,7 +12,7 @@ public:
         virtual void unknown008();
         virtual void unknown00C();
         virtual void unknown010();
-        virtual void unknown014();
+        virtual void SetTime(double time);
         virtual void unknown018();
         virtual void unknown01C();
         virtual void unknown020();
