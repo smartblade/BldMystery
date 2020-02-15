@@ -7,7 +7,7 @@
 class B_Clock
 {
 public:
-    virtual void unknown000();
+    virtual double GetSystemTime();
     virtual ~B_Clock();
     virtual void SetTimeSpeed(double speed);
     virtual double GetTimeSpeed();
