@@ -1,14 +1,14 @@
 
-#ifndef GAME_CLOCK_H
+#ifndef B_CLOCK_H
 
-#define GAME_CLOCK_H
+#define B_CLOCK_H
 
 
-class game_clock_t
+class B_Clock
 {
 public:
         virtual void unknown000();
-        virtual ~game_clock_t();
+        virtual ~B_Clock();
         virtual void SetTimeSpeed(double speed);
         virtual double GetTimeSpeed();
         virtual double GetTime();
@@ -24,5 +24,5 @@ public:
         char unknownFields2[36];
 };
 
-#endif /* GAME_CLOCK_H */
+#endif /* B_CLOCK_H */
 

@@ -406,15 +406,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Clock.h"
+				>
+			</File>
+			<File
 				RelativePath=".\en_control.h"
 				>
 			</File>
 			<File
 				RelativePath=".\entity.h"
-				>
-			</File>
-			<File
-				RelativePath=".\game_clock.h"
 				>
 			</File>
 			<File

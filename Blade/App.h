@@ -7,7 +7,7 @@
 #include <bld_python.h>
 #include "BBLibc.h"
 #include "entity.h"
-#include "game_clock.h"
+#include "Clock.h"
 #include <array.h>
 #include "Location.h"
 #include "StringValue.h"
@@ -105,8 +105,8 @@ public:
     boolean bUnknown01C;
     int listenerMode;
     char unknownFields1000[8];
-    game_clock_t *clock1;
-    game_clock_t *clock2;
+    B_Clock *clock1;
+    B_Clock *clock2;
     PyObject *CDCallback;
     B_PtrArray<B_Name> arguments;
     void *console;
