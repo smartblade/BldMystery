@@ -241,14 +241,10 @@ void B_App::RestartTime()
 * VC++ mangling:          ?GetTimeSpeed@B_App@@QAENXZ
 */
 
-#ifdef BLD_NATIVE
-
 double B_App::GetTimeSpeed()
 {
-    return 0.0;
+    return this->clock1->GetTimeSpeed();
 }
-
-#endif
 
 
 /*

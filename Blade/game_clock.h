@@ -10,7 +10,7 @@ public:
         virtual void unknown000();
         virtual ~game_clock_t();
         virtual void unknown008();
-        virtual void unknown00C();
+        virtual double GetTimeSpeed();
         virtual void unknown010();
         virtual void SetTime(double time);
         virtual void unknown018();
