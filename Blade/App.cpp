@@ -345,7 +345,7 @@ void B_App::LoadLevel(const char *script)
 
         this->InitPythonPath();
 
-        this->clock1->unknown018();
+        this->clock1->Reset();
 
         this->time = 0.0;
 

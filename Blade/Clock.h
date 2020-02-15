@@ -13,7 +13,7 @@ public:
     virtual double GetTimeSpeed();
     virtual double GetTime();
     virtual void SetTime(double time);
-    virtual void unknown018();
+    virtual void Reset();
     virtual void StopTime();
     virtual void RestartTime();
     virtual bool IsActive();
