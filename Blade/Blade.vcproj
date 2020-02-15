@@ -453,6 +453,10 @@
 				RelativePath=".\WinApp.h"
 				>
 			</File>
+			<File
+				RelativePath=".\WinClock.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"

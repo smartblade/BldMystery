@@ -265,6 +265,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\WinClockTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\WorldTests.cpp"
 				>
 			</File>
