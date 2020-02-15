@@ -217,13 +217,10 @@ int B_App::GoToTime(double time)
 * VC++ mangling:          ?StopTime@B_App@@QAEXXZ
 */
 
-#ifdef BLD_NATIVE
-
 void B_App::StopTime()
 {
+    this->clock1->StopTime();
 }
-
-#endif
 
 
 /*
@@ -357,7 +354,7 @@ void B_App::LoadLevel(const char *script)
 
         this->time = 0.0;
 
-        this->clock1->unknown01C();
+        this->clock1->StopTime();
 
         this->unknownPtrForCamera = NUM_3F266666;
 

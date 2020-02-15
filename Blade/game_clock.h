@@ -14,7 +14,7 @@ public:
         virtual void unknown010();
         virtual void SetTime(double time);
         virtual void unknown018();
-        virtual void unknown01C();
+        virtual void StopTime();
         virtual void unknown020();
 
         boolean bUnknown04;
