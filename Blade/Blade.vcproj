@@ -364,6 +364,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\WinClock.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\WorldToMBW.cpp"
 				>
 			</File>

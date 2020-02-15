@@ -770,6 +770,8 @@ externdef _loadSoundDataBase: near
 l004C0897 equ _loadSoundDataBase
 externdef _saveSoundDataBase: near
 l004C08F0 equ _saveSoundDataBase
+externdef ?IsActive@B_Clock@@UAE_NXZ: near
+l004CC5F0 equ ?IsActive@B_Clock@@UAE_NXZ
 externdef ??0Unknown004CD5EC@@QAE@MMMMMM@Z: near
 l004CD5EC equ ??0Unknown004CD5EC@@QAE@MMMMMM@Z
 externdef ?unknown004CD634@Unknown004CD5EC@@QAEXXZ: near

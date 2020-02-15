@@ -16,6 +16,7 @@ public:
     virtual void unknown018();
     virtual void StopTime();
     virtual void RestartTime();
+    virtual bool IsActive();
 
     bool isActive;
     double fUnknown08;
