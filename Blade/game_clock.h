@@ -15,7 +15,7 @@ public:
         virtual void SetTime(double time);
         virtual void unknown018();
         virtual void StopTime();
-        virtual void unknown020();
+        virtual void RestartTime();
 
         boolean bUnknown04;
         double fUnknown08;

@@ -229,13 +229,10 @@ void B_App::StopTime()
 * VC++ mangling:          ?RestartTime@B_App@@QAEXXZ
 */
 
-#ifdef BLD_NATIVE
-
 void B_App::RestartTime()
 {
+    this->clock1->RestartTime();
 }
-
-#endif
 
 
 /*
@@ -514,7 +511,7 @@ void B_App::LoadLevel(const char *script)
         }
 
         if (this->mode == "Game") {
-                this->clock1->unknown020();
+                this->clock1->RestartTime();
         }
 
         StartGSQR();
