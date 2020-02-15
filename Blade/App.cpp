@@ -253,14 +253,10 @@ double B_App::GetTimeSpeed()
 * VC++ mangling:          ?SetTimeSpeed@B_App@@QAEXN@Z
 */
 
-#ifdef BLD_NATIVE
-
 void B_App::SetTimeSpeed(double speed)
 {
+    this->clock1->SetTimeSpeed(speed);
 }
-
-#endif
-
 
 /*
 ................................................................................
