@@ -19,7 +19,7 @@ public:
     virtual bool IsActive();
 
     bool isActive;
-    double fUnknown08;
+    double timeSpeed;
     double fUnknown10;
     double fUnknown18;
     char unknownFields2[36];
