@@ -189,21 +189,20 @@ int B_App::SetTime(double time)
     return true;
 }
 
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004120D3
 * VC++ mangling:          ?GoToTime@B_App@@QAEHN@Z
 */
 
-#ifdef BLD_NATIVE
-
 int B_App::GoToTime(double time)
 {
-    return 0;
+    B_world.GoToTime(time);
+    this->clock1->SetTime(time);
+    this->time = time;
+    return true;
 }
-
-#endif
-
 
 /*
 ................................................................................

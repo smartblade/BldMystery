@@ -504,6 +504,8 @@ externdef ?get_time@B_World@@QAENXZ: near
 l0043A6A4 equ ?get_time@B_World@@QAENXZ
 externdef ?SetTime@B_World@@QAEHN@Z: near
 l0043A6B8 equ ?SetTime@B_World@@QAEHN@Z
+externdef ?GoToTime@B_World@@QAEXN@Z: near
+l0043AC07 equ ?GoToTime@B_World@@QAEXN@Z
 externdef ?SetSun@B_World@@QAEXHABVB_Vector@@@Z: near
 l0043C8B2 equ ?SetSun@B_World@@QAEXHABVB_Vector@@@Z
 externdef ?FindSectorIndex@B_World@@QAEHABVB_Vector@@@Z: near

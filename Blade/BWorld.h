@@ -79,6 +79,7 @@ public:
     void unknown_00439F5D();
     double get_time();
     int SetTime(double time);
+    void GoToTime(double time);
     void SetSun(int exists, const B_Vector &position);
     int FindSectorIndex(const B_Vector &point);
     const char *GenerateEntityName(const char *prefix);
