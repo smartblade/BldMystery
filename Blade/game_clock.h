@@ -11,7 +11,7 @@ public:
         virtual ~game_clock_t();
         virtual void SetTimeSpeed(double speed);
         virtual double GetTimeSpeed();
-        virtual void unknown010();
+        virtual double GetTime();
         virtual void SetTime(double time);
         virtual void unknown018();
         virtual void StopTime();

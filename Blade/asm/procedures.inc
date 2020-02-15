@@ -92,6 +92,8 @@ externdef ?SetTime@B_App@@QAEHN@Z: near
 l0041208A equ ?SetTime@B_App@@QAEHN@Z
 externdef ?GoToTime@B_App@@QAEHN@Z: near
 l004120D3 equ ?GoToTime@B_App@@QAEHN@Z
+externdef ?GetTime@B_App@@QAENXZ: near
+l0041211C equ ?GetTime@B_App@@QAENXZ
 externdef ?StopTime@B_App@@QAEXXZ: near
 l00412138 equ ?StopTime@B_App@@QAEXXZ
 externdef ?RestartTime@B_App@@QAEXXZ: near

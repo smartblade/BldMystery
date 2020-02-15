@@ -59,6 +59,7 @@ public:
     int SetListenerMode(int mode, const B_Vector &v);
     int SetTime(double time);
     int GoToTime(double time);
+    double GetTime();
     void StopTime();
     void RestartTime();
     void SetTimeSpeed(double speed);
