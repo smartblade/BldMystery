@@ -55,18 +55,19 @@ public:
     virtual void Mouse(bool acquire);
     virtual LRESULT WindowProcedure(
         HWND hwnd, UINT uMsg, WPARAM wParam,  LPARAM lParam);
-    B_WinApp(void *module, int nCmdShow, char *cmdLine, void *unknown);
+    B_WinApp(HINSTANCE module, int nCmdShow, char *cmdLine, WNDPROC winProc);
 
     B_Name rasterLibraryName;
     B_Name startPath;
     void (*destroyRasterCB)(B_3DRasterDevice *raster);
-    char unknownFields784[4];
+    B_3DRasterDevice *(*createRasterCB)(HWND, HMODULE, HMODULE);
     HMODULE rasterLibrary;
     WNDPROC winProc;
     WNDCLASS windowClass;
     HWND window;
     HINSTANCE module;
-    char unknownFields7C0[8];
+    bool b07C0;
+    int unknown07C4;
     bool noMouse;
     bool b07C9;
     bool noDInput;

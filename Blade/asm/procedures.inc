@@ -16,8 +16,8 @@ externdef ?setOrientation@location_t@@QAEXABVB_Vector@@@Z: near
 l0040ADA8 equ ?setOrientation@location_t@@QAEXABVB_Vector@@@Z
 externdef _ShowInputDialog: near
 l0040CF10 equ _ShowInputDialog
-externdef ??0B_WinApp@@QAE@PAXHPAD0@Z: near
-l0040F040 equ ??0B_WinApp@@QAE@PAXHPAD0@Z
+externdef ??0B_WinApp@@QAE@PAUHINSTANCE__@@HPADP6GJPAUHWND__@@IIJ@Z@Z: near
+l0040F040 equ ??0B_WinApp@@QAE@PAUHINSTANCE__@@HPADP6GJPAUHWND__@@IIJ@Z@Z
 externdef ??1B_WinApp@@UAE@XZ: near
 l0040F1B4 equ ??1B_WinApp@@UAE@XZ
 externdef ?InitWindow@B_WinApp@@UAE_NXZ: near
@@ -68,6 +68,8 @@ externdef ?GetWindow@B_WinApp@@UAEIXZ: near
 l00411170 equ ?GetWindow@B_WinApp@@UAEIXZ
 externdef ?GetModule@B_WinApp@@UAEIXZ: near
 l00411190 equ ?GetModule@B_WinApp@@UAEIXZ
+externdef ??0B_App@@QAE@PAD@Z: near
+l004113CE equ ??0B_App@@QAE@PAD@Z
 externdef ??1B_App@@UAE@XZ: near
 l00411843 equ ??1B_App@@UAE@XZ
 externdef ?Start@B_App@@UAE_NXZ: near
@@ -770,6 +772,8 @@ externdef _loadSoundDataBase: near
 l004C0897 equ _loadSoundDataBase
 externdef _saveSoundDataBase: near
 l004C08F0 equ _saveSoundDataBase
+externdef ??0B_WinClock@@QAE@XZ: near
+l004CC1C0 equ ??0B_WinClock@@QAE@XZ
 externdef ?GetTimeSpeed@B_Clock@@UAENXZ: near
 l004CC480 equ ?GetTimeSpeed@B_Clock@@UAENXZ
 externdef ?IsActive@B_Clock@@UAE_NXZ: near
@@ -1398,8 +1402,8 @@ externdef _GetWinApplication: near
 l005B9BAD equ _GetWinApplication
 externdef _GetApplication: near
 l005B9BB7 equ _GetApplication
-externdef ??0B_BladeApp@@QAE@PAXHPAD@Z: near
-l005B9BC1 equ ??0B_BladeApp@@QAE@PAXHPAD@Z
+externdef ??0B_BladeApp@@QAE@PAUHINSTANCE__@@HPAD@Z: near
+l005B9BC1 equ ??0B_BladeApp@@QAE@PAUHINSTANCE__@@HPAD@Z
 externdef ?Start@B_BladeApp@@UAE_NXZ: near
 l005B9BF0 equ ?Start@B_BladeApp@@UAE_NXZ
 externdef ?ProcessEvents@B_BladeApp@@UAE_NXZ: near

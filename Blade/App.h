@@ -19,6 +19,7 @@ class B_InputDevice;
 class B_App
 {
 public:
+    B_App(char *cmdLine);
     virtual void ReadArguments(const char *arguments);
     virtual void StringSplit(
         const char *str, const char *sep, B_PtrArray<B_Name> *tokens);

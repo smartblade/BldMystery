@@ -9,6 +9,7 @@
 class B_WinClock : public B_Clock
 {
 public:
+    B_WinClock();
     virtual double GetSystemTime();
 };
 

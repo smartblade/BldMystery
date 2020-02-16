@@ -3,6 +3,7 @@
 #include <console.h>
 #include <raster_device.h>
 #include "BladeApp.h"
+#include "WinClock.h"
 #include <BInputc.h>
 #include "bld_misc_funcs.h"
 
@@ -10,16 +11,39 @@
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0040F040
-* VC++ mangling:          ??0B_WinApp@@QAE@PAXHPAD0@Z
+* VC++ mangling:          ??0B_WinApp@@QAE@PAUHINSTANCE__@@HPADP6GJPAUHWND__@@IIJ@Z@Z
 */
 
-#ifdef BLD_NATIVE_CONSTRUCTOR
-
-B_WinApp::B_WinApp(void *module, int nCmdShow, char *cmdLine, void *unknown)
+B_WinApp::B_WinApp(HINSTANCE module, int nCmdShow, char *cmdLine, WNDPROC winProc)
+:
+B_App(cmdLine)
 {
+    this->noExclusiveMouse = false;
+    this->noMouse = false;
+    this->b07C9 = false;
+    this->noDInput = false;
+    this->r3Dfx = false;
+    this->rsoft16b = false;
+    this->rOpenGL = false;
+    this->rD3D = false;
+    this->destroyRasterCB = NULL;
+    this->createRasterCB = NULL;
+    this->rasterLibrary = NULL;
+    this->b07C0 = true;
+    this->winProc = winProc;
+    this->module = module;
+    this->clock1 = new B_WinClock();
+    if (this->clock1 == NULL)
+    {
+        this->ExitWithError("Blade", "No se ha podido inicializar reloj.");
+    }
+    this->clock2 = new B_WinClock();
+    if (this->clock2 == NULL)
+    {
+        this->ExitWithError("Blade", "No se ha podido inicializar reloj (2).");
+    }
 }
 
-#endif
 
 /*
 * Module:                 Blade.exe

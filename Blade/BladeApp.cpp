@@ -9,7 +9,7 @@
 * Entry point:            0x005B9B60
 */
 
-B_App* CreateApplication(void *module, int nCmdShow, char *cmdLine)
+B_App* CreateApplication(HINSTANCE module, int nCmdShow, char *cmdLine)
 {
     B_BladeApp *new_application = new B_BladeApp(module, nCmdShow, cmdLine);
     gbl_application = new_application;
@@ -42,10 +42,10 @@ B_App* GetApplication()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B9BC1
-* VC++ mangling:          ??0B_BladeApp@@QAE@PAXHPAD@Z
+* VC++ mangling:          ??0B_BladeApp@@QAE@PAUHINSTANCE__@@HPAD@Z
 */
 
-B_BladeApp::B_BladeApp(void *module, int nCmdShow, char *cmdLine)
+B_BladeApp::B_BladeApp(HINSTANCE module, int nCmdShow, char *cmdLine)
 :
 B_WinApp(module, nCmdShow, cmdLine, NULL)
 {

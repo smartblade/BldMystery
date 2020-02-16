@@ -11,13 +11,13 @@ public:
     virtual bool Start();
     virtual bool ProcessEvents();
     virtual void End();
-    B_BladeApp(void *module, int nCmdShow, char *cmdLine);
+    B_BladeApp(HINSTANCE module, int nCmdShow, char *cmdLine);
 };
 
 extern "C"
 {
 
-extern B_App *CreateApplication(void *module, int nCmdShow, char *cmdLine);
+extern B_App *CreateApplication(HINSTANCE module, int nCmdShow, char *cmdLine);
 extern B_WinApp *GetWinApplication();
 extern B_App* GetApplication();
 

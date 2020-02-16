@@ -19,6 +19,17 @@
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x004113CE
+* VC++ mangling:          ??0B_App@@QAE@PAD@Z
+*/
+#ifdef BLD_NATIVE
+B_App::B_App(char *cmdLine)
+{
+}
+#endif
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x00411843
 * VC++ mangling:          ??1B_App@@UAE@XZ
 */

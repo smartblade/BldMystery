@@ -349,13 +349,13 @@ bool FreeNetData(bool freeNetLibrary)
 
 #ifdef BLD_NATIVE
 
-class B_WinApp
+class B_WinClock
 {
 public:
-    B_WinApp(void *, int, char *, void *);
+    B_WinClock();
 };
 
-B_WinApp::B_WinApp(void *, int, char *, void *)
+B_WinClock::B_WinClock()
 {
 }
 

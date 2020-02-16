@@ -1,6 +1,17 @@
 
-#include "Clock.h"
+#include "WinClock.h"
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004CC1C0
+* VC++ mangling:          ??0B_WinClock@@QAE@XZ
+*/
+#ifdef BLD_NATIVE_CONSTRUCTOR
+B_WinClock::B_WinClock()
+{
+}
+#endif
 
 /*
 * Module:                 Blade.exe
