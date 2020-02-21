@@ -3,6 +3,15 @@
 #include "bld_misc_funcs.h"
 
 
+/* File:                  Matrix.cpp */
+/* Begin of file:         0x00404BE0 */
+/* End of file:           0x00407B50 */
+
+
+
+/* Begin of file:         0x00408270 */
+
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004088F4
@@ -17,6 +26,23 @@ B_IDataFile * read_points(B_IDataFile *file, B_PtrArray<world_point_t> *points)
 
 #endif
 
+/* End of file:           0x00409C20 */
+
+
+
+/* File:                  Vector.cpp */
+/* Begin of file:         0x0040A2A0 */
+/* End of file:           0x0040AD10 */
+
+/* File:                  Location.cpp */
+/* Begin of file:         0x0040AD10 */
+/* End of file:           0x0040B560 */
+
+
+
+/* Begin of file:         0x0040CF10 */
+
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0040CF10
@@ -27,6 +53,35 @@ const char *ShowInputDialog(HINSTANCE module, HWND window, const char *text)
     return NULL;
 }
 #endif
+
+/* End of file:           0x0040CFF0 */
+
+
+
+/* File:                  WinApp.cpp */
+/* Begin of file:         0x0040F040 */
+/* End of file:           0x004111B0 */
+
+/* File:                  App.cpp */
+/* Begin of file:         0x004111B0 */
+/* End of file:           0x004182F0 */
+
+
+
+/* File:                  CDExt.cpp */
+/* Begin of file:         0x00427750 */
+/* End of file:           0x00427880 */
+
+/* File:                  ObjExt.cpp */
+/* Begin of file:         0x00427880 */
+/* End of file:           0x0042D090 */
+
+/* File:                  Atmosphere.cpp */
+/* Begin of file:         0x0042D090 */
+/* End of file:           0x0042D1F0 */
+
+/* Begin of file:         0x0042D1F0 */
+
 
 /*
 * Module:                 Blade.exe
@@ -41,6 +96,20 @@ B_IDataFile * read_sectors(B_IDataFile *file, B_PtrArray<B_Sector> *sectors)
 }
 
 #endif
+
+/* End of file:           0x004394B0 */
+
+/* File:                  BWorld.cpp */
+/* Begin of file:         0x004394B0 */
+/* End of file:           0x00443190 */
+
+/* File:                  WorldToMBW.cpp */
+/* Begin of file:         0x00443190 */
+/* End of file:           0x00443BC0 */
+
+
+
+/* Begin of file:         0x00449EE0 */
 
 
 /*
@@ -57,6 +126,16 @@ light_t * read_light(B_IDataFile *file)
 
 #endif
 
+/* End of file:           0x0044D320 */
+
+
+
+/* File:                  MaterialExt.cpp */
+/* Begin of file:         0x0044E9A0 */
+/* End of file:           0x0044ED90 */
+
+/* Begin of file:         0x0044ED90 */
+
 
 /*
 * Module:                 Blade.exe
@@ -71,6 +150,12 @@ void unknown_18F8_class::unknown_00451A21(void *, int, int)
 }
 
 #endif
+
+/* End of file:           0x00453B10 */
+
+
+
+/* Begin of file:         0x004755E0 */
 
 
 /*
@@ -148,6 +233,18 @@ B_IDataFile &operator >>(B_IDataFile &file, anim_t *anim)
 
 #endif
 
+/* End of file:           0x00477B90 */
+
+
+
+/* File:                  WinClock.cpp */
+/* Begin of file:         0x004CC1C0 */
+/* End of file:           0x004CC640 */
+
+
+
+/* Begin of file:         0x004CD580 */
+
 
 /*
 * Module:                 Blade.exe
@@ -170,6 +267,19 @@ void Unknown004CD5EC::unknown004CD634()
 {
 }
 #endif
+
+/* End of file:           0x004CDB30 */
+
+
+
+/* File:                  CameraEntity.cpp */
+/* Begin of file:         0x004EAD20 */
+/* End of file:           0x004EB650 */
+
+
+
+/* Begin of file:         0x004F4E60 */
+
 
 /*
 * Module:                 Blade.exe
@@ -216,6 +326,13 @@ B_ODataFile& operator <<(B_ODataFile &file, const B_Combustion &combustion)
 
 #endif
 
+/* End of file:           0x004F8F80 */
+
+
+
+/* Begin of file:         0x005728B0 */
+
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00572D73
@@ -231,6 +348,12 @@ int unknown204::InsideAA(int AA)
 
 #endif
 
+/* End of file:           0x005758C0 */
+
+
+
+/* Begin of file:         0x00586880 */
+
 
 /*
 * Module:                 Blade.exe
@@ -242,6 +365,37 @@ anim_t *LoadFromHDAnim(const char *anm_name)
     return NULL;
 }
 #endif
+
+/* End of file:           0x0058B630 */
+
+
+
+/* File:                  en_control.cpp */
+/* Begin of file:         0x00590480 */
+/* End of file:           0x00596E90 */
+
+
+
+/* Begin of file:         0x005AA730 */
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x005AA881
+* VC++ mangling:          ?Update@B_ProcTexture@@QAEXXZ
+*/
+#ifdef BLD_NATIVE
+void B_ProcTexture::Update()
+{
+}
+#endif
+
+/* End of file:           0x005AA920 */
+
+
+
+/* Begin of file:         0x005AC4F0 */
+
 
 /*
 * Module:                 Blade.exe
@@ -256,17 +410,10 @@ void Set007EA988To01()
 
 #endif
 
+/* End of file:           0x005ACBC0 */
 
-/*
-* Module:                 Blade.exe
-* Entry point:            0x005AA881
-* VC++ mangling:          ?Update@B_ProcTexture@@QAEXXZ
-*/
-#ifdef BLD_NATIVE
-void B_ProcTexture::Update()
-{
-}
-#endif
+/* Begin of file:         0x005ACBC0 */
+
 
 /*
 * Module:                 Blade.exe
@@ -312,6 +459,15 @@ char *get_map_for_net_game(const char *map)
 
 #endif
 
+/* End of file:           0x005B5340 */
+
+/* File:                  NetExt.cpp */
+/* Begin of file:         0x005B5340 */
+/* End of file:           0x005B64C0 */
+
+/* Begin of file:         0x005B64C0 */
+
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005B64CD
@@ -346,6 +502,15 @@ bool FreeNetData(bool freeNetLibrary)
     return false;
 }
 #endif
+
+/* End of file:           0x005B6880 */
+
+
+
+/* File:                  BladeApp.cpp */
+/* Begin of file:         0x005B9B60 */
+/* End of file:           0x005B9C30 */
+
 
 #ifdef BLD_NATIVE
 
