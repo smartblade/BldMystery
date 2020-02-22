@@ -989,11 +989,113 @@ bool B_App::RunPythonFile(const char *file_name)
 * Entry point:            0x00415811
 * VC++ mangling:          ?ReadArguments@B_App@@UAEXPBD@Z
 */
-#ifdef BLD_NATIVE
-void B_App::ReadArguments(const char *arguments)
+
+void B_App::ReadArguments(const char *args)
 {
+    static char defaultMapName[] = "";
+    static char defaultRasterName[] = "";
+    static char defaultSoundDeviceId[] = "";
+
+    assert(args);
+    this->StringSplit(args, " -", &this->arguments);
+    for(unsigned int i = 0; i < this->arguments.size; i++)
+    {
+        if (*this->arguments.elements[i] == "nosound")
+        {
+            this->noSound = true;
+        }
+        else if (*this->arguments.elements[i] == "cls")
+        {
+            this->cls = true;
+        }
+        else if (*this->arguments.elements[i] == "console")
+        {
+            this->showConsole = true;
+        }
+        /* FIXME two "nosound" arguments*/
+        else if (*this->arguments.elements[i] == "nosound")
+        {
+            this->noSound = true;
+        }
+        else if (!strncmp(
+            this->arguments.elements[i]->String(),
+            "map:",
+            sizeof("map:") - 1))
+        {
+            const B_Name &map = *this->arguments.elements[i];
+            this->mapName = map;
+        }
+        else if (!strncmp(
+            this->arguments.elements[i]->String(),
+            "dev:",
+            sizeof("dev:") - 1))
+        {
+            const B_Name &raster = *this->arguments.elements[i];
+            this->rasterName = raster;
+        }
+        else if (!strncmp(
+            this->arguments.elements[i]->String(),
+            "snd:",
+            sizeof("snd:") - 1))
+        {
+            const B_Name &snd = *this->arguments.elements[i];
+            this->soundDeviceId = snd;
+        }
+        else if (!strncmp(
+            this->arguments.elements[i]->String(),
+            "nogamespy",
+            4))/* FIXME should be whole world comparison*/
+        {
+            SetGameSpySupport(false);
+        }
+        else if (*this->arguments.elements[i] == "dedicated")
+        {
+            SetDedicatedServer(true);
+            this->showConsole = true;
+            this->mapName = "map:Arena1";
+            this->soundDeviceId = "snd:6";
+            this->rasterName = "dev:rNull.dlx";
+            this->noSound = true;
+        }
+    }
+    B_PtrArray<B_Name> mapTokens;
+    const char *mapString = this->mapName;
+    this->StringSplit(mapString, ":", &mapTokens);
+    if (mapTokens.size != 2)
+    {
+        this->mapName = defaultMapName;
+    }
+    else
+    {
+        const B_Name &map = *mapTokens.elements[1];
+        this->mapName = map.String();
+    }
+    B_PtrArray<B_Name> rasterTokens;
+    const char *rasterString = this->rasterName;
+    this->StringSplit(rasterString, ":", &rasterTokens);
+    if (rasterTokens.size != 2)
+    {
+        this->rasterName = defaultRasterName;
+    }
+    else
+    {
+        const B_Name &raster = *rasterTokens.elements[1];
+        this->rasterName = raster.String();
+    }
+    B_PtrArray<B_Name> sndTokens;
+    const char *sndString = this->soundDeviceId;
+    this->StringSplit(sndString, ":", &sndTokens);
+    if (sndTokens.size != 2)
+    {
+        this->soundDeviceId = defaultSoundDeviceId;
+    }
+    else
+    {
+        const B_Name &snd = *sndTokens.elements[1];
+        this->soundDeviceId = snd.String();
+    }
 }
-#endif
+
 
 /*
 ................................................................................

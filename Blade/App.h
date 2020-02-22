@@ -20,7 +20,7 @@ class B_App
 {
 public:
     B_App(char *cmdLine);
-    virtual void ReadArguments(const char *arguments);
+    virtual void ReadArguments(const char *args);
     virtual void StringSplit(
         const char *str, const char *sep, B_PtrArray<B_Name> *tokens);
     virtual bool InitPythonPath();
@@ -130,13 +130,15 @@ public:
     bool no_sleep;
     bool isActive;
     bool b05D4;
+    bool cls;
     char unknownFields320[16];
     const char *commandLine;
     B_Name mode;
     char *map_to_load;
     char *pyStatement;
     char *auxText;
-    char unknownFields10[7];
+    char unknownFields10[6];
+    bool noSound;
     bool showConsole;
     B_Name mapName;
     B_Name rasterName;

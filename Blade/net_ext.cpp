@@ -16,17 +16,12 @@
 * Module:                 Blade.exe
 * Entry point:            0x005B5340
 */
-
 #ifdef BLD_NATIVE
-// TODO fix prototype
-void SetGameSpySupport()
+void SetGameSpySupport(boolean enabled)
 {
         assert("SetGameSpySupport" == NULL);
 }
-
 #endif
-
-
 
 /*
 * Module:                 Blade.exe

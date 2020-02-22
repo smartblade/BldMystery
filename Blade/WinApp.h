@@ -8,7 +8,7 @@
 class B_WinApp : public B_App
 {
 public:
-    virtual void ReadArguments(const char *arguments);
+    virtual void ReadArguments(const char *args);
     virtual void ProcessMessage();
     virtual void *unknown_method010(void *);
     virtual ~B_WinApp();

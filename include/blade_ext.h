@@ -1396,6 +1396,7 @@ LIB_EXP int IsValidProtocol(int protocol);
 LIB_EXP int GetDedicatedServerState(void);
 LIB_EXP void SetDedicatedServerState(int dedicated);
 LIB_EXP void PersonChangeAnmSoundIndex(const char *person_name, int index);
+LIB_EXP void SetGameSpySupport(boolean enabled);
 LIB_EXP void StartGSQR(void);
 LIB_EXP int GetSplinePos(void *spline, float time, void *pos);
 LIB_EXP int AddNodeSpline(

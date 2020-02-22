@@ -298,9 +298,9 @@ int B_WinApp::Quit()
 * VC++ mangling:          ?ReadArguments@B_WinApp@@UAEXPBD@Z
 */
 
-void B_WinApp::ReadArguments(const char *arguments)
+void B_WinApp::ReadArguments(const char *args)
 {
-    B_App::ReadArguments(arguments);
+    B_App::ReadArguments(args);
     for(unsigned int i = 0; i < this->arguments.size; i++)
     {
         if (*this->arguments.elements[i] == "nomouse")

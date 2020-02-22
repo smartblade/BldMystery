@@ -29,11 +29,13 @@ TEST(BladeAppTests, Fields)
     EXPECT_OFFSET_EQ(B_BladeApp, no_sleep, 0x5D2);
     EXPECT_OFFSET_EQ(B_BladeApp, isActive, 0x5D3);
     EXPECT_OFFSET_EQ(B_BladeApp, b05D4, 0x5D4);
+    EXPECT_OFFSET_EQ(B_BladeApp, cls, 0x5D5);
     EXPECT_OFFSET_EQ(B_BladeApp, commandLine, 0x5E8);
     EXPECT_OFFSET_EQ(B_BladeApp, mode, 0x5EC);
     EXPECT_OFFSET_EQ(B_BladeApp, map_to_load, 0x5F4);
     EXPECT_OFFSET_EQ(B_BladeApp, pyStatement, 0x5F8);
     EXPECT_OFFSET_EQ(B_BladeApp, auxText, 0x5FC);
+    EXPECT_OFFSET_EQ(B_BladeApp, noSound, 0x606);
     EXPECT_OFFSET_EQ(B_BladeApp, showConsole, 0x607);
     EXPECT_OFFSET_EQ(B_BladeApp, mapName, 0x608);
     EXPECT_OFFSET_EQ(B_BladeApp, rasterName, 0x610);
