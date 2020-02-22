@@ -237,6 +237,23 @@ B_IDataFile &operator >>(B_IDataFile &file, anim_t *anim)
 
 
 
+/* Begin of file:         0x00497AE0 */
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00497AE0
+*/
+#ifdef BLD_NATIVE
+void unknown_00497AE0()
+{
+}
+#endif
+
+/* End of file:           0x00497D10 */
+
+
+
 /* File:                  WinClock.cpp */
 /* Begin of file:         0x004CC1C0 */
 /* End of file:           0x004CC640 */

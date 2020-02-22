@@ -650,6 +650,8 @@ externdef _AddTextureMaterial: near
 l0049259A equ _AddTextureMaterial
 externdef _AddActionStepSound: near
 l004929C4 equ _AddActionStepSound
+externdef _unknown_00497AE0: near
+l00497AE0 equ _unknown_00497AE0
 externdef _CreateSound: near
 l004BF1EF equ _CreateSound
 externdef _CreateSoundS: near

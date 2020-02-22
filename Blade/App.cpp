@@ -54,12 +54,14 @@ B_App::~B_App()
 * Entry point:            0x00411C2E
 * VC++ mangling:          ?Start@B_App@@UAE_NXZ
 */
-#ifdef BLD_NATIVE
+
 bool B_App::Start()
 {
-    return false;
+    this->ReadArguments(this->commandLine);
+    unknown_00497AE0();
+    return true;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
