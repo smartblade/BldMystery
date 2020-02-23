@@ -191,14 +191,11 @@ const char *B_App::GetCmdLine()
 * VC++ mangling:          ?GetAppMode@B_App@@QAEABVB_Name@@XZ
 */
 
-#ifdef BLD_NATIVE
-
 const B_Name &B_App::GetAppMode()
 {
-    return *(new B_Name());
+    return this->mode;
 }
 
-#endif
 
 /*
 * Module:                 Blade.exe
