@@ -186,54 +186,65 @@ bool B_WinApp::Start()
 
 void B_WinApp::LoadLevel(const char *map)
 {
-        char buffer[260];
-        double timeBefore, timeAfter;
-        static int loadLevelCounter = 0;
+    char buffer[260];
+    double timeBefore, timeAfter;
+    static int loadLevelCounter = 0;
 
-        timeBefore = timeGetTime();
+    timeBefore = timeGetTime();
 
-        this->mapName = get_map_for_net_game(map);
-        map = this->mapName;
+    this->mapName = get_map_for_net_game(map);
+    map = this->mapName;
 
-        GetCurrentDirectory(sizeof(buffer), buffer);
-        mout << buffer;
-        mout << "\n";
+    GetCurrentDirectory(sizeof(buffer), buffer);
+    mout << buffer;
+    mout << "\n";
 
-        if (loadLevelCounter) {
-                SetCurrentDirectory(vararg("..\\%s", map));
-        } else {
-                SetCurrentDirectory(vararg("..\\Maps\\%s", map));
+    if (loadLevelCounter)
+    {
+        SetCurrentDirectory(vararg("..\\%s", map));
+    }
+    else
+    {
+        SetCurrentDirectory(vararg("..\\Maps\\%s", map));
+    }
+
+    GetCurrentDirectory(sizeof(buffer), buffer);
+    mout << buffer;
+    mout << "\n";
+
+    if (gbl_sound_device)
+    {
+        gbl_sound_device->unknown08 = 1;
+        gbl_sound_device->unknown0C = 1;
+    }
+
+    if (gbl_net->is_net_game())
+    {
+        if (gbl_net->is_server())
+        {
+            B_App::LoadLevel("Server.py");
+            Set007EA988To01();
         }
-
-        GetCurrentDirectory(sizeof(buffer), buffer);
-        mout << buffer;
-        mout << "\n";
-
-        if (gbl_sound_device) {
-                gbl_sound_device->unknown08 = 1;
-                gbl_sound_device->unknown0C = 1;
+        else
+        {
+            B_App::LoadLevel("Client.py");
         }
+    }
+    else
+    {
+        loadLevelCounter++;
 
-        if (gbl_net->is_net_game()) {
-                if (gbl_net->is_server()) {
-                        B_App::LoadLevel("Server.py");
-                        Set007EA988To01();
-                } else {
-                        B_App::LoadLevel("Client.py");
-                }
-        } else {
-                loadLevelCounter++;
+        B_App::LoadLevel("Cfg.py");
+    }
 
-                B_App::LoadLevel("Cfg.py");
-        }
+    timeAfter = timeGetTime();
+    mout << vararg("Load Time = %f\n", (timeAfter - timeBefore)/1000.0);
 
-        timeAfter = timeGetTime();
-        mout << vararg("Load Time = %f\n", (timeAfter - timeBefore)/1000.0);
-
-        if (gbl_sound_device) {
-                gbl_sound_device->unknown08 = 0;
-                gbl_sound_device->unknown0C = 0;
-        }
+    if (gbl_sound_device)
+    {
+        gbl_sound_device->unknown08 = 0;
+        gbl_sound_device->unknown0C = 0;
+    }
 }
 
 
@@ -244,21 +255,22 @@ void B_WinApp::LoadLevel(const char *map)
 */
 
 bool B_WinApp::ProcessEvents() {
-        static int counter = 0;
+    static int counter = 0;
 
-        if (!this->no_sleep)
-                Sleep(50);
+    if (!this->no_sleep)
+        Sleep(50);
 
-        if (counter == 60) {
-                SetWindowText(
-                        (HWND)this->window,
-                        vararg("%s %.1f", "Blade", this->fUnknown5C0)
-                );
-                counter = 0;
-        }
+    if (counter == 60)
+    {
+        SetWindowText(
+            (HWND)this->window,
+            vararg("%s %.1f", "Blade", this->fUnknown5C0)
+        );
+        counter = 0;
+    }
 
-        counter++;
-        return B_App::ProcessEvents();
+    counter++;
+    return B_App::ProcessEvents();
 }
 
 
@@ -575,38 +587,45 @@ LRESULT CALLBACK WindowProcedure(
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-        B_App *App;
-        char *cmd;
-        MSG msg;
+    B_App *App;
+    char *cmd;
+    MSG msg;
 
-        cmd = lpCmdLine;
+    cmd = lpCmdLine;
 
-        LoadNetModule("NetBlade\\Netblade.dll");
-        App = CreateApplication(hInstance, nCmdShow, cmd);
+    LoadNetModule("NetBlade\\Netblade.dll");
+    App = CreateApplication(hInstance, nCmdShow, cmd);
 
-        assert(App);
+    assert(App);
 
-        if (!App->Start())
-                return 0;
+    if (!App->Start())
+        return 0;
 
-        Set007EA988To01();
-        for(;;) {
-                if (PeekMessage(&msg, NULL, WM_NULL, WM_NULL, PM_REMOVE)) {
+    Set007EA988To01();
+    for(;;)
+    {
+        if (PeekMessage(&msg, NULL, WM_NULL, WM_NULL, PM_REMOVE))
+        {
 
-                        if (msg.message == WM_QUIT) {
-                                App->End();
-                                delete App;
-                                return msg.wParam;
-                        } else {
-                                TranslateMessage(&msg);
-                                DispatchMessage(&msg);
-                        }
-                } else {
-                        App->ProcessEvents();
-
-                        OnEvent(0, 0xbff00000);
-                }
+            if (msg.message == WM_QUIT)
+            {
+                App->End();
+                delete App;
+                return msg.wParam;
+            }
+            else
+            {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
         }
+        else
+        {
+            App->ProcessEvents();
+
+            OnEvent(0, 0xbff00000);
+        }
+    }
 }
 
 /*
