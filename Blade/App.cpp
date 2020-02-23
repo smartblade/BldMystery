@@ -179,14 +179,10 @@ int B_App::SetAppMode(const B_Name &mode)
 * VC++ mangling:          ?GetCmdLine@B_App@@QAEPBDXZ
 */
 
-#ifdef BLD_NATIVE
-
 const char *B_App::GetCmdLine()
 {
-    return NULL;
+    return this->commandLine;
 }
-
-#endif
 
 
 /*
