@@ -322,11 +322,13 @@ bool B_App::ProcessEvents()
 * Entry point:            0x00413121
 * VC++ mangling:          ?End@B_App@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+
 void B_App::End()
 {
+    mout << "B_App::End()...\n";
+    mout.DisconnectChannel("Salida");
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

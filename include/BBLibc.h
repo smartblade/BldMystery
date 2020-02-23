@@ -76,11 +76,17 @@ public:
 };
 
 
+class LIB_EXP B_MessageChannel
+{
+};
+
+
 class LIB_EXP B_MessageManager
 {
 public:
     unsigned int OpenChannel(const B_Name &channel_name);
     unsigned int CloseChannel(const B_Name &channel_name);
+    B_MessageChannel *DisconnectChannel(const B_Name &channel_name);
 };
 
 LIB_EXP B_MessageManager &operator <<(B_MessageManager &mout, const char *str);
