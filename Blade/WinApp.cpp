@@ -263,7 +263,7 @@ bool B_WinApp::ProcessEvents() {
     if (counter == 60)
     {
         SetWindowText(
-            (HWND)this->window,
+            this->window,
             vararg("%s %.1f", "Blade", this->fUnknown5C0)
         );
         counter = 0;
