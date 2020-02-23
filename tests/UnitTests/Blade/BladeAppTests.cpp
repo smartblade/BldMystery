@@ -26,6 +26,7 @@ TEST(BladeAppTests, Fields)
     EXPECT_OFFSET_EQ(B_BladeApp, camera, 0x078);
     EXPECT_OFFSET_EQ(B_BladeApp, location, 0x07C);
     EXPECT_OFFSET_EQ(B_BladeApp, time, 0x5C8);
+    EXPECT_OFFSET_EQ(B_BladeApp, b05D1, 0x5D1);
     EXPECT_OFFSET_EQ(B_BladeApp, no_sleep, 0x5D2);
     EXPECT_OFFSET_EQ(B_BladeApp, isActive, 0x5D3);
     EXPECT_OFFSET_EQ(B_BladeApp, b05D4, 0x5D4);

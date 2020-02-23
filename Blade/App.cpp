@@ -135,14 +135,42 @@ int B_App::ActivateInput()
 * VC++ mangling:          ?SetAppMode@B_App@@QAEHABVB_Name@@@Z
 */
 
-#ifdef BLD_NATIVE
-
 int B_App::SetAppMode(const B_Name &mode)
 {
-    return 0;
+    if (this->mode == mode)
+        return true;
+    if (mode == "Demo")
+    {
+        this->mode = mode;
+        this->b05D4 = true;
+        this->b05D1 = true;
+        this->RestartTime();
+        B_3D_raster_device->set_raster_parameter("CacheStretchImages", "0");
+        return true;
+    }
+    if (mode == "Game")
+    {
+        this->mode = mode;
+        this->b05D4 = true;
+        this->b05D1 = true;
+        this->RestartTime();
+        B_3D_raster_device->set_raster_parameter("CacheStretchImages", "0");
+        return true;
+    }
+    if (mode == "Menu")
+    {
+        this->mode = mode;
+        this->b05D4 = false;
+        this->b05D1 = false;
+        this->StopTime();
+        B_3D_raster_device->set_raster_parameter("CacheStretchImages", "1");
+        return true;
+    }
+    mout << vararg(
+        "B_App::SetAppMode() -> Unknown mode: %s.\n",
+        mode.String());
+    return false;
 }
-
-#endif
 
 
 /*

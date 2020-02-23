@@ -126,7 +126,8 @@ public:
     float fUnknown5C0;
     char unknownFields400[4];
     float time;
-    char unknownFields310[6];
+    char unknownFields310[5];
+    bool b05D1;
     bool no_sleep;
     bool isActive;
     bool b05D4;
