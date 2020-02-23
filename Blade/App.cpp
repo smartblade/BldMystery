@@ -202,12 +202,12 @@ const B_Name &B_App::GetAppMode()
 * Entry point:            0x0041207A
 * VC++ mangling:          ?Quit@B_App@@UAEHXZ
 */
-#ifdef BLD_NATIVE
+
 int B_App::Quit()
 {
-    return 0;
+    return true;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
