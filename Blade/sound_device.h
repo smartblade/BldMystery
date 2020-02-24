@@ -24,6 +24,7 @@ public:
         int unknown04;
         int unknown08;
         int unknown0C;
+        char unknownFields10[596];
 };
 
 #endif
