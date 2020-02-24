@@ -48,6 +48,7 @@ public:
         return reinterpret_cast<size_t>(this->module);
     }
 
+    int LoadRasterDLL(const char *rasterDllName);
     virtual int SetDirMap(const char *map);
     virtual bool InitWindow();
     virtual HWND NewWindow();
@@ -69,7 +70,7 @@ public:
     bool b07C0;
     int unknown07C4;
     bool noMouse;
-    bool b07C9;
+    bool noKeyboard;
     bool noDInput;
     bool noExclusiveMouse;
     bool r3Dfx;

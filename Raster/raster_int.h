@@ -71,7 +71,7 @@ extern int get_image(
 );
 extern void draw_image(
         int w, int h, const char *color_style, const char *stretch_or_centered,
-        long image_data
+        const void *image_data
 );
 extern void set_background_image(
         int w, int h, const char *is_rgb, const char *is_normal,

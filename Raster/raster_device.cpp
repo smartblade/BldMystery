@@ -439,7 +439,8 @@ int get_image(
 */
 
 void draw_image(
-        int w, int h, const char *color_style, const char *is_normal, long image_data
+        int w, int h, const char *color_style, const char *is_normal,
+        const void * image_data
 ) {
         B_3D_raster_device->draw_image(w, h, color_style, is_normal, image_data);
 }

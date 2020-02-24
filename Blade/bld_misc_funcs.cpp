@@ -56,7 +56,23 @@ const char *ShowInputDialog(HINSTANCE module, HWND window, const char *text)
 
 /* End of file:           0x0040CFF0 */
 
+/* Begin of file:         0x0040CFF0 */
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0040E8E6
+*/
+#ifdef BLD_NATIVE
+int ShowStartupDialog(
+    HMODULE module, HWND window, sound_t *sound, B_Name *rasterName,
+    bool showDialog)
+{
+    return false;
+}
+#endif
+
+/* End of file:           0x0040F040 */
 
 /* File:                  WinApp.cpp */
 /* Begin of file:         0x0040F040 */
@@ -254,9 +270,43 @@ void unknown_00497AE0()
 
 
 
+/* Begin of file:         0x004C2160 */
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004C21C6
+* VC++ mangling:          ??0sound_t@@QAE@XZ
+*/
+#ifdef BLD_NATIVE_CONSTRUCTOR
+sound_t::sound_t()
+{
+}
+#endif
+
+/* End of file:           0x004C5F40 */
+
+
+
 /* File:                  WinClock.cpp */
 /* Begin of file:         0x004CC1C0 */
 /* End of file:           0x004CC640 */
+
+/* Begin of file:         0x004CC640 */
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004CC8C8
+*/
+#ifdef BLD_NATIVE
+bool GetCurrentDir(char *buffer, int bufferLength)
+{
+    return false;
+}
+#endif
+
+/* End of file:           0x004CC950 */
 
 
 
@@ -561,12 +611,25 @@ B_CameraEntity::B_CameraEntity(int, const B_Name &)
 {
 }
 
+class sound_t
+{
+public:
+    sound_t();
+};
+
+sound_t::sound_t()
+{
+}
+
 #include "CDPlayer.h"
 
 bool showStartupDialog;
 int clientRectWidth;
 int clientRectHeight;
 B_PtrArray<world_point_t> gbl_world_points;
+sound_t *unused_sound_ptr;
+int gbl_sound_device_id;
+B_Name *gbl_map_name;
 B_World B_world;
 int gbl_action_areas_bit_mask;
 B_PtrArray<anim_t> gbl_anims;

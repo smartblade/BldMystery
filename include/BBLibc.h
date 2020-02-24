@@ -27,6 +27,7 @@ public:
         ~B_Name();
         B_Name &operator =(const B_Name &src);
         unsigned int operator ==(const char *str) const;
+        unsigned int operator !=(const char *str) const;
         unsigned int operator ==(const B_Name &str) const;
         operator const char *() const { return string; }
         char * const String() const;
@@ -86,6 +87,7 @@ class LIB_EXP B_MessageManager
 public:
     unsigned int OpenChannel(const B_Name &channel_name);
     unsigned int CloseChannel(const B_Name &channel_name);
+    unsigned int Add(B_MessageChannel *channel);
     B_MessageChannel *DisconnectChannel(const B_Name &channel_name);
 };
 
@@ -156,12 +158,15 @@ LIB_EXP unsigned int ReadCSV(const char *file_name, B_NDataBase<B_ElementCSV> *c
 class LIB_EXP B_BitMap24
 {
 public:
+    B_BitMap24(int width = 0, int height = 0);
     virtual ~B_BitMap24();
 
     unsigned int dimension1;
     unsigned int dimension2;
     void *data;
 };
+
+LIB_EXP B_IDataFile& operator >>(B_IDataFile &file, B_BitMap24 &bitMap);
 
 class LIB_EXP B_Pal
 {

@@ -110,7 +110,7 @@ public:
     B_Clock *clock2;
     PyObject *CDCallback;
     B_PtrArray<B_Name> arguments;
-    void *console;
+    B_MessageChannel *console;
     long int rootWidget;
     char unknownFields58[8];
     B_Name lastPlayerCType;

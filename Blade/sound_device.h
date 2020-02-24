@@ -6,14 +6,15 @@
 class sound_t
 {
 public:
+        sound_t();
         virtual void unknown000();
         virtual ~sound_t();
         virtual void unknown008();
         virtual void unknown00C();
         virtual void unknown010();
-        virtual void unknown014();
+        virtual int init();
         virtual void unknown018();
-        virtual void unknown01C();
+        virtual bool SetProviderId(int id);
         virtual void unknown020();
         virtual void unknown024();
         virtual void unknown028();

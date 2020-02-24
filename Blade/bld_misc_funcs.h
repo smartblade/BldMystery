@@ -1,12 +1,12 @@
 
 #include "BWorld.h"
-#include "sound_device.h"
 #include <bld_abstract_net.h>
 #include "anim.h"
 #include "light.h"
 #include "en_control.h"
 
 class B_WinApp;
+class sound_t;
 
 
 class B_Race : public B_NamedObj
@@ -94,9 +94,13 @@ extern "C" {
 
 extern B_IDataFile * read_points(B_IDataFile *file, B_PtrArray<world_point_t> *points);
 extern const char *ShowInputDialog(HINSTANCE module, HWND window, const char *text);
+extern int ShowStartupDialog(
+    HMODULE module, HWND window, sound_t *sound, B_Name *rasterName,
+    bool showDialog);
 extern B_IDataFile * read_sectors(B_IDataFile *file, B_PtrArray<B_Sector> *sectors);
 extern light_t *read_light(B_IDataFile *file);
 extern void unknown_00497AE0();
+extern bool GetCurrentDir(char *buffer, int bufferLength);
 extern anim_t *LoadFromHDAnim(const char *anm_name);
 extern void Set007EA988To01(void);
 extern void OnEvent(int a, int b);
@@ -130,6 +134,24 @@ extern int clientRectHeight;
 * Data address:           0x005DF898
 */
 extern B_PtrArray<world_point_t> gbl_world_points;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x005DFB3C
+*/
+extern sound_t *unused_sound_ptr;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x005DFB40
+*/
+extern int gbl_sound_device_id;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x005DFB44
+*/
+extern B_Name *gbl_map_name;
 
 /*
 * Module:                 Blade.exe

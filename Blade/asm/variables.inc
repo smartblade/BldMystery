@@ -6,6 +6,12 @@ public _clientRectHeight
 g005CCEC0 equ _clientRectHeight
 public _gbl_world_points
 g005DF898 equ _gbl_world_points
+public _unused_sound_ptr
+g005DFB3C equ _unused_sound_ptr
+public _gbl_sound_device_id
+g005DFB40 equ _gbl_sound_device_id
+public _gbl_map_name
+g005DFB44 equ _gbl_map_name
 public _B_world
 g005E0B88 equ _B_world
 public _gbl_action_areas_bit_mask

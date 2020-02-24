@@ -16,6 +16,8 @@ externdef ?setOrientation@location_t@@QAEXABVB_Vector@@@Z: near
 l0040ADA8 equ ?setOrientation@location_t@@QAEXABVB_Vector@@@Z
 externdef _ShowInputDialog: near
 l0040CF10 equ _ShowInputDialog
+externdef _ShowStartupDialog: near
+l0040E8E6 equ _ShowStartupDialog
 externdef ??0B_WinApp@@QAE@PAUHINSTANCE__@@HPADP6GJPAUHWND__@@IIJ@Z@Z: near
 l0040F040 equ ??0B_WinApp@@QAE@PAUHINSTANCE__@@HPADP6GJPAUHWND__@@IIJ@Z@Z
 externdef ??1B_WinApp@@UAE@XZ: near
@@ -58,6 +60,8 @@ externdef ?WindowProcedure@@YGJPAUHWND__@@IIJ@Z: near
 l00410C77 equ ?WindowProcedure@@YGJPAUHWND__@@IIJ@Z
 externdef _WinMain@16: near
 l00410CC2 equ _WinMain@16
+externdef ?LoadRasterDLL@B_WinApp@@QAEHPBD@Z: near
+l00410DC2 equ ?LoadRasterDLL@B_WinApp@@QAEHPBD@Z
 externdef ?SetDirMap@B_WinApp@@UAEHPBD@Z: near
 l00410F6F equ ?SetDirMap@B_WinApp@@UAEHPBD@Z
 externdef ?GetInputMode@B_WinApp@@UAEPBDPBD@Z: near
@@ -774,12 +778,16 @@ externdef _loadSoundDataBase: near
 l004C0897 equ _loadSoundDataBase
 externdef _saveSoundDataBase: near
 l004C08F0 equ _saveSoundDataBase
+externdef ??0sound_t@@QAE@XZ: near
+l004C21C6 equ ??0sound_t@@QAE@XZ
 externdef ??0B_WinClock@@QAE@XZ: near
 l004CC1C0 equ ??0B_WinClock@@QAE@XZ
 externdef ?GetTimeSpeed@B_Clock@@UAENXZ: near
 l004CC480 equ ?GetTimeSpeed@B_Clock@@UAENXZ
 externdef ?IsActive@B_Clock@@UAE_NXZ: near
 l004CC5F0 equ ?IsActive@B_Clock@@UAE_NXZ
+externdef _GetCurrentDir: near
+l004CC8C8 equ _GetCurrentDir
 externdef ??0Unknown004CD5EC@@QAE@MMMMMM@Z: near
 l004CD5EC equ ??0Unknown004CD5EC@@QAE@MMMMMM@Z
 externdef ?unknown004CD634@Unknown004CD5EC@@QAEXXZ: near

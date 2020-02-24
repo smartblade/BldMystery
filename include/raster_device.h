@@ -145,7 +145,7 @@ public:
         virtual void draw_bitmap(long handle, int w, int h) = 0;
         virtual void draw_image(
                 int w, int h, const char *color_style, const char *is_normal,
-                long image_data
+                const void *image_data
         ) = 0;
         virtual int get_image(
                 int x, int y, int w, int h, const char *color_style,

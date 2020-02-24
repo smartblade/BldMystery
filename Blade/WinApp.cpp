@@ -4,6 +4,7 @@
 #include <raster_device.h>
 #include "BladeApp.h"
 #include "WinClock.h"
+#include "sound_device.h"
 #include <BInputc.h>
 #include "bld_misc_funcs.h"
 
@@ -20,7 +21,7 @@ B_App(cmdLine)
 {
     this->noExclusiveMouse = false;
     this->noMouse = false;
-    this->b07C9 = false;
+    this->noKeyboard = false;
     this->noDInput = false;
     this->r3Dfx = false;
     this->rsoft16b = false;
@@ -171,12 +172,137 @@ HWND B_WinApp::NewWindowForClientRectangle()
 * Entry point:            0x0040F4A4
 * VC++ mangling:          ?Start@B_WinApp@@UAE_NXZ
 */
-#ifdef BLD_NATIVE
+
 bool B_WinApp::Start()
 {
-    return false;
+    static char defaultStartPath[] = "";
+
+    if (!this->InitWindow())
+    {
+        this->ExitWithError("Blade", "No se ha podido inicializar Blade.");
+    }
+    if (!B_App::Start())
+        return false;
+    if (this->startPath != defaultStartPath)
+    {
+        SetCurrentDirectory(this->startPath);
+    }
+    if (this->noSound)
+    {
+        gbl_sound_device = NULL;
+    }
+    else
+    {
+        gbl_sound_device = new sound_t();
+    }
+    if (this->showConsole)
+    {
+        this->console = CreateConsole(
+            this->window, "Salida", 655, 0, 300, 400, false);
+        if (this->console == NULL)
+        {
+            this->ExitWithError(
+                "Blade",
+                "No se ha podido inicializar la consola.");
+        }
+        mout.Add(this->console);
+        mout.OpenChannel("Salida");
+    }
+    if (gbl_sound_device == NULL || !gbl_sound_device->init())
+    {
+        mout << "\nNo se ha podido abrir dispositivo de sonido\n";
+    }
+    else
+    {
+        mout << "\nSonido iniciado.\n";
+    }
+    if ((this->rasterName.Length() == 0) ||
+        (this->mapName.Length() == 0) ||
+        (this->soundDeviceId.Length() == 0))
+    {
+        gbl_map_name = &this->mapName;
+        gbl_sound_device_id = -1;
+        unused_sound_ptr = gbl_sound_device;
+        ShowStartupDialog(
+            this->module, this->window, gbl_sound_device, &this->rasterName,
+            showStartupDialog);
+    }
+    else
+    {
+        gbl_sound_device_id = atoi(this->soundDeviceId.String());
+    }
+    ShowWindow(this->window, SW_SHOW);
+    mout << this->rasterName.String();
+    mout << this->mapName.String();
+    char currentDir[255];
+    GetCurrentDir(currentDir, sizeof(currentDir));
+    mout << currentDir;
+    if (this->LoadRasterDLL(this->rasterName.String()))
+    {
+        mout << "Selected raster Raster Imported.\n";
+    }
+    else
+    {
+        mout << "ERROR B_WinApp::InitRasterDevice() -> Raster not created.\n";
+        return false;
+    }
+    B_BitMap24 bitMap;
+    B_IDataFile file("..\\Data\\Rebel logo.bmp", O_BINARY);
+    if (file.OK())
+    {
+        file >> bitMap;
+        B_3D_raster_device->cls(false, false, false);
+        B_3D_raster_device->set_position(0.0f, 0.0f);
+        B_3D_raster_device->draw_image(
+            640, 480, "BGR", "Stretch", bitMap.data);
+        B_3D_raster_device->swap_buffers();
+        this->ProcessMessage();
+    }
+    if (gbl_sound_device == NULL ||
+        !gbl_sound_device->SetProviderId(gbl_sound_device_id))
+    {
+        mout << "Can't initialize selected sound provider.\n";
+    }
+    BringWindowToTop(this->window);
+    if (!this->noKeyboard)
+    {
+        B_DInputKeyb *keyboard = new B_DInputKeyb(this->module, this->window);
+        if (keyboard == NULL)
+        {
+            mout << "Can't initialize Keyboard.\n";
+        }
+        else
+        {
+            InputManager->AddDevice(keyboard);
+        }
+    }
+    else
+    {
+        mout << "Not using keyboard.\n";
+    }
+    if (!this->noMouse)
+    {
+        B_WinMouse * mouse = new B_WinMouse(
+            !this->noExclusiveMouse, this->module, this->window);
+        if (mouse == NULL)
+        {
+            mout << "Can't initialize mouse.\n";
+        }
+        else
+        {
+            mouse->fUnknown0148 = 0.1f;
+            InputManager->AddDevice(mouse);
+        }
+    }
+    else
+    {
+        mout << "Not using mouse.\n";
+    }
+    this->mapName = get_map_for_net_game(this->mapName.String());
+    this->LoadLevel(this->mapName.String());
+    return true;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
@@ -627,6 +753,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         }
     }
 }
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00410DC2
+* VC++ mangling:          ?LoadRasterDLL@B_WinApp@@QAEHPBD@Z
+*/
+#ifdef BLD_NATIVE
+int B_WinApp::LoadRasterDLL(const char *rasterDllName)
+{
+    return false;
+}
+#endif
 
 /*
 ................................................................................

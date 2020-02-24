@@ -967,7 +967,7 @@ PyObject *raster_GetImage(PyObject *self, PyObject *args) {
 PyObject *raster_DrawImage(PyObject *self, PyObject *args) {
         int w, h;
         const char *color_style, *stretch_or_centered;
-        long image_data;
+        void *image_data;
 
         if (!PyArg_ParseTuple(
                 args, "iissl:DrawImage", &w, &h, &color_style,

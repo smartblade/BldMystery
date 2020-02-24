@@ -217,6 +217,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BInputc\DInputKeybTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\BBLibc\ElementCSVTests.cpp"
 				>
 			</File>
@@ -270,6 +274,10 @@
 			</File>
 			<File
 				RelativePath=".\WinClockTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BInputc\WinMouseTests.cpp"
 				>
 			</File>
 			<File
