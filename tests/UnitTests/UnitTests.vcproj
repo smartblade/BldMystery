@@ -241,6 +241,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\ProcessorTimerTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\ProcTextureTests.cpp"
 				>
 			</File>

@@ -1,5 +1,6 @@
 
 #include <bld_system.h>
+#include "ProcessorTimer.h"
 #include "bld_misc_funcs.h"
 
 
@@ -250,6 +251,24 @@ B_IDataFile &operator >>(B_IDataFile &file, anim_t *anim)
 #endif
 
 /* End of file:           0x00477B90 */
+
+
+
+/* Begin of file:         0x0048DB30 */
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0048DB30
+* VC++ mangling:          ??0B_ProcessorTimer@@QAE@XZ
+*/
+#ifdef BLD_NATIVE
+B_ProcessorTimer::B_ProcessorTimer()
+{
+}
+#endif
+
+/* End of file:           0x0048DE60 */
 
 
 
@@ -590,16 +609,6 @@ bool FreeNetData(bool freeNetLibrary)
 
 
 #ifdef BLD_NATIVE
-
-class B_WinClock
-{
-public:
-    B_WinClock();
-};
-
-B_WinClock::B_WinClock()
-{
-}
 
 class B_CameraEntity
 {

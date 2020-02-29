@@ -434,6 +434,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ProcessorTimer.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Sector.h"
 				>
 			</File>

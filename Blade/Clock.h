@@ -7,8 +7,16 @@
 class B_Clock
 {
 public:
+    B_Clock()
+    {
+        this->isActive = true;
+        this->fUnknown18 = this->fUnknown10 = 0.0;
+        this->timeSpeed = 1.0;
+    }
     virtual double GetSystemTime();
-    virtual ~B_Clock();
+    virtual ~B_Clock()
+    {
+    }
     virtual void SetTimeSpeed(double speed);
     virtual double GetTimeSpeed();
     virtual double GetTime();
@@ -22,7 +30,6 @@ public:
     double timeSpeed;
     double fUnknown10;
     double fUnknown18;
-    char unknownFields2[36];
 };
 
 #endif /* B_CLOCK_H */
