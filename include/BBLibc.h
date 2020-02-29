@@ -96,7 +96,7 @@ LIB_EXP B_MessageManager &operator <<(B_MessageManager &mout, const char *str);
 LIB_EXP B_MessageManager mout;
 
 
-const char *vararg(const char *format, ...);
+LIB_EXP const char *vararg(const char *format, ...);
 
 
 class LIB_EXP B_IDataFile
