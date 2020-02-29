@@ -760,12 +760,41 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 * Entry point:            0x00410DC2
 * VC++ mangling:          ?LoadRasterDLL@B_WinApp@@QAEHPBD@Z
 */
-#ifdef BLD_NATIVE
+
 int B_WinApp::LoadRasterDLL(const char *rasterDllName)
 {
+    static char getIniSettings[] = "";
+
+    this->rasterLibraryName = vararg("Raster\\%s", rasterDllName);
+    this->rasterLibrary = LoadLibrary(this->rasterLibraryName.String());
+    if (this->rasterLibrary != NULL)
+    {
+        this->createRasterCB = (B_3DRasterDevice *(*)(HWND, HMODULE, HMODULE))
+            GetProcAddress(this->rasterLibrary, "CreateRaster");
+        this->destroyRasterCB = (void (*)(B_3DRasterDevice *))
+            GetProcAddress(this->rasterLibrary, "DestroyRaster");
+        if (this->createRasterCB != NULL)
+        {
+            B_3D_raster_device = this->createRasterCB(
+                this->window, this->module, this->rasterLibrary);
+            if (B_3D_raster_device != NULL)
+            {
+                B_3D_raster_device->set_raster_parameter(
+                    "GetINISettings", getIniSettings);
+                return true;
+            }
+            return false;
+        }
+        OutputWin32Error(
+            vararg("B_WinApp::LoadRasterDLL() -> Error obtainig function.\n"));
+    }
+    OutputWin32Error(
+        vararg(
+            "B_WinApp::LoadRasterDLL() -> Error loading raster %s.\n",
+            rasterDllName));
     return false;
 }
-#endif
+
 
 /*
 ................................................................................
