@@ -29,7 +29,20 @@ public:
     virtual ~B_Clock()
     {
     }
-    virtual void SetTimeSpeed(double speed);
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004CC440
+* VC++ mangling:          ?SetTimeSpeed@B_Clock@@UAEXN@Z
+*/
+
+    virtual void SetTimeSpeed(double speed)
+    {
+        double time = GetTime();
+        this->timeSpeed = speed;
+        SetTime(time);
+    }
 
 
 /*
