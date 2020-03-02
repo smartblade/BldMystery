@@ -13,7 +13,19 @@ public:
         this->stopTime = this->idleTime = 0.0;
         this->timeSpeed = 1.0;
     }
-    virtual double GetSystemTime();
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004CC420
+* VC++ mangling:          ?GetSystemTime@B_Clock@@UAENXZ
+*/
+
+    virtual double GetSystemTime()
+    {
+        return 0.0;
+    }
+
     virtual ~B_Clock()
     {
     }

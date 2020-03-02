@@ -72,18 +72,6 @@ double B_WinClock::GetSystemTime()
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x004CC420
-* VC++ mangling:          ?GetSystemTime@B_Clock@@UAENXZ
-*/
-#ifdef BLD_NATIVE
-double B_Clock::GetSystemTime()
-{
-    return 0.0;
-}
-#endif
-
-/*
-* Module:                 Blade.exe
 * Entry point:            0x004CC440
 * VC++ mangling:          ?SetTimeSpeed@B_Clock@@UAEXN@Z
 */
