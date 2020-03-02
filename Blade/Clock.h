@@ -18,13 +18,35 @@ public:
     {
     }
     virtual void SetTimeSpeed(double speed);
-    virtual double GetTimeSpeed();
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004CC480
+* VC++ mangling:          ?GetTimeSpeed@B_Clock@@UAENXZ
+*/
+
+    virtual double GetTimeSpeed()
+    {
+        return this->timeSpeed;
+    }
+
     virtual double GetTime();
     virtual void SetTime(double time);
     virtual void Reset();
     virtual void StopTime();
     virtual void RestartTime();
-    virtual bool IsActive();
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004CC5F0
+* VC++ mangling:          ?IsActive@B_Clock@@UAE_NXZ
+*/
+    virtual bool IsActive()
+    {
+        return this->isActive;
+    }
 
     bool isActive;
     double timeSpeed;
