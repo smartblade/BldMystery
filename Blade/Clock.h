@@ -48,6 +48,7 @@ public:
         return this->isActive;
     }
 
+private:
     bool isActive;
     double timeSpeed;
     double fUnknown10;
