@@ -95,18 +95,6 @@ void B_Clock::SetTimeSpeed(double speed)
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x004CC4A0
-* VC++ mangling:          ?GetTime@B_Clock@@UAENXZ
-*/
-#ifdef BLD_NATIVE
-double B_Clock::GetTime()
-{
-    return 0.0;
-}
-#endif
-
-/*
-* Module:                 Blade.exe
 * Entry point:            0x004CC4F0
 * VC++ mangling:          ?SetTime@B_Clock@@UAEXN@Z
 */

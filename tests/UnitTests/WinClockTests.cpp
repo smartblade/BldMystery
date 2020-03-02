@@ -14,8 +14,8 @@ TEST(WinClockTests, Fields)
 {
     EXPECT_OFFSET_EQ(B_WinClock, isActive, 0x004);
     EXPECT_OFFSET_EQ(B_WinClock, timeSpeed, 0x008);
-    EXPECT_OFFSET_EQ(B_WinClock, fUnknown10, 0x010);
-    EXPECT_OFFSET_EQ(B_WinClock, fUnknown18, 0x018);
+    EXPECT_OFFSET_EQ(B_WinClock, idleTime, 0x010);
+    EXPECT_OFFSET_EQ(B_WinClock, stopTime, 0x018);
     EXPECT_OFFSET_EQ(B_WinClock, isNotNT, 0x020);
     EXPECT_OFFSET_EQ(B_WinClock, hasCpuid, 0x024);
     EXPECT_OFFSET_EQ(B_WinClock, hasCpiudFunc, 0x028);

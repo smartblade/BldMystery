@@ -10,7 +10,7 @@ public:
     B_Clock()
     {
         this->isActive = true;
-        this->fUnknown18 = this->fUnknown10 = 0.0;
+        this->stopTime = this->idleTime = 0.0;
         this->timeSpeed = 1.0;
     }
     virtual double GetSystemTime();
@@ -31,7 +31,20 @@ public:
         return this->timeSpeed;
     }
 
-    virtual double GetTime();
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004CC4A0
+* VC++ mangling:          ?GetTime@B_Clock@@UAENXZ
+*/
+
+    virtual double GetTime()
+    {
+        if (this->isActive)
+            return (this->GetSystemTime() - this->idleTime) * this->timeSpeed;
+        return (this->stopTime - this->idleTime) * this->timeSpeed;
+    }
+
     virtual void SetTime(double time);
     virtual void Reset();
     virtual void StopTime();
@@ -51,8 +64,8 @@ public:
 private:
     bool isActive;
     double timeSpeed;
-    double fUnknown10;
-    double fUnknown18;
+    double idleTime;
+    double stopTime;
 };
 
 #endif /* B_CLOCK_H */
