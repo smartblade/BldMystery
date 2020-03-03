@@ -96,7 +96,21 @@ public:
         this->timeSpeed = 1.0;
     }
 
-    virtual void StopTime();
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004CC570
+* VC++ mangling:          ?StopTime@B_Clock@@UAEXXZ
+*/
+
+    virtual void StopTime()
+    {
+        if (!this->isActive)
+            return;
+        this->stopTime = this->GetSystemTime();
+        this->isActive = false;
+    }
+
     virtual void RestartTime();
 
 
