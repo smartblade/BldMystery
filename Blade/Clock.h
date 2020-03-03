@@ -83,7 +83,19 @@ public:
         return true;
     }
 
-    virtual void Reset();
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004CC530
+* VC++ mangling:          ?Reset@B_Clock@@UAEXXZ
+*/
+
+    virtual void Reset()
+    {
+        this->stopTime = this->idleTime = this->GetSystemTime();
+        this->timeSpeed = 1.0;
+    }
+
     virtual void StopTime();
     virtual void RestartTime();
 

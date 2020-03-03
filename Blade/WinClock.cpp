@@ -73,17 +73,6 @@ double B_WinClock::GetSystemTime()
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x004CC530
-* VC++ mangling:          ?Reset@B_Clock@@UAEXXZ
-*/
-#ifdef BLD_NATIVE
-void B_Clock::Reset()
-{
-}
-#endif
-
-/*
-* Module:                 Blade.exe
 * Entry point:            0x004CC570
 * VC++ mangling:          ?StopTime@B_Clock@@UAEXXZ
 */
