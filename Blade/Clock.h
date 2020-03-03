@@ -70,7 +70,19 @@ public:
         return (this->stopTime - this->idleTime) * this->timeSpeed;
     }
 
-    virtual void SetTime(double time);
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004CC4F0
+* VC++ mangling:          ?SetTime@B_Clock@@UAEHN@Z
+*/
+
+    virtual int SetTime(double time)
+    {
+        this->idleTime -= (time - GetTime()) / this->timeSpeed;
+        return true;
+    }
+
     virtual void Reset();
     virtual void StopTime();
     virtual void RestartTime();

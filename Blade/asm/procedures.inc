@@ -794,8 +794,8 @@ externdef ?GetTimeSpeed@B_Clock@@UAENXZ: near
 l004CC480 equ ?GetTimeSpeed@B_Clock@@UAENXZ
 externdef ?GetTime@B_Clock@@UAENXZ: near
 l004CC4A0 equ ?GetTime@B_Clock@@UAENXZ
-externdef ?SetTime@B_Clock@@UAEXN@Z: near
-l004CC4F0 equ ?SetTime@B_Clock@@UAEXN@Z
+externdef ?SetTime@B_Clock@@UAEHN@Z: near
+l004CC4F0 equ ?SetTime@B_Clock@@UAEHN@Z
 externdef ?Reset@B_Clock@@UAEXXZ: near
 l004CC530 equ ?Reset@B_Clock@@UAEXXZ
 externdef ?StopTime@B_Clock@@UAEXXZ: near
