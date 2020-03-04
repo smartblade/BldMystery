@@ -268,6 +268,18 @@ B_ProcessorTimer::B_ProcessorTimer()
 }
 #endif
 
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0048DC31
+* VC++ mangling:          ?GetTime@B_ProcessorTimer@@QAENXZ
+*/
+#ifdef BLD_NATIVE
+double B_ProcessorTimer::GetTime()
+{
+    return 0.0;
+}
+#endif
+
 /* End of file:           0x0048DE60 */
 
 

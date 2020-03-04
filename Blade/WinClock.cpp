@@ -63,9 +63,10 @@ isNotNT(false), hasCpuid(false), hasCpiudFunc(false), hasProcessorTimer(false)
 * Entry point:            0x004CC3A6
 * VC++ mangling:          ?GetSystemTime@B_WinClock@@UAENXZ
 */
-#ifdef BLD_NATIVE
+
 double B_WinClock::GetSystemTime()
 {
-    return 0.0;
+    if (this->hasProcessorTimer)
+        return this->processorTimer->GetTime();
+    return timeGetTime() / 1000.0;
 }
-#endif

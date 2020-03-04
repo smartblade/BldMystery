@@ -648,6 +648,8 @@ externdef ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z: near
 l004760A2 equ ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z
 externdef ??0B_ProcessorTimer@@QAE@XZ: near
 l0048DB30 equ ??0B_ProcessorTimer@@QAE@XZ
+externdef ?GetTime@B_ProcessorTimer@@QAENXZ: near
+l0048DC31 equ ?GetTime@B_ProcessorTimer@@QAENXZ
 externdef _AddStepSound: near
 l00491B70 equ _AddStepSound
 externdef _AddMaterialStepSound: near
