@@ -69,15 +69,3 @@ double B_WinClock::GetSystemTime()
     return 0.0;
 }
 #endif
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x004CC5A0
-* VC++ mangling:          ?RestartTime@B_Clock@@UAEXXZ
-*/
-#ifdef BLD_NATIVE
-void B_Clock::RestartTime()
-{
-}
-#endif

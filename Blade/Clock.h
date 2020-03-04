@@ -111,7 +111,21 @@ public:
         this->isActive = false;
     }
 
-    virtual void RestartTime();
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004CC5A0
+* VC++ mangling:          ?RestartTime@B_Clock@@UAEXXZ
+*/
+
+    virtual void RestartTime()
+    {
+        if (this->isActive)
+            return;
+        double timeAfterStop = this->GetSystemTime() - this->stopTime;
+        this->idleTime = timeAfterStop + this->idleTime;
+        this->isActive = true;
+    }
 
 
 /*
