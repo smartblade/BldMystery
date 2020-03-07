@@ -1261,12 +1261,47 @@ int B_App::RemoveAfterFrameFunc(const char *name)
 * Entry point:            0x004167E1
 * VC++ mangling:          ?StringSplit@B_App@@UAEXPBD0PAV?$B_PtrArray@VB_Name@@@@@Z
 */
-#ifdef BLD_NATIVE
+
 void B_App::StringSplit(
     const char *str, const char *sep, B_PtrArray<B_Name> *tokens)
 {
+    char *Temp = new char[strlen(str) + 1];
+    assert(Temp);
+    strcpy(Temp, str);
+    char *tokenStr = strtok(Temp, sep);
+    while (tokenStr != NULL)
+    {
+        B_Name *token = new B_Name(tokenStr);
+        if (tokens->num_alloc > tokens->size)
+        {
+            tokens->elements[tokens->size] = token;
+            tokens->size++;
+        }
+        else
+        {
+            tokens->num_alloc += tokens->increment;
+            if (tokens->size != 0)
+            {
+                B_Name ** elements = new B_Name *[tokens->num_alloc];
+                for (unsigned int i = 0; i < tokens->size; i++)
+                {
+                    elements[i] = tokens->elements[i];
+                }
+                delete tokens->elements;
+                tokens->elements = elements;
+            }
+            else
+            {
+                tokens->elements = new B_Name *[tokens->num_alloc];
+            }
+            tokens->elements[tokens->size] = token;
+            tokens->size++;
+        }
+        tokenStr = strtok(NULL, sep);
+    }
+    delete [] Temp;
 }
-#endif
+
 
 /*
 ................................................................................
