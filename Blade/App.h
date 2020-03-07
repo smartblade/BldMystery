@@ -138,7 +138,9 @@ public:
     char *map_to_load;
     char *pyStatement;
     char *auxText;
-    char unknownFields10[6];
+    char unknownFields600[4];
+    bool needClearLevel;
+    char unknownFields605[1];
     bool noSound;
     bool showConsole;
     B_Name mapName;

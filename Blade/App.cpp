@@ -352,11 +352,24 @@ void B_App::MarkLevelToLoad(const char *map)
 * Entry point:            0x004131BB
 * VC++ mangling:          ?CloseLevel@B_App@@UAEXPBD0@Z
 */
-#ifdef BLD_NATIVE
+
 void B_App::CloseLevel(const char *statement, const char *auxText)
 {
+    this->needClearLevel = true;
+    if (this->pyStatement != NULL)
+    {
+        free(this->pyStatement);
+        this->pyStatement = NULL;
+    }
+    this->pyStatement = strdup(statement);
+    if (this->auxText != NULL)
+    {
+        free(this->auxText);
+        this->auxText = NULL;
+    }
+    this->auxText = strdup(auxText);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

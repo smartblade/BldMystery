@@ -36,6 +36,7 @@ TEST(BladeAppTests, Fields)
     EXPECT_OFFSET_EQ(B_BladeApp, map_to_load, 0x5F4);
     EXPECT_OFFSET_EQ(B_BladeApp, pyStatement, 0x5F8);
     EXPECT_OFFSET_EQ(B_BladeApp, auxText, 0x5FC);
+    EXPECT_OFFSET_EQ(B_BladeApp, needClearLevel, 0x604);
     EXPECT_OFFSET_EQ(B_BladeApp, noSound, 0x606);
     EXPECT_OFFSET_EQ(B_BladeApp, showConsole, 0x607);
     EXPECT_OFFSET_EQ(B_BladeApp, mapName, 0x608);
