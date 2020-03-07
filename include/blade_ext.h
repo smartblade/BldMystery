@@ -1043,7 +1043,7 @@ LIB_EXP void UnBindAll(void);
 LIB_EXP const char *Input(const char *text);
 LIB_EXP int MarkLevelToLoad(const char *filename);
 LIB_EXP int ReadLevel(const char *filename);
-LIB_EXP void CloseLevel(const char *statement, const char *auxText);
+LIB_EXP void CloseLevel(const char *statement, const char *newMap);
 LIB_EXP int StartRecordingDemo(void);
 LIB_EXP int EndRecordingDemo(const char *name);
 LIB_EXP int PlayDemo(const char *name);

@@ -729,11 +729,11 @@ unsigned int ReadAlphaBitMap(const char *filename, const char *internalname)
 * Entry point:            0x004298D3
 */
 
-void CloseLevel(const char *statement, const char *auxText)
+void CloseLevel(const char *statement, const char *newMap)
 {
     B_App *App = GetApplication();
     assert(App);
-    App->CloseLevel(statement, auxText);
+    App->CloseLevel(statement, newMap);
 }
 
 

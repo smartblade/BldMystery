@@ -353,7 +353,7 @@ void B_App::MarkLevelToLoad(const char *map)
 * VC++ mangling:          ?CloseLevel@B_App@@UAEXPBD0@Z
 */
 
-void B_App::CloseLevel(const char *statement, const char *auxText)
+void B_App::CloseLevel(const char *statement, const char *newMap)
 {
     this->needClearLevel = true;
     if (this->pyStatement != NULL)
@@ -362,12 +362,12 @@ void B_App::CloseLevel(const char *statement, const char *auxText)
         this->pyStatement = NULL;
     }
     this->pyStatement = strdup(statement);
-    if (this->auxText != NULL)
+    if (this->newMap != NULL)
     {
-        free(this->auxText);
-        this->auxText = NULL;
+        free(this->newMap);
+        this->newMap = NULL;
     }
-    this->auxText = strdup(auxText);
+    this->newMap = strdup(newMap);
 }
 
 

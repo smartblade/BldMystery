@@ -1849,12 +1849,12 @@ PyObject *bex_ReadLevel(PyObject *self, PyObject *args) {
 */
 
 PyObject *bex_CloseLevel(PyObject *self, PyObject *args) {
-        const char *statement1 = NULL, *statement2 = NULL;
+        const char *statement = NULL, *newMap = NULL;
 
-        if(!PyArg_ParseTuple(args, "|ss", &statement1, &statement2))
+        if(!PyArg_ParseTuple(args, "|ss", &statement, &newMap))
                 return NULL;
 
-        CloseLevel(statement1, statement2);
+        CloseLevel(statement, newMap);
 
         Py_INCREF(Py_None);
         return Py_None;

@@ -34,7 +34,7 @@ public:
     virtual int SetInputMode(const char *device, const char *mode);
     virtual int Quit();
     virtual void MarkLevelToLoad(const char *map);
-    virtual void CloseLevel(const char *statement, const char *auxText);
+    virtual void CloseLevel(const char *statement, const char *newMap);
     virtual void LoadLevel(const char *map);
     virtual void ReadLevel(const char *file_name);
     virtual void unknown_method040();
@@ -137,7 +137,7 @@ public:
     B_Name mode;
     char *map_to_load;
     char *pyStatement;
-    char *auxText;
+    char *newMap;
     char unknownFields600[4];
     bool needClearLevel;
     char unknownFields605[1];
