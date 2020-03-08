@@ -70,6 +70,25 @@ class MemoryInterval:
                 curAddr += 1
         return line
 
+class ImplementedProcedure:
+    def __init__(self, startAddr, endAddr, label):
+        self._startAddr = startAddr
+        self._endAddr = endAddr
+        self._label = label
+
+    def label(self):
+        return self._label
+
+    def startAddress(self):
+        return self._startAddr
+
+    def endAddress(self):
+        return self._endAddr
+
+    def toString(self, imageMap):
+        comment = 'Implemented in c++ code'
+        return "{} call {}; {}\n".format(' ' * 10, self._label, comment)
+
 class ImportReference:
     def __init__(self, addr, name):
         self._addr = addr
@@ -354,6 +373,9 @@ class AsmInstruction:
                 self.printErrorMessage("Failed to replace number with label")
         return instr
 
+    def isReturn(self):
+        return self._instr.startswith("ret")
+
     def toString(self, imageMap):
         label = "{}:".format(self.label())
         if (not self._showLabel):
@@ -547,6 +569,23 @@ class ImageMap:
             self._items[addr].showLabel(name)
         else:
             self._unresolvedAddresses.add(addr)
+
+    def removeImplementedProcedure(self, addr):
+        label = self.label(addr)
+        item = self._items[addr]
+        while True:
+            del self._items[item.startAddress()]
+            if (item.isReturn()):
+                break;
+            item = self._items[item.endAddress()]
+        endAddress = item.endAddress()
+        # remove jump tables for switch statements
+        item = self._items.get(item.endAddress())
+        while isinstance(item, DataItem):
+            del self._items[item.startAddress()]
+            endAddress = item.endAddress()
+            item = self._items[item.endAddress()]
+        self._items[addr] = ImplementedProcedure(addr, endAddress, label)
 
 class MemoryArea:
     _addr = None
@@ -853,7 +892,7 @@ if __name__ == '__main__':
     (varNames, mangledNames, implementedProcedures) = collectSymbolsFromSources()
     print("Hide implemented procedures...")
     for addr in implementedProcedures:
-        imageMap.itemsMap()[addr].hideLabel()
+        imageMap.removeImplementedProcedure(addr)
     print("Writing data...")
     for imageItem in imageMap.itemsMap().values():
         if isinstance(imageItem, AsmInstruction):
