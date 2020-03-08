@@ -855,7 +855,7 @@ void B_App::RemoveInputAction(const char *action_name)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00415425
-* VC++ mangling:          ?Bind@B_App@@QAE_NPBDPAU_object@@@Z
+* VC++ mangling:          ?Bind@B_App@@QAE_NPBDPAUPyObject@@@Z
 */
 
 #ifdef BLD_NATIVE
@@ -921,7 +921,7 @@ bool B_App::UnBindPred(const char *key, const char *pred)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00415548
-* VC++ mangling:          ?UnBind@B_App@@QAE_NPBDPAU_object@@@Z
+* VC++ mangling:          ?UnBind@B_App@@QAE_NPBDPAUPyObject@@@Z
 */
 
 #ifdef BLD_NATIVE
@@ -1161,16 +1161,25 @@ bool B_App::OutSound(int soundId, double x, double y, double z, int unknown)
 * Entry point:            0x004161EA
 * VC++ mangling:          ?CallCdCb@B_App@@UAEXH@Z
 */
-#ifdef BLD_NATIVE
+
 void B_App::CallCdCb(int arg)
 {
+    if (this->CDCallback != NULL)
+    {
+        PyObject *args = PyTuple_New(1);
+        PyObject *argObj = PyInt_FromLong(arg);
+        PyTuple_SET_ITEM(args, 0, argObj);
+        PyObject *result = CallPythonObject(this->CDCallback, args);
+        Py_DECREF(args);
+        Py_XDECREF(result);
+    }
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00416298
-* VC++ mangling:          ?CDSetCallBack@B_App@@QAEHPAU_object@@@Z
+* VC++ mangling:          ?CDSetCallBack@B_App@@QAEHPAUPyObject@@@Z
 */
 #ifdef BLD_NATIVE
 int B_App::CDSetCallBack(PyObject *func)
@@ -1182,7 +1191,7 @@ int B_App::CDSetCallBack(PyObject *func)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00416309
-* VC++ mangling:          ?SetAfterFrameFunc@B_App@@QAEXPBDPAU_object@@@Z
+* VC++ mangling:          ?SetAfterFrameFunc@B_App@@QAEXPBDPAUPyObject@@@Z
 */
 #ifdef BLD_NATIVE
 void B_App::SetAfterFrameFunc(const char *name, PyObject *function)
@@ -1194,7 +1203,7 @@ void B_App::SetAfterFrameFunc(const char *name, PyObject *function)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0041653E
-* VC++ mangling:          ?GetAfterFrameFunc@B_App@@QAEPAU_object@@PBD@Z
+* VC++ mangling:          ?GetAfterFrameFunc@B_App@@QAEPAUPyObject@@PBD@Z
 */
 #ifdef BLD_NATIVE
 PyObject *B_App::GetAfterFrameFunc(const char *name)
@@ -1230,7 +1239,7 @@ int B_App::GetnAfterFrameFuncs()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00416631
-* VC++ mangling:          ?SetMenuTgapFunc@B_App@@QAEXPAU_object@@@Z
+* VC++ mangling:          ?SetMenuTgapFunc@B_App@@QAEXPAUPyObject@@@Z
 */
 #ifdef BLD_NATIVE
 void B_App::SetMenuTgapFunc(PyObject *func)
@@ -1241,7 +1250,7 @@ void B_App::SetMenuTgapFunc(PyObject *func)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00416678
-* VC++ mangling:          ?GetMenuTgapFunc@B_App@@QAEPAU_object@@XZ
+* VC++ mangling:          ?GetMenuTgapFunc@B_App@@QAEPAUPyObject@@XZ
 */
 #ifdef BLD_NATIVE
 PyObject *B_App::GetMenuTgapFunc()

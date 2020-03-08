@@ -4,6 +4,7 @@
 #define BBLIBC_H
 
 #include <bld_system.h>
+#include <bld_python.h>
 #include <fcntl.h>
 #include <export.h>
 #include <array.h>
@@ -218,5 +219,6 @@ LIB_EXP B_ResourceManager B_resource_manager;
 LIB_EXP int CheckErrors;
 
 LIB_EXP void OutputWin32Error(char const *message);
+LIB_EXP PyObject *CallPythonObject(PyObject *func, PyObject *args);
 
 #endif /* BBLIBC_H */

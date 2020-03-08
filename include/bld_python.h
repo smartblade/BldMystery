@@ -20,8 +20,13 @@
 
 #endif
 
-
+/*
+ * Define macro to make link with ?CallPythonObject@@YAPAUPyObject@@PAU1@0@Z
+ * TODO use appropriate Python version and remove this macro
+ */
+#define _object PyObject
 #include <Python.h>
+#undef _object
 
 #ifdef __cplusplus
 extern "C" {

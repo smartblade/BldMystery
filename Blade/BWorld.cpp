@@ -156,7 +156,7 @@ const char *B_World::GenerateEntityName(const char *prefix)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0043EF43
-* VC++ mangling:          ?SetTriggerSectorFunc@B_World@@QAEHPBD0PAU_object@@@Z
+* VC++ mangling:          ?SetTriggerSectorFunc@B_World@@QAEHPBD0PAUPyObject@@@Z
 */
 #ifdef BLD_NATIVE
 int B_World::SetTriggerSectorFunc(
@@ -219,7 +219,7 @@ double *B_World::GetTriggerSectorPoints(const char *trigger_sector_name)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0043F467
-* VC++ mangling:          ?GetTriggerSectorFunc@B_World@@QAEPAU_object@@PBD0@Z
+* VC++ mangling:          ?GetTriggerSectorFunc@B_World@@QAEPAUPyObject@@PBD0@Z
 */
 #ifdef BLD_NATIVE
 PyObject *B_World::GetTriggerSectorFunc(
@@ -233,7 +233,7 @@ PyObject *B_World::GetTriggerSectorFunc(
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0043F56D
-* VC++ mangling:          ?SetTriggerSectorData@B_World@@QAEHPBDPAU_object@@@Z
+* VC++ mangling:          ?SetTriggerSectorData@B_World@@QAEHPBDPAUPyObject@@@Z
 */
 #ifdef BLD_NATIVE
 int B_World::SetTriggerSectorData(
@@ -247,7 +247,7 @@ int B_World::SetTriggerSectorData(
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0043F65D
-* VC++ mangling:          ?GetTriggerSectorData@B_World@@QAEPAU_object@@PBD@Z
+* VC++ mangling:          ?GetTriggerSectorData@B_World@@QAEPAUPyObject@@PBD@Z
 */
 #ifdef BLD_NATIVE
 PyObject *B_World::GetTriggerSectorData(const char *trigger_sector_name)
