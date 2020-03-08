@@ -339,11 +339,12 @@ void B_App::End()
 
 void B_App::MarkLevelToLoad(const char *map)
 {
-        if (this->map_to_load) {
-                free(this->map_to_load);
-                this->map_to_load = NULL;
-        }
-        this->map_to_load = strdup(map);
+    if (this->map_to_load)
+    {
+        free(this->map_to_load);
+        this->map_to_load = NULL;
+    }
+    this->map_to_load = strdup(map);
 }
 
 
@@ -379,190 +380,211 @@ void B_App::CloseLevel(const char *statement, const char *newMap)
 
 void B_App::LoadLevel(const char *script)
 {
-        int foundIndex;
-        int hash_value;
-        char *str_ptr;
-        unsigned int i;
-        B_PtrArray<B_Entity> *array;
-        B_Entities *entities;
-        B_PersonEntity *player1;
-        B_CameraEntity *camera;
-        const char *str1;
-        char *str2;
-        int cmp_result;
+    int foundIndex;
+    int hash_value;
+    char *str_ptr;
+    unsigned int i;
+    B_PtrArray<B_Entity> *array;
+    B_Entities *entities;
+    B_PersonEntity *player1;
+    B_CameraEntity *camera;
+    const char *str1;
+    char *str2;
+    int cmp_result;
 
-        this->SetAppMode("Game");
+    this->SetAppMode("Game");
 
-        this->InitPythonPath();
+    this->InitPythonPath();
 
-        this->clock1->Reset();
+    this->clock1->Reset();
 
-        this->time = 0.0;
+    this->time = 0.0;
 
-        this->clock1->StopTime();
+    this->clock1->StopTime();
 
-        this->unknownPtrForCamera = NUM_3F266666;
+    this->unknownPtrForCamera = NUM_3F266666;
 
-        B_world.unknown_00439F5D();
+    B_world.unknown_00439F5D();
 
+    this->player1 = NULL;
+
+    if (!this->camera)
+    {
+        camera = new B_CameraEntity(0, "Camera");
+
+        this->camera = camera;
+        this->camera->unknownPtrFromApplication = &this->unknownPtrForCamera;
+    }
+
+    this->camera->unknownValueFromApplication = this->unknownPtrForCamera;
+    this->bUnknown01C = TRUE;
+
+    this->RunPythonFile(script);
+
+    this->location.setPosition(B_world.initial_point_position);
+    this->location.setOrientation(B_world.initial_point_orientation);
+
+    this->PrepareLevel();
+
+    if (!gbl_net->is_net_game() || gbl_net->is_server())
+    {
+        assert(PLAYER);
+
+        entities = &B_world.entities;
+        if (
+            entities->foundEntity &&
+            !strcmp(entities->foundEntity->Id(), PLAYER)
+        )
+        {
+            player1 = (B_PersonEntity *)entities->foundEntity;
+        }
+        else
+        {
+            str_ptr = PLAYER;
+            hash_value = 0;
+            while (*str_ptr)
+            {
+                hash_value += *str_ptr;
+                str_ptr++;
+            }
+            hash_value = hash_value & 0xFF;
+
+            array = &entities->hash[hash_value];
+
+            foundIndex = -1;
+            for(i = 0; i < array->size; i++)
+            {
+                str1 = array->elements[i]->Id();
+                str2 = PLAYER;
+                for(;;)
+                {
+                    if (
+                        (str1[0] != str2[0]) ||
+                        (str2[0] && (str1[1] != str2[1]))
+                    )
+                    {
+                        cmp_result = 1;
+                        break;
+                    }
+                    if (
+                        (str2[0] == '\0') ||
+                        (str2[1] == '\0')
+                    )
+                    {
+                        cmp_result = 0;
+                        break;
+                    }
+                    str2 += 2;
+                    str1 += 2;
+                }
+                if (!cmp_result)
+                {
+                    foundIndex = i;
+                    break;
+                }
+            }
+            if (foundIndex != -1)
+            {
+                entities->foundEntity = array->elements[foundIndex];
+                player1 = (B_PersonEntity *)entities->foundEntity;
+            }
+            else
+            {
+                player1 = NULL;
+            }
+        }
+        this->player1 = player1;
+
+        if (!this->player1)
+        {
+            this->ExitWithError(
+                "Error",
+                "Player1 not declared in pj.py"
+            );
+        }
+
+        this->camera->unknown_004EB1AA(this->player1);
+
+        this->camera->unknownPtrFromApplication = &this->unknownPtrForCamera;
+        this->camera->unknownValueFromApplication = this->unknownPtrForCamera;
+
+        this->client = NULL;
+    }
+    else
+    {
         this->player1 = NULL;
 
-        if (!this->camera) {
-                camera = new B_CameraEntity(0, "Camera");
-
-                this->camera = camera;
-                this->camera->unknownPtrFromApplication = &this->unknownPtrForCamera;
+        entities = &B_world.entities;
+        if (
+            entities->foundEntity &&
+            !strcmp(entities->foundEntity->Id(), PLAYER)
+        )
+        {
+            player1 = (B_PersonEntity *)entities->foundEntity;
         }
+        else
+        {
+            str_ptr = PLAYER;
+            hash_value = 0;
+            while (*str_ptr)
+            {
+                hash_value += *str_ptr;
+                str_ptr++;
+            }
+            hash_value = hash_value & 0xFF;
 
-        this->camera->unknownValueFromApplication = this->unknownPtrForCamera;
-        this->bUnknown01C = TRUE;
+            array = &entities->hash[hash_value];
 
-        this->RunPythonFile(script);
+            foundIndex = -1;
+            for(i = 0; i < array->size; i++)
+            {
+                str1 = array->elements[i]->Id();
+                str2 = PLAYER;
 
-        this->location.setPosition(B_world.initial_point_position);
-        this->location.setOrientation(B_world.initial_point_orientation);
-
-        this->PrepareLevel();
-
-        if (!gbl_net->is_net_game() || gbl_net->is_server()) {
-
-                assert(PLAYER);
-
-                entities = &B_world.entities;
-                if (
-                        entities->foundEntity &&
-                        !strcmp(entities->foundEntity->Id(), PLAYER)
-                ) {
-                        player1 = (B_PersonEntity *)entities->foundEntity;
-                } else {
-                        str_ptr = PLAYER;
-                        hash_value = 0;
-                        while (*str_ptr) {
-                                hash_value += *str_ptr;
-                                str_ptr++;
-                        }
-                        hash_value = hash_value & 0xFF;
-
-                        array = &entities->hash[hash_value];
-
-                        foundIndex = -1;
-                        for(i = 0; i < array->size; i++) {
-
-                                str1 = array->elements[i]->Id();
-                                str2 = PLAYER;
-
-                                for(;;) {
-                                        if (
-                                                (str1[0] != str2[0]) ||
-                                                (str2[0] && (str1[1] != str2[1]))
-                                        ) {
-                                                cmp_result = 1;
-                                                break;
-                                        }
-                                        if (
-                                                (str2[0] == '\0') ||
-                                                (str2[1] == '\0')
-                                        ) {
-                                                cmp_result = 0;
-                                                break;
-                                        }
-                                        str2 += 2;
-                                        str1 += 2;
-                                }
-
-                                if (!cmp_result) {
-                                        foundIndex = i;
-                                        break;
-                                }
-                        }
-
-                        if (foundIndex != -1) {
-                                entities->foundEntity = array->elements[foundIndex];
-                                player1 = (B_PersonEntity *)entities->foundEntity;
-                        } else
-                                player1 = NULL;
+                for(;;)
+                {
+                    if (
+                        (str1[0] != str2[0]) ||
+                        (str2[0] && (str1[1] != str2[1]))
+                    )
+                    {
+                        cmp_result = 1;
+                        break;
+                    }
+                    if (
+                        (str2[0] == '\0') ||
+                        (str2[1] == '\0')
+                    )
+                    {
+                        cmp_result = 0;
+                        break;
+                    }
+                    str2 += 2;
+                    str1 += 2;
                 }
-                this->player1 = player1;
-
-                if (!this->player1) {
-                        this->ExitWithError(
-                            "Error",
-                            "Player1 not declared in pj.py"
-                        );
+                if (!cmp_result)
+                {
+                    foundIndex = i;
+                    break;
                 }
-
-                this->camera->unknown_004EB1AA(this->player1);
-
-                this->camera->unknownPtrFromApplication = &this->unknownPtrForCamera;
-                this->camera->unknownValueFromApplication = this->unknownPtrForCamera;
-
-                this->client = NULL;
-
-        } else {
-                this->player1 = NULL;
-
-                entities = &B_world.entities;
-                if (
-                        entities->foundEntity &&
-                        !strcmp(entities->foundEntity->Id(), PLAYER)
-                ) {
-                        player1 = (B_PersonEntity *)entities->foundEntity;
-                } else {
-                        str_ptr = PLAYER;
-                        hash_value = 0;
-                        while (*str_ptr) {
-                                hash_value += *str_ptr;
-                                str_ptr++;
-                        }
-                        hash_value = hash_value & 0xFF;
-
-                        array = &entities->hash[hash_value];
-
-                        foundIndex = -1;
-                        for(i = 0; i < array->size; i++) {
-
-                                str1 = array->elements[i]->Id();
-                                str2 = PLAYER;
-
-                                for(;;) {
-                                        if (
-                                                (str1[0] != str2[0]) ||
-                                                (str2[0] && (str1[1] != str2[1]))
-                                        ) {
-                                                cmp_result = 1;
-                                                break;
-                                        }
-                                        if (
-                                                (str2[0] == '\0') ||
-                                                (str2[1] == '\0')
-                                        ) {
-                                                cmp_result = 0;
-                                                break;
-                                        }
-                                        str2 += 2;
-                                        str1 += 2;
-                                }
-
-                                if (!cmp_result) {
-                                        foundIndex = i;
-                                        break;
-                                }
-                        }
-
-                        if (foundIndex != -1) {
-                                entities->foundEntity = array->elements[foundIndex];
-                                player1 = (B_PersonEntity *)entities->foundEntity;
-                        } else
-                                player1 = NULL;
-                }
-                this->client = player1;
+            }
+            if (foundIndex != -1)
+            {
+                entities->foundEntity = array->elements[foundIndex];
+                player1 = (B_PersonEntity *)entities->foundEntity;
+            }
+            else
+            {
+                player1 = NULL;
+            }
         }
-
-        if (this->mode == "Game") {
-                this->clock1->RestartTime();
-        }
-
-        StartGSQR();
+        this->client = player1;
+    }
+    if (this->mode == "Game")
+    {
+        this->clock1->RestartTime();
+    }
+    StartGSQR();
 }
 
 /*
@@ -593,98 +615,98 @@ void B_App::TakeSnapShot()
 
 void B_App::ReadLevel(const char * file_name)
 {
-        double timeBefore, timeAfter;
-        char itemKind[256], itemName[256];
+    double timeBefore, timeAfter;
+    char itemKind[256], itemName[256];
 
-        mout << vararg("Abriendo archivo csv.dat\n");
-        timeBefore = timeGetTime();
-        ReadCSV("..\\csv.dat", &B_csvs);
-        timeAfter = timeGetTime();
-        mout << vararg(
-                "csv.dat loaded (%f seconds).\n",
-                (timeAfter - timeBefore)/1000.0);
+    mout << vararg("Abriendo archivo csv.dat\n");
+    timeBefore = timeGetTime();
+    ReadCSV("..\\csv.dat", &B_csvs);
+    timeAfter = timeGetTime();
+    mout << vararg(
+        "csv.dat loaded (%f seconds).\n",
+        (timeAfter - timeBefore)/1000.0);
 
-        timeBefore = timeAfter;
-        mout << vararg("Abriendo archivo %s", file_name);
+    timeBefore = timeAfter;
+    mout << vararg("Abriendo archivo %s", file_name);
 
-        FILE *file = fopen(file_name, "r");
-        if (file == NULL)
+    FILE *file = fopen(file_name, "r");
+    if (file == NULL)
+    {
+        mout << "No se puede abrir archivo\n";
+        return;
+    }
+
+    int status = fscanf(file, "%s -> %s", itemKind, itemName);
+    while ((status != 0) && (status != EOF))
+    {
+        if (!strcmp(itemKind, "Bitmaps"))
         {
-                mout << "No se puede abrir archivo\n";
-                return;
+            B_resource_manager.LocateResourceIn(B_Name(itemName), NULL, 2);
         }
-
-        int status = fscanf(file, "%s -> %s", itemKind, itemName);
-        while ((status != 0) && (status != EOF))
+        else if (!strcmp(itemKind, "ChromaBitmaps"))
         {
-                if (!strcmp(itemKind, "Bitmaps"))
-                {
-                        B_resource_manager.LocateResourceIn(B_Name(itemName), NULL, 2);
-                }
-                else if (!strcmp(itemKind, "ChromaBitmaps"))
-                {
-                        this->ExitWithError("Blade", "ChromaBitmaps no longer supported.");
-                }
-                else if (!strcmp(itemKind, "WorldDome"))
-                {
-                        B_resource_manager.LocateResourceIn(B_Name(itemName), NULL, 2);
-                        B_3D_raster_device->update_dome();
-                }
-                else if (!strcmp(itemKind, "World"))
-                {
-                        this->LoadWorld(itemName);
-                }
-                else if (!strcmp(itemKind, "ANM"))
-                {
-                        B_IDataFile * file = new B_IDataFile(itemName, O_BINARY);
-                        if (file->OK())
-                        {
-                                anim_t *anim = new anim_t();
-                                (*file) >> anim;
-                                if (gbl_anims.num_alloc <= gbl_anims.size)
-                                {
-                                        gbl_anims.num_alloc += gbl_anims.increment;
-                                        if (gbl_anims.size != 0)
-                                        {
-                                                anim_t **elements = new anim_t *[gbl_anims.num_alloc];
-                                                for(unsigned int i = 0; i < gbl_anims.size; i++)
-                                                {
-                                                        elements[i] = gbl_anims.elements[i];
-                                                }
-                                                delete gbl_anims.elements;
-                                                gbl_anims.elements = elements;
-                                        }
-                                        else
-                                        {
-                                                gbl_anims.elements = new anim_t *[gbl_anims.num_alloc];
-                                        }
-                                }
-                                gbl_anims.elements[gbl_anims.size] = anim;
-                                gbl_anims.size++;
-                        }
-                        else
-                        {
-                                mout << vararg("ERROR opening animation %s\n", itemName);
-                        }
-                        delete file;
-                }
-                else if (!strcmp(itemKind, "Objs"))
-                {
-                        this->ExitWithError("Blade", "Objs no longer supported.");
-                }
-                else if (!strcmp(itemKind, "LoadGammaC"))
-                {
-                        this->ExitWithError("Blade", "LoadGammaC no longer supported.");
-                }
-                status = fscanf(file, "%s -> %s", itemKind, itemName);
-                this->ProcessMessage();
+            this->ExitWithError("Blade", "ChromaBitmaps no longer supported.");
         }
-        fclose(file);
-        timeAfter = timeGetTime();
-        mout << vararg(
-                ".lvl %s loaded (%f seconds).\n",
-                file_name,
-                (timeAfter - timeBefore)/1000.0);
+        else if (!strcmp(itemKind, "WorldDome"))
+        {
+            B_resource_manager.LocateResourceIn(B_Name(itemName), NULL, 2);
+            B_3D_raster_device->update_dome();
+        }
+        else if (!strcmp(itemKind, "World"))
+        {
+            this->LoadWorld(itemName);
+        }
+        else if (!strcmp(itemKind, "ANM"))
+        {
+            B_IDataFile * file = new B_IDataFile(itemName, O_BINARY);
+            if (file->OK())
+            {
+                anim_t *anim = new anim_t();
+                (*file) >> anim;
+                if (gbl_anims.num_alloc <= gbl_anims.size)
+                {
+                    gbl_anims.num_alloc += gbl_anims.increment;
+                    if (gbl_anims.size != 0)
+                    {
+                        anim_t **elements = new anim_t *[gbl_anims.num_alloc];
+                        for(unsigned int i = 0; i < gbl_anims.size; i++)
+                        {
+                            elements[i] = gbl_anims.elements[i];
+                        }
+                        delete gbl_anims.elements;
+                        gbl_anims.elements = elements;
+                    }
+                    else
+                    {
+                        gbl_anims.elements = new anim_t *[gbl_anims.num_alloc];
+                    }
+                }
+                gbl_anims.elements[gbl_anims.size] = anim;
+                gbl_anims.size++;
+            }
+            else
+            {
+                mout << vararg("ERROR opening animation %s\n", itemName);
+            }
+            delete file;
+        }
+        else if (!strcmp(itemKind, "Objs"))
+        {
+            this->ExitWithError("Blade", "Objs no longer supported.");
+        }
+        else if (!strcmp(itemKind, "LoadGammaC"))
+        {
+            this->ExitWithError("Blade", "LoadGammaC no longer supported.");
+        }
+        status = fscanf(file, "%s -> %s", itemKind, itemName);
+        this->ProcessMessage();
+    }
+    fclose(file);
+    timeAfter = timeGetTime();
+    mout << vararg(
+        ".lvl %s loaded (%f seconds).\n",
+        file_name,
+        (timeAfter - timeBefore)/1000.0);
 }
 
 
@@ -995,29 +1017,29 @@ int B_App::SetAutoGenTexture(const char *textureName, int textureEffect)
 
 bool B_App::RunPythonFile(const char *file_name)
 {
-        FILE *file;
+    FILE *file;
 
-        file = fopen(file_name, "rt");
+    file = fopen(file_name, "rt");
 
-        if (!file) {
-                mout << vararg("No se ha podido encontrar %s\n", file_name);
-                return FALSE;
-        }
+    if (!file)
+    {
+        mout << vararg("No se ha podido encontrar %s\n", file_name);
+        return FALSE;
+    }
+    if (PyRun_SimpleFile(file, (char *)file_name) == -1)
+    {
+        mout << vararg(
+            "B_App::RunScriptFile() -> Error ejecutando %s\n",
+            file_name);
+    }
+    if (PyErr_Occurred())
+    {
+        PyErr_Print();
+        PyErr_Clear();
+    }
+    fclose(file);
 
-        if (PyRun_SimpleFile(file, (char *)file_name) == -1) {
-                mout << vararg(
-                        "B_App::RunScriptFile() -> Error ejecutando %s\n",
-                        file_name);
-        }
-
-        if (PyErr_Occurred()) {
-                PyErr_Print();
-                PyErr_Clear();
-        }
-
-        fclose(file);
-
-        return TRUE;
+    return TRUE;
 }
 
 
@@ -1391,51 +1413,51 @@ int B_App::GetMutilationLevel()
 
 int B_App::LoadWorld(const char *file_name)
 {
-        double timeBefore, timeAfter;
+    double timeBefore, timeAfter;
 
-        mout << vararg("About to load World %s.\n", file_name);
+    mout << vararg("About to load World %s.\n", file_name);
+    timeBefore = timeGetTime();
+
+    B_IDataFile * file = new B_IDataFile(file_name, O_BINARY);
+    if (!file->OK())
+    {
+        mout << "B_App::LoadWorld() -> Error trying to load map.\n";
+        return 0;
+    }
+    *file >> &B_world;
+    delete file;
+
+    timeAfter = timeGetTime();
+
+    mout << vararg(
+        "World %s loaded (%f seconds).\n",
+        file_name,
+        (timeAfter - timeBefore)/1000.0
+    );
+
+    B_world.world_file_name = B_Name(file_name);
+
+    if (gbl_sound_device)
+    {
+        mout << "About to set world size for sound device\n";
+
         timeBefore = timeGetTime();
 
-        B_IDataFile * file = new B_IDataFile(file_name, O_BINARY);
-        if (!file->OK())
-        {
-                mout << "B_App::LoadWorld() -> Error trying to load map.\n";
-                return 0;
-        }
-        *file >> &B_world;
-        delete file;
+        gbl_sound_device->set_world_size(
+            B_world.unknown18FC.x, B_world.unknown18FC.y,
+            B_world.unknown18FC.z, B_world.unknown1914,
+            5000.0);
 
         timeAfter = timeGetTime();
-
         mout << vararg(
-                "World %s loaded (%f seconds).\n",
-                file_name,
-                (timeAfter - timeBefore)/1000.0
+            "set world size done (%f seconds).\n",
+            (timeAfter - timeBefore)/1000.0
         );
+    }
 
-        B_world.world_file_name = B_Name(file_name);
+    mout << "OK!\n";
 
-        if (gbl_sound_device)
-        {
-                mout << "About to set world size for sound device\n";
-
-                timeBefore = timeGetTime();
-
-                gbl_sound_device->set_world_size(
-                        B_world.unknown18FC.x, B_world.unknown18FC.y,
-                        B_world.unknown18FC.z, B_world.unknown1914,
-                        5000.0);
-
-                timeAfter = timeGetTime();
-                mout << vararg(
-                        "set world size done (%f seconds).\n",
-                        (timeAfter - timeBefore)/1000.0
-                );
-        }
-
-        mout << "OK!\n";
-
-        return 1;
+    return 1;
 }
 
 
