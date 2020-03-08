@@ -150,7 +150,8 @@ public:
     int drawShadows;
     int autoEngageCombat;
     double aecGap;
-    char unknownFields630[8];
+    PyObject *menuTgapFunc;
+    char unknownFields634[4];
     B_PtrArray<B_NamedObj> afterFrameFuncs;
     B_PtrArray<B_StringValue> values;
     char unknownFields668[264];
