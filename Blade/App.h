@@ -132,7 +132,8 @@ public:
     bool isActive;
     bool b05D4;
     bool cls;
-    char unknownFields320[16];
+    float saveToBmp;
+    char unknownFields5DC[12];
     const char *commandLine;
     B_Name mode;
     char *map_to_load;

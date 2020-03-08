@@ -579,11 +579,11 @@ void B_App::LoadLevel(const char *script)
 * VC++ mangling:          ?TakeSnapShot@B_App@@QAEXXZ
 */
 
-#ifdef BLD_NATIVE
 void B_App::TakeSnapShot()
 {
+    this->saveToBmp = 1.0f;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
