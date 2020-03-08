@@ -1229,12 +1229,12 @@ const char *B_App::GetAfterFrameFuncName(int index)
 * Entry point:            0x0041661D
 * VC++ mangling:          ?GetnAfterFrameFuncs@B_App@@QAEHXZ
 */
-#ifdef BLD_NATIVE
+
 int B_App::GetnAfterFrameFuncs()
 {
-    return 0;
+    return this->afterFrameFuncs.size;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

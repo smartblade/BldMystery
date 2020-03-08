@@ -151,7 +151,7 @@ public:
     int autoEngageCombat;
     double aecGap;
     char unknownFields630[8];
-    B_PtrArray<B_NamedObj> unknownArr0638;
+    B_PtrArray<B_NamedObj> afterFrameFuncs;
     B_PtrArray<B_StringValue> values;
     char unknownFields668[264];
 };
