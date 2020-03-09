@@ -1519,12 +1519,12 @@ int B_App::DeleteStringValue(const char *variable)
 * Entry point:            0x00417417
 * VC++ mangling:          ?GetInputMode@B_App@@UAEPBDPBD@Z
 */
-#ifdef BLD_NATIVE
+
 const char *B_App::GetInputMode(const char *device)
 {
     return NULL;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
