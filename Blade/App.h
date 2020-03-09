@@ -96,7 +96,7 @@ public:
     int RemoveAfterFrameFunc(const char *name);
     int SetBloodLevel(int bloodLevel);
     int GetBloodLevel();
-    int SetMutilationLevel(int mutilation_level);
+    int SetMutilationLevel(int mutilationLevel);
     int GetMutilationLevel();
     int SetStringValue(const char *variable, const char *value);
     const char *GetStringValue(const char *variable);
@@ -123,7 +123,8 @@ public:
     float unknown1AC;
     float unknownPtrForCamera;
     int bloodLevel;
-    char unknownFields1B8[1032];
+    int mutilationLevel;
+    char unknownFields1BC[1028];
     float fUnknown5C0;
     char unknownFields400[4];
     float time;
