@@ -94,7 +94,7 @@ public:
     void SetMenuTgapFunc(PyObject *func);
     PyObject *GetMenuTgapFunc();
     int RemoveAfterFrameFunc(const char *name);
-    int SetBloodLevel(int blood_level);
+    int SetBloodLevel(int bloodLevel);
     int GetBloodLevel();
     int SetMutilationLevel(int mutilation_level);
     int GetMutilationLevel();
@@ -122,7 +122,8 @@ public:
     location_t location;
     float unknown1AC;
     float unknownPtrForCamera;
-    char unknownFields300[1036];
+    int bloodLevel;
+    char unknownFields1B8[1032];
     float fUnknown5C0;
     char unknownFields400[4];
     float time;

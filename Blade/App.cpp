@@ -1360,14 +1360,12 @@ void B_App::StringSplit(
 * VC++ mangling:          ?SetBloodLevel@B_App@@QAEHH@Z
 */
 
-#ifdef BLD_NATIVE
-
-int B_App::SetBloodLevel(int blood_level)
+int B_App::SetBloodLevel(int bloodLevel)
 {
-    return 0;
+    this->bloodLevel = bloodLevel;
+    return true;
 }
 
-#endif
 
 /*
 * Module:                 Blade.exe

@@ -25,6 +25,7 @@ TEST(BladeAppTests, Fields)
     EXPECT_OFFSET_EQ(B_BladeApp, unknownPtr074, 0x074);
     EXPECT_OFFSET_EQ(B_BladeApp, camera, 0x078);
     EXPECT_OFFSET_EQ(B_BladeApp, location, 0x07C);
+    EXPECT_OFFSET_EQ(B_BladeApp, bloodLevel, 0x1B4);
     EXPECT_OFFSET_EQ(B_BladeApp, time, 0x5C8);
     EXPECT_OFFSET_EQ(B_BladeApp, b05D1, 0x5D1);
     EXPECT_OFFSET_EQ(B_BladeApp, no_sleep, 0x5D2);
