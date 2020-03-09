@@ -474,6 +474,24 @@ anim_t *LoadFromHDAnim(const char *anm_name)
 
 
 
+/* Begin of file:         0x005A4F40 */
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x005A52CE
+* VC++ mangling:          ??0Unknown005A52CE@@QAE@H@Z
+*/
+#ifdef BLD_NATIVE
+Unknown005A52CE::Unknown005A52CE(int)
+{
+}
+#endif
+
+/* End of file:           0x005A74B0 */
+
+
+
 /* Begin of file:         0x005AA730 */
 
 

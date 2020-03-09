@@ -6,6 +6,7 @@
 #include "anim.h"
 #include "CameraEntity.h"
 #include "sound_device.h"
+#include <BInputc.h>
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
 #include <blade_ext.h>
@@ -23,11 +24,63 @@
 * Entry point:            0x004113CE
 * VC++ mangling:          ??0B_App@@QAE@PAD@Z
 */
-#ifdef BLD_NATIVE
+
 B_App::B_App(char *cmdLine)
+:
+location(B_Vector(0.0, 0.0, 0.0), 0.0, 0.0, 0.0)
 {
+    this->listenerMode = 2;
+    this->noSound = false;
+    this->clock1 = NULL;
+    this->clock2 = NULL;
+    this->console = NULL;
+    this->showConsole = false;
+    this->noSound = false;
+    this->unknown058 = NULL;
+    this->rootWidget = 0;
+    this->player1 = NULL;
+    this->camera = NULL;
+    this->b05D0 = false;
+    this->no_sleep = true;
+    this->unknown5E0 = NULL;
+    this->isActive = true;
+    this->b05D4 = true;
+    this->b05D1 = true;
+    this->cls = false;
+    this->unknown5BC = NULL;
+    this->b05D6 = false;
+    this->unknown1AC = 1.0f;
+    this->unknownPtrForCamera = 0.65f;
+    this->b001C = true;
+    this->b001D = false;
+    this->commandLine = cmdLine;
+    this->saveToBmp = 0.0f;
+    this->numSavedBMPs = 0;
+    this->CDCallback = NULL;
+    this->mutilationLevel = 1;
+    this->bloodLevel = 1;
+    this->mode = "None";
+    InputManager = new B_InputManager();
+    this->unknown634 = 1;
+    this->drawShadows = true;
+    this->autoEngageCombat = false;
+    this->aecGap = 8.0;
+    this->map_to_load = NULL;
+    this->pyStatement = NULL;
+    this->newMap = NULL;
+    this->pyInteractiveString = NULL;
+    this->needClearLevel = false;
+    this->b0605 = false;
+    this->unknown05C = NULL;
+    Py_Initialize();
+    this->unknownPtr070 = new Unknown005A52CE(0);
+    this->unknownPtr074 = new Unknown005A52CE(0);
+    this->b0004 = false;
+    this->dUnknown008 = 2.0;
+    this->dUnknown010 = 1.0;
+    this->menuTgapFunc = NULL;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
@@ -417,7 +470,7 @@ void B_App::LoadLevel(const char *script)
     }
 
     this->camera->unknownValueFromApplication = this->unknownPtrForCamera;
-    this->bUnknown01C = TRUE;
+    this->b001C = true;
 
     this->RunPythonFile(script);
 

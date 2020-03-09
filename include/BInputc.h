@@ -33,7 +33,10 @@ private:
 class LIB_EXP B_InputManager
 {
 public:
+    B_InputManager();
     void AddDevice(B_InputDevice *device);
+private:
+    char unknown_fields[64];
 };
 
 LIB_EXP B_InputManager *InputManager;

@@ -8,6 +8,8 @@ externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z: near
 l0040ACDD equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z
 externdef ??6@YAAAVB_ODataFile@@AAV0@AAVB_Vector@@@Z: near
 l0040ACF4 equ ??6@YAAAVB_ODataFile@@AAV0@AAVB_Vector@@@Z
+externdef ??0location_t@@QAE@ABVB_Vector@@NNN@Z: near
+l0040AD10 equ ??0location_t@@QAE@ABVB_Vector@@NNN@Z
 externdef ??1location_t@@QAE@XZ: near
 l0040AD77 equ ??1location_t@@QAE@XZ
 externdef ?setPosition@location_t@@QAEXABVB_Vector@@@Z: near
@@ -1330,6 +1332,8 @@ externdef _IsSelected: near
 l0059F612 equ _IsSelected
 externdef _CarringObject: near
 l0059F643 equ _CarringObject
+externdef ??0Unknown005A52CE@@QAE@H@Z: near
+l005A52CE equ ??0Unknown005A52CE@@QAE@H@Z
 externdef ?Update@B_ProcTexture@@QAEXXZ: near
 l005AA881 equ ?Update@B_ProcTexture@@QAEXXZ
 externdef _Set007EA988To01: near

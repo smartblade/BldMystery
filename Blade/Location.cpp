@@ -2,12 +2,21 @@
 #include "Location.h"
 #include "bld_misc_funcs.h"
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x00040AD10
+* VC++ mangling:          ??0location_t@@QAE@ABVB_Vector@@NNN@Z
 */
+#ifdef BLD_NATIVE
+location_t::location_t(
+    const B_Vector &position,
+    double rotationX,
+    double rotationY,
+    double rotationZ)
+{
+}
+#endif
 
 /*
 * Module:                 Blade.exe

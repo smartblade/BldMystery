@@ -229,6 +229,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BInputc\InputManagerTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\LocationTests.cpp"
 				>
 			</File>
@@ -274,6 +278,10 @@
 			</File>
 			<File
 				RelativePath=".\Blade\Unknown004CD5ECTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Blade\Unknown005A52CETests.cpp"
 				>
 			</File>
 			<File
