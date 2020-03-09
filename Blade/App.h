@@ -141,7 +141,7 @@ public:
     char *map_to_load;
     char *pyStatement;
     char *newMap;
-    char unknownFields600[4];
+    char *pyInteractiveString;
     bool needClearLevel;
     char unknownFields605[1];
     bool noSound;

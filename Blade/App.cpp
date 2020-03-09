@@ -1465,11 +1465,17 @@ int B_App::LoadWorld(const char *file_name)
 * Entry point:            0x00416EAB
 * VC++ mangling:          ?SetPyInteractiveString@B_App@@UAEXPBD@Z
 */
-#ifdef BLD_NATIVE
+
 void B_App::SetPyInteractiveString(const char *str)
 {
+    if (this->pyInteractiveString != NULL)
+    {
+        free(this->pyInteractiveString);
+        this->pyInteractiveString = NULL;
+    }
+    this->pyInteractiveString = strdup(str);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
