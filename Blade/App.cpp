@@ -1531,12 +1531,12 @@ const char *B_App::GetInputMode(const char *device)
 * Entry point:            0x00417426
 * VC++ mangling:          ?SetInputMode@B_App@@UAEHPBD0@Z
 */
-#ifdef BLD_NATIVE
+
 int B_App::SetInputMode(const char *device, const char *mode)
 {
     return 0;
 }
-#endif
+
 
 /*
 ................................................................................
