@@ -1397,12 +1397,12 @@ int B_App::SetMutilationLevel(int mutilationLevel)
 * Entry point:            0x00416C5B
 * VC++ mangling:          ?GetMutilationLevel@B_App@@QAEHXZ
 */
-#ifdef BLD_NATIVE
+
 int B_App::GetMutilationLevel()
 {
-    return 0;
+    return this->mutilationLevel;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
