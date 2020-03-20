@@ -383,11 +383,7 @@ int SetListenerMode(int mode, double x, double y, double z)
 {
     B_App *App = GetApplication();
     assert(App);
-    B_Vector v;
-    v.x = x;
-    v.y = y;
-    v.z = z;
-    return App->SetListenerMode(mode, v);
+    return App->SetListenerMode(mode, B_Vector(x, y, z));
 }
 
 
@@ -943,11 +939,7 @@ after_search:
 
 void SetSun(int exists, double x, double y, double z)
 {
-    B_Vector sunPosition;
-    sunPosition.x = x;
-    sunPosition.y = y;
-    sunPosition.z = z;
-    B_world.SetSun(exists, sunPosition);
+    B_world.SetSun(exists, B_Vector(x, y, z));
 }
 
 
@@ -960,11 +952,7 @@ int InsideAA(int AA, double x, double y, double z)
 {
     B_Sector *sector;
     int sectorIndex;
-    B_Vector point;
-    point.x = x;
-    point.y = y;
-    point.z = z;
-    sectorIndex = B_world.FindSectorIndex(point);
+    sectorIndex = B_world.FindSectorIndex(B_Vector(x, y, z));
     if (sectorIndex == -1)
         return 0;
     sector = B_world.sectors.elements[sectorIndex];
@@ -1961,10 +1949,7 @@ int GetScreenXY(
     unknown.unknown010 = coef2;
     unknown.unknown014 = 0.65 * coef1;
     unknown.unknown004CD634();
-    B_Vector map_point;
-    map_point.x = map_x;
-    map_point.y = map_y;
-    map_point.z = map_z;
+    B_Vector map_point(map_x, map_y, map_z);
     B_Vector screenPoint = map_point * GetApplication()->location.matrix0030;
     if (fabs(screenPoint.z) < 0.01)
         screenPoint.z = 0.01;
@@ -2013,11 +1998,7 @@ int CreateTriggerSector(
     {
         double y = points[i].y;
         double x = points[i].x;
-        B_Vector point;
-        point.x = x;
-        point.y = floor_height;
-        point.z = y;
-        TS->AddPoint(point, num_points);
+        TS->AddPoint(B_Vector(x, floor_height, y), num_points);
     }
     assert(TS);
     char * name = TS->Id().String();

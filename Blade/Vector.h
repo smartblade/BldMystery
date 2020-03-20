@@ -8,6 +8,16 @@ class B_ODataFile;
 class B_Vector
 {
 public:
+    B_Vector()
+    {
+    }
+
+    B_Vector(double x, double y, double z)
+    :
+    x(x), y(y), z(z)
+    {
+    }
+
     double x;
     double y;
     double z;
