@@ -8,9 +8,9 @@ class B_ODataFile;
 class B_Vector
 {
 public:
-        double x;
-        double y;
-        double z;
+    double x;
+    double y;
+    double z;
 };
 
 extern B_IDataFile& operator >>(B_IDataFile& file, B_Vector &vector);
