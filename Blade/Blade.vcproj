@@ -336,6 +336,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\libnet.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Location.cpp"
 				>
 			</File>
@@ -419,6 +423,10 @@
 			</File>
 			<File
 				RelativePath=".\entity.h"
+				>
+			</File>
+			<File
+				RelativePath=".\libnet.h"
 				>
 			</File>
 			<File

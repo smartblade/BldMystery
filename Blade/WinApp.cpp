@@ -6,6 +6,7 @@
 #include "WinClock.h"
 #include "sound_device.h"
 #include <BInputc.h>
+#include "libnet.h"
 #include "bld_misc_funcs.h"
 
 

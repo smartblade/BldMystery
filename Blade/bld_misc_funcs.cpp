@@ -581,54 +581,8 @@ char *get_map_for_net_game(const char *map)
 /* Begin of file:         0x005B5340 */
 /* End of file:           0x005B64C0 */
 
+/* File:                  libnet.cpp */
 /* Begin of file:         0x005B64C0 */
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x005B64C0
-*/
-#ifdef BLD_NATIVE
-void SetDedicatedServer(bool isDedicated)
-{
-}
-#endif
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x005B64CD
-*/
-#ifdef BLD_NATIVE
-bool IsDedicatedServer()
-{
-    return false;
-}
-#endif
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x005B65D2
-*/
-
-#ifdef BLD_NATIVE
-
-void LoadNetModule(char *fileName)
-{
-}
-
-#endif
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x005B668D
-*/
-#ifdef BLD_NATIVE
-bool FreeNetData(bool freeNetLibrary)
-{
-    return false;
-}
-#endif
-
 /* End of file:           0x005B6880 */
 
 

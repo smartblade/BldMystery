@@ -114,10 +114,6 @@ extern void Set007EA988To01(void);
 extern void OnEvent(int a, int b);
 extern void reset_client_map_name(void);
 extern char *get_map_for_net_game(const char *map);
-extern void SetDedicatedServer(bool isDedicated);
-extern bool IsDedicatedServer();
-extern void LoadNetModule(char *fileName);
-extern bool FreeNetData(bool freeNetLibrary);
 
 /*
 * Module:                 Blade.exe

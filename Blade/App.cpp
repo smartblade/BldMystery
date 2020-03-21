@@ -6,6 +6,7 @@
 #include "anim.h"
 #include "CameraEntity.h"
 #include "sound_device.h"
+#include "libnet.h"
 #include <BInputc.h>
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
