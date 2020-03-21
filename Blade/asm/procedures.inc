@@ -1432,6 +1432,14 @@ externdef _LoadNetModule: near
 l005B65D2 equ _LoadNetModule
 externdef _FreeNetData: near
 l005B668D equ _FreeNetData
+externdef ?message_received@B_NetCallbacks@@UAEXKPAXK@Z: near
+l005B6750 equ ?message_received@B_NetCallbacks@@UAEXKPAXK@Z
+externdef ?player_destroyed@B_NetCallbacks@@UAEXK@Z: near
+l005B6780 equ ?player_destroyed@B_NetCallbacks@@UAEXK@Z
+externdef ?player_created@B_NetCallbacks@@UAEXKPBD@Z: near
+l005B67F0 equ ?player_created@B_NetCallbacks@@UAEXKPBD@Z
+externdef ?unknown00C@B_NetCallbacks@@UAEXHHHPBD@Z: near
+l005B6840 equ ?unknown00C@B_NetCallbacks@@UAEXHHHPBD@Z
 externdef _CreateApplication: near
 l005B9B60 equ _CreateApplication
 externdef _GetWinApplication: near

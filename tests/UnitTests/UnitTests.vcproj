@@ -237,6 +237,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\NetCallbacksTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\BBLibc\ParticleGTypeTests.cpp"
 				>
 			</File>

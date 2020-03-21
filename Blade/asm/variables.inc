@@ -38,7 +38,15 @@ public _net_game_name
 g007EE0B8 equ _net_game_name
 public _gbl_net_max_players
 g007EE138 equ _gbl_net_max_players
+public _netLibrary
+g007EE1C0 equ _netLibrary
 public _gbl_net
 g007EE2C4 equ _gbl_net
+public _closeConnection
+g007EE2C8 equ _closeConnection
+public _netCallbacks
+g007EE34C equ _netCallbacks
+public _getNetInterface
+g007EE350 equ _getNetInterface
 public _gbl_application
 g007EFC94 equ _gbl_application

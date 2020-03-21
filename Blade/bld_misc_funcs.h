@@ -2,10 +2,12 @@
 #include "BWorld.h"
 #include <bld_abstract_net.h>
 #include "anim.h"
+#include "libnet.h"
 #include "light.h"
 #include "en_control.h"
 
 class B_WinApp;
+class bld_net_cb;
 class sound_t;
 
 
@@ -231,9 +233,33 @@ extern int gbl_net_max_players;
 
 /*
 * Module:                 Blade.exe
+* Data address:           0x007EE1C0
+*/
+extern HMODULE netLibrary;
+
+/*
+* Module:                 Blade.exe
 * Data address:           0x007EE2C4
 */
 extern bld_abstract_net *gbl_net;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x007EE2C8
+*/
+extern CloseConnectionFunc closeConnection;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x007EE34C
+*/
+extern bld_net_cb *netCallbacks;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x007EE350
+*/
+extern GetNetInterfaceFunc getNetInterface;
 
 /*
 * Module:                 Blade.exe

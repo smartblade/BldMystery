@@ -635,7 +635,11 @@ B_PtrArray<B_AGTexture> gbl_ag_textures;
 char client_map_name[128];
 char net_game_name[128];
 int gbl_net_max_players;
+HMODULE netLibrary;
 bld_abstract_net *gbl_net;
+CloseConnectionFunc closeConnection;
+bld_net_cb *netCallbacks;
+GetNetInterfaceFunc getNetInterface;
 B_WinApp *gbl_application;
 CDPlayer *cdPlayer;
 
