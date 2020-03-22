@@ -123,12 +123,48 @@ bool B_App::Start()
 * Entry point:            0x00411C54
 * VC++ mangling:          ?InitPythonPath@B_App@@UAE_NXZ
 */
-#ifdef BLD_NATIVE
+
 bool B_App::InitPythonPath()
 {
-    return false;
+    char initPathNoConsole[] =
+        "import sys;"
+        "sys.path.append(\".\");"
+        "sys.path.append(\"..\\..\\Bin\");"
+        "sys.path.append(\"..\\..\\Scripts\");"
+        "sys.path.append(\"..\\..\\Lib\");"
+        "sys.path.append(\"..\\..\\Lib\\PythonLib\");"
+        "sys.path.append(\"..\\..\\Lib\\PythonLib\\Idle\");"
+        "sys.path.append(\"..\\..\\Lib\\PythonLib\\lib-tk\");"
+        "sys.path.append(\"..\\..\\Lib\\PythonLib\\DLLs\");"
+        "sys.path.append(\"..\\..\\Lib\\PythonLib\\Pmw\");"
+        "sys.path.append(\"..\\..\\Lib\\PythonLib\\Pmw\\Pmw_0_8\");"
+        "sys.path.append(\"..\\..\\Lib\\PythonLib\\Pmw\\Pmw_0_8\\lib\");";
+    char initPathAndConsole[] =
+        "import sys;"
+        "sys.path.append(\".\");"
+        "sys.path.append(\"..\\..\\Bin\");"
+        "sys.path.append(\"..\\..\\Scripts\");"
+        "sys.path.append(\"..\\..\\Lib\");"
+        "sys.path.append(\"..\\..\\Lib\\PythonLib\");"
+        "sys.path.append(\"..\\..\\Lib\\PythonLib\\Idle\");"
+        "sys.path.append(\"..\\..\\Lib\\PythonLib\\lib-tk\");"
+        "sys.path.append(\"..\\..\\Lib\\PythonLib\\DLLs\");"
+        "sys.path.append(\"..\\..\\Lib\\PythonLib\\Pmw\");"
+        "sys.path.append(\"..\\..\\Lib\\PythonLib\\Pmw\\Pmw_0_8\");"
+        "sys.path.append(\"..\\..\\Lib\\PythonLib\\Pmw\\Pmw_0_8\\lib\");"
+        "import ConsoleOutput;"
+        "ConsoleOutput.InitConsole();";
+    if (this->console != NULL)
+    {
+        PyRun_SimpleString(initPathAndConsole);
+    }
+    else
+    {
+        PyRun_SimpleString(initPathNoConsole);
+    }
+    return true;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
