@@ -34,7 +34,7 @@ public:
     B_Matrix transform;
 };
 
-class biped_entity_t : public B_Entity
+class B_BipedEntity : public B_Entity
 {
 public:
     char unknownFields01A0[12];
@@ -42,7 +42,7 @@ public:
     char unknownFields01B0[4204];
 };
 
-class B_PersonEntity : public biped_entity_t
+class B_PersonEntity : public B_BipedEntity
 {
     char unknownFields[3684];
 };
