@@ -39,12 +39,12 @@ class B_BipedEntity : public B_Entity
 public:
     char unknownFields01A0[12];
     Unknown0049A1EF *unknown01AC;
-    char unknownFields01B0[4204];
+    char unknownFields01B0[4212];
 };
 
 class B_PersonEntity : public B_BipedEntity
 {
-    char unknownFields[3684];
+    char unknownFields[3676];
 };
 
 #endif /* ENTITY_H */

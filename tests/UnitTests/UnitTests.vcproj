@@ -189,6 +189,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\BipedEntityTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\BBLibc\BitMap24Tests.cpp"
 				>
 			</File>
