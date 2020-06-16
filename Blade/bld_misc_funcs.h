@@ -29,7 +29,10 @@ public:
 private:
     B_PtrArray<void> a00C;
     int unknown0024;
-    char unknown_fields[52];
+    char unknown_fields028[32];
+public:
+    B_ParticleGType *particleType;
+    char unknown_fields04C[16];
 };
 
 class B_ProcTexture
@@ -158,6 +161,12 @@ extern int gbl_sound_device_id;
 * Data address:           0x005DFB44
 */
 extern B_Name *gbl_map_name;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x005DFB58
+*/
+extern B_Name *gbl_combustion_particle_names;
 
 /*
 * Module:                 Blade.exe

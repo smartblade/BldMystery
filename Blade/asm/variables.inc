@@ -12,6 +12,8 @@ public _gbl_sound_device_id
 g005DFB40 equ _gbl_sound_device_id
 public _gbl_map_name
 g005DFB44 equ _gbl_map_name
+public _gbl_combustion_particle_names
+g005DFB58 equ _gbl_combustion_particle_names
 public _B_world
 g005E0B88 equ _B_world
 public _gbl_action_areas_bit_mask

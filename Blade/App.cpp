@@ -805,11 +805,16 @@ void B_App::ReadLevel(const char * file_name)
 * Entry point:            0x00413EE1
 * VC++ mangling:          ?StoreCombustionParticleNames@B_App@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+
 void B_App::StoreCombustionParticleNames()
 {
+    gbl_combustion_particle_names = new B_Name[gbl_combustion_data.size];
+    for(unsigned int i = 0; i < gbl_combustion_data.size; i++)
+    {
+        gbl_combustion_particle_names[i] = gbl_combustion_data.elements[i]->particleType->name;
+    }
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

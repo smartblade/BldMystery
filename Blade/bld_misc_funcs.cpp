@@ -623,6 +623,7 @@ B_PtrArray<world_point_t> gbl_world_points;
 sound_t *unused_sound_ptr;
 int gbl_sound_device_id;
 B_Name *gbl_map_name;
+B_Name *gbl_combustion_particle_names;
 B_World B_world;
 int gbl_action_areas_bit_mask;
 B_PtrArray<anim_t> gbl_anims;
