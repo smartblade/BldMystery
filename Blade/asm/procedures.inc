@@ -124,8 +124,8 @@ externdef ?TakeSnapShot@B_App@@QAEXXZ: near
 l004138A0 equ ?TakeSnapShot@B_App@@QAEXXZ
 externdef ?ReadLevel@B_App@@UAEXPBD@Z: near
 l004138B8 equ ?ReadLevel@B_App@@UAEXPBD@Z
-externdef ?unknown_method040@B_App@@UAEXXZ: near
-l00413EE1 equ ?unknown_method040@B_App@@UAEXXZ
+externdef ?StoreCombustionParticleNames@B_App@@UAEXXZ: near
+l00413EE1 equ ?StoreCombustionParticleNames@B_App@@UAEXXZ
 externdef ?ReassignCombustionData@B_App@@UAEHXZ: near
 l00413FB6 equ ?ReassignCombustionData@B_App@@UAEHXZ
 externdef ?ClearLevel@B_App@@UAEXH@Z: near

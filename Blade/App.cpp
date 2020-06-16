@@ -803,10 +803,10 @@ void B_App::ReadLevel(const char * file_name)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00413EE1
-* VC++ mangling:          ?unknown_method040@B_App@@UAEXXZ
+* VC++ mangling:          ?StoreCombustionParticleNames@B_App@@UAEXXZ
 */
 #ifdef BLD_NATIVE
-void B_App::unknown_method040()
+void B_App::StoreCombustionParticleNames()
 {
 }
 #endif
