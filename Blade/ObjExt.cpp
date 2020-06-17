@@ -239,11 +239,11 @@ int LoadCombustionData(const char *file_name)
 * Entry point:            0x0042819A
 */
 
-int ReassignCombustionData()
+void ReassignCombustionData()
 {
     B_App * App = GetApplication();
     assert(App);
-    return App->ReassignCombustionData();
+    App->ReassignCombustionData();
 }
 
 

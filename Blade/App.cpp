@@ -819,14 +819,21 @@ void B_App::StoreCombustionParticleNames()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00413FB6
-* VC++ mangling:          ?ReassignCombustionData@B_App@@UAEHXZ
+* VC++ mangling:          ?ReassignCombustionData@B_App@@UAEXXZ
 */
-#ifdef BLD_NATIVE
-int B_App::ReassignCombustionData()
+
+void B_App::ReassignCombustionData()
 {
-    return 0;
+    /* FIXME dangerous code */
+    for(unsigned int i = 0; i < gbl_combustion_data.size; i++)
+    {
+        B_ParticleGType *particleType = gbl_particle_types.Find(
+            gbl_combustion_particle_names[i]);
+        gbl_combustion_data.elements[i]->particleType = particleType;
+    }
+    delete[] gbl_combustion_particle_names;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

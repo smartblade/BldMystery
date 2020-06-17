@@ -38,7 +38,7 @@ public:
     virtual void LoadLevel(const char *map);
     virtual void ReadLevel(const char *file_name);
     virtual void StoreCombustionParticleNames();
-    virtual int ReassignCombustionData();
+    virtual void ReassignCombustionData();
     virtual void ClearLevel(int flag);
     virtual void SetPyInteractiveString(const char *str);
     virtual const char *Input(const char *text) = 0;

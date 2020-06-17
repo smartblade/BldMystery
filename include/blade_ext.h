@@ -1328,7 +1328,7 @@ LIB_EXP int SaveParticleSystemsData(const char *filename);
 LIB_EXP int LoadParticleSystemsData(const char *filename);
 LIB_EXP int SaveCombustionData(const char *file_name);
 LIB_EXP int LoadCombustionData(const char *file_name);
-LIB_EXP int ReassignCombustionData(void);
+LIB_EXP void ReassignCombustionData(void);
 LIB_EXP int SaveAnmRaceData(const char *file_name, const char *race);
 LIB_EXP int LoadAnmRaceData(const char *file_name);
 LIB_EXP int SaveAnmSoundData(const char *file_name, const char *race);

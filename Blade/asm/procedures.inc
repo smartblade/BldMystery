@@ -126,8 +126,8 @@ externdef ?ReadLevel@B_App@@UAEXPBD@Z: near
 l004138B8 equ ?ReadLevel@B_App@@UAEXPBD@Z
 externdef ?StoreCombustionParticleNames@B_App@@UAEXXZ: near
 l00413EE1 equ ?StoreCombustionParticleNames@B_App@@UAEXXZ
-externdef ?ReassignCombustionData@B_App@@UAEHXZ: near
-l00413FB6 equ ?ReassignCombustionData@B_App@@UAEHXZ
+externdef ?ReassignCombustionData@B_App@@UAEXXZ: near
+l00413FB6 equ ?ReassignCombustionData@B_App@@UAEXXZ
 externdef ?ClearLevel@B_App@@UAEXH@Z: near
 l0041412A equ ?ClearLevel@B_App@@UAEXH@Z
 externdef ?PrepareLevel@B_App@@QAEXXZ: near

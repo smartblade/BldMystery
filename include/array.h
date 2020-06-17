@@ -3,6 +3,8 @@
 
 #define ARRAY_H
 
+class B_Name;
+
 template<class TYPE>
 class array_t
 {
@@ -91,6 +93,16 @@ public:
             size++;
         }
         return size - 1;
+    }
+
+    TYPE *Find(const B_Name &id)
+    {
+        for (unsigned int i = 0; i < this->size; i++)
+        {
+            if (id == this->elements[i]->Id())
+                return this->elements[i];
+        }
+        return NULL;
     }
 
     TYPE **elements;
