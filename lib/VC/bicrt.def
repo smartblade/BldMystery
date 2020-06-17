@@ -21,6 +21,7 @@ EXPORTS
     ??3@YAXPAX@Z                   @16  ; void operator delete(void *)
     ??3@YAXPAXI@Z                  @16  ; void operator delete(void *,unsigned int)
     ??_V@YAXPAX@Z                  @16  ; void operator delete[](void *)
+    ??_V@YAXPAXI@Z                 @16  ; void operator delete[](void *,unsigned int)
     ??4__non_rtti_object@@QAEAAV0@ABV0@@Z
     ??4bad_cast@@QAEAAV0@ABV0@@Z
     ??4bad_typeid@@QAEAAV0@ABV0@@Z
