@@ -1332,8 +1332,8 @@ externdef _IsSelected: near
 l0059F612 equ _IsSelected
 externdef _CarringObject: near
 l0059F643 equ _CarringObject
-externdef ??0Unknown005A52CE@@QAE@H@Z: near
-l005A52CE equ ??0Unknown005A52CE@@QAE@H@Z
+externdef ??0B_PersonStatus@@QAE@H@Z: near
+l005A52CE equ ??0B_PersonStatus@@QAE@H@Z
 externdef ?Update@B_ProcTexture@@QAEXXZ: near
 l005AA881 equ ?Update@B_ProcTexture@@QAEXXZ
 externdef _Set007EA988To01: near

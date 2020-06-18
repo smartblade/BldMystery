@@ -28,8 +28,8 @@ TEST(BladeAppTests, Fields)
     EXPECT_OFFSET_EQ(B_BladeApp, lastPlayerCType, 0x060);
     EXPECT_OFFSET_EQ(B_BladeApp, player1, 0x068);
     EXPECT_OFFSET_EQ(B_BladeApp, client, 0x06C);
-    EXPECT_OFFSET_EQ(B_BladeApp, unknownPtr070, 0x070);
-    EXPECT_OFFSET_EQ(B_BladeApp, unknownPtr074, 0x074);
+    EXPECT_OFFSET_EQ(B_BladeApp, playerStatus1, 0x070);
+    EXPECT_OFFSET_EQ(B_BladeApp, playerStatus2, 0x074);
     EXPECT_OFFSET_EQ(B_BladeApp, camera, 0x078);
     EXPECT_OFFSET_EQ(B_BladeApp, location, 0x07C);
     EXPECT_OFFSET_EQ(B_BladeApp, unknown1AC, 0x1AC);

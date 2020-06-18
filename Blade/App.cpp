@@ -74,8 +74,8 @@ location(B_Vector(0.0, 0.0, 0.0), 0.0, 0.0, 0.0)
     this->b0605 = false;
     this->unknown05C = NULL;
     Py_Initialize();
-    this->unknownPtr070 = new Unknown005A52CE(0);
-    this->unknownPtr074 = new Unknown005A52CE(0);
+    this->playerStatus1 = new B_PersonStatus(0);
+    this->playerStatus2 = new B_PersonStatus(0);
     this->b0004 = false;
     this->dUnknown008 = 2.0;
     this->dUnknown010 = 1.0;
@@ -98,8 +98,8 @@ B_App::~B_App()
     delete this->clock1;
     delete this->clock2;
     this->clock1 = NULL;
-    delete this->unknownPtr070;
-    delete this->unknownPtr074;
+    delete this->playerStatus1;
+    delete this->playerStatus2;
     Py_Finalize();
 }
 

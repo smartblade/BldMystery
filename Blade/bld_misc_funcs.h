@@ -88,10 +88,10 @@ public:
     char unknown_fields[772];
 };
 
-class Unknown005A52CE
+class B_PersonStatus
 {
 public:
-    Unknown005A52CE(int);
+    B_PersonStatus(int);
 private:
     char unknown_fields[212];
 };

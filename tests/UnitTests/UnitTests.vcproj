@@ -253,6 +253,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\PersonStatusTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\ProcessorTimerTests.cpp"
 				>
 			</File>
@@ -286,10 +290,6 @@
 			</File>
 			<File
 				RelativePath=".\Blade\Unknown004CD5ECTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\Unknown005A52CETests.cpp"
 				>
 			</File>
 			<File

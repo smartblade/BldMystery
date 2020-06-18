@@ -4,7 +4,7 @@
 #include "bld_misc_funcs.h"
 
 
-TEST(Unknown005A52CETests, SizeOf)
+TEST(PersonStatusTests, SizeOf)
 {
-    EXPECT_EQ(sizeof(Unknown005A52CE), 0x0D4);
+    EXPECT_EQ(sizeof(B_PersonStatus), 0x0D4);
 }

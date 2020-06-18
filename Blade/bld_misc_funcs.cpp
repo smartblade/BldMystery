@@ -480,10 +480,10 @@ anim_t *LoadFromHDAnim(const char *anm_name)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x005A52CE
-* VC++ mangling:          ??0Unknown005A52CE@@QAE@H@Z
+* VC++ mangling:          ??0B_PersonStatus@@QAE@H@Z
 */
 #ifdef BLD_NATIVE
-Unknown005A52CE::Unknown005A52CE(int)
+B_PersonStatus::B_PersonStatus(int)
 {
 }
 #endif

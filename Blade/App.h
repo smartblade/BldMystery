@@ -15,6 +15,7 @@
 
 class B_CameraEntity;
 class B_InputDevice;
+class B_PersonStatus;
 
 class B_App
 {
@@ -121,8 +122,8 @@ public:
     B_Name lastPlayerCType;
     B_PersonEntity *player1;
     B_Entity *client;
-    void *unknownPtr070;
-    void *unknownPtr074;
+    B_PersonStatus *playerStatus1;
+    B_PersonStatus *playerStatus2;
     B_CameraEntity *camera;
     location_t location;
     float unknown1AC;
