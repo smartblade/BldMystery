@@ -130,12 +130,16 @@ externdef ?ReassignCombustionData@B_App@@UAEXXZ: near
 l00413FB6 equ ?ReassignCombustionData@B_App@@UAEXXZ
 externdef ?ClearLevel@B_App@@UAEXH@Z: near
 l0041412A equ ?ClearLevel@B_App@@UAEXH@Z
+externdef ?GetPlayerStatus1@B_App@@QAEPAVB_PersonStatus@@XZ: near
+l00414F58 equ ?GetPlayerStatus1@B_App@@QAEPAVB_PersonStatus@@XZ
 externdef ?PrepareLevel@B_App@@QAEXXZ: near
 l00414F7F equ ?PrepareLevel@B_App@@QAEXXZ
 externdef ?DoneLoadGame@B_App@@QAEXXZ: near
 l004150B4 equ ?DoneLoadGame@B_App@@QAEXXZ
 externdef ?BeginLoadGame@B_App@@QAEXXZ: near
 l00415145 equ ?BeginLoadGame@B_App@@QAEXXZ
+externdef ?GetPlayerStatus2@B_App@@QAEPAVB_PersonStatus@@XZ: near
+l0041520F equ ?GetPlayerStatus2@B_App@@QAEPAVB_PersonStatus@@XZ
 externdef ?GetAttachedDevice@B_App@@QAEPAVB_InputDevice@@PBD@Z: near
 l00415236 equ ?GetAttachedDevice@B_App@@QAEPAVB_InputDevice@@PBD@Z
 externdef ?GetTimeActionHeld@B_App@@QAENPBD@Z: near
@@ -1334,6 +1338,8 @@ externdef _CarringObject: near
 l0059F643 equ _CarringObject
 externdef ??0B_PersonStatus@@QAE@H@Z: near
 l005A52CE equ ??0B_PersonStatus@@QAE@H@Z
+externdef ?Reset@B_PersonStatus@@QAEXXZ: near
+l005A54D0 equ ?Reset@B_PersonStatus@@QAEXXZ
 externdef ?Update@B_ProcTexture@@QAEXXZ: near
 l005AA881 equ ?Update@B_ProcTexture@@QAEXXZ
 externdef _Set007EA988To01: near

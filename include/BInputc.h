@@ -35,6 +35,8 @@ class LIB_EXP B_InputManager
 public:
     B_InputManager();
     void AddDevice(B_InputDevice *device);
+    int AddInputActionsSet(const char *actionsSet);
+    int SetInputActionsSet(const char *actionsSet);
 private:
     char unknown_fields[64];
 };

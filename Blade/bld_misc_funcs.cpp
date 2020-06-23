@@ -488,6 +488,17 @@ B_PersonStatus::B_PersonStatus(int)
 }
 #endif
 
+/*
+* Module:                 Blade.exe
+* Entry point:            0x005A54D0
+* VC++ mangling:          ?Reset@B_PersonStatus@@QAEXXZ
+*/
+#ifdef BLD_NATIVE
+void B_PersonStatus::Reset()
+{
+}
+#endif
+
 /* End of file:           0x005A74B0 */
 
 

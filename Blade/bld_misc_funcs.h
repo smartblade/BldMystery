@@ -92,6 +92,7 @@ class B_PersonStatus
 {
 public:
     B_PersonStatus(int);
+    void Reset();
 private:
     char unknown_fields[212];
 };

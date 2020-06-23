@@ -22,7 +22,7 @@ public:
     virtual void *unknown_method004();
     virtual void *unknown_method008();
     virtual int ClassId();
-    virtual int is_type_of(int type);
+    virtual int IsClassOf(int type);
 
     char unknownFields[404];
 };
@@ -39,7 +39,9 @@ class B_BipedEntity : public B_Entity
 public:
     char unknownFields01A0[12];
     Unknown0049A1EF *unknown01AC;
-    char unknownFields01B0[4212];
+    char unknownFields01B0[0x1C0];
+    int unknown0370;
+    char unknownFields0374[0xEB0];
 };
 
 class B_PersonEntity : public B_BipedEntity

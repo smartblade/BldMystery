@@ -65,7 +65,7 @@ TEST(BladeAppTests, Fields)
     EXPECT_OFFSET_EQ(B_BladeApp, autoEngageCombat, 0x624);
     EXPECT_OFFSET_EQ(B_BladeApp, aecGap, 0x628);
     EXPECT_OFFSET_EQ(B_BladeApp, menuTgapFunc, 0x630);
-    EXPECT_OFFSET_EQ(B_BladeApp, unknown634, 0x634);
+    EXPECT_OFFSET_EQ(B_BladeApp, isInputActive, 0x634);
     EXPECT_OFFSET_EQ(B_BladeApp, afterFrameFuncs, 0x638);
     EXPECT_OFFSET_EQ(B_BladeApp, values, 0x650);
     EXPECT_OFFSET_EQ(B_BladeApp, rasterLibraryName, 0x770);

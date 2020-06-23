@@ -67,6 +67,8 @@ public:
     void SetTimeSpeed(double speed);
     void TakeSnapShot();
     double GetTimeSpeed();
+    B_PersonStatus *GetPlayerStatus1();
+    B_PersonStatus *GetPlayerStatus2();
     B_InputDevice *GetAttachedDevice(const char *device);
     void AddInputAction(const char *action_name, int npi);
     void RemoveInputAction(const char *action_name);
@@ -164,7 +166,7 @@ public:
     int autoEngageCombat;
     double aecGap;
     PyObject *menuTgapFunc;
-    int unknown634;
+    int isInputActive;
     B_PtrArray<B_NamedObj> afterFrameFuncs;
     B_PtrArray<B_StringValue> values;
     char unknownFields668[264];

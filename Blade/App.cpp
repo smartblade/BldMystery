@@ -62,7 +62,7 @@ location(B_Vector(0.0, 0.0, 0.0), 0.0, 0.0, 0.0)
     this->bloodLevel = 1;
     this->mode = "None";
     InputManager = new B_InputManager();
-    this->unknown634 = 1;
+    this->isInputActive = true;
     this->drawShadows = true;
     this->autoEngageCombat = false;
     this->aecGap = 8.0;
@@ -188,20 +188,26 @@ int B_App::SetListenerMode(int mode, const B_Vector &v)
 ................................................................................
 ................................................................................
 */
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00411D95
 * VC++ mangling:          ?DeactivateInput@B_App@@QAEHXZ
 */
 
-#ifdef BLD_NATIVE
-
 int B_App::DeactivateInput()
 {
-    return 0;
+    this->GetPlayerStatus1()->Reset();
+    this->GetPlayerStatus2()->Reset();
+    this->isInputActive = false;
+    if (this->player1 != NULL && this->player1->IsClassOf(B_ENTITY_CID_BIPED))
+    {
+        static_cast<B_BipedEntity *>(this->player1)->unknown0370 = false;
+    }
+    InputManager->AddInputActionsSet("EmptySet");
+    InputManager->SetInputActionsSet("EmptySet");
+    return true;
 }
-
-#endif
 
 
 /*
@@ -855,6 +861,18 @@ void B_App::ClearLevel(int flag)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00414F58
+* VC++ mangling:          ?GetPlayerStatus1@B_App@@QAEPAVB_PersonStatus@@XZ
+*/
+#ifdef BLD_NATIVE
+B_PersonStatus *B_App::GetPlayerStatus1()
+{
+    return NULL;
+}
+#endif
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x00414F7F
 * VC++ mangling:          ?PrepareLevel@B_App@@QAEXXZ
 */
@@ -898,11 +916,16 @@ void B_App::BeginLoadGame()
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x0041520F
+* VC++ mangling:          ?GetPlayerStatus2@B_App@@QAEPAVB_PersonStatus@@XZ
 */
+#ifdef BLD_NATIVE
+B_PersonStatus *B_App::GetPlayerStatus2()
+{
+    return NULL;
+}
+#endif
 
 /*
 * Module:                 Blade.exe
