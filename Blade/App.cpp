@@ -886,12 +886,15 @@ void B_App::ClearLevel(int flag)
 * Entry point:            0x00414F58
 * VC++ mangling:          ?GetPlayerStatus1@B_App@@QAEPAVB_PersonStatus@@XZ
 */
-#ifdef BLD_NATIVE
+
 B_PersonStatus *B_App::GetPlayerStatus1()
 {
-    return NULL;
+    if (this->player1 != NULL)
+        /* FIXME dangerous cast */
+        return &static_cast<B_PersonEntity *>(this->player1)->status1;
+    return this->playerStatus1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

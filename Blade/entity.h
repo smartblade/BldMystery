@@ -4,6 +4,7 @@
 
 #include "BBLibc.h"
 #include "Matrix.h"
+#include "simpleact.h"
 
 
 #define PLAYER "Player1"
@@ -46,7 +47,10 @@ public:
 
 class B_PersonEntity : public B_BipedEntity
 {
-    char unknownFields[3676];
+public:
+    char unknownFields1224[0x9EC];
+    B_PersonStatus status1;
+    char unknownFields1CE4[0x39C];
 };
 
 #endif /* ENTITY_H */
