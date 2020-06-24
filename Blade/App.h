@@ -122,7 +122,7 @@ public:
     void *unknown058;
     void *unknown05C;
     B_Name lastPlayerCType;
-    B_PersonEntity *player1;
+    B_Entity *player1;
     B_Entity *client;
     B_PersonStatus *playerStatus1;
     B_PersonStatus *playerStatus2;

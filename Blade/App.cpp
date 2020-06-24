@@ -487,7 +487,7 @@ void B_App::LoadLevel(const char *script)
     unsigned int i;
     B_PtrArray<B_Entity> *array;
     B_Entities *entities;
-    B_PersonEntity *player1;
+    B_Entity *player1;
     B_CameraEntity *camera;
     const char *str1;
     char *str2;
@@ -537,7 +537,7 @@ void B_App::LoadLevel(const char *script)
             !strcmp(entities->foundEntity->Id(), PLAYER)
         )
         {
-            player1 = (B_PersonEntity *)entities->foundEntity;
+            player1 = entities->foundEntity;
         }
         else
         {
@@ -587,7 +587,7 @@ void B_App::LoadLevel(const char *script)
             if (foundIndex != -1)
             {
                 entities->foundEntity = array->elements[foundIndex];
-                player1 = (B_PersonEntity *)entities->foundEntity;
+                player1 = entities->foundEntity;
             }
             else
             {
@@ -621,7 +621,7 @@ void B_App::LoadLevel(const char *script)
             !strcmp(entities->foundEntity->Id(), PLAYER)
         )
         {
-            player1 = (B_PersonEntity *)entities->foundEntity;
+            player1 = entities->foundEntity;
         }
         else
         {
@@ -672,7 +672,7 @@ void B_App::LoadLevel(const char *script)
             if (foundIndex != -1)
             {
                 entities->foundEntity = array->elements[foundIndex];
-                player1 = (B_PersonEntity *)entities->foundEntity;
+                player1 = entities->foundEntity;
             }
             else
             {
