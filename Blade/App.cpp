@@ -216,14 +216,19 @@ int B_App::DeactivateInput()
 * VC++ mangling:          ?ActivateInput@B_App@@QAEHXZ
 */
 
-#ifdef BLD_NATIVE
-
 int B_App::ActivateInput()
 {
-    return 0;
+    this->GetPlayerStatus1()->Reset();
+    this->GetPlayerStatus2()->Reset();
+    this->isInputActive = true;
+    if (this->player1 != NULL && this->player1->IsClassOf(B_ENTITY_CID_BIPED))
+    {
+        static_cast<B_BipedEntity *>(this->player1)->unknown0370 = false;
+    }
+    InputManager->SetInputActionsSet("Default");
+    InputManager->ProcessInput(this->time);
+    return true;
 }
-
-#endif
 
 
 /*

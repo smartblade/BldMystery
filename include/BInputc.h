@@ -37,6 +37,7 @@ public:
     void AddDevice(B_InputDevice *device);
     int AddInputActionsSet(const char *actionsSet);
     int SetInputActionsSet(const char *actionsSet);
+    void ProcessInput(float time);
 private:
     char unknown_fields[64];
 };
