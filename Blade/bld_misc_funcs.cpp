@@ -474,31 +474,8 @@ anim_t *LoadFromHDAnim(const char *anm_name)
 
 
 
+/* File:                  simpleact.cpp */
 /* Begin of file:         0x005A4F40 */
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x005A52CE
-* VC++ mangling:          ??0B_PersonStatus@@QAE@H@Z
-*/
-#ifdef BLD_NATIVE
-B_PersonStatus::B_PersonStatus(int)
-{
-}
-#endif
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x005A54D0
-* VC++ mangling:          ?Reset@B_PersonStatus@@QAEXXZ
-*/
-#ifdef BLD_NATIVE
-void B_PersonStatus::Reset()
-{
-}
-#endif
-
 /* End of file:           0x005A74B0 */
 
 

@@ -5,6 +5,7 @@
 #include "App.h"
 #include "anim.h"
 #include "CameraEntity.h"
+#include "simpleact.h"
 #include "sound_device.h"
 #include "libnet.h"
 #include <BInputc.h>
