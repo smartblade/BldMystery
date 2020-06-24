@@ -172,14 +172,30 @@ bool B_App::InitPythonPath()
 * VC++ mangling:          ?SetListenerMode@B_App@@QAEHHABVB_Vector@@@Z
 */
 
-#ifdef BLD_NATIVE
-
 int B_App::SetListenerMode(int mode, const B_Vector &v)
 {
-    return 0;
+    if (
+        mode != 0 && this->listenerMode == 0 ||
+        mode == 0 && this->listenerMode != 0)
+    {
+        gbl_sound_device->sound_unknown054();
+    }
+    switch(mode)
+    {
+        case 0:
+            if (gbl_sound_device != NULL)
+            {
+                gbl_sound_device->SetListenerPosition(B_Matrix(v));
+            }
+        case 1:
+        case 2:
+            this->listenerMode = mode;
+            return true;
+        default:
+            mout << "B_App::SetListenerMode() -> Unknown mode.\n";
+            return false;
+    }
 }
-
-#endif
 
 
 /*

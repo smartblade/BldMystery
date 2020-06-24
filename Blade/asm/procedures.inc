@@ -1,3 +1,7 @@
+externdef ??0B_Matrix@@QAE@XZ: near
+l00404BE0 equ ??0B_Matrix@@QAE@XZ
+externdef ??0B_Matrix@@QAE@ABVB_Vector@@@Z: near
+l00404F2F equ ??0B_Matrix@@QAE@ABVB_Vector@@@Z
 externdef ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ: near
 l0040571F equ ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ
 externdef ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z: near
