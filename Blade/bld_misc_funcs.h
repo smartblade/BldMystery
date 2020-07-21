@@ -8,7 +8,7 @@
 
 class B_WinApp;
 class bld_net_cb;
-class sound_t;
+class B_YSoundDev;
 
 
 class B_Race : public B_NamedObj
@@ -100,7 +100,7 @@ extern "C" {
 extern B_IDataFile * read_points(B_IDataFile *file, B_PtrArray<world_point_t> *points);
 extern const char *ShowInputDialog(HINSTANCE module, HWND window, const char *text);
 extern int ShowStartupDialog(
-    HMODULE module, HWND window, sound_t *sound, B_Name *rasterName,
+    HMODULE module, HWND window, B_YSoundDev *sound, B_Name *rasterName,
     bool showDialog);
 extern B_IDataFile * read_sectors(B_IDataFile *file, B_PtrArray<B_Sector> *sectors);
 extern light_t *read_light(B_IDataFile *file);
@@ -140,7 +140,7 @@ extern B_PtrArray<world_point_t> gbl_world_points;
 * Module:                 Blade.exe
 * Data address:           0x005DFB3C
 */
-extern sound_t *unused_sound_ptr;
+extern B_YSoundDev *unused_sound_ptr;
 
 /*
 * Module:                 Blade.exe
@@ -188,7 +188,7 @@ extern B_PtrArray<B_ParticleGType> gbl_particle_types;
 * Module:                 Blade.exe
 * Data address:           0x007C8ED0
 */
-extern sound_t *gbl_sound_device;
+extern B_YSoundDev *gbl_sound_device;
 
 /*
 * Module:                 Blade.exe

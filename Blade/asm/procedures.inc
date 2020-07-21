@@ -792,8 +792,8 @@ externdef _loadSoundDataBase: near
 l004C0897 equ _loadSoundDataBase
 externdef _saveSoundDataBase: near
 l004C08F0 equ _saveSoundDataBase
-externdef ??0sound_t@@QAE@XZ: near
-l004C21C6 equ ??0sound_t@@QAE@XZ
+externdef ??0B_YSoundDev@@QAE@XZ: near
+l004C21C6 equ ??0B_YSoundDev@@QAE@XZ
 externdef ??0B_WinClock@@QAE@XZ: near
 l004CC1C0 equ ??0B_WinClock@@QAE@XZ
 externdef ?GetSystemTime@B_WinClock@@UAENXZ: near

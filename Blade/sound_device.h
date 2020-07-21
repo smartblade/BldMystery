@@ -6,12 +6,12 @@
 
 class B_Matrix;
 
-class sound_t
+class B_YSoundDev
 {
 public:
-    sound_t();
+    B_YSoundDev();
     virtual void unknown000();
-    virtual ~sound_t();
+    virtual ~B_YSoundDev();
     virtual void unknown008();
     virtual void unknown00C();
     virtual void unknown010();

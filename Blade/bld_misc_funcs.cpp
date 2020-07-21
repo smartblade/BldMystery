@@ -66,7 +66,7 @@ const char *ShowInputDialog(HINSTANCE module, HWND window, const char *text)
 */
 #ifdef BLD_NATIVE
 int ShowStartupDialog(
-    HMODULE module, HWND window, sound_t *sound, B_Name *rasterName,
+    HMODULE module, HWND window, B_YSoundDev *sound, B_Name *rasterName,
     bool showDialog)
 {
     return false;
@@ -307,10 +307,10 @@ void unknown_00497AE0()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004C21C6
-* VC++ mangling:          ??0sound_t@@QAE@XZ
+* VC++ mangling:          ??0B_YSoundDev@@QAE@XZ
 */
 #ifdef BLD_NATIVE_CONSTRUCTOR
-sound_t::sound_t()
+B_YSoundDev::B_YSoundDev()
 {
 }
 #endif
@@ -592,13 +592,13 @@ B_CameraEntity::B_CameraEntity(int, const B_Name &)
 {
 }
 
-class sound_t
+class B_YSoundDev
 {
 public:
-    sound_t();
+    B_YSoundDev();
 };
 
-sound_t::sound_t()
+B_YSoundDev::B_YSoundDev()
 {
 }
 
@@ -608,7 +608,7 @@ bool showStartupDialog;
 int clientRectWidth;
 int clientRectHeight;
 B_PtrArray<world_point_t> gbl_world_points;
-sound_t *unused_sound_ptr;
+B_YSoundDev *unused_sound_ptr;
 int gbl_sound_device_id;
 B_Name *gbl_map_name;
 B_Name *gbl_combustion_particle_names;
@@ -616,7 +616,7 @@ B_World B_world;
 int gbl_action_areas_bit_mask;
 B_PtrArray<anim_t> gbl_anims;
 B_PtrArray<B_ParticleGType> gbl_particle_types;
-sound_t *gbl_sound_device;
+B_YSoundDev *gbl_sound_device;
 B_PtrArray<B_Race> gbl_races;
 B_PtrArray<B_Combustion> gbl_combustion_data;
 EnControl gbl_en_control;

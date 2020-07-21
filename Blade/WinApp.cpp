@@ -194,7 +194,7 @@ bool B_WinApp::Start()
     }
     else
     {
-        gbl_sound_device = new sound_t();
+        gbl_sound_device = new B_YSoundDev();
     }
     if (this->showConsole)
     {

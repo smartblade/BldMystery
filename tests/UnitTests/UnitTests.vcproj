@@ -273,10 +273,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Blade\SoundTests.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Blade\StringValue.cpp"
 				>
 			</File>
@@ -302,6 +298,10 @@
 			</File>
 			<File
 				RelativePath=".\Blade\WorldTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Blade\YSoundDevTests.cpp"
 				>
 			</File>
 		</Filter>
