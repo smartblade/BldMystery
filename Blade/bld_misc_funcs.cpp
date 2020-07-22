@@ -178,6 +178,12 @@ void unknown_18F8_class::unknown_00451A21(void *, int, int)
 
 
 
+/* File:                  AnimationExt.cpp */
+/* Begin of file:         0x0046A9D0 */
+/* End of file:           0x0046F070 */
+
+
+
 /* Begin of file:         0x004755E0 */
 
 

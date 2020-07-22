@@ -453,13 +453,6 @@ LIB_EXP int GetBloodLevel(void);
 LIB_EXP int SetMutilationLevel(int mutilation_level);
 LIB_EXP int GetMutilationLevel(void);
 LIB_EXP const char *GetWorldFileName(void);
-LIB_EXP int AddTranTime(
-        const char *biped_name, const char *next_anm , const char *prev_anm,
-        double time, int unknown
-);
-LIB_EXP int CheckAnims(void);
-LIB_EXP int GiveAnims(const char *race_name);
-LIB_EXP int GetAnimationDuration(const char *animation_name, double *duration);
 LIB_EXP int SetAnimationFactor(const char *mov, double new_speed_factor);
 LIB_EXP int SetTurnSpeed(const char *race_name, double new_speed);
 LIB_EXP B_Entity *GetEntity(const char *name);
@@ -984,7 +977,6 @@ LIB_EXP unsigned int ReadAlphaBitMap(const char *filename, const char *internaln
 LIB_EXP void SetSun(int exists, double x, double y, double z);
 LIB_EXP int InsideAA(int AA, double x, double y, double z);
 LIB_EXP void AnmAddEvent(const char *anm_name, const char *event_name, double event_frame);
-LIB_EXP void AddAnmEvent(const char *anm_name, const char *event_name, double event_frame);
 LIB_EXP void AnmDelEvent(const char *anm_name, const char *event_name);
 LIB_EXP void AnmClearEvents(const char *anm_name);
 LIB_EXP double AnmGetEventFrame(const char *anm_name, const char *event_name);
@@ -1147,17 +1139,6 @@ LIB_EXP int SetAppMode(const char *mode);
 LIB_EXP const char *GetAppMode(void);
 LIB_EXP const char *GetCommandLine(void);
 LIB_EXP int Quit(void);
-LIB_EXP int LoadSampledAnimation(
-        const char *file, const char *internal_name, int type,
-        const char *s_unknown, int i_unknown
-);
-LIB_EXP int CreateFCAnimation(
-        const char *file, const char *internal_name, int n_armonics
-);
-LIB_EXP int CreateDFCAnimation(
-        const char *file1, const char *file2, const char *internal_name,
-        int n_armonics
-);
 LIB_EXP int CreateBipedData(const char *biped_name, const char *kind);
 LIB_EXP int AddBipedAction(
         const char *char_name, const char *action_name,
@@ -1170,9 +1151,6 @@ LIB_EXP int AddBipedActionC(
         double d_unknown2, int i_unknown
 );
 LIB_EXP int RemoveBipedAction(const char *s_unknown1, const char *s_unknown2);
-LIB_EXP int AddRStepEvent(const char *animation_name, double d_unknown);
-LIB_EXP int RStepEvents(const char *s_unknown1, const char *s_unknown2);
-LIB_EXP int LStepEvents(const char *s_unknown1, const char *s_unknown2);
 LIB_EXP int SetActionEventTable(
         const char *race_name, const char *action_name, const char *table_name
 );
@@ -1182,11 +1160,6 @@ LIB_EXP int SetEventTableFuncC(
 LIB_EXP int SetEventTableFunc(
         const char *event_table_name, const char *event_type, PyObject *func
 );
-LIB_EXP int AddLStepEvent(const char *animation_name, double d_unknown);
-LIB_EXP int AddRReleaseEvent(const char *animation_name, double d_unknown);
-LIB_EXP int AddLReleaseEvent(const char *animation_name, double d_unknown);
-LIB_EXP void AddStopTests(const char *animation_name);
-LIB_EXP void AddFloorCTolerance(const char *animation_name, double tolerance);
 LIB_EXP int SetSolidMask(const char *kind, int mask);
 LIB_EXP int SetDrawObjectShadows(int draw);
 LIB_EXP int GetAutoEngageCombat(void);

@@ -280,6 +280,10 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\AnimationExt.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\App.cpp"
 				>
 			</File>
@@ -391,6 +395,10 @@
 			>
 			<File
 				RelativePath=".\anim.h"
+				>
+			</File>
+			<File
+				RelativePath="..\include\AnimationExt.h"
 				>
 			</File>
 			<File

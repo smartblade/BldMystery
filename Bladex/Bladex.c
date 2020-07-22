@@ -1,6 +1,7 @@
 //---------------------------------------------------------------------------
 
 #include "bladex_int.h"
+#include <AnimationExt.h>
 
 
 static PyObject* bex_nEntities(PyObject* self, PyObject* args);
