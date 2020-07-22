@@ -2,6 +2,7 @@
 
 #include "bladex_int.h"
 #include <AnimationExt.h>
+#include <SoundFuncs.h>
 
 
 static PyObject* bex_nEntities(PyObject* self, PyObject* args);

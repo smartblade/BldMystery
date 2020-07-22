@@ -313,6 +313,12 @@ void unknown_00497AE0()
 
 
 
+/* File:                  Sound/SoundFuncs.cpp */
+/* Begin of file:         0x004BF1B0 */
+/* End of file:           0x004C09A0 */
+
+
+
 /* Begin of file:         0x004C2160 */
 
 

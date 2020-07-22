@@ -387,6 +387,14 @@
 				RelativePath=".\WorldToMBW.cpp"
 				>
 			</File>
+			<Filter
+				Name="Sound"
+				>
+				<File
+					RelativePath=".\Sound\SoundFuncs.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -458,6 +466,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\include\Point2D.h"
+				>
+			</File>
+			<File
 				RelativePath=".\ProcessorTimer.h"
 				>
 			</File>
@@ -475,6 +487,10 @@
 			</File>
 			<File
 				RelativePath=".\sound_device.h"
+				>
+			</File>
+			<File
+				RelativePath="..\include\SoundFuncs.h"
 				>
 			</File>
 			<File

@@ -1,5 +1,6 @@
 
 #include "bladex_int.h"
+#include <SoundFuncs.h>
 
 
 static PyObject* bex_snd_Play(PyObject* self, PyObject* args);
