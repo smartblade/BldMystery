@@ -360,6 +360,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\SectorFuncs.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\simpleact.cpp"
 				>
 			</File>
@@ -451,6 +455,10 @@
 			</File>
 			<File
 				RelativePath=".\Sector.h"
+				>
+			</File>
+			<File
+				RelativePath="..\include\SectorFuncs.h"
 				>
 			</File>
 			<File

@@ -1,5 +1,6 @@
 
 #include "bladex_int.h"
+#include <SectorFuncs.h>
 
 
 static PyObject* bex_sec_InitBreak(PyObject* self, PyObject* args);

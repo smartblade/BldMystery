@@ -172,6 +172,12 @@ void unknown_18F8_class::unknown_00451A21(void *, int, int)
 
 
 
+/* File:                  SectorFuncs.cpp */
+/* Begin of file:         0x0045C040 */
+/* End of file:           0x0045CEF0 */
+
+
+
 /* Begin of file:         0x004755E0 */
 
 
