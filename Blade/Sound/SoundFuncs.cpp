@@ -15,9 +15,9 @@
 * Entry point:            0x004BF1EF
 */
 #ifdef BLD_NATIVE
-int CreateSound(const char *file_name, const char *sound_name)
+B_Sound *CreateSound(const char *file_name, const char *sound_name)
 {
-    int (*bld_proc)(const char *file_name, const char *sound_name) = NULL;
+    B_Sound *(*bld_proc)(const char *file_name, const char *sound_name) = NULL;
     return bld_proc(file_name, sound_name);
 }
 #endif
@@ -27,10 +27,10 @@ int CreateSound(const char *file_name, const char *sound_name)
 * Entry point:            0x004BF236
 */
 #ifdef BLD_NATIVE
-int CreateSoundS(int soundID)
+B_Sound *CreateSoundS(B_Sound * sound)
 {
-    int (*bld_proc)(int soundID) = NULL;
-    return bld_proc(soundID);
+    B_Sound *(*bld_proc)(B_Sound * sound) = NULL;
+    return bld_proc(sound);
 }
 #endif
 
@@ -39,10 +39,10 @@ int CreateSoundS(int soundID)
 * Entry point:            0x004BF25D
 */
 #ifdef BLD_NATIVE
-void DestroySound(int soundID)
+void DestroySound(B_Sound * sound)
 {
-    void (*bld_proc)(int soundID) = NULL;
-    bld_proc(soundID);
+    void (*bld_proc)(B_Sound * sound) = NULL;
+    bld_proc(sound);
 }
 #endif
 
@@ -355,9 +355,9 @@ int SetGhostSectorSound(
 * Entry point:            0x004BFEAB
 */
 #ifdef BLD_NATIVE
-int GetGhostSectorSound(const char *gs_name)
+B_Sound *GetGhostSectorSound(const char *gs_name)
 {
-    int (*bld_proc)(const char *gs_name) = NULL;
+    B_Sound *(*bld_proc)(const char *gs_name) = NULL;
     return bld_proc(gs_name);
 }
 #endif
@@ -447,10 +447,10 @@ const char *GetSoundFileName(int soundId)
 * Entry point:            0x004BFF6E
 */
 #ifdef BLD_NATIVE
-int PlaySoundM(int soundID, double x, double y, double z, int i_unknown)
+int PlaySoundM(B_Sound *sound, double x, double y, double z, int i_unknown)
 {
-    int (*bld_proc)(int soundID, double x, double y, double z, int i_unknown) = NULL;
-    return bld_proc(soundID, x, y, z, i_unknown);
+    int (*bld_proc)(B_Sound *sound, double x, double y, double z, int i_unknown) = NULL;
+    return bld_proc(sound, x, y, z, i_unknown);
 }
 #endif
 
@@ -459,10 +459,10 @@ int PlaySoundM(int soundID, double x, double y, double z, int i_unknown)
 * Entry point:            0x004BFFEE
 */
 #ifdef BLD_NATIVE
-int PlaySoundStereo(int soundID, int i_unknown)
+int PlaySoundStereo(B_Sound *sound, int i_unknown)
 {
-    int (*bld_proc)(int soundID, int i_unknown) = NULL;
-    return bld_proc(soundID, i_unknown);
+    int (*bld_proc)(B_Sound *sound, int i_unknown) = NULL;
+    return bld_proc(sound, i_unknown);
 }
 #endif
 
@@ -471,10 +471,10 @@ int PlaySoundStereo(int soundID, int i_unknown)
 * Entry point:            0x004C003B
 */
 #ifdef BLD_NATIVE
-int StopSound(int soundID)
+int StopSound(B_Sound *sound)
 {
-    int (*bld_proc)(int soundID) = NULL;
-    return bld_proc(soundID);
+    int (*bld_proc)(B_Sound *sound) = NULL;
+    return bld_proc(sound);
 }
 #endif
 
@@ -483,10 +483,10 @@ int StopSound(int soundID)
 * Entry point:            0x004C0082
 */
 #ifdef BLD_NATIVE
-double GetSoundFloatProperty(int property_kind, int soundID)
+double GetSoundFloatProperty(int property_kind, B_Sound *sound)
 {
-    double (*bld_proc)(int property_kind, int soundID) = NULL;
-    return bld_proc(property_kind, soundID);
+    double (*bld_proc)(int property_kind, B_Sound *sound) = NULL;
+    return bld_proc(property_kind, sound);
 }
 #endif
 
@@ -495,10 +495,10 @@ double GetSoundFloatProperty(int property_kind, int soundID)
 * Entry point:            0x004C0143
 */
 #ifdef BLD_NATIVE
-void SetSoundFloatProperty(int property_kind, int soundID, double value)
+void SetSoundFloatProperty(int property_kind, B_Sound *sound, double value)
 {
-    void (*bld_proc)(int property_kind, int soundID, double value) = NULL;
-    bld_proc(property_kind, soundID, value);
+    void (*bld_proc)(int property_kind, B_Sound *sound, double value) = NULL;
+    bld_proc(property_kind, sound, value);
 }
 #endif
 
@@ -507,10 +507,10 @@ void SetSoundFloatProperty(int property_kind, int soundID, double value)
 * Entry point:            0x004C0293
 */
 #ifdef BLD_NATIVE
-char *GetSoundStringProperty(int property_kind, int soundID)
+char *GetSoundStringProperty(int property_kind, B_Sound *sound)
 {
-    char *(*bld_proc)(int property_kind, int soundID) = NULL;
-    return bld_proc(property_kind, soundID);
+    char *(*bld_proc)(int property_kind, B_Sound *sound) = NULL;
+    return bld_proc(property_kind, sound);
 }
 #endif
 
@@ -543,10 +543,10 @@ void GetSoundIntProperty()
 * Entry point:            0x004C033D
 */
 #ifdef BLD_NATIVE
-void SetSoundIntProperty(int property_kind, int soundID, int value)
+void SetSoundIntProperty(int property_kind, B_Sound *sound, int value)
 {
-    void (*bld_proc)(int property_kind, int soundID, int value) = NULL;
-    bld_proc(property_kind, soundID, value);
+    void (*bld_proc)(int property_kind, B_Sound *sound, int value) = NULL;
+    bld_proc(property_kind, sound, value);
 }
 #endif
 
@@ -556,15 +556,15 @@ void SetSoundIntProperty(int property_kind, int soundID, int value)
 */
 #ifdef BLD_NATIVE
 void SetSoundPitchVar(
-        int soundID, int i_unknown, float f_unknown1, float f_unknown2,
+        B_Sound *sound, int i_unknown, float f_unknown1, float f_unknown2,
         float f_unknown3, float f_unknown4
 )
 {
     void (*bld_proc)(
-        int soundID, int i_unknown, float f_unknown1, float f_unknown2,
+        B_Sound *sound, int i_unknown, float f_unknown1, float f_unknown2,
         float f_unknown3, float f_unknown4
 ) = NULL;
-    bld_proc(soundID, i_unknown, f_unknown1, f_unknown2, f_unknown3, f_unknown4);
+    bld_proc(sound, i_unknown, f_unknown1, f_unknown2, f_unknown3, f_unknown4);
 }
 #endif
 
@@ -723,9 +723,9 @@ int addMusicEventADPCM(
 * Entry point:            0x004C06F7
 */
 #ifdef BLD_NATIVE
-int GetSound(const char *sound_name)
+B_Sound *GetSound(const char *sound_name)
 {
-    int (*bld_proc)(const char *sound_name) = NULL;
+    B_Sound *(*bld_proc)(const char *sound_name) = NULL;
     return bld_proc(sound_name);
 }
 #endif
@@ -735,10 +735,10 @@ int GetSound(const char *sound_name)
 * Entry point:            0x004C071E
 */
 #ifdef BLD_NATIVE
-int addSoundVar(int soundID, const char *alt_sound)
+int addSoundVar(B_Sound *sound, const char *alt_sound)
 {
-    int (*bld_proc)(int soundID, const char *alt_sound) = NULL;
-    return bld_proc(soundID, alt_sound);
+    int (*bld_proc)(B_Sound *sound, const char *alt_sound) = NULL;
+    return bld_proc(sound, alt_sound);
 }
 #endif
 

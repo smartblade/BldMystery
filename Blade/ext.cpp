@@ -16,10 +16,10 @@
 * Entry point:            0x00491B70
 */
 #ifdef BLD_NATIVE
-int AddStepSound(const char *name, int soundID)
+int AddStepSound(const char *name, B_Sound *sound)
 {
-    int (*bld_proc)(const char *name, int soundID) = NULL;
-    return bld_proc(name, soundID);
+    int (*bld_proc)(const char *name, B_Sound *sound) = NULL;
+    return bld_proc(name, sound);
 }
 #endif
 
@@ -1786,13 +1786,13 @@ int GetEntityInternalState(
 */
 #ifdef BLD_NATIVE
 int AddSoundAnim(
-        const char *entity_name, const char *anm_event, double time, int soundID
+    const char *entity_name, const char *anm_event, double time, B_Sound *sound
 )
 {
     int (*bld_proc)(
-        const char *entity_name, const char *anm_event, double time, int soundID
+        const char *entity_name, const char *anm_event, double time, B_Sound *sound
 ) = NULL;
-    return bld_proc(entity_name, anm_event, time, soundID);
+    return bld_proc(entity_name, anm_event, time, sound);
 }
 #endif
 
@@ -1809,13 +1809,13 @@ int AddSoundAnim(
 */
 #ifdef BLD_NATIVE
 int AddSoundEvent(
-        const char *entity_name, const char *event, int soundID
+        const char *entity_name, const char *event, B_Sound *sound
 )
 {
     int (*bld_proc)(
-        const char *entity_name, const char *event, int soundID
+        const char *entity_name, const char *event, B_Sound *sound
 ) = NULL;
-    return bld_proc(entity_name, event, soundID);
+    return bld_proc(entity_name, event, sound);
 }
 #endif
 

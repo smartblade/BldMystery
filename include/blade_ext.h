@@ -30,6 +30,7 @@ class B_BitMap;
 class B_Entity;
 class material_t;
 class B_Resource;
+class B_Sound;
 
 #else
 
@@ -37,6 +38,7 @@ typedef struct _B_BitMap B_BitMap;
 typedef struct _B_Entity B_Entity;
 typedef struct _material_t material_t;
 typedef struct _B_Resource B_Resource;
+typedef struct _B_Sound B_Sound;
 
 #endif
 
@@ -634,7 +636,7 @@ LIB_EXP int GetActionMode(const char *entity_name, int *action_mode);
 LIB_EXP int StartGrabbing(const char *entity_name);
 LIB_EXP int StopGrabbing(const char *entity_name);
 LIB_EXP int AddSoundAnim(
-        const char *entity_name, const char *anm_event, double time, int soundID
+    const char *entity_name, const char *anm_event, double time, B_Sound *sound
 );
 LIB_EXP int EntityAddAnmEventFunc(
         const char *entity_name, const char *anm_event, PyObject *func
@@ -644,7 +646,7 @@ LIB_EXP int EntityDelAnmEventFunc(
 );
 LIB_EXP int EntityClearAnmEventFuncs(const char *entity_name);
 LIB_EXP int AddSoundEvent(
-        const char *entity_name, const char *event, int soundID
+    const char *entity_name, const char *event, B_Sound *sound
 );
 LIB_EXP int ClearActorPath(const char *entity_name);
 LIB_EXP int CameraClearPath(const char *entity_name, int node);
@@ -976,7 +978,7 @@ LIB_EXP material_t *GetMaterial(const char *name);
 LIB_EXP material_t *GetMaterialI(int index);
 LIB_EXP material_t *CreateMaterial(const char *name);
 LIB_EXP int AddHitSoundComb(
-        material_t *material1, material_t *material2, int soundID
+    material_t *material1, material_t *material2, B_Sound *sound
 );
 LIB_EXP int GetMaterialFloatProperty(
         material_t *material, int property_kind, int index, double *value
@@ -988,10 +990,10 @@ LIB_EXP int GetMaterialStringProperty(
         material_t *material, int property_kind, int index, const char **value
 );
 LIB_EXP int GetMaterialSoundProperty(
-        material_t *material, int property_kind, int index, int *soundID
+        material_t *material, int property_kind, int index, B_Sound **sound
 );
 LIB_EXP int SetMaterialSoundProperty(
-        material_t *material, int property_kind, int index, int soundID
+    material_t *material, int property_kind, int index, B_Sound *sound
 );
 LIB_EXP int nMaterials(void);
 LIB_EXP int CreateTriggerSector(
@@ -1100,7 +1102,7 @@ LIB_EXP void DoneLoadGame(void);
 LIB_EXP void BeginLoadGame(void);
 LIB_EXP size_t GetWindowId(void);
 LIB_EXP size_t GetProgramId(void);
-LIB_EXP int AddStepSound(const char *name, int soundID);
+LIB_EXP int AddStepSound(const char *name, B_Sound *sound);
 LIB_EXP int AddMaterialStepSound(
         const char *table, const char *material, const char *step_sound
 );

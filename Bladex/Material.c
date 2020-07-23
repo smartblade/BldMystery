@@ -95,21 +95,21 @@ PyObject *create_material(const char *name) {
 PyObject *bex_mat_AddHitSoundComb(PyObject *self, PyObject *args) {
         bld_py_material_t *material = (bld_py_material_t *)self;
         material_t *material1, *material2;
-        int soundID;
+        B_Sound *sound;
         const char *material_name;
-        bld_py_sound_t *sound;
+        bld_py_sound_t *sound_obj;
         int code;
 
-        if (!PyArg_ParseTuple(args, "sO", &material_name, &sound)) {
+        if (!PyArg_ParseTuple(args, "sO", &material_name, &sound_obj)) {
                 PyErr_SetString(PyExc_RuntimeError, "Invalid Params.");
                 return Py_BuildValue("i", 0);
         }
 
         material1 = material->material;
         material2 = GetMaterial(material_name);
-        soundID = sound->soundID;
+        sound = sound_obj->sound;
 
-        code = AddHitSoundComb(material1, material2, soundID);
+        code = AddHitSoundComb(material1, material2, sound);
         if (code != 0)
                 return Py_BuildValue("i", 1);
         else
@@ -196,8 +196,8 @@ int bld_py_material_print(PyObject *self, FILE *file, int flags) {
 PyObject *bld_py_material_getattr(PyObject *self, char *attr_name)
 {
         const char *name;
-        int break_sound_id, friction_sound_id, hit_sound_id;
-        PyObject *break_sound, *friction_sound, *hit_sound;
+        B_Sound *break_sound, *friction_sound, *hit_sound;
+        PyObject *break_sound_obj, *friction_sound_obj, *hit_sound_obj;
         double weight;
         int code;
 
@@ -220,53 +220,53 @@ PyObject *bld_py_material_getattr(PyObject *self, char *attr_name)
         if (!strcmp(attr_name, "BreakSound")) {
                 code = GetMaterialSoundProperty(
                         ((bld_py_material_t *)self)->material,
-                        MAT_SND_BREAK_SOUND, 0, &break_sound_id
+                        MAT_SND_BREAK_SOUND, 0, &break_sound
                 );
                 if (code != 1) {
                         PyErr_SetString(PyExc_AttributeError, attr_name);
                         return NULL;
                 }
 
-                break_sound = create_sound_s(break_sound_id);
-                if (break_sound == NULL)
+                break_sound_obj = create_sound_s(break_sound);
+                if (break_sound_obj == NULL)
                         return PyString_FromString(
                                 "Material has no BreakSound."
                         );
 
-                return break_sound;
+                return break_sound_obj;
         }
 
         if (!strcmp(attr_name, "FrictionSound")) {
                 code = GetMaterialSoundProperty(
                         ((bld_py_material_t *)self)->material,
-                        MAT_SND_FRICTION_SOUND, 0, &friction_sound_id
+                        MAT_SND_FRICTION_SOUND, 0, &friction_sound
                 );
                 if (code != 1) {
                         PyErr_SetString(PyExc_AttributeError, attr_name);
                         return NULL;
                 }
-                friction_sound = create_sound_s(friction_sound_id);
-                if (friction_sound == NULL)
+                friction_sound_obj = create_sound_s(friction_sound);
+                if (friction_sound_obj == NULL)
                         return PyString_FromString(
                                 "Material has no FrictionSound."
                         );
-                return friction_sound;
+                return friction_sound_obj;
         }
 
         if (!strcmp(attr_name, "HitSound")) {
                 code = GetMaterialSoundProperty(
                         ((bld_py_material_t *)self)->material,
-                        MAT_SND_HIT_SOUND, 0, &hit_sound_id
+                        MAT_SND_HIT_SOUND, 0, &hit_sound
                 );
                 if (code != 1) {
                         PyErr_SetString(PyExc_AttributeError, attr_name);
                         return NULL;
                 }
-                hit_sound = create_sound_s(hit_sound_id);
-                if (hit_sound == NULL)
+                hit_sound_obj = create_sound_s(hit_sound);
+                if (hit_sound_obj == NULL)
                         return PyString_FromString("Material has no HitSound.");
 
-                return hit_sound;
+                return hit_sound_obj;
         }
 
         if (!strcmp(attr_name, "Weight")) {
@@ -314,14 +314,14 @@ int bld_py_material_setattr(PyObject *self, char *attr_name, PyObject *value)
 
                 if (break_sound->ob_type != &soundTypeObject) {
                         break_sound = NULL;
-                } else if (break_sound->soundID == 0) {
+                } else if (break_sound->sound == NULL) {
                         PyErr_SetString(PyExc_AttributeError, "Invalid Sound.");
                         return -1;
                 }
 
                 code = SetMaterialSoundProperty(
                         ((bld_py_material_t *)self)->material,
-                        MAT_SND_BREAK_SOUND, 0, break_sound->soundID
+                        MAT_SND_BREAK_SOUND, 0, break_sound->sound
                 );
                 if (code != 1) {
                         PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
@@ -339,14 +339,14 @@ int bld_py_material_setattr(PyObject *self, char *attr_name, PyObject *value)
 
                 if (friction_sound->ob_type != &soundTypeObject) {
                         friction_sound = NULL;
-                } else if (friction_sound->soundID == 0) {
+                } else if (friction_sound->sound == NULL) {
                         PyErr_SetString(PyExc_AttributeError, "Invalid Sound.");
                         return -1;
                 }
 
                 code = SetMaterialSoundProperty(
                         ((bld_py_material_t *)self)->material,
-                        MAT_SND_FRICTION_SOUND, 0, friction_sound->soundID
+                        MAT_SND_FRICTION_SOUND, 0, friction_sound->sound
                 );
                 if (code != 1) {
                         PyErr_SetString(PyExc_AttributeError, "Invalid Param.");
@@ -364,7 +364,7 @@ int bld_py_material_setattr(PyObject *self, char *attr_name, PyObject *value)
 
                 if (hit_sound->ob_type != &soundTypeObject) {
                         hit_sound = NULL;
-                } else if (hit_sound->soundID == 0) {
+                } else if (hit_sound->sound == NULL) {
                         PyErr_SetString(PyExc_AttributeError, "Invalid Sound.");
                         return -1;
                 }
@@ -378,7 +378,7 @@ int bld_py_material_setattr(PyObject *self, char *attr_name, PyObject *value)
 
                 code = SetMaterialSoundProperty(
                         ((bld_py_material_t *)self)->material,
-                        MAT_SND_HIT_SOUND, 0, hit_sound->soundID
+                        MAT_SND_HIT_SOUND, 0, hit_sound->sound
                 );
                 if (code != 1) {
                         PyErr_SetString(PyExc_AttributeError, "Invalid Param.");

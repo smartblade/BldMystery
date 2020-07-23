@@ -12,6 +12,8 @@
 
 #define MAX_PROPERTY_KINDS                   1024
 
+typedef struct _B_Sound B_Sound;
+
 typedef struct {
         PyObject_HEAD
         int charID;
@@ -44,7 +46,7 @@ typedef struct {
 
 typedef struct {
         PyObject_HEAD
-        int soundID;
+        B_Sound *sound;
         int soundDev;
 } bld_py_sound_t;
 
@@ -117,7 +119,7 @@ extern PyObject* get_sector_by_position(double x, double y, double z);
 extern void init_sector(void);
 
 extern PyObject *create_sound(const char *file_name, const char *sound_name);
-extern PyObject *create_sound_s(int id);
+extern PyObject *create_sound_s(B_Sound *sound);
 extern PyObject *get_ghost_sector_sound(const char *gs_name);
 extern void init_sound(void);
 

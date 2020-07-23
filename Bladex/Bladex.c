@@ -3231,7 +3231,7 @@ PyObject *bex_SetGhostSectorSound(PyObject *self, PyObject *args) {
 */
 
 PyObject *bex_GetSound(PyObject *self, PyObject *args) {
-        int soundID;
+        B_Sound *sound;
         bld_py_sound_t *sound_obj;
         const char *sound_name;
 
@@ -3243,8 +3243,8 @@ PyObject *bex_GetSound(PyObject *self, PyObject *args) {
                 return NULL;
         }
 
-        soundID = GetSound(sound_name);
-        if (soundID == 0) {
+        sound = GetSound(sound_name);
+        if (sound == NULL) {
                 Py_INCREF(Py_None);
                 return Py_None;
         }
@@ -3255,7 +3255,7 @@ PyObject *bex_GetSound(PyObject *self, PyObject *args) {
                 return Py_None;
         }
 
-        sound_obj->soundID = soundID;
+        sound_obj->sound = sound;
         sound_obj->soundDev = GetSoundDevInstace();
 
         return (PyObject *)sound_obj;
@@ -4276,7 +4276,7 @@ PyObject *bex_AddStepSound(PyObject *self, PyObject *args) {
         if(!PyArg_ParseTuple(args, "sO", &name, &sound))
                 return NULL;
 
-        return Py_BuildValue("i", AddStepSound(name, sound->soundID));
+        return Py_BuildValue("i", AddStepSound(name, sound->sound));
 }
 
 

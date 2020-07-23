@@ -36,20 +36,20 @@ static PyMethodDef sound_methods[] = {
 */
 
 PyObject *create_sound(const char *file_name, const char *sound_name) {
-        int soundID;
+        B_Sound *sound;
         bld_py_sound_t *sound_obj;
 
-        soundID = CreateSound(file_name, sound_name);
-        if (soundID != 0) {
+        sound = CreateSound(file_name, sound_name);
+        if (sound != NULL) {
 
                 sound_obj = PyObject_NEW(bld_py_sound_t, &soundTypeObject);
 
                 if (sound_obj != NULL) {
-                    sound_obj->soundID = soundID;
+                    sound_obj->sound = sound;
                     sound_obj->soundDev = GetSoundDevInstace();
                     return (PyObject *)sound_obj;
                 } else {
-                    DestroySound(soundID);
+                    DestroySound(sound);
                     return NULL;
                 }
         }
@@ -62,21 +62,21 @@ PyObject *create_sound(const char *file_name, const char *sound_name) {
 * Entry point:            0x10017EC9
 */
 
-PyObject *create_sound_s(int id) {
-        int soundID;
+PyObject *create_sound_s(B_Sound *sound) {
+        B_Sound *sound_s;
         bld_py_sound_t *sound_obj;
 
-        soundID = CreateSoundS(id);
-        if (soundID == 0)
+        sound_s = CreateSoundS(sound);
+        if (sound_s == NULL)
                 return NULL;
 
         sound_obj = PyObject_NEW(bld_py_sound_t, &soundTypeObject);
         if (sound_obj == NULL) {
-                DestroySound(soundID);
+                DestroySound(sound_s);
                 return NULL;
         }
 
-        sound_obj->soundID = soundID;
+        sound_obj->sound = sound_s;
         sound_obj->soundDev = GetSoundDevInstace();
 
         return (PyObject *)sound_obj;
@@ -89,20 +89,20 @@ PyObject *create_sound_s(int id) {
 */
 
 PyObject *get_ghost_sector_sound(const char *gs_name) {
-        int soundID;
+        B_Sound *sound;
         bld_py_sound_t *sound_obj;
 
-        soundID = GetGhostSectorSound(gs_name);
-        if (soundID == 0)
+        sound = GetGhostSectorSound(gs_name);
+        if (sound == NULL)
                 return NULL;
 
         sound_obj = PyObject_NEW(bld_py_sound_t, &soundTypeObject);
         if (sound_obj == NULL) {
-                DestroySound(soundID);
+                DestroySound(sound);
                 return NULL;
         }
 
-        sound_obj->soundID = soundID;
+        sound_obj->sound = sound;
         sound_obj->soundDev = GetSoundDevInstace();
 
         return (PyObject *)sound_obj;
@@ -123,7 +123,7 @@ PyObject *bex_snd_Play(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "ddd|i", &x, &y, &z, &i_unknown))
                 return NULL;
 
-        code = PlaySoundM(sound->soundID, x, y, z, i_unknown);
+        code = PlaySoundM(sound->sound, x, y, z, i_unknown);
         if (code != 0)
                 return Py_BuildValue("i", 1);
         else
@@ -144,7 +144,7 @@ PyObject *bex_snd_PlayStereo(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "|i", &i_unknown))
                 return NULL;
 
-        code = PlaySoundStereo(sound->soundID, i_unknown);
+        code = PlaySoundStereo(sound->sound, i_unknown);
         if (code != 0)
                 return Py_BuildValue("i", 1);
         else
@@ -169,7 +169,7 @@ PyObject *bex_snd_SetPitchVar(PyObject *self, PyObject *args) {
         ))
                 return NULL;
 
-        SetSoundPitchVar(sound->soundID, i_unknown, d_unknown1, d_unknown2, d_unknown3, d_unknown4);
+        SetSoundPitchVar(sound->sound, i_unknown, d_unknown1, d_unknown2, d_unknown3, d_unknown4);
         return Py_BuildValue("i", 1);
 }
 
@@ -189,7 +189,7 @@ PyObject *bex_snd_AddAltSound(PyObject *self, PyObject *args) {
                 return Py_BuildValue("i", 0);
         }
 
-        code = addSoundVar(sound->soundID, alt_sound);
+        code = addSoundVar(sound->sound, alt_sound);
         if (code != 0)
                 return Py_BuildValue("i", 1);
         else
@@ -209,7 +209,7 @@ PyObject *bex_snd_Stop(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ""))
                 return NULL;
 
-        code = StopSound(sound->soundID);
+        code = StopSound(sound->sound);
         if (code != 0)
                 return Py_BuildValue("i", 1);
         else
@@ -278,7 +278,7 @@ boolean bld_py_sound_check(PyObject *self) {
                 return FALSE;
 
 
-        if ( ((bld_py_sound_t *)self)->soundID == 0 )
+        if ( ((bld_py_sound_t *)self)->sound == NULL )
                 return FALSE;
 
         return TRUE;
@@ -299,9 +299,9 @@ int bld_py_sound_print(PyObject *self, FILE *file, int flags)
                         buffer,
                         "Sound: %s (%d)\n",
                         GetSoundStringProperty(
-                                SND_STR_NAME, ((bld_py_sound_t *)self)->soundID
+                                SND_STR_NAME, ((bld_py_sound_t *)self)->sound
                         ),
-                        ((bld_py_sound_t *)self)->soundID
+                        PTR_TO_INT(((bld_py_sound_t *)self)->sound)
                 );
                 fprintf(file, buffer);
         }
@@ -326,9 +326,9 @@ PyObject *bld_py_sound_repr(PyObject *self)
                 buffer,
                 "Sound: %s (%d)\n",
                 GetSoundStringProperty(
-                        SND_STR_NAME, ((bld_py_sound_t *)self)->soundID
+                        SND_STR_NAME, ((bld_py_sound_t *)self)->sound
                 ),
-                ((bld_py_sound_t *)self)->soundID
+                PTR_TO_INT(((bld_py_sound_t *)self)->sound)
         );
 
         return PyString_FromString(buffer);
@@ -352,7 +352,7 @@ PyObject *bld_py_sound_getattr(PyObject *self, char *attr_name)
                 return PyFloat_FromDouble(
                         GetSoundFloatProperty(
                                 SND_FLT_MIN_DISTANCE,
-                                ((bld_py_sound_t *)self)->soundID
+                                ((bld_py_sound_t *)self)->sound
                         )
                 );
 
@@ -360,7 +360,7 @@ PyObject *bld_py_sound_getattr(PyObject *self, char *attr_name)
                 return PyFloat_FromDouble(
                         GetSoundFloatProperty(
                                 SND_FLT_MAX_DISTANCE,
-                                ((bld_py_sound_t *)self)->soundID
+                                ((bld_py_sound_t *)self)->sound
                         )
                 );
 
@@ -368,7 +368,7 @@ PyObject *bld_py_sound_getattr(PyObject *self, char *attr_name)
                 return PyString_FromString(
                         GetSoundStringProperty(
                                 SND_STR_NAME,
-                                ((bld_py_sound_t *)self)->soundID
+                                ((bld_py_sound_t *)self)->sound
                         )
                 );
 
@@ -376,7 +376,7 @@ PyObject *bld_py_sound_getattr(PyObject *self, char *attr_name)
                 return PyFloat_FromDouble(
                         GetSoundFloatProperty(
                                 SND_FLT_VOLUME,
-                                ((bld_py_sound_t *)self)->soundID
+                                ((bld_py_sound_t *)self)->sound
                         )
                 );
 
@@ -384,7 +384,7 @@ PyObject *bld_py_sound_getattr(PyObject *self, char *attr_name)
                 return PyFloat_FromDouble(
                         GetSoundFloatProperty(
                                 SND_FLT_BASE_VOLUME,
-                                ((bld_py_sound_t *)self)->soundID
+                                ((bld_py_sound_t *)self)->sound
                         )
                 );
 
@@ -392,7 +392,7 @@ PyObject *bld_py_sound_getattr(PyObject *self, char *attr_name)
                 return PyFloat_FromDouble(
                         GetSoundFloatProperty(
                                 SND_FLT_PITCH,
-                                ((bld_py_sound_t *)self)->soundID
+                                ((bld_py_sound_t *)self)->sound
                         )
                 );
 
@@ -400,7 +400,7 @@ PyObject *bld_py_sound_getattr(PyObject *self, char *attr_name)
                 return PyFloat_FromDouble(
                         GetSoundFloatProperty(
                                 SND_FLT_SCALE,
-                                ((bld_py_sound_t *)self)->soundID
+                                ((bld_py_sound_t *)self)->sound
                         )
                 );
         }
@@ -409,7 +409,7 @@ PyObject *bld_py_sound_getattr(PyObject *self, char *attr_name)
                 return PyFloat_FromDouble(/*FIXME Maybe should be int property*/
                         GetSoundFloatProperty(
                                 SND_INT_SEND_NOTIFY,
-                                ((bld_py_sound_t *)self)->soundID
+                                ((bld_py_sound_t *)self)->sound
                         )
                 );
         }
@@ -448,7 +448,7 @@ int bld_py_sound_setattr(PyObject *self, char *attr_name, PyObject *value)
                 }
 
                 SetSoundFloatProperty(
-                        SND_FLT_MIN_DISTANCE, ((bld_py_sound_t *)self)->soundID,
+                        SND_FLT_MIN_DISTANCE, ((bld_py_sound_t *)self)->sound,
                         min_distance
                 );
                 return 0;
@@ -461,7 +461,7 @@ int bld_py_sound_setattr(PyObject *self, char *attr_name, PyObject *value)
                 }
 
                 SetSoundFloatProperty(
-                        SND_FLT_MAX_DISTANCE, ((bld_py_sound_t *)self)->soundID,
+                        SND_FLT_MAX_DISTANCE, ((bld_py_sound_t *)self)->sound,
                         max_distance
                 );
                 return 0;
@@ -474,7 +474,7 @@ int bld_py_sound_setattr(PyObject *self, char *attr_name, PyObject *value)
                 }
 
                 SetSoundFloatProperty(
-                        SND_FLT_VOLUME, ((bld_py_sound_t *)self)->soundID,
+                        SND_FLT_VOLUME, ((bld_py_sound_t *)self)->sound,
                         volume
                 );
                 return 0;
@@ -487,7 +487,7 @@ int bld_py_sound_setattr(PyObject *self, char *attr_name, PyObject *value)
                 }
 
                 SetSoundFloatProperty(
-                        SND_FLT_BASE_VOLUME, ((bld_py_sound_t *)self)->soundID,
+                        SND_FLT_BASE_VOLUME, ((bld_py_sound_t *)self)->sound,
                         base_volume
                 );
                 return 0;
@@ -500,7 +500,7 @@ int bld_py_sound_setattr(PyObject *self, char *attr_name, PyObject *value)
                 }
 
                 SetSoundFloatProperty(
-                        SND_FLT_PITCH, ((bld_py_sound_t *)self)->soundID, pitch
+                        SND_FLT_PITCH, ((bld_py_sound_t *)self)->sound, pitch
                 );
                 return 0;
         }
@@ -512,7 +512,7 @@ int bld_py_sound_setattr(PyObject *self, char *attr_name, PyObject *value)
                 }
 
                 SetSoundFloatProperty(
-                        SND_FLT_SCALE, ((bld_py_sound_t *)self)->soundID, scale
+                        SND_FLT_SCALE, ((bld_py_sound_t *)self)->sound, scale
                 );
                 return 0;
         }
@@ -524,7 +524,7 @@ int bld_py_sound_setattr(PyObject *self, char *attr_name, PyObject *value)
                 }
 
                 SetSoundIntProperty(
-                        SND_INT_SEND_NOTIFY, ((bld_py_sound_t *)self)->soundID,
+                        SND_INT_SEND_NOTIFY, ((bld_py_sound_t *)self)->sound,
                         send_notify
                 );
                 return 0;

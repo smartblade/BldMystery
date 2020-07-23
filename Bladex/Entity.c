@@ -2267,7 +2267,7 @@ PyObject *bex_ent_AddAnimSound(PyObject *self, PyObject *args) {
                 return NULL;
         }
 
-        code = AddSoundAnim(entity->name, animation, time, sound->soundID);
+        code = AddSoundAnim(entity->name, animation, time, sound->sound);
         if (code != 1)
                 return Py_BuildValue("i", 0);
         else
@@ -2363,7 +2363,7 @@ PyObject *bex_ent_AddEventSound(PyObject *self, PyObject *args) {
                 return NULL;
         }
 
-        code = AddSoundEvent(entity->name, event_name, sound->soundID);
+        code = AddSoundEvent(entity->name, event_name, sound->sound);
         if (code != 1)
                 return Py_BuildValue("i", 0);
         else
