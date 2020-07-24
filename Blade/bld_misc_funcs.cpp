@@ -526,7 +526,7 @@ void B_ProcTexture::Update()
 
 #ifdef BLD_NATIVE
 
-void Set007EA988To01()
+void MarkNetMapSet()
 {
 }
 

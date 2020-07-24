@@ -351,7 +351,7 @@ void B_WinApp::LoadLevel(const char *map)
         if (gbl_net->is_server())
         {
             B_App::LoadLevel("Server.py");
-            Set007EA988To01();
+            MarkNetMapSet();
         }
         else
         {
@@ -729,7 +729,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     if (!App->Start())
         return 0;
 
-    Set007EA988To01();
+    MarkNetMapSet();
     for(;;)
     {
         if (PeekMessage(&msg, NULL, WM_NULL, WM_NULL, PM_REMOVE))

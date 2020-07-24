@@ -1346,8 +1346,8 @@ externdef ?Reset@B_PersonStatus@@QAEXXZ: near
 l005A54D0 equ ?Reset@B_PersonStatus@@QAEXXZ
 externdef ?Update@B_ProcTexture@@QAEXXZ: near
 l005AA881 equ ?Update@B_ProcTexture@@QAEXXZ
-externdef _Set007EA988To01: near
-l005AC791 equ _Set007EA988To01
+externdef _MarkNetMapSet: near
+l005AC791 equ _MarkNetMapSet
 externdef _OnEvent: near
 l005AF2CE equ _OnEvent
 externdef _ResetClientMapName: near
