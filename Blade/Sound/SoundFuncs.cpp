@@ -402,13 +402,12 @@ int SetShowSounds(int showSounds)
 * Module:                 Blade.exe
 * Entry point:            0x004BFEFB
 */
-#ifdef BLD_NATIVE
+
 int GetSoundDevInstace()
 {
-    int (*bld_proc)() = NULL;
-    return bld_proc();
+    return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

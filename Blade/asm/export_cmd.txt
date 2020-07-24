@@ -77,7 +77,6 @@
 /EXPORT:GetGhostSectorSound
 /EXPORT:SetGhostSectorGroupSound
 /EXPORT:SetShowSounds
-/EXPORT:GetSoundDevInstace
 /EXPORT:nSounds
 /EXPORT:GetSoundName
 /EXPORT:GetSoundFileName
