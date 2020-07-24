@@ -108,9 +108,6 @@ extern void unknown_00497AE0();
 extern bool GetCurrentDir(char *buffer, int bufferLength);
 extern anim_t *LoadFromHDAnim(const char *anm_name);
 extern void Set007EA988To01(void);
-extern void OnEvent(int a, int b);
-extern void ResetClientMapName(void);
-extern const char *GetNetMap(const char *map);
 
 /*
 * Module:                 Blade.exe

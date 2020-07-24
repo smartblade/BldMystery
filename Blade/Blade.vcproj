@@ -340,6 +340,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\gamenet.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\libnet.cpp"
 				>
 			</File>
@@ -447,6 +451,10 @@
 			</File>
 			<File
 				RelativePath=".\entity.h"
+				>
+			</File>
+			<File
+				RelativePath=".\gamenet.h"
 				>
 			</File>
 			<File

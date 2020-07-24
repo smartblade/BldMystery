@@ -534,53 +534,8 @@ void Set007EA988To01()
 
 /* End of file:           0x005ACBC0 */
 
+/* File:                  gamenet.cpp */
 /* Begin of file:         0x005ACBC0 */
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x005AF2CE
-*/
-
-#ifdef BLD_NATIVE
-
-void OnEvent(int a, int b)
-{
-}
-
-#endif
-
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x005B1431
-*/
-
-#ifdef BLD_NATIVE
-
-void ResetClientMapName()
-{
-}
-
-#endif
-
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x005B143D
-*/
-
-#ifdef BLD_NATIVE
-
-const char *GetNetMap(const char *map)
-{
-    return NULL;
-}
-
-#endif
-
 /* End of file:           0x005B5340 */
 
 /* File:                  NetExt.cpp */
