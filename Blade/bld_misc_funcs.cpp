@@ -559,7 +559,7 @@ void OnEvent(int a, int b)
 
 #ifdef BLD_NATIVE
 
-void reset_client_map_name()
+void ResetClientMapName()
 {
 }
 

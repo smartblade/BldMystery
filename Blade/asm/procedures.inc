@@ -1350,8 +1350,8 @@ externdef _Set007EA988To01: near
 l005AC791 equ _Set007EA988To01
 externdef _OnEvent: near
 l005AF2CE equ _OnEvent
-externdef _reset_client_map_name: near
-l005B1431 equ _reset_client_map_name
+externdef _ResetClientMapName: near
+l005B1431 equ _ResetClientMapName
 externdef _get_map_for_net_game: near
 l005B143D equ _get_map_for_net_game
 externdef _SetGameSpySupport: near

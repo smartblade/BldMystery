@@ -568,7 +568,7 @@ boolean JoinSession(int index, const char *player_name)
 {
         bool status;
 
-        reset_client_map_name();
+        ResetClientMapName();
 
         status = gbl_net->join_session(index, player_name);
 
