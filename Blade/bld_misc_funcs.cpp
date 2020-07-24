@@ -516,22 +516,8 @@ void B_ProcTexture::Update()
 
 
 
+/* File:                  datanet.cpp */
 /* Begin of file:         0x005AC4F0 */
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x005AC791
-*/
-
-#ifdef BLD_NATIVE
-
-void MarkNetMapSet()
-{
-}
-
-#endif
-
 /* End of file:           0x005ACBC0 */
 
 /* File:                  gamenet.cpp */

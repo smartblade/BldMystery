@@ -332,6 +332,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\datanet.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\en_control.cpp"
 				>
 			</File>
@@ -443,6 +447,10 @@
 			</File>
 			<File
 				RelativePath=".\Clock.h"
+				>
+			</File>
+			<File
+				RelativePath=".\datanet.h"
 				>
 			</File>
 			<File

@@ -107,7 +107,6 @@ extern light_t *read_light(B_IDataFile *file);
 extern void unknown_00497AE0();
 extern bool GetCurrentDir(char *buffer, int bufferLength);
 extern anim_t *LoadFromHDAnim(const char *anm_name);
-extern void MarkNetMapSet(void);
 
 /*
 * Module:                 Blade.exe
