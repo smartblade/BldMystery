@@ -1,6 +1,7 @@
 
 #include <bld_system.h>
 #include "ProcessorTimer.h"
+#include "Sound/Sound.h"
 #include "bld_misc_funcs.h"
 
 
@@ -576,6 +577,7 @@ int gbl_action_areas_bit_mask;
 B_PtrArray<anim_t> gbl_anims;
 B_PtrArray<B_ParticleGType> gbl_particle_types;
 B_YSoundDev *gbl_sound_device;
+B_Sound no_sound;
 B_PtrArray<B_Race> gbl_races;
 B_PtrArray<B_Combustion> gbl_combustion_data;
 EnControl gbl_en_control;

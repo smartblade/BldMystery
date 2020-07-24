@@ -48,7 +48,6 @@
 /EXPORT:AddMaterialStepSound
 /EXPORT:AddTextureMaterial
 /EXPORT:AddActionStepSound
-/EXPORT:CreateSound
 /EXPORT:CreateSoundS
 /EXPORT:DestroySound
 /EXPORT:SetSoundVolume

@@ -1,5 +1,7 @@
 
 #include <bld_system.h>
+#include "../sound_device.h"
+#include "../bld_misc_funcs.h"
 #define BUILD_LIB
 #include <SoundFuncs.h>
 
@@ -14,13 +16,15 @@
 * Module:                 Blade.exe
 * Entry point:            0x004BF1EF
 */
-#ifdef BLD_NATIVE
+
 B_Sound *CreateSound(const char *file_name, const char *sound_name)
 {
-    B_Sound *(*bld_proc)(const char *file_name, const char *sound_name) = NULL;
-    return bld_proc(file_name, sound_name);
+    if (gbl_sound_device == NULL)
+        return &no_sound;
+    return gbl_sound_device->CreateSound(
+        file_name, sound_name, 1000.0f, 15000.0f, 1.0f, 1.0f, 1.0f);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

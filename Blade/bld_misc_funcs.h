@@ -8,6 +8,7 @@
 
 class B_WinApp;
 class bld_net_cb;
+class B_Sound;
 class B_YSoundDev;
 
 
@@ -185,6 +186,12 @@ extern B_PtrArray<B_ParticleGType> gbl_particle_types;
 * Data address:           0x007C8ED0
 */
 extern B_YSoundDev *gbl_sound_device;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x007C8ED8
+*/
+extern B_Sound no_sound;
 
 /*
 * Module:                 Blade.exe

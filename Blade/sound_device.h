@@ -5,6 +5,7 @@
 
 
 class B_Matrix;
+class B_Sound;
 
 class B_YSoundDev
 {
@@ -26,7 +27,9 @@ public:
         double a, double b, double x, double d, double e);
     virtual void unknown034();
     virtual void unknown038();
-    virtual void unknown03C();
+    virtual B_Sound *CreateSound(
+        const char *file_name, const char *sound_name,
+        float, float, float, float, float);
     virtual void unknown040();
     virtual void unknown044();
     virtual void unknown048();
