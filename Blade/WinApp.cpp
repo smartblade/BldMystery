@@ -299,7 +299,7 @@ bool B_WinApp::Start()
     {
         mout << "Not using mouse.\n";
     }
-    this->mapName = get_map_for_net_game(this->mapName.String());
+    this->mapName = GetNetMap(this->mapName.String());
     this->LoadLevel(this->mapName.String());
     return true;
 }
@@ -319,7 +319,7 @@ void B_WinApp::LoadLevel(const char *map)
 
     timeBefore = timeGetTime();
 
-    this->mapName = get_map_for_net_game(map);
+    this->mapName = GetNetMap(map);
     map = this->mapName;
 
     GetCurrentDirectory(sizeof(buffer), buffer);

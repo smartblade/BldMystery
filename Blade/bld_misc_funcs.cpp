@@ -574,7 +574,7 @@ void ResetClientMapName()
 
 #ifdef BLD_NATIVE
 
-char *get_map_for_net_game(const char *map)
+const char *GetNetMap(const char *map)
 {
     return NULL;
 }

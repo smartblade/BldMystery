@@ -110,7 +110,7 @@ extern anim_t *LoadFromHDAnim(const char *anm_name);
 extern void Set007EA988To01(void);
 extern void OnEvent(int a, int b);
 extern void ResetClientMapName(void);
-extern char *get_map_for_net_game(const char *map);
+extern const char *GetNetMap(const char *map);
 
 /*
 * Module:                 Blade.exe

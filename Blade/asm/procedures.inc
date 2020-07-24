@@ -1352,8 +1352,8 @@ externdef _OnEvent: near
 l005AF2CE equ _OnEvent
 externdef _ResetClientMapName: near
 l005B1431 equ _ResetClientMapName
-externdef _get_map_for_net_game: near
-l005B143D equ _get_map_for_net_game
+externdef _GetNetMap: near
+l005B143D equ _GetNetMap
 externdef _SetGameSpySupport: near
 l005B5340 equ _SetGameSpySupport
 externdef _GetGameSpySupport: near
