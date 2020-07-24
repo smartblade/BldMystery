@@ -9,6 +9,7 @@ extern "C"
 extern void OnEvent(int a, int b);
 extern void ResetClientMapName(void);
 extern const char *GetNetMap(const char *map);
+extern void SendPlayerName();
 
 }
 

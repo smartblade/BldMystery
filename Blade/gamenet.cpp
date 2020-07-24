@@ -1,6 +1,7 @@
 #include "gamenet.h"
 
 #include <bld_system.h>
+#include "datanet.h"
 #include "bld_misc_funcs.h"
 
 
@@ -42,10 +43,40 @@ void ResetClientMapName()
 * Module:                 Blade.exe
 * Entry point:            0x005B143D
 */
-#ifdef BLD_NATIVE
+
 const char *GetNetMap(const char *map)
 {
-    return NULL;
+    if (gbl_net->is_net_game())
+    {
+        if (!gbl_net->is_server())
+        {
+            while (client_map_name[0] == '\0')
+            {
+            }
+            MarkNetMapSet();
+            SendPlayerName();
+            return client_map_name;
+        }
+        return GetServerMap();
+    }
+    return map;
+}
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x005B3D69
+*/
+#ifdef BLD_NATIVE
+void SendPlayerName()
+{
 }
 #endif
 

@@ -35,6 +35,17 @@ bool IsDedicatedServer()
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x005B65C8
+*/
+#ifdef BLD_NATIVE
+const char *GetServerMap()
+{
+    return NULL;
+}
+#endif
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x005B65D2
 */
 

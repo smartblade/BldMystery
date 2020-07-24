@@ -32,6 +32,7 @@ extern "C"
 
 extern void SetDedicatedServer(bool isDedicated);
 extern bool IsDedicatedServer();
+extern const char *GetServerMap();
 extern bool LoadNetModule(char *fileName);
 extern bool FreeNetData(bool freeNetLibrary);
 

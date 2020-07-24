@@ -1354,6 +1354,8 @@ externdef _ResetClientMapName: near
 l005B1431 equ _ResetClientMapName
 externdef _GetNetMap: near
 l005B143D equ _GetNetMap
+externdef _SendPlayerName: near
+l005B3D69 equ _SendPlayerName
 externdef _SetGameSpySupport: near
 l005B5340 equ _SetGameSpySupport
 externdef _GetGameSpySupport: near
@@ -1438,6 +1440,8 @@ externdef _SetDedicatedServer: near
 l005B64C0 equ _SetDedicatedServer
 externdef _IsDedicatedServer: near
 l005B64CD equ _IsDedicatedServer
+externdef _GetServerMap: near
+l005B65C8 equ _GetServerMap
 externdef _LoadNetModule: near
 l005B65D2 equ _LoadNetModule
 externdef _FreeNetData: near
