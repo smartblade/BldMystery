@@ -340,6 +340,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\EntityFuncs.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\ext.cpp"
 				>
 			</File>
@@ -463,6 +467,10 @@
 			</File>
 			<File
 				RelativePath=".\entity.h"
+				>
+			</File>
+			<File
+				RelativePath="..\include\EntityFuncs.h"
 				>
 			</File>
 			<File

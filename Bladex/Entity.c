@@ -1,4 +1,5 @@
 
+#include <EntityFuncs.h>
 #include "bladex_int.h"
 
 

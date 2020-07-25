@@ -447,6 +447,12 @@ B_ODataFile& operator <<(B_ODataFile &file, const B_Combustion &combustion)
 
 
 
+/* File:                  EntityFuncs.cpp */
+/* Begin of file:         0x004FFEA0 */
+/* End of file:           0x0051DBE0 */
+
+
+
 /* Begin of file:         0x005728B0 */
 
 
