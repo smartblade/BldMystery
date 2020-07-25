@@ -87,6 +87,25 @@ void B_World::GoToTime(double time)
 ................................................................................
 */
 
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043B8E6
+* VC++ mangling:          ?AddScheduledFunc@B_World@@QAEXNPAUPyObject@@0PBD@Z
+*/
+#ifdef BLD_NATIVE
+void B_World::AddScheduledFunc(
+    double time, PyObject *func, PyObject *args, const char *name)
+{
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 
 /*
 * Module:                 Blade.exe

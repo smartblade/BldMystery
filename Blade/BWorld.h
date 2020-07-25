@@ -80,6 +80,8 @@ public:
     double get_time();
     int SetTime(double time);
     void GoToTime(double time);
+    void AddScheduledFunc(
+        double time, PyObject *func, PyObject *args, const char *name);
     void SetSun(int exists, const B_Vector &position);
     int FindSectorIndex(const B_Vector &point);
     const char *GenerateEntityName(const char *prefix);

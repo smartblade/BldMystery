@@ -1,5 +1,6 @@
 
 #include <bld_system.h>
+#include "bld_misc_funcs.h"
 #define BUILD_LIB
 #include <EntityFuncs.h>
 
@@ -1212,17 +1213,15 @@ int AddSoundEvent(
 * Module:                 Blade.exe
 * Entry point:            0x00517718
 */
-#ifdef BLD_NATIVE
+
 int AddScheduledFunc(
-        double time, PyObject *func, PyObject *args, const char *name
+    double time, PyObject *func, PyObject *args, const char *name
 )
 {
-    int (*bld_proc)(
-        double time, PyObject *func, PyObject *args, const char *name
-) = NULL;
-    return bld_proc(time, func, args, name);
+    B_world.AddScheduledFunc(time, func, args, name);
+    return true;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

@@ -184,7 +184,6 @@
 /EXPORT:GetEntityInternalState
 /EXPORT:AddSoundAnim
 /EXPORT:AddSoundEvent
-/EXPORT:AddScheduledFunc
 /EXPORT:RemoveScheduledFunc
 /EXPORT:GetnScheduledFuncs
 /EXPORT:GetScheduledFunc
