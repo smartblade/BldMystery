@@ -4,6 +4,9 @@
 #define SOUND_DEVICE_H
 
 
+#include "Sound/Sound.h"
+
+
 class B_Matrix;
 class B_Sound;
 

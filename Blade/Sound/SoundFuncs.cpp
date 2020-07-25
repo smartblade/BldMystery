@@ -545,13 +545,22 @@ void GetSoundIntProperty()
 * Module:                 Blade.exe
 * Entry point:            0x004C033D
 */
-#ifdef BLD_NATIVE
-void SetSoundIntProperty(int property_kind, B_Sound *sound, int value)
+
+int SetSoundIntProperty(int property_kind, B_Sound *sound, int value)
 {
-    void (*bld_proc)(int property_kind, B_Sound *sound, int value) = NULL;
-    bld_proc(property_kind, sound, value);
+    assert(sound);
+    if (gbl_sound_device == NULL)
+        return false;
+    switch (property_kind)
+    {
+        case SND_INT_SEND_NOTIFY:
+            sound->sendNotify = (value != 0);
+            return true;
+        default:
+            return false;
+    }
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

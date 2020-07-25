@@ -88,7 +88,6 @@
 /EXPORT:GetSoundStringProperty
 /EXPORT:SetSoundStringProperty
 /EXPORT:GetSoundIntProperty
-/EXPORT:SetSoundIntProperty
 /EXPORT:SetSoundPitchVar
 /EXPORT:GetSoundFuncProperty
 /EXPORT:SetSoundFuncProperty

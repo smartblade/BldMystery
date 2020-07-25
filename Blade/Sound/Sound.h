@@ -3,8 +3,15 @@
 
 #define SOUND_H
 
-class B_Sound
+
+#include <BBLibc.h>
+
+
+class B_Sound : public B_NamedObj
 {
+public:
+    char unknownFields00C[13];
+    bool sendNotify;
 };
 
 #endif /* SOUND_H */

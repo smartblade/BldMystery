@@ -84,7 +84,7 @@ LIB_EXP int StopSound(B_Sound *sound);
 LIB_EXP double GetSoundFloatProperty(int property_kind, B_Sound *sound);
 LIB_EXP void SetSoundFloatProperty(int property_kind, B_Sound *sound, double value);
 LIB_EXP char *GetSoundStringProperty(int property_kind, B_Sound *sound);
-LIB_EXP void SetSoundIntProperty(int property_kind, B_Sound *sound, int value);
+LIB_EXP int SetSoundIntProperty(int property_kind, B_Sound *sound, int value);
 LIB_EXP void SetSoundPitchVar(
     B_Sound *sound, int i_unknown, float f_unknown1, float f_unknown2,
     float f_unknown3, float f_unknown4

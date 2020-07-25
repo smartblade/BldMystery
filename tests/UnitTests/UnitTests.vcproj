@@ -273,6 +273,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\Sound\SoundTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\StringValue.cpp"
 				>
 			</File>
