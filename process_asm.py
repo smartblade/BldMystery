@@ -823,7 +823,7 @@ def collectSymbolsFromSources():
     implementedProcedures = []
     for (root, dirs, files) in os.walk('..'):
         for file in files:
-            if file.endswith(".cpp") or file.endswith(".h"):
+            if file.lower().endswith(".cpp") or file.lower().endswith(".h"):
                 fileName = os.path.join(root, file)
                 (names, implemented) = collectProceduresFromFile(fileName)
                 mangledNames.update(names)
