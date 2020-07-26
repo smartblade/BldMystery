@@ -3,6 +3,8 @@
 
 #define ARRAY_H
 
+#include <bld_system.h>
+
 class B_Name;
 
 template<class TYPE>

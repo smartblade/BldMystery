@@ -98,23 +98,8 @@ int ShowStartupDialog(
 /* Begin of file:         0x0042D090 */
 /* End of file:           0x0042D1F0 */
 
+/* File:                  BMAP.CPP */
 /* Begin of file:         0x0042D1F0 */
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x00432379
-*/
-
-#ifdef BLD_NATIVE
-
-B_IDataFile * read_sectors(B_IDataFile *file, B_PtrArray<B_Sector> *sectors)
-{
-    return NULL;
-}
-
-#endif
-
 /* End of file:           0x004394B0 */
 
 /* File:                  BWorld.cpp */

@@ -103,7 +103,6 @@ extern const char *ShowInputDialog(HINSTANCE module, HWND window, const char *te
 extern int ShowStartupDialog(
     HMODULE module, HWND window, B_YSoundDev *sound, B_Name *rasterName,
     bool showDialog);
-extern B_IDataFile * read_sectors(B_IDataFile *file, B_PtrArray<B_Sector> *sectors);
 extern light_t *read_light(B_IDataFile *file);
 extern void unknown_00497AE0();
 extern bool GetCurrentDir(char *buffer, int bufferLength);
