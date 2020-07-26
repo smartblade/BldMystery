@@ -11,11 +11,12 @@
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00432379
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Map@@@Z
 */
 #ifdef BLD_NATIVE
-B_IDataFile * read_sectors(B_IDataFile *file, B_Map *map)
+B_IDataFile &operator >>(B_IDataFile &file, B_Map &map)
 {
-    return NULL;
+    return file;
 }
 #endif
 

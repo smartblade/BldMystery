@@ -514,8 +514,8 @@ externdef ??5@YAAAVB_IDataFile@@AAV0@PAVatmosphere_t@@@Z: near
 l0042D175 equ ??5@YAAAVB_IDataFile@@AAV0@PAVatmosphere_t@@@Z
 externdef ??1atmosphere_t@@UAE@XZ: near
 l0042D1B0 equ ??1atmosphere_t@@UAE@XZ
-externdef _read_sectors: near
-l00432379 equ _read_sectors
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Map@@@Z: near
+l00432379 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Map@@@Z
 externdef ?unknown_00439F5D@B_World@@QAEXXZ: near
 l00439F5D equ ?unknown_00439F5D@B_World@@QAEXXZ
 externdef ?get_time@B_World@@QAENXZ: near

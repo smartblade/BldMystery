@@ -14,11 +14,6 @@ private:
     int unknown030;
 };
 
-extern "C"
-{
-
-extern B_IDataFile * read_sectors(B_IDataFile *file, B_Map *map);
-
-}
+B_IDataFile &operator >>(B_IDataFile &file, B_Map &map);
 
 #endif /* BMAP_H */

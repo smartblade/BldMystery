@@ -400,7 +400,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
         }
 
         read_points(&file, &gbl_world_points);
-        read_sectors(&file, &world->map);
+        file >> world->map;
 
         B_PtrArray<light_t> *lights = &world->lights;
         if (lights->num_alloc != 0)
