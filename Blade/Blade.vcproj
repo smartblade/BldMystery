@@ -510,10 +510,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Sector.h"
-				>
-			</File>
-			<File
 				RelativePath="..\include\SectorFuncs.h"
 				>
 			</File>

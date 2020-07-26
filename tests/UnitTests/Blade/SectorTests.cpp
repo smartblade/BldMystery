@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
-#include "Sector.h"
+#include "BMap.h"
 
 
 TEST(SectorTests, SizeOf)
