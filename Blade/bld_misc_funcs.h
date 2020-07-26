@@ -98,7 +98,7 @@ extern B_ODataFile& operator <<(
 extern "C" {
 #endif
 
-extern B_IDataFile * read_points(B_IDataFile *file, B_PtrArray<world_point_t> *points);
+extern B_IDataFile * read_points(B_IDataFile *file, array_t<world_point_t> *points);
 extern const char *ShowInputDialog(HINSTANCE module, HWND window, const char *text);
 extern int ShowStartupDialog(
     HMODULE module, HWND window, B_YSoundDev *sound, B_Name *rasterName,
@@ -131,7 +131,7 @@ extern int clientRectHeight;
 * Module:                 Blade.exe
 * Data address:           0x005DF898
 */
-extern B_PtrArray<world_point_t> gbl_world_points;
+extern array_t<world_point_t> gbl_world_points;
 
 /*
 * Module:                 Blade.exe

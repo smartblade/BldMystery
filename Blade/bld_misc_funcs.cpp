@@ -21,7 +21,7 @@
 
 #ifdef BLD_NATIVE
 
-B_IDataFile * read_points(B_IDataFile *file, B_PtrArray<world_point_t> *points)
+B_IDataFile * read_points(B_IDataFile *file, array_t<world_point_t> *points)
 {
     return NULL;
 }
@@ -573,7 +573,7 @@ B_YSoundDev::B_YSoundDev()
 bool showStartupDialog;
 int clientRectWidth;
 int clientRectHeight;
-B_PtrArray<world_point_t> gbl_world_points;
+array_t<world_point_t> gbl_world_points;
 B_YSoundDev *unused_sound_ptr;
 int gbl_sound_device_id;
 B_Name *gbl_map_name;
