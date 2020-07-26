@@ -13,7 +13,7 @@ TEST(WorldTests, Fields)
     EXPECT_OFFSET_EQ(B_World, unknown187C, 0x187C);
     EXPECT_OFFSET_EQ(B_World, unknown1880, 0x1880);
     EXPECT_OFFSET_EQ(B_World, atmospheres, 0x18AC);
-    EXPECT_OFFSET_EQ(B_World, sectors, 0x18C4);
+    EXPECT_OFFSET_EQ(B_World, map, 0x18C4);
     EXPECT_OFFSET_EQ(B_World, unknown18F8, 0x18F8);
     EXPECT_OFFSET_EQ(B_World, unknown18FC, 0x18FC);
     EXPECT_OFFSET_EQ(B_World, unknown1914, 0x1914);

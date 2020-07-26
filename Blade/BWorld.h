@@ -115,7 +115,7 @@ public:
     int unknown1880;
     char unknownFields1884[40];
     B_PtrArray<atmosphere_t> atmospheres;
-    B_PtrArray<B_Sector> sectors;
+    B_PtrArray<B_Sector> map;
     char unknownFields18DC[28];
     unknown_18F8_class unknown18F8;
     B_Vector unknown18FC;

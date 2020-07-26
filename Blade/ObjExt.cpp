@@ -955,7 +955,7 @@ int InsideAA(int AA, double x, double y, double z)
     sectorIndex = B_world.FindSectorIndex(B_Vector(x, y, z));
     if (sectorIndex == -1)
         return 0;
-    sector = B_world.sectors.elements[sectorIndex];
+    sector = B_world.map.elements[sectorIndex];
     return sector->unknown204.InsideAA(AA);
 }
 
@@ -2263,7 +2263,7 @@ int TakeSnapShot()
 
 int nSectors()
 {
-    return B_world.sectors.size;
+    return B_world.map.size;
 }
 
 

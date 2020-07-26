@@ -399,7 +399,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
         }
 
         read_points(&file, &gbl_world_points);
-        read_sectors(&file, &world->sectors);
+        read_sectors(&file, &world->map);
 
         B_PtrArray<light_t> *lights = &world->lights;
         if (lights->num_alloc != 0)
@@ -451,13 +451,13 @@ B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
 
         file >> world->initial_point_position >> world->initial_point_orientation;
 
-        for(i = 0; i < world->sectors.size; i++)
+        for(i = 0; i < world->map.size; i++)
         {
-                B_Sector *sector = world->sectors.elements[i];
+                B_Sector *sector = world->map.elements[i];
                 file >> sector->groupId;
         }
 
-        world->unknown18F8.unknown_00451A21(&world->sectors, 0, 0x40B38800/*30000.0lf*/);
+        world->unknown18F8.unknown_00451A21(&world->map, 0, 0x40B38800/*30000.0lf*/);
 
         return file;
 }
