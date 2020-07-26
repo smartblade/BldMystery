@@ -205,6 +205,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\BMapTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\CameraEntityTests.cpp"
 				>
 			</File>

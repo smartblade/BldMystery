@@ -7,7 +7,7 @@
 #include <array.h>
 #include "entity.h"
 #include "atmosphere.h"
-#include "sector.h"
+#include "BMap.h"
 #include "light.h"
 #include "vector.h"
 #include <bld_python.h>
@@ -115,8 +115,7 @@ public:
     int unknown1880;
     char unknownFields1884[40];
     B_PtrArray<atmosphere_t> atmospheres;
-    B_PtrArray<B_Sector> map;
-    char unknownFields18DC[28];
+    B_Map map;
     unknown_18F8_class unknown18F8;
     B_Vector unknown18FC;
     double unknown1914;

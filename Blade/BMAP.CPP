@@ -13,7 +13,7 @@
 * Entry point:            0x00432379
 */
 #ifdef BLD_NATIVE
-B_IDataFile * read_sectors(B_IDataFile *file, B_PtrArray<B_Sector> *sectors)
+B_IDataFile * read_sectors(B_IDataFile *file, B_Map *map)
 {
     return NULL;
 }
