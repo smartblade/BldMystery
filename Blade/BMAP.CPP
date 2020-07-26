@@ -10,15 +10,55 @@
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x00432379
-* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Map@@@Z
+* Entry point:            0x0042E06B
+* VC++ mangling:          ??0B_Sector@@QAE@XZ
 */
 #ifdef BLD_NATIVE
-B_IDataFile &operator >>(B_IDataFile &file, B_Map &map)
+B_Sector::B_Sector()
+{
+}
+#endif
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0042FFDC
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Sector@@@Z
+*/
+#ifdef BLD_NATIVE
+B_IDataFile &operator >>(B_IDataFile &file, B_Sector &sector)
 {
     return file;
 }
 #endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00432379
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Map@@@Z
+*/
+
+B_IDataFile &operator >>(B_IDataFile &file, B_Map &map)
+{
+    return (file >> static_cast<B_PtrArray<B_Sector> &>(map));
+}
+
 
 /*
 ................................................................................

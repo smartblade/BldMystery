@@ -5,6 +5,7 @@
 
 #include <bld_system.h>
 
+class B_IDataFile;
 class B_Name;
 
 template<class TYPE>
@@ -113,6 +114,35 @@ public:
     unsigned int num_alloc;
     int unknown14;
 };
+
+template<class TYPE>
+B_IDataFile &operator >>(B_IDataFile &file, B_PtrArray<TYPE> &arr)
+{
+    if (arr.num_alloc != 0)
+    {
+        for (unsigned int i = 0; i < arr.size; i++)
+        {
+            TYPE *elem = arr.elements[i];
+            delete elem;
+        }
+        delete(arr.elements);
+        arr.elements = NULL;
+        arr.size = 0;
+        arr.num_alloc = 0;
+    }
+    file >> arr.size;
+    arr.num_alloc = ((arr.increment + arr.size - 1) / arr.increment) * arr.increment;
+    if (arr.num_alloc != 0)
+    {
+        arr.elements = new TYPE * [arr.num_alloc];
+        for(unsigned int i = 0; i < arr.size; i++)
+        {
+            arr.elements[i] = new TYPE();
+            file >> *arr.elements[i];
+        }
+    }
+    return file;
+}
 
 
 #endif /* ARRAY_H */

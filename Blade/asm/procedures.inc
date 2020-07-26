@@ -514,6 +514,10 @@ externdef ??5@YAAAVB_IDataFile@@AAV0@PAVatmosphere_t@@@Z: near
 l0042D175 equ ??5@YAAAVB_IDataFile@@AAV0@PAVatmosphere_t@@@Z
 externdef ??1atmosphere_t@@UAE@XZ: near
 l0042D1B0 equ ??1atmosphere_t@@UAE@XZ
+externdef ??0B_Sector@@QAE@XZ: near
+l0042E06B equ ??0B_Sector@@QAE@XZ
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Sector@@@Z: near
+l0042FFDC equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Sector@@@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Map@@@Z: near
 l00432379 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Map@@@Z
 externdef ?unknown_00439F5D@B_World@@QAEXXZ: near
