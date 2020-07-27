@@ -5,6 +5,7 @@
 
 #include <array.h>
 #include <BBLibc.h>
+#include "Surface.h"
 
 class B_Sector;
 
@@ -16,12 +17,12 @@ public:
     B_Sector *sector;
 };
 
-class B_Sector
+class B_Sector : public B_PtrArray<B_Surface>
 {
 public:
     B_Sector();
 
-    char unknownFields[32];
+    char unknownFields[8];
     unsigned long groupId;
     char unknownFields24[480];
     unknown204 unknown204;

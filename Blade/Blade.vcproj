@@ -530,6 +530,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Surface.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Vector.h"
 				>
 			</File>
