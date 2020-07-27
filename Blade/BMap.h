@@ -5,6 +5,7 @@
 
 #include <array.h>
 #include <BBLibc.h>
+#include "BoundingBox.h"
 #include "Surface.h"
 
 class B_Sector;
@@ -24,7 +25,9 @@ public:
 
     char unknownFields[8];
     unsigned long groupId;
-    char unknownFields24[480];
+    char unknownFields24[56];
+    B_BoundingBox boundingBox;
+    char unknownFields8C[376];
     unknown204 unknown204;
     char unknownFields208[24];
 };

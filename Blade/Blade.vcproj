@@ -450,6 +450,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BoundingBox.h"
+				>
+			</File>
+			<File
 				RelativePath=".\BWorld.h"
 				>
 			</File>
