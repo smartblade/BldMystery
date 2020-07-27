@@ -1,5 +1,30 @@
 #include "BMap.h"
 
+#include <raster_device.h>
+#include "Polygon.h"
+#include "bld_misc_funcs.h"
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0042E011
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_SectorLights@@@Z
+*/
+#ifdef BLD_NATIVE
+B_IDataFile &operator >>(B_IDataFile &file, B_SectorLights &lights)
+{
+    return file;
+}
+#endif
+
 /*
 ................................................................................
 ................................................................................
@@ -19,6 +44,26 @@ B_Sector::B_Sector()
 }
 #endif
 
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0042E464
+* VC++ mangling:          ?CalculateBoundingBox@B_Sector@@QAEXXZ
+*/
+#ifdef BLD_NATIVE
+void B_Sector::CalculateBoundingBox()
+{
+}
+#endif
+
+
 
 /*
 ................................................................................
@@ -33,12 +78,32 @@ B_Sector::B_Sector()
 * Entry point:            0x0042FFDC
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Sector@@@Z
 */
-#ifdef BLD_NATIVE
+
 B_IDataFile &operator >>(B_IDataFile &file, B_Sector &sector)
 {
+    unsigned int numSurfaces;
+    B_Name atmosphereName;
+
+    file >> atmosphereName;
+    sector.atmosphere = B_3D_raster_device->GetAtmosphere(atmosphereName);
+    file >> sector.lights;
+    file >> numSurfaces;
+    for (unsigned int i = 0; i < numSurfaces; i++)
+    {
+        B_Surface *surface = ReadSurface(file);
+        if (surface->GetPolygon()->numVertices < 3)
+        {
+            delete surface;
+        }
+        else
+        {
+            sector.addElement(surface);
+        }
+    }
+    sector.CalculateBoundingBox();
     return file;
 }
-#endif
+
 
 /*
 ................................................................................

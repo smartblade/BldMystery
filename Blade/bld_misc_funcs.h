@@ -104,6 +104,7 @@ extern int ShowStartupDialog(
     HMODULE module, HWND window, B_YSoundDev *sound, B_Name *rasterName,
     bool showDialog);
 extern light_t *read_light(B_IDataFile *file);
+extern B_Surface *ReadSurface(B_IDataFile &file);
 extern void unknown_00497AE0();
 extern bool GetCurrentDir(char *buffer, int bufferLength);
 extern anim_t *LoadFromHDAnim(const char *anm_name);

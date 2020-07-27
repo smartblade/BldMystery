@@ -13,5 +13,7 @@ TEST(SectorTests, Fields)
 {
     EXPECT_OFFSET_EQ(B_Sector, groupId, 0x020);
     EXPECT_OFFSET_EQ(B_Sector, boundingBox, 0x05C);
+    EXPECT_OFFSET_EQ(B_Sector, atmosphere, 0x0A4);
+    EXPECT_OFFSET_EQ(B_Sector, lights, 0x0BC);
     EXPECT_OFFSET_EQ(B_Sector, unknown204, 0x204);
 }

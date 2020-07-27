@@ -510,6 +510,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Polygon.h"
+				>
+			</File>
+			<File
 				RelativePath=".\ProcessorTimer.h"
 				>
 			</File>

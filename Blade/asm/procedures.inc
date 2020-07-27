@@ -514,8 +514,12 @@ externdef ??5@YAAAVB_IDataFile@@AAV0@PAVatmosphere_t@@@Z: near
 l0042D175 equ ??5@YAAAVB_IDataFile@@AAV0@PAVatmosphere_t@@@Z
 externdef ??1atmosphere_t@@UAE@XZ: near
 l0042D1B0 equ ??1atmosphere_t@@UAE@XZ
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_SectorLights@@@Z: near
+l0042E011 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_SectorLights@@@Z
 externdef ??0B_Sector@@QAE@XZ: near
 l0042E06B equ ??0B_Sector@@QAE@XZ
+externdef ?CalculateBoundingBox@B_Sector@@QAEXXZ: near
+l0042E464 equ ?CalculateBoundingBox@B_Sector@@QAEXXZ
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Sector@@@Z: near
 l0042FFDC equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Sector@@@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Map@@@Z: near
@@ -588,6 +592,8 @@ externdef _AddHitSoundComb: near
 l0044ED6A equ _AddHitSoundComb
 externdef ?unknown_00451A21@unknown_18F8_class@@QAEXPAXHH@Z: near
 l00451A21 equ ?unknown_00451A21@unknown_18F8_class@@QAEXPAXHH@Z
+externdef _ReadSurface: near
+l0045499F equ _ReadSurface
 externdef _GetSectorByPosition: near
 l0045C040 equ _GetSectorByPosition
 externdef _GetSectorByIndex: near
