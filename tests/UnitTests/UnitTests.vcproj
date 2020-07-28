@@ -309,6 +309,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\WorldPointTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\WorldTests.cpp"
 				>
 			</File>

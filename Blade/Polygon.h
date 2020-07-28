@@ -9,11 +9,12 @@ class B_IDataFile;
 
 class B_WorldPoint
 {
+public:
     double x;
     double y;
     double z;
-    int unknown10;
-    int unknown14;
+    int unknown18;
+    int unknown1C;
 };
 
 extern "C"
