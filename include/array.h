@@ -31,11 +31,46 @@ public:
             num_alloc = 0;
         }
 
+        TYPE &operator[](unsigned int index)
+        {
+            return elements[index];
+        }
+
+        void Clear()
+        {
+            if (num_alloc == 0)
+                return;
+            delete [] elements;
+            elements = NULL;
+            size = 0;
+            num_alloc = 0;
+        }
+
         TYPE *elements;
         unsigned int size;
         int increment;
         unsigned int num_alloc;
 };
+
+template<class TYPE>
+B_IDataFile &operator >>(B_IDataFile &file, array_t<TYPE> &arr)
+{
+    if (arr.num_alloc != 0)
+    {
+        arr.Clear();
+    }
+    file >> arr.size;
+    arr.num_alloc = ((arr.size + arr.increment - 1) / arr.increment) * arr.increment;
+    if (arr.num_alloc != 0)
+    {
+        arr.elements = new TYPE[arr.num_alloc];
+        for(unsigned int i = 0; i < arr.size; i++)
+        {
+            file >> arr[i];
+        }
+    }
+    return file;
+}
 
 template<class TYPE>
 class B_PtrArray

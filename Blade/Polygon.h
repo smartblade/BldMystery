@@ -11,10 +11,14 @@ class B_IDataFile;
 class B_WorldPoint
 {
 public:
+    B_WorldPoint();
+
     B_Vector v;
     int unknown18;
     int unknown1C;
 };
+
+B_IDataFile &operator >>(B_IDataFile &file, B_WorldPoint &point);
 
 class B_WorldPoints
 {

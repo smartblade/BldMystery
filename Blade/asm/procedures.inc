@@ -6,6 +6,10 @@ externdef ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ: near
 l0040571F equ ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ
 externdef ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z: near
 l00406903 equ ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z
+externdef ??0B_WorldPoint@@QAE@XZ: near
+l004085BC equ ??0B_WorldPoint@@QAE@XZ
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_WorldPoint@@@Z: near
+l00408631 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_WorldPoint@@@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_WorldPoints@@@Z: near
 l004088F4 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_WorldPoints@@@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z: near
