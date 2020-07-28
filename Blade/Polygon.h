@@ -7,7 +7,7 @@
 
 class B_IDataFile;
 
-class world_point_t
+class B_WorldPoint
 {
     double x;
     double y;
@@ -19,7 +19,7 @@ class world_point_t
 extern "C"
 {
 
-B_IDataFile * read_points(B_IDataFile *file, array_t<world_point_t> *points);
+B_IDataFile * read_points(B_IDataFile *file, array_t<B_WorldPoint> *points);
 
 }
 

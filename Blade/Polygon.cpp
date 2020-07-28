@@ -13,7 +13,7 @@
 * Entry point:            0x004088F4
 */
 #ifdef BLD_NATIVE
-B_IDataFile * read_points(B_IDataFile *file, array_t<world_point_t> *points)
+B_IDataFile * read_points(B_IDataFile *file, array_t<B_WorldPoint> *points)
 {
     return NULL;
 }

@@ -557,7 +557,7 @@ B_YSoundDev::B_YSoundDev()
 bool showStartupDialog;
 int clientRectWidth;
 int clientRectHeight;
-array_t<world_point_t> gbl_world_points;
+array_t<B_WorldPoint> gbl_world_points;
 B_YSoundDev *unused_sound_ptr;
 int gbl_sound_device_id;
 B_Name *gbl_map_name;
