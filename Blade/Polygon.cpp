@@ -15,11 +15,12 @@
 * Entry point:            0x004085BC
 * VC++ mangling:          ??0B_WorldPoint@@QAE@XZ
 */
-#ifdef BLD_NATIVE
+
 B_WorldPoint::B_WorldPoint()
+ : unknown1C(0)
 {
 }
-#endif
+
 
 /*
 ................................................................................
