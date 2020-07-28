@@ -34,12 +34,13 @@ B_WorldPoint::B_WorldPoint()
 * Entry point:            0x00408631
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_WorldPoint@@@Z
 */
-#ifdef BLD_NATIVE
+
 B_IDataFile &operator >>(B_IDataFile &file, B_WorldPoint &point)
 {
-    return file;
+    point.unknown1C = 0;
+    return (file >> point.v);
 }
-#endif
+
 
 /*
 ................................................................................
