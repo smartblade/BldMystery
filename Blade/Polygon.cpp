@@ -11,11 +11,12 @@
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004088F4
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_WorldPoints@@@Z
 */
 #ifdef BLD_NATIVE
-B_IDataFile * read_points(B_IDataFile *file, B_WorldPoints *points)
+B_IDataFile &operator >>(B_IDataFile &file, B_WorldPoints &wordPoints)
 {
-    return NULL;
+    return file;
 }
 #endif
 

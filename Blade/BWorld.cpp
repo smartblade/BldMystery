@@ -398,7 +398,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
                 B_3D_raster_device->add_atmosphere(atm->Id(), atm->color, atm->intensity);
         }
 
-        read_points(&file, &gbl_world_points);
+        file >> gbl_world_points;
         file >> world->map;
 
         B_PtrArray<light_t> *lights = &world->lights;

@@ -6,8 +6,8 @@ externdef ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ: near
 l0040571F equ ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ
 externdef ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z: near
 l00406903 equ ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z
-externdef _read_points: near
-l004088F4 equ _read_points
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_WorldPoints@@@Z: near
+l004088F4 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_WorldPoints@@@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z: near
 l0040ACDD equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z
 externdef ??6@YAAAVB_ODataFile@@AAV0@AAVB_Vector@@@Z: near

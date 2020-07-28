@@ -22,12 +22,8 @@ public:
     array_t<B_WorldPoint> points;
 };
 
-extern "C"
-{
+B_IDataFile &operator >>(B_IDataFile &file, B_WorldPoints &wordPoints);
 
-B_IDataFile * read_points(B_IDataFile *file, B_WorldPoints *points);
-
-}
 
 class B_Polygon
 {
