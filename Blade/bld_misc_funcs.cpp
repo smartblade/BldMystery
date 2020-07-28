@@ -11,23 +11,8 @@
 
 
 
+/* File:                  Polygon.cpp */
 /* Begin of file:         0x00408270 */
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x004088F4
-*/
-
-#ifdef BLD_NATIVE
-
-B_IDataFile * read_points(B_IDataFile *file, array_t<world_point_t> *points)
-{
-    return NULL;
-}
-
-#endif
-
 /* End of file:           0x00409C20 */
 
 

@@ -380,6 +380,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Polygon.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SectorFuncs.cpp"
 				>
 			</File>

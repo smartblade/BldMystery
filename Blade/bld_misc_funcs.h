@@ -1,5 +1,6 @@
 
 #include "BWorld.h"
+#include "Polygon.h"
 #include <bld_abstract_net.h>
 #include "anim.h"
 #include "libnet.h"
@@ -98,7 +99,6 @@ extern B_ODataFile& operator <<(
 extern "C" {
 #endif
 
-extern B_IDataFile * read_points(B_IDataFile *file, array_t<world_point_t> *points);
 extern const char *ShowInputDialog(HINSTANCE module, HWND window, const char *text);
 extern int ShowStartupDialog(
     HMODULE module, HWND window, B_YSoundDev *sound, B_Name *rasterName,

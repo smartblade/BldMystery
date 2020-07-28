@@ -14,14 +14,6 @@
 
 
 typedef struct {
-    double x;
-    double y;
-    double z;
-    int unknown10;
-    int unknown14;
-} world_point_t;
-
-typedef struct {
     int numEntities;
     B_PtrArray<B_Entity> hash[256];
     int unknown1804;
