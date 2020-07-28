@@ -4,15 +4,14 @@
 #define POLYGON_H
 
 #include "array.h"
+#include "Vector.h"
 
 class B_IDataFile;
 
 class B_WorldPoint
 {
 public:
-    double x;
-    double y;
-    double z;
+    B_Vector v;
     int unknown18;
     int unknown1C;
 };
