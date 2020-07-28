@@ -16,10 +16,16 @@ public:
     int unknown1C;
 };
 
+class B_WorldPoints
+{
+public:
+    array_t<B_WorldPoint> points;
+};
+
 extern "C"
 {
 
-B_IDataFile * read_points(B_IDataFile *file, array_t<B_WorldPoint> *points);
+B_IDataFile * read_points(B_IDataFile *file, B_WorldPoints *points);
 
 }
 

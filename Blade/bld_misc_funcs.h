@@ -131,7 +131,7 @@ extern int clientRectHeight;
 * Module:                 Blade.exe
 * Data address:           0x005DF898
 */
-extern array_t<B_WorldPoint> gbl_world_points;
+extern B_WorldPoints gbl_world_points;
 
 /*
 * Module:                 Blade.exe
