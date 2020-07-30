@@ -261,6 +261,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\PlaneTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\PolygonTests.cpp"
 				>
 			</File>

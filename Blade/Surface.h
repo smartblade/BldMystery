@@ -3,10 +3,11 @@
 
 #define SURFACE_H
 
+#include "Plane.h"
 
 class B_Polygon;
 
-class B_Surface
+class B_Surface : public B_Plane
 {
 public:
     virtual ~B_Surface();

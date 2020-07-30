@@ -510,6 +510,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Plane.h"
+				>
+			</File>
+			<File
 				RelativePath="..\include\Point2D.h"
 				>
 			</File>
