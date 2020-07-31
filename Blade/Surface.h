@@ -15,6 +15,8 @@ public:
     char unknownFields[0x78];
 };
 
+B_IDataFile &operator >>(B_IDataFile &file, B_Portal &portal);
+
 class B_Surface : public B_Plane
 {
 public:

@@ -12,6 +12,8 @@ externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_WorldPoint@@@Z: near
 l00408631 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_WorldPoint@@@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_WorldPoints@@@Z: near
 l004088F4 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_WorldPoints@@@Z
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Polygon@@@Z: near
+l004097FC equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Polygon@@@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z: near
 l0040ACDD equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z
 externdef ??6@YAAAVB_ODataFile@@AAV0@AAVB_Vector@@@Z: near
@@ -598,6 +600,8 @@ externdef ?unknown_00451A21@unknown_18F8_class@@QAEXPAXHH@Z: near
 l00451A21 equ ?unknown_00451A21@unknown_18F8_class@@QAEXPAXHH@Z
 externdef _ReadSurface: near
 l0045499F equ _ReadSurface
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Portal@@@Z: near
+l004567CD equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Portal@@@Z
 externdef _GetSectorByPosition: near
 l0045C040 equ _GetSectorByPosition
 externdef _GetSectorByIndex: near

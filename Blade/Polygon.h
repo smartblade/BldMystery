@@ -38,4 +38,6 @@ public:
     int *vertices;
 };
 
+B_IDataFile &operator >>(B_IDataFile &file, B_Polygon &polygon);
+
 #endif /* POLYGON_H */
