@@ -269,6 +269,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\PortalTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\ProcessorTimerTests.cpp"
 				>
 			</File>

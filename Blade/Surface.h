@@ -4,8 +4,16 @@
 #define SURFACE_H
 
 #include "Plane.h"
+#include "Polygon.h"
 
-class B_Polygon;
+class B_Portal : public B_Polygon
+{
+public:
+    virtual ~B_Portal();
+
+    int sectorIndex;
+    char unknownFields[0x78];
+};
 
 class B_Surface : public B_Plane
 {
