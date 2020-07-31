@@ -35,7 +35,7 @@ public:
     virtual ~B_Polygon();
 
     unsigned int numVertices;
-    int *vertices;
+    unsigned int *vertices;
 };
 
 B_IDataFile &operator >>(B_IDataFile &file, B_Polygon &polygon);

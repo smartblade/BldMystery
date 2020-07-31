@@ -6,6 +6,8 @@ public _clientRectHeight
 g005CCEC0 equ _clientRectHeight
 public _gbl_world_points
 g005DF898 equ _gbl_world_points
+public _gbl_num_polygon_vertices
+g005DF8B0 equ _gbl_num_polygon_vertices
 public _unused_sound_ptr
 g005DFB3C equ _unused_sound_ptr
 public _gbl_sound_device_id

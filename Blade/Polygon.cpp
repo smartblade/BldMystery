@@ -4,6 +4,13 @@
 
 
 /*
+* Module:                 Blade.exe
+* Data address:           0x005DF8B0
+*/
+static unsigned int gbl_num_polygon_vertices = 0;
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
@@ -73,12 +80,20 @@ B_IDataFile &operator >>(B_IDataFile &file, B_WorldPoints &wordPoints)
 * Entry point:            0x004097FC
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Polygon@@@Z
 */
-#ifdef BLD_NATIVE
+
 B_IDataFile &operator >>(B_IDataFile &file, B_Polygon &polygon)
 {
+    delete [] polygon.vertices;
+    file >> polygon.numVertices;
+    polygon.vertices = new unsigned int[polygon.numVertices];
+    for (unsigned int i = 0; i < polygon.numVertices; i++)
+    {
+        file >> polygon.vertices[i];
+    }
+    gbl_num_polygon_vertices += polygon.numVertices;
     return file;
 }
-#endif
+
 
 /*
 ................................................................................
