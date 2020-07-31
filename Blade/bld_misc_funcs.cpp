@@ -141,20 +141,8 @@ void unknown_18F8_class::unknown_00451A21(void *, int, int)
 
 /* End of file:           0x00453B10 */
 
+/* File:                  Surface.cpp */
 /* Begin of file:         0x00453B10 */
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x0045499F
-*/
-#ifdef BLD_NATIVE
-B_Surface *ReadSurface(B_IDataFile &file)
-{
-    return NULL;
-}
-#endif
-
 /* End of file:           0x0045C040 */
 
 /* File:                  SectorFuncs.cpp */

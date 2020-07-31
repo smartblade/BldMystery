@@ -392,6 +392,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Surface.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Vector.cpp"
 				>
 			</File>

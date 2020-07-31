@@ -23,4 +23,11 @@ public:
     virtual B_Polygon *GetPolygon();
 };
 
+extern "C"
+{
+
+extern B_Surface *ReadSurface(B_IDataFile &file);
+
+}
+
 #endif /* SURFACE_H */
