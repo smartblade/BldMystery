@@ -229,6 +229,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\DomeSurfaceTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\BBLibc\ElementCSVTests.cpp"
 				>
 			</File>
@@ -245,7 +249,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\MultiplePortalTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\NetCallbacksTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Blade\OpaqueSurfaceTests.cpp"
 				>
 			</File>
 			<File
@@ -289,11 +301,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\SinglePortalTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\Sound\SoundTests.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\Blade\StringValue.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Blade\TransparentSurfaceTests.cpp"
 				>
 			</File>
 			<File

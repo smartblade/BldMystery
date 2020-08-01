@@ -24,6 +24,40 @@ public:
     virtual int ClassId() = 0;
     virtual B_Polygon *GetPolygon();
     virtual void GetPortals(int *numPortals, B_Portal **portals);
+
+    int unknown024;
+    B_Plane *unknown028;
+};
+
+class B_DomeSurface : public B_Surface
+{
+public:
+    B_Polygon polygon;
+};
+
+class B_OpaqueSurface : public B_Surface
+{
+public:
+    char unknownFields[0x60];
+    B_Polygon polygon;
+};
+
+class B_TransparentSurface : public B_Surface
+{
+public:
+    char unknownFields[0xE8];
+};
+
+class B_SinglePortalSurface : public B_OpaqueSurface
+{
+public:
+    char unknownFields[0xA0];
+};
+
+class B_MultiplePortalSurface : public B_OpaqueSurface
+{
+public:
+    char unknownFields[0x18];
 };
 
 extern "C"
