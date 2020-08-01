@@ -23,6 +23,7 @@ public:
     virtual ~B_Surface();
     virtual int ClassId() = 0;
     virtual B_Polygon *GetPolygon();
+    virtual void GetPortals(int *numPortals, B_Portal **portals);
 };
 
 extern "C"
