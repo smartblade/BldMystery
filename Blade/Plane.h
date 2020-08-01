@@ -8,7 +8,9 @@
 class B_Plane
 {
 public:
-    virtual ~B_Plane();
+    virtual ~B_Plane()
+    {
+    }
 
     B_Vector normal;
     double p;

@@ -32,6 +32,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_WorldPoints &wordPoints);
 class B_Polygon
 {
 public:
+    B_Polygon();
     virtual ~B_Polygon();
 
     unsigned int numVertices;
