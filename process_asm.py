@@ -803,7 +803,7 @@ def collectVariablesFromFile(fileName):
     f = open(fileName)
     lines = f.readlines()
     addr_regexp = re.compile('Data\s+address:\s+0x(?P<addr>[\dABCDEF]+)')
-    name_regexp = re.compile('(\W+(?P<name>\w+)(\s*\[\s*\d*\s*\])*\s*)?;')
+    name_regexp = re.compile('(\W+(?P<name>\w+)(\s*\[\s*\d*\s*\])*\s*)?(=\s*\d*\s*)?;')
     addr = None
     for line in lines:
         match = re.search(addr_regexp, line)
