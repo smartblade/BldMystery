@@ -608,19 +608,6 @@ void B_Surface::unknown014()
 }
 #endif
 
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x0045BCE0
-* VC++ mangling:          ?GetPolygon@B_DomeSurface@@UAEPAVB_Polygon@@XZ
-*/
-#ifdef BLD_NATIVE
-B_Polygon *B_DomeSurface::GetPolygon()
-{
-    return NULL;
-}
-#endif
-
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0045BD00

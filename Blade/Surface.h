@@ -56,7 +56,19 @@ class B_DomeSurface : public B_Surface
 {
 public:
     virtual int ClassId();
-    virtual B_Polygon *GetPolygon();
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0045BCE0
+* VC++ mangling:          ?GetPolygon@B_DomeSurface@@UAEPAVB_Polygon@@XZ
+*/
+
+    virtual B_Polygon *GetPolygon()
+    {
+        return &polygon;
+    }
+
     virtual void unknown014();
 
     B_Polygon polygon;
