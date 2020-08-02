@@ -81,7 +81,19 @@ class B_OpaqueSurface : public B_Surface
 {
 public:
     virtual int ClassId();
-    virtual B_Polygon *GetPolygon();
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0045BD00
+* VC++ mangling:          ?GetPolygon@B_OpaqueSurface@@UAEPAVB_Polygon@@XZ
+*/
+
+    virtual B_Polygon *GetPolygon()
+    {
+        return &polygon;
+    }
+
     virtual void unknown014();
     virtual void unknown018();
 
