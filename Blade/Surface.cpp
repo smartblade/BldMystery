@@ -8,11 +8,12 @@
 * Entry point:            0x00453B10
 * VC++ mangling:          ??0B_Surface@@QAE@XZ
 */
-#ifdef BLD_NATIVE
+
 B_Surface::B_Surface()
+ : unknown024(0)
 {
+    unknown028 = NULL;
 }
-#endif
 
 
 /*
