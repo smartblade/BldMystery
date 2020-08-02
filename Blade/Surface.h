@@ -29,7 +29,19 @@ public:
     B_Surface();
     virtual ~B_Surface();
     virtual int ClassId() = 0;
-    virtual B_Polygon *GetPolygon();
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0045BCB0
+* VC++ mangling:          ?GetPolygon@B_Surface@@UAEPAVB_Polygon@@XZ
+*/
+
+    virtual B_Polygon *GetPolygon()
+    {
+        return NULL;
+    }
+
     virtual void GetPortals(int *numPortals, B_Portal **portals);
     virtual void unknown010();
     virtual void unknown014();

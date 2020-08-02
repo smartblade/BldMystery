@@ -588,18 +588,6 @@ B_IDataFile &operator >>(B_IDataFile &file, B_MultiplePortalSurface &surface)
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x0045BCB0
-* VC++ mangling:          ?GetPolygon@B_Surface@@UAEPAVB_Polygon@@XZ
-*/
-#ifdef BLD_NATIVE
-B_Polygon *B_Surface::GetPolygon()
-{
-    return NULL;
-}
-#endif
-
-/*
-* Module:                 Blade.exe
 * Entry point:            0x0045BCC0
 * VC++ mangling:          ?unknown010@B_Surface@@UAEXXZ
 */
