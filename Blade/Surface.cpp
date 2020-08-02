@@ -607,15 +607,3 @@ void B_Surface::unknown014()
 {
 }
 #endif
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x0045BD20
-* VC++ mangling:          ?GetPolygon@B_TransparentSurface@@UAEPAVB_Polygon@@XZ
-*/
-#ifdef BLD_NATIVE
-B_Polygon *B_TransparentSurface::GetPolygon()
-{
-    return NULL;
-}
-#endif

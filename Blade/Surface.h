@@ -109,13 +109,26 @@ class B_TransparentSurface : public B_Surface
 public:
     B_TransparentSurface();
     virtual int ClassId();
-    virtual B_Polygon *GetPolygon();
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0045BD20
+* VC++ mangling:          ?GetPolygon@B_TransparentSurface@@UAEPAVB_Polygon@@XZ
+*/
+
+    virtual B_Polygon *GetPolygon()
+    {
+        return &portal;
+    }
+
     virtual void GetPortals(int *numPortals, B_Portal **portals);
     virtual void unknown010();
     virtual void unknown014();
     virtual void unknown018();
 
-    char unknownFields[0xE8];
+    char unknownFields[0x60];
+    B_Portal portal;
 };
 
 B_IDataFile &operator >>(B_IDataFile &file, B_TransparentSurface &surface);
