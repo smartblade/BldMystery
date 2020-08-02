@@ -9,7 +9,7 @@
 class B_Portal : public B_Polygon
 {
 public:
-    virtual ~B_Portal();
+    B_Portal();
 
     int sectorIndex;
     char unknownFields[0x78];

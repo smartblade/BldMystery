@@ -628,6 +628,8 @@ externdef ?unknown014@B_OpaqueSurface@@UAEXXZ: near
 l00456594 equ ?unknown014@B_OpaqueSurface@@UAEXXZ
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_OpaqueSurface@@@Z: near
 l004566EC equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_OpaqueSurface@@@Z
+externdef ??0B_Portal@@QAE@XZ: near
+l00456760 equ ??0B_Portal@@QAE@XZ
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Portal@@@Z: near
 l004567CD equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Portal@@@Z
 externdef ??0B_TransparentSurface@@QAE@XZ: near

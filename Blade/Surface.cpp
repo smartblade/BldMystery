@@ -244,6 +244,24 @@ B_IDataFile &operator >>(B_IDataFile &file, B_OpaqueSurface &surface)
 }
 #endif
 
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00456760
+* VC++ mangling:          ??0B_Portal@@QAE@XZ
+*/
+#ifdef BLD_NATIVE
+B_Portal::B_Portal()
+{
+}
+#endif
+
 
 /*
 ................................................................................
@@ -279,11 +297,11 @@ B_IDataFile &operator >>(B_IDataFile &file, B_Portal &portal)
 * Entry point:            0x0045681F
 * VC++ mangling:          ??0B_TransparentSurface@@QAE@XZ
 */
-#ifdef BLD_NATIVE
+
 B_TransparentSurface::B_TransparentSurface()
 {
 }
-#endif
+
 
 /*
 ................................................................................
