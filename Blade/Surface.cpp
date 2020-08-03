@@ -525,12 +525,12 @@ B_MultiplePortalSurface::~B_MultiplePortalSurface()
 * Entry point:            0x0045AE93
 * VC++ mangling:          ?ClassId@B_MultiplePortalSurface@@UAEHXZ
 */
-#ifdef BLD_NATIVE
+
 int B_MultiplePortalSurface::ClassId()
 {
-    return 0;
+    return B_SURFACE_CID_MULTIPLE_PORTAL;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
