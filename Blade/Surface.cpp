@@ -33,11 +33,13 @@ B_Surface::~B_Surface()
 * Entry point:            0x00453B9E
 * VC++ mangling:          ?GetPortals@B_Surface@@UAEXPAHPAPAVB_Portal@@@Z
 */
-#ifdef BLD_NATIVE
+
 void B_Surface::GetPortals(int *numPortals, B_Portal **portals)
 {
+    *numPortals = 0;
+    *portals = NULL;
 }
-#endif
+
 
 /*
 ................................................................................
