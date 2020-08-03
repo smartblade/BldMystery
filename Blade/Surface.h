@@ -163,7 +163,10 @@ public:
     virtual void unknown014();
     virtual void unknown018();
 
-    char unknownFields[0x18];
+    char unknownFields[0x08];
+    int numPortals;
+    B_Portal *portals;
+    char unknownFields0A8[0x08];
 };
 
 B_IDataFile &operator >>(B_IDataFile &file, B_MultiplePortalSurface &surface);

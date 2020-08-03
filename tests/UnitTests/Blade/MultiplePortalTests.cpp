@@ -15,4 +15,6 @@ TEST(MultiplePortalSurfaceTests, Fields)
     EXPECT_OFFSET_EQ(B_MultiplePortalSurface, p, 0x01C);
     EXPECT_OFFSET_EQ(B_MultiplePortalSurface, unknown024, 0x024);
     EXPECT_OFFSET_EQ(B_MultiplePortalSurface, unknown028, 0x028);
+    EXPECT_OFFSET_EQ(B_MultiplePortalSurface, numPortals, 0x0A0);
+    EXPECT_OFFSET_EQ(B_MultiplePortalSurface, portals, 0x0A4);
 }

@@ -537,11 +537,13 @@ int B_MultiplePortalSurface::ClassId()
 * Entry point:            0x0045AEA3
 * VC++ mangling:          ?GetPortals@B_MultiplePortalSurface@@UAEXPAPAVB_Portal@@PAH@Z
 */
-#ifdef BLD_NATIVE
+
 void B_MultiplePortalSurface::GetPortals(B_Portal **portals, int *numPortals)
 {
+    *portals = this->portals;
+    *numPortals = this->numPortals;
 }
-#endif
+
 
 /*
 ................................................................................
