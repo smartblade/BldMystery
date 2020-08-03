@@ -419,12 +419,12 @@ B_SinglePortalSurface::B_SinglePortalSurface()
 * Entry point:            0x00457EFE
 * VC++ mangling:          ?ClassId@B_SinglePortalSurface@@UAEHXZ
 */
-#ifdef BLD_NATIVE
+
 int B_SinglePortalSurface::ClassId()
 {
-    return 0;
+    return B_SURFACE_CID_SINGLE_PORTAL;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
