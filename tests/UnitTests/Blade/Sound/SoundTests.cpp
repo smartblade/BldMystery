@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
-#include "Sound/Sound.h"
+#include <Sound/Sound.h>
 
 
 TEST(SoundTests, Fields)

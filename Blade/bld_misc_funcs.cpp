@@ -1,7 +1,7 @@
 
 #include <bld_system.h>
 #include "ProcessorTimer.h"
-#include "Sound/Sound.h"
+#include <Sound/Sound.h>
 #include "bld_misc_funcs.h"
 
 
