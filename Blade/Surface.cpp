@@ -152,12 +152,12 @@ B_Surface *ReadSurface(B_IDataFile &file)
 * Entry point:            0x00454C44
 * VC++ mangling:          ?ClassId@B_DomeSurface@@UAEHXZ
 */
-#ifdef BLD_NATIVE
+
 int B_DomeSurface::ClassId()
 {
-    return 0;
+    return B_SURFACE_CID_DOME;
 }
-#endif
+
 
 /*
 ................................................................................
