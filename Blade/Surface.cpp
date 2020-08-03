@@ -201,12 +201,12 @@ B_IDataFile &operator >>(B_IDataFile &file, B_DomeSurface &surface)
 * Entry point:            0x00454F25
 * VC++ mangling:          ?ClassId@B_OpaqueSurface@@UAEHXZ
 */
-#ifdef BLD_NATIVE
+
 int B_OpaqueSurface::ClassId()
 {
-    return 0;
+    return B_SURFACE_CID_OPAQUE;
 }
-#endif
+
 
 /*
 ................................................................................
