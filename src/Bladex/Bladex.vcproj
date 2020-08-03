@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8,00"
-	Name="netgame"
-	ProjectGUID="{71413378-43EF-4477-8F17-290FA1F773C9}"
-	RootNamespace="netgame"
+	Name="Bladex"
+	ProjectGUID="{45BBCEFB-81A4-4FDB-832A-027D0A5B991A}"
+	RootNamespace="Bladex"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -17,7 +17,7 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)install\bin"
+			OutputDirectory="$(SolutionDir)..\install\bin"
 			IntermediateDirectory="$(ConfigurationName)\.."
 			ConfigurationType="2"
 			CharacterSet="1"
@@ -41,7 +41,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\include;&quot;C:\Program Files (x86)\Python\include&quot;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;NETGAME_EXPORTS"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;BLADEX_EXPORTS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="2"
@@ -63,10 +63,10 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="Blade.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\lib;..\lib\VC"
+				AdditionalLibraryDirectories="..\..\lib;..\..\lib\VC"
 				GenerateDebugInformation="true"
 				SubSystem="2"
-				ImportLibrary="..\lib\$(TargetName).lib"
+				ImportLibrary="..\..\lib\$(TargetName).lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -96,7 +96,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)install\bin"
+			OutputDirectory="$(SolutionDir)..\install\bin"
 			IntermediateDirectory="$(ConfigurationName)\.."
 			ConfigurationType="2"
 			CharacterSet="1"
@@ -120,7 +120,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="..\include;&quot;C:\Program Files (x86)\Python\include&quot;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;NETGAME_EXPORTS"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;BLADEX_EXPORTS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -140,12 +140,12 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="Blade.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="C:\Program Files (x86)\Python\libs;..\lib"
+				AdditionalLibraryDirectories="..\..\lib;..\..\lib\VC"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				ImportLibrary="..\lib\$(TargetName).lib"
+				ImportLibrary="..\..\lib\$(TargetName).lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -183,7 +183,47 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\netgame.c"
+				RelativePath=".\Bladex.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Character.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Entity.c"
+				>
+			</File>
+			<File
+				RelativePath=".\HeapCheck.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Inventory.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Material.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Route.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Sector.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Sound.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Trail.c"
+				>
+			</File>
+			<File
+				RelativePath=".\Utils.c"
 				>
 			</File>
 		</Filter>
@@ -192,10 +232,6 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
-			<File
-				RelativePath=".\netgame.h"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"

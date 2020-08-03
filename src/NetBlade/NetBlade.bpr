@@ -3,7 +3,7 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.06.00"/>
-    <PROJECT value="..\install\bin\NetBlade\NetBlade.dll"/>
+    <PROJECT value="..\..\install\bin\NetBlade\NetBlade.dll"/>
     <OBJFILES value="netinterface.obj netfunctions.obj bld_net.obj interface.obj netdialog.obj 
       bcb_wrappers.obj"/>
     <RESFILES value="NetBlade.res"/>
@@ -44,7 +44,7 @@
     <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>
     <AFLAGS value="/mx /w2 /zd"/>
-    <LFLAGS value="-l..\lib -D&quot;&quot; -aa -Tpd -x -Gn -Gi -v"/>
+    <LFLAGS value="-l..\..\lib -D&quot;&quot; -aa -Tpd -x -Gn -Gi -v"/>
     <OTHERFILES value=""/>
   </OPTIONS>
   <LINKER>
@@ -97,15 +97,17 @@ ProductVersion=1.0.0.0
 Comments=
 
 [HistoryLists\hlIncludePath]
-Count=3
-Item0=..\;NetBlade;$(BCB)\include;$(BCB)\include\vcl;..\include
-Item1=NetBlade;$(BCB)\include;$(BCB)\include\vcl;..\include
-Item2=NetBlade;$(BCB)\include;$(BCB)\include\vcl
+Count=4
+Item0=..;NetBlade;$(BCB)\include;$(BCB)\include\vcl;..\include
+Item1=..\;NetBlade;$(BCB)\include;$(BCB)\include\vcl;..\include
+Item2=NetBlade;$(BCB)\include;$(BCB)\include\vcl;..\include
+Item3=NetBlade;$(BCB)\include;$(BCB)\include\vcl
 
 [HistoryLists\hlLibraryPath]
-Count=2
-Item0=..\;NetBlade;$(BCB)\lib\obj;$(BCB)\lib
-Item1=NetBlade;$(BCB)\lib\obj;$(BCB)\lib
+Count=3
+Item0=..;NetBlade;$(BCB)\lib\obj;$(BCB)\lib
+Item1=..\;NetBlade;$(BCB)\lib\obj;$(BCB)\lib
+Item2=NetBlade;$(BCB)\lib\obj;$(BCB)\lib
 
 [HistoryLists\hlDebugSourcePath]
 Count=1
@@ -116,14 +118,16 @@ Count=1
 Item0=_DEBUG
 
 [HistoryLists\hlFinalOutputDir]
-Count=3
-Item0=..\install\bin\NetBlade\
-Item1=..\..\bin\NetBlade\
-Item2=..\..\bin\NetBlade
+Count=4
+Item0=..\..\install\bin\NetBlade\
+Item1=..\install\bin\NetBlade\
+Item2=..\..\bin\NetBlade\
+Item3=..\..\bin\NetBlade
 
 [HistoryLists\hIBPIOutputDir]
-Count=1
-Item0=..\lib
+Count=2
+Item0=..\..\lib
+Item1=..\lib
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl

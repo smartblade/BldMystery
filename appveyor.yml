@@ -9,14 +9,14 @@ before_build:
 # setup Visual C++ build environment
 - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
 # upgrade projects
-- devenv /Upgrade BOD.sln
+- devenv /Upgrade src/BOD.sln
 - devenv /Upgrade Mss32dummy.sln
 - devenv /Upgrade tests/UnitTests.sln
 # set environment variables for additional properties of Visual C++ projects
-- set NOSAFESEH=/p:ForceImportBeforeCppTargets=%APPVEYOR_BUILD_FOLDER%\nosafeseh.props
+- set NOSAFESEH=/p:ForceImportBeforeCppTargets=%APPVEYOR_BUILD_FOLDER%\src\nosafeseh.props
 build_script:
 - msbuild %NOSAFESEH% /p:Configuration=Debug Mss32dummy.sln
-- msbuild %NOSAFESEH% BOD.sln
+- msbuild %NOSAFESEH% src/BOD.sln
 - msbuild %NOSAFESEH% tests/UnitTests.sln
 test_script:
 - tests\%CONFIGURATION%\UnitTests.exe
@@ -27,7 +27,7 @@ for:
     - configuration: Native
   build_script:
   - msbuild %NOSAFESEH% /p:Configuration=Debug Mss32dummy.sln
-  - msbuild %NOSAFESEH% BOD.sln
+  - msbuild %NOSAFESEH% src/BOD.sln
   test_script:
   - echo 'There is no tests for %CONFIGURATION% configuration'
 artifacts:
