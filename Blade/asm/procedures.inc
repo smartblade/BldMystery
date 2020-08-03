@@ -606,8 +606,8 @@ externdef ??0B_Surface@@QAE@XZ: near
 l00453B10 equ ??0B_Surface@@QAE@XZ
 externdef ??1B_Surface@@UAE@XZ: near
 l00453B81 equ ??1B_Surface@@UAE@XZ
-externdef ?GetPortals@B_Surface@@UAEXPAHPAPAVB_Portal@@@Z: near
-l00453B9E equ ?GetPortals@B_Surface@@UAEXPAHPAPAVB_Portal@@@Z
+externdef ?GetPortals@B_Surface@@UAEXPAPAVB_Portal@@PAH@Z: near
+l00453B9E equ ?GetPortals@B_Surface@@UAEXPAPAVB_Portal@@PAH@Z
 externdef ?unknown018@B_Surface@@UAEXXZ: near
 l004547D7 equ ?unknown018@B_Surface@@UAEXXZ
 externdef ?unknown01C@B_Surface@@UAEXXZ: near
@@ -636,8 +636,8 @@ externdef ??0B_TransparentSurface@@QAE@XZ: near
 l0045681F equ ??0B_TransparentSurface@@QAE@XZ
 externdef ?ClassId@B_TransparentSurface@@UAEHXZ: near
 l00456960 equ ?ClassId@B_TransparentSurface@@UAEHXZ
-externdef ?GetPortals@B_TransparentSurface@@UAEXPAHPAPAVB_Portal@@@Z: near
-l00456970 equ ?GetPortals@B_TransparentSurface@@UAEXPAHPAPAVB_Portal@@@Z
+externdef ?GetPortals@B_TransparentSurface@@UAEXPAPAVB_Portal@@PAH@Z: near
+l00456970 equ ?GetPortals@B_TransparentSurface@@UAEXPAPAVB_Portal@@PAH@Z
 externdef ?unknown010@B_TransparentSurface@@UAEXXZ: near
 l00456B78 equ ?unknown010@B_TransparentSurface@@UAEXXZ
 externdef ?unknown014@B_TransparentSurface@@UAEXXZ: near
@@ -650,8 +650,8 @@ externdef ??0B_SinglePortalSurface@@QAE@XZ: near
 l004574A5 equ ??0B_SinglePortalSurface@@QAE@XZ
 externdef ?ClassId@B_SinglePortalSurface@@UAEHXZ: near
 l00457EFE equ ?ClassId@B_SinglePortalSurface@@UAEHXZ
-externdef ?GetPortals@B_SinglePortalSurface@@UAEXPAHPAPAVB_Portal@@@Z: near
-l00457F0E equ ?GetPortals@B_SinglePortalSurface@@UAEXPAHPAPAVB_Portal@@@Z
+externdef ?GetPortals@B_SinglePortalSurface@@UAEXPAPAVB_Portal@@PAH@Z: near
+l00457F0E equ ?GetPortals@B_SinglePortalSurface@@UAEXPAPAVB_Portal@@PAH@Z
 externdef ?unknown010@B_SinglePortalSurface@@UAEXXZ: near
 l00458123 equ ?unknown010@B_SinglePortalSurface@@UAEXXZ
 externdef ?unknown014@B_SinglePortalSurface@@UAEXXZ: near
@@ -666,8 +666,8 @@ externdef ??1B_MultiplePortalSurface@@UAE@XZ: near
 l0045AD21 equ ??1B_MultiplePortalSurface@@UAE@XZ
 externdef ?ClassId@B_MultiplePortalSurface@@UAEHXZ: near
 l0045AE93 equ ?ClassId@B_MultiplePortalSurface@@UAEHXZ
-externdef ?GetPortals@B_MultiplePortalSurface@@UAEXPAHPAPAVB_Portal@@@Z: near
-l0045AEA3 equ ?GetPortals@B_MultiplePortalSurface@@UAEXPAHPAPAVB_Portal@@@Z
+externdef ?GetPortals@B_MultiplePortalSurface@@UAEXPAPAVB_Portal@@PAH@Z: near
+l0045AEA3 equ ?GetPortals@B_MultiplePortalSurface@@UAEXPAPAVB_Portal@@PAH@Z
 externdef ?unknown010@B_MultiplePortalSurface@@UAEXXZ: near
 l0045B110 equ ?unknown010@B_MultiplePortalSurface@@UAEXXZ
 externdef ?unknown014@B_MultiplePortalSurface@@UAEXXZ: near

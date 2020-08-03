@@ -42,7 +42,7 @@ public:
         return NULL;
     }
 
-    virtual void GetPortals(int *numPortals, B_Portal **portals);
+    virtual void GetPortals(B_Portal **portals, int *numPortals);
     virtual void unknown010();
     virtual void unknown014();
     virtual void unknown018();
@@ -122,7 +122,7 @@ public:
         return &portal;
     }
 
-    virtual void GetPortals(int *numPortals, B_Portal **portals);
+    virtual void GetPortals(B_Portal **portals, int *numPortals);
     virtual void unknown010();
     virtual void unknown014();
     virtual void unknown018();
@@ -139,7 +139,7 @@ class B_SinglePortalSurface : public B_OpaqueSurface
 public:
     B_SinglePortalSurface();
     virtual int ClassId();
-    virtual void GetPortals(int *numPortals, B_Portal **portals);
+    virtual void GetPortals(B_Portal **portals, int *numPortals);
     virtual void unknown010();
     virtual void unknown014();
     virtual void unknown018();
@@ -156,7 +156,7 @@ public:
     B_MultiplePortalSurface();
     virtual ~B_MultiplePortalSurface();
     virtual int ClassId();
-    virtual void GetPortals(int *numPortals, B_Portal **portals);
+    virtual void GetPortals(B_Portal **portals, int *numPortals);
     virtual void unknown010();
     virtual void unknown014();
     virtual void unknown018();

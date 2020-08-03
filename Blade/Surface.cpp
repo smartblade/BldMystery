@@ -30,13 +30,13 @@ B_Surface::~B_Surface()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00453B9E
-* VC++ mangling:          ?GetPortals@B_Surface@@UAEXPAHPAPAVB_Portal@@@Z
+* VC++ mangling:          ?GetPortals@B_Surface@@UAEXPAPAVB_Portal@@PAH@Z
 */
 
-void B_Surface::GetPortals(int *numPortals, B_Portal **portals)
+void B_Surface::GetPortals(B_Portal **portals, int *numPortals)
 {
-    *numPortals = 0;
     *portals = NULL;
+    *numPortals = 0;
 }
 
 
@@ -326,13 +326,15 @@ int B_TransparentSurface::ClassId()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00456970
-* VC++ mangling:          ?GetPortals@B_TransparentSurface@@UAEXPAHPAPAVB_Portal@@@Z
+* VC++ mangling:          ?GetPortals@B_TransparentSurface@@UAEXPAPAVB_Portal@@PAH@Z
 */
-#ifdef BLD_NATIVE
-void B_TransparentSurface::GetPortals(int *numPortals, B_Portal **portals)
+
+void B_TransparentSurface::GetPortals(B_Portal **portals, int *numPortals)
 {
+    *portals = &portal;
+    *numPortals = 1;
 }
-#endif
+
 
 /*
 ................................................................................
@@ -427,10 +429,10 @@ int B_SinglePortalSurface::ClassId()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00457F0E
-* VC++ mangling:          ?GetPortals@B_SinglePortalSurface@@UAEXPAHPAPAVB_Portal@@@Z
+* VC++ mangling:          ?GetPortals@B_SinglePortalSurface@@UAEXPAPAVB_Portal@@PAH@Z
 */
 #ifdef BLD_NATIVE
-void B_SinglePortalSurface::GetPortals(int *numPortals, B_Portal **portals)
+void B_SinglePortalSurface::GetPortals(B_Portal **portals, int *numPortals)
 {
 }
 #endif
@@ -531,10 +533,10 @@ int B_MultiplePortalSurface::ClassId()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0045AEA3
-* VC++ mangling:          ?GetPortals@B_MultiplePortalSurface@@UAEXPAHPAPAVB_Portal@@@Z
+* VC++ mangling:          ?GetPortals@B_MultiplePortalSurface@@UAEXPAPAVB_Portal@@PAH@Z
 */
 #ifdef BLD_NATIVE
-void B_MultiplePortalSurface::GetPortals(int *numPortals, B_Portal **portals)
+void B_MultiplePortalSurface::GetPortals(B_Portal **portals, int *numPortals)
 {
 }
 #endif
