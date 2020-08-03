@@ -431,11 +431,13 @@ int B_SinglePortalSurface::ClassId()
 * Entry point:            0x00457F0E
 * VC++ mangling:          ?GetPortals@B_SinglePortalSurface@@UAEXPAPAVB_Portal@@PAH@Z
 */
-#ifdef BLD_NATIVE
+
 void B_SinglePortalSurface::GetPortals(B_Portal **portals, int *numPortals)
 {
+    *portals = &portal;
+    *numPortals = 1;
 }
-#endif
+
 
 /*
 ................................................................................

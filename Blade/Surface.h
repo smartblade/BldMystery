@@ -144,7 +144,9 @@ public:
     virtual void unknown014();
     virtual void unknown018();
 
-    char unknownFields[0xA0];
+    char unknownFields[0x08];
+    B_Portal portal;
+    char unknownFields128[0x10];
 };
 
 B_IDataFile &operator >>(B_IDataFile &file, B_SinglePortalSurface &surface);
