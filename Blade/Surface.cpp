@@ -316,12 +316,12 @@ B_TransparentSurface::B_TransparentSurface()
 * Entry point:            0x00456960
 * VC++ mangling:          ?ClassId@B_TransparentSurface@@UAEHXZ
 */
-#ifdef BLD_NATIVE
+
 int B_TransparentSurface::ClassId()
 {
-    return 0;
+    return B_SURFACE_CID_TRANSPARENT;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
