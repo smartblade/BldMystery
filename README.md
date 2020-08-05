@@ -13,3 +13,11 @@
 - `Raster.dll`
 ### Partially recovered binaries
 - `Blade.exe`
+# Method
+- Create Visual Studio project with native `assembly` code of `Blade.exe`.
+- Choose function/method which source code we want to reconstruct.
+    - Provide `C++` implementation of this function/method.
+    - Remove `assembly` implementation of this function (using `process_asm.py` script).
+- Go to the next function/method.
+
+So we have consistent project at each stage.
