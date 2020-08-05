@@ -52,6 +52,9 @@ public:
     B_Plane *unknown028;
 };
 
+B_IDataFile &operator >>(B_IDataFile &file, B_Surface &surface);
+
+
 class B_DomeSurface : public B_Surface
 {
 public:

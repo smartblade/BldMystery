@@ -616,6 +616,8 @@ externdef ?unknown018@B_OpaqueSurface@@UAEXXZ: near
 l004548AF equ ?unknown018@B_OpaqueSurface@@UAEXXZ
 externdef _ReadSurface: near
 l0045499F equ _ReadSurface
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Surface@@@Z: near
+l00454C0A equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Surface@@@Z
 externdef ?ClassId@B_DomeSurface@@UAEHXZ: near
 l00454C44 equ ?ClassId@B_DomeSurface@@UAEHXZ
 externdef ?unknown014@B_DomeSurface@@UAEXXZ: near

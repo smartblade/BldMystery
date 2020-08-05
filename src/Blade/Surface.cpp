@@ -140,12 +140,26 @@ B_Surface *ReadSurface(B_IDataFile &file)
     return surface;
 }
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00454C0A
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Surface@@@Z
+*/
+#ifdef BLD_NATIVE
+B_IDataFile &operator >>(B_IDataFile &file, B_Surface &surface)
+{
+    return file;
+}
+#endif
+
 /*
 ................................................................................
 ................................................................................
 ................................................................................
 ................................................................................
 */
+
 
 /*
 * Module:                 Blade.exe
@@ -182,12 +196,13 @@ void B_DomeSurface::unknown014()
 * Entry point:            0x00454ED5
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_DomeSurface@@@Z
 */
-#ifdef BLD_NATIVE
+
 B_IDataFile &operator >>(B_IDataFile &file, B_DomeSurface &surface)
 {
+    file >> static_cast<B_Surface &>(surface) >> surface.polygon;
     return file;
 }
-#endif
+
 
 /*
 ................................................................................
