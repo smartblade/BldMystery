@@ -146,12 +146,14 @@ B_Surface *ReadSurface(B_IDataFile &file)
 * Entry point:            0x00454C0A
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Surface@@@Z
 */
-#ifdef BLD_NATIVE
+
 B_IDataFile &operator >>(B_IDataFile &file, B_Surface &surface)
 {
+    surface.unknown024 = 0;
+    file >> static_cast<B_Plane &>(surface);
     return file;
 }
-#endif
+
 
 /*
 ................................................................................

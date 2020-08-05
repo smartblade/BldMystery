@@ -380,6 +380,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Plane.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Polygon.cpp"
 				>
 			</File>

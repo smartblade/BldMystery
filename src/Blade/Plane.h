@@ -16,4 +16,6 @@ public:
     double p;
 };
 
+B_IDataFile &operator >>(B_IDataFile &file, B_Plane &plane);
+
 #endif /* PLANE_H */
