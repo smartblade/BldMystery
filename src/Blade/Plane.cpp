@@ -1,5 +1,8 @@
 #include "Plane.h"
 
+#include <BBLibc.h>
+#include "Vector.h"
+
 
 /*
 ................................................................................
@@ -13,12 +16,13 @@
 * Entry point:            0x00407DF6
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Plane@@@Z
 */
-#ifdef BLD_NATIVE
+
 B_IDataFile &operator >>(B_IDataFile &file, B_Plane &plane)
 {
+    file >> plane.normal >> plane.p;
     return file;
 }
-#endif
+
 
 /*
 ................................................................................
