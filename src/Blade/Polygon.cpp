@@ -79,11 +79,12 @@ B_IDataFile &operator >>(B_IDataFile &file, B_WorldPoints &wordPoints)
 * Entry point:            0x00408B67
 * VC++ mangling:          ??0B_Polygon@@QAE@XZ
 */
-#ifdef BLD_NATIVE
+
 B_Polygon::B_Polygon()
+ : numVertices(0), vertices(NULL)
 {
 }
-#endif
+
 
 /*
 ................................................................................
