@@ -98,11 +98,13 @@ B_Polygon::B_Polygon()
 * Entry point:            0x00408CD3
 * VC++ mangling:          ??1B_Polygon@@UAE@XZ
 */
-#ifdef BLD_NATIVE
+
 B_Polygon::~B_Polygon()
 {
+    this->numVertices = 0;
+    delete [] this->vertices;
 }
-#endif
+
 
 
 /*
