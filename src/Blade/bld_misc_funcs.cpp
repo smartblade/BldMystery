@@ -75,6 +75,23 @@ int ShowStartupDialog(
 
 
 
+/* Begin of file:         0x00420980 */
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00422F3B
+*/
+#ifdef BLD_NATIVE
+void JumpCB(const B_Name &action, float time, float, void *)
+{
+}
+#endif
+
+/* End of file:           0x004246C0 */
+
+
+
 /* File:                  CDExt.cpp */
 /* Begin of file:         0x00427750 */
 /* End of file:           0x00427880 */

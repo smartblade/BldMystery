@@ -230,6 +230,8 @@ externdef ?SetInputMode@B_App@@UAEHPBD0@Z: near
 l00417426 equ ?SetInputMode@B_App@@UAEHPBD0@Z
 externdef ?unknown_method010@B_App@@UAEPAXPAX@Z: near
 l004179B0 equ ?unknown_method010@B_App@@UAEPAXPAX@Z
+externdef _JumpCB: near
+l00422F3B equ _JumpCB
 externdef _PlayCDTrack: near
 l00427750 equ _PlayCDTrack
 externdef _nCDTracks: near
