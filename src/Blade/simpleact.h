@@ -7,8 +7,10 @@ class B_PersonStatus
 public:
     B_PersonStatus(int);
     void Reset();
-private:
-    char unknown_fields[212];
+
+    char unknown_fields[0x7C];
+    int jumpActivated;
+    char unknown_fields80[0x52];
 };
 
 #endif /* SIMPLEACT_H */
