@@ -14,6 +14,7 @@
 
 
 class B_CameraEntity;
+class B_InputActions;
 class B_InputDevice;
 class B_PersonStatus;
 
@@ -70,6 +71,7 @@ public:
     B_PersonStatus *GetPlayerStatus1();
     B_PersonStatus *GetPlayerStatus2();
     B_InputDevice *GetAttachedDevice(const char *device);
+    B_InputActions *GetInputActions();
     void AddInputAction(const char *action_name, int npi);
     void RemoveInputAction(const char *action_name);
     int AssocKey(

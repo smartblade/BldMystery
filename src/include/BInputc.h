@@ -5,6 +5,10 @@
 
 #include <export.h>
 
+class B_InputActions
+{
+};
+
 class LIB_EXP B_InputDevice
 {
 };
@@ -37,6 +41,7 @@ public:
     void AddDevice(B_InputDevice *device);
     int AddInputActionsSet(const char *actionsSet);
     int SetInputActionsSet(const char *actionsSet);
+    B_InputActions *GetInputActions();
     void ProcessInput(float time);
 private:
     char unknown_fields[64];

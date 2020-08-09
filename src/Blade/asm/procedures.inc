@@ -158,6 +158,8 @@ externdef ?GetPlayerStatus2@B_App@@QAEPAVB_PersonStatus@@XZ: near
 l0041520F equ ?GetPlayerStatus2@B_App@@QAEPAVB_PersonStatus@@XZ
 externdef ?GetAttachedDevice@B_App@@QAEPAVB_InputDevice@@PBD@Z: near
 l00415236 equ ?GetAttachedDevice@B_App@@QAEPAVB_InputDevice@@PBD@Z
+externdef ?GetInputActions@B_App@@QAEPAVB_InputActions@@XZ: near
+l00415255 equ ?GetInputActions@B_App@@QAEPAVB_InputActions@@XZ
 externdef ?GetTimeActionHeld@B_App@@QAENPBD@Z: near
 l0041526D equ ?GetTimeActionHeld@B_App@@QAENPBD@Z
 externdef ?AddInputAction@B_App@@QAEXPBDH@Z: near

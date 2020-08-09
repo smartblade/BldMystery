@@ -965,11 +965,16 @@ B_InputDevice *B_App::GetAttachedDevice(const char *device)
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x00415255
+* VC++ mangling:          ?GetInputActions@B_App@@QAEPAVB_InputActions@@XZ
 */
+
+B_InputActions *B_App::GetInputActions()
+{
+    return InputManager->GetInputActions();
+}
+
 
 /*
 * Module:                 Blade.exe
