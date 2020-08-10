@@ -28,6 +28,10 @@ public:
     int field;
 };
 
+class B_SubscriptionList : public B_PtrArray<B_Entity>, public B_NamedObj
+{
+};
+
 class B_TriggerSector : public B_NamedObj
 {
 public:
@@ -99,7 +103,7 @@ public:
     B_PtrArray<B_TriggerSector> triggerSectors;
     B_Entities entities;
     int nextEntitySuffix;
-    B_PtrArray<void> unknown1828;
+    B_PtrArray<B_SubscriptionList> subscriptions;
     char unknownFields1840[28];
     B_Name world_file_name;
     char unknownFields1864[24];
