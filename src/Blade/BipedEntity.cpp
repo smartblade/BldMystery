@@ -1,4 +1,4 @@
-#include "entity.h"
+#include "BipedEntity.h"
 
 #include <bld_system.h>
 

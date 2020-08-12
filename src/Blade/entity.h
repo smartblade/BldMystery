@@ -3,8 +3,6 @@
 #define ENTITY_H
 
 #include "BBLibc.h"
-#include "Matrix.h"
-#include "simpleact.h"
 
 
 #define PLAYER "Player1"
@@ -26,35 +24,6 @@ public:
     virtual int IsClassOf(int type);
 
     char unknownFields[404];
-};
-
-class Unknown0049A1EF
-{
-public:
-    char unknownFields[36];
-    B_Matrix transform;
-};
-
-class B_Event;
-
-class B_BipedEntity : public B_Entity
-{
-public:
-    int RaiseEvent(B_Event *event);
-
-    char unknownFields01A0[12];
-    Unknown0049A1EF *unknown01AC;
-    char unknownFields01B0[0x1C0];
-    int unknown0370;
-    char unknownFields0374[0xEB0];
-};
-
-class B_PersonEntity : public B_BipedEntity
-{
-public:
-    char unknownFields1224[0x9EC];
-    B_PersonStatus status1;
-    char unknownFields1CE4[0x39C];
 };
 
 #endif /* ENTITY_H */

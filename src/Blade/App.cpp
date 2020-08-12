@@ -4,7 +4,9 @@
 #include <raster_device.h>
 #include "App.h"
 #include "anim.h"
+#include "BipedEntity.h"
 #include "CameraEntity.h"
+#include "PersonEntity.h"
 #include "simpleact.h"
 #include "sound_device.h"
 #include "libnet.h"

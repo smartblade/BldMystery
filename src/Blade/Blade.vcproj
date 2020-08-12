@@ -454,6 +454,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BipedEntity.h"
+				>
+			</File>
+			<File
 				RelativePath=".\BladeApp.h"
 				>
 			</File>
@@ -519,6 +523,10 @@
 			</File>
 			<File
 				RelativePath=".\Matrix.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PersonEntity.h"
 				>
 			</File>
 			<File

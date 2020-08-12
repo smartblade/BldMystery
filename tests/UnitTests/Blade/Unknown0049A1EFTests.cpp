@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
-#include "entity.h"
+#include "BipedEntity.h"
 
 
 TEST(Unknown0049A1EFTests, Fields)
