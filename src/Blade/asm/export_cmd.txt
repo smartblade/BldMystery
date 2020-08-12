@@ -273,7 +273,6 @@
 /EXPORT:DoAction
 /EXPORT:DoActionWI
 /EXPORT:SetOnFloor
-/EXPORT:RaiseEvent
 /EXPORT:SetSolidMask
 /EXPORT:IsValidEntity
 /EXPORT:EntityRemoveFromWorld

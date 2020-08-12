@@ -312,6 +312,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BipedEntity.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\BladeApp.cpp"
 				>
 			</File>

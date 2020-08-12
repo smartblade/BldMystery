@@ -2528,13 +2528,26 @@ int SetOnFloor(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051CFE4
 */
-#ifdef BLD_NATIVE
+
 int RaiseEvent(const char *entity_name, const char *event_name)
 {
-    int (*bld_proc)(const char *entity_name, const char *event_name) = NULL;
-    return bld_proc(entity_name, event_name);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity == NULL)
+    {
+        mout << vararg(
+            "RaiseEvent() -> Error: Trying to access non-existent entity:%s.\n",
+            entity_name);
+        return -1;
+    }
+    if (entity->IsClassOf(B_ENTITY_CID_BIPED))
+    {
+        B_BipedEntity *bipedEntity = static_cast<B_BipedEntity *>(entity);
+        bipedEntity->RaiseEvent(gbl_events.GetEvent(event_name));
+        return 1;
+    }
+    return -2;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

@@ -7,6 +7,8 @@
 #include "light.h"
 #include "en_control.h"
 
+class B_Event;
+class B_Events;
 class B_WinApp;
 class bld_net_cb;
 class B_Sound;
@@ -88,6 +90,12 @@ public:
     float unknown010;
     float unknown014;
     char unknown_fields[772];
+};
+
+class B_Events
+{
+public:
+    B_Event *GetEvent(const char *event_name);
 };
 
 extern B_IDataFile& operator >>(B_IDataFile& file, B_Combustion &combustion);
@@ -174,6 +182,12 @@ extern int gbl_action_areas_bit_mask;
 * Data address:           0x007072A8
 */
 extern B_PtrArray<anim_t> gbl_anims;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x0070A358
+*/
+extern B_Events gbl_events;
 
 /*
 * Module:                 Blade.exe

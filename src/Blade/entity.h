@@ -35,9 +35,13 @@ public:
     B_Matrix transform;
 };
 
+class B_Event;
+
 class B_BipedEntity : public B_Entity
 {
 public:
+    int RaiseEvent(B_Event *event);
+
     char unknownFields01A0[12];
     Unknown0049A1EF *unknown01AC;
     char unknownFields01B0[0x1C0];

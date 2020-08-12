@@ -260,6 +260,25 @@ B_IDataFile &operator >>(B_IDataFile &file, anim_t *anim)
 
 
 
+/* Begin of file:         0x0048A740 */
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0048B74A
+* VC++ mangling:          ?GetEvent@B_Events@@QAEPAVB_Event@@PBD@Z
+*/
+#ifdef BLD_NATIVE
+B_Event *B_Events::GetEvent(const char *event_name)
+{
+    return NULL;
+}
+#endif
+
+/* End of file:           0x0048CBE0 */
+
+
+
 /* Begin of file:         0x0048DB30 */
 
 
@@ -381,6 +400,9 @@ void Unknown004CD5EC::unknown004CD634()
 /* End of file:           0x004CDB30 */
 
 
+/* File:                  BipedEntity.cpp */
+/* Begin of file:         0x004D5C40 */
+/* End of file:           0x004EAD20 */
 
 /* File:                  CameraEntity.cpp */
 /* Begin of file:         0x004EAD20 */
@@ -574,6 +596,7 @@ B_Name *gbl_combustion_particle_names;
 B_World B_world;
 int gbl_action_areas_bit_mask;
 B_PtrArray<anim_t> gbl_anims;
+B_Events gbl_events;
 B_PtrArray<B_ParticleGType> gbl_particle_types;
 B_YSoundDev *gbl_sound_device;
 B_Sound no_sound;
