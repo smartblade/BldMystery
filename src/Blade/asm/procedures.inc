@@ -770,8 +770,8 @@ externdef ?GetEventFrame@anim_t@@QAEMABVB_Name@@@Z: near
 l00476057 equ ?GetEventFrame@anim_t@@QAEMABVB_Name@@@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z: near
 l004760A2 equ ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z
-externdef ?GetEvent@B_Events@@QAEPAVB_Event@@PBD@Z: near
-l0048B74A equ ?GetEvent@B_Events@@QAEPAVB_Event@@PBD@Z
+externdef ?GetEventIndex@B_Events@@QAEHPBD@Z: near
+l0048B74A equ ?GetEventIndex@B_Events@@QAEHPBD@Z
 externdef ??0B_ProcessorTimer@@QAE@XZ: near
 l0048DB30 equ ??0B_ProcessorTimer@@QAE@XZ
 externdef ?GetTime@B_ProcessorTimer@@QAENXZ: near
@@ -938,8 +938,8 @@ externdef ??0Unknown004CD5EC@@QAE@MMMMMM@Z: near
 l004CD5EC equ ??0Unknown004CD5EC@@QAE@MMMMMM@Z
 externdef ?unknown004CD634@Unknown004CD5EC@@QAEXXZ: near
 l004CD634 equ ?unknown004CD634@Unknown004CD5EC@@QAEXXZ
-externdef ?RaiseEvent@B_BipedEntity@@QAEHPAVB_Event@@@Z: near
-l004E73AF equ ?RaiseEvent@B_BipedEntity@@QAEHPAVB_Event@@@Z
+externdef ?RaiseEvent@B_BipedEntity@@QAEHH@Z: near
+l004E73AF equ ?RaiseEvent@B_BipedEntity@@QAEHH@Z
 externdef ??0B_CameraEntity@@QAE@HABVB_Name@@@Z: near
 l004EAD20 equ ??0B_CameraEntity@@QAE@HABVB_Name@@@Z
 externdef ?unknown_004EB1AA@B_CameraEntity@@QAEXPAX@Z: near

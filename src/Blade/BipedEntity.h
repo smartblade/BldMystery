@@ -19,7 +19,7 @@ public:
 class B_BipedEntity : public B_Entity
 {
 public:
-    int RaiseEvent(B_Event *event);
+    int RaiseEvent(int eventIndex);
 
     char unknownFields01A0[12];
     Unknown0049A1EF *unknown01AC;

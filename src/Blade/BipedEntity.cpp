@@ -13,10 +13,10 @@
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004E73AF
-* VC++ mangling:          ?RaiseEvent@B_BipedEntity@@QAEHPAVB_Event@@@Z
+* VC++ mangling:          ?RaiseEvent@B_BipedEntity@@QAEHH@Z
 */
 #ifdef BLD_NATIVE
-int B_BipedEntity::RaiseEvent(B_Event *event)
+int B_BipedEntity::RaiseEvent(int eventIndex)
 {
     return 0;
 }

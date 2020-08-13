@@ -2543,7 +2543,7 @@ int RaiseEvent(const char *entity_name, const char *event_name)
     if (entity->IsClassOf(B_ENTITY_CID_BIPED))
     {
         B_BipedEntity *bipedEntity = static_cast<B_BipedEntity *>(entity);
-        bipedEntity->RaiseEvent(gbl_events.GetEvent(event_name));
+        bipedEntity->RaiseEvent(gbl_events.GetEventIndex(event_name));
         return 1;
     }
     return -2;

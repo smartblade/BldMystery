@@ -266,12 +266,12 @@ B_IDataFile &operator >>(B_IDataFile &file, anim_t *anim)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0048B74A
-* VC++ mangling:          ?GetEvent@B_Events@@QAEPAVB_Event@@PBD@Z
+* VC++ mangling:          ?GetEventIndex@B_Events@@QAEHPBD@Z
 */
 #ifdef BLD_NATIVE
-B_Event *B_Events::GetEvent(const char *event_name)
+int B_Events::GetEventIndex(const char *event_name)
 {
-    return NULL;
+    return 0;
 }
 #endif
 

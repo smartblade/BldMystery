@@ -101,7 +101,7 @@ public:
 class B_Events
 {
 public:
-    B_Event *GetEvent(const char *event_name);
+    int GetEventIndex(const char *event_name);
 };
 
 extern B_IDataFile& operator >>(B_IDataFile& file, B_Combustion &combustion);
