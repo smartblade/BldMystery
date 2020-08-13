@@ -92,6 +92,12 @@ public:
     char unknown_fields[772];
 };
 
+class B_Event : public B_NamedObj
+{
+public:
+    int index;
+};
+
 class B_Events
 {
 public:
