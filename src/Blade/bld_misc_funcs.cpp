@@ -1,5 +1,6 @@
 
 #include <bld_system.h>
+#include "Events.h"
 #include "ProcessorTimer.h"
 #include <Sound/Sound.h>
 #include "bld_misc_funcs.h"
@@ -260,21 +261,8 @@ B_IDataFile &operator >>(B_IDataFile &file, anim_t *anim)
 
 
 
+/* File:                  Events.cpp */
 /* Begin of file:         0x0048A740 */
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x0048B74A
-* VC++ mangling:          ?GetEventIndex@B_Events@@QAEHPBD@Z
-*/
-#ifdef BLD_NATIVE
-int B_Events::GetEventIndex(const char *event_name)
-{
-    return 0;
-}
-#endif
-
 /* End of file:           0x0048CBE0 */
 
 

@@ -352,6 +352,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Events.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\ext.cpp"
 				>
 			</File>
@@ -503,6 +507,10 @@
 			</File>
 			<File
 				RelativePath="..\include\EntityFuncs.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Events.h"
 				>
 			</File>
 			<File

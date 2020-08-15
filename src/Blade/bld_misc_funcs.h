@@ -7,7 +7,6 @@
 #include "light.h"
 #include "en_control.h"
 
-class B_Event;
 class B_Events;
 class B_WinApp;
 class bld_net_cb;
@@ -90,18 +89,6 @@ public:
     float unknown010;
     float unknown014;
     char unknown_fields[772];
-};
-
-class B_Event : public B_NamedObj
-{
-public:
-    int index;
-};
-
-class B_Events
-{
-public:
-    int GetEventIndex(const char *event_name);
 };
 
 extern B_IDataFile& operator >>(B_IDataFile& file, B_Combustion &combustion);

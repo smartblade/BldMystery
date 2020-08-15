@@ -1,5 +1,6 @@
 
 #include <bld_system.h>
+#include "Events.h"
 #include "BipedEntity.h"
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
