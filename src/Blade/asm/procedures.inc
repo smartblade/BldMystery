@@ -772,6 +772,8 @@ externdef ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z: near
 l004760A2 equ ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z
 externdef ?GetEventIndex@B_Events@@QAEHPBD@Z: near
 l0048B74A equ ?GetEventIndex@B_Events@@QAEHPBD@Z
+externdef ?GetEventName@B_Events@@QAEABVB_Name@@H@Z: near
+l0048BEED equ ?GetEventName@B_Events@@QAEABVB_Name@@H@Z
 externdef ??0B_ProcessorTimer@@QAE@XZ: near
 l0048DB30 equ ??0B_ProcessorTimer@@QAE@XZ
 externdef ?GetTime@B_ProcessorTimer@@QAENXZ: near
