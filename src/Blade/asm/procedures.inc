@@ -770,6 +770,8 @@ externdef ?GetEventFrame@anim_t@@QAEMABVB_Name@@@Z: near
 l00476057 equ ?GetEventFrame@anim_t@@QAEMABVB_Name@@@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z: near
 l004760A2 equ ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z
+externdef ?CallFunc@B_EventFuncs@@QAEHPAVB_Entity@@I@Z: near
+l0048B30B equ ?CallFunc@B_EventFuncs@@QAEHPAVB_Entity@@I@Z
 externdef ?GetEventIndex@B_Events@@QAEHPBD@Z: near
 l0048B74A equ ?GetEventIndex@B_Events@@QAEHPBD@Z
 externdef ?GetEventName@B_Events@@QAEABVB_Name@@H@Z: near

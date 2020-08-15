@@ -16,7 +16,7 @@ public:
         {
             if (num_alloc != 0)
             {
-                delete elements;
+                delete [] elements;
                 elements = NULL;
                 size = 0;
                 num_alloc = 0;
