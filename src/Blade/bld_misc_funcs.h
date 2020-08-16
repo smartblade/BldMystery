@@ -91,6 +91,14 @@ public:
     char unknown_fields[772];
 };
 
+class B_ClimbStartPose : public B_NamedObj
+{
+public:
+    B_Vector position;
+    B_Vector v;
+    double w;
+};
+
 extern B_IDataFile& operator >>(B_IDataFile& file, B_Combustion &combustion);
 extern B_ODataFile& operator <<(
     B_ODataFile &file,
@@ -175,6 +183,12 @@ extern int gbl_action_areas_bit_mask;
 * Data address:           0x007072A8
 */
 extern B_PtrArray<anim_t> gbl_anims;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x007072C8
+*/
+extern B_PtrArray<B_ClimbStartPose> gbl_climb_start_poses;
 
 /*
 * Module:                 Blade.exe

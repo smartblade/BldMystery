@@ -221,6 +221,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\ClimbStartPoseTest.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\CombustionTests.cpp"
 				>
 			</File>
