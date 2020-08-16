@@ -3,6 +3,65 @@
 #include "entity.h"
 #include "bld_misc_funcs.h"
 
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0048A900
+* VC++ mangling:          ??0B_EventFunc@@QAE@XZ
+*/
+
+B_EventFunc::B_EventFunc()
+ : pyFunc(NULL), func(NULL), name(NULL)
+{
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0048AEB2
+* VC++ mangling:          ?AddFunc@B_EventFuncs@@QAEXIP6AHPAVB_Entity@@I@ZPBD@Z
+*/
+
+void B_EventFuncs::AddFunc(
+    unsigned int eventIndex, EventFn func, const char *name)
+{
+    unsigned int i = eventIndex / NUM_EVENT_FUNCS;
+    unsigned int j = eventIndex % NUM_EVENT_FUNCS;
+    if (this->eventFuncs.size <= i)
+    {
+        unsigned int funcsIndex = this->eventFuncs.size;
+        this->eventFuncs.Resize(i + 1, true);
+        for (; funcsIndex < this->eventFuncs.size; funcsIndex++)
+        {
+            this->eventFuncs.elements[funcsIndex] = NULL;
+        }
+    }
+    if (this->eventFuncs.elements[i] == NULL)
+    {
+        B_EventFunc *eventFuncs =
+            this->eventFuncs.elements[i] = new B_EventFunc[NUM_EVENT_FUNCS];
+        for (unsigned int index = 0; index < NUM_EVENT_FUNCS; index++)
+        {
+            eventFuncs[index].pyFunc = NULL;
+            eventFuncs[index].func = NULL;
+            eventFuncs[index].name = NULL;
+        }
+    }
+    this->eventFuncs.elements[i][j].func = func;
+    this->eventFuncs.elements[i][j].name = name;
+}
 
 /*
 ................................................................................

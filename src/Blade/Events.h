@@ -7,11 +7,15 @@
 
 class B_Entity;
 
+typedef int (*EventFn)(B_Entity *entity, unsigned int eventIndex);
+
 class B_EventFunc
 {
 public:
+    B_EventFunc();
+
     PyObject *pyFunc;
-    int (*func)(B_Entity *entity, unsigned int eventIndex);
+    EventFn func;
     const char *name;
 };
 
@@ -20,6 +24,7 @@ public:
 class B_EventFuncs : public B_NamedObj
 {
 public:
+    void AddFunc(unsigned int eventIndex, EventFn func, const char *name);
     int CallFunc(B_Entity *entity, unsigned int eventIndex);
 private:
     array_t<B_EventFunc *> eventFuncs;

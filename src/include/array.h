@@ -46,6 +46,44 @@ public:
             num_alloc = 0;
         }
 
+        void Resize(unsigned int newSize, int keepElements)
+        {
+            unsigned int minSize;
+            int newAlloc =
+                ((newSize + this->increment - 1) / this->increment)
+                * this->increment;
+            if (this->size < newSize)
+            {
+                minSize = this->size;
+            }
+            else
+            {
+                minSize = newSize;
+            }
+            if (this->num_alloc != newAlloc)
+            {
+                TYPE *oldElements = this->elements;
+                this->num_alloc = newAlloc;
+                if (this->num_alloc != 0)
+                {
+                    this->elements = new TYPE[this->num_alloc];
+                }
+                else
+                {
+                    this->elements = NULL;
+                }
+                if (keepElements)
+                {
+                    for (unsigned int i = 0; i < minSize; i++)
+                    {
+                        this->elements[i] = oldElements[i];
+                    }
+                }
+                delete [] oldElements;
+            }
+            this->size = newSize;
+        }
+
         TYPE *elements;
         unsigned int size;
         int increment;
