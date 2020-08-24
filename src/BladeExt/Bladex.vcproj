@@ -183,47 +183,47 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\Bladex.c"
+				RelativePath=".\Bladex.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Character.c"
+				RelativePath=".\Character.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Entity.c"
+				RelativePath=".\Entity.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\HeapCheck.c"
+				RelativePath=".\HeapCheck.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Inventory.c"
+				RelativePath=".\Inventory.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Material.c"
+				RelativePath=".\Material.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Route.c"
+				RelativePath=".\Route.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Sector.c"
+				RelativePath=".\Sector.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Sound.c"
+				RelativePath=".\Sound.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Trail.c"
+				RelativePath=".\Trail.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Utils.c"
+				RelativePath=".\Utils.cpp"
 				>
 			</File>
 		</Filter>

@@ -12,8 +12,6 @@
 
 #define MAX_PROPERTY_KINDS                   1024
 
-typedef struct _B_Sound B_Sound;
-
 typedef struct {
         PyObject_HEAD
         int charID;
@@ -76,7 +74,15 @@ extern PyTypeObject soundTypeObject;
 extern PyTypeObject trailTypeObject;
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 LIB_EXP INIT_PY_MODULE_FUNC initBladex(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 
 extern PyObject *get_char_by_name(const char *name, const char *short_name);

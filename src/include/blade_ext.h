@@ -24,21 +24,10 @@
 
 #endif
 
-#ifdef __cplusplus
-
 class B_BitMap;
 class material_t;
 class B_Resource;
 class B_Sound;
-
-#else
-
-typedef struct _B_BitMap B_BitMap;
-typedef struct _material_t material_t;
-typedef struct _B_Resource B_Resource;
-typedef struct _B_Sound B_Sound;
-
-#endif
 
 
 #define CHR_FLT_TURN_SPEED                0

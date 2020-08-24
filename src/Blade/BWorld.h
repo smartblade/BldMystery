@@ -122,11 +122,7 @@ public:
     B_Vector initial_point_orientation;
 };
 
-#ifdef __cplusplus
-
 B_IDataFile& operator >>(B_IDataFile& file, B_World *gs);
-
-#endif
 
 
 #endif /* GAME_STATE_H */

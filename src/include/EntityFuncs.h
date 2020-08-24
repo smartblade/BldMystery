@@ -6,17 +6,8 @@
 #include <bld_python.h>
 #include <export.h>
 
-#ifdef __cplusplus
-
 class B_Entity;
 class B_Sound;
-
-#else
-
-typedef struct _B_Entity B_Entity;
-typedef struct _B_Sound B_Sound;
-
-#endif
 
 typedef struct {
     const char *name;

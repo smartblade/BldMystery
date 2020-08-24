@@ -5,15 +5,7 @@
 #include <Point2D.h>
 #include <export.h>
 
-#ifdef __cplusplus
-
 class B_Sound;
-
-#else
-
-typedef struct _B_Sound B_Sound;
-
-#endif
 
 
 #define SND_INT_SEND_NOTIFY               0
