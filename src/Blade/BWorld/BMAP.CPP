@@ -1,4 +1,4 @@
-#include "BMap.h"
+#include <BWorld/BMap.h>
 
 #include <raster_device.h>
 #include "Polygon.h"

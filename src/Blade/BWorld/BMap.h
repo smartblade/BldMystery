@@ -6,7 +6,7 @@
 #include <array.h>
 #include <BBLibc.h>
 #include "BoundingBox.h"
-#include "Surface.h"
+#include <BWorld/Surface.h>
 
 class B_Sector;
 

@@ -1,5 +1,5 @@
 #include <bld_system.h>
-#include "atmosphere.h"
+#include <BWorld/atmosphere.h>
 
 
 /*

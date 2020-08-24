@@ -101,19 +101,19 @@ void JumpCB(const B_Name &action, float time, float, void *)
 /* Begin of file:         0x00427880 */
 /* End of file:           0x0042D090 */
 
-/* File:                  Atmosphere.cpp */
+/* File:                  BWorld/Atmosphere.cpp */
 /* Begin of file:         0x0042D090 */
 /* End of file:           0x0042D1F0 */
 
-/* File:                  BMAP.CPP */
+/* File:                  BWorld/BMAP.CPP */
 /* Begin of file:         0x0042D1F0 */
 /* End of file:           0x004394B0 */
 
-/* File:                  BWorld.cpp */
+/* File:                  BWorld/BWorld.cpp */
 /* Begin of file:         0x004394B0 */
 /* End of file:           0x00443190 */
 
-/* File:                  WorldToMBW.cpp */
+/* File:                  BWorld/WorldToMBW.cpp */
 /* Begin of file:         0x00443190 */
 /* End of file:           0x00443BC0 */
 
@@ -140,7 +140,7 @@ light_t * read_light(B_IDataFile *file)
 
 
 
-/* File:                  MaterialExt.cpp */
+/* File:                  BWorld/MaterialExt.cpp */
 /* Begin of file:         0x0044E9A0 */
 /* End of file:           0x0044ED90 */
 
@@ -163,11 +163,11 @@ void unknown_18F8_class::unknown_00451A21(void *, int, int)
 
 /* End of file:           0x00453B10 */
 
-/* File:                  Surface.cpp */
+/* File:                  BWorld/Surface.cpp */
 /* Begin of file:         0x00453B10 */
 /* End of file:           0x0045C040 */
 
-/* File:                  SectorFuncs.cpp */
+/* File:                  BWorld/SectorFuncs.cpp */
 /* Begin of file:         0x0045C040 */
 /* End of file:           0x0045CEF0 */
 

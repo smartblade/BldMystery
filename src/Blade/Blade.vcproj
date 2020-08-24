@@ -308,10 +308,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\atmosphere.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\BipedEntity.cpp"
 				>
 			</File>
@@ -321,14 +317,6 @@
 			</File>
 			<File
 				RelativePath=".\bld_misc_funcs.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\BMAP.CPP"
-				>
-			</File>
-			<File
-				RelativePath=".\BWorld.cpp"
 				>
 			</File>
 			<File
@@ -372,10 +360,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\MaterialExt.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Matrix.cpp"
 				>
 			</File>
@@ -396,15 +380,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\SectorFuncs.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\simpleact.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Surface.cpp"
 				>
 			</File>
 			<File
@@ -419,10 +395,6 @@
 				RelativePath=".\WinClock.cpp"
 				>
 			</File>
-			<File
-				RelativePath=".\WorldToMBW.cpp"
-				>
-			</File>
 			<Filter
 				Name="Sound"
 				>
@@ -432,6 +404,62 @@
 				</File>
 				<File
 					RelativePath=".\Sound\SoundFuncs.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="BWorld"
+				>
+				<File
+					RelativePath=".\BWorld\atmosphere.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BWorld\atmosphere.h"
+					>
+				</File>
+				<File
+					RelativePath=".\BWorld\BMAP.CPP"
+					>
+				</File>
+				<File
+					RelativePath=".\BWorld\BMap.h"
+					>
+				</File>
+				<File
+					RelativePath=".\BWorld\BWorld.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BWorld\BWorld.h"
+					>
+				</File>
+				<File
+					RelativePath=".\BWorld\light.h"
+					>
+				</File>
+				<File
+					RelativePath=".\BWorld\MaterialExt.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BWorld\SectorFuncs.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\SectorFuncs.h"
+					>
+				</File>
+				<File
+					RelativePath=".\BWorld\Surface.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BWorld\Surface.h"
+					>
+				</File>
+				<File
+					RelativePath=".\BWorld\WorldToMBW.cpp"
 					>
 				</File>
 			</Filter>
@@ -454,10 +482,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\atmosphere.h"
-				>
-			</File>
-			<File
 				RelativePath=".\BipedEntity.h"
 				>
 			</File>
@@ -470,15 +494,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\BMap.h"
-				>
-			</File>
-			<File
 				RelativePath=".\BoundingBox.h"
-				>
-			</File>
-			<File
-				RelativePath=".\BWorld.h"
 				>
 			</File>
 			<File
@@ -522,10 +538,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\light.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Location.h"
 				>
 			</File>
@@ -554,10 +566,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\include\SectorFuncs.h"
-				>
-			</File>
-			<File
 				RelativePath=".\simpleact.h"
 				>
 			</File>
@@ -571,10 +579,6 @@
 			</File>
 			<File
 				RelativePath=".\StringValue.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Surface.h"
 				>
 			</File>
 			<File

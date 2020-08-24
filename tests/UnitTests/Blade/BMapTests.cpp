@@ -2,7 +2,7 @@
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
 #define private public
-#include "BMap.h"
+#include <BWorld/BMap.h>
 
 
 TEST(BMapTests, Fields)

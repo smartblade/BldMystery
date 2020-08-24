@@ -1,10 +1,10 @@
 
-#include "BWorld.h"
+#include <BWorld/BWorld.h>
 #include "Polygon.h"
 #include <bld_abstract_net.h>
 #include "anim.h"
 #include "libnet.h"
-#include "light.h"
+#include <BWorld/light.h>
 #include "en_control.h"
 
 class B_Events;

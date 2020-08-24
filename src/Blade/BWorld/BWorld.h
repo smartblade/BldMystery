@@ -6,9 +6,9 @@
 
 #include <array.h>
 #include "entity.h"
-#include "atmosphere.h"
-#include "BMap.h"
-#include "light.h"
+#include <BWorld/atmosphere.h>
+#include <BWorld/BMap.h>
+#include <BWorld/light.h>
 #include "vector.h"
 #include <bld_python.h>
 

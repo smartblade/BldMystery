@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
-#include "BWorld.h"
+#include <BWorld/BWorld.h>
 
 
 TEST(WorldTests, Fields)

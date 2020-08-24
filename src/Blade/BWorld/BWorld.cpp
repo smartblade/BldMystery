@@ -1,9 +1,9 @@
 
 #include <bld_system.h>
 #include <raster_device.h>
-#include "BWorld.h"
-#include "BMap.h"
-#include "light.h"
+#include <BWorld/BWorld.h>
+#include <BWorld/BMap.h>
+#include <BWorld/light.h>
 #include "bld_misc_funcs.h"
 
 
