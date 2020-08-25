@@ -169,13 +169,13 @@ B_Entity *GetEntityI(int index)
 * Module:                 Blade.exe
 * Entry point:            0x005036B2
 */
-#ifdef BLD_NATIVE
+
 const char *GetEntityName(B_Entity *entity)
 {
-    const char *(*bld_proc)(B_Entity *entity) = NULL;
-    return bld_proc(entity);
+    assert(entity);
+    return entity->name.String();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

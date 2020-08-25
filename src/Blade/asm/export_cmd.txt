@@ -114,7 +114,6 @@
 /EXPORT:CreateEntityDecal
 /EXPORT:GetEntity
 /EXPORT:GetEntityI
-/EXPORT:GetEntityName
 /EXPORT:GetEntitiesAt
 /EXPORT:GetEntitiesVisibleFrom
 /EXPORT:GetObjectEntitiesVisibleFrom
