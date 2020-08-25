@@ -463,6 +463,18 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="Math"
+				>
+				<File
+					RelativePath=".\Math\BSpline.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Math\BSpline.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"

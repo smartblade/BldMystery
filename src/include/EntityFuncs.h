@@ -8,6 +8,7 @@
 
 class B_Entity;
 class B_Sound;
+class B_Spline;
 
 typedef struct {
     const char *name;
@@ -293,7 +294,7 @@ LIB_EXP int AddNodeSpline(
     double pos_z, double tang_i_x, double tang_i_y, double tang_i_z,
     double tang_j_x, double tang_j_y, double tang_j_z
 );
-LIB_EXP int CloseSpline(void *spline);
+LIB_EXP int CloseSpline(B_Spline *spline);
 LIB_EXP int ClearSpline(void *spline);
 LIB_EXP B_Entity *CreateSpark(
     const char *name, point_3d_t *spark_point, point_3d_t *spark_dir,

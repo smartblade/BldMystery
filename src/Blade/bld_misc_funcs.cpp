@@ -297,6 +297,12 @@ double B_ProcessorTimer::GetTime()
 
 
 
+/* File:                  Math/BSpline.cpp */
+/* Begin of file:         0x00495240 */
+/* End of file:           0x00497500 */
+
+
+
 /* Begin of file:         0x00497AE0 */
 
 

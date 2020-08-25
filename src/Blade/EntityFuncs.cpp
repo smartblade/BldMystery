@@ -2,6 +2,7 @@
 #include <bld_system.h>
 #include "Events.h"
 #include "BipedEntity.h"
+#include <Math/BSpline.h>
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
 #include <EntityFuncs.h>
@@ -42,13 +43,12 @@ int AddNodeSpline(
 * Module:                 Blade.exe
 * Entry point:            0x004FFEF3
 */
-#ifdef BLD_NATIVE
-int CloseSpline(void *spline)
+
+int CloseSpline(B_Spline *spline)
 {
-    int (*bld_proc)(void *spline) = NULL;
-    return bld_proc(spline);
+    return spline->Close();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
