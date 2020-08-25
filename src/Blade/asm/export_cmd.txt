@@ -108,7 +108,6 @@
 /EXPORT:saveSoundDataBase
 /EXPORT:GetSplinePos
 /EXPORT:AddNodeSpline
-/EXPORT:ClearSpline
 /EXPORT:CreateSpark
 /EXPORT:CreateEntity
 /EXPORT:DeleteEntity

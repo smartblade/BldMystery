@@ -6,6 +6,7 @@ class B_Spline
 {
 public:
     int Close();
+    int Clear();
 };
 
 #endif /* BSPLINE_H */

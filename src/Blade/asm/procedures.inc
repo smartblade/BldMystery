@@ -794,6 +794,8 @@ externdef _AddActionStepSound: near
 l004929C4 equ _AddActionStepSound
 externdef ?Close@B_Spline@@QAEHXZ: near
 l004954DC equ ?Close@B_Spline@@QAEHXZ
+externdef ?Clear@B_Spline@@QAEHXZ: near
+l00496830 equ ?Clear@B_Spline@@QAEHXZ
 externdef _unknown_00497AE0: near
 l00497AE0 equ _unknown_00497AE0
 externdef _CreateSound: near

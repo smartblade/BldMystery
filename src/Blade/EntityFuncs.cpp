@@ -54,13 +54,12 @@ int CloseSpline(B_Spline *spline)
 * Module:                 Blade.exe
 * Entry point:            0x004FFF00
 */
-#ifdef BLD_NATIVE
-int ClearSpline(void *spline)
+
+int ClearSpline(B_Spline *spline)
 {
-    int (*bld_proc)(void *spline) = NULL;
-    return bld_proc(spline);
+    return spline->Clear();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

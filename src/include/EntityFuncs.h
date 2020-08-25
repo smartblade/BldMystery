@@ -295,7 +295,7 @@ LIB_EXP int AddNodeSpline(
     double tang_j_x, double tang_j_y, double tang_j_z
 );
 LIB_EXP int CloseSpline(B_Spline *spline);
-LIB_EXP int ClearSpline(void *spline);
+LIB_EXP int ClearSpline(B_Spline *spline);
 LIB_EXP B_Entity *CreateSpark(
     const char *name, point_3d_t *spark_point, point_3d_t *spark_dir,
     double d_unknown1, double d_unknown2, double d_unknown3,
