@@ -106,7 +106,6 @@
 /EXPORT:saveMusicState
 /EXPORT:loadSoundDataBase
 /EXPORT:saveSoundDataBase
-/EXPORT:GetSplinePos
 /EXPORT:AddNodeSpline
 /EXPORT:CreateSpark
 /EXPORT:CreateEntity

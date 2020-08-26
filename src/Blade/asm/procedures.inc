@@ -796,6 +796,8 @@ externdef ?Close@B_Spline@@QAEHXZ: near
 l004954DC equ ?Close@B_Spline@@QAEHXZ
 externdef ?Clear@B_Spline@@QAEHXZ: near
 l00496830 equ ?Clear@B_Spline@@QAEHXZ
+externdef ?GetPosition@B_Spline@@QAEHNPAVB_Vector@@@Z: near
+l004968CD equ ?GetPosition@B_Spline@@QAEHNPAVB_Vector@@@Z
 externdef _unknown_00497AE0: near
 l00497AE0 equ _unknown_00497AE0
 externdef _CreateSound: near

@@ -4,6 +4,7 @@
 #define ENTITY_FUNCS_H
 
 #include <bld_python.h>
+#include <Vector.h>
 #include <export.h>
 
 class B_Entity;
@@ -288,7 +289,7 @@ typedef struct {
 extern "C" {
 #endif
 
-LIB_EXP int GetSplinePos(void *spline, float time, void *pos);
+LIB_EXP int GetSplinePos(B_Spline *spline, float time, B_Vector *position);
 LIB_EXP int AddNodeSpline(
     void *spline, int num_node, double time, double pos_x, double pos_y,
     double pos_z, double tang_i_x, double tang_i_y, double tang_i_z,

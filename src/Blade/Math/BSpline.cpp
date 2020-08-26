@@ -38,6 +38,18 @@ int B_Spline::Clear()
 }
 #endif
 
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004968CD
+* VC++ mangling:          ?GetPosition@B_Spline@@QAEHNPAVB_Vector@@@Z
+*/
+#ifdef BLD_NATIVE
+int B_Spline::GetPosition(double time, B_Vector *position)
+{
+    return 0;
+}
+#endif
+
 
 /*
 ................................................................................

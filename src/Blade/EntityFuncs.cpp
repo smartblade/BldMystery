@@ -12,13 +12,12 @@
 * Module:                 Blade.exe
 * Entry point:            0x004FFEA0
 */
-#ifdef BLD_NATIVE
-int GetSplinePos(void *spline, float time, void *pos)
+
+int GetSplinePos(B_Spline *spline, float time, B_Vector *position)
 {
-    int (*bld_proc)(void *spline, float time, void *pos) = NULL;
-    return bld_proc(spline, time, pos);
+    return spline->GetPosition(time, position);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
