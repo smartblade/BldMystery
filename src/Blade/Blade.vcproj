@@ -284,10 +284,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\App.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\asmMain.asm"
 				>
 				<FileConfiguration
@@ -388,13 +384,33 @@
 				>
 			</File>
 			<File
-				RelativePath=".\WinApp.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\WinClock.cpp"
 				>
 			</File>
+			<Filter
+				Name="App"
+				>
+				<File
+					RelativePath=".\App\App.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\App\App.h"
+					>
+				</File>
+				<Filter
+					Name="Windows"
+					>
+					<File
+						RelativePath=".\App\Windows\WinApp.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\App\Windows\WinApp.h"
+						>
+					</File>
+				</Filter>
+			</Filter>
 			<Filter
 				Name="Sound"
 				>
@@ -487,10 +503,6 @@
 			</File>
 			<File
 				RelativePath="..\include\AnimationExt.h"
-				>
-			</File>
-			<File
-				RelativePath=".\App.h"
 				>
 			</File>
 			<File
@@ -595,10 +607,6 @@
 			</File>
 			<File
 				RelativePath=".\Vector.h"
-				>
-			</File>
-			<File
-				RelativePath=".\WinApp.h"
 				>
 			</File>
 			<File

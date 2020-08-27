@@ -3,7 +3,7 @@
 
 #define BLADE_APP_H
 
-#include "WinApp.h"
+#include <App/Windows/WinApp.h>
 
 class B_BladeApp : public B_WinApp
 {
