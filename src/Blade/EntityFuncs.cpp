@@ -23,20 +23,16 @@ int GetSplinePos(B_Spline *spline, float time, B_Vector *position)
 * Module:                 Blade.exe
 * Entry point:            0x004FFEBA
 */
-#ifdef BLD_NATIVE
-int AddNodeSpline(
-        void *spline, int num_node, double time, double pos_x, double pos_y,
-        double pos_z, double tang_i_x, double tang_i_y, double tang_i_z,
-        double tang_j_x, double tang_j_y, double tang_j_z)
+
+void AddNodeSpline(
+    B_Spline *spline, int nodeIndex, double time, B_Vector position,
+    B_Vector startTangent, B_Vector endTangent)
 {
-    int (*bld_proc)(void *spline, int num_node, double time, double pos_x, double pos_y,
-        double pos_z, double tang_i_x, double tang_i_y, double tang_i_z,
-        double tang_j_x, double tang_j_y, double tang_j_z) = NULL;
-    return bld_proc(spline, num_node, time, pos_x, pos_y,
-                pos_z, tang_i_x, tang_i_y, tang_i_z,
-                tang_j_x, tang_j_y, tang_j_z);
+    spline->AddNode(time, position);
+    spline->SetStartTangent(nodeIndex, startTangent);
+    spline->SetEndTangent(nodeIndex, endTangent);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

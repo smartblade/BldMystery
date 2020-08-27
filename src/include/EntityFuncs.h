@@ -290,11 +290,9 @@ extern "C" {
 #endif
 
 LIB_EXP int GetSplinePos(B_Spline *spline, float time, B_Vector *position);
-LIB_EXP int AddNodeSpline(
-    void *spline, int num_node, double time, double pos_x, double pos_y,
-    double pos_z, double tang_i_x, double tang_i_y, double tang_i_z,
-    double tang_j_x, double tang_j_y, double tang_j_z
-);
+LIB_EXP void AddNodeSpline(
+    B_Spline *spline, int nodeIndex, double time, B_Vector position,
+    B_Vector startTangent, B_Vector endTangent);
 LIB_EXP int CloseSpline(B_Spline *spline);
 LIB_EXP int ClearSpline(B_Spline *spline);
 LIB_EXP B_Entity *CreateSpark(
