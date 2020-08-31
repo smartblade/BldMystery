@@ -1,5 +1,5 @@
 image:
-- Visual Studio 2015
+- Visual Studio 2019
 configuration:
 - Release
 - Native
@@ -7,7 +7,7 @@ before_build:
 # install python 1.5
 - 7z x -o"C:\Program Files (x86)\Python" python-1.5.2.zip
 # setup Visual C++ build environment
-- call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
+- call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x86
 # upgrade projects
 - devenv /Upgrade src/BOD.sln
 - devenv /Upgrade Mss32dummy.sln
@@ -15,9 +15,9 @@ before_build:
 # set environment variables for additional properties of Visual C++ projects
 - set NOSAFESEH=/p:ForceImportBeforeCppTargets=%APPVEYOR_BUILD_FOLDER%\src\nosafeseh.props
 build_script:
-- msbuild %NOSAFESEH% /p:Configuration=Debug Mss32dummy.sln
-- msbuild %NOSAFESEH% src/BOD.sln
-- msbuild %NOSAFESEH% tests/UnitTests.sln
+- msbuild %NOSAFESEH% /p:Configuration=Debug /p:Platform=Win32 Mss32dummy.sln
+- msbuild %NOSAFESEH% /p:Platform=Win32 src/BOD.sln
+- msbuild %NOSAFESEH% /p:Platform=Win32 tests/UnitTests.sln
 test_script:
 - tests\%CONFIGURATION%\UnitTests.exe
 for:
@@ -26,8 +26,8 @@ for:
     only:
     - configuration: Native
   build_script:
-  - msbuild %NOSAFESEH% /p:Configuration=Debug Mss32dummy.sln
-  - msbuild %NOSAFESEH% src/BOD.sln
+  - msbuild %NOSAFESEH% /p:Configuration=Debug /p:Platform=Win32 Mss32dummy.sln
+  - msbuild %NOSAFESEH% /p:Platform=Win32 src/BOD.sln
   test_script:
   - echo 'There is no tests for %CONFIGURATION% configuration'
 artifacts:
