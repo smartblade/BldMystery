@@ -12,6 +12,7 @@ before_build:
 - devenv /Upgrade src/BOD.sln
 - devenv /Upgrade Mss32dummy.sln
 - devenv /Upgrade tests/UnitTests.sln
+- xcopy /Y /E tests\gtest-v1-10 tests\gtest
 # set environment variables for additional properties of Visual C++ projects
 - set NOSAFESEH=/p:ForceImportBeforeCppTargets=%APPVEYOR_BUILD_FOLDER%\src\nosafeseh.props
 build_script:
