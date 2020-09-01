@@ -42,7 +42,6 @@
 				Optimization="0"
 				AdditionalIncludeDirectories="../src/Blade/asm"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;MSS32DUMMY_EXPORTS"
-				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
