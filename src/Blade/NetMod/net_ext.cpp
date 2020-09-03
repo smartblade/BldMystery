@@ -1,7 +1,7 @@
 
 #include <bld_system.h>
 #include <bld_python.h>
-#include "gamenet.h"
+#include <NetMod/gamenet.h>
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
 #include <blade_ext.h>

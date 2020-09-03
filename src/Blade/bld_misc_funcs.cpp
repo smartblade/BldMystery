@@ -532,19 +532,19 @@ void B_ProcTexture::Update()
 
 
 
-/* File:                  datanet.cpp */
+/* File:                  NetMod/datanet.cpp */
 /* Begin of file:         0x005AC4F0 */
 /* End of file:           0x005ACBC0 */
 
-/* File:                  gamenet.cpp */
+/* File:                  NetMod/gamenet.cpp */
 /* Begin of file:         0x005ACBC0 */
 /* End of file:           0x005B5340 */
 
-/* File:                  NetExt.cpp */
+/* File:                  NetMod/NetExt.cpp */
 /* Begin of file:         0x005B5340 */
 /* End of file:           0x005B64C0 */
 
-/* File:                  libnet.cpp */
+/* File:                  NetMod/libnet.cpp */
 /* Begin of file:         0x005B64C0 */
 /* End of file:           0x005B6880 */
 

@@ -9,7 +9,7 @@
 #include "PersonEntity.h"
 #include "simpleact.h"
 #include "sound_device.h"
-#include "libnet.h"
+#include <NetMod/libnet.h>
 #include <BInputc.h>
 #include "bld_misc_funcs.h"
 #define BUILD_LIB

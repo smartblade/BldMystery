@@ -6,9 +6,9 @@
 #include "WinClock.h"
 #include "sound_device.h"
 #include <BInputc.h>
-#include "datanet.h"
-#include "gamenet.h"
-#include "libnet.h"
+#include <NetMod/datanet.h>
+#include <NetMod/gamenet.h>
+#include <NetMod/libnet.h>
 #include "bld_misc_funcs.h"
 
 

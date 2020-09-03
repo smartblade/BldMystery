@@ -324,10 +324,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\datanet.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\en_control.cpp"
 				>
 			</File>
@@ -344,23 +340,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\gamenet.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\libnet.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Location.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\Matrix.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\net_ext.cpp"
 				>
 			</File>
 			<File
@@ -491,6 +475,38 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="NetMod"
+				>
+				<File
+					RelativePath=".\NetMod\datanet.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\NetMod\datanet.h"
+					>
+				</File>
+				<File
+					RelativePath=".\NetMod\gamenet.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\NetMod\gamenet.h"
+					>
+				</File>
+				<File
+					RelativePath=".\NetMod\libnet.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\NetMod\libnet.h"
+					>
+				</File>
+				<File
+					RelativePath=".\NetMod\net_ext.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -534,10 +550,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\datanet.h"
-				>
-			</File>
-			<File
 				RelativePath=".\en_control.h"
 				>
 			</File>
@@ -551,14 +563,6 @@
 			</File>
 			<File
 				RelativePath=".\Events.h"
-				>
-			</File>
-			<File
-				RelativePath=".\gamenet.h"
-				>
-			</File>
-			<File
-				RelativePath=".\libnet.h"
 				>
 			</File>
 			<File
