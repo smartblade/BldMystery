@@ -382,6 +382,14 @@
 					RelativePath=".\App\App.h"
 					>
 				</File>
+				<File
+					RelativePath=".\App\camera.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\App\camera.h"
+					>
+				</File>
 				<Filter
 					Name="Windows"
 					>

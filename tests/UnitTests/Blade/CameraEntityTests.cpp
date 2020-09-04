@@ -11,7 +11,8 @@ TEST(CameraEntityTests, SizeOf)
 
 TEST(CameraEntityTests, Fields)
 {
-    EXPECT_OFFSET_EQ(B_CameraEntity, movements, 0x1A0);
+    EXPECT_OFFSET_EQ(B_CameraEntity, cam, 0x1A0);
+    EXPECT_OFFSET_EQ(B_CameraEntity, cam.movements, 0x1A0);
     EXPECT_OFFSET_EQ(B_CameraEntity, unknownValueFromApplication, 0x3EC);
     EXPECT_OFFSET_EQ(B_CameraEntity, unknownPtrFromApplication, 0x3F0);
 }

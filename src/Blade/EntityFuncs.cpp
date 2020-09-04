@@ -1,6 +1,7 @@
 
 #include <bld_system.h>
 #include "Events.h"
+#include "CameraEntity.h"
 #include "BipedEntity.h"
 #include <Math/BSpline.h>
 #include "bld_misc_funcs.h"
@@ -316,13 +317,19 @@ int GetNewExclusionGroupId()
 * Module:                 Blade.exe
 * Entry point:            0x00504646
 */
-#ifdef BLD_NATIVE
+
 int AddCameraEvent(const char *entity_name, int frame, PyObject *func)
 {
-    int (*bld_proc)(const char *entity_name, int frame, PyObject *func) = NULL;
-    return bld_proc(entity_name, frame, func);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity->IsClassOf(B_ENTITY_CID_CAMERA))
+    {
+        B_CameraEntity *cameraEntity = static_cast<B_CameraEntity *>(entity);
+        cameraEntity->cam.AddEvent(frame, func);
+        return true;
+    }
+    return false;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

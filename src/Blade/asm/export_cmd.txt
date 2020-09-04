@@ -121,7 +121,6 @@
 /EXPORT:GetWeaponCombos
 /EXPORT:nEntities
 /EXPORT:GetNewExclusionGroupId
-/EXPORT:AddCameraEvent
 /EXPORT:DeleteCameraEvent
 /EXPORT:CameraAddSourceNode
 /EXPORT:CameraAddTargetNode

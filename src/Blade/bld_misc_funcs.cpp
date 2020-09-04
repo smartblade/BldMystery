@@ -74,7 +74,9 @@ int ShowStartupDialog(
 /* Begin of file:         0x004111B0 */
 /* End of file:           0x004182F0 */
 
-
+/* File:                  camera.cpp */
+/* Begin of file:         0x004182F0 */
+/* End of file:           0x00420980 */
 
 /* Begin of file:         0x00420980 */
 

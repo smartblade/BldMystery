@@ -1469,7 +1469,7 @@ int SetActionCameraMovement(
     {
         B_CameraMovement *movement = new B_CameraMovement(
             action_name, angle, start_pos, end_pos);
-        B_PtrArray<B_CameraMovement> *array = &camera->movements;
+        B_PtrArray<B_CameraMovement> *array = &camera->cam.movements;
         if (array->num_alloc > array->size)
         {
             array->elements[array->size] = movement;
