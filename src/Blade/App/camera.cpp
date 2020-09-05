@@ -42,12 +42,12 @@ void B_Camera::AddEvent(int frame, PyObject *func)
 * Entry point:            0x004201E8
 * VC++ mangling:          ?AddSourceNode@B_Camera@@QAEHNABVB_Vector@@@Z
 */
-#ifdef BLD_NATIVE
+
 int B_Camera::AddSourceNode(double time, const B_Vector &position)
 {
-    return 0;
+    return source.AddNode(time, position);
 }
-#endif
+
 
 /*
 ................................................................................
