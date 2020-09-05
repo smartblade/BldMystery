@@ -236,6 +236,8 @@ externdef ?DeleteEvent@B_Camera@@QAEHH@Z: near
 l0041AD83 equ ?DeleteEvent@B_Camera@@QAEHH@Z
 externdef ?AddEvent@B_Camera@@QAEXHPAUPyObject@@@Z: near
 l0041AE6D equ ?AddEvent@B_Camera@@QAEXHPAUPyObject@@@Z
+externdef ?AddSourceNode@B_Camera@@QAEHNABVB_Vector@@@Z: near
+l004201E8 equ ?AddSourceNode@B_Camera@@QAEHNABVB_Vector@@@Z
 externdef _JumpCB: near
 l00422F3B equ _JumpCB
 externdef _PlayCDTrack: near

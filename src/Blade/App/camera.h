@@ -6,6 +6,8 @@
 #include <BBLibc.h>
 
 
+class B_Vector;
+
 class B_CameraMovement : public B_NamedObj
 {
 public:
@@ -31,6 +33,7 @@ class B_Camera
 public:
     int DeleteEvent(int frame);
     void AddEvent(int frame, PyObject *func);
+    int AddSourceNode(double time, const B_Vector &position);
 
     B_PtrArray<B_CameraMovement> movements;
     char unknownFields1B8[0x228];

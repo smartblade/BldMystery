@@ -2628,7 +2628,7 @@ PyObject *bex_ent_AddCameraNode(PyObject *self, PyObject *args) {
         if (node != 0)
                 code = CameraAddTargetNode(entity->name, time, x, y, z);
         else
-                code = CameraAddSourceNode(entity->name, time, x, y, z);
+                code = CameraAddSourceNode(entity->name, time, B_Vector(x, y, z));
 
         if (code != 1)
                 return Py_BuildValue("i", 0);

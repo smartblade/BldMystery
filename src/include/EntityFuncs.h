@@ -342,7 +342,7 @@ LIB_EXP int GetNewExclusionGroupId(void);
 LIB_EXP int AddCameraEvent(const char *entity_name, int frame, PyObject *func);
 LIB_EXP int DeleteCameraEvent(const char *entity_name, int frame);
 LIB_EXP int CameraAddSourceNode(
-    const char *entity_name, float time, double x, double y, double z
+    const char *entity_name, float time, B_Vector position
 );
 LIB_EXP int CameraAddTargetNode(
     const char *entity_name, float time, double x, double y, double z
