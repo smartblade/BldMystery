@@ -121,7 +121,6 @@
 /EXPORT:GetWeaponCombos
 /EXPORT:nEntities
 /EXPORT:GetNewExclusionGroupId
-/EXPORT:CameraSetStartTangentSourceNode
 /EXPORT:CameraSetEndTangentSourceNode
 /EXPORT:CameraSetStartTangentTargetNode
 /EXPORT:CameraSetEndTangentTargetNode

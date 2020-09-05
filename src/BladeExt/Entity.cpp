@@ -2645,21 +2645,21 @@ PyObject *bex_ent_AddCameraNode(PyObject *self, PyObject *args) {
 PyObject *bex_ent_SetCameraStartTangentNode(PyObject *self, PyObject *args) {
         bld_py_entity_t *entity = (bld_py_entity_t *)self;
         int code;
-        int node, unknown1;
-        double unknown2, unknown3, unknown4;
+        int node, nodeIndex;
+        double tangX, tangY, tangZ;
 
         if (! PyArg_ParseTuple(
-                args, "iiddd", &node, &unknown1, &unknown2, &unknown3, &unknown4
+                args, "iiddd", &node, &nodeIndex, &tangX, &tangY, &tangZ
         ))
                 return NULL;
 
         if (node != 0)
                 code = CameraSetStartTangentTargetNode(
-                        entity->name, unknown1, unknown2, unknown3, unknown4
+                        entity->name, nodeIndex, tangX, tangY, tangZ
                 );
         else
                 code = CameraSetStartTangentSourceNode(
-                        entity->name, unknown1, unknown2, unknown3, unknown4
+                        entity->name, nodeIndex, B_Vector(tangX, tangY, tangZ)
                 );
 
         if (code != 1)

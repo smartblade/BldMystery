@@ -39,6 +39,10 @@ public:
     {
         return target.AddNode(time, position);
     }
+    int SetStartTangentSourceNode(int nodeIndex, const B_Vector &startTangent)
+    {
+        return source.SetStartTangent(nodeIndex, startTangent);
+    }
 
     B_PtrArray<B_CameraMovement> movements;
     char unknownFields018[0x080];
