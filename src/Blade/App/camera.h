@@ -29,6 +29,7 @@ public:
 class B_Camera
 {
 public:
+    int DeleteEvent(int frame);
     void AddEvent(int frame, PyObject *func);
 
     B_PtrArray<B_CameraMovement> movements;

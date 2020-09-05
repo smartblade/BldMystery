@@ -335,13 +335,18 @@ int AddCameraEvent(const char *entity_name, int frame, PyObject *func)
 * Module:                 Blade.exe
 * Entry point:            0x00504695
 */
-#ifdef BLD_NATIVE
+
 int DeleteCameraEvent(const char *entity_name, int frame)
 {
-    int (*bld_proc)(const char *entity_name, int frame) = NULL;
-    return bld_proc(entity_name, frame);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity->IsClassOf(B_ENTITY_CID_CAMERA))
+    {
+        B_CameraEntity *cameraEntity = static_cast<B_CameraEntity *>(entity);
+        return cameraEntity->cam.DeleteEvent(frame);
+    }
+    return false;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
