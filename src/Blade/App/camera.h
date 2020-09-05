@@ -51,6 +51,11 @@ public:
         return source.SetEndTangent(nodeIndex, endTangent);
     }
 
+    int SetStartTangentTargetNode(int nodeIndex, const B_Vector &startTangent)
+    {
+        return target.SetStartTangent(nodeIndex, startTangent);
+    }
+
     B_PtrArray<B_CameraMovement> movements;
     char unknownFields018[0x080];
     B_Spline source;
