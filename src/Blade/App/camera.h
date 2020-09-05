@@ -35,13 +35,20 @@ public:
     int DeleteEvent(int frame);
     void AddEvent(int frame, PyObject *func);
     int AddSourceNode(double time, const B_Vector &position);
+
     int AddTargetNode(double time, const B_Vector &position)
     {
         return target.AddNode(time, position);
     }
+
     int SetStartTangentSourceNode(int nodeIndex, const B_Vector &startTangent)
     {
         return source.SetStartTangent(nodeIndex, startTangent);
+    }
+
+    int SetEndTangentSourceNode(int nodeIndex, const B_Vector &endTangent)
+    {
+        return source.SetEndTangent(nodeIndex, endTangent);
     }
 
     B_PtrArray<B_CameraMovement> movements;
