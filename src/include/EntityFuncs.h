@@ -345,7 +345,7 @@ LIB_EXP int CameraAddSourceNode(
     const char *entity_name, float time, B_Vector position
 );
 LIB_EXP int CameraAddTargetNode(
-    const char *entity_name, float time, double x, double y, double z
+    const char *entity_name, float time, B_Vector position
 );
 LIB_EXP int CameraSetStartTangentSourceNode(
     const char *entity_name, int unknown1, double unknown2, double unknown3,

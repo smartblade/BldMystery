@@ -217,6 +217,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\CameraTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\CharSizeTests.cpp"
 				>
 			</File>

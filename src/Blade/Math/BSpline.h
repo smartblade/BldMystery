@@ -14,6 +14,8 @@ public:
     int GetPosition(double time, B_Vector *position);
     int SetStartTangent(int nodeIndex, const B_Vector &startTangent);
     int SetEndTangent(int nodeIndex, const B_Vector &endTangent);
+
+    char unknownFields[0x1C];
 };
 
 #endif /* BSPLINE_H */

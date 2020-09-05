@@ -3,6 +3,7 @@
 #define CAMERA_H
 
 
+#include <Math/BSpline.h>
 #include <BBLibc.h>
 
 
@@ -34,9 +35,16 @@ public:
     int DeleteEvent(int frame);
     void AddEvent(int frame, PyObject *func);
     int AddSourceNode(double time, const B_Vector &position);
+    int AddTargetNode(double time, const B_Vector &position)
+    {
+        return target.AddNode(time, position);
+    }
 
     B_PtrArray<B_CameraMovement> movements;
-    char unknownFields1B8[0x228];
+    char unknownFields018[0x080];
+    B_Spline source;
+    B_Spline target;
+    char unknownFields0D0[0x170];
 };
 
 #endif

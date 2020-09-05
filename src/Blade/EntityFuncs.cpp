@@ -372,17 +372,21 @@ int CameraAddSourceNode(
 * Module:                 Blade.exe
 * Entry point:            0x0050472F
 */
-#ifdef BLD_NATIVE
+
 int CameraAddTargetNode(
-        const char *entity_name, float time, double x, double y, double z
+    const char *entity_name, float time, B_Vector position
 )
 {
-    int (*bld_proc)(
-        const char *entity_name, float time, double x, double y, double z
-) = NULL;
-    return bld_proc(entity_name, time, x, y, z);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity->IsClassOf(B_ENTITY_CID_CAMERA))
+    {
+        B_CameraEntity *cameraEntity = static_cast<B_CameraEntity *>(entity);
+        cameraEntity->cam.AddTargetNode(time, position);
+        return true;
+    }
+    return false;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
