@@ -234,6 +234,8 @@ externdef ?unknown_method010@B_App@@UAEPAXPAX@Z: near
 l004179B0 equ ?unknown_method010@B_App@@UAEPAXPAX@Z
 externdef ?SetPersonView@B_Camera@@QAEHPBD@Z: near
 l004195CE equ ?SetPersonView@B_Camera@@QAEHPBD@Z
+externdef ?Read3dsMaxAnimation@B_Camera@@QAEHPBDHH@Z: near
+l0041A86B equ ?Read3dsMaxAnimation@B_Camera@@QAEHPBDHH@Z
 externdef ?DeleteEvent@B_Camera@@QAEHH@Z: near
 l0041AD83 equ ?DeleteEvent@B_Camera@@QAEHH@Z
 externdef ?AddEvent@B_Camera@@QAEXHPAUPyObject@@@Z: near

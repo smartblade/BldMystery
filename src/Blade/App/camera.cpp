@@ -29,6 +29,26 @@ int B_Camera::SetPersonView(const char *person_name)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x0041A86B
+* VC++ mangling:          ?Read3dsMaxAnimation@B_Camera@@QAEHPBDHH@Z
+*/
+#ifdef BLD_NATIVE
+int B_Camera::Read3dsMaxAnimation(
+    const char *cam_file_name, int i_unknown, int num_frames)
+{
+    return 0;
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x0041AD83
 * VC++ mangling:          ?DeleteEvent@B_Camera@@QAEHH@Z
 */

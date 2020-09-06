@@ -491,19 +491,22 @@ int CameraSetPersonView(
 * Module:                 Blade.exe
 * Entry point:            0x00504905
 */
-#ifdef BLD_NATIVE
+
 int CameraSetMaxCamera(
-        const char *entity_name, const char *cam_file_name, int i_unknown,
-        int num_frames
+    const char *entity_name, const char *cam_file_name, int i_unknown,
+    int num_frames
 )
 {
-    int (*bld_proc)(
-        const char *entity_name, const char *cam_file_name, int i_unknown,
-        int num_frames
-) = NULL;
-    return bld_proc(entity_name, cam_file_name, i_unknown, num_frames);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity->IsClassOf(B_ENTITY_CID_CAMERA))
+    {
+        B_CameraEntity *cameraEntity = static_cast<B_CameraEntity *>(entity);
+        return cameraEntity->cam.Read3dsMaxAnimation(
+            cam_file_name, i_unknown, num_frames);
+    }
+    return false;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
