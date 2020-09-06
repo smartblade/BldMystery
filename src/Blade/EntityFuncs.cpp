@@ -452,19 +452,21 @@ int CameraSetStartTangentTargetNode(
 * Module:                 Blade.exe
 * Entry point:            0x00504870
 */
-#ifdef BLD_NATIVE
+
 int CameraSetEndTangentTargetNode(
-        const char *entity_name, int unknown1, double unknown2, double unknown3,
-        double unknown4
+    const char *entity_name, int nodeIndex, B_Vector endTangent
 )
 {
-    int (*bld_proc)(
-        const char *entity_name, int unknown1, double unknown2, double unknown3,
-        double unknown4
-) = NULL;
-    return bld_proc(entity_name, unknown1, unknown2, unknown3, unknown4);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity->IsClassOf(B_ENTITY_CID_CAMERA))
+    {
+        B_CameraEntity *cameraEntity = static_cast<B_CameraEntity *>(entity);
+        cameraEntity->cam.SetEndTangentTargetNode(nodeIndex, endTangent);
+        return true;
+    }
+    return false;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

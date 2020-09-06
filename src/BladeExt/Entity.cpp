@@ -2687,7 +2687,7 @@ PyObject *bex_ent_SetCameraEndTangentNode(PyObject *self, PyObject *args) {
 
         if (node != 0)
                 CameraSetEndTangentTargetNode(
-                        entity->name, nodeIndex, tangX, tangY, tangZ
+                        entity->name, nodeIndex, B_Vector(tangX, tangY, tangZ)
                 );
         else
                 CameraSetEndTangentSourceNode(
