@@ -10,6 +10,25 @@
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x004195CE
+* VC++ mangling:          ?SetPersonView@B_Camera@@QAEHPBD@Z
+*/
+#ifdef BLD_NATIVE
+int B_Camera::SetPersonView(const char *person_name)
+{
+    return 0;
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x0041AD83
 * VC++ mangling:          ?DeleteEvent@B_Camera@@QAEHH@Z
 */

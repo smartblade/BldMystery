@@ -472,17 +472,20 @@ int CameraSetEndTangentTargetNode(
 * Module:                 Blade.exe
 * Entry point:            0x005048BF
 */
-#ifdef BLD_NATIVE
+
 int CameraSetPersonView(
-        const char *entity_name, const char *person_name
+    const char *entity_name, const char *person_name
 )
 {
-    int (*bld_proc)(
-        const char *entity_name, const char *person_name
-) = NULL;
-    return bld_proc(entity_name, person_name);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity->IsClassOf(B_ENTITY_CID_CAMERA))
+    {
+        B_CameraEntity *cameraEntity = static_cast<B_CameraEntity *>(entity);
+        return cameraEntity->cam.SetPersonView(person_name);
+    }
+    return false;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

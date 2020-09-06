@@ -32,6 +32,7 @@ public:
 class B_Camera
 {
 public:
+    int SetPersonView(const char *person_name);
     int DeleteEvent(int frame);
     void AddEvent(int frame, PyObject *func);
     int AddSourceNode(double time, const B_Vector &position);
