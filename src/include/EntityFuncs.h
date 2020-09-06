@@ -368,7 +368,7 @@ LIB_EXP int CameraSetMaxCamera(
 );
 LIB_EXP int CameraCut(const char *entity_name);
 LIB_EXP int CameraSetTravelingView(
-    const char *entity_name, int unknown1, int unknown2
+    const char *entity_name, int s_type, int t_type
 );
 LIB_EXP int CameraClearPath(const char *entity_name, int node);
 LIB_EXP int CameraStartPath(const char *entity_name, int node);

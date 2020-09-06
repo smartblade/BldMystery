@@ -10,6 +10,25 @@
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00418E69
+* VC++ mangling:          ?SetTravelingView@B_Camera@@QAEHHH@Z
+*/
+#ifdef BLD_NATIVE
+int B_Camera::SetTravelingView(int s_type, int t_type)
+{
+    return 0;
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x004195CE
 * VC++ mangling:          ?SetPersonView@B_Camera@@QAEHPBD@Z
 */

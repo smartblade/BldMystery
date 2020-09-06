@@ -2772,12 +2772,12 @@ PyObject *bex_ent_Cut(PyObject *self, PyObject *args) {
 PyObject *bex_ent_SetTravellingView(PyObject *self, PyObject *args) {
         bld_py_entity_t *entity = (bld_py_entity_t *)self;
         int code;
-        int unknown1, unknown2;
+        int s_type, t_type;
 
-        if (!PyArg_ParseTuple(args, "ii", &unknown1, &unknown2))
+        if (!PyArg_ParseTuple(args, "ii", &s_type, &t_type))
                 return NULL;
 
-        code = CameraSetTravelingView(entity->name, unknown1, unknown2);
+        code = CameraSetTravelingView(entity->name, s_type, t_type);
         if (code != 1)
                 return Py_BuildValue("i", 0);
         else

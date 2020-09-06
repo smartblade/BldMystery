@@ -32,6 +32,7 @@ public:
 class B_Camera
 {
 public:
+    int SetTravelingView(int s_type, int t_type);
     int SetPersonView(const char *person_name);
     int Read3dsMaxAnimation(
         const char *cam_file_name, int i_unknown, int num_frames);

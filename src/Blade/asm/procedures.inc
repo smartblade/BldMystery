@@ -232,6 +232,8 @@ externdef ?SetInputMode@B_App@@UAEHPBD0@Z: near
 l00417426 equ ?SetInputMode@B_App@@UAEHPBD0@Z
 externdef ?unknown_method010@B_App@@UAEPAXPAX@Z: near
 l004179B0 equ ?unknown_method010@B_App@@UAEPAXPAX@Z
+externdef ?SetTravelingView@B_Camera@@QAEHHH@Z: near
+l00418E69 equ ?SetTravelingView@B_Camera@@QAEHHH@Z
 externdef ?SetPersonView@B_Camera@@QAEHPBD@Z: near
 l004195CE equ ?SetPersonView@B_Camera@@QAEHPBD@Z
 externdef ?Read3dsMaxAnimation@B_Camera@@QAEHPBDHH@Z: near

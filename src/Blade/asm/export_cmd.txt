@@ -122,7 +122,6 @@
 /EXPORT:nEntities
 /EXPORT:GetNewExclusionGroupId
 /EXPORT:CameraCut
-/EXPORT:CameraSetTravelingView
 /EXPORT:CameraClearPath
 /EXPORT:CameraStartPath
 /EXPORT:UseEntity
