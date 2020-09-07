@@ -168,12 +168,6 @@ extern B_Name *gbl_combustion_particle_names;
 
 /*
 * Module:                 Blade.exe
-* Data address:           0x005E0B88
-*/
-extern B_World B_world;
-
-/*
-* Module:                 Blade.exe
 * Data address:           0x005E2514
 */
 extern int gbl_action_areas_bit_mask;

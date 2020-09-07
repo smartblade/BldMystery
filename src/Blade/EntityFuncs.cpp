@@ -512,13 +512,19 @@ int CameraSetMaxCamera(
 * Module:                 Blade.exe
 * Entry point:            0x00504953
 */
-#ifdef BLD_NATIVE
+
 int CameraCut(const char *entity_name)
 {
-    int (*bld_proc)(const char *entity_name) = NULL;
-    return bld_proc(entity_name);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity->IsClassOf(B_ENTITY_CID_CAMERA))
+    {
+        B_CameraEntity *cameraEntity = static_cast<B_CameraEntity *>(entity);
+        cameraEntity->cam.Cut(1);
+        return true;
+    }
+    return false;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

@@ -124,6 +124,20 @@ public:
 
 B_IDataFile& operator >>(B_IDataFile& file, B_World *gs);
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x005E0B88
+*/
+extern B_World B_world;
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif /* GAME_STATE_H */
 

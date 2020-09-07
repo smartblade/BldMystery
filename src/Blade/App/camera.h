@@ -3,6 +3,7 @@
 #define CAMERA_H
 
 
+#include <BWorld/BWorld.h>
 #include <Math/BSpline.h>
 #include <BBLibc.h>
 
@@ -65,11 +66,28 @@ public:
         return target.SetEndTangent(nodeIndex, endTangent);
     }
 
+    void Cut(int unknown)
+    {
+        this->unknown014C = 2;
+        this->unknown0150 = unknown;
+        if (unknown == 1)
+        {
+            this->unknown011C = 0;
+            this->time = B_world.get_time() - 1.0;
+        }
+    }
+
     B_PtrArray<B_CameraMovement> movements;
     char unknownFields018[0x080];
     B_Spline source;
     B_Spline target;
-    char unknownFields0D0[0x170];
+    char unknownFields0D0[0x44];
+    double time;
+    int unknown011C;
+    char unknownFields120[0x2C];
+    int unknown014C;
+    int unknown0150;
+    char unknownFields154[0xEC];
 };
 
 #endif
