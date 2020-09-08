@@ -66,6 +66,18 @@ public:
         return target.SetEndTangent(nodeIndex, endTangent);
     }
 
+    void ClearSourcePath()
+    {
+        this->source.Clear();
+        this->curSourceNode = 0;
+    }
+
+    void ClearTargetPath()
+    {
+        this->target.Clear();
+        this->curTargetNode = 0;
+    }
+
     void Cut(int unknown)
     {
         this->unknown014C = 2;
@@ -81,7 +93,10 @@ public:
     char unknownFields018[0x080];
     B_Spline source;
     B_Spline target;
-    char unknownFields0D0[0x44];
+    char unknownFields0D0[0x34];
+    int curSourceNode;
+    int curTargetNode;
+    char unknownFields108[0x08];
     double time;
     int unknown011C;
     char unknownFields120[0x2C];

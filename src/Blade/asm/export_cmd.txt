@@ -121,7 +121,6 @@
 /EXPORT:GetWeaponCombos
 /EXPORT:nEntities
 /EXPORT:GetNewExclusionGroupId
-/EXPORT:CameraClearPath
 /EXPORT:CameraStartPath
 /EXPORT:UseEntity
 /EXPORT:ChangeEntityStatic

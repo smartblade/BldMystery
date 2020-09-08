@@ -15,6 +15,8 @@ TEST(CameraEntityTests, Fields)
     EXPECT_OFFSET_EQ(B_CameraEntity, cam.movements, 0x1A0);
     EXPECT_OFFSET_EQ(B_CameraEntity, cam.source, 0x238);
     EXPECT_OFFSET_EQ(B_CameraEntity, cam.target, 0x254);
+    EXPECT_OFFSET_EQ(B_CameraEntity, cam.curSourceNode, 0x2A4);
+    EXPECT_OFFSET_EQ(B_CameraEntity, cam.curTargetNode, 0x2A8);
     EXPECT_OFFSET_EQ(B_CameraEntity, cam.time, 0x2B4);
     EXPECT_OFFSET_EQ(B_CameraEntity, cam.unknown011C, 0x2BC);
     EXPECT_OFFSET_EQ(B_CameraEntity, cam.unknown014C, 0x2EC);

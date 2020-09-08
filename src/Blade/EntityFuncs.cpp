@@ -549,13 +549,26 @@ int CameraSetTravelingView(
 * Module:                 Blade.exe
 * Entry point:            0x00504A2C
 */
-#ifdef BLD_NATIVE
+
 int CameraClearPath(const char *entity_name, int node)
 {
-    int (*bld_proc)(const char *entity_name, int node) = NULL;
-    return bld_proc(entity_name, node);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity->IsClassOf(B_ENTITY_CID_CAMERA))
+    {
+        B_CameraEntity *cameraEntity = static_cast<B_CameraEntity *>(entity);
+        if (!node)
+        {
+            cameraEntity->cam.ClearSourcePath();
+        }
+        else
+        {
+            cameraEntity->cam.ClearTargetPath();
+        }
+        return true;
+    }
+    return false;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
