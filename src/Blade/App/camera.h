@@ -73,7 +73,7 @@ public:
         if (unknown == 1)
         {
             this->unknown011C = 0;
-            this->time = B_world.get_time() - 1.0;
+            this->time = B_world.GetTime() - 1.0;
         }
     }
 

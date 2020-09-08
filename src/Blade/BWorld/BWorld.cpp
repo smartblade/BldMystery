@@ -38,16 +38,13 @@ void B_World::unknown_00439F5D()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0043A6A4
-* VC++ mangling:          ?get_time@B_World@@QAENXZ
+* VC++ mangling:          ?GetTime@B_World@@QAENXZ
 */
-
 #ifdef BLD_NATIVE
-
-double B_World::get_time()
+double B_World::GetTime()
 {
     return 0.0;
 }
-
 #endif
 
 /*

@@ -447,7 +447,7 @@ int GoToTime(double time)
 
 double GetTime()
 {
-    return B_world.get_time();
+    return B_world.GetTime();
 }
 
 

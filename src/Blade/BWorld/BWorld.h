@@ -73,7 +73,7 @@ class B_World
 {
 public:
     void unknown_00439F5D();
-    double get_time();
+    double GetTime();
     int SetTime(double time);
     void GoToTime(double time);
     void AddScheduledFunc(

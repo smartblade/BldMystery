@@ -554,8 +554,8 @@ externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Map@@@Z: near
 l00432379 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Map@@@Z
 externdef ?unknown_00439F5D@B_World@@QAEXXZ: near
 l00439F5D equ ?unknown_00439F5D@B_World@@QAEXXZ
-externdef ?get_time@B_World@@QAENXZ: near
-l0043A6A4 equ ?get_time@B_World@@QAENXZ
+externdef ?GetTime@B_World@@QAENXZ: near
+l0043A6A4 equ ?GetTime@B_World@@QAENXZ
 externdef ?SetTime@B_World@@QAEHN@Z: near
 l0043A6B8 equ ?SetTime@B_World@@QAEHN@Z
 externdef ?GoToTime@B_World@@QAEXN@Z: near
