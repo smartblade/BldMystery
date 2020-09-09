@@ -78,6 +78,16 @@ public:
         this->curTargetNode = 0;
     }
 
+    void StartSourcePath()
+    {
+        this->curSourceTime = 0.0;
+    }
+
+    void StartTargetPath()
+    {
+        this->curTargetTime = 0.0;
+    }
+
     void Cut(int unknown)
     {
         this->unknown014C = 2;
@@ -102,7 +112,10 @@ public:
     char unknownFields120[0x2C];
     int unknown014C;
     int unknown0150;
-    char unknownFields154[0xEC];
+    char unknownFields154[0xB4];
+    double curTargetTime;
+    double curSourceTime;
+    char unknownFields218[0x28];
 };
 
 #endif

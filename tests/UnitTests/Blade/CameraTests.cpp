@@ -15,4 +15,6 @@ TEST(CameraTests, Fields)
     EXPECT_OFFSET_EQ(B_Camera, unknown011C, 0x11C);
     EXPECT_OFFSET_EQ(B_Camera, unknown014C, 0x14C);
     EXPECT_OFFSET_EQ(B_Camera, unknown0150, 0x150);
+    EXPECT_OFFSET_EQ(B_Camera, curTargetTime, 0x208);
+    EXPECT_OFFSET_EQ(B_Camera, curSourceTime, 0x210);
 }

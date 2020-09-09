@@ -21,6 +21,8 @@ TEST(CameraEntityTests, Fields)
     EXPECT_OFFSET_EQ(B_CameraEntity, cam.unknown011C, 0x2BC);
     EXPECT_OFFSET_EQ(B_CameraEntity, cam.unknown014C, 0x2EC);
     EXPECT_OFFSET_EQ(B_CameraEntity, cam.unknown0150, 0x2F0);
+    EXPECT_OFFSET_EQ(B_CameraEntity, cam.curTargetTime, 0x3A8);
+    EXPECT_OFFSET_EQ(B_CameraEntity, cam.curSourceTime, 0x3B0);
     EXPECT_OFFSET_EQ(B_CameraEntity, unknownValueFromApplication, 0x3EC);
     EXPECT_OFFSET_EQ(B_CameraEntity, unknownPtrFromApplication, 0x3F0);
 }
