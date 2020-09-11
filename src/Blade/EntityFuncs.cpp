@@ -599,13 +599,18 @@ int CameraStartPath(const char *entity_name, int node)
 * Module:                 Blade.exe
 * Entry point:            0x00504B29
 */
-#ifdef BLD_NATIVE
+
 int UseEntity(const char *entity_name)
 {
-    int (*bld_proc)(const char *entity_name) = NULL;
-    return bld_proc(entity_name);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity != NULL)
+    {
+        entity->Use(3);
+        return true;
+    }
+    return false;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
