@@ -216,11 +216,11 @@ class DataItem:
                     numElements = length
                 else:
                     dataSize = "dd"
-                    numElements = length / 4
+                    numElements = length // 4
                     length = numElements * 4
                 data = "{} dup (?)".format(numElements)
             elif self.zeroFilledDataLen(imageMap, addr) >= 8:
-                numElements = self.zeroFilledDataLen(imageMap, addr) / 4
+                numElements = self.zeroFilledDataLen(imageMap, addr) // 4
                 length = numElements * 4
                 dataSize = "dd"
                 data = "{} dup (0)".format(numElements)
@@ -449,7 +449,7 @@ class ImageMap:
         length = 1
         instruction = "invalid {}".format(self._mem.bytes(addr, addr + length))
         for (pattern, instr) in patterns.items():
-            l = len(pattern) / 2
+            l = len(pattern) // 2
             bytes = self._mem.bytes(addr, addr + l)
             if (bytes == pattern):
                 instruction = instr
@@ -518,7 +518,7 @@ class ImageMap:
     def _mergeUserData(self, imageMap, userMap):
         result = dict()
         nextAddr = 0
-        for addr in sorted(set(imageMap.keys() + userMap.keys())):
+        for addr in sorted(set(list(imageMap) + list(userMap))):
             item = imageMap.get(addr)
             usrItem = userMap.get(addr)
             if (usrItem != None):
@@ -537,11 +537,11 @@ class ImageMap:
         unresolvedAddresses = self._unresolvedAddresses
         importReferences = self._importReferences.values()
         addresses = (
-            self._items.keys() +
+            list(self._items) +
             list(unresolvedAddresses) +
-            self.relocations().values() +
-            map(lambda ref : ref.startAddress(), importReferences) +
-            map(lambda ref : ref.endAddress(), importReferences)
+            list(self.relocations().values()) +
+            list(map(lambda ref : ref.startAddress(), importReferences)) +
+            list(map(lambda ref : ref.endAddress(), importReferences))
         )
         curItem = None
         for addr in sorted(set(addresses)):
@@ -685,7 +685,7 @@ def readDataItems(dataFileName):
     return dataItems
 
 def reverseBytes(bytes):
-    length = len(bytes) / 2
+    length = len(bytes) // 2
     num = ""
     for i in range(length, 0, -1):
         num += bytes[2 * i - 2] + bytes[2 * i - 1]
@@ -855,7 +855,7 @@ if __name__ == '__main__':
             addr = fromHex(match.group('addr'))
             instr = match.group('instr')
             bytes = match.group('bytes')
-            length = len(bytes) / 2
+            length = len(bytes) // 2
             mem.addBytes(addr, bytes)
             memIntv = MemoryInterval(imageMap = imageMap, addr = addr, length = length)
             lineItems.append(memIntv)
