@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Native|Win32">
+      <Configuration>Native</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F18446DB-7027-4330-BB0F-3D133E659CA5}</ProjectGuid>
+    <RootNamespace>Blade</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Native|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Native|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.28307.799</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)..\install\bin\</OutDir>
+    <IntDir>$(Configuration)\..\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)..\install\bin\</OutDir>
+    <IntDir>$(Configuration)\..\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Native|Win32'">
+    <OutDir>$(SolutionDir)..\install\bin\</OutDir>
+    <IntDir>$(Configuration)\..\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <MASM>
+      <IncludePaths>asm</IncludePaths>
+    </MASM>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\Blade;..\include;C:\Program Files (x86)\Python\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_NO_CRT_STDIO_INLINE;WINDOWS_IGNORE_PACKING_MISMATCH;BLD_NATIVE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling />
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <StructMemberAlignment>4Bytes</StructMemberAlignment>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>bicrt.lib;BBLibc.lib;raster.lib;binputc.lib;console.lib;python15.lib;mss32.lib;shw32.lib;wsock32.lib;winmm.lib;ddraw.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\lib;..\..\lib\VC;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol />
+      <ImportLibrary>..\..\lib\$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <MASM>
+      <IncludePaths>asm</IncludePaths>
+    </MASM>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\Blade;..\include;C:\Program Files (x86)\Python\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_NO_CRT_STDIO_INLINE;WINDOWS_IGNORE_PACKING_MISMATCH;BLD_NATIVE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling />
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <StructMemberAlignment>4Bytes</StructMemberAlignment>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>bicrt.lib;BBLibc.lib;raster.lib;binputc.lib;console.lib;python15.lib;mss32.lib;shw32.lib;wsock32.lib;winmm.lib;ddraw.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\lib;..\..\lib\VC;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol />
+      <ImportLibrary>..\..\lib\$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Native|Win32'">
+    <MASM>
+      <IncludePaths>asm</IncludePaths>
+    </MASM>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\Blade;..\include;C:\Program Files (x86)\Python\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_NO_CRT_STDIO_INLINE;WINDOWS_IGNORE_PACKING_MISMATCH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling />
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <StructMemberAlignment>4Bytes</StructMemberAlignment>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/EXPORT:PlayCDTrack
+/EXPORT:nCDTracks
+/EXPORT:CDLenght
+/EXPORT:CDTrackLenght
+/EXPORT:CDPresent
+/EXPORT:CDStop
+/EXPORT:CDPause
+/EXPORT:CDSetCallBack
+/EXPORT:SaveAnmRaceData
+/EXPORT:LoadAnmRaceData
+/EXPORT:SaveAnmSoundData
+/EXPORT:LoadAnmSoundData
+/EXPORT:WorldToMBW
+/EXPORT:nMaterials
+/EXPORT:CreateMaterial
+/EXPORT:GetMaterial
+/EXPORT:GetMaterialI
+/EXPORT:SetMaterialSoundProperty
+/EXPORT:GetMaterialSoundProperty
+/EXPORT:GetMaterialStringProperty
+/EXPORT:SetMaterialFloatProperty
+/EXPORT:GetMaterialFloatProperty
+/EXPORT:AddHitSoundComb
+/EXPORT:GetSectorByPosition
+/EXPORT:GetSectorByIndex
+/EXPORT:GetNumberOfSectors
+/EXPORT:InitBreakSector
+/EXPORT:DoBreakSector
+/EXPORT:GetSectorIntProperty
+/EXPORT:SetSectorIntProperty
+/EXPORT:GetSectorFloatProperty
+/EXPORT:SetSectorFloatProperty
+/EXPORT:GetSectorStringProperty
+/EXPORT:SetSectorStringProperty
+/EXPORT:SetSectorVectorProperty
+/EXPORT:GetSectorVectorProperty
+/EXPORT:SetSectorFuncProperty
+/EXPORT:GetSectorFuncProperty
+/EXPORT:GetAnimationDuration
+/EXPORT:RStepEvents
+/EXPORT:LStepEvents
+/EXPORT:LoadSampledAnimation
+/EXPORT:CreateFCAnimation
+/EXPORT:CreateDFCAnimation
+/EXPORT:AddRStepEvent
+/EXPORT:AddLStepEvent
+/EXPORT:AddRReleaseEvent
+/EXPORT:AddLReleaseEvent
+/EXPORT:AddAnmEvent
+/EXPORT:AddStopTests
+/EXPORT:AddFloorCTolerance
+/EXPORT:AddTranTime
+/EXPORT:CheckAnims
+/EXPORT:GiveAnims
+/EXPORT:AddStepSound
+/EXPORT:AddMaterialStepSound
+/EXPORT:AddTextureMaterial
+/EXPORT:AddActionStepSound
+/EXPORT:CreateSound
+/EXPORT:CreateSoundS
+/EXPORT:DestroySound
+/EXPORT:SetSoundVolume
+/EXPORT:GetSoundVolume
+/EXPORT:SoundSystemActive
+/EXPORT:SetSSFrecuency
+/EXPORT:SetSS2dChannels
+/EXPORT:SetSS3dChannels
+/EXPORT:SetSSFilter
+/EXPORT:KillMusic
+/EXPORT:ShutDownSoundChannels
+/EXPORT:PauseSoundSystem
+/EXPORT:PauseSoundSystemButMusic
+/EXPORT:ResumeSoundSystem
+/EXPORT:SetMusicVolume
+/EXPORT:GetMusicVolume
+/EXPORT:GetSSQuality
+/EXPORT:SetSSQuality
+/EXPORT:GetSSSpeakerConfig
+/EXPORT:SetEAXOverride
+/EXPORT:GetEAXOverride
+/EXPORT:SaveSSConfig
+/EXPORT:SetSSSpeakerConfig
+/EXPORT:CreateGhostSector
+/EXPORT:SetEAX
+/EXPORT:SetGhostSectorSound
+/EXPORT:GetGhostSectorSound
+/EXPORT:SetGhostSectorGroupSound
+/EXPORT:SetShowSounds
+/EXPORT:GetSoundDevInstace
+/EXPORT:nSounds
+/EXPORT:GetSoundName
+/EXPORT:GetSoundFileName
+/EXPORT:PlaySoundM
+/EXPORT:PlaySoundStereo
+/EXPORT:StopSound
+/EXPORT:GetSoundFloatProperty
+/EXPORT:SetSoundFloatProperty
+/EXPORT:GetSoundStringProperty
+/EXPORT:SetSoundStringProperty
+/EXPORT:GetSoundIntProperty
+/EXPORT:SetSoundIntProperty
+/EXPORT:SetSoundPitchVar
+/EXPORT:GetSoundFuncProperty
+/EXPORT:SetSoundFuncProperty
+/EXPORT:dropDebugInfo
+/EXPORT:GetMusicEventPriority
+/EXPORT:getMusicEvent
+/EXPORT:exeMusicEvent
+/EXPORT:addMusicEventCD
+/EXPORT:addMusicEventMP3
+/EXPORT:addMusicEventWAV
+/EXPORT:addMusicEventADPCM
+/EXPORT:GetSound
+/EXPORT:addSoundVar
+/EXPORT:saveSoundStats
+/EXPORT:loadMusicState
+/EXPORT:saveMusicState
+/EXPORT:loadSoundDataBase
+/EXPORT:saveSoundDataBase
+/EXPORT:GetSplinePos
+/EXPORT:AddNodeSpline
+/EXPORT:CloseSpline
+/EXPORT:ClearSpline
+/EXPORT:CreateSpark
+/EXPORT:CreateEntity
+/EXPORT:DeleteEntity
+/EXPORT:CreateEntityDecal
+/EXPORT:GetEntity
+/EXPORT:GetEntityI
+/EXPORT:GetEntityName
+/EXPORT:GetEntitiesAt
+/EXPORT:GetEntitiesVisibleFrom
+/EXPORT:GetObjectEntitiesVisibleFrom
+/EXPORT:GetEnemiesVisibleFrom
+/EXPORT:SetCombos
+/EXPORT:GetCombos
+/EXPORT:GetWeaponCombos
+/EXPORT:nEntities
+/EXPORT:GetNewExclusionGroupId
+/EXPORT:AddCameraEvent
+/EXPORT:DeleteCameraEvent
+/EXPORT:CameraAddSourceNode
+/EXPORT:CameraAddTargetNode
+/EXPORT:CameraSetStartTangentSourceNode
+/EXPORT:CameraSetEndTangentSourceNode
+/EXPORT:CameraSetStartTangentTargetNode
+/EXPORT:CameraSetEndTangentTargetNode
+/EXPORT:CameraSetPersonView
+/EXPORT:CameraSetMaxCamera
+/EXPORT:CameraCut
+/EXPORT:CameraSetTravelingView
+/EXPORT:CameraClearPath
+/EXPORT:CameraStartPath
+/EXPORT:UseEntity
+/EXPORT:ChangeEntityStatic
+/EXPORT:ChangeEntityActor
+/EXPORT:ChangeEntityPerson
+/EXPORT:ChangeEntityWeapon
+/EXPORT:ChangeEntityArrow
+/EXPORT:SetNextAttack
+/EXPORT:SeverLimb
+/EXPORT:SetCombatGroup
+/EXPORT:SubscribeEntityToList
+/EXPORT:MessageEvent
+/EXPORT:InterruptCombat
+/EXPORT:GetParticleEntity
+/EXPORT:Rel2AbsVector
+/EXPORT:Rel2AbsPoint
+/EXPORT:Rel2AbsVectorN
+/EXPORT:Rel2AbsPointN
+/EXPORT:Abs2RelVector
+/EXPORT:Abs2RelPoint
+/EXPORT:Abs2RelVectorN
+/EXPORT:Abs2RelPointN
+/EXPORT:SQDistance2
+/EXPORT:RemoveEntityFromList
+/EXPORT:CreateTimer
+/EXPORT:GetnTimers
+/EXPORT:GetTimerInfo
+/EXPORT:GetEntityIntProperty
+/EXPORT:GetEntityFloatProperty
+/EXPORT:GetEntityStringProperty
+/EXPORT:GetEntityVectorProperty
+/EXPORT:GetEntityQuatProperty
+/EXPORT:GetEntityFuncProperty
+/EXPORT:SetEntityIntProperty
+/EXPORT:SetEntityFloatProperty
+/EXPORT:SetEntityStringProperty
+/EXPORT:SetEntityVectorProperty
+/EXPORT:SetEntityQuatProperty
+/EXPORT:SetEntityData
+/EXPORT:GetEntityData
+/EXPORT:SetEntityFuncProperty
+/EXPORT:SetEntityInternalState
+/EXPORT:GetEntityInternalState
+/EXPORT:AddSoundAnim
+/EXPORT:AddSoundEvent
+/EXPORT:AddScheduledFunc
+/EXPORT:RemoveScheduledFunc
+/EXPORT:GetnScheduledFuncs
+/EXPORT:GetScheduledFunc
+/EXPORT:EntityRotate
+/EXPORT:EntityRotateAbs
+/EXPORT:EntityRotateRel
+/EXPORT:EntityMove
+/EXPORT:EntitySetPosition
+/EXPORT:EntitySetOrientation
+/EXPORT:EntityPutToWorld
+/EXPORT:EntityAddAnmEventFunc
+/EXPORT:EntityDelAnmEventFunc
+/EXPORT:EntityClearAnmEventFuncs
+/EXPORT:ClearActorPath
+/EXPORT:AddActorPathnode
+/EXPORT:StartActorPath
+/EXPORT:GoToActorPath
+/EXPORT:TestPos
+/EXPORT:TestPosInOwnBox
+/EXPORT:TurnOnActor
+/EXPORT:TurnOffActor
+/EXPORT:SetAttackList
+/EXPORT:GetAttackList
+/EXPORT:GetGroupMembers
+/EXPORT:GetCombatants
+/EXPORT:SetActorNodeStartTangent
+/EXPORT:SetActorNodeEndTangent
+/EXPORT:SetSound
+/EXPORT:SetObjectSound
+/EXPORT:PlayEntitySound
+/EXPORT:Stop
+/EXPORT:StopAt
+/EXPORT:CheckAnimCol
+/EXPORT:RemoveFromInvent
+/EXPORT:ResetWounds
+/EXPORT:RemoveFromInventRight
+/EXPORT:RemoveFromInventLeft
+/EXPORT:RemoveFromInventLeft2
+/EXPORT:CanISee
+/EXPORT:CanISeeFrom
+/EXPORT:SetActiveEnemy
+/EXPORT:ExcludeHitFor
+/EXPORT:ExcludeHitInAnimationFor
+/EXPORT:Link
+/EXPORT:LinkToNode
+/EXPORT:LinkAnchors
+/EXPORT:UnlinkChilds
+/EXPORT:GetNodeIndex
+/EXPORT:UnlinkChild
+/EXPORT:InsideActionArea
+/EXPORT:SetTmpAnmFlags
+/EXPORT:SetAnmFlags
+/EXPORT:LaunchAnimation2
+/EXPORT:SetEnemy
+/EXPORT:GetEnemy
+/EXPORT:Chase
+/EXPORT:ResetChase
+/EXPORT:GoTo
+/EXPORT:CanGoTo
+/EXPORT:QuickFace
+/EXPORT:Face
+/EXPORT:StartLooking
+/EXPORT:StopLooking
+/EXPORT:LookAtEntity
+/EXPORT:LaunchWatch
+/EXPORT:GetActionMode
+/EXPORT:StartGrabbing
+/EXPORT:StopGrabbing
+/EXPORT:AddEntWatchAnim
+/EXPORT:Freeze
+/EXPORT:UnFreeze
+/EXPORT:SwitchTo1H
+/EXPORT:GetDummyAxis
+/EXPORT:GraspPos
+/EXPORT:SwitchToBow
+/EXPORT:LaunchBayRoute
+/EXPORT:EntityCatchOnFire
+/EXPORT:GetNChildren
+/EXPORT:GetChild
+/EXPORT:CreateBipedData
+/EXPORT:AddBipedAction
+/EXPORT:RemoveBipedAction
+/EXPORT:AddBipedActionC
+/EXPORT:SetActionEventTable
+/EXPORT:SetEventTableFuncC
+/EXPORT:SetEventTableFunc
+/EXPORT:DoAction
+/EXPORT:DoActionWI
+/EXPORT:SetOnFloor
+/EXPORT:RaiseEvent
+/EXPORT:SetSolidMask
+/EXPORT:IsValidEntity
+/EXPORT:EntityRemoveFromWorld
+/EXPORT:EntityRemoveFromWorldWithChilds
+/EXPORT:ImpulseC
+/EXPORT:SetAuraActive
+/EXPORT:SetAuraParams
+/EXPORT:SetAuraGradient
+/EXPORT:GetMouseState
+/EXPORT:SetMouseState
+/EXPORT:GetPSeconds
+/EXPORT:BodInspector
+/EXPORT:SaveScreeShoot
+/EXPORT:CleanArea
+/EXPORT:GetCharByName
+/EXPORT:LoadAllAnimations
+/EXPORT:ChangeAnimation
+/EXPORT:SetAnmDefaultPrefix
+/EXPORT:AddAttack
+/EXPORT:AttackWindow
+/EXPORT:AttackLevels
+/EXPORT:AttackEnergyLevel
+/EXPORT:ForwardsOffset
+/EXPORT:AttackTypeFlag
+/EXPORT:AllowAttack
+/EXPORT:MetaAttack
+/EXPORT:AssignTrail
+/EXPORT:SetNCDSpheres
+/EXPORT:SetCDSphere
+/EXPORT:GetCharIntProperty
+/EXPORT:SetCharIntProperty
+/EXPORT:GetCharFloatProperty
+/EXPORT:SetCharFloatProperty
+/EXPORT:GetCharStringProperty
+/EXPORT:SetCharStringProperty
+/EXPORT:SetCharFuncProperty
+/EXPORT:GetTrailByName
+/EXPORT:GetTrailIntProperty
+/EXPORT:SetTrailIntProperty
+/EXPORT:GetTrailFloatProperty
+/EXPORT:SetTrailFloatProperty
+/EXPORT:GetTrailStringProperty
+/EXPORT:GetTrailVectorProperty
+/EXPORT:SetTrailFuncProperty
+/EXPORT:SetTrailVectorProperty
+/EXPORT:GetInventory
+/EXPORT:GetInventoryFloatProperty
+/EXPORT:SetInventoryFloatProperty
+/EXPORT:GetInventoryStringProperty
+/EXPORT:SetInventoryStringProperty
+/EXPORT:GetInventoryIntProperty
+/EXPORT:SetInventoryIntProperty
+/EXPORT:LinkRightHand
+/EXPORT:LinkLeftHand
+/EXPORT:LinkLeftHand2
+/EXPORT:LinkRightBack
+/EXPORT:LinkLeftBack
+/EXPORT:LinkBack
+/EXPORT:SetCurrentQuiver
+/EXPORT:AddWeapon
+/EXPORT:AddObject
+/EXPORT:RemoveObject
+/EXPORT:GetObject
+/EXPORT:GetObjectByName
+/EXPORT:GetRightBack
+/EXPORT:GetLeftBack
+/EXPORT:GetSelectedObject
+/EXPORT:GetActiveShield
+/EXPORT:GetActiveWeapon
+/EXPORT:ActiveWeaponActive
+/EXPORT:GetActiveQuiver
+/EXPORT:Cycle
+/EXPORT:GetNumberObjectsAt
+/EXPORT:GetMaxNumberObjectsAt
+/EXPORT:IsSelected
+/EXPORT:CarringObject
+/EXPORT:SetGameSpySupport
+/EXPORT:GetGameSpySupport
+/EXPORT:StartGSQR
+/EXPORT:EndGSQR
+/EXPORT:LoopGSQR
+/EXPORT:PersonChangeAnmSoundIndex
+/EXPORT:SetDedicatedServerState
+/EXPORT:GetDedicatedServerState
+/EXPORT:SetLocalOptions
+/EXPORT:ServerInfoBlock
+/EXPORT:ClientSetPyClientSoundFunc
+/EXPORT:CallNetEventSound
+/EXPORT:ClientSetPyClientMutilaFunc
+/EXPORT:ClientSetPyClientDamageFunc
+/EXPORT:NetAddSoundToClient
+/EXPORT:NetGetClientId
+/EXPORT:NetSetObjectState
+/EXPORT:NetAddEventUserFunc
+/EXPORT:NetAddPosition
+/EXPORT:NetSetPersonView
+/EXPORT:GetLocalOptionsNet
+/EXPORT:GetNextPosition
+/EXPORT:ServerSetPyByePlayerFunc
+/EXPORT:ServerSetPyGetUserString
+/EXPORT:SendNetUserString
+/EXPORT:GetLifeAndLevel
+/EXPORT:ServerSetPyCreatePlayerFunc
+/EXPORT:ClientStartMainChar
+/EXPORT:ServerSetSendDataState
+/EXPORT:ClearPools
+/EXPORT:RestartNet
+/EXPORT:NetServerChangeLevel
+/EXPORT:NetGetTime
+/EXPORT:NetSetPPS
+ %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>bicrt.lib;BBLibc.lib;raster.lib;binputc.lib;console.lib;python15.lib;mss32.lib;shw32.lib;wsock32.lib;winmm.lib;ddraw.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\lib;..\..\lib\VC;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol />
+      <ImportLibrary>..\..\lib\$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="AnimationExt.cpp" />
+    <ClCompile Include="App\App.cpp" />
+    <ClCompile Include="App\camera.cpp" />
+    <ClCompile Include="App\Windows\WinApp.cpp" />
+    <ClCompile Include="BladeApp.cpp" />
+    <ClCompile Include="bld_misc_funcs.cpp" />
+    <ClCompile Include="BWorld\atmosphere.cpp" />
+    <ClCompile Include="BWorld\BMAP.CPP" />
+    <ClCompile Include="BWorld\BWorld.cpp" />
+    <ClCompile Include="BWorld\MaterialExt.cpp" />
+    <ClCompile Include="BWorld\SectorFuncs.cpp" />
+    <ClCompile Include="BWorld\Surface.cpp" />
+    <ClCompile Include="BWorld\WorldToMBW.cpp" />
+    <ClCompile Include="CDExt.cpp" />
+    <ClCompile Include="Entities\BipedEntity.cpp" />
+    <ClCompile Include="Entities\CameraEntity.cpp" />
+    <ClCompile Include="Entities\EntityFuncs.cpp" />
+    <ClCompile Include="Events.cpp" />
+    <ClCompile Include="ext.cpp" />
+    <ClCompile Include="Location.cpp" />
+    <ClCompile Include="Math\BSpline.cpp" />
+    <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="NetMod\datanet.cpp" />
+    <ClCompile Include="NetMod\gamenet.cpp" />
+    <ClCompile Include="NetMod\libnet.cpp" />
+    <ClCompile Include="NetMod\net_ext.cpp" />
+    <ClCompile Include="ObjExt.cpp" />
+    <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="Polygon.cpp" />
+    <ClCompile Include="simpleact.cpp" />
+    <ClCompile Include="Sound\SoundFuncs.cpp" />
+    <ClCompile Include="Vector.cpp" />
+    <ClCompile Include="WinClock.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="asmMain.asm">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\AnimationExt.h" />
+    <ClInclude Include="..\include\Point2D.h" />
+    <ClInclude Include="anim.h" />
+    <ClInclude Include="App\App.h" />
+    <ClInclude Include="App\camera.h" />
+    <ClInclude Include="App\Windows\WinApp.h" />
+    <ClInclude Include="BladeApp.h" />
+    <ClInclude Include="bld_misc_funcs.h" />
+    <ClInclude Include="BoundingBox.h" />
+    <ClInclude Include="BWorld\atmosphere.h" />
+    <ClInclude Include="BWorld\BMap.h" />
+    <ClInclude Include="BWorld\BWorld.h" />
+    <ClInclude Include="BWorld\light.h" />
+    <ClInclude Include="BWorld\SectorFuncs.h" />
+    <ClInclude Include="BWorld\Surface.h" />
+    <ClInclude Include="CDPlayer.h" />
+    <ClInclude Include="Clock.h" />
+    <ClInclude Include="Entities\AuraEntity.h" />
+    <ClInclude Include="Entities\BipedEntity.h" />
+    <ClInclude Include="Entities\CameraEntity.h" />
+    <ClInclude Include="Entities\Entity.h" />
+    <ClInclude Include="Entities\EntityFuncs.h" />
+    <ClInclude Include="Entities\ObjectEntity.h" />
+    <ClInclude Include="Entities\PersonEntity.h" />
+    <ClInclude Include="Entities\PhysicSIEntity.h" />
+    <ClInclude Include="Entities\SolidMask.h" />
+    <ClInclude Include="en_control.h" />
+    <ClInclude Include="EventFuncC.h" />
+    <ClInclude Include="Events.h" />
+    <ClInclude Include="Location.h" />
+    <ClInclude Include="Math\BSpline.h" />
+    <ClInclude Include="Matrix.h" />
+    <ClInclude Include="NetMod\datanet.h" />
+    <ClInclude Include="NetMod\gamenet.h" />
+    <ClInclude Include="NetMod\libnet.h" />
+    <ClInclude Include="Plane.h" />
+    <ClInclude Include="Polygon.h" />
+    <ClInclude Include="ProcessorTimer.h" />
+    <ClInclude Include="simpleact.h" />
+    <ClInclude Include="Sound\Sound.h" />
+    <ClInclude Include="Sound\SoundFuncs.h" />
+    <ClInclude Include="sound_device.h" />
+    <ClInclude Include="StringValue.h" />
+    <ClInclude Include="Vector.h" />
+    <ClInclude Include="WinClock.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Blade.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Raster\Raster.vcxproj">
+      <Project>{15817d0c-f1b7-40b7-a229-706ab72278a8}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  </ImportGroup>
+</Project>

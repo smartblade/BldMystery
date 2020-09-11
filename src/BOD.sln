@@ -1,22 +1,15 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Raster", "Raster\Raster.vcproj", "{15817D0C-F1B7-40B7-A229-706AB72278A8}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1259
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Raster", "Raster\Raster.vcxproj", "{15817D0C-F1B7-40B7-A229-706AB72278A8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bladex", "BladeExt\Bladex.vcproj", "{45BBCEFB-81A4-4FDB-832A-027D0A5B991A}"
-	ProjectSection(ProjectDependencies) = postProject
-		{F18446DB-7027-4330-BB0F-3D133E659CA5} = {F18446DB-7027-4330-BB0F-3D133E659CA5}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bladex", "BladeExt\Bladex.vcxproj", "{45BBCEFB-81A4-4FDB-832A-027D0A5B991A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "netgame", "netgame\netgame.vcproj", "{71413378-43EF-4477-8F17-290FA1F773C9}"
-	ProjectSection(ProjectDependencies) = postProject
-		{F18446DB-7027-4330-BB0F-3D133E659CA5} = {F18446DB-7027-4330-BB0F-3D133E659CA5}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "netgame", "netgame\netgame.vcxproj", "{71413378-43EF-4477-8F17-290FA1F773C9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Blade", "Blade\Blade.vcproj", "{F18446DB-7027-4330-BB0F-3D133E659CA5}"
-	ProjectSection(ProjectDependencies) = postProject
-		{15817D0C-F1B7-40B7-A229-706AB72278A8} = {15817D0C-F1B7-40B7-A229-706AB72278A8}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Blade", "Blade\Blade.vcxproj", "{F18446DB-7027-4330-BB0F-3D133E659CA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,5 +45,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6B3622C9-D4EB-4A09-AD48-218D52BCB807}
 	EndGlobalSection
 EndGlobal

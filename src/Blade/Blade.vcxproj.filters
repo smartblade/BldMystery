@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\App">
+      <UniqueIdentifier>{dcc96804-6334-4a33-b76b-17c113a13518}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\Windows">
+      <UniqueIdentifier>{77ddb262-ee16-4e8b-8e51-d9d6088440a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Sound">
+      <UniqueIdentifier>{1cc4dab9-1c97-47a3-8446-431a7bb6c860}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BWorld">
+      <UniqueIdentifier>{eabf6a13-d551-46e2-a36c-707f554e0170}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Math">
+      <UniqueIdentifier>{3b369c89-80cf-4ae4-a81c-c003451048f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities">
+      <UniqueIdentifier>{656a4374-702a-4818-b06f-dff5189876da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NetMod">
+      <UniqueIdentifier>{c78815cc-5318-4db2-a666-52af057c1a4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AnimationExt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BladeApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bld_misc_funcs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CDExt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Events.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Location.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjExt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Polygon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="simpleact.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WinClock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="App\App.cpp">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
+    <ClCompile Include="App\camera.cpp">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
+    <ClCompile Include="App\Windows\WinApp.cpp">
+      <Filter>Source Files\App\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound\SoundFuncs.cpp">
+      <Filter>Source Files\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="BWorld\atmosphere.cpp">
+      <Filter>Source Files\BWorld</Filter>
+    </ClCompile>
+    <ClCompile Include="BWorld\BMAP.CPP">
+      <Filter>Source Files\BWorld</Filter>
+    </ClCompile>
+    <ClCompile Include="BWorld\BWorld.cpp">
+      <Filter>Source Files\BWorld</Filter>
+    </ClCompile>
+    <ClCompile Include="BWorld\MaterialExt.cpp">
+      <Filter>Source Files\BWorld</Filter>
+    </ClCompile>
+    <ClCompile Include="BWorld\SectorFuncs.cpp">
+      <Filter>Source Files\BWorld</Filter>
+    </ClCompile>
+    <ClCompile Include="BWorld\Surface.cpp">
+      <Filter>Source Files\BWorld</Filter>
+    </ClCompile>
+    <ClCompile Include="BWorld\WorldToMBW.cpp">
+      <Filter>Source Files\BWorld</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\BSpline.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\BipedEntity.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\CameraEntity.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\EntityFuncs.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="NetMod\datanet.cpp">
+      <Filter>Source Files\NetMod</Filter>
+    </ClCompile>
+    <ClCompile Include="NetMod\gamenet.cpp">
+      <Filter>Source Files\NetMod</Filter>
+    </ClCompile>
+    <ClCompile Include="NetMod\libnet.cpp">
+      <Filter>Source Files\NetMod</Filter>
+    </ClCompile>
+    <ClCompile Include="NetMod\net_ext.cpp">
+      <Filter>Source Files\NetMod</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="asmMain.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="App\App.h">
+      <Filter>Source Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="App\camera.h">
+      <Filter>Source Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="App\Windows\WinApp.h">
+      <Filter>Source Files\App\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound\Sound.h">
+      <Filter>Source Files\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound\SoundFuncs.h">
+      <Filter>Source Files\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="BWorld\atmosphere.h">
+      <Filter>Source Files\BWorld</Filter>
+    </ClInclude>
+    <ClInclude Include="BWorld\BMap.h">
+      <Filter>Source Files\BWorld</Filter>
+    </ClInclude>
+    <ClInclude Include="BWorld\BWorld.h">
+      <Filter>Source Files\BWorld</Filter>
+    </ClInclude>
+    <ClInclude Include="BWorld\light.h">
+      <Filter>Source Files\BWorld</Filter>
+    </ClInclude>
+    <ClInclude Include="BWorld\SectorFuncs.h">
+      <Filter>Source Files\BWorld</Filter>
+    </ClInclude>
+    <ClInclude Include="BWorld\Surface.h">
+      <Filter>Source Files\BWorld</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\BSpline.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\AuraEntity.h">
+      <Filter>Source Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\BipedEntity.h">
+      <Filter>Source Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\CameraEntity.h">
+      <Filter>Source Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\Entity.h">
+      <Filter>Source Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\EntityFuncs.h">
+      <Filter>Source Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\ObjectEntity.h">
+      <Filter>Source Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\PersonEntity.h">
+      <Filter>Source Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\PhysicSIEntity.h">
+      <Filter>Source Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\SolidMask.h">
+      <Filter>Source Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="NetMod\datanet.h">
+      <Filter>Source Files\NetMod</Filter>
+    </ClInclude>
+    <ClInclude Include="NetMod\gamenet.h">
+      <Filter>Source Files\NetMod</Filter>
+    </ClInclude>
+    <ClInclude Include="NetMod\libnet.h">
+      <Filter>Source Files\NetMod</Filter>
+    </ClInclude>
+    <ClInclude Include="anim.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\AnimationExt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BladeApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bld_misc_funcs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BoundingBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CDPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Clock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="en_control.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EventFuncC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Events.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Location.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Point2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Polygon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessorTimer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="simpleact.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sound_device.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StringValue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WinClock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Blade.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

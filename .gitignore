@@ -15,6 +15,11 @@ lib/*.lib
 *.embed.manifest
 *.intermediate.manifest
 *.vcproj.*user
+*.vcxproj.*user
+*.log
+*.tlog
+*.VC.db
+*.VC.opendb
 *.~c
 *.~cpp
 *.~h
@@ -25,6 +30,7 @@ lib/*.lib
 *.~bpf
 *.~def
 BuildLog.htm
+.vs
 # MSVC build directories
 **/Debug
 **/Release
