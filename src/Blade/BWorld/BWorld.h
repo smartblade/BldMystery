@@ -9,16 +9,9 @@
 #include <BWorld/atmosphere.h>
 #include <BWorld/BMap.h>
 #include <BWorld/light.h>
+#include <Hash.h>
 #include "vector.h"
 #include <bld_python.h>
-
-
-typedef struct {
-    int numEntities;
-    B_PtrArray<B_Entity> hash[256];
-    int unknown1804;
-    B_Entity *foundEntity;
-} B_Entities;
 
 
 class unknown_18F8_class
@@ -100,8 +93,14 @@ public:
     int LoadEntitiesData(const char *filename);
     const char *GetTriggerSectorName(int index);
 
+    B_Entity *GetEntity(const char *name)
+    {
+        assert(name);
+        return entities.Get(name);
+    }
+
     B_PtrArray<B_TriggerSector> triggerSectors;
-    B_Entities entities;
+    B_Hash<B_Entity> entities;
     int nextEntitySuffix;
     B_PtrArray<B_SubscriptionList> subscriptions;
     char unknownFields1840[28];

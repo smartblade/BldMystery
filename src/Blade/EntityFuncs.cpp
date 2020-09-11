@@ -141,13 +141,12 @@ B_Entity *CreateEntityDecal(
 * Module:                 Blade.exe
 * Entry point:            0x0050340C
 */
-#ifdef BLD_NATIVE
+
 B_Entity *GetEntity(const char *name)
 {
-    B_Entity *(*bld_proc)(const char *name) = NULL;
-    return bld_proc(name);
+    return B_world.GetEntity(name);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

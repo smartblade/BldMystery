@@ -141,6 +141,11 @@ public:
         unknown14 = 1;
     }
 
+    TYPE *operator[](unsigned int index)
+    {
+        return elements[index];
+    }
+
     int addElement(TYPE *newElement)
     {
         if (num_alloc > size)

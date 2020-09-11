@@ -110,7 +110,6 @@
 /EXPORT:CreateEntity
 /EXPORT:DeleteEntity
 /EXPORT:CreateEntityDecal
-/EXPORT:GetEntity
 /EXPORT:GetEntityI
 /EXPORT:GetEntitiesAt
 /EXPORT:GetEntitiesVisibleFrom

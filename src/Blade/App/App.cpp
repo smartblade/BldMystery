@@ -505,7 +505,7 @@ void B_App::LoadLevel(const char *script)
     char *str_ptr;
     unsigned int i;
     B_PtrArray<B_Entity> *array;
-    B_Entities *entities;
+    B_Hash<B_Entity> *entities;
     B_Entity *player1;
     B_CameraEntity *camera;
     const char *str1;

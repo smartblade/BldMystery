@@ -2164,7 +2164,7 @@ int GetModelPos(const char *person, double *x, double *y, double *z)
     {
         const char *name = person;
         assert(name);
-        B_Entities *entities = &B_world.entities;
+        B_Hash<B_Entity> *entities = &B_world.entities;
         if (
             entities->foundEntity &&
             !strcmp(entities->foundEntity->Id().String(), name))
