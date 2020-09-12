@@ -104,13 +104,14 @@ B_Entity *CreateEntity(
 * Module:                 Blade.exe
 * Entry point:            0x00501FE9
 */
-#ifdef BLD_NATIVE
+
 int DeleteEntity(const char *name)
 {
-    int (*bld_proc)(const char *name) = NULL;
-    return bld_proc(name);
+    if (B_world.RemoveEntity(name, true))
+        return 1;
+    return -1;
 }
-#endif
+
 
 /*
 ................................................................................

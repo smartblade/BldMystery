@@ -93,6 +93,13 @@ public:
     int LoadEntitiesData(const char *filename);
     const char *GetTriggerSectorName(int index);
 
+    bool RemoveEntity(const char *name, int deleteEntity)
+    {
+        assert(name);
+        entities.Remove(name, deleteEntity);
+        return true;
+    }
+
     B_Entity *GetEntity(const char *name)
     {
         assert(name);

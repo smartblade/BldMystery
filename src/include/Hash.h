@@ -6,6 +6,23 @@ template<class T>
 class B_Hash
 {
 public:
+    int Remove(const B_Name &key, int deleteItem)
+    {
+        unsigned int hashValue = HashValue(key);
+        int index = hash[hashValue].FindItemIndex(key);
+        if (index != -1)
+        {
+            size--;
+            if (lastItem != NULL && lastItem->Id() == key)
+            {
+                lastItem = NULL;
+            }
+            hash[hashValue].Remove(index, deleteItem);
+            return true;
+        }
+        return false;
+    }
+
     T *Get(const char *key)
     {
         if (lastItem != NULL && !strcmp(lastItem->Id().String(), key))
@@ -41,6 +58,19 @@ public:
         {
             hashValue += *key;
             key++;
+        }
+        hashValue = hashValue & 0xFF;
+        return hashValue;
+    }
+
+    unsigned int HashValue(const B_Name &key)
+    {
+        unsigned int hashValue = 0;
+        int len = key.Length();
+        const char *str = key.String();
+        for (int i = 0; i < len; i++)
+        {
+            hashValue += str[i];
         }
         hashValue = hashValue & 0xFF;
         return hashValue;

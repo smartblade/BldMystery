@@ -176,6 +176,47 @@ public:
         return size - 1;
     }
 
+    void Remove(unsigned int index, int deleteItem)
+    {
+        if (index >= this->size)
+            return;
+        if (deleteItem)
+        {
+            delete this->elements[index];
+        }
+        if (this->size == 1)
+        {
+            delete [] this->elements;
+            this->elements = NULL;
+            this->size = 0;
+            this->num_alloc = 0;
+            return;
+        }
+        if (this->num_alloc >= (this->size + this->increment - 1))
+        {
+            this->num_alloc -= this->increment;
+            TYPE ** elements = new TYPE *[this->num_alloc];
+            for (unsigned int i = 0; i < index; i++)
+            {
+                elements[i] = this->elements[i];
+            }
+            for (unsigned int i = index + 1; i < this->size; i++)
+            {
+                elements[i - 1] = this->elements[i];
+            }
+            delete [] this->elements;
+            this->elements = elements;
+        }
+        else
+        {
+            for (unsigned int i = index + 1; i < this->size; i++)
+            {
+                this->elements[i - 1] = this->elements[i];
+            }
+        }
+        this->size--;
+    }
+
     TYPE *Find(const B_Name &id)
     {
         for (unsigned int i = 0; i < this->size; i++)
@@ -184,6 +225,16 @@ public:
                 return this->elements[i];
         }
         return NULL;
+    }
+
+    int FindItemIndex(const B_Name &id)
+    {
+        for (unsigned int i = 0; i < this->size; i++)
+        {
+            if (id == this->elements[i]->Id())
+                return i;
+        }
+        return -1;
     }
 
     TYPE **elements;
