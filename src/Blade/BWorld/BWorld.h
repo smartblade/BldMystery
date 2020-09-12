@@ -99,6 +99,12 @@ public:
         return entities.Get(name);
     }
 
+    B_Entity *GetEntity(unsigned int i)
+    {
+        assert(i>=0);
+        return entities.Get(i);
+    }
+
     B_PtrArray<B_TriggerSector> triggerSectors;
     B_Hash<B_Entity> entities;
     int nextEntitySuffix;

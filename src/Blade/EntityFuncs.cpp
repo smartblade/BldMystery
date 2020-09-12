@@ -152,13 +152,12 @@ B_Entity *GetEntity(const char *name)
 * Module:                 Blade.exe
 * Entry point:            0x0050360D
 */
-#ifdef BLD_NATIVE
+
 B_Entity *GetEntityI(int index)
 {
-    B_Entity *(*bld_proc)(int index) = NULL;
-    return bld_proc(index);
+    return B_world.GetEntity(index);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

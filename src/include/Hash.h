@@ -20,6 +20,20 @@ public:
         return NULL;
     }
 
+    T *Get(unsigned int index)
+    {
+        if (size <= index)
+            return NULL;
+        unsigned int numItemsBefore = 0;
+        unsigned int hashValue = 0;
+        while ((numItemsBefore + hash[hashValue].size) <= index)
+        {
+            numItemsBefore += hash[hashValue].size;
+            hashValue++;
+        }
+        return hash[hashValue][index - numItemsBefore];
+    }
+
     int HashValue(const char *key)
     {
         int hashValue = 0;
