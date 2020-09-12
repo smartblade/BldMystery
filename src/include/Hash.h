@@ -42,7 +42,7 @@ public:
          return -1;
     }
 
-    int numEntities;
+    unsigned int size;
     B_PtrArray<T> hash[256];
     int unknown1804;
     T *foundEntity;

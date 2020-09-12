@@ -7,7 +7,7 @@
 TEST(WorldTests, Fields)
 {
     EXPECT_OFFSET_EQ(B_World, entities, 0x0018);
-    EXPECT_OFFSET_EQ(B_World, entities.numEntities, 0x0018);
+    EXPECT_OFFSET_EQ(B_World, entities.size, 0x0018);
     EXPECT_OFFSET_EQ(B_World, entities.hash, 0x001C);
     EXPECT_OFFSET_EQ(B_World, entities.unknown1804, 0x181C);
     EXPECT_OFFSET_EQ(B_World, entities.foundEntity, 0x1820);
