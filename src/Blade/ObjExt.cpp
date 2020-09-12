@@ -2163,7 +2163,7 @@ int GetModelPos(const char *person, double *x, double *y, double *z)
     B_Entity *entity = B_world.GetEntity(person);
     if (entity != NULL && entity->ClassId() == B_ENTITY_CID_PERSON)
     {
-        B_PersonEntity *person = (B_PersonEntity *)entity;
+        B_PersonEntity *person = static_cast<B_PersonEntity *>(entity);
         Unknown0049A1EF *unknown = person->unknown01AC;
         B_Vector position = unknown->transform.TranslationVector();
         *x = position.x;
