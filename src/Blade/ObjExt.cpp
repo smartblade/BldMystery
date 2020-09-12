@@ -2160,48 +2160,7 @@ const char *GetTriggerSectorName(int index)
 
 int GetModelPos(const char *person, double *x, double *y, double *z)
 {
-    B_Entity *entity;
-    {
-        const char *name = person;
-        assert(name);
-        B_Hash<B_Entity> *entities = &B_world.entities;
-        if (
-            entities->foundEntity &&
-            !strcmp(entities->foundEntity->Id().String(), name))
-        {
-            entity = entities->foundEntity;
-        }
-        else
-        {
-            const char *str_ptr = name;
-            int hash_value = 0;
-            while (*str_ptr)
-            {
-                hash_value += *str_ptr;
-                str_ptr++;
-            }
-            hash_value = hash_value & 0xFF;
-            B_PtrArray<B_Entity> *array = &entities->hash[hash_value];
-            int foundIndex = -1;
-            for(unsigned int i = 0; i < array->size; i++)
-            {
-                if (!strcmp(array->elements[i]->Id().String(), name))
-                {
-                    foundIndex = i;
-                    break;
-                }
-            }
-            if (foundIndex != -1)
-            {
-                entities->foundEntity = array->elements[foundIndex];
-                entity = entities->foundEntity;
-            }
-            else
-            {
-                entity = NULL;
-            }
-        }
-    }
+    B_Entity *entity = B_world.GetEntity(person);
     if (entity != NULL && entity->ClassId() == B_ENTITY_CID_PERSON)
     {
         B_PersonEntity *person = (B_PersonEntity *)entity;

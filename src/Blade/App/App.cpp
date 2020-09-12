@@ -500,17 +500,7 @@ void B_App::CloseLevel(const char *statement, const char *newMap)
 
 void B_App::LoadLevel(const char *script)
 {
-    int foundIndex;
-    int hash_value;
-    char *str_ptr;
-    unsigned int i;
-    B_PtrArray<B_Entity> *array;
-    B_Hash<B_Entity> *entities;
-    B_Entity *player1;
     B_CameraEntity *camera;
-    const char *str1;
-    char *str2;
-    int cmp_result;
 
     this->SetAppMode("Game");
 
@@ -548,73 +538,7 @@ void B_App::LoadLevel(const char *script)
 
     if (!gbl_net->is_net_game() || gbl_net->is_server())
     {
-        assert(PLAYER);
-
-        entities = &B_world.entities;
-        if (
-            entities->foundEntity &&
-            !strcmp(entities->foundEntity->Id(), PLAYER)
-        )
-        {
-            player1 = entities->foundEntity;
-        }
-        else
-        {
-            str_ptr = PLAYER;
-            hash_value = 0;
-            while (*str_ptr)
-            {
-                hash_value += *str_ptr;
-                str_ptr++;
-            }
-            hash_value = hash_value & 0xFF;
-
-            array = &entities->hash[hash_value];
-
-            foundIndex = -1;
-            for(i = 0; i < array->size; i++)
-            {
-                str1 = array->elements[i]->Id();
-                str2 = PLAYER;
-                for(;;)
-                {
-                    if (
-                        (str1[0] != str2[0]) ||
-                        (str2[0] && (str1[1] != str2[1]))
-                    )
-                    {
-                        cmp_result = 1;
-                        break;
-                    }
-                    if (
-                        (str2[0] == '\0') ||
-                        (str2[1] == '\0')
-                    )
-                    {
-                        cmp_result = 0;
-                        break;
-                    }
-                    str2 += 2;
-                    str1 += 2;
-                }
-                if (!cmp_result)
-                {
-                    foundIndex = i;
-                    break;
-                }
-            }
-            if (foundIndex != -1)
-            {
-                entities->foundEntity = array->elements[foundIndex];
-                player1 = entities->foundEntity;
-            }
-            else
-            {
-                player1 = NULL;
-            }
-        }
-        this->player1 = player1;
-
+        this->player1 = B_world.GetEntity(PLAYER);
         if (!this->player1)
         {
             this->ExitWithError(
@@ -633,73 +557,8 @@ void B_App::LoadLevel(const char *script)
     else
     {
         this->player1 = NULL;
-
-        entities = &B_world.entities;
-        if (
-            entities->foundEntity &&
-            !strcmp(entities->foundEntity->Id(), PLAYER)
-        )
-        {
-            player1 = entities->foundEntity;
-        }
-        else
-        {
-            str_ptr = PLAYER;
-            hash_value = 0;
-            while (*str_ptr)
-            {
-                hash_value += *str_ptr;
-                str_ptr++;
-            }
-            hash_value = hash_value & 0xFF;
-
-            array = &entities->hash[hash_value];
-
-            foundIndex = -1;
-            for(i = 0; i < array->size; i++)
-            {
-                str1 = array->elements[i]->Id();
-                str2 = PLAYER;
-
-                for(;;)
-                {
-                    if (
-                        (str1[0] != str2[0]) ||
-                        (str2[0] && (str1[1] != str2[1]))
-                    )
-                    {
-                        cmp_result = 1;
-                        break;
-                    }
-                    if (
-                        (str2[0] == '\0') ||
-                        (str2[1] == '\0')
-                    )
-                    {
-                        cmp_result = 0;
-                        break;
-                    }
-                    str2 += 2;
-                    str1 += 2;
-                }
-                if (!cmp_result)
-                {
-                    foundIndex = i;
-                    break;
-                }
-            }
-            if (foundIndex != -1)
-            {
-                entities->foundEntity = array->elements[foundIndex];
-                player1 = entities->foundEntity;
-            }
-            else
-            {
-                player1 = NULL;
-            }
-        }
-        this->client = player1;
-    }
+        this->client = B_world.GetEntity(PLAYER);
+     }
     if (this->mode == "Game")
     {
         this->clock1->RestartTime();
