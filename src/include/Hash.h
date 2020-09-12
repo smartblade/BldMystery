@@ -8,14 +8,14 @@ class B_Hash
 public:
     T *Get(const char *key)
     {
-        if (foundEntity != NULL && !strcmp(foundEntity->Id().String(), key))
-            return foundEntity;
+        if (lastItem != NULL && !strcmp(lastItem->Id().String(), key))
+            return lastItem;
         int hashValue = HashValue(key);
         int index = FindItemIndex(hash[hashValue], key);
         if (index != -1)
         {
-            foundEntity = hash[hashValue][index];
-            return foundEntity;
+            lastItem = hash[hashValue][index];
+            return lastItem;
         }
         return NULL;
     }
@@ -45,7 +45,7 @@ public:
     unsigned int size;
     B_PtrArray<T> hash[256];
     int unknown1804;
-    T *foundEntity;
+    T *lastItem;
 };
 
 #endif /* HASH_H */
