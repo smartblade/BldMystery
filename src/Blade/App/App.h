@@ -66,6 +66,7 @@ public:
     void StopTime();
     void RestartTime();
     void SetTimeSpeed(double speed);
+    void SaveScreenShot(const char *filename, int width, int height);
     void TakeSnapShot();
     double GetTimeSpeed();
     B_PersonStatus *GetPlayerStatus1();

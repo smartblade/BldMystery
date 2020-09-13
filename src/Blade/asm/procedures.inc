@@ -136,6 +136,8 @@ externdef ?CloseLevel@B_App@@UAEXPBD0@Z: near
 l004131BB equ ?CloseLevel@B_App@@UAEXPBD0@Z
 externdef ?LoadLevel@B_App@@UAEXPBD@Z: near
 l00413256 equ ?LoadLevel@B_App@@UAEXPBD@Z
+externdef ?SaveScreenShot@B_App@@QAEXPBDHH@Z: near
+l00413840 equ ?SaveScreenShot@B_App@@QAEXPBDHH@Z
 externdef ?TakeSnapShot@B_App@@QAEXXZ: near
 l004138A0 equ ?TakeSnapShot@B_App@@QAEXXZ
 externdef ?ReadLevel@B_App@@UAEXPBD@Z: near

@@ -566,12 +566,17 @@ void B_App::LoadLevel(const char *script)
     StartGSQR();
 }
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x00413840
+* VC++ mangling:          ?SaveScreenShot@B_App@@QAEXPBDHH@Z
 */
+#ifdef BLD_NATIVE
+void B_App::SaveScreenShot(const char *filename, int width, int height)
+{
+}
+#endif
 
 
 /*

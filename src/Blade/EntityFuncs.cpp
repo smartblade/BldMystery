@@ -1,5 +1,6 @@
 
 #include <bld_system.h>
+#include <BladeApp.h>
 #include "Events.h"
 #include "CameraEntity.h"
 #include "BipedEntity.h"
@@ -2788,13 +2789,12 @@ void BodInspector()
 * Module:                 Blade.exe
 * Entry point:            0x0051D6DE
 */
-#ifdef BLD_NATIVE
+
 void SaveScreeShoot(const char *filename, int width, int height)
 {
-    void (*bld_proc)(const char *filename, int width, int height) = NULL;
-    bld_proc(filename, width, height);
+    GetApplication()->SaveScreenShot(filename, width, height);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
