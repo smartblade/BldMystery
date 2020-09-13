@@ -261,7 +261,6 @@
 /EXPORT:GetMouseState
 /EXPORT:SetMouseState
 /EXPORT:GetPSeconds
-/EXPORT:BodInspector
 /EXPORT:CleanArea
 /EXPORT:GetCharByName
 /EXPORT:LoadAllAnimations

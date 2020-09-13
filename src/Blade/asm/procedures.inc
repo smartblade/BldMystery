@@ -1606,6 +1606,8 @@ externdef ?player_created@B_NetCallbacks@@UAEXKPBD@Z: near
 l005B67F0 equ ?player_created@B_NetCallbacks@@UAEXKPBD@Z
 externdef ?unknown00C@B_NetCallbacks@@UAEXHHHPBD@Z: near
 l005B6840 equ ?unknown00C@B_NetCallbacks@@UAEXHHHPBD@Z
+externdef _InspectBODList: near
+l005B907E equ _InspectBODList
 externdef _CreateApplication: near
 l005B9B60 equ _CreateApplication
 externdef _GetWinApplication: near

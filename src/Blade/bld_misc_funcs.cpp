@@ -552,6 +552,23 @@ void B_ProcTexture::Update()
 
 
 
+/* Begin of file:         0x005B8E80 */
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x005B907E
+*/
+#ifdef BLD_NATIVE
+void InspectBODList()
+{
+}
+#endif
+
+/* End of file:           0x005B9480 */
+
+
+
 /* File:                  BladeApp.cpp */
 /* Begin of file:         0x005B9B60 */
 /* End of file:           0x005B9C30 */

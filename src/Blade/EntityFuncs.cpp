@@ -2777,13 +2777,12 @@ double GetPSeconds()
 * Module:                 Blade.exe
 * Entry point:            0x0051D6D4
 */
-#ifdef BLD_NATIVE
+
 void BodInspector()
 {
-    void (*bld_proc)() = NULL;
-    bld_proc();
+    InspectBODList();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
