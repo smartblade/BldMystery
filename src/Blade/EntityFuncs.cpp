@@ -2765,13 +2765,12 @@ void SetMouseState(int invert, double xsens, double ysens)
 * Module:                 Blade.exe
 * Entry point:            0x0051D6B1
 */
-#ifdef BLD_NATIVE
+
 double GetPSeconds()
 {
-    double (*bld_proc)() = NULL;
-    return bld_proc();
+    return timeGetTime() / 1000.0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

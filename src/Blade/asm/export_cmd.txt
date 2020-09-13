@@ -260,7 +260,6 @@
 /EXPORT:SetAuraGradient
 /EXPORT:GetMouseState
 /EXPORT:SetMouseState
-/EXPORT:GetPSeconds
 /EXPORT:CleanArea
 /EXPORT:GetCharByName
 /EXPORT:LoadAllAnimations
