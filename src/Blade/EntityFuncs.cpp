@@ -2753,13 +2753,14 @@ void GetMouseState(int *invert, double *xsens, double *ysens)
 * Module:                 Blade.exe
 * Entry point:            0x0051D677
 */
-#ifdef BLD_NATIVE
+
 void SetMouseState(int invert, double xsens, double ysens)
 {
-    void (*bld_proc)(int invert, double xsens, double ysens) = NULL;
-    bld_proc(invert, xsens, ysens);
+    GetApplication()->invertMouse = (invert != 0);
+    GetApplication()->xMouseSens = xsens;
+    GetApplication()->yMouseSens = ysens;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

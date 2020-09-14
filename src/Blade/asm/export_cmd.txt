@@ -259,7 +259,6 @@
 /EXPORT:SetAuraParams
 /EXPORT:SetAuraGradient
 /EXPORT:GetMouseState
-/EXPORT:SetMouseState
 /EXPORT:CleanArea
 /EXPORT:GetCharByName
 /EXPORT:LoadAllAnimations

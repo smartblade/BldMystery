@@ -108,9 +108,9 @@ public:
     const char *GetStringValue(const char *variable);
     int DeleteStringValue(const char *variable);
 
-    bool b0004;
-    double dUnknown008;
-    double dUnknown010;
+    bool invertMouse;
+    double xMouseSens;
+    double yMouseSens;
     char unknownFields18[4];
     bool b001C;
     bool b001D;

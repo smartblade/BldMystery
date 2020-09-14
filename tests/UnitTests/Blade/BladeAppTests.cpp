@@ -11,9 +11,9 @@ TEST(BladeAppTests, SizeOf)
 
 TEST(BladeAppTests, Fields)
 {
-    EXPECT_OFFSET_EQ(B_BladeApp, b0004, 0x004);
-    EXPECT_OFFSET_EQ(B_BladeApp, dUnknown008, 0x008);
-    EXPECT_OFFSET_EQ(B_BladeApp, dUnknown010, 0x010);
+    EXPECT_OFFSET_EQ(B_BladeApp, invertMouse, 0x004);
+    EXPECT_OFFSET_EQ(B_BladeApp, xMouseSens, 0x008);
+    EXPECT_OFFSET_EQ(B_BladeApp, yMouseSens, 0x010);
     EXPECT_OFFSET_EQ(B_BladeApp, b001C, 0x01C);
     EXPECT_OFFSET_EQ(B_BladeApp, b001D, 0x01D);
     EXPECT_OFFSET_EQ(B_BladeApp, listenerMode, 0x020);

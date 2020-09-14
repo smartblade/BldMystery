@@ -79,9 +79,9 @@ location(B_Vector(0.0, 0.0, 0.0), 0.0, 0.0, 0.0)
     Py_Initialize();
     this->playerStatus1 = new B_PersonStatus(0);
     this->playerStatus2 = new B_PersonStatus(0);
-    this->b0004 = false;
-    this->dUnknown008 = 2.0;
-    this->dUnknown010 = 1.0;
+    this->invertMouse = false;
+    this->xMouseSens = 2.0;
+    this->yMouseSens = 1.0;
     this->menuTgapFunc = NULL;
 }
 
