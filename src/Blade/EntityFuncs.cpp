@@ -2741,13 +2741,14 @@ int SetAuraGradient(
 * Module:                 Blade.exe
 * Entry point:            0x0051D63D
 */
-#ifdef BLD_NATIVE
+
 void GetMouseState(int *invert, double *xsens, double *ysens)
 {
-    void (*bld_proc)(int *invert, double *xsens, double *ysens) = NULL;
-    bld_proc(invert, xsens, ysens);
+    *invert = GetApplication()->invertMouse;
+    *xsens = GetApplication()->xMouseSens;
+    *ysens = GetApplication()->yMouseSens;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
