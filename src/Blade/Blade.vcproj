@@ -530,6 +530,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\AuraEntity.h"
+				>
+			</File>
+			<File
 				RelativePath=".\BipedEntity.h"
 				>
 			</File>

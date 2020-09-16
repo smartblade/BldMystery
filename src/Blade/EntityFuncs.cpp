@@ -2,6 +2,7 @@
 #include <bld_system.h>
 #include <BladeApp.h>
 #include "Events.h"
+#include "AuraEntity.h"
 #include "CameraEntity.h"
 #include "BipedEntity.h"
 #include <Math/BSpline.h>
@@ -2721,21 +2722,40 @@ int SetAuraParams(
 * Module:                 Blade.exe
 * Entry point:            0x0051D554
 */
-#ifdef BLD_NATIVE
+
 int SetAuraGradient(
-        const char *entity_name, int gap, double r1, double g1, double b1,
-        double alpha1, double starting_point, double r2, double g2, double b2,
-        double alpha2, double ending_point
+    const char *entity_name, int gap, double r1, double g1, double b1,
+    double alpha1, double starting_point, double r2, double g2, double b2,
+    double alpha2, double ending_point
 )
 {
-    int (*bld_proc)(
-        const char *entity_name, int gap, double r1, double g1, double b1,
-        double alpha1, double starting_point, double r2, double g2, double b2,
-        double alpha2, double ending_point
-) = NULL;
-    return bld_proc(entity_name, gap, r1, g1, b1, alpha1, starting_point, r2, g2, b2, alpha2, ending_point);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity == NULL)
+    {
+        mout << vararg(
+            "EntitySetPosition() -> Error: Trying to access non-existent entity:%s.\n",
+            entity_name);
+        return -1;
+    }
+    if (entity->IsClassOf(B_ENTITY_CID_AURA))
+    {
+        B_AuraEntity *auraEntity = static_cast<B_AuraEntity *>(entity);
+        B_AuraGradient &gradient = auraEntity->GetGradient(gap);
+        gradient.r = r1;
+        gradient.g = g1;
+        gradient.b = b1;
+        gradient.alpha = alpha1;
+        gradient.dR = (r2 - r1);
+        gradient.dG = (g2 - g1);
+        gradient.dB = (b2 - b1);
+        gradient.dAlpha = (alpha2 - alpha1);
+        gradient.endingPoint = ending_point;
+        gradient.startingPoint = starting_point;
+        return 1;
+    }
+    return -2;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

@@ -13,7 +13,8 @@
 #define B_ENTITY_CID_CAMERA            8
 #define B_ENTITY_CID_ACTOR             13
 #define B_ENTITY_CID_BIPED             21
-#define B_ENTITY_CID_CLIENT            27
+#define B_ENTITY_CID_CLIENT            26
+#define B_ENTITY_CID_AURA              27
 
 class B_Entity :  public B_NamedObj
 {

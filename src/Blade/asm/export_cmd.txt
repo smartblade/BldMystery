@@ -257,7 +257,6 @@
 /EXPORT:ImpulseC
 /EXPORT:SetAuraActive
 /EXPORT:SetAuraParams
-/EXPORT:SetAuraGradient
 /EXPORT:CleanArea
 /EXPORT:GetCharByName
 /EXPORT:LoadAllAnimations

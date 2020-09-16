@@ -189,6 +189,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\AuraEntityTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Blade\AuraGradientTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\BipedEntityTests.cpp"
 				>
 			</File>
