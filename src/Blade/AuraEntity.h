@@ -29,8 +29,41 @@ public:
     {
         return gradients[gap];
     }
+
+    void setAlphaMode(bool alphaMode)
+    {
+        this->alphaMode = alphaMode;
+    }
+
+    void setHideFaces(bool hideFrontFaces, bool hideBackFaces)
+    {
+        this->hideFrontFaces = hideFrontFaces;
+        this->hideBackFaces = hideBackFaces;
+    }
+
+    void setSize(float size)
+    {
+        this->size = size;
+    }
+
+    void setAlpha(float alpha)
+    {
+        this->alpha = alpha;
+    }
+
+    void setColourIntensity(float colourIntensity)
+    {
+        this->colourIntensity = colourIntensity;
+    }
+
 private:
-    char unknown_fields1A0[0x1C];
+    char unknown_fields1A0[0x4];
+    int alphaMode;
+    int hideFrontFaces;
+    int hideBackFaces;
+    float size;
+    float alpha;
+    float colourIntensity;
     B_AuraGradient gradients[3];
     char unknown_fields27C[0x84];
 };

@@ -2702,21 +2702,34 @@ int SetAuraActive(const char *entity_name, int is_active)
 * Module:                 Blade.exe
 * Entry point:            0x0051D47C
 */
-#ifdef BLD_NATIVE
+
 int SetAuraParams(
-        const char *entity_name, double size, double alpha,
-        double colour_intensity, int hide_front_faces, int hide_back_faces,
-        int alpha_mode
+    const char *entity_name, double size, double alpha,
+    double colour_intensity, int hide_front_faces, int hide_back_faces,
+    int alpha_mode
 )
 {
-    int (*bld_proc)(
-        const char *entity_name, double size, double alpha,
-        double colour_intensity, int hide_front_faces, int hide_back_faces,
-        int alpha_mode
-) = NULL;
-    return bld_proc(entity_name, size, alpha, colour_intensity, hide_front_faces, hide_back_faces, alpha_mode);
+    B_Entity * entity = GetEntity(entity_name);
+    if (entity == NULL)
+    {
+        mout << vararg(
+            "EntitySetPosition() -> Error: Trying to access non-existent entity:%s.\n",
+            entity_name);
+        return -1;
+    }
+    if (entity->IsClassOf(B_ENTITY_CID_AURA))
+    {
+        B_AuraEntity *auraEntity = static_cast<B_AuraEntity *>(entity);
+        auraEntity->setAlpha(alpha);
+        auraEntity->setColourIntensity(colour_intensity);
+        auraEntity->setSize(size);
+        auraEntity->setHideFaces(hide_front_faces > 0, hide_back_faces > 0);
+        auraEntity->setAlphaMode(alpha_mode > 0);
+        return 1;
+    }
+    return -2;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
