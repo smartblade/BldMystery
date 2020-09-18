@@ -2690,13 +2690,26 @@ int ImpulseC(
 * Module:                 Blade.exe
 * Entry point:            0x0051D3FA
 */
-#ifdef BLD_NATIVE
+
 int SetAuraActive(const char *entity_name, int is_active)
 {
-    int (*bld_proc)(const char *entity_name, int is_active) = NULL;
-    return bld_proc(entity_name, is_active);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity == NULL)
+    {
+        mout << vararg(
+            "EntitySetPosition() -> Error: Trying to access non-existent entity:%s.\n",
+            entity_name);
+        return -1;
+    }
+    if (entity->IsClassOf(B_ENTITY_CID_AURA))
+    {
+        B_AuraEntity *auraEntity = static_cast<B_AuraEntity *>(entity);
+        auraEntity->setActive(is_active > 0);
+        return 1;
+    }
+    return -2;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

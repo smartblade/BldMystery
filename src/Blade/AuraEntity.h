@@ -30,6 +30,11 @@ public:
         return gradients[gap];
     }
 
+    void setActive(bool active)
+    {
+        this->active = active;
+    }
+
     void setAlphaMode(bool alphaMode)
     {
         this->alphaMode = alphaMode;
@@ -57,7 +62,7 @@ public:
     }
 
 private:
-    char unknown_fields1A0[0x4];
+    int active;
     int alphaMode;
     int hideFrontFaces;
     int hideBackFaces;

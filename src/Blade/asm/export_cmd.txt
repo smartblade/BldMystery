@@ -255,7 +255,6 @@
 /EXPORT:EntityRemoveFromWorld
 /EXPORT:EntityRemoveFromWorldWithChilds
 /EXPORT:ImpulseC
-/EXPORT:SetAuraActive
 /EXPORT:CleanArea
 /EXPORT:GetCharByName
 /EXPORT:LoadAllAnimations

@@ -12,6 +12,7 @@ TEST(AuraEntityTests, SizeOf)
 
 TEST(AuraEntityTests, Fields)
 {
+    EXPECT_OFFSET_EQ(B_AuraEntity, active, 0x1A0);
     EXPECT_OFFSET_EQ(B_AuraEntity, alphaMode, 0x1A4);
     EXPECT_OFFSET_EQ(B_AuraEntity, hideFrontFaces, 0x1A8);
     EXPECT_OFFSET_EQ(B_AuraEntity, hideBackFaces, 0x1AC);
