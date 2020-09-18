@@ -69,6 +69,9 @@ public:
     virtual void unknown_method0BC();
     virtual void unknown_method0C0();
     virtual void Use(int unknown);
+    virtual void unknown_method0C8();
+    virtual void unknown_method0CC();
+    virtual void unknown_method0D0();
 
     char unknownFields[404];
 };

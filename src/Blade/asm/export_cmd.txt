@@ -254,7 +254,6 @@
 /EXPORT:IsValidEntity
 /EXPORT:EntityRemoveFromWorld
 /EXPORT:EntityRemoveFromWorldWithChilds
-/EXPORT:ImpulseC
 /EXPORT:CleanArea
 /EXPORT:GetCharByName
 /EXPORT:LoadAllAnimations

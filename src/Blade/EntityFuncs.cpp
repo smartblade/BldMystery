@@ -5,6 +5,7 @@
 #include "AuraEntity.h"
 #include "CameraEntity.h"
 #include "BipedEntity.h"
+#include "PhysicSIEntity.h"
 #include <Math/BSpline.h>
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
@@ -2672,19 +2673,32 @@ void EntityRemoveFromWorldWithChilds(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051D32B
 */
-#ifdef BLD_NATIVE
+
 int ImpulseC(
-        const char *entity_name, double x, double y, double z, double x_vec,
-        double y_vec, double z_vec
+    const char *entity_name, double x, double y, double z, double x_vec,
+    double y_vec, double z_vec
 )
 {
-    int (*bld_proc)(
-        const char *entity_name, double x, double y, double z, double x_vec,
-        double y_vec, double z_vec
-) = NULL;
-    return bld_proc(entity_name, x, y, z, x_vec, y_vec, z_vec);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity == NULL)
+    {
+        mout << vararg(
+            "ImpulseC() -> Error: Trying to access non-existent entity:%s.\n",
+            entity_name);
+        return false;
+    }
+    if (entity->IsClassOf(B_ENTITY_CID_PHYSIC_OBJECT))
+    {
+        B_PhysicSIEntity *physicEntity = static_cast<B_PhysicSIEntity *>(
+            entity);
+        physicEntity->ImpulseC(
+            B_Vector(x, y, z),
+            B_Vector(x_vec, y_vec, z_vec));
+        return true;
+    }
+    return false;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

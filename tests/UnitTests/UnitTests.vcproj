@@ -289,6 +289,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\ObjectEntityTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\OpaqueSurfaceTests.cpp"
 				>
 			</File>
@@ -302,6 +306,10 @@
 			</File>
 			<File
 				RelativePath=".\Blade\PersonStatusTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Blade\PhysicSIEntityTests.cpp"
 				>
 			</File>
 			<File

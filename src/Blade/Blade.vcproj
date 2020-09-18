@@ -586,7 +586,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ObjectEntity.h"
+				>
+			</File>
+			<File
 				RelativePath=".\PersonEntity.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysicSIEntity.h"
 				>
 			</File>
 			<File
