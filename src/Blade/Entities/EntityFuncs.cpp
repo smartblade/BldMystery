@@ -2661,13 +2661,21 @@ void EntityRemoveFromWorld(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051D2D7
 */
-#ifdef BLD_NATIVE
-void EntityRemoveFromWorldWithChilds(const char *entity_name)
+
+int EntityRemoveFromWorldWithChilds(const char *entity_name)
 {
-    void (*bld_proc)(const char *entity_name) = NULL;
-    bld_proc(entity_name);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity == NULL)
+    {
+        mout << vararg(
+            "EntityRemoveFromWorldWithChilds() -> Error: Trying to access non-existent entity:%s.\n",
+            entity_name);
+        return false;
+    }
+    entity->RemoveFromWorldWithChilds();
+    return true;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

@@ -689,7 +689,7 @@ LIB_EXP int RaiseEvent(const char *entity_name, const char *event_name);
 LIB_EXP int SetSolidMask(const char *kind, int mask);
 LIB_EXP int IsValidEntity(const char *entity_name);
 LIB_EXP void EntityRemoveFromWorld(const char *entity_name);
-LIB_EXP void EntityRemoveFromWorldWithChilds(const char *entity_name);
+LIB_EXP int EntityRemoveFromWorldWithChilds(const char *entity_name);
 LIB_EXP int ImpulseC(
     const char *entity_name, double x, double y, double z, double x_vec,
     double y_vec, double z_vec

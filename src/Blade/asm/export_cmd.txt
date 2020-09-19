@@ -253,7 +253,6 @@
 /EXPORT:SetSolidMask
 /EXPORT:IsValidEntity
 /EXPORT:EntityRemoveFromWorld
-/EXPORT:EntityRemoveFromWorldWithChilds
 /EXPORT:CleanArea
 /EXPORT:GetCharByName
 /EXPORT:LoadAllAnimations
