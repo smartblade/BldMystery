@@ -2,7 +2,7 @@
 
 #define PERSON_ENTITY_H
 
-#include "BipedEntity.h"
+#include <Entities/BipedEntity.h>
 #include "simpleact.h"
 
 

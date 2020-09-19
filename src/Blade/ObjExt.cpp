@@ -3,8 +3,8 @@
 #include <bld_python.h>
 #include <raster_device.h>
 #include "BladeApp.h"
-#include "CameraEntity.h"
-#include "PersonEntity.h"
+#include <Entities/CameraEntity.h>
+#include <Entities/PersonEntity.h>
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
 #include <blade_ext.h>

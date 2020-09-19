@@ -6,7 +6,7 @@
 
 #include <bld_python.h>
 #include "BBLibc.h"
-#include "entity.h"
+#include <Entities/Entity.h>
 #include "Clock.h"
 #include <array.h>
 #include "Location.h"

@@ -396,11 +396,11 @@ void Unknown004CD5EC::unknown004CD634()
 /* End of file:           0x004CDB30 */
 
 
-/* File:                  BipedEntity.cpp */
+/* File:                  Entities/BipedEntity.cpp */
 /* Begin of file:         0x004D5C40 */
 /* End of file:           0x004EAD20 */
 
-/* File:                  CameraEntity.cpp */
+/* File:                  Entities/CameraEntity.cpp */
 /* Begin of file:         0x004EAD20 */
 /* End of file:           0x004EB650 */
 
@@ -458,7 +458,7 @@ B_ODataFile& operator <<(B_ODataFile &file, const B_Combustion &combustion)
 
 
 
-/* File:                  EntityFuncs.cpp */
+/* File:                  Entities/EntityFuncs.cpp */
 /* Begin of file:         0x004FFEA0 */
 /* End of file:           0x0051DBE0 */
 

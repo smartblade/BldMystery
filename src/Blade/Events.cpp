@@ -1,6 +1,6 @@
 #include "Events.h"
 
-#include "entity.h"
+#include <Entities/Entity.h>
 #include "bld_misc_funcs.h"
 
 /*

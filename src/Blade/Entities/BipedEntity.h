@@ -3,7 +3,7 @@
 #define BIPED_ENTITY_H
 
 #include "Matrix.h"
-#include "entity.h"
+#include <Entities/Entity.h>
 
 
 class B_Event;

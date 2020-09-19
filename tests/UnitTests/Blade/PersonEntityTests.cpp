@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
-#include "PersonEntity.h"
+#include <Entities/PersonEntity.h>
 
 
 TEST(PersonEntityTests, SizeOf)

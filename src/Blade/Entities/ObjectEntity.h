@@ -2,7 +2,7 @@
 
 #define OBJECT_ENTITY_H
 
-#include "entity.h"
+#include <Entities/Entity.h>
 
 
 class B_ObjectEntity : public B_Entity

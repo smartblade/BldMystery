@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
-#include "CameraEntity.h"
+#include <Entities/CameraEntity.h>
 
 
 TEST(CameraMovementTests, SizeOf)

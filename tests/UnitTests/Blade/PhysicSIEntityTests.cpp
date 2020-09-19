@@ -2,7 +2,7 @@
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
 #define private public
-#include "PhysicSIEntity.h"
+#include <Entities/PhysicSIEntity.h>
 
 
 TEST(PhysicSIEntityTests, SizeOf)

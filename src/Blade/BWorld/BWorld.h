@@ -5,7 +5,7 @@
 
 
 #include <array.h>
-#include "entity.h"
+#include <Entities/Entity.h>
 #include <BWorld/atmosphere.h>
 #include <BWorld/BMap.h>
 #include <BWorld/light.h>

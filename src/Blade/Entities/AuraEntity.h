@@ -2,7 +2,7 @@
 
 #define AURA_ENTITY_H
 
-#include "entity.h"
+#include <Entities/Entity.h>
 
 
 struct B_AuraGradient

@@ -304,10 +304,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\BipedEntity.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\BladeApp.cpp"
 				>
 			</File>
@@ -316,19 +312,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\CameraEntity.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\CDExt.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\en_control.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\EntityFuncs.cpp"
 				>
 			</File>
 			<File
@@ -484,6 +472,54 @@
 				</File>
 			</Filter>
 			<Filter
+				Name="Entities"
+				>
+				<File
+					RelativePath=".\Entities\AuraEntity.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Entities\BipedEntity.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Entities\BipedEntity.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Entities\CameraEntity.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Entities\CameraEntity.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Entities\Entity.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Entities\EntityFuncs.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Entities\EntityFuncs.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Entities\ObjectEntity.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Entities\PersonEntity.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Entities\PhysicSIEntity.h"
+					>
+				</File>
+			</Filter>
+			<Filter
 				Name="NetMod"
 				>
 				<File
@@ -530,14 +566,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\AuraEntity.h"
-				>
-			</File>
-			<File
-				RelativePath=".\BipedEntity.h"
-				>
-			</File>
-			<File
 				RelativePath=".\BladeApp.h"
 				>
 			</File>
@@ -547,10 +575,6 @@
 			</File>
 			<File
 				RelativePath=".\BoundingBox.h"
-				>
-			</File>
-			<File
-				RelativePath=".\CameraEntity.h"
 				>
 			</File>
 			<File
@@ -566,14 +590,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\entity.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\EntityFuncs.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Events.h"
 				>
 			</File>
@@ -583,18 +599,6 @@
 			</File>
 			<File
 				RelativePath=".\Matrix.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ObjectEntity.h"
-				>
-			</File>
-			<File
-				RelativePath=".\PersonEntity.h"
-				>
-			</File>
-			<File
-				RelativePath=".\PhysicSIEntity.h"
 				>
 			</File>
 			<File

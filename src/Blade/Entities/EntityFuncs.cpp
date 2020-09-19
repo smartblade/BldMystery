@@ -2,14 +2,14 @@
 #include <bld_system.h>
 #include <BladeApp.h>
 #include "Events.h"
-#include "AuraEntity.h"
-#include "CameraEntity.h"
-#include "BipedEntity.h"
-#include "PhysicSIEntity.h"
+#include <Entities/AuraEntity.h>
+#include <Entities/CameraEntity.h>
+#include <Entities/BipedEntity.h>
+#include <Entities/PhysicSIEntity.h>
 #include <Math/BSpline.h>
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
-#include <EntityFuncs.h>
+#include <Entities/EntityFuncs.h>
 
 
 /*

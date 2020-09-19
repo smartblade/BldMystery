@@ -3,7 +3,8 @@
 #define CAMERA_ENTITY_H
 
 #include <App/camera.h>
-#include "entity.h"
+#include <Entities/Entity.h>
+
 
 class B_CameraEntity : public B_Entity
 {

@@ -2,7 +2,7 @@
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
 #define private public
-#include "ObjectEntity.h"
+#include <Entities/ObjectEntity.h>
 
 
 TEST(ObjectEntityTests, SizeOf)

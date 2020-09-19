@@ -1,17 +1,7 @@
+#include <Entities/BipedEntity.h>
 
-#include "CameraEntity.h"
+#include <bld_system.h>
 
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x004EAD20
-* VC++ mangling:          ??0B_CameraEntity@@QAE@HABVB_Name@@@Z
-*/
-#ifdef BLD_NATIVE_CONSTRUCTOR
-B_CameraEntity::B_CameraEntity(int unknown, const B_Name &name)
-{
-}
-#endif
 
 /*
 ................................................................................
@@ -22,12 +12,13 @@ B_CameraEntity::B_CameraEntity(int unknown, const B_Name &name)
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x004EB1AA
-* VC++ mangling:          ?unknown_004EB1AA@B_CameraEntity@@QAEXPAX@Z
+* Entry point:            0x004E73AF
+* VC++ mangling:          ?RaiseEvent@B_BipedEntity@@QAEHH@Z
 */
 #ifdef BLD_NATIVE
-void B_CameraEntity::unknown_004EB1AA(void *)
+int B_BipedEntity::RaiseEvent(int eventIndex)
 {
+    return 0;
 }
 #endif
 

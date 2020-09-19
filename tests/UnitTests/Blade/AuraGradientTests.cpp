@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
-#include "AuraEntity.h"
+#include <Entities/AuraEntity.h>
 
 
 TEST(AuraGradientTests, SizeOf)

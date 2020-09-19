@@ -2,7 +2,7 @@
 
 #define PHYSIC_SI_ENTITY_H
 
-#include "ObjectEntity.h"
+#include <Entities/ObjectEntity.h>
 
 
 class B_Vector;
