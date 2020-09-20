@@ -251,7 +251,6 @@
 /EXPORT:DoActionWI
 /EXPORT:SetOnFloor
 /EXPORT:SetSolidMask
-/EXPORT:IsValidEntity
 /EXPORT:CleanArea
 /EXPORT:GetCharByName
 /EXPORT:LoadAllAnimations

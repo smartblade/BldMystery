@@ -2637,13 +2637,15 @@ int SetSolidMask(const char *kind, int mask)
 * Module:                 Blade.exe
 * Entry point:            0x0051D25D
 */
-#ifdef BLD_NATIVE
+
 int IsValidEntity(const char *entity_name)
 {
-    int (*bld_proc)(const char *entity_name) = NULL;
-    return bld_proc(entity_name);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity == NULL)
+        return false;
+    return true;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
