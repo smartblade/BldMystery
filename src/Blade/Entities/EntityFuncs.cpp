@@ -2625,13 +2625,22 @@ int RaiseEvent(const char *entity_name, const char *event_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051D065
 */
-#ifdef BLD_NATIVE
+
 int SetSolidMask(const char *kind, int mask)
 {
-    int (*bld_proc)(const char *kind, int mask) = NULL;
-    return bld_proc(kind, mask);
+    B_SolidMask *solidMask = gbl_solid_masks.Find(kind);
+    if (solidMask != NULL)
+    {
+        solidMask->mask = mask;
+    }
+    else
+    {
+        B_SolidMask *newSolidMask = new B_SolidMask(kind, mask);
+        gbl_solid_masks.addElement(newSolidMask);
+    }
+    return true;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

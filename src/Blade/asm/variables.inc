@@ -38,6 +38,8 @@ public _gbl_races
 g007C9878 equ _gbl_races
 public _gbl_combustion_data
 g007D1650 equ _gbl_combustion_data
+public _gbl_solid_masks
+g007D40D0 equ _gbl_solid_masks
 public _gbl_en_control
 g007E93B8 equ _gbl_en_control
 public _gbl_ag_textures

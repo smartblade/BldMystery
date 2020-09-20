@@ -345,6 +345,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\SolidMaskTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\Sound\SoundTests.cpp"
 				>
 			</File>

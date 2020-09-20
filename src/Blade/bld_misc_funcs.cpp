@@ -615,6 +615,7 @@ B_YSoundDev *gbl_sound_device;
 B_Sound no_sound;
 B_PtrArray<B_Race> gbl_races;
 B_PtrArray<B_Combustion> gbl_combustion_data;
+B_PtrArray<B_SolidMask> gbl_solid_masks;
 EnControl gbl_en_control;
 B_PtrArray<B_AGTexture> gbl_ag_textures;
 char client_map_name[128];

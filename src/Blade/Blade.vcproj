@@ -518,6 +518,10 @@
 					RelativePath=".\Entities\PhysicSIEntity.h"
 					>
 				</File>
+				<File
+					RelativePath=".\Entities\SolidMask.h"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="NetMod"

@@ -250,7 +250,6 @@
 /EXPORT:DoAction
 /EXPORT:DoActionWI
 /EXPORT:SetOnFloor
-/EXPORT:SetSolidMask
 /EXPORT:CleanArea
 /EXPORT:GetCharByName
 /EXPORT:LoadAllAnimations

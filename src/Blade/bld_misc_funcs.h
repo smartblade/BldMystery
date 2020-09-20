@@ -5,6 +5,7 @@
 #include "anim.h"
 #include <NetMod/libnet.h>
 #include <BWorld/light.h>
+#include <Entities/SolidMask.h>
 #include "en_control.h"
 
 class B_Events;
@@ -220,6 +221,12 @@ extern B_PtrArray<B_Race> gbl_races;
 * Data address:           0x007D1650
 */
 extern B_PtrArray<B_Combustion> gbl_combustion_data;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x007D40D0
+*/
+extern B_PtrArray<B_SolidMask> gbl_solid_masks;
 
 /*
 * Module:                 Blade.exe
