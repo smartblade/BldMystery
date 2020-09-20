@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 
 #include <AnimationExt.h>
-#include <SoundFuncs.h>
+#include <Sound/SoundFuncs.h>
 #include <Entities/EntityFuncs.h>
 #include "bladex_int.h"
 

@@ -3,7 +3,7 @@
 #include "../sound_device.h"
 #include "../bld_misc_funcs.h"
 #define BUILD_LIB
-#include <SoundFuncs.h>
+#include <Sound/SoundFuncs.h>
 
 /*
 ................................................................................

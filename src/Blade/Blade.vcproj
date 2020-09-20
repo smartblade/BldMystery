@@ -402,6 +402,10 @@
 					RelativePath=".\Sound\SoundFuncs.cpp"
 					>
 				</File>
+				<File
+					RelativePath=".\Sound\SoundFuncs.h"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="BWorld"
@@ -627,10 +631,6 @@
 			</File>
 			<File
 				RelativePath=".\sound_device.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\SoundFuncs.h"
 				>
 			</File>
 			<File
