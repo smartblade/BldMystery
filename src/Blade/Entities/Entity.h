@@ -33,7 +33,7 @@ public:
     virtual void unknown_method02C();
     virtual void unknown_method030();
     virtual void unknown_method034();
-    virtual void unknown_method038();
+    virtual void RemoveFromWorld();
     virtual void RemoveFromWorldWithChilds();
     virtual void unknown_method040();
     virtual void unknown_method044();

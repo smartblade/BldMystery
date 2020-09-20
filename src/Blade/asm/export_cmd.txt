@@ -252,7 +252,6 @@
 /EXPORT:SetOnFloor
 /EXPORT:SetSolidMask
 /EXPORT:IsValidEntity
-/EXPORT:EntityRemoveFromWorld
 /EXPORT:CleanArea
 /EXPORT:GetCharByName
 /EXPORT:LoadAllAnimations
