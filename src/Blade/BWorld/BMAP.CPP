@@ -97,7 +97,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_Sector &sector)
         }
         else
         {
-            sector.addElement(surface);
+            sector.Append(surface);
         }
     }
     sector.CalculateBoundingBox();

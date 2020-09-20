@@ -2024,7 +2024,7 @@ after_search:
     int code;
     if (!found)
     {
-        B_world.triggerSectors.addElement(TS);
+        B_world.triggerSectors.Append(TS);
         code = 1;
     }
     else

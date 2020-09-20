@@ -146,7 +146,7 @@ public:
         return elements[index];
     }
 
-    int addElement(TYPE *newElement)
+    int Append(TYPE *newElement)
     {
         if (num_alloc > size)
         {
