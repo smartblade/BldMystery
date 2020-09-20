@@ -1,7 +1,7 @@
 
 #include <bld_system.h>
 #define BUILD_LIB
-#include <SectorFuncs.h>
+#include <BWorld/SectorFuncs.h>
 
 
 /*

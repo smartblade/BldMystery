@@ -443,7 +443,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\include\SectorFuncs.h"
+					RelativePath=".\BWorld\SectorFuncs.h"
 					>
 				</File>
 				<File
