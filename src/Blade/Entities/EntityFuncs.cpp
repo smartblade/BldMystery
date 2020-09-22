@@ -2588,13 +2588,26 @@ int DoActionWI(
 * Module:                 Blade.exe
 * Entry point:            0x0051CF72
 */
-#ifdef BLD_NATIVE
+
 int SetOnFloor(const char *entity_name)
 {
-    int (*bld_proc)(const char *entity_name) = NULL;
-    return bld_proc(entity_name);
+    B_Entity * entity = GetEntity(entity_name);
+    if (entity == NULL)
+    {
+        mout << vararg(
+            "SetOnFloor() -> Error: Trying to access non-existent entity:%s.\n",
+            entity_name);
+        return -1;
+    }
+    if (entity->IsClassOf(B_ENTITY_CID_BIPED))
+    {
+        B_BipedEntity *bipedEntity = static_cast<B_BipedEntity *>(entity);
+        bipedEntity->SetOnFloor();
+        return 1;
+    }
+    return -2;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

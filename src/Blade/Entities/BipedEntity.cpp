@@ -12,6 +12,25 @@
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x004E5DA7
+* VC++ mangling:          ?SetOnFloor@B_BipedEntity@@QAEHXZ
+*/
+#ifdef BLD_NATIVE
+int B_BipedEntity::SetOnFloor()
+{
+    return 0;
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x004E73AF
 * VC++ mangling:          ?RaiseEvent@B_BipedEntity@@QAEHH@Z
 */

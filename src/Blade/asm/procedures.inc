@@ -972,6 +972,8 @@ externdef ??0Unknown004CD5EC@@QAE@MMMMMM@Z: near
 l004CD5EC equ ??0Unknown004CD5EC@@QAE@MMMMMM@Z
 externdef ?unknown004CD634@Unknown004CD5EC@@QAEXXZ: near
 l004CD634 equ ?unknown004CD634@Unknown004CD5EC@@QAEXXZ
+externdef ?SetOnFloor@B_BipedEntity@@QAEHXZ: near
+l004E5DA7 equ ?SetOnFloor@B_BipedEntity@@QAEHXZ
 externdef ?RaiseEvent@B_BipedEntity@@QAEHH@Z: near
 l004E73AF equ ?RaiseEvent@B_BipedEntity@@QAEHH@Z
 externdef ??0B_CameraEntity@@QAE@HABVB_Name@@@Z: near

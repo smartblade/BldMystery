@@ -19,6 +19,7 @@ public:
 class B_BipedEntity : public B_Entity
 {
 public:
+    int SetOnFloor();
     int RaiseEvent(int eventIndex);
 
     char unknownFields01A0[12];
