@@ -19,6 +19,10 @@ public:
 class B_BipedEntity : public B_Entity
 {
 public:
+    void DoActionWI(
+        const B_Name &actionName, int interpolationType, double time,
+        double unknown1, double *dUnknown, double unknown2
+    );
     int SetOnFloor();
     int RaiseEvent(int eventIndex);
 

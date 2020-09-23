@@ -2570,19 +2570,31 @@ int DoAction(const char *entity_name, const char *action_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051CEBC
 */
-#ifdef BLD_NATIVE
+
 int DoActionWI(
-        const char *entity_name, const char *action_name,
-        int interpolation_type, double time, double unknown1
+    const char *entity_name, const char *action_name,
+    int interpolation_type, double time, double unknown1
 )
 {
-    int (*bld_proc)(
-        const char *entity_name, const char *action_name,
-        int interpolation_type, double time, double unknown1
-) = NULL;
-    return bld_proc(entity_name, action_name, interpolation_type, time, unknown1);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity == NULL)
+    {
+        mout << vararg(
+            "DoActionWI() -> Error: Trying to access non-existent entity:%s.\n",
+            entity_name);
+        return -1;
+    }
+    if (entity->IsClassOf(B_ENTITY_CID_BIPED))
+    {
+        B_BipedEntity *bipedEntity = static_cast<B_BipedEntity *>(entity);
+        double dUnknown = 0.0;
+        bipedEntity->DoActionWI(
+            action_name, interpolation_type, time, unknown1, &dUnknown, 0.0);
+        return 1;
+    }
+    return -2;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
