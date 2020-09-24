@@ -2558,13 +2558,20 @@ int SetEventTableFunc(
 * Module:                 Blade.exe
 * Entry point:            0x0051CE46
 */
-#ifdef BLD_NATIVE
+
 int DoAction(const char *entity_name, const char *action_name)
 {
-    int (*bld_proc)(const char *entity_name, const char *action_name) = NULL;
-    return bld_proc(entity_name, action_name);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity->IsClassOf(B_ENTITY_CID_BIPED))
+    {
+        B_BipedEntity *bipedEntity = static_cast<B_BipedEntity *>(entity);
+        double dUnknown = 0.0;
+        bipedEntity->DoAction(action_name, 0.0, 0, &dUnknown);
+        return 1;
+    }
+    return -2;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

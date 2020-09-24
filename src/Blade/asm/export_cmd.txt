@@ -247,7 +247,6 @@
 /EXPORT:SetActionEventTable
 /EXPORT:SetEventTableFuncC
 /EXPORT:SetEventTableFunc
-/EXPORT:DoAction
 /EXPORT:CleanArea
 /EXPORT:GetCharByName
 /EXPORT:LoadAllAnimations

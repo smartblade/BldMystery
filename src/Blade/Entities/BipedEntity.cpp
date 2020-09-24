@@ -12,6 +12,26 @@
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x004E3AD9
+* VC++ mangling:          ?DoAction@B_BipedEntity@@QAEXABVB_Name@@NHPAN@Z
+*/
+#ifdef BLD_NATIVE
+void B_BipedEntity::DoAction(
+    const B_Name &action_name, double unknown1, int iUnknown,
+    double *dUnknown)
+{
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x004E3B6A
 * VC++ mangling:          ?DoActionWI@B_BipedEntity@@QAEXABVB_Name@@HNNPANN@Z
 */
