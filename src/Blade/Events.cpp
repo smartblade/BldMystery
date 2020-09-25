@@ -21,12 +21,36 @@ B_EventFunc::B_EventFunc()
 {
 }
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0048A92B
+* VC++ mangling:          ??0B_EventFuncs@@QAE@ABVB_Name@@@Z
+*/
+#ifdef BLD_NATIVE
+B_EventFuncs::B_EventFuncs(const B_Name &name)
+{
+}
+#endif
+
 /*
 ................................................................................
 ................................................................................
 ................................................................................
 ................................................................................
 */
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0048AB7F
+* VC++ mangling:          ?AddPyFunc@B_EventFuncs@@QAEXIPAUPyObject@@PBD@Z
+*/
+#ifdef BLD_NATIVE
+void B_EventFuncs::AddPyFunc(
+    unsigned int eventIndex, PyObject *func, const char *name)
+{
+}
+#endif
 
 /*
 * Module:                 Blade.exe

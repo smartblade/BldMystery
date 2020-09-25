@@ -6,6 +6,7 @@
 #include <NetMod/libnet.h>
 #include <BWorld/light.h>
 #include <Entities/SolidMask.h>
+#include <Events.h>
 #include "en_control.h"
 
 class B_Events;
@@ -185,6 +186,12 @@ extern B_PtrArray<anim_t> gbl_anims;
 * Data address:           0x007072C8
 */
 extern B_PtrArray<B_ClimbStartPose> gbl_climb_start_poses;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x00708B48
+*/
+extern B_Hash<B_EventFuncs> gbl_event_tables;
 
 /*
 * Module:                 Blade.exe

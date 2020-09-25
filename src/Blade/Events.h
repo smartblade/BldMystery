@@ -24,6 +24,8 @@ public:
 class B_EventFuncs : public B_NamedObj
 {
 public:
+    B_EventFuncs(const B_Name &name);
+    void AddPyFunc(unsigned int eventIndex, PyObject *func, const char *name);
     void AddFunc(unsigned int eventIndex, EventFn func, const char *name);
     int CallFunc(B_Entity *entity, unsigned int eventIndex);
 private:

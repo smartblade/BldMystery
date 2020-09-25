@@ -786,6 +786,10 @@ externdef ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z: near
 l004760A2 equ ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z
 externdef ??0B_EventFunc@@QAE@XZ: near
 l0048A900 equ ??0B_EventFunc@@QAE@XZ
+externdef ??0B_EventFuncs@@QAE@ABVB_Name@@@Z: near
+l0048A92B equ ??0B_EventFuncs@@QAE@ABVB_Name@@@Z
+externdef ?AddPyFunc@B_EventFuncs@@QAEXIPAUPyObject@@PBD@Z: near
+l0048AB7F equ ?AddPyFunc@B_EventFuncs@@QAEXIPAUPyObject@@PBD@Z
 externdef ?AddFunc@B_EventFuncs@@QAEXIP6AHPAVB_Entity@@I@ZPBD@Z: near
 l0048AEB2 equ ?AddFunc@B_EventFuncs@@QAEXIP6AHPAVB_Entity@@I@ZPBD@Z
 externdef ?CallFunc@B_EventFuncs@@QAEHPAVB_Entity@@I@Z: near

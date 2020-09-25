@@ -2542,17 +2542,26 @@ int SetEventTableFuncC(
 * Module:                 Blade.exe
 * Entry point:            0x0051CA1C
 */
-#ifdef BLD_NATIVE
+
 int SetEventTableFunc(
-        const char *event_table_name, const char *event_type, PyObject *func
+    const char *event_table_name, const char *event_type, PyObject *func
 )
 {
-    int (*bld_proc)(
-        const char *event_table_name, const char *event_type, PyObject *func
-) = NULL;
-    return bld_proc(event_table_name, event_type, func);
+    B_EventFuncs *table = gbl_event_tables.Get(event_table_name);
+    if (table == NULL)
+    {
+        table = new B_EventFuncs(event_table_name);
+        gbl_event_tables.Add(table);
+    }
+    if (func != NULL)
+    {
+        unsigned int eventIndex = gbl_events.GetEventIndex(event_type);
+        table->AddPyFunc(eventIndex, func, event_type);
+        return 1;
+    }
+    return -1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

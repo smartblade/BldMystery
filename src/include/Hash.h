@@ -6,6 +6,13 @@ template<class T>
 class B_Hash
 {
 public:
+    void Add(T *item)
+    {
+        int hashValue = HashValue(item->Id());
+        hash[hashValue].Append(item);
+        size++;
+    }
+
     int Remove(const B_Name &key, int deleteItem)
     {
         unsigned int hashValue = HashValue(key);
