@@ -38,8 +38,8 @@ public _no_sound
 g007C8ED8 equ _no_sound
 public _cdPlayer
 g007C91B0 equ _cdPlayer
-public _gbl_races
-g007C9878 equ _gbl_races
+public _gbl_bipeds
+g007C9878 equ _gbl_bipeds
 public _gbl_combustion_data
 g007D1650 equ _gbl_combustion_data
 public _gbl_solid_masks

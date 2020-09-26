@@ -615,7 +615,7 @@ B_Events gbl_events;
 B_PtrArray<B_ParticleGType> gbl_particle_types;
 B_YSoundDev *gbl_sound_device;
 B_Sound no_sound;
-B_PtrArray<B_Race> gbl_races;
+B_PtrArray<B_BipedData> gbl_bipeds;
 B_PtrArray<B_Combustion> gbl_combustion_data;
 B_PtrArray<B_SolidMask> gbl_solid_masks;
 EnControl gbl_en_control;

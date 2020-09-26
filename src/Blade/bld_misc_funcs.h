@@ -16,7 +16,7 @@ class B_Sound;
 class B_YSoundDev;
 
 
-class B_Race : public B_NamedObj
+class B_BipedData : public B_NamedObj
 {
 };
 
@@ -227,7 +227,7 @@ extern B_Sound no_sound;
 * Module:                 Blade.exe
 * Data address:           0x007C9878
 */
-extern B_PtrArray<B_Race> gbl_races;
+extern B_PtrArray<B_BipedData> gbl_bipeds;
 
 /*
 * Module:                 Blade.exe

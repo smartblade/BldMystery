@@ -279,7 +279,7 @@ int LoadAnmRaceData(const char *file_name)
 
 int GetnRaces()
 {
-    return gbl_races.size;
+    return gbl_bipeds.size;
 }
 
 
@@ -290,9 +290,9 @@ int GetnRaces()
 
 const char *GetRaceName(int index)
 {
-    if (index >= 0 && (unsigned int)index < gbl_races.size)
+    if (index >= 0 && (unsigned int)index < gbl_bipeds.size)
     {
-        B_Race *race = gbl_races.elements[index];
+        B_BipedData *race = gbl_bipeds.elements[index];
         return race->Id().String();
     }
     return NULL;
