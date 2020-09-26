@@ -245,7 +245,6 @@
 /EXPORT:RemoveBipedAction
 /EXPORT:AddBipedActionC
 /EXPORT:SetActionEventTable
-/EXPORT:SetEventTableFuncC
 /EXPORT:CleanArea
 /EXPORT:GetCharByName
 /EXPORT:LoadAllAnimations

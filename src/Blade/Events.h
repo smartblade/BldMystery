@@ -3,11 +3,8 @@
 #define EVENTS_H
 
 #include <BBLibc.h>
+#include <EventFuncC.h>
 
-
-class B_Entity;
-
-typedef int (*EventFn)(B_Entity *entity, unsigned int eventIndex);
 
 class B_EventFunc
 {

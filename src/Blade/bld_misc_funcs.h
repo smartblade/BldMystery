@@ -189,6 +189,12 @@ extern B_PtrArray<B_ClimbStartPose> gbl_climb_start_poses;
 
 /*
 * Module:                 Blade.exe
+* Data address:           0x007072F8
+*/
+extern B_Hash<B_EventFuncC> gbl_predefined_funcs;
+
+/*
+* Module:                 Blade.exe
 * Data address:           0x00708B48
 */
 extern B_Hash<B_EventFuncs> gbl_event_tables;

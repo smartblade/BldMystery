@@ -253,6 +253,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\EventFuncCTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\EventFuncsTests.cpp"
 				>
 			</File>

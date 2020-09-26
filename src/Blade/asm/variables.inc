@@ -24,6 +24,8 @@ public _gbl_anims
 g007072A8 equ _gbl_anims
 public _gbl_climb_start_poses
 g007072C8 equ _gbl_climb_start_poses
+public _gbl_predefined_funcs
+g007072F8 equ _gbl_predefined_funcs
 public _gbl_event_tables
 g00708B48 equ _gbl_event_tables
 public _gbl_events

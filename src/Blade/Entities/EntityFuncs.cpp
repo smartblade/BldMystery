@@ -2526,17 +2526,27 @@ int SetActionEventTable(
 * Module:                 Blade.exe
 * Entry point:            0x0051C4A4
 */
-#ifdef BLD_NATIVE
+
 int SetEventTableFuncC(
-        const char *s_unknown1, const char *s_unknown2, const char *s_unknown3
+    const char *event_table_name, const char *event_type, const char *func_name
 )
 {
-    int (*bld_proc)(
-        const char *s_unknown1, const char *s_unknown2, const char *s_unknown3
-) = NULL;
-    return bld_proc(s_unknown1, s_unknown2, s_unknown3);
+    B_EventFuncs *table = gbl_event_tables.Get(event_table_name);
+    if (table == NULL)
+    {
+        table = new B_EventFuncs(event_table_name);
+        gbl_event_tables.Add(table);
+    }
+    B_EventFuncC *func = gbl_predefined_funcs.Get(func_name);
+    if (func != NULL)
+    {
+        unsigned int eventIndex = gbl_events.GetEventIndex(event_type);
+        table->AddFunc(eventIndex, func->func, func_name);
+        return 1;
+    }
+    return -1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

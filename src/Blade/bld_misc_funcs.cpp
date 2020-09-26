@@ -609,6 +609,7 @@ B_Name *gbl_combustion_particle_names;
 B_World B_world;
 int gbl_action_areas_bit_mask;
 B_PtrArray<anim_t> gbl_anims;
+B_Hash<B_EventFuncC> gbl_predefined_funcs;
 B_Hash<B_EventFuncs> gbl_event_tables;
 B_Events gbl_events;
 B_PtrArray<B_ParticleGType> gbl_particle_types;

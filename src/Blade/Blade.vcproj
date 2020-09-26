@@ -598,6 +598,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\EventFuncC.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Events.h"
 				>
 			</File>

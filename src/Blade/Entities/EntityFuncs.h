@@ -674,7 +674,7 @@ LIB_EXP int SetActionEventTable(
     const char *race_name, const char *action_name, const char *table_name
 );
 LIB_EXP int SetEventTableFuncC(
-    const char *s_unknown1, const char *s_unknown2, const char *s_unknown3
+    const char *event_table_name, const char *event_type, const char *func_name
 );
 LIB_EXP int SetEventTableFunc(
     const char *event_table_name, const char *event_type, PyObject *func
