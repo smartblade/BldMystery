@@ -197,6 +197,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\BipedActionTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\BipedDataTests.cpp"
 				>
 			</File>

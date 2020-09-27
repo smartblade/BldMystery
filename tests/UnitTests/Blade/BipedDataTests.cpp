@@ -11,5 +11,6 @@ TEST(BipedDataTests, SizeOf)
 
 TEST(BipedDataTests, Fields)
 {
+    EXPECT_OFFSET_EQ(B_BipedData, actions, 0x030);
     EXPECT_OFFSET_EQ(B_BipedData, charType, 0x080);
 }

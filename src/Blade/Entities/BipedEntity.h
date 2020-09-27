@@ -8,6 +8,7 @@
 
 class B_CharType;
 class B_Event;
+class B_EventFuncs;
 
 class Unknown0049A1EF
 {
@@ -17,12 +18,22 @@ public:
 };
 
 
+class B_BipedAction : public B_NamedObj
+{
+public:
+    char unknown_fields[0x28];
+    B_EventFuncs *eventTable;
+};
+
+
 class B_BipedData : public B_NamedObj
 {
 public:
     B_BipedData(const B_Name &bipedName, const B_Name &kind);
 
-    char unknown_fields[0x74];
+    char unknown_fields[0x24];
+    B_PtrArray<B_BipedAction> actions;
+    char unknown_fields48[0x38];
     B_CharType *charType;
     char unknown_fields84[0x78];
 };

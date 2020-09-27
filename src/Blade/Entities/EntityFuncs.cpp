@@ -2525,17 +2525,37 @@ int AddBipedActionC(
 * Module:                 Blade.exe
 * Entry point:            0x0051BEF4
 */
-#ifdef BLD_NATIVE
+
 int SetActionEventTable(
-        const char *race_name, const char *action_name, const char *table_name
+    const char *race_name, const char *action_name, const char *table_name
 )
 {
-    int (*bld_proc)(
-        const char *race_name, const char *action_name, const char *table_name
-) = NULL;
-    return bld_proc(race_name, action_name, table_name);
+    B_BipedData *biped = gbl_bipeds.Find(race_name);
+    if (biped != NULL)
+    {
+        B_BipedAction *action = biped->actions.Find(action_name);
+        if (action != NULL)
+        {
+            B_EventFuncs *table = gbl_event_tables.Get(table_name);
+            if (table == NULL)
+            {
+                table = new B_EventFuncs(table_name);
+                gbl_event_tables.Add(table);
+             }
+            action->eventTable = table;
+            return 1;
+        }
+    }
+    else
+    {
+        mout << vararg(
+            "SetActionEventTable() -> Error: Trying to access non-existent biped_data: %s for action: %s.\n",
+            race_name,
+            action_name);
+    }
+    return -1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
