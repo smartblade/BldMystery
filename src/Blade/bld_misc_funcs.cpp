@@ -598,6 +598,10 @@ B_YSoundDev::B_YSoundDev()
 
 #include "CDPlayer.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 bool showStartupDialog;
 int clientRectWidth;
 int clientRectHeight;
@@ -615,7 +619,7 @@ B_Events gbl_events;
 B_PtrArray<B_ParticleGType> gbl_particle_types;
 B_YSoundDev *gbl_sound_device;
 B_Sound no_sound;
-B_PtrArray<B_BipedData> gbl_bipeds;
+void *gbl_bipeds;
 B_PtrArray<B_Combustion> gbl_combustion_data;
 B_PtrArray<B_SolidMask> gbl_solid_masks;
 EnControl gbl_en_control;
@@ -630,5 +634,9 @@ bld_net_cb *netCallbacks;
 GetNetInterfaceFunc getNetInterface;
 B_WinApp *gbl_application;
 CDPlayer *cdPlayer;
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

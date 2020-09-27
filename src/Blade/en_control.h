@@ -2,6 +2,10 @@
 
 #define EN_CONTROL_H
 
+#include <array.h>
+#include <chartype.h>
+
+
 class EnControl
 {
 public:
@@ -15,6 +19,20 @@ public:
     int StartRecordingDemo();
     int EndRecordingDemo(const char *name);
     int PlayDemo(const char *name);
+
+    int NumCharTypes()
+    {
+        return charTypes.size;
+    }
+
+    B_CharType *GetCharType(int i)
+    {
+        return charTypes[i];
+    }
+
+private:
+    char unknown_fields[0x3C];
+    B_PtrArray<B_CharType> charTypes;
 };
 
 #endif /* EN_CONTROL_H */

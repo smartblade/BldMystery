@@ -16,10 +16,6 @@ class B_Sound;
 class B_YSoundDev;
 
 
-class B_BipedData : public B_NamedObj
-{
-};
-
 class B_Combustion : public B_NamedObj
 {
 public:
@@ -222,12 +218,6 @@ extern B_YSoundDev *gbl_sound_device;
 * Data address:           0x007C8ED8
 */
 extern B_Sound no_sound;
-
-/*
-* Module:                 Blade.exe
-* Data address:           0x007C9878
-*/
-extern B_PtrArray<B_BipedData> gbl_bipeds;
 
 /*
 * Module:                 Blade.exe

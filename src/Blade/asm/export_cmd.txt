@@ -240,7 +240,6 @@
 /EXPORT:EntityCatchOnFire
 /EXPORT:GetNChildren
 /EXPORT:GetChild
-/EXPORT:CreateBipedData
 /EXPORT:AddBipedAction
 /EXPORT:RemoveBipedAction
 /EXPORT:AddBipedActionC

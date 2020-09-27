@@ -197,6 +197,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\BipedDataTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\BipedEntityTests.cpp"
 				>
 			</File>
@@ -233,6 +237,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\CharTypeTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\ClimbStartPoseTest.cpp"
 				>
 			</File>
@@ -250,6 +258,10 @@
 			</File>
 			<File
 				RelativePath=".\BBLibc\ElementCSVTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Blade\EnControlTests.cpp"
 				>
 			</File>
 			<File

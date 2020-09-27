@@ -976,6 +976,8 @@ externdef ??0Unknown004CD5EC@@QAE@MMMMMM@Z: near
 l004CD5EC equ ??0Unknown004CD5EC@@QAE@MMMMMM@Z
 externdef ?unknown004CD634@Unknown004CD5EC@@QAEXXZ: near
 l004CD634 equ ?unknown004CD634@Unknown004CD5EC@@QAEXXZ
+externdef ??0B_BipedData@@QAE@ABVB_Name@@0@Z: near
+l004D741B equ ??0B_BipedData@@QAE@ABVB_Name@@0@Z
 externdef ?DoAction@B_BipedEntity@@QAEXABVB_Name@@NHPAN@Z: near
 l004E3AD9 equ ?DoAction@B_BipedEntity@@QAEXABVB_Name@@NHPAN@Z
 externdef ?DoActionWI@B_BipedEntity@@QAEXABVB_Name@@HNNPANN@Z: near

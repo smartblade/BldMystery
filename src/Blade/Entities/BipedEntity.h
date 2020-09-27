@@ -6,6 +6,7 @@
 #include <Entities/Entity.h>
 
 
+class B_CharType;
 class B_Event;
 
 class Unknown0049A1EF
@@ -13,6 +14,17 @@ class Unknown0049A1EF
 public:
     char unknownFields[36];
     B_Matrix transform;
+};
+
+
+class B_BipedData : public B_NamedObj
+{
+public:
+    B_BipedData(const B_Name &bipedName, const B_Name &kind);
+
+    char unknown_fields[0x74];
+    B_CharType *charType;
+    char unknown_fields84[0x78];
 };
 
 
@@ -36,5 +48,19 @@ public:
     int unknown0370;
     char unknownFields0374[0xEB0];
 };
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x007C9878
+*/
+extern B_PtrArray<B_BipedData> gbl_bipeds;
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* BIPED_ENTITY_H */

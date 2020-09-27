@@ -590,6 +590,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\chartype.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Clock.h"
 				>
 			</File>

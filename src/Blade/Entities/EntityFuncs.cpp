@@ -2446,13 +2446,28 @@ const char *GetChild(const char *entity_name, int index)
 * Module:                 Blade.exe
 * Entry point:            0x0051B225
 */
-#ifdef BLD_NATIVE
+
 int CreateBipedData(const char *biped_name, const char *kind)
 {
-    int (*bld_proc)(const char *biped_name, const char *kind) = NULL;
-    return bld_proc(biped_name, kind);
+    B_BipedData *biped = gbl_bipeds.Find(biped_name);
+    if (biped != NULL)
+    {
+        mout << "EntityFuncs.cpp->CreateBipeData. Biped already created. Skipped... \n";
+        return 1;
+    }
+    B_BipedData *newBiped = new B_BipedData(biped_name, kind);
+    gbl_bipeds.Append(newBiped);
+    for (int i = 0; i < gbl_en_control.NumCharTypes(); i++)
+    {
+        if (!stricmp(gbl_en_control.GetCharType(i)->name.String(), kind))
+        {
+            gbl_en_control.GetCharType(i)->biped = newBiped;
+            newBiped->charType = gbl_en_control.GetCharType(i);
+        }
+    }
+    return 1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
