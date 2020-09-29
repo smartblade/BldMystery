@@ -2493,13 +2493,22 @@ int AddBipedAction(
 * Module:                 Blade.exe
 * Entry point:            0x0051B971
 */
-#ifdef BLD_NATIVE
-int RemoveBipedAction(const char *s_unknown1, const char *s_unknown2)
+
+int RemoveBipedAction(const char *race_name, const char *action_name)
 {
-    int (*bld_proc)(const char *s_unknown1, const char *s_unknown2) = NULL;
-    return bld_proc(s_unknown1, s_unknown2);
+    B_BipedData *biped = gbl_bipeds.Find(race_name);
+    if (biped != NULL)
+    {
+        B_BipedAction *action = biped->actions.Find(action_name);
+        if (action != NULL)
+        {
+            biped->actions.Remove(action_name, true);
+            return 1;
+        }
+    }
+    return -1;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

@@ -176,6 +176,18 @@ public:
         return size - 1;
     }
 
+    void Remove(const B_Name &name, int deleteItem)
+    {
+        for (unsigned int i = 0; i < size; i++)
+        {
+            if (name == elements[i]->Id())
+            {
+                Remove(i, deleteItem);
+                return;
+            }
+        }
+    }
+
     void Remove(unsigned int index, int deleteItem)
     {
         if (index >= this->size)

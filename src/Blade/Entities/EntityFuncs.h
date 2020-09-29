@@ -664,7 +664,7 @@ LIB_EXP int AddBipedAction(
     const char *animation_name, double d_unknown1, double d_unknown2,
     int i_unknown
 );
-LIB_EXP int RemoveBipedAction(const char *s_unknown1, const char *s_unknown2);
+LIB_EXP int RemoveBipedAction(const char *race_name, const char *action_name);
 LIB_EXP int AddBipedActionC(
     const char *char_name, const char *action_name,
     const char *animation_name, const char *s_unknown, double d_unknown1,

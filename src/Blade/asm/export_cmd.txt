@@ -241,7 +241,6 @@
 /EXPORT:GetNChildren
 /EXPORT:GetChild
 /EXPORT:AddBipedAction
-/EXPORT:RemoveBipedAction
 /EXPORT:AddBipedActionC
 /EXPORT:CleanArea
 /EXPORT:GetCharByName
