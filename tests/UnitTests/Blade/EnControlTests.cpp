@@ -2,7 +2,7 @@
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
 #define private public
-#include <en_control.h>
+#include <enemies/en_control.h>
 
 
 TEST(EnControlTests, Fields)

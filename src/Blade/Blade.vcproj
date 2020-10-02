@@ -316,10 +316,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\en_control.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Events.cpp"
 				>
 			</File>
@@ -528,6 +524,22 @@
 				</File>
 			</Filter>
 			<Filter
+				Name="enemies"
+				>
+				<File
+					RelativePath=".\enemies\chartype.h"
+					>
+				</File>
+				<File
+					RelativePath=".\enemies\en_control.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\enemies\en_control.h"
+					>
+				</File>
+			</Filter>
+			<Filter
 				Name="NetMod"
 				>
 				<File
@@ -590,15 +602,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\chartype.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Clock.h"
-				>
-			</File>
-			<File
-				RelativePath=".\en_control.h"
 				>
 			</File>
 			<File

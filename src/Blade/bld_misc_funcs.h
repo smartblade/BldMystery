@@ -7,7 +7,7 @@
 #include <BWorld/light.h>
 #include <Entities/SolidMask.h>
 #include <Events.h>
-#include "en_control.h"
+#include <enemies/en_control.h>
 
 class B_Events;
 class B_WinApp;

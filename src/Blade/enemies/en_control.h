@@ -3,7 +3,7 @@
 #define EN_CONTROL_H
 
 #include <array.h>
-#include <chartype.h>
+#include <enemies/chartype.h>
 
 
 class EnControl

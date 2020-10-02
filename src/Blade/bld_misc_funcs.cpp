@@ -504,7 +504,7 @@ anim_t *LoadFromHDAnim(const char *anm_name)
 
 
 
-/* File:                  en_control.cpp */
+/* File:                  enemies/en_control.cpp */
 /* Begin of file:         0x00590480 */
 /* End of file:           0x00596E90 */
 
