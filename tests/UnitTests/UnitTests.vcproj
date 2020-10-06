@@ -373,6 +373,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\SparkEntityTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\StringValue.cpp"
 				>
 			</File>

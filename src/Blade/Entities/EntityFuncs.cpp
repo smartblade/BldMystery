@@ -7,6 +7,7 @@
 #include <Entities/BipedEntity.h>
 #include <Entities/PersonEntity.h>
 #include <Entities/PhysicSIEntity.h>
+#include <Entities/SparkEntity.h>
 #include <Math/BSpline.h>
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
@@ -65,25 +66,30 @@ int ClearSpline(B_Spline *spline)
 * Module:                 Blade.exe
 * Entry point:            0x004FFF0D
 */
-#ifdef BLD_NATIVE
+
 B_Entity *CreateSpark(
-        const char *name, point_3d_t *spark_point, point_3d_t *spark_dir,
-        double d_unknown1, double d_unknown2, double d_unknown3,
-        double d_unknown4, double d_unknown5, int i_unknown6, int i_unknown7,
-        int i_unknown8, int i_unknown9, int i_unknown10, int i_unknown11,
-        float d_unknown12, float d_unknown13, float d_unknown14, int i_unknown15
+    const char *name, const B_Vector &spark_point, const B_Vector &spark_dir,
+    double d_unknown1, double d_unknown2, double d_unknown3,
+    double d_unknown4, double d_unknown5, int i_unknown6, int i_unknown7,
+    int i_unknown8, int i_unknown9, int i_unknown10, int i_unknown11,
+    float d_unknown12, float d_unknown13, float d_unknown14, int i_unknown15
 )
 {
-    B_Entity *(*bld_proc)(
-        const char *name, point_3d_t *spark_point, point_3d_t *spark_dir,
-        double d_unknown1, double d_unknown2, double d_unknown3,
-        double d_unknown4, double d_unknown5, int i_unknown6, int i_unknown7,
-        int i_unknown8, int i_unknown9, int i_unknown10, int i_unknown11,
-        float d_unknown12, float d_unknown13, float d_unknown14, int i_unknown15
-) = NULL;
-    return bld_proc(name, spark_point, spark_dir, d_unknown1, d_unknown2, d_unknown3, d_unknown4, d_unknown5, i_unknown6, i_unknown7, i_unknown8, i_unknown9, i_unknown10, i_unknown11, d_unknown12, d_unknown13, d_unknown14, i_unknown15);
+    B_Entity *entity = NULL;
+    B_SparkEntity *sparkEntity = NULL;
+    sparkEntity = new B_SparkEntity(
+        name, spark_point, spark_dir, d_unknown1, d_unknown2, d_unknown3,
+        d_unknown4, d_unknown5, B_Color(i_unknown6, i_unknown7, i_unknown8),
+        B_Color(i_unknown9, i_unknown10, i_unknown11), d_unknown12,
+        d_unknown13, d_unknown14, i_unknown15);
+    if (sparkEntity != NULL)
+    {
+        sparkEntity->PutToWorld();
+        entity = sparkEntity;
+    }
+    return entity;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

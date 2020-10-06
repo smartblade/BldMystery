@@ -14,9 +14,11 @@ class B_3DRasterDevice;
 
 class LIB_EXP B_Color {
 public:
-        virtual void MakeCons();
+    B_Color();
+    B_Color(byte r, byte g, byte b);
+    virtual void MakeCons();
 private:
-        byte r, g, b;
+    byte r, g, b;
 };
 
 

@@ -507,22 +507,16 @@ PyObject *create_spark(
 ) {
         B_Entity *entity;
         bld_py_entity_t *entity_obj;
-        point_3d_t spark_point, spark_dir;
 
         entity_obj = PyObject_NEW(bld_py_entity_t, &entityTypeObject);
         if (entity_obj == NULL)
                 return NULL;
 
-        spark_dir.x = x_spark_dir;
-        spark_dir.y = y_spark_dir;
-        spark_dir.z = z_spark_dir;
-
-        spark_point.x = x;
-        spark_point.y = y;
-        spark_point.z = z;
+        B_Vector spark_dir(x_spark_dir, y_spark_dir, z_spark_dir);
+        B_Vector spark_point(x, y, z);
 
         entity = CreateSpark(
-                name, &spark_point, &spark_dir, d_unknown1, d_unknown2,
+                name, spark_point, spark_dir, d_unknown1, d_unknown2,
                 d_unknown3, d_unknown4, d_unknown5, i_unknown6, i_unknown7,
                 i_unknown8, i_unknown9, i_unknown10, i_unknown11, d_unknown12,
                 d_unknown13, d_unknown14, i_unknown15

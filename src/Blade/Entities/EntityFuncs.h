@@ -16,12 +16,6 @@ typedef struct {
     int executed;
 } combo_t;
 
-typedef struct {
-    double x;
-    double y;
-    double z;
-} point_3d_t;
-
 
 #define ENT_INT_STATIC                    0
 #define ENT_INT_N_LIGHTS                  1
@@ -296,7 +290,7 @@ LIB_EXP void AddNodeSpline(
 LIB_EXP int CloseSpline(B_Spline *spline);
 LIB_EXP int ClearSpline(B_Spline *spline);
 LIB_EXP B_Entity *CreateSpark(
-    const char *name, point_3d_t *spark_point, point_3d_t *spark_dir,
+    const char *name, const B_Vector &spark_point, const B_Vector &spark_dir,
     double d_unknown1, double d_unknown2, double d_unknown3,
     double d_unknown4, double d_unknown5, int i_unknown6, int i_unknown7,
     int i_unknown8, int i_unknown9, int i_unknown10, int i_unknown11,

@@ -464,6 +464,12 @@ B_ODataFile& operator <<(B_ODataFile &file, const B_Combustion &combustion)
 
 
 
+/* File:                  Entities/SparkEntity.cpp */
+/* Begin of file:         0x005504E0 */
+/* End of file:           0x00552DF0 */
+
+
+
 /* Begin of file:         0x005728B0 */
 
 
@@ -585,6 +591,28 @@ public:
 };
 
 B_CameraEntity::B_CameraEntity(int, const B_Name &)
+{
+}
+
+class B_SparkEntity
+{
+public:
+    B_SparkEntity(
+        const B_Name &name, const B_Vector &spark_point,
+        const B_Vector &spark_dir, double d_unknown1, double d_unknown2,
+        double d_unknown3, double d_unknown4, double d_unknown5,
+        const B_Color &color1, const B_Color &color2, float d_unknown12,
+        float d_unknown13, float d_unknown14, int i_unknown15
+    );
+};
+
+B_SparkEntity::B_SparkEntity(
+    const B_Name &name, const B_Vector &spark_point,
+    const B_Vector &spark_dir, double d_unknown1, double d_unknown2,
+    double d_unknown3, double d_unknown4, double d_unknown5,
+    const B_Color &color1, const B_Color &color2, float d_unknown12,
+    float d_unknown13, float d_unknown14, int i_unknown15
+)
 {
 }
 

@@ -522,6 +522,14 @@
 					RelativePath=".\Entities\SolidMask.h"
 					>
 				</File>
+				<File
+					RelativePath=".\Entities\SparkEntity.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Entities\SparkEntity.h"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="enemies"

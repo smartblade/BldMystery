@@ -106,7 +106,6 @@
 /EXPORT:saveMusicState
 /EXPORT:loadSoundDataBase
 /EXPORT:saveSoundDataBase
-/EXPORT:CreateSpark
 /EXPORT:CreateEntity
 /EXPORT:CreateEntityDecal
 /EXPORT:GetEntitiesAt
