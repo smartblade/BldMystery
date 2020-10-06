@@ -5,6 +5,7 @@
 #include <Entities/AuraEntity.h>
 #include <Entities/CameraEntity.h>
 #include <Entities/BipedEntity.h>
+#include <Entities/PersonEntity.h>
 #include <Entities/PhysicSIEntity.h>
 #include <Math/BSpline.h>
 #include "bld_misc_funcs.h"
@@ -678,17 +679,21 @@ int ChangeEntityArrow(const char *entity_name, int is_arrow)
 * Module:                 Blade.exe
 * Entry point:            0x0050888E
 */
-#ifdef BLD_NATIVE
+
 int SetNextAttack(
-        const char *entity_name, const char *attack, int *res
+    const char *entity_name, const char *attack, int *res
 )
 {
-    int (*bld_proc)(
-        const char *entity_name, const char *attack, int *res
-) = NULL;
-    return bld_proc(entity_name, attack, res);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity != NULL && entity->IsClassOf(B_ENTITY_CID_PERSON))
+    {
+        B_PersonEntity *personEntity = static_cast<B_PersonEntity *>(entity);
+        *res = personEntity->combos.SetNextAttack(personEntity, attack);
+        return true;
+    }
+    return false;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

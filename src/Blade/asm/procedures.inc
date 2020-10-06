@@ -1410,6 +1410,8 @@ externdef _SetCharFuncProperty: near
 l005867AB equ _SetCharFuncProperty
 externdef _LoadFromHDAnim: near
 l00588F43 equ _LoadFromHDAnim
+externdef ?SetNextAttack@B_Combos@@QAEHPAVB_PersonEntity@@PBD@Z: near
+l0058C0D5 equ ?SetNextAttack@B_Combos@@QAEHPAVB_PersonEntity@@PBD@Z
 externdef ?SetTurnSpeed@EnControl@@QAEHPBDN@Z: near
 l00595124 equ ?SetTurnSpeed@EnControl@@QAEHPBDN@Z
 externdef ?SetAnimationFactor@EnControl@@QAEHPBDN@Z: near

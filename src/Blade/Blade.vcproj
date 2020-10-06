@@ -531,6 +531,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\enemies\Combos_Stuff.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\enemies\Combos_Stuff.h"
+					>
+				</File>
+				<File
 					RelativePath=".\enemies\en_control.cpp"
 					>
 				</File>

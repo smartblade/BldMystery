@@ -502,10 +502,12 @@ anim_t *LoadFromHDAnim(const char *anm_name)
 
 /* End of file:           0x0058B630 */
 
-
+/* File:                  enemies/Combos_Stuff.cpp */
+/* Begin of file:         0x0058B630 */
+/* End of file:           0x00590560 */
 
 /* File:                  enemies/en_control.cpp */
-/* Begin of file:         0x00590480 */
+/* Begin of file:         0x00590560 */
 /* End of file:           0x00596E90 */
 
 
