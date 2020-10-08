@@ -107,7 +107,6 @@
 /EXPORT:loadSoundDataBase
 /EXPORT:saveSoundDataBase
 /EXPORT:CreateEntity
-/EXPORT:CreateEntityDecal
 /EXPORT:GetEntitiesAt
 /EXPORT:GetEntitiesVisibleFrom
 /EXPORT:GetObjectEntitiesVisibleFrom

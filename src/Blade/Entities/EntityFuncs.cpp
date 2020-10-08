@@ -5,6 +5,7 @@
 #include <Entities/AuraEntity.h>
 #include <Entities/CameraEntity.h>
 #include <Entities/BipedEntity.h>
+#include <Entities/DecalEntity.h>
 #include <Entities/PersonEntity.h>
 #include <Entities/PhysicSIEntity.h>
 #include <Entities/SparkEntity.h>
@@ -134,19 +135,17 @@ int DeleteEntity(const char *name)
 * Module:                 Blade.exe
 * Entry point:            0x00503351
 */
-#ifdef BLD_NATIVE
+
 B_Entity *CreateEntityDecal(
-        const char *name, double x, double y, double z, int i_unknown,
-        double d_unknown1, double d_unknown2
-)
+    const char *name, double x, double y, double z, int i_unknown,
+    double d_unknown1, double d_unknown2)
 {
-    B_Entity *(*bld_proc)(
-        const char *name, double x, double y, double z, int i_unknown,
-        double d_unknown1, double d_unknown2
-) = NULL;
-    return bld_proc(name, x, y, z, i_unknown, d_unknown1, d_unknown2);
+    B_Entity *decalEntity = new B_DecalEntity(
+        name, B_Vector(x, y, z), d_unknown1, i_unknown, d_unknown2);
+    decalEntity->PutToWorld();
+    return decalEntity;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

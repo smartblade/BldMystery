@@ -253,6 +253,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\DecalEntityTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\BInputc\DInputKeybTests.cpp"
 				>
 			</File>

@@ -990,6 +990,8 @@ externdef ??0B_CameraEntity@@QAE@HABVB_Name@@@Z: near
 l004EAD20 equ ??0B_CameraEntity@@QAE@HABVB_Name@@@Z
 externdef ?unknown_004EB1AA@B_CameraEntity@@QAEXPAX@Z: near
 l004EB1AA equ ?unknown_004EB1AA@B_CameraEntity@@QAEXPAX@Z
+externdef ??0B_DecalEntity@@QAE@ABVB_Name@@ABVB_Vector@@NHN@Z: near
+l004F0847 equ ??0B_DecalEntity@@QAE@ABVB_Name@@ABVB_Vector@@NHN@Z
 externdef ??0B_Combustion@@QAE@ABVB_Name@@0NNNNNN@Z: near
 l004F65BE equ ??0B_Combustion@@QAE@ABVB_Name@@0NNNNNN@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Combustion@@@Z: near

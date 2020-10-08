@@ -594,6 +594,20 @@ B_CameraEntity::B_CameraEntity(int, const B_Name &)
 {
 }
 
+class B_DecalEntity
+{
+public:
+    B_DecalEntity(
+        const B_Name &name, const B_Vector &position, double d_unknown1,
+        int i_unknown, double d_unknown2);
+};
+
+B_DecalEntity::B_DecalEntity(
+    const B_Name &name, const B_Vector &position, double d_unknown1,
+    int i_unknown, double d_unknown2)
+{
+}
+
 class B_SparkEntity
 {
 public:
