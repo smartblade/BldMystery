@@ -322,6 +322,24 @@ void unknown_00497AE0()
 
 
 
+/* Begin of file:         0x004ABD40 */
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004AC6C2
+*/
+#ifdef BLD_NATIVE
+int newExclusionGroupId()
+{
+    return 0;
+}
+#endif
+
+/* End of file:           0x004ACB70 */
+
+
+
 /* File:                  Sound/SoundFuncs.cpp */
 /* Begin of file:         0x004BF1B0 */
 /* End of file:           0x004C09A0 */

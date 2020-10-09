@@ -312,13 +312,12 @@ int nEntities()
 * Module:                 Blade.exe
 * Entry point:            0x0050463C
 */
-#ifdef BLD_NATIVE
+
 int GetNewExclusionGroupId()
 {
-    int (*bld_proc)() = NULL;
-    return bld_proc();
+    return newExclusionGroupId();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
