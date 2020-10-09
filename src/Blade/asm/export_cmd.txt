@@ -114,7 +114,6 @@
 /EXPORT:SetCombos
 /EXPORT:GetCombos
 /EXPORT:GetWeaponCombos
-/EXPORT:nEntities
 /EXPORT:GetNewExclusionGroupId
 /EXPORT:ChangeEntityStatic
 /EXPORT:ChangeEntityActor

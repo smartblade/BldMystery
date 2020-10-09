@@ -301,13 +301,12 @@ int GetWeaponCombos(
 * Module:                 Blade.exe
 * Entry point:            0x00504629
 */
-#ifdef BLD_NATIVE
+
 int nEntities()
 {
-    int (*bld_proc)() = NULL;
-    return bld_proc();
+    return B_world.NumEntities();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

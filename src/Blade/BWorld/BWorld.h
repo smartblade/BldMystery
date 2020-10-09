@@ -93,6 +93,11 @@ public:
     int LoadEntitiesData(const char *filename);
     const char *GetTriggerSectorName(int index);
 
+    unsigned int NumEntities()
+    {
+        return entities.Size();
+    }
+
     bool RemoveEntity(const char *name, int deleteEntity)
     {
         assert(name);
