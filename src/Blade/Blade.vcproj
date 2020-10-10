@@ -523,6 +523,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Entities\PhysicSIEntity.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\Entities\PhysicSIEntity.h"
 					>
 				</File>

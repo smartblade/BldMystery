@@ -273,6 +273,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\EntityTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\EventFuncCTests.cpp"
 				>
 			</File>
@@ -398,6 +402,10 @@
 			</File>
 			<File
 				RelativePath=".\Blade\Unknown0049A1EFTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Blade\Unknown004ACF58Tests.cpp"
 				>
 			</File>
 			<File

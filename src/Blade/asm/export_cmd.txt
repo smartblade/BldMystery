@@ -114,7 +114,6 @@
 /EXPORT:SetCombos
 /EXPORT:GetCombos
 /EXPORT:GetWeaponCombos
-/EXPORT:ChangeEntityStatic
 /EXPORT:ChangeEntityActor
 /EXPORT:ChangeEntityPerson
 /EXPORT:ChangeEntityWeapon

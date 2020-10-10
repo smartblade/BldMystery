@@ -7,6 +7,7 @@
 
 #define PLAYER "Player1"
 
+#define B_ENTITY_CID_OBJECT            1
 #define B_ENTITY_CID_PHYSIC_OBJECT     2
 #define B_ENTITY_CID_PERSON            4
 #define B_ENTITY_CID_WEAPON            6
@@ -15,6 +16,9 @@
 #define B_ENTITY_CID_BIPED             21
 #define B_ENTITY_CID_CLIENT            26
 #define B_ENTITY_CID_AURA              27
+
+
+class B_Matrix;
 
 class B_Entity :  public B_NamedObj
 {
@@ -25,10 +29,10 @@ public:
     virtual int ClassId();
     virtual int IsClassOf(int type);
     virtual void unknown_method014();
-    virtual void unknown_method018();
+    virtual const char *GetKind();
     virtual void unknown_method01C();
     virtual void unknown_method020();
-    virtual void unknown_method024();
+    virtual void SetPose(const B_Matrix &pose);
     virtual void unknown_method028();
     virtual void unknown_method02C();
     virtual void unknown_method030();
@@ -73,7 +77,19 @@ public:
     virtual void unknown_method0CC();
     virtual void unknown_method0D0();
 
-    char unknownFields[404];
+    char unknownFields[0x38];
+    PyObject *timerFunc;
+    int unknown048;
+    PyObject *frameFunc;
+    int unknown050;
+    PyObject *hitFunc;
+    char unknownFields058[0x2C];
+    PyObject *func084;
+    char unknownFields088[0xD0];
+    PyObject *data;
+    int sendSectorMsgs;
+    int sendTriggerSectorMsgs;
+    char unknownFields164[0x3C];
 };
 
 #endif /* ENTITY_H */

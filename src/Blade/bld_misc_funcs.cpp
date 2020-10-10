@@ -626,6 +626,17 @@ B_DecalEntity::B_DecalEntity(
 {
 }
 
+class B_PhysicSIEntity
+{
+public:
+    B_PhysicSIEntity(const B_Name &name, const B_Name &kind, int load);
+};
+
+B_PhysicSIEntity::B_PhysicSIEntity(
+    const B_Name &name, const B_Name &kind, int load)
+{
+}
+
 class B_SparkEntity
 {
 public:

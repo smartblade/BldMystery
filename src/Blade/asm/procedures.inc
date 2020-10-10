@@ -1366,6 +1366,8 @@ externdef _SaveScreeShoot: near
 l0051D6DE equ _SaveScreeShoot
 externdef _CleanArea: near
 l0051D6FB equ _CleanArea
+externdef ??0B_PhysicSIEntity@@QAE@ABVB_Name@@0H@Z: near
+l00544919 equ ??0B_PhysicSIEntity@@QAE@ABVB_Name@@0H@Z
 externdef ??0B_SparkEntity@@QAE@ABVB_Name@@ABVB_Vector@@1NNNNNABVB_Color@@2MMMH@Z: near
 l00550B74 equ ??0B_SparkEntity@@QAE@ABVB_Name@@ABVB_Vector@@1NNNNNABVB_Color@@2MMMH@Z
 externdef ?InsideAA@unknown204@@QAEHH@Z: near

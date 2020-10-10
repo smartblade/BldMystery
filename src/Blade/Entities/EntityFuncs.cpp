@@ -622,13 +622,64 @@ int UseEntity(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x00504B5F
 */
-#ifdef BLD_NATIVE
+
 int ChangeEntityStatic(const char *entity_name, int is_static)
 {
-    int (*bld_proc)(const char *entity_name, int is_static) = NULL;
-    return bld_proc(entity_name, is_static);
+    B_Entity *entity = GetEntity(entity_name);
+    if (entity->ClassId() == B_ENTITY_CID_OBJECT && !is_static)
+    {
+        B_ObjectEntity *objectEntity = static_cast<B_ObjectEntity *>(entity);
+        B_Name name(objectEntity->name.String());
+        B_Name kind(objectEntity->GetKind());
+        B_Matrix pose = objectEntity->unknown1B8->pose;
+        PyObject *data = objectEntity->data;
+        Py_XINCREF(data);
+        int sendSectorMsgs = objectEntity->sendSectorMsgs;
+        int sendTriggerSectorMsgs = objectEntity->sendTriggerSectorMsgs;
+        PyObject *timerFunc = objectEntity->timerFunc;
+        Py_XINCREF(timerFunc);
+        PyObject *frameFunc = objectEntity->frameFunc;
+        Py_XINCREF(frameFunc);
+        PyObject *hitFunc = objectEntity->hitFunc;
+        Py_XINCREF(hitFunc);
+        PyObject *func084 = objectEntity->func084;
+        Py_XINCREF(func084);
+        B_world.RemoveEntity(name.String(), true);
+        B_PhysicSIEntity *physicEntity = new B_PhysicSIEntity(
+            name, kind, true);
+        if (physicEntity == NULL)
+        {
+            mout << "ChangeEntityKind() -> Error al crear B_PhysicSIEntity()\n";
+            return false;
+        }
+        physicEntity->SetPose(pose);
+        physicEntity->data = data;
+        physicEntity->sendSectorMsgs = sendSectorMsgs;
+        physicEntity->sendTriggerSectorMsgs = sendTriggerSectorMsgs;
+        physicEntity->PutToWorld();
+        physicEntity->timerFunc = timerFunc;
+        physicEntity->frameFunc = frameFunc;
+        physicEntity->hitFunc = hitFunc;
+        physicEntity->func084 = func084;
+        return true;
+    }
+    if (entity->ClassId() == B_ENTITY_CID_PHYSIC_OBJECT && is_static)
+    {
+        B_PhysicSIEntity *physicEntity = static_cast<B_PhysicSIEntity *>(
+            entity);
+        physicEntity->SetStatic(true);
+        return true;
+    }
+    if (entity->ClassId() == B_ENTITY_CID_PHYSIC_OBJECT && !is_static)
+    {
+        B_PhysicSIEntity *physicEntity = static_cast<B_PhysicSIEntity *>(
+            entity);
+        physicEntity->SetStatic(false);
+        return true;
+    }
+    return true;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
