@@ -8,6 +8,8 @@ public _gbl_world_points
 g005DF898 equ _gbl_world_points
 public _gbl_num_polygon_vertices
 g005DF8B0 equ _gbl_num_polygon_vertices
+public _yDirection
+g005DF908 equ _yDirection
 public _unused_sound_ptr
 g005DFB3C equ _unused_sound_ptr
 public _gbl_sound_device_id
@@ -22,8 +24,8 @@ public _gbl_action_areas_bit_mask
 g005E2514 equ _gbl_action_areas_bit_mask
 public _gbl_anims
 g007072A8 equ _gbl_anims
-public _gbl_climb_start_poses
-g007072C8 equ _gbl_climb_start_poses
+public _climbing_data_list
+g007072C8 equ _climbing_data_list
 public _gbl_predefined_funcs
 g007072F8 equ _gbl_predefined_funcs
 public _gbl_event_tables

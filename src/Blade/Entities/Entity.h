@@ -31,7 +31,7 @@ public:
     virtual void unknown_method014();
     virtual const char *GetKind();
     virtual void unknown_method01C();
-    virtual void unknown_method020();
+    virtual const B_Matrix &GetPose();
     virtual void SetPose(const B_Matrix &pose);
     virtual void unknown_method028();
     virtual void unknown_method02C();

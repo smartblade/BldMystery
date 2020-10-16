@@ -742,7 +742,7 @@ int SetNextAttack(
     if (entity != NULL && entity->IsClassOf(B_ENTITY_CID_PERSON))
     {
         B_PersonEntity *personEntity = static_cast<B_PersonEntity *>(entity);
-        *res = personEntity->combos.SetNextAttack(personEntity, attack);
+        *res = personEntity->per.combos.SetNextAttack(personEntity, attack);
         return true;
     }
     return false;

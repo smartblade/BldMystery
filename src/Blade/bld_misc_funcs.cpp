@@ -261,6 +261,10 @@ B_IDataFile &operator >>(B_IDataFile &file, anim_t *anim)
 
 /* End of file:           0x00477B90 */
 
+/* File:                  Climbing.cpp */
+/* Begin of file:         0x00477B90 */
+/* End of file:           0x0047B630 */
+
 
 
 /* File:                  Events.cpp */
@@ -510,20 +514,8 @@ int unknown204::InsideAA(int AA)
 
 
 
+/* File:                  enemies/chartype.cpp */
 /* Begin of file:         0x00586880 */
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x00588F43
-*/
-#ifdef BLD_NATIVE
-anim_t *LoadFromHDAnim(const char *anm_name)
-{
-    return NULL;
-}
-#endif
-
 /* End of file:           0x0058B630 */
 
 /* File:                  enemies/Combos_Stuff.cpp */
@@ -535,6 +527,9 @@ anim_t *LoadFromHDAnim(const char *anm_name)
 /* End of file:           0x00596E90 */
 
 
+/* File:                  Person.cpp */
+/* Begin of file:         0x005A3830 */
+/* End of file:           0x005A4F40 */
 
 /* File:                  simpleact.cpp */
 /* Begin of file:         0x005A4F40 */
@@ -670,6 +665,7 @@ B_YSoundDev::B_YSoundDev()
 }
 
 #include "CDPlayer.h"
+#include <Climbing.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -679,6 +675,7 @@ bool showStartupDialog;
 int clientRectWidth;
 int clientRectHeight;
 B_WorldPoints gbl_world_points;
+B_Vector yDirection;
 B_YSoundDev *unused_sound_ptr;
 int gbl_sound_device_id;
 B_Name *gbl_map_name;
@@ -686,6 +683,7 @@ B_Name *gbl_combustion_particle_names;
 B_World B_world;
 int gbl_action_areas_bit_mask;
 B_PtrArray<anim_t> gbl_anims;
+B_PtrArray<B_ClimbingData> climbing_data_list;
 B_Hash<B_EventFuncC> gbl_predefined_funcs;
 B_Hash<B_EventFuncs> gbl_event_tables;
 B_Events gbl_events;

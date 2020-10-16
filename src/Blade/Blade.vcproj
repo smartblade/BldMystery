@@ -316,6 +316,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Climbing.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Events.cpp"
 				>
 			</File>
@@ -333,6 +337,10 @@
 			</File>
 			<File
 				RelativePath=".\ObjExt.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Person.cpp"
 				>
 			</File>
 			<File
@@ -547,6 +555,10 @@
 				Name="enemies"
 				>
 				<File
+					RelativePath=".\enemies\chartype.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\enemies\chartype.h"
 					>
 				</File>
@@ -630,6 +642,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Climbing.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Clock.h"
 				>
 			</File>
@@ -647,6 +663,10 @@
 			</File>
 			<File
 				RelativePath=".\Matrix.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Person.h"
 				>
 			</File>
 			<File

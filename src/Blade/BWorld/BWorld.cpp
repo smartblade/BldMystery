@@ -142,6 +142,20 @@ int B_World::FindSectorIndex(const B_Vector &point)
 #endif
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x0043DC20
+* VC++ mangling:          ?IntersectSegment@B_World@@QAEHABVB_Vector@@00HHPAX@Z
+*/
+#ifdef BLD_NATIVE
+int B_World::IntersectSegment(
+    const B_Vector &startPoint, const B_Vector &endPoint,
+    const B_Vector &intersection, int flags, int, void *)
+{
+    return 0;
+}
+#endif
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................

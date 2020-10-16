@@ -757,7 +757,7 @@ B_PersonStatus *B_App::GetPlayerStatus1()
 {
     if (this->player1 != NULL)
         /* FIXME dangerous cast */
-        return &static_cast<B_PersonEntity *>(this->player1)->status1;
+        return &static_cast<B_PersonEntity *>(this->player1)->per.status1;
     return this->playerStatus1;
 }
 

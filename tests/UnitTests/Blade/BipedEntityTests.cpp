@@ -11,5 +11,7 @@ TEST(BipedEntityTests, SizeOf)
 
 TEST(BipedEntityTests, Fields)
 {
+    EXPECT_OFFSET_EQ(B_BipedEntity, data, 0x01A0);
+    EXPECT_OFFSET_EQ(B_BipedEntity, eventTable, 0x0310);
     EXPECT_OFFSET_EQ(B_BipedEntity, unknown0370, 0x0370);
 }

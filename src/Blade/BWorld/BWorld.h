@@ -73,6 +73,9 @@ public:
         double time, PyObject *func, PyObject *args, const char *name);
     void SetSun(int exists, const B_Vector &position);
     int FindSectorIndex(const B_Vector &point);
+    int IntersectSegment(
+        const B_Vector &startPoint, const B_Vector &endPoint,
+        const B_Vector &intersection, int flags, int, void *);
     const char *GenerateEntityName(const char *prefix);
     int SetTriggerSectorFunc(
         const char *trigger_sector_name, const char *func_type,

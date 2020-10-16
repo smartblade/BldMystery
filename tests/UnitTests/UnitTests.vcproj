@@ -245,7 +245,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Blade\ClimbStartPoseTest.cpp"
+				RelativePath=".\Blade\ClimbingDataTest.cpp"
 				>
 			</File>
 			<File
