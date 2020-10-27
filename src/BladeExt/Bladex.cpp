@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 
-#include <AnimationExt.h>
+#include <Control/AnimationExt.h>
 #include <Sound/SoundFuncs.h>
 #include <Entities/EntityFuncs.h>
 #include "bladex_int.h"

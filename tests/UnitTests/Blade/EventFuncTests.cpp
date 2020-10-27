@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
-#include "Events.h"
+#include <Control/Events.h>
 
 
 TEST(EventFuncTests, SizeOf)

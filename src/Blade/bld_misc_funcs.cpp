@@ -1,6 +1,6 @@
 
 #include <bld_system.h>
-#include "Events.h"
+#include <Control/Events.h>
 #include "ProcessorTimer.h"
 #include <Sound/Sound.h>
 #include "bld_misc_funcs.h"
@@ -175,7 +175,7 @@ void unknown_18F8_class::unknown_00451A21(void *, int, int)
 
 
 
-/* File:                  AnimationExt.cpp */
+/* File:                  Control/AnimationExt.cpp */
 /* Begin of file:         0x0046A9D0 */
 /* End of file:           0x0046F070 */
 
@@ -261,13 +261,13 @@ B_IDataFile &operator >>(B_IDataFile &file, anim_t *anim)
 
 /* End of file:           0x00477B90 */
 
-/* File:                  Climbing.cpp */
+/* File:                  Control/Climbing.cpp */
 /* Begin of file:         0x00477B90 */
 /* End of file:           0x0047B630 */
 
 
 
-/* File:                  Events.cpp */
+/* File:                  Control/Events.cpp */
 /* Begin of file:         0x0048A740 */
 /* End of file:           0x0048CBE0 */
 
@@ -665,7 +665,7 @@ B_YSoundDev::B_YSoundDev()
 }
 
 #include "CDPlayer.h"
-#include <Climbing.h>
+#include <Control/Climbing.h>
 
 #ifdef __cplusplus
 extern "C" {

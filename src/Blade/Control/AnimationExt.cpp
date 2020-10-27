@@ -1,7 +1,7 @@
 
 #include <bld_system.h>
 #define BUILD_LIB
-#include <AnimationExt.h>
+#include <Control/AnimationExt.h>
 
 /*
 ................................................................................

@@ -3,7 +3,7 @@
 #define EVENTS_H
 
 #include <BBLibc.h>
-#include <EventFuncC.h>
+#include <Control/EventFuncC.h>
 
 
 class B_EventFunc

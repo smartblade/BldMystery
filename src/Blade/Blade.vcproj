@@ -280,10 +280,6 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\AnimationExt.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\asmMain.asm"
 				>
 				<FileConfiguration
@@ -313,14 +309,6 @@
 			</File>
 			<File
 				RelativePath=".\CDExt.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Climbing.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Events.cpp"
 				>
 			</File>
 			<File
@@ -464,6 +452,42 @@
 				</File>
 				<File
 					RelativePath=".\BWorld\WorldToMBW.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Control"
+				>
+				<File
+					RelativePath=".\Control\anim.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Control\AnimationExt.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Control\AnimationExt.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Control\Climbing.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Control\Climbing.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Control\EventFuncC.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Control\Events.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Control\Events.h"
 					>
 				</File>
 			</Filter>
@@ -618,14 +642,6 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\anim.h"
-				>
-			</File>
-			<File
-				RelativePath="..\include\AnimationExt.h"
-				>
-			</File>
-			<File
 				RelativePath=".\BladeApp.h"
 				>
 			</File>
@@ -642,19 +658,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Climbing.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Clock.h"
-				>
-			</File>
-			<File
-				RelativePath=".\EventFuncC.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Events.h"
 				>
 			</File>
 			<File

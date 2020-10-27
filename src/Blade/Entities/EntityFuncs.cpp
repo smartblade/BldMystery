@@ -1,7 +1,7 @@
 
 #include <bld_system.h>
 #include <BladeApp.h>
-#include "Events.h"
+#include <Control/Events.h>
 #include <Entities/AuraEntity.h>
 #include <Entities/CameraEntity.h>
 #include <Entities/BipedEntity.h>

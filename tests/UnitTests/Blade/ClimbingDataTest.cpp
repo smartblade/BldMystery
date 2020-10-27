@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
-#include <Climbing.h>
+#include <Control/Climbing.h>
 
 
 TEST(ClimbingDataTests, SizeOf)

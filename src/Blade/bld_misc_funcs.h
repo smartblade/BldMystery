@@ -2,11 +2,11 @@
 #include <BWorld/BWorld.h>
 #include "Polygon.h"
 #include <bld_abstract_net.h>
-#include "anim.h"
+#include <Control/anim.h>
 #include <NetMod/libnet.h>
 #include <BWorld/light.h>
 #include <Entities/SolidMask.h>
-#include <Events.h>
+#include <Control/Events.h>
 #include <enemies/en_control.h>
 
 class B_Events;
