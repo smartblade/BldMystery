@@ -4,7 +4,7 @@
 
 #include <BBLibc.h>
 #include <enemies/Combos_Stuff.h>
-#include <simpleact.h>
+#include <Person/simpleact.h>
 
 
 class B_CharType;

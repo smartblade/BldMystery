@@ -7,7 +7,7 @@
 #include <Entities/BipedEntity.h>
 #include <Entities/CameraEntity.h>
 #include <Entities/PersonEntity.h>
-#include "simpleact.h"
+#include <Person/simpleact.h>
 #include "sound_device.h"
 #include <NetMod/libnet.h>
 #include <BInputc.h>

@@ -3,7 +3,7 @@
 #define PERSON_ENTITY_H
 
 #include <Entities/BipedEntity.h>
-#include <Person.h>
+#include <Person/Person.h>
 
 
 class B_PersonEntity : public B_BipedEntity

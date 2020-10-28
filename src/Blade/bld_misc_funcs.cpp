@@ -527,11 +527,11 @@ int unknown204::InsideAA(int AA)
 /* End of file:           0x00596E90 */
 
 
-/* File:                  Person.cpp */
+/* File:                  Person/Person.cpp */
 /* Begin of file:         0x005A3830 */
 /* End of file:           0x005A4F40 */
 
-/* File:                  simpleact.cpp */
+/* File:                  Person/simpleact.cpp */
 /* Begin of file:         0x005A4F40 */
 /* End of file:           0x005A74B0 */
 

@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
-#include "simpleact.h"
+#include <Person/simpleact.h>
 
 
 TEST(PersonStatusTests, SizeOf)

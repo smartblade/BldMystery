@@ -328,19 +328,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Person.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Plane.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\Polygon.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\simpleact.cpp"
 				>
 			</File>
 			<File
@@ -604,6 +596,26 @@
 				</File>
 			</Filter>
 			<Filter
+				Name="Person"
+				>
+				<File
+					RelativePath=".\Person\Person.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Person\Person.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Person\simpleact.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Person\simpleact.h"
+					>
+				</File>
+			</Filter>
+			<Filter
 				Name="NetMod"
 				>
 				<File
@@ -670,10 +682,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Person.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Plane.h"
 				>
 			</File>
@@ -687,10 +695,6 @@
 			</File>
 			<File
 				RelativePath=".\ProcessorTimer.h"
-				>
-			</File>
-			<File
-				RelativePath=".\simpleact.h"
 				>
 			</File>
 			<File
