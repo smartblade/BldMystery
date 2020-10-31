@@ -308,15 +308,15 @@ int SetSSSpeakerConfig(int config)
 */
 #ifdef BLD_NATIVE
 int CreateGhostSector(
-	const char *ghost_sector_name, const char *group_name,
-	double floor_height, double roof_height, int num_points,
-	point_2d_t *points
+    const char *ghost_sector_name, const char *group_name,
+    double floor_height, double roof_height, int num_points,
+    point_2d_t *points
 )
 {
     int (*bld_proc)(
-	const char *ghost_sector_name, const char *group_name,
-	double floor_height, double roof_height, int num_points,
-	point_2d_t *points
+    const char *ghost_sector_name, const char *group_name,
+    double floor_height, double roof_height, int num_points,
+    point_2d_t *points
 ) = NULL;
     return bld_proc(ghost_sector_name, group_name, floor_height, roof_height, num_points, points);
 }

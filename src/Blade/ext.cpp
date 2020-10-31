@@ -794,11 +794,11 @@ void SetInventoryFloatProperty()
 */
 #ifdef BLD_NATIVE
 int GetInventoryStringProperty(
-	const char *name, int property_kind, const char **value
+    const char *name, int property_kind, const char **value
 )
 {
     int (*bld_proc)(
-	const char *name, int property_kind, const char **value
+    const char *name, int property_kind, const char **value
 ) = NULL;
     return bld_proc(name, property_kind, value);
 }

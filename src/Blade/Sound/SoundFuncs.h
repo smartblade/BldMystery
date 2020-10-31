@@ -49,9 +49,9 @@ LIB_EXP int GetEAXOverride(void);
 LIB_EXP int SaveSSConfig(void);
 LIB_EXP int SetSSSpeakerConfig(int config);
 LIB_EXP int CreateGhostSector(
-	const char *ghost_sector_name, const char *group_name,
-	double floor_height, double roof_height, int num_points,
-	point_2d_t *points
+    const char *ghost_sector_name, const char *group_name,
+    double floor_height, double roof_height, int num_points,
+    point_2d_t *points
 );
 LIB_EXP int SetEAX(int eax_flag);
 LIB_EXP int SetGhostSectorSound(

@@ -9,7 +9,7 @@ LANGUAGE LANG_SPANISH, 0x3
 {
 POPUP "&File"
 {
-	MENUITEM "&Exit",  40001
+    MENUITEM "&Exit",  40001
 }
 }
 
@@ -76,26 +76,26 @@ FILETYPE 0x1
 {
 BLOCK "StringFileInfo"
 {
-	BLOCK "040904b0"
-	{
-		VALUE "Comments", ""
-		VALUE "CompanyName", "Rebel Act Studios"
-		VALUE "FileDescription", "Blade"
-		VALUE "FileVersion", "1, 0, 0, 1"
-		VALUE "InternalName", "Blade"
-		VALUE "LegalCopyright", "Copyright © 2001 Rebel Act Studios"
-		VALUE "LegalTrademarks", ""
-		VALUE "OriginalFilename", "Blade.exe"
-		VALUE "PrivateBuild", ""
-		VALUE "ProductName", "Blade Of Darkness"
-		VALUE "ProductVersion", "1, 0, 0, 1"
-		VALUE "SpecialBuild", ""
-	}
+    BLOCK "040904b0"
+    {
+        VALUE "Comments", ""
+        VALUE "CompanyName", "Rebel Act Studios"
+        VALUE "FileDescription", "Blade"
+        VALUE "FileVersion", "1, 0, 0, 1"
+        VALUE "InternalName", "Blade"
+        VALUE "LegalCopyright", "Copyright © 2001 Rebel Act Studios"
+        VALUE "LegalTrademarks", ""
+        VALUE "OriginalFilename", "Blade.exe"
+        VALUE "PrivateBuild", ""
+        VALUE "ProductName", "Blade Of Darkness"
+        VALUE "ProductVersion", "1, 0, 0, 1"
+        VALUE "SpecialBuild", ""
+    }
 }
 
 BLOCK "VarFileInfo"
 {
-	VALUE "Translation", 0x0409 0x04B0
+    VALUE "Translation", 0x0409 0x04B0
 }
 }
 

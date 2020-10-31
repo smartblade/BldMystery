@@ -165,7 +165,7 @@ LIB_EXP const char *GetActiveWeapon(const char *inv_name);
 LIB_EXP const char *GetActiveQuiver(const char *inv_name);
 LIB_EXP int AddWeapon(const char *inv_name, int flag, const char *weapon_name);
 LIB_EXP int GetInventoryStringProperty(
-	const char *name, int property_kind, const char **value
+    const char *name, int property_kind, const char **value
 );
 LIB_EXP int GetInventoryIntProperty(
         const char *name, int property_kind, int *value
@@ -318,9 +318,9 @@ LIB_EXP int SetMaterialSoundProperty(
 );
 LIB_EXP int nMaterials(void);
 LIB_EXP int CreateTriggerSector(
-	const char *trigger_sector_name, const char *group_name,
-	double floor_height, double roof_height, int num_points,
-	point_2d_t *points
+    const char *trigger_sector_name, const char *group_name,
+    double floor_height, double roof_height, int num_points,
+    point_2d_t *points
 );
 LIB_EXP int SetTriggerSectorFunc(
         const char *trigger_sector_name, const char *func_type, PyObject *func
