@@ -30,7 +30,12 @@ public:
     }
 
     virtual void set_flags(long flags) = 0;
-    virtual void unknown02C() = 0;
+
+    virtual long GetFlags()
+    {
+        return flags;
+    }
+
     virtual void unknown030() = 0;
     virtual void unknown034() = 0;
     virtual void unknown038() = 0;
@@ -185,6 +190,9 @@ public:
     virtual void unknown228() = 0;
     virtual int unknown22C() = 0;
     virtual const char *class_id_name() = 0;
+
+protected:
+    long flags;
 };
 
 LIB_EXP B_3DRasterDevice *B_3D_raster_device;
