@@ -11,7 +11,10 @@ class B_Font;
 
 class B_3DRasterDevice {
 public:
-    virtual void unknown000() = 0;
+    virtual ~B_3DRasterDevice()
+    {
+    }
+
     virtual void swap_buffers() = 0;
     virtual void unknown008(void *) = 0;
     virtual void set_gamma_correction(float gamma) = 0;
