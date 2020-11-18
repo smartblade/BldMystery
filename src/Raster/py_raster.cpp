@@ -404,7 +404,7 @@ PyObject *raster_SetVideoSettings(PyObject *self, PyObject *args) {
         ))
                 return NULL;
 
-        set_video_settings(gamma, contrast, brightness);
+        SetVideoSettings(gamma, contrast, brightness);
 
         Py_INCREF(Py_None);
         return Py_None;

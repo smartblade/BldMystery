@@ -84,8 +84,8 @@ void set_flags(long flags) {
 * Entry point:            0x10003612
 */
 
-void set_video_settings(float gamma, float contrast, float brightness) {
-        B_3D_raster_device->set_video_settings(
+void SetVideoSettings(float gamma, float contrast, float brightness) {
+        B_3D_raster_device->SetVideoSettings(
                 gamma, contrast, brightness
         );
 }

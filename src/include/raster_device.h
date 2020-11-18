@@ -23,9 +23,12 @@ public:
     virtual float get_contrast() = 0;
     virtual void set_brightness(float brightness) = 0;
     virtual float get_brightness() = 0;
-    virtual void set_video_settings(
-        float gamma, float contrast, float brightness
-    ) = 0;
+
+    virtual void SetVideoSettings(
+        float gamma, float contrast, float brightness)
+    {
+    }
+
     virtual void set_flags(long flags) = 0;
     virtual void unknown02C() = 0;
     virtual void unknown030() = 0;

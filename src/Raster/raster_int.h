@@ -28,7 +28,7 @@ extern int n_textures(void);
 extern int get_texture_info(
         int index, int &w, int &h, int &depth
 );
-extern void set_video_settings(float gamma, float contrast, float brightness);
+extern void SetVideoSettings(float gamma, float contrast, float brightness);
 extern void set_gamma_correction(float gamma);
 extern float get_gamma_correction(void);
 extern void set_contrast(float contrast);
