@@ -107,9 +107,12 @@ public:
     virtual void unknown100() = 0;
     virtual void unknown104() = 0;
     virtual void unknown108() = 0;
-    virtual void sys_write(
-        int x, int y, const char *text, byte r, byte g, byte b
-    ) = 0;
+
+    virtual void SysWrite(
+        int x, int y, const char *text, byte r, byte g, byte b)
+    {
+    }
+
     virtual void unknown110() = 0;
     virtual void unknown114() = 0;
     virtual void unknown118() = 0;

@@ -927,7 +927,7 @@ PyObject *raster_SysWrite(PyObject *self, PyObject *args) {
         ))
                 return NULL;
 
-        sys_write(x, y, text, r, g, b);
+        SysWrite(x, y, text, r, g, b);
 
         Py_INCREF(Py_None);
         return Py_None;

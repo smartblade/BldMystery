@@ -412,8 +412,8 @@ int write_text(const char *text) {
 * Entry point:            0x100039F5
 */
 
-void sys_write(int x, int y, const char *text, byte r, byte g, byte b) {
-        B_3D_raster_device->sys_write(x, y, text, r, g, b);
+void SysWrite(int x, int y, const char *text, byte r, byte g, byte b) {
+        B_3D_raster_device->SysWrite(x, y, text, r, g, b);
 }
 
 
