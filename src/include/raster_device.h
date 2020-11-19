@@ -55,8 +55,15 @@ public:
     virtual void unknown068() = 0;
     virtual void unknown06C() = 0;
     virtual void unknown070() = 0;
-    virtual void unknown074() = 0;
-    virtual void unknown078() = 0;
+
+    virtual void IncModeReflection()
+    {
+    }
+
+    virtual void DecModeReflection()
+    {
+    }
+
     virtual void unknown07C() = 0;
     virtual void unknown080() = 0;
     virtual void unknown084() = 0;
