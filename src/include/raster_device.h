@@ -74,8 +74,15 @@ public:
     virtual void unknown098() = 0;
     virtual void cls(boolean unknown1, boolean unknown2, boolean unknown3) = 0;
     virtual void unknown0A0() = 0;
-    virtual void set_dome_color(byte r, byte g, byte b) = 0;
-    virtual void get_dome_color(byte &r, byte &g, byte &b) = 0;
+
+    virtual void SetDomeColor(byte r, byte g, byte b)
+    {
+    }
+
+    virtual void GetDomeColor(byte &r, byte &g, byte &b)
+    {
+    }
+
     virtual void unknown0AC() = 0;
     virtual void unknown0B0() = 0;
     virtual void unknown0B4() = 0;

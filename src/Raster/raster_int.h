@@ -99,9 +99,9 @@ extern int get_current_mode(
 );
 extern const char *class_id_name(void);
 extern void set_font(long font_pointer);
-extern void get_dome_color(byte &r, byte &g, byte &b);
+extern void GetDomeColor(byte &r, byte &g, byte &b);
 extern void unify_render_buffers(void);
-extern void set_dome_color(byte r, byte g, byte b);
+extern void SetDomeColor(byte r, byte g, byte b);
 
 
 #endif /* RASTER_INT_H */

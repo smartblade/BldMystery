@@ -663,8 +663,8 @@ void set_font(long font_pointer) {
 * Entry point:            0x10003D30
 */
 
-void set_dome_color(byte r, byte g, byte b) {
-        B_3D_raster_device->set_dome_color(r, g, b);
+void SetDomeColor(byte r, byte g, byte b) {
+        B_3D_raster_device->SetDomeColor(r, g, b);
 }
 
 
@@ -673,8 +673,8 @@ void set_dome_color(byte r, byte g, byte b) {
 * Entry point:            0x10003D54
 */
 
-void get_dome_color(byte &r, byte &g, byte &b) {
-        B_3D_raster_device->get_dome_color(r, g, b);
+void GetDomeColor(byte &r, byte &g, byte &b) {
+        B_3D_raster_device->GetDomeColor(r, g, b);
 }
 
 

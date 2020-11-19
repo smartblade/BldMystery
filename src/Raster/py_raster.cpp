@@ -1412,7 +1412,7 @@ PyObject *raster_SetDomeColor(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "iii:SetDomeColor", &r, &g, &b))
                 return NULL;
 
-        set_dome_color(r, g, b);
+        SetDomeColor(r, g, b);
 
         Py_INCREF(Py_None);
         return Py_None;
@@ -1431,7 +1431,7 @@ PyObject *raster_GetDomeColor(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":GetDomeColor"))
                 return NULL;
 
-        get_dome_color(r, g, b);
+        GetDomeColor(r, g, b);
 
         Py_INCREF(Py_None);
         domeColorObj = Py_None;
