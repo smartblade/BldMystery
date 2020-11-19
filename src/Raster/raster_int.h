@@ -100,7 +100,7 @@ extern int get_current_mode(
 extern const char *class_id_name(void);
 extern void set_font(long font_pointer);
 extern void GetDomeColor(byte &r, byte &g, byte &b);
-extern void unify_render_buffers(void);
+extern void UnifyRenderBuffers(void);
 extern void SetDomeColor(byte r, byte g, byte b);
 
 

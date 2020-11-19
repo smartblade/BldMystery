@@ -1459,7 +1459,7 @@ PyObject *raster_UnifyRenderBuffers(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":UnifyRenderBuffers"))
                 return NULL;
 
-        unify_render_buffers();
+        UnifyRenderBuffers();
 
         Py_INCREF(Py_None);
         return Py_None;

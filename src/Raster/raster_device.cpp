@@ -683,6 +683,6 @@ void GetDomeColor(byte &r, byte &g, byte &b) {
 * Entry point:            0x10003DA6
 */
 
-void unify_render_buffers() {
-        B_3D_raster_device->unify_render_buffers();
+void UnifyRenderBuffers() {
+        B_3D_raster_device->UnifyRenderBuffers();
 }

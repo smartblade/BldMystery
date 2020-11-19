@@ -120,7 +120,11 @@ public:
     virtual void unknown120() = 0;
     virtual void unknown124() = 0;
     virtual void unknown128() = 0;
-    virtual void unify_render_buffers() = 0;
+
+    virtual void UnifyRenderBuffers()
+    {
+    }
+
     virtual void set_clip_window(int x, int y, int w, int h) = 0;
     virtual void get_clip_window(int &x, int &y, int &w, int &h) = 0;
     virtual void set_clip_active(int clip_active) = 0;
