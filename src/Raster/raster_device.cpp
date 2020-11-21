@@ -156,8 +156,8 @@ float get_brightness() {
 * Entry point:            0x100036C0
 */
 
-void set_text_mode(int text_mode) {
-        B_3D_raster_device->set_text_mode(text_mode);
+void SetTextMode(int text_mode) {
+        B_3D_raster_device->SetTextMode(text_mode);
 }
 
 

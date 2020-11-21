@@ -440,7 +440,7 @@ PyObject *raster_SetTextMode(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "i:SetTextMode", &text_mode))
                 return NULL;
 
-        set_text_mode(text_mode);
+        SetTextMode(text_mode);
 
         Py_INCREF(Py_None);
         return Py_None;

@@ -193,7 +193,11 @@ public:
         return currentFont;
     }
 
-    virtual void set_text_mode(int text_mode) = 0;
+    virtual void SetTextMode(int textMode)
+    {
+        this->textMode = textMode;
+    }
+
     virtual int get_text_mode() = 0;
     virtual void unknown194() = 0;
     virtual void unknown198() = 0;
@@ -262,6 +266,7 @@ protected:
     float posX;
     float posY;
     B_Font *currentFont;
+    int textMode;
 };
 
 LIB_EXP B_3DRasterDevice *B_3D_raster_device;
