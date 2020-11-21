@@ -172,7 +172,13 @@ public:
     virtual void set_fill_color(byte r, byte g, byte b) = 0;
     virtual void unknown16C() = 0;
     virtual void set_alpha(float alpha) = 0;
-    virtual void GetPosition(float &x, float &y) = 0;
+
+    virtual void GetPosition(float &x, float &y)
+    {
+        x = this->posX;
+        y = this->posY;
+    }
+
     virtual void unknown178() = 0;
     virtual void unknown17C() = 0;
     virtual float get_alpha() = 0;
