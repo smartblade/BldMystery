@@ -36,7 +36,7 @@ extern float get_contrast(void);
 extern void set_brightness(float brightness);
 extern float get_brightness(void);
 extern void SetTextMode(int text_mode);
-extern int get_text_mode(void);
+extern int GetTextMode(void);
 extern void set_text_scale(float scale_x, float scale_y);
 extern void get_text_scale(float &scale_x, float &scale_y);
 extern void Line(int x1, int y1, int x2, int y2);

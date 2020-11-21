@@ -458,7 +458,7 @@ PyObject *raster_GetTextMode(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":GetTextMode"))
                 return NULL;
 
-        text_mode = get_text_mode();
+        text_mode = GetTextMode();
 
         return Py_BuildValue("i", text_mode);
 }

@@ -198,7 +198,11 @@ public:
         this->textMode = textMode;
     }
 
-    virtual int get_text_mode() = 0;
+    virtual int GetTextMode()
+    {
+        return textMode;
+    }
+
     virtual void unknown194() = 0;
     virtual void unknown198() = 0;
     virtual void set_text_shadow(int x_shadow, int y_shadow) = 0;

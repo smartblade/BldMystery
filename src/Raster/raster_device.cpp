@@ -166,8 +166,8 @@ void SetTextMode(int text_mode) {
 * Entry point:            0x100036DD
 */
 
-int get_text_mode() {
-        return B_3D_raster_device->get_text_mode();
+int GetTextMode() {
+        return B_3D_raster_device->GetTextMode();
 }
 
 
