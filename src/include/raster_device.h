@@ -160,7 +160,12 @@ public:
     virtual void unknown17C() = 0;
     virtual float get_alpha() = 0;
     virtual void set_font(long font_pointer) = 0;
-    virtual B_Font *GetFont() = 0;
+
+    virtual B_Font *GetFont()
+    {
+        return currentFont;
+    }
+
     virtual void set_text_mode(int text_mode) = 0;
     virtual int get_text_mode() = 0;
     virtual void unknown194() = 0;
@@ -229,6 +234,7 @@ protected:
     long flags;
     float posX;
     float posY;
+    B_Font *currentFont;
 };
 
 LIB_EXP B_3DRasterDevice *B_3D_raster_device;
