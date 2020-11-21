@@ -182,7 +182,11 @@ public:
     virtual void unknown178() = 0;
     virtual void unknown17C() = 0;
     virtual float get_alpha() = 0;
-    virtual void set_font(long font_pointer) = 0;
+
+    virtual void SetFont(B_Font *font)
+    {
+        this->currentFont = font;
+    }
 
     virtual B_Font *GetFont()
     {

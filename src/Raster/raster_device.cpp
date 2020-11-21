@@ -653,8 +653,8 @@ const char *class_id_name() {
 * Entry point:            0x10003D13
 */
 
-void set_font(long font_pointer) {
-        B_3D_raster_device->set_font(font_pointer);
+void SetFont(long font_pointer) {
+        B_3D_raster_device->SetFont(INT_TO_PTR(font_pointer, B_Font));
 }
 
 

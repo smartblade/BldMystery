@@ -1176,7 +1176,7 @@ PyObject *raster_SetFont(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "l:SetFont", &font_pointer))
                 return NULL;
 
-        set_font(font_pointer);
+        SetFont(font_pointer);
 
         Py_INCREF(Py_None);
         return Py_None;

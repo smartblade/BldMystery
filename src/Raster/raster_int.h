@@ -98,7 +98,7 @@ extern int get_current_mode(
         int &unknown1, int &unknown2, int &unknown3, int &unknown4, int &unknown5
 );
 extern const char *class_id_name(void);
-extern void set_font(long font_pointer);
+extern void SetFont(long font_pointer);
 extern void GetDomeColor(byte &r, byte &g, byte &b);
 extern void UnifyRenderBuffers(void);
 extern void SetDomeColor(byte r, byte g, byte b);
