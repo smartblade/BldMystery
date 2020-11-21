@@ -219,7 +219,12 @@ public:
         this->textShadowY = textShadowY;
     }
 
-    virtual void get_text_shadow(int &x_shadow, int &y_shadow) = 0;
+    virtual void GetTextShadow(int &textShadowX, int &textShadowY)
+    {
+        textShadowX = this->textShadowX;
+        textShadowY = this->textShadowY;
+    }
+
     virtual void set_text_scale(float scale_x, float scale_y)  = 0;
     virtual void get_text_scale(float &scale_x, float &scale_y) = 0;
     virtual void set_text_blur(

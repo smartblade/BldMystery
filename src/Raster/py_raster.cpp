@@ -679,7 +679,7 @@ PyObject *raster_GetTextShadow(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":GetTextShadow"))
                 return NULL;
 
-        get_text_shadow(x_shadow, y_shadow);
+        GetTextShadow(x_shadow, y_shadow);
 
         Py_INCREF(Py_None);
         shadowObj = Py_None;

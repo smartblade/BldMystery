@@ -58,7 +58,7 @@ extern void get_text_blur(
 );
 extern float get_text_blur_alpha(void);
 extern void SetTextShadow(int x_shadow, int y_shadow);
-extern void get_text_shadow(int &x_shadow, int &y_shadow);
+extern void GetTextShadow(int &x_shadow, int &y_shadow);
 extern float get_alpha(void);
 extern void set_text_color(byte r, byte g, byte b);
 extern void set_text_alpha(float alpha);

@@ -352,8 +352,8 @@ void SetTextShadow(int x_shadow, int y_shadow) {
 * Entry point:            0x10003946
 */
 
-void get_text_shadow(int &x_shadow, int &y_shadow) {
-        B_3D_raster_device->get_text_shadow(x_shadow, y_shadow);
+void GetTextShadow(int &x_shadow, int &y_shadow) {
+        B_3D_raster_device->GetTextShadow(x_shadow, y_shadow);
 }
 
 
