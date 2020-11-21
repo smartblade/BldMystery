@@ -203,7 +203,11 @@ public:
         return textMode;
     }
 
-    virtual void unknown194() = 0;
+    virtual void SetTextDirection(int textDirection)
+    {
+        this->textDirection = textDirection;
+    }
+
     virtual void unknown198() = 0;
     virtual void set_text_shadow(int x_shadow, int y_shadow) = 0;
     virtual void get_text_shadow(int &x_shadow, int &y_shadow) = 0;
@@ -271,6 +275,7 @@ protected:
     float posY;
     B_Font *currentFont;
     int textMode;
+    int textDirection;
 };
 
 LIB_EXP B_3DRasterDevice *B_3D_raster_device;
