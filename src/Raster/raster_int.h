@@ -50,11 +50,11 @@ extern void set_fill_color(byte r, byte g, byte b);
 extern void set_alpha(float alpha);
 extern void set_text_blur_color(byte r, byte g, byte b);
 extern void set_text_blur_alpha(float alpha);
-extern void set_text_blur(
-        int unknown1, int unknown2, int unknown3, int unknown4
+extern void SetTextBlur(
+        int blurLeft, int blurTop, int blurRight, int blurBottom
 );
-extern void get_text_blur(
-        int &unknown1, int &unknown2, int &unknown3, int &unknown4
+extern void GetTextBlur(
+        int &blurLeft, int &blurTop, int &blurRight, int &blurBottom
 );
 extern float get_text_blur_alpha(void);
 extern void SetTextShadow(int x_shadow, int y_shadow);

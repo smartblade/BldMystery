@@ -237,11 +237,17 @@ public:
         scaleY = this->textScaleY;
     }
 
-    virtual void set_text_blur(
-        int unknown1, int unknown2, int unknown3, int unknown4
-    ) = 0;
-    virtual void get_text_blur(
-        int &unknown1, int &unknown2, int &unknown3, int &unknown4
+    virtual void SetTextBlur(
+        int blurLeft, int blurTop, int blurRight, int blurBottom)
+    {
+        this->blurLeft = blurLeft;
+        this->blurTop = blurTop;
+        this->blurRight = blurRight;
+        this->blurBottom = blurBottom;
+    }
+
+    virtual void GetTextBlur(
+        int &blurLeft, int &blurTop, int &blurRight, int &blurBottom
     ) = 0;
     virtual void set_text_color(byte r, byte g, byte b) = 0;
     virtual void unknown1B8() = 0;
@@ -304,6 +310,11 @@ protected:
     int textShadowY;
     float textScaleX;
     float textScaleY;
+    int mode;
+    int blurLeft;
+    int blurTop;
+    int blurRight;
+    int blurBottom;
 };
 
 LIB_EXP B_3DRasterDevice *B_3D_raster_device;

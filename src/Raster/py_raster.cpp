@@ -800,15 +800,15 @@ PyObject *raster_GetTextBlurAlpha(PyObject *self, PyObject *args) {
 */
 
 PyObject *raster_SetTextBlur(PyObject *self, PyObject *args) {
-        int unknown1, unknown2, unknown3, unknown4;
+        int blurLeft, blurTop, blurRight, blurBottom;
 
         if (!PyArg_ParseTuple(
-                args, "iiii:SetTextBlur", &unknown1, &unknown2, &unknown3,
-                &unknown4
+                args, "iiii:SetTextBlur", &blurLeft, &blurTop, &blurRight,
+                &blurBottom
         ))
                 return NULL;
 
-        set_text_blur(unknown1, unknown2, unknown3, unknown4);
+        SetTextBlur(blurLeft, blurTop, blurRight, blurBottom);
 
         Py_INCREF(Py_None);
         return Py_None;
@@ -822,28 +822,28 @@ PyObject *raster_SetTextBlur(PyObject *self, PyObject *args) {
 
 PyObject *raster_GetTextBlur(PyObject *self, PyObject *args) {
         PyObject *textBlurObj;
-        PyObject *unknown1Obj, *unknown2Obj, *unknown3Obj, *unknown4Obj;
-        int unknown1, unknown2, unknown3, unknown4;
+        PyObject *blurLeftObj, *blurTopObj, *blurRightObj, *blurBottomObj;
+        int blurLeft, blurTop, blurRight, blurBottom;
 
         if (!PyArg_ParseTuple(args, ":GetTextBlur"))
                 return NULL;
 
-        get_text_blur(unknown1, unknown2, unknown3, unknown4);
+        GetTextBlur(blurLeft, blurTop, blurRight, blurBottom);
 
         Py_INCREF(Py_None);
         textBlurObj = Py_None;
 
-        unknown1Obj = PyInt_FromLong(unknown1);
-        textBlurObj = add_item(textBlurObj, unknown1Obj);
+        blurLeftObj = PyInt_FromLong(blurLeft);
+        textBlurObj = add_item(textBlurObj, blurLeftObj);
 
-        unknown2Obj = PyInt_FromLong(unknown2);
-        textBlurObj = add_item(textBlurObj, unknown2Obj);
+        blurTopObj = PyInt_FromLong(blurTop);
+        textBlurObj = add_item(textBlurObj, blurTopObj);
 
-        unknown3Obj = PyInt_FromLong(unknown3);
-        textBlurObj = add_item(textBlurObj, unknown3Obj);
+        blurRightObj = PyInt_FromLong(blurRight);
+        textBlurObj = add_item(textBlurObj, blurRightObj);
 
-        unknown4Obj = PyInt_FromLong(unknown4);
-        textBlurObj = add_item(textBlurObj, unknown4Obj);
+        blurBottomObj = PyInt_FromLong(blurBottom);
+        textBlurObj = add_item(textBlurObj, blurBottomObj);
 
         return textBlurObj;
 }

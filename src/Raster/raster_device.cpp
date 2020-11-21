@@ -316,9 +316,9 @@ float get_text_blur_alpha() {
 * Entry point:            0x100038D3
 */
 
-void set_text_blur(int unknown1, int unknown2, int unknown3, int unknown4) {
-        B_3D_raster_device->set_text_blur(
-                unknown1, unknown2, unknown3, unknown4
+void SetTextBlur(int blurLeft, int blurTop, int blurRight, int blurBottom) {
+        B_3D_raster_device->SetTextBlur(
+                blurLeft, blurTop, blurRight, blurBottom
         );
 }
 
@@ -328,11 +328,11 @@ void set_text_blur(int unknown1, int unknown2, int unknown3, int unknown4) {
 * Entry point:            0x100038FC
 */
  
-void get_text_blur(
-        int &unknown1, int &unknown2, int &unknown3, int &unknown4
+void GetTextBlur(
+        int &blurLeft, int &blurTop, int &blurRight, int &blurBottom
 ) {
-        B_3D_raster_device->get_text_blur(
-                unknown1, unknown2, unknown3, unknown4
+        B_3D_raster_device->GetTextBlur(
+                blurLeft, blurTop, blurRight, blurBottom
         );
 }
 
