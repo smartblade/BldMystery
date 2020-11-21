@@ -129,8 +129,15 @@ public:
     virtual void get_clip_window(int &x, int &y, int &w, int &h) = 0;
     virtual void set_clip_active(int clip_active) = 0;
     virtual int get_clip_active() = 0;
-    virtual void unknown140() = 0;
-    virtual void unknown144() = 0;
+
+    virtual void SetTransformation()
+    {
+    }
+
+    virtual void ResetTransformation()
+    {
+    }
+
     virtual void line(int x1, int y1, int x2, int y2) = 0;
     virtual void line_to(int x, int y) = 0;
     virtual void rectangle(int x1, int y1, int x2, int y2) = 0;
