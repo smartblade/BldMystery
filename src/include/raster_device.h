@@ -231,7 +231,12 @@ public:
         this->textScaleY = scaleY;
     }
 
-    virtual void get_text_scale(float &scale_x, float &scale_y) = 0;
+    virtual void GetTextScale(float &scaleX, float &scaleY)
+    {
+        scaleX = this->textScaleX;
+        scaleY = this->textScaleY;
+    }
+
     virtual void set_text_blur(
         int unknown1, int unknown2, int unknown3, int unknown4
     ) = 0;

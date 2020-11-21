@@ -879,7 +879,7 @@ PyObject *raster_GetTextScale(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":GetTextScale"))
                 return NULL;
 
-        get_text_scale(scale_x, scale_y);
+        GetTextScale(scale_x, scale_y);
 
         Py_INCREF(Py_None);
         textScaleObj = Py_None;

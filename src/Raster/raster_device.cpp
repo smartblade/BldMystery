@@ -186,8 +186,8 @@ void SetTextScale(float scale_x, float scale_y) {
 * Entry point:            0x10003716
 */
 
-void get_text_scale(float &scale_x, float &scale_y) {
-        B_3D_raster_device->get_text_scale(scale_x, scale_y);
+void GetTextScale(float &scale_x, float &scale_y) {
+        B_3D_raster_device->GetTextScale(scale_x, scale_y);
 }
 
 
