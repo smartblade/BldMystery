@@ -511,7 +511,7 @@ PyObject *raster_Rectangle(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "iiii:Rectangle", &x1, &y1, &x2, &y2))
                 return NULL;
 
-        rectangle(x1, y1, x2, y2);
+        Rectangle(x1, y1, x2, y2);
 
         Py_INCREF(Py_None);
         return Py_None;
@@ -566,7 +566,7 @@ PyObject *raster_GetPosition(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":GetPosition"))
                 return NULL;
 
-        get_position(x, y);
+        GetPosition(x, y);
 
         Py_INCREF(Py_None);
         posObj = Py_None;

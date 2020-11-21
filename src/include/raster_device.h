@@ -146,7 +146,18 @@ public:
         SetPosition(x, y);
     }
 
-    virtual void rectangle(int x1, int y1, int x2, int y2) = 0;
+    virtual void Rectangle(int x1, int y1, int x2, int y2)
+    {
+        float origX, origY;
+        GetPosition(origX, origY);
+        SetPosition(x1, y1);
+        LineTo(x2, y1);
+        LineTo(x2, y2);
+        LineTo(x1, y2);
+        LineTo(x1, y1);
+        SetPosition(origX, origY);
+    }
+
     virtual void solid_rectangle(int x1, int y1, int x2, int y2) = 0;
     virtual void unknown158() = 0;
     virtual void SetPosition(float x, float y) = 0;
@@ -155,7 +166,7 @@ public:
     virtual void set_fill_color(byte r, byte g, byte b) = 0;
     virtual void unknown16C() = 0;
     virtual void set_alpha(float alpha) = 0;
-    virtual void get_position(float &x, float &y) = 0;
+    virtual void GetPosition(float &x, float &y) = 0;
     virtual void unknown178() = 0;
     virtual void unknown17C() = 0;
     virtual float get_alpha() = 0;

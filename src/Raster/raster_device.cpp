@@ -216,8 +216,8 @@ void LineTo(int x, int y) {
 * Entry point:            0x10003781
 */
 
-void rectangle(int x1, int y1, int x2, int y2) {
-        B_3D_raster_device->rectangle(x1, y1, x2, y2);
+void Rectangle(int x1, int y1, int x2, int y2) {
+        B_3D_raster_device->Rectangle(x1, y1, x2, y2);
 }
 
 
@@ -246,8 +246,8 @@ void SetPosition(float x, float y) {
 * Entry point:            0x100037F4
 */
 
-void get_position(float &x, float &y) {
-        B_3D_raster_device->get_position(x, y);
+void GetPosition(float &x, float &y) {
+        B_3D_raster_device->GetPosition(x, y);
 }
 
 
