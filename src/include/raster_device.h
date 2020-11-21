@@ -208,7 +208,11 @@ public:
         this->textDirection = textDirection;
     }
 
-    virtual void unknown198() = 0;
+    virtual int GetTextDirection()
+    {
+        return textDirection;
+    }
+
     virtual void set_text_shadow(int x_shadow, int y_shadow) = 0;
     virtual void get_text_shadow(int &x_shadow, int &y_shadow) = 0;
     virtual void set_text_scale(float scale_x, float scale_y)  = 0;
