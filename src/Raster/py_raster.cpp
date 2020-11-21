@@ -860,7 +860,7 @@ PyObject *raster_SetTextScale(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "ff:SetTextScale", &scale_x, &scale_y))
                 return NULL;
 
-        set_text_scale(scale_x, scale_y);
+        SetTextScale(scale_x, scale_y);
 
         Py_INCREF(Py_None);
         return Py_None;

@@ -225,7 +225,12 @@ public:
         textShadowY = this->textShadowY;
     }
 
-    virtual void set_text_scale(float scale_x, float scale_y)  = 0;
+    virtual void SetTextScale(float scaleX, float scaleY)
+    {
+        this->textScaleX = scaleX;
+        this->textScaleY = scaleY;
+    }
+
     virtual void get_text_scale(float &scale_x, float &scale_y) = 0;
     virtual void set_text_blur(
         int unknown1, int unknown2, int unknown3, int unknown4
@@ -292,6 +297,8 @@ protected:
     int textDirection;
     int textShadowX;
     int textShadowY;
+    float textScaleX;
+    float textScaleY;
 };
 
 LIB_EXP B_3DRasterDevice *B_3D_raster_device;

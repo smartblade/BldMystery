@@ -176,8 +176,8 @@ int GetTextMode() {
 * Entry point:            0x100036F5
 */
 
-void set_text_scale(float scale_x, float scale_y) {
-        B_3D_raster_device->set_text_scale(scale_x, scale_y);
+void SetTextScale(float scale_x, float scale_y) {
+        B_3D_raster_device->SetTextScale(scale_x, scale_y);
 }
 
 
