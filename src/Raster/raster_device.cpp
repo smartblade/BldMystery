@@ -196,8 +196,8 @@ void get_text_scale(float &scale_x, float &scale_y) {
 * Entry point:            0x10003737
 */
 
-void line(int x1, int y1, int x2, int y2) {
-        B_3D_raster_device->line(x1, y1, x2, y2);
+void Line(int x1, int y1, int x2, int y2) {
+        B_3D_raster_device->Line(x1, y1, x2, y2);
 }
 
 
@@ -206,8 +206,8 @@ void line(int x1, int y1, int x2, int y2) {
 * Entry point:            0x10003760
 */
 
-void line_to(int x, int y) {
-        B_3D_raster_device->line_to(x, y);
+void LineTo(int x, int y) {
+        B_3D_raster_device->LineTo(x, y);
 }
 
 
@@ -236,8 +236,8 @@ void solid_rectangle(int x1, int y1, int x2, int y2) {
 * Entry point:            0x100037D3
 */
 
-void set_position(float x, float y) {
-        B_3D_raster_device->set_position(x, y);
+void SetPosition(float x, float y) {
+        B_3D_raster_device->SetPosition(x, y);
 }
 
 

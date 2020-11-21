@@ -138,12 +138,18 @@ public:
     {
     }
 
-    virtual void line(int x1, int y1, int x2, int y2) = 0;
-    virtual void line_to(int x, int y) = 0;
+    virtual void Line(int x1, int y1, int x2, int y2) = 0;
+
+    virtual void LineTo(int x, int y)
+    {
+        Line(this->posX, this->posY, x, y);
+        SetPosition(x, y);
+    }
+
     virtual void rectangle(int x1, int y1, int x2, int y2) = 0;
     virtual void solid_rectangle(int x1, int y1, int x2, int y2) = 0;
     virtual void unknown158() = 0;
-    virtual void set_position(float x, float y) = 0;
+    virtual void SetPosition(float x, float y) = 0;
     virtual void set_pen_color(byte r, byte g, byte b) = 0;
     virtual void unknown164() = 0;
     virtual void set_fill_color(byte r, byte g, byte b) = 0;
@@ -221,6 +227,8 @@ public:
 
 protected:
     long flags;
+    float posX;
+    float posY;
 };
 
 LIB_EXP B_3DRasterDevice *B_3D_raster_device;

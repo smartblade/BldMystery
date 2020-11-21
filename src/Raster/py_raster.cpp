@@ -475,7 +475,7 @@ PyObject *raster_Line(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "iiii:Line", &x1, &y1, &x2, &y2))
                 return NULL;
 
-        line(x1, y1, x2, y2);
+        Line(x1, y1, x2, y2);
 
         Py_INCREF(Py_None);
         return Py_None;
@@ -493,7 +493,7 @@ PyObject *raster_LineTo(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "ii:LineTo", &x, &y))
                 return NULL;
 
-        line_to(x, y);
+        LineTo(x, y);
 
         Py_INCREF(Py_None);
         return Py_None;
@@ -547,7 +547,7 @@ PyObject *raster_SetPosition(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "ff:SetPosition", &x, &y))
                 return NULL;
 
-        set_position(x, y);
+        SetPosition(x, y);
 
         Py_INCREF(Py_None);
         return Py_None;
