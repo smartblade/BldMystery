@@ -660,7 +660,7 @@ PyObject *raster_SetTextShadow(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "ii:SetTextShadow", &x_shadow, &y_shadow))
                 return NULL;
 
-        set_text_shadow(x_shadow, y_shadow);
+        SetTextShadow(x_shadow, y_shadow);
 
         Py_INCREF(Py_None);
         return Py_None;

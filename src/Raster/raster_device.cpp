@@ -342,8 +342,8 @@ void get_text_blur(
 * Entry point:            0x10003925
 */
 
-void set_text_shadow(int x_shadow, int y_shadow) {
-         B_3D_raster_device->set_text_shadow(x_shadow, y_shadow);
+void SetTextShadow(int x_shadow, int y_shadow) {
+         B_3D_raster_device->SetTextShadow(x_shadow, y_shadow);
 }
 
 

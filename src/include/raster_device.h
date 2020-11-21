@@ -213,7 +213,12 @@ public:
         return textDirection;
     }
 
-    virtual void set_text_shadow(int x_shadow, int y_shadow) = 0;
+    virtual void SetTextShadow(int textShadowX, int textShadowY)
+    {
+        this->textShadowX = textShadowX;
+        this->textShadowY = textShadowY;
+    }
+
     virtual void get_text_shadow(int &x_shadow, int &y_shadow) = 0;
     virtual void set_text_scale(float scale_x, float scale_y)  = 0;
     virtual void get_text_scale(float &scale_x, float &scale_y) = 0;
@@ -280,6 +285,8 @@ protected:
     B_Font *currentFont;
     int textMode;
     int textDirection;
+    int textShadowX;
+    int textShadowY;
 };
 
 LIB_EXP B_3DRasterDevice *B_3D_raster_device;
