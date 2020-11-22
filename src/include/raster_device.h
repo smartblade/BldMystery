@@ -247,8 +247,14 @@ public:
     }
 
     virtual void GetTextBlur(
-        int &blurLeft, int &blurTop, int &blurRight, int &blurBottom
-    ) = 0;
+        int &blurLeft, int &blurTop, int &blurRight, int &blurBottom)
+    {
+        blurLeft = this->blurLeft;
+        blurTop = this->blurTop;
+        blurRight = this->blurRight;
+        blurBottom = this->blurBottom;
+    }
+
     virtual void set_text_color(byte r, byte g, byte b) = 0;
     virtual void unknown1B8() = 0;
     virtual void set_text_alpha(float alpha) = 0;
