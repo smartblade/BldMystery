@@ -1159,7 +1159,7 @@ PyObject *raster_GetRasterParameter(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "s:GetRasterParameter", &parameter))
                 return NULL;
 
-        value = get_raster_parameter(parameter);
+        value = GetRasterParameter(parameter);
 
         return Py_BuildValue("s", value);
 }

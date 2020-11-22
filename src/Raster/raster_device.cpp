@@ -517,8 +517,8 @@ int SetRasterParameter(const char *parameter, const char *value) {
 * Entry point:            0x10003B73
 */
 
-const char *get_raster_parameter(const char *parameter) {
-        return B_3D_raster_device->get_raster_parameter(parameter);
+const char *GetRasterParameter(const char *parameter) {
+        return B_3D_raster_device->GetRasterParameter(parameter);
 }
 
 

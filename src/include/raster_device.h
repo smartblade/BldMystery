@@ -300,7 +300,11 @@ public:
         return 0;
     }
 
-    virtual const char *get_raster_parameter(const char *parameter) = 0;
+    virtual const char *GetRasterParameter(const char *parameter)
+    {
+        return NULL;
+    }
+
     virtual void get_size(int &w, int &h) = 0;
     virtual void unknown204(int) = 0;
     virtual int set_window_size(int w, int h) = 0;

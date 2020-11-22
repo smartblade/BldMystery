@@ -82,7 +82,7 @@ extern void draw_bitmap(long bmp_handle, int w, int h);
 extern void set_clip_window(int x, int y, int w, int h);
 extern void GetClipWindow(int &x, int &y, int &w, int &h);
 extern int SetRasterParameter(const char *parameter, const char *value);
-extern const char *get_raster_parameter(const char * parameter);
+extern const char *GetRasterParameter(const char * parameter);
 extern void set_clip_active(int clip_active);
 extern int GetClipActive(void);
 extern void get_size(int &w, int &h);
