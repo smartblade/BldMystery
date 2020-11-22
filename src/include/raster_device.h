@@ -126,7 +126,15 @@ public:
     }
 
     virtual void set_clip_window(int x, int y, int w, int h) = 0;
-    virtual void get_clip_window(int &x, int &y, int &w, int &h) = 0;
+
+    virtual void GetClipWindow(int &x, int &y, int &w, int &h)
+    {
+        x = this->clipX;
+        y = this->clipY;
+        w = this->clipWidth;
+        h = this->clipHeight;
+    }
+
     virtual void set_clip_active(int clip_active) = 0;
     virtual int get_clip_active() = 0;
 
@@ -321,6 +329,10 @@ protected:
     int blurTop;
     int blurRight;
     int blurBottom;
+    int clipX;
+    int clipY;
+    int clipWidth;
+    int clipHeight;
 };
 
 LIB_EXP B_3DRasterDevice *B_3D_raster_device;

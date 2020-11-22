@@ -1072,7 +1072,7 @@ PyObject *raster_GetClipWindow(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":GetClipWindow"))
                 return NULL;
 
-        get_clip_window(x, y, w, h);
+        GetClipWindow(x, y, w, h);
 
         Py_INCREF(Py_None);
         clipWindowObj = Py_None;

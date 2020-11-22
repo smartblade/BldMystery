@@ -497,8 +497,8 @@ void set_clip_window(int x, int y, int w, int h) {
 * Entry point:            0x10003B29
 */
 
-void get_clip_window(int &x, int &y, int &w, int &h) {
-        B_3D_raster_device->get_clip_window(x, y, w, h);
+void GetClipWindow(int &x, int &y, int &w, int &h) {
+        B_3D_raster_device->GetClipWindow(x, y, w, h);
 }
 
 
