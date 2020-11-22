@@ -85,17 +85,17 @@ extern int SetRasterParameter(const char *parameter, const char *value);
 extern const char *GetRasterParameter(const char * parameter);
 extern void set_clip_active(int clip_active);
 extern int GetClipActive(void);
-extern void get_size(int &w, int &h);
+extern void GetSize(int &w, int &h);
 extern int set_window_size(int w, int h);
-extern int get_window_size(int &w, int &h);
-extern int full_screen(void);
+extern int GetWindowSize(int &w, int &h);
+extern int FullScreen(void);
 extern int n_video_modes(void);
 extern int get_video_mode_dscr(
         int mode_index, int &depth, int &w, int &h, int &unknown, int &frequency
 );
 extern int set_video_mode(int mode_index);
-extern int get_current_mode(
-        int &unknown1, int &unknown2, int &unknown3, int &unknown4, int &unknown5
+extern int GetCurrentMode(
+        int &unknown1, int &w, int &h, int &unknown4, int &unknown5
 );
 extern const char *class_id_name(void);
 extern void SetFont(long font_pointer);

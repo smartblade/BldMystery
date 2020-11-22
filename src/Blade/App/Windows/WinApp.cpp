@@ -567,7 +567,7 @@ LRESULT B_WinApp::WindowProcedure(
             }
             if (B_3D_raster_device != NULL)
             {
-                if (B_3D_raster_device->full_screen())
+                if (B_3D_raster_device->FullScreen())
                 {
                     if (!this->isActive)
                     {

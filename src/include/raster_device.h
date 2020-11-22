@@ -305,10 +305,22 @@ public:
         return NULL;
     }
 
-    virtual void get_size(int &w, int &h) = 0;
+    virtual void GetSize(int &w, int &h)
+    {
+        if (FullScreen())
+        {
+            int dummy1, dummy2, dummy3;
+            GetCurrentMode(dummy1, w, h, dummy2, dummy3);
+        }
+        else
+        {
+            GetWindowSize(w, h);
+        }
+    }
+
     virtual void unknown204(int) = 0;
     virtual int set_window_size(int w, int h) = 0;
-    virtual int get_window_size(int &w, int &h) = 0;
+    virtual int GetWindowSize(int &w, int &h) = 0;
     virtual int n_video_modes() = 0;
     virtual int get_video_mode_dscr(
         int mode_index, int &depth, int &w, int &h, int &unknown,
@@ -316,11 +328,11 @@ public:
     ) = 0;
     virtual void unknown218() = 0;
     virtual int set_video_mode(int mode_index) = 0;
-    virtual int get_current_mode(
-        int &unknown1, int &unknown2, int &unknown3, int &unknown4,
+    virtual int GetCurrentMode(
+        int &unknown1, int &w, int &h, int &unknown4,
         int &unknown5
     ) = 0;
-    virtual int full_screen() = 0;
+    virtual int FullScreen() = 0;
     virtual void unknown228() = 0;
     virtual int unknown22C() = 0;
     virtual const char *class_id_name() = 0;

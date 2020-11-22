@@ -547,8 +547,8 @@ int GetClipActive() {
 * Entry point:            0x10003BC5
 */
 
-void get_size(int &w, int &h) {
-        B_3D_raster_device->get_size(w, h);
+void GetSize(int &w, int &h) {
+        B_3D_raster_device->GetSize(w, h);
 }
 
 
@@ -567,8 +567,8 @@ int set_window_size(int w, int h) {
 * Entry point:            0x10003C07
 */
 
-int get_window_size(int &w, int &h) {
-        return B_3D_raster_device->get_window_size(w, h);
+int GetWindowSize(int &w, int &h) {
+        return B_3D_raster_device->GetWindowSize(w, h);
 }
 
 
@@ -577,8 +577,8 @@ int get_window_size(int &w, int &h) {
 * Entry point:            0x10003C28
 */
 
-int full_screen() {
-        return B_3D_raster_device->full_screen();
+int FullScreen() {
+        return B_3D_raster_device->FullScreen();
 }
 
 
@@ -628,12 +628,12 @@ int set_video_mode(int mode_index) {
 * Entry point:            0x10003CCE
 */
 
-int get_current_mode(
-        int &unknown1, int &unknown2, int &unknown3, int &unknown4,
+int GetCurrentMode(
+        int &unknown1, int &w, int &h, int &unknown4,
         int &unknown5
 ) {
-        return B_3D_raster_device->get_current_mode(
-                unknown1, unknown2, unknown3, unknown4, unknown5
+        return B_3D_raster_device->GetCurrentMode(
+                unknown1, w, h, unknown4, unknown5
         );
 }
 

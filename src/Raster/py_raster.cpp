@@ -1195,7 +1195,7 @@ PyObject *raster_GetSize(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":GetSize"))
                 return NULL;
 
-        get_size(w, h);
+        GetSize(w, h);
 
         Py_INCREF(Py_None);
         sizeObj = Py_None;
@@ -1242,7 +1242,7 @@ PyObject *raster_GetWindowSize(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":GetWindowSize"))
                 return NULL;
 
-        code = get_window_size(w, h);
+        code = GetWindowSize(w, h);
 
         sizeObj = Py_BuildValue("i", code);
 
@@ -1267,7 +1267,7 @@ PyObject *raster_FullScreen(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":FullScreen"))
                 return NULL;
 
-        code = full_screen();
+        code = FullScreen();
 
         return Py_BuildValue("i", code);
 }
@@ -1351,16 +1351,16 @@ PyObject *raster_SetVideoMode(PyObject *self, PyObject *args) {
 */
 
 PyObject *raster_GetCurrentMode(PyObject *self, PyObject *args) {
-        PyObject *curModeObj, *unknown1Obj, *unknown2Obj, *unknown3Obj;
+        PyObject *curModeObj, *unknown1Obj, *wObj, *hObj;
         PyObject *unknown4Obj, *unknown5Obj;
-        int unknown1, unknown2, unknown3, unknown4, unknown5;
+        int unknown1, w, h, unknown4, unknown5;
         int code;
 
         if (!PyArg_ParseTuple(args, ":GetCurrentMode"))
                 return NULL;
 
-        code = get_current_mode(
-                unknown1, unknown2, unknown3, unknown4, unknown5
+        code = GetCurrentMode(
+                unknown1, w, h, unknown4, unknown5
         );
 
         curModeObj = Py_BuildValue("i", code);
@@ -1368,11 +1368,11 @@ PyObject *raster_GetCurrentMode(PyObject *self, PyObject *args) {
         unknown1Obj = PyInt_FromLong(unknown1);
         curModeObj = add_item(curModeObj, unknown1Obj);
 
-        unknown2Obj = PyInt_FromLong(unknown2);
-        curModeObj = add_item(curModeObj, unknown2Obj);
+        wObj = PyInt_FromLong(w);
+        curModeObj = add_item(curModeObj, wObj);
 
-        unknown3Obj = PyInt_FromLong(unknown3);
-        curModeObj = add_item(curModeObj, unknown3Obj);
+        hObj = PyInt_FromLong(h);
+        curModeObj = add_item(curModeObj, hObj);
 
         unknown4Obj = PyInt_FromLong(unknown4);
         curModeObj = add_item(curModeObj, unknown4Obj);
