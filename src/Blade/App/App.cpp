@@ -266,7 +266,7 @@ int B_App::SetAppMode(const B_Name &mode)
         this->b05D4 = true;
         this->b05D1 = true;
         this->RestartTime();
-        B_3D_raster_device->set_raster_parameter("CacheStretchImages", "0");
+        B_3D_raster_device->SetRasterParameter("CacheStretchImages", "0");
         return true;
     }
     if (mode == "Game")
@@ -275,7 +275,7 @@ int B_App::SetAppMode(const B_Name &mode)
         this->b05D4 = true;
         this->b05D1 = true;
         this->RestartTime();
-        B_3D_raster_device->set_raster_parameter("CacheStretchImages", "0");
+        B_3D_raster_device->SetRasterParameter("CacheStretchImages", "0");
         return true;
     }
     if (mode == "Menu")
@@ -284,7 +284,7 @@ int B_App::SetAppMode(const B_Name &mode)
         this->b05D4 = false;
         this->b05D1 = false;
         this->StopTime();
-        B_3D_raster_device->set_raster_parameter("CacheStretchImages", "1");
+        B_3D_raster_device->SetRasterParameter("CacheStretchImages", "1");
         return true;
     }
     mout << vararg(

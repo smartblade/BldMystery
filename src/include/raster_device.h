@@ -293,9 +293,13 @@ public:
         const char *stretch_or_centered, long image_data
     ) = 0;
     virtual void remove_background_image() = 0;
-    virtual int set_raster_parameter(
-        const char *parameter, const char *value
-    ) = 0;
+
+    virtual int SetRasterParameter(
+        const char *parameter, const char *value)
+    {
+        return 0;
+    }
+
     virtual const char *get_raster_parameter(const char *parameter) = 0;
     virtual void get_size(int &w, int &h) = 0;
     virtual void unknown204(int) = 0;

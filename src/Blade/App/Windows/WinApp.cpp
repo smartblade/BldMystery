@@ -782,7 +782,7 @@ int B_WinApp::LoadRasterDLL(const char *rasterDllName)
                 this->window, this->module, this->rasterLibrary);
             if (B_3D_raster_device != NULL)
             {
-                B_3D_raster_device->set_raster_parameter(
+                B_3D_raster_device->SetRasterParameter(
                     "GetINISettings", getIniSettings);
                 return true;
             }

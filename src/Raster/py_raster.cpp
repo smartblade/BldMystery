@@ -1142,7 +1142,7 @@ PyObject *raster_SetRasterParameter(PyObject *self, PyObject *args) {
         ))
                 return NULL;
 
-        code = set_raster_parameter(parameter, value);
+        code = SetRasterParameter(parameter, value);
 
         return Py_BuildValue("i", code);
 }

@@ -507,8 +507,8 @@ void GetClipWindow(int &x, int &y, int &w, int &h) {
 * Entry point:            0x10003B52
 */
 
-int set_raster_parameter(const char *parameter, const char *value) {
-        return B_3D_raster_device->set_raster_parameter(parameter, value);
+int SetRasterParameter(const char *parameter, const char *value) {
+        return B_3D_raster_device->SetRasterParameter(parameter, value);
 }
 
 
