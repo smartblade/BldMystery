@@ -537,8 +537,8 @@ void set_clip_active(int clip_active) {
 * Entry point:            0x10003BAD
 */
 
-int get_clip_active() {
-        return B_3D_raster_device->get_clip_active();
+int GetClipActive() {
+        return B_3D_raster_device->GetClipActive();
 }
 
 

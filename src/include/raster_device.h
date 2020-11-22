@@ -136,7 +136,11 @@ public:
     }
 
     virtual void set_clip_active(int clip_active) = 0;
-    virtual int get_clip_active() = 0;
+
+    virtual int GetClipActive()
+    {
+        return clipActive;
+    }
 
     virtual void SetTransformation()
     {
@@ -333,6 +337,7 @@ protected:
     int clipY;
     int clipWidth;
     int clipHeight;
+    int clipActive;
 };
 
 LIB_EXP B_3DRasterDevice *B_3D_raster_device;

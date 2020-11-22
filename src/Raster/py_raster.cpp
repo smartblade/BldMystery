@@ -1122,7 +1122,7 @@ PyObject *raster_GetClipActive(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":GetClipActive"))
                 return NULL;
 
-        clip_active = get_clip_active(); 
+        clip_active = GetClipActive();
 
         return Py_BuildValue("i", clip_active);
  }

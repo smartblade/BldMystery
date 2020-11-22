@@ -84,7 +84,7 @@ extern void GetClipWindow(int &x, int &y, int &w, int &h);
 extern int set_raster_parameter(const char *parameter, const char *value);
 extern const char *get_raster_parameter(const char * parameter);
 extern void set_clip_active(int clip_active);
-extern int get_clip_active(void);
+extern int GetClipActive(void);
 extern void get_size(int &w, int &h);
 extern int set_window_size(int w, int h);
 extern int get_window_size(int &w, int &h);
