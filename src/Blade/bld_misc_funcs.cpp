@@ -486,6 +486,12 @@ B_ODataFile& operator <<(B_ODataFile &file, const B_Combustion &combustion)
 
 
 
+/* File:                  Entities/PersonEntity.cpp */
+/* Begin of file:         0x00531060 */
+/* End of file:           0x00544700 */
+
+
+
 /* File:                  Entities/SparkEntity.cpp */
 /* Begin of file:         0x005504E0 */
 /* End of file:           0x00552DF0 */

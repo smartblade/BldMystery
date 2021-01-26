@@ -1912,17 +1912,38 @@ int RemoveFromInventLeft2(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x00519375
 */
-#ifdef BLD_NATIVE
+
 int CanISee(
-        const char *entity_name, const char *seen_entity_name, int *canISee
-)
+    const char *entity_name, const char *seen_entity_name, int *canISee)
 {
-    int (*bld_proc)(
-        const char *entity_name, const char *seen_entity_name, int *canISee
-) = NULL;
-    return bld_proc(entity_name, seen_entity_name, canISee);
+    B_Entity *thisEntity = GetEntity(entity_name);
+    if (thisEntity == NULL)
+    {
+        mout << vararg(
+            "CanISee() -> Error: Trying to access non-existent entity:%s.\n",
+            entity_name);
+        return -1;
+    }
+    B_Entity *thatEntity = GetEntity(seen_entity_name);
+    if (thisEntity->IsClassOf(B_ENTITY_CID_PERSON) &&
+        thatEntity != NULL &&
+        thatEntity->IsClassOf(B_ENTITY_CID_PERSON))
+    {
+        B_PersonEntity *thisPerson = static_cast<B_PersonEntity *>(thisEntity);
+        B_PersonEntity *thatPerson = static_cast<B_PersonEntity *>(thatEntity);
+        if (thisPerson->CanISee(thatPerson))
+        {
+            *canISee = true;
+        }
+        else
+        {
+            *canISee = false;
+        }
+        return 1;
+    }
+    return -2;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

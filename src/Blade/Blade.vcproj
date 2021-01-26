@@ -543,6 +543,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Entities\PersonEntity.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\Entities\PersonEntity.h"
 					>
 				</File>
