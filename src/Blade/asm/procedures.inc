@@ -578,6 +578,8 @@ externdef ?AddScheduledFunc@B_World@@QAEXNPAUPyObject@@0PBD@Z: near
 l0043B8E6 equ ?AddScheduledFunc@B_World@@QAEXNPAUPyObject@@0PBD@Z
 externdef ?SetSun@B_World@@QAEXHABVB_Vector@@@Z: near
 l0043C8B2 equ ?SetSun@B_World@@QAEXHABVB_Vector@@@Z
+externdef ?GetEnemiesVisibleFrom@B_World@@QAEXABVB_Vector@@N0NPAV?$B_PtrArray@VB_Entity@@@@@Z: near
+l0043D434 equ ?GetEnemiesVisibleFrom@B_World@@QAEXABVB_Vector@@N0NPAV?$B_PtrArray@VB_Entity@@@@@Z
 externdef ?FindSectorIndex@B_World@@QAEHABVB_Vector@@@Z: near
 l0043DBBE equ ?FindSectorIndex@B_World@@QAEHABVB_Vector@@@Z
 externdef ?IntersectSegment@B_World@@QAEHABVB_Vector@@00HHPAX@Z: near

@@ -118,6 +118,28 @@ void B_World::SetSun(int exists, const B_Vector &position)
 
 #endif
 
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043D434
+* VC++ mangling:          ?GetEnemiesVisibleFrom@B_World@@QAEXABVB_Vector@@N0NPAV?$B_PtrArray@VB_Entity@@@@@Z
+*/
+#ifdef BLD_NATIVE
+void B_World::GetEnemiesVisibleFrom(
+    const B_Vector &position, double radius,
+    const B_Vector &direction, double angle, B_PtrArray<B_Entity> *enemies)
+{
+}
+#endif
+
 /*
 ................................................................................
 ................................................................................

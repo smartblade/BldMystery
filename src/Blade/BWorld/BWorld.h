@@ -72,6 +72,10 @@ public:
     void AddScheduledFunc(
         double time, PyObject *func, PyObject *args, const char *name);
     void SetSun(int exists, const B_Vector &position);
+    void GetEnemiesVisibleFrom(
+        const B_Vector &position, double radius,
+        const B_Vector &direction, double angle,
+        B_PtrArray<B_Entity> *enemies);
     int FindSectorIndex(const B_Vector &point);
     int IntersectSegment(
         const B_Vector &startPoint, const B_Vector &endPoint,

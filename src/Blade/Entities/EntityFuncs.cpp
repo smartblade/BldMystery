@@ -237,19 +237,38 @@ int GetObjectEntitiesVisibleFrom(
 * Module:                 Blade.exe
 * Entry point:            0x005040EB
 */
-#ifdef BLD_NATIVE
+
 int GetEnemiesVisibleFrom(
-        double xc, double yc, double zc, double radius, double xdir,
-        double ydir, double zdir, double angle, char ***enemy_names
-)
+    double xc, double yc, double zc, double radius, double xdir,
+    double ydir, double zdir, double angle, char ***enemy_names)
 {
-    int (*bld_proc)(
-        double xc, double yc, double zc, double radius, double xdir,
-        double ydir, double zdir, double angle, char ***enemy_names
-) = NULL;
-    return bld_proc(xc, yc, zc, radius, xdir, ydir, zdir, angle, enemy_names);
+    B_SharedPtrArray<B_Entity> enemies;
+    B_world.GetEnemiesVisibleFrom(
+        B_Vector(xc, yc, zc), radius,
+        B_Vector(xdir, ydir, zdir), angle, &enemies);
+    int numEnemies = enemies.size;
+    if (numEnemies != 0)
+    {
+        char **curName;
+        *enemy_names = curName = (char **)malloc(numEnemies * sizeof(char *));
+        if (*enemy_names == NULL)
+        {
+            mout << "GetEntitiesVisibleFrom() -> Error reserving memory\n";
+            return 0;
+        }
+        for (int i = 0; i < numEnemies; i++)
+        {
+            *curName = enemies[i]->name.String();
+            curName++;
+        }
+    }
+    else
+    {
+        *enemy_names = NULL;
+    }
+    return numEnemies;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

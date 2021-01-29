@@ -110,7 +110,6 @@
 /EXPORT:GetEntitiesAt
 /EXPORT:GetEntitiesVisibleFrom
 /EXPORT:GetObjectEntitiesVisibleFrom
-/EXPORT:GetEnemiesVisibleFrom
 /EXPORT:SetCombos
 /EXPORT:GetCombos
 /EXPORT:GetWeaponCombos

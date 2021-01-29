@@ -118,27 +118,17 @@ public:
     {
         if (num_alloc != 0)
         {
-            if (num_alloc != 0 && unknown14)
-            {
-                for(unsigned int i = 0; i < size; i++)
-                {
-                    delete elements[i];
-                }
-            }
-            delete elements;
-            elements = NULL;
-            size = 0;
-            num_alloc = 0;
+            Clear(deleteItems);
         }
     }
 
-    B_PtrArray()
+    B_PtrArray(unsigned int increment = 16, int deleteItems = true)
     {
         elements = NULL;
         size = 0;
-        increment = 16;
+        this->increment = increment;
         num_alloc = 0;
-        unknown14 = 1;
+        this->deleteItems = deleteItems;
     }
 
     TYPE *operator[](unsigned int index)
@@ -229,6 +219,23 @@ public:
         this->size--;
     }
 
+    void Clear(int deleteItems)
+    {
+        if (num_alloc == 0)
+            return;
+        if (deleteItems)
+        {
+            for(unsigned int i = 0; i < size; i++)
+            {
+                delete elements[i];
+            }
+        }
+        delete elements;
+        elements = NULL;
+        size = 0;
+        num_alloc = 0;
+    }
+
     TYPE *Find(const B_Name &id)
     {
         for (unsigned int i = 0; i < this->size; i++)
@@ -253,7 +260,7 @@ public:
     unsigned int size;
     int increment;
     unsigned int num_alloc;
-    int unknown14;
+    int deleteItems;
 };
 
 template<class TYPE>
@@ -284,6 +291,23 @@ B_IDataFile &operator >>(B_IDataFile &file, B_PtrArray<TYPE> &arr)
     }
     return file;
 }
+
+
+template<class TYPE>
+class B_SharedPtrArray : public B_PtrArray<TYPE>
+{
+public:
+    virtual ~B_SharedPtrArray()
+    {
+        Clear(false);
+    }
+
+    B_SharedPtrArray(unsigned int increment = 16)
+        :
+    B_PtrArray(increment)
+    {
+    }
+};
 
 
 #endif /* ARRAY_H */
