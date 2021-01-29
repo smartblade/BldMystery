@@ -152,15 +152,12 @@ light_t * read_light(B_IDataFile *file)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00451A21
-* VC++ mangling:          ?unknown_00451A21@unknown_18F8_class@@QAEXPAXHH@Z
+* VC++ mangling:          ?Build@B_OctTree@@QAEXABVB_Map@@N@Z
 */
-
 #ifdef BLD_NATIVE
-
-void unknown_18F8_class::unknown_00451A21(void *, int, int)
+void B_OctTree::Build(const B_Map &map, double size)
 {
 }
-
 #endif
 
 /* End of file:           0x00453B10 */

@@ -490,7 +490,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
                 file >> sector->groupId;
         }
 
-        world->unknown18F8.unknown_00451A21(&world->map, 0, 0x40B38800/*30000.0lf*/);
+        world->octTree.Build(world->map, 5000.0);
 
         return file;
 }

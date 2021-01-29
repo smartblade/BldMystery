@@ -636,8 +636,8 @@ externdef _GetMaterialFloatProperty: near
 l0044ED29 equ _GetMaterialFloatProperty
 externdef _AddHitSoundComb: near
 l0044ED6A equ _AddHitSoundComb
-externdef ?unknown_00451A21@unknown_18F8_class@@QAEXPAXHH@Z: near
-l00451A21 equ ?unknown_00451A21@unknown_18F8_class@@QAEXPAXHH@Z
+externdef ?Build@B_OctTree@@QAEXABVB_Map@@N@Z: near
+l00451A21 equ ?Build@B_OctTree@@QAEXABVB_Map@@N@Z
 externdef ??0B_Surface@@QAE@XZ: near
 l00453B10 equ ??0B_Surface@@QAE@XZ
 externdef ??1B_Surface@@UAE@XZ: near

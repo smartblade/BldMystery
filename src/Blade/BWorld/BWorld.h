@@ -14,10 +14,10 @@
 #include <bld_python.h>
 
 
-class unknown_18F8_class
+class B_OctTree
 {
 public:
-    void unknown_00451A21(void *, int, int);
+    void Build(const B_Map &map, double size);
     int field;
 };
 
@@ -136,7 +136,7 @@ public:
     char unknownFields1884[40];
     B_PtrArray<atmosphere_t> atmospheres;
     B_Map map;
-    unknown_18F8_class unknown18F8;
+    B_OctTree octTree;
     B_Vector unknown18FC;
     double unknown1914;
     void *unknown191C;
