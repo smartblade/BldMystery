@@ -146,20 +146,8 @@ light_t * read_light(B_IDataFile *file)
 /* Begin of file:         0x0044E9A0 */
 /* End of file:           0x0044ED90 */
 
+/* File:                  BWorld/OctTree.cpp */
 /* Begin of file:         0x0044ED90 */
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x00451A21
-* VC++ mangling:          ?Build@B_OctTree@@QAEXABVB_Map@@N@Z
-*/
-#ifdef BLD_NATIVE
-void B_OctTree::Build(const B_Map &map, double size)
-{
-}
-#endif
-
 /* End of file:           0x00453B10 */
 
 /* File:                  BWorld/Surface.cpp */

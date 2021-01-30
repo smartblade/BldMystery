@@ -427,6 +427,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\BWorld\OctTree.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BWorld\OctTree.h"
+					>
+				</File>
+				<File
 					RelativePath=".\BWorld\SectorFuncs.cpp"
 					>
 				</File>

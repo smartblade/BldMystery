@@ -9,17 +9,11 @@
 #include <BWorld/atmosphere.h>
 #include <BWorld/BMap.h>
 #include <BWorld/light.h>
+#include <BWorld/OctTree.h>
 #include <Hash.h>
 #include "vector.h"
 #include <bld_python.h>
 
-
-class B_OctTree
-{
-public:
-    void Build(const B_Map &map, double size);
-    int field;
-};
 
 class B_SubscriptionList : public B_PtrArray<B_Entity>, public B_NamedObj
 {
