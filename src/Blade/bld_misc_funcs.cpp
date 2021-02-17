@@ -93,7 +93,9 @@ void JumpCB(const B_Name &action, float time, float, void *)
 
 /* End of file:           0x004246C0 */
 
-
+/* File:                  App/stats.cpp */
+/* Begin of file:         0x004246C0 */
+/* End of file:           0x00427750 */
 
 /* File:                  CDExt.cpp */
 /* Begin of file:         0x00427750 */
@@ -533,6 +535,17 @@ int unknown204::InsideAA(int AA)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x005AA730
+* VC++ mangling:          ?SetTime@B_ProcTexture@@SAXN@Z
+*/
+#ifdef BLD_NATIVE
+void B_ProcTexture::SetTime(double time)
+{
+}
+#endif
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x005AA881
 * VC++ mangling:          ?Update@B_ProcTexture@@QAEXXZ
 */
@@ -671,6 +684,11 @@ B_YSoundDev *unused_sound_ptr;
 int gbl_sound_device_id;
 B_Name *gbl_map_name;
 B_Name *gbl_combustion_particle_names;
+float frameUpdateTime;
+float worldUpdateTime;
+int unknown005DFB9C;
+int unknown005DFBA4;
+int unknown005DFBA8;
 B_World B_world;
 int gbl_action_areas_bit_mask;
 B_PtrArray<anim_t> gbl_anims;

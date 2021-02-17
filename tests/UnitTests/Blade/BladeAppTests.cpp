@@ -36,9 +36,12 @@ TEST(BladeAppTests, Fields)
     EXPECT_OFFSET_EQ(B_BladeApp, unknownPtrForCamera, 0x1B0);
     EXPECT_OFFSET_EQ(B_BladeApp, bloodLevel, 0x1B4);
     EXPECT_OFFSET_EQ(B_BladeApp, mutilationLevel, 0x1B8);
+    EXPECT_OFFSET_EQ(B_BladeApp, timeByFrame, 0x1BC);
     EXPECT_OFFSET_EQ(B_BladeApp, frameIndex, 0x5BC);
     EXPECT_OFFSET_EQ(B_BladeApp, FPS20, 0x5C0);
+    EXPECT_OFFSET_EQ(B_BladeApp, FPS5, 0x5C4);
     EXPECT_OFFSET_EQ(B_BladeApp, time, 0x5C8);
+    EXPECT_OFFSET_EQ(B_BladeApp, lastFrameTimeDelta, 0x5CC);
     EXPECT_OFFSET_EQ(B_BladeApp, b05D0, 0x5D0);
     EXPECT_OFFSET_EQ(B_BladeApp, b05D1, 0x5D1);
     EXPECT_OFFSET_EQ(B_BladeApp, mouseAcquired, 0x5D2);
@@ -69,6 +72,9 @@ TEST(BladeAppTests, Fields)
     EXPECT_OFFSET_EQ(B_BladeApp, isInputActive, 0x634);
     EXPECT_OFFSET_EQ(B_BladeApp, afterFrameFuncs, 0x638);
     EXPECT_OFFSET_EQ(B_BladeApp, values, 0x650);
+    EXPECT_OFFSET_EQ(B_BladeApp, screenShotFileName, 0x668);
+    EXPECT_OFFSET_EQ(B_BladeApp, screenShotWidth, 0x768);
+    EXPECT_OFFSET_EQ(B_BladeApp, screenShotHeight, 0x76C);
     EXPECT_OFFSET_EQ(B_BladeApp, rasterLibraryName, 0x770);
     EXPECT_OFFSET_EQ(B_BladeApp, startPath, 0x778);
     EXPECT_OFFSET_EQ(B_BladeApp, destroyRasterCB, 0x780);

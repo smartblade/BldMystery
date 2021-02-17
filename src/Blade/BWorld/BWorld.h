@@ -15,6 +15,8 @@
 #include <bld_python.h>
 
 
+class location_t;
+
 class B_SubscriptionList : public B_PtrArray<B_Entity>, public B_NamedObj
 {
 };
@@ -65,6 +67,8 @@ public:
     void GoToTime(double time);
     void AddScheduledFunc(
         double time, PyObject *func, PyObject *args, const char *name);
+    void Update(
+        location_t *location, void *unknown, double time, int updateRaster);
     void SetSun(int exists, const B_Vector &position);
     void GetEnemiesVisibleFrom(
         const B_Vector &position, double radius,

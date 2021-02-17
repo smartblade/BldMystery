@@ -106,6 +106,18 @@ void B_World::AddScheduledFunc(
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x0043C5FD
+* VC++ mangling:          ?Update@B_World@@QAEXPAVlocation_t@@PAXNH@Z
+*/
+#ifdef BLD_NATIVE
+void B_World::Update(
+    location_t *location, void *unknown, double time, int updateRaster)
+{
+}
+#endif
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x0043C8B2
 * VC++ mangling:          ?SetSun@B_World@@QAEXHABVB_Vector@@@Z
 */

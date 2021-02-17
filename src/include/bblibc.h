@@ -165,6 +165,8 @@ class LIB_EXP B_BitMap24
 public:
     B_BitMap24(int width = 0, int height = 0);
     virtual ~B_BitMap24();
+    int SaveToBMP(char const *fileName) const;
+    int SaveToBMPSized(char const *fileName, int width, int height) const;
 
     unsigned int dimension1;
     unsigned int dimension2;

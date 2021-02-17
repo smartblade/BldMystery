@@ -102,6 +102,8 @@ externdef ?GetWindow@B_WinApp@@UAEIXZ: near
 l00411170 equ ?GetWindow@B_WinApp@@UAEIXZ
 externdef ?GetModule@B_WinApp@@UAEIXZ: near
 l00411190 equ ?GetModule@B_WinApp@@UAEIXZ
+externdef ?Call@B_AfterFrameFunc@@QAEXN@Z: near
+l00411281 equ ?Call@B_AfterFrameFunc@@QAEXN@Z
 externdef ??0B_App@@QAE@PAD@Z: near
 l004113CE equ ??0B_App@@QAE@PAD@Z
 externdef ??1B_App@@UAE@XZ: near
@@ -260,6 +262,8 @@ externdef ?AddSourceNode@B_Camera@@QAEHNABVB_Vector@@@Z: near
 l004201E8 equ ?AddSourceNode@B_Camera@@QAEHNABVB_Vector@@@Z
 externdef _JumpCB: near
 l00422F3B equ _JumpCB
+externdef ?DisplayStats@B_App@@QAEXXZ: near
+l004246C0 equ ?DisplayStats@B_App@@QAEXXZ
 externdef _PlayCDTrack: near
 l00427750 equ _PlayCDTrack
 externdef _nCDTracks: near
@@ -576,6 +580,8 @@ externdef ?GoToTime@B_World@@QAEXN@Z: near
 l0043AC07 equ ?GoToTime@B_World@@QAEXN@Z
 externdef ?AddScheduledFunc@B_World@@QAEXNPAUPyObject@@0PBD@Z: near
 l0043B8E6 equ ?AddScheduledFunc@B_World@@QAEXNPAUPyObject@@0PBD@Z
+externdef ?Update@B_World@@QAEXPAVlocation_t@@PAXNH@Z: near
+l0043C5FD equ ?Update@B_World@@QAEXPAVlocation_t@@PAXNH@Z
 externdef ?SetSun@B_World@@QAEXHABVB_Vector@@@Z: near
 l0043C8B2 equ ?SetSun@B_World@@QAEXHABVB_Vector@@@Z
 externdef ?GetEnemiesVisibleFrom@B_World@@QAEXABVB_Vector@@N0NPAV?$B_PtrArray@VB_Entity@@@@@Z: near
@@ -1476,6 +1482,8 @@ externdef _LoadFromHDAnim: near
 l00588F43 equ _LoadFromHDAnim
 externdef ?SetNextAttack@B_Combos@@QAEHPAVB_PersonEntity@@PBD@Z: near
 l0058C0D5 equ ?SetNextAttack@B_Combos@@QAEHPAVB_PersonEntity@@PBD@Z
+externdef ?UpdatePlayer@EnControl@@QAEXNH@Z: near
+l00593CA6 equ ?UpdatePlayer@EnControl@@QAEXNH@Z
 externdef ?SetTurnSpeed@EnControl@@QAEHPBDN@Z: near
 l00595124 equ ?SetTurnSpeed@EnControl@@QAEHPBDN@Z
 externdef ?SetAnimationFactor@EnControl@@QAEHPBDN@Z: near
@@ -1576,6 +1584,10 @@ externdef ??0B_PersonStatus@@QAE@H@Z: near
 l005A52CE equ ??0B_PersonStatus@@QAE@H@Z
 externdef ?Reset@B_PersonStatus@@QAEXXZ: near
 l005A54D0 equ ?Reset@B_PersonStatus@@QAEXXZ
+externdef ?ProcessInputActions@B_PersonStatus@@QAEXN@Z: near
+l005A58A4 equ ?ProcessInputActions@B_PersonStatus@@QAEXN@Z
+externdef ?SetTime@B_ProcTexture@@SAXN@Z: near
+l005AA730 equ ?SetTime@B_ProcTexture@@SAXN@Z
 externdef ?Update@B_ProcTexture@@QAEXXZ: near
 l005AA881 equ ?Update@B_ProcTexture@@QAEXXZ
 externdef _MarkNetMapSet: near

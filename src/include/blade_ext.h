@@ -438,6 +438,7 @@ LIB_EXP int DisableProfiler(void);
 LIB_EXP int SaveProfileData(const char *file_name);
 LIB_EXP int SetInputMode(const char *device, const char *mode);
 LIB_EXP const char *GetInputMode(const char *device);
+LIB_EXP void LoopGSQR();
 LIB_EXP void NetServerChangeLevel(const char *level_name);
 LIB_EXP void SetLocalOptions(
         const char *name, const char *kind, const char *weapon,

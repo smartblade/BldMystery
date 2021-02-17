@@ -26,6 +26,24 @@
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00411281
+* VC++ mangling:          ?Call@B_AfterFrameFunc@@QAEXN@Z
+*/
+#ifdef BLD_NATIVE
+void B_AfterFrameFunc::Call(double time)
+{
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x004113CE
 * VC++ mangling:          ??0B_App@@QAE@PAD@Z
 */
@@ -432,12 +450,209 @@ void B_App::SetTimeSpeed(double speed)
 * Entry point:            0x004121CE
 * VC++ mangling:          ?ProcessEvents@B_App@@UAE_NXZ
 */
-#ifdef BLD_NATIVE
+
 bool B_App::ProcessEvents()
 {
-    return false;
+    bool updateRaster = !IsDedicatedServer();
+    LoopGSQR();
+    if (this->needClearLevel)
+    {
+        this->ClearLevel(false);
+        this->needClearLevel = false;
+    }
+    if (this->mapToLoad != NULL)
+    {
+        char *newMap = this->mapToLoad;
+        this->mapToLoad = NULL;
+        this->ClearLevel(false);
+        this->LoadLevel(newMap);
+        free(newMap);
+        if (this->mapToLoad != NULL && strcmp(this->mapToLoad, "Casa"))
+        {
+            /* FIXME setting to null before memory deallocation */
+            this->mapToLoad = NULL;
+            free(this->mapToLoad);
+        }
+        return true;
+    }
+    if (!this->b05D0)
+        return true;
+    frameUpdateTime = -this->clock1->GetTime();
+    float prevTime = this->time;
+    this->time = this->clock1->GetTime();
+    if (this->time - prevTime > 0.15)
+    {
+        this->time = prevTime + 0.15;
+        this->clock1->SetTime(this->time);
+    }
+    this->lastFrameTimeDelta = max(min(this->time - prevTime, 0.1f), 1e-06f);
+    this->timeByFrame[this->frameIndex] = this->time;
+    this->FPS5 = 5.0f /
+        (this->time - this->timeByFrame[(this->frameIndex + 256 - 5) & 0xFF]);
+    this->FPS20 = 20.0f /
+        (this->time - this->timeByFrame[(this->frameIndex + 256 - 20) & 0xFF]);
+    this->frameIndex = (this->frameIndex + 1) & 0xFF;
+    if (this->b001C)
+    {
+        this->GetPlayerStatus1()->Reset();
+    }
+    if (updateRaster && this->mouseAcquired)
+    {
+        if (this->player1 != NULL)
+        {
+            gbl_en_control.UpdatePlayer(B_world.GetTime(), this->isInputActive);
+            this->GetPlayerStatus1()->ProcessInputActions(this->time);
+            InputManager->ProcessInput(this->time);
+        }
+        else if (this->client != NULL)
+        {
+            if (!this->isInputActive)
+            {
+                this->GetPlayerStatus1()->Reset();
+                this->GetPlayerStatus2()->Reset();
+                this->GetPlayerStatus1()->unknown9C = -100.0;
+                this->GetPlayerStatus1()->unknown94 = -100.0;
+                this->GetPlayerStatus1()->unknown8C = -100.0;
+                this->GetPlayerStatus1()->unknown84 = -100.0;
+                this->GetPlayerStatus1()->unknownB4 = -100.0;
+                this->GetPlayerStatus1()->unknownAC = -100.0;
+                this->GetPlayerStatus1()->unknownA4 = -100.0;
+            }
+            else
+            {
+                this->GetPlayerStatus1()->ProcessInputActions(this->time);
+                InputManager->ProcessInput(this->time);
+            }
+        }
+    }
+    if (this->b05D1 && gbl_sound_device != NULL)
+    {
+        if (this->listenerMode == 1)
+        {
+            if (this->b001C)
+            {
+                const B_Matrix *pose;
+                if (this->player1 == NULL)
+                {
+                    pose = &this->client->GetPose();
+                }
+                else
+                {
+                    pose = &this->player1->GetPose();
+                }
+                gbl_sound_device->SetListenerPosition(*pose);
+            }
+            else
+            {
+                gbl_sound_device->SetListenerPosition(this->location.matrix00B0);
+            }
+        }
+        else if (this->listenerMode == 2)
+        {
+            gbl_sound_device->SetListenerPosition(this->location.matrix00B0);
+        }
+    }
+    if (this->isActive)
+    {
+        Unknown004CD5EC unknown(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+        this->unknown_method010(&unknown);
+        for (unsigned int i = 0; i < gbl_ag_textures.size; i++)
+        {
+            gbl_ag_textures[i]->needUpdate = true;
+        }
+        B_ProcTexture::SetTime(this->time);
+        B_3D_raster_device->StartScene(&this->location);
+        B_3D_raster_device->unknown008(&unknown);
+        if (this->cls)
+        {
+            B_3D_raster_device->Cls(B_Color(125, 0, 0));
+        }
+        unknown005DFB9C = 0;
+        unknown005DFBA4 = 0;
+        unknown005DFBA8 = 0;
+        worldUpdateTime = -this->clock1->GetTime();
+        if (this->b05D4)
+        {
+            B_world.Update(
+                &this->location, &unknown, this->time, updateRaster);
+        }
+        else
+        {
+            B_3D_raster_device->SetMode(2);
+        }
+        worldUpdateTime = worldUpdateTime + this->clock1->GetTime();
+        for (unsigned int i = 0; i < this->afterFrameFuncs.size; i++)
+        {
+            B_AfterFrameFunc *func = this->afterFrameFuncs[i];
+            func->Call(this->time);
+            if (func->removed)
+            {
+                this->afterFrameFuncs.Remove(i, true);
+                i--;
+            }
+        }
+        if (this->rootWidget != NULL && !this->needClearLevel)
+        {
+            int w = 640;
+            int h = 480;
+            B_3D_raster_device->GetSize(w, h);
+            this->rootWidget->SetSize(w, h);
+            B_3D_raster_device->SetTransformation();
+            int clipX, clipY, clipWidth, clipHeight;
+            B_3D_raster_device->GetClipWindow(clipX, clipY, clipWidth, clipHeight);
+            this->rootWidget->Draw(0, 0, this->clock2->GetTime());
+            B_3D_raster_device->set_clip_window(clipX, clipY, clipWidth, clipHeight);
+            B_3D_raster_device->ResetTransformation();
+        }
+        if (this->saveToBmp != 0.0f)
+        {
+            bool isClockActive = this->clock1->IsActive();
+            /* FIXME incorrect clause. Time will not stopped. */
+            if (!isClockActive)
+            {
+                this->clock1->StopTime();
+            }
+            B_BitMap24 *bitMap = B_3D_raster_device->GetBitMap24();
+            if (bitMap != NULL)
+            {
+                if (this->saveToBmp == 1.0f)
+                {
+                    bitMap->SaveToBMP(
+                        vararg("snp%5d.bmp", this->numSavedBMPs));
+                    ++this->numSavedBMPs;
+                }
+                else
+                {
+                    bitMap->SaveToBMPSized(
+                        this->screenShotFileName,
+                        this->screenShotWidth,
+                        this->screenShotHeight);
+                }
+                delete bitMap;
+                this->saveToBmp = 0.0f;
+            }
+            if (isClockActive)
+            {
+                this->clock1->RestartTime();
+            }
+        }
+        if (this->currentStatsIndex != 0)
+        {
+            this->DisplayStats();
+        }
+        B_3D_raster_device->EndScene();
+        ++this->numFrames;
+    }
+    frameUpdateTime = frameUpdateTime + this->clock1->GetTime();
+    if (this->pyInteractiveString != NULL)
+    {
+        PyRun_InteractiveString(this->pyInteractiveString);
+        free(this->pyInteractiveString);
+        this->pyInteractiveString = NULL;
+    }
+    return true;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

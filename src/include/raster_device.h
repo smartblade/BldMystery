@@ -5,6 +5,7 @@
 #include <bld_system.h>
 #include <export.h>
 
+class B_BitMap24;
 class B_Name;
 class B_Color;
 class B_Font;
@@ -70,10 +71,10 @@ public:
     virtual void unknown088() = 0;
     virtual void unknown08C() = 0;
     virtual void unknown090() = 0;
-    virtual void unknown094() = 0;
-    virtual void unknown098() = 0;
+    virtual void StartScene(void *) = 0;
+    virtual void EndScene() = 0;
     virtual void cls(boolean unknown1, boolean unknown2, boolean unknown3) = 0;
-    virtual void unknown0A0() = 0;
+    virtual void Cls(B_Color color) = 0;
 
     virtual void SetDomeColor(byte r, byte g, byte b)
     {
@@ -114,12 +115,12 @@ public:
     }
 
     virtual void unknown110() = 0;
-    virtual void unknown114() = 0;
+    virtual void SetMode(int mode) = 0;
     virtual void unknown118() = 0;
     virtual void unknown11C() = 0;
     virtual void unknown120() = 0;
     virtual void unknown124() = 0;
-    virtual void unknown128() = 0;
+    virtual B_BitMap24 *GetBitMap24() = 0;
 
     virtual void UnifyRenderBuffers()
     {

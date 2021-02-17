@@ -18,6 +18,16 @@ public _gbl_map_name
 g005DFB44 equ _gbl_map_name
 public _gbl_combustion_particle_names
 g005DFB58 equ _gbl_combustion_particle_names
+public _frameUpdateTime
+g005DFB90 equ _frameUpdateTime
+public _worldUpdateTime
+g005DFB94 equ _worldUpdateTime
+public _unknown005DFB9C
+g005DFB9C equ _unknown005DFB9C
+public _unknown005DFBA4
+g005DFBA4 equ _unknown005DFBA4
+public _unknown005DFBA8
+g005DFBA8 equ _unknown005DFBA8
 public _B_world
 g005E0B88 equ _B_world
 public _gbl_action_areas_bit_mask

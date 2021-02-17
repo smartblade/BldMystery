@@ -39,7 +39,7 @@ public:
     virtual void unknown04C();
     virtual void unknown050();
     virtual void sound_unknown054();
-    virtual void SetListenerPosition(B_Matrix &pos);
+    virtual void SetListenerPosition(const B_Matrix &pos);
 
     int unknown04;
     int unknown08;

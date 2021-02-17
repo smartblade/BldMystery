@@ -10,6 +10,24 @@
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00593CA6
+* VC++ mangling:          ?UpdatePlayer@EnControl@@QAEXNH@Z
+*/
+#ifdef BLD_NATIVE
+void EnControl::UpdatePlayer(double time, int isInputActive)
+{
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x00595124
 * VC++ mangling:          ?SetTurnSpeed@EnControl@@QAEHPBDN@Z
 */

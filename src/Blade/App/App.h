@@ -19,6 +19,16 @@ class B_InputDevice;
 class B_PersonStatus;
 class B_Widget;
 
+class B_AfterFrameFunc : public B_NamedObj
+{
+public:
+    void Call(double time);
+
+    PyObject *func;
+    PyObject *param;
+    int removed;
+};
+
 class B_App
 {
 public:
@@ -108,6 +118,7 @@ public:
     int SetStringValue(const char *variable, const char *value);
     const char *GetStringValue(const char *variable);
     int DeleteStringValue(const char *variable);
+    void DisplayStats();
 
     bool invertMouse;
     double xMouseSens;
@@ -136,12 +147,12 @@ public:
     float unknownPtrForCamera;
     int bloodLevel;
     int mutilationLevel;
-    char unknownFields1BC[1024];
+    float timeByFrame[256];
     unsigned int frameIndex;
     float FPS20;
-    char unknownFields400[4];
+    float FPS5;
     float time;
-    char unknownFields310[4];
+    float lastFrameTimeDelta;
     bool b05D0;
     bool b05D1;
     bool mouseAcquired;
@@ -171,9 +182,11 @@ public:
     double aecGap;
     PyObject *menuTgapFunc;
     int isInputActive;
-    B_PtrArray<B_NamedObj> afterFrameFuncs;
+    B_PtrArray<B_AfterFrameFunc> afterFrameFuncs;
     B_PtrArray<B_StringValue> values;
-    char unknownFields668[264];
+    char screenShotFileName[256];
+    int screenShotWidth;
+    int screenShotHeight;
 };
 
 #endif /* APPLICATION_H */

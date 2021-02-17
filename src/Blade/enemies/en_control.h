@@ -9,6 +9,7 @@
 class EnControl
 {
 public:
+    void UpdatePlayer(double time, int isInputActive);
     int SetTurnSpeed(const char *race_name, double new_speed);
     int SetAnimationFactor(const char *mov, double new_speed_factor);
     int AddWatchAnim(const char *anim);

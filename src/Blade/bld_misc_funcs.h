@@ -39,6 +39,7 @@ public:
 class B_ProcTexture
 {
 public:
+    static void SetTime(double time);
     virtual ~B_ProcTexture();
     void Update();
 
@@ -156,6 +157,36 @@ extern B_Name *gbl_map_name;
 * Data address:           0x005DFB58
 */
 extern B_Name *gbl_combustion_particle_names;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x005DFB90
+*/
+extern float frameUpdateTime;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x005DFB94
+*/
+extern float worldUpdateTime;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x005DFB9C
+*/
+extern int unknown005DFB9C;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x005DFBA4
+*/
+extern int unknown005DFBA4;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x005DFBA8
+*/
+extern int unknown005DFBA8;
 
 /*
 * Module:                 Blade.exe
