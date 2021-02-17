@@ -154,7 +154,7 @@ public:
     char unknownFields5E4[4];
     const char *commandLine;
     B_Name mode;
-    char *map_to_load;
+    char *mapToLoad;
     char *pyStatement;
     char *newMap;
     char *pyInteractiveString;

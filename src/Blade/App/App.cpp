@@ -69,7 +69,7 @@ location(B_Vector(0.0, 0.0, 0.0), 0.0, 0.0, 0.0)
     this->drawShadows = true;
     this->autoEngageCombat = false;
     this->aecGap = 8.0;
-    this->map_to_load = NULL;
+    this->mapToLoad = NULL;
     this->pyStatement = NULL;
     this->newMap = NULL;
     this->pyInteractiveString = NULL;
@@ -459,12 +459,12 @@ void B_App::End()
 
 void B_App::MarkLevelToLoad(const char *map)
 {
-    if (this->map_to_load)
+    if (this->mapToLoad)
     {
-        free(this->map_to_load);
-        this->map_to_load = NULL;
+        free(this->mapToLoad);
+        this->mapToLoad = NULL;
     }
-    this->map_to_load = strdup(map);
+    this->mapToLoad = strdup(map);
 }
 
 
