@@ -36,7 +36,7 @@ TEST(BladeAppTests, Fields)
     EXPECT_OFFSET_EQ(B_BladeApp, unknownPtrForCamera, 0x1B0);
     EXPECT_OFFSET_EQ(B_BladeApp, bloodLevel, 0x1B4);
     EXPECT_OFFSET_EQ(B_BladeApp, mutilationLevel, 0x1B8);
-    EXPECT_OFFSET_EQ(B_BladeApp, unknown5BC, 0x5BC);
+    EXPECT_OFFSET_EQ(B_BladeApp, frameIndex, 0x5BC);
     EXPECT_OFFSET_EQ(B_BladeApp, FPS20, 0x5C0);
     EXPECT_OFFSET_EQ(B_BladeApp, time, 0x5C8);
     EXPECT_OFFSET_EQ(B_BladeApp, b05D0, 0x5D0);

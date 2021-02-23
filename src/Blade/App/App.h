@@ -136,7 +136,7 @@ public:
     int bloodLevel;
     int mutilationLevel;
     char unknownFields1BC[1024];
-    void *unknown5BC;
+    unsigned int frameIndex;
     float FPS20;
     char unknownFields400[4];
     float time;
