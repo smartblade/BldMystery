@@ -150,7 +150,7 @@ public:
     byte currentStatsIndex;
     float saveToBmp;
     int numSavedBMPs;
-    void *unknown5E0;
+    int numFrames;
     char unknownFields5E4[4];
     const char *commandLine;
     B_Name mode;

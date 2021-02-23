@@ -46,7 +46,7 @@ location(B_Vector(0.0, 0.0, 0.0), 0.0, 0.0, 0.0)
     this->camera = NULL;
     this->b05D0 = false;
     this->mouseAcquired = true;
-    this->unknown5E0 = NULL;
+    this->numFrames = 0;
     this->isActive = true;
     this->b05D4 = true;
     this->b05D1 = true;
