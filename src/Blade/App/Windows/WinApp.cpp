@@ -393,7 +393,7 @@ bool B_WinApp::ProcessEvents() {
     {
         SetWindowText(
             this->window,
-            vararg("%s %.1f", "Blade", this->fUnknown5C0)
+            vararg("%s %.1f", "Blade", this->FPS20)
         );
         counter = 0;
     }

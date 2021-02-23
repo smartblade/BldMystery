@@ -137,7 +137,7 @@ public:
     int mutilationLevel;
     char unknownFields1BC[1024];
     void *unknown5BC;
-    float fUnknown5C0;
+    float FPS20;
     char unknownFields400[4];
     float time;
     char unknownFields310[4];
