@@ -386,7 +386,7 @@ void B_WinApp::LoadLevel(const char *map)
 bool B_WinApp::ProcessEvents() {
     static int counter = 0;
 
-    if (!this->no_sleep)
+    if (!this->mouseAcquired)
         Sleep(50);
 
     if (counter == 60)
@@ -555,8 +555,8 @@ LRESULT B_WinApp::WindowProcedure(
             {
                 break;
             }
-            this->isActive = this->no_sleep = (wParam != 0);
-            this->Mouse(this->no_sleep);
+            this->isActive = this->mouseAcquired = (wParam != 0);
+            this->Mouse(this->mouseAcquired);
             if (!this->isActive)
             {
                 this->StopTime();
@@ -637,7 +637,7 @@ void B_WinApp::Mouse(bool acquire)
     }
     else if (mouse != NULL && !mouse->Acquire())
     {
-        this->no_sleep = false;
+        this->mouseAcquired = false;
     }
 }
 

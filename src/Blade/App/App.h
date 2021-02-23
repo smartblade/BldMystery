@@ -143,7 +143,7 @@ public:
     char unknownFields310[4];
     bool b05D0;
     bool b05D1;
-    bool no_sleep;
+    bool mouseAcquired;
     bool isActive;
     bool b05D4;
     bool cls;

@@ -40,7 +40,7 @@ TEST(BladeAppTests, Fields)
     EXPECT_OFFSET_EQ(B_BladeApp, time, 0x5C8);
     EXPECT_OFFSET_EQ(B_BladeApp, b05D0, 0x5D0);
     EXPECT_OFFSET_EQ(B_BladeApp, b05D1, 0x5D1);
-    EXPECT_OFFSET_EQ(B_BladeApp, no_sleep, 0x5D2);
+    EXPECT_OFFSET_EQ(B_BladeApp, mouseAcquired, 0x5D2);
     EXPECT_OFFSET_EQ(B_BladeApp, isActive, 0x5D3);
     EXPECT_OFFSET_EQ(B_BladeApp, b05D4, 0x5D4);
     EXPECT_OFFSET_EQ(B_BladeApp, cls, 0x5D5);
