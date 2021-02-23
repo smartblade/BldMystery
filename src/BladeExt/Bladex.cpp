@@ -3301,7 +3301,7 @@ PyObject *bex_SetRootWidget(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "l", &widget))
                 return NULL;
 
-        return Py_BuildValue("i", SetRootWidget(widget));
+        return Py_BuildValue("i", SetRootWidget(INT_TO_PTR(widget, B_Widget)));
 }
 
 
@@ -3311,11 +3311,11 @@ PyObject *bex_SetRootWidget(PyObject *self, PyObject *args) {
 */
 
 PyObject *bex_GetRootWidget(PyObject *self, PyObject *args) {
-
+        long int rootWidget = 0;
         if (!PyArg_ParseTuple(args, ""))
                 return NULL;
-
-        return Py_BuildValue("l", GetRootWidget());
+        rootWidget = PTR_TO_INT(GetRootWidget());
+        return Py_BuildValue("l", rootWidget);
 }
 
 

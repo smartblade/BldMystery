@@ -1505,7 +1505,7 @@ int SetActionCameraMovement(
 * Entry point:            0x0042ABBA
 */
 
-int SetRootWidget(long int widget)
+int SetRootWidget(B_Widget *widget)
 {
     B_App *App = GetApplication();
     assert(App);
@@ -1519,11 +1519,11 @@ int SetRootWidget(long int widget)
 * Entry point:            0x0042ABF6
 */
 
-long int GetRootWidget()
+B_Widget *GetRootWidget()
 {
     B_App *App = GetApplication();
     assert(App);
-    long int rootWidget = App->rootWidget;
+    B_Widget *rootWidget = App->rootWidget;
     return rootWidget;
 }
 

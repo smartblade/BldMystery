@@ -17,6 +17,7 @@ class B_CameraEntity;
 class B_InputActions;
 class B_InputDevice;
 class B_PersonStatus;
+class B_Widget;
 
 class B_App
 {
@@ -121,7 +122,7 @@ public:
     PyObject *CDCallback;
     B_PtrArray<B_Name> arguments;
     B_MessageChannel *console;
-    long int rootWidget;
+    B_Widget *rootWidget;
     void *unknown058;
     void *unknown05C;
     B_Name lastPlayerCType;

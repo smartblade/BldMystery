@@ -28,6 +28,7 @@ class B_BitMap;
 class material_t;
 class B_Resource;
 class B_Sound;
+class B_Widget;
 
 
 #define CHR_FLT_TURN_SPEED                0
@@ -349,8 +350,8 @@ LIB_EXP int SetActionCameraMovement(
 );
 LIB_EXP int DeactivateInput(void);
 LIB_EXP int ActivateInput(void);
-LIB_EXP int SetRootWidget(long int widget);
-LIB_EXP long int GetRootWidget(void);
+LIB_EXP int SetRootWidget(B_Widget *widget);
+LIB_EXP B_Widget *GetRootWidget(void);
 LIB_EXP int AddCombustionDataFor(
         const char *object_kind, const char *fire_kind, double upper_treshol,
         double lower_treshold, double flame_height, double flame_size,

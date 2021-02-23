@@ -11,6 +11,7 @@
 #include "sound_device.h"
 #include <NetMod/libnet.h>
 #include <BInputc.h>
+#include <BUIxc.h>
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
 #include <blade_ext.h>
