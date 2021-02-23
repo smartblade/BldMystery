@@ -52,7 +52,7 @@ location(B_Vector(0.0, 0.0, 0.0), 0.0, 0.0, 0.0)
     this->b05D1 = true;
     this->cls = false;
     this->unknown5BC = NULL;
-    this->b05D6 = false;
+    this->currentStatsIndex = 0;
     this->unknown1AC = 1.0f;
     this->unknownPtrForCamera = 0.65f;
     this->b001C = true;

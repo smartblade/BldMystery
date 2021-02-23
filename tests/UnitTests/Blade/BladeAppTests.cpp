@@ -44,7 +44,7 @@ TEST(BladeAppTests, Fields)
     EXPECT_OFFSET_EQ(B_BladeApp, isActive, 0x5D3);
     EXPECT_OFFSET_EQ(B_BladeApp, b05D4, 0x5D4);
     EXPECT_OFFSET_EQ(B_BladeApp, cls, 0x5D5);
-    EXPECT_OFFSET_EQ(B_BladeApp, b05D6, 0x5D6);
+    EXPECT_OFFSET_EQ(B_BladeApp, currentStatsIndex, 0x5D6);
     EXPECT_OFFSET_EQ(B_BladeApp, saveToBmp, 0x5D8);
     EXPECT_OFFSET_EQ(B_BladeApp, numSavedBMPs, 0x5DC);
     EXPECT_OFFSET_EQ(B_BladeApp, unknown5E0, 0x5E0);
