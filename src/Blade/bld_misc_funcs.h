@@ -57,7 +57,8 @@ public:
 
 struct B_CharSize
 {
-    char unknown_fields[8];
+    float x;
+    float y;
     float width;
     float height;
 };
