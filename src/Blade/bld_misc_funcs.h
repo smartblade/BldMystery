@@ -68,10 +68,10 @@ public:
     B_CharSize charSize[255];
 };
 
-class B_Font
+class B_Font : public B_NamedObj
 {
 public:
-    char unknown_fields[40];
+    char unknown_fields[28];
     B_CharData *charData;
 };
 
