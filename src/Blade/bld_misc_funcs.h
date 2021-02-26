@@ -65,7 +65,7 @@ struct B_CharSize
 class B_CharData
 {
 public:
-    B_CharSize charSize[255];
+    B_CharSize charSize[256];
 };
 
 class B_Font : public B_NamedObj
