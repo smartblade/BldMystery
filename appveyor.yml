@@ -3,34 +3,56 @@ image:
 configuration:
 - Release
 - Native
+environment:
+  matrix:
+    - BUILD_TOOL: cmake
+      CMAKE_CONFIGURATION: x86-Release
+    - BUILD_TOOL: cmake
+      CMAKE_CONFIGURATION: x86-Native
+      NATIVE_ARGS: "-DBLD_NATIVE=true"
+    - BUILD_TOOL: msbuild
+matrix:
+  exclude:
+    - configuration: Native
+      BUILD_TOOL: cmake
 before_build:
 # install python 1.5
 - 7z x -o"C:\Program Files (x86)\Python" python-1.5.2.zip
 # setup Visual C++ build environment
 - call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x86
-# upgrade projects
-- devenv /Upgrade src/BOD.sln
 # set environment variables for additional properties of Visual C++ projects
 - set NOSAFESEH=/p:ForceImportBeforeCppTargets=%APPVEYOR_BUILD_FOLDER%\src\nosafeseh.props
 - set MSBUILD_ARGS=-maxcpucount:8 %NOSAFESEH%
-build_script:
-- devenv /Upgrade Mss32dummy.sln
-- msbuild %MSBUILD_ARGS% /p:Configuration=Debug /p:Platform=Win32 Mss32dummy.sln
-- msbuild %MSBUILD_ARGS% /p:Platform=Win32 src/BOD.sln
-- devenv /Upgrade tests/UnitTests.sln
-- xcopy /Y /E tests\gtest-v1-10 tests\gtest
-- msbuild %MSBUILD_ARGS% /p:Platform=Win32 tests/UnitTests.sln
 test_script:
-- tests\%CONFIGURATION%\UnitTests.exe
+- echo 'There is no tests for %CONFIGURATION% configuration'
 for:
--
-  matrix:
+- matrix:
+    only:
+    - configuration: Release
+      BUILD_TOOL: msbuild
+  build_script:
+  - devenv /Upgrade Mss32dummy.sln
+  - msbuild %MSBUILD_ARGS% /p:Configuration=Debug /p:Platform=Win32 Mss32dummy.sln
+  - devenv /Upgrade src/BOD.sln
+  - msbuild %MSBUILD_ARGS% /p:Platform=Win32 src/BOD.sln
+  - devenv /Upgrade tests/UnitTests.sln
+  - xcopy /Y /E tests\gtest-v1-10 tests\gtest
+  - msbuild %MSBUILD_ARGS% /p:Platform=Win32 tests/UnitTests.sln
+  test_script:
+  - tests\%CONFIGURATION%\UnitTests.exe
+- matrix:
     only:
     - configuration: Native
+      BUILD_TOOL: msbuild
   build_script:
+  - devenv /Upgrade src/BOD.sln
   - msbuild %MSBUILD_ARGS% /p:Platform=Win32 src/BOD.sln
-  test_script:
-  - echo 'There is no tests for %CONFIGURATION% configuration'
+- matrix:
+    only:
+    - BUILD_TOOL: cmake
+  build_script:
+  - cmake -GNinja -DCMAKE_BUILD_TYPE=RelWithDebInfo %NATIVE_ARGS% -S src -B .cmake
+  - cmake --build .cmake
 artifacts:
 - path: install/bin/*.exe
   name: Blade of Darkness main executable
