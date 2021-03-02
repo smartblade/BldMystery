@@ -10,8 +10,6 @@ before_build:
 - call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x86
 # upgrade projects
 - devenv /Upgrade src/BOD.sln
-- devenv /Upgrade tests/UnitTests.sln
-- xcopy /Y /E tests\gtest-v1-10 tests\gtest
 # set environment variables for additional properties of Visual C++ projects
 - set NOSAFESEH=/p:ForceImportBeforeCppTargets=%APPVEYOR_BUILD_FOLDER%\src\nosafeseh.props
 - set MSBUILD_ARGS=-maxcpucount:8 %NOSAFESEH%
@@ -19,6 +17,8 @@ build_script:
 - devenv /Upgrade Mss32dummy.sln
 - msbuild %MSBUILD_ARGS% /p:Configuration=Debug /p:Platform=Win32 Mss32dummy.sln
 - msbuild %MSBUILD_ARGS% /p:Platform=Win32 src/BOD.sln
+- devenv /Upgrade tests/UnitTests.sln
+- xcopy /Y /E tests\gtest-v1-10 tests\gtest
 - msbuild %MSBUILD_ARGS% /p:Platform=Win32 tests/UnitTests.sln
 test_script:
 - tests\%CONFIGURATION%\UnitTests.exe
