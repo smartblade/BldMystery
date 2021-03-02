@@ -14,11 +14,12 @@ before_build:
 - xcopy /Y /E tests\gtest-v1-10 tests\gtest
 # set environment variables for additional properties of Visual C++ projects
 - set NOSAFESEH=/p:ForceImportBeforeCppTargets=%APPVEYOR_BUILD_FOLDER%\src\nosafeseh.props
+- set MSBUILD_ARGS=-maxcpucount:8 %NOSAFESEH%
 build_script:
 - devenv /Upgrade Mss32dummy.sln
-- msbuild %NOSAFESEH% /p:Configuration=Debug /p:Platform=Win32 Mss32dummy.sln
-- msbuild %NOSAFESEH% /p:Platform=Win32 src/BOD.sln
-- msbuild %NOSAFESEH% /p:Platform=Win32 tests/UnitTests.sln
+- msbuild %MSBUILD_ARGS% /p:Configuration=Debug /p:Platform=Win32 Mss32dummy.sln
+- msbuild %MSBUILD_ARGS% /p:Platform=Win32 src/BOD.sln
+- msbuild %MSBUILD_ARGS% /p:Platform=Win32 tests/UnitTests.sln
 test_script:
 - tests\%CONFIGURATION%\UnitTests.exe
 for:
@@ -27,7 +28,7 @@ for:
     only:
     - configuration: Native
   build_script:
-  - msbuild %NOSAFESEH% /p:Platform=Win32 src/BOD.sln
+  - msbuild %MSBUILD_ARGS% /p:Platform=Win32 src/BOD.sln
   test_script:
   - echo 'There is no tests for %CONFIGURATION% configuration'
 artifacts:
