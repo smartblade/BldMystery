@@ -23,7 +23,7 @@ endif()
 
 list(APPEND BOD_COMMON_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/include")
 list(APPEND BOD_COMMON_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Blade")
-set(PYTHON_INCLUDE_DIR "C:\\Program Files (x86)\\Python\\include")
+set(PYTHON_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Python-1.5.2/Include")
 
 set(BOD_EXTERNAL_LIB_DIR "${PROJECT_SOURCE_DIR}/../lib/VC")
 
