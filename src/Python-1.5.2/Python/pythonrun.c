@@ -599,6 +599,55 @@ PyRun_SimpleString(command)
 	return 0;
 }
 
+/*
+* Module:                 python15.dll
+* Entry point:            0x1E1571CF
+*/
+
+int
+PyRun_InteractiveString(command)
+	char *command;
+{
+	size_t i, j, len;
+	char *str;
+	node *n;
+	perrdetail err;
+	PyObject *m, *d, *v;
+	len = strlen(command);
+	if (len == 0)
+		return 0;
+	str = malloc(len + 3);
+	if (str == NULL)
+		return -1;
+	j = 0;
+	for (i = 0; command[i] != '\0'; i++) {
+		if (command[i] != '\r') {
+			str[j++] = command[i];
+		}
+	}
+	str[j++] = '\n';
+	str[j++] = '\0';
+	str[j++] = EOF;
+	n = PyParser_ParseString(str, &_PyParser_Grammar, Py_single_input, &err);
+	free(str);
+	if (n == NULL) {
+		err_input(&err);
+		return -1;
+	}
+	m = PyImport_AddModule("__main__");
+	if (m == NULL)
+		return -1;
+	d = PyModule_GetDict(m);
+	v = run_node(n, "Blade input", d, d);
+	if (v == NULL) {
+		PyErr_Print();
+		return -1;
+	}
+	Py_DECREF(v);
+	Py_FlushLine();
+	return 0;
+}
+
 static int
 parse_syntax_error(err, message, filename, lineno, offset, text)
      PyObject* err;

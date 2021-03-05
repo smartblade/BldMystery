@@ -28,16 +28,6 @@
 #include <Python.h>
 #undef _object
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-DL_IMPORT(int) PyRun_InteractiveString Py_PROTO((char *));
-
-#ifdef __cplusplus
-}
-#endif
-
 #ifdef __BORLANDC__
 
 /* Use stdcall to avoid generation underscores */

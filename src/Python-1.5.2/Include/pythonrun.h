@@ -52,6 +52,7 @@ DL_IMPORT(void) Py_EndInterpreter Py_PROTO((PyThreadState *));
 DL_IMPORT(int) PyRun_AnyFile Py_PROTO((FILE *, char *));
 
 DL_IMPORT(int) PyRun_SimpleString Py_PROTO((char *));
+DL_IMPORT(int) PyRun_InteractiveString Py_PROTO((char *));
 DL_IMPORT(int) PyRun_SimpleFile Py_PROTO((FILE *, char *));
 DL_IMPORT(int) PyRun_InteractiveOne Py_PROTO((FILE *, char *));
 DL_IMPORT(int) PyRun_InteractiveLoop Py_PROTO((FILE *, char *));
