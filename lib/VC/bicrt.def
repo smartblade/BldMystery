@@ -244,8 +244,10 @@ EXPORTS
     _fputwchar                     @237 ; _fputwchar
     _fsopen                        @238 ; _fsopen
     _fstat                         @239 ; _fstat
+    __fstat32                      @239 ; _fstat
     _fstati64                      @240 ; _fstati64
     _ftime                         @241 ; _ftime
+    __ftime32                      @241 ; _ftime
     _ftol                          @242 ; _ftol
     _fullpath                      @243 ; _fullpath
     _futime                        @244 ; _futime
@@ -448,6 +450,7 @@ EXPORTS
     _spawnvpe                      @441 ; _spawnvpe
     _splitpath                     @442 ; _splitpath
     _stat                          @443 ; _stat
+    __stat32                       @443 ; _stat
     _stati64                       @444 ; _stati64
     _statusfp                      @445 ; _statusfp
     _strcmpi                       @446 ; _strcmpi
@@ -486,6 +489,7 @@ EXPORTS
     _unloaddll                     @479 ; _unloaddll
     _unlock                        @480 ; _unlock
     _utime                         @481 ; _utime
+    __utime32                      @481 ; _utime
     _vsnprintf                     @482 ; _vsnprintf
     _vsnwprintf                    @483 ; _vsnwprintf
     _waccess                       @484 ; _waccess
@@ -587,7 +591,8 @@ EXPORTS
     clock
     cos
     cosh
-    ctime
+    ctime                          @583 ; ctime
+    __ctime32                      @583 ; ctime
     difftime
     div
     exit
@@ -627,7 +632,8 @@ EXPORTS
     gets
     getwc
     getwchar
-    gmtime
+    gmtime                             @623 ; gmtime
+    __gmtime32                         @623 ; gmtime
     is_wctype
     isalnum
     isalpha
@@ -658,7 +664,8 @@ EXPORTS
     ldexp
     ldiv
     localeconv
-    localtime
+    localtime                          @654 ; localtime
+    __localtime32                      @654 ; localtime
     log
     log10
     longjmp
@@ -671,7 +678,8 @@ EXPORTS
     memcpy
     memmove
     memset
-    mktime
+    mktime                             @667 ; mktime
+    __mktime32                         @667 ; mktime
     modf
     perror
     pow
@@ -725,7 +733,8 @@ EXPORTS
     system
     tan
     tanh
-    time
+    time                             @721 ; time
+    __time32                         @721 ; time
     tmpfile
     tmpnam
     tolower

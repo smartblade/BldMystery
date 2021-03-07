@@ -13,7 +13,7 @@ if (BLD_NATIVE)
         CMAKE_CXX_FLAGS_RELWITHDEBINFO ${CMAKE_CXX_FLAGS_RELWITHDEBINFO}
     )
     link_libraries(${PROJECT_SOURCE_DIR}/../lib/VC/bicrt.lib)
-    add_compile_definitions(_NO_CRT_STDIO_INLINE)
+    add_compile_definitions(_NO_CRT_STDIO_INLINE _USE_32BIT_TIME_T)
 endif()
 if (MSVC)
     # Enable asserts
