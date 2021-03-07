@@ -456,7 +456,7 @@ EXPORTS
     _strcmpi                       @446 ; _strcmpi
     _strdate                       @447 ; _strdate
     _strdup                        @448 ; _strdup
-    _strerror                      @449 ; _strerror
+    __strerror                     @449 ; _strerror
     _stricmp                       @450 ; _stricmp
     _stricoll                      @451 ; _stricoll
     _strlwr                        @452 ; _strlwr
