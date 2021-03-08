@@ -621,7 +621,7 @@ inittime()
 #ifdef PYOS_OS2
 	ins(d, "timezone", PyInt_FromLong((long)_timezone));
 #else /* !PYOS_OS2 */
-	ins(d, "timezone", PyInt_FromLong((long)timezone));
+	ins(d, "timezone", PyInt_FromLong((long)_Py_timezone));
 #endif /* PYOS_OS2 */
 #ifdef HAVE_ALTZONE
 	ins(d, "altzone", PyInt_FromLong((long)altzone));
@@ -629,11 +629,11 @@ inittime()
 #ifdef PYOS_OS2
 	ins(d, "altzone", PyInt_FromLong((long)_timezone-3600));
 #else /* !PYOS_OS2 */
-	ins(d, "altzone", PyInt_FromLong((long)timezone-3600));
+	ins(d, "altzone", PyInt_FromLong((long)_Py_timezone-3600));
 #endif /* PYOS_OS2 */
 #endif
-	ins(d, "daylight", PyInt_FromLong((long)daylight));
-	ins(d, "tzname", Py_BuildValue("(zz)", tzname[0], tzname[1]));
+	ins(d, "daylight", PyInt_FromLong((long)_Py_daylight));
+	ins(d, "tzname", Py_BuildValue("(zz)", _Py_tzname[0], _Py_tzname[1]));
 #else /* !HAVE_TZNAME || __GNU_LIBRARY__ */
 #ifdef HAVE_TM_ZONE
 	{

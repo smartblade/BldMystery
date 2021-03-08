@@ -90,6 +90,17 @@ typedef int pid_t;
 #define LONG_LONG __int64
 #endif /* _MSC_VER && > 850 */
 
+/* VS 2015 defines these names with a leading underscore */
+#if _MSC_VER >= 1900
+#define _Py_timezone _timezone
+#define _Py_daylight _daylight
+#define _Py_tzname _tzname
+#else
+#define _Py_timezone timezone
+#define _Py_daylight daylight
+#define _Py_tzname tzname
+#endif
+
 #if defined(_MSC_VER) && _MSC_VER <= 850
 /* Start of defines for 16-bit Windows using VC++ 1.5 */
 #define COMPILER "[MSC 16-bit]"
