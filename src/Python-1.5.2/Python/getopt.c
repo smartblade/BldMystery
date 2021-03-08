@@ -24,7 +24,7 @@
  * davegottner@delphi.com.
  *---------------------------------------------------------------------------*/
 
-#include <stdio.h>
+#include "Python.h"
 #include <string.h>
 
 #define bool	int

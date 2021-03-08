@@ -70,6 +70,18 @@ typedef int pid_t;
 #pragma warning(disable:4113)
 #define hypot _hypot
 #include <stdio.h>
+#ifdef USE_BICRT
+/* Use legacy definitions for stdin/stdout/stderr */
+__declspec(dllimport) char _iob;
+#define BICRT_FILE_SIZE 0x20
+#define BICRT_IOB(i) ((FILE *)(&_iob + (i * BICRT_FILE_SIZE)))
+#undef stdin
+#undef stdout
+#undef stderr
+#define stdin  BICRT_IOB(0)
+#define stdout BICRT_IOB(1)
+#define stderr BICRT_IOB(2)
+#endif /* USE_BICRT */
 #define HAVE_CLOCK
 #define HAVE_STRFTIME
 #define HAVE_STRERROR
