@@ -26,6 +26,15 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/Python
 )
 target_link_libraries(${TARGET} PRIVATE winmm wsock32)
+if (MSVC)
+    set(LARGEINT_DIR ${PROJECT_SOURCE_DIR}/largeint)
+    target_include_directories(${TARGET} PRIVATE ${LARGEINT_DIR})
+    target_link_libraries(${TARGET} PRIVATE ${LARGEINT_DIR}/largeint.lib)
+    set_target_properties(
+        ${TARGET} PROPERTIES
+        LINK_FLAGS "/NODEFAULTLIB:libc.lib"
+    )
+endif()
 set_target_properties(
     ${TARGET} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${BOD_RUNTIME_DIR}
