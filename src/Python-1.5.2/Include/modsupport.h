@@ -37,8 +37,6 @@ PERFORMANCE OF THIS SOFTWARE.
 
 /* Module support interface */
 
-#ifdef HAVE_STDARG_PROTOTYPES
-
 #include <stdarg.h>
 
 extern DL_IMPORT(int) PyArg_Parse Py_PROTO((PyObject *, char *, ...));
@@ -46,17 +44,6 @@ extern DL_IMPORT(int) PyArg_ParseTuple Py_PROTO((PyObject *, char *, ...));
 extern DL_IMPORT(int) PyArg_ParseTupleAndKeywords Py_PROTO((PyObject *, PyObject *,
 						 char *, char **, ...));
 extern DL_IMPORT(PyObject *) Py_BuildValue Py_PROTO((char *, ...));
-
-#else
-
-#include <varargs.h>
-
-/* Better to have no prototypes at all for varargs functions in this case */
-extern DL_IMPORT(int) PyArg_Parse();
-extern DL_IMPORT(int) PyArg_ParseTuple();
-extern DL_IMPORT(PyObject *) Py_BuildValue();
-
-#endif
 
 extern DL_IMPORT(int) PyArg_VaParse Py_PROTO((PyObject *, char *, va_list));
 extern DL_IMPORT(PyObject *) Py_VaBuildValue Py_PROTO((char *, va_list));
