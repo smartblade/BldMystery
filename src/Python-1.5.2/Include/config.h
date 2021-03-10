@@ -102,8 +102,15 @@ __declspec(dllimport) char _iob;
 #define LONG_LONG __int64
 #endif /* _MSC_VER && > 850 */
 
+#ifdef USE_BICRT
+__declspec(dllimport) long timezone;
+__declspec(dllimport) int daylight;
+__declspec(dllimport) char *tzname[2];
+#define _Py_timezone timezone
+#define _Py_daylight daylight
+#define _Py_tzname tzname
 /* VS 2015 defines these names with a leading underscore */
-#if _MSC_VER >= 1900
+#elif _MSC_VER >= 1900
 #define _Py_timezone _timezone
 #define _Py_daylight _daylight
 #define _Py_tzname _tzname
