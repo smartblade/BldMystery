@@ -27,8 +27,7 @@ add_executable(${TARGET} WIN32 ${SOURCES} ${RESOURCES})
 
 if (BLD_NATIVE)
     target_include_directories(${TARGET} PRIVATE asm)
-    target_link_libraries(${TARGET} PRIVATE bicrt ddraw Mss32 shw32 wsock32)
-    target_compile_definitions(${TARGET} PRIVATE _NO_CRT_STDIO_INLINE)
+    target_link_libraries(${TARGET} PRIVATE ddraw Mss32 shw32 wsock32)
     # Struct member alignment
     target_compile_options(${TARGET} PRIVATE "/Zp4")
     target_compile_definitions(

@@ -12,6 +12,8 @@ if (BLD_NATIVE)
         REGEX REPLACE /O2 /Od
         CMAKE_CXX_FLAGS_RELWITHDEBINFO ${CMAKE_CXX_FLAGS_RELWITHDEBINFO}
     )
+    link_libraries(${PROJECT_SOURCE_DIR}/../lib/VC/bicrt.lib)
+    add_compile_definitions(_NO_CRT_STDIO_INLINE)
 endif()
 if (MSVC)
     # Enable asserts
