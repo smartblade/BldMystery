@@ -20,11 +20,8 @@ target_compile_definitions(
     _CRT_NONSTDC_NO_DEPRECATE
     _CRT_SECURE_NO_DEPRECATE
 )
-target_include_directories(
-    ${TARGET} PRIVATE
-    ${PROJECT_SOURCE_DIR}/Include
-    ${PROJECT_SOURCE_DIR}/Python
-)
+target_include_directories(${TARGET} PUBLIC ${PROJECT_SOURCE_DIR}/Include)
+target_include_directories(${TARGET} PRIVATE ${PROJECT_SOURCE_DIR}/Python)
 target_link_libraries(${TARGET} PRIVATE winmm wsock32)
 if (MSVC)
     set(LARGEINT_DIR ${PROJECT_SOURCE_DIR}/largeint)
