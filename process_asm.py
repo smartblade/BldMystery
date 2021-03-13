@@ -16,7 +16,7 @@ export_regexp = re.compile('\*\s+Export:\s+(?P<export>\S+),\s+(?P<ordinal>\d+)')
 num_regexp = re.compile('(?P<prefix>[^\w\?\.@$])(?P<number>[\dABCDEF]+)')
 cmds = 'call|jmp|je|jne|jb|jnb|jbe|jl|jnl|jle|jg|ja|js|jns|jp|jnp|jo|jno|loop|loopnz'
 direct_transfer_regexp = re.compile('^(?P<cmd>{})\s+(?P<target>[\dABCDEF]+)\W*$'.format(cmds))
-external_ref_regexp = re.compile('(?P<extern>\w+\.(?P<name>\S+))')
+external_ref_regexp = re.compile('(?P<extern>(?P<library>\w+)\.(?P<name>\S+))')
 byteReg = 'al|cl|dl'
 wordReg = 'ax|cx|dx'
 dwordReg = 'eax|ecx|edx'
@@ -90,15 +90,20 @@ class ImplementedProcedure:
         return "{} call {}; {}\n".format(' ' * 10, self._label, comment)
 
 class ImportReference:
-    def __init__(self, addr, name):
+    def __init__(self, addr, library, name):
+        is_underscore = (library == 'python15')
         self._addr = addr
         self._name = name
+        if is_underscore:
+            self._mangled_name = "_{}".format(name)
+        else:
+            self._mangled_name = name
 
     def showLabel(self, name):
         pass
 
     def label(self):
-        return "__imp_{}".format(self._name)
+        return "__imp_{}".format(self._mangled_name)
 
     def startAddress(self):
         return self._addr
@@ -323,10 +328,11 @@ class AsmInstruction:
         match = re.search(external_ref_regexp, self._instr)
         if match:
             externalSym = match.group('extern')
+            library = match.group('library')
             symbolName = match.group('name')
             (targetAddr, isDirectCall) = self.extractTargetAddress(imageMap)
             if targetAddr is not None and not isDirectCall:
-                imageMap.addImportReference(targetAddr, symbolName)
+                imageMap.addImportReference(targetAddr, library, symbolName)
             self.printErrorMessage("[{}]".format(externalSym))
             target = self.buildTargetOperand(targetAddr, isDirectCall)
             self._instr = self._instr.replace(externalSym, target)
@@ -424,8 +430,8 @@ class ImageMap:
     def add(self, addr, item):
         self._items[addr] = item
 
-    def addImportReference(self, addr, name):
-        self._importReferences[addr] = ImportReference(addr, name)
+    def addImportReference(self, addr, library, name):
+        self._importReferences[addr] = ImportReference(addr, library, name)
 
     def addExport(self, addr, name):
         self._exports[addr] = name
