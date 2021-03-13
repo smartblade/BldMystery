@@ -22,6 +22,7 @@ target_compile_definitions(
 )
 target_include_directories(${TARGET} PUBLIC ${PROJECT_SOURCE_DIR}/Include)
 target_include_directories(${TARGET} PRIVATE ${PROJECT_SOURCE_DIR}/Python)
+target_link_libraries(${TARGET} PUBLIC bicrt)
 target_link_libraries(${TARGET} PRIVATE winmm wsock32)
 if (MSVC)
     set(LARGEINT_DIR ${PROJECT_SOURCE_DIR}/largeint)
