@@ -34,5 +34,6 @@ if (MSVC)
 endif()
 set_target_properties(
     ${TARGET} PROPERTIES
+    DEBUG_POSTFIX _d
     RUNTIME_OUTPUT_DIRECTORY ${BOD_RUNTIME_DIR}
 )
