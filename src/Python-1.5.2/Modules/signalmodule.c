@@ -382,8 +382,29 @@ initsignal()
 		sigaction(i,  0, &act);
 		t = act.sa_handler;
 #else
+		/* Special signal handling for the secure CRT in Visual Studio 2005 */
+		#if !defined(USE_BICRT) && defined(_MSC_VER) && _MSC_VER >= 1400
+			switch (i) {
+			/* Only these signals are valid */
+			case SIGINT:
+			case SIGILL:
+			case SIGFPE:
+			case SIGSEGV:
+			case SIGTERM:
+			case SIGBREAK:
+			case SIGABRT:
+				t = signal(i, SIG_IGN);
+				signal(i, t);
+				break;
+			/* Don't call signal() with other values or it will assert */
+			default:
+				t = SIG_ERR;
+				break;
+			}
+		#else
 		t = signal(i, SIG_IGN);
 		signal(i, t);
+		#endif /* _MSC_VER && _MSC_VER >= 1400 */
 #endif
 		Handlers[i].tripped = 0;
 		if (t == SIG_DFL)
