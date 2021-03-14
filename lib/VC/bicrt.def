@@ -249,6 +249,7 @@ EXPORTS
     _ftime                         @241 ; _ftime
     __ftime32                      @241 ; _ftime
     _ftol                          @242 ; _ftol
+    __ftol2_sse                    @242 ; _ftol
     _fullpath                      @243 ; _fullpath
     _futime                        @244 ; _futime
     _gcvt                          @245 ; _gcvt
