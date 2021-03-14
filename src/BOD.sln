@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Raster", "Raster\Raster.vcproj", "{15817D0C-F1B7-40B7-A229-706AB72278A8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{047ABB79-1A07-43D8-BE9D-7F168BA38E88} = {047ABB79-1A07-43D8-BE9D-7F168BA38E88}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bladex", "BladeExt\Bladex.vcproj", "{45BBCEFB-81A4-4FDB-832A-027D0A5B991A}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -17,6 +20,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Blade", "Blade\Blade.vcproj
 	ProjectSection(ProjectDependencies) = postProject
 		{15817D0C-F1B7-40B7-A229-706AB72278A8} = {15817D0C-F1B7-40B7-A229-706AB72278A8}
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "python15", "Python-1.5.2\python15.vcproj", "{047ABB79-1A07-43D8-BE9D-7F168BA38E88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +54,12 @@ Global
 		{F18446DB-7027-4330-BB0F-3D133E659CA5}.Native|Win32.Build.0 = Native|Win32
 		{F18446DB-7027-4330-BB0F-3D133E659CA5}.Release|Win32.ActiveCfg = Release|Win32
 		{F18446DB-7027-4330-BB0F-3D133E659CA5}.Release|Win32.Build.0 = Release|Win32
+		{047ABB79-1A07-43D8-BE9D-7F168BA38E88}.Debug|Win32.ActiveCfg = Debug|Win32
+		{047ABB79-1A07-43D8-BE9D-7F168BA38E88}.Debug|Win32.Build.0 = Debug|Win32
+		{047ABB79-1A07-43D8-BE9D-7F168BA38E88}.Native|Win32.ActiveCfg = Native|Win32
+		{047ABB79-1A07-43D8-BE9D-7F168BA38E88}.Native|Win32.Build.0 = Native|Win32
+		{047ABB79-1A07-43D8-BE9D-7F168BA38E88}.Release|Win32.ActiveCfg = Release|Win32
+		{047ABB79-1A07-43D8-BE9D-7F168BA38E88}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
