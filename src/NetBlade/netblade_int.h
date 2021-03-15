@@ -114,7 +114,7 @@ extern bool bld_check_protocol(bool tcp);
 extern "C" {
 #endif
 
-LIB_EXP bld_abstract_net *GetNetInterface(bld_net_cb *cb, void *module);
+LIB_EXP bld_abstract_net *GetNetInterface(bld_net_cb *cb, HMODULE module);
 LIB_EXP void CloseConection(void);
 
 #ifdef __cplusplus

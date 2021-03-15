@@ -75,7 +75,7 @@ void bld_net::player_created(unsigned long playerId, const char *name)
 * Entry point:            0x1000386F
 */
 
-bld_abstract_net *GetNetInterface(bld_net_cb *cb, void *module) {
+bld_abstract_net *GetNetInterface(bld_net_cb *cb, HMODULE module) {
 
         if (gbl_net == NULL) {
 
