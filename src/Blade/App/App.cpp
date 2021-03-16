@@ -27,10 +27,10 @@
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00411281
-* VC++ mangling:          ?Call@B_AfterFrameFunc@@QAEXN@Z
+* VC++ mangling:          ?Call@B_AfterFrameFunc@@QAEXM@Z
 */
 #ifdef BLD_NATIVE
-void B_AfterFrameFunc::Call(double time)
+void B_AfterFrameFunc::Call(float time)
 {
 }
 #endif

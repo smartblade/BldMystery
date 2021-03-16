@@ -22,7 +22,7 @@ class B_Widget;
 class B_AfterFrameFunc : public B_NamedObj
 {
 public:
-    void Call(double time);
+    void Call(float time);
 
     PyObject *func;
     PyObject *param;

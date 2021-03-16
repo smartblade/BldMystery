@@ -102,8 +102,8 @@ externdef ?GetWindow@B_WinApp@@UAEIXZ: near
 l00411170 equ ?GetWindow@B_WinApp@@UAEIXZ
 externdef ?GetModule@B_WinApp@@UAEIXZ: near
 l00411190 equ ?GetModule@B_WinApp@@UAEIXZ
-externdef ?Call@B_AfterFrameFunc@@QAEXN@Z: near
-l00411281 equ ?Call@B_AfterFrameFunc@@QAEXN@Z
+externdef ?Call@B_AfterFrameFunc@@QAEXM@Z: near
+l00411281 equ ?Call@B_AfterFrameFunc@@QAEXM@Z
 externdef ??0B_App@@QAE@PAD@Z: near
 l004113CE equ ??0B_App@@QAE@PAD@Z
 externdef ??1B_App@@UAE@XZ: near
