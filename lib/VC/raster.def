@@ -1,5 +1,0 @@
-LIBRARY     RASTER.DLL
-
-EXPORTS
-    ?B_3D_raster_device@@3PAVB_3DRasterDevice@@A @1   ; ?B_3D_raster_device@@3PAVB_3DRasterDevice@@A
-    initRaster                     @2   ; initRaster
