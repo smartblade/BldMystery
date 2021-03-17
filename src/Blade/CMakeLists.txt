@@ -26,6 +26,10 @@ endif()
 add_executable(${TARGET} WIN32 ${SOURCES} ${RESOURCES})
 
 if (BLD_NATIVE)
+    # Generate debug information for asm files
+    target_compile_options(
+        ${TARGET} PRIVATE $<$<COMPILE_LANGUAGE:ASM_MASM>:/Zi>
+    )
     target_include_directories(${TARGET} PRIVATE asm)
     target_link_libraries(${TARGET} PRIVATE ddraw Mss32 shw32 wsock32)
     # Struct member alignment
