@@ -37,39 +37,6 @@ def toHex(n):
 def fromHex(h):
     return int(h, 16)
 
-class CommentLine:
-    _line = None
-    def __init__(self, line):
-        self._line = line
-
-    def toString(self):
-        return ";{}".format(self._line)
-
-class MemoryInterval:
-    def __init__(self, imageMap, addr, length):
-        self._imageMap = imageMap
-        self._addr = addr
-        self._length = length
-
-    def startAddress(self):
-        return self._addr
-
-    def endAddress(self):
-        return self._addr + self._length
-
-    def toString(self):
-        line = ""
-        curAddr = self._addr
-        endAddr = self._addr + self._length
-        while curAddr < endAddr:
-            item = self._imageMap.itemsMap().get(curAddr)
-            if item is not None:
-                line += item.toString(self._imageMap)
-                curAddr = item.endAddress()
-            else:
-                curAddr += 1
-        return line
-
 class ImplementedProcedure:
     def __init__(self, startAddr, endAddr, label):
         self._startAddr = startAddr
@@ -401,6 +368,7 @@ class ImageMap:
         self._importReferences = {}
         self._exports = {}
         self._unresolvedAddresses = set()
+        self._comments = {}
 
     def itemsMap(self):
         return self._items
@@ -436,6 +404,13 @@ class ImageMap:
     def addExport(self, addr, name):
         self._exports[addr] = name
         self.resolveAddress(addr)
+
+    def addComments(self, addr, comments):
+        if (len(comments) > 0):
+            self._comments[addr] = comments
+
+    def comments(self, addr):
+        return self._comments.get(addr)
 
     def bytes(self, startAddress, endAddress):
         return self._mem.bytes(startAddress, endAddress)
@@ -593,6 +568,19 @@ class ImageMap:
             item = self._items[item.endAddress()]
         self._items[addr] = ImplementedProcedure(addr, endAddress, label)
 
+    def toString(self, endDataAddress):
+        lines = []
+        for addr in sorted(self._items.keys()):
+            if addr >= endDataAddress:
+                break
+            item = self._items[addr]
+            comments = self.comments(addr)
+            if comments is not None:
+                for comment in comments:
+                    lines.append(";{}".format(comment))
+            lines.append(item.toString(self))
+        return ''.join(lines)
+
 class MemoryArea:
     _addr = None
     _bytes = None
@@ -647,22 +635,6 @@ def extractExport(line):
     if match:
         return match.group('export')
     return None
-
-def makeMemoryIntervalsAdjacent(imageMap, lineItems):
-    prevIndex = -1
-    for (i, lineItem) in enumerate(lineItems):
-        if isinstance(lineItem, MemoryInterval):
-            if (
-                prevIndex > 0 and
-                lineItems[prevIndex].endAddress() != lineItem.startAddress()
-            ):
-                startAddress = lineItems[prevIndex].startAddress()
-                length = lineItem.startAddress() - startAddress
-                lineItems[prevIndex] = MemoryInterval(
-                    imageMap = imageMap,
-                    addr = startAddress,
-                    length = length)
-            prevIndex = i
 
 def readRelocations(relocFileName):
     addr_value_regexp = re.compile('^;;\s(?P<addr>0x[\dABCDEF]+)\s(?P<value>0x[\dABCDEF]+)')
@@ -848,13 +820,13 @@ if __name__ == '__main__':
     print("Fill data structures...")
     entryPoint = None
     export = None
-    lineItems = []
     mem = MemoryArea(reloc)
     imageMap = ImageMap(mem)
+    comments = []
     for line in lines:
         match = re.search(addr_label_regexp, line)
         if not match:
-            lineItems.append(CommentLine(line))
+            comments.append(line)
             entryPoint = entryPoint or extractEntryPoint(line)
             export = export or extractExport(line)
         else:
@@ -863,8 +835,7 @@ if __name__ == '__main__':
             bytes = match.group('bytes')
             length = len(bytes) // 2
             mem.addBytes(addr, bytes)
-            memIntv = MemoryInterval(imageMap = imageMap, addr = addr, length = length)
-            lineItems.append(memIntv)
+            endDataAddress = addr + length
             if instr is not None:
                 item = AsmInstruction(addr, instr.rstrip(), length)
             else:
@@ -873,9 +844,10 @@ if __name__ == '__main__':
             if export is not None:
                 imageMap.addExport(addr, export)
                 export = None
+            imageMap.addComments(addr, comments)
+            comments = []
     imageMap.resolveAddress(entryPoint, '__startup')
     print("Removing overlapped items...")
-    makeMemoryIntervalsAdjacent(imageMap, lineItems)
     imageMap.removeOverlappedItems()
     print("Merging user data...")
     imageMap.mergeUserData(userData)
@@ -906,13 +878,12 @@ if __name__ == '__main__':
             imageItem.addNearJumpModifier(imageMap)
             imageItem.avoidEmittingOfFWAIT()
     f = open("native.asm", "wt")
-    for lineItem in lineItems:
-        f.write(lineItem.toString())
+    f.write(imageMap.toString(endDataAddress))
     f.write("; Unresolved addresses:\n")
     for addr in sorted(imageMap.unresolvedAddresses()):
         f.write("l{} dd 012345678h\n".format(toHex(addr)))
     f.close()
-    writeUninitialisedData(imageMap, lineItems[-1].endAddress())
+    writeUninitialisedData(imageMap, endDataAddress)
     f = open("import.inc", "wt")
     for impref in imageMap.importReferences():
         f.write("externdef {}: ptr\n".format(impref.label()))
