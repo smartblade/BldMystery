@@ -14,8 +14,11 @@ options.show_hex_prefix = (options.show_hex_prefix != 'no')
 entry_point_regexp = re.compile('Entry\s+Point:\s+(?P<entryPoint>[\dABCDEF]+)')
 export_regexp = re.compile('\*\s+Export:\s+(?P<export>\S+),\s+(?P<ordinal>\d+)')
 num_regexp = re.compile('(?P<prefix>[^\w\?\.@$])(?P<number>[\dABCDEF]+)')
-cmds = 'call|jmp|je|jne|jb|jnb|jbe|jl|jnl|jle|jg|ja|js|jns|jp|jnp|jo|jno|loop|loopnz'
-direct_transfer_regexp = re.compile('^(?P<cmd>{})\s+(?P<target>[\dABCDEF]+)\W*$'.format(cmds))
+jump_cmds = 'jmp|je|jne|jb|jnb|jbe|jl|jnl|jle|jg|ja|js|jns|jp|jnp|jo|jno'
+cmds = 'call|loop|loopnz|' + jump_cmds
+direct_transfer = '^(?P<cmd>{})\s+(?P<target>[\dABCDEF]+)\W*$'
+direct_transfer_regexp = re.compile(direct_transfer.format(cmds))
+jump_regexp = re.compile(direct_transfer.format(jump_cmds))
 external_ref_regexp = re.compile('(?P<extern>(?P<library>\w+)\.(?P<name>\S+))')
 byteReg = 'al|cl|dl'
 wordReg = 'ax|cx|dx'
@@ -37,6 +40,28 @@ def toHex(n):
 def fromHex(h):
     return int(h, 16)
 
+class ImageWriter:
+    def __init__(self, imageMap):
+        self._imageMap = imageMap
+        self._lines = []
+        self._printedComments = set()
+
+    def imageMap(self):
+        return self._imageMap
+
+    def write(self, item):
+        if isinstance(item, str):
+            self._lines.append(item)
+        else:
+            if not item.startAddress() in self._printedComments:
+                comments = self._imageMap.commentsToString(item.startAddress())
+                self._lines.append(comments)
+                self._printedComments.add(item.startAddress())
+            item.write(self)
+
+    def toString(self):
+        return ''.join(self._lines)
+
 class ImplementedProcedure:
     def __init__(self, startAddr, endAddr, label):
         self._startAddr = startAddr
@@ -52,9 +77,9 @@ class ImplementedProcedure:
     def endAddress(self):
         return self._endAddr
 
-    def toString(self, imageMap):
+    def write(self, writer):
         comment = 'Implemented in c++ code'
-        return "{} call {}; {}\n".format(' ' * 10, self._label, comment)
+        writer.write("{} call {}; {}\n".format(' ' * 10, self._label, comment))
 
 class ImportReference:
     def __init__(self, addr, library, name):
@@ -89,10 +114,11 @@ class ImportReference:
             return (name, size)
         return (None, None)
 
-    def toString(self, imageMap):
+    def write(self, writer):
+        imageMap = writer.imageMap()
         label = "g{}".format(toHex(self._addr))
         data = "0{}h".format(imageMap.bytes(self._addr, self.endAddress()))
-        return "{}  dd {}; {}\n".format(label, data, self._name)
+        writer.write("{}  dd {}; {}\n".format(label, data, self._name))
 
 class DataItem:
     _addr = None
@@ -167,8 +193,8 @@ class DataItem:
             curAddr += 1
         return (curAddr - startAddr)
 
-    def toString(self, imageMap):
-        lines = ""
+    def write(self, writer):
+        imageMap = writer.imageMap()
         addr = self.startAddress()
         while addr < self.endAddress():
             error = ""
@@ -205,9 +231,8 @@ class DataItem:
                 length = 1
                 dataSize = "db"
                 data = "0{}h".format(imageMap.bytes(addr, addr + length))
-            lines += "{}  {} {}{}\n".format(label, dataSize, data, error)
+            writer.write("{}  {} {}{}\n".format(label, dataSize, data, error))
             addr += length
-        return lines
 
 class AsmInstruction:
     _addr = None
@@ -228,6 +253,9 @@ class AsmInstruction:
 
     def hideLabel(self):
         self._showLabel = False
+
+    def hasLabel(self):
+        return self._showLabel
 
     def label(self):
         return self._name or "l{}".format(toHex(self._addr))
@@ -349,7 +377,14 @@ class AsmInstruction:
     def isReturn(self):
         return self._instr.startswith("ret")
 
-    def toString(self, imageMap):
+    def isJump(self):
+        match = re.search(jump_regexp, self._instr)
+        if match:
+            return True
+        return False
+
+    def write(self, writer):
+        imageMap = writer.imageMap()
         label = "{}:".format(self.label())
         if (not self._showLabel):
             label = "          "
@@ -359,12 +394,63 @@ class AsmInstruction:
         instr = self.replacePointers(imageMap)
         if options.show_hex_prefix:
             instr = self.addHexPrefix(instr)
-        return "{} {}{}\n".format(label, instr, msg)
+        writer.write("{} {}{}\n".format(label, instr, msg))
+
+class CodeBlock:
+    def __init__(self, instructions):
+        self._instructions = instructions
+
+    def showLabel(self, name):
+        self._instructions[0].showLabel(name)
+
+    def label(self):
+        return self._instructions[0].label()
+
+    def startAddress(self):
+        return self._instructions[0].startAddress()
+
+    def endAddress(self):
+        return self._instructions[-1].endAddress()
+
+    def length(self):
+        return self.endAddress() - self.startAddress()
+
+    def isReturn(self):
+        return self._instructions[-1].isReturn()
+
+    def split(self, addr):
+        instructions1 = []
+        instructions2 = []
+        for instr in self._instructions:
+            if instr.startAddress() < addr:
+                instructions1.append(instr)
+            else:
+                instructions2.append(instr)
+        if (len(instructions2) == 0 or instructions2[0].startAddress() != addr):
+            return (None, None)
+        return (instructions1, instructions2)
+
+    def processData(self, imageMap):
+        for instr in self._instructions:
+            instr.resolveExternalCalls(imageMap)
+            instr.applyRelocs(imageMap)
+            instr.resolveDirectTransferAddress(imageMap)
+
+    def adjustInstructions(self, imageMap):
+        for instr in self._instructions:
+            instr.fixByteMemoryAccess()
+            instr.addNearJumpModifier(imageMap)
+            instr.avoidEmittingOfFWAIT()
+
+    def write(self, writer):
+        for instr in self._instructions:
+            writer.write(instr)
 
 class ImageMap:
     def __init__(self, mem):
         self._mem = mem
         self._items = {}
+        self._blocks = {}
         self._importReferences = {}
         self._exports = {}
         self._unresolvedAddresses = set()
@@ -546,7 +632,7 @@ class ImageMap:
         self._unresolvedAddresses -= set(self._items)
 
     def resolveAddress(self, addr, name = None):
-        if addr in self._items:
+        if addr in self._items or self.splitBlock(addr):
             self._items[addr].showLabel(name)
         else:
             self._unresolvedAddresses.add(addr)
@@ -568,18 +654,60 @@ class ImageMap:
             item = self._items[item.endAddress()]
         self._items[addr] = ImplementedProcedure(addr, endAddress, label)
 
-    def toString(self, endDataAddress):
+    def splitBlock(self, addr):
+        block = self._blocks.get(addr)
+        if block is None:
+            return False
+        (instrs1, instrs2) =  block.split(addr)
+        if instrs1 is None or instrs2 is None:
+            return False
+        del self._items[block.startAddress()]
+        self._createBlock(instrs1)
+        self._createBlock(instrs2)
+        return True
+
+    def _createBlock(self, instructions):
+        block = CodeBlock(instructions)
+        self._items[block.startAddress()] = block
+        for instr in instructions:
+            self._blocks[instr.startAddress()] = block
+
+    def makeBlocks(self):
+        blockInstructions = []
+        for addr in sorted(self._items.keys()):
+            item = self._items[addr]
+            if (
+                len(blockInstructions) > 0 and
+                (
+                    not isinstance(item, AsmInstruction) or
+                    item.hasLabel() or
+                    blockInstructions[-1].endAddress() != item.startAddress() or
+                    blockInstructions[-1].isReturn() or
+                    blockInstructions[-1].isJump())
+            ):
+                for blockInstruction in blockInstructions:
+                    del self._items[blockInstruction.startAddress()]
+                self._createBlock(blockInstructions)
+                blockInstructions = []
+            if isinstance(item, AsmInstruction):
+                blockInstructions.append(item)
+
+    def commentsToString(self, addr):
         lines = []
+        comments = self.comments(addr)
+        if comments is not None:
+            for comment in comments:
+                lines.append(";{}".format(comment))
+        return ''.join(lines)
+
+    def toString(self, endDataAddress):
+        writer = ImageWriter(self)
         for addr in sorted(self._items.keys()):
             if addr >= endDataAddress:
                 break
             item = self._items[addr]
-            comments = self.comments(addr)
-            if comments is not None:
-                for comment in comments:
-                    lines.append(";{}".format(comment))
-            lines.append(item.toString(self))
-        return ''.join(lines)
+            writer.write(item)
+        return writer.toString()
 
 class MemoryArea:
     _addr = None
@@ -677,11 +805,13 @@ def stdcallPrototype(name, size):
     return "void __stdcall {}({})".format(name, params)
 
 def writeUninitialisedData(imageMap, endDataAdddress):
-    f = open("uninitialised.asm", "wt")
+    writer = ImageWriter(imageMap)
     for addr in sorted(imageMap.itemsMap().keys()):
         imageItem = imageMap.itemsMap()[addr]
         if imageItem.startAddress() >= endDataAdddress:
-            f.write(imageItem.toString(imageMap))
+            writer.write(imageItem)
+    f = open("uninitialised.asm", "wt")
+    f.write(writer.toString())
     f.close()
 
 
@@ -853,14 +983,14 @@ if __name__ == '__main__':
     imageMap.mergeUserData(userData)
     print("Removing invalid instructions...")
     imageMap.removeInvalidInstructions()
+    print("Make blocks...")
+    imageMap.makeBlocks()
     print("Merge adjacent data iiems...")
     imageMap.mergeAdjacentDataItems()
     print("Processing data...")
     for imageItem in imageMap.itemsMap().values():
-        if isinstance(imageItem, AsmInstruction):
-            imageItem.resolveExternalCalls(imageMap)
-            imageItem.applyRelocs(imageMap)
-            imageItem.resolveDirectTransferAddress(imageMap)
+        if isinstance(imageItem, CodeBlock):
+            imageItem.processData(imageMap)
     print("Splitting data items...")
     imageMap.splitDataItems()
     for imageItem in imageMap.itemsMap().values():
@@ -871,12 +1001,11 @@ if __name__ == '__main__':
     print("Hide implemented procedures...")
     for addr in implementedProcedures:
         imageMap.removeImplementedProcedure(addr)
-    print("Writing data...")
+    print("Adjust instructions...")
     for imageItem in imageMap.itemsMap().values():
-        if isinstance(imageItem, AsmInstruction):
-            imageItem.fixByteMemoryAccess()
-            imageItem.addNearJumpModifier(imageMap)
-            imageItem.avoidEmittingOfFWAIT()
+        if isinstance(imageItem, CodeBlock):
+            imageItem.adjustInstructions(imageMap)
+    print("Writing data...")
     f = open("native.asm", "wt")
     f.write(imageMap.toString(endDataAddress))
     f.write("; Unresolved addresses:\n")
