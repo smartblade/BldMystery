@@ -45,19 +45,28 @@ class ImageWriter:
         self._imageMap = imageMap
         self._lines = []
         self._printedComments = set()
+        self._items = []
 
     def imageMap(self):
         return self._imageMap
+
+    def label(self, addr):
+        for item in self._items:
+            if hasattr(item, 'labelAt') and item.labelAt(addr) != None:
+                return item.labelAt(addr)
+        return self._imageMap.label(addr)
 
     def write(self, item):
         if isinstance(item, str):
             self._lines.append(item)
         else:
+            self._items.append(item)
             if not item.startAddress() in self._printedComments:
                 comments = self._imageMap.commentsToString(item.startAddress())
                 self._lines.append(comments)
                 self._printedComments.add(item.startAddress())
             item.write(self)
+            self._items.pop()
 
     def toString(self):
         return ''.join(self._lines)
@@ -80,6 +89,51 @@ class ImplementedProcedure:
     def write(self, writer):
         comment = 'Implemented in c++ code'
         writer.write("{} call {}; {}\n".format(' ' * 10, self._label, comment))
+
+class CodeItem:
+    def adjustInstructions(self, imageMap):
+        pass
+
+class Procedure(CodeItem):
+    def __init__(self, items, isUsed):
+        self._firstItem = items[0]
+        self._lastItem = items[-1]
+        self._items = {item.startAddress(): item for item in items}
+        self._isUsed = isUsed
+
+    def label(self):
+        return self._firstItem.label()
+
+    def startAddress(self):
+        return self._firstItem.startAddress()
+
+    def endAddress(self):
+        return self._lastItem.endAddress()
+
+    def adjustInstructions(self, imageMap):
+        for item in self._items.values():
+            if isinstance(item, CodeItem):
+                item.adjustInstructions(imageMap)
+
+    def labelAt(self, addr):
+        item = self._items.get(addr)
+        if item is not None:
+            return item.label()
+        return None
+
+    def _writeItems(self, writer):
+        for addr in sorted(self._items.keys()):
+            item = self._items[addr]
+            writer.write(item)
+
+    def write(self, writer):
+        if not self._isUsed:
+            self._writeItems(writer)
+            return
+        self._firstItem.hideLabel()
+        writer.write("{} PROC\n".format(self.label()))
+        self._writeItems(writer)
+        writer.write("{} ENDP\n".format(self.label()))
 
 class ImportReference:
     def __init__(self, addr, library, name):
@@ -206,7 +260,7 @@ class DataItem:
             if addr in self._ptrs:
                 length = 4
                 dataSize = "dd"
-                data = imageMap.label(self._ptrs[addr])
+                data = writer.label(self._ptrs[addr])
             elif self.uninitialisedDataLen(imageMap, addr) > 0:
                 length = self.uninitialisedDataLen(imageMap, addr)
                 if length < 4:
@@ -234,7 +288,7 @@ class DataItem:
             writer.write("{}  {} {}{}\n".format(label, dataSize, data, error))
             addr += length
 
-class AsmInstruction:
+class AsmInstruction(CodeItem):
     _addr = None
     _instr = None
     _length = 0
@@ -246,6 +300,7 @@ class AsmInstruction:
         self._instr = instr
         self._length = length
         self._pointers = []
+        self._parseJump()
 
     def showLabel(self, name):
         self._showLabel = True
@@ -363,10 +418,10 @@ class AsmInstruction:
                 return (fromHex(addr), False)
         return (None, False)
 
-    def replacePointers(self, imageMap):
+    def replacePointers(self, writer):
         instr = self._instr
         for addr in self._pointers:
-            label = imageMap.label(addr)
+            label = writer.label(addr)
             if instr.find("[{}]".format(toHex(addr))) < 0:
                 label = "offset {}".format(label)
             (instr, count) = re.subn(toHex(addr), label, instr, 1)
@@ -377,31 +432,55 @@ class AsmInstruction:
     def isReturn(self):
         return self._instr.startswith("ret")
 
-    def isJump(self):
+    def isUnconditionalJump(self):
+        return self._instr.startswith("jmp")
+
+    def isShortJump(self, imageMap):
+        if self.isUnconditionalJump():
+            opcode = imageMap.bytes(self._addr, self._addr + 1)
+            if opcode == "E9":
+                return False
+        return True
+
+    def _parseJump(self):
         match = re.search(jump_regexp, self._instr)
         if match:
-            return True
-        return False
+            self._isJump = True
+            self._jumpTarget = fromHex(match.group('target'))
+        else:
+            self._isJump = False
+            self._jumpTarget = None
+
+    def isJump(self):
+        return self._isJump or self.isUnconditionalJump()
+
+    def jumpTarget(self):
+        return self._jumpTarget
 
     def write(self, writer):
-        imageMap = writer.imageMap()
         label = "{}:".format(self.label())
         if (not self._showLabel):
             label = "          "
         msg = ""
         if (self._message):
             msg = "; {}".format(self._message.lstrip())
-        instr = self.replacePointers(imageMap)
+        instr = self.replacePointers(writer)
         if options.show_hex_prefix:
             instr = self.addHexPrefix(instr)
         writer.write("{} {}{}\n".format(label, instr, msg))
 
-class CodeBlock:
+class CodeBlock(CodeItem):
     def __init__(self, instructions):
         self._instructions = instructions
 
     def showLabel(self, name):
         self._instructions[0].showLabel(name)
+
+    def hideLabel(self):
+        self._instructions[0].hideLabel()
+
+    def hasLabel(self):
+        return self._instructions[0].hasLabel()
 
     def label(self):
         return self._instructions[0].label()
@@ -417,6 +496,15 @@ class CodeBlock:
 
     def isReturn(self):
         return self._instructions[-1].isReturn()
+
+    def isUnconditionalJump(self):
+        return self._instructions[-1].isUnconditionalJump()
+
+    def isShortJump(self, imageMap):
+        return self._instructions[-1].isShortJump(imageMap)
+
+    def jumpTarget(self):
+        return self._instructions[-1].jumpTarget()
 
     def split(self, addr):
         instructions1 = []
@@ -639,19 +727,8 @@ class ImageMap:
 
     def removeImplementedProcedure(self, addr):
         label = self.label(addr)
-        item = self._items[addr]
-        while True:
-            del self._items[item.startAddress()]
-            if (item.isReturn()):
-                break;
-            item = self._items[item.endAddress()]
-        endAddress = item.endAddress()
-        # remove jump tables for switch statements
-        item = self._items.get(item.endAddress())
-        while isinstance(item, DataItem):
-            del self._items[item.startAddress()]
-            endAddress = item.endAddress()
-            item = self._items[item.endAddress()]
+        proc = self._items[addr]
+        endAddress = proc.endAddress()
         self._items[addr] = ImplementedProcedure(addr, endAddress, label)
 
     def splitBlock(self, addr):
@@ -691,6 +768,61 @@ class ImageMap:
                 blockInstructions = []
             if isinstance(item, AsmInstruction):
                 blockInstructions.append(item)
+
+    def _tryMakeProcedure(self, addr, shortJumpsFrom, isUsed):
+        items = []
+        item = self._items[addr]
+        if item.isUnconditionalJump() and item.jumpTarget() is None:
+            return
+        while True:
+            items.append(item)
+            if not isinstance(item, CodeBlock):
+                return
+            if (item.isReturn()):
+                break;
+            item = self._items[item.endAddress()]
+        # add jump tables for switch statements
+        item = self._items.get(item.endAddress())
+        while isinstance(item, DataItem):
+            items.append(item)
+            item = self._items[item.endAddress()]
+        procStartAddress = items[0].startAddress()
+        procEndAddress = items[-1].endAddress()
+        for item in items:
+            if isinstance(item, CodeBlock) and item.jumpTarget() is not None:
+                if (item.jumpTarget() <= procStartAddress):
+                    return
+                if (item.jumpTarget() >= procEndAddress):
+                    return
+            addrsFrom = shortJumpsFrom.get(item.startAddress())
+            if addrsFrom is not None:
+                for addrFrom in addrsFrom:
+                    if (addrFrom < procStartAddress):
+                        return
+                    if (addrFrom >= procEndAddress):
+                        return
+        for item in items:
+            del self._items[item.startAddress()]
+        self._items[addr] = Procedure(items, isUsed)
+
+    def _isProcStartPattern(self, addr):
+        return self.bytes(addr, addr + 3) == "558BEC"
+
+    def makeProcedures(self):
+        shortJumpsFrom = {}
+        for addr in sorted(self._items.keys()):
+            item = self._items[addr]
+            if isinstance(item, CodeBlock) and item.jumpTarget() is not None:
+                if item.isShortJump(self):
+                    if not item.jumpTarget() in shortJumpsFrom:
+                        shortJumpsFrom[item.jumpTarget()] = set()
+                    shortJumpsFrom[item.jumpTarget()].add(addr)
+        for addr in sorted(self._items.keys()):
+            item = self._items.get(addr)
+            if isinstance(item, CodeBlock):
+                isUsed = item.hasLabel()
+                if isUsed or self._isProcStartPattern(addr):
+                    self._tryMakeProcedure(addr, shortJumpsFrom, isUsed)
 
     def commentsToString(self, addr):
         lines = []
@@ -996,6 +1128,8 @@ if __name__ == '__main__':
     for imageItem in imageMap.itemsMap().values():
         if isinstance(imageItem, DataItem):
             imageItem.applyRelocs(imageMap)
+    print("Make procedures...")
+    imageMap.makeProcedures()
     print("Collect symbols from sources...")
     (varNames, mangledNames, implementedProcedures) = collectSymbolsFromSources()
     print("Hide implemented procedures...")
@@ -1003,7 +1137,7 @@ if __name__ == '__main__':
         imageMap.removeImplementedProcedure(addr)
     print("Adjust instructions...")
     for imageItem in imageMap.itemsMap().values():
-        if isinstance(imageItem, CodeBlock):
+        if isinstance(imageItem, CodeItem):
             imageItem.adjustInstructions(imageMap)
     print("Writing data...")
     f = open("native.asm", "wt")
