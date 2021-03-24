@@ -71,25 +71,6 @@ class ImageWriter:
     def toString(self):
         return ''.join(self._lines)
 
-class ImplementedProcedure:
-    def __init__(self, startAddr, endAddr, label):
-        self._startAddr = startAddr
-        self._endAddr = endAddr
-        self._label = label
-
-    def label(self):
-        return self._label
-
-    def startAddress(self):
-        return self._startAddr
-
-    def endAddress(self):
-        return self._endAddr
-
-    def write(self, writer):
-        comment = 'Implemented in c++ code'
-        writer.write("{} call {}; {}\n".format(' ' * 10, self._label, comment))
-
 class CodeItem:
     def adjustInstructions(self, imageMap):
         pass
@@ -725,12 +706,6 @@ class ImageMap:
         else:
             self._unresolvedAddresses.add(addr)
 
-    def removeImplementedProcedure(self, addr):
-        label = self.label(addr)
-        proc = self._items[addr]
-        endAddress = proc.endAddress()
-        self._items[addr] = ImplementedProcedure(addr, endAddress, label)
-
     def splitBlock(self, addr):
         block = self._blocks.get(addr)
         if block is None:
@@ -981,12 +956,38 @@ def writeExportDeclarations(imageMap):
 def isCdeclMangling(exportName, internalName):
     return (internalName == '_' + exportName)
 
-def writeExportCmd(imageMap, mangledNames, implementedProcedures):
-    f = open("export_cmd.txt", "wt")
-    exportAddrs = set(imageMap.exports().keys()) - set(implementedProcedures)
+def writeExportSymbols(imageMap, exportFileName):
+    f = open(exportFileName, "wt")
+    exportAddrs = set(imageMap.exports().keys())
     for addr in sorted(exportAddrs):
         exportName = imageMap.exports()[addr]
         internalName = imageMap.label(addr)
+        f.write("{} {} {}\n".format(toHex(addr), exportName, internalName))
+    f.close()
+
+def writeExportCmd(exportFileName, mangledNames, implementedProcedures):
+    with open(exportFileName) as f:
+        lines = f.readlines()
+    addr_export_regexp = re.compile(
+        '(?P<addr>[\dABCDEF]+)\s(?P<exportName>\w+)\s(?P<internalName>\w+)'
+    )
+    exportAddrs = []
+    exportNames = {}
+    internalNames = {}
+    for line in lines:
+        match = re.search(addr_export_regexp, line)
+        if match:
+            addr = fromHex(match.group('addr'))
+            exportName = match.group('exportName')
+            internalName = match.group('internalName')
+            if not addr in implementedProcedures:
+                exportAddrs.append(addr)
+                exportNames[addr] = exportName
+                internalNames[addr] = internalName
+    f = open("export_cmd.txt", "wt")
+    for addr in exportAddrs:
+        exportName = exportNames[addr]
+        internalName = internalNames[addr]
         if addr in mangledNames:
             internalName = mangledNames[addr]
         if isCdeclMangling(exportName, internalName):
@@ -1069,7 +1070,7 @@ def collectSymbolsFromSources():
                 mangledNames.update(names)
                 implementedProcedures += implemented
                 varNames.update(collectVariablesFromFile(fileName))
-    return (varNames, mangledNames, implementedProcedures)
+    return (varNames, mangledNames, set(implementedProcedures))
 
 def openForWriting(filename):
     if filename.endswith(".cpp"):
@@ -1087,8 +1088,7 @@ def openForWriting(filename):
     f.write(autoGenMsg)
     return f
 
-if __name__ == '__main__':
-    start_time = time.time()
+def createAsmCode(codeFileName, exportFileName):
     f = open("raw.txt")
     lines = f.readlines()
     f.close()
@@ -1146,17 +1146,12 @@ if __name__ == '__main__':
             imageItem.applyRelocs(imageMap)
     print("Make procedures...")
     imageMap.makeProcedures()
-    print("Collect symbols from sources...")
-    (varNames, mangledNames, implementedProcedures) = collectSymbolsFromSources()
-    print("Hide implemented procedures...")
-    for addr in implementedProcedures:
-        imageMap.removeImplementedProcedure(addr)
     print("Adjust instructions...")
     for imageItem in imageMap.itemsMap().values():
         if isinstance(imageItem, CodeItem):
             imageItem.adjustInstructions(imageMap)
     print("Writing data...")
-    f = openForWriting("native.asm")
+    f = openForWriting(codeFileName)
     f.write(imageMap.toString(endDataAddress))
     f.write("; Unresolved addresses:\n")
     for addr in sorted(imageMap.unresolvedAddresses()):
@@ -1168,18 +1163,58 @@ if __name__ == '__main__':
         f.write("externdef {}: ptr\n".format(impref.label()))
     f.close()
     writeExportDeclarations(imageMap)
-    writeExportCmd(imageMap, mangledNames, implementedProcedures)
+    writeExportSymbols(imageMap, exportFileName)
     writeStdcallFunctions(imageMap.importReferences())
+
+def ensureAsmCode(codeFileName, exportFileName):
+    if not os.path.exists(codeFileName) or not os.path.exists(exportFileName):
+       createAsmCode(codeFileName, exportFileName)
+
+def readAsmCode(codeFileName):
+    with open(codeFileName) as f:
+        return f.readlines()
+
+if __name__ == '__main__':
+    start_time = time.time()
+    codeFileName = "code.str"
+    exportFileName = "export_cmd.str"
+    ensureAsmCode(codeFileName, exportFileName)
+    print("Reading code...")
+    lines = readAsmCode(codeFileName)
+    print("Collect symbols from sources...")
+    (varNames, mangledNames, implementedProcedures) = collectSymbolsFromSources()
+    print("Writing code...")
+    f = open("native.asm", "wt")
+    isImplemented = False
+    for line in lines:
+        if line.startswith("l"):
+            if line.find("PROC") >= 0:
+                addr = fromHex(line[1:9])
+                isImplemented = addr in implementedProcedures
+                if isImplemented:
+                    f.write(
+                        "{} call l{}; Implemented in c++ code\n".format(
+                            ' ' * 10,
+                            toHex(addr)))
+        if not isImplemented:
+            f.write(line)
+        elif line.find("ENDP") >= 0:
+            isImplemented = False
+    f.close()
+    print("Writing export symbols command line...")
+    writeExportCmd(exportFileName, mangledNames, implementedProcedures)
+    print("Writing procedures declarations...")
     f = openForWriting("procedures.inc")
     for addr in sorted(mangledNames.keys()):
         name = mangledNames[addr]
-        label = imageMap.label(addr)
+        label = "l{}".format(toHex(addr))
         f.write("externdef {}: near\n{} equ {}\n".format(name, label, name))
     f.close()
+    print("Writing variable declarations...")
     f = openForWriting("variables.inc")
     for addr in sorted(varNames.keys()):
         name = varNames[addr]
-        label = imageMap.label(addr)
+        label = "g{}".format(toHex(addr))
         f.write("public _{}\n{} equ _{}\n".format(name, label, name))
     f.close()
     print("Converted in %.2f seconds" % (time.time() - start_time))
