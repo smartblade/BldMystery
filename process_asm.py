@@ -1136,18 +1136,18 @@ def createAsmCode(codeFileName, exportFileName):
     print("Merge adjacent data iiems...")
     imageMap.mergeAdjacentDataItems()
     print("Processing data...")
-    for imageItem in imageMap.itemsMap().values():
+    for imageItem in set(imageMap.itemsMap().values()):
         if isinstance(imageItem, CodeBlock):
             imageItem.processData(imageMap)
     print("Splitting data items...")
     imageMap.splitDataItems()
-    for imageItem in imageMap.itemsMap().values():
+    for imageItem in set(imageMap.itemsMap().values()):
         if isinstance(imageItem, DataItem):
             imageItem.applyRelocs(imageMap)
     print("Make procedures...")
     imageMap.makeProcedures()
     print("Adjust instructions...")
-    for imageItem in imageMap.itemsMap().values():
+    for imageItem in set(imageMap.itemsMap().values()):
         if isinstance(imageItem, CodeItem):
             imageItem.adjustInstructions(imageMap)
     print("Writing data...")
