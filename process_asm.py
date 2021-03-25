@@ -1,6 +1,8 @@
-
+import hashlib
+import json
 from optparse import OptionParser
 import os
+import pathlib
 import re
 import time
 
@@ -1174,15 +1176,41 @@ def readAsmCode(codeFileName):
     with open(codeFileName) as f:
         return f.readlines()
 
-if __name__ == '__main__':
-    start_time = time.time()
+def calc_hash(varNames, mangledNames, implementedProcedures):
+    hasher = hashlib.sha256()
+    json_str = json.dumps(
+        (varNames, mangledNames, sorted(implementedProcedures)),
+        sort_keys=True
+    )
+    hasher.update(json_str.encode())
+    return hasher.digest()
+
+def is_hash_changed(hashFileName, new_hash):
+    try:
+        with open(hashFileName, "rb") as f:
+            existing_hash = f.read()
+            return existing_hash != new_hash
+    except Exception:
+        return True
+
+def write_hash(hashFileName, new_hash):
+    with open(hashFileName, "wb") as f:
+        f.write(new_hash)
+
+def run():
     codeFileName = "code.str"
     exportFileName = "export_cmd.str"
+    hashFileName = "hash.str"
+    print("Collect symbols from sources...")
+    (varNames, mangledNames, implementedProcedures) = collectSymbolsFromSources()
+    symbols_hash = calc_hash(varNames, mangledNames, implementedProcedures)
+    print("Checking hash for collected symbols...")
+    if not is_hash_changed(hashFileName, symbols_hash):
+        print("Nothing to do...")
+        return
     ensureAsmCode(codeFileName, exportFileName)
     print("Reading code...")
     lines = readAsmCode(codeFileName)
-    print("Collect symbols from sources...")
-    (varNames, mangledNames, implementedProcedures) = collectSymbolsFromSources()
     print("Writing code...")
     f = open("native.asm", "wt")
     isImplemented = False
@@ -1217,4 +1245,12 @@ if __name__ == '__main__':
         label = "g{}".format(toHex(addr))
         f.write("public _{}\n{} equ _{}\n".format(name, label, name))
     f.close()
+    # Touch asm file to force recompile
+    pathlib.Path("../asmMain.asm").touch()
+    print("Writing hash for collected symbols...")
+    write_hash(hashFileName, symbols_hash)
+
+if __name__ == '__main__':
+    start_time = time.time()
+    run()
     print("Converted in %.2f seconds" % (time.time() - start_time))
