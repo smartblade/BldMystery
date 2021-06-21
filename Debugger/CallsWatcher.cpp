@@ -34,64 +34,34 @@ void CallsWatcher::OnThreadCreated(DWORD threadId, HANDLE hThread)
 
 void CallsWatcher::OnBreakpoint(LPVOID address, DWORD threadId)
 {
-    if (procedures.find(address) != procedures.end())
-    {
-        printf("%s\n", procedures[address].c_str());
-    }
     auto hThread = threads[threadId];
-    CONTEXT lcContext;
-    lcContext.ContextFlags = CONTEXT_ALL;
-    GetThreadContext(hThread, &lcContext);
-    // Set trap flag, which raises "single-step" exception
-    lcContext.EFlags |= 0x100;
+    CONTEXT lpContext;
+    lpContext.ContextFlags = CONTEXT_ALL;
+    GetThreadContext(hThread, &lpContext);
     if (DisableBreakpoint(address))
     {
-        lcContext.Eip--;
+        lpContext.Eip--;
+        // Set trap flag, which raises "single-step" exception
+        lpContext.EFlags |= 0x100;
     }
-    SetThreadContext(hThread, &lcContext);
-    BYTE byte[10];
-    ReadProcessMemory(
-        hProcess,
-        address,
-        &byte, sizeof(byte), nullptr);
-    for (int i = 0; i < sizeof(byte); i++)
+    SetThreadContext(hThread, &lpContext);
+    if (verbose)
     {
-        printf("%02X", byte[i]);
+        printf("===========================================\n");
+        DumpMemory(address);
+        DumpRegisters(threadId, address);
     }
-    printf("\n");
-    printf("eip: %X\n", lcContext.Eip);
+    AdjustStackFrames((LPVOID)lpContext.Esp);
+    DumpProcedureName(address);
 }
 
 void CallsWatcher::OnSingleStep(LPVOID address, DWORD threadId)
 {
-    BYTE bytes[10];
-    ReadProcessMemory(
-        hProcess,
-        address,
-        &bytes, sizeof(bytes), nullptr);
-    for (int i = 0; i < sizeof(bytes); i++)
+    if (verbose)
     {
-        printf("%02X", bytes[i]);
-    }
-    printf("\n");
-    auto hThread = threads[threadId];
-    CONTEXT lcContext;
-    lcContext.ContextFlags = CONTEXT_ALL;
-    GetThreadContext(hThread, &lcContext);
-    printf("eip: %X\n", lcContext.Eip);
-    if (lcContext.Eip != (DWORD)address)
-    {
-        // Looks like task switch
-        printf("Eip != ExceptionAddress\n");
-        ReadProcessMemory(
-            hProcess,
-            (LPVOID)lcContext.Eip,
-            &bytes, sizeof(bytes), nullptr);
-        for (int i = 0; i < sizeof(bytes); i++)
-        {
-            printf("%02X", bytes[i]);
-        }
-        printf("\n");
+        DumpMemory(address);
+        DumpRegisters(threadId, address);
+        printf("===========================================\n");
     }
     EnableAllBreakpoints();
 }
@@ -175,4 +145,89 @@ void CallsWatcher::SetBreakpoint(LPVOID address)
     savedBytes[address] = savedByte;
     WriteProcessMemory(hProcess, address, &debugIstruction, 1, nullptr);
     FlushInstructionCache(hProcess, address, 1);
+}
+
+void CallsWatcher::AdjustStackFrames(LPVOID curStackPointer)
+{
+    while (!stackFrames.empty())
+    {
+        auto& frame = stackFrames.back();
+        if (IsStackFrameValid(frame, curStackPointer))
+            break;
+        stackFrames.pop_back();
+    }
+    stackFrames.push_back(ReadStackFrame(curStackPointer));
+}
+
+StackFrame CallsWatcher::ReadStackFrame(LPVOID stackPointer)
+{
+    LPVOID returnAddress;
+    ReadProcessMemory(
+        hProcess,
+        stackPointer,
+        &returnAddress, sizeof(returnAddress), nullptr);
+    if (verbose)
+    {
+        printf("return addr: %p\n", returnAddress);
+    }
+    return StackFrame(stackPointer, returnAddress);
+}
+
+bool CallsWatcher::IsStackFrameValid(StackFrame& frame, LPVOID curStackPointer)
+{
+    if (curStackPointer >= frame.StackPointer())
+        return false;
+    LPVOID newReturnAddress;
+    ReadProcessMemory(
+        hProcess,
+        frame.StackPointer(),
+        &newReturnAddress, sizeof(newReturnAddress), nullptr);
+    if (newReturnAddress != frame.ReturnAddress())
+        return false;
+    return true;;
+}
+
+void CallsWatcher::DumpProcedureName(LPVOID procAddress)
+{
+    auto procedureIter = procedures.find(procAddress);
+    if (procedureIter == procedures.end())
+        return;
+    auto &procedureName = procedureIter->second;
+    for (unsigned int i = 0; i < stackFrames.size(); i++)
+        printf(" ");
+    printf("%s\n", procedureName.c_str());
+}
+
+void CallsWatcher::DumpRegisters(DWORD threadId, LPVOID address)
+{
+    auto hThreadIter = threads.find(threadId);
+    if (hThreadIter == threads.end())
+        return;
+    auto hThread = hThreadIter->second;
+    CONTEXT lpContext;
+    lpContext.ContextFlags = CONTEXT_ALL;
+    GetThreadContext(hThread, &lpContext);
+    printf("eip: %X\n", lpContext.Eip);
+    printf("esp: %X\n", lpContext.Esp);
+    if (lpContext.Eip != (DWORD)address)
+    {
+        // Looks like task switch
+        printf("Eip != ExceptionAddress\n");
+        DumpMemory((LPVOID)lpContext.Eip);
+    }
+}
+
+void CallsWatcher::DumpMemory(LPVOID address)
+{
+    printf("Memory: ");
+    BYTE bytes[10];
+    ReadProcessMemory(
+        hProcess,
+        address,
+        &bytes, sizeof(bytes), nullptr);
+    for (int i = 0; i < sizeof(bytes); i++)
+    {
+        printf("%02X", bytes[i]);
+    }
+    printf("\n");
 }

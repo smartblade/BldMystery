@@ -145,6 +145,7 @@
     <ClCompile Include="FileInfo.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ReadExportSymbols.cpp" />
+    <ClCompile Include="StackFrame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CallsWatcher.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="FileInfo.h" />
     <ClInclude Include="rapidjson.h" />
     <ClInclude Include="ReadExportSymbols.h" />
+    <ClInclude Include="StackFrame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
