@@ -36,6 +36,9 @@
     <ClCompile Include="StackFrame.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="Dumper.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DllMetadata.h">
@@ -57,6 +60,9 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="StackFrame.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Dumper.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>

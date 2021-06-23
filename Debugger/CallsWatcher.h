@@ -3,13 +3,17 @@
 #include <map>
 #include <string>
 #include <windows.h>
+#include "Dumper.h"
 #include "DllMetadata.h"
 #include "StackFrame.h"
 
 class CallsWatcher
 {
 public:
-	CallsWatcher(HANDLE hProcess, const std::string& dllMetadataFileName);
+	CallsWatcher(
+		HANDLE hProcess,
+		const std::string& dllMetadataFileName,
+		Dumper &dumper);
 	void OnDllLoaded(HANDLE hFile, LPVOID lpBase);
 	void OnProcessCreated(
 		HANDLE hFile,
@@ -34,9 +38,9 @@ private:
 	void AdjustStackFrames(LPVOID curStackPointer);
 	StackFrame ReadStackFrame(LPVOID stackPointer);
 	bool IsStackFrameValid(StackFrame& frame, LPVOID curStackPointer);
-	void DumpProcedureName(LPVOID procAddress);
-	void DumpRegisters(DWORD threadId, LPVOID address);
-	void DumpMemory(LPVOID address);
+	void DumpProcedureName(Dumper::Level level, LPVOID procAddress);
+	void DumpRegisters(Dumper::Level level, DWORD threadId, LPVOID address);
+	void DumpMemory(Dumper::Level level, LPVOID address);
 
 	HANDLE hProcess;
 	DllMetadata dllMetadata;
@@ -46,5 +50,5 @@ private:
 	std::map<LPVOID, std::string> procedures;
 	std::vector<LPVOID> disabledBreakpoints;
 	std::vector<StackFrame> stackFrames;
-	bool verbose = true;
+	Dumper dumper;
 };

@@ -18,7 +18,8 @@ void ReadNullTerminatedString(
 
 std::map<LPVOID, std::string> ReadExportSymbols(
     HANDLE hProcess,
-    char* baseAddr)
+    char* baseAddr,
+    Dumper& dumper)
 {
     // Based on http://www.rohitab.com/discuss/topic/38615-getprocaddress-replacement/
     std::map<LPVOID, std::string> symbols;
@@ -81,8 +82,11 @@ std::map<LPVOID, std::string> ReadExportSymbols(
                 hProcess, address, dll_name, sizeof(dll_name));
             auto func_name = strchr(dll_name, '.');
             *func_name++ = '\0';
-            printf(
-                "Unsupported forwarded function %s!%s\n", dll_name, func_name);
+            dumper.Printf(
+                Dumper::Level::Debug,
+                "Unsupported forwarded function %s!%s\n",
+                dll_name,
+                func_name);
             continue;
         }
         symbols[address] = name;

@@ -45,6 +45,16 @@ std::wstring toWideChar(const std::string s)
     return ws;
 }
 
+void PrintUsage(LPTSTR binary)
+{
+    char sBinaryPath[MAX_PATH];
+    sprintf_s(sBinaryPath, "%ws", binary);
+    printf(
+        "Usage: %ws --executable <executable-name> [--verbose]\n",
+        toWideChar(GetFileName(sBinaryPath)).c_str());
+    ExitProcess(-1);
+}
+
 int _tmain(int argc, LPTSTR* argv)
 {
     STARTUPINFO si;
@@ -52,16 +62,40 @@ int _tmain(int argc, LPTSTR* argv)
     ZeroMemory(&si, sizeof(si));
     si.cb = sizeof(si);
     ZeroMemory(&pi, sizeof(pi));
-    if (argc < 2)
+    auto binary = argv[0];
+    LPTSTR processName = nullptr;
+    bool verbose = false;
+    for (int i = 1; i < argc; i++)
     {
-        printf("Usage: %ws executable-name\n", argv[0]);
-        return -1;
+        if (!wcscmp(argv[i], L"--executable"))
+        {
+            i++;
+            if (i >= argc)
+            {
+                PrintUsage(binary);
+            }
+            processName = argv[i];
+        }
+        else if(!wcscmp(argv[i], L"--verbose"))
+        {
+            verbose = true;
+        }
+        else
+        {
+            PrintUsage(binary);
+        }
     }
-    auto processName = argv[1];
+    if (processName == nullptr)
+    {
+        PrintUsage(binary);
+    }
     char sProcessPath[MAX_PATH];
     sprintf_s(sProcessPath, "%ws", processName);
     auto directoryName = toWideChar(GetDirectoryName(sProcessPath));
-    printf("Starting %ws\n", processName);
+    if (verbose)
+    {
+        printf("Starting %ws\n", processName);
+    }
     if (!CreateProcess(
         processName, NULL, NULL, NULL, FALSE,
         DEBUG_ONLY_THIS_PROCESS, NULL, directoryName.c_str(), &si, &pi))
@@ -70,6 +104,6 @@ int _tmain(int argc, LPTSTR* argv)
         ErrorExit(processName);
         return -1;
     }
-    EnterDebugLoop(&pi, "dlls.json");
+    EnterDebugLoop(&pi, "dlls.json", verbose);
     return 0;
 }

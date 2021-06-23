@@ -5,5 +5,6 @@
 
 void EnterDebugLoop(
     LPPROCESS_INFORMATION lpProcessInfo,
-    const std::string& dllMetadataFileName);
+    const std::string& dllMetadataFileName,
+    bool verbose);
 

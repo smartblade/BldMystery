@@ -2,16 +2,21 @@
 #include <windows.h>
 #include <string>
 #include "CallsWatcher.h"
+#include "Dumper.h"
 #include "FileInfo.h"
 
 
-void PrintLoadedFileMessage(HANDLE hFile, LPVOID lpBase)
+void PrintLoadedFileMessage(Dumper& dumper, HANDLE hFile, LPVOID lpBase)
 {
     auto filePath = GetFilePath(hFile);
-    printf("Loaded %s at %p\n", filePath.c_str(), lpBase);
+    dumper.Printf(
+        Dumper::Level::Debug,
+        "Loaded %s at %p\n",
+        filePath.c_str(), lpBase);
 }
 
 void PrintException(
+    Dumper& dumper,
     const char* excName,
     const std::string &dllName,
     LPEXCEPTION_DEBUG_INFO exception)
@@ -20,7 +25,8 @@ void PrintException(
     {
         ExitProcess(exception->ExceptionRecord.ExceptionCode);
     }
-    printf(
+    dumper.Printf(
+        Dumper::Level::Debug,
         "First chance %s at %s!%p, exception-code: 0x%08x\n",
         excName ? excName : "exception",
         dllName.c_str(),
@@ -29,6 +35,7 @@ void PrintException(
 }
 
 DWORD OnExceptionDebugEvent(
+    Dumper& dumper,
     CallsWatcher& callsWatcher,
     const LPDEBUG_EVENT debugEv)
 {
@@ -40,12 +47,16 @@ DWORD OnExceptionDebugEvent(
         // First chance: Pass this on to the system.
         // Last chance: Display an appropriate error.
         PrintException(
-            "AccessViolationException", dllName, &debugEv->u.Exception);
+            dumper,
+            "AccessViolationException",
+            dllName,
+            &debugEv->u.Exception);
         return DBG_EXCEPTION_NOT_HANDLED;
     case EXCEPTION_BREAKPOINT:
         // First chance: Display the current
         // instruction and register values.
-        printf(
+        dumper.Printf(
+            Dumper::Level::Debug,
             "Breakpoint at %p (Thread %d)\n",
             debugEv->u.Exception.ExceptionRecord.ExceptionAddress,
             debugEv->dwThreadId);
@@ -57,13 +68,17 @@ DWORD OnExceptionDebugEvent(
         // First chance: Pass this on to the system.
         // Last chance: Display an appropriate error.
         PrintException(
-            "DataTypeMisalignmentException", dllName, &debugEv->u.Exception);
+            dumper,
+            "DataTypeMisalignmentException",
+            dllName,
+            &debugEv->u.Exception);
         return DBG_EXCEPTION_NOT_HANDLED;
     case EXCEPTION_SINGLE_STEP:
     {
         // First chance: Update the display of the
         // current instruction and register values.
-        printf(
+        dumper.Printf(
+            Dumper::Level::Debug,
             "Single step at %p (Thread %d)\n",
             debugEv->u.Exception.ExceptionRecord.ExceptionAddress,
             debugEv->dwThreadId);
@@ -75,21 +90,27 @@ DWORD OnExceptionDebugEvent(
     case DBG_CONTROL_C:
         // First chance: Pass this on to the system.
         // Last chance: Display an appropriate error.
-        PrintException("ControlCException", dllName, &debugEv->u.Exception);
+        PrintException(
+            dumper,
+            "ControlCException",
+            dllName,
+            &debugEv->u.Exception);
         return DBG_EXCEPTION_NOT_HANDLED;
     default:
         // Handle other exceptions.
-        PrintException(nullptr, dllName, &debugEv->u.Exception);
+        PrintException(dumper, nullptr, dllName, &debugEv->u.Exception);
         return DBG_EXCEPTION_NOT_HANDLED;
     }
     return DBG_CONTINUE;
 }
 
 DWORD OnCreateThreadDebugEvent(
+    Dumper& dumper,
     CallsWatcher& callsWatcher,
     const LPDEBUG_EVENT debugEv)
 {
-    printf(
+    dumper.Printf(
+        Dumper::Level::Debug,
         "Thread 0x%p (Id: %d) created at: 0x%p\n",
         debugEv->u.CreateThread.hThread,
         debugEv->dwThreadId,
@@ -101,11 +122,16 @@ DWORD OnCreateThreadDebugEvent(
 }
 
 DWORD OnCreateProcessDebugEvent(
+    Dumper& dumper,
     CallsWatcher& callsWatcher,
     const LPDEBUG_EVENT debugEv)
 {
-    printf("Start address: %p ", debugEv->u.CreateProcessInfo.lpStartAddress);
+    dumper.Printf(
+        Dumper::Level::Debug,
+        "Start address: %p ",
+        debugEv->u.CreateProcessInfo.lpStartAddress);
     PrintLoadedFileMessage(
+        dumper,
         debugEv->u.CreateProcessInfo.hFile,
         debugEv->u.CreateProcessInfo.lpBaseOfImage);
     callsWatcher.OnProcessCreated(
@@ -117,18 +143,20 @@ DWORD OnCreateProcessDebugEvent(
     return DBG_CONTINUE;
 }
 
-DWORD OnExitThreadDebugEvent(const LPDEBUG_EVENT debugEv)
+DWORD OnExitThreadDebugEvent(Dumper& dumper, const LPDEBUG_EVENT debugEv)
 {
-    printf(
+    dumper.Printf(
+        Dumper::Level::Debug,
         "The thread %d exited with code: %d\n",
         debugEv->dwThreadId,
         debugEv->u.ExitThread.dwExitCode);
     return DBG_CONTINUE;
 }
 
-DWORD OnExitProcessDebugEvent(const LPDEBUG_EVENT debugEv)
+DWORD OnExitProcessDebugEvent(Dumper& dumper, const LPDEBUG_EVENT debugEv)
 {
-    printf(
+    dumper.Printf(
+        Dumper::Level::Debug,
         "Process exited with code: %d\n",
         debugEv->u.ExitProcess.dwExitCode);
     ExitProcess(0);
@@ -136,11 +164,13 @@ DWORD OnExitProcessDebugEvent(const LPDEBUG_EVENT debugEv)
 }
 
 DWORD OnLoadDllDebugEvent(
+    Dumper& dumper,
     CallsWatcher& callsWatcher,
     const LPDEBUG_EVENT debugEv)
 {
-    printf("%d:", debugEv->dwThreadId);
+    dumper.Printf(Dumper::Level::Debug, "%d:", debugEv->dwThreadId);
     PrintLoadedFileMessage(
+        dumper,
         debugEv->u.LoadDll.hFile,
         debugEv->u.LoadDll.lpBaseOfDll);
     callsWatcher.OnDllLoaded(
@@ -149,33 +179,39 @@ DWORD OnLoadDllDebugEvent(
     return DBG_CONTINUE;
 }
 
-DWORD OnUnloadDllDebugEvent(const LPDEBUG_EVENT debugEv)
+DWORD OnUnloadDllDebugEvent(Dumper& dumper, const LPDEBUG_EVENT debugEv)
 {
-    printf(
+    dumper.Printf(
+        Dumper::Level::Debug,
         "Unloaded at %p\n",
         debugEv->u.UnloadDll.lpBaseOfDll);
     return DBG_CONTINUE;
 }
 
-DWORD OnOutputDebugStringEvent(const LPDEBUG_EVENT debugEv)
+DWORD OnOutputDebugStringEvent(Dumper& dumper, const LPDEBUG_EVENT debugEv)
 {
-    printf("OUTPUT_DEBUG_STRING_EVENT\n");
+    dumper.Printf(Dumper::Level::Debug, "OUTPUT_DEBUG_STRING_EVENT\n");
     return DBG_CONTINUE;
 }
 
-DWORD OnRipEvent(const LPDEBUG_EVENT debugEv)
+DWORD OnRipEvent(Dumper &dumper, const LPDEBUG_EVENT debugEv)
 {
-    printf("RIP_EVENT\n");
+    dumper.Printf(Dumper::Level::Debug, "RIP_EVENT\n");
     return DBG_CONTINUE;
 }
 
 void EnterDebugLoop(
     LPPROCESS_INFORMATION lpProcessInfo,
-    const std::string& dllMetadataFileName)
+    const std::string& dllMetadataFileName,
+    bool verbose)
 {
     DEBUG_EVENT debugEv;
     ZeroMemory(&debugEv, sizeof(debugEv));
-    CallsWatcher callsWatcher(lpProcessInfo->hProcess, dllMetadataFileName);
+    Dumper dumper(verbose ? Dumper::Level::Debug : Dumper::Level::Info);
+    CallsWatcher callsWatcher(
+        lpProcessInfo->hProcess,
+        dllMetadataFileName,
+        dumper);
     DWORD dwContinueStatus = DBG_CONTINUE; // exception continuation
     for (;;)
     {
@@ -191,7 +227,8 @@ void EnterDebugLoop(
             // exceptions, remember to set the continuation
             // status parameter (dwContinueStatus). This value
             // is used by the ContinueDebugEvent function.
-            dwContinueStatus = OnExceptionDebugEvent(callsWatcher, &debugEv);
+            dwContinueStatus = OnExceptionDebugEvent(
+                dumper, callsWatcher, &debugEv);
             break;
         case CREATE_THREAD_DEBUG_EVENT:
             // As needed, examine or change the thread's registers
@@ -199,7 +236,7 @@ void EnterDebugLoop(
             // and suspend and resume thread execution with the
             // SuspendThread and ResumeThread functions.
             dwContinueStatus = OnCreateThreadDebugEvent(
-                callsWatcher, &debugEv);
+                dumper, callsWatcher, &debugEv);
             break;
         case CREATE_PROCESS_DEBUG_EVENT:
             // As needed, examine or change the registers of the
@@ -211,32 +248,33 @@ void EnterDebugLoop(
             // functions. Be sure to close the handle to the process image
             // file with CloseHandle.
             dwContinueStatus = OnCreateProcessDebugEvent(
-                callsWatcher, &debugEv);
+                dumper, callsWatcher, &debugEv);
             break;
         case EXIT_THREAD_DEBUG_EVENT:
             // Display the thread's exit code.
-            dwContinueStatus = OnExitThreadDebugEvent(&debugEv);
+            dwContinueStatus = OnExitThreadDebugEvent(dumper , &debugEv);
             break;
         case EXIT_PROCESS_DEBUG_EVENT:
             // Display the process's exit code.
-            dwContinueStatus = OnExitProcessDebugEvent(&debugEv);
+            dwContinueStatus = OnExitProcessDebugEvent(dumper , &debugEv);
             break;
         case LOAD_DLL_DEBUG_EVENT:
             // Read the debugging information included in the newly
             // loaded DLL. Be sure to close the handle to the loaded DLL
             // with CloseHandle.
-            dwContinueStatus = OnLoadDllDebugEvent(callsWatcher, &debugEv);
+            dwContinueStatus = OnLoadDllDebugEvent(
+                dumper, callsWatcher, &debugEv);
             break;
         case UNLOAD_DLL_DEBUG_EVENT:
             // Display a message that the DLL has been unloaded.
-            dwContinueStatus = OnUnloadDllDebugEvent(&debugEv);
+            dwContinueStatus = OnUnloadDllDebugEvent(dumper , &debugEv);
             break;
         case OUTPUT_DEBUG_STRING_EVENT:
             // Display the output debugging string.
-            dwContinueStatus = OnOutputDebugStringEvent(&debugEv);
+            dwContinueStatus = OnOutputDebugStringEvent(dumper , &debugEv);
             break;
         case RIP_EVENT:
-            dwContinueStatus = OnRipEvent(&debugEv);
+            dwContinueStatus = OnRipEvent(dumper , &debugEv);
             break;
         }
         // Resume executing the thread that reported the debugging event.

@@ -5,8 +5,10 @@
 #include "ReadExportSymbols.h"
 
 CallsWatcher::CallsWatcher(
-    HANDLE hProcess, const std::string& dllMetadataFileName)
-    : hProcess(hProcess), dllMetadata(dllMetadataFileName)
+    HANDLE hProcess,
+    const std::string& dllMetadataFileName,
+    Dumper &dumper)
+    : hProcess(hProcess), dllMetadata(dllMetadataFileName), dumper(dumper)
 {
 }
 
@@ -45,24 +47,20 @@ void CallsWatcher::OnBreakpoint(LPVOID address, DWORD threadId)
         lpContext.EFlags |= 0x100;
     }
     SetThreadContext(hThread, &lpContext);
-    if (verbose)
-    {
-        printf("===========================================\n");
-        DumpMemory(address);
-        DumpRegisters(threadId, address);
-    }
+    dumper.Printf(
+        Dumper::Level::Debug, "===========================================\n");
+    DumpMemory(Dumper::Level::Debug, address);
+    DumpRegisters(Dumper::Level::Debug, threadId, address);
     AdjustStackFrames((LPVOID)lpContext.Esp);
-    DumpProcedureName(address);
+    DumpProcedureName(Dumper::Level::Info, address);
 }
 
 void CallsWatcher::OnSingleStep(LPVOID address, DWORD threadId)
 {
-    if (verbose)
-    {
-        DumpMemory(address);
-        DumpRegisters(threadId, address);
-        printf("===========================================\n");
-    }
+    DumpMemory(Dumper::Level::Debug, address);
+    DumpRegisters(Dumper::Level::Debug, threadId, address);
+    dumper.Printf(
+        Dumper::Level::Debug, "===========================================\n");
     EnableAllBreakpoints();
 }
 
@@ -79,7 +77,8 @@ void CallsWatcher::AddWatchedDll(HANDLE hFile, LPVOID lpBase)
 {
     auto symbols = ReadExportSymbols(
         hProcess,
-        (char*)lpBase);
+        (char*)lpBase,
+        dumper);
     std::vector<std::string> symbolNames;
     for (auto& symbol : symbols) {
         auto& name = symbol.second;
@@ -166,10 +165,7 @@ StackFrame CallsWatcher::ReadStackFrame(LPVOID stackPointer)
         hProcess,
         stackPointer,
         &returnAddress, sizeof(returnAddress), nullptr);
-    if (verbose)
-    {
-        printf("return addr: %p\n", returnAddress);
-    }
+    dumper.Printf(Dumper::Level::Debug, "return addr: %p\n", returnAddress);
     return StackFrame(stackPointer, returnAddress);
 }
 
@@ -187,18 +183,18 @@ bool CallsWatcher::IsStackFrameValid(StackFrame& frame, LPVOID curStackPointer)
     return true;;
 }
 
-void CallsWatcher::DumpProcedureName(LPVOID procAddress)
+void CallsWatcher::DumpProcedureName(Dumper::Level level, LPVOID procAddress)
 {
     auto procedureIter = procedures.find(procAddress);
     if (procedureIter == procedures.end())
         return;
     auto &procedureName = procedureIter->second;
     for (unsigned int i = 0; i < stackFrames.size(); i++)
-        printf(" ");
-    printf("%s\n", procedureName.c_str());
+        dumper.Printf(level, " ");
+    dumper.Printf(level, "%s\n", procedureName.c_str());
 }
 
-void CallsWatcher::DumpRegisters(DWORD threadId, LPVOID address)
+void CallsWatcher::DumpRegisters(Dumper::Level level, DWORD threadId, LPVOID address)
 {
     auto hThreadIter = threads.find(threadId);
     if (hThreadIter == threads.end())
@@ -207,19 +203,19 @@ void CallsWatcher::DumpRegisters(DWORD threadId, LPVOID address)
     CONTEXT lpContext;
     lpContext.ContextFlags = CONTEXT_ALL;
     GetThreadContext(hThread, &lpContext);
-    printf("eip: %X\n", lpContext.Eip);
-    printf("esp: %X\n", lpContext.Esp);
+    dumper.Printf(level, "eip: %X\n", lpContext.Eip);
+    dumper.Printf(level, "esp: %X\n", lpContext.Esp);
     if (lpContext.Eip != (DWORD)address)
     {
         // Looks like task switch
-        printf("Eip != ExceptionAddress\n");
-        DumpMemory((LPVOID)lpContext.Eip);
+        dumper.Printf(level, "Eip != ExceptionAddress\n");
+        DumpMemory(level, (LPVOID)lpContext.Eip);
     }
 }
 
-void CallsWatcher::DumpMemory(LPVOID address)
+void CallsWatcher::DumpMemory(Dumper::Level level, LPVOID address)
 {
-    printf("Memory: ");
+    dumper.Printf(level, "Memory: ");
     BYTE bytes[10];
     ReadProcessMemory(
         hProcess,
@@ -227,7 +223,7 @@ void CallsWatcher::DumpMemory(LPVOID address)
         &bytes, sizeof(bytes), nullptr);
     for (int i = 0; i < sizeof(bytes); i++)
     {
-        printf("%02X", bytes[i]);
+        dumper.Printf(level, "%02X", bytes[i]);
     }
-    printf("\n");
+    dumper.Printf(level, "\n");
 }

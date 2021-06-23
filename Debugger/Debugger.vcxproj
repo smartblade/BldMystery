@@ -142,6 +142,7 @@
     <ClCompile Include="CallsWatcher.cpp" />
     <ClCompile Include="DebugLoop.cpp" />
     <ClCompile Include="DllMetadata.cpp" />
+    <ClCompile Include="Dumper.cpp" />
     <ClCompile Include="FileInfo.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ReadExportSymbols.cpp" />
@@ -151,6 +152,7 @@
     <ClInclude Include="CallsWatcher.h" />
     <ClInclude Include="DebugLoop.h" />
     <ClInclude Include="DllMetadata.h" />
+    <ClInclude Include="Dumper.h" />
     <ClInclude Include="FileInfo.h" />
     <ClInclude Include="rapidjson.h" />
     <ClInclude Include="ReadExportSymbols.h" />
