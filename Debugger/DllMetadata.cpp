@@ -45,6 +45,7 @@ DllInfo::DllInfo()
 
 DllInfo::DllInfo(const Value &dllInfoObj)
 {
+    this->isSystem = dllInfoObj["isSystem"].GetBool();
     auto& symbolsObj = dllInfoObj["symbols"];
     for (auto& m : symbolsObj.GetObject())
     {
@@ -52,6 +53,11 @@ DllInfo::DllInfo(const Value &dllInfoObj)
             m.name.GetString(),
             m.value);
     }
+}
+
+bool DllInfo::IsSystem()
+{
+    return isSystem;
 }
 
 void DllInfo::AddSymbols(std::vector<std::string> symbols)
@@ -73,6 +79,10 @@ DllExportSymbol& DllInfo::GetSymbol(const std::string& symbolName)
 Value DllInfo::Dump(Document &document) const
 {
     Value dllInfoObj(Type::kObjectType);
+    dllInfoObj.AddMember(
+        Value("isSystem", document.GetAllocator()),
+        Value(isSystem),
+        document.GetAllocator());
     Value symbolsObj(Type::kObjectType);
     for (auto& symbol : symbols)
     {

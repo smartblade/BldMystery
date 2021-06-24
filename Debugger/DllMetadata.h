@@ -26,12 +26,14 @@ class DllInfo
 public:
 	DllInfo();
 	DllInfo(const rapidjson::Value &dllInfoObj);
+	bool IsSystem();
 	void AddSymbols(std::vector<std::string> symbols);
 	DllExportSymbol& GetSymbol(const std::string& symbolName);
 	rapidjson::Value Dump(rapidjson::Document& document) const;
 
 private:
 	std::map<std::string, DllExportSymbol> symbols;
+	bool isSystem = true;
 };
 
 class DllMetadata

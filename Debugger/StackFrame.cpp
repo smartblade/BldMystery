@@ -1,8 +1,10 @@
 #include "StackFrame.h"
 
-StackFrame::StackFrame(LPVOID stackPointer, LPVOID returnAddress)
+StackFrame::StackFrame(
+    LPVOID stackPointer, LPVOID returnAddress, LPVOID startAddress)
     :
-stackPointer(stackPointer), returnAddress(returnAddress)
+stackPointer(stackPointer), returnAddress(returnAddress),
+startAddress(startAddress)
 {
 }
 
@@ -14,4 +16,9 @@ LPVOID StackFrame::StackPointer()
 LPVOID StackFrame::ReturnAddress()
 {
     return returnAddress;
+}
+
+LPVOID StackFrame::StartAddress()
+{
+    return startAddress;
 }

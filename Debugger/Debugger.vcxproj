@@ -145,6 +145,7 @@
     <ClCompile Include="Dumper.cpp" />
     <ClCompile Include="FileInfo.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Procedure.cpp" />
     <ClCompile Include="ReadExportSymbols.cpp" />
     <ClCompile Include="StackFrame.cpp" />
   </ItemGroup>
@@ -154,6 +155,7 @@
     <ClInclude Include="DllMetadata.h" />
     <ClInclude Include="Dumper.h" />
     <ClInclude Include="FileInfo.h" />
+    <ClInclude Include="Procedure.h" />
     <ClInclude Include="rapidjson.h" />
     <ClInclude Include="ReadExportSymbols.h" />
     <ClInclude Include="StackFrame.h" />

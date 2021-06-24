@@ -25,7 +25,7 @@ void CallsWatcher::OnProcessCreated(
     HANDLE hThread)
 {
     AddWatchedDll(hFile, lpBase);
-    AddWatchedProcedure(hFile, startAddress, "__entry");
+    AddWatchedProcedure(hFile, startAddress, "__entry", false);
     threads[threadId] = hThread;
 }
 
@@ -51,8 +51,16 @@ void CallsWatcher::OnBreakpoint(LPVOID address, DWORD threadId)
         Dumper::Level::Debug, "===========================================\n");
     DumpMemory(Dumper::Level::Debug, address);
     DumpRegisters(Dumper::Level::Debug, threadId, address);
-    AdjustStackFrames((LPVOID)lpContext.Esp);
-    DumpProcedureName(Dumper::Level::Info, address);
+    AdjustStackFrames((LPVOID)lpContext.Esp, address);
+    if (IsInternalSystemCall())
+    {
+        dumper.Printf(Dumper::Level::Debug, "Internal system call\n");
+        DumpProcedureName(Dumper::Level::Debug, address);
+    }
+    else
+    {
+        DumpProcedureName(Dumper::Level::Info, address);
+    }
 }
 
 void CallsWatcher::OnSingleStep(LPVOID address, DWORD threadId)
@@ -95,7 +103,8 @@ void CallsWatcher::AddWatchedDll(HANDLE hFile, LPVOID lpBase)
         auto& symbol = dllInfo.GetSymbol(symbolName);
         if (symbol.IsWatched())
         {
-            AddWatchedProcedure(hFile, address, symbolName);
+            AddWatchedProcedure(
+                hFile, address, symbolName, dllInfo.IsSystem());
         }
     }
     this->dlls[lpBase] = dllName;
@@ -104,11 +113,12 @@ void CallsWatcher::AddWatchedDll(HANDLE hFile, LPVOID lpBase)
 void CallsWatcher::AddWatchedProcedure(
     HANDLE hFile,
     LPVOID procAddress,
-    const std::string &procName)
+    const std::string &procName,
+    bool isSystem)
 {
     auto filePath = GetFilePath(hFile);
     auto dllName = GetFileName(filePath);
-    procedures[procAddress] = dllName + "!" + procName;
+    procedures[procAddress] = Procedure(dllName, procName, isSystem);
     SetBreakpoint(procAddress);
 }
 
@@ -146,7 +156,9 @@ void CallsWatcher::SetBreakpoint(LPVOID address)
     FlushInstructionCache(hProcess, address, 1);
 }
 
-void CallsWatcher::AdjustStackFrames(LPVOID curStackPointer)
+void CallsWatcher::AdjustStackFrames(
+    LPVOID curStackPointer,
+    LPVOID startAddress)
 {
     while (!stackFrames.empty())
     {
@@ -155,10 +167,11 @@ void CallsWatcher::AdjustStackFrames(LPVOID curStackPointer)
             break;
         stackFrames.pop_back();
     }
-    stackFrames.push_back(ReadStackFrame(curStackPointer));
+    stackFrames.push_back(ReadStackFrame(curStackPointer, startAddress));
 }
 
-StackFrame CallsWatcher::ReadStackFrame(LPVOID stackPointer)
+StackFrame CallsWatcher::ReadStackFrame(
+    LPVOID stackPointer, LPVOID startAddress)
 {
     LPVOID returnAddress;
     ReadProcessMemory(
@@ -166,7 +179,7 @@ StackFrame CallsWatcher::ReadStackFrame(LPVOID stackPointer)
         stackPointer,
         &returnAddress, sizeof(returnAddress), nullptr);
     dumper.Printf(Dumper::Level::Debug, "return addr: %p\n", returnAddress);
-    return StackFrame(stackPointer, returnAddress);
+    return StackFrame(stackPointer, returnAddress, startAddress);
 }
 
 bool CallsWatcher::IsStackFrameValid(StackFrame& frame, LPVOID curStackPointer)
@@ -183,12 +196,29 @@ bool CallsWatcher::IsStackFrameValid(StackFrame& frame, LPVOID curStackPointer)
     return true;;
 }
 
+bool CallsWatcher::IsInternalSystemCall()
+{
+    if (stackFrames.size() < 1)
+        return true;
+    auto& curFrame = stackFrames[stackFrames.size() - 1];
+    if (stackFrames.size() < 2)
+    {
+        return procedures[curFrame.StartAddress()].IsSystem();
+    }
+    auto& prevFrame = stackFrames[stackFrames.size() - 2];
+    if (
+        procedures[prevFrame.StartAddress()].IsSystem() &&
+        procedures[curFrame.StartAddress()].IsSystem())
+        return true;
+    return false;
+}
+
 void CallsWatcher::DumpProcedureName(Dumper::Level level, LPVOID procAddress)
 {
     auto procedureIter = procedures.find(procAddress);
     if (procedureIter == procedures.end())
         return;
-    auto &procedureName = procedureIter->second;
+    const auto& procedureName = procedureIter->second.FullName();
     for (unsigned int i = 0; i < stackFrames.size(); i++)
         dumper.Printf(level, " ");
     dumper.Printf(level, "%s\n", procedureName.c_str());

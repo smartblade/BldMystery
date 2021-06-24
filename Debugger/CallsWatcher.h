@@ -5,6 +5,7 @@
 #include <windows.h>
 #include "Dumper.h"
 #include "DllMetadata.h"
+#include "Procedure.h"
 #include "StackFrame.h"
 
 class CallsWatcher
@@ -31,13 +32,15 @@ private:
 	void AddWatchedProcedure(
 		HANDLE hFile,
 		LPVOID procAddress,
-		const std::string& procName);
+		const std::string& procName,
+		bool isSystem);
 	void EnableAllBreakpoints();
 	bool DisableBreakpoint(LPVOID address);
 	void SetBreakpoint(LPVOID address);
-	void AdjustStackFrames(LPVOID curStackPointer);
-	StackFrame ReadStackFrame(LPVOID stackPointer);
+	void AdjustStackFrames(LPVOID curStackPointer, LPVOID startAddress);
+	StackFrame ReadStackFrame(LPVOID stackPointer, LPVOID startAddress);
 	bool IsStackFrameValid(StackFrame& frame, LPVOID curStackPointer);
+	bool IsInternalSystemCall();
 	void DumpProcedureName(Dumper::Level level, LPVOID procAddress);
 	void DumpRegisters(Dumper::Level level, DWORD threadId, LPVOID address);
 	void DumpMemory(Dumper::Level level, LPVOID address);
@@ -47,7 +50,7 @@ private:
 	std::map<DWORD, HANDLE> threads;
 	std::map<LPVOID, std::string> dlls;
 	std::map<LPVOID, BYTE> savedBytes;
-	std::map<LPVOID, std::string> procedures;
+	std::map<LPVOID, Procedure> procedures;
 	std::vector<LPVOID> disabledBreakpoints;
 	std::vector<StackFrame> stackFrames;
 	Dumper dumper;

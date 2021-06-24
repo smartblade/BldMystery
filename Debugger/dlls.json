@@ -1,9 +1,11 @@
 {
     "dlls": {
         "Autopan.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "BBLibc.dll": {
+            "isSystem": false,
             "symbols": {
                 "??0B_BitMap24@@QAE@ABV0@@Z": {
                     "isWatched": true
@@ -881,6 +883,7 @@
             }
         },
         "BInputc.dll": {
+            "isSystem": false,
             "symbols": {
                 "??0B_DInputKeyb@@QAE@PAUHINSTANCE__@@PAUHWND__@@@Z": {
                     "isWatched": true
@@ -1011,9 +1014,11 @@
             }
         },
         "Bandpass.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "Blade.exe": {
+            "isSystem": false,
             "symbols": {
                 "Abs2RelPoint": {
                     "isWatched": true
@@ -2629,15 +2634,19 @@
             }
         },
         "Capture.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "Chorus.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "Compress.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "Console.dll": {
+            "isSystem": false,
             "symbols": {
                 "CreateConsole": {
                     "isWatched": true
@@ -2651,12 +2660,15 @@
             }
         },
         "Flange.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "Highpass.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "IPHLPAPI.DLL": {
+            "isSystem": true,
             "symbols": {
                 "AddIPAddress": {
                     "isWatched": true
@@ -3435,6 +3447,7 @@
             }
         },
         "KernelBase.dll": {
+            "isSystem": true,
             "symbols": {
                 "AccessCheck": {
                     "isWatched": false
@@ -7711,18 +7724,23 @@
             }
         },
         "Laginter.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "Lowpass.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "Mdelay.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "Mp3dec.asi": {
+            "isSystem": true,
             "symbols": {}
         },
         "Mss32.dll": {
+            "isSystem": true,
             "symbols": {
                 "AIL_debug_printf": {
                     "isWatched": true
@@ -8723,36 +8741,47 @@
             }
         },
         "Mssds3dh.m3d": {
+            "isSystem": true,
             "symbols": {}
         },
         "Mssds3ds.m3d": {
+            "isSystem": true,
             "symbols": {}
         },
         "Mssdx7sh.m3d": {
+            "isSystem": true,
             "symbols": {}
         },
         "Mssdx7sl.m3d": {
+            "isSystem": true,
             "symbols": {}
         },
         "Mssdx7sn.m3d": {
+            "isSystem": true,
             "symbols": {}
         },
         "Mssfast.m3d": {
+            "isSystem": true,
             "symbols": {}
         },
         "Mssrsx.m3d": {
+            "isSystem": true,
             "symbols": {}
         },
         "Mssv12.asi": {
+            "isSystem": true,
             "symbols": {}
         },
         "Mssv24.asi": {
+            "isSystem": true,
             "symbols": {}
         },
         "Mssv29.asi": {
+            "isSystem": true,
             "symbols": {}
         },
         "NetBlade.dll": {
+            "isSystem": false,
             "symbols": {
                 "CloseConection": {
                     "isWatched": true
@@ -8763,12 +8792,15 @@
             }
         },
         "Parmeq.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "Phaser.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "Raster.dll": {
+            "isSystem": false,
             "symbols": {
                 "?B_3D_raster_device@@3PAVB_3DRasterDevice@@A": {
                     "isWatched": false
@@ -8779,21 +8811,27 @@
             }
         },
         "Reson.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "Reverb1.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "Reverb2.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "Reverb3.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "Ringmod.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "SHCore.dll": {
+            "isSystem": true,
             "symbols": {
                 "CommandLineToArgvW": {
                     "isWatched": true
@@ -9044,12 +9082,15 @@
             }
         },
         "Sdelay.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "Shelfeq.flt": {
+            "isSystem": true,
             "symbols": {}
         },
         "Shw32.dll": {
+            "isSystem": true,
             "symbols": {
                 "MemAlloc": {
                     "isWatched": true
@@ -9306,6 +9347,7 @@
             }
         },
         "advapi32.dll": {
+            "isSystem": true,
             "symbols": {
                 "AbortSystemShutdownA": {
                     "isWatched": true
@@ -11491,6 +11533,7 @@
             }
         },
         "bcrypt.dll": {
+            "isSystem": true,
             "symbols": {
                 "BCryptAddContextFunction": {
                     "isWatched": true
@@ -11666,6 +11709,7 @@
             }
         },
         "bcryptprimitives.dll": {
+            "isSystem": true,
             "symbols": {
                 "GetAsymmetricEncryptionInterface": {
                     "isWatched": true
@@ -11694,6 +11738,7 @@
             }
         },
         "bicrt.dll": {
+            "isSystem": true,
             "symbols": {
                 "$I10_OUTPUT": {
                     "isWatched": true
@@ -13936,6 +13981,7 @@
             }
         },
         "cfgmgr32.dll": {
+            "isSystem": true,
             "symbols": {
                 "CMP_GetBlockedDriverInfo": {
                     "isWatched": true
@@ -14768,6 +14814,7 @@
             }
         },
         "combase.dll": {
+            "isSystem": true,
             "symbols": {
                 "CLSIDFromOle1Class": {
                     "isWatched": true
@@ -15675,6 +15722,7 @@
             }
         },
         "comctl32.dll": {
+            "isSystem": true,
             "symbols": {
                 "AddMRUStringW": {
                     "isWatched": true
@@ -16102,6 +16150,7 @@
             }
         },
         "cryptbase.dll": {
+            "isSystem": true,
             "symbols": {
                 "SystemFunction001": {
                     "isWatched": true
@@ -16139,6 +16188,7 @@
             }
         },
         "cryptsp.dll": {
+            "isSystem": true,
             "symbols": {
                 "CryptAcquireContextA": {
                     "isWatched": true
@@ -16317,6 +16367,7 @@
             }
         },
         "dciman32.dll": {
+            "isSystem": true,
             "symbols": {
                 "DCIBeginAccess": {
                     "isWatched": true
@@ -16378,6 +16429,7 @@
             }
         },
         "ddraw.dll": {
+            "isSystem": true,
             "symbols": {
                 "AcquireDDThreadLock": {
                     "isWatched": true
@@ -16448,6 +16500,7 @@
             }
         },
         "devobj.dll": {
+            "isSystem": true,
             "symbols": {
                 "DevObjBuildClassInfoList": {
                     "isWatched": true
@@ -16605,6 +16658,7 @@
             }
         },
         "dhcpcsvc.dll": {
+            "isSystem": true,
             "symbols": {
                 "DhcpAcquireParameters": {
                     "isWatched": true
@@ -16810,6 +16864,7 @@
             }
         },
         "dinput.dll": {
+            "isSystem": true,
             "symbols": {
                 "DirectInputCreateA": {
                     "isWatched": true
@@ -16835,6 +16890,7 @@
             }
         },
         "dplayx.dll": {
+            "isSystem": true,
             "symbols": {
                 "DirectPlayCreate": {
                     "isWatched": true
@@ -16872,6 +16928,7 @@
             }
         },
         "dpnathlp.dll": {
+            "isSystem": true,
             "symbols": {
                 "DirectPlayNATHelpCreate": {
                     "isWatched": true
@@ -16891,6 +16948,7 @@
             }
         },
         "dpwsockx.dll": {
+            "isSystem": true,
             "symbols": {
                 "DPWS_BuildIPMessageHeader": {
                     "isWatched": true
@@ -16904,6 +16962,7 @@
             }
         },
         "dwmapi.dll": {
+            "isSystem": true,
             "symbols": {
                 "DllCanUnloadNow": {
                     "isWatched": true
@@ -17013,6 +17072,7 @@
             }
         },
         "gdi32.dll": {
+            "isSystem": true,
             "symbols": {
                 "AbortDoc": {
                     "isWatched": true
@@ -19408,6 +19468,7 @@
             }
         },
         "imm32.dll": {
+            "isSystem": true,
             "symbols": {
                 "CtfImmAppCompatEnableIMEonProtectedCode": {
                     "isWatched": true
@@ -19814,6 +19875,7 @@
             }
         },
         "kernel.appcore.dll": {
+            "isSystem": true,
             "symbols": {
                 "AcquireStateLock": {
                     "isWatched": true
@@ -20175,6 +20237,7 @@
             }
         },
         "kernel32.dll": {
+            "isSystem": true,
             "symbols": {
                 "ActivateActCtx": {
                     "isWatched": true
@@ -24340,6 +24403,7 @@
             }
         },
         "msacm32.dll": {
+            "isSystem": true,
             "symbols": {
                 "XRegThunkEntry": {
                     "isWatched": true
@@ -24476,6 +24540,7 @@
             }
         },
         "msctf.dll": {
+            "isSystem": true,
             "symbols": {
                 "CtfImeAssociateFocus": {
                     "isWatched": true
@@ -24675,6 +24740,7 @@
             }
         },
         "msvcr80.dll": {
+            "isSystem": true,
             "symbols": {
                 "$I10_OUTPUT": {
                     "isWatched": true
@@ -29023,6 +29089,7 @@
             }
         },
         "msvcrt.dll": {
+            "isSystem": true,
             "symbols": {
                 "$I10_OUTPUT": {
                     "isWatched": true
@@ -33149,6 +33216,7 @@
             }
         },
         "mswsock.dll": {
+            "isSystem": true,
             "symbols": {
                 "AcceptEx": {
                     "isWatched": true
@@ -33336,6 +33404,7 @@
             }
         },
         "nsi.dll": {
+            "isSystem": true,
             "symbols": {
                 "NsiAllocateAndGetPersistentDataWithMaskTable": {
                     "isWatched": true
@@ -33418,6 +33487,7 @@
             }
         },
         "ntdll.dll": {
+            "isSystem": true,
             "symbols": {
                 "A_SHAFinal": {
                     "isWatched": false
@@ -38630,6 +38700,7 @@
             }
         },
         "ole32.dll": {
+            "isSystem": true,
             "symbols": {
                 "BindMoniker": {
                     "isWatched": true
@@ -39378,6 +39449,7 @@
             }
         },
         "python15.dll": {
+            "isSystem": true,
             "symbols": {
                 "PyArg_Parse": {
                     "isWatched": true
@@ -40771,6 +40843,7 @@
             }
         },
         "rasapi32.dll": {
+            "isSystem": true,
             "symbols": {
                 "DDMFreePhonebookContext": {
                     "isWatched": true
@@ -41156,6 +41229,7 @@
             }
         },
         "rasman.dll": {
+            "isSystem": true,
             "symbols": {
                 "IsRasmanProcess": {
                     "isWatched": true
@@ -41715,6 +41789,7 @@
             }
         },
         "rpcrt4.dll": {
+            "isSystem": true,
             "symbols": {
                 "CStdStubBuffer_AddRef": {
                     "isWatched": true
@@ -43354,6 +43429,7 @@
             }
         },
         "rsaenh.dll": {
+            "isSystem": true,
             "symbols": {
                 "CPAcquireContext": {
                     "isWatched": true
@@ -43439,6 +43515,7 @@
             }
         },
         "sechost.dll": {
+            "isSystem": true,
             "symbols": {
                 "AuditComputeEffectivePolicyBySid": {
                     "isWatched": true
@@ -43968,6 +44045,7 @@
             }
         },
         "shell32.dll": {
+            "isSystem": true,
             "symbols": {
                 "AppCompat_RunDLLW": {
                     "isWatched": true
@@ -44953,6 +45031,7 @@
             }
         },
         "shlwapi.dll": {
+            "isSystem": true,
             "symbols": {
                 "AssocCreate": {
                     "isWatched": true
@@ -46073,6 +46152,7 @@
             }
         },
         "sspicli.dll": {
+            "isSystem": true,
             "symbols": {
                 "AcceptSecurityContext": {
                     "isWatched": true
@@ -46368,6 +46448,7 @@
             }
         },
         "user32.dll": {
+            "isSystem": true,
             "symbols": {
                 "ActivateKeyboardLayout": {
                     "isWatched": true
@@ -49009,6 +49090,7 @@
             }
         },
         "uxtheme.dll": {
+            "isSystem": true,
             "symbols": {
                 "BeginBufferedAnimation": {
                     "isWatched": true
@@ -49265,6 +49347,7 @@
             }
         },
         "winmm.dll": {
+            "isSystem": true,
             "symbols": {
                 "CloseDriver": {
                     "isWatched": true
@@ -49845,6 +49928,7 @@
             }
         },
         "winmmbase.dll": {
+            "isSystem": true,
             "symbols": {
                 "CloseDriver": {
                     "isWatched": true
@@ -50287,6 +50371,7 @@
             }
         },
         "winnsi.dll": {
+            "isSystem": true,
             "symbols": {
                 "NsiConnectToServer": {
                     "isWatched": true
@@ -50336,6 +50421,7 @@
             }
         },
         "ws2_32.dll": {
+            "isSystem": true,
             "symbols": {
                 "FreeAddrInfoExW": {
                     "isWatched": true
@@ -50862,6 +50948,7 @@
             }
         },
         "wsock32.dll": {
+            "isSystem": true,
             "symbols": {
                 "getsockopt": {
                     "isWatched": true
