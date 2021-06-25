@@ -51,15 +51,16 @@ void CallsWatcher::OnBreakpoint(LPVOID address, DWORD threadId)
         Dumper::Level::Debug, "===========================================\n");
     DumpMemory(Dumper::Level::Debug, address);
     DumpRegisters(Dumper::Level::Debug, threadId, address);
-    AdjustStackFrames((LPVOID)lpContext.Esp, address);
-    if (IsInternalSystemCall())
+    auto& stackFrames = stackFramesByThread[threadId];
+    AdjustStackFrames(stackFrames, (LPVOID)lpContext.Esp, address);
+    if (IsInternalSystemCall(stackFrames))
     {
         dumper.Printf(Dumper::Level::Debug, "Internal system call\n");
-        DumpProcedureName(Dumper::Level::Debug, address);
+        DumpProcedureName(Dumper::Level::Debug, stackFrames, address);
     }
     else
     {
-        DumpProcedureName(Dumper::Level::Info, address);
+        DumpProcedureName(Dumper::Level::Info, stackFrames, address);
     }
 }
 
@@ -157,6 +158,7 @@ void CallsWatcher::SetBreakpoint(LPVOID address)
 }
 
 void CallsWatcher::AdjustStackFrames(
+    std::vector<StackFrame>& stackFrames,
     LPVOID curStackPointer,
     LPVOID startAddress)
 {
@@ -196,7 +198,7 @@ bool CallsWatcher::IsStackFrameValid(StackFrame& frame, LPVOID curStackPointer)
     return true;;
 }
 
-bool CallsWatcher::IsInternalSystemCall()
+bool CallsWatcher::IsInternalSystemCall(std::vector<StackFrame>& stackFrames)
 {
     if (stackFrames.size() < 1)
         return true;
@@ -213,7 +215,10 @@ bool CallsWatcher::IsInternalSystemCall()
     return false;
 }
 
-void CallsWatcher::DumpProcedureName(Dumper::Level level, LPVOID procAddress)
+void CallsWatcher::DumpProcedureName(
+    Dumper::Level level,
+    std::vector<StackFrame>& stackFrames,
+    LPVOID procAddress)
 {
     auto procedureIter = procedures.find(procAddress);
     if (procedureIter == procedures.end())

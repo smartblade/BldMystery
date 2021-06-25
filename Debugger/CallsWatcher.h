@@ -37,11 +37,17 @@ private:
 	void EnableAllBreakpoints();
 	bool DisableBreakpoint(LPVOID address);
 	void SetBreakpoint(LPVOID address);
-	void AdjustStackFrames(LPVOID curStackPointer, LPVOID startAddress);
+	void AdjustStackFrames(
+		std::vector<StackFrame> &stackFrames,
+		LPVOID curStackPointer,
+		LPVOID startAddress);
 	StackFrame ReadStackFrame(LPVOID stackPointer, LPVOID startAddress);
 	bool IsStackFrameValid(StackFrame& frame, LPVOID curStackPointer);
-	bool IsInternalSystemCall();
-	void DumpProcedureName(Dumper::Level level, LPVOID procAddress);
+	bool IsInternalSystemCall(std::vector<StackFrame>& stackFrames);
+	void DumpProcedureName(
+		Dumper::Level level,
+		std::vector<StackFrame>& stackFrames,
+		LPVOID procAddress);
 	void DumpRegisters(Dumper::Level level, DWORD threadId, LPVOID address);
 	void DumpMemory(Dumper::Level level, LPVOID address);
 
@@ -52,6 +58,6 @@ private:
 	std::map<LPVOID, BYTE> savedBytes;
 	std::map<LPVOID, Procedure> procedures;
 	std::vector<LPVOID> disabledBreakpoints;
-	std::vector<StackFrame> stackFrames;
+	std::map<DWORD, std::vector<StackFrame>> stackFramesByThread;
 	Dumper dumper;
 };
