@@ -24,6 +24,8 @@ public:
 		HANDLE hThread);
 	void OnThreadCreated(DWORD threadId, HANDLE hThread);
 	void OnBreakpoint(LPVOID address, DWORD threadId);
+	void OnProcedureStart(LPVOID address, DWORD threadId, LPVOID stackPointer);
+	void OnProcedureReturn(DWORD threadId, LPVOID stackPointer);
 	void OnSingleStep(LPVOID address, DWORD threadId);
 	std::string FindDll(LPVOID address);
 
@@ -34,10 +36,16 @@ private:
 		LPVOID procAddress,
 		const std::string& procName,
 		bool isSystem);
+	void AddWatchedReturnAddress(
+		std::vector<StackFrame>& stackFrames,
+		LPVOID procAddress);
+	void AdjustStackFrames(
+		std::vector<StackFrame>& stackFrames,
+		LPVOID curStackPointer);
 	void EnableAllBreakpoints();
 	bool DisableBreakpoint(LPVOID address);
 	void SetBreakpoint(LPVOID address);
-	void AdjustStackFrames(
+	void PushStackFrame(
 		std::vector<StackFrame> &stackFrames,
 		LPVOID curStackPointer,
 		LPVOID startAddress);
@@ -57,6 +65,7 @@ private:
 	std::map<LPVOID, std::string> dlls;
 	std::map<LPVOID, BYTE> savedBytes;
 	std::map<LPVOID, Procedure> procedures;
+	std::map<LPVOID, LPVOID> returnAddresses;
 	std::vector<LPVOID> disabledBreakpoints;
 	std::map<DWORD, std::vector<StackFrame>> stackFramesByThread;
 	Dumper dumper;

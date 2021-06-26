@@ -51,8 +51,25 @@ void CallsWatcher::OnBreakpoint(LPVOID address, DWORD threadId)
         Dumper::Level::Debug, "===========================================\n");
     DumpMemory(Dumper::Level::Debug, address);
     DumpRegisters(Dumper::Level::Debug, threadId, address);
+    if (returnAddresses.find(address) != returnAddresses.end())
+    {
+        OnProcedureReturn(threadId, (LPVOID)lpContext.Esp);
+    }
+    else
+    {
+        OnProcedureStart(address, threadId, (LPVOID)lpContext.Esp);
+    }
+}
+
+void CallsWatcher::OnProcedureStart(
+    LPVOID address,
+    DWORD threadId,
+    LPVOID stackPointer)
+{
     auto& stackFrames = stackFramesByThread[threadId];
-    AdjustStackFrames(stackFrames, (LPVOID)lpContext.Esp, address);
+    AdjustStackFrames(stackFrames, stackPointer);
+    PushStackFrame(stackFrames, stackPointer, address);
+    AddWatchedReturnAddress(stackFrames, address);
     if (IsInternalSystemCall(stackFrames))
     {
         dumper.Printf(Dumper::Level::Debug, "Internal system call\n");
@@ -62,6 +79,12 @@ void CallsWatcher::OnBreakpoint(LPVOID address, DWORD threadId)
     {
         DumpProcedureName(Dumper::Level::Info, stackFrames, address);
     }
+}
+
+void CallsWatcher::OnProcedureReturn(DWORD threadId, LPVOID stackPointer)
+{
+    auto& stackFrames = stackFramesByThread[threadId];
+    AdjustStackFrames(stackFrames, stackPointer);
 }
 
 void CallsWatcher::OnSingleStep(LPVOID address, DWORD threadId)
@@ -123,6 +146,17 @@ void CallsWatcher::AddWatchedProcedure(
     SetBreakpoint(procAddress);
 }
 
+void CallsWatcher::AddWatchedReturnAddress(
+    std::vector<StackFrame>& stackFrames,
+    LPVOID procAddress)
+{
+    if (stackFrames.empty())
+        return;
+    auto returnAddress = stackFrames.back().ReturnAddress();
+    returnAddresses[returnAddress] = procAddress;
+    SetBreakpoint(returnAddress);
+}
+
 void CallsWatcher::EnableAllBreakpoints()
 {
     while (!disabledBreakpoints.empty())
@@ -157,10 +191,17 @@ void CallsWatcher::SetBreakpoint(LPVOID address)
     FlushInstructionCache(hProcess, address, 1);
 }
 
-void CallsWatcher::AdjustStackFrames(
+void CallsWatcher::PushStackFrame(
     std::vector<StackFrame>& stackFrames,
     LPVOID curStackPointer,
     LPVOID startAddress)
+{
+    stackFrames.push_back(ReadStackFrame(curStackPointer, startAddress));
+}
+
+void CallsWatcher::AdjustStackFrames(
+    std::vector<StackFrame>& stackFrames,
+    LPVOID curStackPointer)
 {
     while (!stackFrames.empty())
     {
@@ -169,7 +210,6 @@ void CallsWatcher::AdjustStackFrames(
             break;
         stackFrames.pop_back();
     }
-    stackFrames.push_back(ReadStackFrame(curStackPointer, startAddress));
 }
 
 StackFrame CallsWatcher::ReadStackFrame(
