@@ -193,6 +193,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\AmbientLightTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\AuraEntityTests.cpp"
 				>
 			</File>
@@ -301,6 +305,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\FlatLightTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\FontTests.cpp"
 				>
 			</File>
@@ -366,6 +374,10 @@
 			</File>
 			<File
 				RelativePath=".\BBLibc\ResourceTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Blade\SectorLightsTests.cpp"
 				>
 			</File>
 			<File

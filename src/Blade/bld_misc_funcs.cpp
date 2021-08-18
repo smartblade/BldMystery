@@ -290,6 +290,10 @@ double B_ProcessorTimer::GetTime()
 
 
 
+/* File:                  Math/BLights.cpp */
+/* Begin of file:         0x00493610 */
+/* End of file:           0x00495240 */
+
 /* File:                  Math/BSpline.cpp */
 /* Begin of file:         0x00495240 */
 /* End of file:           0x00497500 */

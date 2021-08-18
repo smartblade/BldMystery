@@ -7,6 +7,7 @@
 #include <BBLibc.h>
 #include "BoundingBox.h"
 #include <BWorld/Surface.h>
+#include <Math/BLights.h>
 
 class B_Sector;
 
@@ -20,8 +21,11 @@ public:
 
 class B_SectorLights
 {
-private:
-    char unknownFields[0x138];
+public:
+    char unknownFields[0x00C];
+    B_AmbientLight ambient;
+    B_FlatLight flat;
+    char unknownFields0128[0x010];
 };
 
 B_IDataFile &operator >>(B_IDataFile &file, B_SectorLights &lights);

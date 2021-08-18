@@ -18,12 +18,13 @@
 * Entry point:            0x0042E011
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_SectorLights@@@Z
 */
-#ifdef BLD_NATIVE
+
 B_IDataFile &operator >>(B_IDataFile &file, B_SectorLights &lights)
 {
+    file >> lights.ambient >> lights.flat;
     return file;
 }
-#endif
+
 
 /*
 ................................................................................

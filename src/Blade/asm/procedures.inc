@@ -848,6 +848,14 @@ externdef _AddTextureMaterial: near
 l0049259A equ _AddTextureMaterial
 externdef _AddActionStepSound: near
 l004929C4 equ _AddActionStepSound
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_LightSource@@@Z: near
+l004943A0 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_LightSource@@@Z
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_DirectedLightSource@@@Z: near
+l004947F4 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_DirectedLightSource@@@Z
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_AmbientLight@@@Z: near
+l00494866 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_AmbientLight@@@Z
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_FlatLight@@@Z: near
+l00494BB8 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_FlatLight@@@Z
 externdef ?AddNode@B_Spline@@QAEHNABVB_Vector@@@Z: near
 l00495240 equ ?AddNode@B_Spline@@QAEHNABVB_Vector@@@Z
 externdef ?Close@B_Spline@@QAEHXZ: near

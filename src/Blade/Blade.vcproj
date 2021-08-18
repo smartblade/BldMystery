@@ -499,6 +499,14 @@
 				Name="Math"
 				>
 				<File
+					RelativePath=".\Math\BLights.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Math\BLights.h"
+					>
+				</File>
+				<File
 					RelativePath=".\Math\BSpline.cpp"
 					>
 				</File>

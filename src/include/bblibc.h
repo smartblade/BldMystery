@@ -16,8 +16,10 @@ class LIB_EXP B_Color {
 public:
     B_Color();
     B_Color(byte r, byte g, byte b);
+    B_Color operator *(float coef) const;
+    B_Color &operator =(const B_Color &that);
     virtual void MakeCons();
-private:
+
     byte r, g, b;
 };
 
