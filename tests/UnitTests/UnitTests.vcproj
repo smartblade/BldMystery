@@ -175,7 +175,7 @@
 	<References>
 	</References>
 	<Files>
-        <Filter
+		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
@@ -194,7 +194,6 @@
 		<Filter
 			Name="Blade"
 			>
-
 			<File
 				RelativePath=".\Blade\AfterFrameFuncTests.cpp"
 				>
@@ -380,10 +379,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Blade\Sound\SoundTests.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Blade\SparkEntityTests.cpp"
 				>
 			</File>
@@ -431,6 +426,14 @@
 				RelativePath=".\Blade\YSoundDevTests.cpp"
 				>
 			</File>
+			<Filter
+				Name="Sound"
+				>
+				<File
+					RelativePath=".\Blade\Sound\SoundTests.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="BInputc"
