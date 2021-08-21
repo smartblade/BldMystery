@@ -231,10 +231,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Blade\BMapTests.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Blade\CameraEntityTests.cpp"
 				>
 			</File>
@@ -264,10 +260,6 @@
 			</File>
 			<File
 				RelativePath=".\Blade\DecalEntityTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\DomeSurfaceTests.cpp"
 				>
 			</File>
 			<File
@@ -311,23 +303,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Blade\MapTextureTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\MultiplePortalTests.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Blade\NetCallbacksTests.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\Blade\ObjectEntityTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\OpaqueSurfaceTests.cpp"
 				>
 			</File>
 			<File
@@ -351,27 +331,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Blade\PortalTests.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Blade\ProcessorTimerTests.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\Blade\ProcTextureTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\SectorLightsTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\SectorTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\SinglePortalTests.cpp"
 				>
 			</File>
 			<File
@@ -384,18 +348,6 @@
 			</File>
 			<File
 				RelativePath=".\Blade\StringValue.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\SubscriptionListTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\TransparentSurfaceTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\TriggerSectorTests.cpp"
 				>
 			</File>
 			<File
@@ -419,10 +371,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Blade\WorldTests.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Blade\YSoundDevTests.cpp"
 				>
 			</File>
@@ -431,6 +379,62 @@
 				>
 				<File
 					RelativePath=".\Blade\Sound\SoundTests.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="BWorld"
+				>
+				<File
+					RelativePath=".\Blade\BWorld\BMapTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\BWorld\DomeSurfaceTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\BWorld\MapTextureTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\BWorld\MultiplePortalTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\BWorld\OpaqueSurfaceTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\BWorld\PortalTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\BWorld\SectorLightsTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\BWorld\SectorTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\BWorld\SinglePortalTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\BWorld\SubscriptionListTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\BWorld\TransparentSurfaceTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\BWorld\TriggerSectorTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\BWorld\WorldTests.cpp"
 					>
 				</File>
 			</Filter>
