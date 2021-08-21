@@ -173,10 +173,6 @@
 		</Configuration>
 	</Configurations>
 	<References>
-		<ProjectReference
-			ReferencedProjectIdentifier="{F1B72C20-DE70-4E02-8DCE-201F5FC11AA0}"
-			RelativePathToProject=".\gtest\gtest.vcproj"
-		/>
 	</References>
 	<Files>
 		<Filter
