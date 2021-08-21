@@ -255,12 +255,16 @@ void B_OpaqueSurface::unknown014()
 * Entry point:            0x004566EC
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_OpaqueSurface@@@Z
 */
-#ifdef BLD_NATIVE
+
 B_IDataFile &operator >>(B_IDataFile &file, B_OpaqueSurface &surface)
 {
+    file
+        >> static_cast<B_Surface &>(surface)
+        >> surface.mapTexture
+        >> surface.polygon;
     return file;
 }
-#endif
+
 
 /*
 ................................................................................

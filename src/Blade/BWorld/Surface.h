@@ -5,6 +5,7 @@
 
 #include "Plane.h"
 #include "Polygon.h"
+#include <BWorld/MapTexture.h>
 
 class B_Portal : public B_Polygon
 {
@@ -100,7 +101,7 @@ public:
     virtual void unknown014();
     virtual void unknown018();
 
-    char unknownFields[0x60];
+    B_MapTexture mapTexture;
     B_Polygon polygon;
 };
 

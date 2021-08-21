@@ -15,5 +15,6 @@ TEST(OpaqueSurfaceTests, Fields)
     EXPECT_OFFSET_EQ(B_OpaqueSurface, p, 0x01C);
     EXPECT_OFFSET_EQ(B_OpaqueSurface, unknown024, 0x024);
     EXPECT_OFFSET_EQ(B_OpaqueSurface, unknown028, 0x028);
+    EXPECT_OFFSET_EQ(B_OpaqueSurface, mapTexture, 0x02C);
     EXPECT_OFFSET_EQ(B_OpaqueSurface, polygon, 0x08C);
 }

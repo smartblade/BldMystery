@@ -142,6 +142,10 @@ light_t * read_light(B_IDataFile *file)
 
 /* End of file:           0x0044D320 */
 
+/* File:                  BWorld/MapTexture.cpp */
+/* Begin of file:         0x0044D320 */
+/* End of file:           0x0044DA20 */
+
 
 
 /* File:                  BWorld/MaterialExt.cpp */

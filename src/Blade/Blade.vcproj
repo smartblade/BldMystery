@@ -427,6 +427,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\BWorld\MapTexture.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BWorld\MapTexture.h"
+					>
+				</File>
+				<File
 					RelativePath=".\BWorld\MaterialExt.cpp"
 					>
 				</File>
