@@ -624,6 +624,8 @@ externdef _WorldToMBW: near
 l004431DE equ _WorldToMBW
 externdef _read_light: near
 l0044AD38 equ _read_light
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Texture@@@Z: near
+l0044D702 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Texture@@@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_MapTexture@@@Z: near
 l0044D88C equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_MapTexture@@@Z
 externdef _nMaterials: near

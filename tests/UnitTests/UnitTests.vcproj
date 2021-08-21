@@ -321,6 +321,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\MapTextureTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\MultiplePortalTests.cpp"
 				>
 			</File>

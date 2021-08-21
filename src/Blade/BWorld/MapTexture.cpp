@@ -1,5 +1,26 @@
 #include <BWorld/MapTexture.h>
 
+#include <BBLibc.h>
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0044D702
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Texture@@@Z
+*/
+#ifdef BLD_NATIVE
+B_IDataFile &operator >>(B_IDataFile &file, B_Texture &texture)
+{
+    return file;
+}
+#endif
 
 /*
 ................................................................................
@@ -13,12 +34,18 @@
 * Entry point:            0x0044D88C
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_MapTexture@@@Z
 */
-#ifdef BLD_NATIVE
+
 B_IDataFile &operator >>(B_IDataFile &file, B_MapTexture &mapTexture)
 {
+    file
+        >> mapTexture.unknown000
+        >> mapTexture.fUnknown004
+        >> mapTexture.texture
+        >> mapTexture.fUnknown048
+        >> mapTexture.fUnknown04C;
     return file;
 }
-#endif
+
 
 /*
 ................................................................................
