@@ -363,7 +363,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\WinClockTests.cpp"
+				RelativePath=".\Blade\WinClockTests.cpp"
 				>
 			</File>
 			<File
