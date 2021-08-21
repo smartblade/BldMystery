@@ -1,5 +1,6 @@
 #include <BWorld/MapTexture.h>
 
+#include <raster_device.h>
 #include <BBLibc.h>
 
 
@@ -15,12 +16,27 @@
 * Entry point:            0x0044D702
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Texture@@@Z
 */
-#ifdef BLD_NATIVE
+
 B_IDataFile &operator >>(B_IDataFile &file, B_Texture &texture)
 {
+    B_Name textureName;
+    file >> textureName;
+    texture.handle = B_3D_raster_device->bmp_handle(textureName);
+    file
+        >> texture.xTransform
+        >> texture.yTransform
+        >> texture.xOffset
+        >> texture.yOffset;
+    if (B_3D_raster_device->unknown22C() == 4)
+    {
+        texture.xTransform *= (1.0 / 256.0);
+        texture.yTransform *= (1.0 / 256.0);
+        texture.xOffset *= (1.0 / 256.0);
+        texture.yOffset *= (1.0 / 256.0);
+    }
     return file;
 }
-#endif
+
 
 /*
 ................................................................................

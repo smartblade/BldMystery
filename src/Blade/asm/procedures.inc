@@ -28,6 +28,8 @@ externdef ??D@YA?AVB_Vector@@NABV0@@Z: near
 l0040A375 equ ??D@YA?AVB_Vector@@NABV0@@Z
 externdef ??DB_Vector@@QBE?AV0@N@Z: near
 l0040A3D1 equ ??DB_Vector@@QBE?AV0@N@Z
+externdef ??XB_Vector@@QAEAAV0@N@Z: near
+l0040A493 equ ??XB_Vector@@QAEAAV0@N@Z
 externdef ??HB_Vector@@QBE?AV0@ABV0@@Z: near
 l0040A567 equ ??HB_Vector@@QBE?AV0@ABV0@@Z
 externdef ??ZB_Vector@@QAEABV0@ABV0@@Z: near

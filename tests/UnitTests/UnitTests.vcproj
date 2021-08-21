@@ -444,6 +444,10 @@
 						RelativePath=".\Blade\BWorld\MapTexture.h\MapTextureTests.cpp"
 						>
 					</File>
+					<File
+						RelativePath=".\blade\bworld\surface.h\TextureTests.cpp"
+						>
+					</File>
 				</Filter>
 			</Filter>
 		</Filter>

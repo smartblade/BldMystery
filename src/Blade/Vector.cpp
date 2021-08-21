@@ -44,6 +44,25 @@ B_Vector B_Vector::operator *(double c) const
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x0040A493
+* VC++ mangling:          ??XB_Vector@@QAEAAV0@N@Z
+*/
+#ifdef BLD_NATIVE
+B_Vector &B_Vector::operator *=(double c)
+{
+    return *this;
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x0040A567
 * VC++ mangling:          ??HB_Vector@@QBE?AV0@ABV0@@Z
 */

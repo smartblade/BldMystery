@@ -1,11 +1,19 @@
 #pragma once
 
+#include "Vector.h"
 
 class B_IDataFile;
 
+
 class B_Texture
 {
-    char unknownFields[0x40];
+public:
+    long handle;
+    B_Vector xTransform;
+    B_Vector yTransform;
+    float xOffset;
+    float yOffset;
+    char unknownFields[0x4];
 };
 
 B_IDataFile &operator >>(B_IDataFile &file, B_Texture &texture);
