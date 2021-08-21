@@ -390,23 +390,7 @@
 					>
 				</File>
 				<File
-					RelativePath=".\Blade\BWorld\DomeSurfaceTests.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\Blade\BWorld\MapTextureTests.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Blade\BWorld\MultiplePortalTests.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Blade\BWorld\OpaqueSurfaceTests.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Blade\BWorld\PortalTests.cpp"
 					>
 				</File>
 				<File
@@ -418,15 +402,7 @@
 					>
 				</File>
 				<File
-					RelativePath=".\Blade\BWorld\SinglePortalTests.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\Blade\BWorld\SubscriptionListTests.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Blade\BWorld\TransparentSurfaceTests.cpp"
 					>
 				</File>
 				<File
@@ -437,6 +413,34 @@
 					RelativePath=".\Blade\BWorld\WorldTests.cpp"
 					>
 				</File>
+				<Filter
+					Name="Surface.h"
+					>
+					<File
+						RelativePath=".\Blade\BWorld\Surface.h\DomeSurfaceTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\BWorld\Surface.h\MultiplePortalTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\BWorld\Surface.h\OpaqueSurfaceTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\BWorld\Surface.h\PortalTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\BWorld\Surface.h\SinglePortalTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\BWorld\Surface.h\TransparentSurfaceTests.cpp"
+						>
+					</File>
+				</Filter>
 			</Filter>
 		</Filter>
 		<Filter
