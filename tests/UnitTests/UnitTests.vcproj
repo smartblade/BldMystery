@@ -390,10 +390,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\Blade\BWorld\MapTextureTests.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\Blade\BWorld\SectorLightsTests.cpp"
 					>
 				</File>
@@ -438,6 +434,14 @@
 					</File>
 					<File
 						RelativePath=".\Blade\BWorld\Surface.h\TransparentSurfaceTests.cpp"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="MapTexture.h"
+					>
+					<File
+						RelativePath=".\Blade\BWorld\MapTexture.h\MapTextureTests.cpp"
 						>
 					</File>
 				</Filter>
