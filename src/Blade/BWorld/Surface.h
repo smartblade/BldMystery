@@ -138,6 +138,14 @@ public:
 B_IDataFile &operator >>(B_IDataFile &file, B_TransparentSurface &surface);
 
 
+class B_PortalPlanes
+{
+    char unknownFields[0x10];
+};
+
+B_IDataFile &operator >>(B_IDataFile &file, B_PortalPlanes &portalPlanes);
+
+
 class B_SinglePortalSurface : public B_OpaqueSurface
 {
 public:
@@ -150,7 +158,7 @@ public:
 
     char unknownFields[0x08];
     B_Portal portal;
-    char unknownFields128[0x10];
+    B_PortalPlanes portalPlanes;
 };
 
 B_IDataFile &operator >>(B_IDataFile &file, B_SinglePortalSurface &surface);

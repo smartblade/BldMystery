@@ -698,6 +698,8 @@ externdef ?unknown018@B_TransparentSurface@@UAEXXZ: near
 l00456FF1 equ ?unknown018@B_TransparentSurface@@UAEXXZ
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_TransparentSurface@@@Z: near
 l0045719A equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_TransparentSurface@@@Z
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_PortalPlanes@@@Z: near
+l0045729D equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_PortalPlanes@@@Z
 externdef ??0B_SinglePortalSurface@@QAE@XZ: near
 l004574A5 equ ??0B_SinglePortalSurface@@QAE@XZ
 externdef ?ClassId@B_SinglePortalSurface@@UAEHXZ: near

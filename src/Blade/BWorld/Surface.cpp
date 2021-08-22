@@ -423,6 +423,26 @@ B_IDataFile &operator >>(B_IDataFile &file, B_TransparentSurface &surface)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x0045729D
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_PortalPlanes@@@Z
+*/
+#ifdef BLD_NATIVE
+B_IDataFile &operator >>(B_IDataFile &file, B_PortalPlanes &portalPlanes)
+{
+    return file;
+}
+#endif
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x004574A5
 * VC++ mangling:          ??0B_SinglePortalSurface@@QAE@XZ
 */
@@ -509,12 +529,16 @@ void B_SinglePortalSurface::unknown018()
 * Entry point:            0x00458F60
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_SinglePortalSurface@@@Z
 */
-#ifdef BLD_NATIVE
+
 B_IDataFile &operator >>(B_IDataFile &file, B_SinglePortalSurface &surface)
 {
+    file
+        >> static_cast<B_OpaqueSurface &>(surface)
+        >> surface.portal
+        >> surface.portalPlanes;
     return file;
 }
-#endif
+
 
 /*
 ................................................................................

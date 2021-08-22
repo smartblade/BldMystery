@@ -16,4 +16,5 @@ TEST(SinglePortalSurfaceTests, Fields)
     EXPECT_OFFSET_EQ(B_SinglePortalSurface, unknown024, 0x024);
     EXPECT_OFFSET_EQ(B_SinglePortalSurface, unknown028, 0x028);
     EXPECT_OFFSET_EQ(B_SinglePortalSurface, portal, 0x0A0);
+    EXPECT_OFFSET_EQ(B_SinglePortalSurface, portalPlanes, 0x128);
 }
