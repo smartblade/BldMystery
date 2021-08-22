@@ -426,12 +426,34 @@ B_IDataFile &operator >>(B_IDataFile &file, B_TransparentSurface &surface)
 * Entry point:            0x0045729D
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_PortalPlanes@@@Z
 */
-#ifdef BLD_NATIVE
+
 B_IDataFile &operator >>(B_IDataFile &file, B_PortalPlanes &portalPlanes)
 {
+    if (portalPlanes.planes)
+    {
+        delete [] portalPlanes.planes;
+    }
+    if (portalPlanes.unknown00C)
+    {
+        delete [] portalPlanes.unknown00C;
+    }
+    file >> portalPlanes.numPlanes;
+    if (portalPlanes.numPlanes != 0)
+    {
+        portalPlanes.planes = new B_Plane[portalPlanes.numPlanes];
+        portalPlanes.unknown00C = new int[portalPlanes.numPlanes];
+        for (unsigned int i = 0; i < portalPlanes.numPlanes; i++)
+        {
+            file >> portalPlanes.planes[i];
+        }
+    }
+    else
+    {
+        portalPlanes.planes = NULL;
+        portalPlanes.unknown00C = NULL;
+    }
     return file;
 }
-#endif
 
 
 /*

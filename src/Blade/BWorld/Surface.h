@@ -140,7 +140,11 @@ B_IDataFile &operator >>(B_IDataFile &file, B_TransparentSurface &surface);
 
 class B_PortalPlanes
 {
-    char unknownFields[0x10];
+public:
+    int unknown000;
+    unsigned int numPlanes;
+    B_Plane *planes;
+    int *unknown00C;
 };
 
 B_IDataFile &operator >>(B_IDataFile &file, B_PortalPlanes &portalPlanes);
