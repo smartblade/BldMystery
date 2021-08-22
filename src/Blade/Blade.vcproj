@@ -130,7 +130,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\Blade;..\include;..\Python-1.5.2\Include"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_NO_CRT_STDIO_INLINE;WINDOWS_IGNORE_PACKING_MISMATCH;BLD_NATIVE"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;WINDOWS_IGNORE_PACKING_MISMATCH;BLD_NATIVE"
 				ExceptionHandling="0"
 				RuntimeLibrary="2"
 				StructMemberAlignment="3"
@@ -151,9 +151,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="bicrt.lib BBLibc.lib raster.lib binputc.lib console.lib python15.lib mss32.lib shw32.lib wsock32.lib winmm.lib ddraw.lib"
+				AdditionalDependencies="BBLibc.lib raster.lib binputc.lib console.lib python15.lib mss32.lib shw32.lib wsock32.lib winmm.lib ddraw.lib"
 				AdditionalLibraryDirectories="..\..\lib;..\..\lib\VC"
-				IgnoreDefaultLibraryNames="msvcrt.lib"
+				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				EntryPointSymbol=""
