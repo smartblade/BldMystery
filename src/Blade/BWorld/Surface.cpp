@@ -403,12 +403,16 @@ void B_TransparentSurface::unknown018()
 * Entry point:            0x0045719A
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_TransparentSurface@@@Z
 */
-#ifdef BLD_NATIVE
+
 B_IDataFile &operator >>(B_IDataFile &file, B_TransparentSurface &surface)
 {
+    file
+        >> static_cast<B_Surface &>(surface)
+        >> surface.portal
+        >> surface.mapTexture;
     return file;
 }
-#endif
+
 
 /*
 ................................................................................

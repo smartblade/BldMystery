@@ -131,7 +131,7 @@ public:
     virtual void unknown014();
     virtual void unknown018();
 
-    char unknownFields[0x60];
+    B_MapTexture mapTexture;
     B_Portal portal;
 };
 
