@@ -207,35 +207,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Blade\AuraEntityTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\AuraGradientTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\BipedActionTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\BipedDataTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\BipedEntityTests.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Blade\BladeAppTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\CameraEntityTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\CameraMovementTests.cpp"
 				>
 			</File>
 			<File
@@ -259,15 +231,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Blade\DecalEntityTests.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Blade\EnControlTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\EntityTests.cpp"
 				>
 			</File>
 			<File
@@ -307,19 +271,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Blade\ObjectEntityTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\PersonEntityTests.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Blade\PersonStatusTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\PhysicSIEntityTests.cpp"
 				>
 			</File>
 			<File
@@ -339,23 +291,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Blade\SolidMaskTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\SparkEntityTests.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Blade\StringValue.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\Unknown0049A1EFTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\Unknown004ACF58Tests.cpp"
 				>
 			</File>
 			<File
@@ -453,6 +389,74 @@
 						>
 					</File>
 				</Filter>
+			</Filter>
+			<Filter
+				Name="Entities"
+				>
+				<File
+					RelativePath=".\Blade\Entities\AuraEntityTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Entities\AuraGradientTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Entities\BipedActionTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Entities\BipedDataTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Entities\BipedEntityTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Entities\CameraEntityTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Entities\CameraMovementTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Entities\DecalEntityTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Entities\EntityTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Entities\ObjectEntityTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Entities\PersonEntityTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Entities\PhysicSIEntityTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Entities\SolidMaskTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Entities\SparkEntityTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Entities\Unknown0049A1EFTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Entities\Unknown004ACF58Tests.cpp"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter
