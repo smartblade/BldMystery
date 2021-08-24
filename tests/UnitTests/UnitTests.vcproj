@@ -223,35 +223,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Blade\ClimbingDataTest.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Blade\CombustionTests.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\Blade\EnControlTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\EventFuncCTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\EventFuncsTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\EventFuncTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\EventsTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\EventTests.cpp"
 				>
 			</File>
 			<File
@@ -455,6 +431,34 @@
 				</File>
 				<File
 					RelativePath=".\Blade\Entities\Unknown004ACF58Tests.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Control"
+				>
+				<File
+					RelativePath=".\Blade\Control\ClimbingDataTest.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Control\EventFuncCTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Control\EventFuncsTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Control\EventFuncTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Control\EventsTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Control\EventTests.cpp"
 					>
 				</File>
 			</Filter>
