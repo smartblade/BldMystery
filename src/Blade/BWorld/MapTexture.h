@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Vector.h"
+#include <AnalyticGeometry/Vector.h>
 
 class B_IDataFile;
 

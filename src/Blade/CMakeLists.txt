@@ -5,6 +5,7 @@ project(${TARGET})
 file(
     GLOB SOURCES
     *.cpp
+    AnalyticGeometry/*.cpp
     App/*.cpp
     App/Windows/*.cpp
     BWorld/*.cpp

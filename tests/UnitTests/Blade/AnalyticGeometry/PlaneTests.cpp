@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
-#include "Plane.h"
+#include <AnalyticGeometry/Plane.h>
 
 
 TEST(PlaneTests, SizeOf)

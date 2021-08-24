@@ -2,7 +2,7 @@
 
 #define BLIGHTS_H
 
-#include "Plane.h"
+#include <AnalyticGeometry/Plane.h>
 #include <BBLibc.h>
 
 

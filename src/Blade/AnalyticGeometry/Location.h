@@ -2,8 +2,8 @@
 
 #define LOCATION_H
 
-#include "Vector.h"
-#include "Matrix.h"
+#include <AnalyticGeometry/Vector.h>
+#include <AnalyticGeometry/Matrix.h>
 
 class location_t
 {

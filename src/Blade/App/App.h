@@ -9,7 +9,7 @@
 #include <Entities/Entity.h>
 #include "Clock.h"
 #include <array.h>
-#include "Location.h"
+#include <AnalyticGeometry/Location.h>
 #include "StringValue.h"
 
 

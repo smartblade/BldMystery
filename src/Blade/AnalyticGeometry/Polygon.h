@@ -4,7 +4,7 @@
 #define POLYGON_H
 
 #include "array.h"
-#include "Vector.h"
+#include <AnalyticGeometry/Vector.h>
 
 class B_IDataFile;
 

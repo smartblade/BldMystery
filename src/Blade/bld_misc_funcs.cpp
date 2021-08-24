@@ -6,27 +6,27 @@
 #include "bld_misc_funcs.h"
 
 
-/* File:                  Matrix.cpp */
+/* File:                  AnalyticGeometry/Matrix.cpp */
 /* Begin of file:         0x00404BE0 */
 /* End of file:           0x00407B50 */
 
-/* File:                  Plane.cpp */
+/* File:                  AnalyticGeometry/Plane.cpp */
 /* Begin of file:         0x00407B50 */
 /* End of file:           0x00407E80 */
 
 
 
-/* File:                  Polygon.cpp */
+/* File:                  AnalyticGeometry/Polygon.cpp */
 /* Begin of file:         0x00408270 */
 /* End of file:           0x00409C20 */
 
 
 
-/* File:                  Vector.cpp */
+/* File:                  AnalyticGeometry/Vector.cpp */
 /* Begin of file:         0x0040A2A0 */
 /* End of file:           0x0040AD10 */
 
-/* File:                  Location.cpp */
+/* File:                  AnalyticGeometry/Location.cpp */
 /* Begin of file:         0x0040AD10 */
 /* End of file:           0x0040B560 */
 

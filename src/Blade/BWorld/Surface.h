@@ -3,8 +3,8 @@
 
 #define SURFACE_H
 
-#include "Plane.h"
-#include "Polygon.h"
+#include <AnalyticGeometry/Plane.h>
+#include <AnalyticGeometry/Polygon.h>
 #include <BWorld/MapTexture.h>
 
 class B_Portal : public B_Polygon

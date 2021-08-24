@@ -1,6 +1,6 @@
 
 #include <BWorld/BWorld.h>
-#include "Polygon.h"
+#include <AnalyticGeometry/Polygon.h>
 #include <bld_abstract_net.h>
 #include <Control/anim.h>
 #include <NetMod/libnet.h>

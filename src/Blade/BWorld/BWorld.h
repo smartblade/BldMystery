@@ -11,7 +11,7 @@
 #include <BWorld/light.h>
 #include <BWorld/OctTree.h>
 #include <Hash.h>
-#include "vector.h"
+#include <AnalyticGeometry/Vector.h>
 #include <bld_python.h>
 
 

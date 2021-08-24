@@ -1,7 +1,7 @@
-#include "Plane.h"
+#include <AnalyticGeometry/Plane.h>
 
 #include <BBLibc.h>
-#include "Vector.h"
+#include <AnalyticGeometry/Vector.h>
 
 
 /*

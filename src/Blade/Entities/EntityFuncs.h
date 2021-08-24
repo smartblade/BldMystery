@@ -4,7 +4,7 @@
 #define ENTITY_FUNCS_H
 
 #include <bld_python.h>
-#include <Vector.h>
+#include <AnalyticGeometry/Vector.h>
 #include <export.h>
 
 class B_Entity;

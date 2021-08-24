@@ -3,7 +3,7 @@
 
 #define PLANE_H
 
-#include "Vector.h"
+#include <AnalyticGeometry/Vector.h>
 
 class B_Plane
 {

@@ -239,23 +239,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Blade\LocationTests.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Blade\NetCallbacksTests.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\Blade\PersonStatusTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\PlaneTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\PolygonTests.cpp"
 				>
 			</File>
 			<File
@@ -276,10 +264,6 @@
 			</File>
 			<File
 				RelativePath=".\Blade\WinClockTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\WorldPointTests.cpp"
 				>
 			</File>
 			<File
@@ -459,6 +443,26 @@
 				</File>
 				<File
 					RelativePath=".\Blade\Control\EventTests.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="AnalyticGeometry"
+				>
+				<File
+					RelativePath=".\Blade\AnalyticGeometry\LocationTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\AnalyticGeometry\PlaneTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\AnalyticGeometry\PolygonTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\AnalyticGeometry\WorldPointTests.cpp"
 					>
 				</File>
 			</Filter>

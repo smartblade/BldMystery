@@ -1,6 +1,6 @@
 #include <Control/Climbing.h>
 
-#include <Vector.h>
+#include <AnalyticGeometry/Vector.h>
 #include <BWorld/BWorld.h>
 #include <Entities/BipedEntity.h>
 #include <Entities/PersonEntity.h>

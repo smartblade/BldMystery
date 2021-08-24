@@ -5,7 +5,7 @@
 
 #include <array.h>
 #include <BBLibc.h>
-#include "BoundingBox.h"
+#include <AnalyticGeometry/BoundingBox.h>
 #include <BWorld/Surface.h>
 #include <Math/BLights.h>
 

@@ -2,7 +2,7 @@
 
 #define OBJECT_ENTITY_H
 
-#include <Matrix.h>
+#include <AnalyticGeometry/Matrix.h>
 #include <Entities/Entity.h>
 
 

@@ -316,33 +316,61 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Location.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Matrix.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\ObjExt.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Plane.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Polygon.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Vector.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\WinClock.cpp"
 				>
 			</File>
+			<Filter
+				Name="AnalyticGeometry"
+				>
+				<File
+					RelativePath=".\AnalyticGeometry\BoundingBox.h"
+					>
+				</File>
+				<File
+					RelativePath=".\AnalyticGeometry\Location.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\AnalyticGeometry\Location.h"
+					>
+				</File>
+				<File
+					RelativePath=".\AnalyticGeometry\Matrix.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\AnalyticGeometry\Matrix.h"
+					>
+				</File>
+				<File
+					RelativePath=".\AnalyticGeometry\Plane.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\AnalyticGeometry\Plane.h"
+					>
+				</File>
+				<File
+					RelativePath=".\AnalyticGeometry\Polygon.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\AnalyticGeometry\Polygon.h"
+					>
+				</File>
+				<File
+					RelativePath=".\AnalyticGeometry\Vector.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\AnalyticGeometry\Vector.h"
+					>
+				</File>
+			</Filter>
 			<Filter
 				Name="App"
 				>
@@ -694,10 +722,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\BoundingBox.h"
-				>
-			</File>
-			<File
 				RelativePath=".\CDPlayer.h"
 				>
 			</File>
@@ -706,23 +730,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Location.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Matrix.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Plane.h"
-				>
-			</File>
-			<File
 				RelativePath="..\include\Point2D.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Polygon.h"
 				>
 			</File>
 			<File
@@ -735,10 +743,6 @@
 			</File>
 			<File
 				RelativePath=".\StringValue.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Vector.h"
 				>
 			</File>
 			<File

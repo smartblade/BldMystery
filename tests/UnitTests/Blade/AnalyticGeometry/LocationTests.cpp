@@ -2,7 +2,7 @@
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
 #define private public
-#include "Location.h"
+#include <AnalyticGeometry/Location.h>
 
 
 TEST(LocationTests, SizeOf)

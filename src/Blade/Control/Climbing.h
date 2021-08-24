@@ -3,7 +3,7 @@
 #define CLIMBING_H
 
 #include <BBLibc.h>
-#include <Vector.h>
+#include <AnalyticGeometry/Vector.h>
 
 
 class B_BipedAction;

@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
-#include "Polygon.h"
+#include <AnalyticGeometry/Polygon.h>
 
 
 TEST(PolygonTests, Fields)

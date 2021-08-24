@@ -3,7 +3,7 @@
 
 #define BOUNDING_BOX_H
 
-#include "Vector.h"
+#include <AnalyticGeometry/Vector.h>
 
 
 class B_BoundingBox
