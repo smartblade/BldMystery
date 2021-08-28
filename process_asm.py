@@ -861,6 +861,102 @@ class MemoryArea:
             return True
         return self._bytes[index] is None and self._bytes[index + 1] is None
 
+class SrcSymbols:
+    def __init__(self):
+        self.varNames = {}
+        self.mangledNames = {}
+        self.implementedProcedures = set()
+
+    @staticmethod
+    def ensure_symbols_for_module(symbols_dict, module):
+        symbols = symbols_dict.get(module)
+        if symbols is None:
+            symbols = SrcSymbols()
+            symbols_dict[module] = symbols
+        return symbols
+
+    @staticmethod
+    def create_symbols_dict(varNames, mangledNames, implementedProcedures):
+        symbols_dict = {}
+        for (module, addr), var_name in varNames.items():
+            symbols = SrcSymbols.ensure_symbols_for_module(symbols_dict, module)
+            symbols.varNames[addr] = var_name
+        for (module, addr), mangled_name in mangledNames.items():
+            symbols = SrcSymbols.ensure_symbols_for_module(symbols_dict, module)
+            symbols.mangledNames[addr] = mangled_name
+        for module, addr in implementedProcedures:
+            symbols = SrcSymbols.ensure_symbols_for_module(symbols_dict, module)
+            symbols.implementedProcedures.add(addr)
+        return symbols_dict
+
+class AsmFiles:
+    def __init__(self, dir):
+        self._dir = dir
+
+    @property
+    def input_asm(self):
+        return os.path.join(self._dir, "raw.txt")
+
+    @property
+    def input_data(self):
+        return os.path.join(self._dir, "data.txt")
+
+    @property
+    def reloc(self):
+        return os.path.join(self._dir, "reloc.txt")
+
+    @property
+    def module(self):
+        return os.path.join(self._dir, "module.txt")
+
+    @property
+    def intermediate_asm(self):
+        return os.path.join(self._dir, "code.str")
+
+    @property
+    def intermediate_export(self):
+        return os.path.join(self._dir, "export_cmd.str")
+
+    @property
+    def intermediate_hash(self):
+        return os.path.join(self._dir, "hash.str")
+
+    @property
+    def output_asm(self):
+        return os.path.join(self._dir, "native.asm")
+
+    @property
+    def output_procedures(self):
+        return os.path.join(self._dir, "procedures.inc")
+
+    @property
+    def output_variables(self):
+        return os.path.join(self._dir, "variables.inc")
+
+    @property
+    def output_export(self):
+        return os.path.join(self._dir, "export_cmd.txt")
+
+    @property
+    def uninitialised(self):
+        return os.path.join(self._dir, "uninitialised.asm")
+
+    @property
+    def export_include(self):
+        return os.path.join(self._dir, "export.inc")
+
+    @property
+    def import_include(self):
+        return os.path.join(self._dir, "import.inc")
+
+    @property
+    def stdcall_defs(self):
+        return os.path.join(self._dir, "stdcallDefs.cpp")
+
+    @property
+    def asm_main(self):
+        return os.path.join(self._dir, "../asmMain.asm")
+
 def extractEntryPoint(line):
     match = re.search(entry_point_regexp, line)
     if match:
@@ -913,19 +1009,19 @@ def stdcallPrototype(name, size):
         params = ""
     return "void __stdcall {}({})".format(name, params)
 
-def writeUninitialisedData(imageMap, endDataAdddress):
+def writeUninitialisedData(asm_files, imageMap, endDataAdddress):
     writer = ImageWriter(imageMap)
     for addr in sorted(imageMap.itemsMap().keys()):
         imageItem = imageMap.itemsMap()[addr]
         if imageItem.startAddress() >= endDataAdddress:
             writer.write(imageItem)
-    f = openForWriting("uninitialised.asm")
+    f = openForWriting(asm_files.uninitialised)
     f.write(writer.toString())
     f.close()
 
 
-def writeStdcallFunctions(importReferences):
-    f = openForWriting("stdcallDefs.cpp")
+def writeStdcallFunctions(asm_files, importReferences):
+    f = openForWriting(asm_files.stdcall_defs)
     stdcalls = []
     sizes = set()
     for impref in importReferences:
@@ -949,8 +1045,8 @@ def writeStdcallFunctions(importReferences):
         f.write("\n{}".format(definition))
     f.close()
 
-def writeExportDeclarations(imageMap):
-    f = openForWriting("export.inc")
+def writeExportDeclarations(asm_files, imageMap):
+    f = openForWriting(asm_files.export_include)
     for addr in sorted(imageMap.exports().keys()):
         f.write("public {}\n".format(imageMap.label(addr)))
     f.close()
@@ -967,8 +1063,8 @@ def writeExportSymbols(imageMap, exportFileName):
         f.write("{} {} {}\n".format(toHex(addr), exportName, internalName))
     f.close()
 
-def writeExportCmd(exportFileName, mangledNames, implementedProcedures):
-    with open(exportFileName) as f:
+def writeExportCmd(asm_files, symbols):
+    with open(asm_files.intermediate_export) as f:
         lines = f.readlines()
     addr_export_regexp = re.compile(
         '(?P<addr>[\dABCDEF]+)\s(?P<exportName>\w+)\s(?P<internalName>\w+)'
@@ -982,16 +1078,16 @@ def writeExportCmd(exportFileName, mangledNames, implementedProcedures):
             addr = fromHex(match.group('addr'))
             exportName = match.group('exportName')
             internalName = match.group('internalName')
-            if not addr in implementedProcedures:
+            if not addr in symbols.implementedProcedures:
                 exportAddrs.append(addr)
                 exportNames[addr] = exportName
                 internalNames[addr] = internalName
-    f = open("export_cmd.txt", "wt")
+    f = open(asm_files.output_export, "wt")
     for addr in exportAddrs:
         exportName = exportNames[addr]
         internalName = internalNames[addr]
-        if addr in mangledNames:
-            internalName = mangledNames[addr]
+        if addr in symbols.mangledNames:
+            internalName = symbols.mangledNames[addr]
         if isCdeclMangling(exportName, internalName):
             symbolName = "{}".format(exportName)
         else:
@@ -1004,31 +1100,41 @@ def collectProceduresFromFile(fileName):
     nativeProcedures = set()
     f = open(fileName)
     lines = f.readlines()
+    module_regexp = re.compile('Module:\s+(?P<module>[\S]+)')
     addr_regexp = re.compile('Entry\s+point:\s+0x(?P<addr>[\dABCDEF]+)')
     mangling_regexp = re.compile('VC\+\+\s+mangling:\s+(?P<mangling>[\S]+)')
     proc_regexp = re.compile('\W(?P<proc>\w+)\s*\([^\(\)]*\)\s*\{')
     meta = False
-    addr = None
+    module = None
+    addr_by_module = {}
     for line in lines:
         if line.find("/*") >= 0:
             meta = True
-            addr = None
+            module = None
+            addr_by_module = {}
             mangling = None
         if line.find("*/") >= 0:
             meta = False
             definition = ""
-            if addr is not None:
-                mangledNames[addr] = mangling
+            for module, addr in addr_by_module.items():
+                mangledNames[(module, addr)] = mangling
         if line.find("BLD_NATIVE") >= 0:
-            nativeProcedures.add(addr)
+            for module, addr in addr_by_module.items():
+                nativeProcedures.add((module, addr))
         if meta:
+            match = re.search(module_regexp, line)
+            if match:
+                module = match.group('module')
             match = re.search(addr_regexp, line)
             if match:
-                addr = fromHex(match.group('addr'))
+                addr_by_module[module] = fromHex(match.group('addr'))
             match = re.search(mangling_regexp, line)
             if match:
                 mangling = match.group('mangling')
-        elif addr is not None and mangledNames[addr] is None:
+        elif (
+            len(addr_by_module) > 0 and
+            mangledNames[(module, addr_by_module[module])] is None
+        ):
             definition += line
             if line.find("{") >= 0:
                 cdecl_mangling = None
@@ -1036,8 +1142,9 @@ def collectProceduresFromFile(fileName):
                 if match:
                     proc_name = match.group('proc')
                     cdecl_mangling = "_{}".format(proc_name)
-                fallback = "fn{}".format(toHex(addr))
-                mangledNames[addr] = cdecl_mangling or fallback
+                for module, addr in addr_by_module.items():
+                    fallback = "fn{}".format(toHex(addr))
+                    mangledNames[(module, addr)] = cdecl_mangling or fallback
     f.close()
     return (mangledNames, set(mangledNames.keys()) - nativeProcedures)
 
@@ -1045,26 +1152,32 @@ def collectVariablesFromFile(fileName):
     varNames = {}
     f = open(fileName)
     lines = f.readlines()
+    module_regexp = re.compile('Module:\s+(?P<module>[\S]+)')
     addr_regexp = re.compile('Data\s+address:\s+0x(?P<addr>[\dABCDEF]+)')
     name_regexp = re.compile('(\W+(?P<name>\w+)(\s*\[\s*\d*\s*\])*\s*)?(=\s*\d*\s*)?;')
-    addr = None
+    module = None
+    addr_by_module = {}
     for line in lines:
+        match = re.search(module_regexp, line)
+        if match:
+            module = match.group('module')
         match = re.search(addr_regexp, line)
         if match:
-            addr = fromHex(match.group('addr'))
-        if addr is not None:
+            addr_by_module[module] = fromHex(match.group('addr'))
+        if len(addr_by_module) > 0:
             match = re.search(name_regexp, line)
             if match:
-                varNames[addr] = match.group('name')
-                addr = None
+                for module, addr in addr_by_module.items():
+                    varNames[(module, addr)] = match.group('name')
+                addr_by_module = {}
     f.close()
     return varNames
 
-def collectSymbolsFromSources():
+def collectSymbolsFromSources(src_dir):
     varNames = {}
     mangledNames = {}
     implementedProcedures = []
-    for (root, dirs, files) in os.walk('..'):
+    for (root, dirs, files) in os.walk(src_dir):
         for file in files:
             if file.lower().endswith(".cpp") or file.lower().endswith(".h"):
                 fileName = os.path.join(root, file)
@@ -1072,7 +1185,11 @@ def collectSymbolsFromSources():
                 mangledNames.update(names)
                 implementedProcedures += implemented
                 varNames.update(collectVariablesFromFile(fileName))
-    return (varNames, mangledNames, set(implementedProcedures))
+    return SrcSymbols.create_symbols_dict(
+        varNames,
+        mangledNames,
+        set(implementedProcedures)
+    )
 
 def openForWriting(filename):
     if filename.endswith(".cpp"):
@@ -1090,12 +1207,12 @@ def openForWriting(filename):
     f.write(autoGenMsg)
     return f
 
-def createAsmCode(codeFileName, exportFileName):
-    f = open("raw.txt")
+def createAsmCode(asm_files):
+    f = open(asm_files.input_asm)
     lines = f.readlines()
     f.close()
-    reloc = readRelocations("reloc.txt")
-    userData = readDataItems("data.txt")
+    reloc = readRelocations(asm_files.reloc)
+    userData = readDataItems(asm_files.input_data)
     addr_label_regexp = re.compile('^(?P<addr>[\dABCDEF]+):\s+(?P<bytes>[\dABCDEF]+)\s+(?P<instr>\S.*)?$')
     print("Fill data structures...")
     entryPoint = None
@@ -1153,33 +1270,40 @@ def createAsmCode(codeFileName, exportFileName):
         if isinstance(imageItem, CodeItem):
             imageItem.adjustInstructions(imageMap)
     print("Writing data...")
-    f = openForWriting(codeFileName)
+    f = openForWriting(asm_files.intermediate_asm)
     f.write(imageMap.toString(endDataAddress))
     f.write("; Unresolved addresses:\n")
     for addr in sorted(imageMap.unresolvedAddresses()):
         f.write("l{} dd 012345678h\n".format(toHex(addr)))
     f.close()
-    writeUninitialisedData(imageMap, endDataAddress)
-    f = openForWriting("import.inc")
+    writeUninitialisedData(asm_files, imageMap, endDataAddress)
+    f = openForWriting(asm_files.import_include)
     for impref in imageMap.importReferences():
         f.write("externdef {}: ptr\n".format(impref.label()))
     f.close()
-    writeExportDeclarations(imageMap)
-    writeExportSymbols(imageMap, exportFileName)
-    writeStdcallFunctions(imageMap.importReferences())
+    writeExportDeclarations(asm_files, imageMap)
+    writeExportSymbols(imageMap, asm_files.intermediate_export)
+    writeStdcallFunctions(asm_files, imageMap.importReferences())
 
-def ensureAsmCode(codeFileName, exportFileName):
-    if not os.path.exists(codeFileName) or not os.path.exists(exportFileName):
-       createAsmCode(codeFileName, exportFileName)
+def ensureAsmCode(asm_files):
+    if (
+        not os.path.exists(asm_files.intermediate_asm) or
+        not os.path.exists(asm_files.intermediate_export)
+    ):
+       createAsmCode(asm_files)
 
 def readAsmCode(codeFileName):
     with open(codeFileName) as f:
         return f.readlines()
 
-def calc_hash(varNames, mangledNames, implementedProcedures):
+def calc_hash(symbols):
     hasher = hashlib.sha256()
     json_str = json.dumps(
-        (varNames, mangledNames, sorted(implementedProcedures)),
+        (
+            symbols.varNames,
+            symbols.mangledNames,
+            sorted(symbols.implementedProcedures)
+        ),
         sort_keys=True
     )
     hasher.update(json_str.encode())
@@ -1197,28 +1321,38 @@ def write_hash(hashFileName, new_hash):
     with open(hashFileName, "wb") as f:
         f.write(new_hash)
 
+def read_module_name(asm_files):
+    with open(asm_files.module, "rt") as f:
+        return f.readlines()[0]
+
 def run():
-    codeFileName = "code.str"
-    exportFileName = "export_cmd.str"
-    hashFileName = "hash.str"
+    src_dir = os.path.abspath('src')
     print("Collect symbols from sources...")
-    (varNames, mangledNames, implementedProcedures) = collectSymbolsFromSources()
-    symbols_hash = calc_hash(varNames, mangledNames, implementedProcedures)
+    symbols_dict = collectSymbolsFromSources(src_dir)
+    for (root, dirs, files) in os.walk(src_dir):
+        if "raw.txt" in files:
+            asm_files = AsmFiles(root)
+            module_name = read_module_name(asm_files)
+            print("Processing {}".format(module_name))
+            process_asm_dir(asm_files, symbols_dict[module_name])
+
+def process_asm_dir(asm_files, symbols):
+    symbols_hash = calc_hash(symbols)
     print("Checking hash for collected symbols...")
-    if not is_hash_changed(hashFileName, symbols_hash):
+    if not is_hash_changed(asm_files.intermediate_hash, symbols_hash):
         print("Nothing to do...")
         return
-    ensureAsmCode(codeFileName, exportFileName)
+    ensureAsmCode(asm_files)
     print("Reading code...")
-    lines = readAsmCode(codeFileName)
+    lines = readAsmCode(asm_files.intermediate_asm)
     print("Writing code...")
-    f = open("native.asm", "wt")
+    f = open(asm_files.output_asm, "wt")
     isImplemented = False
     for line in lines:
         if line.startswith("l"):
             if line.find("PROC") >= 0:
                 addr = fromHex(line[1:9])
-                isImplemented = addr in implementedProcedures
+                isImplemented = addr in symbols.implementedProcedures
                 if isImplemented:
                     f.write(
                         "{} call l{}; Implemented in c++ code\n".format(
@@ -1230,25 +1364,25 @@ def run():
             isImplemented = False
     f.close()
     print("Writing export symbols command line...")
-    writeExportCmd(exportFileName, mangledNames, implementedProcedures)
+    writeExportCmd(asm_files, symbols)
     print("Writing procedures declarations...")
-    f = openForWriting("procedures.inc")
-    for addr in sorted(mangledNames.keys()):
-        name = mangledNames[addr]
+    f = openForWriting(asm_files.output_procedures)
+    for addr in sorted(symbols.mangledNames.keys()):
+        name = symbols.mangledNames[addr]
         label = "l{}".format(toHex(addr))
         f.write("externdef {}: near\n{} equ {}\n".format(name, label, name))
     f.close()
     print("Writing variable declarations...")
-    f = openForWriting("variables.inc")
-    for addr in sorted(varNames.keys()):
-        name = varNames[addr]
+    f = openForWriting(asm_files.output_variables)
+    for addr in sorted(symbols.varNames.keys()):
+        name = symbols.varNames[addr]
         label = "g{}".format(toHex(addr))
         f.write("public _{}\n{} equ _{}\n".format(name, label, name))
     f.close()
     # Touch asm file to force recompile
-    pathlib.Path("../asmMain.asm").touch()
+    pathlib.Path(asm_files.asm_main).touch()
     print("Writing hash for collected symbols...")
-    write_hash(hashFileName, symbols_hash)
+    write_hash(asm_files.intermediate_hash, symbols_hash)
 
 if __name__ == '__main__':
     start_time = time.time()
