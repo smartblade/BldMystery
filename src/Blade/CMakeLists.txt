@@ -5,17 +5,17 @@ project(${TARGET})
 file(
     GLOB SOURCES
     *.cpp
-    AnalyticGeometry/*.cpp
-    App/*.cpp
-    App/Windows/*.cpp
-    BWorld/*.cpp
-    Control/*.cpp
-    enemies/*.cpp
-    Entities/*.cpp
-    Math/*.cpp
-    NetMod/*.cpp
-    Person/*.cpp
-    Sound/*.cpp
+    ../AnalyticGeometry/*.cpp
+    ../App/*.cpp
+    ../App/Windows/*.cpp
+    ../BWorld/*.cpp
+    ../Control/*.cpp
+    ../enemies/*.cpp
+    ../Entities/*.cpp
+    ../Math/*.cpp
+    ../NetMod/*.cpp
+    ../Person/*.cpp
+    ../Sound/*.cpp
 )
 set(RESOURCES Blade.rc)
 

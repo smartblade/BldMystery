@@ -45,7 +45,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\Blade;..\include;..\Python-1.5.2\Include"
+				AdditionalIncludeDirectories="..;..\Blade;..\include;..\Python-1.5.2\Include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_NO_CRT_STDIO_INLINE;WINDOWS_IGNORE_PACKING_MISMATCH;BLD_NATIVE"
 				ExceptionHandling="0"
 				RuntimeLibrary="2"
@@ -129,7 +129,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\Blade;..\include;..\Python-1.5.2\Include"
+				AdditionalIncludeDirectories="..;..\Blade;..\include;..\Python-1.5.2\Include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;WINDOWS_IGNORE_PACKING_MISMATCH;BLD_NATIVE"
 				ExceptionHandling="0"
 				RuntimeLibrary="2"
@@ -213,7 +213,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\Blade;..\include;..\Python-1.5.2\Include"
+				AdditionalIncludeDirectories="..;..\Blade;..\include;..\Python-1.5.2\Include"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_NO_CRT_STDIO_INLINE;WINDOWS_IGNORE_PACKING_MISMATCH"
 				ExceptionHandling="0"
 				RuntimeLibrary="2"
@@ -327,47 +327,47 @@
 				Name="AnalyticGeometry"
 				>
 				<File
-					RelativePath=".\AnalyticGeometry\BoundingBox.h"
+					RelativePath="..\AnalyticGeometry\BoundingBox.h"
 					>
 				</File>
 				<File
-					RelativePath=".\AnalyticGeometry\Location.cpp"
+					RelativePath="..\AnalyticGeometry\Location.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\AnalyticGeometry\Location.h"
+					RelativePath="..\AnalyticGeometry\Location.h"
 					>
 				</File>
 				<File
-					RelativePath=".\AnalyticGeometry\Matrix.cpp"
+					RelativePath="..\AnalyticGeometry\Matrix.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\AnalyticGeometry\Matrix.h"
+					RelativePath="..\AnalyticGeometry\Matrix.h"
 					>
 				</File>
 				<File
-					RelativePath=".\AnalyticGeometry\Plane.cpp"
+					RelativePath="..\AnalyticGeometry\Plane.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\AnalyticGeometry\Plane.h"
+					RelativePath="..\AnalyticGeometry\Plane.h"
 					>
 				</File>
 				<File
-					RelativePath=".\AnalyticGeometry\Polygon.cpp"
+					RelativePath="..\AnalyticGeometry\Polygon.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\AnalyticGeometry\Polygon.h"
+					RelativePath="..\AnalyticGeometry\Polygon.h"
 					>
 				</File>
 				<File
-					RelativePath=".\AnalyticGeometry\Vector.cpp"
+					RelativePath="..\AnalyticGeometry\Vector.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\AnalyticGeometry\Vector.h"
+					RelativePath="..\AnalyticGeometry\Vector.h"
 					>
 				</File>
 			</Filter>
@@ -375,34 +375,34 @@
 				Name="App"
 				>
 				<File
-					RelativePath=".\App\App.cpp"
+					RelativePath="..\App\App.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\App\App.h"
+					RelativePath="..\App\App.h"
 					>
 				</File>
 				<File
-					RelativePath=".\App\camera.cpp"
+					RelativePath="..\App\camera.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\App\camera.h"
+					RelativePath="..\App\camera.h"
 					>
 				</File>
 				<File
-					RelativePath=".\App\stats.cpp"
+					RelativePath="..\App\stats.cpp"
 					>
 				</File>
 				<Filter
 					Name="Windows"
 					>
 					<File
-						RelativePath=".\App\Windows\WinApp.cpp"
+						RelativePath="..\App\Windows\WinApp.cpp"
 						>
 					</File>
 					<File
-						RelativePath=".\App\Windows\WinApp.h"
+						RelativePath="..\App\Windows\WinApp.h"
 						>
 					</File>
 				</Filter>
@@ -411,15 +411,15 @@
 				Name="Sound"
 				>
 				<File
-					RelativePath=".\Sound\Sound.h"
+					RelativePath="..\Sound\Sound.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Sound\SoundFuncs.cpp"
+					RelativePath="..\Sound\SoundFuncs.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Sound\SoundFuncs.h"
+					RelativePath="..\Sound\SoundFuncs.h"
 					>
 				</File>
 			</Filter>
@@ -427,71 +427,71 @@
 				Name="BWorld"
 				>
 				<File
-					RelativePath=".\BWorld\atmosphere.cpp"
+					RelativePath="..\BWorld\atmosphere.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\BWorld\atmosphere.h"
+					RelativePath="..\BWorld\atmosphere.h"
 					>
 				</File>
 				<File
-					RelativePath=".\BWorld\BMAP.CPP"
+					RelativePath="..\BWorld\BMAP.CPP"
 					>
 				</File>
 				<File
-					RelativePath=".\BWorld\BMap.h"
+					RelativePath="..\BWorld\BMap.h"
 					>
 				</File>
 				<File
-					RelativePath=".\BWorld\BWorld.cpp"
+					RelativePath="..\BWorld\BWorld.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\BWorld\BWorld.h"
+					RelativePath="..\BWorld\BWorld.h"
 					>
 				</File>
 				<File
-					RelativePath=".\BWorld\light.h"
+					RelativePath="..\BWorld\light.h"
 					>
 				</File>
 				<File
-					RelativePath=".\BWorld\MapTexture.cpp"
+					RelativePath="..\BWorld\MapTexture.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\BWorld\MapTexture.h"
+					RelativePath="..\BWorld\MapTexture.h"
 					>
 				</File>
 				<File
-					RelativePath=".\BWorld\MaterialExt.cpp"
+					RelativePath="..\BWorld\MaterialExt.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\BWorld\OctTree.cpp"
+					RelativePath="..\BWorld\OctTree.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\BWorld\OctTree.h"
+					RelativePath="..\BWorld\OctTree.h"
 					>
 				</File>
 				<File
-					RelativePath=".\BWorld\SectorFuncs.cpp"
+					RelativePath="..\BWorld\SectorFuncs.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\BWorld\SectorFuncs.h"
+					RelativePath="..\BWorld\SectorFuncs.h"
 					>
 				</File>
 				<File
-					RelativePath=".\BWorld\Surface.cpp"
+					RelativePath="..\BWorld\Surface.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\BWorld\Surface.h"
+					RelativePath="..\BWorld\Surface.h"
 					>
 				</File>
 				<File
-					RelativePath=".\BWorld\WorldToMBW.cpp"
+					RelativePath="..\BWorld\WorldToMBW.cpp"
 					>
 				</File>
 			</Filter>
@@ -499,35 +499,35 @@
 				Name="Control"
 				>
 				<File
-					RelativePath=".\Control\anim.h"
+					RelativePath="..\Control\anim.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Control\AnimationExt.cpp"
+					RelativePath="..\Control\AnimationExt.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Control\AnimationExt.h"
+					RelativePath="..\Control\AnimationExt.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Control\Climbing.cpp"
+					RelativePath="..\Control\Climbing.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Control\Climbing.h"
+					RelativePath="..\Control\Climbing.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Control\EventFuncC.h"
+					RelativePath="..\Control\EventFuncC.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Control\Events.cpp"
+					RelativePath="..\Control\Events.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Control\Events.h"
+					RelativePath="..\Control\Events.h"
 					>
 				</File>
 			</Filter>
@@ -535,19 +535,19 @@
 				Name="Math"
 				>
 				<File
-					RelativePath=".\Math\BLights.cpp"
+					RelativePath="..\Math\BLights.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Math\BLights.h"
+					RelativePath="..\Math\BLights.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Math\BSpline.cpp"
+					RelativePath="..\Math\BSpline.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Math\BSpline.h"
+					RelativePath="..\Math\BSpline.h"
 					>
 				</File>
 			</Filter>
@@ -555,75 +555,75 @@
 				Name="Entities"
 				>
 				<File
-					RelativePath=".\Entities\AuraEntity.h"
+					RelativePath="..\Entities\AuraEntity.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Entities\BipedEntity.cpp"
+					RelativePath="..\Entities\BipedEntity.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Entities\BipedEntity.h"
+					RelativePath="..\Entities\BipedEntity.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Entities\CameraEntity.cpp"
+					RelativePath="..\Entities\CameraEntity.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Entities\CameraEntity.h"
+					RelativePath="..\Entities\CameraEntity.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Entities\DecalEntity.cpp"
+					RelativePath="..\Entities\DecalEntity.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Entities\DecalEntity.h"
+					RelativePath="..\Entities\DecalEntity.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Entities\Entity.h"
+					RelativePath="..\Entities\Entity.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Entities\EntityFuncs.cpp"
+					RelativePath="..\Entities\EntityFuncs.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Entities\EntityFuncs.h"
+					RelativePath="..\Entities\EntityFuncs.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Entities\ObjectEntity.h"
+					RelativePath="..\Entities\ObjectEntity.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Entities\PersonEntity.cpp"
+					RelativePath="..\Entities\PersonEntity.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Entities\PersonEntity.h"
+					RelativePath="..\Entities\PersonEntity.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Entities\PhysicSIEntity.cpp"
+					RelativePath="..\Entities\PhysicSIEntity.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Entities\PhysicSIEntity.h"
+					RelativePath="..\Entities\PhysicSIEntity.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Entities\SolidMask.h"
+					RelativePath="..\Entities\SolidMask.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Entities\SparkEntity.cpp"
+					RelativePath="..\Entities\SparkEntity.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Entities\SparkEntity.h"
+					RelativePath="..\Entities\SparkEntity.h"
 					>
 				</File>
 			</Filter>
@@ -631,27 +631,27 @@
 				Name="enemies"
 				>
 				<File
-					RelativePath=".\enemies\chartype.cpp"
+					RelativePath="..\enemies\chartype.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\enemies\chartype.h"
+					RelativePath="..\enemies\chartype.h"
 					>
 				</File>
 				<File
-					RelativePath=".\enemies\Combos_Stuff.cpp"
+					RelativePath="..\enemies\Combos_Stuff.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\enemies\Combos_Stuff.h"
+					RelativePath="..\enemies\Combos_Stuff.h"
 					>
 				</File>
 				<File
-					RelativePath=".\enemies\en_control.cpp"
+					RelativePath="..\enemies\en_control.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\enemies\en_control.h"
+					RelativePath="..\enemies\en_control.h"
 					>
 				</File>
 			</Filter>
@@ -659,19 +659,19 @@
 				Name="Person"
 				>
 				<File
-					RelativePath=".\Person\Person.cpp"
+					RelativePath="..\Person\Person.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Person\Person.h"
+					RelativePath="..\Person\Person.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Person\simpleact.cpp"
+					RelativePath="..\Person\simpleact.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Person\simpleact.h"
+					RelativePath="..\Person\simpleact.h"
 					>
 				</File>
 			</Filter>
@@ -679,31 +679,31 @@
 				Name="NetMod"
 				>
 				<File
-					RelativePath=".\NetMod\datanet.cpp"
+					RelativePath="..\NetMod\datanet.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\NetMod\datanet.h"
+					RelativePath="..\NetMod\datanet.h"
 					>
 				</File>
 				<File
-					RelativePath=".\NetMod\gamenet.cpp"
+					RelativePath="..\NetMod\gamenet.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\NetMod\gamenet.h"
+					RelativePath="..\NetMod\gamenet.h"
 					>
 				</File>
 				<File
-					RelativePath=".\NetMod\libnet.cpp"
+					RelativePath="..\NetMod\libnet.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\NetMod\libnet.h"
+					RelativePath="..\NetMod\libnet.h"
 					>
 				</File>
 				<File
-					RelativePath=".\NetMod\net_ext.cpp"
+					RelativePath="..\NetMod\net_ext.cpp"
 					>
 				</File>
 			</Filter>
