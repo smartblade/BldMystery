@@ -1,6 +1,6 @@
 
 #include <bld_system.h>
-#include <raster_device.h>
+#include <Raster/raster_device.h>
 #include <BWorld/BWorld.h>
 #include <BWorld/BMap.h>
 #include <BWorld/light.h>
