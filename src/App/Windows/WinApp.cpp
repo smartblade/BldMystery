@@ -1,7 +1,7 @@
 
 #include <bld_system.h>
 #include <console.h>
-#include <Raster/raster_device.h>
+#include <Raster/RasterDevice.h>
 #include "BladeApp.h"
 #include "WinClock.h"
 #include "sound_device.h"

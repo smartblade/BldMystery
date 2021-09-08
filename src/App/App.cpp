@@ -2,7 +2,7 @@
 
 #include <bld_system.h>
 #include <bld_python.h>
-#include <Raster/raster_device.h>
+#include <Raster/RasterDevice.h>
 #include <Control/anim.h>
 #include <Entities/BipedEntity.h>
 #include <Entities/CameraEntity.h>

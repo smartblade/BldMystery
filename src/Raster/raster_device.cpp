@@ -1,6 +1,6 @@
 
 #define BUILD_LIB
-#include "raster_device.h"
+#include "RasterDevice.h"
 #undef BUILD_LIB
 
 #include "raster_int.h"

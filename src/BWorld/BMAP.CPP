@@ -1,6 +1,6 @@
 #include <BWorld/BMap.h>
 
-#include <Raster/raster_device.h>
+#include <Raster/RasterDevice.h>
 #include <AnalyticGeometry/Polygon.h>
 #include "bld_misc_funcs.h"
 
