@@ -12,7 +12,7 @@
 * Entry point:            0x005A495E
 * VC++ mangling:          ?LaunchAnimation@B_Person@@QAEXPBDN@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_Person::LaunchAnimation(const char *animationName, double time)
 {
 }

@@ -13,7 +13,7 @@
 * Entry point:            0x00593CA6
 * VC++ mangling:          ?UpdatePlayer@EnControl@@QAEXNH@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void EnControl::UpdatePlayer(double time, int isInputActive)
 {
 }
@@ -31,7 +31,7 @@ void EnControl::UpdatePlayer(double time, int isInputActive)
 * Entry point:            0x00595124
 * VC++ mangling:          ?SetTurnSpeed@EnControl@@QAEHPBDN@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int EnControl::SetTurnSpeed(const char *race_name, double new_speed)
 {
     return 0;
@@ -43,7 +43,7 @@ int EnControl::SetTurnSpeed(const char *race_name, double new_speed)
 * Entry point:            0x00595166
 * VC++ mangling:          ?SetAnimationFactor@EnControl@@QAEHPBDN@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int EnControl::SetAnimationFactor(const char *mov, double new_speed_factor)
 {
     return 0;
@@ -62,7 +62,7 @@ int EnControl::SetAnimationFactor(const char *mov, double new_speed_factor)
 * Entry point:            0x005954F7
 * VC++ mangling:          ?AddWatchAnim@EnControl@@QAEHPBD@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int EnControl::AddWatchAnim(const char *anim)
 {
     return 0;
@@ -74,7 +74,7 @@ int EnControl::AddWatchAnim(const char *anim)
 * Entry point:            0x005956B0
 * VC++ mangling:          ?AddAnimFlags@EnControl@@QAEHPBDHHHHHH@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int EnControl::AddAnimFlags(
     const char *anim, int wuea, int mdf_y, int solf, int copy_rot,
     int bng_mov, int head_f
@@ -97,7 +97,7 @@ int EnControl::AddAnimFlags(
 * VC++ mangling:          ?StartRecordingDemo@EnControl@@QAEHXZ
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 int EnControl::StartRecordingDemo()
 {
@@ -113,7 +113,7 @@ int EnControl::StartRecordingDemo()
 * VC++ mangling:          ?EndRecordingDemo@EnControl@@QAEHPBD@Z
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 int EnControl::EndRecordingDemo(const char *name)
 {
@@ -129,7 +129,7 @@ int EnControl::EndRecordingDemo(const char *name)
 * VC++ mangling:          ?PlayDemo@EnControl@@QAEHPBD@Z
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 int EnControl::PlayDemo(const char *name)
 {

@@ -16,7 +16,7 @@
 * Module:                 Blade.exe
 * Entry point:            0x005AF2CE
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void OnEvent(int a, int b)
 {
 }
@@ -33,7 +33,7 @@ void OnEvent(int a, int b)
 * Module:                 Blade.exe
 * Entry point:            0x005B1431
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void ResetClientMapName()
 {
 }
@@ -74,7 +74,7 @@ const char *GetNetMap(const char *map)
 * Module:                 Blade.exe
 * Entry point:            0x005B3D69
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void SendPlayerName()
 {
 }

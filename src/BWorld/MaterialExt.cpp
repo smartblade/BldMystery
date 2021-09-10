@@ -8,7 +8,7 @@
 * Module:                 Blade.exe
 * Entry point:            0x0044E9A0
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int nMaterials()
 {
     int (*bld_proc)() = NULL;
@@ -20,7 +20,7 @@ int nMaterials()
 * Module:                 Blade.exe
 * Entry point:            0x0044E9AA
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 material_t *CreateMaterial(const char *name)
 {
     material_t *(*bld_proc)(const char *name) = NULL;
@@ -32,7 +32,7 @@ material_t *CreateMaterial(const char *name)
 * Module:                 Blade.exe
 * Entry point:            0x0044EB5A
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 material_t *GetMaterial(const char *name)
 {
     material_t *(*bld_proc)(const char *name) = NULL;
@@ -44,7 +44,7 @@ material_t *GetMaterial(const char *name)
 * Module:                 Blade.exe
 * Entry point:            0x0044EBD3
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 material_t *GetMaterialI(int index)
 {
     material_t *(*bld_proc)(int index) = NULL;
@@ -56,7 +56,7 @@ material_t *GetMaterialI(int index)
 * Module:                 Blade.exe
 * Entry point:            0x0044EC02
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetMaterialSoundProperty(
     material_t *material, int property_kind, int index, B_Sound *sound
 )
@@ -72,7 +72,7 @@ int SetMaterialSoundProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0044EC62
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetMaterialSoundProperty(
         material_t *material, int property_kind, int index, B_Sound **sound
 )
@@ -88,7 +88,7 @@ int GetMaterialSoundProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0044ECC5
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetMaterialStringProperty(
         material_t *material, int property_kind, int index, const char **value
 )
@@ -104,7 +104,7 @@ int GetMaterialStringProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0044ECF8
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetMaterialFloatProperty(
         material_t *material, int property_kind, int index, double value
 )
@@ -120,7 +120,7 @@ int SetMaterialFloatProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0044ED29
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetMaterialFloatProperty(
         material_t *material, int property_kind, int index, double *value
 )
@@ -136,7 +136,7 @@ int GetMaterialFloatProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0044ED6A
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int AddHitSoundComb(
     material_t *material1, material_t *material2, B_Sound *sound
 )

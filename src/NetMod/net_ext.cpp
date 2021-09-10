@@ -17,7 +17,7 @@
 * Module:                 Blade.exe
 * Entry point:            0x005B5340
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void SetGameSpySupport(boolean enabled)
 {
         assert("SetGameSpySupport" == NULL);
@@ -29,7 +29,7 @@ void SetGameSpySupport(boolean enabled)
 * Entry point:            0x005B534D
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 // TODO fix prototype
 void GetGameSpySupport()
 {
@@ -45,7 +45,7 @@ void GetGameSpySupport()
 * Entry point:            0x005B5357
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void StartGSQR(void)
 {
@@ -66,7 +66,7 @@ void StartGSQR(void)
 * Entry point:            0x005B5582
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 // TODO fix prototype
 void EndGSQR()
 {
@@ -82,7 +82,7 @@ void EndGSQR()
 * Entry point:            0x005B55ED
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 // TODO fix prototype
 void LoopGSQR()
 {
@@ -98,7 +98,7 @@ void LoopGSQR()
 * Entry point:            0x005B5647
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void PersonChangeAnmSoundIndex(const char *person_name, int index)
 {
@@ -113,7 +113,7 @@ void PersonChangeAnmSoundIndex(const char *person_name, int index)
 * Entry point:            0x005B565C
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void SetDedicatedServerState(int dedicated)
 {
@@ -128,7 +128,7 @@ void SetDedicatedServerState(int dedicated)
 * Entry point:            0x005B5673
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 int GetDedicatedServerState(void)
 {
@@ -144,7 +144,7 @@ int GetDedicatedServerState(void)
 * Entry point:            0x005B568F
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void SetLocalOptions(
         const char *name, const char *kind, const char *weapon,
@@ -162,7 +162,7 @@ void SetLocalOptions(
 * Entry point:            0x005B5716
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 const char *ServerInfoBlock(void)
 {
@@ -178,7 +178,7 @@ const char *ServerInfoBlock(void)
 * Entry point:            0x005B5720
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void ClientSetPyClientSoundFunc(PyObject *func)
 {
@@ -193,7 +193,7 @@ void ClientSetPyClientSoundFunc(PyObject *func)
 * Entry point:            0x005B5731
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void CallNetEventSound(const char *entity_name, byte id)
 {
@@ -208,7 +208,7 @@ void CallNetEventSound(const char *entity_name, byte id)
 * Entry point:            0x005B5959
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void ClientSetPyClientMutilaFunc(PyObject *func)
 {
@@ -223,7 +223,7 @@ void ClientSetPyClientMutilaFunc(PyObject *func)
 * Entry point:            0x005B596A
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void ClientSetPyClientDamageFunc(PyObject *func)
 {
@@ -238,7 +238,7 @@ void ClientSetPyClientDamageFunc(PyObject *func)
 * Entry point:            0x005B597B
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void NetAddSoundToClient(
         const char *entity_name, const char *animation_name,
@@ -256,7 +256,7 @@ void NetAddSoundToClient(
 * Entry point:            0x005B5BB2
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 const char *NetGetClientId(void)
 {
@@ -272,7 +272,7 @@ const char *NetGetClientId(void)
 * Entry point:            0x005B5BBC
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 boolean NetSetObjectState(const char *entity_name, boolean state)
 {
@@ -288,7 +288,7 @@ boolean NetSetObjectState(const char *entity_name, boolean state)
 * Entry point:            0x005B5BD1
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void NetAddEventUserFunc(
         const char *action, PyObject *func, int ignore_host
@@ -305,7 +305,7 @@ void NetAddEventUserFunc(
 * Entry point:            0x005B5BF0
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void NetAddPosition(double x, double y, double z)
 {
@@ -320,7 +320,7 @@ void NetAddPosition(double x, double y, double z)
 * Entry point:            0x005B5C15
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void NetSetPersonView(const char *entity_name)
 {
@@ -335,7 +335,7 @@ void NetSetPersonView(const char *entity_name)
 * Entry point:            0x005B5DE9
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void GetLocalOptionsNet(
         const char **name, const char **kind, const char **weapon,
@@ -353,7 +353,7 @@ void GetLocalOptionsNet(
 * Entry point:            0x005B5E06
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void GetNextPosition(double *x, double *y, double *z)
 {
@@ -368,7 +368,7 @@ void GetNextPosition(double *x, double *y, double *z)
 * Entry point:            0x005B5E74
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void ServerSetPyByePlayerFunc(PyObject *func)
 {
@@ -383,7 +383,7 @@ void ServerSetPyByePlayerFunc(PyObject *func)
 * Entry point:            0x005B5E85
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void ServerSetPyGetUserString(PyObject *func)
 {
@@ -398,7 +398,7 @@ void ServerSetPyGetUserString(PyObject *func)
 * Entry point:            0x005B5E96
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void SendNetUserString(
         short kind, const char *str, int guaranteed, const char *str_unknown
@@ -415,7 +415,7 @@ void SendNetUserString(
 * Entry point:            0x005B5EB4
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void GetLifeAndLevel(const char *entity_name, int *energy, int *life)
 {
@@ -430,7 +430,7 @@ void GetLifeAndLevel(const char *entity_name, int *energy, int *life)
 * Entry point:            0x005B6146
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void ServerSetPyCreatePlayerFunc(PyObject *func)
 {
@@ -445,7 +445,7 @@ void ServerSetPyCreatePlayerFunc(PyObject *func)
 * Entry point:            0x005B6157
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 boolean ClientStartMainChar(void)
 {
@@ -461,7 +461,7 @@ boolean ClientStartMainChar(void)
 * Entry point:            0x005B6188
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 int ServerSetSendDataState(int state)
 {
@@ -501,7 +501,7 @@ int GetNetState(void)
 * Entry point:            0x005B61FD
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void ClearPools(void)
 {
@@ -582,7 +582,7 @@ boolean JoinSession(int index, const char *player_name)
 * Entry point:            0x005B6448
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void RestartNet(void)
 {
@@ -597,7 +597,7 @@ void RestartNet(void)
 * Entry point:            0x005B6464
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void NetServerChangeLevel(const char *level_name)
 {
@@ -612,7 +612,7 @@ void NetServerChangeLevel(const char *level_name)
 * Entry point:            0x005B6475
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 float NetGetTime(void)
 {
@@ -628,7 +628,7 @@ float NetGetTime(void)
 * Entry point:            0x005B647F
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 int NetSetPPS(int PPS)
 {

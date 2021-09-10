@@ -14,7 +14,7 @@
 * Module:                 Blade.exe
 * Entry point:            0x004431DE
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int WorldToMBW(const char *world)
 {
     int (*bld_proc)(const char *world) = NULL;

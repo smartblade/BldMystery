@@ -36,12 +36,10 @@ if (BLD_NATIVE)
     # Struct member alignment
     target_compile_options(${TARGET} PRIVATE "/Zp4")
     target_compile_definitions(
-        ${TARGET} PRIVATE WINDOWS_IGNORE_PACKING_MISMATCH
+        ${TARGET} PRIVATE WINDOWS_IGNORE_PACKING_MISMATCH BLD_NATIVE
     )
     set(EXPORT_FUNCTIONS_FILE "${PROJECT_SOURCE_DIR}/asm/export_cmd.txt")
     target_link_options(${TARGET} PRIVATE "@${EXPORT_FUNCTIONS_FILE}")
-else()
-    target_compile_definitions(${TARGET} PRIVATE BLD_NATIVE)
 endif()
 
 target_compile_definitions(

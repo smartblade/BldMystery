@@ -39,7 +39,7 @@
 * Module:                 Blade.exe
 * Entry point:            0x0040CF10
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 const char *ShowInputDialog(HINSTANCE module, HWND window, const char *text)
 {
     return NULL;
@@ -55,7 +55,7 @@ const char *ShowInputDialog(HINSTANCE module, HWND window, const char *text)
 * Module:                 Blade.exe
 * Entry point:            0x0040E8E6
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int ShowStartupDialog(
     HMODULE module, HWND window, B_YSoundDev *sound, B_Name *rasterName,
     bool showDialog)
@@ -85,7 +85,7 @@ int ShowStartupDialog(
 * Module:                 Blade.exe
 * Entry point:            0x00422F3B
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void JumpCB(const B_Name &action, float time, float, void *)
 {
 }
@@ -131,7 +131,7 @@ void JumpCB(const B_Name &action, float time, float, void *)
 * Entry point:            0x0044AD38
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 light_t * read_light(B_IDataFile *file)
 {
@@ -181,7 +181,7 @@ light_t * read_light(B_IDataFile *file)
 * VC++ mangling:          ??0anim_t@@QAE@XZ
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 anim_t::anim_t()
 {
@@ -195,7 +195,7 @@ anim_t::anim_t()
 * Entry point:            0x00475EEB
 * VC++ mangling:          ?AddEvent@anim_t@@QAEXABVB_Name@@M@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void anim_t::AddEvent(const B_Name &event_name, float event_frame)
 {
 }
@@ -206,7 +206,7 @@ void anim_t::AddEvent(const B_Name &event_name, float event_frame)
 * Entry point:            0x00475F86
 * VC++ mangling:          ?DelEvent@anim_t@@QAEXABVB_Name@@@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void anim_t::DelEvent(const B_Name &event_name)
 {
 }
@@ -217,7 +217,7 @@ void anim_t::DelEvent(const B_Name &event_name)
 * Entry point:            0x00476014
 * VC++ mangling:          ?ClearEvents@anim_t@@QAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void anim_t::ClearEvents()
 {
 }
@@ -228,7 +228,7 @@ void anim_t::ClearEvents()
 * Entry point:            0x00476057
 * VC++ mangling:          ?GetEventFrame@anim_t@@QAEMABVB_Name@@@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 float anim_t::GetEventFrame(const B_Name &event_name)
 {
     return -1.0;
@@ -241,7 +241,7 @@ float anim_t::GetEventFrame(const B_Name &event_name)
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@PAVanim_t@@@Z
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 B_IDataFile &operator >>(B_IDataFile &file, anim_t *anim)
 {
@@ -272,7 +272,7 @@ B_IDataFile &operator >>(B_IDataFile &file, anim_t *anim)
 * Entry point:            0x0048DB30
 * VC++ mangling:          ??0B_ProcessorTimer@@QAE@XZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 B_ProcessorTimer::B_ProcessorTimer()
 {
 }
@@ -283,7 +283,7 @@ B_ProcessorTimer::B_ProcessorTimer()
 * Entry point:            0x0048DC31
 * VC++ mangling:          ?GetTime@B_ProcessorTimer@@QAENXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 double B_ProcessorTimer::GetTime()
 {
     return 0.0;
@@ -311,7 +311,7 @@ double B_ProcessorTimer::GetTime()
 * Module:                 Blade.exe
 * Entry point:            0x00497AE0
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void unknown_00497AE0()
 {
 }
@@ -328,7 +328,7 @@ void unknown_00497AE0()
 * Module:                 Blade.exe
 * Entry point:            0x004AC6C2
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int newExclusionGroupId()
 {
     return 0;
@@ -374,7 +374,7 @@ B_YSoundDev::B_YSoundDev()
 * Module:                 Blade.exe
 * Entry point:            0x004CC8C8
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 bool GetCurrentDir(char *buffer, int bufferLength)
 {
     return false;
@@ -393,7 +393,7 @@ bool GetCurrentDir(char *buffer, int bufferLength)
 * Entry point:            0x004CD5EC
 * VC++ mangling:          ??0Unknown004CD5EC@@QAE@MMMMMM@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 Unknown004CD5EC::Unknown004CD5EC(float a, float b, float c, float d, float e, float f)
 {
 }
@@ -404,7 +404,7 @@ Unknown004CD5EC::Unknown004CD5EC(float a, float b, float c, float d, float e, fl
 * Entry point:            0x004CD634
 * VC++ mangling:          ?unknown004CD634@Unknown004CD5EC@@QAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void Unknown004CD5EC::unknown004CD634()
 {
 }
@@ -431,7 +431,7 @@ void Unknown004CD5EC::unknown004CD634()
 * Entry point:            0x004F65BE
 * VC++ mangling:          ??0B_Combustion@@QAE@ABVB_Name@@0NNNNNN@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 B_Combustion::B_Combustion(
     const B_Name &object_kind, const B_Name &fire_kind, double upper_treshol,
     double lower_treshold, double flame_height, double flame_size,
@@ -446,7 +446,7 @@ B_Combustion::B_Combustion(
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Combustion@@@Z
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 B_IDataFile& operator >>(B_IDataFile& file, B_Combustion &combustion)
 {
@@ -462,7 +462,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_Combustion &combustion)
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABVB_Combustion@@@Z
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 B_ODataFile& operator <<(B_ODataFile &file, const B_Combustion &combustion)
 {
@@ -502,7 +502,7 @@ B_ODataFile& operator <<(B_ODataFile &file, const B_Combustion &combustion)
 * VC++ mangling:          ?InsideAA@unknown204@@QAEHH@Z
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 int unknown204::InsideAA(int AA)
 {
@@ -546,7 +546,7 @@ int unknown204::InsideAA(int AA)
 * Entry point:            0x005AA730
 * VC++ mangling:          ?SetTime@B_ProcTexture@@SAXN@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_ProcTexture::SetTime(double time)
 {
 }
@@ -557,7 +557,7 @@ void B_ProcTexture::SetTime(double time)
 * Entry point:            0x005AA881
 * VC++ mangling:          ?Update@B_ProcTexture@@QAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_ProcTexture::Update()
 {
 }
@@ -592,7 +592,7 @@ void B_ProcTexture::Update()
 * Module:                 Blade.exe
 * Entry point:            0x005B907E
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void InspectBODList()
 {
 }
@@ -607,7 +607,7 @@ void InspectBODList()
 /* End of file:           0x005B9C30 */
 
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 class B_CameraEntity
 {

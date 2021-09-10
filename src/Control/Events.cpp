@@ -27,7 +27,7 @@ B_EventFunc::B_EventFunc()
 * Entry point:            0x0048A92B
 * VC++ mangling:          ??0B_EventFuncs@@QAE@ABVB_Name@@@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 B_EventFuncs::B_EventFuncs(const B_Name &name)
 {
 }
@@ -45,7 +45,7 @@ B_EventFuncs::B_EventFuncs(const B_Name &name)
 * Entry point:            0x0048AB7F
 * VC++ mangling:          ?AddPyFunc@B_EventFuncs@@QAEXIPAUPyObject@@PBD@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_EventFuncs::AddPyFunc(
     unsigned int eventIndex, PyObject *func, const char *name)
 {
@@ -140,7 +140,7 @@ int B_EventFuncs::CallFunc(B_Entity *entity, unsigned int eventIndex)
 * Entry point:            0x0048B74A
 * VC++ mangling:          ?GetEventIndex@B_Events@@QAEHPBD@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int B_Events::GetEventIndex(const char *event_name)
 {
     return 0;

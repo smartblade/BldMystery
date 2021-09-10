@@ -14,7 +14,7 @@
 * Module:                 Blade.exe
 * Entry point:            0x005AC791
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void MarkNetMapSet()
 {
 }

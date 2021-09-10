@@ -13,7 +13,7 @@
 * Module:                 Blade.exe
 * Entry point:            0x00477CC6
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int FindClimbingTopPosition(
     const B_Vector &bottomPos, double maxHeight, B_Vector *topFloorPos,
     double step)
@@ -26,7 +26,7 @@ int FindClimbingTopPosition(
 * Module:                 Blade.exe
 * Entry point:            0x00477D6E
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int FindLeanPos(
     const B_Vector &startPos, const B_Vector &topFloorPos,
     double leftHandDist, double rightHandDist,
@@ -40,7 +40,7 @@ int FindLeanPos(
 * Module:                 Blade.exe
 * Entry point:            0x00478385
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int FindLowClimbingTopPos(
     const B_Vector &startPos, const B_Vector &topFloorPos,
     B_Vector *lowClmbTopFloorPos)
@@ -53,7 +53,7 @@ int FindLowClimbingTopPos(
 * Module:                 Blade.exe
 * Entry point:            0x00478561
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int ClimbingImpulse(B_Entity *entity, unsigned int eventIndex)
 {
     return 0;
@@ -64,7 +64,7 @@ int ClimbingImpulse(B_Entity *entity, unsigned int eventIndex)
 * Module:                 Blade.exe
 * Entry point:            0x00478D62
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int LowClimbingImpulse(B_Entity *entity, unsigned int eventIndex)
 {
     return 0;
@@ -75,7 +75,7 @@ int LowClimbingImpulse(B_Entity *entity, unsigned int eventIndex)
 * Module:                 Blade.exe
 * Entry point:            0x0047920C
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int FindEndPos(
     B_PersonEntity *personEntity, B_BipedAction *action,
     const B_Vector &leftHandPos, const B_Vector &rightHandPos,

@@ -29,7 +29,7 @@
 * Entry point:            0x00411281
 * VC++ mangling:          ?Call@B_AfterFrameFunc@@QAEXM@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_AfterFrameFunc::Call(float time)
 {
 }
@@ -788,7 +788,7 @@ void B_App::LoadLevel(const char *script)
 * Entry point:            0x00413840
 * VC++ mangling:          ?SaveScreenShot@B_App@@QAEXPBDHH@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_App::SaveScreenShot(const char *filename, int width, int height)
 {
 }
@@ -950,7 +950,7 @@ void B_App::ReassignCombustionData()
 * Entry point:            0x0041412A
 * VC++ mangling:          ?ClearLevel@B_App@@UAEXH@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_App::ClearLevel(int flag)
 {
 }
@@ -984,7 +984,7 @@ B_PersonStatus *B_App::GetPlayerStatus1()
 * VC++ mangling:          ?PrepareLevel@B_App@@QAEXXZ
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void B_App::PrepareLevel()
 {
@@ -999,7 +999,7 @@ void B_App::PrepareLevel()
 * VC++ mangling:          ?DoneLoadGame@B_App@@QAEXXZ
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void B_App::DoneLoadGame()
 {
@@ -1014,7 +1014,7 @@ void B_App::DoneLoadGame()
 * VC++ mangling:          ?BeginLoadGame@B_App@@QAEXXZ
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void B_App::BeginLoadGame()
 {
@@ -1027,7 +1027,7 @@ void B_App::BeginLoadGame()
 * Entry point:            0x0041520F
 * VC++ mangling:          ?GetPlayerStatus2@B_App@@QAEPAVB_PersonStatus@@XZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 B_PersonStatus *B_App::GetPlayerStatus2()
 {
     return NULL;
@@ -1039,7 +1039,7 @@ B_PersonStatus *B_App::GetPlayerStatus2()
 * Entry point:            0x00415236
 * VC++ mangling:          ?GetAttachedDevice@B_App@@QAEPAVB_InputDevice@@PBD@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 B_InputDevice *B_App::GetAttachedDevice(const char *device)
 {
     return NULL;
@@ -1064,7 +1064,7 @@ B_InputActions *B_App::GetInputActions()
 * VC++ mangling:          ?GetTimeActionHeld@B_App@@QAENPBD@Z
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 double B_App::GetTimeActionHeld(const char *action)
 {
@@ -1080,7 +1080,7 @@ double B_App::GetTimeActionHeld(const char *action)
 * VC++ mangling:          ?AddInputAction@B_App@@QAEXPBDH@Z
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void B_App::AddInputAction(const char *action_name, int npi)
 {
@@ -1095,7 +1095,7 @@ void B_App::AddInputAction(const char *action_name, int npi)
 * VC++ mangling:          ?RemoveInputAction@B_App@@QAEXPBD@Z
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void B_App::RemoveInputAction(const char *action_name)
 {
@@ -1117,7 +1117,7 @@ void B_App::RemoveInputAction(const char *action_name)
 * VC++ mangling:          ?Bind@B_App@@QAE_NPBDPAUPyObject@@@Z
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 bool B_App::Bind(const char *key, PyObject *proc)
 {
@@ -1133,7 +1133,7 @@ bool B_App::Bind(const char *key, PyObject *proc)
 * VC++ mangling:          ?Bind2@B_App@@QAEXPBD00H@Z
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void B_App::Bind2(
     const char *act, const char *subact1,
@@ -1151,7 +1151,7 @@ void B_App::Bind2(
 * VC++ mangling:          ?BindPred@B_App@@QAE_NPBD0@Z
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 bool B_App::BindPred(const char *key, const char *pred)
 {
@@ -1167,7 +1167,7 @@ bool B_App::BindPred(const char *key, const char *pred)
 * VC++ mangling:          ?UnBindPred@B_App@@QAE_NPBD0@Z
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 bool B_App::UnBindPred(const char *key, const char *pred)
 {
@@ -1183,7 +1183,7 @@ bool B_App::UnBindPred(const char *key, const char *pred)
 * VC++ mangling:          ?UnBind@B_App@@QAE_NPBDPAUPyObject@@@Z
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 bool B_App::UnBind(const char *key, PyObject *proc)
 {
@@ -1199,7 +1199,7 @@ bool B_App::UnBind(const char *key, PyObject *proc)
 * VC++ mangling:          ?AssocKey@B_App@@QAEHPBD00H@Z
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 int B_App::AssocKey(
     const char *action, const char *input_device, const char *key,
@@ -1218,7 +1218,7 @@ int B_App::AssocKey(
 * VC++ mangling:          ?UnBindAll@B_App@@QAEXXZ
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void B_App::UnBindAll()
 {
@@ -1239,7 +1239,7 @@ void B_App::UnBindAll()
 * Entry point:            0x00415610
 * VC++ mangling:          ?SetAutoGenTexture@B_App@@QAEHPBDH@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int B_App::SetAutoGenTexture(const char *textureName, int textureEffect)
 {
     return 0;
@@ -1406,7 +1406,7 @@ void B_App::ReadArguments(const char *args)
 * VC++ mangling:          ?OutSound@B_App@@QAE_NHNNNH@Z
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 bool B_App::OutSound(int soundId, double x, double y, double z, int unknown)
 {
@@ -1440,7 +1440,7 @@ void B_App::CallCdCb(int arg)
 * Entry point:            0x00416298
 * VC++ mangling:          ?CDSetCallBack@B_App@@QAEHPAUPyObject@@@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int B_App::CDSetCallBack(PyObject *func)
 {
     return 0;
@@ -1452,7 +1452,7 @@ int B_App::CDSetCallBack(PyObject *func)
 * Entry point:            0x00416309
 * VC++ mangling:          ?SetAfterFrameFunc@B_App@@QAEXPBDPAUPyObject@@@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_App::SetAfterFrameFunc(const char *name, PyObject *function)
 {
 }
@@ -1464,7 +1464,7 @@ void B_App::SetAfterFrameFunc(const char *name, PyObject *function)
 * Entry point:            0x0041653E
 * VC++ mangling:          ?GetAfterFrameFunc@B_App@@QAEPAUPyObject@@PBD@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 PyObject *B_App::GetAfterFrameFunc(const char *name)
 {
     return NULL;
@@ -1476,7 +1476,7 @@ PyObject *B_App::GetAfterFrameFunc(const char *name)
 * Entry point:            0x004165D8
 * VC++ mangling:          ?GetAfterFrameFuncName@B_App@@QAEPBDH@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 const char *B_App::GetAfterFrameFuncName(int index)
 {
     return NULL;
@@ -1500,7 +1500,7 @@ int B_App::GetnAfterFrameFuncs()
 * Entry point:            0x00416631
 * VC++ mangling:          ?SetMenuTgapFunc@B_App@@QAEXPAUPyObject@@@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_App::SetMenuTgapFunc(PyObject *func)
 {
 }
@@ -1523,7 +1523,7 @@ PyObject *B_App::GetMenuTgapFunc()
 * Entry point:            0x0041668C
 * VC++ mangling:          ?RemoveAfterFrameFunc@B_App@@QAEHPBD@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int B_App::RemoveAfterFrameFunc(const char *name)
 {
     return 0;
@@ -1719,7 +1719,7 @@ void B_App::SetPyInteractiveString(const char *str)
 * Entry point:            0x00416EFA
 * VC++ mangling:          ?SetStringValue@B_App@@QAEHPBD0@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int B_App::SetStringValue(const char *variable, const char *value)
 {
     return 0;
@@ -1731,7 +1731,7 @@ int B_App::SetStringValue(const char *variable, const char *value)
 * Entry point:            0x0041712A
 * VC++ mangling:          ?GetStringValue@B_App@@QAEPBDPBD@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 const char *B_App::GetStringValue(const char *variable)
 {
     return NULL;
@@ -1744,7 +1744,7 @@ const char *B_App::GetStringValue(const char *variable)
 * Entry point:            0x004171D1
 * VC++ mangling:          ?DeleteStringValue@B_App@@QAEHPBD@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int B_App::DeleteStringValue(const char *variable)
 {
     return 0;
@@ -1787,7 +1787,7 @@ int B_App::SetInputMode(const char *device, const char *mode)
 * Entry point:            0x004179B0
 * VC++ mangling:          ?unknown_method010@B_App@@UAEPAXPAX@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void *B_App::unknown_method010(void *)
 {
     return NULL;

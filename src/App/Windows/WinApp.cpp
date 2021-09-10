@@ -498,7 +498,7 @@ void B_WinApp::ReadArguments(const char *args)
 * Entry point:            0x00410640
 * VC++ mangling:          ?unknown_method010@B_WinApp@@UAEPAXPAX@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void *B_WinApp::unknown_method010(void *)
 {
     return NULL;

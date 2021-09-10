@@ -8,7 +8,7 @@
 * Module:                 Blade.exe
 * Entry point:            0x0045C040
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetSectorByPosition(double x, double y, double z)
 {
     int (*bld_proc)(double x, double y, double z) = NULL;
@@ -20,7 +20,7 @@ int GetSectorByPosition(double x, double y, double z)
 * Module:                 Blade.exe
 * Entry point:            0x0045C080
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetSectorByIndex(int index)
 {
     int (*bld_proc)(int index) = NULL;
@@ -32,7 +32,7 @@ int GetSectorByIndex(int index)
 * Module:                 Blade.exe
 * Entry point:            0x0045C0A3
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 // TODO fix prototype
 void GetNumberOfSectors()
 {
@@ -44,7 +44,7 @@ void GetNumberOfSectors()
 * Module:                 Blade.exe
 * Entry point:            0x0045C0AD
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int InitBreakSector(
         int sectorID, double x_vec1, double y_vec1, double z_vec1,
         double x_vec2, double y_vec2, double z_vec2, double x_vec3,
@@ -66,7 +66,7 @@ int InitBreakSector(
 * Module:                 Blade.exe
 * Entry point:            0x0045C159
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int DoBreakSector(
         int sectorID, double x_impulse, double y_impulse, double z_impulse,
         double x, double y, double z, double x_unknown, double y_unknown,
@@ -86,7 +86,7 @@ int DoBreakSector(
 * Module:                 Blade.exe
 * Entry point:            0x0045C1F5
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetSectorIntProperty(
         int sectorID, int property_kind, int index, int *value
 )
@@ -102,7 +102,7 @@ int GetSectorIntProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0045C34D
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetSectorIntProperty(
         int sectorID, int property_kind, int index, int value
 )
@@ -118,7 +118,7 @@ int SetSectorIntProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0045C415
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetSectorFloatProperty(
         int sectorID, int property_kind, int index, double *value
 )
@@ -134,7 +134,7 @@ int GetSectorFloatProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0045C5A6
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetSectorFloatProperty(
         int sectorID, int property_kind, int index, double value
 )
@@ -150,7 +150,7 @@ int SetSectorFloatProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0045C735
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetSectorStringProperty(
         int sectorID, int property_kind, int index, const char **value
 )
@@ -173,7 +173,7 @@ int GetSectorStringProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0045C8B0
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetSectorStringProperty(
         int sectorID, int property_kind, int index, const char *value
 )
@@ -189,7 +189,7 @@ int SetSectorStringProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0045C9A0
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetSectorVectorProperty(
         int sectorID, int property_kind, int index, double x,
         double y, double z
@@ -207,7 +207,7 @@ int SetSectorVectorProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0045CA86
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetSectorVectorProperty(
         int sectorID, int property_kind, int index,
         double *x, double *y, double *z
@@ -225,7 +225,7 @@ int GetSectorVectorProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0045CB7C
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetSectorFuncProperty(
         int sectorID, int property_kind, int index, PyObject *value
 )
@@ -241,7 +241,7 @@ int SetSectorFuncProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0045CCD8
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetSectorFuncProperty(
         int sectorID, int property_kind, int index, PyObject **value
 )

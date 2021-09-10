@@ -52,7 +52,7 @@ void B_Surface::GetPortals(B_Portal **portals, int *numPortals)
 * Entry point:            0x004547D7
 * VC++ mangling:          ?unknown018@B_Surface@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_Surface::unknown018()
 {
 }
@@ -63,7 +63,7 @@ void B_Surface::unknown018()
 * Entry point:            0x00454806
 * VC++ mangling:          ?unknown01C@B_Surface@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_Surface::unknown01C()
 {
 }
@@ -75,7 +75,7 @@ void B_Surface::unknown01C()
 * Entry point:            0x004548AF
 * VC++ mangling:          ?unknown018@B_OpaqueSurface@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_OpaqueSurface::unknown018()
 {
 }
@@ -187,7 +187,7 @@ int B_DomeSurface::ClassId()
 * Entry point:            0x00454E39
 * VC++ mangling:          ?unknown014@B_DomeSurface@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_DomeSurface::unknown014()
 {
 }
@@ -237,7 +237,7 @@ int B_OpaqueSurface::ClassId()
 * Entry point:            0x00456594
 * VC++ mangling:          ?unknown014@B_OpaqueSurface@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_OpaqueSurface::unknown014()
 {
 }
@@ -278,7 +278,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_OpaqueSurface &surface)
 * Entry point:            0x00456760
 * VC++ mangling:          ??0B_Portal@@QAE@XZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 B_Portal::B_Portal()
 {
 }
@@ -369,7 +369,7 @@ void B_TransparentSurface::GetPortals(B_Portal **portals, int *numPortals)
 * Entry point:            0x00456B78
 * VC++ mangling:          ?unknown010@B_TransparentSurface@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_TransparentSurface::unknown010()
 {
 }
@@ -380,7 +380,7 @@ void B_TransparentSurface::unknown010()
 * Entry point:            0x00456C3A
 * VC++ mangling:          ?unknown014@B_TransparentSurface@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_TransparentSurface::unknown014()
 {
 }
@@ -392,7 +392,7 @@ void B_TransparentSurface::unknown014()
 * Entry point:            0x00456FF1
 * VC++ mangling:          ?unknown018@B_TransparentSurface@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_TransparentSurface::unknown018()
 {
 }
@@ -468,7 +468,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_PortalPlanes &portalPlanes)
 * Entry point:            0x004574A5
 * VC++ mangling:          ??0B_SinglePortalSurface@@QAE@XZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 B_SinglePortalSurface::B_SinglePortalSurface()
 {
 }
@@ -518,7 +518,7 @@ void B_SinglePortalSurface::GetPortals(B_Portal **portals, int *numPortals)
 * Entry point:            0x00458123
 * VC++ mangling:          ?unknown010@B_SinglePortalSurface@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_SinglePortalSurface::unknown010()
 {
 }
@@ -529,7 +529,7 @@ void B_SinglePortalSurface::unknown010()
 * Entry point:            0x00458217
 * VC++ mangling:          ?unknown014@B_SinglePortalSurface@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_SinglePortalSurface::unknown014()
 {
 }
@@ -540,7 +540,7 @@ void B_SinglePortalSurface::unknown014()
 * Entry point:            0x00458CE9
 * VC++ mangling:          ?unknown018@B_SinglePortalSurface@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_SinglePortalSurface::unknown018()
 {
 }
@@ -574,7 +574,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_SinglePortalSurface &surface)
 * Entry point:            0x0045AC13
 * VC++ mangling:          ??0B_MultiplePortalSurface@@QAE@XZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 B_MultiplePortalSurface::B_MultiplePortalSurface()
 {
 }
@@ -585,7 +585,7 @@ B_MultiplePortalSurface::B_MultiplePortalSurface()
 * Entry point:            0x0045AD21
 * VC++ mangling:          ??1B_MultiplePortalSurface@@UAE@XZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 B_MultiplePortalSurface::~B_MultiplePortalSurface()
 {
 }
@@ -628,7 +628,7 @@ void B_MultiplePortalSurface::GetPortals(B_Portal **portals, int *numPortals)
 * Entry point:            0x0045B110
 * VC++ mangling:          ?unknown010@B_MultiplePortalSurface@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_MultiplePortalSurface::unknown010()
 {
 }
@@ -639,7 +639,7 @@ void B_MultiplePortalSurface::unknown010()
 * Entry point:            0x0045B28B
 * VC++ mangling:          ?unknown014@B_MultiplePortalSurface@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_MultiplePortalSurface::unknown014()
 {
 }
@@ -657,7 +657,7 @@ void B_MultiplePortalSurface::unknown014()
 * Entry point:            0x0045B67E
 * VC++ mangling:          ?unknown018@B_MultiplePortalSurface@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_MultiplePortalSurface::unknown018()
 {
 }
@@ -668,7 +668,7 @@ void B_MultiplePortalSurface::unknown018()
 * Entry point:            0x0045B707
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_MultiplePortalSurface@@@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 B_IDataFile &operator >>(B_IDataFile &file, B_MultiplePortalSurface &surface)
 {
     return file;
@@ -687,7 +687,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_MultiplePortalSurface &surface)
 * Entry point:            0x0045BCC0
 * VC++ mangling:          ?unknown010@B_Surface@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_Surface::unknown010()
 {
 }
@@ -698,7 +698,7 @@ void B_Surface::unknown010()
 * Entry point:            0x0045BCD0
 * VC++ mangling:          ?unknown014@B_Surface@@UAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_Surface::unknown014()
 {
 }

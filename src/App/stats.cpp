@@ -6,7 +6,7 @@
 * Entry point:            0x004246C0
 * VC++ mangling:          ?DisplayStats@B_App@@QAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_App::DisplayStats()
 {
 }

@@ -13,7 +13,7 @@
 * Entry point:            0x005341D8
 * VC++ mangling:          ?CanISee@B_PersonEntity@@QAEHPAV1@@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int B_PersonEntity::CanISee(B_PersonEntity *that)
 {
     return false;

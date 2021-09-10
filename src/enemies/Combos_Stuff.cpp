@@ -13,7 +13,7 @@
 * Entry point:            0x0058C0D5
 * VC++ mangling:          ?SetNextAttack@B_Combos@@QAEHPAVB_PersonEntity@@PBD@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int B_Combos::SetNextAttack(B_PersonEntity *personEntity, const char *attack)
 {
     return 0;

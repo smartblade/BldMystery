@@ -96,7 +96,7 @@ B_Entity *CreateSpark(
 * Module:                 Blade.exe
 * Entry point:            0x00500036
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 B_Entity *CreateEntity(
         const char *name, const char *kind, double x, double y, double z,
         const char *parent_class, const char *unknown
@@ -185,7 +185,7 @@ const char *GetEntityName(B_Entity *entity)
 * Module:                 Blade.exe
 * Entry point:            0x005036E1
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetEntitiesAt(
         double x, double y, double z, double radius, char ***entity_names
 )
@@ -201,7 +201,7 @@ int GetEntitiesAt(
 * Module:                 Blade.exe
 * Entry point:            0x005039F3
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetEntitiesVisibleFrom(
         double xc, double yc, double zc, double radius, double xdir,
         double ydir, double zdir, double angle, char ***entity_names
@@ -219,7 +219,7 @@ int GetEntitiesVisibleFrom(
 * Module:                 Blade.exe
 * Entry point:            0x00503D6F
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetObjectEntitiesVisibleFrom(
         double xc, double yc, double zc, double radius, double xdir,
         double ydir, double zdir, double angle, char ***entity_names
@@ -274,7 +274,7 @@ int GetEnemiesVisibleFrom(
 * Module:                 Blade.exe
 * Entry point:            0x00504467
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetCombos(
         const char *person_name, int num_combos, char **combos_names,
         int *combos_executed
@@ -292,7 +292,7 @@ int SetCombos(
 * Module:                 Blade.exe
 * Entry point:            0x00504527
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetCombos(const char *person_name, combo_t **combos)
 {
     int (*bld_proc)(const char *person_name, combo_t **combos) = NULL;
@@ -304,7 +304,7 @@ int GetCombos(const char *person_name, combo_t **combos)
 * Module:                 Blade.exe
 * Entry point:            0x005045A6
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetWeaponCombos(
         const char *person_name, const char *weapon_kind, combo_t **combos
 )
@@ -704,7 +704,7 @@ int ChangeEntityStatic(const char *entity_name, int is_static)
 * Module:                 Blade.exe
 * Entry point:            0x005050DD
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int ChangeEntityActor(const char *entity_name, int is_actor)
 {
     int (*bld_proc)(const char *entity_name, int is_actor) = NULL;
@@ -716,7 +716,7 @@ int ChangeEntityActor(const char *entity_name, int is_actor)
 * Module:                 Blade.exe
 * Entry point:            0x00505F63
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int ChangeEntityPerson(const char *entity_name, int is_person)
 {
     int (*bld_proc)(const char *entity_name, int is_person) = NULL;
@@ -728,7 +728,7 @@ int ChangeEntityPerson(const char *entity_name, int is_person)
 * Module:                 Blade.exe
 * Entry point:            0x00506E31
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int ChangeEntityWeapon(const char *entity_name, int is_weapon)
 {
     int (*bld_proc)(const char *entity_name, int is_weapon) = NULL;
@@ -740,7 +740,7 @@ int ChangeEntityWeapon(const char *entity_name, int is_weapon)
 * Module:                 Blade.exe
 * Entry point:            0x00507A06
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int ChangeEntityArrow(const char *entity_name, int is_arrow)
 {
     int (*bld_proc)(const char *entity_name, int is_arrow) = NULL;
@@ -772,7 +772,7 @@ int SetNextAttack(
 * Module:                 Blade.exe
 * Entry point:            0x005088E8
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 B_Entity *SeverLimb(const char *entity_name, int limb)
 {
     B_Entity *(*bld_proc)(const char *entity_name, int limb) = NULL;
@@ -784,7 +784,7 @@ B_Entity *SeverLimb(const char *entity_name, int limb)
 * Module:                 Blade.exe
 * Entry point:            0x00508935
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 // TODO fix prototype
 void SetCombatGroup()
 {
@@ -796,7 +796,7 @@ void SetCombatGroup()
 * Module:                 Blade.exe
 * Entry point:            0x00508B11
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SubscribeEntityToList(
         const char *entity_name, const char *timer_name
 )
@@ -812,7 +812,7 @@ int SubscribeEntityToList(
 * Module:                 Blade.exe
 * Entry point:            0x00508B80
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int MessageEvent(
         const char *entity_name, int message_type, int unknown1, int unknown2
 )
@@ -828,7 +828,7 @@ int MessageEvent(
 * Module:                 Blade.exe
 * Entry point:            0x00508BBB
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int InterruptCombat(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -840,7 +840,7 @@ int InterruptCombat(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x00508CD9
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 const char *GetParticleEntity(const char *entity_name)
 {
     const char *(*bld_proc)(const char *entity_name) = NULL;
@@ -852,7 +852,7 @@ const char *GetParticleEntity(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x00508D4D
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int Rel2AbsVector(
         const char *entity_name, double x_rel, double y_rel, double z_rel,
         double *x_abs, double *y_abs, double *z_abs
@@ -870,7 +870,7 @@ int Rel2AbsVector(
 * Module:                 Blade.exe
 * Entry point:            0x00508E06
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int Rel2AbsPoint(
         const char *entity_name, double x_rel, double y_rel, double z_rel,
         double *x_abs, double *y_abs, double *z_abs
@@ -888,7 +888,7 @@ int Rel2AbsPoint(
 * Module:                 Blade.exe
 * Entry point:            0x00508EBF
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int Rel2AbsVectorN(
         const char *entity_name, double x_rel, double y_rel, double z_rel,
         const char *anchor_name, double *x_abs, double *y_abs, double *z_abs
@@ -906,7 +906,7 @@ int Rel2AbsVectorN(
 * Module:                 Blade.exe
 * Entry point:            0x0050901D
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int Rel2AbsPointN(
         const char *entity_name, double x_rel, double y_rel, double z_rel,
         const char *anchor_name, double *x_abs, double *y_abs, double *z_abs
@@ -924,7 +924,7 @@ int Rel2AbsPointN(
 * Module:                 Blade.exe
 * Entry point:            0x0050917B
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int Abs2RelVector(
         const char *entity_name, double x_abs, double y_abs, double z_abs,
         double *x_rel, double *y_rel, double *z_rel
@@ -942,7 +942,7 @@ int Abs2RelVector(
 * Module:                 Blade.exe
 * Entry point:            0x00509257
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int Abs2RelPoint(
         const char *entity_name, double x_abs, double y_abs, double z_abs,
         double *x_rel, double *y_rel, double *z_rel
@@ -960,7 +960,7 @@ int Abs2RelPoint(
 * Module:                 Blade.exe
 * Entry point:            0x00509333
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int Abs2RelVectorN(
         const char *entity_name, double x_abs, double y_abs, double z_abs,
         const char *anchor_name, double *x_rel, double *y_rel, double *z_rel
@@ -978,7 +978,7 @@ int Abs2RelVectorN(
 * Module:                 Blade.exe
 * Entry point:            0x005094D1
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int Abs2RelPointN(
         const char *entity_name, double x_abs, double y_abs, double z_abs,
         const char *anchor_name, double *x_rel, double *y_rel, double *z_rel
@@ -996,7 +996,7 @@ int Abs2RelPointN(
 * Module:                 Blade.exe
 * Entry point:            0x0050966F
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 double SQDistance2(const char *entity_name1, const char *entity_name2)
 {
     double (*bld_proc)(const char *entity_name1, const char *entity_name2) = NULL;
@@ -1008,7 +1008,7 @@ double SQDistance2(const char *entity_name1, const char *entity_name2)
 * Module:                 Blade.exe
 * Entry point:            0x0050973E
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int RemoveEntityFromList(
         const char *entity_name, const char *timer_name
 )
@@ -1024,7 +1024,7 @@ int RemoveEntityFromList(
 * Module:                 Blade.exe
 * Entry point:            0x005097AD
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int CreateTimer(const char *timer_name, double period)
 {
     int (*bld_proc)(const char *timer_name, double period) = NULL;
@@ -1036,7 +1036,7 @@ int CreateTimer(const char *timer_name, double period)
 * Module:                 Blade.exe
 * Entry point:            0x005097EB
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetnTimers()
 {
     int (*bld_proc)() = NULL;
@@ -1048,7 +1048,7 @@ int GetnTimers()
 * Module:                 Blade.exe
 * Entry point:            0x005097FA
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetTimerInfo(
         int timer_index, const char **timer_name, double *period
 )
@@ -1064,7 +1064,7 @@ int GetTimerInfo(
 * Module:                 Blade.exe
 * Entry point:            0x0050981F
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetEntityIntProperty(
         const char *entity_name, int property_kind, int index, int *value
 )
@@ -1080,7 +1080,7 @@ int GetEntityIntProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0050B513
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetEntityFloatProperty(
         const char *entity_name, int property_kind, int index, double *value
 )
@@ -1103,7 +1103,7 @@ int GetEntityFloatProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0050D31F
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetEntityStringProperty(
         const char *entity_name, int property_kind, int index,
         const char **value
@@ -1121,7 +1121,7 @@ int GetEntityStringProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0050E086
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetEntityVectorProperty(
         const char *entity_name, int property_kind, int index,
         double *x, double *y, double *z
@@ -1139,7 +1139,7 @@ int GetEntityVectorProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0050F6E7
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetEntityQuatProperty(
         const char *entity_name, int property_kind, int index, double *quat1,
         double *quat2, double *quat3, double *quat4
@@ -1157,7 +1157,7 @@ int GetEntityQuatProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0050F8B9
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetEntityFuncProperty(
         const char *entity_name, int property_kind, int index, PyObject **func
 )
@@ -1173,7 +1173,7 @@ int GetEntityFuncProperty(
 * Module:                 Blade.exe
 * Entry point:            0x00510A2A
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetEntityIntProperty(
         const char *entity_name, int property_kind, int index, int value
 )
@@ -1189,7 +1189,7 @@ int SetEntityIntProperty(
 * Module:                 Blade.exe
 * Entry point:            0x00511DB7
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetEntityFloatProperty(
         const char *entity_name, int property_kind, int index, double value
 )
@@ -1205,7 +1205,7 @@ int SetEntityFloatProperty(
 * Module:                 Blade.exe
 * Entry point:            0x00513675
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetEntityStringProperty(
         const char *entity_name, int property_kind, int index,
         const char *value
@@ -1223,7 +1223,7 @@ int SetEntityStringProperty(
 * Module:                 Blade.exe
 * Entry point:            0x00514C9B
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetEntityVectorProperty(
         const char *entity_name, int property_kind, int index,
         double x, double y, double z
@@ -1241,7 +1241,7 @@ int SetEntityVectorProperty(
 * Module:                 Blade.exe
 * Entry point:            0x0051603F
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetEntityQuatProperty(
         const char *entity_name, int property_kind, int index, double quat1,
         double quat2, double quat3, double quat4
@@ -1259,7 +1259,7 @@ int SetEntityQuatProperty(
 * Module:                 Blade.exe
 * Entry point:            0x005163AA
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetEntityData(const char *entity_name, PyObject *data)
 {
     int (*bld_proc)(const char *entity_name, PyObject *data) = NULL;
@@ -1271,7 +1271,7 @@ int SetEntityData(const char *entity_name, PyObject *data)
 * Module:                 Blade.exe
 * Entry point:            0x0051645D
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 PyObject *GetEntityData(const char *entity_name)
 {
     PyObject *(*bld_proc)(const char *entity_name) = NULL;
@@ -1283,7 +1283,7 @@ PyObject *GetEntityData(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x005164FD
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetEntityFuncProperty(
         const char *entity_name, int property_kind, int index, PyObject *func
 )
@@ -1299,7 +1299,7 @@ int SetEntityFuncProperty(
 * Module:                 Blade.exe
 * Entry point:            0x00517526
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetEntityInternalState(
         const char *entity_name, PyObject *internal_state
 )
@@ -1315,7 +1315,7 @@ int SetEntityInternalState(
 * Module:                 Blade.exe
 * Entry point:            0x0051758B
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetEntityInternalState(
         const char *entity_name, PyObject **internal_state
 )
@@ -1331,7 +1331,7 @@ int GetEntityInternalState(
 * Module:                 Blade.exe
 * Entry point:            0x005175E8
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int AddSoundAnim(
     const char *entity_name, const char *anm_event, double time, B_Sound *sound
 )
@@ -1347,7 +1347,7 @@ int AddSoundAnim(
 * Module:                 Blade.exe
 * Entry point:            0x00517688
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int AddSoundEvent(
         const char *entity_name, const char *event, B_Sound *sound
 )
@@ -1377,7 +1377,7 @@ int AddScheduledFunc(
 * Module:                 Blade.exe
 * Entry point:            0x00517740
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int RemoveScheduledFunc(const char *name)
 {
     int (*bld_proc)(const char *name) = NULL;
@@ -1389,7 +1389,7 @@ int RemoveScheduledFunc(const char *name)
 * Module:                 Blade.exe
 * Entry point:            0x00517758
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetnScheduledFuncs()
 {
     int (*bld_proc)() = NULL;
@@ -1401,7 +1401,7 @@ int GetnScheduledFuncs()
 * Module:                 Blade.exe
 * Entry point:            0x00517767
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetScheduledFunc(
         int index, PyObject **func, PyObject **args, const char **name,
         double *time
@@ -1419,7 +1419,7 @@ int GetScheduledFunc(
 * Module:                 Blade.exe
 * Entry point:            0x0051778A
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int EntityRotate(
         const char *entity_name, double x_dir, double y_dir, double z_dir,
         double velocity, int unknown
@@ -1437,7 +1437,7 @@ int EntityRotate(
 * Module:                 Blade.exe
 * Entry point:            0x00517867
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int EntityRotateAbs(
         const char *entity_name, double x, double y, double z, double x_dir,
         double y_dir, double z_dir, double angle, int i_unknown
@@ -1455,7 +1455,7 @@ int EntityRotateAbs(
 * Module:                 Blade.exe
 * Entry point:            0x005179E7
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int EntityRotateRel(
         const char *entity_name, double x, double y, double z, double x_dir,
         double y_dir, double z_dir, double angle, int i_unknown
@@ -1473,7 +1473,7 @@ int EntityRotateRel(
 * Module:                 Blade.exe
 * Entry point:            0x00517B67
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int EntityMove(
         const char *entity_name, double x, double y, double z, int unknown
 )
@@ -1489,7 +1489,7 @@ int EntityMove(
 * Module:                 Blade.exe
 * Entry point:            0x00517C3C
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int EntitySetPosition(
         const char *entity_name, double x, double y, double z, int unknown
 )
@@ -1505,7 +1505,7 @@ int EntitySetPosition(
 * Module:                 Blade.exe
 * Entry point:            0x00517D17
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int EntitySetOrientation(
         const char *entity_name, double quat1, double quat2, double quat3,
         double quat4, int unknown
@@ -1523,7 +1523,7 @@ int EntitySetOrientation(
 * Module:                 Blade.exe
 * Entry point:            0x00517E42
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int EntityPutToWorld(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -1535,7 +1535,7 @@ int EntityPutToWorld(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x00517E97
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int EntityAddAnmEventFunc(
         const char *entity_name, const char *anm_event, PyObject *func
 )
@@ -1551,7 +1551,7 @@ int EntityAddAnmEventFunc(
 * Module:                 Blade.exe
 * Entry point:            0x00517F32
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int EntityDelAnmEventFunc(
         const char *entity_name, const char *anm_event
 )
@@ -1567,7 +1567,7 @@ int EntityDelAnmEventFunc(
 * Module:                 Blade.exe
 * Entry point:            0x00517FB9
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int EntityClearAnmEventFuncs(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -1586,7 +1586,7 @@ int EntityClearAnmEventFuncs(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x00518030
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int ClearActorPath(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -1598,7 +1598,7 @@ int ClearActorPath(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x005180A2
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int AddActorPathnode(
         const char *entity_name, double time, double x, double y, double z
 )
@@ -1614,7 +1614,7 @@ int AddActorPathnode(
 * Module:                 Blade.exe
 * Entry point:            0x00518148
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int StartActorPath(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -1626,7 +1626,7 @@ int StartActorPath(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x005181BA
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GoToActorPath(
         const char *entity_name, int i_unknown, double d_unknown
 )
@@ -1642,7 +1642,7 @@ int GoToActorPath(
 * Module:                 Blade.exe
 * Entry point:            0x00518238
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int TestPos(
         const char *entity_name, double x, double y, double z, double max_fall,
         int action_area, int *isCorrect
@@ -1660,7 +1660,7 @@ int TestPos(
 * Module:                 Blade.exe
 * Entry point:            0x0051831A
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int TestPosInOwnBox(
         const char *entity_name, double x, double y, double z, double box_size,
         int *isCorrect
@@ -1678,7 +1678,7 @@ int TestPosInOwnBox(
 * Module:                 Blade.exe
 * Entry point:            0x005184E8
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int TurnOnActor(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -1690,7 +1690,7 @@ int TurnOnActor(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051855A
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int TurnOffActor(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -1702,7 +1702,7 @@ int TurnOffActor(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x005185CC
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetAttackList(const char *entity_name, PyObject *attack_list)
 {
     int (*bld_proc)(const char *entity_name, PyObject *attack_list) = NULL;
@@ -1714,7 +1714,7 @@ int SetAttackList(const char *entity_name, PyObject *attack_list)
 * Module:                 Blade.exe
 * Entry point:            0x005186BA
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 PyObject *GetAttackList(const char *entity_name)
 {
     PyObject *(*bld_proc)(const char *entity_name) = NULL;
@@ -1726,7 +1726,7 @@ PyObject *GetAttackList(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051872A
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 PyObject *GetGroupMembers(const char *entity_name)
 {
     PyObject *(*bld_proc)(const char *entity_name) = NULL;
@@ -1738,7 +1738,7 @@ PyObject *GetGroupMembers(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x00518910
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 PyObject *GetCombatants(const char *entity_name)
 {
     PyObject *(*bld_proc)(const char *entity_name) = NULL;
@@ -1750,7 +1750,7 @@ PyObject *GetCombatants(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051898B
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetActorNodeStartTangent(
         const char *entity_name, int unknown1, double unknown2, double unknown3,
         double unknown4
@@ -1768,7 +1768,7 @@ int SetActorNodeStartTangent(
 * Module:                 Blade.exe
 * Entry point:            0x00518A2D
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetActorNodeEndTangent(
         const char *entity_name, int unknown1, double unknown2, double unknown3,
         double unknown4
@@ -1786,7 +1786,7 @@ int SetActorNodeEndTangent(
 * Module:                 Blade.exe
 * Entry point:            0x00518ACF
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetSound(const char *entity_name, const char *sound)
 {
     int (*bld_proc)(const char *entity_name, const char *sound) = NULL;
@@ -1798,7 +1798,7 @@ int SetSound(const char *entity_name, const char *sound)
 * Module:                 Blade.exe
 * Entry point:            0x00518B45
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetObjectSound(const char *entity_name, const char *sound)
 {
     int (*bld_proc)(const char *entity_name, const char *sound) = NULL;
@@ -1810,7 +1810,7 @@ int SetObjectSound(const char *entity_name, const char *sound)
 * Module:                 Blade.exe
 * Entry point:            0x00518BBB
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int PlayEntitySound(const char *entity_name, int i_unknown)
 {
     int (*bld_proc)(const char *entity_name, int i_unknown) = NULL;
@@ -1829,7 +1829,7 @@ int PlayEntitySound(const char *entity_name, int i_unknown)
 * Module:                 Blade.exe
 * Entry point:            0x00518CA3
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int Stop(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -1841,7 +1841,7 @@ int Stop(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x00518D90
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int StopAt(const char *entity_name, double x, double y, double z)
 {
     int (*bld_proc)(const char *entity_name, double x, double y, double z) = NULL;
@@ -1853,7 +1853,7 @@ int StopAt(const char *entity_name, double x, double y, double z)
 * Module:                 Blade.exe
 * Entry point:            0x00518E2E
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int CheckAnimCol(
         const char *entity_name, const char *anm_name, const char *obj_name,
         int unknown, int *res
@@ -1871,7 +1871,7 @@ int CheckAnimCol(
 * Module:                 Blade.exe
 * Entry point:            0x00518F1A
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int RemoveFromInvent(const char *entity_name, const char *obj_name)
 {
     int (*bld_proc)(const char *entity_name, const char *obj_name) = NULL;
@@ -1883,7 +1883,7 @@ int RemoveFromInvent(const char *entity_name, const char *obj_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051919B
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int ResetWounds(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -1895,7 +1895,7 @@ int ResetWounds(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051920D
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int RemoveFromInventRight(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -1907,7 +1907,7 @@ int RemoveFromInventRight(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x00519285
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int RemoveFromInventLeft(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -1919,7 +1919,7 @@ int RemoveFromInventLeft(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x005192FD
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int RemoveFromInventLeft2(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -1968,7 +1968,7 @@ int CanISee(
 * Module:                 Blade.exe
 * Entry point:            0x0051942F
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int CanISeeFrom(
         const char *entity_name, const char *seen_entity_name,
         double x, double y, double z, int *canISee
@@ -1986,7 +1986,7 @@ int CanISeeFrom(
 * Module:                 Blade.exe
 * Entry point:            0x005194EE
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetActiveEnemy(
         const char *entity_name, const char *active_enemy_name, int *unknown
 )
@@ -2002,7 +2002,7 @@ int SetActiveEnemy(
 * Module:                 Blade.exe
 * Entry point:            0x005195C0
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int ExcludeHitFor(
         const char *entity_name, const char *exclude_hit_for_name,
         void *unknown
@@ -2020,7 +2020,7 @@ int ExcludeHitFor(
 * Module:                 Blade.exe
 * Entry point:            0x00519697
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int ExcludeHitInAnimationFor(
         const char *entity_name, const char *exclude_hit_for_name, void *unknown
 )
@@ -2036,7 +2036,7 @@ int ExcludeHitInAnimationFor(
 * Module:                 Blade.exe
 * Entry point:            0x00519792
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int Link(
         const char *entity_name, const char *child_entity_name, void *unknown
 )
@@ -2052,7 +2052,7 @@ int Link(
 * Module:                 Blade.exe
 * Entry point:            0x00519833
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int LinkToNode(
         const char *entity_name, const char *child_name, int node_index,
         void *unknown
@@ -2070,7 +2070,7 @@ int LinkToNode(
 * Module:                 Blade.exe
 * Entry point:            0x0051996F
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int LinkAnchors(
         const char *entity_name, const char *entity_anchor_name,
         const char *child_name, const char *child_anchor_name, void *unknown
@@ -2088,7 +2088,7 @@ int LinkAnchors(
 * Module:                 Blade.exe
 * Entry point:            0x00519A7D
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int UnlinkChilds(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -2100,7 +2100,7 @@ int UnlinkChilds(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x00519ACF
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetNodeIndex(
         const char *entity_name, const char *node_name, int *index
 )
@@ -2116,7 +2116,7 @@ int GetNodeIndex(
 * Module:                 Blade.exe
 * Entry point:            0x00519B6F
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int UnlinkChild(
         const char *entity_name, const char *child_entity_name, void *unknown
 )
@@ -2132,7 +2132,7 @@ int UnlinkChild(
 * Module:                 Blade.exe
 * Entry point:            0x00519C0D
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int InsideActionArea(
         const char *entity_name, int action_area, int *is_inside
 )
@@ -2148,7 +2148,7 @@ int InsideActionArea(
 * Module:                 Blade.exe
 * Entry point:            0x00519CBF
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetTmpAnmFlags(
         const char *entity_name, int wuea, int mod_y, int solf, int copy_rot,
         int bng_mov, int headf, int unknown
@@ -2166,7 +2166,7 @@ int SetTmpAnmFlags(
 * Module:                 Blade.exe
 * Entry point:            0x00519D4F
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetAnmFlags(
         const char *entity_name, const char *anm_name, int wuea, int mod_y,
         int solf, int copy_rot, int bng_mov, int headf
@@ -2184,7 +2184,7 @@ int SetAnmFlags(
 * Module:                 Blade.exe
 * Entry point:            0x00519DDF
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int LaunchAnimation2(
         const char *entity_name, const char *anm_name1, const char *anm_name2
 )
@@ -2200,7 +2200,7 @@ int LaunchAnimation2(
 * Module:                 Blade.exe
 * Entry point:            0x00519E5F
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SetEnemy(const char *entity_name, const char *enemy_name)
 {
     int (*bld_proc)(const char *entity_name, const char *enemy_name) = NULL;
@@ -2212,7 +2212,7 @@ int SetEnemy(const char *entity_name, const char *enemy_name)
 * Module:                 Blade.exe
 * Entry point:            0x00519F38
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 const char *GetEnemy(const char *entity_name)
 {
     const char *(*bld_proc)(const char *entity_name) = NULL;
@@ -2224,7 +2224,7 @@ const char *GetEnemy(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x00519FD6
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int Chase(
         const char *entity_name, const char *enemy_name, int action_area
 )
@@ -2240,7 +2240,7 @@ int Chase(
 * Module:                 Blade.exe
 * Entry point:            0x0051A0A5
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int ResetChase(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -2252,7 +2252,7 @@ int ResetChase(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051A14B
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GoTo(const char *entity_name, int x, int y, int z)
 {
     int (*bld_proc)(const char *entity_name, int x, int y, int z) = NULL;
@@ -2264,7 +2264,7 @@ int GoTo(const char *entity_name, int x, int y, int z)
 * Module:                 Blade.exe
 * Entry point:            0x0051A1FC
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int CanGoTo(const char *entity_name, int x, int y, int z)
 {
     int (*bld_proc)(const char *entity_name, int x, int y, int z) = NULL;
@@ -2276,7 +2276,7 @@ int CanGoTo(const char *entity_name, int x, int y, int z)
 * Module:                 Blade.exe
 * Entry point:            0x0051A2A8
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int QuickFace(const char *entity_name, double angle)
 {
     int (*bld_proc)(const char *entity_name, double angle) = NULL;
@@ -2288,7 +2288,7 @@ int QuickFace(const char *entity_name, double angle)
 * Module:                 Blade.exe
 * Entry point:            0x0051A32A
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int Face(const char *entity_name, double angle)
 {
     int (*bld_proc)(const char *entity_name, double angle) = NULL;
@@ -2300,7 +2300,7 @@ int Face(const char *entity_name, double angle)
 * Module:                 Blade.exe
 * Entry point:            0x0051A3E3
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int StartLooking(const char *entity_name, int x, int y, int z)
 {
     int (*bld_proc)(const char *entity_name, int x, int y, int z) = NULL;
@@ -2312,7 +2312,7 @@ int StartLooking(const char *entity_name, int x, int y, int z)
 * Module:                 Blade.exe
 * Entry point:            0x0051A3ED
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int StopLooking(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -2324,7 +2324,7 @@ int StopLooking(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051A47A
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int LookAtEntity(
         const char *entity_name, const char *look_at_entity_name
 )
@@ -2347,7 +2347,7 @@ int LookAtEntity(
 * Module:                 Blade.exe
 * Entry point:            0x0051A5D6
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int LaunchWatch(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -2359,7 +2359,7 @@ int LaunchWatch(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051A68A
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetActionMode(const char *entity_name, int *action_mode)
 {
     int (*bld_proc)(const char *entity_name, int *action_mode) = NULL;
@@ -2371,7 +2371,7 @@ int GetActionMode(const char *entity_name, int *action_mode)
 * Module:                 Blade.exe
 * Entry point:            0x0051A74D
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int StartGrabbing(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -2383,7 +2383,7 @@ int StartGrabbing(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051A789
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int StopGrabbing(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -2395,7 +2395,7 @@ int StopGrabbing(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051A7C5
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int AddEntWatchAnim(const char *entity_name, const char *anm_name)
 {
     int (*bld_proc)(const char *entity_name, const char *anm_name) = NULL;
@@ -2407,7 +2407,7 @@ int AddEntWatchAnim(const char *entity_name, const char *anm_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051A841
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int Freeze(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -2419,7 +2419,7 @@ int Freeze(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051A8D7
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int UnFreeze(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -2431,7 +2431,7 @@ int UnFreeze(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051A96A
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SwitchTo1H(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -2443,7 +2443,7 @@ int SwitchTo1H(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051A9E2
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetDummyAxis(
         const char *entity_name, const char *anchor_name, double x_dir,
         double y_dir, double z_dir, double *x_dummy_axis, double *y_dummy_axis,
@@ -2463,7 +2463,7 @@ int GetDummyAxis(
 * Module:                 Blade.exe
 * Entry point:            0x0051AD9B
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GraspPos(
         const char *entity_name, const char *grasp, double *x, double *y,
         double *z
@@ -2481,7 +2481,7 @@ int GraspPos(
 * Module:                 Blade.exe
 * Entry point:            0x0051AF97
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SwitchToBow(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -2493,7 +2493,7 @@ int SwitchToBow(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051B00F
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int LaunchBayRoute(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -2505,7 +2505,7 @@ int LaunchBayRoute(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051B09A
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int EntityCatchOnFire(
         const char *entity_name, double x, double y, double z
 )
@@ -2521,7 +2521,7 @@ int EntityCatchOnFire(
 * Module:                 Blade.exe
 * Entry point:            0x0051B18D
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetNChildren(const char *entity_name)
 {
     int (*bld_proc)(const char *entity_name) = NULL;
@@ -2533,7 +2533,7 @@ int GetNChildren(const char *entity_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051B1DB
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 const char *GetChild(const char *entity_name, int index)
 {
     const char *(*bld_proc)(const char *entity_name, int index) = NULL;
@@ -2572,7 +2572,7 @@ int CreateBipedData(const char *biped_name, const char *kind)
 * Module:                 Blade.exe
 * Entry point:            0x0051B4D3
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int AddBipedAction(
         const char *char_name, const char *action_name,
         const char *animation_name, double d_unknown1, double d_unknown2,
@@ -2613,7 +2613,7 @@ int RemoveBipedAction(const char *race_name, const char *action_name)
 * Module:                 Blade.exe
 * Entry point:            0x0051BC8F
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int AddBipedActionC(
         const char *char_name, const char *action_name,
         const char *animation_name, const char *s_unknown, double d_unknown1,
@@ -3081,7 +3081,7 @@ void SaveScreeShoot(const char *filename, int width, int height)
 * Module:                 Blade.exe
 * Entry point:            0x0051D6FB
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void CleanArea(double x, double y, double z, float distance)
 {
     void (*bld_proc)(double x, double y, double z, float distance) = NULL;

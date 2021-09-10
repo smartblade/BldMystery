@@ -9,7 +9,7 @@
 * Entry point:            0x00040AD10
 * VC++ mangling:          ??0location_t@@QAE@ABVB_Vector@@NNN@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 location_t::location_t(
     const B_Vector &position,
     double rotationX,
@@ -36,7 +36,7 @@ location_t::~location_t()
 * VC++ mangling:          ?setPosition@location_t@@QAEXABVB_Vector@@@Z
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void location_t::setPosition(const B_Vector &pos)
 {
@@ -51,7 +51,7 @@ void location_t::setPosition(const B_Vector &pos)
 * VC++ mangling:          ?setOrientation@location_t@@QAEXABVB_Vector@@@Z
 */
 
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 
 void location_t::setOrientation(const B_Vector &orientation)
 {

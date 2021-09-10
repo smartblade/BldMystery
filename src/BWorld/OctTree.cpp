@@ -13,7 +13,7 @@
 * Entry point:            0x00451A21
 * VC++ mangling:          ?Build@B_OctTree@@QAEXABVB_Map@@N@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_OctTree::Build(const B_Map &map, double size)
 {
 }

@@ -252,7 +252,7 @@ void ReassignCombustionData()
 * Module:                 Blade.exe
 * Entry point:            0x004281D3
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SaveAnmRaceData(const char *file_name, const char *race)
 {
     int (*bld_proc)(const char *file_name, const char *race);
@@ -264,7 +264,7 @@ int SaveAnmRaceData(const char *file_name, const char *race)
 * Module:                 Blade.exe
 * Entry point:            0x0042857B
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int LoadAnmRaceData(const char *file_name)
 {
     int (*bld_proc)(const char *file_name);
@@ -303,7 +303,7 @@ const char *GetRaceName(int index)
 * Module:                 Blade.exe
 * Entry point:            0x00428A22
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int SaveAnmSoundData(const char *file_name, const char *race)
 {
     int (*bld_proc)(const char *file_name, const char *race);
@@ -315,7 +315,7 @@ int SaveAnmSoundData(const char *file_name, const char *race)
 * Module:                 Blade.exe
 * Entry point:            0x00428BEE
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int LoadAnmSoundData(const char *file_name)
 {
     int (*bld_proc)(const char *file_name);

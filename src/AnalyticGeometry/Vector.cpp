@@ -16,7 +16,7 @@
 * Entry point:            0x0040A375
 * VC++ mangling:          ??D@YA?AVB_Vector@@NABV0@@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 B_Vector operator *(double c, const B_Vector &v)
 {
     return v;
@@ -28,7 +28,7 @@ B_Vector operator *(double c, const B_Vector &v)
 * Entry point:            0x0040A3D1
 * VC++ mangling:          ??DB_Vector@@QBE?AV0@N@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 B_Vector B_Vector::operator *(double c) const
 {
     return *this;
@@ -48,7 +48,7 @@ B_Vector B_Vector::operator *(double c) const
 * Entry point:            0x0040A493
 * VC++ mangling:          ??XB_Vector@@QAEAAV0@N@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 B_Vector &B_Vector::operator *=(double c)
 {
     return *this;
@@ -67,7 +67,7 @@ B_Vector &B_Vector::operator *=(double c)
 * Entry point:            0x0040A567
 * VC++ mangling:          ??HB_Vector@@QBE?AV0@ABV0@@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 B_Vector B_Vector::operator +(const B_Vector &that) const
 {
     return that;
@@ -86,7 +86,7 @@ B_Vector B_Vector::operator +(const B_Vector &that) const
 * Entry point:            0x0040A67C
 * VC++ mangling:          ??ZB_Vector@@QAEABV0@ABV0@@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 const B_Vector &B_Vector::operator -=(const B_Vector &that)
 {
     return *this;
@@ -105,7 +105,7 @@ const B_Vector &B_Vector::operator -=(const B_Vector &that)
 * Entry point:            0x0040AA41
 * VC++ mangling:          ?SetAngle@B_Vector@@QAEXN@Z
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_Vector::SetAngle(double angle)
 {
 }

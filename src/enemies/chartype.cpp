@@ -13,7 +13,7 @@
 * Entry point:            0x00587F50
 * VC++ mangling:          ?GetMaxGrabDist@B_CharType@@QAENXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 double B_CharType::GetMaxGrabDist()
 {
     return 0.0;
@@ -25,7 +25,7 @@ double B_CharType::GetMaxGrabDist()
 * Entry point:            0x00587FF3
 * VC++ mangling:          ?GetMedGrabDist@B_CharType@@QAENXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 double B_CharType::GetMedGrabDist()
 {
     return 0.0;
@@ -37,7 +37,7 @@ double B_CharType::GetMedGrabDist()
 * Entry point:            0x00588096
 * VC++ mangling:          ?GetMinGrabDist@B_CharType@@QAENXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 double B_CharType::GetMinGrabDist()
 {
     return 0.0;
@@ -55,7 +55,7 @@ double B_CharType::GetMinGrabDist()
 * Module:                 Blade.exe
 * Entry point:            0x00588F43
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 anim_t *LoadFromHDAnim(const char *anm_name)
 {
     return NULL;

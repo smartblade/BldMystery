@@ -14,7 +14,7 @@
 * Module:                 Blade.exe
 * Entry point:            0x0046AB6A
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GetAnimationDuration(const char *animation_name, double *duration)
 {
     int (*bld_proc)(const char *animation_name, double *duration) = NULL;
@@ -26,7 +26,7 @@ int GetAnimationDuration(const char *animation_name, double *duration)
 * Module:                 Blade.exe
 * Entry point:            0x0046AC16
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int RStepEvents(const char *s_unknown1, const char *s_unknown2)
 {
     int (*bld_proc)(const char *s_unknown1, const char *s_unknown2) = NULL;
@@ -38,7 +38,7 @@ int RStepEvents(const char *s_unknown1, const char *s_unknown2)
 * Module:                 Blade.exe
 * Entry point:            0x0046AEEC
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int LStepEvents(const char *s_unknown1, const char *s_unknown2)
 {
     int (*bld_proc)(const char *s_unknown1, const char *s_unknown2) = NULL;
@@ -57,7 +57,7 @@ int LStepEvents(const char *s_unknown1, const char *s_unknown2)
 * Module:                 Blade.exe
 * Entry point:            0x0046B885
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int LoadSampledAnimation(
         const char *file, const char *internal_name, int type,
         const char *s_unknown, int i_unknown
@@ -82,7 +82,7 @@ int LoadSampledAnimation(
 * Module:                 Blade.exe
 * Entry point:            0x0046C4D9
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int CreateFCAnimation(
         const char *file, const char *internal_name, int n_armonics
 )
@@ -98,7 +98,7 @@ int CreateFCAnimation(
 * Module:                 Blade.exe
 * Entry point:            0x0046CAFB
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int CreateDFCAnimation(
         const char *file1, const char *file2, const char *internal_name,
         int n_armonics
@@ -116,7 +116,7 @@ int CreateDFCAnimation(
 * Module:                 Blade.exe
 * Entry point:            0x0046D1F0
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int AddRStepEvent(const char *animation_name, double d_unknown)
 {
     int (*bld_proc)(const char *animation_name, double d_unknown) = NULL;
@@ -128,7 +128,7 @@ int AddRStepEvent(const char *animation_name, double d_unknown)
 * Module:                 Blade.exe
 * Entry point:            0x0046D3DE
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int AddLStepEvent(const char *animation_name, double d_unknown)
 {
     int (*bld_proc)(const char *animation_name, double d_unknown) = NULL;
@@ -140,7 +140,7 @@ int AddLStepEvent(const char *animation_name, double d_unknown)
 * Module:                 Blade.exe
 * Entry point:            0x0046D5CC
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int AddRReleaseEvent(const char *animation_name, double d_unknown)
 {
     int (*bld_proc)(const char *animation_name, double d_unknown) = NULL;
@@ -152,7 +152,7 @@ int AddRReleaseEvent(const char *animation_name, double d_unknown)
 * Module:                 Blade.exe
 * Entry point:            0x0046D7BA
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int AddLReleaseEvent(const char *animation_name, double d_unknown)
 {
     int (*bld_proc)(const char *animation_name, double d_unknown) = NULL;
@@ -164,7 +164,7 @@ int AddLReleaseEvent(const char *animation_name, double d_unknown)
 * Module:                 Blade.exe
 * Entry point:            0x0046D9A8
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void AddAnmEvent(const char *anm_name, const char *event_name, double event_frame)
 {
     void (*bld_proc)(const char *anm_name, const char *event_name, double event_frame) = NULL;
@@ -183,7 +183,7 @@ void AddAnmEvent(const char *anm_name, const char *event_name, double event_fram
 * Module:                 Blade.exe
 * Entry point:            0x0046E1AB
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void AddStopTests(const char *animation_name)
 {
     void (*bld_proc)(const char *animation_name) = NULL;
@@ -195,7 +195,7 @@ void AddStopTests(const char *animation_name)
 * Module:                 Blade.exe
 * Entry point:            0x0046E4AC
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void AddFloorCTolerance(const char *animation_name, double tolerance)
 {
     void (*bld_proc)(const char *animation_name, double tolerance) = NULL;
@@ -207,7 +207,7 @@ void AddFloorCTolerance(const char *animation_name, double tolerance)
 * Module:                 Blade.exe
 * Entry point:            0x0046E57A
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int AddTranTime(
         const char *biped_name, const char *next_anm , const char *prev_anm,
         double time, int unknown
@@ -225,7 +225,7 @@ int AddTranTime(
 * Module:                 Blade.exe
 * Entry point:            0x0046E93B
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int CheckAnims()
 {
     int (*bld_proc)() = NULL;
@@ -237,7 +237,7 @@ int CheckAnims()
 * Module:                 Blade.exe
 * Entry point:            0x0046EBFD
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 int GiveAnims(const char *race_name)
 {
     int (*bld_proc)(const char *race_name) = NULL;

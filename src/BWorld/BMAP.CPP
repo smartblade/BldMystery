@@ -39,7 +39,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_SectorLights &lights)
 * Entry point:            0x0042E06B
 * VC++ mangling:          ??0B_Sector@@QAE@XZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 B_Sector::B_Sector()
 {
 }
@@ -58,7 +58,7 @@ B_Sector::B_Sector()
 * Entry point:            0x0042E464
 * VC++ mangling:          ?CalculateBoundingBox@B_Sector@@QAEXXZ
 */
-#ifdef BLD_NATIVE
+#ifndef BLD_NATIVE
 void B_Sector::CalculateBoundingBox()
 {
 }
