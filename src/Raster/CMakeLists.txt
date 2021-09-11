@@ -12,3 +12,5 @@ set_target_properties(
     ${TARGET} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${BOD_RUNTIME_DIR}
 )
+
+add_subdirectory(rOpenGL3)

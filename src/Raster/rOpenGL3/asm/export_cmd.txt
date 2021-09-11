@@ -1,0 +1,3 @@
+/EXPORT:ConfigDlg=l10001091
+/EXPORT:CreateRaster=l100010CD
+/EXPORT:DestroyRaster=l100012D5

@@ -1,0 +1,7 @@
+; Code segment (jump tables)
+;; 0x1000A412 0x1000A4EA
+;; 0x1000A98A 0x1000AA69
+;; 0x1000AE31 0x1000AF09
+
+; Data segments
+;; 0x10036C9C 0x10054000

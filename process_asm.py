@@ -119,8 +119,9 @@ class Procedure(CodeItem):
         writer.write("{} ENDP\n".format(self.label()))
 
 class ImportReference:
+    underscore_libs = {'python15'}
     def __init__(self, addr, library, name):
-        is_underscore = (library == 'python15')
+        is_underscore = library.lower() in self.underscore_libs
         self._addr = addr
         self._name = name
         if is_underscore:
@@ -1334,7 +1335,8 @@ def run():
             asm_files = AsmFiles(root)
             module_name = read_module_name(asm_files)
             print("Processing {}".format(module_name))
-            process_asm_dir(asm_files, symbols_dict[module_name])
+            symbols = symbols_dict.get(module_name, SrcSymbols())
+            process_asm_dir(asm_files, symbols)
 
 def process_asm_dir(asm_files, symbols):
     symbols_hash = calc_hash(symbols)
