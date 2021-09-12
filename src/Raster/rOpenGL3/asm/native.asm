@@ -75818,42 +75818,7 @@ l100289BA ENDP
 ;* Jump:
 ; 100012D5(U) 
 ;
-l10028A98 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000000Ch
-           mov eax, dword ptr [ebp+008h]
-           mov dword ptr [ebp-008h], eax
-           mov ecx, dword ptr [ebp-008h]
-           mov dword ptr [ebp-004h], ecx
-           cmp dword ptr [ebp-004h], 000000000h
-           je l10028AC1
-;
-;* Control "OK", Dialog 006E
-;
-           push 000000001h
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [edx]
-           mov ecx, dword ptr [ebp-004h]
-           call [eax]
-           mov dword ptr [ebp-00Ch], eax
-           jmp l10028AC8
-;
-;* Jump:
-; 10028AAE(C) 
-;
-l10028AC1: mov dword ptr [ebp-00Ch], 000000000h
-;
-;* Jump:
-; 10028ABF(U) 
-;
-;* Control "OK", Dialog 006E
-;
-l10028AC8: mov eax, 000000001h
-           mov esp, ebp
-           pop ebp
-           ret
-l10028A98 ENDP
+           call l10028A98; Implemented in c++ code
 ;
            int 03h
            int 03h
