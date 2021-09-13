@@ -507,6 +507,14 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="rOpenGL"
+			>
+			<File
+				RelativePath=".\rOpenGL\OpenGLRasterDevice.cpp"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>

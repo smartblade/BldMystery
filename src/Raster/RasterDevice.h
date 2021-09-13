@@ -53,9 +53,9 @@ public:
     virtual void unknown05C() = 0;
     virtual void unknown060() = 0;
     virtual int n_textures() = 0;
-    virtual void unknown068() = 0;
-    virtual void unknown06C() = 0;
-    virtual void unknown070() = 0;
+    virtual void unknown068();
+    virtual void unknown06C();
+    virtual void unknown070();
 
     virtual void IncModeReflection()
     {
@@ -117,7 +117,7 @@ public:
     virtual void unknown110() = 0;
     virtual void SetMode(int mode) = 0;
     virtual void unknown118() = 0;
-    virtual void unknown11C() = 0;
+    virtual void unknown11C();
     virtual void unknown120() = 0;
     virtual void unknown124() = 0;
     virtual B_BitMap24 *GetBitMap24() = 0;
@@ -279,7 +279,7 @@ public:
     virtual void unknown1D4() = 0;
     virtual float get_text_blur_alpha() = 0;
     virtual void unknown1DC() = 0;
-    virtual int write_text(const char *text) = 0;
+    virtual int write_text(const char *text);
     virtual void draw_bitmap(long handle, int w, int h) = 0;
     virtual void draw_image(
         int w, int h, const char *color_style, const char *is_normal,
@@ -334,7 +334,7 @@ public:
         int &unknown5
     ) = 0;
     virtual int FullScreen() = 0;
-    virtual void unknown228() = 0;
+    virtual void unknown228();
     virtual int unknown22C() = 0;
     virtual const char *class_id_name() = 0;
 
