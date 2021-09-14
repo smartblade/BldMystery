@@ -126,8 +126,8 @@ void SetContrast(float contrast) {
 * Entry point:            0x1000367C
 */
 
-float get_contrast() {
-        return B_3D_raster_device->get_contrast();
+float GetContrast() {
+        return B_3D_raster_device->GetContrast();
 }
 
 

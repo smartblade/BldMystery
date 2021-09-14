@@ -355,7 +355,7 @@ PyObject *raster_GetContrast(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":GetContrast"))
                 return NULL;
 
-        return Py_BuildValue("f", get_contrast());
+        return Py_BuildValue("f", GetContrast());
 }
 
 

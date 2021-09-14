@@ -19,7 +19,7 @@ public:
     virtual void SetGammaCorrection(float gamma);
     virtual float GetGammaCorrection();
     virtual void SetContrast(float contrast);
-    virtual float get_contrast();
+    virtual float GetContrast();
     virtual void set_brightness(float brightness);
     virtual float get_brightness();
     virtual void SetVideoSettings(
