@@ -643,8 +643,8 @@ int GetCurrentMode(
 * Entry point:            0x10003CFB
 */
 
-const char *class_id_name() {
-        return B_3D_raster_device->class_id_name();
+const char *ClassIdName() {
+        return B_3D_raster_device->ClassIdName();
 }
 
 

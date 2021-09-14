@@ -1395,7 +1395,7 @@ PyObject *raster_ClassIdName(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":ClassIdName"))
                 return NULL;
 
-        name = class_id_name();
+        name = ClassIdName();
 
         return Py_BuildValue("s", name);
 }

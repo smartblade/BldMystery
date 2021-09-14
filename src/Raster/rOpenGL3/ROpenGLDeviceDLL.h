@@ -146,7 +146,7 @@ public:
     );
     virtual int FullScreen();
     virtual int unknown22C();
-    virtual const char *class_id_name();
+    virtual const char *ClassIdName();
 
 private:
     char unknownFields[0xB2450];

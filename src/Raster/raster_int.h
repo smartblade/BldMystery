@@ -97,7 +97,7 @@ extern int set_video_mode(int mode_index);
 extern int GetCurrentMode(
         int &unknown1, int &w, int &h, int &unknown4, int &unknown5
 );
-extern const char *class_id_name(void);
+extern const char *ClassIdName(void);
 extern void SetFont(long font_pointer);
 extern void GetDomeColor(byte &r, byte &g, byte &b);
 extern void UnifyRenderBuffers(void);
