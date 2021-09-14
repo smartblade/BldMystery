@@ -254,7 +254,7 @@ bool B_WinApp::Start()
     if (file.OK())
     {
         file >> bitMap;
-        B_3D_raster_device->cls(false, false, false);
+        B_3D_raster_device->Cls(false, false, false);
         B_3D_raster_device->SetPosition(0.0f, 0.0f);
         B_3D_raster_device->draw_image(
             640, 480, "BGR", "Stretch", bitMap.data);

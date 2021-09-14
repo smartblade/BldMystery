@@ -73,7 +73,7 @@ public:
     virtual void unknown090() = 0;
     virtual void StartScene(void *) = 0;
     virtual void EndScene() = 0;
-    virtual void cls(boolean unknown1, boolean unknown2, boolean unknown3) = 0;
+    virtual void Cls(boolean unknown1, boolean unknown2, boolean unknown3) = 0;
     virtual void Cls(B_Color color) = 0;
 
     virtual void SetDomeColor(byte r, byte g, byte b)

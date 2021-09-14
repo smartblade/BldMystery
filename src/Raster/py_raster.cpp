@@ -155,7 +155,7 @@ PyObject *raster_Cls(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "iii:Cls", &unknown1, &unknown2, &unknown3))
                 return NULL;
 
-        cls(unknown1, unknown2, unknown3);
+        Cls(unknown1, unknown2, unknown3);
 
         Py_INCREF(Py_None);
         return Py_None;

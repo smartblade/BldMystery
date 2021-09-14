@@ -19,7 +19,7 @@ LIB_EXP INIT_PY_MODULE_FUNC initRaster(void);
 #endif
 
 
-extern void cls(boolean unknown1, boolean unknown2, boolean unknown3);
+extern void Cls(boolean unknown1, boolean unknown2, boolean unknown3);
 extern void SwapBuffers(void);
 extern long bmp_handle(const char *bmp_name);
 extern const char *bmp_name(long handle);
