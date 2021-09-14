@@ -29,7 +29,7 @@ extern int GetTextureInfo(
         int index, int &w, int &h, int &depth
 );
 extern void SetVideoSettings(float gamma, float contrast, float brightness);
-extern void set_gamma_correction(float gamma);
+extern void SetGammaCorrection(float gamma);
 extern float get_gamma_correction(void);
 extern void set_contrast(float contrast);
 extern float get_contrast(void);

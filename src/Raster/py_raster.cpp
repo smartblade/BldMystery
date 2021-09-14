@@ -306,7 +306,7 @@ PyObject *raster_SetGammaCorrection(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "f:SetGammaCorrection", &gamma))
                 return NULL;
 
-        set_gamma_correction(gamma);
+        SetGammaCorrection(gamma);
 
         Py_INCREF(Py_None);
         return Py_None;

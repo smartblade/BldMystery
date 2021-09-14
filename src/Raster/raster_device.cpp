@@ -96,8 +96,8 @@ void SetVideoSettings(float gamma, float contrast, float brightness) {
 * Entry point:            0x10003633
 */
 
-void set_gamma_correction(float gamma) {
-        B_3D_raster_device->set_gamma_correction(gamma);
+void SetGammaCorrection(float gamma) {
+        B_3D_raster_device->SetGammaCorrection(gamma);
 }
 
 

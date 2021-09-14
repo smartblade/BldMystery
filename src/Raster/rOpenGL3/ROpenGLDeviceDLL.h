@@ -16,7 +16,7 @@ public:
     virtual ~B_OpenGLRasterDevice();
     virtual void SwapBuffers();
     virtual void unknown008(void *);
-    virtual void set_gamma_correction(float gamma);
+    virtual void SetGammaCorrection(float gamma);
     virtual float get_gamma_correction();
     virtual void set_contrast(float contrast);
     virtual float get_contrast();
