@@ -41,7 +41,7 @@ public:
     virtual void unknown058();
     virtual void unknown05C();
     virtual void unknown060();
-    virtual int n_textures();
+    virtual int nTextures();
     virtual void IncModeReflection();
     virtual void DecModeReflection();
     virtual void unknown07C();

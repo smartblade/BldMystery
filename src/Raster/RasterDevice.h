@@ -52,7 +52,7 @@ public:
     virtual void unknown058() = 0;
     virtual void unknown05C() = 0;
     virtual void unknown060() = 0;
-    virtual int n_textures() = 0;
+    virtual int nTextures() = 0;
     virtual void unknown068();
     virtual void unknown06C();
     virtual void unknown070();

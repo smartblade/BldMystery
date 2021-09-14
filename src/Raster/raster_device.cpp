@@ -51,8 +51,8 @@ const char *BmpName(long handle) {
 * Entry point:            0x100035BD
 */
 
-int n_textures() {
-        return B_3D_raster_device->n_textures();
+int nTextures() {
+        return B_3D_raster_device->nTextures();
 }
 
 

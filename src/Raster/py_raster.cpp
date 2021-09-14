@@ -226,7 +226,7 @@ PyObject *raster_nTextures(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":nTextures"))
                 return NULL;
 
-        num_textures = n_textures();
+        num_textures = nTextures();
 
         return Py_BuildValue("i", num_textures);
 }

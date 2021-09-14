@@ -24,7 +24,7 @@ extern void SwapBuffers(void);
 extern long BmpHandle(const char *bmpName);
 extern const char *BmpName(long handle);
 extern void set_flags(long flags);
-extern int n_textures(void);
+extern int nTextures(void);
 extern int get_texture_info(
         int index, int &w, int &h, int &depth
 );
