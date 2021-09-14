@@ -17,7 +17,7 @@ public:
     virtual void SwapBuffers();
     virtual void unknown008(void *);
     virtual void SetGammaCorrection(float gamma);
-    virtual float get_gamma_correction();
+    virtual float GetGammaCorrection();
     virtual void set_contrast(float contrast);
     virtual float get_contrast();
     virtual void set_brightness(float brightness);

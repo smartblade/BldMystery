@@ -30,7 +30,7 @@ extern int GetTextureInfo(
 );
 extern void SetVideoSettings(float gamma, float contrast, float brightness);
 extern void SetGammaCorrection(float gamma);
-extern float get_gamma_correction(void);
+extern float GetGammaCorrection(void);
 extern void set_contrast(float contrast);
 extern float get_contrast(void);
 extern void set_brightness(float brightness);

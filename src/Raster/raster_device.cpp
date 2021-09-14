@@ -106,8 +106,8 @@ void SetGammaCorrection(float gamma) {
 * Entry point:            0x1000364D
 */
 
-float get_gamma_correction() {
-        return B_3D_raster_device->get_gamma_correction();
+float GetGammaCorrection() {
+        return B_3D_raster_device->GetGammaCorrection();
 }
 
 

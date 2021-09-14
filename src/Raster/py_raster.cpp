@@ -323,7 +323,7 @@ PyObject *raster_GetGammaCorrection(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":GetGammaCorrection"))
                 return NULL;
 
-        return Py_BuildValue("f", get_gamma_correction());
+        return Py_BuildValue("f", GetGammaCorrection());
 }
 
 
