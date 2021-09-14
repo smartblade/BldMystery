@@ -402,8 +402,8 @@ float get_text_alpha() {
 * Entry point:            0x100039D8
 */
  
-int write_text(const char *text) {
-        return B_3D_raster_device->write_text(text);
+int WriteText(const char *text) {
+        return B_3D_raster_device->WriteText(text);
 }
 
 

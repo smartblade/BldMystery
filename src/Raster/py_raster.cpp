@@ -906,7 +906,7 @@ PyObject *raster_WriteText(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "s:WriteText", &text))
                 return NULL;
 
-        code = write_text(text);
+        code = WriteText(text);
 
         return Py_BuildValue("i", code);
 }

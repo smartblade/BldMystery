@@ -279,7 +279,7 @@ public:
     virtual void unknown1D4() = 0;
     virtual float get_text_blur_alpha() = 0;
     virtual void unknown1DC() = 0;
-    virtual int write_text(const char *text);
+    virtual int WriteText(const char *text);
     virtual void draw_bitmap(long handle, int w, int h) = 0;
     virtual void draw_image(
         int w, int h, const char *color_style, const char *is_normal,

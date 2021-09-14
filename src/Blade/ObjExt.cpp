@@ -1855,7 +1855,7 @@ int WriteText(double x, double y, const char *text)
     int w, h;
     B_3D_raster_device->GetSize(w, h);
     B_3D_raster_device->SetPosition((w / 2) + w * x, (h / 2) + w * y);
-    B_3D_raster_device->write_text(text);
+    B_3D_raster_device->WriteText(text);
     return 0;
 }
 
