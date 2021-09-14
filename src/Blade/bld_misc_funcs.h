@@ -52,7 +52,7 @@ public:
     int textureEffect;
     int needUpdate;
     B_ProcTexture *procTexture;
-    long bmp_handle;
+    long bmpHandle;
 };
 
 struct B_CharSize

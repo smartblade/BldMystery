@@ -21,7 +21,7 @@ LIB_EXP INIT_PY_MODULE_FUNC initRaster(void);
 
 extern void Cls(boolean unknown1, boolean unknown2, boolean unknown3);
 extern void SwapBuffers(void);
-extern long bmp_handle(const char *bmp_name);
+extern long BmpHandle(const char *bmp_name);
 extern const char *bmp_name(long handle);
 extern void set_flags(long flags);
 extern int n_textures(void);
@@ -78,7 +78,7 @@ extern void set_background_image(
         const char *stretch_or_centered, long image_data
 );
 extern void remove_background_image(void);
-extern void draw_bitmap(long bmp_handle, int w, int h);
+extern void draw_bitmap(long bmpHandle, int w, int h);
 extern void set_clip_window(int x, int y, int w, int h);
 extern void GetClipWindow(int &x, int &y, int &w, int &h);
 extern int SetRasterParameter(const char *parameter, const char *value);

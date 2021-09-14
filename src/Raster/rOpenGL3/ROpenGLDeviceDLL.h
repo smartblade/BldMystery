@@ -30,7 +30,7 @@ public:
     virtual void add_atmosphere(
         const B_Name &name, const B_Color &color, float intensity
     );
-    virtual long bmp_handle(const char *bmp_name);
+    virtual long BmpHandle(const char *bmp_name);
     virtual int GetAtmosphere(const B_Name &name);
     virtual const char *bmp_name(long handle);
     virtual void unknown04C();
@@ -154,7 +154,7 @@ private:
 
 typedef B_BitMap *(*RM_GetResourceFunc)(const char *name);
 typedef void (*RM_FreeResourceFunc)(B_Resource *resource);
-typedef void (*UpdateAGTextureFunc)(long bmp_handle);
+typedef void (*UpdateAGTextureFunc)(long bmpHandle);
 
 #ifdef __cplusplus
 extern "C" {

@@ -359,7 +359,7 @@ LIB_EXP int AddCombustionDataFor(
 );
 LIB_EXP void RM_FreeResource(B_Resource *resource);
 LIB_EXP B_BitMap *RM_GetResource(const char *name);
-LIB_EXP void UpdateAGTexture(long bmp_handle);
+LIB_EXP void UpdateAGTexture(long bmpHandle);
 LIB_EXP int SetAfterFrameFunc(const char *name, PyObject *function);
 LIB_EXP PyObject *GetAfterFrameFunc(const char *name);
 LIB_EXP int GetnAfterFrameFuncs(void);

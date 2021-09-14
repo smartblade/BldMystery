@@ -191,7 +191,7 @@ PyObject *raster_BmpHandle(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "s:BmpHandle", &bmp_name))
                 return NULL;
 
-        handle = bmp_handle(bmp_name);
+        handle = BmpHandle(bmp_name);
 
         return Py_BuildValue("l", handle);
 }
@@ -988,13 +988,13 @@ PyObject *raster_DrawImage(PyObject *self, PyObject *args) {
 */
 
 PyObject *raster_DrawBitmap(PyObject *self, PyObject *args) {
-        long bmp_handle;
+        long bmpHandle;
         int w, h;
 
-        if (!PyArg_ParseTuple(args, "lii:DrawBitmap", &bmp_handle, &w, &h))
+        if (!PyArg_ParseTuple(args, "lii:DrawBitmap", &bmpHandle, &w, &h))
                 return NULL;
 
-        draw_bitmap(bmp_handle, w, h);
+        draw_bitmap(bmpHandle, w, h);
 
         Py_INCREF(Py_None);
         return Py_None;

@@ -21,7 +21,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_Texture &texture)
 {
     B_Name textureName;
     file >> textureName;
-    texture.handle = B_3D_raster_device->bmp_handle(textureName);
+    texture.handle = B_3D_raster_device->BmpHandle(textureName);
     file
         >> texture.xTransform
         >> texture.yTransform

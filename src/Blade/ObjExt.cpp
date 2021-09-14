@@ -1333,7 +1333,7 @@ int GetParticleGType(
     {
         B_ParticleGType *particleType = gbl_particle_types.elements[index];
         *type = particleType->name.String();
-        *parent_type = B_3D_raster_device->bmp_name(particleType->bmp_handle);
+        *parent_type = B_3D_raster_device->bmp_name(particleType->bmpHandle);
         *operation_type = particleType->operation_type;
         *duration = particleType->duration;
         return 1;
@@ -1654,15 +1654,15 @@ B_BitMap *RM_GetResource(const char *name)
 * Entry point:            0x0042B0F4
 */
 
-void UpdateAGTexture(long bmp_handle)
+void UpdateAGTexture(long bmpHandle)
 {
     B_AGTexture *texture;
     {
         for (unsigned int i = 0; i < gbl_ag_textures.size; i++)
         {
             B_AGTexture *currentTexture = gbl_ag_textures.elements[i];
-            long currentHandle = currentTexture->bmp_handle;
-            if (currentHandle == bmp_handle)
+            long currentHandle = currentTexture->bmpHandle;
+            if (currentHandle == bmpHandle)
             {
                 B_AGTexture *foundTexture = gbl_ag_textures.elements[i];
                 texture = foundTexture;
