@@ -145,7 +145,7 @@ public:
         int &unknown5
     );
     virtual int FullScreen();
-    virtual int unknown22C();
+    virtual int ClassId();
     virtual const char *ClassIdName();
 
 private:

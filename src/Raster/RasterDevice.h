@@ -335,7 +335,7 @@ public:
     ) = 0;
     virtual int FullScreen() = 0;
     virtual void unknown228();
-    virtual int unknown22C() = 0;
+    virtual int ClassId() = 0;
     virtual const char *ClassIdName() = 0;
 
 protected:

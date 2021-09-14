@@ -551,7 +551,7 @@ LRESULT B_WinApp::WindowProcedure(
             if (IsDedicatedServer())
                 break;
             if ((B_3D_raster_device != NULL) &&
-                (B_3D_raster_device->unknown22C() == 3))
+                (B_3D_raster_device->ClassId() == 3))
             {
                 break;
             }
