@@ -116,8 +116,8 @@ float GetGammaCorrection() {
 * Entry point:            0x10003662
 */
 
-void set_contrast(float contrast) {
-        return B_3D_raster_device->set_contrast(contrast);
+void SetContrast(float contrast) {
+        return B_3D_raster_device->SetContrast(contrast);
 }
 
 

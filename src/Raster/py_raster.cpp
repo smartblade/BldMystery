@@ -338,7 +338,7 @@ PyObject *raster_SetContrast(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "f:SetContrast", &contrast))
                 return NULL;
 
-        set_contrast(contrast);
+        SetContrast(contrast);
 
         Py_INCREF(Py_None);
         return Py_None;

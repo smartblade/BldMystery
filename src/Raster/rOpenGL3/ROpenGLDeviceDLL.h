@@ -18,7 +18,7 @@ public:
     virtual void unknown008(void *);
     virtual void SetGammaCorrection(float gamma);
     virtual float GetGammaCorrection();
-    virtual void set_contrast(float contrast);
+    virtual void SetContrast(float contrast);
     virtual float get_contrast();
     virtual void set_brightness(float brightness);
     virtual float get_brightness();
