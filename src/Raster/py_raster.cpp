@@ -422,7 +422,7 @@ PyObject *raster_SetFlags(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "l:SetFlags", &flags))
                 return NULL;
 
-        set_flags(flags);
+        SetFlags(flags);
 
         Py_INCREF(Py_None);
         return Py_None;

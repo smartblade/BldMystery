@@ -30,7 +30,7 @@ public:
     {
     }
 
-    virtual void set_flags(long flags) = 0;
+    virtual void SetFlags(long flags) = 0;
 
     virtual long GetFlags()
     {

@@ -23,7 +23,7 @@ extern void Cls(boolean unknown1, boolean unknown2, boolean unknown3);
 extern void SwapBuffers(void);
 extern long BmpHandle(const char *bmpName);
 extern const char *BmpName(long handle);
-extern void set_flags(long flags);
+extern void SetFlags(long flags);
 extern int nTextures(void);
 extern int GetTextureInfo(
         int index, int &w, int &h, int &depth

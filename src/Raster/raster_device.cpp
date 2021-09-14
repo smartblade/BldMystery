@@ -74,8 +74,8 @@ int GetTextureInfo(int index, int &w, int &h, int &depth) {
 * Entry point:            0x100035F8
 */
 
-void set_flags(long flags) {
-        B_3D_raster_device->set_flags(flags);
+void SetFlags(long flags) {
+        B_3D_raster_device->SetFlags(flags);
 }
 
 

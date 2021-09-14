@@ -25,7 +25,7 @@ public:
     virtual void SetVideoSettings(
         float gamma, float contrast, float brightness
     );
-    virtual void set_flags(long flags);
+    virtual void SetFlags(long flags);
     virtual void unknown038();
     virtual void add_atmosphere(
         const B_Name &name, const B_Color &color, float intensity
