@@ -370,7 +370,7 @@ PyObject *raster_SetBrightness(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "f:SetBrightness", &brightness))
                 return NULL;
 
-        set_brightness(brightness);
+        SetBrightness(brightness);
 
         Py_INCREF(Py_None);
         return Py_None;

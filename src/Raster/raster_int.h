@@ -33,7 +33,7 @@ extern void SetGammaCorrection(float gamma);
 extern float GetGammaCorrection(void);
 extern void SetContrast(float contrast);
 extern float GetContrast(void);
-extern void set_brightness(float brightness);
+extern void SetBrightness(float brightness);
 extern float get_brightness(void);
 extern void SetTextMode(int text_mode);
 extern int GetTextMode(void);

@@ -136,8 +136,8 @@ float GetContrast() {
 * Entry point:            0x10003691
 */
 
-void set_brightness(float brightness) {
-        B_3D_raster_device->set_brightness(brightness);
+void SetBrightness(float brightness) {
+        B_3D_raster_device->SetBrightness(brightness);
 }
 
 
