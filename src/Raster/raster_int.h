@@ -21,8 +21,8 @@ LIB_EXP INIT_PY_MODULE_FUNC initRaster(void);
 
 extern void Cls(boolean unknown1, boolean unknown2, boolean unknown3);
 extern void SwapBuffers(void);
-extern long BmpHandle(const char *bmp_name);
-extern const char *bmp_name(long handle);
+extern long BmpHandle(const char *bmpName);
+extern const char *BmpName(long handle);
 extern void set_flags(long flags);
 extern int n_textures(void);
 extern int get_texture_info(

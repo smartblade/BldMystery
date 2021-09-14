@@ -185,13 +185,13 @@ PyObject *raster_SwapBuffers(PyObject *self, PyObject *args) {
 */
 
 PyObject *raster_BmpHandle(PyObject *self, PyObject *args) {
-        const char *bmp_name;
+        const char *bmpName;
         long handle;
 
-        if (!PyArg_ParseTuple(args, "s:BmpHandle", &bmp_name))
+        if (!PyArg_ParseTuple(args, "s:BmpHandle", &bmpName))
                 return NULL;
 
-        handle = BmpHandle(bmp_name);
+        handle = BmpHandle(bmpName);
 
         return Py_BuildValue("l", handle);
 }
@@ -209,7 +209,7 @@ PyObject *raster_BmpName(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "l:BmpName", &handle))
                 return NULL;
 
-        name = bmp_name(handle);
+        name = BmpName(handle);
 
         return Py_BuildValue("s", name);
 }

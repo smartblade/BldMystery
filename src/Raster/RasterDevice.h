@@ -41,9 +41,9 @@ public:
     virtual void unknown034() = 0;
     virtual void unknown038() = 0;
     virtual void add_atmosphere(const B_Name &name, const B_Color &color, float intensity) = 0;
-    virtual long BmpHandle(const char *bmp_name) = 0;
+    virtual long BmpHandle(const char *bmpName) = 0;
     virtual int GetAtmosphere(const B_Name &name) = 0;
-    virtual const char *bmp_name(long handle) = 0;
+    virtual const char *BmpName(long handle) = 0;
     virtual void unknown04C() = 0;
     virtual void update_dome() = 0;
     virtual int get_texture_info(

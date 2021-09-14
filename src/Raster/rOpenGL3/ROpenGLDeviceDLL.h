@@ -30,9 +30,9 @@ public:
     virtual void add_atmosphere(
         const B_Name &name, const B_Color &color, float intensity
     );
-    virtual long BmpHandle(const char *bmp_name);
+    virtual long BmpHandle(const char *bmpName);
     virtual int GetAtmosphere(const B_Name &name);
-    virtual const char *bmp_name(long handle);
+    virtual const char *BmpName(long handle);
     virtual void unknown04C();
     virtual void update_dome();
     virtual int get_texture_info(

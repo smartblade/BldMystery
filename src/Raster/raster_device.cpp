@@ -31,8 +31,8 @@ void SwapBuffers() {
 * Entry point:            0x10003589
 */
 
-long BmpHandle(const char *bmp_name) {
-        return B_3D_raster_device->BmpHandle(bmp_name);
+long BmpHandle(const char *bmpName) {
+        return B_3D_raster_device->BmpHandle(bmpName);
 }
 
 
@@ -41,8 +41,8 @@ long BmpHandle(const char *bmp_name) {
 * Entry point:            0x100035A3
 */
 
-const char *bmp_name(long handle) {
-        return B_3D_raster_device->bmp_name(handle);
+const char *BmpName(long handle) {
+        return B_3D_raster_device->BmpName(handle);
 }
 
 
