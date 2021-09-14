@@ -146,8 +146,8 @@ void SetBrightness(float brightness) {
 * Entry point:            0x100036AB
 */
 
-float get_brightness() {
-        return B_3D_raster_device->get_brightness();
+float GetBrightness() {
+        return B_3D_raster_device->GetBrightness();
 }
 
 

@@ -387,7 +387,7 @@ PyObject *raster_GetBrightness(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":GetBrightness"))
                 return NULL;
 
-        return Py_BuildValue("f", get_brightness());
+        return Py_BuildValue("f", GetBrightness());
 }
 
 

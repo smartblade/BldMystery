@@ -23,7 +23,7 @@ public:
     virtual void SetContrast(float contrast) = 0;
     virtual float GetContrast() = 0;
     virtual void SetBrightness(float brightness) = 0;
-    virtual float get_brightness() = 0;
+    virtual float GetBrightness() = 0;
 
     virtual void SetVideoSettings(
         float gamma, float contrast, float brightness)
