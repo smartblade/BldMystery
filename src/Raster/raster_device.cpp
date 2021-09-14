@@ -61,9 +61,9 @@ int nTextures() {
 * Entry point:            0x100035D2
 */
 
-int get_texture_info(int index, int &w, int &h, int &depth) {
+int GetTextureInfo(int index, int &w, int &h, int &depth) {
 
-        return B_3D_raster_device->get_texture_info(
+        return B_3D_raster_device->GetTextureInfo(
                 index, w, h, depth
         );
 }

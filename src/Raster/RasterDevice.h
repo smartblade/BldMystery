@@ -46,7 +46,7 @@ public:
     virtual const char *BmpName(long handle) = 0;
     virtual void unknown04C() = 0;
     virtual void update_dome() = 0;
-    virtual int get_texture_info(
+    virtual int GetTextureInfo(
         int index, int &w, int &h, int &depth
     ) = 0;
     virtual void unknown058() = 0;

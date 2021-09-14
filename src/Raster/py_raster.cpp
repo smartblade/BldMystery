@@ -244,7 +244,7 @@ PyObject *raster_GetTextureInfo(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "i:GetTextureInfo", &index))
                 return NULL;
 
-        code = get_texture_info(index, w, h, depth); 
+        code = GetTextureInfo(index, w, h, depth);
 
         infoObj = Py_BuildValue("i", code);
 

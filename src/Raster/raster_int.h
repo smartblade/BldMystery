@@ -25,7 +25,7 @@ extern long BmpHandle(const char *bmpName);
 extern const char *BmpName(long handle);
 extern void set_flags(long flags);
 extern int nTextures(void);
-extern int get_texture_info(
+extern int GetTextureInfo(
         int index, int &w, int &h, int &depth
 );
 extern void SetVideoSettings(float gamma, float contrast, float brightness);
