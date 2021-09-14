@@ -172,7 +172,7 @@ PyObject *raster_SwapBuffers(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":SwapBuffers"))
                 return NULL;
 
-        swap_buffers();
+        SwapBuffers();
 
         Py_INCREF(Py_None);
         return Py_None;

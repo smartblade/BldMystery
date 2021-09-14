@@ -258,7 +258,7 @@ bool B_WinApp::Start()
         B_3D_raster_device->SetPosition(0.0f, 0.0f);
         B_3D_raster_device->draw_image(
             640, 480, "BGR", "Stretch", bitMap.data);
-        B_3D_raster_device->swap_buffers();
+        B_3D_raster_device->SwapBuffers();
         this->ProcessMessage();
     }
     if (gbl_sound_device == NULL ||

@@ -21,8 +21,8 @@ void cls(boolean unknown1, boolean unknown2, boolean unknown3) {
 * Entry point:            0x10003574
 */
 
-void swap_buffers() {
-        return B_3D_raster_device->swap_buffers();
+void SwapBuffers() {
+        return B_3D_raster_device->SwapBuffers();
 }
 
 

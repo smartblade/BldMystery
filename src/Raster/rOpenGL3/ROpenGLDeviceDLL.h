@@ -14,7 +14,7 @@ class B_OpenGLRasterDevice : public B_TrisDevice
 public:
     B_OpenGLRasterDevice(HWND window, HMODULE rasterModule);
     virtual ~B_OpenGLRasterDevice();
-    virtual void swap_buffers();
+    virtual void SwapBuffers();
     virtual void unknown008(void *);
     virtual void set_gamma_correction(float gamma);
     virtual float get_gamma_correction();

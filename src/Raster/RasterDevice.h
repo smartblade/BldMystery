@@ -16,7 +16,7 @@ public:
     {
     }
 
-    virtual void swap_buffers() = 0;
+    virtual void SwapBuffers() = 0;
     virtual void unknown008(void *) = 0;
     virtual void set_gamma_correction(float gamma) = 0;
     virtual float get_gamma_correction() = 0;
