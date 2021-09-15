@@ -52,7 +52,7 @@ public:
     virtual void unknown090();
     virtual void StartScene(void *);
     virtual void EndScene();
-    virtual void Cls(boolean unknown1, boolean unknown2, boolean unknown3);
+    virtual void ClsRGB(byte r, byte g, byte b);
     virtual void Cls(B_Color color);
     virtual void SetDomeColor(byte r, byte g, byte b);
     virtual void GetDomeColor(byte &r, byte &g, byte &b);

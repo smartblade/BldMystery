@@ -150,12 +150,12 @@ static PyMethodDef methods[] = {
 */
 
 PyObject *raster_Cls(PyObject *self, PyObject *args) {
-        int unknown1, unknown2, unknown3;
+        int r, g, b;
 
-        if (!PyArg_ParseTuple(args, "iii:Cls", &unknown1, &unknown2, &unknown3))
+        if (!PyArg_ParseTuple(args, "iii:Cls", &r, &g, &b))
                 return NULL;
 
-        Cls(unknown1, unknown2, unknown3);
+        Cls(r, g, b);
 
         Py_INCREF(Py_None);
         return Py_None;

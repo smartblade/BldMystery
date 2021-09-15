@@ -11,8 +11,8 @@
 * Entry point:            0x10003550
 */
 
-void Cls(boolean unknown1, boolean unknown2, boolean unknown3) {
-        return B_3D_raster_device->Cls(unknown1, unknown2, unknown3);
+void Cls(byte r, byte g, byte b) {
+        return B_3D_raster_device->ClsRGB(r, g, b);
 }
 
 
