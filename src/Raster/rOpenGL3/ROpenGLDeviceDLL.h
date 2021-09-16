@@ -2,7 +2,6 @@
 
 #include "RTrisDeviceDLL.h"
 #include <bld_system.h>
-#define BUILD_LIB
 #include <export.h>
 
 class B_BitMap;

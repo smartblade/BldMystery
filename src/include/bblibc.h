@@ -4,12 +4,12 @@
 #define BBLIBC_H
 
 #include <bld_system.h>
-#include <bld_python.h>
 #include <fcntl.h>
 #include <export.h>
 #include <array.h>
 
 class B_3DRasterDevice;
+struct PyObject;
 
 
 class LIB_EXP B_Color {
