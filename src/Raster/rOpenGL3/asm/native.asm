@@ -62153,40 +62153,7 @@ l1001FD7B ENDP
 ;* Jump:
 ; 10001758(U) 
 ;
-l1001FDF8 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [eax+00008419Ch]
-           push ecx
-           call [__imp_SwapBuffers]; [GDI32.SwapBuffers].
-           test eax, eax
-           jne l1001FE36
-;
-;* String: "Error in SwapBuffers()."
-;
-           push offset g1003AEE0
-           call [__imp_?OutputWin32Error@@YAXPBD@Z]; [BBLibc.?OutputWin32Error@@YAXPBD@Z].
-           add esp, 000000004h
-;
-;* String: "B_OpenGLRasterDevice::SwapBuffers() -> Fallo en SwapBuffers().
-;          "
-;
-           push offset g1003AEF8
-           mov edx, dword ptr [__imp_?mout@@3VB_MessageManager@@A]; [BBLibc.?mout@@3VB_MessageManager@@A].
-           push edx
-           call [__imp_??6@YAAAVB_MessageManager@@AAV0@PBD@Z]; [BBLibc.??6@YAAAVB_MessageManager@@AAV0@PBD@Z].
-           add esp, 000000008h
-;
-;* Jump:
-; 1001FE11(C) 
-;
-l1001FE36: mov esp, ebp
-           pop ebp
-           ret
-l1001FDF8 ENDP
+           call l1001FDF8; Implemented in c++ code
 ;
 ;* Jump:
 ; 1000105F(U) 

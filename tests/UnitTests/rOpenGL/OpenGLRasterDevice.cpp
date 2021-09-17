@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include <Utils/FieldOffset.h>
 #define protected public
+#define private public
 #include <Raster/rOpenGL3/ROpenGLDeviceDLL.h>
 
 
@@ -31,4 +32,5 @@ TEST(OpenGLRasterDeviceTests, Fields)
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, clipWidth, 0x00048);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, clipHeight, 0x0004C);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, clipActive, 0x00050);
+    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, deviceContext, 0x8419C);
 }

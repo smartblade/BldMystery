@@ -1,4 +1,5 @@
 #include <BBLibc.h>
+#include <wingdi.h>
 #define BUILD_LIB
 #include "ROpenGLDeviceDLL.h"
 
@@ -44,18 +45,16 @@ B_OpenGLRasterDevice::~B_OpenGLRasterDevice()
 * Entry point:            0x1001FDF8
 * VC++ mangling:          ?SwapBuffers@B_OpenGLRasterDevice@@UAEXXZ
 */
-#ifndef BLD_NATIVE
+
 void B_OpenGLRasterDevice::SwapBuffers()
 {
+    if (!::SwapBuffers(this->deviceContext))
+    {
+        OutputWin32Error("Error in SwapBuffers().");
+        mout << "B_OpenGLRasterDevice::SwapBuffers() -> Fallo en SwapBuffers().\n";
+    }
 }
-#endif
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
 /*
 * Module:                 rOpenGL.dll

@@ -148,7 +148,9 @@ public:
     virtual const char *ClassIdName();
 
 private:
-    char unknownFields[0xB2450];
+    char unknownFields[0x84148];
+    HDC deviceContext;
+    char unknownFields841A0[0x2E304];
 };
 
 typedef B_BitMap *(*RM_GetResourceFunc)(const char *name);
