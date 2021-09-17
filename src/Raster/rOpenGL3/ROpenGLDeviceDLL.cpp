@@ -61,18 +61,12 @@ void B_OpenGLRasterDevice::SwapBuffers()
 * Entry point:            0x1001FE3A
 * VC++ mangling:          ?SetFlags@B_OpenGLRasterDevice@@UAEXJ@Z
 */
-#ifndef BLD_NATIVE
+
 void B_OpenGLRasterDevice::SetFlags(long flags)
 {
+    this->flags = flags;
 }
-#endif
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
 /*
 * Module:                 rOpenGL.dll

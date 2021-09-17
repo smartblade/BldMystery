@@ -62158,18 +62158,7 @@ l1001FD7B ENDP
 ;* Jump:
 ; 1000105F(U) 
 ;
-l1001FE3A PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           mov dword ptr [eax+004h], ecx
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l1001FE3A ENDP
+           call l1001FE3A; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001717(U) 
