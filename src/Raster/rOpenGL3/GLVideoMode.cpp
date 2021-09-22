@@ -43,7 +43,7 @@ void B_OpenGLRasterDevice::GetVideoModes()
 */
 #ifndef BLD_NATIVE
 int B_OpenGLRasterDevice::GetVideoModeDscr(
-    int mode_index, int &depth, int &w, int &h, int &unknown,
+    int mode_index, int &depth, int &w, int &h, int &flags,
     int &frequency
 )
 {

@@ -1297,14 +1297,14 @@ PyObject *raster_nVideoModes(PyObject *self, PyObject *args) {
 
 PyObject *raster_GetVideoModeDscr(PyObject *self, PyObject *args) {
         PyObject *modeDscrObj; 
-        PyObject *depthObj, *wObj, *hObj, *unknownObj, *frequencyObj;
-        int code, mode_index, depth, w, h, unknown, frequency;
+        PyObject *depthObj, *wObj, *hObj, *flagsObj, *frequencyObj;
+        int code, mode_index, depth, w, h, flags, frequency;
 
         if (!PyArg_ParseTuple(args, "i:GetVideoModeDscr", &mode_index))
                 return NULL;
 
         code = GetVideoModeDscr(
-                mode_index, depth, w, h, unknown, frequency
+                mode_index, depth, w, h, flags, frequency
         );
 
         modeDscrObj = Py_BuildValue("i", code);
@@ -1318,8 +1318,8 @@ PyObject *raster_GetVideoModeDscr(PyObject *self, PyObject *args) {
         hObj = PyInt_FromLong(h);
         modeDscrObj = add_item(modeDscrObj, hObj);
 
-        unknownObj = PyInt_FromLong(unknown);
-        modeDscrObj = add_item(modeDscrObj, unknownObj);
+        flagsObj = PyInt_FromLong(flags);
+        modeDscrObj = add_item(modeDscrObj, flagsObj);
 
         frequencyObj = PyInt_FromLong(frequency);
         modeDscrObj = add_item(modeDscrObj, frequencyObj);

@@ -137,7 +137,7 @@ public:
     virtual int GetWindowSize(int &w, int &h);
     virtual int n_video_modes();
     virtual int GetVideoModeDscr(
-        int mode_index, int &depth, int &w, int &h, int &unknown,
+        int mode_index, int &depth, int &w, int &h, int &flags,
         int &frequency
     );
     virtual void unknown218();

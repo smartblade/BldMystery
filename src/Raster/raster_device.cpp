@@ -598,11 +598,11 @@ int n_video_modes() {
 */
 
 int GetVideoModeDscr(
-        int mode_index, int &depth, int &w, int &h, int &unknown,
+        int mode_index, int &depth, int &w, int &h, int &flags,
         int &frequency
 ) {
         return B_3D_raster_device->GetVideoModeDscr(
-                mode_index, depth, w, h, unknown, frequency
+                mode_index, depth, w, h, flags, frequency
         );
 }
 
