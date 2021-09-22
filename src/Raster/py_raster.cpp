@@ -1303,7 +1303,7 @@ PyObject *raster_GetVideoModeDscr(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "i:GetVideoModeDscr", &mode_index))
                 return NULL;
 
-        code = get_video_mode_dscr(
+        code = GetVideoModeDscr(
                 mode_index, depth, w, h, unknown, frequency
         );
 

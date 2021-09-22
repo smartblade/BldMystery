@@ -597,11 +597,11 @@ int n_video_modes() {
 * Entry point:            0x10003C58
 */
 
-int get_video_mode_dscr(
+int GetVideoModeDscr(
         int mode_index, int &depth, int &w, int &h, int &unknown,
         int &frequency
 ) {
-        return B_3D_raster_device->get_video_mode_dscr(
+        return B_3D_raster_device->GetVideoModeDscr(
                 mode_index, depth, w, h, unknown, frequency
         );
 }

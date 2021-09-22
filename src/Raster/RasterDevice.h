@@ -323,7 +323,7 @@ public:
     virtual int set_window_size(int w, int h) = 0;
     virtual int GetWindowSize(int &w, int &h) = 0;
     virtual int n_video_modes() = 0;
-    virtual int get_video_mode_dscr(
+    virtual int GetVideoModeDscr(
         int mode_index, int &depth, int &w, int &h, int &unknown,
         int &frequency
     ) = 0;

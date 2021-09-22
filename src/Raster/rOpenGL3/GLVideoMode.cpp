@@ -39,10 +39,10 @@ void B_OpenGLRasterDevice::GetVideoModes()
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1001C0D8
-* VC++ mangling:          ?get_video_mode_dscr@B_OpenGLRasterDevice@@UAEHHAAH0000@Z
+* VC++ mangling:          ?GetVideoModeDscr@B_OpenGLRasterDevice@@UAEHHAAH0000@Z
 */
 #ifndef BLD_NATIVE
-int B_OpenGLRasterDevice::get_video_mode_dscr(
+int B_OpenGLRasterDevice::GetVideoModeDscr(
     int mode_index, int &depth, int &w, int &h, int &unknown,
     int &frequency
 )

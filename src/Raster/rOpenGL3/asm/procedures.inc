@@ -122,8 +122,8 @@ externdef _GetVideoModes: near
 l1001BEDC equ _GetVideoModes
 externdef ?GetVideoModes@B_OpenGLRasterDevice@@QAEXXZ: near
 l1001C0BC equ ?GetVideoModes@B_OpenGLRasterDevice@@QAEXXZ
-externdef ?get_video_mode_dscr@B_OpenGLRasterDevice@@UAEHHAAH0000@Z: near
-l1001C0D8 equ ?get_video_mode_dscr@B_OpenGLRasterDevice@@UAEHHAAH0000@Z
+externdef ?GetVideoModeDscr@B_OpenGLRasterDevice@@UAEHHAAH0000@Z: near
+l1001C0D8 equ ?GetVideoModeDscr@B_OpenGLRasterDevice@@UAEHHAAH0000@Z
 externdef ?set_video_mode@B_OpenGLRasterDevice@@UAEHH@Z: near
 l1001C197 equ ?set_video_mode@B_OpenGLRasterDevice@@UAEHH@Z
 externdef ?GetCurrentMode@B_OpenGLRasterDevice@@UAEHAAH0000@Z: near

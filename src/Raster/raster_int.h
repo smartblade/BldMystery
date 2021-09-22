@@ -90,7 +90,7 @@ extern int set_window_size(int w, int h);
 extern int GetWindowSize(int &w, int &h);
 extern int FullScreen(void);
 extern int n_video_modes(void);
-extern int get_video_mode_dscr(
+extern int GetVideoModeDscr(
         int mode_index, int &depth, int &w, int &h, int &unknown, int &frequency
 );
 extern int set_video_mode(int mode_index);
