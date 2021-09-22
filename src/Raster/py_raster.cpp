@@ -1284,7 +1284,7 @@ PyObject *raster_nVideoModes(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":nVideoModes"))
                 return NULL;
 
-        num_modes = n_video_modes();
+        num_modes = nVideoModes();
 
         return Py_BuildValue("i", num_modes);
 }

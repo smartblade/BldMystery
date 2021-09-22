@@ -270,8 +270,8 @@ externdef ?GetPosition@B_OpenGLRasterDevice@@UAEXAAM0@Z: near
 l1002BD30 equ ?GetPosition@B_OpenGLRasterDevice@@UAEXAAM0@Z
 externdef ?GetSize@B_OpenGLRasterDevice@@UAEXAAH0@Z: near
 l1002BD70 equ ?GetSize@B_OpenGLRasterDevice@@UAEXAAH0@Z
-externdef ?n_video_modes@B_OpenGLRasterDevice@@UAEHXZ: near
-l1002BDB0 equ ?n_video_modes@B_OpenGLRasterDevice@@UAEHXZ
+externdef ?nVideoModes@B_OpenGLRasterDevice@@UAEHXZ: near
+l1002BDB0 equ ?nVideoModes@B_OpenGLRasterDevice@@UAEHXZ
 externdef ?ClassId@B_OpenGLRasterDevice@@UAEHXZ: near
 l1002BDD0 equ ?ClassId@B_OpenGLRasterDevice@@UAEHXZ
 externdef ?ClassIdName@B_OpenGLRasterDevice@@UAEPBDXZ: near

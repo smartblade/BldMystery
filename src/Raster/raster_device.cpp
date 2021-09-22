@@ -587,8 +587,8 @@ int FullScreen() {
 * Entry point:            0x10003C40
 */
 
-int n_video_modes() {
-        return B_3D_raster_device->n_video_modes();
+int nVideoModes() {
+        return B_3D_raster_device->nVideoModes();
 }
 
 
