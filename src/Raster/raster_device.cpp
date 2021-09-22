@@ -612,8 +612,8 @@ int GetVideoModeDscr(
 * Entry point:            0x10003C88
 */
 
-int set_video_mode(int mode_index) {
-        return B_3D_raster_device->set_video_mode(mode_index);
+int SetVideoMode(int mode_index) {
+        return B_3D_raster_device->SetVideoMode(mode_index);
 }
 
 /*

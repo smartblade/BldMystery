@@ -1339,7 +1339,7 @@ PyObject *raster_SetVideoMode(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "i:SetVideoMode", &mode_index))
                 return NULL;
 
-        code = set_video_mode(mode_index);
+        code = SetVideoMode(mode_index);
 
         return Py_BuildValue("i", code);
 }

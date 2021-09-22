@@ -141,7 +141,7 @@ public:
         int &frequency
     );
     virtual void unknown218();
-    virtual int set_video_mode(int mode_index);
+    virtual int SetVideoMode(int mode_index);
     virtual int GetCurrentMode(
         int &unknown1, int &w, int &h, int &unknown4,
         int &unknown5

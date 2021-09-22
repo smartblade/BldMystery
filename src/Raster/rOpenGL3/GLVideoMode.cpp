@@ -61,10 +61,10 @@ int B_OpenGLRasterDevice::GetVideoModeDscr(
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1001C197
-* VC++ mangling:          ?set_video_mode@B_OpenGLRasterDevice@@UAEHH@Z
+* VC++ mangling:          ?SetVideoMode@B_OpenGLRasterDevice@@UAEHH@Z
 */
 #ifndef BLD_NATIVE
-int B_OpenGLRasterDevice::set_video_mode(int mode_index)
+int B_OpenGLRasterDevice::SetVideoMode(int mode_index)
 {
     return 0;
 }
