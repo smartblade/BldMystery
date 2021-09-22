@@ -118,6 +118,10 @@ externdef ?GetBrightness@B_OpenGLRasterDevice@@UAEMXZ: near
 l10017B0E equ ?GetBrightness@B_OpenGLRasterDevice@@UAEMXZ
 externdef ?FullScreen@B_OpenGLRasterDevice@@UAEHXZ: near
 l1001BEC0 equ ?FullScreen@B_OpenGLRasterDevice@@UAEHXZ
+externdef _GetVideoModes: near
+l1001BEDC equ _GetVideoModes
+externdef ?GetVideoModes@B_OpenGLRasterDevice@@QAEXXZ: near
+l1001C0BC equ ?GetVideoModes@B_OpenGLRasterDevice@@QAEXXZ
 externdef ?get_video_mode_dscr@B_OpenGLRasterDevice@@UAEHHAAH0000@Z: near
 l1001C0D8 equ ?get_video_mode_dscr@B_OpenGLRasterDevice@@UAEHHAAH0000@Z
 externdef ?set_video_mode@B_OpenGLRasterDevice@@UAEHH@Z: near

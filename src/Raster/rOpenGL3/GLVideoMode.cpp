@@ -14,11 +14,27 @@ int B_OpenGLRasterDevice::FullScreen()
 
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 rOpenGL.dll
+* Entry point:            0x1001BEDC
 */
+#ifndef BLD_NATIVE
+void GetVideoModes(B_PtrArray<B_VideoMode> &videoModes)
+{
+}
+#endif
+
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x1001C0BC
+* VC++ mangling:          ?GetVideoModes@B_OpenGLRasterDevice@@QAEXXZ
+*/
+
+void B_OpenGLRasterDevice::GetVideoModes()
+{
+    ::GetVideoModes(this->videoModes);
+}
+
 
 /*
 * Module:                 rOpenGL.dll
