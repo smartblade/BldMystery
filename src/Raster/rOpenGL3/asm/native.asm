@@ -75406,27 +75406,7 @@ l10027929 ENDP
 ;* Jump:
 ; 100014CE(U) 
 ;
-l1002872D PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-004h]
-           mov dl, byte ptr [ecx+0000847E8h]
-           mov byte ptr [eax], dl
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp-004h]
-           mov dl, byte ptr [ecx+0000847E9h]
-           mov byte ptr [eax], dl
-           mov eax, dword ptr [ebp+010h]
-           mov ecx, dword ptr [ebp-004h]
-           mov dl, byte ptr [ecx+0000847EAh]
-           mov byte ptr [eax], dl
-           mov esp, ebp
-           pop ebp
-           ret 0000Ch
-l1002872D ENDP
+           call l1002872D; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001546(U) 

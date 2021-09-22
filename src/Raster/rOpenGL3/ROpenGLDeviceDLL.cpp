@@ -657,18 +657,14 @@ void B_OpenGLRasterDevice::SetDomeColor(byte r, byte g, byte b)
 * Entry point:            0x1002872D
 * VC++ mangling:          ?GetDomeColor@B_OpenGLRasterDevice@@UAEXAAE00@Z
 */
-#ifndef BLD_NATIVE
+
 void B_OpenGLRasterDevice::GetDomeColor(byte &r, byte &g, byte &b)
 {
+    r = this->domeColor.r;
+    g = this->domeColor.g;
+    b = this->domeColor.b;
 }
-#endif
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
 /*
 * Module:                 rOpenGL.dll
