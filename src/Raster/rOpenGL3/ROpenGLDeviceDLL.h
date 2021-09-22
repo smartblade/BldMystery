@@ -10,6 +10,15 @@ class B_BitMap;
 class B_Resource;
 
 
+struct B_VideoMode
+{
+    int depth;
+    int width;
+    int height;
+    int flags;
+    int frequency;
+};
+
 class B_OpenGLRasterDevice : public B_TrisDevice
 {
 public:
@@ -154,7 +163,9 @@ private:
     HDC deviceContext;
     char unknownFields841A0[0x644];
     B_Color domeColor;
-    char unknownFields847EC[0x2DCB8];
+    char unknownFields847EC[0x1B24];
+    B_VideoMode *fullScreenMode;
+    char unknownFields86314[0x2C190];
 };
 
 typedef B_BitMap *(*RM_GetResourceFunc)(const char *name);

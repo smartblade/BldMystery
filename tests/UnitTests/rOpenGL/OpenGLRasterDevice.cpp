@@ -34,4 +34,5 @@ TEST(OpenGLRasterDeviceTests, Fields)
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, clipActive, 0x00050);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, deviceContext, 0x8419C);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, domeColor, 0x847E4);
+    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, fullScreenMode, 0x86310);
 }

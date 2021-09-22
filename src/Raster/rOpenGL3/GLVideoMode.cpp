@@ -6,12 +6,12 @@
 * Entry point:            0x1001BEC0
 * VC++ mangling:          ?FullScreen@B_OpenGLRasterDevice@@UAEHXZ
 */
-#ifndef BLD_NATIVE
+
 int B_OpenGLRasterDevice::FullScreen()
 {
-    return 0.0;
+    return this->fullScreenMode != NULL;
 }
-#endif
+
 
 /*
 ................................................................................
