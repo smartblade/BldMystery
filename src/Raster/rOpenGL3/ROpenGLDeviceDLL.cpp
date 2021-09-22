@@ -1,6 +1,3 @@
-#include <BBLibc.h>
-#include <wingdi.h>
-#define BUILD_LIB
 #include "ROpenGLDeviceDLL.h"
 
 
@@ -642,29 +639,18 @@ const char *B_OpenGLRasterDevice::GetRasterParameter(const char *parameter)
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
 * Module:                 rOpenGL.dll
 * Entry point:            0x100286FC
 * VC++ mangling:          ?SetDomeColor@B_OpenGLRasterDevice@@UAEXEEE@Z
 */
-#ifndef BLD_NATIVE
+
 void B_OpenGLRasterDevice::SetDomeColor(byte r, byte g, byte b)
 {
+    this->domeColor.r = r;
+    this->domeColor.g = g;
+    this->domeColor.b = b;
 }
-#endif
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
 /*
 * Module:                 rOpenGL.dll

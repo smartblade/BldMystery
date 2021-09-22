@@ -1,7 +1,9 @@
 #pragma once
 
 #include "RTrisDeviceDLL.h"
+#include <BBLibc.h>
 #include <bld_system.h>
+#define BUILD_LIB
 #include <export.h>
 
 class B_BitMap;
@@ -150,7 +152,9 @@ public:
 private:
     char unknownFields[0x84148];
     HDC deviceContext;
-    char unknownFields841A0[0x2E304];
+    char unknownFields841A0[0x644];
+    B_Color domeColor;
+    char unknownFields847EC[0x2DCB8];
 };
 
 typedef B_BitMap *(*RM_GetResourceFunc)(const char *name);
