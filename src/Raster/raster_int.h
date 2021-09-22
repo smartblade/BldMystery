@@ -86,7 +86,7 @@ extern const char *GetRasterParameter(const char * parameter);
 extern void set_clip_active(int clip_active);
 extern int GetClipActive(void);
 extern void GetSize(int &w, int &h);
-extern int set_window_size(int w, int h);
+extern int SetWindowSize(int w, int h);
 extern int GetWindowSize(int &w, int &h);
 extern int FullScreen(void);
 extern int n_video_modes(void);

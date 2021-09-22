@@ -130,8 +130,8 @@ externdef ?GetCurrentMode@B_OpenGLRasterDevice@@UAEHAAH0000@Z: near
 l1001CCF8 equ ?GetCurrentMode@B_OpenGLRasterDevice@@UAEHAAH0000@Z
 externdef ?unknown218@B_OpenGLRasterDevice@@UAEXXZ: near
 l1001CD74 equ ?unknown218@B_OpenGLRasterDevice@@UAEXXZ
-externdef ?set_window_size@B_OpenGLRasterDevice@@UAEHHH@Z: near
-l1001CED6 equ ?set_window_size@B_OpenGLRasterDevice@@UAEHHH@Z
+externdef ?SetWindowSize@B_OpenGLRasterDevice@@UAEHHH@Z: near
+l1001CED6 equ ?SetWindowSize@B_OpenGLRasterDevice@@UAEHHH@Z
 externdef ?GetWindowSize@B_OpenGLRasterDevice@@UAEHAAH0@Z: near
 l1001D667 equ ?GetWindowSize@B_OpenGLRasterDevice@@UAEHAAH0@Z
 externdef ??0B_OpenGLRasterDevice@@QAE@PAUHWND__@@PAUHINSTANCE__@@@Z: near

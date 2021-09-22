@@ -120,10 +120,10 @@ void B_OpenGLRasterDevice::unknown218()
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1001CED6
-* VC++ mangling:          ?set_window_size@B_OpenGLRasterDevice@@UAEHHH@Z
+* VC++ mangling:          ?SetWindowSize@B_OpenGLRasterDevice@@UAEHHH@Z
 */
 #ifndef BLD_NATIVE
-int B_OpenGLRasterDevice::set_window_size(int w, int h)
+int B_OpenGLRasterDevice::SetWindowSize(int w, int h)
 {
     return 0;
 }

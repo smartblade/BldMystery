@@ -557,8 +557,8 @@ void GetSize(int &w, int &h) {
 * Entry point:            0x10003BE6
 */
 
-int set_window_size(int w, int h) {
-        return B_3D_raster_device->set_window_size(w, h);
+int SetWindowSize(int w, int h) {
+        return B_3D_raster_device->SetWindowSize(w, h);
 }
 
 

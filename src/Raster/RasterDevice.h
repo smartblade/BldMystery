@@ -320,7 +320,7 @@ public:
     }
 
     virtual void unknown204(int) = 0;
-    virtual int set_window_size(int w, int h) = 0;
+    virtual int SetWindowSize(int w, int h) = 0;
     virtual int GetWindowSize(int &w, int &h) = 0;
     virtual int n_video_modes() = 0;
     virtual int GetVideoModeDscr(

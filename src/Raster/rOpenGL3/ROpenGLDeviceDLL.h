@@ -133,7 +133,7 @@ public:
     virtual const char *GetRasterParameter(const char *parameter);
     virtual void GetSize(int &w, int &h);
     virtual void unknown204(int);
-    virtual int set_window_size(int w, int h);
+    virtual int SetWindowSize(int w, int h);
     virtual int GetWindowSize(int &w, int &h);
     virtual int n_video_modes();
     virtual int GetVideoModeDscr(

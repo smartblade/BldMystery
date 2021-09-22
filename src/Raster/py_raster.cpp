@@ -1224,7 +1224,7 @@ PyObject *raster_SetWindowSize(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "|ii:SetWindowSize", &w, &h))
                 return NULL;
 
-        code = set_window_size(w, h);
+        code = SetWindowSize(w, h);
 
         return Py_BuildValue("i", code);
 }
