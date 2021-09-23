@@ -331,23 +331,16 @@ void B_OpenGLRasterDevice::AddAtmosphere(const B_Name &name, const B_Color &colo
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
 * Module:                 rOpenGL.dll
 * Entry point:            0x10024ECB
 * VC++ mangling:          ?GetAtmosphere@B_OpenGLRasterDevice@@UAEHABVB_Name@@@Z
 */
-#ifndef BLD_NATIVE
+
 int B_OpenGLRasterDevice::GetAtmosphere(const B_Name &name)
 {
-    return 0;
+    return this->atmospheres.FindItemIndex(name);
 }
-#endif
+
 
 /*
 * Module:                 rOpenGL.dll

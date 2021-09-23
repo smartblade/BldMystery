@@ -69869,63 +69869,7 @@ l10024D13 ENDP
 ;* Jump:
 ; 10001695(U) 
 ;
-l10024ECB PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000010h
-           mov dword ptr [ebp-010h], ecx
-           mov eax, dword ptr [ebp-010h]
-           add eax, 000086460h
-           mov dword ptr [ebp-008h], eax
-           mov dword ptr [ebp-004h], 000000000h
-           jmp l10024EF1
-;
-;* Jump:
-; 10024F24(U) 
-;
-l10024EE8: mov ecx, dword ptr [ebp-004h]
-           add ecx, 000000001h
-           mov dword ptr [ebp-004h], ecx
-;
-;* Jump:
-; 10024EE6(U) 
-;
-l10024EF1: mov edx, dword ptr [ebp-008h]
-           mov eax, dword ptr [ebp-004h]
-           cmp eax, [edx+008h]
-           jnb l10024F26
-           mov ecx, dword ptr [ebp-008h]
-           mov edx, dword ptr [ecx+004h]
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [edx+eax*04h]
-           call [__imp_?Id@B_NamedObj@@QBEABVB_Name@@XZ]; [BBLibc.?Id@B_NamedObj@@QBEABVB_Name@@XZ].
-           push eax
-           mov ecx, dword ptr [ebp+008h]
-           call [__imp_??8B_Name@@QBEIABV0@@Z]; [BBLibc.??8B_Name@@QBEIABV0@@Z].
-           test eax, eax
-           je l10024F24
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ebp-00Ch], ecx
-           jmp l10024F2D
-;
-;* Jump:
-; 10024F1A(C) 
-;
-l10024F24: jmp l10024EE8
-;
-;* Jump:
-; 10024EFA(C) 
-;
-l10024F26: mov dword ptr [ebp-00Ch], 0FFFFFFFFh
-;
-;* Jump:
-; 10024F22(U) 
-;
-l10024F2D: mov eax, dword ptr [ebp-00Ch]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l10024ECB ENDP
+           call l10024ECB; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001730(U) 
