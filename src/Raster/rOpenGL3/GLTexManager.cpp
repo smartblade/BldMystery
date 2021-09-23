@@ -250,6 +250,18 @@ const char *B_OpenGLRasterDevice::BmpName(long handle)
 
 /*
 * Module:                 rOpenGL.dll
+* Entry point:            0x100177EC
+* VC++ mangling:          ?UpdateColorAdjustment@B_OpenGLRasterDevice@@QAEXXZ
+*/
+#ifndef BLD_NATIVE
+void B_OpenGLRasterDevice::UpdateColorAdjustment()
+{
+}
+#endif
+
+
+/*
+* Module:                 rOpenGL.dll
 * Entry point:            0x100179C6
 * VC++ mangling:          ?SetVideoSettings@B_OpenGLRasterDevice@@UAEXMMM@Z
 */
@@ -372,8 +384,13 @@ float B_OpenGLRasterDevice::GetBrightness()
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 rOpenGL.dll
+* Entry point:            0x10017B27
+* VC++ mangling:          ?LoadBitmapWinResource@B_OpenGLRasterDevice@@QAEXHH@Z
 */
+#ifndef BLD_NATIVE
+void B_OpenGLRasterDevice::LoadBitmapWinResource(
+    int resourceId, GLint textureId)
+{
+}
+#endif

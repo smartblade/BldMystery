@@ -2,8 +2,10 @@
 
 #include "GLVideoMode.h"
 #include "RTrisDeviceDLL.h"
+#include <AnalyticGeometry/Matrix.h>
 #include <BBLibc.h>
 #include <bld_system.h>
+#include <GL/gl.h>
 #define BUILD_LIB
 #include <export.h>
 
@@ -156,7 +158,9 @@ public:
         int mode_index, int &depth, int &w, int &h, int &flags,
         int &frequency
     );
-    virtual void unknown218();
+    virtual int SetVideoModeParameters(
+        int depth, int width, int height, int frequency
+    );
     virtual int SetVideoMode(int mode_index);
     virtual int GetCurrentMode(
         int &unknown1, int &w, int &h, int &unknown4,
@@ -165,22 +169,111 @@ public:
     virtual int FullScreen();
     virtual int ClassId();
     virtual const char *ClassIdName();
+    virtual void unknown234();
+    virtual void unknown238();
+    virtual void unknown23C();
+    virtual void unknown240();
+    virtual void unknown244();
 
+    void UpdateColorAdjustment();
+    void LoadBitmapWinResource(
+        int resourceId, GLint textureId);
     void GetVideoModes();
+    int CreateContext();
+    int LoadExtensions();
 
 private:
-    char unknownFields[0x84148];
+    HWND window;
     HDC deviceContext;
-    char unknownFields841A0[0x644];
+    HGLRC glContext;
+    int unknown0841A4;
+    HMODULE rasterModule;
+    WORD gammaRamp[256][3];
+    int hasGammaRamp;
+    int isGammaRampSet;
+    int unknown0847B4;
+    GLuint backgroundRegion;
+    int useCreditsHack;
+    int backgroundImageWidth;
+    int backgroundImageHeight;
+    int unknown0847C8;
+    int unknown0847CC;
+    int currentDisplayWidth;
+    int currentDisplayHeight;
+    int currentDisplayDepth;
+    int currentDisplayFrequency;
+    float unknown0847E0;
     B_Color domeColor;
-    char unknownFields847EC[0x1B0C];
+    int useMipmaps;
+    int unknown0847F0;
+    int unknown0847F4;
+    int toonRender;
+    int toonColor;
+    int toonTextures;
+    int BWRender;
+    float toonLineWidth;
+    int showStats;
+    int textureMinifyingFunc;
+    int textureMagnificationFunc;
+    float anisotropicLevel;
+    float textureLODBias;
+    int hasTextureEnvCombine;
+    int hasTextureFilterAnisotropic;
+    int hasTextureLodBias;
+    int hasFogCoord;
+    int hasARBTextureCompression;
+    int hasNVRegisterCombiners;
+    int hasSGISMipmapping;
+    int useTextureFont;
+    int tFontOpaque;
+    int useCompressedTextures;
+    float tFontScale;
+    int unknown08484C[4];
+    int useOGLLight;
+    int notUsePalettes;
+    int unknown084864;
+    int useOGLFog;
+    int cacheStretchImage;
+    int unknown084870;
+    int unknown084874;
+    int unknown084878;
+    int unknown08487C;
+    int unknown084880;
+    int unknown084884[1543];
+    bool isFog;
+    int unknown0860A4;
+    int unknown0860A8;
+    int unknown0860AC[3];
+    float alpha;
+    GLfloat fillColor[4];
+    GLubyte textColor[4];
+    GLfloat blurRGBA[4];
+    B_Matrix pose;
+    B_Matrix invPose;
+    double modelviewMatrix[16];
+    double projectionMatrix[16];
+    int viewport[4];
+    int unknown0862F0;
+    int transformations;
     B_PtrArray<B_VideoMode> videoModes;
     B_VideoMode *fullScreenMode;
-    char unknownFields86314[0x14C];
+    int unknown086314[6];
+    double gamma;
+    double contrast;
+    double brightness;
+    byte colorTable[256];
+    B_PtrArray<void> textures;
+    int nextTextureId;
     B_PtrArray<B_Atmosphere> atmospheres;
-    char unknownFields86478[0x14];
+    GLfloat fogColor[4];
+    float fogDensity;
     float fogFactor;
-    char unknownFields86490[0x2C014];
+    int fogEnabled;
+    int numTrisMaps;
+    int numTrisObjs;
+    int numParticles;
+    int numTextureSwaps;
+    char unknownFields864A4[0x2C000];
 };
 
 typedef B_BitMap *(*RM_GetResourceFunc)(const char *name);

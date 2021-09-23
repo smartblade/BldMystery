@@ -5,6 +5,8 @@
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10003430
 * Module:                 Blade.exe
 * Entry point:            0x00404BE0
 * VC++ mangling:          ??0B_Matrix@@QAE@XZ

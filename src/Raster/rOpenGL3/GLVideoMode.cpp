@@ -102,11 +102,14 @@ int B_OpenGLRasterDevice::GetCurrentMode(
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1001CD74
-* VC++ mangling:          ?unknown218@B_OpenGLRasterDevice@@UAEXXZ
+* VC++ mangling:          ?SetVideoModeParameters@B_OpenGLRasterDevice@@UAEHHHHH@Z
 */
 #ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::unknown218()
+int B_OpenGLRasterDevice::SetVideoModeParameters(
+    int depth, int width, int height, int frequency
+)
 {
+    return 0;
 }
 #endif
 

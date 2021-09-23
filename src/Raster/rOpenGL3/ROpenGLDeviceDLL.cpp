@@ -1,5 +1,6 @@
 #include "ROpenGLDeviceDLL.h"
 
+#include "ConfigSections.h"
 #include <math.h>
 
 
@@ -8,11 +9,179 @@
 * Entry point:            0x1001E100
 * VC++ mangling:          ??0B_OpenGLRasterDevice@@QAE@PAUHWND__@@PAUHINSTANCE__@@@Z
 */
-#ifndef BLD_NATIVE
+
 B_OpenGLRasterDevice::B_OpenGLRasterDevice(HWND window, HMODULE rasterModule)
+    : unknown0847B4(0), domeColor(255, 255, 255), fullScreenMode(NULL)
 {
+    mout << "Initializing OpenGL device.\n";
+    this->isFog = false;
+    this->fogEnabled = false;
+    this->window = window;
+    this->rasterModule = rasterModule;
+    DEVMODE devMode;
+    memset(&devMode, 0, sizeof(devMode));
+    devMode.dmSize = sizeof(devMode);
+    this->currentDisplayHeight = -1;
+    this->currentDisplayWidth = -1;
+    if (EnumDisplaySettings(NULL, ENUM_CURRENT_SETTINGS, &devMode))
+    {
+        this->currentDisplayWidth = devMode.dmPelsWidth;
+        this->currentDisplayHeight = devMode.dmPelsHeight;
+        this->currentDisplayDepth = devMode.dmBitsPerPel;
+        this->currentDisplayFrequency = devMode.dmDisplayFrequency;
+    }
+    this->isGammaRampSet = false;
+    this->useTextureFont = true;
+    this->tFontScale = 0.5;
+    this->tFontOpaque = false;
+    this->backgroundRegion = -1;
+    this->useCreditsHack = true;
+    this->backgroundImageHeight = 0;
+    this->backgroundImageWidth = 0;
+    this->showStats = false;
+    this->useMipmaps = false;
+    this->unknown0847F0 = 0;
+    this->unknown0847F4 = 0;
+    this->hasTextureEnvCombine = false;
+    this->hasTextureFilterAnisotropic = false;
+    this->hasTextureLodBias = false;
+    this->hasFogCoord = false;
+    this->hasARBTextureCompression = false;
+    this->hasNVRegisterCombiners = false;
+    this->hasSGISMipmapping = false;
+    this->textureLODBias = 0.0;
+    this->useCompressedTextures = false;
+    this->unknown084864 = 0;
+    this->useOGLLight = false;
+    this->useOGLFog = true;
+    this->notUsePalettes = false;
+    this->textureMagnificationFunc = GL_LINEAR;
+    this->textureMinifyingFunc = GL_LINEAR;
+    this->GetVideoModes();
+    char cfgFile[256];
+    strcpy(cfgFile, GetConfigDirectory());
+    strcat(cfgFile, "/rOpenGL.ini");
+    B_VideoModeSection videoModeSection(cfgFile);
+    if (!videoModeSection.isWindow)
+    {
+        this->SetVideoModeParameters(
+            videoModeSection.bpp,
+            videoModeSection.width,
+            videoModeSection.height,
+            videoModeSection.frequency);
+    }
+    this->fogColor[2] = 0.7f;
+    this->fogColor[1] = 0.7f;
+    this->fogColor[0] = 0.7f;
+    this->fogColor[3] = 0.0f;
+    this->fogDensity = 1e-05f;
+    this->fogFactor = 0.02f;
+    this->flags = RASTER_FLAGS_0001 | RASTER_FLAGS_0002 | RASTER_FLAGS_0010;
+    this->cacheStretchImage = false;
+    this->unknown084870 = 0;
+    this->unknown084874 = -1;
+    this->CreateContext();
+    mout << "OpenGL Info:\n";
+    mout << vararg("  Vendor: %s.\n", glGetString(GL_VENDOR));
+    mout << vararg("  Renderer: %s.\n", glGetString(GL_RENDERER));
+    mout << vararg("  Version: %s.\n", glGetString(GL_VERSION));
+    GLint maxTextureSize;
+    glGetIntegerv(GL_MAX_TEXTURE_SIZE, &maxTextureSize);
+    mout << vararg("  MaxTextureSize: %d.\n", maxTextureSize);
+    GLint stencilBits;
+    glGetIntegerv(GL_STENCIL_BITS, &stencilBits);
+    mout << vararg("  StencilBits: %d.\n", stencilBits);
+    GLint redBits, greenBits, blueBits;
+    glGetIntegerv(GL_RED_BITS, &redBits);
+    glGetIntegerv(GL_GREEN_BITS, &greenBits);
+    glGetIntegerv(GL_BLUE_BITS, &blueBits);
+    mout << vararg("  ColorBits: %d %d %d.\n", redBits, greenBits, blueBits);
+    GLint depthBits;
+    glGetIntegerv(GL_DEPTH_BITS, &depthBits);
+    mout << vararg("  DepthBits: %d.\n", depthBits);
+    this->LoadExtensions();
+    mout << vararg("  Available video modes: %d.\n", this->videoModes.size);
+    this->ClsRGB(0, 0, 0);
+    glEnable(GL_SCISSOR_TEST);
+    this->clipActive = false;
+    this->clipX = 0;
+    this->clipY = 0;
+    this->clipWidth = this->width;
+    this->clipHeight = this->height;
+    this->unknown084878 = 0;
+    this->unknown084880 = 0;
+    this->unknown08487C = 0;
+    GLfloat pixels[] =
+    {
+        0.2f, 0.2f, 0.2f,
+        0.2f, 0.2f, 0.2f,
+        0.2f, 0.2f, 0.2f,
+        0.2f, 0.2f, 0.2f,
+        0.2f, 0.2f, 0.2f,
+        0.2f, 0.2f, 0.2f,
+        0.5f, 0.5f, 0.5f,
+        0.5f, 0.5f, 0.5f,
+        0.5f, 0.5f, 0.5f,
+        0.5f, 0.5f, 0.5f,
+        0.5f, 0.5f, 0.5f,
+        0.5f, 0.5f, 0.5f,
+        0.5f, 0.5f, 0.5f,
+        0.5f, 0.5f, 0.5f,
+        0.5f, 0.5f, 0.5f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+    };
+    glBindTexture(GL_TEXTURE_1D, 2001);
+    glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexImage1D(
+        GL_TEXTURE_1D, 0, GL_RGB, sizeof(pixels) / (sizeof(pixels[0]) * 3),
+        0, GL_RGB, GL_FLOAT, &pixels);
+    this->LoadBitmapWinResource(105, 2002);
+    this->LoadBitmapWinResource(108, 2003);
+    this->LoadBitmapWinResource(103, 2004);
+    this->LoadBitmapWinResource(107, 2005);
+    this->LoadBitmapWinResource(120, 2006);
+    this->unknown0847E0 = -1.0;
+    this->unknown0847CC = -1;
+    this->unknown0847C8 = -1;
+    glNewList(500, GL_COMPILE);
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glLoadIdentity();
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glLoadIdentity();
+    glScalef(2.0 / this->width, 2.0 / this->height, 1.0);
+    glTranslatef(-(this->width / 2.0), -(this->height / 2.0), 0.0);
+    glViewport(0, 0, this->width, this->height);
+    glEndList();
+    glNewList(501, GL_COMPILE);
+    glMatrixMode(GL_MODELVIEW);
+    glPopMatrix();
+    glMatrixMode(GL_PROJECTION);
+    glPopMatrix();
+    glEndList();
+    this->UpdateColorAdjustment();
+    this->BWRender = 0;
+    mout << "OpenGL initialized.\n\n";
 }
-#endif
+
 
 /*
 ................................................................................
@@ -29,6 +198,25 @@ B_OpenGLRasterDevice::B_OpenGLRasterDevice(HWND window, HMODULE rasterModule)
 #ifndef BLD_NATIVE
 B_OpenGLRasterDevice::~B_OpenGLRasterDevice()
 {
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x1001FA3E
+* VC++ mangling:          ?CreateContext@B_OpenGLRasterDevice@@QAEHXZ
+*/
+#ifndef BLD_NATIVE
+int B_OpenGLRasterDevice::CreateContext()
+{
+    return 0;
 }
 #endif
 
@@ -195,6 +383,18 @@ void B_OpenGLRasterDevice::unknown080()
 
 /*
 * Module:                 rOpenGL.dll
+* Entry point:            0x10021571
+* VC++ mangling:          ?LoadExtensions@B_OpenGLRasterDevice@@QAEHXZ
+*/
+#ifndef BLD_NATIVE
+int B_OpenGLRasterDevice::LoadExtensions()
+{
+    return true;
+}
+#endif
+
+/*
+* Module:                 rOpenGL.dll
 * Entry point:            0x10021A5B
 * VC++ mangling:          ?SetMode@B_OpenGLRasterDevice@@UAEXH@Z
 */
@@ -222,12 +422,17 @@ void B_OpenGLRasterDevice::unknown0D4()
 }
 #endif
 
+
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 rOpenGL.dll
+* Entry point:            0x10021EB5
+* VC++ mangling:          ?unknown240@B_OpenGLRasterDevice@@UAEXXZ
 */
+#ifndef BLD_NATIVE
+void B_OpenGLRasterDevice::unknown240()
+{
+}
+#endif
 
 /*
 * Module:                 rOpenGL.dll
@@ -295,11 +500,15 @@ void B_OpenGLRasterDevice::unknown100()
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 rOpenGL.dll
+* Entry point:            0x10023A08
+* VC++ mangling:          ?unknown244@B_OpenGLRasterDevice@@UAEXXZ
 */
+#ifndef BLD_NATIVE
+void B_OpenGLRasterDevice::unknown244()
+{
+}
+#endif
 
 /*
 * Module:                 rOpenGL.dll
@@ -313,11 +522,37 @@ void B_OpenGLRasterDevice::unknown0D0()
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 rOpenGL.dll
+* Entry point:            0x100241EF
+* VC++ mangling:          ?unknown234@B_OpenGLRasterDevice@@UAEXXZ
 */
+#ifndef BLD_NATIVE
+void B_OpenGLRasterDevice::unknown234()
+{
+}
+#endif
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10024730
+* VC++ mangling:          ?unknown23C@B_OpenGLRasterDevice@@UAEXXZ
+*/
+#ifndef BLD_NATIVE
+void B_OpenGLRasterDevice::unknown23C()
+{
+}
+#endif
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10024A68
+* VC++ mangling:          ?unknown238@B_OpenGLRasterDevice@@UAEXXZ
+*/
+#ifndef BLD_NATIVE
+void B_OpenGLRasterDevice::unknown238()
+{
+}
+#endif
 
 /*
 * Module:                 rOpenGL.dll
@@ -751,7 +986,6 @@ void B_3DRasterDevice::unknown11C()
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1002B5F0
-* VC++ mangling:          ?UnifyRenderBuffers@B_3DRasterDevice@@UAEXXZ
 */
 #ifdef BLD_NATIVE_HEADER
 void B_3DRasterDevice::UnifyRenderBuffers()

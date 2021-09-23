@@ -27,6 +27,11 @@ if (BLD_NATIVE)
     target_link_options(${TARGET} PRIVATE "@${EXPORT_FUNCTIONS_FILE}")
 endif()
 
+target_compile_definitions(
+    ${TARGET} PRIVATE
+    _CRT_NONSTDC_NO_DEPRECATE
+    _CRT_SECURE_NO_DEPRECATE
+)
 target_include_directories(${TARGET} PRIVATE ${BOD_COMMON_INCLUDE_DIR})
 target_link_directories(${TARGET} PRIVATE ${BOD_EXTERNAL_LIB_DIR})
 target_link_libraries(

@@ -10,6 +10,10 @@ class B_Name;
 class B_Color;
 class B_Font;
 
+#define RASTER_FLAGS_0001 0x0001
+#define RASTER_FLAGS_0002 0x0002
+#define RASTER_FLAGS_0010 0x0010
+
 class B_3DRasterDevice {
 public:
     virtual ~B_3DRasterDevice()
@@ -329,7 +333,9 @@ public:
         int mode_index, int &depth, int &w, int &h, int &flags,
         int &frequency
     ) = 0;
-    virtual void unknown218() = 0;
+    virtual int SetVideoModeParameters(
+        int depth, int width, int height, int frequency
+    ) = 0;
     virtual int SetVideoMode(int mode_index) = 0;
     virtual int GetCurrentMode(
         int &unknown1, int &w, int &h, int &unknown4,

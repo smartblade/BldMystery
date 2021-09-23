@@ -229,5 +229,6 @@ LIB_EXP int CheckErrors;
 
 LIB_EXP void OutputWin32Error(char const *message);
 LIB_EXP PyObject *CallPythonObject(PyObject *func, PyObject *args);
+LIB_EXP const char *GetConfigDirectory();
 
 #endif /* BBLIBC_H */
