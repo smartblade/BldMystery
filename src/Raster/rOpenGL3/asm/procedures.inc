@@ -174,8 +174,8 @@ externdef ?add_atmosphere@B_OpenGLRasterDevice@@UAEXABVB_Name@@ABVB_Color@@M@Z: 
 l10024D13 equ ?add_atmosphere@B_OpenGLRasterDevice@@UAEXABVB_Name@@ABVB_Color@@M@Z
 externdef ?GetAtmosphere@B_OpenGLRasterDevice@@UAEHABVB_Name@@@Z: near
 l10024ECB equ ?GetAtmosphere@B_OpenGLRasterDevice@@UAEHABVB_Name@@@Z
-externdef ?unknown04C@B_OpenGLRasterDevice@@UAEXXZ: near
-l10024F36 equ ?unknown04C@B_OpenGLRasterDevice@@UAEXXZ
+externdef ?GetAtmosphereName@B_OpenGLRasterDevice@@UAE?AVB_Name@@H@Z: near
+l10024F36 equ ?GetAtmosphereName@B_OpenGLRasterDevice@@UAE?AVB_Name@@H@Z
 externdef ?unknown0B0@B_OpenGLRasterDevice@@UAEXXZ: near
 l10024FA8 equ ?unknown0B0@B_OpenGLRasterDevice@@UAEXXZ
 externdef ?GetAtmosphereColor@B_OpenGLRasterDevice@@UAEXHNAAMAAVB_Color@@@Z: near

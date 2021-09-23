@@ -350,29 +350,22 @@ int B_OpenGLRasterDevice::GetAtmosphere(const B_Name &name)
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
 * Module:                 rOpenGL.dll
 * Entry point:            0x10024F36
-* VC++ mangling:          ?unknown04C@B_OpenGLRasterDevice@@UAEXXZ
+* VC++ mangling:          ?GetAtmosphereName@B_OpenGLRasterDevice@@UAE?AVB_Name@@H@Z
 */
-#ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::unknown04C()
-{
-}
-#endif
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+B_Name B_OpenGLRasterDevice::GetAtmosphereName(int atmosphereHandle)
+{
+    if (
+        (unsigned int)atmosphereHandle < this->atmospheres.size &&
+        atmosphereHandle >= 0
+    )
+        return this->atmospheres[atmosphereHandle]->Id();
+    mout << "B_OpenGLRasterDevice::AtmName() -> Handle no v\xE1lido.\n";
+    return "";
+}
+
 
 /*
 * Module:                 rOpenGL.dll

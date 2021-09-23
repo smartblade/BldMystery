@@ -69930,50 +69930,7 @@ l10024ECB ENDP
 ;* Jump:
 ; 10001730(U) 
 ;
-l10024F36 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000008h
-           mov dword ptr [ebp-008h], ecx
-           mov eax, dword ptr [ebp-008h]
-           mov ecx, dword ptr [ebp+00Ch]
-           cmp ecx, [eax+000086468h]
-           jnb l10024F7D
-           cmp dword ptr [ebp+00Ch], 000000000h
-           jb l10024F7D
-           mov edx, dword ptr [ebp-008h]
-           mov eax, dword ptr [edx+000086464h]
-           mov ecx, dword ptr [ebp+00Ch]
-           mov edx, dword ptr [eax+ecx*04h]
-           mov dword ptr [ebp-004h], edx
-           mov ecx, dword ptr [ebp-004h]
-           call [__imp_?Id@B_NamedObj@@QBEABVB_Name@@XZ]; [BBLibc.?Id@B_NamedObj@@QBEABVB_Name@@XZ].
-           push eax
-           mov ecx, dword ptr [ebp+008h]
-           call [__imp_??0B_Name@@QAE@ABV0@@Z]; [BBLibc.??0B_Name@@QAE@ABV0@@Z].
-           mov eax, dword ptr [ebp+008h]
-           jmp l10024FA2
-;
-;* Jump:
-; 10024F4B(C), 10024F51(C) 
-;
-l10024F7D: push offset g1003B704
-           mov eax, dword ptr [__imp_?mout@@3VB_MessageManager@@A]; [BBLibc.?mout@@3VB_MessageManager@@A].
-           push eax
-           call [__imp_??6@YAAAVB_MessageManager@@AAV0@PBD@Z]; [BBLibc.??6@YAAAVB_MessageManager@@AAV0@PBD@Z].
-           add esp, 000000008h
-           push offset g10051884
-           mov ecx, dword ptr [ebp+008h]
-           call [__imp_??0B_Name@@QAE@PBD@Z]; [BBLibc.??0B_Name@@QAE@PBD@Z].
-           mov eax, dword ptr [ebp+008h]
-;
-;* Jump:
-; 10024F7B(U) 
-;
-l10024FA2: mov esp, ebp
-           pop ebp
-           ret 00008h
-l10024F36 ENDP
+           call l10024F36; Implemented in c++ code
 ;
 ;* Jump:
 ; 1000145B(U) 

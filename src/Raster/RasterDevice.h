@@ -44,7 +44,7 @@ public:
     virtual long BmpHandle(const char *bmpName) = 0;
     virtual int GetAtmosphere(const B_Name &name) = 0;
     virtual const char *BmpName(long handle) = 0;
-    virtual void unknown04C() = 0;
+    virtual B_Name GetAtmosphereName(int atmosphereHandle) = 0;
     virtual void update_dome() = 0;
     virtual int GetTextureInfo(
         int index, int &w, int &h, int &depth
