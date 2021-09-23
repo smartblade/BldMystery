@@ -13,6 +13,13 @@ class B_Resource;
 
 struct B_Atmosphere : public B_NamedObj
 {
+    B_Atmosphere(const B_Color &color, float intensity, const B_Name &name)
+        : B_NamedObj(name)
+    {
+        this->color = color;
+        this->intensity = intensity;
+    }
+
     B_Color color;
     float intensity;
 };
@@ -36,7 +43,7 @@ public:
     );
     virtual void SetFlags(long flags);
     virtual void unknown038();
-    virtual void AddAtmosphere(
+    virtual int AddAtmosphere(
         const B_Name &name, const B_Color &color, float intensity
     );
     virtual long BmpHandle(const char *bmpName);
