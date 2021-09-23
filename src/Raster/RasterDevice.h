@@ -40,7 +40,7 @@ public:
     virtual void unknown030() = 0;
     virtual void unknown034() = 0;
     virtual void unknown038() = 0;
-    virtual void add_atmosphere(const B_Name &name, const B_Color &color, float intensity) = 0;
+    virtual void AddAtmosphere(const B_Name &name, const B_Color &color, float intensity) = 0;
     virtual long BmpHandle(const char *bmpName) = 0;
     virtual int GetAtmosphere(const B_Name &name) = 0;
     virtual const char *BmpName(long handle) = 0;

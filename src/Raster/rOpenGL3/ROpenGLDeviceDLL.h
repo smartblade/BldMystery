@@ -36,7 +36,7 @@ public:
     );
     virtual void SetFlags(long flags);
     virtual void unknown038();
-    virtual void add_atmosphere(
+    virtual void AddAtmosphere(
         const B_Name &name, const B_Color &color, float intensity
     );
     virtual long BmpHandle(const char *bmpName);

@@ -322,10 +322,10 @@ void B_OpenGLRasterDevice::unknown0D0()
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x10024D13
-* VC++ mangling:          ?add_atmosphere@B_OpenGLRasterDevice@@UAEXABVB_Name@@ABVB_Color@@M@Z
+* VC++ mangling:          ?AddAtmosphere@B_OpenGLRasterDevice@@UAEXABVB_Name@@ABVB_Color@@M@Z
 */
 #ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::add_atmosphere(const B_Name &name, const B_Color &color, float intensity)
+void B_OpenGLRasterDevice::AddAtmosphere(const B_Name &name, const B_Color &color, float intensity)
 {
 }
 #endif

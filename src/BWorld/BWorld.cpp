@@ -440,7 +440,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
         for(i = 0; i < atms->size; i++)
         {
                 atmosphere_t * atm = (atmosphere_t *)atms->elements[i];
-                B_3D_raster_device->add_atmosphere(atm->Id(), atm->color, atm->intensity);
+                B_3D_raster_device->AddAtmosphere(atm->Id(), atm->color, atm->intensity);
         }
 
         file >> gbl_world_points;
