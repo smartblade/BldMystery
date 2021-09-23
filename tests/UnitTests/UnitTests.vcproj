@@ -511,6 +511,10 @@
 			Name="rOpenGL"
 			>
 			<File
+				RelativePath=".\rOpenGL\AtmosphereTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\rOpenGL\OpenGLRasterDevice.cpp"
 				>
 			</File>

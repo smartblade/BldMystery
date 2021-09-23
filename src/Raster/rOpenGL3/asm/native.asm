@@ -70188,57 +70188,7 @@ l10024FA8 ENDP
 ;* Jump:
 ; 100017E9(U) 
 ;
-l10025229 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000010h
-           mov dword ptr [ebp-00Ch], ecx
-           cmp dword ptr [ebp+008h], 0FFFFFFFFh
-           jne l1002523A
-           jmp l100252A0
-;
-;* Jump:
-; 10025236(C) 
-;
-l1002523A: mov eax, dword ptr [ebp-00Ch]
-           mov ecx, dword ptr [eax+000086464h]
-           mov edx, dword ptr [ebp+008h]
-           mov eax, dword ptr [ecx+edx*04h]
-           mov dword ptr [ebp-004h], eax
-           fld qword ptr [ebp+00Ch]
-           fchs
-           mov ecx, dword ptr [ebp-004h]
-           fmul dword ptr [ecx+014h]
-           mov edx, dword ptr [ebp-00Ch]
-           fmul dword ptr [edx+00008648Ch]
-           call l10035EC4; [MSVCRT._CIexp].
-           fst dword ptr [ebp-010h]
-           fsubr dword ptr [g1003706C]
-           mov eax, dword ptr [ebp+014h]
-           fstp dword ptr [eax]
-           mov ecx, dword ptr [ebp-004h]
-           add ecx, 00000000Ch
-           mov dword ptr [ebp-008h], ecx
-           mov edx, dword ptr [ebp+018h]
-           mov eax, dword ptr [ebp-008h]
-           mov cl, byte ptr [eax+004h]
-           mov byte ptr [edx+004h], cl
-           mov edx, dword ptr [ebp+018h]
-           mov eax, dword ptr [ebp-008h]
-           mov cl, byte ptr [eax+005h]
-           mov byte ptr [edx+005h], cl
-           mov edx, dword ptr [ebp+018h]
-           mov eax, dword ptr [ebp-008h]
-           mov cl, byte ptr [eax+006h]
-           mov byte ptr [edx+006h], cl
-;
-;* Jump:
-; 10025238(U) 
-;
-l100252A0: mov esp, ebp
-           pop ebp
-           ret 00014h
-l10025229 ENDP
+           call l10025229; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001514(U) 

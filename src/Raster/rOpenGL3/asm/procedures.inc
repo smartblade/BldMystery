@@ -178,8 +178,8 @@ externdef ?unknown04C@B_OpenGLRasterDevice@@UAEXXZ: near
 l10024F36 equ ?unknown04C@B_OpenGLRasterDevice@@UAEXXZ
 externdef ?unknown0B0@B_OpenGLRasterDevice@@UAEXXZ: near
 l10024FA8 equ ?unknown0B0@B_OpenGLRasterDevice@@UAEXXZ
-externdef ?unknown0B4@B_OpenGLRasterDevice@@UAEXXZ: near
-l10025229 equ ?unknown0B4@B_OpenGLRasterDevice@@UAEXXZ
+externdef ?GetAtmosphereColor@B_OpenGLRasterDevice@@UAEXHNAAMAAVB_Color@@@Z: near
+l10025229 equ ?GetAtmosphereColor@B_OpenGLRasterDevice@@UAEXHNAAMAAVB_Color@@@Z
 externdef ?unknown108@B_OpenGLRasterDevice@@UAEXXZ: near
 l100252A6 equ ?unknown108@B_OpenGLRasterDevice@@UAEXXZ
 externdef ?unknown0F8@B_OpenGLRasterDevice@@UAEXXZ: near

@@ -11,6 +11,13 @@ class B_BitMap;
 class B_Resource;
 
 
+struct B_Atmosphere : public B_NamedObj
+{
+    B_Color color;
+    float intensity;
+};
+
+
 class B_OpenGLRasterDevice : public B_TrisDevice
 {
 public:
@@ -60,7 +67,9 @@ public:
     virtual void GetDomeColor(byte &r, byte &g, byte &b);
     virtual void unknown0AC();
     virtual void unknown0B0();
-    virtual void unknown0B4();
+    virtual void GetAtmosphereColor(
+        int atmosphereHandle, double intensityFactor, float &alpha,
+        B_Color &color);
     virtual void unknown0B8();
     virtual void unknown0C0();
     virtual void unknown0C8();
@@ -160,7 +169,11 @@ private:
     char unknownFields847EC[0x1B0C];
     B_PtrArray<B_VideoMode> videoModes;
     B_VideoMode *fullScreenMode;
-    char unknownFields86314[0x2C190];
+    char unknownFields86314[0x14C];
+    B_PtrArray<B_Atmosphere> atmospheres;
+    char unknownFields86478[0x14];
+    float fogFactor;
+    char unknownFields86490[0x2C014];
 };
 
 typedef B_BitMap *(*RM_GetResourceFunc)(const char *name);

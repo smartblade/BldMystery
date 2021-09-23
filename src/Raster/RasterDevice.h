@@ -86,7 +86,9 @@ public:
 
     virtual void unknown0AC() = 0;
     virtual void unknown0B0() = 0;
-    virtual void unknown0B4() = 0;
+    virtual void GetAtmosphereColor(
+        int atmosphereHandle, double intensityFactor, float &alpha,
+        B_Color &color) = 0;
     virtual void unknown0B8() = 0;
     virtual void unknown0BC() = 0;
     virtual void unknown0C0() = 0;

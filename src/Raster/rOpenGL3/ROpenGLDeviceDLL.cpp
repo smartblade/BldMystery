@@ -1,5 +1,7 @@
 #include "ROpenGLDeviceDLL.h"
 
+#include <math.h>
+
 
 /*
 * Module:                 rOpenGL.dll
@@ -384,29 +386,22 @@ void B_OpenGLRasterDevice::unknown0B0()
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
 * Module:                 rOpenGL.dll
 * Entry point:            0x10025229
-* VC++ mangling:          ?unknown0B4@B_OpenGLRasterDevice@@UAEXXZ
+* VC++ mangling:          ?GetAtmosphereColor@B_OpenGLRasterDevice@@UAEXHNAAMAAVB_Color@@@Z
 */
-#ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::unknown0B4()
-{
-}
-#endif
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+void B_OpenGLRasterDevice::GetAtmosphereColor(
+    int atmosphereHandle, double intensityFactor, float &alpha,
+    B_Color &color)
+{
+    if (atmosphereHandle == -1)
+        return;
+    B_Atmosphere *atm = this->atmospheres[atmosphereHandle];
+    alpha = 1.0 - exp(-intensityFactor * atm->intensity * this->fogFactor);
+    color = atm->color;
+}
+
 
 /*
 * Module:                 rOpenGL.dll

@@ -36,4 +36,6 @@ TEST(OpenGLRasterDeviceTests, Fields)
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, domeColor, 0x847E4);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, videoModes, 0x862F8);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, fullScreenMode, 0x86310);
+    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, atmospheres, 0x86460);
+    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, fogFactor, 0x8648C);
 }
