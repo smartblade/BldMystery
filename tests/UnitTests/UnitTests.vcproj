@@ -515,7 +515,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\rOpenGL\EdgeTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\rOpenGL\OpenGLRasterDevice.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\rOpenGL\TriangleTests.cpp"
 				>
 			</File>
 		</Filter>

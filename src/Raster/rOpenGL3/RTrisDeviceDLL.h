@@ -20,17 +20,17 @@ struct B_Edge
 {
     unsigned int firstVertexIndex;
     unsigned int secondVertexIndex;
-    int edge_unknown_dw0008;
+    B_Edge *nextEdge;
     float edge_unknown_r000C;
-    int edge_unknown_dw0010;
+    void *light;
 };
 
 
 struct B_Triangle
 {
-    int triangle_unknown_dw0000;
-    int triangle_unknown_dw0004;
-    int triangle_unknown_dw0008;
+    int invEdge1;
+    int invEdge2;
+    int invEdge3;
     B_Edge *edge1;
     B_Edge *edge2;
     B_Edge *edge3;
@@ -54,6 +54,10 @@ public:
     virtual void unknown23C() = 0;
     virtual void unknown240();
     virtual void unknown244();
+    void SplitTriangleThreeEdges(B_Triangle *triangle);
+    void SplitTriangleTwoEdges(B_Triangle *triangle);
+    void SplitTriangleOneEdge(B_Triangle *triangle);
+    void SplitTriangles();
 
 protected:
     int width;

@@ -184,3 +184,129 @@ void B_TrisDevice::unknown0E4()
 {
 }
 #endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10032646
+* VC++ mangling:          ?SplitTriangleThreeEdges@B_TrisDevice@@QAEXPAUB_Triangle@@@Z
+*/
+#ifndef BLD_NATIVE
+void B_TrisDevice::SplitTriangleThreeEdges(B_Triangle *triangle)
+{
+}
+#endif
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x100329C6
+* VC++ mangling:          ?SplitTriangleTwoEdges@B_TrisDevice@@QAEXPAUB_Triangle@@@Z
+*/
+#ifndef BLD_NATIVE
+void B_TrisDevice::SplitTriangleTwoEdges(B_Triangle *triangle)
+{
+}
+#endif
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10032C9A
+* VC++ mangling:          ?SplitTriangleOneEdge@B_TrisDevice@@QAEXPAUB_Triangle@@@Z
+*/
+#ifndef BLD_NATIVE
+void B_TrisDevice::SplitTriangleOneEdge(B_Triangle *triangle)
+{
+}
+#endif
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10032E58
+* VC++ mangling:          ?SplitTriangles@B_TrisDevice@@QAEXXZ
+*/
+
+void B_TrisDevice::SplitTriangles()
+{
+    B_Triangle *triangle = this->triangles;
+    unsigned int numTriangles = this->numTriangles;
+    for (unsigned int i = 0; i < numTriangles; i++)
+    {
+        if (triangle->edge1->nextEdge != NULL)
+        {
+            if (triangle->edge2->nextEdge != NULL)
+            {
+                if (triangle->edge3->nextEdge != NULL)
+                {
+                    this->SplitTriangleThreeEdges(triangle);
+                }
+                else
+                {
+                    this->SplitTriangleTwoEdges(triangle);
+                }
+            }
+            else if (triangle->edge3->nextEdge != NULL)
+            {
+                B_Edge *edge1 = triangle->edge1;
+                int invEdge1 = triangle->invEdge1;
+                triangle->edge1 = triangle->edge3;
+                triangle->invEdge1 = triangle->invEdge3;
+                triangle->edge3 = triangle->edge2;
+                triangle->invEdge3 = triangle->invEdge2;
+                triangle->edge2 = edge1;
+                triangle->invEdge2 = invEdge1;
+                this->SplitTriangleTwoEdges(triangle);
+            }
+            else
+            {
+                this->SplitTriangleOneEdge(triangle);
+            }
+        }
+        else if (triangle->edge2->nextEdge != NULL)
+        {
+            if (triangle->edge3->nextEdge != NULL)
+            {
+                B_Edge *edge1 = triangle->edge1;
+                int invEdge1 = triangle->invEdge1;
+                triangle->edge1 = triangle->edge2;
+                triangle->invEdge1 = triangle->invEdge2;
+                triangle->edge2 = triangle->edge3;
+                triangle->invEdge2 = triangle->invEdge3;
+                triangle->edge3 = edge1;
+                triangle->invEdge3 = invEdge1;
+                this->SplitTriangleTwoEdges(triangle);
+            }
+            else
+            {
+                B_Edge *edge1 = triangle->edge1;
+                int invEdge1 = triangle->invEdge1;
+                triangle->edge1 = triangle->edge2;
+                triangle->invEdge1 = triangle->invEdge2;
+                triangle->edge2 = triangle->edge3;
+                triangle->invEdge2 = triangle->invEdge3;
+                triangle->edge3 = edge1;
+                triangle->invEdge3 = invEdge1;
+                this->SplitTriangleOneEdge(triangle);
+            }
+        }
+        else if (triangle->edge3->nextEdge != NULL)
+        {
+            B_Edge *edge1 = triangle->edge1;
+            int invEdge1 = triangle->invEdge1;
+            triangle->edge1 = triangle->edge3;
+            triangle->invEdge1 = triangle->invEdge3;
+            triangle->edge3 = triangle->edge2;
+            triangle->invEdge3 = triangle->invEdge2;
+            triangle->edge2 = edge1;
+            triangle->invEdge2 = invEdge1;
+            this->SplitTriangleOneEdge(triangle);
+        }
+        ++triangle;
+    }
+}
