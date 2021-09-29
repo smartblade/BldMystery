@@ -523,7 +523,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\rOpenGL\PointLightTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\rOpenGL\TriangleTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\rOpenGL\VertexTests.cpp"
 				>
 			</File>
 		</Filter>

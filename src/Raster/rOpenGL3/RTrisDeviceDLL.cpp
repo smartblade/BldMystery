@@ -192,6 +192,66 @@ void B_TrisDevice::unknown0E4()
 ................................................................................
 */
 
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x100321A0
+* VC++ mangling:          ?SplitEdge@B_TrisDevice@@QAEXPAUB_Edge@@@Z
+*/
+#ifndef BLD_NATIVE
+void B_TrisDevice::SplitEdge(B_Edge *edge)
+{
+}
+#endif
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x1003248C
+* VC++ mangling:          ?SplitLightenedEdges@B_TrisDevice@@QAEHXZ
+*/
+
+int B_TrisDevice::SplitLightenedEdges()
+{
+    double cameraDist = max(
+        0.0, this->currentPointLight->pointToPlane.z);
+    float cameraDistCoef =
+        (cameraDist * cameraDist / 1000.0) + 30000.0;
+    B_Edge *edge = this->edges;
+    unsigned int numEdges = this->numEdges;
+    unsigned int numNewEdges = 0;
+    float planeDistCoef =
+        this->currentPointLight->planeDist *
+        this->currentPointLight->planeDist *
+        this->currentPointLight->planeDist * 0.001;
+    for (unsigned int i = 0; i < numEdges; i++)
+    {
+        if (edge->light != this->currentPointLight)
+        {
+            float minSqrLightDist = min(
+                this->vertices[edge->firstVertexIndex].sqrLightDist,
+                this->vertices[edge->secondVertexIndex].sqrLightDist);
+            if (
+                (minSqrLightDist + planeDistCoef) * 0.3 +
+                    cameraDistCoef < edge->sqrLen)
+            {
+                this->SplitEdge(edge);
+                numNewEdges++;
+            }
+            else
+            {
+                edge->nextEdge = NULL;
+                edge->light = this->currentPointLight;
+            }
+        }
+        else
+        {
+            edge->nextEdge = NULL;
+            edge->light = this->currentPointLight;
+        }
+        edge++;
+    }
+    return numNewEdges;
+}
+
 
 /*
 * Module:                 rOpenGL.dll

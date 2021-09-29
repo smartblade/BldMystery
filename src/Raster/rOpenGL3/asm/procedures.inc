@@ -320,6 +320,10 @@ externdef ?unknown0C4@B_TrisDevice@@UAEXXZ: near
 l10031630 equ ?unknown0C4@B_TrisDevice@@UAEXXZ
 externdef ?unknown0E4@B_TrisDevice@@UAEXXZ: near
 l10031845 equ ?unknown0E4@B_TrisDevice@@UAEXXZ
+externdef ?SplitEdge@B_TrisDevice@@QAEXPAUB_Edge@@@Z: near
+l100321A0 equ ?SplitEdge@B_TrisDevice@@QAEXPAUB_Edge@@@Z
+externdef ?SplitLightenedEdges@B_TrisDevice@@QAEHXZ: near
+l1003248C equ ?SplitLightenedEdges@B_TrisDevice@@QAEHXZ
 externdef ?SplitTriangleThreeEdges@B_TrisDevice@@QAEXPAUB_Triangle@@@Z: near
 l10032646 equ ?SplitTriangleThreeEdges@B_TrisDevice@@QAEXPAUB_Triangle@@@Z
 externdef ?SplitTriangleTwoEdges@B_TrisDevice@@QAEXPAUB_Triangle@@@Z: near

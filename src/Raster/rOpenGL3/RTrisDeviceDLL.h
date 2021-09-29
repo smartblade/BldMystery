@@ -1,18 +1,38 @@
 #pragma once
 
 #include <Raster/RasterDevice.h>
+#include <AnalyticGeometry/Vector.h>
+
+
+#define MAX_VERTICES           4096
+#define MAX_EDGES              4096
+#define MAX_TRIANGLES          4096
+
+
+class B_LightSource;
 
 
 struct B_PointLight
 {
-    int unknown000;
-    int unknown004;
-    int unknown008;
-    int unknown00C;
-    int unknown010;
-    int unknown014;
-    int unknown018;
-    int unknown01C;
+    B_LightSource *light;
+    B_Vector pointToPlane;
+    float planeDist;
+};
+
+
+struct B_Vertex
+{
+    B_Vector pos;
+    float textureCoords[2];
+    float color[3];
+    float fUnknown02C;
+    float fog;
+    float fUnknown034;
+    float fUnknown038;
+    float fUnknown03C;
+    float fUnknown040;
+    float sqrLightDist;
+    int unknown048;
 };
 
 
@@ -21,8 +41,8 @@ struct B_Edge
     unsigned int firstVertexIndex;
     unsigned int secondVertexIndex;
     B_Edge *nextEdge;
-    float edge_unknown_r000C;
-    void *light;
+    float sqrLen;
+    B_PointLight *light;
 };
 
 
@@ -54,6 +74,8 @@ public:
     virtual void unknown23C() = 0;
     virtual void unknown240();
     virtual void unknown244();
+    void SplitEdge(B_Edge *edge);
+    int SplitLightenedEdges();
     void SplitTriangleThreeEdges(B_Triangle *triangle);
     void SplitTriangleTwoEdges(B_Triangle *triangle);
     void SplitTriangleOneEdge(B_Triangle *triangle);
@@ -82,11 +104,12 @@ protected:
     float unknown9B8;
     int unknown9BC[1515];
     int unknown002168;
-    int numVertices;
-    int vertices[77824];
-    int numEdges;
-    B_Edge edges[4096];
-    int numTriangles;
-    B_Triangle triangles[4096];
-    int unknown07A178[10248];
+    unsigned int numVertices;
+    B_Vertex vertices[MAX_VERTICES];
+    unsigned int numEdges;
+    B_Edge edges[MAX_EDGES];
+    unsigned int numTriangles;
+    B_Triangle triangles[MAX_TRIANGLES];
+    B_PointLight *currentPointLight;
+    int unknown07A17C[10247];
 };

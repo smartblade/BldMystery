@@ -60,7 +60,8 @@ TEST(OpenGLRasterDeviceTests, Fields)
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, edges, 0x4E174);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, numTriangles, 0x62174);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, triangles, 0x62178);
-    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown07A178, 0x7A178);
+    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, currentPointLight, 0x7A178);
+    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown07A17C, 0x7A17C);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, window, 0x84198);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, deviceContext, 0x8419C);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, glContext, 0x841A0);
