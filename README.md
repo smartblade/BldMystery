@@ -7,6 +7,12 @@
 `Mystery of Blade` is a project containing decompiled source code of `Severance: Blade of Darkness` game.
 # Target version
 The target is classic (not Steam) version released at 2001 with patch v1.01 installed.
+# Purpose
+The goal of this project is making the source code of the game open to the
+community. The code should be as close as possible to original game (with same
+bugs and limitations). There is another
+[project](https://github.com/smartblade/BldPatch) for bug fixes based on this
+repository.
 # Status
 ### Fully recovered binaries
 - `Bladex.dll`
@@ -24,3 +30,8 @@ The target is classic (not Steam) version released at 2001 with patch v1.01 inst
 - Go to the next function/method.
 
 So we have consistent project at each stage.
+# Contributing
+There are still a lot of unrecovered functions. So any contribution is welcome.
+Just choose a function/class method, reconstruct its source code and send pull
+request to this repository. Provided implementation should be as close as
+possible to original binary.
