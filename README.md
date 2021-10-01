@@ -4,7 +4,9 @@
 
 
 # Mystery of Blade
-`Mystery of Blade` is a project containing decompiled source code of `Severance: Blade of Darkness` game
+`Mystery of Blade` is a project containing decompiled source code of `Severance: Blade of Darkness` game.
+# Target version
+The target is classic (not Steam) version released at 2001 with patch v1.01 installed.
 # Status
 ### Fully recovered binaries
 - `Bladex.dll`
