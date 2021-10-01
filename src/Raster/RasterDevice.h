@@ -36,6 +36,13 @@ public:
 
     virtual void SetFlags(long flags) = 0;
 
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B590
+    * VC++ mangling:          ?GetFlags@B_3DRasterDevice@@UAEJXZ
+    */
+
     virtual long GetFlags()
     {
         return flags;
@@ -128,11 +135,25 @@ public:
     virtual void unknown124() = 0;
     virtual B_BitMap24 *GetBitMap24() = 0;
 
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B5F0
+    * VC++ mangling:          ?UnifyRenderBuffers@B_3DRasterDevice@@UAEXXZ
+    */
+
     virtual void UnifyRenderBuffers()
     {
     }
 
     virtual void set_clip_window(int x, int y, int w, int h) = 0;
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B600
+    * VC++ mangling:          ?GetClipWindow@B_3DRasterDevice@@UAEXAAH000@Z
+    */
 
     virtual void GetClipWindow(int &x, int &y, int &w, int &h)
     {
@@ -143,6 +164,13 @@ public:
     }
 
     virtual void set_clip_active(int clip_active) = 0;
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B650
+    * VC++ mangling:          ?GetClipActive@B_3DRasterDevice@@UAEHXZ
+    */
 
     virtual int GetClipActive()
     {
@@ -158,6 +186,13 @@ public:
     }
 
     virtual void Line(int x1, int y1, int x2, int y2) = 0;
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B670
+    * VC++ mangling:          ?LineTo@B_3DRasterDevice@@UAEXHH@Z
+    */
 
     virtual void LineTo(int x, int y)
     {
@@ -202,35 +237,84 @@ public:
     virtual void unknown17C() = 0;
     virtual float get_alpha() = 0;
 
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B6E0
+    * VC++ mangling:          ?SetFont@B_3DRasterDevice@@UAEXPAVB_Font@@@Z
+    */
+
     virtual void SetFont(B_Font *font)
     {
         this->currentFont = font;
     }
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B700
+    * VC++ mangling:          ?GetFont@B_3DRasterDevice@@UAEPAVB_Font@@XZ
+    */
 
     virtual B_Font *GetFont()
     {
         return currentFont;
     }
 
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B720
+    * VC++ mangling:          ?SetTextMode@B_3DRasterDevice@@UAEXH@Z
+    */
+
     virtual void SetTextMode(int textMode)
     {
         this->textMode = textMode;
     }
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B740
+    * VC++ mangling:          ?GetTextMode@B_3DRasterDevice@@UAEHXZ
+    */
 
     virtual int GetTextMode()
     {
         return textMode;
     }
 
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B760
+    * VC++ mangling:          ?SetTextDirection@B_3DRasterDevice@@UAEXH@Z
+    */
+
     virtual void SetTextDirection(int textDirection)
     {
         this->textDirection = textDirection;
     }
 
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B780
+    * VC++ mangling:          ?GetTextDirection@B_3DRasterDevice@@UAEHXZ
+    */
+
     virtual int GetTextDirection()
     {
         return textDirection;
     }
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B7A0
+    * VC++ mangling:          ?SetTextShadow@B_3DRasterDevice@@UAEXHH@Z
+    */
 
     virtual void SetTextShadow(int textShadowX, int textShadowY)
     {
@@ -238,11 +322,25 @@ public:
         this->textShadowY = textShadowY;
     }
 
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B7D0
+    * VC++ mangling:          ?GetTextShadow@B_3DRasterDevice@@UAEXAAH0@Z
+    */
+
     virtual void GetTextShadow(int &textShadowX, int &textShadowY)
     {
         textShadowX = this->textShadowX;
         textShadowY = this->textShadowY;
     }
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B800
+    * VC++ mangling:          ?SetTextScale@B_3DRasterDevice@@UAEXMM@Z
+    */
 
     virtual void SetTextScale(float scaleX, float scaleY)
     {
@@ -250,11 +348,25 @@ public:
         this->textScaleY = scaleY;
     }
 
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B830
+    * VC++ mangling:          ?GetTextScale@B_3DRasterDevice@@UAEXAAM0@Z
+    */
+
     virtual void GetTextScale(float &scaleX, float &scaleY)
     {
         scaleX = this->textScaleX;
         scaleY = this->textScaleY;
     }
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B860
+    * VC++ mangling:          ?SetTextBlur@B_3DRasterDevice@@UAEXHHHH@Z
+    */
 
     virtual void SetTextBlur(
         int blurLeft, int blurTop, int blurRight, int blurBottom)
@@ -264,6 +376,13 @@ public:
         this->blurRight = blurRight;
         this->blurBottom = blurBottom;
     }
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B8A0
+    * VC++ mangling:          ?GetTextBlur@B_3DRasterDevice@@UAEXAAH000@Z
+    */
 
     virtual void GetTextBlur(
         int &blurLeft, int &blurTop, int &blurRight, int &blurBottom)
