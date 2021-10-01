@@ -13,6 +13,7 @@
 - `Raster.dll`
 ### Partially recovered binaries
 - `Blade.exe`
+- `rOpenGL.dll`
 # Method
 - Create Visual Studio project with native `assembly` code of `Blade.exe`.
 - Choose function/method which source code we want to reconstruct.
