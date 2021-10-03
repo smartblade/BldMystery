@@ -941,17 +941,6 @@ void B_3DRasterDevice::unknown068()
 
 /*
 * Module:                 rOpenGL.dll
-* Entry point:            0x1002B5C0
-* VC++ mangling:          ?unknown06C@B_3DRasterDevice@@UAEXXZ
-*/
-#ifndef BLD_NATIVE
-void B_3DRasterDevice::unknown06C()
-{
-}
-#endif
-
-/*
-* Module:                 rOpenGL.dll
 * Entry point:            0x1002B8F0
 * VC++ mangling:          ?WriteText@B_3DRasterDevice@@UAEHPBD@Z
 */
