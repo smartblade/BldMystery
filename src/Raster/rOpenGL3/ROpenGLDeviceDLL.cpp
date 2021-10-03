@@ -1016,14 +1016,3 @@ void B_OpenGLRasterDevice::SetPosition(float x, float y)
 {
 }
 #endif
-
-/*
-* Module:                 rOpenGL.dll
-* Entry point:            0x1002BD30
-* VC++ mangling:          ?GetPosition@B_OpenGLRasterDevice@@UAEXAAM0@Z
-*/
-#ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::GetPosition(float &x, float &y)
-{
-}
-#endif

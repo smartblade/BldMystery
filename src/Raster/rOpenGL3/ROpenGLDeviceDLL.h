@@ -117,7 +117,20 @@ public:
     virtual void set_fill_color(byte r, byte g, byte b);
     virtual void unknown16C();
     virtual void set_alpha(float alpha);
-    virtual void GetPosition(float &x, float &y);
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002BD30
+    * VC++ mangling:          ?GetPosition@B_OpenGLRasterDevice@@UAEXAAM0@Z
+    */
+
+    virtual void GetPosition(float &x, float &y)
+    {
+        x = this->posX;
+        y = this->height - this->posY;
+    }
+
     virtual void unknown178();
     virtual void unknown17C();
     virtual float get_alpha();
