@@ -27,7 +27,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_Texture &texture)
         >> texture.yTransform
         >> texture.xOffset
         >> texture.yOffset;
-    if (B_3D_raster_device->ClassId() == 4)
+    if (B_3D_raster_device->ClassId() == B_RASTER_CID_OPENGL)
     {
         texture.xTransform *= (1.0 / 256.0);
         texture.yTransform *= (1.0 / 256.0);

@@ -10,6 +10,9 @@ class B_Name;
 class B_Color;
 class B_Font;
 
+#define B_RASTER_CID_3DFX              3
+#define B_RASTER_CID_OPENGL            4
+
 #define RASTER_FLAGS_0001 0x0001
 #define RASTER_FLAGS_0002 0x0002
 #define RASTER_FLAGS_0010 0x0010

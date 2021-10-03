@@ -1050,15 +1050,3 @@ int B_OpenGLRasterDevice::nVideoModes()
     return 0;
 }
 #endif
-
-/*
-* Module:                 rOpenGL.dll
-* Entry point:            0x1002BDD0
-* VC++ mangling:          ?ClassId@B_OpenGLRasterDevice@@UAEHXZ
-*/
-#ifndef BLD_NATIVE
-int B_OpenGLRasterDevice::ClassId()
-{
-    return 0;
-}
-#endif

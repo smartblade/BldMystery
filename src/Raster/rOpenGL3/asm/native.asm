@@ -86576,16 +86576,7 @@ l1002BDB0 ENDP
 ;* Jump:
 ; 10001370(U) 
 ;
-l1002BDD0 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, 000000004h
-           mov esp, ebp
-           pop ebp
-           ret
-l1002BDD0 ENDP
+           call l1002BDD0; Implemented in c++ code
 ;
            int 03h
            int 03h
