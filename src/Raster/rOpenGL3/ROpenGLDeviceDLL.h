@@ -111,7 +111,20 @@ public:
     virtual void Rectangle(int x1, int y1, int x2, int y2);
     virtual void solid_rectangle(int x1, int y1, int x2, int y2);
     virtual void unknown158();
-    virtual void SetPosition(float x, float y);
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002BD00
+    * VC++ mangling:          ?SetPosition@B_OpenGLRasterDevice@@UAEXMM@Z
+    */
+
+    virtual void SetPosition(float x, float y)
+    {
+        this->posX = x;
+        this->posY = this->height - y;
+    }
+
     virtual void set_pen_color(byte r, byte g, byte b);
     virtual void unknown164() ;
     virtual void set_fill_color(byte r, byte g, byte b);
