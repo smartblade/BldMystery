@@ -149,7 +149,20 @@ public:
     virtual int SetRasterParameter(
         const char *parameter, const char *value);
     virtual const char *GetRasterParameter(const char *parameter);
-    virtual void GetSize(int &w, int &h);
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002BD70
+    * VC++ mangling:          ?GetSize@B_OpenGLRasterDevice@@UAEXAAH0@Z
+    */
+
+    virtual void GetSize(int &w, int &h)
+    {
+        w = this->width;
+        h = this->height;
+    }
+
     virtual void unknown204(int);
     virtual int SetWindowSize(int w, int h);
     virtual int GetWindowSize(int &w, int &h);

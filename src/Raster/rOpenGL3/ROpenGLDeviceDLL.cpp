@@ -1027,14 +1027,3 @@ void B_OpenGLRasterDevice::GetPosition(float &x, float &y)
 {
 }
 #endif
-
-/*
-* Module:                 rOpenGL.dll
-* Entry point:            0x1002BD70
-* VC++ mangling:          ?GetSize@B_OpenGLRasterDevice@@UAEXAAH0@Z
-*/
-#ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::GetSize(int &w, int &h)
-{
-}
-#endif

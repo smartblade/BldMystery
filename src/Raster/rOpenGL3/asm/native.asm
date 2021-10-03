@@ -86498,27 +86498,7 @@ l1002BD30 ENDP
 ;* Jump:
 ; 10001055(U) 
 ;
-l1002BD70 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ecx+054h]
-           mov dword ptr [eax], edx
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ecx+058h]
-           mov dword ptr [eax], edx
-;
-;* Control "OK", Dialog 006E
-;
-           mov eax, 000000001h
-           mov esp, ebp
-           pop ebp
-           ret 00008h
-l1002BD70 ENDP
+           call l1002BD70; Implemented in c++ code
 ;
            int 03h
            int 03h
