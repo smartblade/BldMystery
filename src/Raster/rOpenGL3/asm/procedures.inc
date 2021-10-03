@@ -246,8 +246,8 @@ externdef ?unknown06C@B_3DRasterDevice@@UAEXXZ: near
 l1002B5C0 equ ?unknown06C@B_3DRasterDevice@@UAEXXZ
 externdef ?unknown070@B_3DRasterDevice@@UAEXXZ: near
 l1002B5D0 equ ?unknown070@B_3DRasterDevice@@UAEXXZ
-externdef ?unknown11C@B_3DRasterDevice@@UAEXXZ: near
-l1002B5E0 equ ?unknown11C@B_3DRasterDevice@@UAEXXZ
+externdef ?unknown11C@B_3DRasterDevice@@UAEXHHHH@Z: near
+l1002B5E0 equ ?unknown11C@B_3DRasterDevice@@UAEXHHHH@Z
 externdef ?UnifyRenderBuffers@B_3DRasterDevice@@UAEXXZ: near
 l1002B5F0 equ ?UnifyRenderBuffers@B_3DRasterDevice@@UAEXXZ
 externdef ?GetClipWindow@B_3DRasterDevice@@UAEXAAH000@Z: near

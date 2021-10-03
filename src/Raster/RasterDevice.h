@@ -133,7 +133,18 @@ public:
     virtual void unknown110() = 0;
     virtual void SetMode(int mode) = 0;
     virtual void unknown118() = 0;
-    virtual void unknown11C();
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B5E0
+    * VC++ mangling:          ?unknown11C@B_3DRasterDevice@@UAEXHHHH@Z
+    */
+
+    virtual void unknown11C(int, int, int, int)
+    {
+    }
+
     virtual void unknown120() = 0;
     virtual void unknown124() = 0;
     virtual B_BitMap24 *GetBitMap24() = 0;
