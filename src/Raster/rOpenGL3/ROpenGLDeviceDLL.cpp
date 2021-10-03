@@ -1062,15 +1062,3 @@ int B_OpenGLRasterDevice::ClassId()
     return 0;
 }
 #endif
-
-/*
-* Module:                 rOpenGL.dll
-* Entry point:            0x1002BDF0
-* VC++ mangling:          ?ClassIdName@B_OpenGLRasterDevice@@UAEPBDXZ
-*/
-#ifndef BLD_NATIVE
-const char *B_OpenGLRasterDevice::ClassIdName()
-{
-    return NULL;
-}
-#endif

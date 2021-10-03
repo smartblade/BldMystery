@@ -168,7 +168,19 @@ public:
     );
     virtual int FullScreen();
     virtual int ClassId();
-    virtual const char *ClassIdName();
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002BDF0
+    * VC++ mangling:          ?ClassIdName@B_OpenGLRasterDevice@@UAEPBDXZ
+    */
+
+    virtual const char *ClassIdName()
+    {
+        return "B_OpenGLRasterDevice";
+    }
+
     virtual void unknown234();
     virtual void unknown238();
     virtual void unknown23C();

@@ -86607,19 +86607,7 @@ l1002BDD0 ENDP
 ;* Jump:
 ; 100012A3(U) 
 ;
-l1002BDF0 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-;
-;* String: "B_OpenGLRasterDevice"
-;
-           mov eax, offset g1003C1CC
-           mov esp, ebp
-           pop ebp
-           ret
-l1002BDF0 ENDP
+           call l1002BDF0; Implemented in c++ code
 ;
            int 03h
            int 03h
