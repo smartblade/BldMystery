@@ -994,14 +994,3 @@ void B_3DRasterDevice::unknown228()
 {
 }
 #endif
-
-/*
-* Module:                 rOpenGL.dll
-* Entry point:            0x1002BCF0
-* VC++ mangling:          ?unknown084@B_OpenGLRasterDevice@@UAEXXZ
-*/
-#ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::unknown084()
-{
-}
-#endif

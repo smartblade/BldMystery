@@ -64,7 +64,18 @@ public:
     virtual void DecModeReflection();
     virtual void unknown07C();
     virtual void unknown080();
-    virtual void unknown084();
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002BCF0
+    * VC++ mangling:          ?unknown084@B_OpenGLRasterDevice@@UAEXXZ
+    */
+
+    virtual void unknown084()
+    {
+    }
+
     virtual void unknown088();
     virtual void unknown08C();
     virtual void unknown090();
