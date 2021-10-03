@@ -464,7 +464,19 @@ public:
         int &unknown5
     ) = 0;
     virtual int FullScreen() = 0;
-    virtual void unknown228();
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002BCD0
+    * VC++ mangling:          ?unknown228@B_3DRasterDevice@@UAEHH@Z
+    */
+
+    virtual int unknown228(int)
+    {
+        return false;
+    }
+
     virtual int ClassId() = 0;
     virtual const char *ClassIdName() = 0;
 

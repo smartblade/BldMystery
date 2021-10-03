@@ -983,14 +983,3 @@ int B_3DRasterDevice::WriteText(const char *text)
     return 0;
 }
 #endif
-
-/*
-* Module:                 rOpenGL.dll
-* Entry point:            0x1002BCD0
-* VC++ mangling:          ?unknown228@B_3DRasterDevice@@UAEXXZ
-*/
-#ifndef BLD_NATIVE
-void B_3DRasterDevice::unknown228()
-{
-}
-#endif

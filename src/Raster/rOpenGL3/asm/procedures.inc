@@ -282,8 +282,8 @@ externdef ?GetTextBlur@B_3DRasterDevice@@UAEXAAH000@Z: near
 l1002B8A0 equ ?GetTextBlur@B_3DRasterDevice@@UAEXAAH000@Z
 externdef ?WriteText@B_3DRasterDevice@@UAEHPBD@Z: near
 l1002B8F0 equ ?WriteText@B_3DRasterDevice@@UAEHPBD@Z
-externdef ?unknown228@B_3DRasterDevice@@UAEXXZ: near
-l1002BCD0 equ ?unknown228@B_3DRasterDevice@@UAEXXZ
+externdef ?unknown228@B_3DRasterDevice@@UAEHH@Z: near
+l1002BCD0 equ ?unknown228@B_3DRasterDevice@@UAEHH@Z
 externdef ?unknown084@B_OpenGLRasterDevice@@UAEXXZ: near
 l1002BCF0 equ ?unknown084@B_OpenGLRasterDevice@@UAEXXZ
 externdef ?SetPosition@B_OpenGLRasterDevice@@UAEXMM@Z: near
