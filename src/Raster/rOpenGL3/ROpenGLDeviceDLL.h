@@ -85,7 +85,7 @@ public:
     virtual void Cls(B_Color color);
     virtual void SetDomeColor(byte r, byte g, byte b);
     virtual void GetDomeColor(byte &r, byte &g, byte &b);
-    virtual void unknown0AC();
+    virtual void SetActiveTexture(unsigned long textureHandle);
     virtual void unknown0B0();
     virtual void GetAtmosphereColor(
         int atmosphereHandle, double intensityFactor, float &alpha,
@@ -159,16 +159,19 @@ public:
     virtual void unknown17C();
     virtual float get_alpha();
     virtual void set_text_color(byte r, byte g, byte b);
-    virtual void unknown1B8();
+    virtual void SetTextColor(B_Color &color);
     virtual void set_text_alpha(float alpha);
     virtual void set_text_blur_color(byte r, byte g, byte b);
     virtual void unknown1C4();
     virtual void set_text_blur_alpha(float alpha);
-    virtual void unknown1CC();
+    virtual B_Color GetTextColor();
     virtual float get_text_alpha();
     virtual void unknown1D4();
     virtual float get_text_blur_alpha();
-    virtual void unknown1DC();
+    virtual void DrawChar(
+        B_Font::B_CharSize charLocation, float scaleX, float scaleY,
+        int textMode
+    );
     virtual void draw_bitmap(long handle, int w, int h);
     virtual void draw_image(
         int w, int h, const char *color_style, const char *is_normal,

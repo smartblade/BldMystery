@@ -284,10 +284,10 @@ float B_OpenGLRasterDevice::get_alpha()
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000F3F3
-* VC++ mangling:          ?unknown1B8@B_OpenGLRasterDevice@@UAEXXZ
+* VC++ mangling:          ?SetTextColor@B_OpenGLRasterDevice@@UAEXAAVB_Color@@@Z
 */
 #ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::unknown1B8()
+void B_OpenGLRasterDevice::SetTextColor(B_Color &color)
 {
 }
 #endif
@@ -392,11 +392,12 @@ void B_OpenGLRasterDevice::set_text_blur_alpha(float alpha)
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000F569
-* VC++ mangling:          ?unknown1CC@B_OpenGLRasterDevice@@UAEXXZ
+* VC++ mangling:          ?GetTextColor@B_OpenGLRasterDevice@@UAE?AVB_Color@@XZ
 */
 #ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::unknown1CC()
+B_Color B_OpenGLRasterDevice::GetTextColor()
 {
+    return B_Color();
 }
 #endif
 
@@ -466,10 +467,11 @@ float B_OpenGLRasterDevice::get_text_blur_alpha()
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000F68F
-* VC++ mangling:          ?unknown1DC@B_OpenGLRasterDevice@@UAEXXZ
+* VC++ mangling:          ?DrawChar@B_OpenGLRasterDevice@@UAEXUB_CharSize@B_Font@@MMH@Z
 */
 #ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::unknown1DC()
+void B_OpenGLRasterDevice::DrawChar(
+    B_Font::B_CharSize charLocation, float scaleX, float scaleY, int textMode)
 {
 }
 #endif

@@ -926,16 +926,3 @@ int DestroyRaster(B_3DRasterDevice* raster)
     delete raster;
     return true;
 }
-
-
-/*
-* Module:                 rOpenGL.dll
-* Entry point:            0x1002B8F0
-* VC++ mangling:          ?WriteText@B_3DRasterDevice@@UAEHPBD@Z
-*/
-#ifndef BLD_NATIVE
-int B_3DRasterDevice::WriteText(const char *text)
-{
-    return 0;
-}
-#endif

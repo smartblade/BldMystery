@@ -1,8 +1,5 @@
-
-#define BUILD_LIB
+#define RASTER_LIB_EXPORT
 #include "RasterDevice.h"
-#undef BUILD_LIB
-
 #include "raster_int.h"
 
 

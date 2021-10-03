@@ -29,10 +29,10 @@ void B_OpenGLRasterDevice::unknown038()
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x100151A0
-* VC++ mangling:          ?unknown0AC@B_OpenGLRasterDevice@@UAEXXZ
+* VC++ mangling:          ?SetActiveTexture@B_OpenGLRasterDevice@@UAEXK@Z
 */
 #ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::unknown0AC()
+void B_OpenGLRasterDevice::SetActiveTexture(unsigned long textureHandle)
 {
 }
 #endif

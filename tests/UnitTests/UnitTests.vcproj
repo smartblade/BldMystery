@@ -215,10 +215,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Blade\CharSizeTests.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Blade\CharTypeTests.cpp"
 				>
 			</File>
@@ -232,10 +228,6 @@
 			</File>
 			<File
 				RelativePath=".\Blade\FlatLightTests.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\FontTests.cpp"
 				>
 			</File>
 			<File
@@ -532,6 +524,18 @@
 			</File>
 			<File
 				RelativePath=".\rOpenGL\VertexTests.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="BUIxc"
+			>
+			<File
+				RelativePath=".\BUIxc\CharSizeTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BUIxc\FontTests.cpp"
 				>
 			</File>
 		</Filter>

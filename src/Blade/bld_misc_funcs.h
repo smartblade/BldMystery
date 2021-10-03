@@ -55,27 +55,6 @@ public:
     long bmpHandle;
 };
 
-struct B_CharSize
-{
-    float x;
-    float y;
-    float width;
-    float height;
-};
-
-class B_CharData
-{
-public:
-    B_CharSize charSize[256];
-};
-
-class B_Font : public B_NamedObj
-{
-public:
-    char unknown_fields[28];
-    B_CharData *charData;
-};
-
 class Unknown004CD5EC
 {
 public:

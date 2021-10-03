@@ -1876,7 +1876,7 @@ int GetTextWH(const char *text, double *w, double *h)
         mout << "WARNING: GetTextWH fails because Font can't be found.";
         return 0;
     }
-    B_CharData *charData = font->charData;
+    const B_Font::B_CharData *charData = font->GetChars();
     if (font == NULL)/*FIXME should be charData*/
     {
         mout << "TERRIBLE WARNING: GetTextWH fails because CharData can't be found.";

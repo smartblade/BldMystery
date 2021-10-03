@@ -1,9 +1,12 @@
-#ifndef RASTER_DEVICE_H
-
-#define RASTER_DEVICE_H
+#pragma once
 
 #include <bld_system.h>
+#include <BUIxc.h>
+#ifdef RASTER_LIB_EXPORT
+#define BUILD_LIB
+#endif
 #include <export.h>
+#undef BUILD_LIB
 
 class B_BitMap24;
 class B_Name;
@@ -13,9 +16,16 @@ class B_Font;
 #define B_RASTER_CID_3DFX              3
 #define B_RASTER_CID_OPENGL            4
 
-#define RASTER_FLAGS_0001 0x0001
-#define RASTER_FLAGS_0002 0x0002
-#define RASTER_FLAGS_0010 0x0010
+#define RASTER_FLAGS_0001              0x0001
+#define RASTER_FLAGS_0002              0x0002
+#define RASTER_FLAGS_0010              0x0010
+
+#define RASTER_MODE_TEXT               0x0200
+
+#define TEXT_MODE_SHADOW               0x01
+#define TEXT_MODE_TEXT                 0x02
+#define TEXT_MODE_SCALE                0x04
+#define TEXT_MODE_BLUR                 0x10
 
 class B_3DRasterDevice {
 public:
@@ -128,7 +138,7 @@ public:
     {
     }
 
-    virtual void unknown0AC() = 0;
+    virtual void SetActiveTexture(unsigned long textureHandle) = 0;
     virtual void unknown0B0() = 0;
     virtual void GetAtmosphereColor(
         int atmosphereHandle, double intensityFactor, float &alpha,
@@ -438,17 +448,99 @@ public:
     }
 
     virtual void set_text_color(byte r, byte g, byte b) = 0;
-    virtual void unknown1B8() = 0;
+    virtual void SetTextColor(B_Color &color) = 0;
     virtual void set_text_alpha(float alpha) = 0;
     virtual void set_text_blur_color(byte r, byte g, byte b) = 0;
     virtual void unknown1C4() = 0;
     virtual void set_text_blur_alpha(float alpha) = 0;
-    virtual void unknown1CC() = 0;
+    virtual B_Color GetTextColor() = 0;
     virtual float get_text_alpha() = 0;
     virtual void unknown1D4() = 0;
     virtual float get_text_blur_alpha() = 0;
-    virtual void unknown1DC() = 0;
-    virtual int WriteText(const char *text);
+    virtual void DrawChar(
+        B_Font::B_CharSize charLocation, float scaleX, float scaleY,
+        int textMode
+    ) = 0;
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B8F0
+    * VC++ mangling:          ?WriteText@B_3DRasterDevice@@UAEHPBD@Z
+    */
+
+    virtual int WriteText(const char *text)
+    {
+        if (this->currentFont == NULL)
+            return false;
+        float textScaleX, textScaleY;
+        const B_Font::B_CharData *charData = this->currentFont->GetChars();
+        this->SetActiveTexture(this->currentFont->GethBitmap());
+        const char *curChar = text;
+        if (this->textMode & TEXT_MODE_SCALE)
+        {
+            textScaleX = this->textScaleX;
+            textScaleY = this->textScaleY;
+        }
+        else
+        {
+            textScaleX = 1.0f;
+            textScaleY = 1.0f;
+        }
+        this->unknown06C();
+        this->SetTransformation();
+        if (this->textMode & TEXT_MODE_SHADOW)
+        {
+            B_Color textColor = this->GetTextColor();
+            float xPos, yPos;
+            this->GetPosition(xPos, yPos);
+            this->SetPosition(
+                this->textShadowX + xPos,
+                this->textShadowY + yPos);
+            this->SetTextColor(B_Color(0, 0, 0));
+            this->SetMode(RASTER_MODE_TEXT);
+            while (*curChar != '\0')
+            {
+                this->DrawChar(
+                    charData->charSize[*curChar],
+                    textScaleX, textScaleY, 0);
+                curChar++;
+            }
+            this->SetPosition(xPos, yPos);
+            this->SetTextColor(textColor);
+        }
+        if (this->textMode & TEXT_MODE_BLUR)
+        {
+            float xPos, yPos;
+            this->GetPosition(xPos, yPos);
+            curChar = text;
+            this->SetMode(RASTER_MODE_TEXT);
+            while (*curChar != '\0')
+            {
+                this->DrawChar(
+                    charData->charSize[*curChar],
+                    textScaleX, textScaleY, this->textMode);
+                curChar++;
+            }
+            this->SetPosition(xPos, yPos);
+        }
+        if (this->textMode & TEXT_MODE_TEXT)
+        {
+            curChar = text;
+            this->SetMode(RASTER_MODE_TEXT);
+            while (*curChar != '\0')
+            {
+                this->DrawChar(
+                    charData->charSize[*curChar],
+                    textScaleX, textScaleY, 0);
+                curChar++;
+            }
+        }
+        this->unknown070();
+        this->ResetTransformation();
+        return true;
+    }
+
     virtual void draw_bitmap(long handle, int w, int h) = 0;
     virtual void draw_image(
         int w, int h, const char *color_style, const char *is_normal,
@@ -545,5 +637,3 @@ protected:
 };
 
 LIB_EXP B_3DRasterDevice *B_3D_raster_device;
-
-#endif /* RASTER_DEVICE_H */
