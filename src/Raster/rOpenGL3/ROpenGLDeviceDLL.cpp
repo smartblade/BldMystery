@@ -930,17 +930,6 @@ int DestroyRaster(B_3DRasterDevice* raster)
 
 /*
 * Module:                 rOpenGL.dll
-* Entry point:            0x1002B5B0
-* VC++ mangling:          ?unknown068@B_3DRasterDevice@@UAEXXZ
-*/
-#ifndef BLD_NATIVE
-void B_3DRasterDevice::unknown068()
-{
-}
-#endif
-
-/*
-* Module:                 rOpenGL.dll
 * Entry point:            0x1002B8F0
 * VC++ mangling:          ?WriteText@B_3DRasterDevice@@UAEHPBD@Z
 */

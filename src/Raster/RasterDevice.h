@@ -67,7 +67,17 @@ public:
     virtual void unknown05C() = 0;
     virtual void unknown060() = 0;
     virtual int nTextures() = 0;
-    virtual void unknown068();
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B5B0
+    * VC++ mangling:          ?unknown068@B_3DRasterDevice@@UAEXXZ
+    */
+
+    virtual void unknown068()
+    {
+    }
 
 
     /*
