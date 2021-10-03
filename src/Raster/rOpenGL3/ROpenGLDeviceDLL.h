@@ -153,7 +153,19 @@ public:
     virtual void unknown204(int);
     virtual int SetWindowSize(int w, int h);
     virtual int GetWindowSize(int &w, int &h);
-    virtual int nVideoModes();
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002BDB0
+    * VC++ mangling:          ?nVideoModes@B_OpenGLRasterDevice@@UAEHXZ
+    */
+
+    virtual int nVideoModes()
+    {
+        return this->videoModes.size;
+    }
+
     virtual int GetVideoModeDscr(
         int mode_index, int &depth, int &w, int &h, int &flags,
         int &frequency

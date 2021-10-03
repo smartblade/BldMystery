@@ -1038,15 +1038,3 @@ void B_OpenGLRasterDevice::GetSize(int &w, int &h)
 {
 }
 #endif
-
-/*
-* Module:                 rOpenGL.dll
-* Entry point:            0x1002BDB0
-* VC++ mangling:          ?nVideoModes@B_OpenGLRasterDevice@@UAEHXZ
-*/
-#ifndef BLD_NATIVE
-int B_OpenGLRasterDevice::nVideoModes()
-{
-    return 0;
-}
-#endif
