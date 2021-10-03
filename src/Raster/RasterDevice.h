@@ -69,7 +69,17 @@ public:
     virtual int nTextures() = 0;
     virtual void unknown068();
     virtual void unknown06C();
-    virtual void unknown070();
+
+
+    /*
+    * Module:                 rOpenGL.dll
+    * Entry point:            0x1002B5D0
+    * VC++ mangling:          ?unknown070@B_3DRasterDevice@@UAEXXZ
+    */
+
+    virtual void unknown070()
+    {
+    }
 
     virtual void IncModeReflection()
     {
