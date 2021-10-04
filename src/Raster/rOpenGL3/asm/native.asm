@@ -70385,20 +70385,7 @@ l10026067 ENDP
 ;* Jump:
 ; 10001541(U) 
 ;
-l100260C0 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [eax+078h]
-           add ecx, 000000001h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+078h], ecx
-           mov esp, ebp
-           pop ebp
-           ret
-l100260C0 ENDP
+           call l100260C0; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001334(U) 
