@@ -799,18 +799,13 @@ void B_OpenGLRasterDevice::IncModeReflection()
 * Entry point:            0x100260DA
 * VC++ mangling:          ?DecModeReflection@B_OpenGLRasterDevice@@UAEXXZ
 */
-#ifndef BLD_NATIVE
+
 void B_OpenGLRasterDevice::DecModeReflection()
 {
+    this->ModeReflection--;
+    assert(ModeReflection >= 0);
 }
-#endif
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
 /*
 * Module:                 rOpenGL.dll

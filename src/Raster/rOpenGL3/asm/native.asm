@@ -70390,38 +70390,7 @@ l10026067 ENDP
 ;* Jump:
 ; 10001334(U) 
 ;
-l100260DA PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [eax+078h]
-           sub ecx, 000000001h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+078h], ecx
-           mov eax, dword ptr [ebp-004h]
-           cmp dword ptr [eax+078h], 000000000h
-           jnl l10026111
-           push 000000BC0h
-;
-;* String: "C:\Code\Raster\rOpenGL3\ROpenGLDeviceDLL.cpp"
-;
-           push offset g1003B748
-;
-;* String: "ModeReflection>=0"
-;
-           push offset g1003B778
-           call [__imp__assert]; [MSVCRT._assert].
-           add esp, 00000000Ch
-;
-;* Jump:
-; 100260F7(C) 
-;
-l10026111: mov esp, ebp
-           pop ebp
-           ret
-l100260DA ENDP
+           call l100260DA; Implemented in c++ code
 ;
 ;* Jump:
 ; 100012B7(U) 
