@@ -13,6 +13,9 @@ class B_BitMap;
 class B_Resource;
 
 
+#define GL_LIST_START_2D               500
+
+
 struct B_Atmosphere : public B_NamedObj
 {
     B_Atmosphere(const B_Color &color, float intensity, const B_Name &name)
@@ -269,6 +272,15 @@ public:
     void GetVideoModes();
     int CreateContext();
     int LoadExtensions();
+
+    void DisableFog()
+    {
+        if (this->fogEnabled)
+        {
+            glDisable(GL_FOG);
+            this->fogEnabled = false;
+        }
+    }
 
 private:
     HWND window;

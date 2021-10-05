@@ -384,3 +384,5 @@ EXPORTS
     _glTexParameteri@12 = glTexParameteri
     _glTranslatef@12 = glTranslatef
     _glViewport@16 = glViewport
+    _glCallList@4 = glCallList
+    _glDisable@4 = glDisable

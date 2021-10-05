@@ -70294,53 +70294,7 @@ l10025F82 ENDP
 ;* Jump:
 ; 10001834(U) 
 ;
-l10025FEA PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [eax+0000862F4h]
-           add ecx, 000000001h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+0000862F4h], ecx
-           mov eax, dword ptr [ebp-004h]
-           cmp dword ptr [eax+000086490h], 000000000h
-           je l1002602A
-           push 000000B60h
-           call [__imp_glDisable]; [OPENGL32.glDisable].
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+000086490h], 000000000h
-;
-;* Jump:
-; 10026010(C) 
-;
-l1002602A: mov edx, dword ptr [ebp-004h]
-           cmp dword ptr [edx+0000862F4h], 000000001h
-           je l10026038
-           jmp l10026063
-;
-;* Jump:
-; 10026034(C) 
-;
-l10026038: push 0000001F4h
-           call [__imp_glCallList]; [OPENGL32.glCallList].
-           mov eax, dword ptr [ebp-004h]
-           cmp dword ptr [eax+000084804h], 000000000h
-           je l10026063
-           mov ecx, dword ptr [ebp-004h]
-           cmp dword ptr [ecx+078h], 000000000h
-           jne l10026063
-           push 000008522h
-           call [__imp_glDisable]; [OPENGL32.glDisable].
-;
-;* Jump:
-; 10026036(U), 1002604D(C), 10026056(C) 
-;
-l10026063: mov esp, ebp
-           pop ebp
-           ret
-l10025FEA ENDP
+           call l10025FEA; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001037(U) 

@@ -1,6 +1,7 @@
 #include "ROpenGLDeviceDLL.h"
 
 #include "ConfigSections.h"
+#include "GlExtensions.h"
 #include <math.h>
 
 
@@ -160,7 +161,7 @@ B_OpenGLRasterDevice::B_OpenGLRasterDevice(HWND window, HMODULE rasterModule)
     this->unknown0847E0 = -1.0;
     this->unknown0847CC = -1;
     this->unknown0847C8 = -1;
-    glNewList(500, GL_COMPILE);
+    glNewList(GL_LIST_START_2D, GL_COMPILE);
     glMatrixMode(GL_PROJECTION);
     glPushMatrix();
     glLoadIdentity();
@@ -747,29 +748,24 @@ void B_OpenGLRasterDevice::set_clip_window(int x, int y, int w, int h)
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
 * Module:                 rOpenGL.dll
 * Entry point:            0x10025FEA
 * VC++ mangling:          ?SetTransformation@B_OpenGLRasterDevice@@UAEXXZ
 */
-#ifndef BLD_NATIVE
+
 void B_OpenGLRasterDevice::SetTransformation()
 {
+    this->transformations++;
+    DisableFog();
+    if (this->transformations != 1)
+        return;
+    glCallList(GL_LIST_START_2D);
+    if (this->BWRender != 0 && !this->ModeReflection)
+    {
+        glDisable(GL_REGISTER_COMBINERS_NV);
+    }
 }
-#endif
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
 /*
 * Module:                 rOpenGL.dll
