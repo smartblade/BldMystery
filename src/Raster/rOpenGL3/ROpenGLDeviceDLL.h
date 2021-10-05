@@ -14,6 +14,7 @@ class B_Resource;
 
 
 #define GL_LIST_START_2D               500
+#define GL_LIST_END_2D                 501
 
 
 struct B_Atmosphere : public B_NamedObj

@@ -172,7 +172,7 @@ B_OpenGLRasterDevice::B_OpenGLRasterDevice(HWND window, HMODULE rasterModule)
     glTranslatef(-(this->width / 2.0), -(this->height / 2.0), 0.0);
     glViewport(0, 0, this->width, this->height);
     glEndList();
-    glNewList(501, GL_COMPILE);
+    glNewList(GL_LIST_END_2D, GL_COMPILE);
     glMatrixMode(GL_MODELVIEW);
     glPopMatrix();
     glMatrixMode(GL_PROJECTION);
@@ -772,11 +772,19 @@ void B_OpenGLRasterDevice::SetTransformation()
 * Entry point:            0x10026067
 * VC++ mangling:          ?ResetTransformation@B_OpenGLRasterDevice@@UAEXXZ
 */
-#ifndef BLD_NATIVE
+
 void B_OpenGLRasterDevice::ResetTransformation()
 {
+    this->transformations--;
+    if (this->transformations != 0)
+        return;
+    glCallList(GL_LIST_END_2D);
+    if (this->BWRender != 0 && !this->ModeReflection)
+    {
+        glEnable(GL_REGISTER_COMBINERS_NV);
+    }
 }
-#endif
+
 
 /*
 * Module:                 rOpenGL.dll
