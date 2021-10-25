@@ -38,7 +38,7 @@ public:
         const char *str, const char *sep, B_PtrArray<B_Name> *tokens);
     virtual bool InitPythonPath();
     virtual void ProcessMessage() = 0;
-    virtual void *unknown_method010(void *);
+    virtual void *GetCameraView(void *);
     virtual ~B_App();
     virtual bool Start();
     virtual bool ProcessEvents();

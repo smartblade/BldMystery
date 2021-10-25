@@ -555,7 +555,7 @@ bool B_App::ProcessEvents()
     if (this->isActive)
     {
         Unknown004CD5EC unknown(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-        this->unknown_method010(&unknown);
+        this->GetCameraView(&unknown);
         for (unsigned int i = 0; i < gbl_ag_textures.size; i++)
         {
             gbl_ag_textures[i]->needUpdate = true;
@@ -1785,10 +1785,10 @@ int B_App::SetInputMode(const char *device, const char *mode)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004179B0
-* VC++ mangling:          ?unknown_method010@B_App@@UAEPAXPAX@Z
+* VC++ mangling:          ?GetCameraView@B_App@@UAEPAXPAX@Z
 */
 #ifndef BLD_NATIVE
-void *B_App::unknown_method010(void *)
+void *B_App::GetCameraView(void *)
 {
     return NULL;
 }

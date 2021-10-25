@@ -496,10 +496,10 @@ void B_WinApp::ReadArguments(const char *args)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00410640
-* VC++ mangling:          ?unknown_method010@B_WinApp@@UAEPAXPAX@Z
+* VC++ mangling:          ?GetCameraView@B_WinApp@@UAEPAXPAX@Z
 */
 #ifndef BLD_NATIVE
-void *B_WinApp::unknown_method010(void *)
+void *B_WinApp::GetCameraView(void *)
 {
     return NULL;
 }
@@ -581,7 +581,7 @@ LRESULT B_WinApp::WindowProcedure(
                     }
                 }
                 Unknown004CD5EC unknown(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-                this->unknown_method010(&unknown);
+                this->GetCameraView(&unknown);
                 B_3D_raster_device->unknown008(&unknown);
             }
             return false;
