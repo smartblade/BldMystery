@@ -1911,7 +1911,7 @@ int GetScreenRect(
     double *x_min, double *y_min, double *x_max, double *y_max
 )
 {
-    B_CameraView cameraView(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+    B_CameraView cameraView;
     float coef1 = 1.0f;
     float coef2 = 1.0f;
     cameraView.unknown000 = (1.0f - coef1) * 0.5f + 0.001f;
@@ -1940,7 +1940,7 @@ int GetScreenXY(
     double *screen_y
 )
 {
-    B_CameraView cameraView(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+    B_CameraView cameraView;
     float coef1 = 1.0f;
     float coef2 = 1.0f;
     cameraView.unknown000 = (1.0f - coef1) * 0.5f + 0.001f;

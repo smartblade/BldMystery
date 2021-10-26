@@ -58,7 +58,14 @@ public:
 class B_CameraView
 {
 public:
-    B_CameraView(float a, float b, float c, float d, float e, float f);
+    B_CameraView(
+        float a = 0.0f,
+        float b = 0.0f,
+        float c = 0.0f,
+        float d = 0.0f,
+        float e = 0.0f,
+        float f = 0.0f
+    );
     void unknown004CD634();
 
     float unknown000;

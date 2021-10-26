@@ -554,7 +554,7 @@ bool B_App::ProcessEvents()
     }
     if (this->isActive)
     {
-        B_CameraView cameraView(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+        B_CameraView cameraView;
         this->GetCameraView(&cameraView);
         for (unsigned int i = 0; i < gbl_ag_textures.size; i++)
         {

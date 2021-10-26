@@ -580,7 +580,7 @@ LRESULT B_WinApp::WindowProcedure(
                         B_3D_raster_device->unknown204(wParam);
                     }
                 }
-                B_CameraView cameraView(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                B_CameraView cameraView;
                 this->GetCameraView(&cameraView);
                 B_3D_raster_device->unknown008(&cameraView);
             }
