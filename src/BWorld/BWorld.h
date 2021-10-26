@@ -68,7 +68,7 @@ public:
     void AddScheduledFunc(
         double time, PyObject *func, PyObject *args, const char *name);
     void Update(
-        location_t *location, void *unknown, double time, int updateRaster);
+        location_t *location, void *cameraView, double time, int updateRaster);
     void SetSun(int exists, const B_Vector &position);
     void GetEnemiesVisibleFrom(
         const B_Vector &position, double radius,

@@ -1911,20 +1911,20 @@ int GetScreenRect(
     double *x_min, double *y_min, double *x_max, double *y_max
 )
 {
-    Unknown004CD5EC unknown(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+    B_CameraView cameraView(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
     float coef1 = 1.0f;
     float coef2 = 1.0f;
-    unknown.unknown000 = (1.0f - coef1) * 0.5f + 0.001f;
-    unknown.unknown004 = (1.0f - coef1) * 0.5f * 0.75f + 0.001f;
-    unknown.unknown008 = 0.998f * coef1;
-    unknown.unknown00C = 0.748f * coef1;
-    unknown.unknown010 = coef2;
-    unknown.unknown014 = 0.65 * coef1;
-    unknown.unknown004CD634();
-    *x_min = unknown.unknown000 - unknown.unknown008 * 0.5;
-    *y_min = unknown.unknown004 - unknown.unknown00C * 0.5;
-    *x_max = unknown.unknown000 + unknown.unknown008 * 0.5;
-    *y_max = unknown.unknown004 + unknown.unknown00C * 0.5;
+    cameraView.unknown000 = (1.0f - coef1) * 0.5f + 0.001f;
+    cameraView.unknown004 = (1.0f - coef1) * 0.5f * 0.75f + 0.001f;
+    cameraView.unknown008 = 0.998f * coef1;
+    cameraView.unknown00C = 0.748f * coef1;
+    cameraView.unknown010 = coef2;
+    cameraView.unknown014 = 0.65 * coef1;
+    cameraView.unknown004CD634();
+    *x_min = cameraView.unknown000 - cameraView.unknown008 * 0.5;
+    *y_min = cameraView.unknown004 - cameraView.unknown00C * 0.5;
+    *x_max = cameraView.unknown000 + cameraView.unknown008 * 0.5;
+    *y_max = cameraView.unknown004 + cameraView.unknown00C * 0.5;
     int result = 0;
     return result;
 }
@@ -1940,21 +1940,21 @@ int GetScreenXY(
     double *screen_y
 )
 {
-    Unknown004CD5EC unknown(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+    B_CameraView cameraView(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
     float coef1 = 1.0f;
     float coef2 = 1.0f;
-    unknown.unknown000 = (1.0f - coef1) * 0.5f + 0.001f;
-    unknown.unknown004 = (1.0f - coef1) * 0.5f * 0.75f + 0.001f;
-    unknown.unknown008 = 0.998f * coef1;
-    unknown.unknown00C = 0.748f * coef1;
-    unknown.unknown010 = coef2;
-    unknown.unknown014 = 0.65 * coef1;
-    unknown.unknown004CD634();
+    cameraView.unknown000 = (1.0f - coef1) * 0.5f + 0.001f;
+    cameraView.unknown004 = (1.0f - coef1) * 0.5f * 0.75f + 0.001f;
+    cameraView.unknown008 = 0.998f * coef1;
+    cameraView.unknown00C = 0.748f * coef1;
+    cameraView.unknown010 = coef2;
+    cameraView.unknown014 = 0.65 * coef1;
+    cameraView.unknown004CD634();
     B_Vector map_point(map_x, map_y, map_z);
     B_Vector screenPoint = map_point * GetApplication()->location.matrix0030;
     if (fabs(screenPoint.z) < 0.01)
         screenPoint.z = 0.01;
-    double factor = unknown.unknown014 / screenPoint.z;
+    double factor = cameraView.unknown014 / screenPoint.z;
     *screen_x = screenPoint.x * factor;
     *screen_y = screenPoint.y * factor;
     int result = 0;

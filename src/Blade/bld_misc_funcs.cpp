@@ -391,10 +391,10 @@ bool GetCurrentDir(char *buffer, int bufferLength)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004CD5EC
-* VC++ mangling:          ??0Unknown004CD5EC@@QAE@MMMMMM@Z
+* VC++ mangling:          ??0B_CameraView@@QAE@MMMMMM@Z
 */
 #ifndef BLD_NATIVE
-Unknown004CD5EC::Unknown004CD5EC(float a, float b, float c, float d, float e, float f)
+B_CameraView::B_CameraView(float a, float b, float c, float d, float e, float f)
 {
 }
 #endif
@@ -402,10 +402,10 @@ Unknown004CD5EC::Unknown004CD5EC(float a, float b, float c, float d, float e, fl
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004CD634
-* VC++ mangling:          ?unknown004CD634@Unknown004CD5EC@@QAEXXZ
+* VC++ mangling:          ?unknown004CD634@B_CameraView@@QAEXXZ
 */
 #ifndef BLD_NATIVE
-void Unknown004CD5EC::unknown004CD634()
+void B_CameraView::unknown004CD634()
 {
 }
 #endif

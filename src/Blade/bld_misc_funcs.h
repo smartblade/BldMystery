@@ -55,10 +55,10 @@ public:
     long bmpHandle;
 };
 
-class Unknown004CD5EC
+class B_CameraView
 {
 public:
-    Unknown004CD5EC(float a, float b, float c, float d, float e, float f);
+    B_CameraView(float a, float b, float c, float d, float e, float f);
     void unknown004CD634();
 
     float unknown000;

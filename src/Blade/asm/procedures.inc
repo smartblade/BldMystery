@@ -1028,10 +1028,10 @@ externdef ?IsActive@B_Clock@@UAE_NXZ: near
 l004CC5F0 equ ?IsActive@B_Clock@@UAE_NXZ
 externdef _GetCurrentDir: near
 l004CC8C8 equ _GetCurrentDir
-externdef ??0Unknown004CD5EC@@QAE@MMMMMM@Z: near
-l004CD5EC equ ??0Unknown004CD5EC@@QAE@MMMMMM@Z
-externdef ?unknown004CD634@Unknown004CD5EC@@QAEXXZ: near
-l004CD634 equ ?unknown004CD634@Unknown004CD5EC@@QAEXXZ
+externdef ??0B_CameraView@@QAE@MMMMMM@Z: near
+l004CD5EC equ ??0B_CameraView@@QAE@MMMMMM@Z
+externdef ?unknown004CD634@B_CameraView@@QAEXXZ: near
+l004CD634 equ ?unknown004CD634@B_CameraView@@QAEXXZ
 externdef ?GetEventTime@B_BipedAction@@QAENPBD@Z: near
 l004D6B8A equ ?GetEventTime@B_BipedAction@@QAENPBD@Z
 externdef ??0B_BipedData@@QAE@ABVB_Name@@0@Z: near

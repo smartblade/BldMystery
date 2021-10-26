@@ -554,15 +554,15 @@ bool B_App::ProcessEvents()
     }
     if (this->isActive)
     {
-        Unknown004CD5EC unknown(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-        this->GetCameraView(&unknown);
+        B_CameraView cameraView(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+        this->GetCameraView(&cameraView);
         for (unsigned int i = 0; i < gbl_ag_textures.size; i++)
         {
             gbl_ag_textures[i]->needUpdate = true;
         }
         B_ProcTexture::SetTime(this->time);
         B_3D_raster_device->StartScene(&this->location);
-        B_3D_raster_device->unknown008(&unknown);
+        B_3D_raster_device->unknown008(&cameraView);
         if (this->cls)
         {
             B_3D_raster_device->Cls(B_Color(125, 0, 0));
@@ -574,7 +574,7 @@ bool B_App::ProcessEvents()
         if (this->b05D4)
         {
             B_world.Update(
-                &this->location, &unknown, this->time, updateRaster);
+                &this->location, &cameraView, this->time, updateRaster);
         }
         else
         {

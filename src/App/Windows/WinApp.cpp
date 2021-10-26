@@ -580,9 +580,9 @@ LRESULT B_WinApp::WindowProcedure(
                         B_3D_raster_device->unknown204(wParam);
                     }
                 }
-                Unknown004CD5EC unknown(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-                this->GetCameraView(&unknown);
-                B_3D_raster_device->unknown008(&unknown);
+                B_CameraView cameraView(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                this->GetCameraView(&cameraView);
+                B_3D_raster_device->unknown008(&cameraView);
             }
             return false;
         case WM_SYSKEYDOWN:

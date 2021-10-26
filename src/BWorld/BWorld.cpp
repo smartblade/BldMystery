@@ -111,7 +111,7 @@ void B_World::AddScheduledFunc(
 */
 #ifndef BLD_NATIVE
 void B_World::Update(
-    location_t *location, void *unknown, double time, int updateRaster)
+    location_t *location, void *cameraView, double time, int updateRaster)
 {
 }
 #endif
