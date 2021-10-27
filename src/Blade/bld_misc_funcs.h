@@ -68,13 +68,13 @@ public:
     );
     void UpdateViewPyramid();
 
-    float unknown000;
-    float unknown004;
-    float unknown008;
-    float unknown00C;
+    float xCentre;
+    float yCentre;
+    float width;
+    float height;
     float unknown010;
-    float unknown014;
-    char unknown_fields[772];
+    float z;
+    char viewPyramid[772];
 };
 
 extern B_IDataFile& operator >>(B_IDataFile& file, B_Combustion &combustion);

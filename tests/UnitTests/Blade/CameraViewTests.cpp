@@ -11,10 +11,10 @@ TEST(CameraViewTests, SizeOf)
 
 TEST(CameraViewTests, Fields)
 {
-    EXPECT_OFFSET_EQ(B_CameraView, unknown000, 0x000);
-    EXPECT_OFFSET_EQ(B_CameraView, unknown004, 0x004);
-    EXPECT_OFFSET_EQ(B_CameraView, unknown008, 0x008);
-    EXPECT_OFFSET_EQ(B_CameraView, unknown00C, 0x00C);
+    EXPECT_OFFSET_EQ(B_CameraView, xCentre, 0x000);
+    EXPECT_OFFSET_EQ(B_CameraView, yCentre, 0x004);
+    EXPECT_OFFSET_EQ(B_CameraView, width, 0x008);
+    EXPECT_OFFSET_EQ(B_CameraView, height, 0x00C);
     EXPECT_OFFSET_EQ(B_CameraView, unknown010, 0x010);
-    EXPECT_OFFSET_EQ(B_CameraView, unknown014, 0x014);
+    EXPECT_OFFSET_EQ(B_CameraView, z, 0x014);
 }
