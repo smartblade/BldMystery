@@ -76,8 +76,8 @@ externdef ?Quit@B_WinApp@@UAEHXZ: near
 l004103A1 equ ?Quit@B_WinApp@@UAEHXZ
 externdef ?ReadArguments@B_WinApp@@UAEXPBD@Z: near
 l004103D7 equ ?ReadArguments@B_WinApp@@UAEXPBD@Z
-externdef ?GetCameraView@B_WinApp@@UAEPAXPAX@Z: near
-l00410640 equ ?GetCameraView@B_WinApp@@UAEPAXPAX@Z
+externdef ?GetCameraView@B_WinApp@@UAE_NPAVB_CameraView@@@Z: near
+l00410640 equ ?GetCameraView@B_WinApp@@UAE_NPAVB_CameraView@@@Z
 externdef ?ReadLevel@B_WinApp@@UAEXPBD@Z: near
 l004106F2 equ ?ReadLevel@B_WinApp@@UAEXPBD@Z
 externdef ?WindowProcedure@B_WinApp@@UAEJPAUHWND__@@IIJ@Z: near
@@ -250,8 +250,8 @@ externdef ?GetInputMode@B_App@@UAEPBDPBD@Z: near
 l00417417 equ ?GetInputMode@B_App@@UAEPBDPBD@Z
 externdef ?SetInputMode@B_App@@UAEHPBD0@Z: near
 l00417426 equ ?SetInputMode@B_App@@UAEHPBD0@Z
-externdef ?GetCameraView@B_App@@UAEPAXPAX@Z: near
-l004179B0 equ ?GetCameraView@B_App@@UAEPAXPAX@Z
+externdef ?GetCameraView@B_App@@UAE_NPAVB_CameraView@@@Z: near
+l004179B0 equ ?GetCameraView@B_App@@UAE_NPAVB_CameraView@@@Z
 externdef ?SetTravelingView@B_Camera@@QAEHHH@Z: near
 l00418E69 equ ?SetTravelingView@B_Camera@@QAEHHH@Z
 externdef ?SetPersonView@B_Camera@@QAEHPBD@Z: near

@@ -10,7 +10,7 @@ class B_WinApp : public B_App
 public:
     virtual void ReadArguments(const char *args);
     virtual void ProcessMessage();
-    virtual void *GetCameraView(void *);
+    virtual bool GetCameraView(B_CameraView *cameraView);
     virtual ~B_WinApp();
     virtual bool Start();
     virtual bool ProcessEvents();

@@ -14,6 +14,7 @@
 
 
 class B_CameraEntity;
+class B_CameraView;
 class B_InputActions;
 class B_InputDevice;
 class B_PersonStatus;
@@ -38,7 +39,7 @@ public:
         const char *str, const char *sep, B_PtrArray<B_Name> *tokens);
     virtual bool InitPythonPath();
     virtual void ProcessMessage() = 0;
-    virtual void *GetCameraView(void *);
+    virtual bool GetCameraView(B_CameraView *cameraView);
     virtual ~B_App();
     virtual bool Start();
     virtual bool ProcessEvents();

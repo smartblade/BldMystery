@@ -496,14 +496,22 @@ void B_WinApp::ReadArguments(const char *args)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00410640
-* VC++ mangling:          ?GetCameraView@B_WinApp@@UAEPAXPAX@Z
+* VC++ mangling:          ?GetCameraView@B_WinApp@@UAE_NPAVB_CameraView@@@Z
 */
-#ifndef BLD_NATIVE
-void *B_WinApp::GetCameraView(void *)
+
+bool B_WinApp::GetCameraView(B_CameraView *cameraView)
 {
-    return NULL;
+    float coef = 1.0f;
+    cameraView->xCentre = (1.0f - this->unknown1AC) * 0.5f + 0.0f;
+    cameraView->yCentre = (1.0f - this->unknown1AC) * 0.5f * 0.75f + 0.0f;
+    cameraView->width = 1.0f * this->unknown1AC;
+    cameraView->height = 0.75f * this->unknown1AC;
+    cameraView->unknown010 = coef;
+    cameraView->z = this->unknownPtrForCamera * this->unknown1AC;
+    cameraView->UpdateViewPyramid();
+    return true;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
