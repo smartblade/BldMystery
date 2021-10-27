@@ -1920,7 +1920,7 @@ int GetScreenRect(
     cameraView.unknown00C = 0.748f * coef1;
     cameraView.unknown010 = coef2;
     cameraView.unknown014 = 0.65 * coef1;
-    cameraView.unknown004CD634();
+    cameraView.UpdateViewPyramid();
     *x_min = cameraView.unknown000 - cameraView.unknown008 * 0.5;
     *y_min = cameraView.unknown004 - cameraView.unknown00C * 0.5;
     *x_max = cameraView.unknown000 + cameraView.unknown008 * 0.5;
@@ -1949,7 +1949,7 @@ int GetScreenXY(
     cameraView.unknown00C = 0.748f * coef1;
     cameraView.unknown010 = coef2;
     cameraView.unknown014 = 0.65 * coef1;
-    cameraView.unknown004CD634();
+    cameraView.UpdateViewPyramid();
     B_Vector map_point(map_x, map_y, map_z);
     B_Vector screenPoint = map_point * GetApplication()->location.matrix0030;
     if (fabs(screenPoint.z) < 0.01)

@@ -66,7 +66,7 @@ public:
         float e = 0.0f,
         float f = 0.0f
     );
-    void unknown004CD634();
+    void UpdateViewPyramid();
 
     float unknown000;
     float unknown004;

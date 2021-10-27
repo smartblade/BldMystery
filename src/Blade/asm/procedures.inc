@@ -1030,8 +1030,8 @@ externdef _GetCurrentDir: near
 l004CC8C8 equ _GetCurrentDir
 externdef ??0B_CameraView@@QAE@MMMMMM@Z: near
 l004CD5EC equ ??0B_CameraView@@QAE@MMMMMM@Z
-externdef ?unknown004CD634@B_CameraView@@QAEXXZ: near
-l004CD634 equ ?unknown004CD634@B_CameraView@@QAEXXZ
+externdef ?UpdateViewPyramid@B_CameraView@@QAEXXZ: near
+l004CD634 equ ?UpdateViewPyramid@B_CameraView@@QAEXXZ
 externdef ?GetEventTime@B_BipedAction@@QAENPBD@Z: near
 l004D6B8A equ ?GetEventTime@B_BipedAction@@QAENPBD@Z
 externdef ??0B_BipedData@@QAE@ABVB_Name@@0@Z: near

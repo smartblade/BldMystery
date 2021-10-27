@@ -402,10 +402,10 @@ B_CameraView::B_CameraView(float a, float b, float c, float d, float e, float f)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004CD634
-* VC++ mangling:          ?unknown004CD634@B_CameraView@@QAEXXZ
+* VC++ mangling:          ?UpdateViewPyramid@B_CameraView@@QAEXXZ
 */
 #ifndef BLD_NATIVE
-void B_CameraView::unknown004CD634()
+void B_CameraView::UpdateViewPyramid()
 {
 }
 #endif
