@@ -39,7 +39,19 @@ public:
         const char *str, const char *sep, B_PtrArray<B_Name> *tokens);
     virtual bool InitPythonPath();
     virtual void ProcessMessage() = 0;
-    virtual bool GetCameraView(B_CameraView *cameraView);
+
+
+    /*
+    * Module:                 Blade.exe
+    * Entry point:            0x004179B0
+    * VC++ mangling:          ?GetCameraView@B_App@@UAE_NPAVB_CameraView@@@Z
+    */
+
+    virtual bool GetCameraView(B_CameraView *cameraView)
+    {
+        return false;
+    }
+
     virtual ~B_App();
     virtual bool Start();
     virtual bool ProcessEvents();

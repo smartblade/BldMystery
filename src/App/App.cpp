@@ -1773,23 +1773,3 @@ int B_App::SetInputMode(const char *device, const char *mode)
 {
     return 0;
 }
-
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x004179B0
-* VC++ mangling:          ?GetCameraView@B_App@@UAE_NPAVB_CameraView@@@Z
-*/
-#ifndef BLD_NATIVE
-bool B_App::GetCameraView(B_CameraView *cameraView)
-{
-    return false;
-}
-#endif
