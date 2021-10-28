@@ -152,8 +152,8 @@ externdef ?SwapBuffers@B_OpenGLRasterDevice@@UAEXXZ: near
 l1001FDF8 equ ?SwapBuffers@B_OpenGLRasterDevice@@UAEXXZ
 externdef ?SetFlags@B_OpenGLRasterDevice@@UAEXJ@Z: near
 l1001FE3A equ ?SetFlags@B_OpenGLRasterDevice@@UAEXJ@Z
-externdef ?unknown008@B_OpenGLRasterDevice@@UAEXPAX@Z: near
-l1001FE50 equ ?unknown008@B_OpenGLRasterDevice@@UAEXPAX@Z
+externdef ?SetProjection@B_OpenGLRasterDevice@@UAEXPAX@Z: near
+l1001FE50 equ ?SetProjection@B_OpenGLRasterDevice@@UAEXPAX@Z
 externdef ?Cls@B_OpenGLRasterDevice@@UAEXVB_Color@@@Z: near
 l1002022E equ ?Cls@B_OpenGLRasterDevice@@UAEXVB_Color@@@Z
 externdef ?ClsRGB@B_OpenGLRasterDevice@@UAEXEEE@Z: near

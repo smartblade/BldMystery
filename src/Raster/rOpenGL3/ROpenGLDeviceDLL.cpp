@@ -259,10 +259,10 @@ void B_OpenGLRasterDevice::SetFlags(long flags)
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1001FE50
-* VC++ mangling:          ?unknown008@B_OpenGLRasterDevice@@UAEXPAX@Z
+* VC++ mangling:          ?SetProjection@B_OpenGLRasterDevice@@UAEXPAX@Z
 */
 #ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::unknown008(void *)
+void B_OpenGLRasterDevice::SetProjection(void *)
 {
 }
 #endif

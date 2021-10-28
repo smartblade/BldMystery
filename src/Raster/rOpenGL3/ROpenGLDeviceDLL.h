@@ -37,7 +37,7 @@ public:
     B_OpenGLRasterDevice(HWND window, HMODULE rasterModule);
     virtual ~B_OpenGLRasterDevice();
     virtual void SwapBuffers();
-    virtual void unknown008(void *);
+    virtual void SetProjection(void *);
     virtual void SetGammaCorrection(float gamma);
     virtual float GetGammaCorrection();
     virtual void SetContrast(float contrast);

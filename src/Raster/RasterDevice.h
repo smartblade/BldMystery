@@ -34,7 +34,7 @@ public:
     }
 
     virtual void SwapBuffers() = 0;
-    virtual void unknown008(void *) = 0;
+    virtual void SetProjection(void *) = 0;
     virtual void SetGammaCorrection(float gamma) = 0;
     virtual float GetGammaCorrection() = 0;
     virtual void SetContrast(float contrast) = 0;
