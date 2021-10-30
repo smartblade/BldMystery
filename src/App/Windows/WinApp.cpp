@@ -591,7 +591,7 @@ LRESULT B_WinApp::WindowProcedure(
                 }
                 B_CameraView cameraView;
                 this->GetCameraView(&cameraView);
-                B_3D_raster_device->SetProjection(&cameraView);
+                B_3D_raster_device->SetProjection(cameraView);
             }
             return false;
         case WM_SYSKEYDOWN:

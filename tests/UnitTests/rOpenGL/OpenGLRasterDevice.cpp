@@ -34,8 +34,8 @@ TEST(OpenGLRasterDeviceTests, Fields)
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, clipActive, 0x00050);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, width, 0x00054);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, height, 0x00058);
-    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown005C, 0x0005C);
-    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown0060, 0x00060);
+    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, xCentre, 0x0005C);
+    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, yCentre, 0x00060);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown064, 0x00064);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown068, 0x00068);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown06C, 0x0006C);
@@ -75,13 +75,13 @@ TEST(OpenGLRasterDeviceTests, Fields)
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, useCreditsHack, 0x847BC);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, backgroundImageWidth, 0x847C0);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, backgroundImageHeight, 0x847C4);
-    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown0847C8, 0x847C8);
-    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown0847CC, 0x847CC);
+    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, projectionWidth, 0x847C8);
+    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, projectionHeight, 0x847CC);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, currentDisplayWidth, 0x847D0);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, currentDisplayHeight, 0x847D4);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, currentDisplayDepth, 0x847D8);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, currentDisplayFrequency, 0x847DC);
-    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown0847E0, 0x847E0);
+    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, projectionZ, 0x847E0);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, domeColor, 0x847E4);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, useMipmaps, 0x847EC);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown0847F0, 0x847F0);

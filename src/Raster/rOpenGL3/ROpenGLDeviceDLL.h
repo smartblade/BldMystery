@@ -37,7 +37,7 @@ public:
     B_OpenGLRasterDevice(HWND window, HMODULE rasterModule);
     virtual ~B_OpenGLRasterDevice();
     virtual void SwapBuffers();
-    virtual void SetProjection(void *);
+    virtual void SetProjection(const B_CameraView &cameraView);
     virtual void SetGammaCorrection(float gamma);
     virtual float GetGammaCorrection();
     virtual void SetContrast(float contrast);
@@ -297,13 +297,13 @@ private:
     int useCreditsHack;
     int backgroundImageWidth;
     int backgroundImageHeight;
-    int unknown0847C8;
-    int unknown0847CC;
+    int projectionWidth;
+    int projectionHeight;
     int currentDisplayWidth;
     int currentDisplayHeight;
     int currentDisplayDepth;
     int currentDisplayFrequency;
-    float unknown0847E0;
+    float projectionZ;
     B_Color domeColor;
     int useMipmaps;
     int unknown0847F0;

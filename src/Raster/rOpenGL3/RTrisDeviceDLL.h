@@ -61,6 +61,7 @@ class B_TrisDevice : public B_3DRasterDevice
 {
 public:
     B_TrisDevice();
+    virtual void SetProjection(const B_CameraView &cameraView);
     virtual void unknown030();
     virtual void unknown034();
     virtual void unknown0BC();
@@ -84,8 +85,8 @@ public:
 protected:
     int width;
     int height;
-    int unknown005C;
-    int unknown0060;
+    int xCentre;
+    int yCentre;
     int unknown064;
     int unknown068;
     int unknown06C;

@@ -386,3 +386,8 @@ EXPORTS
     _glViewport@16 = glViewport
     _glCallList@4 = glCallList
     _glDisable@4 = glDisable
+    _glFrustum@48 = glFrustum
+    _glGetDoublev@8 = glGetDoublev
+    _glOrtho@48 = glOrtho
+    _glScaled@24 = glScaled
+    _glScissor@16 = glScissor

@@ -563,7 +563,7 @@ bool B_App::ProcessEvents()
         }
         B_ProcTexture::SetTime(this->time);
         B_3D_raster_device->StartScene(&this->location);
-        B_3D_raster_device->SetProjection(&cameraView);
+        B_3D_raster_device->SetProjection(cameraView);
         if (this->cls)
         {
             B_3D_raster_device->Cls(B_Color(125, 0, 0));

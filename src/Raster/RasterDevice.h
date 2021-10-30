@@ -9,6 +9,7 @@
 #undef BUILD_LIB
 
 class B_BitMap24;
+class B_CameraView;
 class B_Name;
 class B_Color;
 class B_Font;
@@ -34,7 +35,7 @@ public:
     }
 
     virtual void SwapBuffers() = 0;
-    virtual void SetProjection(void *) = 0;
+    virtual void SetProjection(const B_CameraView &cameraView) = 0;
     virtual void SetGammaCorrection(float gamma) = 0;
     virtual float GetGammaCorrection() = 0;
     virtual void SetContrast(float contrast) = 0;

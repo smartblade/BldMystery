@@ -152,8 +152,8 @@ externdef ?SwapBuffers@B_OpenGLRasterDevice@@UAEXXZ: near
 l1001FDF8 equ ?SwapBuffers@B_OpenGLRasterDevice@@UAEXXZ
 externdef ?SetFlags@B_OpenGLRasterDevice@@UAEXJ@Z: near
 l1001FE3A equ ?SetFlags@B_OpenGLRasterDevice@@UAEXJ@Z
-externdef ?SetProjection@B_OpenGLRasterDevice@@UAEXPAX@Z: near
-l1001FE50 equ ?SetProjection@B_OpenGLRasterDevice@@UAEXPAX@Z
+externdef ?SetProjection@B_OpenGLRasterDevice@@UAEXABVB_CameraView@@@Z: near
+l1001FE50 equ ?SetProjection@B_OpenGLRasterDevice@@UAEXABVB_CameraView@@@Z
 externdef ?Cls@B_OpenGLRasterDevice@@UAEXVB_Color@@@Z: near
 l1002022E equ ?Cls@B_OpenGLRasterDevice@@UAEXVB_Color@@@Z
 externdef ?ClsRGB@B_OpenGLRasterDevice@@UAEXEEE@Z: near
@@ -304,6 +304,8 @@ externdef ??0B_TrisDevice@@QAE@XZ: near
 l1002E3D1 equ ??0B_TrisDevice@@QAE@XZ
 externdef ?unknown240@B_TrisDevice@@UAEXXZ: near
 l1002EE80 equ ?unknown240@B_TrisDevice@@UAEXXZ
+externdef ?SetProjection@B_TrisDevice@@UAEXABVB_CameraView@@@Z: near
+l1002F28D equ ?SetProjection@B_TrisDevice@@UAEXABVB_CameraView@@@Z
 externdef ?unknown030@B_TrisDevice@@UAEXXZ: near
 l1002F3EA equ ?unknown030@B_TrisDevice@@UAEXXZ
 externdef ?unknown034@B_TrisDevice@@UAEXXZ: near

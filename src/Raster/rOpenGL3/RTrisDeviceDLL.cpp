@@ -64,6 +64,24 @@ void B_TrisDevice::unknown240()
 
 /*
 * Module:                 rOpenGL.dll
+* Entry point:            0x1002F28D
+* VC++ mangling:          ?SetProjection@B_TrisDevice@@UAEXABVB_CameraView@@@Z
+*/
+#ifndef BLD_NATIVE
+void B_TrisDevice::SetProjection(const B_CameraView &cameraView)
+{
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 rOpenGL.dll
 * Entry point:            0x1002F3EA
 * VC++ mangling:          ?unknown030@B_TrisDevice@@UAEXXZ
 */

@@ -2,6 +2,7 @@
 
 #include "ConfigSections.h"
 #include "GlExtensions.h"
+#include <View/CameraView.h>
 #include <math.h>
 
 
@@ -158,9 +159,9 @@ B_OpenGLRasterDevice::B_OpenGLRasterDevice(HWND window, HMODULE rasterModule)
     this->LoadBitmapWinResource(103, 2004);
     this->LoadBitmapWinResource(107, 2005);
     this->LoadBitmapWinResource(120, 2006);
-    this->unknown0847E0 = -1.0;
-    this->unknown0847CC = -1;
-    this->unknown0847C8 = -1;
+    this->projectionZ = -1.0;
+    this->projectionHeight = -1;
+    this->projectionWidth = -1;
     glNewList(GL_LIST_START_2D, GL_COMPILE);
     glMatrixMode(GL_PROJECTION);
     glPushMatrix();
@@ -259,20 +260,89 @@ void B_OpenGLRasterDevice::SetFlags(long flags)
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1001FE50
-* VC++ mangling:          ?SetProjection@B_OpenGLRasterDevice@@UAEXPAX@Z
+* VC++ mangling:          ?SetProjection@B_OpenGLRasterDevice@@UAEXABVB_CameraView@@@Z
 */
-#ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::SetProjection(void *)
-{
-}
-#endif
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+void B_OpenGLRasterDevice::SetProjection(const B_CameraView &cameraView)
+{
+    RECT clientRectangle;
+    if (this->FullScreen() && this->fullScreenMode != NULL)
+    {
+        this->width = this->fullScreenMode->width;
+        this->height = this->fullScreenMode->height;
+    }
+    else if (GetClientRect(this->window, &clientRectangle))
+    {
+        this->width = abs(clientRectangle.left - clientRectangle.right);
+        this->height = abs(clientRectangle.bottom - clientRectangle.top);
+    }
+    else
+    {
+        this->width = 640;
+        this->height = 480;
+    }
+    if (
+        (this->width != this->projectionWidth) ||
+        (this->height != this->projectionHeight) ||
+        (this->projectionZ != cameraView.z))
+    {
+        this->xCentre = this->width / 2;
+        this->yCentre = this->height / 2;
+        B_TrisDevice::SetProjection(cameraView);
+        glViewport(0, 0, this->width, this->height);
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+        double left = -100.0f * cameraView.width / (2.0f * cameraView.z);
+        double right = -left;
+        /* FIXME incorrect work for other aspect ratios */
+        double displayRatio = 0.75;
+        double bottom = left * displayRatio;
+        double top = right * displayRatio;
+        glFrustum(left, right, bottom, top, 100.0, 1000000.0);
+        glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
+        glScaled(1.0, -1.0, -1.0);
+        glScissor(1, 1, this->width - 2, this->height - 2);
+        glGetDoublev(GL_PROJECTION_MATRIX, this->projectionMatrix);
+        glGetDoublev(GL_MODELVIEW_MATRIX, this->modelviewMatrix);
+        glGetIntegerv(GL_VIEWPORT, this->viewport);
+        this->projectionZ = cameraView.z;
+        this->projectionWidth = this->width;
+        this->projectionHeight = this->height;
+        glNewList(GL_LIST_START_2D, GL_COMPILE);
+        glMatrixMode(GL_PROJECTION);
+        glPushMatrix();
+        glLoadIdentity();
+        glOrtho(0.0, this->width, 0.0, this->height, -499950.0, 499950.0);
+        glMatrixMode(GL_MODELVIEW);
+        glPushMatrix();
+        glLoadIdentity();
+        glViewport(0, 0, this->width, this->height);
+        glEndList();
+        glNewList(GL_LIST_END_2D, GL_COMPILE);
+        glMatrixMode(GL_MODELVIEW);
+        glPopMatrix();
+        glMatrixMode(GL_PROJECTION);
+        glPopMatrix();
+        glEndList();
+        glNewList(510, GL_COMPILE);
+        glMatrixMode(GL_PROJECTION);
+        glPushMatrix();
+        glLoadIdentity();
+        glMatrixMode(GL_MODELVIEW);
+        glPushMatrix();
+        glLoadIdentity();
+        glOrtho(0.0, this->width, 0.0, this->height, 100.0, -1000000.0);
+        glEndList();
+        glNewList(511, GL_COMPILE);
+        glMatrixMode(GL_MODELVIEW);
+        glPopMatrix();
+        glMatrixMode(GL_PROJECTION);
+        glPopMatrix();
+        glEndList();
+    }
+}
+
 
 /*
 * Module:                 rOpenGL.dll
