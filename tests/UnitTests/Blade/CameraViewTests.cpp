@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
-#include "bld_misc_funcs.h"
+#include <View/CameraView.h>
 
 
 TEST(CameraViewTests, SizeOf)

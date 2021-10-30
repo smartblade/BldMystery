@@ -385,31 +385,8 @@ bool GetCurrentDir(char *buffer, int bufferLength)
 
 
 
+/* File:                  View/CameraView.cpp */
 /* Begin of file:         0x004CD580 */
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x004CD5EC
-* VC++ mangling:          ??0B_CameraView@@QAE@MMMMMM@Z
-*/
-#ifndef BLD_NATIVE
-B_CameraView::B_CameraView(float a, float b, float c, float d, float e, float f)
-{
-}
-#endif
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x004CD634
-* VC++ mangling:          ?UpdateViewPyramid@B_CameraView@@QAEXXZ
-*/
-#ifndef BLD_NATIVE
-void B_CameraView::UpdateViewPyramid()
-{
-}
-#endif
-
 /* End of file:           0x004CDB30 */
 
 

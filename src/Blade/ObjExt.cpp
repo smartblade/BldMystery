@@ -2,6 +2,7 @@
 #include <bld_system.h>
 #include <bld_python.h>
 #include <Raster/RasterDevice.h>
+#include <View/CameraView.h>
 #include "BladeApp.h"
 #include <Entities/CameraEntity.h>
 #include <Entities/PersonEntity.h>

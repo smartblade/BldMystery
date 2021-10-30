@@ -4,6 +4,7 @@
 #include <bld_python.h>
 #include <Raster/RasterDevice.h>
 #include <Control/anim.h>
+#include <View/CameraView.h>
 #include <Entities/BipedEntity.h>
 #include <Entities/CameraEntity.h>
 #include <Entities/PersonEntity.h>

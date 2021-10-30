@@ -10,6 +10,7 @@ file(
     ../App/Windows/*.cpp
     ../BWorld/*.cpp
     ../Control/*.cpp
+    ../View/*.cpp
     ../enemies/*.cpp
     ../Entities/*.cpp
     ../Math/*.cpp

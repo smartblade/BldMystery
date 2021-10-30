@@ -5,6 +5,7 @@
 #include "BladeApp.h"
 #include "WinClock.h"
 #include "sound_device.h"
+#include <View/CameraView.h>
 #include <BInputc.h>
 #include <NetMod/datanet.h>
 #include <NetMod/gamenet.h>
