@@ -41,22 +41,22 @@ void B_OpenGLRasterDevice::GetVideoModes()
 * Entry point:            0x1001C0D8
 * VC++ mangling:          ?GetVideoModeDscr@B_OpenGLRasterDevice@@UAEHHAAH0000@Z
 */
-#ifndef BLD_NATIVE
+
 int B_OpenGLRasterDevice::GetVideoModeDscr(
     int mode_index, int &depth, int &w, int &h, int &flags,
     int &frequency
 )
 {
-    return 0.0;
+    if (mode_index < 0 || (unsigned int)mode_index >= this->videoModes.size)
+        return false;
+    depth = this->videoModes[mode_index]->depth;
+    w = this->videoModes[mode_index]->width;
+    h = this->videoModes[mode_index]->height;
+    flags = this->videoModes[mode_index]->flags;
+    frequency = this->videoModes[mode_index]->frequency;
+    return true;
 }
-#endif
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
 /*
 * Module:                 rOpenGL.dll
