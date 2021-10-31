@@ -57750,43 +57750,7 @@ l1001CED6 ENDP
 ;* Jump:
 ; 100014D8(U) 
 ;
-l1001D667 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov edx, dword ptr [eax]
-           mov ecx, dword ptr [ebp-004h]
-           call [edx+000000224h]
-           test eax, eax
-           je l1001D684
-           xor eax, eax
-           jmp l1001D69F
-;
-;* Jump:
-; 1001D67E(C) 
-;
-l1001D684: mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ecx+054h]
-           mov dword ptr [eax], edx
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ecx+058h]
-           mov dword ptr [eax], edx
-;
-;* Control "OK", Dialog 006E
-;
-           mov eax, 000000001h
-;
-;* Jump:
-; 1001D682(U) 
-;
-l1001D69F: mov esp, ebp
-           pop ebp
-           ret 00008h
-l1001D667 ENDP
+           call l1001D667; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001267(U) 

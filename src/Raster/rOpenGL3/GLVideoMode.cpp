@@ -145,23 +145,20 @@ int B_OpenGLRasterDevice::SetWindowSize(int w, int h)
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1001D667
 * VC++ mangling:          ?GetWindowSize@B_OpenGLRasterDevice@@UAEHAAH0@Z
 */
-#ifndef BLD_NATIVE
+
 int B_OpenGLRasterDevice::GetWindowSize(int &w, int &h)
 {
-    return 0;
+    if (this->FullScreen())
+        return false;
+    w = this->width;
+    h = this->height;
+    return true;
 }
-#endif
+
 
 /*
 ................................................................................
