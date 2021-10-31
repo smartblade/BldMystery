@@ -232,8 +232,8 @@ public:
     );
     virtual int SetVideoMode(int mode_index);
     virtual int GetCurrentMode(
-        int &unknown1, int &w, int &h, int &unknown4,
-        int &unknown5
+        int &depth, int &w, int &h, int &flags,
+        int &frequency
     );
     virtual int FullScreen();
 

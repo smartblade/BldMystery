@@ -1351,22 +1351,22 @@ PyObject *raster_SetVideoMode(PyObject *self, PyObject *args) {
 */
 
 PyObject *raster_GetCurrentMode(PyObject *self, PyObject *args) {
-        PyObject *curModeObj, *unknown1Obj, *wObj, *hObj;
-        PyObject *unknown4Obj, *unknown5Obj;
-        int unknown1, w, h, unknown4, unknown5;
+        PyObject *curModeObj, *depthObj, *wObj, *hObj;
+        PyObject *flagsObj, *frequencyObj;
+        int depth, w, h, flags, frequency;
         int code;
 
         if (!PyArg_ParseTuple(args, ":GetCurrentMode"))
                 return NULL;
 
         code = GetCurrentMode(
-                unknown1, w, h, unknown4, unknown5
+                depth, w, h, flags, frequency
         );
 
         curModeObj = Py_BuildValue("i", code);
 
-        unknown1Obj = PyInt_FromLong(unknown1);
-        curModeObj = add_item(curModeObj, unknown1Obj);
+        depthObj = PyInt_FromLong(depth);
+        curModeObj = add_item(curModeObj, depthObj);
 
         wObj = PyInt_FromLong(w);
         curModeObj = add_item(curModeObj, wObj);
@@ -1374,11 +1374,11 @@ PyObject *raster_GetCurrentMode(PyObject *self, PyObject *args) {
         hObj = PyInt_FromLong(h);
         curModeObj = add_item(curModeObj, hObj);
 
-        unknown4Obj = PyInt_FromLong(unknown4);
-        curModeObj = add_item(curModeObj, unknown4Obj);
+        flagsObj = PyInt_FromLong(flags);
+        curModeObj = add_item(curModeObj, flagsObj);
 
-        unknown5Obj = PyInt_FromLong(unknown5);
-        curModeObj = add_item(curModeObj, unknown5Obj);
+        frequencyObj = PyInt_FromLong(frequency);
+        curModeObj = add_item(curModeObj, frequencyObj);
 
         return curModeObj;
 }

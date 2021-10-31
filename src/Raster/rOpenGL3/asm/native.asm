@@ -56854,60 +56854,7 @@ l1001CC77 ENDP
 ;* Jump:
 ; 1000135C(U) 
 ;
-l1001CCF8 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov edx, dword ptr [eax]
-           mov ecx, dword ptr [ebp-004h]
-           call [edx+000000224h]
-           test eax, eax
-           jne l1001CD15
-           xor eax, eax
-           jmp l1001CD6E
-;
-;* Jump:
-; 1001CD0F(C) 
-;
-l1001CD15: mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [eax+000086310h]
-           mov edx, dword ptr [ebp+008h]
-           mov eax, dword ptr [ecx]
-           mov dword ptr [edx], eax
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ecx+000086310h]
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [edx+004h]
-           mov dword ptr [eax], ecx
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [edx+000086310h]
-           mov ecx, dword ptr [ebp+010h]
-           mov edx, dword ptr [eax+008h]
-           mov dword ptr [ecx], edx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [eax+000086310h]
-           mov edx, dword ptr [ebp+014h]
-           mov eax, dword ptr [ecx+00Ch]
-           mov dword ptr [edx], eax
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ecx+000086310h]
-           mov eax, dword ptr [ebp+018h]
-           mov ecx, dword ptr [edx+010h]
-           mov dword ptr [eax], ecx
-;
-;* Control "OK", Dialog 006E
-;
-           mov eax, 000000001h
-;
-;* Jump:
-; 1001CD13(U) 
-;
-l1001CD6E: mov esp, ebp
-           pop ebp
-           ret 00014h
-l1001CCF8 ENDP
+           call l1001CCF8; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001131(U) 

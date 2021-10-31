@@ -626,11 +626,11 @@ int SetVideoMode(int mode_index) {
 */
 
 int GetCurrentMode(
-        int &unknown1, int &w, int &h, int &unknown4,
-        int &unknown5
+        int &depth, int &w, int &h, int &flags,
+        int &frequency
 ) {
         return B_3D_raster_device->GetCurrentMode(
-                unknown1, w, h, unknown4, unknown5
+                depth, w, h, flags, frequency
         );
 }
 

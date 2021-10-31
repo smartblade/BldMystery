@@ -95,7 +95,7 @@ extern int GetVideoModeDscr(
 );
 extern int SetVideoMode(int mode_index);
 extern int GetCurrentMode(
-        int &unknown1, int &w, int &h, int &unknown4, int &unknown5
+        int &depth, int &w, int &h, int &flags, int &frequency
 );
 extern const char *ClassIdName(void);
 extern void SetFont(long font_pointer);

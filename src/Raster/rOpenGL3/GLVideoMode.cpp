@@ -82,15 +82,22 @@ int B_OpenGLRasterDevice::SetVideoMode(int mode_index)
 * Entry point:            0x1001CCF8
 * VC++ mangling:          ?GetCurrentMode@B_OpenGLRasterDevice@@UAEHAAH0000@Z
 */
-#ifndef BLD_NATIVE
+
 int B_OpenGLRasterDevice::GetCurrentMode(
-    int &unknown1, int &w, int &h, int &unknown4,
-    int &unknown5
+    int &depth, int &w, int &h, int &flags,
+    int &frequency
 )
 {
-    return 0;
+    if (!this->FullScreen())
+        return false;
+    depth = this->fullScreenMode->depth;
+    w = this->fullScreenMode->width;
+    h = this->fullScreenMode->height;
+    flags = this->fullScreenMode->flags;
+    frequency = this->fullScreenMode->frequency;
+    return true;
 }
-#endif
+
 
 /*
 * Module:                 rOpenGL.dll
