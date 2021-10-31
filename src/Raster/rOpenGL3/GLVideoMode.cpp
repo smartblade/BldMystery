@@ -17,11 +17,26 @@ int B_OpenGLRasterDevice::FullScreen()
 * Module:                 rOpenGL.dll
 * Entry point:            0x1001BEDC
 */
-#ifndef BLD_NATIVE
+
 void GetVideoModes(B_PtrArray<B_VideoMode> &videoModes)
 {
+    DEVMODE devMode;
+    unsigned int i = 0;
+    while (EnumDisplaySettings(NULL, i, &devMode))
+    {
+        if (devMode.dmBitsPerPel >= 16)
+        {
+            B_VideoMode *mode = new B_VideoMode;
+            mode->width = devMode.dmPelsWidth;
+            mode->height = devMode.dmPelsHeight;
+            mode->depth = devMode.dmBitsPerPel;
+            mode->flags = devMode.dmDisplayFlags;
+            mode->frequency = devMode.dmDisplayFrequency;
+            videoModes.Append(mode);
+        }
+        i++;
+    }
 }
-#endif
 
 
 /*
