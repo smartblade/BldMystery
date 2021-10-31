@@ -93,32 +93,44 @@ int B_OpenGLRasterDevice::GetCurrentMode(
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1001CD74
 * VC++ mangling:          ?SetVideoModeParameters@B_OpenGLRasterDevice@@UAEHHHHH@Z
 */
-#ifndef BLD_NATIVE
+
 int B_OpenGLRasterDevice::SetVideoModeParameters(
     int depth, int width, int height, int frequency
 )
 {
-    return 0;
+    unsigned int i;
+    if (frequency == -1)
+    {
+        for (i = 0; i < this->videoModes.size; i++)
+        {
+            if (
+                (depth == this->videoModes[i]->depth) &&
+                (width == this->videoModes[i]->width) &&
+                (height == this->videoModes[i]->height)
+            )
+                return this->SetVideoMode(i);
+        }
+    }
+    else
+    {
+        for (i = 0; i < this->videoModes.size; i++)
+        {
+            if (
+                (depth == this->videoModes[i]->depth) &&
+                (width == this->videoModes[i]->width) &&
+                (height == this->videoModes[i]->height) &&
+                (frequency == this->videoModes[i]->frequency)
+            )
+                return this->SetVideoMode(i);
+        }
+    }
+    return false;
 }
-#endif
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
 /*
 * Module:                 rOpenGL.dll
