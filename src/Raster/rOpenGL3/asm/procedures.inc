@@ -98,8 +98,8 @@ externdef ?unknown08C@B_OpenGLRasterDevice@@UAEXXZ: near
 l10015B32 equ ?unknown08C@B_OpenGLRasterDevice@@UAEXXZ
 externdef ?unknown088@B_OpenGLRasterDevice@@UAEXXZ: near
 l10015D70 equ ?unknown088@B_OpenGLRasterDevice@@UAEXXZ
-externdef ?unknown090@B_OpenGLRasterDevice@@UAEXXZ: near
-l100173D3 equ ?unknown090@B_OpenGLRasterDevice@@UAEXXZ
+externdef ?UnLoadBitmaps@B_OpenGLRasterDevice@@UAEXXZ: near
+l100173D3 equ ?UnLoadBitmaps@B_OpenGLRasterDevice@@UAEXXZ
 externdef ?update_dome@B_OpenGLRasterDevice@@UAEXXZ: near
 l1001752D equ ?update_dome@B_OpenGLRasterDevice@@UAEXXZ
 externdef ?BmpHandle@B_OpenGLRasterDevice@@UAEJPBD@Z: near

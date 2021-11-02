@@ -428,22 +428,25 @@ void B_OpenGLRasterDevice::EndScene()
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
 * Module:                 rOpenGL.dll
 * Entry point:            0x100208FB
 * VC++ mangling:          ?ClearMap@B_OpenGLRasterDevice@@UAEXXZ
 */
-#ifndef BLD_NATIVE
+
 void B_OpenGLRasterDevice::ClearMap()
 {
+    this->UnLoadBitmaps();
+    this->atmospheres.Clear(true);
+    this->domeColor.b = 255;
+    this->domeColor.g = 255;
+    this->domeColor.r = 255;
+    this->projectionZ = -1.0F;
+    this->projectionHeight = -1;
+    this->projectionWidth = -1;
+    this->fogEnabled = false;
+    glDisable(GL_FOG);
 }
-#endif
+
 
 /*
 ................................................................................

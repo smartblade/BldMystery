@@ -177,10 +177,10 @@ void B_OpenGLRasterDevice::unknown088()
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x100173D3
-* VC++ mangling:          ?unknown090@B_OpenGLRasterDevice@@UAEXXZ
+* VC++ mangling:          ?UnLoadBitmaps@B_OpenGLRasterDevice@@UAEXXZ
 */
 #ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::unknown090()
+void B_OpenGLRasterDevice::UnLoadBitmaps()
 {
 }
 #endif

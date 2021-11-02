@@ -82,7 +82,7 @@ public:
 
     virtual void unknown088();
     virtual void unknown08C();
-    virtual void unknown090();
+    virtual void UnLoadBitmaps();
     virtual void StartScene(void *);
     virtual void EndScene();
     virtual void ClsRGB(byte r, byte g, byte b);

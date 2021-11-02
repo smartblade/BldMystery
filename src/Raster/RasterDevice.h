@@ -125,7 +125,7 @@ public:
     virtual void unknown084() = 0;
     virtual void unknown088() = 0;
     virtual void unknown08C() = 0;
-    virtual void unknown090() = 0;
+    virtual void UnLoadBitmaps() = 0;
     virtual void StartScene(void *) = 0;
     virtual void EndScene() = 0;
     virtual void ClsRGB(byte r, byte g, byte b) = 0;
