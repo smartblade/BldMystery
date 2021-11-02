@@ -437,10 +437,10 @@ void B_OpenGLRasterDevice::EndScene()
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x100208FB
-* VC++ mangling:          ?unknown080@B_OpenGLRasterDevice@@UAEXXZ
+* VC++ mangling:          ?ClearMap@B_OpenGLRasterDevice@@UAEXXZ
 */
 #ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::unknown080()
+void B_OpenGLRasterDevice::ClearMap()
 {
 }
 #endif

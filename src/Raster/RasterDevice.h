@@ -121,7 +121,7 @@ public:
     }
 
     virtual void unknown07C() = 0;
-    virtual void unknown080() = 0;
+    virtual void ClearMap() = 0;
     virtual void unknown084() = 0;
     virtual void unknown088() = 0;
     virtual void unknown08C() = 0;

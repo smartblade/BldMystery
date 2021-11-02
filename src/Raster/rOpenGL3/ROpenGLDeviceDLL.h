@@ -67,7 +67,7 @@ public:
     virtual void IncModeReflection();
     virtual void DecModeReflection();
     virtual void unknown07C();
-    virtual void unknown080();
+    virtual void ClearMap();
 
 
     /*
