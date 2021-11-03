@@ -370,18 +370,21 @@ void B_OpenGLRasterDevice::Cls(B_Color color)
 * Entry point:            0x100202D7
 * VC++ mangling:          ?ClsRGB@B_OpenGLRasterDevice@@UAEXEEE@Z
 */
-#ifndef BLD_NATIVE
+
 void B_OpenGLRasterDevice::ClsRGB(byte r, byte g, byte b)
 {
+    if (this->backgroundRegion != -1)
+    {
+        glDrawBufferRegion(
+            this->backgroundRegion, 0, 0, this->width, this->height, 0, 0);
+    }
+    else
+    {
+        glClearColor(r / 255.0, g / 255.0, b / 255.0, 0.0);
+        glClear(GL_COLOR_BUFFER_BIT);
+    }
 }
-#endif
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
 /*
 * Module:                 rOpenGL.dll

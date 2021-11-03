@@ -60857,69 +60857,7 @@ l1001FD7B ENDP
 ;* Jump:
 ; 100011E5(U) 
 ;
-l100202D7 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000001Ch
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           cmp dword ptr [eax+0000847B8h], 0FFFFFFFFh
-           je l10020314
-           push 000000000h
-           push 000000000h
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ecx+058h]
-           push edx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [eax+054h]
-           push ecx
-           push 000000000h
-           push 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [edx+0000847B8h]
-           push eax
-           call [g10051820]
-           jmp l1002037A
-;
-;* Jump:
-; 100202EA(C) 
-;
-l10020314: push 000000000h
-           mov ecx, dword ptr [ebp+010h]
-           and ecx, 0000000FFh
-           mov dword ptr [ebp-008h], ecx
-           fild dword ptr [ebp-008h]
-           fmul qword ptr [g100371F8]
-           fst dword ptr [ebp-00Ch]
-           push ecx
-           fstp dword ptr [esp]
-           mov edx, dword ptr [ebp+00Ch]
-           and edx, 0000000FFh
-           mov dword ptr [ebp-010h], edx
-           fild dword ptr [ebp-010h]
-           fmul qword ptr [g100371F8]
-           fst dword ptr [ebp-014h]
-           push ecx
-           fstp dword ptr [esp]
-           mov eax, dword ptr [ebp+008h]
-           and eax, 0000000FFh
-           mov dword ptr [ebp-018h], eax
-           fild dword ptr [ebp-018h]
-           fmul qword ptr [g100371F8]
-           fst dword ptr [ebp-01Ch]
-           push ecx
-           fstp dword ptr [esp]
-           call [__imp_glClearColor]; [OPENGL32.glClearColor].
-           push 000004000h
-           call [__imp_glClear]; [OPENGL32.glClear].
-;
-;* Jump:
-; 10020312(U) 
-;
-l1002037A: mov esp, ebp
-           pop ebp
-           ret 0000Ch
-l100202D7 ENDP
+           call l100202D7; Implemented in c++ code
 ;
 ;* Jump:
 ; 100017E4(U) 
