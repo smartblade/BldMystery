@@ -391,3 +391,4 @@ EXPORTS
     _glOrtho@48 = glOrtho
     _glScaled@24 = glScaled
     _glScissor@16 = glScissor
+    _wglGetProcAddress@4 = wglGetProcAddress

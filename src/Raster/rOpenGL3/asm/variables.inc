@@ -6,3 +6,85 @@ public _ERM_FreeResource
 g100517D8 equ _ERM_FreeResource
 public _UpdateAGTexture
 g100517DC equ _UpdateAGTexture
+public _glColorTableEXT
+g100517E0 equ _glColorTableEXT
+public _glColorSubTableEXT
+g100517E4 equ _glColorSubTableEXT
+public _glGetColorTableEXT
+g100517E8 equ _glGetColorTableEXT
+public _glGetColorTableParameteriv
+g100517EC equ _glGetColorTableParameteriv
+public _glGetColorTableParameterfv
+g100517F0 equ _glGetColorTableParameterfv
+public _glActiveTextureARB
+g100517F4 equ _glActiveTextureARB
+public _glMultiTexCoord1fARB
+g100517F8 equ _glMultiTexCoord1fARB
+public _glMultiTexCoord2fARB
+g100517FC equ _glMultiTexCoord2fARB
+public _glMultiTexCoord2fvARB
+g10051800 equ _glMultiTexCoord2fvARB
+public _glFogCoordfEXT
+g10051804 equ _glFogCoordfEXT
+public _glFogCoordfvEXT
+g10051808 equ _glFogCoordfvEXT
+public _glGetColorTableEXT2
+g1005180C equ _glGetColorTableEXT2
+public _glFogCoorddvEXT
+g10051810 equ _glFogCoorddvEXT
+public _glNewBufferRegion
+g10051814 equ _glNewBufferRegion
+public _glDeleteBufferRegion
+g10051818 equ _glDeleteBufferRegion
+public _glReadBufferRegion
+g1005181C equ _glReadBufferRegion
+public _glDrawBufferRegion
+g10051820 equ _glDrawBufferRegion
+public _glBufferRegionEnabled
+g10051824 equ _glBufferRegionEnabled
+public _wglGetExtensionsStringEXT
+g10051828 equ _wglGetExtensionsStringEXT
+public _wglSwapIntervalEXT
+g1005182C equ _wglSwapIntervalEXT
+public _wglGetSwapIntervalEXT
+g10051830 equ _wglGetSwapIntervalEXT
+public _glCompressedTexImage3DARB
+g10051834 equ _glCompressedTexImage3DARB
+public _glCompressedTexImage2DARB
+g10051838 equ _glCompressedTexImage2DARB
+public _glCompressedTexImage1DARB
+g1005183C equ _glCompressedTexImage1DARB
+public _glCompressedTexSubImage3DARB
+g10051840 equ _glCompressedTexSubImage3DARB
+public _glCompressedTexSubImage2DARB
+g10051844 equ _glCompressedTexSubImage2DARB
+public _glCompressedTexSubImage1DARB
+g10051848 equ _glCompressedTexSubImage1DARB
+public _glGetCompressedTexImageARB
+g1005184C equ _glGetCompressedTexImageARB
+public _glCombinerParameterfvNV
+g10051850 equ _glCombinerParameterfvNV
+public _glCombinerParameterivNV
+g10051854 equ _glCombinerParameterivNV
+public _glCombinerParameterfNV
+g10051858 equ _glCombinerParameterfNV
+public _glCombinerParameteriNV
+g1005185C equ _glCombinerParameteriNV
+public _glCombinerInputNV
+g10051860 equ _glCombinerInputNV
+public _glCombinerOutputNV
+g10051864 equ _glCombinerOutputNV
+public _glFinalCombinerInputNV
+g10051868 equ _glFinalCombinerInputNV
+public _glGetCombinerInputParameterfvNV
+g1005186C equ _glGetCombinerInputParameterfvNV
+public _glGetCombinerInputParameterivNV
+g10051870 equ _glGetCombinerInputParameterivNV
+public _glGetCombinerOutputParameterfvNV
+g10051874 equ _glGetCombinerOutputParameterfvNV
+public _glGetCombinerOutputParameterivNV
+g10051878 equ _glGetCombinerOutputParameterivNV
+public _glGetFinalCombinerInputfvNV
+g1005187C equ _glGetFinalCombinerInputfvNV
+public _glGetFinalCombinerInputivNV
+g10051880 equ _glGetFinalCombinerInputivNV

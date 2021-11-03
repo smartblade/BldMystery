@@ -166,6 +166,10 @@ externdef ?EndScene@B_OpenGLRasterDevice@@UAEXXZ: near
 l10020755 equ ?EndScene@B_OpenGLRasterDevice@@UAEXXZ
 externdef ?ClearMap@B_OpenGLRasterDevice@@UAEXXZ: near
 l100208FB equ ?ClearMap@B_OpenGLRasterDevice@@UAEXXZ
+externdef ?HasWglExtension@B_OpenGLRasterDevice@@QAEHPBD@Z: near
+l10020B5D equ ?HasWglExtension@B_OpenGLRasterDevice@@QAEHPBD@Z
+externdef ?HasExtension@B_OpenGLRasterDevice@@QAEHPBD@Z: near
+l10020B94 equ ?HasExtension@B_OpenGLRasterDevice@@QAEHPBD@Z
 externdef ?LoadExtensions@B_OpenGLRasterDevice@@QAEHXZ: near
 l10021571 equ ?LoadExtensions@B_OpenGLRasterDevice@@QAEHXZ
 externdef ?SetMode@B_OpenGLRasterDevice@@UAEXH@Z: near

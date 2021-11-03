@@ -457,15 +457,186 @@ void B_OpenGLRasterDevice::ClearMap()
 
 /*
 * Module:                 rOpenGL.dll
+* Entry point:            0x10020B5D
+* VC++ mangling:          ?HasWglExtension@B_OpenGLRasterDevice@@QAEHPBD@Z
+*/
+#ifndef BLD_NATIVE
+int B_OpenGLRasterDevice::HasWglExtension(const char *extension)
+{
+    return false;
+}
+#endif
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10020B94
+* VC++ mangling:          ?HasExtension@B_OpenGLRasterDevice@@QAEHPBD@Z
+*/
+#ifndef BLD_NATIVE
+int B_OpenGLRasterDevice::HasExtension(const char *extension)
+{
+    return false;
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 rOpenGL.dll
 * Entry point:            0x10021571
 * VC++ mangling:          ?LoadExtensions@B_OpenGLRasterDevice@@QAEHXZ
 */
-#ifndef BLD_NATIVE
+
 int B_OpenGLRasterDevice::LoadExtensions()
 {
+    mout << "\n";
+    if (this->HasExtension("GL_EXT_paletted_texture"))
+    {
+        glColorTableEXT = (PFNGLCOLORTABLEEXTPROC)
+            wglGetProcAddress("glColorTableEXT");
+        glColorSubTableEXT = (PFNGLCOLORSUBTABLEEXTPROC)
+            wglGetProcAddress("glColorSubTableEXT");
+        glGetColorTableEXT = (PFNGLGETCOLORTABLEEXTPROC)
+            wglGetProcAddress("glGetColorTableEXT");
+        glGetColorTableParameteriv = (PFNGLGETCOLORTABLEPARAMETERIVPROC)
+            wglGetProcAddress("glGetColorTableParameteriv");
+        glGetColorTableParameterfv = (PFNGLGETCOLORTABLEPARAMETERFVPROC)
+            wglGetProcAddress("glGetColorTableParameterfv");
+        mout << "  Found GL_EXT_paletted_texture.\n";
+    }
+    if (this->HasExtension("GL_ARB_multitexture"))
+    {
+        glActiveTextureARB = (PFNGLACTIVETEXTUREARBPROC)
+            wglGetProcAddress("glActiveTextureARB");
+        glMultiTexCoord1fARB = (PFNGLMULTITEXCOORD1FARBPROC)
+            wglGetProcAddress("glMultiTexCoord1fARB");
+        glMultiTexCoord2fARB = (PFNGLMULTITEXCOORD2FARBPROC)
+            wglGetProcAddress("glMultiTexCoord2fARB");
+        glMultiTexCoord2fvARB = (PFNGLMULTITEXCOORD2FVARBPROC)
+            wglGetProcAddress("glMultiTexCoord2fvARB");
+        mout << "  Found GL_ARB_multitexture.\n";
+    }
+    if (this->HasExtension("GL_EXT_texture_env_combine"))
+    {
+        mout << "  Found GL_EXT_texture_env_combine.\n";
+        this->hasTextureEnvCombine = true;
+    }
+    if (this->HasExtension("GL_EXT_texture_filter_anisotropic"))
+    {
+        mout << "  Found GL_EXT_texture_filter_anisotropic.\n";
+        this->hasTextureFilterAnisotropic = true;
+    }
+    if (this->HasExtension("GL_EXT_texture_lod_bias"))
+    {
+        mout << "  Found GL_EXT_texture_lod_bias.\n";
+        this->hasTextureLodBias = true;
+    }
+    if (this->HasExtension("GL_EXT_fog_coord"))
+    {
+        glFogCoordfEXT = (PFNGLFOGCOORDFEXTPROC)
+            wglGetProcAddress("glFogCoordfEXT");
+        glFogCoordfvEXT = (PFNGLFOGCOORDFVEXTPROC)
+            wglGetProcAddress("glFogCoordfvEXT");
+        glGetColorTableEXT2 = (PFNGLGETCOLORTABLEEXTPROC)
+            wglGetProcAddress("glGetColorTableEXT");
+        glFogCoorddvEXT = (PFNGLFOGCOORDDVEXTPROC)
+            wglGetProcAddress("glFogCoorddvEXT");
+        this->hasFogCoord = true;
+        this->useOGLFog = false;
+        mout << "  Found GL_EXT_fog_coord.\n";
+    }
+    if (this->HasExtension("GL_KTX_buffer_region"))
+    {
+        glNewBufferRegion = (PFNGLNEWBUFFERREGIONPROC)
+            wglGetProcAddress("glNewBufferRegion");
+        glDeleteBufferRegion = (PFNGLDELETEBUFFERREGIONPROC)
+            wglGetProcAddress("glDeleteBufferRegion");
+        glReadBufferRegion = (PFNGLREADBUFFERREGIONPROC)
+            wglGetProcAddress("glReadBufferRegion");
+        glDrawBufferRegion = (PFNGLDRAWBUFFERREGIONPROC)
+            wglGetProcAddress("glDrawBufferRegion");
+        glBufferRegionEnabled = (PFNGLBUFFERREGIONENABLEDPROC)
+            wglGetProcAddress("glBufferRegionEnabled");
+        mout << "  Found GL_KTX_buffer_region.\n";
+        if (glBufferRegionEnabled())
+        {
+            mout << "  Driver supports GL_KTX_buffer_region in an efficient manner.\n";
+        }
+    }
+    if (this->HasExtension("GL_ARB_texture_compression"))
+    {
+        glCompressedTexImage3DARB = (PFNGLCOMPRESSEDTEXIMAGE3DARBPROC)
+            wglGetProcAddress("glCompressedTexImage3DARB");
+        glCompressedTexImage2DARB = (PFNGLCOMPRESSEDTEXIMAGE2DARBPROC)
+            wglGetProcAddress("glCompressedTexImage2DARB");
+        glCompressedTexImage1DARB = (PFNGLCOMPRESSEDTEXIMAGE1DARBPROC)
+            wglGetProcAddress("glCompressedTexImage1DARB");
+        glCompressedTexSubImage3DARB = (PFNGLCOMPRESSEDTEXSUBIMAGE3DARBPROC)
+            wglGetProcAddress("glCompressedTexSubImage3DARB");
+        glCompressedTexSubImage2DARB = (PFNGLCOMPRESSEDTEXSUBIMAGE2DARBPROC)
+            wglGetProcAddress("glCompressedTexSubImage2DARB");
+        glCompressedTexSubImage1DARB = (PFNGLCOMPRESSEDTEXSUBIMAGE1DARBPROC)
+            wglGetProcAddress("glCompressedTexSubImage1DARB");
+        glGetCompressedTexImageARB = (PFNGLGETCOMPRESSEDTEXIMAGEARBPROC)
+            wglGetProcAddress("glGetCompressedTexImageARB");
+        this->hasARBTextureCompression = true;
+        mout << "  Found GL_ARB_texture_compression.\n";
+    }
+    if (this->HasExtension("GL_NV_register_combiners"))
+    {
+        glCombinerParameterfvNV = (PFNGLCOMBINERPARAMETERFVNVPROC)
+            wglGetProcAddress("glCombinerParameterfvNV");
+        glCombinerParameterivNV = (PFNGLCOMBINERPARAMETERIVNVPROC)
+            wglGetProcAddress("glCombinerParameterivNV");
+        glCombinerParameterfNV = (PFNGLCOMBINERPARAMETERFNVPROC)
+            wglGetProcAddress("glCombinerParameterfNV");
+        glCombinerParameteriNV = (PFNGLCOMBINERPARAMETERINVPROC)
+            wglGetProcAddress("glCombinerParameteriNV");
+        glCombinerInputNV = (PFNGLCOMBINERINPUTNVPROC)
+            wglGetProcAddress("glCombinerInputNV");
+        glCombinerOutputNV = (PFNGLCOMBINEROUTPUTNVPROC)
+            wglGetProcAddress("glCombinerOutputNV");
+        glFinalCombinerInputNV = (PFNGLFINALCOMBINERINPUTNVPROC)
+            wglGetProcAddress("glFinalCombinerInputNV");
+        glGetCombinerInputParameterfvNV = (PFNGLGETCOMBINERINPUTPARAMETERFVNVPROC)
+            wglGetProcAddress("glGetCombinerInputParameterfvNV");
+        glGetCombinerInputParameterivNV = (PFNGLGETCOMBINERINPUTPARAMETERIVNVPROC)
+            wglGetProcAddress("glGetCombinerInputParameterivNV");
+        glGetCombinerOutputParameterfvNV = (PFNGLGETCOMBINEROUTPUTPARAMETERFVNVPROC)
+            wglGetProcAddress("glGetCombinerOutputParameterfvNV");
+        glGetCombinerOutputParameterivNV = (PFNGLGETCOMBINEROUTPUTPARAMETERIVNVPROC)
+            wglGetProcAddress("glGetCombinerOutputParameterivNV");
+        /* FIXME Incorrect name. Should be GetFinalCombinerInputParameterfvNV*/
+        glGetFinalCombinerInputfvNV = (PFNGLGETFINALCOMBINERINPUTPARAMETERFVNVPROC)
+            wglGetProcAddress("glGetFinalCombinerInputfvNV");
+         /* FIXME Incorrect name. Should be GetFinalCombinerInputParameterivNV*/
+        glGetFinalCombinerInputivNV = (PFNGLGETFINALCOMBINERINPUTPARAMETERIVNVPROC)
+            wglGetProcAddress("glGetFinalCombinerInputivNV");
+        this->hasNVRegisterCombiners = true;
+        mout << "  Found GL_NV_register_combiners\n";
+    }
+    if (this->HasExtension("GL_SGIS_generate_mipmap"))
+    {
+        this->hasSGISMipmapping = true;
+        mout << "  Found SGIS_generate_mipmap.\n";
+    }
+    if (this->HasWglExtension("WGL_EXT_swap_control"))
+    {
+        wglSwapIntervalEXT = (PFNWGLSWAPINTERVALEXTPROC)
+            wglGetProcAddress("wglSwapIntervalEXT");
+        wglGetSwapIntervalEXT = (PFNWGLGETSWAPINTERVALEXTPROC)
+            wglGetProcAddress("wglGetSwapIntervalEXT");
+        mout << "  Found WGL_EXT_swap_control.\n";
+    }
+    mout << "\n";
     return true;
 }
-#endif
+
 
 /*
 * Module:                 rOpenGL.dll

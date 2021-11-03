@@ -272,6 +272,8 @@ public:
         int resourceId, GLint textureId);
     void GetVideoModes();
     int CreateContext();
+    int HasWglExtension(const char *extension);
+    int HasExtension(const char *extension);
     int LoadExtensions();
 
     void DisableFog()
