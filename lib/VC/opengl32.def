@@ -392,3 +392,5 @@ EXPORTS
     _glScaled@24 = glScaled
     _glScissor@16 = glScissor
     _wglGetProcAddress@4 = wglGetProcAddress
+    _glClear@4 = glClear
+    _glClearColor@16 = glClearColor

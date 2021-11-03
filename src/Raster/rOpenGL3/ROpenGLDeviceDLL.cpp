@@ -349,18 +349,21 @@ void B_OpenGLRasterDevice::SetProjection(const B_CameraView &cameraView)
 * Entry point:            0x1002022E
 * VC++ mangling:          ?Cls@B_OpenGLRasterDevice@@UAEXVB_Color@@@Z
 */
-#ifndef BLD_NATIVE
+
 void B_OpenGLRasterDevice::Cls(B_Color color)
 {
+    if (this->backgroundRegion != -1)
+    {
+        glDrawBufferRegion(
+            this->backgroundRegion, 0, 0, this->width, this->height, 0, 0);
+    }
+    else
+    {
+        glClearColor(color.r / 255.0, color.g / 255.0, color.b / 255.0, 0.0);
+        glClear(GL_COLOR_BUFFER_BIT);
+    }
 }
-#endif
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
 /*
 * Module:                 rOpenGL.dll
