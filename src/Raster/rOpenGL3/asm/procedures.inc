@@ -160,8 +160,8 @@ externdef ?ClsRGB@B_OpenGLRasterDevice@@UAEXEEE@Z: near
 l100202D7 equ ?ClsRGB@B_OpenGLRasterDevice@@UAEXEEE@Z
 externdef ?unknown0EC@B_OpenGLRasterDevice@@UAEXXZ: near
 l10020380 equ ?unknown0EC@B_OpenGLRasterDevice@@UAEXXZ
-externdef ?StartScene@B_OpenGLRasterDevice@@UAEXPAX@Z: near
-l1002045B equ ?StartScene@B_OpenGLRasterDevice@@UAEXPAX@Z
+externdef ?StartScene@B_OpenGLRasterDevice@@UAEXPAVlocation_t@@@Z: near
+l1002045B equ ?StartScene@B_OpenGLRasterDevice@@UAEXPAVlocation_t@@@Z
 externdef ?EndScene@B_OpenGLRasterDevice@@UAEXXZ: near
 l10020755 equ ?EndScene@B_OpenGLRasterDevice@@UAEXXZ
 externdef ?ClearMap@B_OpenGLRasterDevice@@UAEXXZ: near
@@ -310,6 +310,8 @@ externdef ?unknown240@B_TrisDevice@@UAEXXZ: near
 l1002EE80 equ ?unknown240@B_TrisDevice@@UAEXXZ
 externdef ?SetProjection@B_TrisDevice@@UAEXABVB_CameraView@@@Z: near
 l1002F28D equ ?SetProjection@B_TrisDevice@@UAEXABVB_CameraView@@@Z
+externdef ?StartScene@B_TrisDevice@@UAEXPAVlocation_t@@@Z: near
+l1002F33F equ ?StartScene@B_TrisDevice@@UAEXPAVlocation_t@@@Z
 externdef ?unknown030@B_TrisDevice@@UAEXXZ: near
 l1002F3EA equ ?unknown030@B_TrisDevice@@UAEXXZ
 externdef ?unknown034@B_TrisDevice@@UAEXXZ: near

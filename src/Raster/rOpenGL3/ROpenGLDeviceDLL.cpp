@@ -2,6 +2,7 @@
 
 #include "ConfigSections.h"
 #include "GlExtensions.h"
+#include <AnalyticGeometry/Location.h>
 #include <View/CameraView.h>
 #include <math.h>
 
@@ -53,7 +54,7 @@ B_OpenGLRasterDevice::B_OpenGLRasterDevice(HWND window, HMODULE rasterModule)
     this->hasSGISMipmapping = false;
     this->textureLODBias = 0.0;
     this->useCompressedTextures = false;
-    this->unknown084864 = 0;
+    this->invertOGLLight = false;
     this->useOGLLight = false;
     this->useOGLFog = true;
     this->notUsePalettes = false;
@@ -398,29 +399,79 @@ void B_OpenGLRasterDevice::unknown0EC()
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1002045B
-* VC++ mangling:          ?StartScene@B_OpenGLRasterDevice@@UAEXPAX@Z
+* VC++ mangling:          ?StartScene@B_OpenGLRasterDevice@@UAEXPAVlocation_t@@@Z
 */
-#ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::StartScene(void *)
-{
-}
-#endif
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+void B_OpenGLRasterDevice::StartScene(location_t *cameraPose)
+{
+    B_TrisDevice::StartScene(cameraPose);
+    if (cameraPose)
+    {
+        this->pose = cameraPose->matrix0030;
+        this->invPose = cameraPose->matrix00B0;
+    }
+    if (this->invertOGLLight)
+    {
+        this->useOGLLight = !this->useOGLLight;
+        if (this->useOGLLight)
+        {
+            glEnable(GL_NORMALIZE);
+        }
+        else
+        {
+            glDisable(GL_NORMALIZE);
+        }
+        this->invertOGLLight = false;
+    }
+    this->numTrisMaps = 0;
+    this->numTrisObjs = 0;
+    this->numParticles = 0;
+    this->numTextureSwaps = 0;
+    if (this->flags & RASTER_FLAGS_CLS)
+    {
+        this->Cls(B_Color(0, 0, 0));
+    }
+    this->fogEnabled = false;
+    glDisable(GL_FOG);
+    this->SetMode(RASTER_MODE_NONE);
+    this->activeTextureHandle = -1;
+    this->drawSunFlare = false;
+    if (this->useCreditsHack)
+    {
+        if (
+            this->backgroundImageWidth != 800 &&
+            this->backgroundImageHeight != 600)
+        {
+            this->remove_background_image();
+        }
+    }
+    else
+    {
+        this->remove_background_image();
+    }
+    if (this->useOGLLight)
+    {
+        glEnable(GL_LIGHTING);
+        glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER, 0);
+        float specular[] = { 0.0f, 0.0f, 0.0f, 1.0f };
+        float unknown05Ch[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+        float unknown024h[] = { 0.8f, 0.8f, 0.2f, 1.0f };
+        float unknown014h[] = { 0.1f, 0.5f, 0.8f, 1.0f };
+        float white[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+        float unknown004h = 0.0f;
+        float shininess = 5.0f;
+        float unknown038 = 100.0f;
+        float emission[] = { 0.01f, 0.01f, 0.01f, 0.0f };
+        glMaterialfv(GL_FRONT, GL_AMBIENT, white);
+        glMaterialfv(GL_FRONT, GL_DIFFUSE, white);
+        glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
+        glMaterialfv(GL_FRONT, GL_SHININESS, &shininess);
+        glMaterialfv(GL_FRONT, GL_EMISSION, emission);
+    }
+}
+
 
 /*
 * Module:                 rOpenGL.dll

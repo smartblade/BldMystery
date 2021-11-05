@@ -83,7 +83,7 @@ public:
     virtual void unknown088();
     virtual void unknown08C();
     virtual void UnLoadBitmaps();
-    virtual void StartScene(void *);
+    virtual void StartScene(location_t *cameraPose);
     virtual void EndScene();
     virtual void ClsRGB(byte r, byte g, byte b);
     virtual void Cls(B_Color color);
@@ -334,7 +334,7 @@ private:
     int unknown08484C[4];
     int useOGLLight;
     int notUsePalettes;
-    int unknown084864;
+    int invertOGLLight;
     int useOGLFog;
     int cacheStretchImage;
     int unknown084870;
@@ -345,7 +345,7 @@ private:
     int unknown084884[1543];
     bool isFog;
     int unknown0860A4;
-    int unknown0860A8;
+    unsigned int activeTextureHandle;
     int unknown0860AC[3];
     float alpha;
     GLfloat fillColor[4];
@@ -356,7 +356,7 @@ private:
     double modelviewMatrix[16];
     double projectionMatrix[16];
     int viewport[4];
-    int unknown0862F0;
+    int drawSunFlare;
     int transformations;
     B_PtrArray<B_VideoMode> videoModes;
     B_VideoMode *fullScreenMode;

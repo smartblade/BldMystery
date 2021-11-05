@@ -64,6 +64,7 @@ public:
     virtual void SetProjection(const B_CameraView &cameraView);
     virtual void unknown030();
     virtual void unknown034();
+    virtual void StartScene(location_t *cameraPose);
     virtual void unknown0BC();
     virtual void unknown0C4();
     virtual void unknown0E4();

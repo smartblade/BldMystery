@@ -394,3 +394,5 @@ EXPORTS
     _wglGetProcAddress@4 = wglGetProcAddress
     _glClear@4 = glClear
     _glClearColor@16 = glClearColor
+    _glLightModeli@8 = glLightModeli
+    _glMaterialfv@12 = glMaterialfv

@@ -8,6 +8,7 @@
 #include <export.h>
 #undef BUILD_LIB
 
+class location_t;
 class B_BitMap24;
 class B_CameraView;
 class B_Name;
@@ -20,7 +21,9 @@ class B_Font;
 #define RASTER_FLAGS_0001              0x0001
 #define RASTER_FLAGS_0002              0x0002
 #define RASTER_FLAGS_0010              0x0010
+#define RASTER_FLAGS_CLS               0x0020
 
+#define RASTER_MODE_NONE               0x0000
 #define RASTER_MODE_TEXT               0x0200
 
 #define TEXT_MODE_SHADOW               0x01
@@ -126,7 +129,7 @@ public:
     virtual void unknown088() = 0;
     virtual void unknown08C() = 0;
     virtual void UnLoadBitmaps() = 0;
-    virtual void StartScene(void *) = 0;
+    virtual void StartScene(location_t *cameraPose) = 0;
     virtual void EndScene() = 0;
     virtual void ClsRGB(byte r, byte g, byte b) = 0;
     virtual void Cls(B_Color color) = 0;

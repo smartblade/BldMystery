@@ -110,7 +110,7 @@ TEST(OpenGLRasterDeviceTests, Fields)
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown08484C, 0x8484C);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, useOGLLight, 0x8485C);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, notUsePalettes, 0x84860);
-    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown084864, 0x84864);
+    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, invertOGLLight, 0x84864);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, useOGLFog, 0x84868);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, cacheStretchImage, 0x8486C);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown084870, 0x84870);
@@ -121,7 +121,7 @@ TEST(OpenGLRasterDeviceTests, Fields)
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown084884, 0x84884);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, isFog, 0x860A0);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown0860A4, 0x860A4);
-    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown0860A8, 0x860A8);
+    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, activeTextureHandle, 0x860A8);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown0860AC, 0x860AC);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, alpha, 0x860B8);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, fillColor, 0x860BC);
@@ -132,7 +132,7 @@ TEST(OpenGLRasterDeviceTests, Fields)
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, modelviewMatrix, 0x861E0);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, projectionMatrix, 0x86260);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, viewport, 0x862E0);
-    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown0862F0, 0x862F0);
+    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, drawSunFlare, 0x862F0);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, transformations, 0x862F4);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, videoModes, 0x862F8);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, fullScreenMode, 0x86310);

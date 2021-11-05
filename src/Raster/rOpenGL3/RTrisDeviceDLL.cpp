@@ -74,6 +74,17 @@ void B_TrisDevice::SetProjection(const B_CameraView &cameraView)
 #endif
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x1002F33F
+* VC++ mangling:          ?StartScene@B_TrisDevice@@UAEXPAVlocation_t@@@Z
+*/
+#ifndef BLD_NATIVE
+void B_TrisDevice::StartScene(location_t *cameraPose)
+{
+}
+#endif
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
