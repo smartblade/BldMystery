@@ -270,7 +270,7 @@ public:
         SetPosition(origX, origY);
     }
 
-    virtual void solid_rectangle(int x1, int y1, int x2, int y2) = 0;
+    virtual void SolidRectangle(int x1, int y1, int x2, int y2) = 0;
     virtual void unknown158() = 0;
 
     virtual void SetPosition(float x, float y)

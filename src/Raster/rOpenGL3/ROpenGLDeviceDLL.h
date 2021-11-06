@@ -124,7 +124,7 @@ public:
     virtual void ResetTransformation();
     virtual void Line(int x1, int y1, int x2, int y2);
     virtual void Rectangle(int x1, int y1, int x2, int y2);
-    virtual void solid_rectangle(int x1, int y1, int x2, int y2);
+    virtual void SolidRectangle(int x1, int y1, int x2, int y2);
     virtual void unknown158();
 
 

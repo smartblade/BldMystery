@@ -14,8 +14,8 @@ externdef ?Line@B_OpenGLRasterDevice@@UAEXHHHH@Z: near
 l1000ED1B equ ?Line@B_OpenGLRasterDevice@@UAEXHHHH@Z
 externdef ?Rectangle@B_OpenGLRasterDevice@@UAEXHHHH@Z: near
 l1000EDA2 equ ?Rectangle@B_OpenGLRasterDevice@@UAEXHHHH@Z
-externdef ?solid_rectangle@B_OpenGLRasterDevice@@UAEXHHHH@Z: near
-l1000EECF equ ?solid_rectangle@B_OpenGLRasterDevice@@UAEXHHHH@Z
+externdef ?SolidRectangle@B_OpenGLRasterDevice@@UAEXHHHH@Z: near
+l1000EECF equ ?SolidRectangle@B_OpenGLRasterDevice@@UAEXHHHH@Z
 externdef ?unknown158@B_OpenGLRasterDevice@@UAEXXZ: near
 l1000EFD9 equ ?unknown158@B_OpenGLRasterDevice@@UAEXXZ
 externdef ?unknown164@B_OpenGLRasterDevice@@UAEXXZ: near

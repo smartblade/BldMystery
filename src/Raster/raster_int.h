@@ -42,7 +42,7 @@ extern void GetTextScale(float &scale_x, float &scale_y);
 extern void Line(int x1, int y1, int x2, int y2);
 extern void LineTo(int x, int y);
 extern void Rectangle(int x1, int y1, int x2, int y2);
-extern void solid_rectangle(int x1, int y1, int x2, int y2);
+extern void SolidRectangle(int x1, int y1, int x2, int y2);
 extern void SetPosition(float x, float y);
 extern void GetPosition(float &x, float &y);
 extern void set_pen_color(byte r, byte g, byte b);

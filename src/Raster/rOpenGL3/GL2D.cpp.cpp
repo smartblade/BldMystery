@@ -103,10 +103,10 @@ void B_OpenGLRasterDevice::Rectangle(int x1, int y1, int x2, int y2)
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000EECF
-* VC++ mangling:          ?solid_rectangle@B_OpenGLRasterDevice@@UAEXHHHH@Z
+* VC++ mangling:          ?SolidRectangle@B_OpenGLRasterDevice@@UAEXHHHH@Z
 */
 #ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::solid_rectangle(int x1, int y1, int x2, int y2)
+void B_OpenGLRasterDevice::SolidRectangle(int x1, int y1, int x2, int y2)
 {
 }
 #endif

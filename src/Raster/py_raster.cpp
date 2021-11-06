@@ -529,7 +529,7 @@ PyObject *raster_SolidRectangle(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "iiii:SolidRectangle", &x1, &y1, &x2, &y2))
                 return NULL;
 
-        solid_rectangle(x1, y1, x2, y2);
+        SolidRectangle(x1, y1, x2, y2);
 
         Py_INCREF(Py_None);
         return Py_None;

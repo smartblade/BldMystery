@@ -223,8 +223,8 @@ void Rectangle(int x1, int y1, int x2, int y2) {
 * Entry point:            0x100037AA
 */
 
-void solid_rectangle(int x1, int y1, int x2, int y2) {
-        B_3D_raster_device->solid_rectangle(x1, y1, x2, y2);
+void SolidRectangle(int x1, int y1, int x2, int y2) {
+        B_3D_raster_device->SolidRectangle(x1, y1, x2, y2);
 }
 
 
