@@ -5,6 +5,7 @@
 #include <AnalyticGeometry/Location.h>
 #include <View/CameraView.h>
 #include <math.h>
+#include <stdio.h>
 
 
 /*
@@ -478,11 +479,30 @@ void B_OpenGLRasterDevice::StartScene(location_t *cameraPose)
 * Entry point:            0x10020755
 * VC++ mangling:          ?EndScene@B_OpenGLRasterDevice@@UAEXXZ
 */
-#ifndef BLD_NATIVE
+
 void B_OpenGLRasterDevice::EndScene()
 {
+    if (this->showStats)
+    {
+        char buffer[256];
+        sprintf(buffer, "Tris mapa: %d.", this->numTrisMaps);
+        glColor3d(1.0, 1.0, 1.0);
+        this->DisplayText(10, 112, buffer, 0x00AAFF00);
+        sprintf(buffer, "Tris Objs: %d.", this->numTrisObjs);
+        this->DisplayText(10, 128, buffer, 0x00AAFF00);
+        sprintf(buffer, "Particles: %d.", this->numParticles);
+        this->DisplayText(10, 144, buffer, 0x00AAFF00);
+        sprintf(buffer, "Texture Swaps: %d.", this->numTextureSwaps);
+        this->DisplayText(10, 160, buffer, 0x00AAFF00);
+    }
+    if (!::SwapBuffers(this->deviceContext))
+    {
+        OutputWin32Error("Error in SwapBuffers().");
+        mout << "B_OpenGLRasterDevice::EndScene -> Fallo en SwapBuffers().\n";
+    }
+    B_TrisDevice::EndScene();
 }
-#endif
+
 
 /*
 * Module:                 rOpenGL.dll

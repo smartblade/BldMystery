@@ -30,10 +30,11 @@ void B_OpenGLRasterDevice::SysWrite(
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000E9C5
-* VC++ mangling:          ?unknown110@B_OpenGLRasterDevice@@UAEXXZ
+* VC++ mangling:          ?DisplayText@B_OpenGLRasterDevice@@UAEXHHPBDI@Z
 */
 #ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::unknown110()
+void B_OpenGLRasterDevice::DisplayText(
+    int x, int y, const char *text, unsigned int color)
 {
 }
 #endif

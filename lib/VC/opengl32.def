@@ -396,3 +396,4 @@ EXPORTS
     _glClearColor@16 = glClearColor
     _glLightModeli@8 = glLightModeli
     _glMaterialfv@12 = glMaterialfv
+    _glColor3d@24 = glColor3d

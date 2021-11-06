@@ -85,11 +85,15 @@ void B_TrisDevice::StartScene(location_t *cameraPose)
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 rOpenGL.dll
+* Entry point:            0x1002F3DF
+* VC++ mangling:          ?EndScene@B_TrisDevice@@UAEXXZ
 */
+#ifndef BLD_NATIVE
+void B_TrisDevice::EndScene()
+{
+}
+#endif
 
 /*
 * Module:                 rOpenGL.dll

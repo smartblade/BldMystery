@@ -174,7 +174,8 @@ public:
     {
     }
 
-    virtual void unknown110() = 0;
+    virtual void DisplayText(
+        int x, int y, const char *text, unsigned int color) = 0;
     virtual void SetMode(int mode) = 0;
     virtual void unknown118() = 0;
 

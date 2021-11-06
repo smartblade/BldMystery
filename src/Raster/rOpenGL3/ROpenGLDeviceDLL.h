@@ -112,7 +112,8 @@ public:
     virtual void SysWrite(
         int x, int y, const char *text, byte r, byte g, byte b
     );
-    virtual void unknown110();
+    virtual void DisplayText(
+        int x, int y, const char *text, unsigned int color);
     virtual void SetMode(int mode);
     virtual void unknown118();
     virtual void unknown120();
