@@ -89298,19 +89298,7 @@ l1002F28D ENDP
 ;* Jump:
 ; 100013B1(U) 
 ;
-l1002F3EA PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+07Ch], 000000000h
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+00007A210h], 000000000h
-           mov esp, ebp
-           pop ebp
-           ret
-l1002F3EA ENDP
+           call l1002F3EA; Implemented in c++ code
 ;
 ;* Jump:
 ; 1000137A(U) 
