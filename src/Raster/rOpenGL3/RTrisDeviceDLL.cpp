@@ -78,11 +78,23 @@ void B_TrisDevice::SetProjection(const B_CameraView &cameraView)
 * Entry point:            0x1002F33F
 * VC++ mangling:          ?StartScene@B_TrisDevice@@UAEXPAVlocation_t@@@Z
 */
-#ifndef BLD_NATIVE
+
 void B_TrisDevice::StartScene(location_t *cameraPose)
 {
+    this->unknown007C = false;
+    this->unknown07A210 = false;
+    this->numVertices = 0;
+    this->numEdges = 0;
+    this->numTriangles = 0;
+    this->numLights = 0;
+    this->numPointLights = 0;
+    this->redLightIntensity += 2.5;
+    if (this->redLightIntensity > 250.0f)
+    {
+        this->redLightIntensity = 70.0f;
+    }
 }
-#endif
+
 
 /*
 * Module:                 rOpenGL.dll

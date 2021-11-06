@@ -89288,46 +89288,7 @@ l1002F28D ENDP
 ;* Jump:
 ; 10001785(U) 
 ;
-l1002F33F PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+07Ch], 000000000h
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+00007A210h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+00000216Ch], 000000000h
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+00004E170h], 000000000h
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+000062174h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+0000000B0h], 000000000h
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+0000001B4h], 000000000h
-           mov ecx, dword ptr [ebp-004h]
-           fld dword ptr [ecx+000084194h]
-           fadd qword ptr [g10037C98]
-           mov edx, dword ptr [ebp-004h]
-           fstp dword ptr [edx+000084194h]
-           mov eax, dword ptr [ebp-004h]
-           fld dword ptr [eax+000084194h]
-           fcomp dword ptr [g10037C94]
-           fnstsw ax
-           test ah, 041h
-           jne l1002F3D9
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+000084194h], 0428C0000h
-;
-;* Jump:
-; 1002F3CA(C) 
-;
-l1002F3D9: mov esp, ebp
-           pop ebp
-           ret 00004h
-l1002F33F ENDP
+           call l1002F33F; Implemented in c++ code
 ;
 ;* Jump:
 ; 100013A2(U) 

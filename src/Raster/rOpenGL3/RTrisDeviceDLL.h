@@ -114,5 +114,9 @@ protected:
     unsigned int numTriangles;
     B_Triangle triangles[MAX_TRIANGLES];
     B_PointLight *currentPointLight;
-    int unknown07A17C[10247];
+    int unknown07A17C[37];
+    int unknown07A210;
+    int unknown07A214[10207];
+    int redLightFlickered;
+    float redLightIntensity;
 };
