@@ -550,7 +550,7 @@ public:
         int w, int h, const char *color_style, const char *is_normal,
         const void *image_data
     ) = 0;
-    virtual int get_image(
+    virtual int GetImage(
         int x, int y, int w, int h, const char *color_style,
         const char *stretch_or_centered, int image_size, long image_data
     ) = 0;

@@ -56,8 +56,8 @@ externdef ?get_text_blur_alpha@B_OpenGLRasterDevice@@UAEMXZ: near
 l1000F67B equ ?get_text_blur_alpha@B_OpenGLRasterDevice@@UAEMXZ
 externdef ?DrawChar@B_OpenGLRasterDevice@@UAEXUB_CharSize@B_Font@@MMH@Z: near
 l1000F68F equ ?DrawChar@B_OpenGLRasterDevice@@UAEXUB_CharSize@B_Font@@MMH@Z
-externdef ?get_image@B_OpenGLRasterDevice@@UAEHHHHHPBD0HJ@Z: near
-l1000FA80 equ ?get_image@B_OpenGLRasterDevice@@UAEHHHHHPBD0HJ@Z
+externdef ?GetImage@B_OpenGLRasterDevice@@UAEHHHHHPBD0HJ@Z: near
+l1000FA80 equ ?GetImage@B_OpenGLRasterDevice@@UAEHHHHHPBD0HJ@Z
 externdef ?draw_image@B_OpenGLRasterDevice@@UAEXHHPBD0PBX@Z: near
 l1000FB62 equ ?draw_image@B_OpenGLRasterDevice@@UAEXHHPBD0PBX@Z
 externdef ?SetBackgroundImage@B_OpenGLRasterDevice@@UAEXHHPBD00J@Z: near

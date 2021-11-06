@@ -419,11 +419,11 @@ void SysWrite(int x, int y, const char *text, byte r, byte g, byte b) {
 * Entry point:            0x10003A25
 */
 
-int get_image(
+int GetImage(
         int x, int y, int w, int h, const char *color_style,
         const char *stretch_or_centered, int image_size, long image_data
 ) {
-        return B_3D_raster_device->get_image(
+        return B_3D_raster_device->GetImage(
                 x, y, w, h, color_style, stretch_or_centered, image_size,
                 image_data
         );

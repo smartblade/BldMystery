@@ -950,7 +950,7 @@ PyObject *raster_GetImage(PyObject *self, PyObject *args) {
         ))
                 return NULL;
 
-        code = get_image(
+        code = GetImage(
                 x, y, w, h, color_style, stretch_or_centered, image_size,
                 image_data
         );

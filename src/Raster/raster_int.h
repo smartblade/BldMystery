@@ -65,7 +65,7 @@ extern void set_text_alpha(float alpha);
 extern int WriteText(const char *text);
 extern void SysWrite(int x, int y, const char *text, byte r, byte g, byte b);
 extern float get_text_alpha(void);
-extern int get_image(
+extern int GetImage(
         int x, int y, int w, int h, const char *color_style,
         const char *stretch_or_centered, int image_size, long image_data
 );

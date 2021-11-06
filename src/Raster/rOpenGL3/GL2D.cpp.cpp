@@ -486,10 +486,10 @@ void B_OpenGLRasterDevice::DrawChar(
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000FA80
-* VC++ mangling:          ?get_image@B_OpenGLRasterDevice@@UAEHHHHHPBD0HJ@Z
+* VC++ mangling:          ?GetImage@B_OpenGLRasterDevice@@UAEHHHHHPBD0HJ@Z
 */
 #ifndef BLD_NATIVE
-int B_OpenGLRasterDevice::get_image(
+int B_OpenGLRasterDevice::GetImage(
     int x, int y, int w, int h, const char *color_style,
     const char *stretch_or_centered, int image_size, long image_data
 )
