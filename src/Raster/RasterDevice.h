@@ -546,7 +546,7 @@ public:
     }
 
     virtual void draw_bitmap(long handle, int w, int h) = 0;
-    virtual void draw_image(
+    virtual void DrawImage(
         int w, int h, const char *color_style, const char *is_normal,
         const void *image_data
     ) = 0;

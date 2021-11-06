@@ -508,10 +508,10 @@ int B_OpenGLRasterDevice::GetImage(
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000FB62
-* VC++ mangling:          ?draw_image@B_OpenGLRasterDevice@@UAEXHHPBD0PBX@Z
+* VC++ mangling:          ?DrawImage@B_OpenGLRasterDevice@@UAEXHHPBD0PBX@Z
 */
 #ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::draw_image(
+void B_OpenGLRasterDevice::DrawImage(
     int w, int h, const char *color_style, const char *is_normal,
     const void *image_data
 )

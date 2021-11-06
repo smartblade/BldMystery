@@ -257,7 +257,7 @@ bool B_WinApp::Start()
         file >> bitMap;
         B_3D_raster_device->ClsRGB(0, 0, 0);
         B_3D_raster_device->SetPosition(0.0f, 0.0f);
-        B_3D_raster_device->draw_image(
+        B_3D_raster_device->DrawImage(
             640, 480, "BGR", "Stretch", bitMap.data);
         B_3D_raster_device->SwapBuffers();
         this->ProcessMessage();

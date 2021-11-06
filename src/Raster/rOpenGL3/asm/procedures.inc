@@ -58,8 +58,8 @@ externdef ?DrawChar@B_OpenGLRasterDevice@@UAEXUB_CharSize@B_Font@@MMH@Z: near
 l1000F68F equ ?DrawChar@B_OpenGLRasterDevice@@UAEXUB_CharSize@B_Font@@MMH@Z
 externdef ?GetImage@B_OpenGLRasterDevice@@UAEHHHHHPBD0HJ@Z: near
 l1000FA80 equ ?GetImage@B_OpenGLRasterDevice@@UAEHHHHHPBD0HJ@Z
-externdef ?draw_image@B_OpenGLRasterDevice@@UAEXHHPBD0PBX@Z: near
-l1000FB62 equ ?draw_image@B_OpenGLRasterDevice@@UAEXHHPBD0PBX@Z
+externdef ?DrawImage@B_OpenGLRasterDevice@@UAEXHHPBD0PBX@Z: near
+l1000FB62 equ ?DrawImage@B_OpenGLRasterDevice@@UAEXHHPBD0PBX@Z
 externdef ?SetBackgroundImage@B_OpenGLRasterDevice@@UAEXHHPBD00J@Z: near
 l10010279 equ ?SetBackgroundImage@B_OpenGLRasterDevice@@UAEXHHPBD00J@Z
 externdef ?RemoveBackgroundImage@B_OpenGLRasterDevice@@UAEXXZ: near

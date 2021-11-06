@@ -975,7 +975,7 @@ PyObject *raster_DrawImage(PyObject *self, PyObject *args) {
         ))
                 return NULL;
 
-        draw_image(w, h, color_style, stretch_or_centered, image_data);
+        DrawImage(w, h, color_style, stretch_or_centered, image_data);
 
         Py_INCREF(Py_None);
         return Py_None;

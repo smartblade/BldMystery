@@ -69,7 +69,7 @@ extern int GetImage(
         int x, int y, int w, int h, const char *color_style,
         const char *stretch_or_centered, int image_size, long image_data
 );
-extern void draw_image(
+extern void DrawImage(
         int w, int h, const char *color_style, const char *stretch_or_centered,
         const void *image_data
 );

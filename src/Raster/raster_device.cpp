@@ -435,11 +435,11 @@ int GetImage(
 * Entry point:            0x10003A5E
 */
 
-void draw_image(
+void DrawImage(
         int w, int h, const char *color_style, const char *is_normal,
         const void * image_data
 ) {
-        B_3D_raster_device->draw_image(w, h, color_style, is_normal, image_data);
+        B_3D_raster_device->DrawImage(w, h, color_style, is_normal, image_data);
 }
 
 
