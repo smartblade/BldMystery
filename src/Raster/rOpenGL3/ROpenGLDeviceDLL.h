@@ -176,7 +176,7 @@ public:
         B_Font::B_CharSize charLocation, float scaleX, float scaleY,
         int textMode
     );
-    virtual void draw_bitmap(long handle, int w, int h);
+    virtual void DrawBitmap(long handle, int w, int h);
     virtual void DrawImage(
         int w, int h, const char *color_style, const char *is_normal,
         const void *image_data

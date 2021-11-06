@@ -78,7 +78,7 @@ extern void SetBackgroundImage(
         const char *stretch_or_centered, long image_data
 );
 extern void RemoveBackgroundImage(void);
-extern void draw_bitmap(long bmpHandle, int w, int h);
+extern void DrawBitmap(long bmpHandle, int w, int h);
 extern void set_clip_window(int x, int y, int w, int h);
 extern void GetClipWindow(int &x, int &y, int &w, int &h);
 extern int SetRasterParameter(const char *parameter, const char *value);

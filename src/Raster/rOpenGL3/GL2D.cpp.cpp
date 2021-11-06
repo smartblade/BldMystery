@@ -568,10 +568,10 @@ void B_OpenGLRasterDevice::RemoveBackgroundImage()
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x100103BF
-* VC++ mangling:          ?draw_bitmap@B_OpenGLRasterDevice@@UAEXJHH@Z
+* VC++ mangling:          ?DrawBitmap@B_OpenGLRasterDevice@@UAEXJHH@Z
 */
 #ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::draw_bitmap(long handle, int w, int h)
+void B_OpenGLRasterDevice::DrawBitmap(long handle, int w, int h)
 {
 }
 #endif

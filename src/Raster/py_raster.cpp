@@ -994,7 +994,7 @@ PyObject *raster_DrawBitmap(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "lii:DrawBitmap", &bmpHandle, &w, &h))
                 return NULL;
 
-        draw_bitmap(bmpHandle, w, h);
+        DrawBitmap(bmpHandle, w, h);
 
         Py_INCREF(Py_None);
         return Py_None;

@@ -64,8 +64,8 @@ externdef ?SetBackgroundImage@B_OpenGLRasterDevice@@UAEXHHPBD00J@Z: near
 l10010279 equ ?SetBackgroundImage@B_OpenGLRasterDevice@@UAEXHHPBD00J@Z
 externdef ?RemoveBackgroundImage@B_OpenGLRasterDevice@@UAEXXZ: near
 l10010366 equ ?RemoveBackgroundImage@B_OpenGLRasterDevice@@UAEXXZ
-externdef ?draw_bitmap@B_OpenGLRasterDevice@@UAEXJHH@Z: near
-l100103BF equ ?draw_bitmap@B_OpenGLRasterDevice@@UAEXJHH@Z
+externdef ?DrawBitmap@B_OpenGLRasterDevice@@UAEXJHH@Z: near
+l100103BF equ ?DrawBitmap@B_OpenGLRasterDevice@@UAEXJHH@Z
 externdef ?unknown0C8@B_OpenGLRasterDevice@@UAEXXZ: near
 l10010F60 equ ?unknown0C8@B_OpenGLRasterDevice@@UAEXXZ
 externdef ?unknown0CC@B_OpenGLRasterDevice@@UAEXXZ: near

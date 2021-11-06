@@ -474,8 +474,8 @@ void RemoveBackgroundImage() {
 * Entry point:            0x10003ADC
 */
 
-void draw_bitmap(long handle, int w, int h) {
-        B_3D_raster_device->draw_bitmap(handle, w, h);
+void DrawBitmap(long handle, int w, int h) {
+        B_3D_raster_device->DrawBitmap(handle, w, h);
 }
 
 
