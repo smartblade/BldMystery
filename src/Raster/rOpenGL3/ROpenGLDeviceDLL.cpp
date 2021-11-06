@@ -1022,10 +1022,10 @@ void B_OpenGLRasterDevice::unknown07C()
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x10025F18
-* VC++ mangling:          ?set_clip_active@B_OpenGLRasterDevice@@UAEXH@Z
+* VC++ mangling:          ?SetClipActive@B_OpenGLRasterDevice@@UAEXH@Z
 */
 #ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::set_clip_active(int clip_active)
+void B_OpenGLRasterDevice::SetClipActive(int clip_active)
 {
 }
 #endif

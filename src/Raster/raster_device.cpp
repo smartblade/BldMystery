@@ -524,8 +524,8 @@ const char *GetRasterParameter(const char *parameter) {
 * Entry point:            0x10003B90
 */
 
-void set_clip_active(int clip_active) {
-        B_3D_raster_device->set_clip_active(clip_active);
+void SetClipActive(int clip_active) {
+        B_3D_raster_device->SetClipActive(clip_active);
 }
 
 

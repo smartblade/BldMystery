@@ -221,7 +221,7 @@ public:
         h = this->clipHeight;
     }
 
-    virtual void set_clip_active(int clip_active) = 0;
+    virtual void SetClipActive(int clip_active) = 0;
 
 
     /*

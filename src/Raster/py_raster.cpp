@@ -1104,7 +1104,7 @@ PyObject *raster_SetClipActive(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "i:SetClipActive", &clip_active))
                 return NULL;
 
-        set_clip_active(clip_active);
+        SetClipActive(clip_active);
 
         Py_INCREF(Py_None);
         return Py_None;
