@@ -558,7 +558,7 @@ public:
         int w, int h, const char *is_rgb, const char *is_normal,
         const char *stretch_or_centered, long image_data
     ) = 0;
-    virtual void remove_background_image() = 0;
+    virtual void RemoveBackgroundImage() = 0;
 
     virtual int SetRasterParameter(
         const char *parameter, const char *value)

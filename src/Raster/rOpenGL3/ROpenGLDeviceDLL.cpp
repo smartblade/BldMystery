@@ -444,12 +444,12 @@ void B_OpenGLRasterDevice::StartScene(location_t *cameraPose)
             this->backgroundImageWidth != 800 &&
             this->backgroundImageHeight != 600)
         {
-            this->remove_background_image();
+            this->RemoveBackgroundImage();
         }
     }
     else
     {
-        this->remove_background_image();
+        this->RemoveBackgroundImage();
     }
     if (this->useOGLLight)
     {

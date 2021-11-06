@@ -550,10 +550,10 @@ void B_OpenGLRasterDevice::set_background_image(
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x10010366
-* VC++ mangling:          ?remove_background_image@B_OpenGLRasterDevice@@UAEXXZ
+* VC++ mangling:          ?RemoveBackgroundImage@B_OpenGLRasterDevice@@UAEXXZ
 */
 #ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::remove_background_image()
+void B_OpenGLRasterDevice::RemoveBackgroundImage()
 {
 }
 #endif

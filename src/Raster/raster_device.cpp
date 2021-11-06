@@ -463,9 +463,9 @@ void set_background_image(
 * Entry point:            0x10003ABB
 */
 
-void remove_background_image() {
+void RemoveBackgroundImage() {
         if (B_3D_raster_device != NULL)
-                B_3D_raster_device->remove_background_image();
+                B_3D_raster_device->RemoveBackgroundImage();
 }
 
 

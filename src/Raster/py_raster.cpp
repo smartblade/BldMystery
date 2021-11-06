@@ -1035,7 +1035,7 @@ PyObject *raster_RemoveBackgroundImage(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, ":RemoveBackgroundImage"))
                 return NULL;
 
-        remove_background_image();
+        RemoveBackgroundImage();
 
         Py_INCREF(Py_None);
         return Py_None;
