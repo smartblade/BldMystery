@@ -1018,7 +1018,7 @@ PyObject *raster_SetBackgroundImage(PyObject *self, PyObject *args) {
         ))
                 return NULL;
 
-        set_background_image(w, h, is_rgb, is_normal, stretch_or_centered, image_data);
+        SetBackgroundImage(w, h, is_rgb, is_normal, stretch_or_centered, image_data);
 
         Py_INCREF(Py_None);
         return Py_None;

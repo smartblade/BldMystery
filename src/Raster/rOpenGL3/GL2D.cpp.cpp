@@ -529,10 +529,10 @@ void B_OpenGLRasterDevice::draw_image(
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x10010279
-* VC++ mangling:          ?set_background_image@B_OpenGLRasterDevice@@UAEXHHPBD00J@Z
+* VC++ mangling:          ?SetBackgroundImage@B_OpenGLRasterDevice@@UAEXHHPBD00J@Z
 */
 #ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::set_background_image(
+void B_OpenGLRasterDevice::SetBackgroundImage(
     int w, int h, const char *is_rgb, const char *is_normal,
     const char *stretch_or_centered, long image_data
 )

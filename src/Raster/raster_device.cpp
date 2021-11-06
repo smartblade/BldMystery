@@ -448,11 +448,11 @@ void draw_image(
 * Entry point:            0x10003A8B
 */
 
-void set_background_image(
+void SetBackgroundImage(
         int w, int h, const char *is_rgb, const char *is_normal,
         const char *stretch_or_centered, long image_data
 ) {
-        B_3D_raster_device->set_background_image(
+        B_3D_raster_device->SetBackgroundImage(
                 w, h, is_rgb, is_normal, stretch_or_centered, image_data
         );
 }

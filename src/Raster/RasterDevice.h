@@ -554,7 +554,7 @@ public:
         int x, int y, int w, int h, const char *color_style,
         const char *stretch_or_centered, int image_size, long image_data
     ) = 0;
-    virtual void set_background_image(
+    virtual void SetBackgroundImage(
         int w, int h, const char *is_rgb, const char *is_normal,
         const char *stretch_or_centered, long image_data
     ) = 0;
