@@ -204,7 +204,7 @@ public:
     {
     }
 
-    virtual void set_clip_window(int x, int y, int w, int h) = 0;
+    virtual void SetClipWindow(int x, int y, int w, int h) = 0;
 
 
     /*

@@ -1053,7 +1053,7 @@ PyObject *raster_SetClipWindow(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "iiii:SetClipWindow", &x, &y, &w, &h))
                 return NULL;
 
-        set_clip_window(x, y, w, h);
+        SetClipWindow(x, y, w, h);
 
         Py_INCREF(Py_None);
         return Py_None;

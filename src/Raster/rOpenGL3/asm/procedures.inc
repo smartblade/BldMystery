@@ -218,8 +218,8 @@ externdef ?unknown07C@B_OpenGLRasterDevice@@UAEXXZ: near
 l10025E28 equ ?unknown07C@B_OpenGLRasterDevice@@UAEXXZ
 externdef ?set_clip_active@B_OpenGLRasterDevice@@UAEXH@Z: near
 l10025F18 equ ?set_clip_active@B_OpenGLRasterDevice@@UAEXH@Z
-externdef ?set_clip_window@B_OpenGLRasterDevice@@UAEXHHHH@Z: near
-l10025F82 equ ?set_clip_window@B_OpenGLRasterDevice@@UAEXHHHH@Z
+externdef ?SetClipWindow@B_OpenGLRasterDevice@@UAEXHHHH@Z: near
+l10025F82 equ ?SetClipWindow@B_OpenGLRasterDevice@@UAEXHHHH@Z
 externdef ?SetTransformation@B_OpenGLRasterDevice@@UAEXXZ: near
 l10025FEA equ ?SetTransformation@B_OpenGLRasterDevice@@UAEXXZ
 externdef ?ResetTransformation@B_OpenGLRasterDevice@@UAEXXZ: near

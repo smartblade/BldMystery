@@ -1040,10 +1040,10 @@ void B_OpenGLRasterDevice::set_clip_active(int clip_active)
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x10025F82
-* VC++ mangling:          ?set_clip_window@B_OpenGLRasterDevice@@UAEXHHHH@Z
+* VC++ mangling:          ?SetClipWindow@B_OpenGLRasterDevice@@UAEXHHHH@Z
 */
 #ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::set_clip_window(int x, int y, int w, int h)
+void B_OpenGLRasterDevice::SetClipWindow(int x, int y, int w, int h)
 {
 }
 #endif

@@ -118,7 +118,7 @@ public:
     virtual void unknown120();
     virtual void unknown124();
     virtual B_BitMap24 *GetBitMap24();
-    virtual void set_clip_window(int x, int y, int w, int h);
+    virtual void SetClipWindow(int x, int y, int w, int h);
     virtual void set_clip_active(int clip_active);
     virtual void SetTransformation();
     virtual void ResetTransformation();

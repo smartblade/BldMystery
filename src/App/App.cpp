@@ -602,7 +602,7 @@ bool B_App::ProcessEvents()
             int clipX, clipY, clipWidth, clipHeight;
             B_3D_raster_device->GetClipWindow(clipX, clipY, clipWidth, clipHeight);
             this->rootWidget->Draw(0, 0, this->clock2->GetTime());
-            B_3D_raster_device->set_clip_window(clipX, clipY, clipWidth, clipHeight);
+            B_3D_raster_device->SetClipWindow(clipX, clipY, clipWidth, clipHeight);
             B_3D_raster_device->ResetTransformation();
         }
         if (this->saveToBmp != 0.0f)

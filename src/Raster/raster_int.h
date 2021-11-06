@@ -79,7 +79,7 @@ extern void SetBackgroundImage(
 );
 extern void RemoveBackgroundImage(void);
 extern void DrawBitmap(long bmpHandle, int w, int h);
-extern void set_clip_window(int x, int y, int w, int h);
+extern void SetClipWindow(int x, int y, int w, int h);
 extern void GetClipWindow(int &x, int &y, int &w, int &h);
 extern int SetRasterParameter(const char *parameter, const char *value);
 extern const char *GetRasterParameter(const char * parameter);
