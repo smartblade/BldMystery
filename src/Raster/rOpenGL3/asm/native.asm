@@ -89303,25 +89303,7 @@ l1002F28D ENDP
 ;* Jump:
 ; 1000137A(U) 
 ;
-l1002F40C PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-;
-;* Control "OK", Dialog 006E
-;
-           mov dword ptr [eax+07Ch], 000000001h
-           mov ecx, dword ptr [ebp-004h]
-;
-;* Control "OK", Dialog 006E
-;
-           mov dword ptr [ecx+00007A210h], 000000001h
-           mov esp, ebp
-           pop ebp
-           ret
-l1002F40C ENDP
+           call l1002F40C; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001465(U) 

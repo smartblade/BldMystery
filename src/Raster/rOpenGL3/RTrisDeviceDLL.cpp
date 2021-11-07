@@ -125,11 +125,13 @@ void B_TrisDevice::unknown030()
 * Entry point:            0x1002F40C
 * VC++ mangling:          ?unknown034@B_TrisDevice@@UAEXXZ
 */
-#ifndef BLD_NATIVE
+
 void B_TrisDevice::unknown034()
 {
+    this->unknown007C = true;
+    this->unknown07A210 = true;
 }
-#endif
+
 
 /*
 ................................................................................
