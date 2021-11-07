@@ -107,7 +107,10 @@ public:
     virtual void unknown0F8();
     virtual void unknown0FC();
     virtual void unknown100();
-    virtual void unknown104();
+    virtual void RasterParticles(
+        B_Particle *particles, unsigned int numParticles,
+        B_ParticleGType *particleType
+    );
     virtual void unknown108();
     virtual void SysWrite(
         int x, int y, const char *text, byte r, byte g, byte b
@@ -283,6 +286,15 @@ public:
         {
             glDisable(GL_FOG);
             this->fogEnabled = false;
+        }
+    }
+
+    void EnableFog()
+    {
+        if (this->fogEnabled != 1)
+        {
+            glEnable(GL_FOG);
+            this->fogEnabled = true;
         }
     }
 

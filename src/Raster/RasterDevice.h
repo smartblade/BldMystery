@@ -14,6 +14,8 @@ class B_CameraView;
 class B_Name;
 class B_Color;
 class B_Font;
+struct B_Particle;
+class B_ParticleGType;
 
 #define B_RASTER_CID_3DFX              3
 #define B_RASTER_CID_OPENGL            4
@@ -23,8 +25,13 @@ class B_Font;
 #define RASTER_FLAGS_0010              0x0010
 #define RASTER_FLAGS_CLS               0x0020
 
-#define RASTER_MODE_NONE               0x0000
-#define RASTER_MODE_TEXT               0x0200
+#define RASTER_MODE_NONE               0x00000
+#define RASTER_MODE_TEXTURE            0x00001
+#define RASTER_MODE_DEPTH_READ_ONLY    0x00020
+#define RASTER_MODE_GTYPE_MUL          0x00100
+#define RASTER_MODE_TEXT               0x00200
+#define RASTER_MODE_GTYPE_BLEND        0x00800
+#define RASTER_MODE_GTYPE_ADD          0x10000
 
 #define TEXT_MODE_SHADOW               0x01
 #define TEXT_MODE_TEXT                 0x02
@@ -166,7 +173,10 @@ public:
     virtual void unknown0F8() = 0;
     virtual void unknown0FC() = 0;
     virtual void unknown100() = 0;
-    virtual void unknown104() = 0;
+    virtual void RasterParticles(
+        B_Particle *particles, unsigned int numParticles,
+        B_ParticleGType *particleType
+    ) = 0;
     virtual void unknown108() = 0;
 
     virtual void SysWrite(

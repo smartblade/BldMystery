@@ -65,6 +65,12 @@ public:
     float size;
 };
 
+#define B_PARTICLE_GTYPE_COPY          0
+#define B_PARTICLE_GTYPE_BLEND         1
+#define B_PARTICLE_GTYPE_ADD           2
+#define B_PARTICLE_GTYPE_MUL           3
+
+
 class B_ParticleGType : public B_NamedObj
 {
 public:
@@ -80,6 +86,14 @@ public:
     unsigned int duration;
     int bmpHandle;
     int operation_type;
+};
+
+struct B_Particle
+{
+    double x;
+    double y;
+    double z;
+    int time;
 };
 
 

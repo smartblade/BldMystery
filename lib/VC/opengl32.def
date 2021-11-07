@@ -397,3 +397,8 @@ EXPORTS
     _glLightModeli@8 = glLightModeli
     _glMaterialfv@12 = glMaterialfv
     _glColor3d@24 = glColor3d
+    _glBegin@4 = glBegin
+    _glColor4ubv@4 = glColor4ubv
+    _glEnd@0 = glEnd
+    _glTexCoord2f@8 = glTexCoord2f
+    _glVertex3f@12 = glVertex3f

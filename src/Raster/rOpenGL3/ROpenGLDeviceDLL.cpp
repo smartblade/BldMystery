@@ -768,29 +768,93 @@ void B_OpenGLRasterDevice::unknown124()
 #endif
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-/*
 * Module:                 rOpenGL.dll
 * Entry point:            0x100221EA
-* VC++ mangling:          ?unknown104@B_OpenGLRasterDevice@@UAEXXZ
+* VC++ mangling:          ?RasterParticles@B_OpenGLRasterDevice@@UAEXPAUB_Particle@@IPAVB_ParticleGType@@@Z
 */
-#ifndef BLD_NATIVE
-void B_OpenGLRasterDevice::unknown104()
-{
-}
-#endif
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
+void B_OpenGLRasterDevice::RasterParticles(
+    B_Particle *particles, unsigned int numParticles,
+    B_ParticleGType *particleType)
+{
+    int multiply = false;
+    switch (particleType->operation_type)
+    {
+    case B_PARTICLE_GTYPE_BLEND:
+        this->SetMode(
+            RASTER_MODE_GTYPE_BLEND |
+            RASTER_MODE_TEXTURE |
+            RASTER_MODE_DEPTH_READ_ONLY
+        );
+        break;
+    case B_PARTICLE_GTYPE_ADD:
+        this->SetMode(
+            RASTER_MODE_GTYPE_ADD |
+            RASTER_MODE_TEXTURE |
+            RASTER_MODE_DEPTH_READ_ONLY
+        );
+        break;
+    case B_PARTICLE_GTYPE_MUL:
+        this->SetMode(
+            RASTER_MODE_GTYPE_MUL |
+            RASTER_MODE_TEXTURE |
+            RASTER_MODE_DEPTH_READ_ONLY
+        );
+        multiply = true;
+        break;
+    default:
+        this->SetMode(RASTER_MODE_TEXTURE | RASTER_MODE_DEPTH_READ_ONLY);
+        break;
+    }
+    if (multiply && this->BWRender != 0)
+    {
+        glDisable(GL_REGISTER_COMBINERS_NV);
+    }
+    this->numParticles += numParticles;
+    if (this->isFog)
+    {
+        this->DisableFog();
+    }
+    B_Particle *particle = particles;
+    B_ParticleElement *element = NULL;
+    this->SetActiveTexture(particleType->bmpHandle);
+    glBegin(GL_QUADS);
+    for (unsigned int i = 0; i < numParticles; i++)
+    {
+        if (particle->z > 0.5)
+        {
+            element = &particleType->a00C[particle->time];
+            float x = particle->x;
+            float y = particle->y;
+            float size = element->size;
+            if (size < 1.0f)
+            {
+                size = 1.0f;
+            }
+            glColor4ubv(&element->r);
+            glTexCoord2f(0.0, 0.0);
+            float z = particle->z;
+            glVertex3f(x - size, y - size, z);
+            glTexCoord2f(0.0, 1.0);
+            glVertex3f(x - size, y + size, z);
+            glTexCoord2f(1.0, 1.0);
+            glVertex3f(x + size, y + size, z);
+            glTexCoord2f(1.0, 0.0);
+            glVertex3f(x + size, y - size, z);
+        }
+        particle++;
+    }
+    glEnd();
+    if (this->isFog)
+    {
+        this->EnableFog();
+    }
+    if (multiply && this->BWRender != 0)
+    {
+        glEnable(GL_REGISTER_COMBINERS_NV);
+    }
+}
+
 
 /*
 * Module:                 rOpenGL.dll

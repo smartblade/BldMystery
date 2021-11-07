@@ -180,8 +180,8 @@ externdef ?unknown240@B_OpenGLRasterDevice@@UAEXXZ: near
 l10021EB5 equ ?unknown240@B_OpenGLRasterDevice@@UAEXXZ
 externdef ?unknown124@B_OpenGLRasterDevice@@UAEXXZ: near
 l1002206C equ ?unknown124@B_OpenGLRasterDevice@@UAEXXZ
-externdef ?unknown104@B_OpenGLRasterDevice@@UAEXXZ: near
-l100221EA equ ?unknown104@B_OpenGLRasterDevice@@UAEXXZ
+externdef ?RasterParticles@B_OpenGLRasterDevice@@UAEXPAUB_Particle@@IPAVB_ParticleGType@@@Z: near
+l100221EA equ ?RasterParticles@B_OpenGLRasterDevice@@UAEXPAUB_Particle@@IPAVB_ParticleGType@@@Z
 externdef ?unknown0FC@B_OpenGLRasterDevice@@UAEXXZ: near
 l1002249D equ ?unknown0FC@B_OpenGLRasterDevice@@UAEXXZ
 externdef ?unknown100@B_OpenGLRasterDevice@@UAEXXZ: near
