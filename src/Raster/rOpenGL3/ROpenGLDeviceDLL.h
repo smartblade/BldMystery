@@ -352,9 +352,9 @@ private:
     int cacheStretchImage;
     int unknown084870;
     int unknown084874;
-    int unknown084878;
-    int unknown08487C;
-    int unknown084880;
+    int depthMode;
+    int blendMode;
+    int textureMode;
     int unknown084884[1543];
     bool isFog;
     int unknown0860A4;

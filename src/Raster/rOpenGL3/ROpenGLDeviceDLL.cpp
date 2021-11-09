@@ -80,7 +80,7 @@ B_OpenGLRasterDevice::B_OpenGLRasterDevice(HWND window, HMODULE rasterModule)
     this->fogColor[3] = 0.0f;
     this->fogDensity = 1e-05f;
     this->fogFactor = 0.02f;
-    this->flags = RASTER_FLAGS_0001 | RASTER_FLAGS_0002 | RASTER_FLAGS_0010;
+    this->flags = RASTER_FLAGS_TEXTURE | RASTER_FLAGS_0002 | RASTER_FLAGS_0010;
     this->cacheStretchImage = false;
     this->unknown084870 = 0;
     this->unknown084874 = -1;
@@ -112,9 +112,9 @@ B_OpenGLRasterDevice::B_OpenGLRasterDevice(HWND window, HMODULE rasterModule)
     this->clipY = 0;
     this->clipWidth = this->width;
     this->clipHeight = this->height;
-    this->unknown084878 = 0;
-    this->unknown084880 = 0;
-    this->unknown08487C = 0;
+    this->depthMode = 0;
+    this->textureMode = false;
+    this->blendMode = 0;
     GLfloat pixels[] =
     {
         0.2f, 0.2f, 0.2f,
@@ -720,18 +720,124 @@ int B_OpenGLRasterDevice::LoadExtensions()
 * Entry point:            0x10021A5B
 * VC++ mangling:          ?SetMode@B_OpenGLRasterDevice@@UAEXH@Z
 */
-#ifndef BLD_NATIVE
+
 void B_OpenGLRasterDevice::SetMode(int mode)
 {
+    if (this->mode == mode)
+        return;
+    this->mode = mode;
+    if ((mode & RASTER_MODE_DEPTH_MASK) != this->depthMode)
+    {
+        if (mode & RASTER_MODE_DEPTH_TEST)
+        {
+            glEnable(GL_DEPTH_TEST);
+            glDepthMask(GL_TRUE);
+            if (this->unknown07A210)
+            {
+                glDepthFunc(GL_GREATER);
+            }
+            else
+            {
+                glDepthFunc(GL_LEQUAL);
+            }
+        }
+        else if (mode & RASTER_MODE_DEPTH_OVERWRITE)
+        {
+            glEnable(GL_DEPTH_TEST);
+            glDepthMask(GL_TRUE);
+            glDepthFunc(GL_ALWAYS);
+        }
+        else if (mode & RASTER_MODE_DEPTH_READ_ONLY)
+        {
+            glEnable(GL_DEPTH_TEST);
+            glDepthMask(GL_FALSE);
+            if (this->unknown07A210)
+            {
+                glDepthFunc(GL_GREATER);
+            }
+            else
+            {
+                glDepthFunc(GL_LEQUAL);
+            }
+        }
+        else
+        {
+            glDisable(GL_DEPTH_TEST);
+            glDepthMask(GL_FALSE);
+            glDepthFunc(GL_ALWAYS);
+        }
+        this->depthMode = mode & RASTER_MODE_DEPTH_MASK;
+    }
+    if (
+        ((mode & RASTER_MODE_TEXTURE) || (mode & RASTER_MODE_TEXT)) &&
+        (this->flags & RASTER_FLAGS_TEXTURE))
+    {
+        if (!this->textureMode)
+        {
+            glEnable(GL_TEXTURE_2D);
+            this->textureMode = true;
+        }
+    }
+    else
+    {
+        if (this->textureMode)
+        {
+            glDisable(GL_TEXTURE_2D);
+            this->textureMode = false;
+        }
+    }
+    if ((mode & RASTER_MODE_BLEND_MASK) != this->blendMode)
+    {
+        if (mode & RASTER_MODE_BLEND)
+        {
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+            glEnable(GL_BLEND);
+            glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+        }
+        else if (mode & RASTER_MODE_ADD_SCR_RGBA)
+        {
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+            glEnable(GL_BLEND);
+            glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+        }
+        else if (mode & RASTER_MODE_GTYPE_ADD)
+        {
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+            glEnable(GL_BLEND);
+            glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+        }
+        else if (mode & RASTER_MODE_ADD_SCR_RGB)
+        {
+            glBlendFunc(GL_ONE, GL_ONE);
+            glEnable(GL_BLEND);
+            glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+        }
+        else if (mode & RASTER_MODE_TEXT)
+        {
+            glEnable(GL_BLEND);
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+            glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+        }
+        else if (mode & RASTER_MODE_GTYPE_BLEND)
+        {
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+            glEnable(GL_BLEND);
+            glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+        }
+        else if (mode & RASTER_MODE_GTYPE_MUL)
+        {
+            glBlendFunc(GL_SRC_ALPHA, GL_SRC_COLOR);
+            glEnable(GL_BLEND);
+            glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+        }
+        else
+        {
+            glDisable(GL_BLEND);
+        }
+        this->blendMode = mode & RASTER_MODE_BLEND_MASK;
+    }
 }
-#endif
 
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
 /*
 * Module:                 rOpenGL.dll

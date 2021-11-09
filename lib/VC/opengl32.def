@@ -402,3 +402,7 @@ EXPORTS
     _glEnd@0 = glEnd
     _glTexCoord2f@8 = glTexCoord2f
     _glVertex3f@12 = glVertex3f
+    _glBlendFunc@8 = glBlendFunc
+    _glDepthFunc@4 = glDepthFunc
+    _glDepthMask@4 = glDepthMask
+    _glTexEnvi@12 = glTexEnvi

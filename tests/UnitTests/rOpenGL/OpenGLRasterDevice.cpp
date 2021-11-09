@@ -119,9 +119,9 @@ TEST(OpenGLRasterDeviceTests, Fields)
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, cacheStretchImage, 0x8486C);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown084870, 0x84870);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown084874, 0x84874);
-    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown084878, 0x84878);
-    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown08487C, 0x8487C);
-    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown084880, 0x84880);
+    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, depthMode, 0x84878);
+    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, blendMode, 0x8487C);
+    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, textureMode, 0x84880);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown084884, 0x84884);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, isFog, 0x860A0);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, unknown0860A4, 0x860A4);
