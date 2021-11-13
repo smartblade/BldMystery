@@ -410,7 +410,7 @@ void B_OpenGLRasterDevice::StartScene(location_t *cameraPose)
     B_TrisDevice::StartScene(cameraPose);
     if (cameraPose)
     {
-        this->pose = cameraPose->matrix0030;
+        this->fromWorld = cameraPose->fromWorld;
         this->invPose = cameraPose->matrix00B0;
     }
     if (this->invertOGLLight)

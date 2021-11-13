@@ -1952,7 +1952,7 @@ int GetScreenXY(
     cameraView.z = 0.65 * coef1;
     cameraView.UpdateViewPyramid();
     B_Vector map_point(map_x, map_y, map_z);
-    B_Vector screenPoint = map_point * GetApplication()->location.matrix0030;
+    B_Vector screenPoint = map_point * GetApplication()->location.fromWorld;
     if (fabs(screenPoint.z) < 0.01)
         screenPoint.z = 0.01;
     double factor = cameraView.z / screenPoint.z;

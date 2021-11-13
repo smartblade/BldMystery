@@ -21,7 +21,7 @@ public:
     double rotationX;
     double rotationY;
     double rotationZ;
-    B_Matrix matrix0030;
+    B_Matrix fromWorld;
     B_Matrix matrix00B0;
 };
 
