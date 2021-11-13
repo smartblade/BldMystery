@@ -68,16 +68,18 @@ B_Matrix::B_Matrix(const B_Vector &v)
 */
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10003F6F
 * Module:                 Blade.exe
 * Entry point:            0x0040571F
 * VC++ mangling:          ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ
 */
-#ifndef BLD_NATIVE
+
 B_Vector B_Matrix::TranslationVector() const
 {
-    return B_Vector();
+    return B_Vector(this->m[3][0], this->m[3][1], this->m[3][2]);
 }
-#endif
+
 
 /*
 ................................................................................

@@ -6659,46 +6659,7 @@ l10003BFC ENDP
 ;* Jump:
 ; 100017D0(U) 
 ;
-l10003F6F PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000001Ch
-           mov dword ptr [ebp-01Ch], ecx
-           mov eax, dword ptr [ebp-01Ch]
-           mov ecx, dword ptr [eax+070h]
-           mov dword ptr [ebp-018h], ecx
-           mov edx, dword ptr [eax+074h]
-           mov dword ptr [ebp-014h], edx
-           mov eax, dword ptr [ebp-01Ch]
-           mov ecx, dword ptr [eax+068h]
-           mov dword ptr [ebp-010h], ecx
-           mov edx, dword ptr [eax+06Ch]
-           mov dword ptr [ebp-00Ch], edx
-           mov eax, dword ptr [ebp-01Ch]
-           mov ecx, dword ptr [eax+060h]
-           mov dword ptr [ebp-008h], ecx
-           mov edx, dword ptr [eax+064h]
-           mov dword ptr [ebp-004h], edx
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-008h]
-           mov dword ptr [eax], ecx
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [eax+004h], edx
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-010h]
-           mov dword ptr [eax+008h], ecx
-           mov edx, dword ptr [ebp-00Ch]
-           mov dword ptr [eax+00Ch], edx
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-018h]
-           mov dword ptr [eax+010h], ecx
-           mov edx, dword ptr [ebp-014h]
-           mov dword ptr [eax+014h], edx
-           mov eax, dword ptr [ebp+008h]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l10003F6F ENDP
+           call l10003F6F; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001569(U) 
