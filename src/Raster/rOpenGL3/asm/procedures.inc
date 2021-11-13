@@ -2,6 +2,8 @@
 ; and should not be edited.
 externdef ??0B_Matrix@@QAE@XZ: near
 l10003430 equ ??0B_Matrix@@QAE@XZ
+externdef ??0B_Matrix@@QAE@ABVB_Vector@@@Z: near
+l1000377F equ ??0B_Matrix@@QAE@ABVB_Vector@@@Z
 externdef ?Read@B_VideoModeSection@@QAEHXZ: near
 l1000CEAB equ ?Read@B_VideoModeSection@@QAEHXZ
 externdef ?SysWrite@B_OpenGLRasterDevice@@UAEXHHPBDEEE@Z: near

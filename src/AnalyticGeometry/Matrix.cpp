@@ -42,15 +42,23 @@ B_Matrix::B_Matrix()
 */
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x1000377F
 * Module:                 Blade.exe
 * Entry point:            0x00404F2F
 * VC++ mangling:          ??0B_Matrix@@QAE@ABVB_Vector@@@Z
 */
-#ifndef BLD_NATIVE
+
 B_Matrix::B_Matrix(const B_Vector &v)
 {
+    DEFINE_MATRIX(
+        1.0, 0.0, 0.0, 0.0,
+        0.0, 1.0, 0.0, 0.0,
+        0.0, 0.0, 1.0, 0.0,
+        v.x, v.y, v.z, 1.0
+    )
 }
-#endif
+
 
 /*
 ................................................................................
