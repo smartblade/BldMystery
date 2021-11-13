@@ -33,6 +33,7 @@ set(BOD_EXTERNAL_LIB_DIR "${PROJECT_SOURCE_DIR}/../lib/VC")
 
 set(BOD_RUNTIME_DIR "${PROJECT_SOURCE_DIR}/../install/bin")
 
+add_subdirectory(AnalyticGeometry)
 add_subdirectory(bicrt)
 add_subdirectory(Blade)
 add_subdirectory(BladeExt)

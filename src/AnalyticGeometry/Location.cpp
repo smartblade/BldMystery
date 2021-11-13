@@ -1,7 +1,6 @@
 #include <AnalyticGeometry/Location.h>
 
 #include <bld_system.h>
-#include "bld_misc_funcs.h"
 
 
 /*
