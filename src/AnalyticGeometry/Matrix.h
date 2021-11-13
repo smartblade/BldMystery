@@ -11,7 +11,7 @@ public:
     B_Matrix(const B_Vector &v);
     B_Vector TranslationVector() const;
 private:
-    double v[4][4];
+    double m[4][4];
 };
 
 extern B_Vector operator *(const B_Vector& vector, const B_Matrix &matrix);
