@@ -83,7 +83,7 @@ public:
     virtual void unknown088();
     virtual void unknown08C();
     virtual void UnLoadBitmaps();
-    virtual void StartScene(location_t *cameraPose);
+    virtual void StartScene(B_ViewPose *cameraPose);
     virtual void EndScene();
     virtual void ClsRGB(byte r, byte g, byte b);
     virtual void Cls(B_Color color);

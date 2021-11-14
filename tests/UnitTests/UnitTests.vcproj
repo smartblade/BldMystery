@@ -215,6 +215,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blade\CameraViewTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Blade\CharTypeTests.cpp"
 				>
 			</File>
@@ -248,10 +252,6 @@
 			</File>
 			<File
 				RelativePath=".\Blade\StringValue.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Blade\CameraViewTests.cpp"
 				>
 			</File>
 			<File
@@ -442,15 +442,15 @@
 				Name="AnalyticGeometry"
 				>
 				<File
-					RelativePath=".\Blade\AnalyticGeometry\LocationTests.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\Blade\AnalyticGeometry\PlaneTests.cpp"
 					>
 				</File>
 				<File
 					RelativePath=".\Blade\AnalyticGeometry\PolygonTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\AnalyticGeometry\ViewPoseTests.cpp"
 					>
 				</File>
 				<File

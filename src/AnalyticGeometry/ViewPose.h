@@ -1,19 +1,17 @@
-#ifndef LOCATION_H
-
-#define LOCATION_H
+#pragma once
 
 #include <AnalyticGeometry/Vector.h>
 #include <AnalyticGeometry/Matrix.h>
 
-class location_t
+class B_ViewPose
 {
 public:
-    location_t(
+    B_ViewPose(
         const B_Vector &position,
         double rotationX,
         double rotationY,
         double rotationZ);
-    ~location_t();
+    ~B_ViewPose();
     void setPosition(const B_Vector &pos);
     void setOrientation(const B_Vector &orientation);
 
@@ -24,5 +22,3 @@ public:
     B_Matrix fromWorld;
     B_Matrix toWorld;
 };
-
-#endif

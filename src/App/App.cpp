@@ -51,7 +51,7 @@ void B_AfterFrameFunc::Call(float time)
 
 B_App::B_App(char *cmdLine)
 :
-location(B_Vector(0.0, 0.0, 0.0), 0.0, 0.0, 0.0)
+viewPose(B_Vector(0.0, 0.0, 0.0), 0.0, 0.0, 0.0)
 {
     this->listenerMode = 2;
     this->noSound = false;
@@ -545,12 +545,12 @@ bool B_App::ProcessEvents()
             }
             else
             {
-                gbl_sound_device->SetListenerPosition(this->location.toWorld);
+                gbl_sound_device->SetListenerPosition(this->viewPose.toWorld);
             }
         }
         else if (this->listenerMode == 2)
         {
-            gbl_sound_device->SetListenerPosition(this->location.toWorld);
+            gbl_sound_device->SetListenerPosition(this->viewPose.toWorld);
         }
     }
     if (this->isActive)
@@ -562,7 +562,7 @@ bool B_App::ProcessEvents()
             gbl_ag_textures[i]->needUpdate = true;
         }
         B_ProcTexture::SetTime(this->time);
-        B_3D_raster_device->StartScene(&this->location);
+        B_3D_raster_device->StartScene(&this->viewPose);
         B_3D_raster_device->SetProjection(cameraView);
         if (this->cls)
         {
@@ -575,7 +575,7 @@ bool B_App::ProcessEvents()
         if (this->b05D4)
         {
             B_world.Update(
-                &this->location, &cameraView, this->time, updateRaster);
+                &this->viewPose, &cameraView, this->time, updateRaster);
         }
         else
         {
@@ -748,8 +748,8 @@ void B_App::LoadLevel(const char *script)
 
     this->RunPythonFile(script);
 
-    this->location.setPosition(B_world.initial_point_position);
-    this->location.setOrientation(B_world.initial_point_orientation);
+    this->viewPose.setPosition(B_world.initial_point_position);
+    this->viewPose.setOrientation(B_world.initial_point_orientation);
 
     this->PrepareLevel();
 

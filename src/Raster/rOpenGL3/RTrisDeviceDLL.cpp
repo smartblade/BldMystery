@@ -76,10 +76,10 @@ void B_TrisDevice::SetProjection(const B_CameraView &cameraView)
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1002F33F
-* VC++ mangling:          ?StartScene@B_TrisDevice@@UAEXPAVlocation_t@@@Z
+* VC++ mangling:          ?StartScene@B_TrisDevice@@UAEXPAVB_ViewPose@@@Z
 */
 
-void B_TrisDevice::StartScene(location_t *cameraPose)
+void B_TrisDevice::StartScene(B_ViewPose *cameraPose)
 {
     this->unknown007C = false;
     this->unknown07A210 = false;

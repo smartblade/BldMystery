@@ -9,7 +9,7 @@
 #include <Entities/Entity.h>
 #include "Clock.h"
 #include <array.h>
-#include <AnalyticGeometry/Location.h>
+#include <AnalyticGeometry/ViewPose.h>
 #include "StringValue.h"
 
 
@@ -155,7 +155,7 @@ public:
     B_PersonStatus *playerStatus1;
     B_PersonStatus *playerStatus2;
     B_CameraEntity *camera;
-    location_t location;
+    B_ViewPose viewPose;
     float unknown1AC;
     float unknownPtrForCamera;
     int bloodLevel;

@@ -31,7 +31,7 @@ TEST(BladeAppTests, Fields)
     EXPECT_OFFSET_EQ(B_BladeApp, playerStatus1, 0x070);
     EXPECT_OFFSET_EQ(B_BladeApp, playerStatus2, 0x074);
     EXPECT_OFFSET_EQ(B_BladeApp, camera, 0x078);
-    EXPECT_OFFSET_EQ(B_BladeApp, location, 0x07C);
+    EXPECT_OFFSET_EQ(B_BladeApp, viewPose, 0x07C);
     EXPECT_OFFSET_EQ(B_BladeApp, unknown1AC, 0x1AC);
     EXPECT_OFFSET_EQ(B_BladeApp, unknownPtrForCamera, 0x1B0);
     EXPECT_OFFSET_EQ(B_BladeApp, bloodLevel, 0x1B4);

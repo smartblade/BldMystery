@@ -331,14 +331,6 @@
 					>
 				</File>
 				<File
-					RelativePath="..\AnalyticGeometry\Location.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\AnalyticGeometry\Location.h"
-					>
-				</File>
-				<File
 					RelativePath="..\AnalyticGeometry\Matrix.cpp"
 					>
 				</File>
@@ -368,6 +360,14 @@
 				</File>
 				<File
 					RelativePath="..\AnalyticGeometry\Vector.h"
+					>
+				</File>
+				<File
+					RelativePath="..\AnalyticGeometry\ViewPose.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\AnalyticGeometry\ViewPose.h"
 					>
 				</File>
 			</Filter>

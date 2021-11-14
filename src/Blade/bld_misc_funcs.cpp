@@ -26,7 +26,7 @@
 /* Begin of file:         0x0040A2A0 */
 /* End of file:           0x0040AD10 */
 
-/* File:                  AnalyticGeometry/Location.cpp */
+/* File:                  AnalyticGeometry/ViewPose.cpp */
 /* Begin of file:         0x0040AD10 */
 /* End of file:           0x0040B560 */
 

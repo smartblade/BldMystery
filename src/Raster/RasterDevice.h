@@ -8,7 +8,7 @@
 #include <export.h>
 #undef BUILD_LIB
 
-class location_t;
+class B_ViewPose;
 class B_BitMap24;
 class B_CameraView;
 class B_Name;
@@ -153,7 +153,7 @@ public:
     virtual void unknown088() = 0;
     virtual void unknown08C() = 0;
     virtual void UnLoadBitmaps() = 0;
-    virtual void StartScene(location_t *cameraPose) = 0;
+    virtual void StartScene(B_ViewPose *cameraPose) = 0;
     virtual void EndScene() = 0;
     virtual void ClsRGB(byte r, byte g, byte b) = 0;
     virtual void Cls(B_Color color) = 0;

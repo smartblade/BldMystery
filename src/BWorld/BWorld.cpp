@@ -107,11 +107,11 @@ void B_World::AddScheduledFunc(
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0043C5FD
-* VC++ mangling:          ?Update@B_World@@QAEXPAVlocation_t@@PAXNH@Z
+* VC++ mangling:          ?Update@B_World@@QAEXPAVB_ViewPose@@PAXNH@Z
 */
 #ifndef BLD_NATIVE
 void B_World::Update(
-    location_t *location, void *cameraView, double time, int updateRaster)
+    B_ViewPose *viewPose, void *cameraView, double time, int updateRaster)
 {
 }
 #endif

@@ -2,7 +2,7 @@
 
 #include "ConfigSections.h"
 #include "GlExtensions.h"
-#include <AnalyticGeometry/Location.h>
+#include <AnalyticGeometry/ViewPose.h>
 #include <View/CameraView.h>
 #include <math.h>
 #include <stdio.h>
@@ -402,10 +402,10 @@ void B_OpenGLRasterDevice::unknown0EC()
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1002045B
-* VC++ mangling:          ?StartScene@B_OpenGLRasterDevice@@UAEXPAVlocation_t@@@Z
+* VC++ mangling:          ?StartScene@B_OpenGLRasterDevice@@UAEXPAVB_ViewPose@@@Z
 */
 
-void B_OpenGLRasterDevice::StartScene(location_t *cameraPose)
+void B_OpenGLRasterDevice::StartScene(B_ViewPose *cameraPose)
 {
     B_TrisDevice::StartScene(cameraPose);
     if (cameraPose)
