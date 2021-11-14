@@ -22,7 +22,7 @@ public:
     double rotationY;
     double rotationZ;
     B_Matrix fromWorld;
-    B_Matrix matrix00B0;
+    B_Matrix toWorld;
 };
 
 #endif

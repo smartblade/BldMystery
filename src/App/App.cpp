@@ -545,12 +545,12 @@ bool B_App::ProcessEvents()
             }
             else
             {
-                gbl_sound_device->SetListenerPosition(this->location.matrix00B0);
+                gbl_sound_device->SetListenerPosition(this->location.toWorld);
             }
         }
         else if (this->listenerMode == 2)
         {
-            gbl_sound_device->SetListenerPosition(this->location.matrix00B0);
+            gbl_sound_device->SetListenerPosition(this->location.toWorld);
         }
     }
     if (this->isActive)

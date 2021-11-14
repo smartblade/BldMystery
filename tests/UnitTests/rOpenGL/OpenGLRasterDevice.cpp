@@ -132,7 +132,7 @@ TEST(OpenGLRasterDeviceTests, Fields)
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, textColor, 0x860CC);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, blurRGBA, 0x860D0);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, fromWorld, 0x860E0);
-    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, invPose, 0x86160);
+    EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, toWorld, 0x86160);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, modelviewMatrix, 0x861E0);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, projectionMatrix, 0x86260);
     EXPECT_OFFSET_EQ(B_OpenGLRasterDevice, viewport, 0x862E0);

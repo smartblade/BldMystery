@@ -365,7 +365,7 @@ private:
     GLubyte textColor[4];
     GLfloat blurRGBA[4];
     B_Matrix fromWorld;
-    B_Matrix invPose;
+    B_Matrix toWorld;
     double modelviewMatrix[16];
     double projectionMatrix[16];
     int viewport[4];

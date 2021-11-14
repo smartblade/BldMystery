@@ -17,5 +17,5 @@ TEST(LocationTests, Fields)
     EXPECT_OFFSET_EQ(location_t, rotationY, 0x020);
     EXPECT_OFFSET_EQ(location_t, rotationZ, 0x028);
     EXPECT_OFFSET_EQ(location_t, fromWorld, 0x030);
-    EXPECT_OFFSET_EQ(location_t, matrix00B0, 0x0B0);
+    EXPECT_OFFSET_EQ(location_t, toWorld, 0x0B0);
 }
