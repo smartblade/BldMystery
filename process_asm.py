@@ -10,8 +10,12 @@ parser = OptionParser()
 parser.add_option("--show-hex-prefix", dest="show_hex_prefix",
                   help="show '0' prefix and 'h' suffix for hex numbers (yes, no)",
                   default="yes")
+parser.add_option("--write-proc-dict", dest="write_proc_dict",
+                  help="Write procedures dictionary to json file (yes, no)",
+                  default="no")
 (options, args) = parser.parse_args()
 options.show_hex_prefix = (options.show_hex_prefix != 'no')
+options.write_proc_dict = (options.write_proc_dict != 'no')
 
 entry_point_regexp = re.compile('Entry\s+Point:\s+(?P<entryPoint>[\dABCDEF]+)')
 export_regexp = re.compile('\*\s+Export:\s+(?P<export>\S+),\s+(?P<ordinal>\d+)')
@@ -955,6 +959,10 @@ class AsmFiles:
         return os.path.join(self._dir, "stdcallDefs.cpp")
 
     @property
+    def procedures_dict_json(self):
+        return os.path.join(self._dir, "procedures_dict.json")
+
+    @property
     def asm_main(self):
         return os.path.join(self._dir, "../asmMain.asm")
 
@@ -1175,6 +1183,8 @@ def collectVariablesFromFile(fileName):
     return varNames
 
 def collectSymbolsFromSources(src_dir):
+    if options.write_proc_dict:
+        return SrcSymbols.create_symbols_dict({}, {}, set())
     varNames = {}
     mangledNames = {}
     implementedProcedures = []
@@ -1365,6 +1375,19 @@ def process_asm_dir(asm_files, symbols):
         elif line.find("ENDP") >= 0:
             isImplemented = False
     f.close()
+    if options.write_proc_dict:
+        with open(asm_files.procedures_dict_json, "wt") as f:
+            proc_dict = {}
+            for line in lines:
+                if line.startswith("l"):
+                    if line.find("PROC") >= 0:
+                        addr = fromHex(line[1:9])
+                        proc_dict[toHex(addr)] = {}
+            json.dump(
+                proc_dict,
+                f,
+                sort_keys=True,
+            )
     print("Writing export symbols command line...")
     writeExportCmd(asm_files, symbols)
     print("Writing procedures declarations...")
