@@ -1,0 +1,22 @@
+#ifndef B_RDataTriangle_H
+#define B_RDataTriangle_H
+
+
+#ifdef BBLIBC_LIB_EXPORT
+#define BUILD_LIB
+#endif
+#include <export.h>
+#undef BUILD_LIB
+
+
+class LIB_EXP B_RDataTriangle {
+public:
+    B_RDataTriangle();
+
+    B_RDataTriangle& operator=(const B_RDataTriangle&);
+
+private:
+    // Add member variables and other implementation details as needed
+};
+
+#endif  // B_RDataTriangle_H
