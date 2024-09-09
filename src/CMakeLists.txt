@@ -27,6 +27,7 @@ endif()
 
 list(APPEND BOD_COMMON_INCLUDE_DIR "${PROJECT_SOURCE_DIR}")
 list(APPEND BOD_COMMON_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/include")
+list(APPEND BOD_COMMON_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/BBLibc")
 list(APPEND BOD_COMMON_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Blade")
 
 set(BOD_EXTERNAL_LIB_DIR "${PROJECT_SOURCE_DIR}/../lib/VC")
@@ -35,9 +36,12 @@ set(BOD_RUNTIME_DIR "${PROJECT_SOURCE_DIR}/../install/bin")
 
 add_subdirectory(AnalyticGeometry)
 add_subdirectory(bicrt)
+add_subdirectory(BBLibc)
 add_subdirectory(Blade)
 add_subdirectory(BladeExt)
 add_subdirectory(NetBlade)
 add_subdirectory(netgame)
 add_subdirectory(Python-1.5.2)
 add_subdirectory(Raster)
+add_dependencies(BBLibc python15)
+

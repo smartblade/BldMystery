@@ -4,8 +4,7 @@
 #define SOUND_H
 
 
-#include <BBLibc.h>
-
+#include <BBLibc/NamedObj.h>
 
 class B_Sound : public B_NamedObj
 {

@@ -2,7 +2,7 @@
 
 #define PERSON_H
 
-#include <BBLibc.h>
+#include <BBLibc/Name.h>
 #include <enemies/Combos_Stuff.h>
 #include <Person/simpleact.h>
 

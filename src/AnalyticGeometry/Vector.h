@@ -2,8 +2,8 @@
 
 #define VECTOR_H
 
-class B_IDataFile;
-class B_ODataFile;
+#include "IDataFile.h"
+#include "ODataFile.h"
 
 class B_Vector
 {

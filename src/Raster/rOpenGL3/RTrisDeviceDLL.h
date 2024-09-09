@@ -1,4 +1,7 @@
-#pragma once
+#ifndef R_TRIS_DEVICE_DLL_H
+
+#define R_TRIS_DEVICE_DLL_H
+
 
 #include <Raster/RasterDevice.h>
 #include <AnalyticGeometry/Vector.h>
@@ -120,3 +123,5 @@ protected:
     int redLightFlickered;
     float redLightIntensity;
 };
+
+#endif /* R_TRIS_DEVICE_DLL_H */

@@ -6,6 +6,8 @@
 #include <View/CameraView.h>
 #include <math.h>
 #include <stdio.h>
+#include <BBLibc/BBLibc.h> // Needed
+#include <BBLibc/MessageManager.h>
 
 
 /*

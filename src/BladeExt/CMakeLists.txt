@@ -12,7 +12,7 @@ target_compile_definitions(
     _CRT_SECURE_NO_DEPRECATE
 )
 target_include_directories(${TARGET} PRIVATE ${BOD_COMMON_INCLUDE_DIR})
-target_link_libraries(${TARGET} PRIVATE Blade python15)
+target_link_libraries(${TARGET} PRIVATE Blade python15 BBLibc)
 set_target_properties(
     ${TARGET} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${BOD_RUNTIME_DIR}

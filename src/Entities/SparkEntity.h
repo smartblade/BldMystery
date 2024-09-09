@@ -3,6 +3,8 @@
 #define SPARK_ENTITY_H
 
 #include <Entities/Entity.h>
+#include <BBLibc/Color.h>
+#include <BBLibc/Name.h>
 
 
 class B_Vector;

@@ -2,7 +2,8 @@
 
 #define ANIM_H
 
-#include "BBLibc.h"
+#include "BBLibc/Name.h"
+#include "BBLibc/IDataFile.h"
 
 class anim_t : public B_NamedObj
 {

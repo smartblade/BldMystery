@@ -1,7 +1,5 @@
 #include <BWorld/Surface.h>
 
-#include <BBLibc.h>
-
 
 /*
 * Module:                 Blade.exe

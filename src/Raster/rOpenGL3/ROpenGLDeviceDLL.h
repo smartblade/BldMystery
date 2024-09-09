@@ -1,16 +1,19 @@
-#pragma once
+#ifndef R_OPEN_GL_DEVICE_DLL_H
+
+#define R_OPEN_GL_DEVICE_DLL_H
 
 #include "GLVideoMode.h"
 #include "RTrisDeviceDLL.h"
 #include <AnalyticGeometry/Matrix.h>
-#include <BBLibc.h>
+
+#include <BBLibc/NamedObj.h>
+#include <BBLibc/BitMap.h>
+#include <BBLibc/Resource.h>
 #include <bld_system.h>
 #include <GL/gl.h>
 #define BUILD_LIB
 #include <export.h>
 
-class B_BitMap;
-class B_Resource;
 
 
 #define GL_LIST_START_2D               500
@@ -426,3 +429,6 @@ extern UpdateAGTextureFunc UpdateAGTexture;
 #ifdef __cplusplus
 }
 #endif
+
+#endif /* R_OPEN_GL_DEVICE_DLL_H */
+

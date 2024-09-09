@@ -1,4 +1,5 @@
 #include <Entities/DecalEntity.h>
+#include <BBLibc/Name.h>
 
 
 /*

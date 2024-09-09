@@ -2,7 +2,7 @@
 
 #define EVENT_FUNC_C_H
 
-#include <BBLibc.h>
+#include <BBLibc/NamedObj.h>
 
 
 class B_Entity;

@@ -3,6 +3,9 @@
 #include <Control/Events.h>
 #include "ProcessorTimer.h"
 #include <Sound/Sound.h>
+#include <BBLibc/Color.h>
+#include <BBLibc/IDataFile.h>
+#include <BBLibc/ODataFile.h>
 #include "bld_misc_funcs.h"
 
 

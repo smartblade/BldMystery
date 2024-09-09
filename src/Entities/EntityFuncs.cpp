@@ -13,6 +13,7 @@
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
 #include <Entities/EntityFuncs.h>
+#include <BBLibc/MessageManager.h>
 
 
 /*

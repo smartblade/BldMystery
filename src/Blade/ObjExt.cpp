@@ -1,15 +1,24 @@
-
+#include <math.h>
+#include <fcntl.h>
 #include <bld_system.h>
 #include <bld_python.h>
 #include <Raster/RasterDevice.h>
 #include <View/CameraView.h>
 #include "BladeApp.h"
+#include <BBLibc/BBLibc.h>
+#include <BBLibc/Name.h>
+#include <BBLibc/MessageManager.h>
+#include <BBLibc/NDataBase.h>
+#include <BBLibc/ResourceManager.h>
+#include <BBLibc/BitMap.h>
+#include <BBLibc/Resource.h>
+#include <BBLibc/ObjDscr.h>
 #include <Entities/CameraEntity.h>
 #include <Entities/PersonEntity.h>
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
 #include <blade_ext.h>
-#include <math.h>
+
 
 
 /*
@@ -1615,14 +1624,14 @@ B_BitMap *RM_GetResource(const char *name)
     resource = B_resource_manager.GetResource(2, name);
     if (resource != NULL)
     {
-        B_BitMap *bitMap = new B_BitMap((B_BitMap &)resource->data);
+        B_BitMap *bitMap = new B_BitMap((B_BitMap &)resource->file_name);
         B_resource_manager.FreeResource(resource);
         return bitMap;
     }
     resource = B_resource_manager.GetResource(3, name);
     if (resource != NULL)
     {
-        B_BitMap24 *bitMap24 = (B_BitMap24 *)&resource->data;
+        B_BitMap24 *bitMap24 = (B_BitMap24 *)&resource->file_name;
         B_BitMap *bitMap = new B_BitMap(
             B_BitMap::BitMapType4, bitMap24->dimension1, bitMap24->dimension2,
             NULL);
@@ -1635,7 +1644,7 @@ B_BitMap *RM_GetResource(const char *name)
     resource = B_resource_manager.GetResource(4, name);
     if (resource != NULL)
     {
-        B_BitMap24 *bitMap24 = (B_BitMap24 *)&resource->data;
+        B_BitMap24 *bitMap24 = (B_BitMap24 *)&resource->file_name;
         B_BitMap *bitMap = new B_BitMap(
             B_BitMap::BitMapType2, bitMap24->dimension1, bitMap24->dimension2,
             NULL);
@@ -1800,6 +1809,7 @@ int SetCallCheck(int check)
     int checkErrorsPrev = CheckErrors;
     CheckErrors = check;
     return checkErrorsPrev;
+    return 0;
 }
 
 

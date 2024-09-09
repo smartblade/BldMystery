@@ -1,7 +1,15 @@
-#pragma once
+
+#ifndef RASTER_DEVICE_H
+
+#define RASTER_DEVICE_H
+
 
 #include <bld_system.h>
 #include <BUIxc.h>
+#include <BBLibc/Name.h>
+#include <BBLibc/Color.h>
+#include <BBLibc/ParticleGType.h>
+#include <BBLibc/BitMap24.h>
 #ifdef RASTER_LIB_EXPORT
 #define BUILD_LIB
 #endif
@@ -9,13 +17,9 @@
 #undef BUILD_LIB
 
 class B_ViewPose;
-class B_BitMap24;
 class B_CameraView;
-class B_Name;
-class B_Color;
 class B_Font;
-struct B_Particle;
-class B_ParticleGType;
+struct B_Particle; 
 
 #define B_RASTER_CID_3DFX              3
 #define B_RASTER_CID_OPENGL            4
@@ -669,3 +673,5 @@ protected:
 };
 
 LIB_EXP B_3DRasterDevice *B_3D_raster_device;
+
+#endif /* RASTER_DEVICE_H */

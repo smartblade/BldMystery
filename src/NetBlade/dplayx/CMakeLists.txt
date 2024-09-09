@@ -5,6 +5,7 @@ project(${TARGET})
 add_library(${TARGET} INTERFACE)
 
 target_include_directories(${TARGET} INTERFACE ${PROJECT_SOURCE_DIR})
+target_link_options(${TARGET} INTERFACE "/SAFESEH:NO")
 target_link_libraries(
     ${TARGET} INTERFACE
     ${PROJECT_SOURCE_DIR}/dplayx.lib

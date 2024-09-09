@@ -5,6 +5,8 @@
 
 
 #include <array.h>
+#include <BBLibc/Name.h>
+#include <BBLibc/IDataFile.h>
 #include <Entities/Entity.h>
 #include <BWorld/atmosphere.h>
 #include <BWorld/BMap.h>
