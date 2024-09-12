@@ -1356,7 +1356,7 @@ def write_hash(hashFileName, new_hash):
 
 def read_module_name(asm_files):
     with open(asm_files.module, "rt") as f:
-        return f.readlines()[0]
+        return f.readlines()[0].rstrip()
 
 def run():
     src_dir = os.path.abspath('src')
