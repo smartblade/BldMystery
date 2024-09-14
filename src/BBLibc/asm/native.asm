@@ -1654,7 +1654,7 @@ l10001C44 PROC
            ja l10001D56
            mov ecx, dword ptr [ebp-008h]
            xor eax, eax
-           mov al, byte ptr [ecx+offset l10001D89]
+           mov al, byte ptr [ecx+offset g10001D89]
            jmp [offset g10001D71+eax*04h]
 l10001CF2: push offset g10047080
            push offset g1004A53C
@@ -1724,12 +1724,15 @@ g10001D71  dd l10001D42
            dd l10001D1A
            dd l10001D2E
            dd l10001D56
+g10001D89  dd 005050500h
+           dd 005050505h
+           dd 001050505h
+           dd 002050505h
+           dd 005050505h
+           db 003h
+           db 005h
+           db 004h
 l10001C44 ENDP
-l10001D89: add [005050505h], al
-           add eax, 005050505h
-           add [005020505h], eax
-           add eax, 005030505h
-g10001D9F  db 004h
 ;
 ;* Call:
 ; 10001F3E, 1000206A, 100020AB 
