@@ -27,6 +27,11 @@
         #pragma warning (disable : 4244)
 #endif
 
+/* Define nullptr on old compilers */
+#if _MSC_VER < 1900
+#define nullptr NULL
+#endif
+
 
 #endif /* BLD_SYSTEM_H */
 
