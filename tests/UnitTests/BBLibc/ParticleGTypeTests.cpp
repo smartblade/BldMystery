@@ -2,7 +2,7 @@
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
 #define private public
-#include <BBLibc.h>
+#include <BBLibc/ParticleGType.h>
 
 
 TEST(ParticleGTypeTests, SizeOf)
