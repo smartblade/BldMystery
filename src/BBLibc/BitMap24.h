@@ -12,7 +12,7 @@
 #undef BUILD_LIB
 
 template <typename T>
-class B_Array {
+class LIB_EXP B_Array {
 private:
     T* data_; // pointer to the array data
     size_t size_; // current size of the array
