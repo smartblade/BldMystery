@@ -2,9 +2,9 @@
 
 #define ATMOSPHERE_H
 
-#include "Color.h"
-#include "NamedObj.h"
-#include "IDataFile.h"
+#include <BBLibc/Color.h>
+#include <BBLibc/NamedObj.h>
+#include <BBLibc/IDataFile.h>
 
 class atmosphere_t : public B_NamedObj
 {
