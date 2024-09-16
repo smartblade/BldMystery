@@ -221,8 +221,8 @@ unsigned char B_IDataFile::Peek() {
 */
 
 int B_IDataFile::Eof() {
-    long ecx = filePosition + cacheBlockFlag->filePosition;
-    return ecx >= this->file_size ? 1 : 0;
+    unsigned int curPos = filePosition + cacheBlockFlag->filePosition;
+    return curPos >= this->file_size ? 1 : 0;
 }
 
 
