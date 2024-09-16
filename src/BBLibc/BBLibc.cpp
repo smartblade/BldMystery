@@ -1,5 +1,5 @@
 #include <crtdbg.h>
-#include "direct.h"
+#include <direct.h>
 
 #include "MessageManager.h"
 #define BBLIBC_LIB_EXPORT
