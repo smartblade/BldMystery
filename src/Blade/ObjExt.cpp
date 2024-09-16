@@ -1,5 +1,3 @@
-#include <math.h>
-#include <fcntl.h>
 #include <bld_system.h>
 #include <bld_python.h>
 #include <Raster/RasterDevice.h>
@@ -18,7 +16,8 @@
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
 #include <blade_ext.h>
-
+#include <math.h>
+#include <fcntl.h>
 
 
 /*
@@ -1809,7 +1808,6 @@ int SetCallCheck(int check)
     int checkErrorsPrev = CheckErrors;
     CheckErrors = check;
     return checkErrorsPrev;
-    return 0;
 }
 
 
