@@ -4,9 +4,8 @@
 
 #include <AnalyticGeometry/Plane.h>
 #include <BBLibc/Color.h>
-#include <BBLibc/IDataFile.h>
 
-
+class B_IDataFile;
 
 class B_LightSource
 {

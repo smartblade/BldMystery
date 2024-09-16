@@ -8,7 +8,6 @@
 #include <BUIxc.h>
 #include <BBLibc/Name.h>
 #include <BBLibc/Color.h>
-#include <BBLibc/ParticleGType.h>
 #include <BBLibc/BitMap24.h>
 #ifdef RASTER_LIB_EXPORT
 #define BUILD_LIB
@@ -19,7 +18,8 @@
 class B_ViewPose;
 class B_CameraView;
 class B_Font;
-struct B_Particle; 
+struct B_Particle;
+class B_ParticleGType;
 
 #define B_RASTER_CID_3DFX              3
 #define B_RASTER_CID_OPENGL            4
