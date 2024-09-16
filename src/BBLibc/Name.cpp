@@ -85,11 +85,7 @@ B_Name::~B_Name() {
 */
 
 unsigned int B_Name::CompareNoCase(const char* str) const {
-    if (this->string != 0) {
-        return 1;
-    }
-
-    return 0;
+    return stricmp(this->string, str);
 }
 
 
