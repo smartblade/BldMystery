@@ -24,7 +24,7 @@ void OutputWin32Error(char const* message)
     mout << message;
 
     LPSTR errorString = nullptr;
-    FormatMessageA(
+    FormatMessage(
         FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
         nullptr, errorCode, 0x400, (LPSTR)&errorString, 0, nullptr);
 
