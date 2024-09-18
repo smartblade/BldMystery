@@ -42,5 +42,3 @@ add_subdirectory(NetBlade)
 add_subdirectory(netgame)
 add_subdirectory(Python-1.5.2)
 add_subdirectory(Raster)
-add_dependencies(BBLibc python15)
-
