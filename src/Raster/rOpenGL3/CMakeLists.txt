@@ -39,6 +39,7 @@ target_link_libraries(
     AnalyticGeometry
     BBLibc
     Raster
+    python15
     bicrt
     OpenGL32
     Glu32
