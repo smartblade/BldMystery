@@ -28303,10 +28303,9 @@ g1001020E  dd l10010132
            dd l1000FDD5
            dd l1000FEC3
            dd l1000FFFA
-           db 055h
-           db 08Bh
 l1000FC1D ENDP
-           in al, dx
+           push ebp
+           mov ebp, esp
            sub esp, 000000010h
            mov eax, dword ptr [ebp+008h]
            mov ecx, dword ptr [eax+038h]
@@ -28588,11 +28587,9 @@ l10010434: push 000000001h
 ;* Jump:
 ; 1001042F(U) 
 ;
-l100104CE PROC
-           mov esp, ebp
+l100104CE: mov esp, ebp
            pop ebp
            ret
-l100104CE ENDP
 ;
 ;* Call:
 ; 1001035E, 10010377, 10010390, 100103A9, 100103C2, 100103F2, 1001040B, 10010424 
@@ -34209,7 +34206,7 @@ l100136D7 PROC
            ja l10013795
            mov ecx, dword ptr [ebp-008h]
            xor eax, eax
-           mov al, byte ptr [ecx+offset l100137D8]
+           mov al, byte ptr [ecx+offset g100137D8]
            jmp [offset g100137C4+eax*04h]
 l10013715: mov edx, dword ptr [ebp+008h]
            push edx
@@ -34287,18 +34284,18 @@ g100137C4  dd l10013715
            dd l10013775
            dd l1001377E
            dd l10013795
+g100137D8  dd 003020100h
+           dd 003030303h
+           db 003h
+           db 004h
+           db 003h
 l100136D7 ENDP
-l100137D8 PROC
-           add [ecx], al
-           add al, [ebx]
-           add eax, [ebx]
-           add eax, [ebx]
-           add eax, [ebx+eax]
 ;
 ;* Call:
 ; 10013761 
 ;
-l100137E3: push ebp
+l100137E3 PROC
+           push ebp
            mov ebp, esp
            sub esp, 00000001Ch
            mov eax, dword ptr [ebp+008h]
@@ -34586,7 +34583,7 @@ l10013A37: mov ecx, dword ptr [ebp+008h]
            mov esp, ebp
            pop ebp
            ret
-l100137D8 ENDP
+l100137E3 ENDP
 ;
            push ebp
            mov ebp, esp
@@ -44742,7 +44739,7 @@ l100197CC: mov eax, dword ptr [ebp+008h]
            ja l10019A75
            mov ecx, dword ptr [ebp-004h]
            xor eax, eax
-           mov al, byte ptr [ecx+offset l10019AFA]
+           mov al, byte ptr [ecx+offset g10019AFA]
            jmp [offset g10019AB6+eax*04h]
 l10019800: mov edx, dword ptr [ebp+008h]
            push edx
@@ -45047,140 +45044,72 @@ g10019AB6  dd l10019A2A
            dd l100199D0
            dd l10019A05
            dd l10019A75
+g10019AFA  dd 010101000h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           dd 001101010h
+           dd 004030201h
+           dd 003030303h
+           dd 007030605h
+           dd 000030303h
+           dd 000000000h
+           dd 008000000h
+           dd 00C0B0A09h
+           dd 00E10100Dh
+           dd 00E0E0E0Eh
+           dd 00E0E0E0Eh
+           dd 00E0E0E0Eh
+           dd 0100E0E0Eh
+           dd 010101010h
+           dd 010101010h
+           dd 010101010h
+           db 010h
+           db 00Fh
 l10019770 ENDP
-l10019AFA: add [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [ecx], al
-           add [edx], eax
-           add eax, [ebx+eax]
-           add eax, [ebx]
-           add eax, [003070306h]
-           add eax, [ebx]
-           add [eax], al
-           add [eax], al
-           add [eax], al
-           add [eax], al
-           or [ecx], cl
-           or cl, [ebx]
-           or al, 00Dh
-           adc [eax], dl
-           push cs
-           push cs
-           push cs
-           push cs
-           push cs
-           push cs
-           push cs
-           push cs
-           push cs
-           push cs
-           push cs
-           push cs
-           push cs
-           push cs
-           push cs
-           push cs
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-           adc [eax], dl
-g10019BF7  db 00Fh
 ;
 ;* Call:
 ; 10019804 
