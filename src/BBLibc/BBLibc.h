@@ -24,8 +24,6 @@ LIB_EXP void RemoveOnOpenInputFileFunc(void);
 
 LIB_EXP PyObject* CallPythonObject(PyObject* func, PyObject* args);
 
-struct PyObject;
-
 
 #ifdef __cplusplus
 extern "C" {
