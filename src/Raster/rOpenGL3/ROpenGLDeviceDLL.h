@@ -5,13 +5,13 @@
 #include <AnalyticGeometry/Matrix.h>
 
 #include <BBLibc/NamedObj.h>
-#include <BBLibc/BitMap.h>
-#include <BBLibc/Resource.h>
 #include <bld_system.h>
 #include <GL/gl.h>
 #define BUILD_LIB
 #include <export.h>
 
+class B_BitMap;
+class B_Resource;
 
 
 #define GL_LIST_START_2D               500
