@@ -1,6 +1,4 @@
-#ifndef R_OPEN_GL_DEVICE_DLL_H
-
-#define R_OPEN_GL_DEVICE_DLL_H
+#pragma once
 
 #include "GLVideoMode.h"
 #include "RTrisDeviceDLL.h"
@@ -429,6 +427,4 @@ extern UpdateAGTextureFunc UpdateAGTexture;
 #ifdef __cplusplus
 }
 #endif
-
-#endif /* R_OPEN_GL_DEVICE_DLL_H */
 
