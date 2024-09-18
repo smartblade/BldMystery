@@ -86,3 +86,18 @@ void RemoveOnOpenInputFileFunc(void) {
     // TODO implement
 }
 
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x1003E436
+* VC++ mangling:          ?CallPythonObject@@YAPAUPyObject@@PAU1@0@Z
+*/
+
+#ifndef BLD_NATIVE
+PyObject * CallPythonObject(PyObject * func, PyObject * args) {
+    // TODO implement
+    PyObject* result = nullptr;
+
+    return result;
+}
+#endif

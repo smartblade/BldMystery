@@ -389,10 +389,3 @@ B_IDataFile& operator >>(B_IDataFile& file, int& i) {
     // TODO implement
     return file;
 }
-
-LIB_EXP PyObject* CallPythonObject(PyObject* func, PyObject* args) {
-    // TODO implement
-    PyObject* result = nullptr;
-
-    return result;
-}

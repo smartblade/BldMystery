@@ -82,7 +82,4 @@ LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, short& c);
 LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, int& i);
 LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, unsigned char& c);
 
-// FIXME
-LIB_EXP PyObject* CallPythonObject(PyObject* func, PyObject* args);
-
 #endif /* B_I_DATA_FILE_H */
