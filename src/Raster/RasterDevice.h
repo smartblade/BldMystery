@@ -1,8 +1,4 @@
-
-#ifndef RASTER_DEVICE_H
-
-#define RASTER_DEVICE_H
-
+#pragma once
 
 #include <bld_system.h>
 #include <BUIxc.h>
@@ -673,5 +669,3 @@ protected:
 };
 
 LIB_EXP B_3DRasterDevice *B_3D_raster_device;
-
-#endif /* RASTER_DEVICE_H */
