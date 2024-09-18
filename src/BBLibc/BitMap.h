@@ -3,6 +3,7 @@
 
 #define B_BITMAP_H
 
+#include <BBLibc/Pal.h>
 #include <bld_system.h>
 
 #ifdef BBLIBC_LIB_EXPORT
@@ -11,13 +12,6 @@
 #include <export.h>
 #undef BUILD_LIB
 
-class LIB_EXP B_Pal
-{
-public:
-    unsigned char B_Pal::GetRed(unsigned int val) const { return 0; };
-    unsigned char B_Pal::GetGreen(unsigned int val) const { return 0; };
-    unsigned char B_Pal::GetBlue(unsigned int val) const { return 0; };
-};
 
 class LIB_EXP B_BitMap
 {
