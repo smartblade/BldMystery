@@ -2,9 +2,7 @@
 
 #include <bld_system.h>
 #include <BUIxc.h>
-#include <BBLibc/Name.h>
 #include <BBLibc/Color.h>
-#include <BBLibc/BitMap24.h>
 #ifdef RASTER_LIB_EXPORT
 #define BUILD_LIB
 #endif
@@ -12,7 +10,9 @@
 #undef BUILD_LIB
 
 class B_ViewPose;
+class B_BitMap24;
 class B_CameraView;
+class B_Name;
 class B_Font;
 struct B_Particle;
 class B_ParticleGType;
