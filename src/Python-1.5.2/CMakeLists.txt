@@ -30,7 +30,7 @@ if (MSVC)
     target_link_libraries(${TARGET} PRIVATE ${LARGEINT_DIR}/largeint.lib)
     set_target_properties(
         ${TARGET} PROPERTIES
-        LINK_FLAGS "/NODEFAULTLIB:libc.lib /SAFESEH:NO"
+        LINK_FLAGS "/NODEFAULTLIB:libc.lib"
     )
 endif()
 set_target_properties(
