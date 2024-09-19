@@ -26,7 +26,7 @@ unsigned char B_Pal::GetGreen(unsigned int val) const { return 0; };
 
 /*
 * Module:                 BBLibc.dll
-* Entry point:            0x100093E1
+* Entry point:            0x100093FB
 * VC++ mangling:          ?GetBlue@B_Pal@@QBEEI@Z
 */
 
