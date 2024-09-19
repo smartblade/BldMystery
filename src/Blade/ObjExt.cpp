@@ -1623,14 +1623,14 @@ B_BitMap *RM_GetResource(const char *name)
     resource = B_resource_manager.GetResource(2, name);
     if (resource != NULL)
     {
-        B_BitMap *bitMap = new B_BitMap((B_BitMap &)resource->file_name);
+        B_BitMap *bitMap = new B_BitMap((B_BitMap &)resource->data);
         B_resource_manager.FreeResource(resource);
         return bitMap;
     }
     resource = B_resource_manager.GetResource(3, name);
     if (resource != NULL)
     {
-        B_BitMap24 *bitMap24 = (B_BitMap24 *)&resource->file_name;
+        B_BitMap24 *bitMap24 = (B_BitMap24 *)&resource->data;
         B_BitMap *bitMap = new B_BitMap(
             B_BitMap::BitMapType4, bitMap24->dimension1, bitMap24->dimension2,
             NULL);
@@ -1643,7 +1643,7 @@ B_BitMap *RM_GetResource(const char *name)
     resource = B_resource_manager.GetResource(4, name);
     if (resource != NULL)
     {
-        B_BitMap24 *bitMap24 = (B_BitMap24 *)&resource->file_name;
+        B_BitMap24 *bitMap24 = (B_BitMap24 *)&resource->data;
         B_BitMap *bitMap = new B_BitMap(
             B_BitMap::BitMapType2, bitMap24->dimension1, bitMap24->dimension2,
             NULL);

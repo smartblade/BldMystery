@@ -15,7 +15,7 @@
 class LIB_EXP B_Resource : public B_NamedObj
 {
 public:
-    B_Name* file_name;
+    void* data;
 };
 
 #endif /* B_RESOURCE_H */
