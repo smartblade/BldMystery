@@ -1,7 +1,4 @@
-#ifndef R_TRIS_DEVICE_DLL_H
-
-#define R_TRIS_DEVICE_DLL_H
-
+#pragma once
 
 #include <Raster/RasterDevice.h>
 #include <AnalyticGeometry/Vector.h>
@@ -124,4 +121,3 @@ protected:
     float redLightIntensity;
 };
 
-#endif /* R_TRIS_DEVICE_DLL_H */
