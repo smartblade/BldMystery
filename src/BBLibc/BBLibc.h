@@ -3,12 +3,13 @@
 #define BBLIBC_H
 
 #include <bld_system.h>
-#include <bld_python.h>
 #ifdef BBLIBC_LIB_EXPORT
 #define BUILD_LIB
 #endif
 #include <export.h>
 #undef BUILD_LIB
+
+struct PyObject;
 
 LIB_EXP int CheckErrors;
 
@@ -30,7 +31,7 @@ extern "C" {
 #endif
 
 
-LIB_EXP INIT_PY_MODULE_FUNC initBBLibc(void);
+LIB_EXP void initBBLibc(void);
 
 #ifdef __cplusplus
 }

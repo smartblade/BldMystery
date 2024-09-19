@@ -1,11 +1,11 @@
-#include <crtdbg.h>
-#include <direct.h>
 
 #include "MessageManager.h"
 #define BBLIBC_LIB_EXPORT
 #include "BBLibc.h"
 #include "ObjDscr.h"
-
+#include <crtdbg.h>
+#include <direct.h>
+#include <stdio.h>
 
 char Dest[1024];
 char currDirBuffer[260]; // 104h = 260 bytes
