@@ -39,6 +39,7 @@ noFWAIT = {
     'fstsw' : 'fnstsw',
 }
 fwait_regexp = re.compile('^(?P<cmd>{})'.format("|".join(noFWAIT.keys())))
+imul_3_regexp = re.compile('^imul\s+(\w+,\s+){2}(?P<imm>[\dABCDEF]+)')
 
 def toHex(n):
     return format(n, '08X')
@@ -339,6 +340,18 @@ class AsmInstruction(CodeItem):
             cmd = match.group('cmd')
             self._instr = self._instr.replace(cmd, noFWAIT[cmd])
 
+    def fix_imul_3_args(self):
+        match = re.search(imul_3_regexp, self._instr)
+        if match:
+            immediate_str = match.group('imm')
+            immediate = fromHex(immediate_str)
+            if immediate >= 0x80000000 and immediate < 0xFFFFFF80:
+                # negative value
+                immediate = 0x100000000 - immediate
+                self._instr = self._instr.replace(
+                    immediate_str, "-{}".format(toHex(immediate))
+                )
+
     def applyRelocs(self, imageMap):
         reloc = imageMap.relocations()
         for a in range(self._addr, self._addr + self._length):
@@ -517,6 +530,7 @@ class CodeBlock(CodeItem):
             instr.fixByteMemoryAccess()
             instr.addNearJumpModifier(imageMap)
             instr.avoidEmittingOfFWAIT()
+            instr.fix_imul_3_args()
 
     def write(self, writer):
         for instr in self._instructions:
@@ -841,7 +855,7 @@ class MemoryArea:
             expectedSize = 2 * (addr - self._addr)
             delta = expectedSize - len(self._bytes)
             if (delta < 0):
-                del self._bytes[delta]
+                del self._bytes[delta:]
             for i in range(delta):
                 self._bytes.append(None)
             self._bytes.extend(bytes)
@@ -993,7 +1007,9 @@ def readRelocations(relocFileName):
 
 def readDataItems(dataFileName):
     addr_inv_regexp = re.compile('^;;\s(?P<startAddr>0x[\dABCDEF]+)\s(?P<endAddr>0x[\dABCDEF]+)')
+    exp_var_regexp = re.compile('^;;;\s(?P<addr>0x[\dABCDEF]+)\s(?P<name>[\S]+)')
     dataItems = dict()
+    exports = dict()
     f = open(dataFileName)
     for line in f.readlines():
         match = re.search(addr_inv_regexp, line)
@@ -1001,8 +1017,12 @@ def readDataItems(dataFileName):
             startAddr = fromHex(match.group('startAddr'))
             endAddr = fromHex(match.group('endAddr'))
             dataItems[startAddr] = DataItem(startAddr, endAddr)
+        match = re.search(exp_var_regexp, line)
+        if match:
+            addr = fromHex(match.group('addr'))
+            exports[addr] = match.group('name')
     f.close()
-    return dataItems
+    return dataItems, exports
 
 def reverseBytes(bytes):
     length = len(bytes) // 2
@@ -1076,7 +1096,7 @@ def writeExportCmd(asm_files, symbols):
     with open(asm_files.intermediate_export) as f:
         lines = f.readlines()
     addr_export_regexp = re.compile(
-        '(?P<addr>[\dABCDEF]+)\s(?P<exportName>\w+)\s(?P<internalName>\w+)'
+        '(?P<addr>[\dABCDEF]+)\s(?P<exportName>\S+)\s(?P<internalName>\w+)'
     )
     exportAddrs = []
     exportNames = {}
@@ -1223,13 +1243,15 @@ def createAsmCode(asm_files):
     lines = f.readlines()
     f.close()
     reloc = readRelocations(asm_files.reloc)
-    userData = readDataItems(asm_files.input_data)
+    userData, exports = readDataItems(asm_files.input_data)
     addr_label_regexp = re.compile('^(?P<addr>[\dABCDEF]+):\s+(?P<bytes>[\dABCDEF]+)\s+(?P<instr>\S.*)?$')
     print("Fill data structures...")
-    entryPoint = None
-    export = None
     mem = MemoryArea(reloc)
     imageMap = ImageMap(mem)
+    for addr, export in exports.items():
+        imageMap.addExport(addr, export)
+    entryPoint = None
+    export = None
     comments = []
     for line in lines:
         match = re.search(addr_label_regexp, line)

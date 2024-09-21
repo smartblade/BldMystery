@@ -19,9 +19,16 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Blade", "Blade\Blade.vcproj", "{F18446DB-7027-4330-BB0F-3D133E659CA5}"
 	ProjectSection(ProjectDependencies) = postProject
 		{15817D0C-F1B7-40B7-A229-706AB72278A8} = {15817D0C-F1B7-40B7-A229-706AB72278A8}
+		{7F217411-4A32-4ED8-B6BB-6F9D240F82AA} = {7F217411-4A32-4ED8-B6BB-6F9D240F82AA}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "python15", "Python-1.5.2\python15.vcproj", "{047ABB79-1A07-43D8-BE9D-7F168BA38E88}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BBLibc", "BBLibc\BBLibc.vcproj", "{7F217411-4A32-4ED8-B6BB-6F9D240F82AA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{15817D0C-F1B7-40B7-A229-706AB72278A8} = {15817D0C-F1B7-40B7-A229-706AB72278A8}
+		{047ABB79-1A07-43D8-BE9D-7F168BA38E88} = {047ABB79-1A07-43D8-BE9D-7F168BA38E88}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +67,12 @@ Global
 		{047ABB79-1A07-43D8-BE9D-7F168BA38E88}.Native|Win32.Build.0 = Native|Win32
 		{047ABB79-1A07-43D8-BE9D-7F168BA38E88}.Release|Win32.ActiveCfg = Release|Win32
 		{047ABB79-1A07-43D8-BE9D-7F168BA38E88}.Release|Win32.Build.0 = Release|Win32
+		{7F217411-4A32-4ED8-B6BB-6F9D240F82AA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7F217411-4A32-4ED8-B6BB-6F9D240F82AA}.Debug|Win32.Build.0 = Debug|Win32
+		{7F217411-4A32-4ED8-B6BB-6F9D240F82AA}.Native|Win32.ActiveCfg = Native|Win32
+		{7F217411-4A32-4ED8-B6BB-6F9D240F82AA}.Native|Win32.Build.0 = Native|Win32
+		{7F217411-4A32-4ED8-B6BB-6F9D240F82AA}.Release|Win32.ActiveCfg = Release|Win32
+		{7F217411-4A32-4ED8-B6BB-6F9D240F82AA}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
