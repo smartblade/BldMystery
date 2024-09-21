@@ -178,9 +178,9 @@ void B_ResourceManager::AddBodLink(char const* c, int i, char const* pc, int i1)
 * VC++ mangling:          ??4B_ResourceManager@@QAEAAV0@ABV0@@Z
 */
 #ifndef BLD_NATIVE
-B_ResourceManager* B_ResourceManager::operator =(B_ResourceManager* that)
+B_ResourceManager& B_ResourceManager::operator =(const B_ResourceManager& that)
 {
-    return this;
+    return *this;
 }
 #endif
 

@@ -45,7 +45,7 @@ public:
     unsigned char Peek();
     int Eof();
     void Read(void* data, unsigned int size);
-    bool OK();
+    unsigned int OK() const;
     char const* GetFileName() const;
     B_IDataFile& operator =(const B_IDataFile& other);
     static PyObject* OnOpenFunc;

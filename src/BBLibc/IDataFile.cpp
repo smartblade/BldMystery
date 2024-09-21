@@ -237,7 +237,7 @@ void B_IDataFile::Read(void* data, unsigned int size)
 * VC++ mangling:          ?OK@B_IDataFile@@QBEIXZ
 */
 
-bool B_IDataFile::OK()
+unsigned int B_IDataFile::OK() const
 {
     return fd != -1;
 }
