@@ -31,14 +31,14 @@ B_Name::B_Name(const char* str)
         p++;
     }
 
-    len++; // account for null character
-
-    char* buffer = new char[len];
+    char* buffer = new char[len + 1];
 
     // Copy the string into the allocated memory
     for (int i = 0; i < len; i++) {
         buffer[i] = str[i];
     }
+
+    buffer[len] = '\0'; // Add null terminator
 
     this->string = buffer;
     this->len = len;
