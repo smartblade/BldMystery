@@ -5,7 +5,7 @@
 
 #include <BWorld/BWorld.h>
 #include <Math/BSpline.h>
-#include <BBLibc.h>
+#include <BBLibc/NamedObj.h>
 
 
 class B_Vector;

@@ -1,7 +1,6 @@
 #include <AnalyticGeometry/Vector.h>
 
 #include <bld_system.h>
-#include <BBLibc.h>
 
 
 /*

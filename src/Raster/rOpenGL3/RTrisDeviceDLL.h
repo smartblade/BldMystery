@@ -120,3 +120,4 @@ protected:
     int redLightFlickered;
     float redLightIntensity;
 };
+

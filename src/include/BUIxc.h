@@ -2,7 +2,7 @@
 
 #define BUIXC_H
 
-#include <BBLibc.h>
+#include <BBLibc/NamedObj.h>
 #include <export.h>
 
 class LIB_EXP B_Widget
@@ -14,6 +14,7 @@ public:
     virtual void unknown00C() = 0;
     virtual void Draw(int x, int y, float time);
 };
+
 
 class B_Font : public B_NamedObj
 {

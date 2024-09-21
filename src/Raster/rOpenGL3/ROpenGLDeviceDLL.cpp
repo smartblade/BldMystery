@@ -4,6 +4,8 @@
 #include "GlExtensions.h"
 #include <AnalyticGeometry/ViewPose.h>
 #include <View/CameraView.h>
+#include <BBLibc/BBLibc.h>
+#include <BBLibc/MessageManager.h>
 #include <math.h>
 #include <stdio.h>
 

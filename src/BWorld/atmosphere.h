@@ -2,7 +2,9 @@
 
 #define ATMOSPHERE_H
 
-#include "BBLibc.h"
+#include <BBLibc/Color.h>
+#include <BBLibc/NamedObj.h>
+#include <BBLibc/IDataFile.h>
 
 class atmosphere_t : public B_NamedObj
 {
@@ -16,4 +18,4 @@ public:
 
 B_IDataFile &operator >>(B_IDataFile &file, atmosphere_t *atm);
 
-#endif
+#endif /* ATMOSPHERE_H */

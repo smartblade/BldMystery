@@ -1,5 +1,6 @@
 #include <App/App.h>
 
+#include <fcntl.h>
 #include <bld_system.h>
 #include <bld_python.h>
 #include <Raster/RasterDevice.h>
@@ -12,6 +13,11 @@
 #include "sound_device.h"
 #include <NetMod/libnet.h>
 #include <BInputc.h>
+#include <BBLibc/BBLibc.h>
+#include <BBLibc/ResourceManager.h>
+#include <BBLibc/IDataFile.h>
+#include <BBLibc/NDataBase.h>
+#include <BBLibc/BitMap24.h>
 #include <BUIxc.h>
 #include "bld_misc_funcs.h"
 #define BUILD_LIB

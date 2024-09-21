@@ -2,7 +2,7 @@
 
 #define CLIMBING_H
 
-#include <BBLibc.h>
+#include <BBLibc/NamedObj.h>
 #include <AnalyticGeometry/Vector.h>
 
 

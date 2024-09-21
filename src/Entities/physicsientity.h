@@ -3,7 +3,7 @@
 #define PHYSIC_SI_ENTITY_H
 
 #include <Entities/ObjectEntity.h>
-
+#include <BBLibc/Name.h>
 
 class B_Vector;
 

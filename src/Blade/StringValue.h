@@ -3,7 +3,8 @@
 
 #define STRING_VALUE_H
 
-#include <BBLibc.h>
+#include <BBLibc/Name.h>
+#include <BBLibc/NamedObj.h>
 
 class B_StringValue : public B_NamedObj
 {

@@ -10,6 +10,7 @@
 #include <Entities/PhysicSIEntity.h>
 #include <Entities/SparkEntity.h>
 #include <Math/BSpline.h>
+#include <BBLibc/MessageManager.h>
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
 #include <Entities/EntityFuncs.h>

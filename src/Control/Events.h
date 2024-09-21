@@ -2,9 +2,12 @@
 
 #define EVENTS_H
 
-#include <BBLibc.h>
+#include <array.h>
+#include <BBLibc/Name.h>
+
 #include <Control/EventFuncC.h>
 
+struct PyObject;
 
 class B_EventFunc
 {

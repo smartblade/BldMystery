@@ -2,8 +2,10 @@
 
 #define ENTITY_H
 
-#include "BBLibc.h"
+#include <AnalyticGeometry/Matrix.h>
+#include <BBLibc/NamedObj.h>
 
+struct PyObject;
 
 #define PLAYER "Player1"
 

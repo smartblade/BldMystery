@@ -1,7 +1,7 @@
 #pragma once
 
 #include "GLVideoMode.h"
-#include <BBLibc.h>
+#include <BBLibc/Name.h>
 
 
 class B_ConfigSection

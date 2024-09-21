@@ -2,6 +2,8 @@
 
 #include <Entities/Entity.h>
 #include "bld_misc_funcs.h"
+#include <BBLibc/BBLibc.h>
+
 
 /*
 ................................................................................

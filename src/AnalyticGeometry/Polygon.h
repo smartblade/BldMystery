@@ -6,8 +6,6 @@
 #include "array.h"
 #include <AnalyticGeometry/Vector.h>
 
-class B_IDataFile;
-
 class B_WorldPoint
 {
 public:
