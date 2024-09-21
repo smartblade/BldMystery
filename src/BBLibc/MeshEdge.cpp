@@ -4,24 +4,27 @@
 
 /*
 * Module:                 BBLibc.dll
-* Entry point:            0x1003221C
-* VC++ mangling:          ??0B_MeshEdge@@QAE@III@Z
+* Entry point:            0x100321F0
+* VC++ mangling:          ??0B_MeshEdge@@QAE@XZ
 */
-
-B_MeshEdge::B_MeshEdge(unsigned int a, unsigned int b, unsigned int c) {
-    // TODO Implement
+#ifndef BLD_NATIVE
+B_MeshEdge::B_MeshEdge()
+{
 }
+#endif
 
 
 /*
 * Module:                 BBLibc.dll
-* Entry point:            0x100321F0
-* VC++ mangling:          ??0B_MeshEdge@@QAE@XZ
+* Entry point:            0x1003221C
+* VC++ mangling:          ??0B_MeshEdge@@QAE@III@Z
 */
+#ifndef BLD_NATIVE
+B_MeshEdge::B_MeshEdge(unsigned int a, unsigned int b, unsigned int c)
+{
 
-B_MeshEdge::B_MeshEdge() {
-    // TODO Implement
 }
+#endif
 
 
 /*
@@ -29,11 +32,12 @@ B_MeshEdge::B_MeshEdge() {
 * Entry point:            0x10007F70
 * VC++ mangling:          ??4B_MeshEdge@@QAEAAV0@ABV0@@Z
 */
-
-B_MeshEdge& B_MeshEdge::operator=(const B_MeshEdge& other) {
-    // TODO Implement
+#ifndef BLD_NATIVE
+B_MeshEdge& B_MeshEdge::operator=(const B_MeshEdge& other)
+{
     return *this;
 }
+#endif
 
 
 /*
@@ -41,8 +45,10 @@ B_MeshEdge& B_MeshEdge::operator=(const B_MeshEdge& other) {
 * Entry point:            0x1003227E
 * VC++ mangling:          ??8B_MeshEdge@@QBEIABV0@@Z
 */
-
-unsigned int B_MeshEdge::operator==(const B_MeshEdge& other) const {
-    // TODO Implement
-    return 0;  // Replace with actual implementation
+#ifndef BLD_NATIVE
+unsigned int B_MeshEdge::operator==(const B_MeshEdge& other) const
+{
+    return 0;
 }
+#endif
+

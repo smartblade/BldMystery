@@ -5,7 +5,6 @@
 #include <bld_python.h>
 #define BBLIBC_LIB_EXPORT
 #include "IDataFile.h"
-#include "BitMap24.h"
 
 
 LIB_EXP int B_IDataFile::n_open_files = 0;
@@ -18,11 +17,12 @@ LIB_EXP PyObject* B_IDataFile::OnOpenFunc;
 * Entry point:            0x10001740
 * VC++ mangling:          ??0B_IDataFile@@QAE@XZ
 */
-
+#ifndef BLD_NATIVE
 B_IDataFile::B_IDataFile()
 {
-    // TODO Implement
+
 }
+#endif
 
 
 /*
@@ -30,11 +30,12 @@ B_IDataFile::B_IDataFile()
 * Entry point:            0x10001788
 * VC++ mangling:          ??0B_IDataFile@@QAE@PBDH@Z
 */
-
+#ifndef BLD_NATIVE
 B_IDataFile::B_IDataFile(const char* file_name, int flags)
 {
-    // TODO Implement
+
 }
+#endif
 
 
 /*
@@ -43,7 +44,8 @@ B_IDataFile::B_IDataFile(const char* file_name, int flags)
 * VC++ mangling:          ??1B_IDataFile@@QAE@XZ
 */
 
-B_IDataFile::~B_IDataFile() {
+B_IDataFile::~B_IDataFile()
+{
     Close();
 }
 
@@ -54,7 +56,8 @@ B_IDataFile::~B_IDataFile() {
 * VC++ mangling:          ?ResetnOpenedFiles@B_IDataFile@@SAXXZ
 */
 
-void B_IDataFile::ResetnOpenedFiles() {
+void B_IDataFile::ResetnOpenedFiles()
+{
     B_IDataFile::n_opened_files = 0;
 }
 
@@ -65,7 +68,8 @@ void B_IDataFile::ResetnOpenedFiles() {
 * VC++ mangling:          ?GetnOpenedFiles@B_IDataFile@@SAHXZ
 */
 
-int B_IDataFile::GetnOpenedFiles() {
+int B_IDataFile::GetnOpenedFiles()
+{
     return B_IDataFile::n_opened_files;
 }
 
@@ -76,7 +80,8 @@ int B_IDataFile::GetnOpenedFiles() {
 * VC++ mangling:          ?GetnOpenFiles@B_IDataFile@@SAHXZ
 */
 
-int B_IDataFile::GetnOpenFiles() {
+int B_IDataFile::GetnOpenFiles()
+{
     return B_IDataFile::n_open_files;
 }
 
@@ -86,23 +91,12 @@ int B_IDataFile::GetnOpenFiles() {
 * Entry point:            0x10001023
 * VC++ mangling:          ?SetOnOpenFunc@B_IDataFile@@SAHPAUPyObject@@@Z
 */
-
-int B_IDataFile::SetOnOpenFunc(PyObject* obj) {
-    // TODO Implement
-    if (!obj) {
-        return 0; // input is null, do nothing
-    }
-
-    //if (OnOpenFunc) {
-        // decrement reference count of current OnOpenFunc object
-        //Py_XDECREF(OnOpenFunc);
-
-    Py_DECREF(OnOpenFunc);
-
-    Py_XINCREF(obj);
-    OnOpenFunc = obj;
-    return 1; // success
+#ifndef BLD_NATIVE
+int B_IDataFile::SetOnOpenFunc(PyObject* obj)
+{
+    return 1;
 }
+#endif
 
 
 /*
@@ -110,34 +104,12 @@ int B_IDataFile::SetOnOpenFunc(PyObject* obj) {
 * Entry point:            0x10001096
 * VC++ mangling:          ?RemoveOnOpenFunc@B_IDataFile@@SAXXZ
 */
-
-void B_IDataFile::RemoveOnOpenFunc() {
-    // TODO Implement
-    OnOpenFunc = nullptr; // set to null
+#ifndef BLD_NATIVE
+void B_IDataFile::RemoveOnOpenFunc()
+{
+    OnOpenFunc = nullptr;
 }
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x100015E2
-* VC++ mangling:          ?Open@B_IDataFile@@QAEXPBDH@Z
-*/
-
-void B_IDataFile::Open(const char* src, int flags) {
-    // TODO Implement
-}
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x100017C2
-* VC++ mangling:          ?ReadCacheBlock@B_IDataFile@@AAEIXZ
-*/
-
-unsigned int B_IDataFile::ReadCacheBlock() {
-    // TODO Implement
-    return 1; // success
-}
+#endif
 
 
 /*
@@ -145,21 +117,38 @@ unsigned int B_IDataFile::ReadCacheBlock() {
 * Entry point:            0x100014D2
 * VC++ mangling:          ?Close@B_IDataFile@@QAEXXZ
 */
+#ifndef BLD_NATIVE
+void B_IDataFile::Close()
+{
 
-void B_IDataFile::Close() {
-    // TODO Implement
 }
+#endif
 
 
 /*
 * Module:                 BBLibc.dll
-* Entry point:            0x10002200
-* VC++ mangling:          ?GetFileName@B_IDataFile@@QBEPBDXZ
+* Entry point:            0x100015E2
+* VC++ mangling:          ?Open@B_IDataFile@@QAEXPBDH@Z
 */
+#ifndef BLD_NATIVE
+void B_IDataFile::Open(const char* src, int flags)
+{
 
-char const* B_IDataFile::GetFileName() const  {
-    return this->file_name;
 }
+#endif
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100017C2
+* VC++ mangling:          ?ReadCacheBlock@B_IDataFile@@AAEIXZ
+*/
+#ifndef BLD_NATIVE
+unsigned int B_IDataFile::ReadCacheBlock()
+{
+    return 1;
+}
+#endif
 
 
 /*
@@ -168,7 +157,8 @@ char const* B_IDataFile::GetFileName() const  {
 * VC++ mangling:          ?Length@B_IDataFile@@QBEJXZ
 */
 
-long B_IDataFile::Length(void) const {
+long B_IDataFile::Length(void) const
+{
     if (fd != -1) {
         return file_size;
     }
@@ -182,12 +172,12 @@ long B_IDataFile::Length(void) const {
 * Entry point:            0x100018A6
 * VC++ mangling:          ?Seek@B_IDataFile@@QAEJJH@Z
 */
-
-long B_IDataFile::Seek(long offset, int whence) {
-    // TODO Implement
+#ifndef BLD_NATIVE
+long B_IDataFile::Seek(long offset, int whence)
+{
     return 0;
-
 }
+#endif
 
 
 /*
@@ -195,11 +185,12 @@ long B_IDataFile::Seek(long offset, int whence) {
 * Entry point:            0x100019AF
 * VC++ mangling:          ?Tell@B_IDataFile@@QAEJXZ
 */
-
-long B_IDataFile::Tell() {
-    // TODO Implement
+#ifndef BLD_NATIVE
+long B_IDataFile::Tell()
+{
     return 0;
 }
+#endif
 
 
 /*
@@ -207,11 +198,12 @@ long B_IDataFile::Tell() {
 * Entry point:            0x100019CC
 * VC++ mangling:          ?Peek@B_IDataFile@@QAEEXZ
 */
-
-unsigned char B_IDataFile::Peek() {
-    // TODO Implement
+#ifndef BLD_NATIVE
+unsigned char B_IDataFile::Peek()
+{
     return 0;
 }
+#endif
 
 
 /*
@@ -220,9 +212,9 @@ unsigned char B_IDataFile::Peek() {
 * VC++ mangling:          ?Eof@B_IDataFile@@QAEHXZ
 */
 
-int B_IDataFile::Eof() {
-    unsigned int curPos = filePosition + cacheBlockFlag->filePosition;
-    return curPos >= this->file_size ? 1 : 0;
+int B_IDataFile::Eof()
+{
+    return cacheBlockBytesRead + cacheBlockPos >= this->file_size ? 1 : 0;
 }
 
 
@@ -231,12 +223,139 @@ int B_IDataFile::Eof() {
 * Entry point:            0x10001A33
 * VC++ mangling:          ?Read@B_IDataFile@@QAEXPAXI@Z
 */
-
+#ifndef BLD_NATIVE
 void B_IDataFile::Read(void* data, unsigned int size)
 {
-    // TODO implement reading data from the file
-    _read(fd, data, size);
-    // handle error
+
+}
+#endif
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100021E0
+* VC++ mangling:          ?OK@B_IDataFile@@QBEIXZ
+*/
+
+bool B_IDataFile::OK()
+{
+    return fd != -1;
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10002200
+* VC++ mangling:          ?GetFileName@B_IDataFile@@QBEPBDXZ
+*/
+
+char const* B_IDataFile::GetFileName() const
+{
+    return this->file_name;
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10002220
+* VC++ mangling:          ??4B_IDataFile@@QAEAAV0@ABV0@@Z
+*/
+#ifndef BLD_NATIVE
+B_IDataFile& B_IDataFile::operator =(B_IDataFile const& file)
+{
+    return *this;
+}
+#endif
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10001B55
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAD@Z
+*/
+
+B_IDataFile& operator >>(B_IDataFile& file, char& c)
+{
+    file.Read(&c, sizeof(char));
+    return file;
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10001B6B
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAE@Z
+*/
+
+B_IDataFile& operator >>(B_IDataFile& file, unsigned char& c)
+{
+    file.Read(&c, sizeof(unsigned char));
+    return file;
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10001B81
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAF@Z
+*/
+
+B_IDataFile& operator >>(B_IDataFile& file, short& s)
+{
+    file.Read(&s, sizeof(short));
+    return file;
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10001B97
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAG@Z
+*/
+
+B_IDataFile& operator >>(B_IDataFile& file, unsigned short& s)
+{
+    file.Read(&s, sizeof(unsigned short));
+    return file;
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10001BAD
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAH@Z
+*/
+
+B_IDataFile& operator >>(B_IDataFile& file, int& i)
+{
+    file.Read(&i, sizeof(int));
+    return file;
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10001BC3
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAJ@Z
+*/
+
+B_IDataFile& operator >>(B_IDataFile& file, long& l)
+{
+    file.Read(&l, sizeof(long));
+    return file;
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10001BD9
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAK@Z
+*/
+
+B_IDataFile& operator >>(B_IDataFile& file, unsigned long& l)
+{
+    file.Read(&l, sizeof(unsigned long));
+    return file;
 }
 
 
@@ -249,19 +368,6 @@ void B_IDataFile::Read(void* data, unsigned int size)
 B_IDataFile& operator >>(B_IDataFile& file, unsigned int& i)
 {
     file.Read(&i, sizeof(unsigned int));
-    return file;
-}
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10001BD9
-* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAK@Z
-*/
-
-B_IDataFile& operator >>(B_IDataFile& file, unsigned long& i)
-{
-    file.Read(&i, sizeof(unsigned long));
     return file;
 }
 
@@ -297,12 +403,12 @@ B_IDataFile& operator >>(B_IDataFile& file, double& f)
 * Entry point:            0x10003904
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Name@@@Z
 */
-
+#ifndef BLD_NATIVE
 B_IDataFile& operator >>(B_IDataFile& file, B_Name& name)
 {
-    // TODO implement reading B_Name from file
     return file;
 }
+#endif
 
 
 /*
@@ -310,12 +416,25 @@ B_IDataFile& operator >>(B_IDataFile& file, B_Name& name)
 * Entry point:            0x10003A40
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_NamedObj@@@Z
 */
-
+#ifndef BLD_NATIVE
 B_IDataFile& operator >>(B_IDataFile& file, B_NamedObj& named_obj)
 {
-    // TODO implement reading B_NamedObj from file
     return file;
 }
+#endif
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10008C9B
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_BitMap@@@Z
+*/
+#ifndef BLD_NATIVE
+B_IDataFile& operator >>(B_IDataFile& file, B_BitMap& bitMap)
+{
+    return file;
+}
+#endif
 
 
 /*
@@ -323,24 +442,25 @@ B_IDataFile& operator >>(B_IDataFile& file, B_NamedObj& named_obj)
 * Entry point:            0x100091A4
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Color@@@Z
 */
-
+#ifndef BLD_NATIVE
 B_IDataFile& operator >>(B_IDataFile& file, B_Color& color)
 {
-    // TODO implement reading B_Color from file
     return file;
 }
+#endif
+
 
 /*
 * Module:                 BBLibc.dll
 * Entry point:            0x1004122B
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_ParticleGType@@@Z
 */
-
+#ifndef BLD_NATIVE
 B_IDataFile& operator >>(B_IDataFile& file, B_ParticleGType& particleType)
 {
-    // TODO implement reading B_ParticleGType from file
     return file;
 }
+#endif
 
 
 /*
@@ -348,44 +468,10 @@ B_IDataFile& operator >>(B_IDataFile& file, B_ParticleGType& particleType)
 * Entry point:            0x10028021
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_BitMap24@@@Z
 */
-
-B_IDataFile& operator >>(B_IDataFile& file, B_BitMap24& bitMap) {
-    // TODO implement
+#ifndef BLD_NATIVE
+B_IDataFile& operator >>(B_IDataFile& file, B_BitMap24& bitMap)
+{
     return file;
 }
+#endif
 
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10001B81
-* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAF@Z
-*/
-
-B_IDataFile& operator >>(B_IDataFile& file, short& c) {
-    // TODO implement
-    return file;
-}
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10001B6B
-* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAE@Z
-*/
-
-B_IDataFile& operator >>(B_IDataFile& file, unsigned char& c) {
-    // TODO implement
-    return file;
-}
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10001BAD
-* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAH@Z
-*/
-
-B_IDataFile& operator >>(B_IDataFile& file, int& i) {
-    // TODO implement
-    return file;
-}

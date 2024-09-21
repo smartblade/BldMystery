@@ -40,7 +40,8 @@ void OutputWin32Error(char const* message)
 * VC++ mangling:          ?vararg@@YAPBDPBDZZ
 */
 
-const char* vararg(const char* format, ...) {
+const char* vararg(const char* format, ...)
+{
     va_list args;
     va_start(args, format);
 
@@ -57,11 +58,12 @@ const char* vararg(const char* format, ...) {
 * Entry point:            0x10002740
 * VC++ mangling:          ?GetConfigDirectory@@YAPBDXZ
 */
-
-const char* GetConfigDirectory() {
-    // TODO implement
+#ifndef BLD_NATIVE
+const char* GetConfigDirectory()
+{
     return currDirBuffer;
 }
+#endif
 
 
 /*
@@ -69,11 +71,12 @@ const char* GetConfigDirectory() {
 * Entry point:            0x100028EC
 * VC++ mangling:          ?GetCurrentLanguage@@YAPBDXZ
 */
-
-char const* GetCurrentLanguage(void) {
-    // TODO implement
+#ifndef BLD_NATIVE
+char const* GetCurrentLanguage(void)
+{
     return 0;
 }
+#endif
 
 
 /*
@@ -81,10 +84,12 @@ char const* GetCurrentLanguage(void) {
 * Entry point:            0x100020F2
 * VC++ mangling:          ?RemoveOnOpenInputFileFunc@@YAXXZ
 */
+#ifndef BLD_NATIVE
+void RemoveOnOpenInputFileFunc(void)
+{
 
-void RemoveOnOpenInputFileFunc(void) {
-    // TODO implement
 }
+#endif
 
 
 /*
@@ -94,10 +99,11 @@ void RemoveOnOpenInputFileFunc(void) {
 */
 
 #ifndef BLD_NATIVE
-PyObject * CallPythonObject(PyObject * func, PyObject * args) {
-    // TODO implement
+PyObject * CallPythonObject(PyObject * func, PyObject * args)
+{
     PyObject* result = nullptr;
 
     return result;
 }
 #endif
+

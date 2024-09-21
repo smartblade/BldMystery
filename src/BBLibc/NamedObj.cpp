@@ -27,8 +27,6 @@ B_NamedObj::B_NamedObj(const B_Name& n) : name(n) {}
 */
 
 B_NamedObj::~B_NamedObj() {
-    // TODO Implement
-    //delete name;
 }
 
 
@@ -41,3 +39,4 @@ B_NamedObj::~B_NamedObj() {
 const B_Name& B_NamedObj::Id() const {
     return name;
 }
+

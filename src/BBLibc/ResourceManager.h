@@ -16,26 +16,29 @@
 class LIB_EXP B_ResourceManager
 {
 public:
-    B_Resource* GetResource(unsigned short resourceId, const B_Name& name);
-    void FreeResource(B_Resource* resource);
-    struct B_Resource* sub_10004425(unsigned short resourceId, const B_Name& name);
-    unsigned int LocateResourceIn(const B_Name& id, const B_Name*, int);
-    void AddBodLink(char const* c, int i , char const* pc, int i1);
-    unsigned int AddAutoResource(B_Name const&, B_Resource*, int);
-    unsigned int NResources(unsigned short);
-    int IsResourceLoaded(int, int);
+    B_ResourceManager();
+    ~B_ResourceManager();
+    B_Resource* sub_10004425(unsigned short resourceId, const B_Name& name);
     void Clean(void);
+    unsigned int LocateResourceIn(const B_Name& id, const B_Name*, int);
+    unsigned int AddAutoResource(B_Name const&, B_Resource*, int);
+    B_Resource* GetResource(unsigned short resourceId, const B_Name& name);
+    int IsResourceLoaded(int, int);
+    void FreeResource(B_Resource* resource);
+    unsigned int NResources(unsigned short);
+    void AddBodLink(char const* c, int i, char const* pc, int i1);
+    B_ResourceManager* operator =(B_ResourceManager* that);
 
 private:
-    B_Resource** resources_; //int unknown1; // offset 0h [ecx+4]
-    int size; // offset 4h [ecx+8]
-    int unknown3; // offset 8h
-    int unknown4; // offset 0ch
-    int unknown5; // offset 10h
-    int unknown6; // offset 14h
-    int unknown7; // offset 18h
-    unsigned short resourceId_1Ch; // 1Ch
-    int counter_20h; // offset 20h
+    B_Resource** resources_;
+    int size;
+    int unknown08;
+    int unknown0C;
+    int unknown10;
+    int unknown14;
+    int unknown18;
+    unsigned short resourceId; // 1Ch
+    int counter; // 20h
 };
 
 LIB_EXP B_ResourceManager B_resource_manager; // global instance

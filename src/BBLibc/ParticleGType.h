@@ -42,7 +42,7 @@ class LIB_EXP B_ParticleGType : public B_NamedObj
 {
 public:
     virtual ~B_ParticleGType();
-    //B_ParticleGType();
+    // B_ParticleGType();
     B_ParticleGType() : duration(0), bmpHandle(-1), operation_type(0)
     {
     }
@@ -50,8 +50,6 @@ public:
         const B_Name& new_type, const B_Name& parent_type,
         unsigned long operation_type, unsigned int duration);
 
-    int operator >>(B_IDataFile& dest/*, B_ParticleGType&*/);
-    int operator <<(B_IDataFile& src/*, B_ParticleGType&*/);
 public:
     array_t<B_ParticleElement> a00C;
     unsigned int duration;

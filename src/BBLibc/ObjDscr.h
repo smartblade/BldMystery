@@ -17,15 +17,18 @@
 class LIB_EXP B_ObjDscr : public B_Resource
 {
 public:
-    unsigned char EdgeFaceGrp(unsigned int);
-    int GetVtxNode(unsigned int);
+    B_ObjDscr();
+    ~B_ObjDscr();
     void SetUpNormals(void);
-    void SetUpEdges(void);
-    void SetUpBSP(void);
     void SetUpInertialT(void);
+    int GetVtxNode(unsigned int);
+    void SetUpEdges(void);
     void Draw(
         B_3DRasterDevice* raster, float x1, float y1, float x2, float y2,
         float scale, int i_unknown);
+    void SetUpBSP(void);
+    unsigned char EdgeFaceGrp(unsigned int);
+    
 };
 
 

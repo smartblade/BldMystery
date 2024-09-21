@@ -9,14 +9,15 @@
 #undef BUILD_LIB
 
 
-class LIB_EXP B_RDataTriangle {
+class LIB_EXP B_RDataTriangle
+{
 public:
     B_RDataTriangle();
 
     B_RDataTriangle& operator=(const B_RDataTriangle&);
 
 private:
-    // Add member variables and other implementation details as needed
+
 };
 
 #endif  // B_RDataTriangle_H

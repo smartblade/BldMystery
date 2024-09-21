@@ -17,9 +17,9 @@ class LIB_EXP B_MessageManager
 {
 public:
     ~B_MessageManager();
+    unsigned int Add(B_MessageChannel* channel);
     unsigned int OpenChannel(const B_Name& channel_name);
     unsigned int CloseChannel(const B_Name& channel_name);
-    unsigned int Add(B_MessageChannel* channel);
     B_MessageChannel* DisconnectChannel(const B_Name& channel_name);
 };
 

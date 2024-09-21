@@ -10,16 +10,17 @@
 #undef BUILD_LIB
 
 
-class LIB_EXP B_MeshEdge {
+class LIB_EXP B_MeshEdge
+{
 public:
-    B_MeshEdge(unsigned int, unsigned int, unsigned int);
     B_MeshEdge();
+    B_MeshEdge(unsigned int, unsigned int, unsigned int);
     B_MeshEdge& operator=(const B_MeshEdge&);
     unsigned int operator==(const B_MeshEdge&) const;
 
     unsigned int field;
 private:
-    // Add private member variables and implementation details as needed
+
 };
 
 #endif  // B_MESHEDGE_H

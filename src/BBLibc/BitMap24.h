@@ -50,16 +50,15 @@ class LIB_EXP B_BitMap24
 public:
     B_BitMap24(int width = 0, int height = 0);
     virtual ~B_BitMap24();
+    static void ClearBitMap24Data(void);
+    void SetBits(int, int, char const*, char const*);
     int SaveToBMP(char const* fileName) const;
     int SaveToBMPSized(char const* fileName, int width, int height) const;
-
-    void SetBits(int, int, char const*, char const*);
     //B_BitMap24 ReadFromFile(char const*);
-    int SaveToFile(char const*, int);
-    void EscribeArchivoRAW(char const*);
+    int SaveToFile(char const*, int) const;
+    void EscribeArchivoRAW(char const*) const;
     //B_BitMap24 ReadFromJPEG(char const*);
-    int SaveToJPEG(char const*, int);
-    static void ClearBitMap24Data(void);
+    int SaveToJPEG(char const*, int) const;
 
     unsigned int dimension1;
     unsigned int dimension2;

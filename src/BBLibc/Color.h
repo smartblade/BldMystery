@@ -11,16 +11,18 @@
 #include <export.h>
 #undef BUILD_LIB
 
-class LIB_EXP B_Color {
+class LIB_EXP B_Color
+{
 public:
     B_Color();
     B_Color(byte r, byte g, byte b);
-    B_Color operator *(float coef) const;
-    B_Color& operator =(const B_Color& that);
+
     virtual void MakeCons();
 
     B_Color operator +(B_Color const& color) const;
+    B_Color operator *(float coef) const;
     B_Color operator /(float f)const;
+    B_Color& operator =(const B_Color& that);
 
     byte r, g, b;
 };

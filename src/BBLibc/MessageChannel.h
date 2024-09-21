@@ -14,10 +14,11 @@
 #undef BUILD_LIB
 
 
-class LIB_EXP B_MessageChannel : public B_NamedObj {
+class LIB_EXP B_MessageChannel : public B_Name
+{
 public:
-    B_MessageChannel(B_Name* name);
-    ~B_MessageChannel();
+    B_MessageChannel(B_Name& name);
+    virtual ~B_MessageChannel();
     virtual unsigned int Message(char const* message);
 private:
     unsigned int unknown0Ch;

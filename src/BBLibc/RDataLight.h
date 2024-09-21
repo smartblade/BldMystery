@@ -9,17 +9,18 @@
 #undef BUILD_LIB
 
 
-class LIB_EXP B_RDataLight {
+class LIB_EXP B_RDataLight
+{
 public:
-    B_RDataLight(float, float, float, float);
     B_RDataLight();
+    B_RDataLight(float, float, float, float);
 
     void Interp(double, B_RDataLight&, double, B_RDataLight&);
 
     B_RDataLight& operator=(const B_RDataLight&);
 
 private:
-    // Add member variables and other implementation details as needed
+
 };
 
 #endif  // B_RDataLight_H
