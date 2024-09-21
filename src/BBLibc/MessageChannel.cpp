@@ -7,7 +7,7 @@
 * VC++ mangling:          ??0B_MessageChannel@@QAE@AAVB_Name@@@Z
 */
 
-B_MessageChannel::B_MessageChannel(B_Name& name) : B_Name(name)
+B_MessageChannel::B_MessageChannel(B_Name& name) : B_NamedObj(name)
 {
     unknown0Ch = 1;
 }

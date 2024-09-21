@@ -26,7 +26,8 @@ B_NamedObj::B_NamedObj(const B_Name& n) : name(n) {}
 * VC++ mangling:          ??1B_NamedObj@@UAE@XZ
 */
 
-B_NamedObj::~B_NamedObj() {
+B_NamedObj::~B_NamedObj()
+{
 }
 
 
@@ -36,7 +37,8 @@ B_NamedObj::~B_NamedObj() {
 * VC++ mangling:          ?Id@B_NamedObj@@QBEABVB_Name@@XZ
 */
 
-const B_Name& B_NamedObj::Id() const {
+const B_Name& B_NamedObj::Id() const
+{
     return name;
 }
 

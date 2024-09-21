@@ -14,7 +14,7 @@
 #undef BUILD_LIB
 
 
-class LIB_EXP B_MessageChannel : public B_Name
+class LIB_EXP B_MessageChannel : public B_NamedObj
 {
 public:
     B_MessageChannel(B_Name& name);
