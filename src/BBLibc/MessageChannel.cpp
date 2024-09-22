@@ -1,3 +1,4 @@
+#define BBLIBC_LIB_EXPORT
 #include "MessageChannel.h"
 
 
