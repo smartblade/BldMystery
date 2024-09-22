@@ -1,7 +1,5 @@
-#include <string>
 #include <fcntl.h>
 #include <io.h>
-#include <cstdint>
 #include <bld_python.h>
 #define BBLIBC_LIB_EXPORT
 #include "IDataFile.h"
