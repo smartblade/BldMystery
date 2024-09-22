@@ -1,6 +1,5 @@
-
-#include "MessageManager.h"
 #define BBLIBC_LIB_EXPORT
+#include "MessageManager.h"
 #include "BBLibc.h"
 #include "ObjDscr.h"
 #include <crtdbg.h>

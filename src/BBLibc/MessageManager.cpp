@@ -1,6 +1,8 @@
 #define BBLIBC_LIB_EXPORT
 #include "MessageManager.h"
 
+B_MessageManager mout;
+
 
 /*
 * Module:                 BBLibc.dll

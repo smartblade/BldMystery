@@ -25,6 +25,6 @@ public:
 
 LIB_EXP B_MessageManager& operator <<(B_MessageManager& mout, const char* str);
 
-LIB_EXP B_MessageManager mout;
+extern LIB_EXP B_MessageManager mout;
 
 #endif /* B_MESSAGE_MANAGER_H */
