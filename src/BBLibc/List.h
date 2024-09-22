@@ -38,6 +38,20 @@ public:
     B_List(B_ListElement* element);
     B_List(B_List const&);
 
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x100031A0
+    * VC++ mangling:          ??4B_List@@QAEAAV0@ABV0@@Z
+    */
+
+    B_List& operator=(const B_List& that)
+    {
+        numElements = that.numElements;
+        tail = that.tail;
+        head = that.head;
+        return *this;
+    }
+
     virtual ~B_List();
     unsigned int Add(B_ListElement* element);
     unsigned int AddAfter(B_ListElement* existing, B_ListElement* newElement);
@@ -46,7 +60,9 @@ public:
     unsigned int Exists(const B_ListElement* element);
 
 private:
-    B_ListElement* list_;
+    int numElements;
+    B_ListElement* tail;
+    B_ListElement* head;
 };
 
 #endif  // B_LIST_H

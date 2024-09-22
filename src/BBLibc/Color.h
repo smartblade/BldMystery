@@ -17,6 +17,17 @@ public:
     B_Color();
     B_Color(byte r, byte g, byte b);
 
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10006B60
+    * VC++ mangling:          ??0B_Color@@QAE@ABV0@@Z
+    */
+
+    B_Color(const B_Color& that) : r(that.r), g(that.g), b(that.b)
+    {
+    }
+
     virtual void MakeCons();
 
     B_Color operator +(B_Color const& color) const;

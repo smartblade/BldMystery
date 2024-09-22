@@ -39,7 +39,17 @@ public:
 
     B_Name const& operator +(char const* str);
 
-    operator const char* () const { return string; }
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x100022D0
+    * VC++ mangling:          ??BB_Name@@QBEPBDXZ
+    */
+
+    operator const char* () const
+    {
+        return string;
+    }
 
     void UpCase();
 private:

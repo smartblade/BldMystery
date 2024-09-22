@@ -30,6 +30,17 @@ B_BitMap24::~B_BitMap24()
 
 /*
 * Module:                 BBLibc.dll
+* Entry point:            0x10026AD5
+* VC++ mangling:          ??0B_BitMap24@@QAE@ABV0@@Z
+*/
+#ifndef BLD_NATIVE
+B_BitMap24::B_BitMap24(const B_BitMap24& that)
+{
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x10026C70
 * VC++ mangling:          ?ClearBitMap24Data@B_BitMap24@@SAXXZ
 */
@@ -53,6 +64,17 @@ void B_BitMap24::SetBits(int, int, char const*, char const*)
 }
 #endif
 
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100271BE
+* VC++ mangling:          ??4B_BitMap24@@QAEAAV0@ABV0@@Z
+*/
+#ifndef BLD_NATIVE
+B_BitMap24& B_BitMap24::operator=(const B_BitMap24& that)
+{
+    return *this;
+}
+#endif
 
 /*
 * Module:                 BBLibc.dll

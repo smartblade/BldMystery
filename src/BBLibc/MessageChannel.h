@@ -19,6 +19,33 @@ class LIB_EXP B_MessageChannel : public B_NamedObj
 public:
     B_MessageChannel(B_Name& name);
     virtual ~B_MessageChannel();
+
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10002580
+    * VC++ mangling:          ??0B_MessageChannel@@QAE@ABV0@@Z
+    */
+
+    B_MessageChannel(const B_MessageChannel& that)
+        : B_NamedObj(that), unknown0Ch(that.unknown0Ch)
+    {
+    }
+
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x100025C0
+    * VC++ mangling:          ??4B_MessageChannel@@QAEAAV0@ABV0@@Z
+    */
+
+    B_MessageChannel& operator=(const B_MessageChannel& that)
+    {
+        B_NamedObj::operator=(that);
+        unknown0Ch = that.unknown0Ch;
+        return *this;
+    }
+
     virtual unsigned int Message(char const* message);
 private:
     unsigned int unknown0Ch;
