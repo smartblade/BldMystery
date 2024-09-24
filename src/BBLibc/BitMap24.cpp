@@ -4,6 +4,16 @@
 
 /*
 * Module:                 BBLibc.dll
+* Data address:           0x1004A520
+* VC++ mangling:          ?BitMap24DataList@B_BitMap24@@0V?$B_Array@VB_BitMap24@@@@A
+*/
+#ifndef BLD_NATIVE
+B_Array<B_BitMap24> B_BitMap24::BitMap24DataList(1);
+#endif
+
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x10006CB0
 * VC++ mangling:          ??0B_BitMap24@@QAE@HH@Z
 */
@@ -142,6 +152,3 @@ int B_BitMap24::SaveToJPEG(char const*, int) const
     return 0;
 }
 #endif
-
-B_Array<B_BitMap24> B_BitMap24::BitMap24DataList(1);
-

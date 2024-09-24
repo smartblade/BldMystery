@@ -5,6 +5,15 @@
 
 /*
 * Module:                 BBLibc.dll
+* Data address:           0x1004A118
+* VC++ mangling:          ?B_resource_manager@@3VB_ResourceManager@@A
+*/
+#ifndef BLD_NATIVE
+B_ResourceManager B_resource_manager;
+#endif
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x10004425
 */
 #ifndef BLD_NATIVE

@@ -71340,29 +71340,11 @@ l1002A23E ENDP
 ;
 ;* Export: ?Open@B_MessageChannel@@UAEIXZ, 00F1
 ;
-l1002A26A PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           xor eax, eax
-           mov esp, ebp
-           pop ebp
-           ret
-l1002A26A ENDP
+           call l1002A26A; Implemented in c++ code
 ;
 ;* Export: ?Close@B_MessageChannel@@UAEIXZ, 00A8
 ;
-l1002A277 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           xor eax, eax
-           mov esp, ebp
-           pop ebp
-           ret
-l1002A277 ENDP
+           call l1002A277; Implemented in c++ code
 ;
 ;* Export: ?Message@B_MessageChannel@@UAEIPBD@Z, 00E6
 ;
@@ -108003,29 +107985,23 @@ g10042150  dd 5 dup (0)
 ;
 ;* Export: ??_7B_NamedObj@@6B@, 008E
 ;
-g1004217C  dd l100023C0
+           dd g1004217C; Defined in c++ code
 ;
 ;* Export: ??_7B_MessageChannel@@6B@, 008D
 ;
-g10042180  dd l10002640
-           dd l1002A26A
-           dd l1002A277
-           dd l1002A284
+           dd g10042180; Defined in c++ code
 ;
 ;* Export: ??_7B_ListElement@@6B@, 008C
 ;
-g10042190  dd l10002FF0
+           dd g10042190; Defined in c++ code
 ;
 ;* Export: ??_7B_List@@6B@, 008B
 ;
-g10042194  dd l10003250
+           dd g10042194; Defined in c++ code
 ;
 ;* Export: ??_7B_Resource@@6B@, 008F
 ;
-g10042198  dd l10006780
-           dd l100415F6
-           dd l100415F6
-           dd l100415F6
+           dd g10042198; Defined in c++ code
 g100421A8  dd l100079D0
            dd l100085AD
            dd l10008563
@@ -108050,7 +108026,7 @@ g100421EC  dd l10008080
 ;
 ;* Export: ??_7B_Color@@6B@, 008A
 ;
-g100421F0  dd l1000921A
+           dd g100421F0; Defined in c++ code
 g100421F4  dd l10008160
 ;
 ;* Export: ??_7B_BitMap@@6B@, 0088
@@ -114081,7 +114057,7 @@ g10048974  dd 025207325h
 ;* Jump:
 ; 1004890D(C) 
 ;
-g10048984  dd 000000003h
+           dd g10048984; Defined in c++ code
 g10048988  dd 06C707554h
            dd 069772065h
            dd 025206874h
@@ -115474,18 +115450,18 @@ g10049EF4  dd 2 dup (0)
 ;
 ;* Export: ?n_opened_files@B_IDataFile@@0HA, 0121
 ;
-g10049EFC  dd 000000000h
+           dd g10049EFC; Defined in c++ code
 ;
 ;* Export: ?n_open_files@B_IDataFile@@0HA, 0120
 ;
 ;* Jump:
 ; 10049E95(C) 
 ;
-g10049F00  dd 000000000h
+           dd g10049F00; Defined in c++ code
 ;
 ;* Export: ?OnOpenFunc@B_IDataFile@@0PAUPyObject@@A, 00EE
 ;
-g10049F04  dd 000000000h
+           dd g10049F04; Defined in c++ code
 ;
 ;* Export: ??_C@_00A@?$AA@, 0090
 ;

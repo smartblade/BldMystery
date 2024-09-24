@@ -11,7 +11,7 @@
 
 struct PyObject;
 
-LIB_EXP int CheckErrors;
+extern LIB_EXP int CheckErrors;
 
 LIB_EXP const char* vararg(const char* format, ...);
 

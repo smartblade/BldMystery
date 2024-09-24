@@ -4,6 +4,15 @@
 
 /*
 * Module:                 BBLibc.dll
+* Data address:           0x1004A9D0
+* VC++ mangling:          ?B_csvs@@3V?$B_NDataBase@UB_ElementCSV@@@@A
+*/
+#ifndef BLD_NATIVE
+B_NDataBase<B_ElementCSV> B_csvs;
+#endif
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x1003DBF3
 * VC++ mangling:          ?ReadCSV@@YAIPBDPAV?$B_NDataBase@UB_ElementCSV@@@@@Z
 */

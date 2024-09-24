@@ -48,7 +48,6 @@ public:
     unsigned int OK() const;
     char const* GetFileName() const;
     B_IDataFile& operator =(const B_IDataFile& other);
-    static PyObject* OnOpenFunc;
 private:
     unsigned int ReadCacheBlock();
     int fd;
@@ -66,6 +65,7 @@ private:
     int n_opened_files_internal;
     static int n_opened_files;
     static int n_open_files;
+    static PyObject* OnOpenFunc;
     int SetPosition(long position);
 };
 

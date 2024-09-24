@@ -41,7 +41,7 @@ private:
     int counter; // 20h
 };
 
-LIB_EXP B_ResourceManager B_resource_manager; // global instance
+extern LIB_EXP B_ResourceManager B_resource_manager; // global instance
 
 B_ResourceManager* GetResourceManager();
 

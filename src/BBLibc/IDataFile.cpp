@@ -5,9 +5,26 @@
 #include "IDataFile.h"
 
 
-LIB_EXP int B_IDataFile::n_open_files = 0;
-LIB_EXP int B_IDataFile::n_opened_files = 0;
-LIB_EXP PyObject* B_IDataFile::OnOpenFunc;
+/*
+* Module:                 BBLibc.dll
+* Data address:           0x10049EFC
+* VC++ mangling:          ?n_opened_files@B_IDataFile@@0HA
+*/
+int B_IDataFile::n_opened_files = 0;
+
+/*
+* Module:                 BBLibc.dll
+* Data address:           0x10049F00
+* VC++ mangling:          ?n_open_files@B_IDataFile@@0HA
+*/
+int B_IDataFile::n_open_files = 0;
+
+/*
+* Module:                 BBLibc.dll
+* Data address:           0x10049F04
+* VC++ mangling:          ?OnOpenFunc@B_IDataFile@@0PAUPyObject@@A
+*/
+PyObject* B_IDataFile::OnOpenFunc = nullptr;
 
 
 /*

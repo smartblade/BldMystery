@@ -12,6 +12,13 @@ bool currDirInitialised_1004A110 = false;
 
 /*
 * Module:                 BBLibc.dll
+* Data address:           0x10048984
+* VC++ mangling:          ?CheckErrors@@3HA
+*/
+int CheckErrors = 3;
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x1002A590
 * VC++ mangling:          ?OutputWin32Error@@YAXPBD@Z
 */

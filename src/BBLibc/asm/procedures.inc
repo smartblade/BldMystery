@@ -330,6 +330,10 @@ externdef ?CloseChannel@B_MessageManager@@QAEIABVB_Name@@@Z: near
 l10029E98 equ ?CloseChannel@B_MessageManager@@QAEIABVB_Name@@@Z
 externdef ?DisconnectChannel@B_MessageManager@@QAEPAVB_MessageChannel@@ABVB_Name@@@Z: near
 l10029F19 equ ?DisconnectChannel@B_MessageManager@@QAEPAVB_MessageChannel@@ABVB_Name@@@Z
+externdef ?Open@B_MessageChannel@@UAEIXZ: near
+l1002A26A equ ?Open@B_MessageChannel@@UAEIXZ
+externdef ?Close@B_MessageChannel@@UAEIXZ: near
+l1002A277 equ ?Close@B_MessageChannel@@UAEIXZ
 externdef ?Message@B_MessageChannel@@UAEIPBD@Z: near
 l1002A284 equ ?Message@B_MessageChannel@@UAEIPBD@Z
 externdef ??6@YAAAVB_MessageManager@@AAV0@PBD@Z: near

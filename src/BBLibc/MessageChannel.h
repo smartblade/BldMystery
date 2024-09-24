@@ -19,7 +19,9 @@ class LIB_EXP B_MessageChannel : public B_NamedObj
 public:
     B_MessageChannel(B_Name& name);
     virtual ~B_MessageChannel();
-
+    virtual unsigned int Open();
+    virtual unsigned int Close();
+    virtual unsigned int Message(char const* message);
 
     /*
     * Module:                 BBLibc.dll
@@ -45,8 +47,6 @@ public:
         unknown0Ch = that.unknown0Ch;
         return *this;
     }
-
-    virtual unsigned int Message(char const* message);
 private:
     unsigned int unknown0Ch;
 };
