@@ -124,7 +124,7 @@ char* const B_Name::String() const {
 
 unsigned int B_Name::CompareNoCase(const char* str) const
 {
-    return stricmp(this->string, str);
+    return !stricmp(this->string, str);
 }
 
 
