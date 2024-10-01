@@ -29,44 +29,6 @@ PyObject* B_IDataFile::OnOpenFunc = nullptr;
 
 /*
 * Module:                 BBLibc.dll
-* Entry point:            0x10001740
-* VC++ mangling:          ??0B_IDataFile@@QAE@XZ
-*/
-#ifndef BLD_NATIVE
-B_IDataFile::B_IDataFile()
-{
-
-}
-#endif
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10001788
-* VC++ mangling:          ??0B_IDataFile@@QAE@PBDH@Z
-*/
-#ifndef BLD_NATIVE
-B_IDataFile::B_IDataFile(const char* file_name, int flags)
-{
-
-}
-#endif
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10001C31
-* VC++ mangling:          ??1B_IDataFile@@QAE@XZ
-*/
-
-B_IDataFile::~B_IDataFile()
-{
-    Close();
-}
-
-
-/*
-* Module:                 BBLibc.dll
 * Entry point:            0x10001000
 * VC++ mangling:          ?ResetnOpenedFiles@B_IDataFile@@SAXXZ
 */
@@ -126,7 +88,6 @@ void B_IDataFile::RemoveOnOpenFunc()
 }
 #endif
 
-
 /*
 * Module:                 BBLibc.dll
 * Entry point:            0x100014D2
@@ -147,6 +108,31 @@ void B_IDataFile::Close()
 */
 #ifndef BLD_NATIVE
 void B_IDataFile::Open(const char* src, int flags)
+{
+
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10001740
+* VC++ mangling:          ??0B_IDataFile@@QAE@XZ
+*/
+#ifndef BLD_NATIVE
+B_IDataFile::B_IDataFile()
+{
+
+}
+#endif
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10001788
+* VC++ mangling:          ??0B_IDataFile@@QAE@PBDH@Z
+*/
+#ifndef BLD_NATIVE
+B_IDataFile::B_IDataFile(const char* file_name, int flags)
 {
 
 }
@@ -244,44 +230,6 @@ void B_IDataFile::Read(void* data, unsigned int size)
 
 }
 #endif
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x100021E0
-* VC++ mangling:          ?OK@B_IDataFile@@QBEIXZ
-*/
-
-unsigned int B_IDataFile::OK() const
-{
-    return fd != -1;
-}
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10002200
-* VC++ mangling:          ?GetFileName@B_IDataFile@@QBEPBDXZ
-*/
-
-char const* B_IDataFile::GetFileName() const
-{
-    return this->file_name;
-}
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10002220
-* VC++ mangling:          ??4B_IDataFile@@QAEAAV0@ABV0@@Z
-*/
-#ifndef BLD_NATIVE
-B_IDataFile& B_IDataFile::operator =(B_IDataFile const& file)
-{
-    return *this;
-}
-#endif
-
 
 /*
 * Module:                 BBLibc.dll
@@ -411,6 +359,58 @@ B_IDataFile& operator >>(B_IDataFile& file, double& f)
     file.Read(&f, sizeof(double));
     return file;
 }
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10001C31
+* VC++ mangling:          ??1B_IDataFile@@QAE@XZ
+*/
+
+B_IDataFile::~B_IDataFile()
+{
+    Close();
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100021E0
+* VC++ mangling:          ?OK@B_IDataFile@@QBEIXZ
+*/
+
+unsigned int B_IDataFile::OK() const
+{
+    return fd != -1;
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10002200
+* VC++ mangling:          ?GetFileName@B_IDataFile@@QBEPBDXZ
+*/
+
+char const* B_IDataFile::GetFileName() const
+{
+    return this->file_name;
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10002220
+* VC++ mangling:          ??4B_IDataFile@@QAEAAV0@ABV0@@Z
+*/
+#ifndef BLD_NATIVE
+B_IDataFile& B_IDataFile::operator =(B_IDataFile const& file)
+{
+    return *this;
+}
+#endif
+
+
+
 
 
 /*
