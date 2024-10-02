@@ -48,4 +48,6 @@ public:
     B_Name name;
 };
 
+LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_NamedObj& named_obj);
+
 #endif /* B_NAMED_OBJ_H */

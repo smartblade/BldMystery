@@ -56,4 +56,6 @@ public:
     int operation_type;
 };
 
+LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_ParticleGType& particleType);
+
 #endif /* B_PARTICLE_G_TYPE_H */

@@ -5,11 +5,6 @@
 
 #include "array.h"
 #include <bld_system.h>
-#include "ParticleGType.h"
-#include "Color.h"
-#include "NamedObj.h"
-#include "BitMap.h"
-#include "BitMap24.h"
 
 #ifdef BBLIBC_LIB_EXPORT
 #define BUILD_LIB
@@ -79,12 +74,6 @@ LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, unsigned long& l);
 LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, unsigned int& i);
 LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, float& f);
 LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, double& f);
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_Name& name);
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_NamedObj& named_obj);
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_BitMap& bitMap);
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_Color& color);
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_BitMap24& bitMap);
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_ParticleGType& particleType);
 
 
 #endif /* B_I_DATA_FILE_H */

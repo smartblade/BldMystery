@@ -53,3 +53,15 @@ const B_Name& B_NamedObj::Id() const
     return name;
 }
 
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10003A40
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_NamedObj@@@Z
+*/
+#ifndef BLD_NATIVE
+B_IDataFile& operator >>(B_IDataFile& file, B_NamedObj& named_obj)
+{
+    return file;
+}
+#endif

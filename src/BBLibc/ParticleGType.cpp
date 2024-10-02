@@ -28,6 +28,17 @@ B_ParticleGType::~B_ParticleGType()
 }
 #endif
 
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x1004122B
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_ParticleGType@@@Z
+*/
+#ifndef BLD_NATIVE
+B_IDataFile& operator >>(B_IDataFile& file, B_ParticleGType& particleType)
+{
+    return file;
+}
+#endif
 
 /*
 * Module:                 BBLibc.dll

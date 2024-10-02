@@ -40,3 +40,14 @@ B_BitMap::B_BitMap(BitMapType type, unsigned int, unsigned int, const B_Pal* pal
 }
 #endif
 
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10008C9B
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_BitMap@@@Z
+*/
+#ifndef BLD_NATIVE
+B_IDataFile& operator >>(B_IDataFile& file, B_BitMap& bitMap)
+{
+    return file;
+}
+#endif

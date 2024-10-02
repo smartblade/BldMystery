@@ -12,6 +12,7 @@
 #include <export.h>
 #undef BUILD_LIB
 
+class B_IDataFile;
 
 class LIB_EXP B_BitMap
 {
@@ -48,5 +49,7 @@ public:
     void* data;
     B_Pal* pal;
 };
+
+LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_BitMap& bitMap);
 
 #endif /* B_BITMAP_H */

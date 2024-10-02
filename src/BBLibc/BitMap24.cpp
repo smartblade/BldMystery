@@ -125,6 +125,18 @@ int B_BitMap24::SaveToFile(char const*, int) const
 
 /*
 * Module:                 BBLibc.dll
+* Entry point:            0x10028021
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_BitMap24@@@Z
+*/
+#ifndef BLD_NATIVE
+B_IDataFile& operator >>(B_IDataFile& file, B_BitMap24& bitMap)
+{
+    return file;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x10028353
 * VC++ mangling:          ?EscribeArchivoRAW@B_BitMap24@@QBEXPBD@Z
 */

@@ -73,6 +73,18 @@ B_Name::B_Name(unsigned int len) : len(len)
 
 /*
 * Module:                 BBLibc.dll
+* Entry point:            0x10003904
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Name@@@Z
+*/
+#ifndef BLD_NATIVE
+B_IDataFile& operator >>(B_IDataFile& file, B_Name& name)
+{
+    return file;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x100039BA
 * VC++ mangling:          ??1B_Name@@QAE@XZ
 */

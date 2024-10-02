@@ -45,6 +45,8 @@ public:
     size_t size() const { return size_; }
 };
 
+class B_IDataFile;
+
 class LIB_EXP B_BitMap24
 {
 public:
@@ -79,5 +81,7 @@ private:
     static B_Array<B_BitMap24> BitMap24DataList;
 
 };
+
+LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_BitMap24& bitMap);
 
 #endif /* B_BITMAP24_H */

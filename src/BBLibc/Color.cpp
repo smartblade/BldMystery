@@ -90,6 +90,18 @@ B_Color& B_Color::operator =(const B_Color& that)
 
 /*
 * Module:                 BBLibc.dll
+* Entry point:            0x100091A4
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Color@@@Z
+*/
+#ifndef BLD_NATIVE
+B_IDataFile& operator >>(B_IDataFile& file, B_Color& color)
+{
+    return file;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x1000921A
 * VC++ mangling:          ?MakeCons@B_Color@@UAEXXZ
 */

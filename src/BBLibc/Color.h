@@ -11,6 +11,8 @@
 #include <export.h>
 #undef BUILD_LIB
 
+class B_IDataFile;
+
 class LIB_EXP B_Color
 {
 public:
@@ -37,5 +39,7 @@ public:
 
     byte r, g, b;
 };
+
+LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_Color& color);
 
 #endif /* B_COLOR_H */
