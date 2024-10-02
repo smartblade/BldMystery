@@ -1,6 +1,7 @@
 
 #include <BWorld/BWorld.h>
 #include <AnalyticGeometry/Polygon.h>
+#include <BBLibc/ParticleGType.h>
 #include <bld_abstract_net.h>
 #include <Control/anim.h>
 #include <NetMod/libnet.h>

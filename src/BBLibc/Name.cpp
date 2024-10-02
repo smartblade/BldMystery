@@ -1,5 +1,6 @@
 #define BBLIBC_LIB_EXPORT
 #include "Name.h"
+#include "ODataFile.h"
 
 
 /*
@@ -79,6 +80,19 @@ B_Name::B_Name(unsigned int len) : len(len)
 #ifndef BLD_NATIVE
 B_IDataFile& operator >>(B_IDataFile& file, B_Name& name)
 {
+    return file;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x1000398A
+* VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABVB_Name@@@Z
+*/
+#ifndef BLD_NATIVE
+B_ODataFile& operator <<(B_ODataFile& file, B_Name const& name)
+{
+    file.Write(&name, sizeof(B_Name));
     return file;
 }
 #endif

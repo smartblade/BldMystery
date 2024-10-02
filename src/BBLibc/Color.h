@@ -12,6 +12,7 @@
 #undef BUILD_LIB
 
 class B_IDataFile;
+class B_ODataFile;
 
 class LIB_EXP B_Color
 {
@@ -41,5 +42,6 @@ public:
 };
 
 LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_Color& color);
+LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, B_Color const& color);
 
 #endif /* B_COLOR_H */

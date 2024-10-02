@@ -49,5 +49,6 @@ public:
 };
 
 LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_NamedObj& named_obj);
+LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, B_NamedObj const& namedObj);
 
 #endif /* B_NAMED_OBJ_H */

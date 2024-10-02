@@ -1,5 +1,6 @@
 #define BBLIBC_LIB_EXPORT
 #include "BitMap.h"
+#include "ODataFile.h"
 
 
 /*
@@ -37,6 +38,19 @@ B_BitMap::B_BitMap(const B_BitMap& src)
 B_BitMap::B_BitMap(BitMapType type, unsigned int, unsigned int, const B_Pal* pal)
 {
 
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10008B51
+* VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABVB_BitMap@@@Z
+*/
+#ifndef BLD_NATIVE
+B_ODataFile& operator <<(B_ODataFile& file, B_BitMap const& bitMap)
+{
+    file.Write(&bitMap, sizeof(B_BitMap));
+    return file;
 }
 #endif
 

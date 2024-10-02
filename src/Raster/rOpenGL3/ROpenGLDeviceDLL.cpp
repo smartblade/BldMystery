@@ -6,6 +6,7 @@
 #include <View/CameraView.h>
 #include <BBLibc/BBLibc.h>
 #include <BBLibc/MessageManager.h>
+#include <BBLibc/ParticleGType.h>
 #include <math.h>
 #include <stdio.h>
 

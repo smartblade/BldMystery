@@ -13,6 +13,7 @@
 #undef BUILD_LIB
 
 class B_IDataFile;
+class B_ODataFile;
 
 class LIB_EXP B_BitMap
 {
@@ -51,5 +52,6 @@ public:
 };
 
 LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_BitMap& bitMap);
+LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, B_BitMap const& bitMap);
 
 #endif /* B_BITMAP_H */

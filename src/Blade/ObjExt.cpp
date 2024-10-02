@@ -9,6 +9,7 @@
 #include <BBLibc/NDataBase.h>
 #include <BBLibc/ResourceManager.h>
 #include <BBLibc/BitMap.h>
+#include <BBLibc/BitMap24.h>
 #include <BBLibc/Resource.h>
 #include <BBLibc/ObjDscr.h>
 #include <Entities/CameraEntity.h>

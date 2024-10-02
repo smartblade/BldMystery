@@ -3,11 +3,6 @@
 
 #define B_O_DATA_FILE_H
 
-#include "Color.h"
-#include "BitMap.h"
-#include "BitMap24.h"
-#include "ParticleGType.h"
-
 #ifdef BBLIBC_LIB_EXPORT
 #define BUILD_LIB
 #endif
@@ -51,12 +46,6 @@ LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, unsigned long const& l);
 LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, const unsigned int& i);
 LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, float const& f);
 LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, double const& f);
-LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, B_Name const& name);
-LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, B_NamedObj const& namedObj);
-LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, B_BitMap const& bitMap);
-LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, B_Color const& color);
-LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, B_BitMap24 const& bitMap);
-LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, const B_ParticleGType& particleType);
 
 
 #endif /* B_O_DATA_FILE_H */

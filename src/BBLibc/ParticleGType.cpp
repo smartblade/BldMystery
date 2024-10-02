@@ -1,5 +1,6 @@
 #define BBLIBC_LIB_EXPORT
 #include "ParticleGType.h"
+#include "ODataFile.h"
 
 
 /*
@@ -36,6 +37,19 @@ B_ParticleGType::~B_ParticleGType()
 #ifndef BLD_NATIVE
 B_IDataFile& operator >>(B_IDataFile& file, B_ParticleGType& particleType)
 {
+    return file;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100413EE
+* VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABVB_ParticleGType@@@Z
+*/
+#ifndef BLD_NATIVE
+B_ODataFile& operator <<(B_ODataFile& file, const B_ParticleGType& particleType)
+{
+    file.Write(&particleType, sizeof(B_ParticleGType));
     return file;
 }
 #endif

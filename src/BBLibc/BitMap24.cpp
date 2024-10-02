@@ -1,5 +1,6 @@
 #define BBLIBC_LIB_EXPORT
 #include "BitMap24.h"
+#include "ODataFile.h"
 
 
 /*
@@ -131,6 +132,19 @@ int B_BitMap24::SaveToFile(char const*, int) const
 #ifndef BLD_NATIVE
 B_IDataFile& operator >>(B_IDataFile& file, B_BitMap24& bitMap)
 {
+    return file;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100280CC
+* VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABVB_BitMap24@@@Z
+*/
+#ifndef BLD_NATIVE
+B_ODataFile& operator <<(B_ODataFile& file, B_BitMap24 const& bitMap)
+{
+    file.Write(&bitMap, sizeof(B_BitMap24));
     return file;
 }
 #endif

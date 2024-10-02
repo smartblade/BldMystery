@@ -1,5 +1,6 @@
 #define BBLIBC_LIB_EXPORT
 #include "Color.h"
+#include "ODataFile.h"
 
 
 /*
@@ -96,6 +97,19 @@ B_Color& B_Color::operator =(const B_Color& that)
 #ifndef BLD_NATIVE
 B_IDataFile& operator >>(B_IDataFile& file, B_Color& color)
 {
+    return file;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100091DF
+* VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABVB_Color@@@Z
+*/
+#ifndef BLD_NATIVE
+B_ODataFile& operator <<(B_ODataFile& file, B_Color const& color)
+{
+    file.Write(&color, sizeof(B_Color));
     return file;
 }
 #endif
