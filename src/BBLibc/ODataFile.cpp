@@ -22,22 +22,6 @@ B_ODataFile::B_ODataFile(const char* file_name, int flags)
 }
 #endif
 
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10002082
-* VC++ mangling:          ??1B_ODataFile@@QAE@XZ
-*/
-#ifndef BLD_NATIVE
-B_ODataFile::~B_ODataFile()
-{
-    if (fd != -1) {
-        _close(fd);
-    }
-}
-#endif
-
-
 /*
 * Module:                 BBLibc.dll
 * Entry point:            0x10001E86
@@ -51,20 +35,6 @@ void B_ODataFile::Write(const void* data, unsigned int size)
     }
 }
 #endif
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10002250
-* VC++ mangling:          ?OK@B_ODataFile@@QBEIXZ
-*/
-#ifndef BLD_NATIVE
-unsigned int B_ODataFile::OK() const
-{
-    return fd != -1;
-}
-#endif
-
 
 /*
 * Module:                 BBLibc.dll
@@ -207,6 +177,33 @@ B_ODataFile& operator <<(B_ODataFile& file, double const& f)
     file.Write(&f, sizeof(double));
     return file;
 }
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10002082
+* VC++ mangling:          ??1B_ODataFile@@QAE@XZ
+*/
+#ifndef BLD_NATIVE
+B_ODataFile::~B_ODataFile()
+{
+    if (fd != -1) {
+        _close(fd);
+    }
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10002250
+* VC++ mangling:          ?OK@B_ODataFile@@QBEIXZ
+*/
+#ifndef BLD_NATIVE
+unsigned int B_ODataFile::OK() const
+{
+    return fd != -1;
+}
+#endif
 
 
 /*
