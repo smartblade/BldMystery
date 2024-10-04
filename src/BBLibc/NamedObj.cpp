@@ -16,6 +16,17 @@
 
 /*
 * Module:                 BBLibc.dll
+* Entry point:            0x10002300
+* VC++ mangling:          ??1B_NamedObj@@UAE@XZ
+*/
+
+B_NamedObj::~B_NamedObj()
+{
+}
+
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x100039E5
 * VC++ mangling:          ??0B_NamedObj@@QAE@XZ
 */
@@ -29,16 +40,7 @@ B_NamedObj::B_NamedObj() : name() {}
 * VC++ mangling:          ??0B_NamedObj@@QAE@ABVB_Name@@@Z
 */
 
-B_NamedObj::B_NamedObj(const B_Name& n) : name(n) {}
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10002300
-* VC++ mangling:          ??1B_NamedObj@@UAE@XZ
-*/
-
-B_NamedObj::~B_NamedObj()
+B_NamedObj::B_NamedObj(const B_Name& n) : name(n)
 {
 }
 
