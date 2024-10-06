@@ -47,7 +47,7 @@ private:
     unsigned int ReadCacheBlock();
     int fd;
     char* file_name;
-    int file_size;
+    unsigned int file_size;
     char fileCache[16384];
     unsigned int cacheBlockBytesRead; // 400ch
     unsigned int cacheBlockPos; // 4010h
