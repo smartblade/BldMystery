@@ -491,6 +491,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BBLibc\IDataFile.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\BBLibc\ODataFile.cpp"
 				>
 			</File>

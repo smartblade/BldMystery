@@ -12,14 +12,6 @@
 #include <export.h>
 #undef BUILD_LIB
 
-typedef struct {
-    int unknownField1;
-    int unknownField4; // align
-    int fd;
-    double unknownField2;
-    char* unknownField3;
-    int filePosition;
-} someStruct_t;
 
 class LIB_EXP B_IDataFile
 {
@@ -48,16 +40,11 @@ private:
     int fd;
     char* file_name;
     unsigned int file_size;
-    char fileCache[16384];
-    unsigned int cacheBlockBytesRead; // 400ch
-    unsigned int cacheBlockPos; // 4010h
-    unsigned int filePosition; // 4014h
-    unsigned int cacheBlock; // 4018h
-    someStruct_t* cacheBlockStruct; // 4020h
-    unsigned int unknown;
-    someStruct_t* unknown_struct;
+    char fileCache[0x4000];
+    unsigned int cacheBlockBytesRead;
+    unsigned int cacheBlockPos;
+    unsigned int filePosition;
 
-    int n_opened_files_internal;
     static int n_opened_files;
     static int n_open_files;
     static PyObject* OnOpenFunc;
