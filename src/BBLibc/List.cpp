@@ -33,7 +33,7 @@
 * VC++ mangling:          ??0B_ListElement@@QAE@XZ
 */
 
-B_ListElement::B_ListElement() : list(0), member2(0), member3(0) {};
+B_ListElement::B_ListElement() : list(nullptr), member2(0), member3(0) {};
 
 
 /*
@@ -53,7 +53,7 @@ B_ListElement::B_ListElement(const B_ListElement& other) : list(other.list), mem
 
 B_ListElement::~B_ListElement()
 {
-    if (this->list != 0) {
+    if (this->list != nullptr) {
         this->list->Remove(this, 0);
     }
 }
