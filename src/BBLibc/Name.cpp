@@ -45,26 +45,9 @@ B_Name::B_Name() : string(new char[1]), len(0)
 
 B_Name::B_Name(const char* str)
 {
-    char* p = (char*)str;
-    int len = 0;
-
-    // Calculate the length of the string
-    while (*p != '\0') {
-        len++;
-        p++;
-    }
-
-    char* buffer = new char[len + 1];
-
-    // Copy the string into the allocated memory
-    for (int i = 0; i < len; i++) {
-        buffer[i] = str[i];
-    }
-
-    buffer[len] = '\0'; // Add null terminator
-
-    this->string = buffer;
-    this->len = len;
+    this->len = static_cast<unsigned int>(strlen(str));
+    this->string = new char[this->len + 1];
+    strcpy(this->string, str);
 }
 
 
