@@ -266,7 +266,7 @@ B_ODataFile& operator <<(B_ODataFile& file, B_Name const& name)
 
 B_Name::~B_Name() {
     len = 0;
-    delete string;
+    delete [] string;
 }
 
 
