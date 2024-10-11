@@ -499,6 +499,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BBLibc\Pal.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\BBLibc\ParticleGTypeTests.cpp"
 				>
 			</File>
