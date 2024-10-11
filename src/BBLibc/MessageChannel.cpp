@@ -68,6 +68,5 @@ unsigned int B_MessageChannel::Close()
 
 unsigned int B_MessageChannel::Message(char const* message)
 {
-    return 0; // This is the actual implementation (xor     eax, eax)
+    return 0;
 }
-
