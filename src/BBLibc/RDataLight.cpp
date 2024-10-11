@@ -46,8 +46,9 @@ void B_RDataLight::Interp(double t, B_RDataLight& start, double u, B_RDataLight&
 * Entry point:            0x10007EF0
 * VC++ mangling:          ??4B_RDataLight@@QAEAAV0@ABV0@@Z
 */
-
+#ifndef BLD_NATIVE
 B_RDataLight& B_RDataLight::operator=(const B_RDataLight& other)
 {
     return *this;
 }
+#endif

@@ -12863,7 +12863,26 @@ l10007D30 ENDP
 ;
 ;* Export: ??4B_RDataLight@@QAEAAV0@ABV0@@Z, 004B
 ;
-           call l10007EF0; Implemented in c++ code
+l10007EF0 PROC
+           push ebp
+           mov ebp, esp
+           push ecx
+           mov dword ptr [ebp-004h], ecx
+           mov eax, dword ptr [ebp+008h]
+           mov ecx, dword ptr [ebp-004h]
+           mov edx, dword ptr [eax]
+           mov dword ptr [ecx], edx
+           mov edx, dword ptr [eax+004h]
+           mov dword ptr [ecx+004h], edx
+           mov edx, dword ptr [eax+008h]
+           mov dword ptr [ecx+008h], edx
+           mov eax, dword ptr [eax+00Ch]
+           mov dword ptr [ecx+00Ch], eax
+           mov eax, dword ptr [ebp-004h]
+           mov esp, ebp
+           pop ebp
+           ret 00004h
+l10007EF0 ENDP
 ;
            int 03h
            int 03h
