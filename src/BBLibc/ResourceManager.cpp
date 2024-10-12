@@ -17,7 +17,7 @@ B_ResourceManager B_resource_manager;
 * Entry point:            0x10004425
 */
 #ifndef BLD_NATIVE
-struct B_Resource* B_ResourceManager::sub_10004425(unsigned short resourceId, const B_Name& name)
+B_Resource* B_ResourceManager::sub_10004425(unsigned short resourceId, const B_Name& name)
 {
     // TODO Implement
     int var_402C = 0;
