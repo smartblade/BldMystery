@@ -14,7 +14,7 @@
 #include <export.h>
 #undef BUILD_LIB
 
-/*LIB_EXP */struct B_Particle
+struct B_Particle
 {
     double x;
     double y;
@@ -22,7 +22,7 @@
     int time;
 };
 
-struct LIB_EXP B_ParticleElement
+struct B_ParticleElement
 {
 public:
     byte r;
