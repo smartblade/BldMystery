@@ -427,4 +427,3 @@ extern UpdateAGTextureFunc UpdateAGTexture;
 #ifdef __cplusplus
 }
 #endif
-
