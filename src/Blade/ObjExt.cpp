@@ -12,6 +12,7 @@
 #include <BBLibc/BitMap24.h>
 #include <BBLibc/Resource.h>
 #include <BBLibc/ObjDscr.h>
+#include <BBLibc/ODataFile.h>
 #include <Entities/CameraEntity.h>
 #include <Entities/PersonEntity.h>
 #include "bld_misc_funcs.h"

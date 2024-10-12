@@ -3,7 +3,6 @@
 
 #define B_I_DATA_FILE_H
 
-#include "array.h"
 #include <bld_system.h>
 
 #ifdef BBLIBC_LIB_EXPORT

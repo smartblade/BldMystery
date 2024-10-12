@@ -1,6 +1,8 @@
 #include <AnalyticGeometry/Vector.h>
 
 #include <bld_system.h>
+#include <BBLibc/IDataFile.h>
+#include <BBLibc/ODataFile.h>
 
 
 /*
