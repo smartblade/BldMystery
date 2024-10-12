@@ -33,8 +33,6 @@ target_compile_definitions(
 )
 target_include_directories(${TARGET} PRIVATE ${BOD_COMMON_INCLUDE_DIR})
 target_link_directories(${TARGET} PRIVATE ${BOD_EXTERNAL_LIB_DIR})
-# Disable SAFESEH
-target_link_options(${TARGET} PRIVATE "/SAFESEH:NO")
 target_link_libraries(
     ${TARGET} PRIVATE
     python15
