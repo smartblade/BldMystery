@@ -5,28 +5,6 @@
 
 /*
 * Module:                 BBLibc.dll
-* Entry point:            0x100022C0
-* VC++ mangling:          ?Id@B_Name@@QBEABV1@XZ
-*/
-
-const B_Name& B_Name::Id() const {
-    return *this;
-}
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x100022E0
-* VC++ mangling:          ?Length@B_Name@@QBEIXZ
-*/
-unsigned int B_Name::Length() const
-{
-    return len;
-}
-
-
-/*
-* Module:                 BBLibc.dll
 * Entry point:            0x10003300
 * VC++ mangling:          ??0B_Name@@QAE@XZ
 */

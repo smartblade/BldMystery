@@ -1,7 +1,6 @@
 #define BBLIBC_LIB_EXPORT
 #include <bld_system.h>
 #include "List.h"
-//#include "ListElement.h"
 
 
 /*
@@ -23,26 +22,6 @@
 * Data address:           0x10042194
 * VC++ mangling:          ??_7B_List@@6B@
 */
-
-
-// B_ListElement implementation
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10002EA0
-* VC++ mangling:          ??0B_ListElement@@QAE@XZ
-*/
-
-B_ListElement::B_ListElement() : list(nullptr), member2(0), member3(0) {};
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10002F40
-* VC++ mangling:          ??0B_ListElement@@QAE@ABV0@@Z
-*/
-
-B_ListElement::B_ListElement(const B_ListElement& other) : list(other.list), member2(other.member2), member3(other.member3) {};
 
 
 /*
@@ -137,17 +116,6 @@ B_List::B_List(B_List const&)
 
 }
 #endif
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x100030E0
-* VC++ mangling:          ??1B_List@@UAE@XZ
-*/
-
-B_List::~B_List()
-{
-}
 
 
 /*

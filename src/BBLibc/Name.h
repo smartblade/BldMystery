@@ -22,8 +22,6 @@ public:
     B_Name(const B_Name& src);
     B_Name(unsigned int len);
     ~B_Name();
-    const B_Name& Id() const;
-    unsigned int Length() const;
     char* const String() const;
     unsigned int CompareNoCase(const char* str) const;
     B_Name Right(unsigned int count) const;
@@ -45,6 +43,17 @@ public:
 
     /*
     * Module:                 BBLibc.dll
+    * Entry point:            0x100022C0
+    * VC++ mangling:          ?Id@B_Name@@QBEABV1@XZ
+    */
+
+    const B_Name& Id() const {
+        return *this;
+    }
+
+
+    /*
+    * Module:                 BBLibc.dll
     * Entry point:            0x100022D0
     * VC++ mangling:          ??BB_Name@@QBEPBDXZ
     */
@@ -52,6 +61,17 @@ public:
     operator const char* () const
     {
         return string;
+    }
+
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x100022E0
+    * VC++ mangling:          ?Length@B_Name@@QBEIXZ
+    */
+    unsigned int Length() const
+    {
+        return len;
     }
 
     void UpCase();

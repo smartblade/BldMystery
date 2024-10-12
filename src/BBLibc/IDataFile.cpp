@@ -375,30 +375,6 @@ B_IDataFile::~B_IDataFile()
 
 /*
 * Module:                 BBLibc.dll
-* Entry point:            0x100021E0
-* VC++ mangling:          ?OK@B_IDataFile@@QBEIXZ
-*/
-
-unsigned int B_IDataFile::OK() const
-{
-    return fd != -1;
-}
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10002200
-* VC++ mangling:          ?GetFileName@B_IDataFile@@QBEPBDXZ
-*/
-
-char const* B_IDataFile::GetFileName() const
-{
-    return this->file_name;
-}
-
-
-/*
-* Module:                 BBLibc.dll
 * Entry point:            0x10002220
 * VC++ mangling:          ??4B_IDataFile@@QAEAAV0@ABV0@@Z
 */

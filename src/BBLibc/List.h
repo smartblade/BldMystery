@@ -15,8 +15,29 @@ class B_List;
 class LIB_EXP B_ListElement
 {
 public:
-    B_ListElement();
-    B_ListElement(const B_ListElement& other);
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10002EA0
+    * VC++ mangling:          ??0B_ListElement@@QAE@XZ
+    */
+
+    B_ListElement() : list(nullptr), member2(0), member3(0)
+    {
+    }
+
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10002F40
+    * VC++ mangling:          ??0B_ListElement@@QAE@ABV0@@Z
+    */
+
+    B_ListElement(const B_ListElement& other)
+        : list(other.list), member2(other.member2), member3(other.member3)
+    {
+    }
+
     virtual ~B_ListElement();
 
     B_ListElement& operator =(const B_ListElement& other);
@@ -40,6 +61,17 @@ public:
 
     /*
     * Module:                 BBLibc.dll
+    * Entry point:            0x100030E0
+    * VC++ mangling:          ??1B_List@@UAE@XZ
+    */
+
+    virtual ~B_List()
+    {
+    }
+
+
+    /*
+    * Module:                 BBLibc.dll
     * Entry point:            0x100031A0
     * VC++ mangling:          ??4B_List@@QAEAAV0@ABV0@@Z
     */
@@ -52,7 +84,6 @@ public:
         return *this;
     }
 
-    virtual ~B_List();
     unsigned int Add(B_ListElement* element);
     unsigned int AddAfter(B_ListElement* existing, B_ListElement* newElement);
     unsigned int AddBefore(B_ListElement* existing, B_ListElement* newElement);

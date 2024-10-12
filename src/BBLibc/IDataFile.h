@@ -31,8 +31,31 @@ public:
     unsigned char Peek();
     int Eof();
     void Read(void* data, unsigned int size);
-    unsigned int OK() const;
-    char const* GetFileName() const;
+
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x100021E0
+    * VC++ mangling:          ?OK@B_IDataFile@@QBEIXZ
+    */
+
+    unsigned int OK() const
+    {
+        return fd != -1;
+    }
+
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10002200
+    * VC++ mangling:          ?GetFileName@B_IDataFile@@QBEPBDXZ
+    */
+
+    char const* GetFileName() const
+    {
+        return this->file_name;
+    }
+
     B_IDataFile& operator =(const B_IDataFile& other);
 private:
     unsigned int ReadCacheBlock();

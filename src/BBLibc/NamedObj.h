@@ -15,7 +15,17 @@
 class LIB_EXP B_NamedObj
 {
 public:
-    virtual ~B_NamedObj();
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10002300
+    * VC++ mangling:          ??1B_NamedObj@@UAE@XZ
+    */
+
+    virtual ~B_NamedObj()
+    {
+    }
+
     B_NamedObj();
 
 
