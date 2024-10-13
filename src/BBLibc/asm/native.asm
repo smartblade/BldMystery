@@ -5600,13 +5600,7 @@ l10003DCE ENDP
 ;* Call:
 ; 1003EEC6 
 ;
-l10003EB0 PROC
-           push ebp
-           mov ebp, esp
-           mov eax, offset g1004A118
-           pop ebp
-           ret
-l10003EB0 ENDP
+           call l10003EB0; Implemented in c++ code
 ;
 ;* Call:
 ; 10004096, 100040F3, 1000429F, 10037F01 

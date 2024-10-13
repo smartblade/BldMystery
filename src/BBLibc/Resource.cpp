@@ -1,5 +1,6 @@
 #define BBLIBC_LIB_EXPORT
 #include "Resource.h"
+#include "ResourceManager.h"
 
 
 /*
@@ -11,6 +12,26 @@
 * Data address:           0x10042198
 * VC++ mangling:          ??_7B_Resource@@6B@
 */
+
+/*
+* Module:                 BBLibc.dll
+* Data address:           0x1004A118
+* VC++ mangling:          ?B_resource_manager@@3VB_ResourceManager@@A
+*/
+#ifndef BLD_NATIVE
+B_ResourceManager B_resource_manager;
+#endif
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10003EB0
+* VC++ mangling:          ?GetResourceManager@@YAPAVB_ResourceManager@@XZ
+*/
+
+B_ResourceManager* GetResourceManager() {
+    return &B_resource_manager;
+}
 
 
 /*

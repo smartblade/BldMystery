@@ -216,6 +216,8 @@ externdef ??YB_Name@@QAEABV0@ABV0@@Z: near
 l10003DCE equ ??YB_Name@@QAEABV0@ABV0@@Z
 externdef ?UpCase@B_Name@@QAEXXZ: near
 l10003E91 equ ?UpCase@B_Name@@QAEXXZ
+externdef ?GetResourceManager@@YAPAVB_ResourceManager@@XZ: near
+l10003EB0 equ ?GetResourceManager@@YAPAVB_ResourceManager@@XZ
 externdef ??0B_Resource@@QAE@XZ: near
 l10003EBA equ ??0B_Resource@@QAE@XZ
 externdef ??1B_Resource@@UAE@XZ: near
