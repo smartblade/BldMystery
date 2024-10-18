@@ -78,7 +78,7 @@ const char* GetConfigDirectory()
 * VC++ mangling:          ?GetCurrentLanguage@@YAPBDXZ
 */
 #ifndef BLD_NATIVE
-char const* GetCurrentLanguage(void)
+char const* GetCurrentLanguage()
 {
     return 0;
 }
@@ -91,7 +91,7 @@ char const* GetCurrentLanguage(void)
 * VC++ mangling:          ?RemoveOnOpenInputFileFunc@@YAXXZ
 */
 #ifndef BLD_NATIVE
-void RemoveOnOpenInputFileFunc(void)
+void RemoveOnOpenInputFileFunc()
 {
 
 }

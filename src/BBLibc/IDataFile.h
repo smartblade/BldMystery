@@ -25,7 +25,7 @@ public:
     static void RemoveOnOpenFunc();
     void Close();
     void Open(const char* src, int flags);
-    long Length(void) const;
+    long Length() const;
     long Seek(long offset, int whence);
     long Tell();
     unsigned char Peek();

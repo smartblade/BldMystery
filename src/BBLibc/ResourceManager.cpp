@@ -66,7 +66,7 @@ B_ResourceManager::~B_ResourceManager()
 * VC++ mangling:          ?Clean@B_ResourceManager@@QAEXXZ
 */
 #ifndef BLD_NATIVE
-void B_ResourceManager::Clean(void)
+void B_ResourceManager::Clean()
 {
 
 }

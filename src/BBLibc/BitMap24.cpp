@@ -56,7 +56,7 @@ B_BitMap24::B_BitMap24(const B_BitMap24& that)
 * VC++ mangling:          ?ClearBitMap24Data@B_BitMap24@@SAXXZ
 */
 #ifndef BLD_NATIVE
-void B_BitMap24::ClearBitMap24Data(void)
+void B_BitMap24::ClearBitMap24Data()
 {
 
 }

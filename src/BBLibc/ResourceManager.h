@@ -19,7 +19,7 @@ public:
     B_ResourceManager();
     ~B_ResourceManager();
     B_Resource* sub_10004425(unsigned short resourceId, const B_Name& name);
-    void Clean(void);
+    void Clean();
     unsigned int LocateResourceIn(const B_Name& id, const B_Name*, int);
     unsigned int AddAutoResource(B_Name const&, B_Resource*, int);
     B_Resource* GetResource(unsigned short resourceId, const B_Name& name);

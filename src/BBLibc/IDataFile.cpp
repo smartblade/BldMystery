@@ -158,7 +158,7 @@ unsigned int B_IDataFile::ReadCacheBlock()
 * VC++ mangling:          ?Length@B_IDataFile@@QBEJXZ
 */
 
-long B_IDataFile::Length(void) const
+long B_IDataFile::Length() const
 {
     if (fd != -1) {
         return file_size;

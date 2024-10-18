@@ -19,9 +19,9 @@ LIB_EXP void OutputWin32Error(char const* message);
 
 LIB_EXP const char* GetConfigDirectory();
 
-LIB_EXP char const* GetCurrentLanguage(void);
+LIB_EXP char const* GetCurrentLanguage();
 
-LIB_EXP void RemoveOnOpenInputFileFunc(void);
+LIB_EXP void RemoveOnOpenInputFileFunc();
 
 LIB_EXP PyObject* CallPythonObject(PyObject* func, PyObject* args);
 

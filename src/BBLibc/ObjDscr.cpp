@@ -32,7 +32,7 @@ B_ObjDscr::~B_ObjDscr()
 * VC++ mangling:          ?SetUpNormals@B_ObjDscr@@QAEXXZ
 */
 #ifndef BLD_NATIVE
-void B_ObjDscr::SetUpNormals(void)
+void B_ObjDscr::SetUpNormals()
 {
 
 }
@@ -45,7 +45,7 @@ void B_ObjDscr::SetUpNormals(void)
 * VC++ mangling:          ?SetUpInertialT@B_ObjDscr@@QAEXXZ
 */
 #ifndef BLD_NATIVE
-void B_ObjDscr::SetUpInertialT(void)
+void B_ObjDscr::SetUpInertialT()
 {
 
 }
@@ -71,7 +71,7 @@ int B_ObjDscr::GetVtxNode(unsigned int)
 * VC++ mangling:          ?SetUpEdges@B_ObjDscr@@QAEXXZ
 */
 #ifndef BLD_NATIVE
-void B_ObjDscr::SetUpEdges(void) {
+void B_ObjDscr::SetUpEdges() {
 }
 #endif
 
@@ -97,7 +97,7 @@ void B_ObjDscr::Draw(
 * VC++ mangling:          ?SetUpBSP@B_ObjDscr@@QAEXXZ
 */
 #ifndef BLD_NATIVE
-void B_ObjDscr::SetUpBSP(void)
+void B_ObjDscr::SetUpBSP()
 {
 
 }
