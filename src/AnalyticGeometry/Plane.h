@@ -4,6 +4,7 @@
 #define PLANE_H
 
 #include <AnalyticGeometry/Vector.h>
+#include <BBLibc/IDataFile.h>
 
 class B_Plane
 {

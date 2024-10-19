@@ -1,15 +1,25 @@
-
 #include <bld_system.h>
 #include <bld_python.h>
 #include <Raster/RasterDevice.h>
 #include <View/CameraView.h>
 #include "BladeApp.h"
+#include <BBLibc/BBLibc.h>
+#include <BBLibc/Name.h>
+#include <BBLibc/MessageManager.h>
+#include <BBLibc/NDataBase.h>
+#include <BBLibc/ResourceManager.h>
+#include <BBLibc/BitMap.h>
+#include <BBLibc/BitMap24.h>
+#include <BBLibc/Resource.h>
+#include <BBLibc/ObjDscr.h>
+#include <BBLibc/ODataFile.h>
 #include <Entities/CameraEntity.h>
 #include <Entities/PersonEntity.h>
 #include "bld_misc_funcs.h"
 #define BUILD_LIB
 #include <blade_ext.h>
 #include <math.h>
+#include <fcntl.h>
 
 
 /*

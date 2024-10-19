@@ -39,6 +39,7 @@ noFWAIT = {
     'fstsw' : 'fnstsw',
 }
 fwait_regexp = re.compile('^(?P<cmd>{})'.format("|".join(noFWAIT.keys())))
+imul_3_regexp = re.compile('^imul\s+(\w+,\s+){2}(?P<imm>[\dABCDEF]+)')
 
 def toHex(n):
     return format(n, '08X')
@@ -339,6 +340,18 @@ class AsmInstruction(CodeItem):
             cmd = match.group('cmd')
             self._instr = self._instr.replace(cmd, noFWAIT[cmd])
 
+    def fix_imul_3_args(self):
+        match = re.search(imul_3_regexp, self._instr)
+        if match:
+            immediate_str = match.group('imm')
+            immediate = fromHex(immediate_str)
+            if immediate >= 0x80000000 and immediate < 0xFFFFFF80:
+                # negative value
+                immediate = 0x100000000 - immediate
+                self._instr = self._instr.replace(
+                    immediate_str, "-{}".format(toHex(immediate))
+                )
+
     def applyRelocs(self, imageMap):
         reloc = imageMap.relocations()
         for a in range(self._addr, self._addr + self._length):
@@ -517,6 +530,7 @@ class CodeBlock(CodeItem):
             instr.fixByteMemoryAccess()
             instr.addNearJumpModifier(imageMap)
             instr.avoidEmittingOfFWAIT()
+            instr.fix_imul_3_args()
 
     def write(self, writer):
         for instr in self._instructions:
@@ -841,7 +855,7 @@ class MemoryArea:
             expectedSize = 2 * (addr - self._addr)
             delta = expectedSize - len(self._bytes)
             if (delta < 0):
-                del self._bytes[delta]
+                del self._bytes[delta:]
             for i in range(delta):
                 self._bytes.append(None)
             self._bytes.extend(bytes)
@@ -869,6 +883,7 @@ class MemoryArea:
 class SrcSymbols:
     def __init__(self):
         self.varNames = {}
+        self.implementedVariables = set()
         self.mangledNames = {}
         self.implementedProcedures = set()
 
@@ -881,11 +896,16 @@ class SrcSymbols:
         return symbols
 
     @staticmethod
-    def create_symbols_dict(varNames, mangledNames, implementedProcedures):
+    def create_symbols_dict(
+        varNames, implementedVariables, mangledNames, implementedProcedures
+    ):
         symbols_dict = {}
         for (module, addr), var_name in varNames.items():
             symbols = SrcSymbols.ensure_symbols_for_module(symbols_dict, module)
             symbols.varNames[addr] = var_name
+        for module, addr in implementedVariables:
+            symbols = SrcSymbols.ensure_symbols_for_module(symbols_dict, module)
+            symbols.implementedVariables.add(addr)
         for (module, addr), mangled_name in mangledNames.items():
             symbols = SrcSymbols.ensure_symbols_for_module(symbols_dict, module)
             symbols.mangledNames[addr] = mangled_name
@@ -993,7 +1013,9 @@ def readRelocations(relocFileName):
 
 def readDataItems(dataFileName):
     addr_inv_regexp = re.compile('^;;\s(?P<startAddr>0x[\dABCDEF]+)\s(?P<endAddr>0x[\dABCDEF]+)')
+    exp_var_regexp = re.compile('^;;;\s(?P<addr>0x[\dABCDEF]+)\s(?P<name>[\S]+)')
     dataItems = dict()
+    exports = dict()
     f = open(dataFileName)
     for line in f.readlines():
         match = re.search(addr_inv_regexp, line)
@@ -1001,8 +1023,12 @@ def readDataItems(dataFileName):
             startAddr = fromHex(match.group('startAddr'))
             endAddr = fromHex(match.group('endAddr'))
             dataItems[startAddr] = DataItem(startAddr, endAddr)
+        match = re.search(exp_var_regexp, line)
+        if match:
+            addr = fromHex(match.group('addr'))
+            exports[addr] = match.group('name')
     f.close()
-    return dataItems
+    return dataItems, exports
 
 def reverseBytes(bytes):
     length = len(bytes) // 2
@@ -1076,7 +1102,7 @@ def writeExportCmd(asm_files, symbols):
     with open(asm_files.intermediate_export) as f:
         lines = f.readlines()
     addr_export_regexp = re.compile(
-        '(?P<addr>[\dABCDEF]+)\s(?P<exportName>\w+)\s(?P<internalName>\w+)'
+        '(?P<addr>[\dABCDEF]+)\s(?P<exportName>\S+)\s(?P<internalName>\w+)'
     )
     exportAddrs = []
     exportNames = {}
@@ -1087,7 +1113,10 @@ def writeExportCmd(asm_files, symbols):
             addr = fromHex(match.group('addr'))
             exportName = match.group('exportName')
             internalName = match.group('internalName')
-            if not addr in symbols.implementedProcedures:
+            if (
+                not addr in symbols.implementedProcedures and
+                not addr in symbols.implementedVariables
+            ):
                 exportAddrs.append(addr)
                 exportNames[addr] = exportName
                 internalNames[addr] = internalName
@@ -1097,6 +1126,8 @@ def writeExportCmd(asm_files, symbols):
         internalName = internalNames[addr]
         if addr in symbols.mangledNames:
             internalName = symbols.mangledNames[addr]
+        elif addr in symbols.varNames:
+            internalName = symbols.varNames[addr]
         if isCdeclMangling(exportName, internalName):
             symbolName = "{}".format(exportName)
         else:
@@ -1159,33 +1190,57 @@ def collectProceduresFromFile(fileName):
 
 def collectVariablesFromFile(fileName):
     varNames = {}
+    nativeVariables = set()
     f = open(fileName)
     lines = f.readlines()
     module_regexp = re.compile('Module:\s+(?P<module>[\S]+)')
     addr_regexp = re.compile('Data\s+address:\s+0x(?P<addr>[\dABCDEF]+)')
+    mangling_regexp = re.compile('VC\+\+\s+mangling:\s+(?P<mangling>[\S]+)')
     name_regexp = re.compile('(\W+(?P<name>\w+)(\s*\[\s*\d*\s*\])*\s*)?(=\s*\d*\s*)?;')
+    meta = False
     module = None
     addr_by_module = {}
     for line in lines:
-        match = re.search(module_regexp, line)
-        if match:
-            module = match.group('module')
-        match = re.search(addr_regexp, line)
-        if match:
-            addr_by_module[module] = fromHex(match.group('addr'))
-        if len(addr_by_module) > 0:
+        if line.find("/*") >= 0:
+            meta = True
+            module = None
+            addr_by_module = {}
+            mangling = None
+        if line.find("*/") >= 0:
+            meta = False
+            for module, addr in addr_by_module.items():
+                varNames[(module, addr)] = mangling
+        if line.find("BLD_NATIVE") >= 0:
+            for module, addr in addr_by_module.items():
+                nativeVariables.add((module, addr))
+        if meta:
+            match = re.search(module_regexp, line)
+            if match:
+                module = match.group('module')
+            match = re.search(addr_regexp, line)
+            if match:
+                addr_by_module[module] = fromHex(match.group('addr'))
+            match = re.search(mangling_regexp, line)
+            if match:
+                mangling = match.group('mangling')
+        elif (
+            len(addr_by_module) > 0 and
+            varNames[(module, addr_by_module[module])] is None
+        ):
             match = re.search(name_regexp, line)
             if match:
                 for module, addr in addr_by_module.items():
-                    varNames[(module, addr)] = match.group('name')
+                    varNames[(module, addr)] = "_{}".format(match.group('name'))
+                    nativeVariables.add((module, addr))
                 addr_by_module = {}
     f.close()
-    return varNames
+    return varNames, set(varNames.keys()) - nativeVariables
 
 def collectSymbolsFromSources(src_dir):
     if options.write_proc_dict:
-        return SrcSymbols.create_symbols_dict({}, {}, set())
+        return SrcSymbols.create_symbols_dict({}, set(), {}, set())
     varNames = {}
+    implementedVariables = []
     mangledNames = {}
     implementedProcedures = []
     for (root, dirs, files) in os.walk(src_dir):
@@ -1195,9 +1250,12 @@ def collectSymbolsFromSources(src_dir):
                 (names, implemented) = collectProceduresFromFile(fileName)
                 mangledNames.update(names)
                 implementedProcedures += implemented
-                varNames.update(collectVariablesFromFile(fileName))
+                (names, implemented) = collectVariablesFromFile(fileName)
+                varNames.update(names)
+                implementedVariables += implemented
     return SrcSymbols.create_symbols_dict(
         varNames,
+        set(implementedVariables),
         mangledNames,
         set(implementedProcedures)
     )
@@ -1223,13 +1281,15 @@ def createAsmCode(asm_files):
     lines = f.readlines()
     f.close()
     reloc = readRelocations(asm_files.reloc)
-    userData = readDataItems(asm_files.input_data)
+    userData, exports = readDataItems(asm_files.input_data)
     addr_label_regexp = re.compile('^(?P<addr>[\dABCDEF]+):\s+(?P<bytes>[\dABCDEF]+)\s+(?P<instr>\S.*)?$')
     print("Fill data structures...")
-    entryPoint = None
-    export = None
     mem = MemoryArea(reloc)
     imageMap = ImageMap(mem)
+    for addr, export in exports.items():
+        imageMap.addExport(addr, export)
+    entryPoint = None
+    export = None
     comments = []
     for line in lines:
         match = re.search(addr_label_regexp, line)
@@ -1312,6 +1372,7 @@ def calc_hash(symbols):
     json_str = json.dumps(
         (
             symbols.varNames,
+            sorted(symbols.implementedVariables),
             symbols.mangledNames,
             sorted(symbols.implementedProcedures)
         ),
@@ -1334,7 +1395,7 @@ def write_hash(hashFileName, new_hash):
 
 def read_module_name(asm_files):
     with open(asm_files.module, "rt") as f:
-        return f.readlines()[0]
+        return f.readlines()[0].rstrip()
 
 def run():
     src_dir = os.path.abspath('src')
@@ -1359,21 +1420,33 @@ def process_asm_dir(asm_files, symbols):
     lines = readAsmCode(asm_files.intermediate_asm)
     print("Writing code...")
     f = open(asm_files.output_asm, "wt")
-    isImplemented = False
+    isImplementedProc = False
+    isImplementedVar = False
     for line in lines:
         if line.startswith("l"):
             if line.find("PROC") >= 0:
                 addr = fromHex(line[1:9])
-                isImplemented = addr in symbols.implementedProcedures
-                if isImplemented:
+                isImplementedProc = addr in symbols.implementedProcedures
+                if isImplementedProc:
                     f.write(
                         "{} call l{}; Implemented in c++ code\n".format(
                             ' ' * 10,
                             toHex(addr)))
-        if not isImplemented:
+        if line.startswith("g"):
+            addr = fromHex(line[1:9])
+            isImplementedVar = addr in symbols.implementedVariables
+            if isImplementedVar:
+                f.write(
+                    "{} dd g{}; Defined in c++ code\n".format(
+                        ' ' * 10,
+                        toHex(addr)))
+        if isImplementedVar and line.startswith(";* Export:"):
+            isImplementedVar = False
+            f.write(";\n")
+        if not isImplementedProc and not isImplementedVar:
             f.write(line)
         elif line.find("ENDP") >= 0:
-            isImplemented = False
+            isImplementedProc = False
     f.close()
     if options.write_proc_dict:
         with open(asm_files.procedures_dict_json, "wt") as f:
@@ -1402,7 +1475,10 @@ def process_asm_dir(asm_files, symbols):
     for addr in sorted(symbols.varNames.keys()):
         name = symbols.varNames[addr]
         label = "g{}".format(toHex(addr))
-        f.write("public _{}\n{} equ _{}\n".format(name, label, name))
+        if addr in symbols.implementedVariables:
+            f.write("externdef {}: ptr\n{} equ {}\n".format(name, label, name))
+        else:
+            f.write("public {}\n{} equ {}\n".format(name, label, name))
     f.close()
     # Touch asm file to force recompile
     pathlib.Path(asm_files.asm_main).touch()

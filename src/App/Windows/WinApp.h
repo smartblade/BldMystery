@@ -4,6 +4,7 @@
 #define WIN_APP_H
 
 #include <App/App.h>
+#include <Raster/RasterDevice.h>
 
 class B_WinApp : public B_App
 {

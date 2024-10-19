@@ -5,7 +5,12 @@
 
 
 #include <bld_python.h>
-#include "BBLibc.h"
+#include <BBLibc/BBLibc.h>
+#include <BBLibc/NDataBase.h>
+#include <BBLibc/Name.h>
+#include <BBLibc/NamedObj.h>
+#include <BBLibc/MessageChannel.h>
+#include <BBLibc/MessageManager.h>
 #include <Entities/Entity.h>
 #include "Clock.h"
 #include <array.h>

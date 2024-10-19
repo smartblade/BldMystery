@@ -3,8 +3,7 @@
 #define BLIGHTS_H
 
 #include <AnalyticGeometry/Plane.h>
-#include <BBLibc.h>
-
+#include <BBLibc/Color.h>
 
 class B_IDataFile;
 

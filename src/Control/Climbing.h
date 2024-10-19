@@ -2,8 +2,9 @@
 
 #define CLIMBING_H
 
-#include <BBLibc.h>
+#include <BBLibc/NamedObj.h>
 #include <AnalyticGeometry/Vector.h>
+#include "array.h"
 
 
 class B_BipedAction;

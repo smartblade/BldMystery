@@ -3,7 +3,8 @@
 #include "GLVideoMode.h"
 #include "RTrisDeviceDLL.h"
 #include <AnalyticGeometry/Matrix.h>
-#include <BBLibc.h>
+
+#include <BBLibc/NamedObj.h>
 #include <bld_system.h>
 #include <GL/gl.h>
 #define BUILD_LIB

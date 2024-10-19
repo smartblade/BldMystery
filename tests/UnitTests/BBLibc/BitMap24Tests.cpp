@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
-#include <BBLibc.h>
+#include <BBLibc/BitMap24.h>
 
 
 TEST(BitMap24Tests, Fields)

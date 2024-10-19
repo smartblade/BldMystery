@@ -1,7 +1,7 @@
 #include <BWorld/MapTexture.h>
 
+#include <BBLibc/IDataFile.h>
 #include <Raster/RasterDevice.h>
-#include <BBLibc.h>
 
 
 /*

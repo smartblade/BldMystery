@@ -487,7 +487,47 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BBLibc\ColorTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\BBLibc\ElementCSVTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BBLibc\IDataFileTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BBLibc\ListElementTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BBLibc\ListTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BBLibc\MessageChannelTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BBLibc\MessageManagerTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BBLibc\NamedObjTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BBLibc\NameTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BBLibc\ODataFileTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BBLibc\PalTests.cpp"
 				>
 			</File>
 			<File
