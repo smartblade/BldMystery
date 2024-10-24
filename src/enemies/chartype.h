@@ -2,7 +2,7 @@
 
 #define CHAR_TYPE_H
 
-#include <BBlibc/NamedObj.h>
+#include <BBLibc/NamedObj.h>
 
 
 class anim_t;
