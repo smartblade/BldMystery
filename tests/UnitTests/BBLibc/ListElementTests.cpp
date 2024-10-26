@@ -13,6 +13,6 @@ TEST(ListElementTests, SizeOf)
 TEST(ListElementTests, Fields)
 {
     EXPECT_OFFSET_EQ(B_ListElement, list, 0x0004);
-    EXPECT_OFFSET_EQ(B_ListElement, member2, 0x0008);
+    EXPECT_OFFSET_EQ(B_ListElement, next, 0x0008);
     EXPECT_OFFSET_EQ(B_ListElement, member3, 0x000C);
 }

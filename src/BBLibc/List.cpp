@@ -50,20 +50,6 @@ B_List* B_ListElement::GetList()
 }
 #endif
 
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10002F00
-* VC++ mangling:          ?GetNext@B_ListElement@@QAEPAV1@XZ
-*/
-#ifndef BLD_NATIVE
-B_ListElement* B_ListElement::GetNext()
-{
-    return nullptr;
-}
-#endif
-
-
 /*
 * Module:                 BBLibc.dll
 * Entry point:            0x10002F20
