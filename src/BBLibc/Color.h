@@ -72,7 +72,9 @@ public:
     B_Color operator *(float coef) const;
     B_Color operator /(float f)const;
 
-    byte r, g, b;
+    byte r;
+    byte g;
+    byte b;
 };
 
 LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_Color& color);
