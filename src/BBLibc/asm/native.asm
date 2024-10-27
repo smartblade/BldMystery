@@ -3720,17 +3720,7 @@ l10002EE0 ENDP
 ;
 ;* Export: ?GetPrev@B_ListElement@@QAEPAV1@XZ, 00C7
 ;
-l10002F20 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov eax, dword ptr [eax+00Ch]
-           mov esp, ebp
-           pop ebp
-           ret
-l10002F20 ENDP
+           call l10002F20; Implemented in c++ code
 ;
            int 03h
            int 03h

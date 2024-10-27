@@ -39,7 +39,6 @@
 /EXPORT:?GetAt@B_List@@QAEPAVB_ListElement@@I@Z=l10002E0E
 /EXPORT:?Exists@B_List@@QAEIPBVB_ListElement@@@Z=?Exists@B_List@@QAEIPBVB_ListElement@@@Z
 /EXPORT:?GetList@B_ListElement@@QAEPAVB_List@@XZ=?GetList@B_ListElement@@QAEPAVB_List@@XZ
-/EXPORT:?GetPrev@B_ListElement@@QAEPAV1@XZ=?GetPrev@B_ListElement@@QAEPAV1@XZ
 /EXPORT:??4B_ListElement@@QAEAAV0@ABV0@@Z=??4B_ListElement@@QAEAAV0@ABV0@@Z
 /EXPORT:??0B_List@@QAE@PAVB_ListElement@@@Z=??0B_List@@QAE@PAVB_ListElement@@@Z
 /EXPORT:?nElements@B_List@@QAEIXZ=l10003100

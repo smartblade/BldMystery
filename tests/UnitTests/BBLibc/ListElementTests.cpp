@@ -14,5 +14,5 @@ TEST(ListElementTests, Fields)
 {
     EXPECT_OFFSET_EQ(B_ListElement, list, 0x0004);
     EXPECT_OFFSET_EQ(B_ListElement, next, 0x0008);
-    EXPECT_OFFSET_EQ(B_ListElement, member3, 0x000C);
+    EXPECT_OFFSET_EQ(B_ListElement, prev, 0x000C);
 }

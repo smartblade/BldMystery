@@ -22,7 +22,7 @@ public:
     * VC++ mangling:          ??0B_ListElement@@QAE@XZ
     */
 
-    B_ListElement() : list(nullptr), next(nullptr), member3(0)
+    B_ListElement() : list(nullptr), next(nullptr), prev(nullptr)
     {
     }
 
@@ -41,12 +41,24 @@ public:
 
     /*
     * Module:                 BBLibc.dll
+    * Entry point:            0x10002F20
+    * VC++ mangling:          ?GetPrev@B_ListElement@@QAEPAV1@XZ
+    */
+
+    B_ListElement* GetPrev()
+    {
+        return this->prev;
+    }
+
+
+    /*
+    * Module:                 BBLibc.dll
     * Entry point:            0x10002F40
     * VC++ mangling:          ??0B_ListElement@@QAE@ABV0@@Z
     */
 
     B_ListElement(const B_ListElement& other)
-        : list(other.list), next(other.next), member3(other.member3)
+        : list(other.list), next(other.next), prev(other.prev)
     {
     }
 
@@ -55,13 +67,10 @@ public:
     B_ListElement& operator =(const B_ListElement& other);
 
     B_List* GetList();
-    B_ListElement* GetPrev();
 
     B_List* list;
     B_ListElement* next;
-    unsigned int member3;
-
-//private:
+    B_ListElement* prev;
 };
 
 class LIB_EXP B_List
