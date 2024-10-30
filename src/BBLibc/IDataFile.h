@@ -11,6 +11,7 @@
 #include <export.h>
 #undef BUILD_LIB
 
+struct PyObject;
 
 class LIB_EXP B_IDataFile
 {
@@ -21,7 +22,7 @@ public:
     static void ResetnOpenedFiles();
     static int GetnOpenedFiles();
     static int GetnOpenFiles();
-    static int SetOnOpenFunc(struct PyObject*);
+    static int SetOnOpenFunc(PyObject* func);
     static void RemoveOnOpenFunc();
     void Close();
     void Open(const char* src, int flags);
