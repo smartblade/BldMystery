@@ -13,9 +13,13 @@ parser.add_option("--show-hex-prefix", dest="show_hex_prefix",
 parser.add_option("--write-proc-dict", dest="write_proc_dict",
                   help="Write procedures dictionary to json file (yes, no)",
                   default="no")
+parser.add_option("--force", dest="force",
+                  help="Always do full asm conversion (yes, no)",
+                  default="no")
 (options, args) = parser.parse_args()
 options.show_hex_prefix = (options.show_hex_prefix != 'no')
 options.write_proc_dict = (options.write_proc_dict != 'no')
+options.force = (options.force != 'no')
 
 entry_point_regexp = re.compile('Entry\s+Point:\s+(?P<entryPoint>[\dABCDEF]+)')
 export_regexp = re.compile('\*\s+Export:\s+(?P<export>\S+),\s+(?P<ordinal>\d+)')
@@ -1358,6 +1362,7 @@ def createAsmCode(asm_files):
 
 def ensureAsmCode(asm_files):
     if (
+        options.force or
         not os.path.exists(asm_files.intermediate_asm) or
         not os.path.exists(asm_files.intermediate_export)
     ):
@@ -1411,10 +1416,11 @@ def run():
 
 def process_asm_dir(asm_files, symbols):
     symbols_hash = calc_hash(symbols)
-    print("Checking hash for collected symbols...")
-    if not is_hash_changed(asm_files.intermediate_hash, symbols_hash):
-        print("Nothing to do...")
-        return
+    if not options.force:
+        print("Checking hash for collected symbols...")
+        if not is_hash_changed(asm_files.intermediate_hash, symbols_hash):
+            print("Nothing to do...")
+            return
     ensureAsmCode(asm_files)
     print("Reading code...")
     lines = readAsmCode(asm_files.intermediate_asm)
