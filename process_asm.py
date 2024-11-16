@@ -38,7 +38,10 @@ regLeft = '((?P<byteLeft>{})|(?P<wordLeft>{})|(?P<dwordLeft>{}))'.format(byteReg
 regRight = '((?P<byteRight>{})|(?P<wordRight>{})|(?P<dwordRight>{}))'.format(byteReg, wordReg, dwordReg)
 accessLeft = '(?P<accessLeft>{})'.format(access)
 accessRight = '(?P<accessRight>{})'.format(access)
-byte_memory_access_regexp = re.compile('^mov\s+(({},\s+{})|({},\s+{}))$'.format(regLeft, accessRight, accessLeft, regRight))
+byte_memory_access_regexp = re.compile(
+    r'^(mov|cmp|add|sub|imul|or|and|xor|test)\s+'
+    r'(({},\s+{})|({},\s+{}))$'.format(
+        regLeft, accessRight, accessLeft, regRight))
 noFWAIT = {
     'fstsw' : 'fnstsw',
 }
