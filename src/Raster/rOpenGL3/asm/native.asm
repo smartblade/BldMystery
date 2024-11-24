@@ -3351,11 +3351,11 @@ l10002216: mov eax, dword ptr [ebp-004h]
            jnb l1000223D
            mov ecx, dword ptr [ebp-004h]
            imul ecx, ecx, 000000018h
-           mov esi, [ebp+008h]
+           mov esi, dword ptr [ebp+008h]
            add esi, ecx
            mov edx, dword ptr [ebp-004h]
            imul edx, edx, 000000018h
-           mov edi, [ebp-014h]
+           mov edi, dword ptr [ebp-014h]
            add edi, edx
            mov ecx, 000000006h
            rep movsd
@@ -3420,7 +3420,7 @@ l10002274: mov ecx, dword ptr [ebp-038h]
            mov esi, eax
            mov eax, dword ptr [ebp-004h]
            imul eax, eax, 000000018h
-           mov edi, [ebp-038h]
+           mov edi, dword ptr [ebp-038h]
            add edi, eax
            mov ecx, 000000006h
            rep movsd
@@ -3442,7 +3442,7 @@ l100022C2: mov ecx, dword ptr [ebp-004h]
            mov esi, eax
            mov edx, dword ptr [ebp-004h]
            imul edx, edx, 000000018h
-           mov edi, [ebp-038h]
+           mov edi, dword ptr [ebp-038h]
            add edi, edx
            mov ecx, 000000006h
            rep movsd
@@ -3767,11 +3767,11 @@ l10002579: mov ecx, dword ptr [ebp-008h]
            jnb l100025A6
            mov eax, dword ptr [ebp-004h]
            imul eax, eax, 000000018h
-           mov esi, [ebp+008h]
+           mov esi, dword ptr [ebp+008h]
            add esi, eax
            mov ecx, dword ptr [ebp-004h]
            imul ecx, ecx, 000000018h
-           mov edi, [ebp-008h]
+           mov edi, dword ptr [ebp-008h]
            add edi, ecx
            mov ecx, 000000006h
            rep movsd
@@ -4205,9 +4205,9 @@ l100029CC: mov edx, dword ptr [ebp-020h]
            ja l100029FD
            mov eax, dword ptr [ebp-020h]
            imul eax, eax, 000000018h
-           mov esi, [ebp-070h]
+           mov esi, dword ptr [ebp-070h]
            add esi, eax
-           mov edi, [ebp-014h]
+           mov edi, dword ptr [ebp-014h]
            imul edi, edi, 000000018h
            add edi, offset g1003C348
            mov ecx, 000000006h
@@ -4245,9 +4245,9 @@ l10002A13: mov ecx, dword ptr [ebp-070h]
            jnb l10002A4A
            mov eax, dword ptr [ebp-020h]
            imul eax, eax, 000000018h
-           mov esi, [ebp-070h]
+           mov esi, dword ptr [ebp-070h]
            add esi, eax
-           mov edi, [ebp-014h]
+           mov edi, dword ptr [ebp-014h]
            imul edi, edi, 000000018h
            add edi, offset g1003C348
            mov ecx, 000000006h
@@ -4278,9 +4278,9 @@ l10002A5C: mov eax, dword ptr [ebp-020h]
            ja l10002A8D
            mov ecx, dword ptr [ebp-020h]
            imul ecx, ecx, 000000018h
-           mov esi, [ebp-070h]
+           mov esi, dword ptr [ebp-070h]
            add esi, ecx
-           mov edi, [ebp-014h]
+           mov edi, dword ptr [ebp-014h]
            imul edi, edi, 000000018h
            add edi, offset g1003C348
            mov ecx, 000000006h
@@ -4330,9 +4330,9 @@ l10002ADC: mov edx, dword ptr [ebp-020h]
            ja l10002B0D
            mov eax, dword ptr [ebp-020h]
            imul eax, eax, 000000018h
-           mov esi, [ebp+008h]
+           mov esi, dword ptr [ebp+008h]
            add esi, eax
-           mov edi, [ebp-014h]
+           mov edi, dword ptr [ebp-014h]
            imul edi, edi, 000000018h
            add edi, offset g1003C348
            mov ecx, 000000006h
@@ -4370,9 +4370,9 @@ l10002B23: mov ecx, dword ptr [ebp+008h]
            jnb l10002B5A
            mov eax, dword ptr [ebp-020h]
            imul eax, eax, 000000018h
-           mov esi, [ebp+008h]
+           mov esi, dword ptr [ebp+008h]
            add esi, eax
-           mov edi, [ebp-014h]
+           mov edi, dword ptr [ebp-014h]
            imul edi, edi, 000000018h
            add edi, offset g1003C348
            mov ecx, 000000006h
@@ -4403,9 +4403,9 @@ l10002B6C: mov eax, dword ptr [ebp-020h]
            ja l10002B9D
            mov ecx, dword ptr [ebp-020h]
            imul ecx, ecx, 000000018h
-           mov esi, [ebp+008h]
+           mov esi, dword ptr [ebp+008h]
            add esi, ecx
-           mov edi, [ebp-014h]
+           mov edi, dword ptr [ebp-014h]
            imul edi, edi, 000000018h
            add edi, offset g1003C348
            mov ecx, 000000006h
@@ -4444,12 +4444,12 @@ l10002BD4: mov ecx, dword ptr [ebp-070h]
            mov edx, dword ptr [ebp-020h]
            cmp edx, dword ptr [ecx+000000300h]
            jnb l10002C02
-           mov esi, [ebp-020h]
+           mov esi, dword ptr [ebp-020h]
            imul esi, esi, 000000018h
            add esi, offset g1003C348
            mov eax, dword ptr [ebp-020h]
            imul eax, eax, 000000018h
-           mov edi, [ebp-070h]
+           mov edi, dword ptr [ebp-070h]
            add edi, eax
            mov ecx, 000000006h
            rep movsd
@@ -7033,11 +7033,11 @@ l10004327: cmp dword ptr [ebp-020h], 000000003h
            mov ecx, dword ptr [ebp-004h]
            mov edx, dword ptr [ebp-004h]
            shl edx, 005h
-           mov esi, [ebp+008h]
+           mov esi, dword ptr [ebp+008h]
            add esi, edx
            mov edx, dword ptr [ebp-020h]
-           mov edi, [eax+ecx*08h]
-           mov [esi+edx*08h], edi
+           mov edi, dword ptr [eax+ecx*08h]
+           mov dword ptr [esi+edx*08h], edi
            mov eax, dword ptr [eax+ecx*08h+004h]
            mov dword ptr [esi+edx*08h+004h], eax
            jmp l1000431E
@@ -7319,7 +7319,7 @@ l100043F9 PROC
            fstp qword ptr [ebp-010h]
            mov ecx, 000000020h
            lea esi, [ebp-080h]
-           mov edi, [ebp+008h]
+           mov edi, dword ptr [ebp+008h]
            rep movsd
            mov eax, dword ptr [ebp+008h]
            pop edi
@@ -7374,7 +7374,7 @@ l1000478E: cmp dword ptr [ebp-008h], 000000004h
            mov ecx, dword ptr [ebp-008h]
            mov edx, dword ptr [ebp-004h]
            shl edx, 005h
-           mov esi, [ebp+00Ch]
+           mov esi, dword ptr [ebp+00Ch]
            add esi, edx
            mov edx, dword ptr [ebp-008h]
            fld qword ptr [eax+ecx*08h]
@@ -7746,7 +7746,7 @@ l100047D7 PROC
            fstp qword ptr [ebp-008h]
            mov ecx, 000000020h
            lea esi, [ebp-080h]
-           mov edi, [ebp+008h]
+           mov edi, dword ptr [ebp+008h]
            rep movsd
            mov eax, dword ptr [ebp+008h]
            pop edi
@@ -7939,7 +7939,7 @@ l10004B88 PROC
            mov dword ptr [ebp-004h], edx
            mov ecx, 000000020h
            lea esi, [ebp-080h]
-           mov edi, [ebp+008h]
+           mov edi, dword ptr [ebp+008h]
            rep movsd
            mov eax, dword ptr [ebp+008h]
            pop edi
@@ -9392,7 +9392,7 @@ l10005C38 PROC
            call l1000169F
            mov esi, eax
            mov ecx, 000000020h
-           mov edi, [ebp+008h]
+           mov edi, dword ptr [ebp+008h]
            rep movsd
            jmp near ptr l10005ED5
 ;
@@ -13120,8 +13120,8 @@ l10006F80 PROC
            push esi
            push edi
            mov dword ptr [ebp-004h], ecx
-           mov esi, [ebp+010h]
-           mov edi, [ebp-004h]
+           mov esi, dword ptr [ebp+010h]
+           mov edi, dword ptr [ebp-004h]
            add edi, 000000004h
            mov ecx, 000000006h
            rep movsd
@@ -13203,7 +13203,7 @@ l10007009 PROC
            add ecx, 000000004h
            call l10001483
            mov esi, eax
-           mov edi, [ebp-01Ch]
+           mov edi, dword ptr [ebp-01Ch]
            add edi, 000000004h
            mov ecx, 000000006h
            rep movsd
@@ -13233,8 +13233,8 @@ l10007081 PROC
            push esi
            push edi
            mov dword ptr [ebp-004h], ecx
-           mov esi, [ebp+010h]
-           mov edi, [ebp-004h]
+           mov esi, dword ptr [ebp+010h]
+           mov edi, dword ptr [ebp-004h]
            add edi, 000000004h
            mov ecx, 000000006h
            rep movsd
@@ -13269,7 +13269,7 @@ l100070B1 PROC
            mov ecx, dword ptr [ebp+00Ch]
            call l10001483
            mov esi, eax
-           mov edi, [ebp-01Ch]
+           mov edi, dword ptr [ebp-01Ch]
            add edi, 000000004h
            mov ecx, 000000006h
            rep movsd
@@ -13305,7 +13305,7 @@ l10007104 PROC
            mov ecx, dword ptr [ebp+00Ch]
            call l10001500
            mov esi, eax
-           mov edi, [ebp-034h]
+           mov edi, dword ptr [ebp-034h]
            add edi, 000000004h
            mov ecx, 000000006h
            rep movsd
@@ -13320,7 +13320,7 @@ l10007104 PROC
            add ecx, 000000004h
            call l10001483
            mov esi, eax
-           mov edi, [ebp-034h]
+           mov edi, dword ptr [ebp-034h]
            add edi, 000000004h
            mov ecx, 000000006h
            rep movsd
@@ -13395,7 +13395,7 @@ l100071D8 PROC
            push ecx
            push esi
            mov dword ptr [ebp-004h], ecx
-           mov esi, [ebp-004h]
+           mov esi, dword ptr [ebp-004h]
            mov eax, dword ptr [ebp+008h]
            push eax
            mov ecx, dword ptr [ebp-004h]
@@ -16982,7 +16982,7 @@ l100089D4 PROC
            lea ecx, [ebp-018h]
            call l10001500
            mov esi, eax
-           mov edi, [ebp-0000001A4h]
+           mov edi, dword ptr [ebp-0000001A4h]
            add edi, 000000018h
            mov ecx, 000000006h
            rep movsd
@@ -17033,7 +17033,7 @@ l100089D4 PROC
            lea ecx, [ebp-060h]
            call l10001500
            mov esi, eax
-           mov edi, [ebp-0000001A4h]
+           mov edi, dword ptr [ebp-0000001A4h]
            add edi, 000000030h
            mov ecx, 000000006h
            rep movsd
@@ -17084,7 +17084,7 @@ l100089D4 PROC
            lea ecx, [ebp-0000000A8h]
            call l10001500
            mov esi, eax
-           mov edi, [ebp-0000001A4h]
+           mov edi, dword ptr [ebp-0000001A4h]
            add edi, 000000048h
            mov ecx, 000000006h
            rep movsd
@@ -17133,7 +17133,7 @@ l100089D4 PROC
            lea ecx, [ebp-0000000F0h]
            call l10001500
            mov esi, eax
-           mov edi, [ebp-0000001A4h]
+           mov edi, dword ptr [ebp-0000001A4h]
            add edi, 000000060h
            mov ecx, 000000006h
            rep movsd
@@ -21986,7 +21986,7 @@ l1000B9BB: mov dx, word ptr [g10039E0C]
 ;* Jump:
 ; 1000B9E0(C) 
 ;
-l1000B9E7: mov edi, [ebp-038h]
+l1000B9E7: mov edi, dword ptr [ebp-038h]
            or ecx, 0FFFFFFFFh
            xor eax, eax
            repnz scasb
@@ -22006,7 +22006,7 @@ l1000B9E7: mov edi, [ebp-038h]
 ;* Jump:
 ; 1000BA10(C) 
 ;
-l1000BA17: mov edi, [ebp-038h]
+l1000BA17: mov edi, dword ptr [ebp-038h]
            mov edx, dword ptr [ebp-00Ch]
            or ecx, 0FFFFFFFFh
            xor eax, eax
@@ -22080,7 +22080,7 @@ l1000BAA8: call [__imp_wglGetCurrentDC]; [OPENGL32.wglGetCurrentDC].
 ;* Jump:
 ; 1000BABC(C) 
 ;
-l1000BAC3: mov edi, [ebp-038h]
+l1000BAC3: mov edi, dword ptr [ebp-038h]
            or ecx, 0FFFFFFFFh
            xor eax, eax
            repnz scasb
@@ -22100,7 +22100,7 @@ l1000BAC3: mov edi, [ebp-038h]
 ;* Jump:
 ; 1000BAEC(C) 
 ;
-l1000BAF0: mov edi, [ebp-038h]
+l1000BAF0: mov edi, dword ptr [ebp-038h]
            mov edx, dword ptr [ebp-00Ch]
            or ecx, 0FFFFFFFFh
            xor eax, eax
@@ -29405,7 +29405,7 @@ l1000E8CB: push 0000003E8h
            mov ecx, dword ptr [ebp+010h]
            push ecx
            push 000001400h
-           mov edi, [ebp+010h]
+           mov edi, dword ptr [ebp+010h]
            or ecx, 0FFFFFFFFh
            xor eax, eax
            repnz scasb
@@ -29458,7 +29458,7 @@ l1000E915: mov edx, dword ptr [ebp-004h]
            mov ecx, dword ptr [ebp+010h]
            push ecx
            push 000001401h
-           mov edi, [ebp+010h]
+           mov edi, dword ptr [ebp+010h]
            or ecx, 0FFFFFFFFh
            xor eax, eax
            repnz scasb
@@ -29613,7 +29613,7 @@ l1000EAEF: mov ecx, dword ptr [ebp-044h]
            mov ecx, dword ptr [eax+004h]
            mov edx, dword ptr [ebp-034h]
            mov eax, dword ptr [ebp-030h]
-           mov esi, [ebp-034h]
+           mov esi, dword ptr [ebp-034h]
            mov ecx, dword ptr [ecx+esi*04h]
            mov dword ptr [eax+edx*04h], ecx
            jmp l1000EAE6
@@ -29801,8 +29801,8 @@ l1000EC9F: mov eax, dword ptr [ebp-008h]
            cmp eax, dword ptr [ebp-014h]
            jnl l1000ED00
            mov ecx, dword ptr [ebp-00Ch]
-           mov esi, [ebp-010h]
-           mov edi, [ebp-018h]
+           mov esi, dword ptr [ebp-010h]
+           mov edi, dword ptr [ebp-018h]
            mov edx, ecx
            shr ecx, 002h
            rep movsd
@@ -29810,8 +29810,8 @@ l1000EC9F: mov eax, dword ptr [ebp-008h]
            and ecx, 000000003h
            rep movsb
            mov ecx, dword ptr [ebp-00Ch]
-           mov esi, [ebp-004h]
-           mov edi, [ebp-010h]
+           mov esi, dword ptr [ebp-004h]
+           mov edi, dword ptr [ebp-010h]
            mov eax, ecx
            shr ecx, 002h
            rep movsd
@@ -29819,8 +29819,8 @@ l1000EC9F: mov eax, dword ptr [ebp-008h]
            and ecx, 000000003h
            rep movsb
            mov ecx, dword ptr [ebp-00Ch]
-           mov esi, [ebp-018h]
-           mov edi, [ebp-004h]
+           mov esi, dword ptr [ebp-018h]
+           mov edi, dword ptr [ebp-004h]
            mov edx, ecx
            shr ecx, 002h
            rep movsd
@@ -31122,7 +31122,7 @@ l1000FAB1: xor eax, eax
 ;* String: "RGB"
 ;
 l1000FAB8: mov edi, offset g1003A610
-           mov esi, [ebp+018h]
+           mov esi, dword ptr [ebp+018h]
            mov ecx, 000000004h
            xor edx, edx
            rep cmpsb
@@ -31230,7 +31230,7 @@ l1000FB7F: jmp near ptr l10010271
 ;* String: "RGB"
 ;
 l1000FB84: mov edi, offset g1003A68C
-           mov esi, [ebp+010h]
+           mov esi, dword ptr [ebp+010h]
            mov ecx, 000000004h
            xor eax, eax
            rep cmpsb
@@ -31244,7 +31244,7 @@ l1000FB84: mov edi, offset g1003A68C
 ;* String: "BGR"
 ;
 l1000FBA0: mov edi, offset g1003A690
-           mov esi, [ebp+010h]
+           mov esi, dword ptr [ebp+010h]
            mov ecx, 000000004h
            xor edx, edx
            rep cmpsb
@@ -31273,7 +31273,7 @@ l1000FBC1: mov eax, dword ptr [ebp-028h]
 ;* String: "Normal"
 ;
            mov edi, offset g1003A694
-           mov esi, [ebp+014h]
+           mov esi, dword ptr [ebp+014h]
            mov ecx, 000000007h
            xor eax, eax
            rep cmpsb
@@ -31352,7 +31352,7 @@ l1000FBC1: mov eax, dword ptr [ebp-028h]
 ;* String: "UpsideDown"
 ;
 l1000FCBD: mov edi, offset g1003A69C
-           mov esi, [ebp+014h]
+           mov esi, dword ptr [ebp+014h]
            mov ecx, 00000000Bh
            xor eax, eax
            rep cmpsb
@@ -31412,7 +31412,7 @@ l1000FCBD: mov edi, offset g1003A69C
 ;* String: "Native"
 ;
 l1000FD72: mov edi, offset g1003A6A8
-           mov esi, [ebp+014h]
+           mov esi, dword ptr [ebp+014h]
            mov ecx, 000000007h
            xor eax, eax
            rep cmpsb
@@ -31476,7 +31476,7 @@ l1000FD72: mov edi, offset g1003A6A8
 ;* String: "Centered"
 ;
 l1000FE3C: mov edi, offset g1003A6B0
-           mov esi, [ebp+014h]
+           mov esi, dword ptr [ebp+014h]
            mov ecx, 000000009h
            xor eax, eax
            rep cmpsb
@@ -31577,7 +31577,7 @@ l1000FE3C: mov edi, offset g1003A6B0
 ;* String: "Stretch"
 ;
 l1000FF51: mov edi, offset g1003A6BC
-           mov esi, [ebp+014h]
+           mov esi, dword ptr [ebp+014h]
            mov ecx, 000000008h
            xor edx, edx
            rep cmpsb
@@ -31915,7 +31915,7 @@ l10010294: jmp near ptr l1001035E
 ;* String: "Stretch"
 ;
 l10010299: mov edi, offset g1003A6C4
-           mov esi, [ebp+018h]
+           mov esi, dword ptr [ebp+018h]
            mov ecx, 000000008h
            xor eax, eax
            rep cmpsb
@@ -31924,7 +31924,7 @@ l10010299: mov edi, offset g1003A6C4
 ;* String: "Centered"
 ;
            mov edi, offset g1003A6CC
-           mov esi, [ebp+018h]
+           mov esi, dword ptr [ebp+018h]
            mov ecx, 000000009h
            xor edx, edx
            rep cmpsb
@@ -34231,7 +34231,7 @@ l10010DC7: mov eax, dword ptr [ebp-014h]
            mov edx, dword ptr [ecx+004h]
            mov eax, dword ptr [ebp-014h]
            mov ecx, dword ptr [ebp-010h]
-           mov esi, [ebp-014h]
+           mov esi, dword ptr [ebp-014h]
            mov edx, dword ptr [edx+esi*04h]
            mov dword ptr [ecx+eax*04h], edx
            jmp l10010DBE
@@ -34262,7 +34262,7 @@ l10010DFA: mov edx, dword ptr [ebp-030h]
            mov edx, dword ptr [ecx+004h]
            mov eax, dword ptr [ebp-014h]
            mov ecx, dword ptr [ebp-010h]
-           mov esi, [ebp-014h]
+           mov esi, dword ptr [ebp-014h]
            mov edx, dword ptr [edx+esi*04h]
            mov dword ptr [ecx+eax*04h-004h], edx
            jmp l10010DF1
@@ -34309,7 +34309,7 @@ l10010E51: mov ecx, dword ptr [ebp-030h]
            mov edx, dword ptr [ebp-030h]
            mov eax, dword ptr [edx+004h]
            mov edx, dword ptr [ebp-018h]
-           mov esi, [ebp-018h]
+           mov esi, dword ptr [ebp-018h]
            mov ecx, dword ptr [ecx+esi*04h]
            mov dword ptr [eax+edx*04h-004h], ecx
            jmp l10010E48
@@ -34815,7 +34815,7 @@ l1001119E: mov eax, dword ptr [ebp+008h]
            add ecx, 000004000h
            push ecx
            call [__imp_glLightf]; [OPENGL32.glLightf].
-           mov esi, [ebp+008h]
+           mov esi, dword ptr [ebp+008h]
            add esi, 00000004Ch
            mov ecx, 000000006h
            lea edi, [ebp-02Ch]
@@ -35143,7 +35143,7 @@ l100116ED PROC
            mov ecx, dword ptr [ebp-01Ch]
            cmp dword ptr [ecx+00008485Ch], 000000000h
            je l10011769
-           mov esi, [ebp-01Ch]
+           mov esi, dword ptr [ebp-01Ch]
            add esi, 000000088h
            mov ecx, 000000006h
            lea edi, [ebp-018h]
@@ -35626,9 +35626,9 @@ l10011C59: mov edx, dword ptr [ebp-014h]
 l10011C62: mov eax, dword ptr [ebp-014h]
            cmp eax, dword ptr [ebp+00Ch]
            jnb l10011D1E
-           mov esi, [ebp-018h]
+           mov esi, dword ptr [ebp-018h]
            mov ecx, 000000006h
-           mov edi, [ebp-020h]
+           mov edi, dword ptr [ebp-020h]
            rep movsd
            mov ecx, dword ptr [ebp-020h]
            fld qword ptr [g10037080]
@@ -35814,9 +35814,9 @@ l10011E80: mov edx, dword ptr [ebp-02Ch]
 l10011E89: mov eax, dword ptr [ebp-02Ch]
            cmp eax, dword ptr [ebp+00Ch]
            jnb l10011EFD
-           mov esi, [ebp-030h]
+           mov esi, dword ptr [ebp-030h]
            mov ecx, 000000006h
-           mov edi, [ebp-038h]
+           mov edi, dword ptr [ebp-038h]
            rep movsd
            mov ecx, dword ptr [ebp-03Ch]
            mov edx, dword ptr [ecx+0000000A8h]
@@ -40058,8 +40058,8 @@ l10013C7A PROC
            mov edx, dword ptr [eax+ecx*04h-004h]
            mov dword ptr [ebp-010h], edx
            mov ecx, 000000300h
-           mov edi, [ebp+014h]
-           mov esi, [ebp-010h]
+           mov edi, dword ptr [ebp+014h]
+           mov esi, dword ptr [ebp-010h]
            xor eax, eax
            mov dword ptr [ebp-048h], eax
            rep cmpsb
@@ -40095,8 +40095,8 @@ l10013D1E: push 000000300h
            cmp dword ptr [ebp-008h], 000000000h
            je l10013D49
            mov ecx, 0000000C0h
-           mov esi, [ebp+014h]
-           mov edi, [ebp-008h]
+           mov esi, dword ptr [ebp+014h]
+           mov edi, dword ptr [ebp-008h]
            rep movsd
            mov eax, dword ptr [ebp-008h]
            mov dword ptr [ebp-028h], eax
@@ -40157,7 +40157,7 @@ l10013DC9: mov ecx, dword ptr [ebp-018h]
            mov edx, dword ptr [g1005137C]
            mov eax, dword ptr [ebp-018h]
            mov ecx, dword ptr [ebp-014h]
-           mov esi, [ebp-018h]
+           mov esi, dword ptr [ebp-018h]
            mov edx, dword ptr [edx+esi*04h]
            mov dword ptr [ecx+eax*04h], edx
            jmp l10013DC0
@@ -40221,8 +40221,8 @@ l10013E5A: push 000000300h
            cmp dword ptr [ebp-00Ch], 000000000h
            je l10013E85
            mov ecx, 0000000C0h
-           mov esi, [ebp+014h]
-           mov edi, [ebp-00Ch]
+           mov esi, dword ptr [ebp+014h]
+           mov edi, dword ptr [ebp-00Ch]
            rep movsd
            mov edx, dword ptr [ebp-00Ch]
            mov dword ptr [ebp-040h], edx
@@ -40283,7 +40283,7 @@ l10013F06: mov eax, dword ptr [ebp-030h]
            mov ecx, dword ptr [g1005137C]
            mov edx, dword ptr [ebp-030h]
            mov eax, dword ptr [ebp-02Ch]
-           mov esi, [ebp-030h]
+           mov esi, dword ptr [ebp-030h]
            mov ecx, dword ptr [ecx+esi*04h]
            mov dword ptr [eax+edx*04h], ecx
            jmp l10013EFD
@@ -40597,7 +40597,7 @@ l100141C9: mov edx, dword ptr [ebp-028h]
            mov edx, dword ptr [ecx+004h]
            mov eax, dword ptr [ebp-018h]
            mov ecx, dword ptr [ebp-014h]
-           mov esi, [ebp-018h]
+           mov esi, dword ptr [ebp-018h]
            mov edx, dword ptr [edx+esi*04h]
            mov dword ptr [ecx+eax*04h], edx
            jmp l100141C0
@@ -40754,7 +40754,7 @@ l10014335: mov edx, dword ptr [ebp-044h]
            mov edx, dword ptr [ecx+004h]
            mov eax, dword ptr [ebp-034h]
            mov ecx, dword ptr [ebp-030h]
-           mov esi, [ebp-034h]
+           mov esi, dword ptr [ebp-034h]
            mov edx, dword ptr [edx+esi*04h]
            mov dword ptr [ecx+eax*04h], edx
            jmp l1001432C
@@ -40902,7 +40902,7 @@ l10014481: mov eax, dword ptr [ebp-060h]
            mov eax, dword ptr [edx+004h]
            mov ecx, dword ptr [ebp-050h]
            mov edx, dword ptr [ebp-04Ch]
-           mov esi, [ebp-050h]
+           mov esi, dword ptr [ebp-050h]
            mov eax, dword ptr [eax+esi*04h]
            mov dword ptr [edx+ecx*04h], eax
            jmp l10014478
@@ -41242,7 +41242,7 @@ l1001478B: mov edx, dword ptr [ebp-02Ch]
            mov byte ptr [ebp-004h], 000h
            mov ecx, 0000000C0h
            mov eax, dword ptr [ebp+008h]
-           mov edi, [eax+014h]
+           mov edi, dword ptr [eax+014h]
            mov esi, offset g10051078
            xor edx, edx
            rep cmpsd
@@ -41257,7 +41257,7 @@ l100147FB: mov eax, dword ptr [g10051694]
            add eax, 000000001h
            mov dword ptr [g10051694], eax
            mov ecx, dword ptr [ebp+008h]
-           mov esi, [ecx+014h]
+           mov esi, dword ptr [ecx+014h]
            mov ecx, 0000000C0h
            mov edi, offset g10051078
            rep movsd
@@ -43297,7 +43297,7 @@ l10015C74: mov eax, dword ptr [ebp-014h]
            mov edx, dword ptr [ecx+004h]
            mov eax, dword ptr [ebp-014h]
            mov ecx, dword ptr [ebp-010h]
-           mov esi, [ebp-014h]
+           mov esi, dword ptr [ebp-014h]
            mov edx, dword ptr [edx+esi*04h]
            mov dword ptr [ecx+eax*04h], edx
            jmp l10015C6B
@@ -43328,7 +43328,7 @@ l10015CA7: mov edx, dword ptr [ebp-030h]
            mov edx, dword ptr [ecx+004h]
            mov eax, dword ptr [ebp-014h]
            mov ecx, dword ptr [ebp-010h]
-           mov esi, [ebp-014h]
+           mov esi, dword ptr [ebp-014h]
            mov edx, dword ptr [edx+esi*04h]
            mov dword ptr [ecx+eax*04h-004h], edx
            jmp l10015C9E
@@ -43375,7 +43375,7 @@ l10015CFE: mov ecx, dword ptr [ebp-030h]
            mov edx, dword ptr [ebp-030h]
            mov eax, dword ptr [edx+004h]
            mov edx, dword ptr [ebp-018h]
-           mov esi, [ebp-018h]
+           mov esi, dword ptr [ebp-018h]
            mov ecx, dword ptr [ecx+esi*04h]
            mov dword ptr [eax+edx*04h-004h], ecx
            jmp l10015CF5
@@ -55933,7 +55933,7 @@ l1001C5A7: mov ecx, dword ptr [ebp-00000019Ch]
            mov edx, dword ptr [ebp-0000000A8h]
            mov eax, dword ptr [ebp-00000019Ch]
            mov ecx, dword ptr [ebp-000000198h]
-           mov esi, [ebp-00000019Ch]
+           mov esi, dword ptr [ebp-00000019Ch]
            mov edx, dword ptr [edx+esi*04h]
            mov dword ptr [ecx+eax*04h], edx
            jmp l1001C598
@@ -56199,7 +56199,7 @@ l1001C912: mov eax, dword ptr [ebp-0000001D0h]
            mov eax, dword ptr [edx+004h]
            mov ecx, dword ptr [ebp-0000001C0h]
            mov edx, dword ptr [ebp-0000001BCh]
-           mov esi, [ebp-0000001C0h]
+           mov esi, dword ptr [ebp-0000001C0h]
            mov eax, dword ptr [eax+esi*04h]
            mov dword ptr [edx+ecx*04h], eax
            jmp l1001C903
@@ -56723,7 +56723,7 @@ l1001D094: mov edx, dword ptr [ebp-06Ch]
            mov eax, dword ptr [ebp-038h]
            mov ecx, dword ptr [ebp-06Ch]
            mov edx, dword ptr [ebp-068h]
-           mov esi, [ebp-06Ch]
+           mov esi, dword ptr [ebp-06Ch]
            mov eax, dword ptr [eax+esi*04h]
            mov dword ptr [edx+ecx*04h], eax
            jmp l1001D08B
@@ -56933,7 +56933,7 @@ l1001D2CA: mov eax, dword ptr [ebp-000000094h]
            mov eax, dword ptr [edx+004h]
            mov ecx, dword ptr [ebp-000000084h]
            mov edx, dword ptr [ebp-080h]
-           mov esi, [ebp-000000084h]
+           mov esi, dword ptr [ebp-000000084h]
            mov eax, dword ptr [eax+esi*04h]
            mov dword ptr [edx+ecx*04h], eax
            jmp l1001D2BB
@@ -60820,7 +60820,7 @@ l10020A1A PROC
 ;* Jump:
 ; 10020A42(C) 
 ;
-l10020A4B: mov edi, [ebp-014h]
+l10020A4B: mov edi, dword ptr [ebp-014h]
            or ecx, 0FFFFFFFFh
            xor eax, eax
            repnz scasb
@@ -60841,7 +60841,7 @@ l10020A4B: mov edi, [ebp-014h]
 ;* Jump:
 ; 10020A74(C) 
 ;
-l10020A7D: mov edi, [ebp-014h]
+l10020A7D: mov edi, dword ptr [ebp-014h]
            mov edx, dword ptr [ebp-008h]
            or ecx, 0FFFFFFFFh
            xor eax, eax
@@ -61037,7 +61037,7 @@ l10020BB9 PROC
 ;* Jump:
 ; 10020BEF(C) 
 ;
-l10020BF6: mov edi, [ebp-014h]
+l10020BF6: mov edi, dword ptr [ebp-014h]
            or ecx, 0FFFFFFFFh
            xor eax, eax
            repnz scasb
@@ -61057,7 +61057,7 @@ l10020BF6: mov edi, [ebp-014h]
 ;* Jump:
 ; 10020C1F(C) 
 ;
-l10020C26: mov edi, [ebp-014h]
+l10020C26: mov edi, dword ptr [ebp-014h]
            mov edx, dword ptr [ebp-008h]
            or ecx, 0FFFFFFFFh
            xor eax, eax
@@ -61426,7 +61426,7 @@ l10020F71: mov eax, dword ptr [ebp-00000009Ch]
 ;* Jump:
 ; 10020F8B(C) 
 ;
-l10020F92: mov edi, [ebp-014h]
+l10020F92: mov edi, dword ptr [ebp-014h]
            or ecx, 0FFFFFFFFh
            xor eax, eax
            repnz scasb
@@ -61446,7 +61446,7 @@ l10020F92: mov edi, [ebp-014h]
 ;* Jump:
 ; 10020FBB(C) 
 ;
-l10020FC2: mov edi, [ebp-014h]
+l10020FC2: mov edi, dword ptr [ebp-014h]
            mov edx, dword ptr [ebp-008h]
            or ecx, 0FFFFFFFFh
            xor eax, eax
@@ -64824,7 +64824,7 @@ l10023DC5: mov ecx, dword ptr [ebp-0000000A8h]
            call l10001677
            mov esi, eax
            mov ecx, 000000006h
-           mov edi, [ebp-01Ch]
+           mov edi, dword ptr [ebp-01Ch]
            rep movsd
            mov ecx, dword ptr [ebp-01Ch]
            fld qword ptr [g10037080]
@@ -66355,9 +66355,9 @@ l1002505F: mov edx, dword ptr [ebp-004h]
 ;* Jump:
 ; 10025121(C) 
 ;
-l1002513B: mov esi, [ebp+008h]
+l1002513B: mov esi, dword ptr [ebp+008h]
            add esi, 000000004h
-           mov edi, [ebp-008h]
+           mov edi, dword ptr [ebp-008h]
            add edi, 000002150h
            mov ecx, 000000006h
            rep movsd
@@ -84307,7 +84307,7 @@ l1002C3E6: mov eax, dword ptr [ebp-018h]
            mov eax, dword ptr [edx+004h]
            mov ecx, dword ptr [ebp-008h]
            mov edx, dword ptr [ebp-004h]
-           mov esi, [ebp-008h]
+           mov esi, dword ptr [ebp-008h]
            mov eax, dword ptr [eax+esi*04h]
            mov dword ptr [edx+ecx*04h], eax
            jmp l1002C3DD
@@ -84798,19 +84798,19 @@ l1002C773: mov eax, dword ptr [ebp-00Ch]
            mov edx, dword ptr [ebp-008h]
            mov eax, dword ptr [ebp-00Ch]
            mov ecx, dword ptr [ebp-008h]
-           mov esi, [ebp-00Ch]
+           mov esi, dword ptr [ebp-00Ch]
            mov ecx, dword ptr [esi+ecx*04h+010h]
            mov dword ptr [eax+edx*04h+00Ch], ecx
            mov edx, dword ptr [ebp-008h]
            mov eax, dword ptr [ebp-00Ch]
            mov ecx, dword ptr [ebp-008h]
-           mov esi, [ebp-00Ch]
+           mov esi, dword ptr [ebp-00Ch]
            mov ecx, dword ptr [esi+ecx*04h+050h]
            mov dword ptr [eax+edx*04h+04Ch], ecx
            mov edx, dword ptr [ebp-008h]
            mov eax, dword ptr [ebp-00Ch]
            mov ecx, dword ptr [ebp-008h]
-           mov esi, [ebp-00Ch]
+           mov esi, dword ptr [ebp-00Ch]
            mov ecx, dword ptr [esi+ecx*04h+000000090h]
            mov dword ptr [eax+edx*04h+00000008Ch], ecx
            jmp l1002C76A
@@ -86082,7 +86082,7 @@ l1002D5E7: mov edx, dword ptr [ebp+008h]
            mov eax, dword ptr [ebp+008h]
            lea esi, [eax+edx+008h]
            mov ecx, 000000006h
-           mov edi, [ebp-02Ch]
+           mov edi, dword ptr [ebp-02Ch]
            rep movsd
            mov ecx, dword ptr [ebp-02Ch]
            fld qword ptr [g10037080]
@@ -86197,7 +86197,7 @@ l1002D70F: mov edx, dword ptr [ebp+008h]
            mov ecx, dword ptr [ebp-004h]
            imul ecx, ecx, 00000004Ch
            mov edx, dword ptr [ebp-06Ch]
-           mov esi, [ebp-06Ch]
+           mov esi, dword ptr [ebp-06Ch]
            fld dword ptr [edx+eax+0000021B4h]
            fsub dword ptr [esi+ecx+0000021B4h]
            mov eax, dword ptr [ebp-028h]
@@ -86205,7 +86205,7 @@ l1002D70F: mov edx, dword ptr [ebp+008h]
            mov ecx, dword ptr [ebp-004h]
            imul ecx, ecx, 00000004Ch
            mov edx, dword ptr [ebp-06Ch]
-           mov esi, [ebp-06Ch]
+           mov esi, dword ptr [ebp-06Ch]
            fld dword ptr [edx+eax+0000021B4h]
            fsub dword ptr [esi+ecx+0000021B4h]
            fdivp st(01h), st(00h)
@@ -86266,7 +86266,7 @@ l1002D7FC: mov edx, dword ptr [ebp-028h]
            mov edx, dword ptr [ebp-020h]
            imul edx, edx, 00000004Ch
            mov eax, dword ptr [ebp-06Ch]
-           mov esi, [ebp-06Ch]
+           mov esi, dword ptr [ebp-06Ch]
            fld dword ptr [eax+ecx+0000021B4h]
            fsub dword ptr [esi+edx+0000021B4h]
            mov ecx, dword ptr [ebp-010h]
@@ -86274,7 +86274,7 @@ l1002D7FC: mov edx, dword ptr [ebp-028h]
            mov edx, dword ptr [ebp-020h]
            imul edx, edx, 00000004Ch
            mov eax, dword ptr [ebp-06Ch]
-           mov esi, [ebp-06Ch]
+           mov esi, dword ptr [ebp-06Ch]
            fld dword ptr [eax+ecx+0000021B4h]
            fsub dword ptr [esi+edx+0000021B4h]
            fdivp st(01h), st(00h)
@@ -86418,7 +86418,7 @@ l1002D99E: mov ecx, dword ptr [ebp+008h]
            mov edx, dword ptr [ebp+008h]
            lea esi, [edx+ecx+008h]
            mov ecx, 000000006h
-           mov edi, [ebp-05Ch]
+           mov edi, dword ptr [ebp-05Ch]
            rep movsd
            jmp l1002D995
 ;
@@ -86486,7 +86486,7 @@ l1002DA39: mov edx, dword ptr [ebp+008h]
            mov ecx, dword ptr [ebp-03Ch]
            imul ecx, ecx, 00000004Ch
            mov edx, dword ptr [ebp-06Ch]
-           mov esi, [ebp-06Ch]
+           mov esi, dword ptr [ebp-06Ch]
            fld dword ptr [edx+eax+0000021B4h]
            fsub dword ptr [esi+ecx+0000021B4h]
            mov eax, dword ptr [ebp-058h]
@@ -86494,7 +86494,7 @@ l1002DA39: mov edx, dword ptr [ebp+008h]
            mov ecx, dword ptr [ebp-03Ch]
            imul ecx, ecx, 00000004Ch
            mov edx, dword ptr [ebp-06Ch]
-           mov esi, [ebp-06Ch]
+           mov esi, dword ptr [ebp-06Ch]
            fld dword ptr [edx+eax+0000021B4h]
            fsub dword ptr [esi+ecx+0000021B4h]
            fdivp st(01h), st(00h)
@@ -86555,7 +86555,7 @@ l1002DB26: mov edx, dword ptr [ebp-058h]
            mov edx, dword ptr [ebp-050h]
            imul edx, edx, 00000004Ch
            mov eax, dword ptr [ebp-06Ch]
-           mov esi, [ebp-06Ch]
+           mov esi, dword ptr [ebp-06Ch]
            fld dword ptr [eax+ecx+0000021B4h]
            fsub dword ptr [esi+edx+0000021B4h]
            mov ecx, dword ptr [ebp-048h]
@@ -86563,7 +86563,7 @@ l1002DB26: mov edx, dword ptr [ebp-058h]
            mov edx, dword ptr [ebp-050h]
            imul edx, edx, 00000004Ch
            mov eax, dword ptr [ebp-06Ch]
-           mov esi, [ebp-06Ch]
+           mov esi, dword ptr [ebp-06Ch]
            fld dword ptr [eax+ecx+0000021B4h]
            fsub dword ptr [esi+edx+0000021B4h]
            fdivp st(01h), st(00h)
@@ -86726,7 +86726,7 @@ l1002DCCB: mov ecx, dword ptr [ebp+008h]
            mov edx, dword ptr [ebp+008h]
            lea esi, [edx+ecx+008h]
            mov ecx, 000000006h
-           mov edi, [ebp-020h]
+           mov edi, dword ptr [ebp-020h]
            rep movsd
            mov eax, dword ptr [ebp-020h]
            fld qword ptr [g10037080]
@@ -87045,7 +87045,7 @@ l1002E08C: mov edx, dword ptr [ebp+008h]
            mov eax, dword ptr [ebp+008h]
            lea esi, [eax+edx+008h]
            mov ecx, 000000006h
-           mov edi, [ebp-03Ch]
+           mov edi, dword ptr [ebp-03Ch]
            rep movsd
            jmp l1002E083
 ;
@@ -87735,7 +87735,7 @@ l1002E9F6: mov dword ptr [ebp-008h], 000000000h
            mov edx, dword ptr [ebp+008h]
            mov edx, dword ptr [edx+004h]
            imul edx, edx, 00000004Ch
-           mov esi, [ebp-00Ch]
+           mov esi, dword ptr [ebp-00Ch]
            fld qword ptr [ecx+eax+000002170h]
            fadd qword ptr [esi+edx+000002170h]
            fmul qword ptr [g10037100]
@@ -87748,7 +87748,7 @@ l1002E9F6: mov dword ptr [ebp-008h], 000000000h
            mov ecx, dword ptr [ebp+008h]
            mov ecx, dword ptr [ecx+004h]
            imul ecx, ecx, 00000004Ch
-           mov esi, [ebp-00Ch]
+           mov esi, dword ptr [ebp-00Ch]
            fld qword ptr [eax+edx+000002178h]
            fadd qword ptr [esi+ecx+000002178h]
            fmul qword ptr [g10037100]
@@ -87761,7 +87761,7 @@ l1002E9F6: mov dword ptr [ebp-008h], 000000000h
            mov eax, dword ptr [ebp+008h]
            mov eax, dword ptr [eax+004h]
            imul eax, eax, 00000004Ch
-           mov esi, [ebp-00Ch]
+           mov esi, dword ptr [ebp-00Ch]
            fld qword ptr [edx+ecx+000002180h]
            fadd qword ptr [esi+eax+000002180h]
            fmul qword ptr [g10037100]
@@ -87774,7 +87774,7 @@ l1002E9F6: mov dword ptr [ebp-008h], 000000000h
            mov edx, dword ptr [ecx+004h]
            imul edx, edx, 00000004Ch
            mov ecx, dword ptr [ebp-00Ch]
-           mov esi, [ebp-00Ch]
+           mov esi, dword ptr [ebp-00Ch]
            fld dword ptr [ecx+eax+00000219Ch]
            fadd dword ptr [esi+edx+00000219Ch]
            fmul dword ptr [g10037210]
@@ -87787,7 +87787,7 @@ l1002E9F6: mov dword ptr [ebp-008h], 000000000h
            mov eax, dword ptr [edx+004h]
            imul eax, eax, 00000004Ch
            mov edx, dword ptr [ebp-00Ch]
-           mov esi, [ebp-00Ch]
+           mov esi, dword ptr [ebp-00Ch]
            fld dword ptr [edx+ecx+000002190h]
            fadd dword ptr [esi+eax+000002190h]
            fmul dword ptr [g10037210]
@@ -87800,7 +87800,7 @@ l1002E9F6: mov dword ptr [ebp-008h], 000000000h
            mov ecx, dword ptr [eax+004h]
            imul ecx, ecx, 00000004Ch
            mov eax, dword ptr [ebp-00Ch]
-           mov esi, [ebp-00Ch]
+           mov esi, dword ptr [ebp-00Ch]
            fld dword ptr [eax+edx+000002194h]
            fadd dword ptr [esi+ecx+000002194h]
            fmul dword ptr [g10037210]
@@ -87813,7 +87813,7 @@ l1002E9F6: mov dword ptr [ebp-008h], 000000000h
            mov edx, dword ptr [ecx+004h]
            imul edx, edx, 00000004Ch
            mov ecx, dword ptr [ebp-00Ch]
-           mov esi, [ebp-00Ch]
+           mov esi, dword ptr [ebp-00Ch]
            fld dword ptr [ecx+eax+000002198h]
            fadd dword ptr [esi+edx+000002198h]
            fmul dword ptr [g10037210]
@@ -87826,7 +87826,7 @@ l1002E9F6: mov dword ptr [ebp-008h], 000000000h
            mov eax, dword ptr [edx+004h]
            imul eax, eax, 00000004Ch
            mov edx, dword ptr [ebp-00Ch]
-           mov esi, [ebp-00Ch]
+           mov esi, dword ptr [ebp-00Ch]
            fld dword ptr [edx+ecx+000002188h]
            fadd dword ptr [esi+eax+000002188h]
            fmul dword ptr [g10037210]
@@ -87839,7 +87839,7 @@ l1002E9F6: mov dword ptr [ebp-008h], 000000000h
            mov ecx, dword ptr [eax+004h]
            imul ecx, ecx, 00000004Ch
            mov eax, dword ptr [ebp-00Ch]
-           mov esi, [ebp-00Ch]
+           mov esi, dword ptr [ebp-00Ch]
            fld dword ptr [eax+edx+00000218Ch]
            fadd dword ptr [esi+ecx+00000218Ch]
            fmul dword ptr [g10037210]
@@ -87983,7 +87983,7 @@ l1002ED1F: mov eax, dword ptr [ebp-01Ch]
            mov edx, dword ptr [ebp-024h]
            mov edx, dword ptr [edx+004h]
            imul edx, edx, 00000004Ch
-           mov esi, [ebp-04Ch]
+           mov esi, dword ptr [ebp-04Ch]
            fld qword ptr [ecx+eax+000002170h]
            fsub qword ptr [esi+edx+000002170h]
            fstp qword ptr [ebp-040h]
@@ -87994,7 +87994,7 @@ l1002ED1F: mov eax, dword ptr [ebp-01Ch]
            mov eax, dword ptr [ebp-024h]
            mov eax, dword ptr [eax+004h]
            imul eax, eax, 00000004Ch
-           mov esi, [ebp-04Ch]
+           mov esi, dword ptr [ebp-04Ch]
            fld qword ptr [edx+ecx+000002178h]
            fsub qword ptr [esi+eax+000002178h]
            fstp qword ptr [ebp-048h]
@@ -88005,7 +88005,7 @@ l1002ED1F: mov eax, dword ptr [ebp-01Ch]
            mov ecx, dword ptr [ebp-024h]
            mov ecx, dword ptr [ecx+004h]
            imul ecx, ecx, 00000004Ch
-           mov esi, [ebp-04Ch]
+           mov esi, dword ptr [ebp-04Ch]
            fld qword ptr [eax+edx+000002180h]
            fsub qword ptr [esi+ecx+000002180h]
            fstp qword ptr [ebp-030h]
@@ -88016,7 +88016,7 @@ l1002ED1F: mov eax, dword ptr [ebp-01Ch]
            mov edx, dword ptr [ebp-024h]
            mov edx, dword ptr [edx+004h]
            imul edx, edx, 00000004Ch
-           mov esi, [ebp-04Ch]
+           mov esi, dword ptr [ebp-04Ch]
            fld qword ptr [ecx+eax+000002180h]
            fadd qword ptr [esi+edx+000002180h]
            fadd qword ptr [g10037C78]
@@ -88565,9 +88565,9 @@ l1002F42E PROC
            mov eax, dword ptr [ebp-008h]
            add eax, 000000084h
            mov dword ptr [ebp-004h], eax
-           mov esi, [ebp+008h]
+           mov esi, dword ptr [ebp+008h]
            add esi, 000000004h
-           mov edi, [ebp-004h]
+           mov edi, dword ptr [ebp-004h]
            add edi, 000000004h
            mov ecx, 000000006h
            rep movsd
@@ -89485,9 +89485,9 @@ l1002FE5F: mov ecx, dword ptr [ebp-014h]
 l1002FE68: mov edx, dword ptr [ebp-014h]
            cmp edx, dword ptr [ebp+00Ch]
            jnb l1002FF5B
-           mov esi, [ebp-018h]
+           mov esi, dword ptr [ebp-018h]
            mov ecx, 000000006h
-           mov edi, [ebp-020h]
+           mov edi, dword ptr [ebp-020h]
            rep movsd
            mov eax, dword ptr [ebp-020h]
            fld qword ptr [g10037080]
@@ -89827,9 +89827,9 @@ l10030223: mov eax, dword ptr [ebp-040h]
 l1003022C: mov ecx, dword ptr [ebp-040h]
            cmp ecx, dword ptr [ebp+00Ch]
            jnb l100302DE
-           mov esi, [ebp-044h]
+           mov esi, dword ptr [ebp-044h]
            mov ecx, 000000006h
-           mov edi, [ebp-04Ch]
+           mov edi, dword ptr [ebp-04Ch]
            rep movsd
            mov edx, dword ptr [ebp-04Ch]
            mov dword ptr [edx+02Ch], 000000000h
@@ -90224,7 +90224,7 @@ l10030626: mov eax, dword ptr [ebp-0000006B8h]
            mov ecx, eax
            call l10001677
            mov esi, eax
-           mov edi, [ebp-00Ch]
+           mov edi, dword ptr [ebp-00Ch]
            add edi, 000000008h
            mov ecx, 000000006h
            rep movsd
@@ -90251,7 +90251,7 @@ l10030626: mov eax, dword ptr [ebp-0000006B8h]
            mov ecx, eax
            call l10001677
            mov esi, eax
-           mov edi, [ebp-00Ch]
+           mov edi, dword ptr [ebp-00Ch]
            add edi, 000000020h
            mov ecx, 000000006h
            rep movsd
@@ -90278,7 +90278,7 @@ l10030626: mov eax, dword ptr [ebp-0000006B8h]
            mov ecx, eax
            call l10001677
            mov esi, eax
-           mov edi, [ebp-00Ch]
+           mov edi, dword ptr [ebp-00Ch]
            add edi, 000000038h
            mov ecx, 000000006h
            rep movsd
@@ -90305,7 +90305,7 @@ l10030626: mov eax, dword ptr [ebp-0000006B8h]
            mov ecx, eax
            call l10001677
            mov esi, eax
-           mov edi, [ebp-00Ch]
+           mov edi, dword ptr [ebp-00Ch]
            add edi, 000000050h
            mov ecx, 000000006h
            rep movsd
@@ -90337,7 +90337,7 @@ l100307CD: push 0408F4000h
            mov ecx, eax
            call l10001677
            mov esi, eax
-           mov edi, [ebp-00Ch]
+           mov edi, dword ptr [ebp-00Ch]
            add edi, 000000050h
            mov ecx, 000000006h
            rep movsd
@@ -90364,7 +90364,7 @@ l100307CD: push 0408F4000h
            mov ecx, eax
            call l10001677
            mov esi, eax
-           mov edi, [ebp-00Ch]
+           mov edi, dword ptr [ebp-00Ch]
            add edi, 000000038h
            mov ecx, 000000006h
            rep movsd
@@ -90391,7 +90391,7 @@ l100307CD: push 0408F4000h
            mov ecx, eax
            call l10001677
            mov esi, eax
-           mov edi, [ebp-00Ch]
+           mov edi, dword ptr [ebp-00Ch]
            add edi, 000000020h
            mov ecx, 000000006h
            rep movsd
@@ -90418,7 +90418,7 @@ l100307CD: push 0408F4000h
            mov ecx, eax
            call l10001677
            mov esi, eax
-           mov edi, [ebp-00Ch]
+           mov edi, dword ptr [ebp-00Ch]
            add edi, 000000008h
            mov ecx, 000000006h
            rep movsd
@@ -90519,7 +90519,7 @@ l10030A5E: mov ecx, dword ptr [ebp-0000006DCh]
            mov ecx, dword ptr [eax+004h]
            mov edx, dword ptr [ebp-0000006C8h]
            mov eax, dword ptr [ebp-0000006C4h]
-           mov esi, [ebp-0000006C8h]
+           mov esi, dword ptr [ebp-0000006C8h]
            mov ecx, dword ptr [ecx+esi*04h]
            mov dword ptr [eax+edx*04h], ecx
            jmp l10030A4F
@@ -90769,7 +90769,7 @@ l10030DAC: mov ecx, dword ptr [ebp-000000704h]
            mov ecx, eax
            call l10001483
            mov esi, eax
-           mov edi, [ebp+014h]
+           mov edi, dword ptr [ebp+014h]
            add edi, 000000004h
            mov ecx, 000000006h
            rep movsd
@@ -90786,7 +90786,7 @@ l10030DAC: mov ecx, dword ptr [ebp-000000704h]
            mov ecx, eax
            call l10001483
            mov esi, eax
-           mov edi, [ebp+014h]
+           mov edi, dword ptr [ebp+014h]
            add edi, 00000001Ch
            mov ecx, 000000006h
            rep movsd
@@ -91221,7 +91221,7 @@ l100312E2: mov edx, dword ptr [ebp-000000090h]
            rep movsd
            mov ecx, 000000006h
            lea esi, [ebp-038h]
-           mov edi, [ebp-01Ch]
+           mov edi, dword ptr [ebp-01Ch]
            rep movsd
            mov ecx, dword ptr [ebp+00Ch]
            add ecx, 000000004h
@@ -91368,9 +91368,9 @@ l100314A0 PROC
            mov eax, dword ptr [ebp-054h]
            add eax, 00007A188h
            mov dword ptr [ebp-050h], eax
-           mov esi, [ebp+008h]
+           mov esi, dword ptr [ebp+008h]
            add esi, 000000004h
-           mov edi, [ebp-050h]
+           mov edi, dword ptr [ebp-050h]
            add edi, 000000004h
            mov ecx, 000000006h
            rep movsd
@@ -91521,15 +91521,15 @@ l10031630 PROC
            mov edx, dword ptr [ebp+008h]
            mov eax, dword ptr [edx+018h]
            mov dword ptr [ecx+018h], eax
-           mov esi, [ebp+008h]
+           mov esi, dword ptr [ebp+008h]
            add esi, 00000001Ch
-           mov edi, [ebp-014h]
+           mov edi, dword ptr [ebp-014h]
            add edi, 00000001Ch
            mov ecx, 000000006h
            rep movsd
-           mov esi, [ebp+008h]
+           mov esi, dword ptr [ebp+008h]
            add esi, 000000034h
-           mov edi, [ebp-014h]
+           mov edi, dword ptr [ebp-014h]
            add edi, 000000034h
            mov ecx, 000000006h
            rep movsd
@@ -101601,7 +101601,7 @@ l100352D3: mov ecx, dword ptr [ebp-018h]
            add ecx, eax
            add ecx, eax
            add ecx, ecx
-           mov esi, [ebp-01Ch]
+           mov esi, dword ptr [ebp-01Ch]
            lea edi, [edi+008h]
            rep movsd
            ret
@@ -101623,11 +101623,11 @@ l100352F0: mov eax, dword ptr [ebp-018h]
            add eax, ebx
            add eax, ebx
            add eax, eax
-           mov esi, [ebp-01Ch]
+           mov esi, dword ptr [ebp-01Ch]
            lea edi, [edi+008h]
            rep movsd
            mov ecx, eax
-           mov esi, [ebp+008h]
+           mov esi, dword ptr [ebp+008h]
            lea esi, [esi+008h]
            rep movsd
            ret
@@ -101644,18 +101644,18 @@ l10035323 PROC
            fldz
            fsub qword ptr [ebp+014h]
            fstp qword ptr [ebp-010h]
-           mov esi, [ebp+008h]
+           mov esi, dword ptr [ebp+008h]
            mov edx, dword ptr [ebp+010h]
            call l100350EA
            cmp eax, 000000000h
            jne l1003549F
            push eax
-           mov esi, [ebp+008h]
-           mov edi, [ebp+00Ch]
+           mov esi, dword ptr [ebp+008h]
+           mov edi, dword ptr [ebp+00Ch]
            call l100352D3
            mov ecx, edi
-           mov esi, [ebp+008h]
-           mov edi, [ebp+00Ch]
+           mov esi, dword ptr [ebp+008h]
+           mov edi, dword ptr [ebp+00Ch]
            mov ebx, [ebp-020h]
            mov edx, dword ptr [ebp+010h]
            fld qword ptr [ebx]
@@ -101829,18 +101829,18 @@ l10035323 ENDP
            fsub qword ptr [edx+018h]
            fsub qword ptr [ebp+014h]
            fstp qword ptr [ebp-010h]
-           mov esi, [ebp+008h]
+           mov esi, dword ptr [ebp+008h]
            mov edx, dword ptr [ebp+010h]
            call l100350EA
            cmp eax, 000000000h
            jne l10035638
            push eax
-           mov esi, [ebp+008h]
-           mov edi, [ebp+00Ch]
+           mov esi, dword ptr [ebp+008h]
+           mov edi, dword ptr [ebp+00Ch]
            call l100352D3
            mov ecx, edi
-           mov esi, [ebp+008h]
-           mov edi, [ebp+00Ch]
+           mov esi, dword ptr [ebp+008h]
+           mov edi, dword ptr [ebp+00Ch]
            mov ebx, [ebp-020h]
            mov edx, dword ptr [ebp+010h]
            fld qword ptr [ebx]
@@ -102025,7 +102025,7 @@ l10035638: mov esp, ebp
            fsub qword ptr [edx+018h]
            fsub qword ptr [ebp+014h]
            fstp qword ptr [ebp-010h]
-           mov esi, [ebp+008h]
+           mov esi, dword ptr [ebp+008h]
            mov edx, dword ptr [ebp+010h]
            call l100350EA
            cmp eax, 000000000h
@@ -102035,7 +102035,7 @@ l10035638: mov esp, ebp
            push dword ptr [ebp-014h]
            push dword ptr [ebp-020h]
            push dword ptr [ebp-018h]
-           mov esi, [ebp+008h]
+           mov esi, dword ptr [ebp+008h]
            cmp dword ptr [ebp-014h], 000000000h
            je l100356A1
            mov eax, dword ptr [ebp-01Ch]
@@ -102081,10 +102081,10 @@ l100356CD: pop dword ptr [ebp-018h]
            pop dword ptr [ebp-020h]
            mov [ebp-014h], ebx
            mov dword ptr [ebp-01Ch], eax
-           mov esi, [ebp+008h]
-           mov edi, [ebp+01Ch]
+           mov esi, dword ptr [ebp+008h]
+           mov edi, dword ptr [ebp+01Ch]
            call l100352D3
-           mov [ebp-03Ch], edi
+           mov dword ptr [ebp-03Ch], edi
            pop dword ptr [ebp-018h]
            pop dword ptr [ebp-020h]
            pop dword ptr [ebp-014h]
@@ -102093,12 +102093,12 @@ l100356CD: pop dword ptr [ebp-018h]
            mov dword ptr [ebp-034h], eax
            mov eax, dword ptr [ebp-020h]
            mov dword ptr [ebp-038h], eax
-           mov esi, [ebp+008h]
-           mov edi, [ebp+00Ch]
+           mov esi, dword ptr [ebp+008h]
+           mov edi, dword ptr [ebp+00Ch]
            call l100352D3
            mov ecx, edi
-           mov esi, [ebp+008h]
-           mov edi, [ebp+00Ch]
+           mov esi, dword ptr [ebp+008h]
+           mov edi, dword ptr [ebp+00Ch]
            mov ebx, [ebp-020h]
            mov edx, dword ptr [ebp+010h]
            fld qword ptr [ebx]
@@ -102280,10 +102280,10 @@ l1003584A: pop eax
 ;* Jump:
 ; 100357F6(C) 
 ;
-l1003588F: mov edi, [ebp-03Ch]
+l1003588F: mov edi, dword ptr [ebp-03Ch]
            cmp dword ptr [ebp-040h], 000000000h
            je l100358B4
-           mov esi, [ebp+01Ch]
+           mov esi, dword ptr [ebp+01Ch]
            inc dword ptr [esi+004h]
            mov ecx, dword ptr [ebp-034h]
            fld qword ptr [ecx]
@@ -102299,7 +102299,7 @@ l1003588F: mov edi, [ebp-03Ch]
 ;
 l100358B4: cmp dword ptr [ebp-044h], 000000000h
            je l100358D3
-           mov esi, [ebp+01Ch]
+           mov esi, dword ptr [ebp+01Ch]
            inc dword ptr [esi+004h]
            mov ecx, dword ptr [ebp-038h]
            fld qword ptr [ecx]
@@ -103225,9 +103225,9 @@ __startup PROC
            push ebx
            mov ebx, [ebp+008h]
            push esi
-           mov esi, [ebp+00Ch]
+           mov esi, dword ptr [ebp+00Ch]
            push edi
-           mov edi, [ebp+010h]
+           mov edi, dword ptr [ebp+010h]
            test esi, esi
            jne l10035FF1
            cmp dword ptr [g10051918], 000000000h
