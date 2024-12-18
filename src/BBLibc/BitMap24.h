@@ -13,17 +13,12 @@
 
 template <typename T>
 class LIB_EXP B_Array {
-private:
-    T* data_; // pointer to the array data
-    size_t size_; // current size of the array
-    size_t capacity_; // maximum capacity of the array
-
 public:
     B_Array() : data_(nullptr), size_(0), capacity_(0) {}
 
     B_Array(size_t capacity) : data_(new T[capacity]), size_(0), capacity_(capacity) {}
 
-    ~B_Array() { delete[] data_; }
+    virtual ~B_Array() { delete[] data_; }
 
     // Add an element to the array
     void push_back(const T& element) {
@@ -43,6 +38,11 @@ public:
 
     // Get the current size of the array
     size_t size() const { return size_; }
+
+private:
+    T* data_; // pointer to the array data
+    size_t size_; // current size of the array
+    size_t capacity_; // maximum capacity of the array
 };
 
 class B_IDataFile;
