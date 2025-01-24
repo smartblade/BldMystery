@@ -68,12 +68,22 @@ int B_IDataFile::GetnOpenFiles()
 * Entry point:            0x10001023
 * VC++ mangling:          ?SetOnOpenFunc@B_IDataFile@@SAHPAUPyObject@@@Z
 */
-#ifndef BLD_NATIVE
+
 int B_IDataFile::SetOnOpenFunc(PyObject* obj)
 {
-    return 1;
+    if (obj != nullptr)
+    {
+        Py_XDECREF(B_IDataFile::OnOpenFunc);
+        Py_XINCREF(obj);
+        B_IDataFile::OnOpenFunc = obj;
+    }
+    else
+    {
+        return false;
+    }
+    return true;
 }
-#endif
+
 
 
 /*

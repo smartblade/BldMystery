@@ -46,78 +46,7 @@
 ;
 ;* Export: ?SetOnOpenFunc@B_IDataFile@@SAHPAUPyObject@@@Z, 0112
 ;
-l10001023 PROC
-           push ebp
-           mov ebp, esp
-           cmp dword ptr [ebp+008h], 000000000h
-           je l1000108B
-           cmp dword ptr [g10049F04], 000000000h
-           jne l10001037
-           jmp l1000106B
-;
-;* Jump:
-; 10001033(C) 
-;
-l10001037: mov eax, dword ptr [g10049F04]
-           mov ecx, dword ptr [eax]
-           sub ecx, 000000001h
-           mov edx, dword ptr [g10049F04]
-           mov dword ptr [edx], ecx
-           mov eax, dword ptr [g10049F04]
-           cmp dword ptr [eax], 000000000h
-           je l10001055
-           jmp l1000106B
-;
-;* Jump:
-; 10001051(C) 
-;
-l10001055: mov ecx, dword ptr [g10049F04]
-           push ecx
-           mov edx, dword ptr [g10049F04]
-           mov eax, dword ptr [edx+004h]
-           call [eax+018h]
-           add esp, 000000004h
-;
-;* Jump:
-; 10001035(U), 10001053(U) 
-;
-l1000106B: cmp dword ptr [ebp+008h], 000000000h
-           jne l10001073
-           jmp l10001080
-;
-;* Jump:
-; 1000106F(C) 
-;
-l10001073: mov ecx, dword ptr [ebp+008h]
-           mov edx, dword ptr [ecx]
-           add edx, 000000001h
-           mov eax, dword ptr [ebp+008h]
-           mov dword ptr [eax], edx
-;
-;* Jump:
-; 10001071(U) 
-;
-l10001080: mov ecx, dword ptr [ebp+008h]
-           mov dword ptr [g10049F04], ecx
-           jmp l1000108F
-;
-;* Jump:
-; 1000102A(C) 
-;
-l1000108B: xor eax, eax
-           jmp l10001094
-;
-;* Jump:
-; 10001089(U) 
-;
-l1000108F: mov eax, 000000001h
-;
-;* Jump:
-; 1000108D(U) 
-;
-l10001094: pop ebp
-           ret
-l10001023 ENDP
+           call l10001023; Implemented in c++ code
 ;
 ;* Call:
 ; 100020F5 
