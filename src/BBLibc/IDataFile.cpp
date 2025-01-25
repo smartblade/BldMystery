@@ -91,12 +91,13 @@ int B_IDataFile::SetOnOpenFunc(PyObject* obj)
 * Entry point:            0x10001096
 * VC++ mangling:          ?RemoveOnOpenFunc@B_IDataFile@@SAXXZ
 */
-#ifndef BLD_NATIVE
+
 void B_IDataFile::RemoveOnOpenFunc()
 {
-    OnOpenFunc = nullptr;
+    Py_XDECREF(B_IDataFile::OnOpenFunc);
+    B_IDataFile::OnOpenFunc = nullptr;
 }
-#endif
+
 
 /*
 * Module:                 BBLibc.dll

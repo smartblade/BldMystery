@@ -1,4 +1,3 @@
-/EXPORT:?RemoveOnOpenFunc@B_IDataFile@@SAXXZ=?RemoveOnOpenFunc@B_IDataFile@@SAXXZ
 /EXPORT:?Close@B_IDataFile@@QAEXXZ=?Close@B_IDataFile@@QAEXXZ
 /EXPORT:?Open@B_IDataFile@@QAEXPBDH@Z=?Open@B_IDataFile@@QAEXPBDH@Z
 /EXPORT:??0B_IDataFile@@QAE@XZ=??0B_IDataFile@@QAE@XZ

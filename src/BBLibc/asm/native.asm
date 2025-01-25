@@ -53,43 +53,7 @@
 ;
 ;* Export: ?RemoveOnOpenFunc@B_IDataFile@@SAXXZ, 00FE
 ;
-l10001096 PROC
-           push ebp
-           mov ebp, esp
-           cmp dword ptr [g10049F04], 000000000h
-           jne l100010A4
-           jmp l100010D8
-;
-;* Jump:
-; 100010A0(C) 
-;
-l100010A4: mov eax, dword ptr [g10049F04]
-           mov ecx, dword ptr [eax]
-           sub ecx, 000000001h
-           mov edx, dword ptr [g10049F04]
-           mov dword ptr [edx], ecx
-           mov eax, dword ptr [g10049F04]
-           cmp dword ptr [eax], 000000000h
-           je l100010C2
-           jmp l100010D8
-;
-;* Jump:
-; 100010BE(C) 
-;
-l100010C2: mov ecx, dword ptr [g10049F04]
-           push ecx
-           mov edx, dword ptr [g10049F04]
-           mov eax, dword ptr [edx+004h]
-           call [eax+018h]
-           add esp, 000000004h
-;
-;* Jump:
-; 100010A2(U), 100010C0(U) 
-;
-l100010D8: mov dword ptr [g10049F04], 000000000h
-           pop ebp
-           ret
-l10001096 ENDP
+           call l10001096; Implemented in c++ code
 ;
 l100010E4 PROC
            push ebp
