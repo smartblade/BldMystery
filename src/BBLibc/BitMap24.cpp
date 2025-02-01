@@ -65,13 +65,13 @@ void B_BitMap24::ClearBitMap24Data()
 
 /*
 * Module:                 BBLibc.dll
-* Entry point:            0x10026C70
-* VC++ mangling:          ?SetBits@B_BitMap24@@QAEXHHPBD0@Z
+* Entry point:            0x100272A5
+* VC++ mangling:          ?SetBits@B_BitMap24@@QAEIHHPBD0@Z
 */
 #ifndef BLD_NATIVE
-void B_BitMap24::SetBits(int, int, char const*, char const*)
+unsigned int B_BitMap24::SetBits(int, int, char const*, char const*)
 {
-
+    return 0;
 }
 #endif
 

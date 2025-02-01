@@ -55,7 +55,7 @@ public:
     virtual ~B_BitMap24();
     B_BitMap24(const B_BitMap24& that);
     static void ClearBitMap24Data();
-    void SetBits(int, int, char const*, char const*);
+    unsigned int SetBits(int, int, char const*, char const*);
     B_BitMap24& operator=(const B_BitMap24& that);
     int SaveToBMP(char const* fileName) const;
     int SaveToBMPSized(char const* fileName, int width, int height) const;

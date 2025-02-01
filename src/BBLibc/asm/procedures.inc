@@ -304,10 +304,12 @@ externdef ?GetBlue@B_Pal@@QBEEI@Z: near
 l100093FB equ ?GetBlue@B_Pal@@QBEEI@Z
 externdef ??0B_BitMap24@@QAE@ABV0@@Z: near
 l10026AD5 equ ??0B_BitMap24@@QAE@ABV0@@Z
-externdef ?SetBits@B_BitMap24@@QAEXHHPBD0@Z: near
-l10026C70 equ ?SetBits@B_BitMap24@@QAEXHHPBD0@Z
+externdef ?ClearBitMap24Data@B_BitMap24@@SAXXZ: near
+l10026C70 equ ?ClearBitMap24Data@B_BitMap24@@SAXXZ
 externdef ??4B_BitMap24@@QAEAAV0@ABV0@@Z: near
 l100271BE equ ??4B_BitMap24@@QAEAAV0@ABV0@@Z
+externdef ?SetBits@B_BitMap24@@QAEIHHPBD0@Z: near
+l100272A5 equ ?SetBits@B_BitMap24@@QAEIHHPBD0@Z
 externdef ?SaveToBMP@B_BitMap24@@QBEHPBD@Z: near
 l10027382 equ ?SaveToBMP@B_BitMap24@@QBEHPBD@Z
 externdef ?SaveToBMPSized@B_BitMap24@@QBEHPBDHH@Z: near
