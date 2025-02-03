@@ -53,15 +53,3 @@ B_ODataFile& operator <<(B_ODataFile& file, const B_ParticleGType& particleType)
     return file;
 }
 #endif
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x100023C0
-*/
-#ifndef BLD_NATIVE
-void sub_100023C0(B_NamedObj* this_ptr, int arg_0)
-{
-
-}
-#endif
-

@@ -106,8 +106,6 @@ externdef ??0B_NamedObj@@QAE@ABV0@@Z: near
 l10002320 equ ??0B_NamedObj@@QAE@ABV0@@Z
 externdef ??4B_NamedObj@@QAEAAV0@ABV0@@Z: near
 l10002350 equ ??4B_NamedObj@@QAEAAV0@ABV0@@Z
-externdef _sub_100023C0: near
-l100023C0 equ _sub_100023C0
 externdef ??0B_MessageChannel@@QAE@AAVB_Name@@@Z: near
 l100024C0 equ ??0B_MessageChannel@@QAE@AAVB_Name@@@Z
 externdef ??1B_MessageChannel@@UAE@XZ: near
