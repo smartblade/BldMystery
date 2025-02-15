@@ -220,8 +220,8 @@ externdef ??0B_Resource@@QAE@XZ: near
 l10003EBA equ ??0B_Resource@@QAE@XZ
 externdef ??1B_Resource@@UAE@XZ: near
 l10003EFE equ ??1B_Resource@@UAE@XZ
-externdef _sub_10004425: near
-l10004425 equ _sub_10004425
+externdef _GetResource: near
+l10004425 equ _GetResource
 externdef ??0B_ResourceManager@@QAE@XZ: near
 l100049F8 equ ??0B_ResourceManager@@QAE@XZ
 externdef ??1B_ResourceManager@@QAE@XZ: near

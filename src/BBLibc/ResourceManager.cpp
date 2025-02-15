@@ -8,28 +8,9 @@
 * Entry point:            0x10004425
 */
 #ifndef BLD_NATIVE
-B_Resource* B_ResourceManager::sub_10004425(unsigned short resourceId)
+B_Resource* B_ResourceLocation::GetResource(unsigned short resourceId)
 {
-    // TODO Implement
-    int var_402C = 0;
-    int var_4028 = 0;
-    int Src = 0;
-    int var_4020 = 0;
-    int var_401C = 0;
-    int var_4018 = 0;
-
-    counter++;
-
-    if (this->resourceId == 0) {
-        // Error handling: print an error message
-        //B_MessageManager* messageManager = ? ? mout@@3VB_MessageManager@@A;
-        /*messageManager->operator<<(aBResourcelocat);
-        messageManager->operator<<(asc_100472B4);
-        messageManager->operator<<(asc_100472B8);*/
-        return nullptr;
-    }
-
-    return nullptr;;
+    return nullptr;
 }
 #endif
 
