@@ -5720,7 +5720,7 @@ l10003204 PROC
            and ecx, 00000007Fh
            mov edx, dword ptr [g1004D9DC]
            xor ebx, ebx
-           mov bl, [edx+ecx]
+           mov bl, byte ptr [edx+ecx]
            shl ebx, 00Fh
            or eax, ebx
            mov dword ptr [ebp-010h], eax
@@ -101345,8 +101345,8 @@ l100350EA PROC
            mov dword ptr [ebp-018h], ecx
            dec ecx
            lea ebx, [esi+008h]
-           mov [ebp-01Ch], ebx
-           mov [ebp-020h], ebx
+           mov dword ptr [ebp-01Ch], ebx
+           mov dword ptr [ebp-020h], ebx
            fld qword ptr [ebx]
            fmul qword ptr [edx]
            fld qword ptr [ebx+008h]
@@ -101394,7 +101394,7 @@ l10035126: fld qword ptr [ebx]
 ;
 l10035154: sub dword ptr [ebp-018h], ecx
            dec dword ptr [ebp-018h]
-           mov [ebp-020h], ebx
+           mov dword ptr [ebp-020h], ebx
            sub dword ptr [ebp-020h], 000000030h
            loop l10035174
            mov dword ptr [ebp-014h], 000000000h
@@ -101428,7 +101428,7 @@ l10035174: fld qword ptr [ebx]
 ; 10035194(C) 
 ;
 l100351A9: sub dword ptr [ebp-014h], ecx
-           mov [ebp-01Ch], ebx
+           mov dword ptr [ebp-01Ch], ebx
            sub dword ptr [ebp-01Ch], 000000018h
            mov eax, 000000000h
            jmp near ptr l100352D2
@@ -101467,11 +101467,11 @@ l100351C7: fld qword ptr [ebx]
 ; 100351E7(C) 
 ;
 l100351F5: sub dword ptr [ebp-014h], ecx
-           mov [ebp-01Ch], ebx
+           mov dword ptr [ebp-01Ch], ebx
            sub dword ptr [ebp-01Ch], 000000018h
            loop l10035215
            dec dword ptr [ebp-018h]
-           mov [ebp-020h], ebx
+           mov dword ptr [ebp-020h], ebx
            sub dword ptr [ebp-020h], 000000018h
            mov eax, 000000000h
            jmp near ptr l100352D2
@@ -101496,7 +101496,7 @@ l10035215: fld qword ptr [ebx]
            jb l1003524D
            loop l10035215
            dec dword ptr [ebp-018h]
-           mov [ebp-020h], ebx
+           mov dword ptr [ebp-020h], ebx
            sub dword ptr [ebp-020h], 000000018h
            mov eax, 000000000h
            jmp near ptr l100352D2
@@ -101506,7 +101506,7 @@ l10035215: fld qword ptr [ebx]
 ;
 l1003524D: sub dword ptr [ebp-018h], ecx
            dec dword ptr [ebp-018h]
-           mov [ebp-020h], ebx
+           mov dword ptr [ebp-020h], ebx
            sub dword ptr [ebp-020h], 000000030h
            mov eax, 000000000h
            jmp l100352D2
@@ -101656,7 +101656,7 @@ l10035323 PROC
            mov ecx, edi
            mov esi, dword ptr [ebp+008h]
            mov edi, dword ptr [ebp+00Ch]
-           mov ebx, [ebp-020h]
+           mov ebx, dword ptr [ebp-020h]
            mov edx, dword ptr [ebp+010h]
            fld qword ptr [ebx]
            fmul qword ptr [edx]
@@ -101690,7 +101690,7 @@ l1003539B: lea eax, [esi+008h]
 ;* Jump:
 ; 10035399(U) 
 ;
-l1003539E: mov ebx, [ebp-020h]
+l1003539E: mov ebx, dword ptr [ebp-020h]
            mov edx, dword ptr [ebp+010h]
            fld qword ptr [eax]
            fmul qword ptr [edx]
@@ -101731,7 +101731,7 @@ l1003539E: mov ebx, [ebp-020h]
 ;* Jump:
 ; 10035385(C) 
 ;
-l100353FB: mov ebx, [ebp-01Ch]
+l100353FB: mov ebx, dword ptr [ebp-01Ch]
            mov edx, dword ptr [ebp+010h]
            fld qword ptr [ebx]
            fmul qword ptr [edx]
@@ -101767,7 +101767,7 @@ l10035434: mov eax, 000000018h
 ;* Jump:
 ; 10035432(U) 
 ;
-l10035444: mov ebx, [ebp-01Ch]
+l10035444: mov ebx, dword ptr [ebp-01Ch]
            mov edx, dword ptr [ebp+010h]
            fld qword ptr [eax]
            fmul qword ptr [edx]
@@ -101841,7 +101841,7 @@ l10035323 ENDP
            mov ecx, edi
            mov esi, dword ptr [ebp+008h]
            mov edi, dword ptr [ebp+00Ch]
-           mov ebx, [ebp-020h]
+           mov ebx, dword ptr [ebp-020h]
            mov edx, dword ptr [ebp+010h]
            fld qword ptr [ebx]
            fmul qword ptr [edx]
@@ -101876,7 +101876,7 @@ l1003552B: lea eax, [esi+008h]
 ;* Jump:
 ; 10035529(U) 
 ;
-l1003552E: mov ebx, [ebp-020h]
+l1003552E: mov ebx, dword ptr [ebp-020h]
            mov edx, dword ptr [ebp+010h]
            fld qword ptr [eax]
            fmul qword ptr [edx]
@@ -101918,7 +101918,7 @@ l1003552E: mov ebx, [ebp-020h]
 ;* Jump:
 ; 10035515(C) 
 ;
-l1003558E: mov ebx, [ebp-01Ch]
+l1003558E: mov ebx, dword ptr [ebp-01Ch]
            mov edx, dword ptr [ebp+010h]
            fld qword ptr [ebx]
            fmul qword ptr [edx]
@@ -101955,7 +101955,7 @@ l100355CA: mov eax, 000000018h
 ;* Jump:
 ; 100355C8(U) 
 ;
-l100355DA: mov ebx, [ebp-01Ch]
+l100355DA: mov ebx, dword ptr [ebp-01Ch]
            mov edx, dword ptr [ebp+010h]
            fld qword ptr [eax]
            fmul qword ptr [edx]
@@ -102040,7 +102040,7 @@ l10035638: mov esp, ebp
            je l100356A1
            mov eax, dword ptr [ebp-01Ch]
            sub eax, 000000018h
-           mov ebx, [ebp-014h]
+           mov ebx, dword ptr [ebp-014h]
            dec ebx
            jmp l100356B5
 ;
@@ -102052,7 +102052,7 @@ l100356A1: mov eax, 000000018h
            sub eax, 000000018h
            mov eax, eax
            add eax, dword ptr [ebp-01Ch]
-           mov ebx, [esi+004h]
+           mov ebx, dword ptr [esi+004h]
            dec ebx
 ;
 ;* Jump:
@@ -102060,9 +102060,9 @@ l100356A1: mov eax, 000000018h
 ;
 l100356B5: push eax
            push ebx
-           mov ebx, [ebp-018h]
+           mov ebx, dword ptr [ebp-018h]
            inc ebx
-           cmp ebx, [esi+004h]
+           cmp ebx, dword ptr [esi+004h]
            je l100356C8
            mov eax, dword ptr [ebp-020h]
            add eax, 000000018h
@@ -102079,7 +102079,7 @@ l100356C8: lea eax, [esi+008h]
 ;
 l100356CD: pop dword ptr [ebp-018h]
            pop dword ptr [ebp-020h]
-           mov [ebp-014h], ebx
+           mov dword ptr [ebp-014h], ebx
            mov dword ptr [ebp-01Ch], eax
            mov esi, dword ptr [ebp+008h]
            mov edi, dword ptr [ebp+01Ch]
@@ -102099,7 +102099,7 @@ l100356CD: pop dword ptr [ebp-018h]
            mov ecx, edi
            mov esi, dword ptr [ebp+008h]
            mov edi, dword ptr [ebp+00Ch]
-           mov ebx, [ebp-020h]
+           mov ebx, dword ptr [ebp-020h]
            mov edx, dword ptr [ebp+010h]
            fld qword ptr [ebx]
            fmul qword ptr [edx]
@@ -102134,7 +102134,7 @@ l10035755: lea eax, [esi+008h]
 ;* Jump:
 ; 10035753(U) 
 ;
-l10035758: mov ebx, [ebp-020h]
+l10035758: mov ebx, dword ptr [ebp-020h]
            mov edx, dword ptr [ebp+010h]
            fld qword ptr [eax]
            fmul qword ptr [edx]
@@ -102189,7 +102189,7 @@ l10035785: pop eax
 ;* Jump:
 ; 1003573B(C) 
 ;
-l100357CD: mov ebx, [ebp-01Ch]
+l100357CD: mov ebx, dword ptr [ebp-01Ch]
            mov edx, dword ptr [ebp+010h]
            fld qword ptr [ebx]
            fmul qword ptr [edx]
@@ -102226,7 +102226,7 @@ l1003580D: mov eax, 000000018h
 ;* Jump:
 ; 1003580B(U) 
 ;
-l1003581D: mov ebx, [ebp-01Ch]
+l1003581D: mov ebx, dword ptr [ebp-01Ch]
            mov edx, dword ptr [ebp+010h]
            fld qword ptr [eax]
            fmul qword ptr [edx]
@@ -103223,7 +103223,7 @@ __startup PROC
            push ebp
            mov ebp, esp
            push ebx
-           mov ebx, [ebp+008h]
+           mov ebx, dword ptr [ebp+008h]
            push esi
            mov esi, dword ptr [ebp+00Ch]
            push edi

@@ -14820,7 +14820,7 @@ l10009110 PROC
            mov al, byte ptr [edx+004h]
            mov edx, dword ptr [ebp+008h]
            xor ebx, ebx
-           mov bl, [edx+004h]
+           mov bl, byte ptr [edx+004h]
            sub eax, ebx
            imul ecx, eax
            mov eax, dword ptr [ebp-004h]
@@ -14828,11 +14828,11 @@ l10009110 PROC
            mov dl, byte ptr [eax+005h]
            mov eax, dword ptr [ebp+008h]
            xor ebx, ebx
-           mov bl, [eax+005h]
+           mov bl, byte ptr [eax+005h]
            sub edx, ebx
            mov eax, dword ptr [ebp-004h]
            xor ebx, ebx
-           mov bl, [eax+005h]
+           mov bl, byte ptr [eax+005h]
            mov esi, dword ptr [ebp+008h]
            xor eax, eax
            mov al, byte ptr [esi+005h]
@@ -14845,11 +14845,11 @@ l10009110 PROC
            mov esi, eax
            mov edx, dword ptr [ebp+008h]
            xor ebx, ebx
-           mov bl, [edx+006h]
+           mov bl, byte ptr [edx+006h]
            sub esi, ebx
            mov edx, dword ptr [ebp-004h]
            xor ebx, ebx
-           mov bl, [edx+006h]
+           mov bl, byte ptr [edx+006h]
            mov edx, dword ptr [ebp+008h]
            xor eax, eax
            mov al, byte ptr [edx+006h]
@@ -15314,7 +15314,7 @@ l1000946B PROC
            call l100093E1
            and eax, 0000000FFh
            sub edi, eax
-           mov ebx, [ebp+00Ch]
+           mov ebx, dword ptr [ebp+00Ch]
            and ebx, 0000000FFh
            mov ecx, dword ptr [ebp+014h]
            push ecx
@@ -15332,7 +15332,7 @@ l1000946B PROC
            call l100093FB
            and eax, 0000000FFh
            sub edi, eax
-           mov ebx, [ebp+010h]
+           mov ebx, dword ptr [ebp+010h]
            and ebx, 0000000FFh
            mov eax, dword ptr [ebp+014h]
            push eax
@@ -15385,7 +15385,7 @@ l10009549: cmp dword ptr [ebp-008h], 000000100h
            call l100093E1
            and eax, 0000000FFh
            sub edi, eax
-           mov ebx, [ebp+00Ch]
+           mov ebx, dword ptr [ebp+00Ch]
            and ebx, 0000000FFh
            mov eax, dword ptr [ebp-008h]
            push eax
@@ -15403,7 +15403,7 @@ l10009549: cmp dword ptr [ebp-008h], 000000100h
            call l100093FB
            and eax, 0000000FFh
            sub edi, eax
-           mov ebx, [ebp+010h]
+           mov ebx, dword ptr [ebp+010h]
            and ebx, 0000000FFh
            mov edx, dword ptr [ebp-008h]
            push edx
@@ -31049,12 +31049,12 @@ l10012585: mov eax, dword ptr [ebp-00Ch]
            add ecx, dword ptr [ebp-014h]
            mov eax, dword ptr [ebp-008h]
            xor ebx, ebx
-           mov bl, [eax+001h]
+           mov bl, byte ptr [eax+001h]
            add ecx, edx
            add ebx, ecx
            sar ebx, 002h
            mov ecx, dword ptr [ebp-01Ch]
-           mov [ecx], bl
+           mov byte ptr [ecx], bl
            mov edx, dword ptr [ebp-01Ch]
            add edx, 000000001h
            mov dword ptr [ebp-01Ch], edx
@@ -107594,7 +107594,7 @@ __startup PROC
            push ebp
            mov ebp, esp
            push ebx
-           mov ebx, [ebp+008h]
+           mov ebx, dword ptr [ebp+008h]
            push esi
            mov esi, dword ptr [ebp+00Ch]
            push edi
