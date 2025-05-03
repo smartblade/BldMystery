@@ -9,7 +9,12 @@
 #undef BUILD_LIB
 
 
-class LIB_EXP B_RDataTriangle
+class B_RItem
+{
+};
+
+
+class LIB_EXP B_RDataTriangle : public B_RItem
 {
 public:
     B_RDataTriangle();

@@ -313,6 +313,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ChannelOFile.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Color.cpp"
 				>
 			</File>
@@ -396,6 +400,10 @@
 			</File>
 			<File
 				RelativePath=".\BitMap24.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ChannelOFile.h"
 				>
 			</File>
 			<File
