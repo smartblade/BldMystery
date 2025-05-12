@@ -64,7 +64,7 @@ private:
     char* file_name;
     unsigned int file_size;
     char fileCache[0x4000];
-    unsigned int cacheBlockBytesRead;
+    unsigned int cacheBlockStartPos;
     unsigned int cacheBlockPos;
     unsigned int filePosition;
 

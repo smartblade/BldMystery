@@ -226,7 +226,7 @@ unsigned char B_IDataFile::Peek()
 
 int B_IDataFile::Eof()
 {
-    return cacheBlockBytesRead + cacheBlockPos >= this->file_size ? 1 : 0;
+    return cacheBlockStartPos + cacheBlockPos >= this->file_size ? 1 : 0;
 }
 
 
