@@ -13,6 +13,15 @@
 
 struct PyObject;
 
+class B_FileInfo
+{
+    int unknown00;
+    char *unknown04;
+    int fd;
+    int unknown0C;
+    long dataStartPos;
+};
+
 class LIB_EXP B_IDataFile
 {
 public:
@@ -66,7 +75,7 @@ private:
     char fileCache[0x4000];
     unsigned int cacheBlockStartPos;
     unsigned int cacheBlockPos;
-    unsigned int filePosition;
+    B_FileInfo *fileInfo;
 
     static int n_opened_files;
     static int n_open_files;

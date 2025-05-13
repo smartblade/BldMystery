@@ -18,5 +18,5 @@ TEST(IDataFileTests, Fields)
     EXPECT_OFFSET_EQ(B_IDataFile, fileCache, 0x000C);
     EXPECT_OFFSET_EQ(B_IDataFile, cacheBlockStartPos, 0x400C);
     EXPECT_OFFSET_EQ(B_IDataFile, cacheBlockPos, 0x4010);
-    EXPECT_OFFSET_EQ(B_IDataFile, filePosition, 0x4014);
+    EXPECT_OFFSET_EQ(B_IDataFile, fileInfo, 0x4014);
 }
