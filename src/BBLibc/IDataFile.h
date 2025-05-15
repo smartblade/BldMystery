@@ -11,10 +11,25 @@
 #include <export.h>
 #undef BUILD_LIB
 
+#define FILE_CACHE_SIZE 0x4000
+
 struct PyObject;
 
 class B_FileInfo
 {
+public:
+    ~B_FileInfo()
+    {
+#ifndef BLD_NATIVE
+        if (ACCESS(STACKVAR(-4, 4), 8, 4) != 0xFFFFFFFF)
+        {
+            close(ACCESS(STACKVAR(-4, 4), 8, 4));
+            free(ACCESS(STACKVAR(-4, 4), 4, 4));
+        }
+#endif
+    }
+
+private:
     int unknown00;
     char *unknown04;
     int fd;
@@ -72,7 +87,7 @@ private:
     int fd;
     char* file_name;
     unsigned int file_size;
-    char fileCache[0x4000];
+    char fileCache[FILE_CACHE_SIZE];
     unsigned int cacheBlockStartPos;
     unsigned int cacheBlockPos;
     B_FileInfo *fileInfo;
