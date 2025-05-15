@@ -3,6 +3,7 @@
 #include <bld_python.h>
 #define BBLIBC_LIB_EXPORT
 #include "IDataFile.h"
+#include "FileInfo.h"
 
 
 /*
@@ -98,18 +99,43 @@ void B_IDataFile::RemoveOnOpenFunc()
     B_IDataFile::OnOpenFunc = nullptr;
 }
 
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
 
 /*
 * Module:                 BBLibc.dll
 * Entry point:            0x100014D2
 * VC++ mangling:          ?Close@B_IDataFile@@QAEXXZ
 */
-#ifndef BLD_NATIVE
+
 void B_IDataFile::Close()
 {
-
+    this->cacheBlockStartPos = -IFILE_CACHE_SIZE;
+    this->cacheBlockPos = 0;
+    if (this->file_name != nullptr)
+    {
+        free(this->file_name);
+        this->file_name = nullptr;
+    }
+    if (this->fileInfo != nullptr)
+    {
+        delete this->fileInfo;
+        this->fileInfo = nullptr;
+        this->fd = -1;
+        return;
+    }
+    if (this->OK())
+    {
+        close(this->fd);
+        this->fd = -1;
+        B_IDataFile::n_open_files--;
+    }
 }
-#endif
 
 
 /*

@@ -11,16 +11,10 @@
 #include <export.h>
 #undef BUILD_LIB
 
-struct PyObject;
+#define IFILE_CACHE_SIZE 0x4000
 
-class B_FileInfo
-{
-    int unknown00;
-    char *unknown04;
-    int fd;
-    int unknown0C;
-    long dataStartPos;
-};
+struct PyObject;
+class B_FileInfo;
 
 class LIB_EXP B_IDataFile
 {
@@ -72,7 +66,7 @@ private:
     int fd;
     char* file_name;
     unsigned int file_size;
-    char fileCache[0x4000];
+    char fileCache[IFILE_CACHE_SIZE];
     unsigned int cacheBlockStartPos;
     unsigned int cacheBlockPos;
     B_FileInfo *fileInfo;
