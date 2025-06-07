@@ -2,6 +2,7 @@
 #include <io.h>
 #include <bld_python.h>
 #define BBLIBC_LIB_EXPORT
+#include "BBLibc.h"
 #include "IDataFile.h"
 #include "FileInfo.h"
 
@@ -143,12 +144,36 @@ void B_IDataFile::Close()
 * Entry point:            0x100015E2
 * VC++ mangling:          ?Open@B_IDataFile@@QAEXPBDH@Z
 */
-#ifndef BLD_NATIVE
+
 void B_IDataFile::Open(const char* src, int flags)
 {
-
+    this->file_name = strdup(src);
+    this->fileInfo = nullptr;
+    if (this->fileInfo == nullptr)
+    {
+        this->fd = open(src, flags);
+        if (!this->OK())
+        {
+            return;
+        }
+        this->file_size = static_cast<unsigned int>(filelength(this->fd));
+        B_IDataFile::n_opened_files++;
+        B_IDataFile::n_open_files++;
+        if (B_IDataFile::OnOpenFunc != nullptr)
+        {
+            PyObject *args = PyTuple_New(2);
+            PyObject *nFilesObj = PyInt_FromLong(B_IDataFile::n_opened_files);
+            PyObject *fileNameObj = PyString_FromString(this->file_name);
+            PyTuple_SET_ITEM(args, 0, nFilesObj);
+            PyTuple_SET_ITEM(args, 1, fileNameObj);
+            PyObject *result = CallPythonObject(B_IDataFile::OnOpenFunc, args);
+            Py_DECREF(args);
+            Py_XDECREF(result);
+        }
+    }
+    this->ReadCacheBlock();
 }
-#endif
+
 
 /*
 * Module:                 BBLibc.dll
