@@ -68,7 +68,7 @@ private:
     unsigned int file_size;
     char fileCache[IFILE_CACHE_SIZE];
     unsigned int cacheBlockStartPos;
-    unsigned int cacheBlockPos;
+    unsigned int posInCacheBlock;
     B_FileInfo *fileInfo;
 
     static int n_opened_files;

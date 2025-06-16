@@ -117,7 +117,7 @@ void B_IDataFile::RemoveOnOpenFunc()
 void B_IDataFile::Close()
 {
     this->cacheBlockStartPos = -IFILE_CACHE_SIZE;
-    this->cacheBlockPos = 0;
+    this->posInCacheBlock = 0;
     if (this->file_name != nullptr)
     {
         free(this->file_name);
@@ -277,7 +277,7 @@ unsigned char B_IDataFile::Peek()
 
 int B_IDataFile::Eof()
 {
-    return cacheBlockStartPos + cacheBlockPos >= this->file_size ? 1 : 0;
+    return this->cacheBlockStartPos + this->posInCacheBlock >= this->file_size;
 }
 
 
