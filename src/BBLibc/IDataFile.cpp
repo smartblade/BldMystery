@@ -180,12 +180,15 @@ void B_IDataFile::Open(const char* src, int flags)
 * Entry point:            0x10001740
 * VC++ mangling:          ??0B_IDataFile@@QAE@XZ
 */
-#ifndef BLD_NATIVE
+
 B_IDataFile::B_IDataFile()
 {
-
+    this->fd = -1;
+    this->file_name = nullptr;
+    this->cacheBlockStartPos = -IFILE_CACHE_SIZE;
+    this->posInCacheBlock = 0;
+    this->fileInfo = nullptr;
 }
-#endif
 
 
 /*
@@ -193,12 +196,13 @@ B_IDataFile::B_IDataFile()
 * Entry point:            0x10001788
 * VC++ mangling:          ??0B_IDataFile@@QAE@PBDH@Z
 */
-#ifndef BLD_NATIVE
+
 B_IDataFile::B_IDataFile(const char* file_name, int flags)
 {
-
+    this->cacheBlockStartPos = -IFILE_CACHE_SIZE;
+    this->posInCacheBlock = 0;
+    this->Open(file_name, flags);
 }
-#endif
 
 
 /*

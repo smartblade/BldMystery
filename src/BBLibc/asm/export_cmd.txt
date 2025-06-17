@@ -1,5 +1,3 @@
-/EXPORT:??0B_IDataFile@@QAE@XZ=??0B_IDataFile@@QAE@XZ
-/EXPORT:??0B_IDataFile@@QAE@PBDH@Z=??0B_IDataFile@@QAE@PBDH@Z
 /EXPORT:?ReadCacheBlock@B_IDataFile@@AAEIXZ=?ReadCacheBlock@B_IDataFile@@AAEIXZ
 /EXPORT:?Seek@B_IDataFile@@QAEJJH@Z=?Seek@B_IDataFile@@QAEJJH@Z
 /EXPORT:?Tell@B_IDataFile@@QAEJXZ=?Tell@B_IDataFile@@QAEJXZ

@@ -536,52 +536,14 @@ l100014CD: pop edi
 ;
 ;* Export: ??0B_IDataFile@@QAE@XZ, 000E
 ;
-l10001740 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax], 0FFFFFFFFh
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+004h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+00000400Ch], 0FFFFC000h
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+000004010h], 000000000h
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+000004014h], 000000000h
-           mov eax, dword ptr [ebp-004h]
-           mov esp, ebp
-           pop ebp
-           ret
-l10001740 ENDP
+           call l10001740; Implemented in c++ code
 ;
 ;* Call:
 ; 1000447E, 10004E5F, 10006490, 10027DA8 
 ;
 ;* Export: ??0B_IDataFile@@QAE@PBDH@Z, 000D
 ;
-l10001788 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+00000400Ch], 0FFFFC000h
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+000004010h], 000000000h
-           mov edx, dword ptr [ebp+00Ch]
-           push edx
-           mov eax, dword ptr [ebp+008h]
-           push eax
-           mov ecx, dword ptr [ebp-004h]
-           call l100015E2
-           mov eax, dword ptr [ebp-004h]
-           mov esp, ebp
-           pop ebp
-           ret 00008h
-l10001788 ENDP
+           call l10001788; Implemented in c++ code
 ;
 ;* Call:
 ; 10001735, 10001992, 10001B31 
