@@ -322,6 +322,8 @@ externdef ?EscribeArchivoRAW@B_BitMap24@@QBEXPBD@Z: near
 l10028353 equ ?EscribeArchivoRAW@B_BitMap24@@QBEXPBD@Z
 externdef ?SaveToJPEG@B_BitMap24@@QBEHPBDH@Z: near
 l10029700 equ ?SaveToJPEG@B_BitMap24@@QBEHPBDH@Z
+externdef ??0B_ChannelOFile@@QAE@VB_Name@@PBD@Z: near
+l100298B0 equ ??0B_ChannelOFile@@QAE@VB_Name@@PBD@Z
 externdef ?vararg@@YAPBDPBDZZ: near
 l10029BE0 equ ?vararg@@YAPBDPBDZZ
 externdef ?Add@B_MessageManager@@QAEIPAVB_MessageChannel@@@Z: near
