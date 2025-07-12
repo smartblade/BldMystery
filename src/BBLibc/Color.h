@@ -47,7 +47,7 @@ public:
     * VC++ mangling:          ??0B_Color@@QAE@ABV0@@Z
     */
 
-    B_Color(const B_Color& that) : r(that.r), g(that.g), b(that.b)
+    B_Color(const B_Color &that) : r(that.r), g(that.g), b(that.b)
     {
     }
 
@@ -58,7 +58,7 @@ public:
     * VC++ mangling:          ??4B_Color@@QAEAAV0@ABV0@@Z
     */
 
-    B_Color& operator =(const B_Color& that)
+    B_Color &operator =(const B_Color &that)
     {
         r = that.r;
         g = that.g;
@@ -68,7 +68,7 @@ public:
 
     virtual void MakeCons();
 
-    B_Color operator +(B_Color const& color) const;
+    B_Color operator +(B_Color const &color) const;
     B_Color operator *(float coef) const;
     B_Color operator /(float f)const;
 
@@ -77,7 +77,7 @@ public:
     byte b;
 };
 
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_Color& color);
-LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, B_Color const& color);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_Color &color);
+LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, B_Color const &color);
 
 #endif /* B_COLOR_H */

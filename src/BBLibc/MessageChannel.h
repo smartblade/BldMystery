@@ -24,7 +24,7 @@ public:
     * VC++ mangling:          ??0B_MessageChannel@@QAE@AAVB_Name@@@Z
     */
 
-    B_MessageChannel(B_Name& name) : B_NamedObj(name)
+    B_MessageChannel(B_Name &name) : B_NamedObj(name)
     {
         unknown0Ch = 1;
     }
@@ -41,7 +41,7 @@ public:
 
     virtual unsigned int Open();
     virtual unsigned int Close();
-    virtual unsigned int Message(char const* message);
+    virtual unsigned int Message(char const *message);
 
     /*
     * Module:                 BBLibc.dll
@@ -49,7 +49,7 @@ public:
     * VC++ mangling:          ??0B_MessageChannel@@QAE@ABV0@@Z
     */
 
-    B_MessageChannel(const B_MessageChannel& that)
+    B_MessageChannel(const B_MessageChannel &that)
         : B_NamedObj(that), unknown0Ch(that.unknown0Ch)
     {
     }
@@ -61,7 +61,7 @@ public:
     * VC++ mangling:          ??4B_MessageChannel@@QAEAAV0@ABV0@@Z
     */
 
-    B_MessageChannel& operator=(const B_MessageChannel& that)
+    B_MessageChannel &operator=(const B_MessageChannel &that)
     {
         B_NamedObj::operator=(that);
         unknown0Ch = that.unknown0Ch;

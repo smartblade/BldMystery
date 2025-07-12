@@ -33,7 +33,7 @@ public:
     * VC++ mangling:          ?GetNext@B_ListElement@@QAEPAV1@XZ
     */
 
-    B_ListElement* GetNext()
+    B_ListElement *GetNext()
     {
         return this->next;
     }
@@ -45,7 +45,7 @@ public:
     * VC++ mangling:          ?GetPrev@B_ListElement@@QAEPAV1@XZ
     */
 
-    B_ListElement* GetPrev()
+    B_ListElement *GetPrev()
     {
         return this->prev;
     }
@@ -57,26 +57,26 @@ public:
     * VC++ mangling:          ??0B_ListElement@@QAE@ABV0@@Z
     */
 
-    B_ListElement(const B_ListElement& other)
+    B_ListElement(const B_ListElement &other)
         : list(other.list), next(other.next), prev(other.prev)
     {
     }
 
     virtual ~B_ListElement();
 
-    B_ListElement& operator =(const B_ListElement& other);
+    B_ListElement &operator =(const B_ListElement &other);
 
-    B_List* GetList();
+    B_List *GetList();
 
-    B_List* list;
-    B_ListElement* next;
-    B_ListElement* prev;
+    B_List *list;
+    B_ListElement *next;
+    B_ListElement *prev;
 };
 
 class LIB_EXP B_List
 {
 public:
-    B_List(B_ListElement* element);
+    B_List(B_ListElement *element);
     B_List(B_List const&);
 
     /*
@@ -96,7 +96,7 @@ public:
     * VC++ mangling:          ??4B_List@@QAEAAV0@ABV0@@Z
     */
 
-    B_List& operator=(const B_List& that)
+    B_List &operator=(const B_List &that)
     {
         numElements = that.numElements;
         tail = that.tail;
@@ -104,16 +104,16 @@ public:
         return *this;
     }
 
-    unsigned int Add(B_ListElement* element);
-    unsigned int AddAfter(B_ListElement* existing, B_ListElement* newElement);
-    unsigned int AddBefore(B_ListElement* existing, B_ListElement* newElement);
-    unsigned int Remove(B_ListElement* element, unsigned int index);
-    unsigned int Exists(const B_ListElement* element);
+    unsigned int Add(B_ListElement *element);
+    unsigned int AddAfter(B_ListElement *existing, B_ListElement *newElement);
+    unsigned int AddBefore(B_ListElement *existing, B_ListElement *newElement);
+    unsigned int Remove(B_ListElement *element, unsigned int index);
+    unsigned int Exists(const B_ListElement *element);
 
 private:
     int numElements;
-    B_ListElement* tail;
-    B_ListElement* head;
+    B_ListElement *tail;
+    B_ListElement *head;
 };
 
 #endif  // B_LIST_H

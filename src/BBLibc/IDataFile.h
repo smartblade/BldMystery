@@ -20,21 +20,21 @@ class LIB_EXP B_IDataFile
 {
 public:
     B_IDataFile();
-    B_IDataFile(const char* file_name, int flags);
+    B_IDataFile(const char *file_name, int flags);
     ~B_IDataFile();
     static void ResetnOpenedFiles();
     static int GetnOpenedFiles();
     static int GetnOpenFiles();
-    static int SetOnOpenFunc(PyObject* func);
+    static int SetOnOpenFunc(PyObject *func);
     static void RemoveOnOpenFunc();
     void Close();
-    void Open(const char* src, int flags);
+    void Open(const char *src, int flags);
     long Length() const;
     long Seek(long offset, int whence);
     long Tell();
     unsigned char Peek();
     int Eof();
-    void Read(void* data, unsigned int size);
+    void Read(void *data, unsigned int size);
 
 
     /*
@@ -55,16 +55,16 @@ public:
     * VC++ mangling:          ?GetFileName@B_IDataFile@@QBEPBDXZ
     */
 
-    char const* GetFileName() const
+    char const *GetFileName() const
     {
         return this->file_name;
     }
 
-    B_IDataFile& operator =(const B_IDataFile& other);
+    B_IDataFile &operator =(const B_IDataFile &other);
 private:
     unsigned int ReadCacheBlock();
     int fd;
-    char* file_name;
+    char *file_name;
     unsigned int file_size;
     char fileCache[IFILE_CACHE_SIZE];
     unsigned int cacheBlockStartPos;
@@ -73,20 +73,20 @@ private:
 
     static int n_opened_files;
     static int n_open_files;
-    static PyObject* OnOpenFunc;
+    static PyObject *OnOpenFunc;
     int SetPosition(long position);
 };
 
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, char& c);
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, unsigned char& c);
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, short& s);
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, unsigned short& s);
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, int& i);
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, long& l);
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, unsigned long& l);
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, unsigned int& i);
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, float& f);
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, double& f);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, char &c);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, unsigned char &c);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, short &s);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, unsigned short &s);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, int &i);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, long &l);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, unsigned long &l);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, unsigned int &i);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, float &f);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, double &f);
 
 
 #endif /* B_I_DATA_FILE_H */

@@ -26,7 +26,7 @@ int B_IDataFile::n_open_files = 0;
 * Data address:           0x10049F04
 * VC++ mangling:          ?OnOpenFunc@B_IDataFile@@0PAUPyObject@@A
 */
-PyObject* B_IDataFile::OnOpenFunc = nullptr;
+PyObject *B_IDataFile::OnOpenFunc = nullptr;
 
 
 /*
@@ -71,7 +71,7 @@ int B_IDataFile::GetnOpenFiles()
 * VC++ mangling:          ?SetOnOpenFunc@B_IDataFile@@SAHPAUPyObject@@@Z
 */
 
-int B_IDataFile::SetOnOpenFunc(PyObject* obj)
+int B_IDataFile::SetOnOpenFunc(PyObject *obj)
 {
     if (obj != nullptr)
     {
@@ -145,7 +145,7 @@ void B_IDataFile::Close()
 * VC++ mangling:          ?Open@B_IDataFile@@QAEXPBDH@Z
 */
 
-void B_IDataFile::Open(const char* src, int flags)
+void B_IDataFile::Open(const char *src, int flags)
 {
     this->file_name = strdup(src);
     this->fileInfo = nullptr;
@@ -197,7 +197,7 @@ B_IDataFile::B_IDataFile()
 * VC++ mangling:          ??0B_IDataFile@@QAE@PBDH@Z
 */
 
-B_IDataFile::B_IDataFile(const char* file_name, int flags)
+B_IDataFile::B_IDataFile(const char *file_name, int flags)
 {
     this->cacheBlockStartPos = -IFILE_CACHE_SIZE;
     this->posInCacheBlock = 0;
@@ -291,7 +291,7 @@ int B_IDataFile::Eof()
 * VC++ mangling:          ?Read@B_IDataFile@@QAEXPAXI@Z
 */
 #ifndef BLD_NATIVE
-void B_IDataFile::Read(void* data, unsigned int size)
+void B_IDataFile::Read(void *data, unsigned int size)
 {
 
 }
@@ -303,7 +303,7 @@ void B_IDataFile::Read(void* data, unsigned int size)
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAD@Z
 */
 
-B_IDataFile& operator >>(B_IDataFile& file, char& c)
+B_IDataFile &operator >>(B_IDataFile &file, char &c)
 {
     file.Read(&c, sizeof(char));
     return file;
@@ -316,7 +316,7 @@ B_IDataFile& operator >>(B_IDataFile& file, char& c)
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAE@Z
 */
 
-B_IDataFile& operator >>(B_IDataFile& file, unsigned char& c)
+B_IDataFile &operator >>(B_IDataFile &file, unsigned char &c)
 {
     file.Read(&c, sizeof(unsigned char));
     return file;
@@ -329,7 +329,7 @@ B_IDataFile& operator >>(B_IDataFile& file, unsigned char& c)
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAF@Z
 */
 
-B_IDataFile& operator >>(B_IDataFile& file, short& s)
+B_IDataFile &operator >>(B_IDataFile &file, short &s)
 {
     file.Read(&s, sizeof(short));
     return file;
@@ -342,7 +342,7 @@ B_IDataFile& operator >>(B_IDataFile& file, short& s)
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAG@Z
 */
 
-B_IDataFile& operator >>(B_IDataFile& file, unsigned short& s)
+B_IDataFile &operator >>(B_IDataFile &file, unsigned short &s)
 {
     file.Read(&s, sizeof(unsigned short));
     return file;
@@ -355,7 +355,7 @@ B_IDataFile& operator >>(B_IDataFile& file, unsigned short& s)
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAH@Z
 */
 
-B_IDataFile& operator >>(B_IDataFile& file, int& i)
+B_IDataFile &operator >>(B_IDataFile &file, int &i)
 {
     file.Read(&i, sizeof(int));
     return file;
@@ -368,7 +368,7 @@ B_IDataFile& operator >>(B_IDataFile& file, int& i)
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAJ@Z
 */
 
-B_IDataFile& operator >>(B_IDataFile& file, long& l)
+B_IDataFile &operator >>(B_IDataFile &file, long &l)
 {
     file.Read(&l, sizeof(long));
     return file;
@@ -381,7 +381,7 @@ B_IDataFile& operator >>(B_IDataFile& file, long& l)
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAK@Z
 */
 
-B_IDataFile& operator >>(B_IDataFile& file, unsigned long& l)
+B_IDataFile &operator >>(B_IDataFile &file, unsigned long &l)
 {
     file.Read(&l, sizeof(unsigned long));
     return file;
@@ -394,7 +394,7 @@ B_IDataFile& operator >>(B_IDataFile& file, unsigned long& l)
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAI@Z
 */
 
-B_IDataFile& operator >>(B_IDataFile& file, unsigned int& i)
+B_IDataFile &operator >>(B_IDataFile &file, unsigned int &i)
 {
     file.Read(&i, sizeof(unsigned int));
     return file;
@@ -407,7 +407,7 @@ B_IDataFile& operator >>(B_IDataFile& file, unsigned int& i)
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAM@Z
 */
 
-B_IDataFile& operator >>(B_IDataFile& file, float& f)
+B_IDataFile &operator >>(B_IDataFile &file, float &f)
 {
     file.Read(&f, sizeof(float));
     return file;
@@ -420,7 +420,7 @@ B_IDataFile& operator >>(B_IDataFile& file, float& f)
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAN@Z
 */
 
-B_IDataFile& operator >>(B_IDataFile& file, double& f)
+B_IDataFile &operator >>(B_IDataFile &file, double &f)
 {
     file.Read(&f, sizeof(double));
     return file;
@@ -445,7 +445,7 @@ B_IDataFile::~B_IDataFile()
 * VC++ mangling:          ??4B_IDataFile@@QAEAAV0@ABV0@@Z
 */
 #ifndef BLD_NATIVE
-B_IDataFile& B_IDataFile::operator =(B_IDataFile const& file)
+B_IDataFile &B_IDataFile::operator =(B_IDataFile const &file)
 {
     return *this;
 }

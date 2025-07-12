@@ -29,7 +29,7 @@ B_ResourceManager B_resource_manager;
 * VC++ mangling:          ?GetResourceManager@@YAPAVB_ResourceManager@@XZ
 */
 
-B_ResourceManager* GetResourceManager() {
+B_ResourceManager *GetResourceManager() {
     return &B_resource_manager;
 }
 

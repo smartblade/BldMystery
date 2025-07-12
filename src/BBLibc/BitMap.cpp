@@ -22,7 +22,7 @@ B_BitMap::~B_BitMap()
 * VC++ mangling:          ??0B_BitMap@@QAE@ABV0@@Z
 */
 #ifndef BLD_NATIVE
-B_BitMap::B_BitMap(const B_BitMap& src)
+B_BitMap::B_BitMap(const B_BitMap &src)
 {
 
 }
@@ -35,7 +35,7 @@ B_BitMap::B_BitMap(const B_BitMap& src)
 * VC++ mangling:          ??0B_BitMap@@QAE@W4BitMapType@0@IIPBVB_Pal@@@Z
 */
 #ifndef BLD_NATIVE
-B_BitMap::B_BitMap(BitMapType type, unsigned int, unsigned int, const B_Pal* pal)
+B_BitMap::B_BitMap(BitMapType type, unsigned int, unsigned int, const B_Pal *pal)
 {
 
 }
@@ -47,7 +47,7 @@ B_BitMap::B_BitMap(BitMapType type, unsigned int, unsigned int, const B_Pal* pal
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABVB_BitMap@@@Z
 */
 #ifndef BLD_NATIVE
-B_ODataFile& operator <<(B_ODataFile& file, B_BitMap const& bitMap)
+B_ODataFile &operator <<(B_ODataFile &file, B_BitMap const &bitMap)
 {
     file.Write(&bitMap, sizeof(B_BitMap));
     return file;
@@ -60,7 +60,7 @@ B_ODataFile& operator <<(B_ODataFile& file, B_BitMap const& bitMap)
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_BitMap@@@Z
 */
 #ifndef BLD_NATIVE
-B_IDataFile& operator >>(B_IDataFile& file, B_BitMap& bitMap)
+B_IDataFile &operator >>(B_IDataFile &file, B_BitMap &bitMap)
 {
     return file;
 }

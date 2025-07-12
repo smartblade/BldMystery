@@ -30,7 +30,7 @@ B_MessageManager::~B_MessageManager()
 * VC++ mangling:          ?Add@B_MessageManager@@QAEIPAVB_MessageChannel@@@Z
 */
 #ifndef BLD_NATIVE
-unsigned int B_MessageManager::Add(B_MessageChannel* channel)
+unsigned int B_MessageManager::Add(B_MessageChannel *channel)
 {
     return 0;
 }
@@ -43,7 +43,7 @@ unsigned int B_MessageManager::Add(B_MessageChannel* channel)
 * VC++ mangling:          ?OpenChannel@B_MessageManager@@QAEIABVB_Name@@@Z
 */
 #ifndef BLD_NATIVE
-unsigned int B_MessageManager::OpenChannel(const B_Name& channel_name)
+unsigned int B_MessageManager::OpenChannel(const B_Name &channel_name)
 {
     return 0;
 }
@@ -56,7 +56,7 @@ unsigned int B_MessageManager::OpenChannel(const B_Name& channel_name)
 * VC++ mangling:          ?CloseChannel@B_MessageManager@@QAEIABVB_Name@@@Z
 */
 #ifndef BLD_NATIVE
-unsigned int B_MessageManager::CloseChannel(const B_Name& channel_name)
+unsigned int B_MessageManager::CloseChannel(const B_Name &channel_name)
 {
     return 1;
 }
@@ -69,7 +69,7 @@ unsigned int B_MessageManager::CloseChannel(const B_Name& channel_name)
 * VC++ mangling:          ?DisconnectChannel@B_MessageManager@@QAEPAVB_MessageChannel@@ABVB_Name@@@Z
 */
 #ifndef BLD_NATIVE
-B_MessageChannel* B_MessageManager::DisconnectChannel(const B_Name& channel_name)
+B_MessageChannel *B_MessageManager::DisconnectChannel(const B_Name &channel_name)
 {
     return nullptr;
 }
@@ -82,7 +82,7 @@ B_MessageChannel* B_MessageManager::DisconnectChannel(const B_Name& channel_name
 * VC++ mangling:          ??6@YAAAVB_MessageManager@@AAV0@PBD@Z
 */
 #ifndef BLD_NATIVE
-B_MessageManager& operator<<(B_MessageManager& mout, const char* str)
+B_MessageManager &operator<<(B_MessageManager &mout, const char *str)
 {
     return mout;
 }

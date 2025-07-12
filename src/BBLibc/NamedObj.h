@@ -35,7 +35,7 @@ public:
     * VC++ mangling:          ??0B_NamedObj@@QAE@ABV0@@Z
     */
 
-    B_NamedObj(const B_NamedObj& that) : name(that.name)
+    B_NamedObj(const B_NamedObj &that) : name(that.name)
     {
     }
 
@@ -46,19 +46,19 @@ public:
     * VC++ mangling:          ??4B_NamedObj@@QAEAAV0@ABV0@@Z
     */
 
-    B_NamedObj& operator=(const B_NamedObj& that)
+    B_NamedObj &operator=(const B_NamedObj &that)
     {
         name = that.name;
         return *this;
     }
 
-    B_NamedObj(const B_Name& name);
-    const B_Name& Id() const;
+    B_NamedObj(const B_Name &name);
+    const B_Name &Id() const;
 public:
     B_Name name;
 };
 
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_NamedObj& named_obj);
-LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, B_NamedObj const& namedObj);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_NamedObj &named_obj);
+LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, B_NamedObj const &namedObj);
 
 #endif /* B_NAMED_OBJ_H */

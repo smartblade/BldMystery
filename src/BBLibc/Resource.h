@@ -24,7 +24,7 @@ public:
     * VC++ mangling:          ??0B_Resource@@QAE@ABV0@@Z
     */
 
-    B_Resource(const B_Resource& that) : B_NamedObj(that)
+    B_Resource(const B_Resource &that) : B_NamedObj(that)
     {
     }
 
@@ -35,7 +35,7 @@ public:
     * VC++ mangling:          ??4B_Resource@@QAEAAV0@ABV0@@Z
     */
 
-    B_Resource& operator=(const B_Resource& that)
+    B_Resource &operator=(const B_Resource &that)
     {
         B_NamedObj::operator=(that);
         return *this;
@@ -43,7 +43,7 @@ public:
 
     virtual ~B_Resource();
 
-    void* data;
+    void *data;
 };
 
 #endif /* B_RESOURCE_H */

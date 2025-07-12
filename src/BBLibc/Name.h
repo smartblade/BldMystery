@@ -18,27 +18,27 @@ class LIB_EXP B_Name
 {
 public:
     B_Name();
-    B_Name(const char* str);
-    B_Name(const B_Name& src);
+    B_Name(const char *str);
+    B_Name(const B_Name &src);
     B_Name(unsigned int len);
     ~B_Name();
-    char* const String() const;
-    unsigned int CompareNoCase(const char* str) const;
+    char *const String() const;
+    unsigned int CompareNoCase(const char *str) const;
     B_Name Right(unsigned int count) const;
     B_Name Left(unsigned int count) const;
 
-    unsigned int operator >(const B_Name& rhs) const;
-    unsigned int operator <(const B_Name& rhs) const;
-    unsigned int operator ==(const B_Name& rhs) const;
-    unsigned int operator ==(const char* str) const;
-    unsigned int operator !=(const B_Name& rhs) const;
-    unsigned int operator !=(const char* str) const;
-    B_Name& operator =(const B_Name& src);
-    const B_Name& operator +=(const char* str);
-    const B_Name& operator +=(char c);
-    B_Name const& operator +=(B_Name const& other);
+    unsigned int operator >(const B_Name &rhs) const;
+    unsigned int operator <(const B_Name &rhs) const;
+    unsigned int operator ==(const B_Name &rhs) const;
+    unsigned int operator ==(const char *str) const;
+    unsigned int operator !=(const B_Name &rhs) const;
+    unsigned int operator !=(const char *str) const;
+    B_Name &operator =(const B_Name &src);
+    const B_Name &operator +=(const char *str);
+    const B_Name &operator +=(char c);
+    B_Name const &operator +=(B_Name const &other);
 
-    B_Name const& operator +(char const* str);
+    B_Name const &operator +(char const *str);
 
 
     /*
@@ -47,7 +47,7 @@ public:
     * VC++ mangling:          ?Id@B_Name@@QBEABV1@XZ
     */
 
-    const B_Name& Id() const {
+    const B_Name &Id() const {
         return *this;
     }
 
@@ -58,7 +58,7 @@ public:
     * VC++ mangling:          ??BB_Name@@QBEPBDXZ
     */
 
-    operator const char* () const
+    operator const char *() const
     {
         return string;
     }
@@ -76,14 +76,14 @@ public:
 
     void UpCase();
 private:
-    char* string;
+    char *string;
     unsigned int len;
 };
 
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_Name& name);
-LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, B_Name const& name);
-LIB_EXP B_Name operator +(B_Name const& lother, B_Name const& rother);
-LIB_EXP B_Name operator +(B_Name const& other, char const* str);
-LIB_EXP B_Name operator +(const char* str, const B_Name& bName);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_Name &name);
+LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, B_Name const &name);
+LIB_EXP B_Name operator +(B_Name const &lother, B_Name const &rother);
+LIB_EXP B_Name operator +(B_Name const &other, char const *str);
+LIB_EXP B_Name operator +(const char *str, const B_Name &bName);
 
 #endif /* B_NAME_H */

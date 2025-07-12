@@ -44,7 +44,7 @@ B_ListElement::~B_ListElement()
 * VC++ mangling:          ?GetList@B_ListElement@@QAEPAVB_List@@XZ
 */
 #ifndef BLD_NATIVE
-B_List* B_ListElement::GetList()
+B_List *B_ListElement::GetList()
 {
     return nullptr;
 }
@@ -56,7 +56,7 @@ B_List* B_ListElement::GetList()
 * VC++ mangling:          ??4B_ListElement@@QAEAAV0@ABV0@@Z
 */
 #ifndef BLD_NATIVE
-B_ListElement& B_ListElement::operator =(const B_ListElement& other)
+B_ListElement &B_ListElement::operator =(const B_ListElement &other)
 {
     return *this;
 }
@@ -71,7 +71,7 @@ B_ListElement& B_ListElement::operator =(const B_ListElement& other)
 * VC++ mangling:          ??0B_List@@QAE@PAVB_ListElement@@@Z
 */
 #ifndef BLD_NATIVE
-B_List::B_List(B_ListElement* element)
+B_List::B_List(B_ListElement *element)
 {
 
 }
@@ -97,7 +97,7 @@ B_List::B_List(B_List const&)
 * VC++ mangling:          ?Add@B_List@@QAEIPAVB_ListElement@@@Z
 */
 #ifndef BLD_NATIVE
-unsigned int B_List::Add(B_ListElement* element)
+unsigned int B_List::Add(B_ListElement *element)
 {
     return 0;
 }
@@ -110,7 +110,7 @@ unsigned int B_List::Add(B_ListElement* element)
 * VC++ mangling:          ?AddAfter@B_List@@QAEIPAVB_ListElement@@0@Z
 */
 #ifndef BLD_NATIVE
-unsigned int B_List::AddAfter(B_ListElement* existing, B_ListElement* newElement)
+unsigned int B_List::AddAfter(B_ListElement *existing, B_ListElement *newElement)
 {
     return 0;
 }
@@ -123,7 +123,7 @@ unsigned int B_List::AddAfter(B_ListElement* existing, B_ListElement* newElement
 * VC++ mangling:          ?AddBefore@B_List@@QAEIPAVB_ListElement@@0@Z
 */
 #ifndef BLD_NATIVE
-unsigned int B_List::AddBefore(B_ListElement* existing, B_ListElement* newElement)
+unsigned int B_List::AddBefore(B_ListElement *existing, B_ListElement *newElement)
 {
     return 0;
 }
@@ -136,7 +136,7 @@ unsigned int B_List::AddBefore(B_ListElement* existing, B_ListElement* newElemen
 * VC++ mangling:          ?Remove@B_List@@QAEIPAVB_ListElement@@I@Z
 */
 #ifndef BLD_NATIVE
-unsigned int B_List::Remove(B_ListElement* element, unsigned int index)
+unsigned int B_List::Remove(B_ListElement *element, unsigned int index)
 {
     return 0;
 }
@@ -150,7 +150,7 @@ unsigned int B_List::Remove(B_ListElement* element, unsigned int index)
 */
 
 #ifndef BLD_NATIVE
-unsigned int B_List::Exists(const B_ListElement* element)
+unsigned int B_List::Exists(const B_ListElement *element)
 {
     return false;
 }

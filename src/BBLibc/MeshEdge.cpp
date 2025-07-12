@@ -33,7 +33,7 @@ B_MeshEdge::B_MeshEdge(unsigned int a, unsigned int b, unsigned int c)
 * VC++ mangling:          ??4B_MeshEdge@@QAEAAV0@ABV0@@Z
 */
 #ifndef BLD_NATIVE
-B_MeshEdge& B_MeshEdge::operator=(const B_MeshEdge& other)
+B_MeshEdge &B_MeshEdge::operator=(const B_MeshEdge &other)
 {
     return *this;
 }
@@ -46,7 +46,7 @@ B_MeshEdge& B_MeshEdge::operator=(const B_MeshEdge& other)
 * VC++ mangling:          ??8B_MeshEdge@@QBEIABV0@@Z
 */
 #ifndef BLD_NATIVE
-unsigned int B_MeshEdge::operator==(const B_MeshEdge& other) const
+unsigned int B_MeshEdge::operator==(const B_MeshEdge &other) const
 {
     return 0;
 }

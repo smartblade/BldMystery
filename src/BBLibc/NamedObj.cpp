@@ -29,7 +29,7 @@ B_NamedObj::B_NamedObj() : name() {}
 * VC++ mangling:          ??0B_NamedObj@@QAE@ABVB_Name@@@Z
 */
 
-B_NamedObj::B_NamedObj(const B_Name& n) : name(n)
+B_NamedObj::B_NamedObj(const B_Name &n) : name(n)
 {
 }
 
@@ -40,7 +40,7 @@ B_NamedObj::B_NamedObj(const B_Name& n) : name(n)
 * VC++ mangling:          ?Id@B_NamedObj@@QBEABVB_Name@@XZ
 */
 
-const B_Name& B_NamedObj::Id() const
+const B_Name &B_NamedObj::Id() const
 {
     return name;
 }
@@ -52,7 +52,7 @@ const B_Name& B_NamedObj::Id() const
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_NamedObj@@@Z
 */
 #ifndef BLD_NATIVE
-B_IDataFile& operator >>(B_IDataFile& file, B_NamedObj& named_obj)
+B_IDataFile &operator >>(B_IDataFile &file, B_NamedObj &named_obj)
 {
     return file;
 }
@@ -64,7 +64,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_NamedObj& named_obj)
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABVB_NamedObj@@@Z
 */
 #ifndef BLD_NATIVE
-B_ODataFile& operator <<(B_ODataFile& file, B_NamedObj const& namedObj)
+B_ODataFile &operator <<(B_ODataFile &file, B_NamedObj const &namedObj)
 {
     file.Write(&namedObj, sizeof(B_NamedObj));
     return file;

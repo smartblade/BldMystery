@@ -21,7 +21,7 @@ B_RDataTriangle::B_RDataTriangle()
 * VC++ mangling:          ??4B_RDataTriangle@@QAEAAV0@ABV0@@Z
 */
 #ifndef BLD_NATIVE
-B_RDataTriangle& B_RDataTriangle::operator=(const B_RDataTriangle& other)
+B_RDataTriangle &B_RDataTriangle::operator=(const B_RDataTriangle &other)
 {
     return *this;
 }

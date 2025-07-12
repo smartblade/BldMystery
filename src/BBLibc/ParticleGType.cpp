@@ -9,7 +9,7 @@
 * VC++ mangling:          ??0B_ParticleGType@@QAE@ABVB_Name@@0KI@Z
 */
 #ifndef BLD_NATIVE
-B_ParticleGType::B_ParticleGType(const B_Name& new_type, const B_Name& parent_type, unsigned long operation_type, unsigned int duration)
+B_ParticleGType::B_ParticleGType(const B_Name &new_type, const B_Name &parent_type, unsigned long operation_type, unsigned int duration)
     : B_NamedObj(new_type), duration(duration), bmpHandle(-1), operation_type(operation_type)
 {
 
@@ -35,7 +35,7 @@ B_ParticleGType::~B_ParticleGType()
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_ParticleGType@@@Z
 */
 #ifndef BLD_NATIVE
-B_IDataFile& operator >>(B_IDataFile& file, B_ParticleGType& particleType)
+B_IDataFile &operator >>(B_IDataFile &file, B_ParticleGType &particleType)
 {
     return file;
 }
@@ -47,7 +47,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_ParticleGType& particleType)
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABVB_ParticleGType@@@Z
 */
 #ifndef BLD_NATIVE
-B_ODataFile& operator <<(B_ODataFile& file, const B_ParticleGType& particleType)
+B_ODataFile &operator <<(B_ODataFile &file, const B_ParticleGType &particleType)
 {
     file.Write(&particleType, sizeof(B_ParticleGType));
     return file;

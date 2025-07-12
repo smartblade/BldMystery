@@ -18,7 +18,7 @@ B_NDataBase<B_ElementCSV> B_csvs;
 */
 
 #ifndef BLD_NATIVE
-unsigned int ReadCSV(const char* file_name, B_NDataBase<B_ElementCSV>* csvs) {
+unsigned int ReadCSV(const char *file_name, B_NDataBase<B_ElementCSV> *csvs) {
     return 0;
 }
 #endif

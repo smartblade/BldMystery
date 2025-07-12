@@ -21,11 +21,11 @@ public:
     virtual ~B_Array() { delete[] data_; }
 
     // Add an element to the array
-    void push_back(const T& element) {
+    void push_back(const T &element) {
         if (size_ == capacity_) {
             // reallocate with double capacity
             capacity_ *= 2;
-            T* newData = new T[capacity_];
+            T *newData = new T[capacity_];
             std::copy(data_, data_ + size_, newData);
             delete[] data_;
             data_ = newData;
@@ -34,13 +34,13 @@ public:
     }
 
     // Access an element at a given index
-    T& operator[](size_t index) { return data_[index]; }
+    T &operator[](size_t index) { return data_[index]; }
 
     // Get the current size of the array
     size_t size() const { return size_; }
 
 private:
-    T* data_; // pointer to the array data
+    T *data_; // pointer to the array data
     size_t size_; // current size of the array
     size_t capacity_; // maximum capacity of the array
 };
@@ -53,12 +53,12 @@ class LIB_EXP B_BitMap24
 public:
     B_BitMap24(int width = 0, int height = 0);
     virtual ~B_BitMap24();
-    B_BitMap24(const B_BitMap24& that);
+    B_BitMap24(const B_BitMap24 &that);
     static void ClearBitMap24Data();
     unsigned int SetBits(int, int, char const*, char const*);
-    B_BitMap24& operator=(const B_BitMap24& that);
-    int SaveToBMP(char const* fileName) const;
-    int SaveToBMPSized(char const* fileName, int width, int height) const;
+    B_BitMap24 &operator=(const B_BitMap24 &that);
+    int SaveToBMP(char const *fileName) const;
+    int SaveToBMPSized(char const *fileName, int width, int height) const;
     //B_BitMap24 ReadFromFile(char const*);
     int SaveToFile(char const*, int) const;
     void EscribeArchivoRAW(char const*) const;
@@ -77,13 +77,13 @@ public:
 
     unsigned int dimension1;
     unsigned int dimension2;
-    void* data;
+    void *data;
 private:
     static B_Array<B_BitMap24> BitMap24DataList;
 
 };
 
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_BitMap24& bitMap);
-LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, B_BitMap24 const& bitMap);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_BitMap24 &bitMap);
+LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, B_BitMap24 const &bitMap);
 
 #endif /* B_BITMAP24_H */

@@ -46,7 +46,7 @@ public:
     {
     }
     LIB_EXP B_ParticleGType(
-        const B_Name& new_type, const B_Name& parent_type,
+        const B_Name &new_type, const B_Name &parent_type,
         unsigned long operation_type, unsigned int duration);
 
 public:
@@ -56,7 +56,7 @@ public:
     int operation_type;
 };
 
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_ParticleGType& particleType);
-LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, const B_ParticleGType& particleType);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_ParticleGType &particleType);
+LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const B_ParticleGType &particleType);
 
 #endif /* B_PARTICLE_G_TYPE_H */

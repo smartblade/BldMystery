@@ -23,7 +23,7 @@ int CheckErrors = 3;
 * VC++ mangling:          ?OutputWin32Error@@YAXPBD@Z
 */
 
-void OutputWin32Error(char const* message)
+void OutputWin32Error(char const *message)
 {
     unsigned int errorCode = GetLastError();
 
@@ -46,7 +46,7 @@ void OutputWin32Error(char const* message)
 * VC++ mangling:          ?vararg@@YAPBDPBDZZ
 */
 
-const char* vararg(const char* format, ...)
+const char *vararg(const char *format, ...)
 {
     va_list args;
     va_start(args, format);
@@ -65,7 +65,7 @@ const char* vararg(const char* format, ...)
 * VC++ mangling:          ?GetConfigDirectory@@YAPBDXZ
 */
 #ifndef BLD_NATIVE
-const char* GetConfigDirectory()
+const char *GetConfigDirectory()
 {
     return currDirBuffer;
 }
@@ -78,7 +78,7 @@ const char* GetConfigDirectory()
 * VC++ mangling:          ?GetCurrentLanguage@@YAPBDXZ
 */
 #ifndef BLD_NATIVE
-char const* GetCurrentLanguage()
+char const *GetCurrentLanguage()
 {
     return 0;
 }
@@ -105,9 +105,9 @@ void RemoveOnOpenInputFileFunc()
 */
 
 #ifndef BLD_NATIVE
-PyObject * CallPythonObject(PyObject * func, PyObject * args)
+PyObject *CallPythonObject(PyObject *func, PyObject *args)
 {
-    PyObject* result = nullptr;
+    PyObject *result = nullptr;
 
     return result;
 }

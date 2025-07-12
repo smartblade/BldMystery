@@ -24,8 +24,8 @@ public:
         BitMapType4 = 4,
     };
     virtual ~B_BitMap();
-    B_BitMap(const B_BitMap& src);
-    B_BitMap(BitMapType type, unsigned int, unsigned int, const B_Pal* pal);
+    B_BitMap(const B_BitMap &src);
+    B_BitMap(BitMapType type, unsigned int, unsigned int, const B_Pal *pal);
 
 
     /*
@@ -34,7 +34,7 @@ public:
     * VC++ mangling:          ??4B_BitMap@@QAEAAV0@ABV0@@Z
     */
 
-    B_BitMap& operator=(const B_BitMap& that)
+    B_BitMap &operator=(const B_BitMap &that)
     {
         type = that.type;
         dimension1 = that.dimension1;
@@ -47,11 +47,11 @@ public:
     BitMapType type;
     unsigned int dimension1;
     unsigned int dimension2;
-    void* data;
-    B_Pal* pal;
+    void *data;
+    B_Pal *pal;
 };
 
-LIB_EXP B_IDataFile& operator >>(B_IDataFile& file, B_BitMap& bitMap);
-LIB_EXP B_ODataFile& operator <<(B_ODataFile& file, B_BitMap const& bitMap);
+LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_BitMap &bitMap);
+LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, B_BitMap const &bitMap);
 
 #endif /* B_BITMAP_H */

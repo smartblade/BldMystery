@@ -8,7 +8,7 @@
 * Entry point:            0x10004425
 */
 #ifndef BLD_NATIVE
-B_Resource* B_ResourceLocation::GetResource(unsigned short resourceId)
+B_Resource *B_ResourceLocation::GetResource(unsigned short resourceId)
 {
     return nullptr;
 }
@@ -60,7 +60,7 @@ void B_ResourceManager::Clean()
 * VC++ mangling:          ?LocateResourceIn@B_ResourceManager@@QAEIABVB_Name@@PBV2@H@Z
 */
 #ifndef BLD_NATIVE
-unsigned int B_ResourceManager::LocateResourceIn(const B_Name& id, const B_Name*, int)
+unsigned int B_ResourceManager::LocateResourceIn(const B_Name &id, const B_Name*, int)
 {
     return 0;
 }
@@ -86,11 +86,11 @@ unsigned int B_ResourceManager::AddAutoResource(B_Name const&, B_Resource*, int)
 * VC++ mangling:          ?GetResource@B_ResourceManager@@QAEPAVB_Resource@@GABVB_Name@@@Z
 */
 #ifndef BLD_NATIVE
-B_Resource* B_ResourceManager::GetResource(unsigned short resourceId, const B_Name& name)
+B_Resource *B_ResourceManager::GetResource(unsigned short resourceId, const B_Name &name)
 {
     // TODO Implement
     unsigned short id = resourceId;
-    const B_Name& resourceName = name;
+    const B_Name &resourceName = name;
 
     // Check if the resourceId is valid
     if (resources_[id] == 0) {
@@ -121,7 +121,7 @@ int B_ResourceManager::IsResourceLoaded(int, int)
 * VC++ mangling:          ?FreeResource@B_ResourceManager@@QAEXPAVB_Resource@@@Z
 */
 #ifndef BLD_NATIVE
-void B_ResourceManager::FreeResource(B_Resource* resource)
+void B_ResourceManager::FreeResource(B_Resource *resource)
 {
     delete resource;
 }
@@ -147,7 +147,7 @@ unsigned int B_ResourceManager::NResources(unsigned short)
 * VC++ mangling:          ?AddBodLink@B_ResourceManager@@QAEXPBDH0H@Z
 */
 #ifndef BLD_NATIVE
-void B_ResourceManager::AddBodLink(char const* c, int i, char const* pc, int i1)
+void B_ResourceManager::AddBodLink(char const *c, int i, char const *pc, int i1)
 {
 }
 #endif
@@ -159,7 +159,7 @@ void B_ResourceManager::AddBodLink(char const* c, int i, char const* pc, int i1)
 * VC++ mangling:          ??4B_ResourceManager@@QAEAAV0@ABV0@@Z
 */
 #ifndef BLD_NATIVE
-B_ResourceManager& B_ResourceManager::operator =(const B_ResourceManager& that)
+B_ResourceManager &B_ResourceManager::operator =(const B_ResourceManager &that)
 {
     return *this;
 }

@@ -20,7 +20,7 @@
 * VC++ mangling:          ??HB_Color@@QBE?AV0@ABV0@@Z
 */
 #ifndef BLD_NATIVE
-B_Color B_Color::operator +(B_Color const& color) const
+B_Color B_Color::operator +(B_Color const &color) const
 {
     return *this;
 }
@@ -59,7 +59,7 @@ B_Color B_Color::operator /(float f)const
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Color@@@Z
 */
 #ifndef BLD_NATIVE
-B_IDataFile& operator >>(B_IDataFile& file, B_Color& color)
+B_IDataFile &operator >>(B_IDataFile &file, B_Color &color)
 {
     return file;
 }
@@ -71,7 +71,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_Color& color)
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABVB_Color@@@Z
 */
 #ifndef BLD_NATIVE
-B_ODataFile& operator <<(B_ODataFile& file, B_Color const& color)
+B_ODataFile &operator <<(B_ODataFile &file, B_Color const &color)
 {
     file.Write(&color, sizeof(B_Color));
     return file;

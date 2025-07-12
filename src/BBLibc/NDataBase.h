@@ -29,6 +29,6 @@ template<class T> class B_NDataBase : public B_PtrArray<T>
 
 extern LIB_EXP B_NDataBase<B_ElementCSV> B_csvs;
 
-LIB_EXP unsigned int ReadCSV(const char* file_name, B_NDataBase<B_ElementCSV>* csvs);
+LIB_EXP unsigned int ReadCSV(const char *file_name, B_NDataBase<B_ElementCSV> *csvs);
 
 #endif /* N_DATABASE_H */

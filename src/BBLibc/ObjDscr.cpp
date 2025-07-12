@@ -83,7 +83,7 @@ void B_ObjDscr::SetUpEdges() {
 */
 #ifndef BLD_NATIVE
 void B_ObjDscr::Draw(
-    B_3DRasterDevice* raster, float x1, float y1, float x2, float y2,
+    B_3DRasterDevice *raster, float x1, float y1, float x2, float y2,
     float scale, int i_unknown)
 {
 
