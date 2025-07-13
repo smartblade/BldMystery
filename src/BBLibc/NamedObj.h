@@ -48,7 +48,7 @@ public:
 
     B_NamedObj &operator=(const B_NamedObj &that)
     {
-        name = that.name;
+        this->name = that.name;
         return *this;
     }
 

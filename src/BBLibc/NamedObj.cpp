@@ -42,7 +42,7 @@ B_NamedObj::B_NamedObj(const B_Name &n) : name(n)
 
 const B_Name &B_NamedObj::Id() const
 {
-    return name;
+    return this->name;
 }
 
 

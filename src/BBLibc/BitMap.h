@@ -36,11 +36,11 @@ public:
 
     B_BitMap &operator=(const B_BitMap &that)
     {
-        type = that.type;
-        dimension1 = that.dimension1;
-        dimension2 = that.dimension2;
-        data = that.data;
-        pal = that.pal;
+        this->type = that.type;
+        this->dimension1 = that.dimension1;
+        this->dimension2 = that.dimension2;
+        this->data = that.data;
+        this->pal = that.pal;
         return *this;
     }
 

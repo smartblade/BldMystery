@@ -69,9 +69,10 @@ public:
     * Entry point:            0x100022E0
     * VC++ mangling:          ?Length@B_Name@@QBEIXZ
     */
+
     unsigned int Length() const
     {
-        return len;
+        return this->len;
     }
 
     void UpCase();

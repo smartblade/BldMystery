@@ -435,7 +435,7 @@ B_IDataFile &operator >>(B_IDataFile &file, double &f)
 
 B_IDataFile::~B_IDataFile()
 {
-    Close();
+    this->Close();
 }
 
 

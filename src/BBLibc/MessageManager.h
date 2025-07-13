@@ -27,7 +27,7 @@ public:
 
     B_MessageManager &operator=(const B_MessageManager &that)
     {
-        unknown00 = that.unknown00;
+        this->unknown00 = that.unknown00;
         return *this;
     }
 

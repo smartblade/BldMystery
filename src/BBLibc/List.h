@@ -98,9 +98,9 @@ public:
 
     B_List &operator=(const B_List &that)
     {
-        numElements = that.numElements;
-        tail = that.tail;
-        head = that.head;
+        this->numElements = that.numElements;
+        this->tail = that.tail;
+        this->head = that.head;
         return *this;
     }
 

@@ -60,9 +60,9 @@ public:
 
     B_Color &operator =(const B_Color &that)
     {
-        r = that.r;
-        g = that.g;
-        b = that.b;
+        this->r = that.r;
+        this->g = that.g;
+        this->b = that.b;
         return *this;
     }
 

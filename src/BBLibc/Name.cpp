@@ -334,5 +334,5 @@ B_Name const &B_Name::operator +=(const B_Name &other)
 
 void B_Name::UpCase()
 {
-    strupr(string);
+    strupr(this->string);
 }

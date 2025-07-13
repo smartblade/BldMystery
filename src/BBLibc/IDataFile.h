@@ -45,7 +45,7 @@ public:
 
     unsigned int OK() const
     {
-        return fd != -1;
+        return this->fd != -1;
     }
 
 
