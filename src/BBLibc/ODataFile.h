@@ -35,17 +35,17 @@ private:
 };
 
 
-LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, char const &c);
-LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, char const *c);
-LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, unsigned char const &c);
-LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, short const &s);
-LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, unsigned short const &s);
-LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, int const &i);
-LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, long const &l);
-LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, unsigned long const &l);
+LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const char &c);
+LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const char *c);
+LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const unsigned char &c);
+LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const short &s);
+LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const unsigned short &s);
+LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const int &i);
+LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const long &l);
+LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const unsigned long &l);
 LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const unsigned int &i);
-LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, float const &f);
-LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, double const &f);
+LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const float &f);
+LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const double &f);
 
 
 #endif /* B_O_DATA_FILE_H */

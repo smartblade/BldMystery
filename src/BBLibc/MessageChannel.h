@@ -41,7 +41,7 @@ public:
 
     virtual unsigned int Open();
     virtual unsigned int Close();
-    virtual unsigned int Message(char const *message);
+    virtual unsigned int Message(const char *message);
 
     /*
     * Module:                 BBLibc.dll

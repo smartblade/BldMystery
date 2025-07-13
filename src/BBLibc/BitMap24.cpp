@@ -69,7 +69,7 @@ void B_BitMap24::ClearBitMap24Data()
 * VC++ mangling:          ?SetBits@B_BitMap24@@QAEIHHPBD0@Z
 */
 #ifndef BLD_NATIVE
-unsigned int B_BitMap24::SetBits(int, int, char const*, char const*)
+unsigned int B_BitMap24::SetBits(int, int, const char*, const char*)
 {
     return 0;
 }
@@ -93,7 +93,7 @@ B_BitMap24 &B_BitMap24::operator=(const B_BitMap24 &that)
 * VC++ mangling:          ?SaveToBMP@B_BitMap24@@QBEHPBD@Z
 */
 #ifndef BLD_NATIVE
-int B_BitMap24::SaveToBMP(char const *fileName) const
+int B_BitMap24::SaveToBMP(const char *fileName) const
 {
     return 0;
 }
@@ -106,7 +106,7 @@ int B_BitMap24::SaveToBMP(char const *fileName) const
 * VC++ mangling:          ?SaveToBMPSized@B_BitMap24@@QBEHPBDHH@Z
 */
 #ifndef BLD_NATIVE
-int B_BitMap24::SaveToBMPSized(char const *fileName, int width, int height) const
+int B_BitMap24::SaveToBMPSized(const char *fileName, int width, int height) const
 {
     return 0;
 }
@@ -119,7 +119,7 @@ int B_BitMap24::SaveToBMPSized(char const *fileName, int width, int height) cons
 * VC++ mangling:          ?SaveToFile@B_BitMap24@@QBEHPBDH@Z
 */
 #ifndef BLD_NATIVE
-int B_BitMap24::SaveToFile(char const*, int) const
+int B_BitMap24::SaveToFile(const char*, int) const
 {
     return 0;
 }
@@ -156,14 +156,14 @@ B_ODataFile &operator <<(B_ODataFile &file, B_BitMap24 const &bitMap)
 * VC++ mangling:          ?EscribeArchivoRAW@B_BitMap24@@QBEXPBD@Z
 */
 #ifndef BLD_NATIVE
-void B_BitMap24::EscribeArchivoRAW(char const*) const
+void B_BitMap24::EscribeArchivoRAW(const char*) const
 {
 
 }
 #endif
 
 
-//B_BitMap24 B_BitMap24::ReadFromJPEG(char const*)
+//B_BitMap24 B_BitMap24::ReadFromJPEG(const char*)
 //{
 //}
 
@@ -174,7 +174,7 @@ void B_BitMap24::EscribeArchivoRAW(char const*) const
 * VC++ mangling:          ?SaveToJPEG@B_BitMap24@@QBEHPBDH@Z
 */
 #ifndef BLD_NATIVE
-int B_BitMap24::SaveToJPEG(char const*, int) const
+int B_BitMap24::SaveToJPEG(const char*, int) const
 {
     return 0;
 }

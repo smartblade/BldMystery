@@ -42,7 +42,7 @@ void B_ODataFile::Write(const void *data, unsigned int size)
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABD@Z
 */
 
-B_ODataFile &operator <<(B_ODataFile &file, char const &c)
+B_ODataFile &operator <<(B_ODataFile &file, const char &c)
 {
     file.Write(&c, sizeof(char));
     return file;
@@ -55,7 +55,7 @@ B_ODataFile &operator <<(B_ODataFile &file, char const &c)
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@PBD@Z
 */
 #ifndef BLD_NATIVE
-B_ODataFile &operator <<(B_ODataFile &file, char const *c)
+B_ODataFile &operator <<(B_ODataFile &file, const char *c)
 {
     return file;
 }
@@ -68,7 +68,7 @@ B_ODataFile &operator <<(B_ODataFile &file, char const *c)
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABE@Z
 */
 
-B_ODataFile &operator <<(B_ODataFile &file, unsigned char const &c)
+B_ODataFile &operator <<(B_ODataFile &file, const unsigned char &c)
 {
     file.Write(&c, sizeof(unsigned char));
     return file;
@@ -81,7 +81,7 @@ B_ODataFile &operator <<(B_ODataFile &file, unsigned char const &c)
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABF@Z
 */
 
-B_ODataFile &operator <<(B_ODataFile &file, short const &s)
+B_ODataFile &operator <<(B_ODataFile &file, const short &s)
 {
     file.Write(&s, sizeof(short));
     return file;
@@ -107,7 +107,7 @@ B_ODataFile &operator <<(B_ODataFile &file, const unsigned short &s)
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABH@Z
 */
 
-B_ODataFile &operator <<(B_ODataFile &file, int const &i)
+B_ODataFile &operator <<(B_ODataFile &file, const int &i)
 {
     file.Write(&i, sizeof(int));
     return file;
@@ -120,7 +120,7 @@ B_ODataFile &operator <<(B_ODataFile &file, int const &i)
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABJ@Z
 */
 
-B_ODataFile &operator <<(B_ODataFile &file, long const &l)
+B_ODataFile &operator <<(B_ODataFile &file, const long &l)
 {
     file.Write(&l, sizeof(long));
     return file;
@@ -133,7 +133,7 @@ B_ODataFile &operator <<(B_ODataFile &file, long const &l)
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABK@Z
 */
 
-B_ODataFile &operator <<(B_ODataFile &file, unsigned long const &l)
+B_ODataFile &operator <<(B_ODataFile &file, const unsigned long &l)
 {
     file.Write(&l, sizeof(unsigned long));
     return file;
@@ -146,7 +146,7 @@ B_ODataFile &operator <<(B_ODataFile &file, unsigned long const &l)
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABI@Z
 */
 
-B_ODataFile &operator <<(B_ODataFile &file, unsigned int const &i)
+B_ODataFile &operator <<(B_ODataFile &file, const unsigned int &i)
 {
     file.Write(&i, sizeof(unsigned int));
     return file;
@@ -159,7 +159,7 @@ B_ODataFile &operator <<(B_ODataFile &file, unsigned int const &i)
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABM@Z
 */
 
-B_ODataFile &operator <<(B_ODataFile &file, float const &f)
+B_ODataFile &operator <<(B_ODataFile &file, const float &f)
 {
     file.Write(&f, sizeof(float));
     return file;
@@ -172,7 +172,7 @@ B_ODataFile &operator <<(B_ODataFile &file, float const &f)
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABN@Z
 */
 
-B_ODataFile &operator <<(B_ODataFile &file, double const &f)
+B_ODataFile &operator <<(B_ODataFile &file, const double &f)
 {
     file.Write(&f, sizeof(double));
     return file;

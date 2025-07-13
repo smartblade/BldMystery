@@ -55,7 +55,7 @@ public:
     * VC++ mangling:          ?GetFileName@B_IDataFile@@QBEPBDXZ
     */
 
-    char const *GetFileName() const
+    const char *GetFileName() const
     {
         return this->file_name;
     }

@@ -268,7 +268,7 @@ B_Name operator +(B_Name const &lother, B_Name const &rother)
 * VC++ mangling:          ??H@YA?AVB_Name@@ABV0@PBD@Z
 */
 #ifndef BLD_NATIVE
-B_Name operator +(B_Name const &other, char const *str)
+B_Name operator +(B_Name const &other, const char *str)
 {
     return other;
 }

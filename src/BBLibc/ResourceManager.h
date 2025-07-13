@@ -33,7 +33,7 @@ public:
     int IsResourceLoaded(int, int);
     void FreeResource(B_Resource *resource);
     unsigned int NResources(unsigned short);
-    void AddBodLink(char const *c, int i, char const *pc, int i1);
+    void AddBodLink(const char *c, int i, const char *pc, int i1);
     B_ResourceManager &operator =(const B_ResourceManager &that);
 
 private:

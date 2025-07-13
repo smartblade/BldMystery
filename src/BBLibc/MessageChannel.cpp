@@ -43,7 +43,7 @@ unsigned int B_MessageChannel::Close()
 * VC++ mangling:          ?Message@B_MessageChannel@@UAEIPBD@Z
 */
 
-unsigned int B_MessageChannel::Message(char const *message)
+unsigned int B_MessageChannel::Message(const char *message)
 {
     return 0;
 }

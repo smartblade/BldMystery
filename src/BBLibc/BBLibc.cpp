@@ -23,7 +23,7 @@ int CheckErrors = 3;
 * VC++ mangling:          ?OutputWin32Error@@YAXPBD@Z
 */
 
-void OutputWin32Error(char const *message)
+void OutputWin32Error(const char *message)
 {
     unsigned int errorCode = GetLastError();
 
@@ -78,7 +78,7 @@ const char *GetConfigDirectory()
 * VC++ mangling:          ?GetCurrentLanguage@@YAPBDXZ
 */
 #ifndef BLD_NATIVE
-char const *GetCurrentLanguage()
+const char *GetCurrentLanguage()
 {
     return 0;
 }

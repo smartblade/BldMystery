@@ -38,7 +38,7 @@ public:
     const B_Name &operator +=(char c);
     B_Name const &operator +=(B_Name const &other);
 
-    B_Name const &operator +(char const *str);
+    B_Name const &operator +(const char *str);
 
 
     /*
@@ -85,7 +85,7 @@ private:
 LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_Name &name);
 LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, B_Name const &name);
 LIB_EXP B_Name operator +(B_Name const &lother, B_Name const &rother);
-LIB_EXP B_Name operator +(B_Name const &other, char const *str);
+LIB_EXP B_Name operator +(B_Name const &other, const char *str);
 LIB_EXP B_Name operator +(const char *str, const B_Name &bName);
 
 #endif /* B_NAME_H */

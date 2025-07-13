@@ -147,7 +147,7 @@ unsigned int B_ResourceManager::NResources(unsigned short)
 * VC++ mangling:          ?AddBodLink@B_ResourceManager@@QAEXPBDH0H@Z
 */
 #ifndef BLD_NATIVE
-void B_ResourceManager::AddBodLink(char const *c, int i, char const *pc, int i1)
+void B_ResourceManager::AddBodLink(const char *c, int i, const char *pc, int i1)
 {
 }
 #endif
