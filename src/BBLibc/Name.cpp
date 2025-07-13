@@ -61,7 +61,8 @@ B_Name::B_Name(unsigned int len) : len(len)
 * VC++ mangling:          ?String@B_Name@@QBEQADXZ
 */
 
-char *const B_Name::String() const {
+char *const B_Name::String() const
+{
     return this->string;
 }
 

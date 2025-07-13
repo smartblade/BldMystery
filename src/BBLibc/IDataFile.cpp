@@ -226,7 +226,8 @@ unsigned int B_IDataFile::ReadCacheBlock()
 
 long B_IDataFile::Length() const
 {
-    if (fd != -1) {
+    if (fd != -1)
+    {
         return file_size;
     }
 

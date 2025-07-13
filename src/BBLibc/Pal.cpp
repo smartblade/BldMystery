@@ -9,7 +9,10 @@
 */
 
 #ifndef BLD_NATIVE
-unsigned char B_Pal::GetRed(unsigned int val) const { return 0; };
+unsigned char B_Pal::GetRed(unsigned int val) const
+{
+    return 0;
+}
 #endif
 
 
@@ -20,7 +23,10 @@ unsigned char B_Pal::GetRed(unsigned int val) const { return 0; };
 */
 
 #ifndef BLD_NATIVE
-unsigned char B_Pal::GetGreen(unsigned int val) const { return 0; };
+unsigned char B_Pal::GetGreen(unsigned int val) const
+{
+    return 0;
+}
 #endif
 
 
@@ -31,5 +37,8 @@ unsigned char B_Pal::GetGreen(unsigned int val) const { return 0; };
 */
 
 #ifndef BLD_NATIVE
-unsigned char B_Pal::GetBlue(unsigned int val) const { return 0; };
+unsigned char B_Pal::GetBlue(unsigned int val) const
+{
+    return 0;
+}
 #endif

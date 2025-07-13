@@ -47,7 +47,8 @@ public:
     * VC++ mangling:          ?Id@B_Name@@QBEABV1@XZ
     */
 
-    const B_Name &Id() const {
+    const B_Name &Id() const
+    {
         return *this;
     }
 

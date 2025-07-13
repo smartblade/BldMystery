@@ -106,7 +106,8 @@ int B_BitMap24::SaveToBMP(char const *fileName) const
 * VC++ mangling:          ?SaveToBMPSized@B_BitMap24@@QBEHPBDHH@Z
 */
 #ifndef BLD_NATIVE
-int B_BitMap24::SaveToBMPSized(char const *fileName, int width, int height) const {
+int B_BitMap24::SaveToBMPSized(char const *fileName, int width, int height) const
+{
     return 0;
 }
 #endif
