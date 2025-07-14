@@ -22,7 +22,7 @@ public:
     B_Name(const B_Name &src);
     B_Name(unsigned int len);
     ~B_Name();
-    char *const String() const;
+    char * const String() const;
     unsigned int CompareNoCase(const char *str) const;
     B_Name Right(unsigned int count) const;
     B_Name Left(unsigned int count) const;
