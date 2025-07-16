@@ -226,11 +226,10 @@ unsigned int B_IDataFile::ReadCacheBlock()
 
 long B_IDataFile::Length() const
 {
-    if (fd != -1)
+    if (this->OK())
     {
-        return file_size;
+        return static_cast<long>(this->file_size);
     }
-
     return 0;
 }
 
