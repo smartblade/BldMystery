@@ -152,7 +152,7 @@ unsigned int B_Name::operator !=(const char *str) const
 
 unsigned int B_Name::CompareNoCase(const char *str) const
 {
-    return !stricmp(this->string, str);
+    return stricmp(this->string, str) == 0;
 }
 
 
