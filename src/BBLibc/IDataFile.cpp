@@ -210,12 +210,28 @@ B_IDataFile::B_IDataFile(const char *file_name, int flags)
 * Entry point:            0x100017C2
 * VC++ mangling:          ?ReadCacheBlock@B_IDataFile@@AAEIXZ
 */
-#ifndef BLD_NATIVE
+
 unsigned int B_IDataFile::ReadCacheBlock()
 {
-    return 1;
+    if (
+        this->OK() &&
+        this->cacheBlockStartPos + IFILE_CACHE_SIZE < this->file_size
+    )
+    {
+        read(
+            this->fd,
+            &this->fileCache,
+            min(
+                IFILE_CACHE_SIZE,
+                this->file_size - this->cacheBlockStartPos - IFILE_CACHE_SIZE
+            )
+        );
+        this->cacheBlockStartPos += IFILE_CACHE_SIZE;
+        this->posInCacheBlock = 0;
+        return true;
+    }
+    return false;
 }
-#endif
 
 
 /*

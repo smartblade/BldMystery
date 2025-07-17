@@ -550,78 +550,7 @@ l100014CD: pop edi
 ;
 ;* Export: ?ReadCacheBlock@B_IDataFile@@AAEIXZ, 00F7
 ;
-l100017C2 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000008h
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           xor ecx, ecx
-           cmp dword ptr [eax], 0FFFFFFFFh
-           setne cl
-           test ecx, ecx
-           je l1000187C
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [edx+00000400Ch]
-           add eax, 000004000h
-           mov ecx, dword ptr [ebp-004h]
-           cmp eax, dword ptr [ecx+008h]
-           jnb l1000187C
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [edx+008h]
-           sub ecx, dword ptr [eax+00000400Ch]
-           sub ecx, 000004000h
-           cmp ecx, 000004000h
-           jbe l1000181E
-           mov dword ptr [ebp-008h], 000004000h
-           jmp l10001836
-;
-;* Jump:
-; 10001813(C) 
-;
-l1000181E: mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [edx+008h]
-           sub ecx, dword ptr [eax+00000400Ch]
-           sub ecx, 000004000h
-           mov dword ptr [ebp-008h], ecx
-;
-;* Jump:
-; 1000181C(U) 
-;
-l10001836: mov edx, dword ptr [ebp-008h]
-           push edx
-           mov eax, dword ptr [ebp-004h]
-           add eax, 00000000Ch
-           push eax
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ecx]
-           push edx
-           call [__imp__read]; [BICRT._read].
-           add esp, 00000000Ch
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [eax+00000400Ch]
-           add ecx, 000004000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+00000400Ch], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+000004010h], 000000000h
-           mov eax, 000000001h
-           jmp l1000187E
-;
-;* Jump:
-; 100017D8(C), 100017F2(C) 
-;
-l1000187C: xor eax, eax
-;
-;* Jump:
-; 1000187A(U) 
-;
-l1000187E: mov esp, ebp
-           pop ebp
-           ret
-l100017C2 ENDP
+           call l100017C2; Implemented in c++ code
 ;
 ;* Export: ?Length@B_IDataFile@@QBEJXZ, 00DC
 ;
