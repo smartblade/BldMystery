@@ -255,12 +255,44 @@ long B_IDataFile::Length() const
 * Entry point:            0x100018A6
 * VC++ mangling:          ?Seek@B_IDataFile@@QAEJJH@Z
 */
-#ifndef BLD_NATIVE
+
 long B_IDataFile::Seek(long offset, int whence)
 {
-    return 0;
+    unsigned int position;
+    switch (whence)
+    {
+        case SEEK_SET:
+            position = static_cast<unsigned int>(offset);
+            break;
+        case SEEK_CUR:
+            position = static_cast<unsigned int>(offset + this->Tell());
+            break;
+        case SEEK_END:
+            position = static_cast<unsigned int>(offset) + this->file_size;
+            break;
+    }
+    if (
+        position > this->cacheBlockStartPos &&
+        position < this->cacheBlockStartPos + IFILE_CACHE_SIZE
+    )
+    {
+        this->posInCacheBlock = position - this->cacheBlockStartPos;
+    }
+    else
+    {
+        this->cacheBlockStartPos = position - IFILE_CACHE_SIZE;
+        if (this->fileInfo != nullptr)
+        {
+            this->fileInfo->Seek(position);
+        }
+        else
+        {
+            lseek(this->fd, static_cast<long>(position), SEEK_SET);
+        }
+        this->ReadCacheBlock();
+    }
+    return static_cast<long>(this->cacheBlockStartPos + this->posInCacheBlock);
 }
-#endif
 
 
 /*

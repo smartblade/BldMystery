@@ -1,4 +1,3 @@
-/EXPORT:?Seek@B_IDataFile@@QAEJJH@Z=?Seek@B_IDataFile@@QAEJJH@Z
 /EXPORT:?Tell@B_IDataFile@@QAEJXZ=?Tell@B_IDataFile@@QAEJXZ
 /EXPORT:?Peek@B_IDataFile@@QAEEXZ=?Peek@B_IDataFile@@QAEEXZ
 /EXPORT:?Read@B_IDataFile@@QAEXPAXI@Z=?Read@B_IDataFile@@QAEXPAXI@Z
