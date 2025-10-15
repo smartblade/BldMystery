@@ -38,7 +38,7 @@ public:
 
 private:
     B_Resource **resources_;
-    int size;
+    void *unknown04;
     int unknown08;
     int unknown0C;
     int unknown10;
