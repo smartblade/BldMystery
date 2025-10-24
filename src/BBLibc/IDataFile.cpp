@@ -300,12 +300,11 @@ long B_IDataFile::Seek(long offset, int whence)
 * Entry point:            0x100019AF
 * VC++ mangling:          ?Tell@B_IDataFile@@QAEJXZ
 */
-#ifndef BLD_NATIVE
+
 long B_IDataFile::Tell()
 {
-    return 0;
+    return static_cast<long>(this->cacheBlockStartPos + this->posInCacheBlock);
 }
-#endif
 
 
 /*

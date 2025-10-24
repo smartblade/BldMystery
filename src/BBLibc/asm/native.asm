@@ -569,19 +569,7 @@ l100014CD: pop edi
 ;
 ;* Export: ?Tell@B_IDataFile@@QAEJXZ, 011A
 ;
-l100019AF PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov eax, dword ptr [eax+00000400Ch]
-           mov ecx, dword ptr [ebp-004h]
-           add eax, dword ptr [ecx+000004010h]
-           mov esp, ebp
-           pop ebp
-           ret
-l100019AF ENDP
+           call l100019AF; Implemented in c++ code
 ;
 ;* Export: ?Peek@B_IDataFile@@QAEEXZ, 00F4
 ;
