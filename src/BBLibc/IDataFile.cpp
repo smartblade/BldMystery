@@ -312,12 +312,18 @@ long B_IDataFile::Tell()
 * Entry point:            0x100019CC
 * VC++ mangling:          ?Peek@B_IDataFile@@QAEEXZ
 */
-#ifndef BLD_NATIVE
+
 unsigned char B_IDataFile::Peek()
 {
+    if (!eof(this->fd))
+    {
+        unsigned char c;
+        this->Read(&c, sizeof(unsigned char));
+        this->Seek(-static_cast<long>(sizeof(unsigned char)), SEEK_CUR);
+        return c;
+    }
     return 0;
 }
-#endif
 
 
 /*

@@ -573,42 +573,7 @@ l100014CD: pop edi
 ;
 ;* Export: ?Peek@B_IDataFile@@QAEEXZ, 00F4
 ;
-l100019CC PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000008h
-           mov dword ptr [ebp-008h], ecx
-           mov eax, dword ptr [ebp-008h]
-           mov ecx, dword ptr [eax]
-           push ecx
-           call [__imp__eof]; [BICRT._eof].
-           add esp, 000000004h
-           test eax, eax
-           jne l10001A07
-           push 000000001h
-           lea edx, [ebp-004h]
-           push edx
-           mov ecx, dword ptr [ebp-008h]
-           call l10001A33
-           push 000000001h
-           push 0FFFFFFFFh
-           mov ecx, dword ptr [ebp-008h]
-           call l100018A6
-           mov al, byte ptr [ebp-004h]
-           jmp l10001A09
-;
-;* Jump:
-; 100019E6(C) 
-;
-l10001A07: xor al, al
-;
-;* Jump:
-; 10001A05(U) 
-;
-l10001A09: mov esp, ebp
-           pop ebp
-           ret
-l100019CC ENDP
+           call l100019CC; Implemented in c++ code
 ;
 ;* Export: ?Eof@B_IDataFile@@QAEHXZ, 00B2
 ;
