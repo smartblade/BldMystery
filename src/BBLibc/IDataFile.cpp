@@ -343,12 +343,45 @@ int B_IDataFile::Eof()
 * Entry point:            0x10001A33
 * VC++ mangling:          ?Read@B_IDataFile@@QAEXPAXI@Z
 */
-#ifndef BLD_NATIVE
+
 void B_IDataFile::Read(void *data, unsigned int size)
 {
-
+    size =
+        min(
+            size,
+            this->file_size - this->posInCacheBlock - this->cacheBlockStartPos
+        );
+    if (size == 0)
+    {
+        return;
+    }
+    if (size < IFILE_CACHE_SIZE - this->posInCacheBlock)
+    {
+        memcpy(
+            data,
+            &this->fileCache[this->posInCacheBlock],
+            static_cast<size_t>(size)
+        );
+        this->posInCacheBlock += size;
+        return;
+    }
+    unsigned int remainingCache = IFILE_CACHE_SIZE - this->posInCacheBlock;
+    if (remainingCache != 0)
+    {
+        memcpy(
+            data,
+            &this->fileCache[this->posInCacheBlock],
+            static_cast<size_t>(remainingCache)
+        );
+        this->posInCacheBlock = IFILE_CACHE_SIZE;
+        size -= remainingCache;
+    }
+    if (this->ReadCacheBlock())
+    {
+        this->Read(&static_cast<char *>(data)[remainingCache], size);
+    }
 }
-#endif
+
 
 /*
 * Module:                 BBLibc.dll

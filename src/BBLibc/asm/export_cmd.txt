@@ -1,4 +1,3 @@
-/EXPORT:?Read@B_IDataFile@@QAEXPAXI@Z=?Read@B_IDataFile@@QAEXPAXI@Z
 /EXPORT:??0B_ODataFile@@QAE@PBDH@Z=??0B_ODataFile@@QAE@PBDH@Z
 /EXPORT:?WriteCacheBlock@B_ODataFile@@AAEXXZ=l10001DA0
 /EXPORT:?Seek@B_ODataFile@@QAEJJ@Z=l10001E01
