@@ -74,7 +74,6 @@ private:
     static int n_opened_files;
     static int n_open_files;
     static PyObject *OnOpenFunc;
-    int SetPosition(long position);
 };
 
 LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, char &c);
