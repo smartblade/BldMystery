@@ -1,12 +1,16 @@
 #define BBLIBC_LIB_EXPORT
 #include "ODataFile.h"
+#include "BBLibc.h"
+#include "MessageManager.h"
 #include "Color.h"
 #include "Name.h"
 #include "NamedObj.h"
 #include "BitMap.h"
 #include "BitMap24.h"
-
+#include <errno.h>
+#include <fcntl.h>
 #include <io.h>
+#include <sys/stat.h>
 
 
 /*
@@ -14,13 +18,50 @@
 * Entry point:            0x10001C44
 * VC++ mangling:          ??0B_ODataFile@@QAE@PBDH@Z
 */
-#ifndef BLD_NATIVE
-B_ODataFile::B_ODataFile(const char *file_name, int flags)
-    : fd(-1), file_name(nullptr) {
 
-    size_t file_name_len = strlen(file_name);
+B_ODataFile::B_ODataFile(const char *file_name, int flags)
+{
+    this->cacheBlockStartPos = 0;
+    this->posInCacheBlock = 0;
+    this->file_name = strdup(file_name);
+    this->fd =
+        open(
+            file_name,
+            flags | O_WRONLY | O_CREAT | O_TRUNC,
+            S_IWRITE | S_IREAD
+        );
+    if (this->fd == -1)
+    {
+        mout << vararg("Could not write to the file %s.\n", file_name);
+        switch (errno)
+        {
+            case EACCES:
+                mout <<
+                    "read-only, or file\x92s sharing mode does not allow "
+                        "specified operations, or given path is directory\n";
+                break;
+            case EEXIST:
+                mout <<
+                    "_O_CREAT and _O_EXCL flags specified, but filename "
+                        "already exists\n";
+                break;
+            case EINVAL:
+                mout << "Invalid oflag or pmode argument\n";
+                break;
+            case EMFILE:
+                mout <<
+                    "No more file handles available (too many open files)\n";
+                break;
+            case ENOENT:
+                mout << "File or path not found\n";
+                break;
+            default:
+                mout << "Unknown error!!!!!!!!1\n";
+                break;
+        }
+    }
 }
-#endif
+
 
 /*
 * Module:                 BBLibc.dll
