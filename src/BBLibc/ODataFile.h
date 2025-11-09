@@ -9,6 +9,8 @@
 #include <export.h>
 #undef BUILD_LIB
 
+#define OFILE_CACHE_SIZE 0x4000
+
 class LIB_EXP B_ODataFile
 {
 public:
@@ -31,7 +33,9 @@ public:
 private:
     int fd;
     char *file_name;
-    char unknown_fields[16392];
+    char fileCache[OFILE_CACHE_SIZE];
+    unsigned int cacheBlockStartPos;
+    unsigned int posInCacheBlock;
 };
 
 
