@@ -1,4 +1,3 @@
-#include <fcntl.h>
 #include <io.h>
 #include <bld_python.h>
 #define BBLIBC_LIB_EXPORT
