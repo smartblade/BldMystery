@@ -17,28 +17,41 @@ bool currDirInitialised_1004A110 = false;
 */
 int CheckErrors = 3;
 
+
 /*
 * Module:                 BBLibc.dll
-* Entry point:            0x1002A590
-* VC++ mangling:          ?OutputWin32Error@@YAXPBD@Z
+* Entry point:            0x100020F2
+* VC++ mangling:          ?RemoveOnOpenInputFileFunc@@YAXXZ
 */
-
-void OutputWin32Error(const char *message)
+#ifndef BLD_NATIVE
+void RemoveOnOpenInputFileFunc()
 {
-    unsigned int errorCode = GetLastError();
-
-    mout << message;
-
-    LPSTR errorString = nullptr;
-    FormatMessage(
-        FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
-        nullptr, errorCode, 0x400, (LPSTR)&errorString, 0, nullptr);
-
-    mout << errorString;
-
-    LocalFree(errorString);
 }
+#endif
 
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10002740
+* VC++ mangling:          ?GetConfigDirectory@@YAPBDXZ
+*/
+#ifndef BLD_NATIVE
+const char *GetConfigDirectory()
+{
+    return currDirBuffer;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100028EC
+* VC++ mangling:          ?GetCurrentLanguage@@YAPBDXZ
+*/
+#ifndef BLD_NATIVE
+const char *GetCurrentLanguage()
+{
+    return 0;
+}
+#endif
 
 /*
 * Module:                 BBLibc.dll
@@ -61,41 +74,25 @@ const char *vararg(const char *format, ...)
 
 /*
 * Module:                 BBLibc.dll
-* Entry point:            0x10002740
-* VC++ mangling:          ?GetConfigDirectory@@YAPBDXZ
+* Entry point:            0x1002A590
+* VC++ mangling:          ?OutputWin32Error@@YAXPBD@Z
 */
-#ifndef BLD_NATIVE
-const char *GetConfigDirectory()
+
+void OutputWin32Error(const char *message)
 {
-    return currDirBuffer;
+    unsigned int errorCode = GetLastError();
+
+    mout << message;
+
+    LPSTR errorString = nullptr;
+    FormatMessage(
+        FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
+        nullptr, errorCode, 0x400, (LPSTR)&errorString, 0, nullptr);
+
+    mout << errorString;
+
+    LocalFree(errorString);
 }
-#endif
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x100028EC
-* VC++ mangling:          ?GetCurrentLanguage@@YAPBDXZ
-*/
-#ifndef BLD_NATIVE
-const char *GetCurrentLanguage()
-{
-    return 0;
-}
-#endif
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x100020F2
-* VC++ mangling:          ?RemoveOnOpenInputFileFunc@@YAXXZ
-*/
-#ifndef BLD_NATIVE
-void RemoveOnOpenInputFileFunc()
-{
-
-}
-#endif
 
 
 /*

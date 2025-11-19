@@ -5,16 +5,14 @@
 
 /*
 * Module:                 BBLibc.dll
-* Entry point:            0x10008FDA
-* VC++ mangling:          ??1B_BitMap@@UAE@XZ
+* Entry point:            0x10008639
+* VC++ mangling:          ??0B_BitMap@@QAE@W4BitMapType@0@IIPBVB_Pal@@@Z
 */
 #ifndef BLD_NATIVE
-B_BitMap::~B_BitMap()
+B_BitMap::B_BitMap(BitMapType type, unsigned int, unsigned int, const B_Pal *pal)
 {
-
 }
 #endif
-
 
 /*
 * Module:                 BBLibc.dll
@@ -24,20 +22,6 @@ B_BitMap::~B_BitMap()
 #ifndef BLD_NATIVE
 B_BitMap::B_BitMap(const B_BitMap &src)
 {
-
-}
-#endif
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10008639
-* VC++ mangling:          ??0B_BitMap@@QAE@W4BitMapType@0@IIPBVB_Pal@@@Z
-*/
-#ifndef BLD_NATIVE
-B_BitMap::B_BitMap(BitMapType type, unsigned int, unsigned int, const B_Pal *pal)
-{
-
 }
 #endif
 
@@ -63,5 +47,16 @@ B_ODataFile &operator <<(B_ODataFile &file, B_BitMap const &bitMap)
 B_IDataFile &operator >>(B_IDataFile &file, B_BitMap &bitMap)
 {
     return file;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10008FDA
+* VC++ mangling:          ??1B_BitMap@@UAE@XZ
+*/
+#ifndef BLD_NATIVE
+B_BitMap::~B_BitMap()
+{
 }
 #endif

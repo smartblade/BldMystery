@@ -4,30 +4,6 @@
 
 /*
 * Module:                 BBLibc.dll
-* Entry point:            0x10037EF5
-* VC++ mangling:          ??0B_ObjDscr@@QAE@XZ
-*/
-#ifndef BLD_NATIVE
-B_ObjDscr::B_ObjDscr()
-{
-}
-#endif
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x1003819B
-* VC++ mangling:          ??1B_ObjDscr@@UAE@XZ
-*/
-#ifndef BLD_NATIVE
-B_ObjDscr::~B_ObjDscr()
-{
-}
-#endif
-
-
-/*
-* Module:                 BBLibc.dll
 * Entry point:            0x10032AE6
 * VC++ mangling:          ?SetUpNormals@B_ObjDscr@@QAEXXZ
 */
@@ -116,3 +92,24 @@ unsigned char B_ObjDscr::EdgeFaceGrp(unsigned int)
 }
 #endif
 
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10037EF5
+* VC++ mangling:          ??0B_ObjDscr@@QAE@XZ
+*/
+#ifndef BLD_NATIVE
+B_ObjDscr::B_ObjDscr()
+{
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x1003819B
+* VC++ mangling:          ??1B_ObjDscr@@UAE@XZ
+*/
+#ifndef BLD_NATIVE
+B_ObjDscr::~B_ObjDscr()
+{
+}
+#endif

@@ -62,6 +62,17 @@ void B_BitMap24::ClearBitMap24Data()
 }
 #endif
 
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100271BE
+* VC++ mangling:          ??4B_BitMap24@@QAEAAV0@ABV0@@Z
+*/
+#ifndef BLD_NATIVE
+B_BitMap24 &B_BitMap24::operator=(const B_BitMap24 &that)
+{
+    return *this;
+}
+#endif
 
 /*
 * Module:                 BBLibc.dll
@@ -72,18 +83,6 @@ void B_BitMap24::ClearBitMap24Data()
 unsigned int B_BitMap24::SetBits(int, int, const char*, const char*)
 {
     return 0;
-}
-#endif
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x100271BE
-* VC++ mangling:          ??4B_BitMap24@@QAEAAV0@ABV0@@Z
-*/
-#ifndef BLD_NATIVE
-B_BitMap24 &B_BitMap24::operator=(const B_BitMap24 &that)
-{
-    return *this;
 }
 #endif
 
