@@ -33,6 +33,7 @@ public:
     unsigned int operator ==(const char *str) const;
     unsigned int operator !=(const B_Name &rhs) const;
     unsigned int operator !=(const char *str) const;
+    unsigned int CompareNoCase(const B_Name &arg_1) const;
     B_Name &operator =(const B_Name &src);
     const B_Name &operator +=(const char *str);
     const B_Name &operator +=(char c);

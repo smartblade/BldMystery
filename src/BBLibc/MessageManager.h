@@ -17,6 +17,7 @@ class LIB_EXP B_MessageManager
 {
 public:
     ~B_MessageManager();
+    B_MessageManager();
 
 
     /*
@@ -35,12 +36,17 @@ public:
     unsigned int OpenChannel(const B_Name &channel_name);
     unsigned int CloseChannel(const B_Name &channel_name);
     B_MessageChannel *DisconnectChannel(const B_Name &channel_name);
+    unsigned int Message(const char *arg_1);
+    unsigned int Message(const char *arg_1, const B_Name &arg_2);
+    unsigned int Message(char arg_1);
+    unsigned int Message(char arg_1, const B_Name &arg_2);
 
 private:
     byte unknown00;
 };
 
 LIB_EXP B_MessageManager &operator <<(B_MessageManager &mout, const char *str);
+LIB_EXP B_MessageManager &operator <<(B_MessageManager &arg_1, char arg_2);
 
 extern LIB_EXP B_MessageManager mout;
 

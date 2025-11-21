@@ -71,6 +71,7 @@ public:
     B_Color operator +(B_Color const &color) const;
     B_Color operator *(float coef) const;
     B_Color operator /(float f)const;
+    float DistanceTo(const B_Color &arg_1);
 
     byte r;
     byte g;

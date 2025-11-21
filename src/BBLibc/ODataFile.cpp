@@ -65,6 +65,29 @@ B_ODataFile::B_ODataFile(const char *file_name, int flags)
 
 /*
 * Module:                 BBLibc.dll
+* Entry point:            0x10001DA0
+* VC++ mangling:          ?WriteCacheBlock@B_ODataFile@@AAEXXZ
+*/
+#ifndef BLD_NATIVE
+void B_ODataFile::WriteCacheBlock()
+{
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10001E01
+* VC++ mangling:          ?Seek@B_ODataFile@@QAEJJ@Z
+*/
+#ifndef BLD_NATIVE
+long B_ODataFile::Seek(long arg_1)
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x10001E86
 * VC++ mangling:          ?Write@B_ODataFile@@QAEXPBXI@Z
 */
@@ -222,6 +245,17 @@ B_ODataFile &operator <<(B_ODataFile &file, const double &f)
 
 /*
 * Module:                 BBLibc.dll
+* Entry point:            0x10002060
+* VC++ mangling:          ?Flush@B_ODataFile@@QAEXXZ
+*/
+#ifndef BLD_NATIVE
+void B_ODataFile::Flush()
+{
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x10002082
 * VC++ mangling:          ??1B_ODataFile@@QAE@XZ
 */
@@ -231,6 +265,53 @@ B_ODataFile::~B_ODataFile()
     if (fd != -1) {
         _close(fd);
     }
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100020C3
+* VC++ mangling:          ?GetnOpenedInputFiles@@YAHXZ
+*/
+#ifndef BLD_NATIVE
+int GetnOpenedInputFiles()
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100020CD
+* VC++ mangling:          ?GetnOpenInputFiles@@YAHXZ
+*/
+#ifndef BLD_NATIVE
+int GetnOpenInputFiles()
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100020D7
+* VC++ mangling:          ?ResetnOpenedInputFiles@@YAXXZ
+*/
+#ifndef BLD_NATIVE
+void ResetnOpenedInputFiles()
+{
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100020E1
+* VC++ mangling:          ?SetOnOpenInputFileFunc@@YAHPAUPyObject@@@Z
+*/
+#ifndef BLD_NATIVE
+int SetOnOpenInputFileFunc(PyObject *arg_1)
+{
+    return 0;
 }
 #endif
 

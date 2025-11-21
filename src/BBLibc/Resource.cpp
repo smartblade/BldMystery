@@ -48,11 +48,45 @@ B_Resource::B_Resource()
 
 /*
 * Module:                 BBLibc.dll
+* Entry point:            0x10003ED9
+* VC++ mangling:          ??0B_Resource@@QAE@ABVB_Name@@@Z
+*/
+#ifndef BLD_NATIVE
+B_Resource::B_Resource(const B_Name &arg_1)
+{
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x10003EFE
 * VC++ mangling:          ??1B_Resource@@UAE@XZ
 */
 #ifndef BLD_NATIVE
 B_Resource::~B_Resource()
 {
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10003F26
+* VC++ mangling:          ?Save@B_Resource@@SAXAAVB_ODataFile@@PBV1@@Z
+*/
+#ifndef BLD_NATIVE
+void B_Resource::Save(B_ODataFile &arg_1, const B_Resource *arg_2)
+{
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10003FCE
+* VC++ mangling:          ?Load@B_Resource@@SAPAV1@AAVB_IDataFile@@G@Z
+*/
+#ifndef BLD_NATIVE
+B_Resource *B_Resource::Load(B_IDataFile &arg_1, unsigned short arg_2)
+{
+    return nullptr;
 }
 #endif

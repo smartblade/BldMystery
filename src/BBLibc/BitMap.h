@@ -12,6 +12,7 @@
 #include <export.h>
 #undef BUILD_LIB
 
+class B_BitMap24;
 class B_IDataFile;
 class B_ODataFile;
 
@@ -25,6 +26,9 @@ public:
     };
     virtual ~B_BitMap();
     B_BitMap(const B_BitMap &src);
+    B_BitMap();
+    B_BitMap(BitMapType arg_1, const B_BitMap24 &arg_2);
+    int BytesPerTexel() const;
     B_BitMap(BitMapType type, unsigned int, unsigned int, const B_Pal *pal);
 
 
