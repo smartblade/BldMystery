@@ -55,13 +55,18 @@ public:
     virtual ~B_BitMap24();
     B_BitMap24(const B_BitMap24 &that);
     static void ClearBitMap24Data();
+    B_BitMap24(const B_BitMap &arg_1);
     unsigned int SetBits(int, int, const char*, const char*);
     B_BitMap24 &operator=(const B_BitMap24 &that);
     int SaveToBMP(const char *fileName) const;
     int SaveToBMPSized(const char *fileName, int width, int height) const;
+    int ReadFromBMP(const char *arg_1);
+    int ReadFromFile(const char *arg_1);
     //B_BitMap24 ReadFromFile(const char*);
     int SaveToFile(const char*, int) const;
     void EscribeArchivoRAW(const char*) const;
+    void ChangeRGBOrder();
+    unsigned int GetPixelAt(int arg_1, int arg_2, B_Color &arg_3);
     //B_BitMap24 ReadFromJPEG(const char*);
     int SaveToJPEG(const char*, int) const;
 

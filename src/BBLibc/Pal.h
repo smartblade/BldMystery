@@ -17,6 +17,16 @@ public:
     unsigned char GetRed(unsigned int val) const;
     unsigned char GetGreen(unsigned int val) const;
     unsigned char GetBlue(unsigned int val) const;
+    void SetRed(unsigned int arg_1, unsigned char arg_2);
+    void SetGreen(unsigned int arg_1, unsigned char arg_2);
+    void SetBlue(unsigned int arg_1, unsigned char arg_2);
+    unsigned int GetIndex(
+        unsigned char arg_1,
+        unsigned char arg_2,
+        unsigned char arg_3,
+        unsigned int arg_4
+    );
+    const B_Pal &Id();
 
     /*
     *

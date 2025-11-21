@@ -52,6 +52,18 @@ B_Color B_Color::operator /(float f)const
 }
 #endif
 
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10009110
+* VC++ mangling:          ?DistanceTo@B_Color@@QAEMABV1@@Z
+*/
+#ifndef BLD_NATIVE
+float B_Color::DistanceTo(const B_Color &arg_1)
+{
+    return 0.0F;
+}
+#endif
+
 
 /*
 * Module:                 BBLibc.dll
@@ -90,3 +102,13 @@ void B_Color::MakeCons()
 }
 #endif
 
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100093A7
+* VC++ mangling:          ??0B_Pal@@QAE@ABV0@@Z
+*/
+#ifndef BLD_NATIVE
+B_Pal::B_Pal(const B_Pal &arg_1)
+{
+}
+#endif

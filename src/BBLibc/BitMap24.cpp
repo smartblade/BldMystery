@@ -64,6 +64,17 @@ void B_BitMap24::ClearBitMap24Data()
 
 /*
 * Module:                 BBLibc.dll
+* Entry point:            0x10026D6D
+* VC++ mangling:          ??0B_BitMap24@@QAE@ABVB_BitMap@@@Z
+*/
+#ifndef BLD_NATIVE
+B_BitMap24::B_BitMap24(const B_BitMap &arg_1)
+{
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x100271BE
 * VC++ mangling:          ??4B_BitMap24@@QAEAAV0@ABV0@@Z
 */
@@ -106,6 +117,30 @@ int B_BitMap24::SaveToBMP(const char *fileName) const
 */
 #ifndef BLD_NATIVE
 int B_BitMap24::SaveToBMPSized(const char *fileName, int width, int height) const
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10027D86
+* VC++ mangling:          ?ReadFromBMP@B_BitMap24@@QAEHPBD@Z
+*/
+#ifndef BLD_NATIVE
+int B_BitMap24::ReadFromBMP(const char *arg_1)
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10027E11
+* VC++ mangling:          ?ReadFromFile@B_BitMap24@@QAEHPBD@Z
+*/
+#ifndef BLD_NATIVE
+int B_BitMap24::ReadFromFile(const char *arg_1)
 {
     return 0;
 }
@@ -158,6 +193,29 @@ B_ODataFile &operator <<(B_ODataFile &file, B_BitMap24 const &bitMap)
 void B_BitMap24::EscribeArchivoRAW(const char*) const
 {
 
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100283CD
+* VC++ mangling:          ?ChangeRGBOrder@B_BitMap24@@QAEXXZ
+*/
+#ifndef BLD_NATIVE
+void B_BitMap24::ChangeRGBOrder()
+{
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10028434
+* VC++ mangling:          ?GetPixelAt@B_BitMap24@@QBEIHHAAVB_Color@@@Z
+*/
+#ifndef BLD_NATIVE
+unsigned int B_BitMap24::GetPixelAt(int arg_1, int arg_2, B_Color &arg_3)
+{
+    return 0;
 }
 #endif
 

@@ -146,6 +146,18 @@ unsigned int B_Name::operator !=(const char *str) const
 
 /*
 * Module:                 BBLibc.dll
+* Entry point:            0x10003730
+* VC++ mangling:          ?CompareNoCase@B_Name@@QBEIABV1@@Z
+*/
+#ifndef BLD_NATIVE
+unsigned int B_Name::CompareNoCase(const B_Name &arg_1)
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x10003769
 * VC++ mangling:          ?CompareNoCase@B_Name@@QBEIPBD@Z
 */

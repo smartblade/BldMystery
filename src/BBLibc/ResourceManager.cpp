@@ -53,6 +53,42 @@ void B_ResourceManager::Clean()
 }
 #endif
 
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10004C20
+* VC++ mangling:          ?GetnFiles@B_ResourceManager@@QAEIXZ
+*/
+#ifndef BLD_NATIVE
+unsigned int B_ResourceManager::GetnFiles()
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10004C37
+* VC++ mangling:          ?GetFile@B_ResourceManager@@QAEPBDI@Z
+*/
+#ifndef BLD_NATIVE
+const char *B_ResourceManager::GetFile(unsigned int arg_1)
+{
+    return nullptr;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10004C76
+* VC++ mangling:          ?AddFile@B_ResourceManager@@AAEIABVB_Name@@@Z
+*/
+#ifndef BLD_NATIVE
+unsigned int B_ResourceManager::AddFile(const B_Name &arg_1)
+{
+    return 0;
+}
+#endif
+
 
 /*
 * Module:                 BBLibc.dll
@@ -61,6 +97,21 @@ void B_ResourceManager::Clean()
 */
 #ifndef BLD_NATIVE
 unsigned int B_ResourceManager::LocateResourceIn(const B_Name &id, const B_Name*, int)
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10005533
+* VC++ mangling:          ?LocateResourcesIn@B_ResourceManager@@AAEIABVB_Name@@AAVB_IDataFile@@@Z
+*/
+#ifndef BLD_NATIVE
+unsigned int B_ResourceManager::LocateResourcesIn(
+    const B_Name &arg_1,
+    B_IDataFile &arg_2
+)
 {
     return 0;
 }
@@ -101,6 +152,67 @@ B_Resource *B_ResourceManager::GetResource(unsigned short resourceId, const B_Na
 }
 #endif
 
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10005B2F
+* VC++ mangling:          ?GetResourceIndex@B_ResourceManager@@QAEIGABVB_Name@@@Z
+*/
+#ifndef BLD_NATIVE
+unsigned int B_ResourceManager::GetResourceIndex(
+    unsigned short arg_1,
+    const B_Name &arg_2
+)
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10005B6F
+* VC++ mangling:          ?GetResource@B_ResourceManager@@QAEPAVB_Resource@@GI@Z
+*/
+#ifndef BLD_NATIVE
+B_Resource *B_ResourceManager::GetResource(
+    unsigned short arg_1,
+    unsigned int arg_2
+)
+{
+    return nullptr;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10005BB2
+* VC++ mangling:          ?LoadResourceToMemory@B_ResourceManager@@QAEIGPBD@Z
+*/
+#ifndef BLD_NATIVE
+unsigned int B_ResourceManager::LoadResourceToMemory(
+    unsigned short arg_1,
+    const char *arg_2
+)
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10005C13
+* VC++ mangling:          ?SaveResource@B_ResourceManager@@QAEIGIPBD@Z
+*/
+#ifndef BLD_NATIVE
+unsigned int B_ResourceManager::SaveResource(
+    unsigned short arg_1,
+    unsigned int arg_2,
+    const char *arg_3
+)
+{
+    return 0;
+}
+#endif
+
 
 /*
 * Module:                 BBLibc.dll
@@ -111,6 +223,60 @@ B_Resource *B_ResourceManager::GetResource(unsigned short resourceId, const B_Na
 int B_ResourceManager::IsResourceLoaded(int, int)
 {
     return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10005D06
+* VC++ mangling:          ?IsResourceLoaded@B_ResourceManager@@QAEHHPBD@Z
+*/
+#ifndef BLD_NATIVE
+int B_ResourceManager::IsResourceLoaded(int arg_1, const char *arg_2)
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10005DAE
+* VC++ mangling:          ?IsResourceLinked@B_ResourceManager@@QAEHHPBD@Z
+*/
+#ifndef BLD_NATIVE
+int B_ResourceManager::IsResourceLinked(int arg_1, const char *arg_2)
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10005E42
+* VC++ mangling:          ?GetResourceName@B_ResourceManager@@QAEPBDGI@Z
+*/
+#ifndef BLD_NATIVE
+const char *B_ResourceManager::GetResourceName(
+    unsigned short arg_1,
+    unsigned int arg_2
+)
+{
+    return nullptr;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10005E8F
+* VC++ mangling:          ?GetResourceFile@B_ResourceManager@@QAEPBDGI@Z
+*/
+#ifndef BLD_NATIVE
+const char *B_ResourceManager::GetResourceFile(
+    unsigned short arg_1,
+    unsigned int arg_2
+)
+{
+    return nullptr;
 }
 #endif
 

@@ -35,6 +35,9 @@ public:
     unsigned int OpenChannel(const B_Name &channel_name);
     unsigned int CloseChannel(const B_Name &channel_name);
     B_MessageChannel *DisconnectChannel(const B_Name &channel_name);
+    unsigned int Message(const char *arg_1);
+    unsigned int Message(const char *arg_1, const B_Name &arg_2);
+    unsigned int Message(char arg_1);
 
 private:
     byte unknown00;

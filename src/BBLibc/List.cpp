@@ -40,6 +40,17 @@ B_ListElement::~B_ListElement()
 
 /*
 * Module:                 BBLibc.dll
+* Entry point:            0x100029AE
+* VC++ mangling:          ?DeleteList@B_List@@QAEXI@Z
+*/
+#ifndef BLD_NATIVE
+void B_List::DeleteList(unsigned int arg_1)
+{
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x10002A14
 * VC++ mangling:          ?Add@B_List@@QAEIPAVB_ListElement@@@Z
 */
@@ -86,6 +97,42 @@ unsigned int B_List::AddBefore(B_ListElement *existing, B_ListElement *newElemen
 unsigned int B_List::Remove(B_ListElement *element, unsigned int index)
 {
     return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10002CAC
+* VC++ mangling:          ?RemoveFirst@B_List@@QAEPAVB_ListElement@@I@Z
+*/
+#ifndef BLD_NATIVE
+B_ListElement *B_List::RemoveFirst(unsigned int arg_1)
+{
+    return nullptr;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10002D5D
+* VC++ mangling:          ?RemoveLast@B_List@@QAEPAVB_ListElement@@I@Z
+*/
+#ifndef BLD_NATIVE
+B_ListElement *B_List::RemoveLast(unsigned int arg_1)
+{
+    return nullptr;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10002E0E
+* VC++ mangling:          ?GetAt@B_List@@QAEPAVB_ListElement@@I@Z
+*/
+#ifndef BLD_NATIVE
+B_ListElement *B_List::GetAt(unsigned int arg_1)
+{
+    return nullptr;
 }
 #endif
 

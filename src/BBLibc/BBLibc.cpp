@@ -74,6 +74,17 @@ const char *vararg(const char *format, ...)
 
 /*
 * Module:                 BBLibc.dll
+* Entry point:            0x10029C4A
+* VC++ mangling:          ??0B_MessageManager@@QAE@XZ
+*/
+#ifndef BLD_NATIVE
+B_MessageManager::B_MessageManager()
+{
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x1002A590
 * VC++ mangling:          ?OutputWin32Error@@YAXPBD@Z
 */
@@ -109,4 +120,3 @@ PyObject *CallPythonObject(PyObject *func, PyObject *args)
     return result;
 }
 #endif
-

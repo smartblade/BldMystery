@@ -47,3 +47,15 @@ unsigned int B_MessageChannel::Message(const char *message)
 {
     return 0;
 }
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002A293
+* VC++ mangling:          ?Message@B_MessageManager@@QAEIDABVB_Name@@@Z
+*/
+#ifndef BLD_NATIVE
+unsigned int B_MessageManager::Message(char arg_1, const B_Name &arg_2)
+{
+    return 0;
+}
+#endif

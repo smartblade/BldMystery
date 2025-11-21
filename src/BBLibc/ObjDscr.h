@@ -17,8 +17,13 @@
 class LIB_EXP B_ObjDscr : public B_Resource
 {
 public:
+    virtual unsigned short ClassId();
+    virtual unsigned long CheckSum();
+    virtual unsigned int SerialSize();
     B_ObjDscr();
     ~B_ObjDscr();
+    unsigned int SavePacked(B_ODataFile &arg_1);
+    unsigned int LoadPacked(B_IDataFile &arg_1);
     void SetUpNormals();
     void SetUpInertialT();
     int GetVtxNode(unsigned int);

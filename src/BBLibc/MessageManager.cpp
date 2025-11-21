@@ -75,6 +75,42 @@ B_MessageChannel *B_MessageManager::DisconnectChannel(const B_Name &channel_name
 }
 #endif
 
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002A13C
+* VC++ mangling:          ?Message@B_MessageManager@@QAEIPBD@Z
+*/
+#ifndef BLD_NATIVE
+unsigned int B_MessageManager::Message(const char *arg_1)
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002A1B9
+* VC++ mangling:          ?Message@B_MessageManager@@QAEIPBDABVB_Name@@@Z
+*/
+#ifndef BLD_NATIVE
+unsigned int B_MessageManager::Message(const char *arg_1, const B_Name &arg_2)
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002A23E
+* VC++ mangling:          ?Message@B_MessageManager@@QAEID@Z
+*/
+#ifndef BLD_NATIVE
+unsigned int B_MessageManager::Message(char arg_1)
+{
+    return 0;
+}
+#endif
+
 
 /*
 * Module:                 BBLibc.dll
@@ -88,3 +124,14 @@ B_MessageManager &operator<<(B_MessageManager &mout, const char *str)
 }
 #endif
 
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002A2D7
+* VC++ mangling:          ??6@YAAAVB_MessageManager@@AAV0@D@Z
+*/
+#ifndef BLD_NATIVE
+B_MessageManager &operator<<(B_MessageManager &arg_1, char arg_2)
+{
+    return arg_1;
+}
+#endif

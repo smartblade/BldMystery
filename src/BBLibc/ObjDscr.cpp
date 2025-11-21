@@ -4,6 +4,42 @@
 
 /*
 * Module:                 BBLibc.dll
+* Entry point:            0x10032ABD
+* VC++ mangling:          ?ClassId@B_ObjDscr@@UBEGXZ
+*/
+#ifndef BLD_NATIVE
+unsigned short B_ObjDscr::ClassId()
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10032ACC
+* VC++ mangling:          ?CheckSum@B_ObjDscr@@UBEKXZ
+*/
+#ifndef BLD_NATIVE
+unsigned long B_ObjDscr::CheckSum()
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10032AD9
+* VC++ mangling:          ?SerialSize@B_ObjDscr@@UBEIXZ
+*/
+#ifndef BLD_NATIVE
+unsigned int B_ObjDscr::SerialSize()
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x10032AE6
 * VC++ mangling:          ?SetUpNormals@B_ObjDscr@@QAEXXZ
 */
@@ -111,5 +147,29 @@ B_ObjDscr::B_ObjDscr()
 #ifndef BLD_NATIVE
 B_ObjDscr::~B_ObjDscr()
 {
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100384CA
+* VC++ mangling:          ?SavePacked@B_ObjDscr@@QAEIAAVB_ODataFile@@@Z
+*/
+#ifndef BLD_NATIVE
+unsigned int B_ObjDscr::SavePacked(B_ODataFile &arg_1)
+{
+    return 0;
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x1003896F
+* VC++ mangling:          ?LoadPacked@B_ObjDscr@@QAEIAAVB_IDataFile@@@Z
+*/
+#ifndef BLD_NATIVE
+unsigned int B_ObjDscr::LoadPacked(B_IDataFile &arg_1)
+{
+    return 0;
 }
 #endif

@@ -16,6 +16,7 @@ class LIB_EXP B_Resource : public B_NamedObj
 {
 public:
     B_Resource();
+    B_Resource(const B_Name &arg_1);
 
 
     /*
@@ -42,6 +43,8 @@ public:
     }
 
     virtual ~B_Resource();
+    static void Save(B_ODataFile &arg_1, const B_Resource *arg_2);
+    static B_Resource *Load(B_IDataFile &arg_1, unsigned short arg_2);
 
     void *data;
 };
