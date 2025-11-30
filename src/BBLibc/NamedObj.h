@@ -46,7 +46,7 @@ public:
     * VC++ mangling:          ??4B_NamedObj@@QAEAAV0@ABV0@@Z
     */
 
-    B_NamedObj &operator=(const B_NamedObj &that)
+    B_NamedObj &operator =(const B_NamedObj &that)
     {
         this->name = that.name;
         return *this;

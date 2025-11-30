@@ -96,7 +96,7 @@ public:
     * VC++ mangling:          ??4B_List@@QAEAAV0@ABV0@@Z
     */
 
-    B_List &operator=(const B_List &that)
+    B_List &operator =(const B_List &that)
     {
         this->numElements = that.numElements;
         this->tail = that.tail;

@@ -34,7 +34,7 @@ public:
     * VC++ mangling:          ??4B_BitMap@@QAEAAV0@ABV0@@Z
     */
 
-    B_BitMap &operator=(const B_BitMap &that)
+    B_BitMap &operator =(const B_BitMap &that)
     {
         this->type = that.type;
         this->dimension1 = that.dimension1;
