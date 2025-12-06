@@ -70,13 +70,13 @@ int B_IDataFile::GetnOpenFiles()
 * VC++ mangling:          ?SetOnOpenFunc@B_IDataFile@@SAHPAUPyObject@@@Z
 */
 
-int B_IDataFile::SetOnOpenFunc(PyObject *obj)
+int B_IDataFile::SetOnOpenFunc(PyObject *func)
 {
-    if (obj != nullptr)
+    if (func != nullptr)
     {
         Py_XDECREF(B_IDataFile::OnOpenFunc);
-        Py_XINCREF(obj);
-        B_IDataFile::OnOpenFunc = obj;
+        Py_XINCREF(func);
+        B_IDataFile::OnOpenFunc = func;
     }
     else
     {
