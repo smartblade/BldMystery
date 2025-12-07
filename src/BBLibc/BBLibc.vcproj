@@ -321,6 +321,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Debug.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\IDataFile.cpp"
 				>
 			</File>
@@ -330,14 +334,6 @@
 			</File>
 			<File
 				RelativePath=".\MeshEdge.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\MessageChannel.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\MessageManager.cpp"
 				>
 			</File>
 			<File
