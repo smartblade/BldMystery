@@ -23,4 +23,25 @@ private:
 
 };
 
+
+class LIB_EXP B_RItem
+{
+public:
+    B_RItem(unsigned long);
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10007F20
+    * VC++ mangling:          ??4B_RItem@@QAEAAV0@ABV0@@Z
+    */
+#ifndef BLD_NATIVE
+    B_RItem &operator =(const B_RItem &that)
+    {
+        return *this;
+    }
+#else
+    B_RItem &operator =(const B_RItem &that);
+#endif
+};
+
 #endif  // B_RDataLight_H

@@ -274,6 +274,8 @@ externdef ??_FB_BitMap24@@QAEXXZ: near
 l100070E0 equ ??_FB_BitMap24@@QAEXXZ
 externdef ??4B_RDataLight@@QAEAAV0@ABV0@@Z: near
 l10007EF0 equ ??4B_RDataLight@@QAEAAV0@ABV0@@Z
+externdef ??4B_RItem@@QAEAAV0@ABV0@@Z: near
+l10007F20 equ ??4B_RItem@@QAEAAV0@ABV0@@Z
 externdef ??4B_RDataTriangle@@QAEAAV0@ABV0@@Z: near
 l10007F40 equ ??4B_RDataTriangle@@QAEAAV0@ABV0@@Z
 externdef ??4B_MeshEdge@@QAEAAV0@ABV0@@Z: near
@@ -380,6 +382,8 @@ externdef ??0B_RDataLight@@QAE@MMMM@Z: near
 l10040CBE equ ??0B_RDataLight@@QAE@MMMM@Z
 externdef ?Interp@B_RDataLight@@QAEXNAAV1@N0@Z: near
 l10040CE6 equ ?Interp@B_RDataLight@@QAEXNAAV1@N0@Z
+externdef ??0B_RItem@@QAE@K@Z: near
+l10040F39 equ ??0B_RItem@@QAE@K@Z
 externdef ??0B_RDataTriangle@@QAE@XZ: near
 l10040F51 equ ??0B_RDataTriangle@@QAE@XZ
 externdef ??0B_ParticleGType@@QAE@ABVB_Name@@0KI@Z: near
