@@ -14,6 +14,7 @@
 class LIB_EXP B_Pal
 {
 public:
+    B_Pal(const B_Pal &);
     unsigned char GetRed(unsigned int val) const;
     unsigned char GetGreen(unsigned int val) const;
     unsigned char GetBlue(unsigned int val) const;

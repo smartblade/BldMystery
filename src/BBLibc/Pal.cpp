@@ -4,6 +4,17 @@
 
 /*
 * Module:                 BBLibc.dll
+* Entry point:            0x100093A7
+* VC++ mangling:          ??0B_Pal@@QAE@ABV0@@Z
+*/
+#ifndef BLD_NATIVE
+B_Pal::B_Pal(const B_Pal &)
+{
+}
+#endif
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x100093C8
 * VC++ mangling:          ?GetRed@B_Pal@@QBEEI@Z
 */
