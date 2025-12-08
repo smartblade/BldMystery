@@ -1,12 +1,12 @@
 #define BBLIBC_LIB_EXPORT
 #include "ODataFile.h"
-#include "BBLibc.h"
 #include "MessageManager.h"
 #include "Color.h"
 #include "Name.h"
 #include "NamedObj.h"
 #include "BitMap.h"
 #include "BitMap24.h"
+#include "Vararg.h"
 #include <errno.h>
 #include <fcntl.h>
 #include <io.h>

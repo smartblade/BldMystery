@@ -4,9 +4,7 @@
 #include "ObjDscr.h"
 #include <crtdbg.h>
 #include <direct.h>
-#include <stdio.h>
 
-char Dest[1024];
 char currDirBuffer[260]; // 104h = 260 bytes
 bool currDirInitialised_1004A110 = false;
 
@@ -52,25 +50,6 @@ const char *GetCurrentLanguage()
     return 0;
 }
 #endif
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10029BE0
-* VC++ mangling:          ?vararg@@YAPBDPBDZZ
-*/
-
-const char *vararg(const char *format, ...)
-{
-    va_list args;
-    va_start(args, format);
-
-    vsprintf(Dest, format, args);
-
-    va_end(args);
-
-    return Dest;
-}
-
 
 /*
 * Module:                 BBLibc.dll

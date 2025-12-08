@@ -3,7 +3,6 @@
 #include <Raster/RasterDevice.h>
 #include <View/CameraView.h>
 #include "BladeApp.h"
-#include <BBLibc/BBLibc.h>
 #include <BBLibc/Name.h>
 #include <BBLibc/MessageManager.h>
 #include <BBLibc/NDataBase.h>
@@ -13,6 +12,7 @@
 #include <BBLibc/Resource.h>
 #include <BBLibc/ObjDscr.h>
 #include <BBLibc/ODataFile.h>
+#include <BBLibc/Vararg.h>
 #include <Entities/CameraEntity.h>
 #include <Entities/PersonEntity.h>
 #include "bld_misc_funcs.h"

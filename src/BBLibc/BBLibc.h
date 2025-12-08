@@ -13,8 +13,6 @@ struct PyObject;
 
 extern LIB_EXP int CheckErrors;
 
-LIB_EXP const char *vararg(const char *format, ...);
-
 LIB_EXP void OutputWin32Error(const char *message);
 
 LIB_EXP const char *GetConfigDirectory();

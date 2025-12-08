@@ -474,6 +474,10 @@
 				RelativePath=".\ResourceManager.h"
 				>
 			</File>
+			<File
+				RelativePath=".\Vararg.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"

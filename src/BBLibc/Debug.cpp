@@ -1,7 +1,11 @@
 #define BBLIBC_LIB_EXPORT
+#include "Vararg.h"
 #include "MessageManager.h"
 #include "MessageChannel.h"
+#include <stdio.h>
 
+
+static char Dest[1024];
 
 /*
 * Module:                 BBLibc.dll
@@ -23,6 +27,24 @@ B_MessageManager::~B_MessageManager()
 {
 }
 #endif
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10029BE0
+* VC++ mangling:          ?vararg@@YAPBDPBDZZ
+*/
+
+const char *vararg(const char *format, ...)
+{
+    va_list args;
+    va_start(args, format);
+
+    vsprintf(Dest, format, args);
+
+    va_end(args);
+
+    return Dest;
+}
 
 
 /*

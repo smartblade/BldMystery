@@ -7,6 +7,7 @@
 #include <BBLibc/BBLibc.h>
 #include <BBLibc/MessageManager.h>
 #include <BBLibc/ParticleGType.h>
+#include <BBLibc/Vararg.h>
 #include <math.h>
 #include <stdio.h>
 

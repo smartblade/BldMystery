@@ -6,10 +6,10 @@
 #include "WinClock.h"
 #include "sound_device.h"
 #include <View/CameraView.h>
-#include <BBLibc/BBLibc.h>
 #include <BBLibc/BitMap24.h>
 #include <BBLibc/MessageManager.h>
 #include <BBLibc/IDataFile.h>
+#include <BBLibc/Vararg.h>
 #include <BInputc.h>
 #include <NetMod/datanet.h>
 #include <NetMod/gamenet.h>
