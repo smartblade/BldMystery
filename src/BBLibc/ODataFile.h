@@ -11,8 +11,6 @@
 
 #define OFILE_CACHE_SIZE 0x4000
 
-struct PyObject;
-
 class LIB_EXP B_ODataFile
 {
 public:
@@ -55,10 +53,6 @@ LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const unsigned long &l);
 LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const unsigned int &i);
 LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const float &f);
 LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const double &f);
-LIB_EXP int GetnOpenedInputFiles();
-LIB_EXP int GetnOpenInputFiles();
-LIB_EXP void ResetnOpenedInputFiles();
-LIB_EXP int SetOnOpenInputFileFunc(PyObject *arg_1);
 
 
 #endif /* B_O_DATA_FILE_H */

@@ -18,17 +18,6 @@ int CheckErrors = 3;
 
 /*
 * Module:                 BBLibc.dll
-* Entry point:            0x100020F2
-* VC++ mangling:          ?RemoveOnOpenInputFileFunc@@YAXXZ
-*/
-#ifndef BLD_NATIVE
-void RemoveOnOpenInputFileFunc()
-{
-}
-#endif
-
-/*
-* Module:                 BBLibc.dll
 * Entry point:            0x10002740
 * VC++ mangling:          ?GetConfigDirectory@@YAPBDXZ
 */

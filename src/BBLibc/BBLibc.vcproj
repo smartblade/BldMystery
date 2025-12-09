@@ -357,6 +357,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\OpenedFilesFuncs.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Pal.cpp"
 				>
 			</File>
@@ -448,6 +452,10 @@
 			</File>
 			<File
 				RelativePath=".\ODataFile.h"
+				>
+			</File>
+			<File
+				RelativePath=".\OpenedFilesFuncs.h"
 				>
 			</File>
 			<File

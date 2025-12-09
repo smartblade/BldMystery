@@ -19,8 +19,6 @@ LIB_EXP const char *GetConfigDirectory();
 
 LIB_EXP const char *GetCurrentLanguage();
 
-LIB_EXP void RemoveOnOpenInputFileFunc();
-
 LIB_EXP PyObject *CallPythonObject(PyObject *func, PyObject *args);
 
 
