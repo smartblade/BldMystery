@@ -68,11 +68,18 @@ B_ODataFile::B_ODataFile(const char *file_name, int flags)
 * Entry point:            0x10001DA0
 * VC++ mangling:          ?WriteCacheBlock@B_ODataFile@@AAEXXZ
 */
-#ifndef BLD_NATIVE
+
 void B_ODataFile::WriteCacheBlock()
 {
+    if (this->posInCacheBlock == 0)
+    {
+        return;
+    }
+    write(this->fd, &this->fileCache, this->posInCacheBlock);
+    this->cacheBlockStartPos += this->posInCacheBlock;
+    this->posInCacheBlock = 0;
 }
-#endif
+
 
 /*
 * Module:                 BBLibc.dll

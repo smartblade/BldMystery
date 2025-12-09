@@ -686,46 +686,7 @@ l100014CD: pop edi
 ;
 ;* Export: ?WriteCacheBlock@B_ODataFile@@AAEXXZ, 011D
 ;
-l10001DA0 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           cmp dword ptr [eax+00000400Ch], 000000000h
-           jne l10001DB5
-           jmp l10001DFD
-;
-;* Jump:
-; 10001DB1(C) 
-;
-l10001DB5: mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ecx+00000400Ch]
-           push edx
-           mov eax, dword ptr [ebp-004h]
-           add eax, 000000008h
-           push eax
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ecx]
-           push edx
-           call [__imp__write]; [BICRT._write].
-           add esp, 00000000Ch
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [eax+000004008h]
-           mov edx, dword ptr [ebp-004h]
-           add ecx, dword ptr [edx+00000400Ch]
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+000004008h], ecx
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+00000400Ch], 000000000h
-;
-;* Jump:
-; 10001DB3(U) 
-;
-l10001DFD: mov esp, ebp
-           pop ebp
-           ret
-l10001DA0 ENDP
+           call l10001DA0; Implemented in c++ code
 ;
 ;* Export: ?Seek@B_ODataFile@@QAEJJ@Z, 010C
 ;

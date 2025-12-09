@@ -15,7 +15,11 @@ class LIB_EXP B_ODataFile
 {
 public:
     B_ODataFile(const char *file_name, int flags);
+
+private:
     void WriteCacheBlock();
+
+public:
     long Seek(long arg_1);
     ~B_ODataFile();
     void Write(const void *data, unsigned int size);
