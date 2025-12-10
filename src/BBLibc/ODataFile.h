@@ -20,7 +20,7 @@ private:
     void WriteCacheBlock();
 
 public:
-    long Seek(long arg_1);
+    long Seek(long position);
     ~B_ODataFile();
     void Write(const void *data, unsigned int size);
     void Flush();

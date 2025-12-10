@@ -86,12 +86,27 @@ void B_ODataFile::WriteCacheBlock()
 * Entry point:            0x10001E01
 * VC++ mangling:          ?Seek@B_ODataFile@@QAEJJ@Z
 */
-#ifndef BLD_NATIVE
-long B_ODataFile::Seek(long arg_1)
+
+long B_ODataFile::Seek(long position)
 {
-    return 0;
+    if (
+        static_cast<unsigned int>(position) > this->cacheBlockStartPos &&
+        static_cast<unsigned int>(position) <
+            this->cacheBlockStartPos + OFILE_CACHE_SIZE
+    )
+    {
+        this->posInCacheBlock =
+            static_cast<unsigned int>(position) - this->cacheBlockStartPos;
+    }
+    else
+    {
+        this->cacheBlockStartPos = static_cast<unsigned int>(position);
+        this->posInCacheBlock = 0;
+        lseek(this->fd, position, SEEK_SET);
+    }
+    return static_cast<long>(this->cacheBlockStartPos + this->posInCacheBlock);
 }
-#endif
+
 
 /*
 * Module:                 BBLibc.dll

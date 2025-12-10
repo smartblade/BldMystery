@@ -690,55 +690,7 @@ l100014CD: pop edi
 ;
 ;* Export: ?Seek@B_ODataFile@@QAEJJ@Z, 010C
 ;
-l10001E01 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           cmp ecx, dword ptr [eax+000004008h]
-           jbe l10001E40
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [edx+000004008h]
-           add eax, 000004000h
-           cmp dword ptr [ebp+008h], eax
-           jnb l10001E40
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ebp+008h]
-           sub edx, dword ptr [ecx+000004008h]
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+00000400Ch], edx
-           jmp l10001E6E
-;
-;* Jump:
-; 10001E14(C), 10001E27(C) 
-;
-l10001E40: mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ebp+008h]
-           mov dword ptr [ecx+000004008h], edx
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+00000400Ch], 000000000h
-           push 000000000h
-           mov ecx, dword ptr [ebp+008h]
-           push ecx
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [edx]
-           push eax
-           call [__imp__lseek]; [BICRT._lseek].
-           add esp, 00000000Ch
-;
-;* Jump:
-; 10001E3E(U) 
-;
-l10001E6E: mov ecx, dword ptr [ebp-004h]
-           mov eax, dword ptr [ecx+000004008h]
-           mov edx, dword ptr [ebp-004h]
-           add eax, dword ptr [edx+00000400Ch]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l10001E01 ENDP
+           call l10001E01; Implemented in c++ code
 ;
 ;* Call:
 ; 10001F51, 10001F6A, 10001F8F, 10001FA6, 10001FBC, 10001FD2, 10001FE8, 10001FFE, 
