@@ -164,12 +164,13 @@ B_ODataFile &operator <<(B_ODataFile &file, const char &c)
 * Entry point:            0x10001F74
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@PBD@Z
 */
-#ifndef BLD_NATIVE
+
 B_ODataFile &operator <<(B_ODataFile &file, const char *c)
 {
+    file.Write(c, static_cast<unsigned int>(strlen(c)));
     return file;
 }
-#endif
+
 
 
 /*

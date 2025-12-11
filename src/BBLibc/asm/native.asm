@@ -711,26 +711,7 @@ l100014CD: pop edi
 ;
 ;* Export: ??6@YAAAVB_ODataFile@@AAV0@PBD@Z, 0072
 ;
-l10001F74 PROC
-           push ebp
-           mov ebp, esp
-           push edi
-           mov edi, dword ptr [ebp+00Ch]
-           or ecx, 0FFFFFFFFh
-           xor eax, eax
-           repnz scasb
-           not ecx
-           add ecx, 0FFFFFFFFh
-           push ecx
-           mov eax, dword ptr [ebp+00Ch]
-           push eax
-           mov ecx, dword ptr [ebp+008h]
-           call l10001E86
-           mov eax, dword ptr [ebp+008h]
-           pop edi
-           pop ebp
-           ret
-l10001F74 ENDP
+           call l10001F74; Implemented in c++ code
 ;
 ;* Call:
 ; 100091FB, 10009204, 1000920D, 10027523, 1002752C, 10027535, 10027924, 1002792D, 
