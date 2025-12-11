@@ -113,14 +113,38 @@ long B_ODataFile::Seek(long position)
 * Entry point:            0x10001E86
 * VC++ mangling:          ?Write@B_ODataFile@@QAEXPBXI@Z
 */
-#ifndef BLD_NATIVE
+
 void B_ODataFile::Write(const void *data, unsigned int size)
 {
-    if (fd != -1) {
-        _write(fd, data, size);
+    if (size == 0)
+    {
+        return;
     }
+    if (size < OFILE_CACHE_SIZE - this->posInCacheBlock)
+    {
+        memcpy(
+            &this->fileCache[this->posInCacheBlock],
+            data,
+            static_cast<size_t>(size)
+        );
+        this->posInCacheBlock += size;
+        return;
+    }
+    unsigned int remainingCache = OFILE_CACHE_SIZE - this->posInCacheBlock;
+    if (remainingCache != 0)
+    {
+        memcpy(
+            &this->fileCache[this->posInCacheBlock],
+            data,
+            static_cast<size_t>(remainingCache)
+        );
+        this->posInCacheBlock = OFILE_CACHE_SIZE;
+        size -= remainingCache;
+    }
+    this->WriteCacheBlock();
+    this->Write(&static_cast<const char *>(data)[remainingCache], size);
 }
-#endif
+
 
 /*
 * Module:                 BBLibc.dll

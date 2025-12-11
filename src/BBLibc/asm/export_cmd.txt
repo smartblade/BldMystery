@@ -1,4 +1,3 @@
-/EXPORT:?Write@B_ODataFile@@QAEXPBXI@Z=?Write@B_ODataFile@@QAEXPBXI@Z
 /EXPORT:??6@YAAAVB_ODataFile@@AAV0@PBD@Z=??6@YAAAVB_ODataFile@@AAV0@PBD@Z
 /EXPORT:?Flush@B_ODataFile@@QAEXXZ=?Flush@B_ODataFile@@QAEXXZ
 /EXPORT:??1B_ODataFile@@QAE@XZ=??1B_ODataFile@@QAE@XZ
