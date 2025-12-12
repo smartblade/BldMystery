@@ -11,5 +11,5 @@ struct PyObject;
 LIB_EXP int GetnOpenedInputFiles();
 LIB_EXP int GetnOpenInputFiles();
 LIB_EXP void ResetnOpenedInputFiles();
-LIB_EXP int SetOnOpenInputFileFunc(PyObject *arg_1);
+LIB_EXP int SetOnOpenInputFileFunc(PyObject *func);
 LIB_EXP void RemoveOnOpenInputFileFunc();

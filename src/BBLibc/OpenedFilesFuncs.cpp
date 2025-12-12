@@ -44,12 +44,12 @@ void ResetnOpenedInputFiles()
 * Entry point:            0x100020E1
 * VC++ mangling:          ?SetOnOpenInputFileFunc@@YAHPAUPyObject@@@Z
 */
-#ifndef BLD_NATIVE
-int SetOnOpenInputFileFunc(PyObject *arg_1)
+
+int SetOnOpenInputFileFunc(PyObject *func)
 {
-    return 0;
+    return B_IDataFile::SetOnOpenFunc(func);
 }
-#endif
+
 
 /*
 * Module:                 BBLibc.dll

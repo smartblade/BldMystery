@@ -822,16 +822,7 @@ l100014CD: pop edi
 ;
 ;* Export: ?SetOnOpenInputFileFunc@@YAHPAUPyObject@@@Z, 0113
 ;
-l100020E1 PROC
-           push ebp
-           mov ebp, esp
-           mov eax, dword ptr [ebp+008h]
-           push eax
-           call l10001023
-           add esp, 000000004h
-           pop ebp
-           ret
-l100020E1 ENDP
+           call l100020E1; Implemented in c++ code
 ;
 ;* Call:
 ; 1003EADC 
