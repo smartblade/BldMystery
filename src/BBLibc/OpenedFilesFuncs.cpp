@@ -20,12 +20,12 @@ int GetnOpenedInputFiles()
 * Entry point:            0x100020CD
 * VC++ mangling:          ?GetnOpenInputFiles@@YAHXZ
 */
-#ifndef BLD_NATIVE
+
 int GetnOpenInputFiles()
 {
-    return 0;
+    return B_IDataFile::GetnOpenFiles();
 }
-#endif
+
 
 /*
 * Module:                 BBLibc.dll

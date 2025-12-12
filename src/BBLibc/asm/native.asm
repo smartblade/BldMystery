@@ -808,13 +808,7 @@ l100014CD: pop edi
 ;
 ;* Export: ?GetnOpenInputFiles@@YAHXZ, 00D1
 ;
-l100020CD PROC
-           push ebp
-           mov ebp, esp
-           call l10001019
-           pop ebp
-           ret
-l100020CD ENDP
+           call l100020CD; Implemented in c++ code
 ;
 ;* Call:
 ; 1003EA14 
