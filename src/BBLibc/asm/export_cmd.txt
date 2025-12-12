@@ -1,4 +1,3 @@
-/EXPORT:?Flush@B_ODataFile@@QAEXXZ=?Flush@B_ODataFile@@QAEXXZ
 /EXPORT:??1B_ODataFile@@QAE@XZ=??1B_ODataFile@@QAE@XZ
 /EXPORT:?GetnOpenedInputFiles@@YAHXZ=?GetnOpenedInputFiles@@YAHXZ
 /EXPORT:?GetnOpenInputFiles@@YAHXZ=?GetnOpenInputFiles@@YAHXZ

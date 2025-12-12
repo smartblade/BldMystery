@@ -786,22 +786,7 @@ l100014CD: pop edi
 ;
 ;* Export: ?Flush@B_ODataFile@@QAEXXZ, 00B5
 ;
-l10002060 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov ecx, dword ptr [ebp-004h]
-           call l10001DA0
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [eax]
-           push ecx
-           call [__imp__commit]; [BICRT._commit].
-           add esp, 000000004h
-           mov esp, ebp
-           pop ebp
-           ret
-l10002060 ENDP
+           call l10002060; Implemented in c++ code
 ;
 ;* Call:
 ; 10005CB8, 1000631D, 10006439, 100273C9, 100275AC, 1002777E, 100277D6, 100279A1, 

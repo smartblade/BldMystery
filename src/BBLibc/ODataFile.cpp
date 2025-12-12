@@ -295,11 +295,13 @@ B_ODataFile &operator <<(B_ODataFile &file, const double &f)
 * Entry point:            0x10002060
 * VC++ mangling:          ?Flush@B_ODataFile@@QAEXXZ
 */
-#ifndef BLD_NATIVE
+
 void B_ODataFile::Flush()
 {
+    this->WriteCacheBlock();
+    _commit(this->fd);
 }
-#endif
+
 
 /*
 * Module:                 BBLibc.dll
