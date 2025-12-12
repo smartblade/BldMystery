@@ -829,13 +829,7 @@ l100014CD: pop edi
 ;
 ;* Export: ?RemoveOnOpenInputFileFunc@@YAXXZ, 00FF
 ;
-l100020F2 PROC
-           push ebp
-           mov ebp, esp
-           call l10001096
-           pop ebp
-           ret
-l100020F2 ENDP
+           call l100020F2; Implemented in c++ code
 ;
            int 03h
            int 03h

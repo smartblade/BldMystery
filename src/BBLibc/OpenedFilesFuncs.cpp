@@ -56,8 +56,8 @@ int SetOnOpenInputFileFunc(PyObject *func)
 * Entry point:            0x100020F2
 * VC++ mangling:          ?RemoveOnOpenInputFileFunc@@YAXXZ
 */
-#ifndef BLD_NATIVE
+
 void RemoveOnOpenInputFileFunc()
 {
+    B_IDataFile::RemoveOnOpenFunc();
 }
-#endif

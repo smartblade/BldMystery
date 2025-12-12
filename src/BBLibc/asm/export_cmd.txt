@@ -1,4 +1,3 @@
-/EXPORT:?RemoveOnOpenInputFileFunc@@YAXXZ=?RemoveOnOpenInputFileFunc@@YAXXZ
 /EXPORT:??4B_IDataFile@@QAEAAV0@ABV0@@Z=??4B_IDataFile@@QAEAAV0@ABV0@@Z
 /EXPORT:?OK@B_ODataFile@@QBEIXZ=?OK@B_ODataFile@@QBEIXZ
 /EXPORT:?GetFileName@B_ODataFile@@QBEPBDXZ=l10002270
