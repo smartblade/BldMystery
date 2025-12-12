@@ -308,14 +308,17 @@ void B_ODataFile::Flush()
 * Entry point:            0x10002082
 * VC++ mangling:          ??1B_ODataFile@@QAE@XZ
 */
-#ifndef BLD_NATIVE
+
 B_ODataFile::~B_ODataFile()
 {
-    if (fd != -1) {
-        _close(fd);
+    free(this->file_name);
+    if (this->OK())
+    {
+        this->WriteCacheBlock();
+        close(this->fd);
     }
 }
-#endif
+
 
 /*
 * Module:                 BBLibc.dll

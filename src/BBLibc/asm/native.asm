@@ -794,37 +794,7 @@ l100014CD: pop edi
 ;
 ;* Export: ??1B_ODataFile@@QAE@XZ, 0038
 ;
-l10002082 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [eax+004h]
-           push ecx
-           call [__imp_free]; [BICRT.free].
-           add esp, 000000004h
-           mov edx, dword ptr [ebp-004h]
-           xor eax, eax
-           cmp dword ptr [edx], 0FFFFFFFFh
-           setne al
-           test eax, eax
-           je l100020BF
-           mov ecx, dword ptr [ebp-004h]
-           call l10001DA0
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ecx]
-           push edx
-           call [__imp__close]; [BICRT._close].
-           add esp, 000000004h
-;
-;* Jump:
-; 100020A6(C) 
-;
-l100020BF: mov esp, ebp
-           pop ebp
-           ret
-l10002082 ENDP
+           call l10002082; Implemented in c++ code
 ;
 ;* Call:
 ; 1003E982 
