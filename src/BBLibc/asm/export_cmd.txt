@@ -1,4 +1,3 @@
-/EXPORT:?GetnOpenedInputFiles@@YAHXZ=?GetnOpenedInputFiles@@YAHXZ
 /EXPORT:?GetnOpenInputFiles@@YAHXZ=?GetnOpenInputFiles@@YAHXZ
 /EXPORT:?ResetnOpenedInputFiles@@YAXXZ=?ResetnOpenedInputFiles@@YAXXZ
 /EXPORT:?SetOnOpenInputFileFunc@@YAHPAUPyObject@@@Z=?SetOnOpenInputFileFunc@@YAHPAUPyObject@@@Z

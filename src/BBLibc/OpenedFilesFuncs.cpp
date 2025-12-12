@@ -1,5 +1,6 @@
 #define BBLIBC_LIB_EXPORT
 #include "OpenedFilesFuncs.h"
+#include "IDataFile.h"
 
 
 /*
@@ -7,12 +8,12 @@
 * Entry point:            0x100020C3
 * VC++ mangling:          ?GetnOpenedInputFiles@@YAHXZ
 */
-#ifndef BLD_NATIVE
+
 int GetnOpenedInputFiles()
 {
-    return 0;
+    return B_IDataFile::GetnOpenedFiles();
 }
-#endif
+
 
 /*
 * Module:                 BBLibc.dll
