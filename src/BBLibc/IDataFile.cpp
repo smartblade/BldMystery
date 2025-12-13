@@ -522,16 +522,3 @@ B_IDataFile::~B_IDataFile()
 {
     this->Close();
 }
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10002220
-* VC++ mangling:          ??4B_IDataFile@@QAEAAV0@ABV0@@Z
-*/
-#ifndef BLD_NATIVE
-B_IDataFile &B_IDataFile::operator =(B_IDataFile const &file)
-{
-    return *this;
-}
-#endif

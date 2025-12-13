@@ -987,24 +987,7 @@ l10002100 ENDP
 ;
 ;* Export: ??4B_IDataFile@@QAEAAV0@ABV0@@Z, 0041
 ;
-l10002220 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           push esi
-           push edi
-           mov dword ptr [ebp-004h], ecx
-           mov edi, dword ptr [ebp-004h]
-           mov esi, dword ptr [ebp+008h]
-           mov ecx, 000001006h
-           rep movsd
-           mov eax, dword ptr [ebp-004h]
-           pop edi
-           pop esi
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l10002220 ENDP
+           call l10002220; Implemented in c++ code
 ;
            int 03h
            int 03h
