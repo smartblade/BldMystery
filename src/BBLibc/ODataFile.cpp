@@ -318,16 +318,3 @@ B_ODataFile::~B_ODataFile()
         close(this->fd);
     }
 }
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10002250
-* VC++ mangling:          ?OK@B_ODataFile@@QBEIXZ
-*/
-#ifndef BLD_NATIVE
-unsigned int B_ODataFile::OK() const
-{
-    return fd != -1;
-}
-#endif

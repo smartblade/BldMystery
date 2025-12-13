@@ -1007,20 +1007,7 @@ l10002100 ENDP
 ;
 ;* Export: ?OK@B_ODataFile@@QBEIXZ, 00ED
 ;
-l10002250 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           xor ecx, ecx
-           cmp dword ptr [eax], 0FFFFFFFFh
-           setne cl
-           mov eax, ecx
-           mov esp, ebp
-           pop ebp
-           ret
-l10002250 ENDP
+           call l10002250; Implemented in c++ code
 ;
            int 03h
            int 03h

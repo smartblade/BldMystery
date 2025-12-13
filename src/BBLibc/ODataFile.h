@@ -24,7 +24,18 @@ public:
     ~B_ODataFile();
     void Write(const void *data, unsigned int size);
     void Flush();
-    unsigned int OK() const;
+
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10002250
+    * VC++ mangling:          ?OK@B_ODataFile@@QBEIXZ
+    */
+
+    unsigned int OK() const
+    {
+        return this->fd != -1;
+    }
 
 
     /*
