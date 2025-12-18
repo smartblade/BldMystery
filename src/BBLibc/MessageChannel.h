@@ -29,6 +29,33 @@ public:
         unknown0Ch = 1;
     }
 
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x100024F0
+    * VC++ mangling:          ??0B_MessageChannel@@QAE@XZ
+    */
+#ifndef BLD_NATIVE
+    B_MessageChannel()
+    {
+    }
+#else
+    B_MessageChannel();
+#endif
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10002540
+    * VC++ mangling:          ??8B_MessageChannel@@QBEHABV0@@Z
+    */
+#ifndef BLD_NATIVE
+    int operator ==(const B_MessageChannel &arg_1) const
+    {
+        return 0;
+    }
+#else
+    int operator ==(const B_MessageChannel &arg_1) const;
+#endif
     /*
     * Module:                 BBLibc.dll
     * Entry point:            0x10002550

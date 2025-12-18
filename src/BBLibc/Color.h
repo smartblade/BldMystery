@@ -43,6 +43,51 @@ public:
 
     /*
     * Module:                 BBLibc.dll
+    * Entry point:            0x10006A70
+    * VC++ mangling:          ??8B_Color@@QAEIABV0@@Z
+    */
+#ifndef BLD_NATIVE
+    unsigned int operator ==(const B_Color &arg_1)
+    {
+        return 0;
+    }
+#else
+    unsigned int operator ==(const B_Color &arg_1);
+#endif
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10006AD0
+    * VC++ mangling:          ??9B_Color@@QAEIABV0@@Z
+    */
+#ifndef BLD_NATIVE
+    unsigned int operator !=(const B_Color &arg_1)
+    {
+        return 0;
+    }
+#else
+    unsigned int operator !=(const B_Color &arg_1);
+#endif
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10006B30
+    * VC++ mangling:          ?SetColor@B_Color@@QAEXEEE@Z
+    */
+#ifndef BLD_NATIVE
+    void SetColor(unsigned char arg_1, unsigned char arg_2, unsigned char arg_3)
+    {
+    }
+#else
+    void SetColor(
+        unsigned char arg_1,
+        unsigned char arg_2,
+        unsigned char arg_3
+    );
+#endif
+
+    /*
+    * Module:                 BBLibc.dll
     * Entry point:            0x10006B60
     * VC++ mangling:          ??0B_Color@@QAE@ABV0@@Z
     */
