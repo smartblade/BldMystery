@@ -11,19 +11,16 @@
 
 #define OFILE_CACHE_SIZE 0x4000
 
-struct PyObject;
-
 class LIB_EXP B_ODataFile
 {
 public:
     B_ODataFile(const char *file_name, int flags);
     void WriteCacheBlock();
-    long Seek(long arg_1);
+    long Seek(long position);
     ~B_ODataFile();
     void Write(const void *data, unsigned int size);
     void Flush();
     unsigned int OK() const;
-
 
     /*
     * Module:                 BBLibc.dll
@@ -38,6 +35,7 @@ public:
 #else
     const char *GetFileName() const;
 #endif
+
 
     /*
     *
@@ -72,7 +70,7 @@ LIB_EXP B_ODataFile &operator <<(B_ODataFile &file, const double &f);
 LIB_EXP int GetnOpenedInputFiles();
 LIB_EXP int GetnOpenInputFiles();
 LIB_EXP void ResetnOpenedInputFiles();
-LIB_EXP int SetOnOpenInputFileFunc(PyObject *arg_1);
+LIB_EXP int SetOnOpenInputFileFunc(PyObject *func);
 
 
 #endif /* B_O_DATA_FILE_H */

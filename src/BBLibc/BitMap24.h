@@ -45,8 +45,6 @@ private:
     size_t capacity_; // maximum capacity of the array
 };
 
-class B_BitMap;
-class B_Color;
 class B_IDataFile;
 class B_ODataFile;
 

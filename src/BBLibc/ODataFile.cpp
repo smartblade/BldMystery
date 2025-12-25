@@ -80,7 +80,7 @@ void B_ODataFile::WriteCacheBlock()
 * VC++ mangling:          ?Seek@B_ODataFile@@QAEJJ@Z
 */
 #ifndef BLD_NATIVE
-long B_ODataFile::Seek(long arg_1)
+long B_ODataFile::Seek(long position)
 {
     return 0;
 }
@@ -309,7 +309,7 @@ void ResetnOpenedInputFiles()
 * VC++ mangling:          ?SetOnOpenInputFileFunc@@YAHPAUPyObject@@@Z
 */
 #ifndef BLD_NATIVE
-int SetOnOpenInputFileFunc(PyObject *arg_1)
+int SetOnOpenInputFileFunc(PyObject *func)
 {
     return 0;
 }

@@ -12,7 +12,6 @@
 #include <export.h>
 #undef BUILD_LIB
 
-class B_BitMap24;
 class B_IDataFile;
 class B_ODataFile;
 

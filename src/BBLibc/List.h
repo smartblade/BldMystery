@@ -146,6 +146,7 @@ public:
         return *this;
     }
 
+    void DeleteList(unsigned int arg_1);
 
     /*
     *
@@ -158,7 +159,6 @@ public:
     */
 #ifndef BLD_NATIVE
 #endif
-    void DeleteList(unsigned int arg_1);
     unsigned int Add(B_ListElement *element);
     unsigned int AddAfter(B_ListElement *existing, B_ListElement *newElement);
     unsigned int AddBefore(B_ListElement *existing, B_ListElement *newElement);
