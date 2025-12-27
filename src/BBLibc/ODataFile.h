@@ -43,14 +43,12 @@ public:
     * Entry point:            0x10002270
     * VC++ mangling:          ?GetFileName@B_ODataFile@@QBEPBDXZ
     */
-#ifndef BLD_NATIVE
+
     const char *GetFileName() const
     {
-        return nullptr;
+        return this->file_name;
     }
-#else
-    const char *GetFileName() const;
-#endif
+
 
     /*
     *
