@@ -20,7 +20,7 @@
 * VC++ mangling:          ??0B_NamedObj@@QAE@XZ
 */
 
-B_NamedObj::B_NamedObj() : name()
+B_NamedObj::B_NamedObj()
 {
 }
 
