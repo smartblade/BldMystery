@@ -1,4 +1,3 @@
-/EXPORT:??0B_MessageChannel@@QAE@XZ=??0B_MessageChannel@@QAE@XZ
 /EXPORT:??8B_MessageChannel@@QBEHABV0@@Z=??8B_MessageChannel@@QBEHABV0@@Z
 /EXPORT:??1B_MessageManager@@QAE@XZ=??1B_MessageManager@@QAE@XZ
 /EXPORT:?GetConfigDirectory@@YAPBDXZ=?GetConfigDirectory@@YAPBDXZ

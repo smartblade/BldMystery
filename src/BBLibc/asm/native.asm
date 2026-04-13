@@ -1298,32 +1298,7 @@ l100024B2: pop ebp
 ;
 ;* Export: ??0B_MessageChannel@@QAE@XZ, 0017
 ;
-l100024F0 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000000Ch
-           mov dword ptr [ebp-00Ch], ecx
-           push offset g10049F08
-           lea ecx, [ebp-008h]
-           call l10003337
-           lea eax, [ebp-008h]
-           push eax
-           mov ecx, dword ptr [ebp-00Ch]
-           call l10003A07
-           lea ecx, [ebp-008h]
-           call l100039BA
-           mov ecx, dword ptr [ebp-00Ch]
-;
-;* String: "@&"
-;
-           mov dword ptr [ecx], offset g10042180
-           mov edx, dword ptr [ebp-00Ch]
-           mov dword ptr [edx+00Ch], 000000001h
-           mov eax, dword ptr [ebp-00Ch]
-           mov esp, ebp
-           pop ebp
-           ret
-l100024F0 ENDP
+           call l100024F0; Implemented in c++ code
 ;
            int 03h
            int 03h

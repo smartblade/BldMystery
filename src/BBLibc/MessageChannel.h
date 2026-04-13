@@ -37,13 +37,14 @@ public:
     * Entry point:            0x100024F0
     * VC++ mangling:          ??0B_MessageChannel@@QAE@XZ
     */
-#ifndef BLD_NATIVE
+
     B_MessageChannel()
+    :
+        B_NamedObj(B_Name(""))
     {
+        this->unknown0Ch = 1;
     }
-#else
-    B_MessageChannel();
-#endif
+
 
     /*
     * Module:                 BBLibc.dll
