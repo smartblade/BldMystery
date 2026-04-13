@@ -22,7 +22,11 @@ public:
     * VC++ mangling:          ??0B_ListElement@@QAE@XZ
     */
 
-    B_ListElement() : list(nullptr), next(nullptr), prev(nullptr)
+    B_ListElement()
+    :
+        list(nullptr),
+        next(nullptr),
+        prev(nullptr)
     {
     }
 
@@ -58,7 +62,10 @@ public:
     */
 
     B_ListElement(const B_ListElement &other)
-        : list(other.list), next(other.next), prev(other.prev)
+    :
+        list(other.list),
+        next(other.next),
+        prev(other.prev)
     {
     }
 

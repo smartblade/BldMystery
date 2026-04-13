@@ -24,7 +24,9 @@ public:
     * VC++ mangling:          ??0B_MessageChannel@@QAE@AAVB_Name@@@Z
     */
 
-    B_MessageChannel(B_Name &name) : B_NamedObj(name)
+    B_MessageChannel(B_Name &name)
+    :
+        B_NamedObj(name)
     {
         this->unknown0Ch = 1;
     }
@@ -77,7 +79,9 @@ public:
     */
 
     B_MessageChannel(const B_MessageChannel &that)
-        : B_NamedObj(that), unknown0Ch(that.unknown0Ch)
+    :
+        B_NamedObj(that),
+        unknown0Ch(that.unknown0Ch)
     {
     }
 

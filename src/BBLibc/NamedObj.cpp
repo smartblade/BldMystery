@@ -31,7 +31,9 @@ B_NamedObj::B_NamedObj()
 * VC++ mangling:          ??0B_NamedObj@@QAE@ABVB_Name@@@Z
 */
 
-B_NamedObj::B_NamedObj(const B_Name &name) : name(name)
+B_NamedObj::B_NamedObj(const B_Name &name)
+:
+    name(name)
 {
 }
 

@@ -24,7 +24,11 @@ public:
     * VC++ mangling:          ??0B_Color@@QAE@XZ
     */
 
-    B_Color() : r(0), g(0), b(0)
+    B_Color()
+    :
+        r(0),
+        g(0),
+        b(0)
     {
     }
 
@@ -35,7 +39,11 @@ public:
     * VC++ mangling:          ??0B_Color@@QAE@EEE@Z
     */
 
-    B_Color(byte r, byte g, byte b) : r(r), g(g), b(b)
+    B_Color(byte r, byte g, byte b)
+    :
+        r(r),
+        g(g),
+        b(b)
     {
         this->MakeCons();
     }
@@ -92,7 +100,11 @@ public:
     * VC++ mangling:          ??0B_Color@@QAE@ABV0@@Z
     */
 
-    B_Color(const B_Color &that) : r(that.r), g(that.g), b(that.b)
+    B_Color(const B_Color &that)
+    :
+        r(that.r),
+        g(that.g),
+        b(that.b)
     {
     }
 
