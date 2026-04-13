@@ -26,7 +26,7 @@ public:
 
     B_MessageChannel(B_Name &name) : B_NamedObj(name)
     {
-        unknown0Ch = 1;
+        this->unknown0Ch = 1;
     }
 
 
