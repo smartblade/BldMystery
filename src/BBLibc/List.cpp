@@ -32,7 +32,8 @@
 
 B_ListElement::~B_ListElement()
 {
-    if (this->list != nullptr) {
+    if (this->list != nullptr)
+    {
         this->list->Remove(this, 0);
     }
 }
