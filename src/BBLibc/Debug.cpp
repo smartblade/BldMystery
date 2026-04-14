@@ -19,17 +19,6 @@ B_MessageManager mout;
 
 /*
 * Module:                 BBLibc.dll
-* Entry point:            0x10002710
-* VC++ mangling:          ??1B_MessageManager@@QAE@XZ
-*/
-#ifndef BLD_NATIVE
-B_MessageManager::~B_MessageManager()
-{
-}
-#endif
-
-/*
-* Module:                 BBLibc.dll
 * Entry point:            0x10029BE0
 * VC++ mangling:          ?vararg@@YAPBDPBDZZ
 */

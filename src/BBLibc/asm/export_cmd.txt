@@ -1,4 +1,3 @@
-/EXPORT:??1B_MessageManager@@QAE@XZ=??1B_MessageManager@@QAE@XZ
 /EXPORT:?GetConfigDirectory@@YAPBDXZ=?GetConfigDirectory@@YAPBDXZ
 /EXPORT:?GetCurrentLanguage@@YAPBDXZ=?GetCurrentLanguage@@YAPBDXZ
 /EXPORT:?DeleteList@B_List@@QAEXI@Z=?DeleteList@B_List@@QAEXI@Z

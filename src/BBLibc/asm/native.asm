@@ -1492,15 +1492,7 @@ l10002640 ENDP
 ;
 ;* Export: ??1B_MessageManager@@QAE@XZ, 0035
 ;
-l10002710 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov esp, ebp
-           pop ebp
-           ret
-l10002710 ENDP
+           call l10002710; Implemented in c++ code
 ;
            int 03h
            int 03h
