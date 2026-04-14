@@ -1315,16 +1315,7 @@ l100024B2: pop ebp
 ;
 ;* Export: ??8B_MessageChannel@@QBEHABV0@@Z, 0075
 ;
-l10002540 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           xor eax, eax
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l10002540 ENDP
+           call l10002540; Implemented in c++ code
 ;
            int 03h
 ;

@@ -51,14 +51,13 @@ public:
     * Entry point:            0x10002540
     * VC++ mangling:          ??8B_MessageChannel@@QBEHABV0@@Z
     */
-#ifndef BLD_NATIVE
-    int operator ==(const B_MessageChannel &arg_1) const
+
+    int operator ==(const B_MessageChannel &that) const
     {
-        return 0;
+        return false;
     }
-#else
-    int operator ==(const B_MessageChannel &arg_1) const;
-#endif
+
+
     /*
     * Module:                 BBLibc.dll
     * Entry point:            0x10002550
