@@ -15,10 +15,6 @@ extern LIB_EXP int CheckErrors;
 
 LIB_EXP void OutputWin32Error(const char *message);
 
-LIB_EXP const char *GetConfigDirectory();
-
-LIB_EXP const char *GetCurrentLanguage();
-
 LIB_EXP PyObject *CallPythonObject(PyObject *func, PyObject *args);
 
 

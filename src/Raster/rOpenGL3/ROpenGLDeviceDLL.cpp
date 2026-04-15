@@ -5,6 +5,7 @@
 #include <AnalyticGeometry/ViewPose.h>
 #include <View/CameraView.h>
 #include <BBLibc/BBLibc.h>
+#include <BBLibc/Config.h>
 #include <BBLibc/MessageManager.h>
 #include <BBLibc/ParticleGType.h>
 #include <BBLibc/Vararg.h>

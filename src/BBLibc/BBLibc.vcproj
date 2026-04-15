@@ -321,6 +321,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Config.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Debug.cpp"
 				>
 			</File>
@@ -408,6 +412,10 @@
 			</File>
 			<File
 				RelativePath=".\Color.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Config.h"
 				>
 			</File>
 			<File

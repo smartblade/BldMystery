@@ -5,8 +5,6 @@
 #include <crtdbg.h>
 #include <direct.h>
 
-char currDirBuffer[260]; // 104h = 260 bytes
-bool currDirInitialised_1004A110 = false;
 
 /*
 * Module:                 BBLibc.dll
@@ -15,30 +13,6 @@ bool currDirInitialised_1004A110 = false;
 */
 int CheckErrors = 3;
 
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10002740
-* VC++ mangling:          ?GetConfigDirectory@@YAPBDXZ
-*/
-#ifndef BLD_NATIVE
-const char *GetConfigDirectory()
-{
-    return currDirBuffer;
-}
-#endif
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x100028EC
-* VC++ mangling:          ?GetCurrentLanguage@@YAPBDXZ
-*/
-#ifndef BLD_NATIVE
-const char *GetCurrentLanguage()
-{
-    return 0;
-}
-#endif
 
 /*
 * Module:                 BBLibc.dll
