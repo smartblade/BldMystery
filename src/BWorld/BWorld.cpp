@@ -407,8 +407,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
         unsigned int num_lights;
         unsigned int i;
 
-        world->unknown187C = 0;
-        world->unknown1880 = 0;
+        world->lastTime = 0;
         B_PtrArray<atmosphere_t> *atms = &world->atmospheres;
         if (atms->num_alloc != 0)
         {
