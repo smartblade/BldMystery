@@ -162,6 +162,24 @@ extern int gbl_action_areas_bit_mask;
 
 /*
 * Module:                 Blade.exe
+* Data address:           0x005E338C
+*/
+extern unsigned int gbl_node_count;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x005E3390
+*/
+extern B_BoundingBox* gbl_current_query_box;
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x005E3394
+*/
+extern unsigned int gbl_oct_tree_query_id;
+
+/*
+* Module:                 Blade.exe
 * Data address:           0x007072A8
 */
 extern B_PtrArray<anim_t> gbl_anims;
@@ -285,3 +303,4 @@ extern B_WinApp *gbl_application;
 #ifdef __cplusplus
 }
 #endif
+

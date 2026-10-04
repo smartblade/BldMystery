@@ -34,15 +34,26 @@ class B_Sector : public B_PtrArray<B_Surface>
 {
 public:
     B_Sector();
+    virtual ~B_Sector();
     void CalculateBoundingBox();
 
-    char unknownFields[8];
+    int visibilityGroup;
+    int unknownField01C;
     unsigned long groupId;
-    char unknownFields24[56];
+    double unknownField24;
+    B_Plane unknown02C;
+    char unknownFields4C[0x4];
+    int lastQueryId;
+    int isActive;
     B_BoundingBox boundingBox;
-    char unknownFields08C[0x18];
+    int unknownField08C;
+    int unknownField090;
+    char padding[0x10];
     int atmosphere;
-    char unknownFields0A8[0x014];
+    int unknownField0A8;
+    int unknownField0AC;
+    double ambientIntensity;
+    int unknownField0B8;
     B_SectorLights lights;
     char unknownFields1F4[0x10];
     unknown204 unknown204;
