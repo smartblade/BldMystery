@@ -472,14 +472,12 @@ void B_OctantNode::CollectSectorsAtPoint(
         {
             if (localPos.z < 10.0 && children[0] != nullptr) {
                 B_Vector childCenter(-childOffset, -childOffset, -childOffset);
-                B_Vector newLocalPos = localPos - childCenter;
-                children[0]->CollectSectorsAtPoint(newLocalPos, outList, childHalfSize);
+                children[0]->CollectSectorsAtPoint(localPos - childCenter, outList, childHalfSize);
             }
 
             if (localPos.z > -10.0 && children[1] != nullptr) {
                 B_Vector childCenter(-childOffset, -childOffset, childOffset);
-                B_Vector newLocalPos = localPos - childCenter;
-                children[1]->CollectSectorsAtPoint(newLocalPos, outList, childHalfSize);
+                children[1]->CollectSectorsAtPoint(localPos - childCenter, outList, childHalfSize);
             }
         }
 
@@ -487,14 +485,12 @@ void B_OctantNode::CollectSectorsAtPoint(
         {
             if (localPos.z < 10.0 && children[2] != nullptr) {
                 B_Vector childCenter(-childOffset, childOffset, -childOffset);
-                B_Vector newLocalPos = localPos - childCenter;
-                children[2]->CollectSectorsAtPoint(newLocalPos, outList, childHalfSize);
+                children[2]->CollectSectorsAtPoint(localPos - childCenter, outList, childHalfSize);
             }
 
             if (localPos.z > -10.0 && children[3] != nullptr) {
                 B_Vector childCenter(-childOffset, childOffset, childOffset);
-                B_Vector newLocalPos = localPos - childCenter;
-                children[3]->CollectSectorsAtPoint(newLocalPos, outList, childHalfSize);
+                children[3]->CollectSectorsAtPoint(localPos - childCenter, outList, childHalfSize);
             }
         }
     }
@@ -506,14 +502,12 @@ void B_OctantNode::CollectSectorsAtPoint(
 
             if (localPos.z < 10.0 && children[4] != nullptr) {
                 B_Vector childCenter(childOffset, -childOffset, -childOffset);
-                B_Vector newLocalPos = localPos - childCenter;
-                children[4]->CollectSectorsAtPoint(newLocalPos, outList, childHalfSize);
+                children[4]->CollectSectorsAtPoint(localPos - childCenter, outList, childHalfSize);
             }
 
             if (localPos.z > -10.0 && children[5] != nullptr) {
                 B_Vector childCenter(childOffset, -childOffset, childOffset);
-                B_Vector newLocalPos = localPos - childCenter;
-                children[5]->CollectSectorsAtPoint(newLocalPos, outList, childHalfSize);
+                children[5]->CollectSectorsAtPoint(localPos - childCenter, outList, childHalfSize);
             }
         }
 
@@ -522,14 +516,12 @@ void B_OctantNode::CollectSectorsAtPoint(
 
             if (localPos.z < 10.0 && children[6] != nullptr) {
                 B_Vector childCenter(childOffset, childOffset, -childOffset);
-                B_Vector newLocalPos = localPos - childCenter;
-                children[6]->CollectSectorsAtPoint(newLocalPos, outList, childHalfSize);
+                children[6]->CollectSectorsAtPoint(localPos - childCenter, outList, childHalfSize);
             }
 
             if (localPos.z > -10.0 && children[7] != nullptr) {
                 B_Vector childCenter(childOffset, childOffset, childOffset);
-                B_Vector newLocalPos = localPos - childCenter;
-                children[7]->CollectSectorsAtPoint(newLocalPos, outList, childHalfSize);
+                children[7]->CollectSectorsAtPoint(localPos - childCenter, outList, childHalfSize);
             }
         }
     }
