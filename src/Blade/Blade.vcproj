@@ -327,6 +327,10 @@
 				Name="AnalyticGeometry"
 				>
 				<File
+					RelativePath="..\AnalyticGeometry\BoundingBox.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\AnalyticGeometry\BoundingBox.h"
 					>
 				</File>
