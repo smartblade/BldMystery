@@ -284,7 +284,6 @@ void B_OctTree::Build(const B_Map& map, double minNodeSize)
     if (m_root != nullptr)
     {
         delete m_root;
-        m_root = nullptr;
     }
     m_halfSize = 0.0;
 
@@ -292,28 +291,24 @@ void B_OctTree::Build(const B_Map& map, double minNodeSize)
 
     if (gbl_world_points.points.size != 0)
     {
-        B_WorldPoint* points = gbl_world_points.points.elements;
-
-        double maxX = points[0].v.x;
-        double minX = points[0].v.x;
-        double maxY = points[0].v.y;
-        double minY = points[0].v.y;
-        double maxZ = points[0].v.z;
-        double minZ = points[0].v.z;
+        double maxX = gbl_world_points.points[0].v.x;
+        double minX = gbl_world_points.points[0].v.x;
+        double maxY = gbl_world_points.points[0].v.y;
+        double minY = gbl_world_points.points[0].v.y;
+        double maxZ = gbl_world_points.points[0].v.z;
+        double minZ = gbl_world_points.points[0].v.z;
 
         for (unsigned int i = 1; i < gbl_world_points.points.size; i++)
         {
-            maxX = max(maxX, points[i].v.x);
-            minX = min(minX, points[i].v.x);
-            maxY = max(maxY, points[i].v.y);
-            minY = min(minY, points[i].v.y);
-            maxZ = max(maxZ, points[i].v.z);
-            minZ = min(minZ, points[i].v.z);
+            maxX = max(maxX, gbl_world_points.points[i].v.x);
+            minX = min(minX, gbl_world_points.points[i].v.x);
+            maxY = max(maxY, gbl_world_points.points[i].v.y);
+            minY = min(minY, gbl_world_points.points[i].v.y);
+            maxZ = max(maxZ, gbl_world_points.points[i].v.z);
+            minZ = min(minZ, gbl_world_points.points[i].v.z);
         }
 
-        double maxExtent = max(maxX - minX, max(maxY - minY, maxZ - minZ));
-
-        m_halfSize = maxExtent + 2.0 * minNodeSize;
+        m_halfSize = max(maxX - minX, max(maxY - minY, maxZ - minZ)) + 2.0 * minNodeSize;
 
         m_center.x = (maxX + minX) * 0.5;
         m_center.y = (maxY + minY) * 0.5;
