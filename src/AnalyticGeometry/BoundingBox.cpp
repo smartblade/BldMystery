@@ -40,9 +40,8 @@ B_BoundingBox::B_BoundingBox()
 */
 
 B_BoundingBox::B_BoundingBox(const B_Vector& minCoords, const B_Vector& maxCoords)
+    : minCoords(minCoords), maxCoords(maxCoords)
 {
-    this->minCoords = minCoords;
-    this->maxCoords = maxCoords;
 }
 
 /*
