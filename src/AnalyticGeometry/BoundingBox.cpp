@@ -21,12 +21,9 @@ B_Sphere::B_Sphere() : radius(0.0)
 * VC++ mangling:          ??0B_BoundingBox@@QAE@XZ
 */
 
-#ifndef BLD_NATIVE
 B_BoundingBox::B_BoundingBox()
 {
-
 }
-#endif
 
 
 /*

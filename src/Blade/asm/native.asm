@@ -500,37 +500,7 @@ l00401540: pop edi
 ; 004F907C, 004F9309, 004F9D5E, 005202D1, 00520489, 0052AD0C, 0052B0DF, 00531C47, 
 ; 005324C8, 0053284E, 00543CA5, 00543E6B, 005662CA, 005760AF 
 ;
-l00401548 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000008h
-           mov dword ptr [ebp-008h], ecx
-           mov eax, dword ptr [ebp-008h]
-           mov dword ptr [eax], 000000000h
-           mov dword ptr [eax+004h], 000000000h
-           mov ecx, dword ptr [ebp-008h]
-           mov dword ptr [ecx+008h], 000000000h
-           mov dword ptr [ecx+00Ch], 000000000h
-           mov edx, dword ptr [ebp-008h]
-           mov dword ptr [edx+010h], 000000000h
-           mov dword ptr [edx+014h], 000000000h
-           mov eax, dword ptr [ebp-008h]
-           add eax, 000000018h
-           mov dword ptr [ebp-004h], eax
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx], 000000000h
-           mov dword ptr [ecx+004h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+008h], 000000000h
-           mov dword ptr [edx+00Ch], 000000000h
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+010h], 000000000h
-           mov dword ptr [eax+014h], 000000000h
-           mov eax, dword ptr [ebp-008h]
-           mov esp, ebp
-           pop ebp
-           ret
-l00401548 ENDP
+           call l00401548; Implemented in c++ code
 ;
 ;* Call:
 ; 0043C9D4, 0043CDF5, 0043ED6C, 00453172, 0049993D, 004B4F4A, 005184C2, 0053DEC5 
