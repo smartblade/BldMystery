@@ -41,11 +41,6 @@ public:
 class B_OctTreeSectorsList
 {
 public:
-    /*
-    * Module:                 Blade.exe
-    * Entry point:            0x00453264
-    * VC++ mangling:          ??0B_OctTreeSectorsList@@QAE@XZ
-    */
     B_OctTreeSectorsList();
 
     int BuildSurfaceCache(B_GlobalSurfaceCache* cache, const B_Sphere* sphere);
