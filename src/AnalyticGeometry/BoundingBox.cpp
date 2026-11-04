@@ -10,12 +10,8 @@
 * VC++ mangling:          ??0B_Sphere@@QAE@XZ
 */
 
-B_Sphere::B_Sphere()
+B_Sphere::B_Sphere() : radius(0.0)
 {
-    this->center.x = 0.0;
-    this->center.y = 0.0;
-    this->center.z = 0.0;
-    this->radius = 0.0;
 }
 
 
