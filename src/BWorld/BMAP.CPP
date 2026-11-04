@@ -49,7 +49,7 @@ B_Sector::B_Sector()
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0042E26F
-* VC++ man gling:          ??1B_Sector@@UAE@XZ
+* VC++ mangling:          ??1B_Sector@@UAE@XZ
 */
 #ifndef BLD_NATIVE
 B_Sector::~B_Sector()
