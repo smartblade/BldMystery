@@ -834,7 +834,7 @@ extern "C" {
 #endif
 
     unsigned int gbl_node_count;
-    B_BoundingBox* gbl_current_query_box;
+    const B_BoundingBox* gbl_current_query_box;
     unsigned int gbl_oct_tree_query_id;
 
 

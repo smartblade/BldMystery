@@ -170,7 +170,7 @@ extern unsigned int gbl_node_count;
 * Module:                 Blade.exe
 * Data address:           0x005E3390
 */
-extern B_BoundingBox* gbl_current_query_box;
+extern const B_BoundingBox* gbl_current_query_box;
 
 /*
 * Module:                 Blade.exe
