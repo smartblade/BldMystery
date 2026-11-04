@@ -682,6 +682,10 @@ externdef ??1B_SectorListNode@@UAE@XZ: near
 l0045050B equ ??1B_SectorListNode@@UAE@XZ
 externdef ?GetTypeID@B_SectorListNode@@UAEHXZ: near
 l004506B5 equ ?GetTypeID@B_SectorListNode@@UAEHXZ
+externdef ??0B_OctTree@@QAE@XZ: near
+l004506C5 equ ??0B_OctTree@@QAE@XZ
+externdef ??0B_OctTree@@QAE@ABVB_Map@@N@Z: near
+l00450734 equ ??0B_OctTree@@QAE@ABVB_Map@@N@Z
 externdef ??1B_OctTree@@QAE@XZ: near
 l004507B9 equ ??1B_OctTree@@QAE@XZ
 externdef ?Clear@B_OctTree@@QAEXXZ: near

@@ -127,8 +127,26 @@ int B_SectorListNode::GetTypeID() {
 };
 
 
-B_OctTree::B_OctTree()
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004506C5
+* VC++ mangling:          ??0B_OctTree@@QAE@XZ
+*/
+
+B_OctTree::B_OctTree() : m_halfSize(0.0), m_root(nullptr)
 {
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00450734
+* VC++ mangling:          ??0B_OctTree@@QAE@ABVB_Map@@N@Z
+*/
+
+B_OctTree::B_OctTree(const B_Map& map, double minNodeSize) : m_halfSize(0.0), m_root(nullptr)
+{
+    Build(map, minNodeSize);
 }
 
 

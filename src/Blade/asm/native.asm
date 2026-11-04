@@ -107747,35 +107747,7 @@ l0044F052 ENDP
 ;* Call:
 ; 00439A44 
 ;
-l004506C5 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000008h
-           mov dword ptr [ebp-008h], ecx
-           mov eax, dword ptr [ebp-008h]
-           add eax, 000000004h
-           mov dword ptr [ebp-004h], eax
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx], 000000000h
-           mov dword ptr [ecx+004h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+008h], 000000000h
-           mov dword ptr [edx+00Ch], 000000000h
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+010h], 000000000h
-           mov dword ptr [eax+014h], 000000000h
-           mov ecx, dword ptr [ebp-008h]
-           mov dword ptr [ecx+01Ch], 000000000h
-           mov dword ptr [ecx+020h], 000000000h
-           mov edx, dword ptr [ebp-008h]
-           mov dword ptr [edx+024h], 000000000h
-           mov eax, dword ptr [ebp-008h]
-           mov dword ptr [eax], offset g005BDD40
-           mov eax, dword ptr [ebp-008h]
-           mov esp, ebp
-           pop ebp
-           ret
-l004506C5 ENDP
+           call l004506C5; Implemented in c++ code
 ;
            push ebp
            mov ebp, esp

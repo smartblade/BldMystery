@@ -163,6 +163,7 @@ class B_OctTree
 {
 public:
     B_OctTree();
+    B_OctTree(const B_Map& map, double minNodeSize);
     ~B_OctTree();
 
     void Clear();
