@@ -137,7 +137,6 @@ B_OctTree::B_OctTree()
 }
 
 
-// 4507D5
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004507B9
@@ -145,6 +144,18 @@ B_OctTree::B_OctTree()
 */
 
 B_OctTree::~B_OctTree()
+{
+    Clear();
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004507D5
+* VC++ mangling:          ?Clear@B_OctTree@@QAEXXZ
+*/
+
+void B_OctTree::Clear()
 {
     if (this->m_root != nullptr) {
         delete this->m_root;

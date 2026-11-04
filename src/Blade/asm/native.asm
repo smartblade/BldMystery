@@ -107821,47 +107821,7 @@ l004506C5 ENDP
 ;* Call:
 ; 0043A3E0, 004507CC 
 ;
-l004507D5 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000010h
-           mov dword ptr [ebp-00Ch], ecx
-           mov eax, dword ptr [ebp-00Ch]
-           cmp dword ptr [eax+024h], 000000000h
-           je l0045081F
-           mov ecx, dword ptr [ebp-00Ch]
-           mov edx, dword ptr [ecx+024h]
-           mov dword ptr [ebp-008h], edx
-           mov eax, dword ptr [ebp-008h]
-           mov dword ptr [ebp-004h], eax
-           cmp dword ptr [ebp-004h], 000000000h
-           je l0045080E
-           push 000000001h
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ecx]
-           mov ecx, dword ptr [ebp-004h]
-           call [edx+004h]
-           mov dword ptr [ebp-010h], eax
-           jmp l00450815
-;
-;* Jump:
-; 004507FA(C) 
-;
-l0045080E: mov dword ptr [ebp-010h], 000000000h
-;
-;* Jump:
-; 0045080C(U) 
-;
-l00450815: mov eax, dword ptr [ebp-00Ch]
-           mov dword ptr [eax+024h], 000000000h
-;
-;* Jump:
-; 004507E5(C) 
-;
-l0045081F: mov esp, ebp
-           pop ebp
-           ret
-l004507D5 ENDP
+           call l004507D5; Implemented in c++ code
 ;
 ;* Call:
 ; 00450B86, 00450D85, 00450F84, 00451183, 00451383, 00451583, 00451783, 0045187F, 

@@ -165,6 +165,8 @@ public:
     B_OctTree();
     ~B_OctTree();
 
+    void Clear();
+
     void Build(const B_Map&, double);
 
     virtual void FindSectorsInBox(const B_BoundingBox& bb, B_OctTreeSectorsList* out) const;
