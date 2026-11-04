@@ -715,50 +715,61 @@ B_OctTreeSectorsList::B_OctTreeSectorsList() : size(0) {}
 * Entry point:            0x0045327B
 * VC++ mangling:          ?BuildSurfaceCache@B_OctTreeSectorsList@@QAEHPAVB_GlobalSurfaceCache@@PBVB_Sphere@@@Z
 */
-// TODO double check
 int B_OctTreeSectorsList::BuildSurfaceCache(B_GlobalSurfaceCache* cache, const B_Sphere* sphere)
 {
     cache->count = 0;
 
-    for (int i = 0; i < this->size; i++)
+    unsigned int i = 0;
+
+    for (i = 0; i < this->size; i++)
     {
         B_Sector* current_sector = this->sectors[i];
 
-        B_SectorSurfaceCache* cacheEntry = &cache->elements[cache->count];
+        cache->elements[cache->count].sector = current_sector;
+        cache->elements[cache->count].numSurfaces = 0;
 
-        cacheEntry->sector = current_sector;
-        cacheEntry->numSurfaces = 0;
+        unsigned int j;
 
-        for (int j = 0; j < current_sector->size; j++)
+        for (j = 0; j < current_sector->size; j++)
         {
             B_Surface* current_surface = current_sector->elements[j];
 
-            double distance = (sphere->center.z * current_surface->normal.z) +
-                (sphere->center.y * current_surface->normal.y) +
-                (sphere->center.x * current_surface->normal.x) +
+            double distance = sphere->center.z * current_surface->normal.z +
+                (sphere->center.y * current_surface->normal.y + sphere->center.x * current_surface->normal.x) +
                 current_surface->p;
 
-            if (distance >= -sphere->radius && distance <= sphere->radius)
+            if (-sphere->radius > distance)
             {
-                cacheEntry->surfaces[cacheEntry->numSurfaces] = current_surface;
-                cacheEntry->numSurfaces++;
+                // the sphere is outside of the sector: skip the sector
+                j = current_sector->size + 1;
+            }
+            else if (distance < sphere->radius)
+            {
+                cache->elements[cache->count].surfaces[cache->elements[cache->count].numSurfaces] = current_sector->elements[j];
+                cache->elements[cache->count].numSurfaces++;
             }
         }
 
-        if (cacheEntry->numSurfaces == 0) {
-            cacheEntry->hasNoIntersections = 1;
-        }
-        else {
-            cacheEntry->hasNoIntersections = 0;
-        }
+        if (j == current_sector->size)
+        {
+            if (cache->elements[cache->count].numSurfaces == 0)
+            {
+                // the sphere is inside of the sector and touches none of its surfaces
+                cache->elements[cache->count].hasNoIntersections = 1;
+                cache->count++;
+                return 1;
+            }
 
-        cache->count++;
+            cache->elements[cache->count].hasNoIntersections = 0;
+            cache->count++;
+        }
     }
 
-    if (cache->count == 0) {
-        return -1;
+    if (cache->count != 0)
+    {
+        return 0;
     }
-    return 0;
+    return -1;
 }
 
 
