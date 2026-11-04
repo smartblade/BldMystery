@@ -24,7 +24,7 @@ public:
 
     void CollectIntersectingSectors(const B_PtrArray<B_Sector>&, B_PtrArray<B_Sector>&);
 
-    bool Intersects(const B_Sector* sector) const;
+    unsigned int Intersects(const B_Sector* sector) const;
 
     B_Vector minCoords;
     B_Vector maxCoords;

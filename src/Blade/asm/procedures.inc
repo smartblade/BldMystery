@@ -660,8 +660,8 @@ externdef _GetMaterialFloatProperty: near
 l0044ED29 equ _GetMaterialFloatProperty
 externdef _AddHitSoundComb: near
 l0044ED6A equ _AddHitSoundComb
-externdef ?Intersects@B_BoundingBox@@QBE_NPBVB_Sector@@@Z: near
-l0044F052 equ ?Intersects@B_BoundingBox@@QBE_NPBVB_Sector@@@Z
+externdef ?Intersects@B_BoundingBox@@QBEIPBVB_Sector@@@Z: near
+l0044F052 equ ?Intersects@B_BoundingBox@@QBEIPBVB_Sector@@@Z
 externdef ?CollectIntersectingSectors@B_BoundingBox@@QAEXABV?$B_PtrArray@VB_Sector@@@@AAV2@@Z: near
 l004501C1 equ ?CollectIntersectingSectors@B_BoundingBox@@QAEXABV?$B_PtrArray@VB_Sector@@@@AAV2@@Z
 externdef ??0B_OctantNode@@QAE@XZ: near
