@@ -410,32 +410,40 @@ void B_SectorListNode::CollectSectorsAtPoint(const B_Vector& localPos, B_OctTree
 
 void B_SectorListNode::CollectSectorsInBox(const B_BoundingBox&, B_OctTreeSectorsList* outList, double)
 {
-    const B_BoundingBox& queryBB = *gbl_current_query_box;
-
     for (unsigned int i = 0; i < this->size; ++i) {
 
-        if ((*this)[i]->lastQueryId != gbl_oct_tree_query_id &&
-            (*this)[i]->isActive != 0) {
+        if (this->elements[i]->lastQueryId != gbl_oct_tree_query_id &&
+            this->elements[i]->isActive != 0) {
 
-            (*this)[i]->lastQueryId = gbl_oct_tree_query_id;
+            this->elements[i]->lastQueryId = gbl_oct_tree_query_id;
 
-            const B_BoundingBox& sectorBB = (*this)[i]->boundingBox;
+            B_BoundingBox* sectorBB = &this->elements[i]->boundingBox;
 
-            if (queryBB.minCoords.x <= sectorBB.maxCoords.x &&
-                queryBB.minCoords.y <= sectorBB.maxCoords.y &&
-                queryBB.minCoords.z <= sectorBB.maxCoords.z &&
-                queryBB.maxCoords.x >= sectorBB.minCoords.x &&
-                queryBB.maxCoords.y >= sectorBB.minCoords.y &&
-                queryBB.maxCoords.z >= sectorBB.minCoords.z)
+            int intersects;
+
+            if (gbl_current_query_box->minCoords.x > sectorBB->maxCoords.x ||
+                gbl_current_query_box->minCoords.y > sectorBB->maxCoords.y ||
+                gbl_current_query_box->minCoords.z > sectorBB->maxCoords.z ||
+                gbl_current_query_box->maxCoords.x < sectorBB->minCoords.x ||
+                gbl_current_query_box->maxCoords.y < sectorBB->minCoords.y ||
+                gbl_current_query_box->maxCoords.z < sectorBB->minCoords.z)
+            {
+                intersects = 0;
+            }
+            else
+            {
+                intersects = 1;
+            }
+
+            if (intersects != 0)
             {
                 if (outList->size < 0x200) {
-                    outList->sectors[outList->size] = (*this)[i];
+                    outList->sectors[outList->size] = this->elements[i];
                     outList->size++;
                 }
             }
         }
     }
-
 }
 
 
