@@ -84,10 +84,17 @@ public:
 class B_OctantNodeBase
 {
 public:
-    B_OctantNodeBase();
+    B_OctantNodeBase()
+    {
+        gbl_node_count++;
+    }
 
     virtual int GetTypeID() = 0;
-    virtual ~B_OctantNodeBase();
+
+    virtual ~B_OctantNodeBase()
+    {
+        gbl_node_count--;
+    }
 
     virtual void CollectSectorsInBox(
         const B_BoundingBox& bb,

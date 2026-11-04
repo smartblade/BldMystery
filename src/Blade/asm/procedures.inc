@@ -714,8 +714,6 @@ externdef ??1B_SectorSurfaceCache@@UAE@XZ: near
 l00453490 equ ??1B_SectorSurfaceCache@@UAE@XZ
 externdef ??0B_GlobalSurfaceCache@@QAE@XZ: near
 l004539A9 equ ??0B_GlobalSurfaceCache@@QAE@XZ
-externdef ??1B_OctantNodeBase@@UAE@XZ: near
-l00453AC0 equ ??1B_OctantNodeBase@@UAE@XZ
 externdef ??0B_Surface@@QAE@XZ: near
 l00453B10 equ ??0B_Surface@@QAE@XZ
 externdef ??1B_Surface@@UAE@XZ: near

@@ -137,11 +137,6 @@ B_OctTree::B_OctTree()
 }
 
 
-B_OctantNodeBase::B_OctantNodeBase() {
-    gbl_node_count++;
-};
-
-
 // 4507D5
 /*
 * Module:                 Blade.exe
@@ -792,27 +787,6 @@ B_GlobalSurfaceCache::B_GlobalSurfaceCache()
 B_SectorSurfaceCache::~B_SectorSurfaceCache()
 {
 
-}
-
-
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x00453AC0
-* VC++ mangling:          ??1B_OctantNodeBase@@UAE@XZ
-*/
-
-B_OctantNodeBase::~B_OctantNodeBase()
-{
-    gbl_node_count--;
 }
 
 

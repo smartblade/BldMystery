@@ -110196,7 +110196,33 @@ l00453A90 ENDP
 ;
            int 03h
            int 03h
-           call l00453AC0; Implemented in c++ code
+l00453AC0 PROC
+           push ebp
+           mov ebp, esp
+           push ecx
+           mov dword ptr [ebp-004h], ecx
+           mov eax, dword ptr [ebp-004h]
+           mov dword ptr [eax], offset g005BDD0C
+           mov ecx, dword ptr [g005E338C]
+           sub ecx, 000000001h
+           mov dword ptr [g005E338C], ecx
+           mov edx, dword ptr [ebp+008h]
+           and edx, 000000001h
+           test edx, edx
+           je l00453AF5
+           mov eax, dword ptr [ebp-004h]
+           push eax
+           call l005BBD3D
+           add esp, 000000004h
+;
+;* Jump:
+; 00453AE7(C) 
+;
+l00453AF5: mov eax, dword ptr [ebp-004h]
+           mov esp, ebp
+           pop ebp
+           ret 00004h
+l00453AC0 ENDP
 ;
            int 03h
            int 03h
