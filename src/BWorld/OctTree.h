@@ -14,6 +14,33 @@ class B_Sector;
 class B_Surface;
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+    /*
+    * Module:                 Blade.exe
+    * Data address:           0x005E338C
+    */
+    extern unsigned int gbl_node_count;
+
+    /*
+    * Module:                 Blade.exe
+    * Data address:           0x005E3390
+    */
+    extern const B_BoundingBox* gbl_current_query_box;
+
+    /*
+    * Module:                 Blade.exe
+    * Data address:           0x005E3394
+    */
+    extern unsigned int gbl_oct_tree_query_id;
+
+#ifdef __cplusplus
+}
+#endif
+
+
 class B_SectorSurfaceCache {
 public:
     B_SectorSurfaceCache();
