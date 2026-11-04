@@ -43,7 +43,7 @@ public:
     double unknownField24;
     B_Plane unknown02C;
     char unknownFields4C[0x4];
-    int lastQueryId;
+    unsigned int lastQueryId;
     int isActive;
     B_BoundingBox boundingBox;
     int unknownField08C;
