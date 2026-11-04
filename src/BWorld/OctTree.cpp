@@ -183,8 +183,6 @@ void B_OctTree::Clear()
 * Entry point:            0x00450823
 * VC++ mangling:          ?BuildNode@@YAPAVB_OctantNodeBase@@ABV?$B_PtrArray@VB_Sector@@@@NABVB_BoundingBox@@@Z
 */
-// FIXME latest update broke this, need to investigate
-#ifndef BLD_NATIVE
 B_OctantNodeBase* BuildNode(const B_PtrArray<B_Sector>& map, double sizeThreshold, const B_BoundingBox& worldBB)
 {
     if (map.size == 0)
@@ -196,11 +194,17 @@ B_OctantNodeBase* BuildNode(const B_PtrArray<B_Sector>& map, double sizeThreshol
         return leaf;
     }
 
-    double width = worldBB.maxCoords.x - worldBB.minCoords.x;
-    if (width >= sizeThreshold && map.size >= 8)
+    if (worldBB.maxCoords.x - worldBB.minCoords.x < sizeThreshold || map.size < 8)
+    {
+        B_SectorListNode* node = new B_SectorListNode();
+        for (unsigned int i = 0; i < map.size; i++)
+            node->Append(map.elements[i]);
+        return node;
+    }
+    else
     {
         B_BoundingBox childBB;
-        B_PtrArray<B_Sector> outBuffer(16, false);
+        B_PtrArray<B_Sector> outBuffer;
         B_OctantNode* node = new B_OctantNode();
         B_Vector center = (worldBB.minCoords + worldBB.maxCoords) * 0.5;
 
@@ -222,7 +226,7 @@ B_OctantNodeBase* BuildNode(const B_PtrArray<B_Sector>& map, double sizeThreshol
         node->children[2] = BuildNode(outBuffer, sizeThreshold, childBB);
         outBuffer.Clear(false);
 
-        childBB.minCoords = B_Vector(worldBB.minCoords.x, center.y, worldBB.minCoords.z);
+        childBB.minCoords = B_Vector(worldBB.minCoords.x, center.y, center.z);
         childBB.maxCoords = B_Vector(center.x, worldBB.maxCoords.y, worldBB.maxCoords.z);
         childBB.CollectIntersectingSectors(map, outBuffer);
         node->children[3] = BuildNode(outBuffer, sizeThreshold, childBB);
@@ -254,15 +258,7 @@ B_OctantNodeBase* BuildNode(const B_PtrArray<B_Sector>& map, double sizeThreshol
 
         return node;
     }
-    else
-    {
-        B_SectorListNode* node = new B_SectorListNode();
-        for (unsigned int i = 0; i < map.size; i++)
-            node->Append(map.elements[i]);
-        return node;
-    }
 }
-#endif
 
 
 /*
