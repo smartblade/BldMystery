@@ -65,9 +65,8 @@ int B_OctantNode::GetTypeID()
 * VC++ mangling:          ??0LeafNode@@QAE@XZ
 */
 
-LeafNode::LeafNode()
+LeafNode::LeafNode() : sectors(nullptr)
 {
-    sectors = nullptr;
 }
 
 
@@ -777,9 +776,8 @@ int B_OctTreeSectorsList::BuildSurfaceCache(B_GlobalSurfaceCache* cache, const B
 */
 
 
-B_SectorSurfaceCache::B_SectorSurfaceCache()
+B_SectorSurfaceCache::B_SectorSurfaceCache() : numSurfaces(0)
 {
-    this->numSurfaces = 0;
 }
 
 
@@ -789,9 +787,8 @@ B_SectorSurfaceCache::B_SectorSurfaceCache()
 * VC++ mangling:          ??0B_GlobalSurfaceCache@@QAE@XZ
 */
 
-B_GlobalSurfaceCache::B_GlobalSurfaceCache()
+B_GlobalSurfaceCache::B_GlobalSurfaceCache() : count(0)
 {
-    this->count = 0;
 }
 
 
