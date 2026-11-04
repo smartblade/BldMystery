@@ -682,7 +682,6 @@ void B_OctTree::FindSectorsAtPoint(const B_Vector& worldPos, B_OctTreeSectorsLis
 * Entry point:            0x0045311A
 * VC++ mangling:          ?FindSectorsInBox@B_OctTree@@UBEXABVB_BoundingBox@@PAVB_OctTreeSectorsList@@@Z
 */
-#ifndef BLD_NATIVE
 void B_OctTree::FindSectorsInBox(const B_BoundingBox& bb, B_OctTreeSectorsList* out) const
 {
     out->size = 0;
@@ -692,17 +691,17 @@ void B_OctTree::FindSectorsInBox(const B_BoundingBox& bb, B_OctTreeSectorsList* 
 
     B_BoundingBox localBB(bb.minCoords - m_center, bb.maxCoords - m_center);
 
-    if (m_root == nullptr)
-        return;
-
-    double reject = 0.5 * m_halfSize + 10.0;
-
-    if (localBB.maxCoords.x > -reject && localBB.maxCoords.y > -reject && localBB.maxCoords.z > -reject &&
-        localBB.minCoords.x < reject && localBB.minCoords.y < reject && localBB.minCoords.z < reject) {
-        m_root->CollectSectorsInBox(localBB, out, m_halfSize);
+    if (m_root != nullptr) {
+        if (localBB.maxCoords.x > -m_halfSize * 0.5 - 10.0 &&
+            localBB.maxCoords.y > -m_halfSize * 0.5 - 10.0 &&
+            localBB.maxCoords.z > -m_halfSize * 0.5 - 10.0 &&
+            localBB.minCoords.x < m_halfSize * 0.5 + 10.0 &&
+            localBB.minCoords.y < m_halfSize * 0.5 + 10.0 &&
+            localBB.minCoords.z < m_halfSize * 0.5 + 10.0) {
+            m_root->CollectSectorsInBox(localBB, out, m_halfSize);
+        }
     }
 }
-#endif
 
 
 
