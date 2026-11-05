@@ -194,16 +194,21 @@ void Rotate(B_Vector &out, const B_Vector &v, const B_Matrix &rotateMatrix)
 }
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10005341
 * Module:                 Blade.exe
 * Entry point:            0x00406AF1
 * VC++ mangling:          ?Rotate@@YA?AVB_Vector@@ABV1@ABVB_Matrix@@@Z
 */
-#ifndef BLD_NATIVE
+
 B_Vector Rotate(const B_Vector &v, const B_Matrix &rotateMatrix)
 {
-    return v;
+    return B_Vector(
+        v.x * rotateMatrix.m[0][0] + v.y * rotateMatrix.m[1][0] + v.z * rotateMatrix.m[2][0],
+        v.x * rotateMatrix.m[0][1] + v.y * rotateMatrix.m[1][1] + v.z * rotateMatrix.m[2][1],
+        v.x * rotateMatrix.m[0][2] + v.y * rotateMatrix.m[1][2] + v.z * rotateMatrix.m[2][2]);
 }
-#endif
+
 
 /*
 ................................................................................
