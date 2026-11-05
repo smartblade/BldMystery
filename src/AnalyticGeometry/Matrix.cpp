@@ -3,6 +3,7 @@
 #include <bld_system.h>
 #include <AnalyticGeometry/Vector.h>
 #include <BBLibc/IDataFile.h>
+#include <BBLibc/ODataFile.h>
 #include <math.h>
 
 #define DEFINE_MATRIX(\
@@ -229,6 +230,20 @@ B_Vector Rotate(const B_Vector &v, const B_Matrix &rotateMatrix)
 B_IDataFile &operator >>(B_IDataFile &file, B_Matrix &matrix)
 {
     file.Read(&matrix, sizeof(matrix));
+    return file;
+}
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x100054D3
+* Module:                 Blade.exe
+* Entry point:            0x00406C83
+* VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABVB_Matrix@@@Z
+*/
+
+B_ODataFile &operator <<(B_ODataFile &file, const B_Matrix &matrix)
+{
+    file.Write(&matrix, sizeof(matrix));
     return file;
 }
 

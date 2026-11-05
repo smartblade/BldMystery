@@ -8172,18 +8172,7 @@ l100053F7 ENDP
 ;* Jump:
 ; 100011E0(U) 
 ;
-l100054D3 PROC
-           push ebp
-           mov ebp, esp
-           push 000000080h
-           mov eax, dword ptr [ebp+00Ch]
-           push eax
-           mov ecx, dword ptr [ebp+008h]
-           call [__imp_?Write@B_ODataFile@@QAEXPBXI@Z]; [BBLibc.?Write@B_ODataFile@@QAEXPBXI@Z].
-           mov eax, dword ptr [ebp+008h]
-           pop ebp
-           ret
-l100054D3 ENDP
+           call l100054D3; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001299(U) 

@@ -6710,18 +6710,7 @@ l00406BA7 ENDP
 ;* Call:
 ; 0051EEBC, 0051EF6E, 0051FE6C, 005216B5, 00522B1F, 00522FEE, 0052467B, 005257CC 
 ;
-l00406C83 PROC
-           push ebp
-           mov ebp, esp
-           push 000000080h
-           mov eax, dword ptr [ebp+00Ch]
-           push eax
-           mov ecx, dword ptr [ebp+008h]
-           call [__imp_?Write@B_ODataFile@@QAEXPBXI@Z]; [BBLibc.?Write@B_ODataFile@@QAEXPBXI@Z].
-           mov eax, dword ptr [ebp+008h]
-           pop ebp
-           ret
-l00406C83 ENDP
+           call l00406C83; Implemented in c++ code
 ;
            push ebp
            mov ebp, esp

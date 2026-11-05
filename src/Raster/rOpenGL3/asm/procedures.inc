@@ -22,6 +22,8 @@ externdef ?Rotate@@YA?AVB_Vector@@ABV1@ABVB_Matrix@@@Z: near
 l10005341 equ ?Rotate@@YA?AVB_Vector@@ABV1@ABVB_Matrix@@@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Matrix@@@Z: near
 l100054B9 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Matrix@@@Z
+externdef ??6@YAAAVB_ODataFile@@AAV0@ABVB_Matrix@@@Z: near
+l100054D3 equ ??6@YAAAVB_ODataFile@@AAV0@ABVB_Matrix@@@Z
 externdef ?Read@B_VideoModeSection@@QAEHXZ: near
 l1000CEAB equ ?Read@B_VideoModeSection@@QAEHXZ
 externdef ?SysWrite@B_OpenGLRasterDevice@@UAEXHHPBDEEE@Z: near
