@@ -148,16 +148,21 @@ void B_Matrix::SetOrigin(const B_Vector *origin)
 */
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10005153
 * Module:                 Blade.exe
-* Entry point:            0x406903
+* Entry point:            0x00406903
 * VC++ mangling:          ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z
 */
-#ifndef BLD_NATIVE
-B_Vector operator *(const B_Vector& vector, const B_Matrix &matrix)
+
+B_Vector operator *(const B_Vector &vector, const B_Matrix &matrix)
 {
-    return vector;
+    return B_Vector(
+        vector.x * matrix.m[0][0] + vector.y * matrix.m[1][0] + vector.z * matrix.m[2][0] + matrix.m[3][0],
+        vector.x * matrix.m[0][1] + vector.y * matrix.m[1][1] + vector.z * matrix.m[2][1] + matrix.m[3][1],
+        vector.x * matrix.m[0][2] + vector.y * matrix.m[1][2] + vector.z * matrix.m[2][2] + matrix.m[3][2]);
 }
-#endif
+
 
 /*
 ................................................................................
