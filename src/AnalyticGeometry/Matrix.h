@@ -8,6 +8,7 @@ class B_Matrix
 {
 public:
     B_Matrix();
+    B_Matrix(double scale);
     B_Matrix(const B_Vector &v);
     B_Vector TranslationVector() const;
 

@@ -33,6 +33,24 @@ B_Matrix::B_Matrix()
     )
 }
 
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x1000354D
+* Module:                 Blade.exe
+* Entry point:            0x00404CFD
+* VC++ mangling:          ??0B_Matrix@@QAE@N@Z
+*/
+
+B_Matrix::B_Matrix(double scale)
+{
+    DEFINE_MATRIX(
+        scale, 0.0, 0.0, 0.0,
+        0.0, scale, 0.0, 0.0,
+        0.0, 0.0, scale, 0.0,
+        0.0, 0.0, 0.0, 1.0
+    )
+}
+
 
 /*
 ................................................................................

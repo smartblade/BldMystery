@@ -4470,70 +4470,7 @@ l00404B40 ENDP
 ; 004AB498, 004E4247, 004E4286, 004E4306, 004E43D2, 004E4411, 004E4491, 004E45C9, 
 ; 004E46BF, 005266B1, 0052FD46, 005461E6 
 ;
-l00404CFD PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           mov dword ptr [eax], ecx
-           mov edx, dword ptr [ebp+00Ch]
-           mov dword ptr [eax+004h], edx
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+008h], 000000000h
-           mov dword ptr [eax+00Ch], 000000000h
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+010h], 000000000h
-           mov dword ptr [ecx+014h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+018h], 000000000h
-           mov dword ptr [edx+01Ch], 000000000h
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+020h], 000000000h
-           mov dword ptr [eax+024h], 000000000h
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ebp+008h]
-           mov dword ptr [ecx+028h], edx
-           mov eax, dword ptr [ebp+00Ch]
-           mov dword ptr [ecx+02Ch], eax
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+030h], 000000000h
-           mov dword ptr [ecx+034h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+038h], 000000000h
-           mov dword ptr [edx+03Ch], 000000000h
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+040h], 000000000h
-           mov dword ptr [eax+044h], 000000000h
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+048h], 000000000h
-           mov dword ptr [ecx+04Ch], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [ebp+008h]
-           mov dword ptr [edx+050h], eax
-           mov ecx, dword ptr [ebp+00Ch]
-           mov dword ptr [edx+054h], ecx
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+058h], 000000000h
-           mov dword ptr [edx+05Ch], 000000000h
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+060h], 000000000h
-           mov dword ptr [eax+064h], 000000000h
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+068h], 000000000h
-           mov dword ptr [ecx+06Ch], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+070h], 000000000h
-           mov dword ptr [edx+074h], 000000000h
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+078h], 000000000h
-           mov dword ptr [eax+07Ch], 03FF00000h
-           mov eax, dword ptr [ebp-004h]
-           mov esp, ebp
-           pop ebp
-           ret 00008h
-l00404CFD ENDP
+           call l00404CFD; Implemented in c++ code
 ;
            push ebp
            mov ebp, esp

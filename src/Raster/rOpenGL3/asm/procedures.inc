@@ -2,6 +2,8 @@
 ; and should not be edited.
 externdef ??0B_Matrix@@QAE@XZ: near
 l10003430 equ ??0B_Matrix@@QAE@XZ
+externdef ??0B_Matrix@@QAE@N@Z: near
+l1000354D equ ??0B_Matrix@@QAE@N@Z
 externdef ??0B_Matrix@@QAE@ABVB_Vector@@@Z: near
 l1000377F equ ??0B_Matrix@@QAE@ABVB_Vector@@@Z
 externdef ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ: near
