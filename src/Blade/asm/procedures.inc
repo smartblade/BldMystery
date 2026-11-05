@@ -20,6 +20,8 @@ externdef ?Rotate@@YAXAAVB_Vector@@ABV1@ABVB_Matrix@@@Z: near
 l00406A67 equ ?Rotate@@YAXAAVB_Vector@@ABV1@ABVB_Matrix@@@Z
 externdef ?Rotate@@YA?AVB_Vector@@ABV1@ABVB_Matrix@@@Z: near
 l00406AF1 equ ?Rotate@@YA?AVB_Vector@@ABV1@ABVB_Matrix@@@Z
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Matrix@@@Z: near
+l00406C69 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Matrix@@@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Plane@@@Z: near
 l00407DF6 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Plane@@@Z
 externdef ??0B_WorldPoint@@QAE@XZ: near

@@ -8167,18 +8167,7 @@ l100053F7 ENDP
 ;* Jump:
 ; 10001028(U) 
 ;
-l100054B9 PROC
-           push ebp
-           mov ebp, esp
-           push 000000080h
-           mov eax, dword ptr [ebp+00Ch]
-           push eax
-           mov ecx, dword ptr [ebp+008h]
-           call [__imp_?Read@B_IDataFile@@QAEXPAXI@Z]; [BBLibc.?Read@B_IDataFile@@QAEXPAXI@Z].
-           mov eax, dword ptr [ebp+008h]
-           pop ebp
-           ret
-l100054B9 ENDP
+           call l100054B9; Implemented in c++ code
 ;
 ;* Jump:
 ; 100011E0(U) 
