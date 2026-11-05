@@ -178,13 +178,20 @@ void TransformPoint(B_Vector &out, const B_Vector &v, const B_Matrix &matrix)
     out.z = v.x * matrix.m[0][2] + v.y * matrix.m[1][2] + v.z * matrix.m[2][2] + matrix.m[3][2];
 }
 
-
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 rOpenGL.dll
+* Entry point:            0x100052B7
+* Module:                 Blade.exe
+* Entry point:            0x00406A67
+* VC++ mangling:          ?Rotate@@YAXAAVB_Vector@@ABV1@ABVB_Matrix@@@Z
 */
+
+void Rotate(B_Vector &out, const B_Vector &v, const B_Matrix &rotateMatrix)
+{
+    out.x = v.x * rotateMatrix.m[0][0] + v.y * rotateMatrix.m[1][0] + v.z * rotateMatrix.m[2][0];
+    out.y = v.x * rotateMatrix.m[0][1] + v.y * rotateMatrix.m[1][1] + v.z * rotateMatrix.m[2][1];
+    out.z = v.x * rotateMatrix.m[0][2] + v.y * rotateMatrix.m[1][2] + v.z * rotateMatrix.m[2][2];
+}
 
 /*
 * Module:                 Blade.exe

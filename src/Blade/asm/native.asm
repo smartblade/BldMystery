@@ -6605,60 +6605,7 @@ l00406547 ENDP
 ; 0044D63E, 0044D65B, 004948CE, 0049FAAA, 004A2571, 004A293B, 004A295B, 004A2BA9, 
 ; 004A3661, 004D39BC, 00551ED4, 005A1F77, 005A2132, 005A24A4 
 ;
-l00406A67 PROC
-           push ebp
-           mov ebp, esp
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp+010h]
-           fld qword ptr [eax]
-           fmul qword ptr [ecx]
-           mov edx, dword ptr [ebp+00Ch]
-           mov eax, dword ptr [ebp+010h]
-           fld qword ptr [edx+008h]
-           fmul qword ptr [eax+020h]
-           faddp st(01h), st(00h)
-           mov ecx, dword ptr [ebp+00Ch]
-           mov edx, dword ptr [ebp+010h]
-           fld qword ptr [ecx+010h]
-           fmul qword ptr [edx+040h]
-           faddp st(01h), st(00h)
-           mov eax, dword ptr [ebp+008h]
-           fstp qword ptr [eax]
-           mov ecx, dword ptr [ebp+010h]
-           mov edx, dword ptr [ebp+00Ch]
-           fld qword ptr [edx]
-           fmul qword ptr [ecx+008h]
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp+010h]
-           fld qword ptr [eax+008h]
-           fmul qword ptr [ecx+028h]
-           faddp st(01h), st(00h)
-           mov edx, dword ptr [ebp+00Ch]
-           mov eax, dword ptr [ebp+010h]
-           fld qword ptr [edx+010h]
-           fmul qword ptr [eax+048h]
-           faddp st(01h), st(00h)
-           mov ecx, dword ptr [ebp+008h]
-           fstp qword ptr [ecx+008h]
-           mov edx, dword ptr [ebp+010h]
-           mov eax, dword ptr [ebp+00Ch]
-           fld qword ptr [eax]
-           fmul qword ptr [edx+010h]
-           mov ecx, dword ptr [ebp+00Ch]
-           mov edx, dword ptr [ebp+010h]
-           fld qword ptr [ecx+008h]
-           fmul qword ptr [edx+030h]
-           faddp st(01h), st(00h)
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp+010h]
-           fld qword ptr [eax+010h]
-           fmul qword ptr [ecx+050h]
-           faddp st(01h), st(00h)
-           mov edx, dword ptr [ebp+008h]
-           fstp qword ptr [edx+010h]
-           pop ebp
-           ret
-l00406A67 ENDP
+           call l00406A67; Implemented in c++ code
 ;
 ;* Call:
 ; 00405B6C, 00405EBD, 0040B23B, 0040B2A1, 0040B307, 0040B4B3, 0040B4DE, 0040B53A, 
