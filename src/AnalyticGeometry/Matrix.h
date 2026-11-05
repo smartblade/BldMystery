@@ -10,6 +10,7 @@ public:
     B_Matrix();
     B_Matrix(double scale);
     B_Matrix(const B_Vector &v);
+    B_Matrix(const B_Vector &axis, double angle);
     B_Vector TranslationVector() const;
 
     double m[4][4];

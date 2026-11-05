@@ -6,6 +6,8 @@ externdef ??0B_Matrix@@QAE@N@Z: near
 l1000354D equ ??0B_Matrix@@QAE@N@Z
 externdef ??0B_Matrix@@QAE@ABVB_Vector@@@Z: near
 l1000377F equ ??0B_Matrix@@QAE@ABVB_Vector@@@Z
+externdef ??0B_Matrix@@QAE@ABVB_Vector@@N@Z: near
+l100038A0 equ ??0B_Matrix@@QAE@ABVB_Vector@@N@Z
 externdef ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ: near
 l10003F6F equ ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ
 externdef ?Read@B_VideoModeSection@@QAEHXZ: near

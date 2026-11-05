@@ -6,6 +6,8 @@ externdef ??0B_Matrix@@QAE@N@Z: near
 l00404CFD equ ??0B_Matrix@@QAE@N@Z
 externdef ??0B_Matrix@@QAE@ABVB_Vector@@@Z: near
 l00404F2F equ ??0B_Matrix@@QAE@ABVB_Vector@@@Z
+externdef ??0B_Matrix@@QAE@ABVB_Vector@@N@Z: near
+l00405050 equ ??0B_Matrix@@QAE@ABVB_Vector@@N@Z
 externdef ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ: near
 l0040571F equ ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ
 externdef ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z: near

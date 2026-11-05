@@ -2,6 +2,7 @@
 
 #include <bld_system.h>
 #include <AnalyticGeometry/Vector.h>
+#include <math.h>
 
 #define DEFINE_MATRIX(\
     m11, m12, m13, m14,\
@@ -74,6 +75,31 @@ B_Matrix::B_Matrix(const B_Vector &v)
         0.0, 1.0, 0.0, 0.0,
         0.0, 0.0, 1.0, 0.0,
         v.x, v.y, v.z, 1.0
+    )
+}
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x100038A0
+* Module:                 Blade.exe
+* Entry point:            0x00405050
+* VC++ mangling:          ??0B_Matrix@@QAE@ABVB_Vector@@N@Z
+*/
+
+B_Matrix::B_Matrix(const B_Vector &axis, double angle)
+{
+    double c = cos(angle);
+    double s = sin(angle);
+
+    double x = axis.x;
+    double y = axis.y;
+    double z = axis.z;
+
+    DEFINE_MATRIX(
+        x * x * (1.0 - c) + c, x * y * (1.0 - c) + z * s, x * z * (1.0 - c) - y * s, 0.0,
+        x * y * (1.0 - c) - z * s, y * y + (x * x + z * z) * c, y * z * (1.0 - c) + x * s, 0.0,
+        x * z * (1.0 - c) + y * s, y * z * (1.0 - c) - x * s, z * z * (1.0 - c) + c, 0.0,
+        0.0, 0.0, 0.0, 1.0
     )
 }
 
