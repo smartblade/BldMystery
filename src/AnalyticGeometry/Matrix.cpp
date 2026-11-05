@@ -163,6 +163,21 @@ B_Vector operator *(const B_Vector &vector, const B_Matrix &matrix)
         vector.x * matrix.m[0][2] + vector.y * matrix.m[1][2] + vector.z * matrix.m[2][2] + matrix.m[3][2]);
 }
 
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x1000521B
+* Module:                 Blade.exe
+* Entry point:            0x004069CB
+* VC++ mangling:          ?TransformPoint@@YAXAAVB_Vector@@ABV1@ABVB_Matrix@@@Z
+*/
+
+void TransformPoint(B_Vector &out, const B_Vector &v, const B_Matrix &matrix)
+{
+    out.x = v.x * matrix.m[0][0] + v.y * matrix.m[1][0] + v.z * matrix.m[2][0] + matrix.m[3][0];
+    out.y = v.x * matrix.m[0][1] + v.y * matrix.m[1][1] + v.z * matrix.m[2][1] + matrix.m[3][1];
+    out.z = v.x * matrix.m[0][2] + v.y * matrix.m[1][2] + v.z * matrix.m[2][2] + matrix.m[3][2];
+}
+
 
 /*
 ................................................................................
