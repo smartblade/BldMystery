@@ -10,6 +10,8 @@ externdef ??0B_Matrix@@QAE@ABVB_Vector@@N@Z: near
 l00405050 equ ??0B_Matrix@@QAE@ABVB_Vector@@N@Z
 externdef ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ: near
 l0040571F equ ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ
+externdef ?SetOrigin@B_Matrix@@QAEXPBVB_Vector@@@Z: near
+l0040578A equ ?SetOrigin@B_Matrix@@QAEXPBVB_Vector@@@Z
 externdef ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z: near
 l00406903 equ ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z
 externdef ?Rotate@@YA?AVB_Vector@@ABV1@ABVB_Matrix@@@Z: near

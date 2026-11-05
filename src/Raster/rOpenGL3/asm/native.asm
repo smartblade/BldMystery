@@ -6463,33 +6463,7 @@ l10003BFC ENDP
 ;* Jump:
 ; 10001569(U) 
 ;
-l10003FDA PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           mov edx, dword ptr [ecx]
-           mov dword ptr [eax+060h], edx
-           mov ecx, dword ptr [ecx+004h]
-           mov dword ptr [eax+064h], ecx
-           mov edx, dword ptr [ebp+008h]
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [edx+008h]
-           mov dword ptr [eax+068h], ecx
-           mov edx, dword ptr [edx+00Ch]
-           mov dword ptr [eax+06Ch], edx
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [eax+010h]
-           mov dword ptr [ecx+070h], edx
-           mov eax, dword ptr [eax+014h]
-           mov dword ptr [ecx+074h], eax
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l10003FDA ENDP
+           call l10003FDA; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001212(U) 

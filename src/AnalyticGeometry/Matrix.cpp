@@ -124,6 +124,21 @@ B_Vector B_Matrix::TranslationVector() const
     return B_Vector(this->m[3][0], this->m[3][1], this->m[3][2]);
 }
 
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10003FDA
+* Module:                 Blade.exe
+* Entry point:            0x0040578A
+* VC++ mangling:          ?SetOrigin@B_Matrix@@QAEXPBVB_Vector@@@Z
+*/
+
+void B_Matrix::SetOrigin(const B_Vector *origin)
+{
+    this->m[3][0] = origin->x;
+    this->m[3][1] = origin->y;
+    this->m[3][2] = origin->z;
+}
+
 
 /*
 ................................................................................

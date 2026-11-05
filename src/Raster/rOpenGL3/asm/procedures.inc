@@ -10,6 +10,8 @@ externdef ??0B_Matrix@@QAE@ABVB_Vector@@N@Z: near
 l100038A0 equ ??0B_Matrix@@QAE@ABVB_Vector@@N@Z
 externdef ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ: near
 l10003F6F equ ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ
+externdef ?SetOrigin@B_Matrix@@QAEXPBVB_Vector@@@Z: near
+l10003FDA equ ?SetOrigin@B_Matrix@@QAEXPBVB_Vector@@@Z
 externdef ?Read@B_VideoModeSection@@QAEHXZ: near
 l1000CEAB equ ?Read@B_VideoModeSection@@QAEHXZ
 externdef ?SysWrite@B_OpenGLRasterDevice@@UAEXHHPBDEEE@Z: near
