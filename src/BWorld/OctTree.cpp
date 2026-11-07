@@ -37,7 +37,7 @@ unsigned int B_BoundingBox::Intersects(const B_Sector *sector) const
 
 void B_BoundingBox::CollectIntersectingSectors(const B_PtrArray<B_Sector> &sectors, B_PtrArray<B_Sector> &outBuffer)
 {
-    for (unsigned int i = 0; i < sectors.size; ++i)
+    for (unsigned int i = 0; i < sectors.size; i++)
     {
         B_Sector *sector = sectors.elements[i];
 
@@ -66,7 +66,7 @@ void B_BoundingBox::CollectIntersectingSectors(const B_PtrArray<B_Sector> &secto
 
 B_OctantNode::B_OctantNode()
 {
-    for (unsigned int i = 0; i < 8; ++i)
+    for (unsigned int i = 0; i < 8; i++)
     {
         children[i] = nullptr;
     }
@@ -81,7 +81,7 @@ B_OctantNode::B_OctantNode()
 
 B_OctantNode::~B_OctantNode()
 {
-    for (unsigned int i = 0; i < 8; ++i)
+    for (unsigned int i = 0; i < 8; i++)
     {
         if (children[i] != nullptr)
         {
@@ -451,7 +451,7 @@ void LeafNode::CollectSectorsInBox(const B_BoundingBox &, B_OctTreeSectorsList *
 
 void B_SectorListNode::CollectSectorsAtPoint(const B_Vector &localPos, B_OctTreeSectorsList *outList, double halfSize)
 {
-    for (unsigned int i = 0; i < this->size; ++i)
+    for (unsigned int i = 0; i < this->size; i++)
     {
 
         if (this->elements[i]->lastQueryId != gbl_oct_tree_query_id && this->elements[i]->isActive != 0)
@@ -476,7 +476,7 @@ void B_SectorListNode::CollectSectorsAtPoint(const B_Vector &localPos, B_OctTree
 
 void B_SectorListNode::CollectSectorsInBox(const B_BoundingBox &, B_OctTreeSectorsList *outList, double)
 {
-    for (unsigned int i = 0; i < this->size; ++i)
+    for (unsigned int i = 0; i < this->size; i++)
     {
 
         if (this->elements[i]->lastQueryId != gbl_oct_tree_query_id &&
