@@ -66,7 +66,8 @@ void B_BoundingBox::CollectIntersectingSectors(const B_PtrArray<B_Sector> &secto
 
 B_OctantNode::B_OctantNode()
 {
-    for (unsigned int i = 0; i < 8; ++i) {
+    for (unsigned int i = 0; i < 8; ++i)
+    {
         children[i] = nullptr;
     }
 }
@@ -80,8 +81,10 @@ B_OctantNode::B_OctantNode()
 
 B_OctantNode::~B_OctantNode()
 {
-    for (unsigned int i = 0; i < 8; ++i) {
-        if (children[i] != nullptr) {
+    for (unsigned int i = 0; i < 8; ++i)
+    {
+        if (children[i] != nullptr)
+        {
             delete children[i];
         }
     }
@@ -170,7 +173,7 @@ B_SectorListNode::~B_SectorListNode()
 int B_SectorListNode::GetTypeID()
 {
     return B_OCT_NODE_CID_SECTOR_LIST;
-};
+}
 
 
 /*
@@ -222,7 +225,8 @@ B_OctTree::~B_OctTree()
 
 void B_OctTree::Clear()
 {
-    if (this->m_root != nullptr) {
+    if (this->m_root != nullptr)
+    {
         delete this->m_root;
 
         this->m_root = nullptr;
@@ -241,7 +245,8 @@ B_OctantNodeBase *BuildNode(const B_PtrArray<B_Sector> &map, double sizeThreshol
     if (map.size == 0)
         return nullptr;
 
-    if (map.size == 1) {
+    if (map.size == 1)
+    {
         LeafNode *leaf = new LeafNode();
         leaf->sectors = map.elements[0];
         return leaf;
@@ -383,7 +388,8 @@ void B_OctTree::Build(const B_Map &map, double minNodeSize)
 void LeafNode::CollectSectorsAtPoint(const B_Vector &localPos, B_OctTreeSectorsList *outList, double halfSize)
 {
 
-    if (this->sectors->lastQueryId != gbl_oct_tree_query_id && this->sectors->isActive != 0) {
+    if (this->sectors->lastQueryId != gbl_oct_tree_query_id && this->sectors->isActive != 0)
+    {
         this->sectors->lastQueryId = gbl_oct_tree_query_id; // mark as "processed"
 
         if (outList->size < 0x200)
@@ -445,12 +451,15 @@ void LeafNode::CollectSectorsInBox(const B_BoundingBox &, B_OctTreeSectorsList *
 
 void B_SectorListNode::CollectSectorsAtPoint(const B_Vector &localPos, B_OctTreeSectorsList *outList, double halfSize)
 {
-    for (unsigned int i = 0; i < this->size; ++i) {
+    for (unsigned int i = 0; i < this->size; ++i)
+    {
 
-        if (this->elements[i]->lastQueryId != gbl_oct_tree_query_id && this->elements[i]->isActive != 0) {
+        if (this->elements[i]->lastQueryId != gbl_oct_tree_query_id && this->elements[i]->isActive != 0)
+        {
             this->elements[i]->lastQueryId = gbl_oct_tree_query_id;
 
-            if (outList->size < 0x200) {
+            if (outList->size < 0x200)
+            {
                 outList->sectors[outList->size] = this->elements[i];
                 outList->size++;
             }
@@ -467,10 +476,12 @@ void B_SectorListNode::CollectSectorsAtPoint(const B_Vector &localPos, B_OctTree
 
 void B_SectorListNode::CollectSectorsInBox(const B_BoundingBox &, B_OctTreeSectorsList *outList, double)
 {
-    for (unsigned int i = 0; i < this->size; ++i) {
+    for (unsigned int i = 0; i < this->size; ++i)
+    {
 
         if (this->elements[i]->lastQueryId != gbl_oct_tree_query_id &&
-            this->elements[i]->isActive != 0) {
+            this->elements[i]->isActive != 0)
+        {
 
             this->elements[i]->lastQueryId = gbl_oct_tree_query_id;
 
@@ -494,7 +505,8 @@ void B_SectorListNode::CollectSectorsInBox(const B_BoundingBox &, B_OctTreeSecto
 
             if (intersects != 0)
             {
-                if (outList->size < 0x200) {
+                if (outList->size < 0x200)
+                {
                     outList->sectors[outList->size] = this->elements[i];
                     outList->size++;
                 }
@@ -529,12 +541,14 @@ void B_OctantNode::CollectSectorsAtPoint(
     {
         if (localPos.y < 10.0)
         {
-            if (localPos.z < 10.0 && children[0] != nullptr) {
+            if (localPos.z < 10.0 && children[0] != nullptr)
+            {
                 B_Vector childCenter(-childOffset, -childOffset, -childOffset);
                 children[0]->CollectSectorsAtPoint(localPos - childCenter, outList, childHalfSize);
             }
 
-            if (localPos.z > -10.0 && children[1] != nullptr) {
+            if (localPos.z > -10.0 && children[1] != nullptr)
+            {
                 B_Vector childCenter(-childOffset, -childOffset, childOffset);
                 children[1]->CollectSectorsAtPoint(localPos - childCenter, outList, childHalfSize);
             }
@@ -542,12 +556,14 @@ void B_OctantNode::CollectSectorsAtPoint(
 
         if (localPos.y > -10.0)
         {
-            if (localPos.z < 10.0 && children[2] != nullptr) {
+            if (localPos.z < 10.0 && children[2] != nullptr)
+            {
                 B_Vector childCenter(-childOffset, childOffset, -childOffset);
                 children[2]->CollectSectorsAtPoint(localPos - childCenter, outList, childHalfSize);
             }
 
-            if (localPos.z > -10.0 && children[3] != nullptr) {
+            if (localPos.z > -10.0 && children[3] != nullptr)
+            {
                 B_Vector childCenter(-childOffset, childOffset, childOffset);
                 children[3]->CollectSectorsAtPoint(localPos - childCenter, outList, childHalfSize);
             }
@@ -559,12 +575,14 @@ void B_OctantNode::CollectSectorsAtPoint(
         if (localPos.y < 10.0)
         {
 
-            if (localPos.z < 10.0 && children[4] != nullptr) {
+            if (localPos.z < 10.0 && children[4] != nullptr)
+            {
                 B_Vector childCenter(childOffset, -childOffset, -childOffset);
                 children[4]->CollectSectorsAtPoint(localPos - childCenter, outList, childHalfSize);
             }
 
-            if (localPos.z > -10.0 && children[5] != nullptr) {
+            if (localPos.z > -10.0 && children[5] != nullptr)
+            {
                 B_Vector childCenter(childOffset, -childOffset, childOffset);
                 children[5]->CollectSectorsAtPoint(localPos - childCenter, outList, childHalfSize);
             }
@@ -573,12 +591,14 @@ void B_OctantNode::CollectSectorsAtPoint(
         if (localPos.y > -10.0)
         {
 
-            if (localPos.z < 10.0 && children[6] != nullptr) {
+            if (localPos.z < 10.0 && children[6] != nullptr)
+            {
                 B_Vector childCenter(childOffset, childOffset, -childOffset);
                 children[6]->CollectSectorsAtPoint(localPos - childCenter, outList, childHalfSize);
             }
 
-            if (localPos.z > -10.0 && children[7] != nullptr) {
+            if (localPos.z > -10.0 && children[7] != nullptr)
+            {
                 B_Vector childCenter(childOffset, childOffset, childOffset);
                 children[7]->CollectSectorsAtPoint(localPos - childCenter, outList, childHalfSize);
             }
@@ -719,10 +739,12 @@ void B_OctTree::FindSectorsAtPoint(const B_Vector &worldPos, B_OctTreeSectorsLis
 
     gbl_oct_tree_query_id++;
 
-    if (m_root != nullptr) {
+    if (m_root != nullptr)
+    {
         if (fabs(localPos.x) < this->m_halfSize + 10.0 &&
             fabs(localPos.y) < this->m_halfSize + 10.0 &&
-            fabs(localPos.z) < this->m_halfSize + 10.0) {
+            fabs(localPos.z) < this->m_halfSize + 10.0)
+        {
             m_root->CollectSectorsAtPoint(localPos, outList, m_halfSize);
         }
     }
@@ -745,13 +767,15 @@ void B_OctTree::FindSectorsInBox(const B_BoundingBox &bb, B_OctTreeSectorsList *
 
     B_BoundingBox localBB(bb.minCoords - m_center, bb.maxCoords - m_center);
 
-    if (m_root != nullptr) {
+    if (m_root != nullptr)
+    {
         if (localBB.maxCoords.x > -m_halfSize * 0.5 - 10.0 &&
             localBB.maxCoords.y > -m_halfSize * 0.5 - 10.0 &&
             localBB.maxCoords.z > -m_halfSize * 0.5 - 10.0 &&
             localBB.minCoords.x < m_halfSize * 0.5 + 10.0 &&
             localBB.minCoords.y < m_halfSize * 0.5 + 10.0 &&
-            localBB.minCoords.z < m_halfSize * 0.5 + 10.0) {
+            localBB.minCoords.z < m_halfSize * 0.5 + 10.0)
+        {
             m_root->CollectSectorsInBox(localBB, out, m_halfSize);
         }
     }

@@ -41,7 +41,8 @@ extern "C" {
 #endif
 
 
-class B_SectorSurfaceCache {
+class B_SectorSurfaceCache
+{
 public:
     B_SectorSurfaceCache();
     virtual ~B_SectorSurfaceCache();
@@ -55,7 +56,8 @@ public:
 };
 
 
-class B_GlobalSurfaceCache {
+class B_GlobalSurfaceCache
+{
 public:
     B_GlobalSurfaceCache();
 

@@ -8,7 +8,8 @@
 
 class B_Sector;
 
-class B_Sphere {
+class B_Sphere
+{
 public:
     B_Sphere();
 
