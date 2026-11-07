@@ -285,4 +285,3 @@ extern B_WinApp *gbl_application;
 #ifdef __cplusplus
 }
 #endif
-

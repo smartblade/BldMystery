@@ -20,11 +20,10 @@ class B_BoundingBox
 {
 public:
     B_BoundingBox();
-    B_BoundingBox(const B_Vector& minCoords, const B_Vector& maxCoords);
+    B_BoundingBox(const B_Vector &minCoords, const B_Vector &maxCoords);
 
-    void CollectIntersectingSectors(const B_PtrArray<B_Sector>&, B_PtrArray<B_Sector>&);
-
-    unsigned int Intersects(const B_Sector* sector) const;
+    void CollectIntersectingSectors(const B_PtrArray<B_Sector> &, B_PtrArray<B_Sector> &);
+    unsigned int Intersects(const B_Sector *sector) const;
 
     B_Vector minCoords;
     B_Vector maxCoords;

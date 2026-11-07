@@ -28,7 +28,7 @@ extern "C" {
     * Module:                 Blade.exe
     * Data address:           0x005E3390
     */
-    extern const B_BoundingBox* gbl_current_query_box;
+    extern const B_BoundingBox *gbl_current_query_box;
 
     /*
     * Module:                 Blade.exe
@@ -46,35 +46,33 @@ public:
     B_SectorSurfaceCache();
     virtual ~B_SectorSurfaceCache();
 
-    int IsPointInside(const B_Vector* point);
+    int IsPointInside(const B_Vector *point);
 
-    B_Sector* sector;
+    B_Sector *sector;
     int numSurfaces;
-    B_Surface* surfaces[64];
+    B_Surface *surfaces[64];
     int hasNoIntersections;
 };
 
 
 class B_GlobalSurfaceCache {
 public:
+    B_GlobalSurfaceCache();
+
     int count;
     B_SectorSurfaceCache elements[128];
-
-    B_GlobalSurfaceCache();
 };
-
 
 
 class B_OctTreeSectorsList
 {
 public:
     B_OctTreeSectorsList();
-
-    int BuildSurfaceCache(B_GlobalSurfaceCache* cache, const B_Sphere* sphere);
+    int BuildSurfaceCache(B_GlobalSurfaceCache *cache, const B_Sphere *sphere);
 
     unsigned int size;
 
-    B_Sector* sectors[0x200];
+    B_Sector *sectors[0x200];
 };
 
 #define B_OCT_NODE_CID_BRANCH              8801
@@ -97,13 +95,13 @@ public:
     }
 
     virtual void CollectSectorsInBox(
-        const B_BoundingBox& bb,
-        B_OctTreeSectorsList* outList,
+        const B_BoundingBox &bb,
+        B_OctTreeSectorsList *outList,
         double halfSize) = 0;
 
     virtual void CollectSectorsAtPoint(
-        const B_Vector& localPos,
-        B_OctTreeSectorsList* outList,
+        const B_Vector &localPos,
+        B_OctTreeSectorsList *outList,
         double halfSize) = 0;
 };
 
@@ -118,16 +116,16 @@ public:
     virtual ~B_OctantNode() override; 
 
     void CollectSectorsInBox(
-        const B_BoundingBox& bb, 
-        B_OctTreeSectorsList* outList, 
+        const B_BoundingBox &bb, 
+        B_OctTreeSectorsList *outList, 
         double halfSize) override;
 
     virtual void CollectSectorsAtPoint(
-        const B_Vector& localPos,
-        B_OctTreeSectorsList* outList,
+        const B_Vector &localPos,
+        B_OctTreeSectorsList *outList,
         double halfSize) override;
 
-    B_OctantNodeBase* children[8];
+    B_OctantNodeBase *children[8];
 };
 
 
@@ -138,10 +136,10 @@ public:
     LeafNode();
     virtual int GetTypeID() override;
     virtual ~LeafNode() override;
-    virtual void CollectSectorsInBox(const B_BoundingBox&, B_OctTreeSectorsList*, double) override;
-    virtual void CollectSectorsAtPoint(const B_Vector& localPos, B_OctTreeSectorsList* outList, double halfSize) override;
+    virtual void CollectSectorsInBox(const B_BoundingBox &, B_OctTreeSectorsList *, double) override;
+    virtual void CollectSectorsAtPoint(const B_Vector &localPos, B_OctTreeSectorsList * outList, double halfSize) override;
 
-    B_Sector* sectors;
+    B_Sector *sectors;
 };
 
 
@@ -153,8 +151,8 @@ public:
 
     virtual int GetTypeID() override;
     virtual ~B_SectorListNode(); 
-    virtual void CollectSectorsInBox(const B_BoundingBox&, B_OctTreeSectorsList*, double) override;
-    virtual void CollectSectorsAtPoint(const B_Vector&, B_OctTreeSectorsList*, double) override;
+    virtual void CollectSectorsInBox(const B_BoundingBox &, B_OctTreeSectorsList *, double) override;
+    virtual void CollectSectorsAtPoint(const B_Vector &, B_OctTreeSectorsList *, double) override;
 };
 
 
@@ -163,23 +161,23 @@ class B_OctTree
 {
 public:
     B_OctTree();
-    B_OctTree(const B_Map& map, double minNodeSize);
+    B_OctTree(const B_Map &map, double minNodeSize);
     ~B_OctTree();
 
     void Clear();
 
-    void Build(const B_Map&, double);
+    void Build(const B_Map &, double);
 
-    virtual void FindSectorsInBox(const B_BoundingBox& bb, B_OctTreeSectorsList* out) const;
-    virtual void FindSectorsAtPoint(const B_Vector&, B_OctTreeSectorsList*) const;
+    virtual void FindSectorsInBox(const B_BoundingBox &bb, B_OctTreeSectorsList *out) const;
+    virtual void FindSectorsAtPoint(const B_Vector &, B_OctTreeSectorsList *) const;
 
     B_Vector m_center;
     double m_halfSize;
-    B_OctantNodeBase* m_root;
+    B_OctantNodeBase *m_root;
 };
 
 
-extern B_OctantNodeBase* BuildNode(const B_PtrArray<B_Sector>&, double sizeThreshold, const B_BoundingBox&);
+extern B_OctantNodeBase *BuildNode(const B_PtrArray<B_Sector> &, double sizeThreshold, const B_BoundingBox &);
 
 
 #endif /* OCT_TREE_H */
