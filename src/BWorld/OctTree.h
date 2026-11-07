@@ -137,7 +137,7 @@ public:
     virtual int GetTypeID() override;
     virtual ~LeafNode() override;
     virtual void CollectSectorsInBox(const B_BoundingBox &, B_OctTreeSectorsList *, double) override;
-    virtual void CollectSectorsAtPoint(const B_Vector &localPos, B_OctTreeSectorsList * outList, double halfSize) override;
+    virtual void CollectSectorsAtPoint(const B_Vector &localPos, B_OctTreeSectorsList *outList, double halfSize) override;
 
     B_Sector *sectors;
 };
