@@ -27,9 +27,10 @@
         #pragma warning (disable : 4244)
 #endif
 
-/* Define nullptr on old compilers */
+/* Define nullptr, ignore override on old compilers */
 #if _MSC_VER < 1900
 #define nullptr NULL
+#define override
 #endif
 
 
