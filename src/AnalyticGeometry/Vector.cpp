@@ -84,6 +84,25 @@ B_Vector B_Vector::operator +(const B_Vector &that) const
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x0040A5D0
+* VC++ mangling:          ??GB_Vector@@QBE?AV0@ABV0@@Z
+*/
+
+B_Vector B_Vector::operator -(const B_Vector &that) const
+{
+    return B_Vector(x - that.x, y - that.y, z - that.z);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x0040A67C
 * VC++ mangling:          ??ZB_Vector@@QAEABV0@ABV0@@Z
 */

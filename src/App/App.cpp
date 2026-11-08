@@ -1687,8 +1687,8 @@ int B_App::LoadWorld(const char *file_name)
         timeBefore = timeGetTime();
 
         gbl_sound_device->set_world_size(
-            B_world.unknown18FC.x, B_world.unknown18FC.y,
-            B_world.unknown18FC.z, B_world.unknown1914,
+            B_world.octTree.m_center.x, B_world.octTree.m_center.y,
+            B_world.octTree.m_center.z, B_world.octTree.m_halfSize,
             5000.0);
 
         timeAfter = timeGetTime();
