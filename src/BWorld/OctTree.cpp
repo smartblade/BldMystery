@@ -96,7 +96,7 @@ B_OctantNode::~B_OctantNode()
 * VC++ mangling:          ?GetTypeID@B_OctantNode@@UAEHXZ
 */
 
-int B_OctantNode::GetTypeID() 
+int B_OctantNode::GetTypeID()
 {
     return B_OCT_NODE_CID_BRANCH;
 }
@@ -109,7 +109,7 @@ int B_OctantNode::GetTypeID()
 */
 
 LeafNode::LeafNode()
-: 
+:
     sectors(nullptr)
 {
 }
@@ -132,7 +132,7 @@ LeafNode::~LeafNode()
 * VC++ mangling:          ?GetTypeID@LeafNode@@UAEHXZ
 */
 
-int LeafNode::GetTypeID() 
+int LeafNode::GetTypeID()
 {
     return B_OCT_NODE_CID_LEAF;
 }
@@ -145,7 +145,7 @@ int LeafNode::GetTypeID()
 */
 
 B_SectorListNode::B_SectorListNode()
-: 
+:
     B_PtrArray<B_Sector>(1)
 {
 }
@@ -182,8 +182,8 @@ int B_SectorListNode::GetTypeID()
 */
 
 B_OctTree::B_OctTree()
-: 
-    m_halfSize(0.0), 
+:
+    m_halfSize(0.0),
     m_root(nullptr)
 {
 }
@@ -735,8 +735,8 @@ void B_OctTree::FindSectorsInBox(const B_BoundingBox &bb, B_OctTreeSectorsList *
 */
 
 B_OctTreeSectorsList::B_OctTreeSectorsList()
-: 
-    size(0) 
+:
+    size(0)
 {
 }
 
@@ -802,9 +802,8 @@ int B_OctTreeSectorsList::BuildSurfaceCache(B_GlobalSurfaceCache *cache, const B
 * VC++ mangling:          ??0B_SectorSurfaceCache@@QAE@XZ
 */
 
-
 B_SectorSurfaceCache::B_SectorSurfaceCache()
-: 
+:
     numSurfaces(0)
 {
 }
@@ -827,8 +826,8 @@ B_SectorSurfaceCache::~B_SectorSurfaceCache()
 * VC++ mangling:          ??0B_GlobalSurfaceCache@@QAE@XZ
 */
 
-B_GlobalSurfaceCache::B_GlobalSurfaceCache() 
-: 
+B_GlobalSurfaceCache::B_GlobalSurfaceCache()
+:
     count(0)
 {
 }

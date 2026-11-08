@@ -10,8 +10,8 @@
 * VC++ mangling:          ??0B_Sphere@@QAE@XZ
 */
 
-B_Sphere::B_Sphere() 
-: 
+B_Sphere::B_Sphere()
+:
     radius(0.0)
 {
 }
@@ -35,8 +35,8 @@ B_BoundingBox::B_BoundingBox()
 */
 
 B_BoundingBox::B_BoundingBox(const B_Vector &minCoords, const B_Vector &maxCoords)
-: 
-    minCoords(minCoords), 
+:
+    minCoords(minCoords),
     maxCoords(maxCoords)
 {
 }
