@@ -698,6 +698,14 @@
 					RelativePath="..\Physics\PhysicsTemplate.h"
 					>
 				</File>
+				<File
+					RelativePath="..\Physics\SphereSetTemplate.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\Physics\SphereSetTemplate.h"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="NetMod"

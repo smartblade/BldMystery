@@ -958,6 +958,10 @@ externdef ??0B_PhysicsTemplate@@QAE@PAVB_ObjDscr@@@Z: near
 l004ACF58 equ ??0B_PhysicsTemplate@@QAE@PAVB_ObjDscr@@@Z
 externdef ??1B_PhysicsTemplate@@UAE@XZ: near
 l004AD047 equ ??1B_PhysicsTemplate@@UAE@XZ
+externdef ??0B_SphereSetTemplate@@QAE@PAV?$array_t@VB_Sphere@@@@@Z: near
+l004B483E equ ??0B_SphereSetTemplate@@QAE@PAV?$array_t@VB_Sphere@@@@@Z
+externdef ??1B_SphereSetTemplate@@UAE@XZ: near
+l004B48F3 equ ??1B_SphereSetTemplate@@UAE@XZ
 externdef _CreateSound: near
 l004BF1EF equ _CreateSound
 externdef _CreateSoundS: near
