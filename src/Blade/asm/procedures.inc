@@ -960,6 +960,8 @@ externdef ?unknown_method010@B_RigidBody@@UAEHXZ: near
 l004AB224 equ ?unknown_method010@B_RigidBody@@UAEHXZ
 externdef ?unknown_method018@B_RigidBody@@UAENXZ: near
 l004AB33E equ ?unknown_method018@B_RigidBody@@UAENXZ
+externdef ?unknown_method01C@B_RigidBody@@UAEXN@Z: near
+l004AB7D9 equ ?unknown_method01C@B_RigidBody@@UAEXN@Z
 externdef ?GetWorldCenterOfMass@B_RigidBody@@UAE?AVB_Vector@@XZ: near
 l004ABB97 equ ?GetWorldCenterOfMass@B_RigidBody@@UAE?AVB_Vector@@XZ
 externdef ??0B_ContactList@@QAE@XZ: near

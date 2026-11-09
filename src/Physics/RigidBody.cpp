@@ -104,6 +104,27 @@ double B_RigidBody::unknown_method018()
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x004AB7D9
+* VC++ mangling:          ?unknown_method01C@B_RigidBody@@UAEXN@Z
+*/
+
+void B_RigidBody::unknown_method01C(double unknown)
+{
+    this->unknownField0D8 = unknown;
+    this->unknown_method020();
+}
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x004ABB97
 * VC++ mangling:          ?GetWorldCenterOfMass@B_RigidBody@@UAE?AVB_Vector@@XZ
 */

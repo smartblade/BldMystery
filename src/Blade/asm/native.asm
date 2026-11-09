@@ -239874,24 +239874,7 @@ l004AB7D3: pop edi
            ret
 l004AB352 ENDP
 ;
-l004AB7D9 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           mov dword ptr [eax+0000000D8h], ecx
-           mov edx, dword ptr [ebp+00Ch]
-           mov dword ptr [eax+0000000DCh], edx
-           mov eax, dword ptr [ebp-004h]
-           mov edx, dword ptr [eax]
-           mov ecx, dword ptr [ebp-004h]
-           call [edx+020h]
-           mov esp, ebp
-           pop ebp
-           ret 00008h
-l004AB7D9 ENDP
+           call l004AB7D9; Implemented in c++ code
 ;
 l004AB806 PROC
            push ebp
