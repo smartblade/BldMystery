@@ -950,6 +950,10 @@ externdef ??0B_RigidBody@@QAE@PAVB_PhysicsTemplate@@@Z: near
 l004AAF00 equ ??0B_RigidBody@@QAE@PAVB_PhysicsTemplate@@@Z
 externdef ??1B_RigidBody@@UAE@XZ: near
 l004AB1E0 equ ??1B_RigidBody@@UAE@XZ
+externdef ?RemoveFromWorld@B_RigidBody@@UAEXXZ: near
+l004AB1FD equ ?RemoveFromWorld@B_RigidBody@@UAEXXZ
+externdef ?PutToWorld@B_RigidBody@@UAEXXZ: near
+l004AB208 equ ?PutToWorld@B_RigidBody@@UAEXXZ
 externdef ??0B_ContactList@@QAE@XZ: near
 l004ABE5C equ ??0B_ContactList@@QAE@XZ
 externdef ??1B_ContactList@@QAE@XZ: near

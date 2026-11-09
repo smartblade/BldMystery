@@ -239452,25 +239452,9 @@ l004AB1E0 PROC
            ret
 l004AB1E0 ENDP
 ;
-l004AB1FD PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov esp, ebp
-           pop ebp
-           ret
-l004AB1FD ENDP
+           call l004AB1FD; Implemented in c++ code
 ;
-l004AB208 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov esp, ebp
-           pop ebp
-           ret
-l004AB208 ENDP
+           call l004AB208; Implemented in c++ code
 ;
 l004AB213 PROC
            push ebp

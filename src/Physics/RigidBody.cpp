@@ -29,6 +29,28 @@ B_RigidBody::~B_RigidBody()
 
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x004AB1FD
+* VC++ mangling:          ?RemoveFromWorld@B_RigidBody@@UAEXXZ
+*/
+
+void B_RigidBody::RemoveFromWorld()
+{
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004AB208
+* VC++ mangling:          ?PutToWorld@B_RigidBody@@UAEXXZ
+*/
+
+void B_RigidBody::PutToWorld()
+{
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
