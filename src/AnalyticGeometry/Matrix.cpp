@@ -188,6 +188,24 @@ void B_Matrix::SetOrigin(const B_Vector *origin)
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x1000401C
+* Module:                 Blade.exe
+* Entry point:            0x004057CC
+* VC++ mangling:          ?ScaleX@B_Matrix@@QBENXZ
+*/
+
+double B_Matrix::ScaleX() const
+{
+    return sqrt(
+        this->m[0][0] * this->m[0][0] +
+            this->m[0][1] * this->m[0][1] +
+            this->m[0][2] * this->m[0][2]
+    );
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................

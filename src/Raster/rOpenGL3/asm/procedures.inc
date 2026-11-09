@@ -14,6 +14,8 @@ externdef ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ: near
 l10003F6F equ ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ
 externdef ?SetOrigin@B_Matrix@@QAEXPBVB_Vector@@@Z: near
 l10003FDA equ ?SetOrigin@B_Matrix@@QAEXPBVB_Vector@@@Z
+externdef ?ScaleX@B_Matrix@@QBENXZ: near
+l1000401C equ ?ScaleX@B_Matrix@@QBENXZ
 externdef ?InvertRigid@B_Matrix@@QAEXAAV1@@Z: near
 l100042F2 equ ?InvertRigid@B_Matrix@@QAEXAAV1@@Z
 externdef ?Invert@B_Matrix@@QBEPAV1@PAV1@@Z: near
