@@ -20,6 +20,8 @@ externdef ??D@YA?AVB_Matrix@@ABV0@0@Z: near
 l100047D7 equ ??D@YA?AVB_Matrix@@ABV0@0@Z
 externdef ?MulRot_406338@@YA?AVB_Matrix@@ABV1@0@Z: near
 l10004B88 equ ?MulRot_406338@@YA?AVB_Matrix@@ABV1@0@Z
+externdef ?MatrixMultiply@@YAXPAVB_Matrix@@PBV1@1@Z: near
+l10004D97 equ ?MatrixMultiply@@YAXPAVB_Matrix@@PBV1@1@Z
 externdef ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z: near
 l10005153 equ ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z
 externdef ?TransformPoint@@YAXAAVB_Vector@@ABV1@ABVB_Matrix@@@Z: near
