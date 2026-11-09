@@ -952,6 +952,12 @@ externdef ??1B_ContactList@@QAE@XZ: near
 l004ABF07 equ ??1B_ContactList@@QAE@XZ
 externdef _newExclusionGroupId: near
 l004AC6C2 equ _newExclusionGroupId
+externdef ??0B_PhysicsTemplate@@QAE@ABVB_Name@@@Z: near
+l004ACE39 equ ??0B_PhysicsTemplate@@QAE@ABVB_Name@@@Z
+externdef ??0B_PhysicsTemplate@@QAE@PAVB_ObjDscr@@@Z: near
+l004ACF58 equ ??0B_PhysicsTemplate@@QAE@PAVB_ObjDscr@@@Z
+externdef ??1B_PhysicsTemplate@@UAE@XZ: near
+l004AD047 equ ??1B_PhysicsTemplate@@UAE@XZ
 externdef _CreateSound: near
 l004BF1EF equ _CreateSound
 externdef _CreateSoundS: near

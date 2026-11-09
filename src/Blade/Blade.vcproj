@@ -690,6 +690,14 @@
 					RelativePath="..\Physics\ContactList.h"
 					>
 				</File>
+				<File
+					RelativePath="..\Physics\PhysicsTemplate.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\Physics\PhysicsTemplate.h"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="NetMod"
