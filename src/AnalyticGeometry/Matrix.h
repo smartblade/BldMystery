@@ -16,6 +16,7 @@ public:
     B_Vector TranslationVector() const;
     void SetOrigin(const B_Vector *origin);
     void InvertRigid(B_Matrix &out);
+    B_Matrix *Invert(B_Matrix *outMatrix) const;
 
     double m[4][4];
 };

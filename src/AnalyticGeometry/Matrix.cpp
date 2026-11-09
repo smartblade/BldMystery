@@ -191,6 +191,54 @@ void B_Matrix::InvertRigid(B_Matrix &out)
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x100043F9
+* Module:                 Blade.exe
+* Entry point:            0x00405BA9
+* VC++ mangling:          ?Invert@B_Matrix@@QBEPAV1@PAV1@@Z
+*/
+
+#ifndef BLD_NATIVE
+B_Matrix *B_Matrix::Invert(B_Matrix *outMatrix) const
+{
+    B_Matrix temp;
+    double det =
+        this->m[0][0] * this->m[1][1] * this->m[2][2] +
+            this->m[0][1] * this->m[1][2] * this->m[2][0] +
+            this->m[1][0] * this->m[2][1] * this->m[0][2] -
+            this->m[0][2] * this->m[1][1] * this->m[2][0] -
+            this->m[0][1] * this->m[1][0] * this->m[2][2] -
+            this->m[1][2] * this->m[2][1] * this->m[0][0];
+    temp.m[0][0] =
+        (this->m[1][1] * this->m[2][2] - this->m[1][2] * this->m[2][1]) / det;
+    temp.m[1][0] =
+        -(this->m[1][0] * this->m[2][2] - this->m[1][2] * this->m[2][0]) / det;
+    temp.m[2][0] =
+        (this->m[1][0] * this->m[2][1] - this->m[1][1] * this->m[2][0]) / det;
+    temp.m[0][1] =
+        -(this->m[0][1] * this->m[2][2] - this->m[0][2] * this->m[2][1]) / det;
+    temp.m[1][1] =
+        (this->m[0][0] * this->m[2][2] - this->m[0][2] * this->m[2][0]) / det;
+    temp.m[2][1] =
+        -(this->m[0][0] * this->m[2][1] - this->m[0][1] * this->m[2][0]) / det;
+    temp.m[0][2] =
+        (this->m[0][1] * this->m[1][2] - this->m[0][2] * this->m[1][1]) / det;
+    temp.m[1][2] =
+        -(this->m[0][0] * this->m[1][2] - this->m[0][2] * this->m[1][0]) / det;
+    temp.m[2][2] =
+        (this->m[0][0] * this->m[1][1] - this->m[0][1] * this->m[1][0]) / det;
+    B_Vector translation(this->m[3][0], this->m[3][1], this->m[3][2]);
+    translation = Rotate(translation, temp);
+    temp.m[3][0] = -translation.x;
+    temp.m[3][1] = -translation.y;
+    temp.m[3][2] = -translation.z;
+    *outMatrix = temp;
+    return outMatrix;
+}
+#endif
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
