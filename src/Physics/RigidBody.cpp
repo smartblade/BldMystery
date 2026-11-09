@@ -75,11 +75,23 @@ int B_RigidBody::unknown_method010()
 
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x004AB257
+* VC++ mangling:          ?ResetForcesAndPose@B_RigidBody@@UAEXN@Z
 */
+
+void B_RigidBody::ResetForcesAndPose(double time)
+{
+    this->unknownField0C0 = time;
+    this->unknownField0D8 = time;
+    this->unknownField0C8 = time;
+    this->unknownField0E0 = time;
+    this->pose = this->solid->pose;
+    this->solid->contacts.Clear();
+    B_Vector zero;
+    this->linearImpulse = this->angularImpulse = zero;
+    this->unknown_method020();
+}
 
 
 /*

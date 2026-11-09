@@ -958,6 +958,8 @@ externdef ?GetSolid@B_RigidBody@@UAEPAVB_PhysicsTemplateBase@@XZ: near
 l004AB213 equ ?GetSolid@B_RigidBody@@UAEPAVB_PhysicsTemplateBase@@XZ
 externdef ?unknown_method010@B_RigidBody@@UAEHXZ: near
 l004AB224 equ ?unknown_method010@B_RigidBody@@UAEHXZ
+externdef ?ResetForcesAndPose@B_RigidBody@@UAEXN@Z: near
+l004AB257 equ ?ResetForcesAndPose@B_RigidBody@@UAEXN@Z
 externdef ?unknown_method018@B_RigidBody@@UAENXZ: near
 l004AB33E equ ?unknown_method018@B_RigidBody@@UAENXZ
 externdef ?unknown_method01C@B_RigidBody@@UAEXN@Z: near
@@ -968,6 +970,8 @@ externdef ??0B_ContactList@@QAE@XZ: near
 l004ABE5C equ ??0B_ContactList@@QAE@XZ
 externdef ??1B_ContactList@@QAE@XZ: near
 l004ABF07 equ ??1B_ContactList@@QAE@XZ
+externdef ?Clear@B_ContactList@@QAEXXZ: near
+l004AC1B9 equ ?Clear@B_ContactList@@QAEXXZ
 externdef _newExclusionGroupId: near
 l004AC6C2 equ _newExclusionGroupId
 externdef ??0B_PhysicsTemplate@@QAE@ABVB_Name@@@Z: near
