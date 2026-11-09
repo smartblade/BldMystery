@@ -20,6 +20,7 @@ public:
     double ScaleX() const;
     double ScaleY() const;
     double ScaleZ() const;
+    void SetScale(double scale);
     void InvertRigid(B_Matrix &out);
     B_Matrix *Invert(B_Matrix *outMatrix) const;
 

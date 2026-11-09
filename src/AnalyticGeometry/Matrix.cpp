@@ -242,6 +242,34 @@ double B_Matrix::ScaleZ() const
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x100040C2
+* Module:                 Blade.exe
+* Entry point:            0x00405872
+* VC++ mangling:          ?SetScale@B_Matrix@@QAEXN@Z
+*/
+
+void B_Matrix::SetScale(double scale)
+{
+    double scaleX = this->ScaleX();
+    double scaleY = this->ScaleY();
+    double scaleZ = this->ScaleZ();
+    double factorX = scale / scaleX;
+    double factorY = scale / scaleY;
+    double factorZ = scale / scaleZ;
+    this->m[0][0] = factorX * this->m[0][0];
+    this->m[0][1] = factorX * this->m[0][1];
+    this->m[0][2] = factorX * this->m[0][2];
+    this->m[1][0] = factorY * this->m[1][0];
+    this->m[1][1] = factorY * this->m[1][1];
+    this->m[1][2] = factorY * this->m[1][2];
+    this->m[2][0] = factorZ * this->m[2][0];
+    this->m[2][1] = factorZ * this->m[2][1];
+    this->m[2][2] = factorZ * this->m[2][2];
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
