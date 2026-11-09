@@ -113,6 +113,7 @@ public:
         const B_Vector &end,
         B_Vector &hit
     );
+    void Update();
 
     B_PhysicsStateCacheHandle stateCache;
     B_ObjDscr *resource;

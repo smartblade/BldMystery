@@ -1,4 +1,5 @@
 #include <Physics/PhysicsTemplate.h>
+#include <Physics/PhysicsState.h>
 
 
 /*
@@ -49,6 +50,19 @@ B_PhysicsTemplate::~B_PhysicsTemplate()
 
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x004AD0E7
+* VC++ mangling:          ?Update@B_PhysicsTemplate@@QAEXXZ
+*/
+
+#ifndef BLD_NATIVE
+void B_PhysicsTemplate::Update()
+{
+}
+#endif
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
@@ -77,6 +91,27 @@ int B_PhysicsTemplate::unknown_method008(B_PhysicsTemplateBase *other)
 int B_PhysicsTemplate::unknown_method010(int unknown)
 {
     return 2;
+}
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004B3978
+* VC++ mangling:          ?GetBoundingBox@B_PhysicsTemplate@@UAEABVB_BoundingBox@@XZ
+*/
+
+const B_BoundingBox &B_PhysicsTemplate::GetBoundingBox()
+{
+    this->Update();
+    return this->stateCache.state->boundingBox;
 }
 
 

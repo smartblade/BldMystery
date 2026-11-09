@@ -252294,20 +252294,7 @@ l004B3972: mov esp, ebp
            ret 00010h
 l004B3693 ENDP
 ;
-l004B3978 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov ecx, dword ptr [ebp-004h]
-           call l004AD0E7
-           mov eax, dword ptr [ebp-004h]
-           mov eax, dword ptr [eax+070h]
-           add eax, 00000002Ch
-           mov esp, ebp
-           pop ebp
-           ret
-l004B3978 ENDP
+           call l004B3978; Implemented in c++ code
 ;
 ;* Call:
 ; 00545024 

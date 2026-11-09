@@ -974,10 +974,14 @@ externdef ??0B_PhysicsTemplate@@QAE@PAVB_ObjDscr@@@Z: near
 l004ACF58 equ ??0B_PhysicsTemplate@@QAE@PAVB_ObjDscr@@@Z
 externdef ??1B_PhysicsTemplate@@UAE@XZ: near
 l004AD047 equ ??1B_PhysicsTemplate@@UAE@XZ
+externdef ?Update@B_PhysicsTemplate@@QAEXXZ: near
+l004AD0E7 equ ?Update@B_PhysicsTemplate@@QAEXXZ
 externdef ?unknown_method008@B_PhysicsTemplate@@UAEHPAVB_PhysicsTemplateBase@@@Z: near
 l004B30A4 equ ?unknown_method008@B_PhysicsTemplate@@UAEHPAVB_PhysicsTemplateBase@@@Z
 externdef ?unknown_method010@B_PhysicsTemplate@@UAEHH@Z: near
 l004B30B3 equ ?unknown_method010@B_PhysicsTemplate@@UAEHH@Z
+externdef ?GetBoundingBox@B_PhysicsTemplate@@UAEABVB_BoundingBox@@XZ: near
+l004B3978 equ ?GetBoundingBox@B_PhysicsTemplate@@UAEABVB_BoundingBox@@XZ
 externdef ??0B_SphereSetTemplate@@QAE@PAV?$array_t@VB_Sphere@@@@@Z: near
 l004B483E equ ??0B_SphereSetTemplate@@QAE@PAV?$array_t@VB_Sphere@@@@@Z
 externdef ??1B_SphereSetTemplate@@UAE@XZ: near
