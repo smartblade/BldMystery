@@ -1556,6 +1556,10 @@ externdef ?CanISee@B_PersonEntity@@QAEHPAV1@@Z: near
 l005341D8 equ ?CanISee@B_PersonEntity@@QAEHPAV1@@Z
 externdef ??0B_PhysicBody@@QAE@PAVB_PhysicsTemplate@@PAVB_PhysicSIEntity@@@Z: near
 l00544700 equ ??0B_PhysicBody@@QAE@PAVB_PhysicsTemplate@@PAVB_PhysicSIEntity@@@Z
+externdef ?RemoveFromWorld@B_PhysicBody@@UAEXXZ: near
+l00544731 equ ?RemoveFromWorld@B_PhysicBody@@UAEXXZ
+externdef ?PutToWorld@B_PhysicBody@@UAEXXZ: near
+l00544753 equ ?PutToWorld@B_PhysicBody@@UAEXXZ
 externdef ??0B_PhysicSIEntity@@QAE@ABVB_Name@@0H@Z: near
 l00544919 equ ??0B_PhysicSIEntity@@QAE@ABVB_Name@@0H@Z
 externdef ??0B_SparkEntity@@QAE@ABVB_Name@@ABVB_Vector@@1NNNNNABVB_Color@@2MMMH@Z: near

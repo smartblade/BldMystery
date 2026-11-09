@@ -464760,37 +464760,9 @@ l00544700 PROC
            ret 00008h
 l00544700 ENDP
 ;
-l00544731 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [eax+0000001B8h]
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [edx+0000001B8h]
-           mov edx, dword ptr [eax]
-           call [edx+038h]
-           mov esp, ebp
-           pop ebp
-           ret
-l00544731 ENDP
+           call l00544731; Implemented in c++ code
 ;
-l00544753 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [eax+0000001B8h]
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [edx+0000001B8h]
-           mov edx, dword ptr [eax]
-           call [edx+034h]
-           mov esp, ebp
-           pop ebp
-           ret
-l00544753 ENDP
+           call l00544753; Implemented in c++ code
 ;
 l00544775 PROC
            push ebp

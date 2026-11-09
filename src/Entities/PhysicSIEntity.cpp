@@ -19,6 +19,30 @@ B_PhysicBody::B_PhysicBody(B_PhysicsTemplate *solid, B_PhysicSIEntity *entity)
 
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x00544731
+* VC++ mangling:          ?RemoveFromWorld@B_PhysicBody@@UAEXXZ
+*/
+
+void B_PhysicBody::RemoveFromWorld()
+{
+    this->entity->RemoveFromWorld();
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00544753
+* VC++ mangling:          ?PutToWorld@B_PhysicBody@@UAEXXZ
+*/
+
+void B_PhysicBody::PutToWorld()
+{
+    this->entity->PutToWorld();
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
