@@ -18,6 +18,7 @@ public:
     B_Vector TranslationVector() const;
     void SetOrigin(const B_Vector *origin);
     double ScaleX() const;
+    double ScaleY() const;
     void InvertRigid(B_Matrix &out);
     B_Matrix *Invert(B_Matrix *outMatrix) const;
 
