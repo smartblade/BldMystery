@@ -7,36 +7,33 @@
 * Entry point:            0x10032ABD
 * VC++ mangling:          ?ClassId@B_ObjDscr@@UBEGXZ
 */
-#ifndef BLD_NATIVE
+
 unsigned short B_ObjDscr::ClassId() const
 {
-    return 0;
+    return 1;
 }
-#endif
 
 /*
 * Module:                 BBLibc.dll
 * Entry point:            0x10032ACC
 * VC++ mangling:          ?CheckSum@B_ObjDscr@@UBEKXZ
 */
-#ifndef BLD_NATIVE
+
 unsigned long B_ObjDscr::CheckSum() const
 {
     return 0;
 }
-#endif
 
 /*
 * Module:                 BBLibc.dll
 * Entry point:            0x10032AD9
 * VC++ mangling:          ?SerialSize@B_ObjDscr@@UBEIXZ
 */
-#ifndef BLD_NATIVE
+
 unsigned int B_ObjDscr::SerialSize() const
 {
     return 0;
 }
-#endif
 
 /*
 * Module:                 BBLibc.dll

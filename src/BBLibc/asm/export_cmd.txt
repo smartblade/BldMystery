@@ -139,9 +139,6 @@
 /EXPORT:?Message@B_MessageManager@@QAEIDABVB_Name@@@Z=?Message@B_MessageManager@@QAEIDABVB_Name@@@Z
 /EXPORT:??6@YAAAVB_MessageManager@@AAV0@PBD@Z=??6@YAAAVB_MessageManager@@AAV0@PBD@Z
 /EXPORT:??6@YAAAVB_MessageManager@@AAV0@D@Z=??6@YAAAVB_MessageManager@@AAV0@D@Z
-/EXPORT:?ClassId@B_ObjDscr@@UBEGXZ=?ClassId@B_ObjDscr@@UBEGXZ
-/EXPORT:?CheckSum@B_ObjDscr@@UBEKXZ=?CheckSum@B_ObjDscr@@UBEKXZ
-/EXPORT:?SerialSize@B_ObjDscr@@UBEIXZ=?SerialSize@B_ObjDscr@@UBEIXZ
 /EXPORT:?SetUpNormals@B_ObjDscr@@QAEXXZ=?SetUpNormals@B_ObjDscr@@QAEXXZ
 /EXPORT:?SetUpInertialT@B_ObjDscr@@QAEXXZ=?SetUpInertialT@B_ObjDscr@@QAEXXZ
 /EXPORT:?GetVtxNode@B_ObjDscr@@QAEHI@Z=?GetVtxNode@B_ObjDscr@@QAEHI@Z

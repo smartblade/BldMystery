@@ -81812,42 +81812,15 @@ l10032A75 ENDP
 ;
 ;* Export: ?ClassId@B_ObjDscr@@UBEGXZ, 00A2
 ;
-l10032ABD PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov ax, 00001h
-           mov esp, ebp
-           pop ebp
-           ret
-l10032ABD ENDP
+           call l10032ABD; Implemented in c++ code
 ;
 ;* Export: ?CheckSum@B_ObjDscr@@UBEKXZ, 00A1
 ;
-l10032ACC PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           xor eax, eax
-           mov esp, ebp
-           pop ebp
-           ret
-l10032ACC ENDP
+           call l10032ACC; Implemented in c++ code
 ;
 ;* Export: ?SerialSize@B_ObjDscr@@UBEIXZ, 010D
 ;
-l10032AD9 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           xor eax, eax
-           mov esp, ebp
-           pop ebp
-           ret
-l10032AD9 ENDP
+           call l10032AD9; Implemented in c++ code
 ;
 ;* Call:
 ; 10036987 
