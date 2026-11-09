@@ -33,12 +33,14 @@ B_MeshEdge::B_MeshEdge()
 * Entry point:            0x1003221C
 * VC++ mangling:          ??0B_MeshEdge@@QAE@III@Z
 */
-#ifndef BLD_NATIVE
-B_MeshEdge::B_MeshEdge(unsigned int a, unsigned int b, unsigned int c)
-{
 
+B_MeshEdge::B_MeshEdge(unsigned int a, unsigned int b, unsigned int node)
+{
+    this->node = node;
+    this->sharp = 1;
+    this->vertexA = a < b ? a : b;
+    this->vertexB = a > b ? a : b;
 }
-#endif
 
 /*
 * Module:                 BBLibc.dll
