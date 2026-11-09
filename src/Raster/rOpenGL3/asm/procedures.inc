@@ -18,6 +18,8 @@ externdef ?ScaleX@B_Matrix@@QBENXZ: near
 l1000401C equ ?ScaleX@B_Matrix@@QBENXZ
 externdef ?ScaleY@B_Matrix@@QBENXZ: near
 l10004052 equ ?ScaleY@B_Matrix@@QBENXZ
+externdef ?ScaleZ@B_Matrix@@QBENXZ: near
+l1000408A equ ?ScaleZ@B_Matrix@@QBENXZ
 externdef ?InvertRigid@B_Matrix@@QAEXAAV1@@Z: near
 l100042F2 equ ?InvertRigid@B_Matrix@@QAEXAAV1@@Z
 externdef ?Invert@B_Matrix@@QBEPAV1@PAV1@@Z: near

@@ -224,6 +224,24 @@ double B_Matrix::ScaleY() const
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x1000408A
+* Module:                 Blade.exe
+* Entry point:            0x0040583A
+* VC++ mangling:          ?ScaleZ@B_Matrix@@QBENXZ
+*/
+
+double B_Matrix::ScaleZ() const
+{
+    return sqrt(
+        this->m[2][0] * this->m[2][0] +
+            this->m[2][1] * this->m[2][1] +
+            this->m[2][2] * this->m[2][2]
+    );
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
