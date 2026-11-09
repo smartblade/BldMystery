@@ -2,6 +2,7 @@
 
 #include <bld_system.h>
 #include <AnalyticGeometry/Vector.h>
+#include <AnalyticGeometry/Plane.h>
 #include <BBLibc/IDataFile.h>
 #include <BBLibc/ODataFile.h>
 #include <math.h>
@@ -583,11 +584,33 @@ B_Vector Rotate(const B_Vector &v, const B_Matrix &rotateMatrix)
 
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 rOpenGL.dll
+* Entry point:            0x100053F7
+* Module:                 Blade.exe
+* Entry point:            0x00406BA7
+* VC++ mangling:          ?TransformPlane@@YAXAAVB_Plane@@ABV1@ABVB_Matrix@@@Z
 */
+
+void TransformPlane(B_Plane &out, const B_Plane &in, const B_Matrix &matrix)
+{
+    out.normal.x =
+        in.normal.x * matrix.m[0][0] +
+            in.normal.y * matrix.m[1][0] +
+            in.normal.z * matrix.m[2][0];
+    out.normal.y =
+        in.normal.x * matrix.m[0][1] +
+            in.normal.y * matrix.m[1][1] +
+            in.normal.z * matrix.m[2][1];
+    out.normal.z =
+        in.normal.x * matrix.m[0][2] +
+            in.normal.y * matrix.m[1][2] +
+            in.normal.z * matrix.m[2][2];
+    out.p =
+        in.p -
+            out.normal.x * matrix.m[3][0] -
+            out.normal.y * matrix.m[3][1] -
+            out.normal.z * matrix.m[3][2];
+}
 
 
 /*

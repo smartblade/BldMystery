@@ -3,6 +3,7 @@
 #define MATRIX_H
 
 class B_Vector;
+class B_Plane;
 class B_IDataFile;
 class B_ODataFile;
 
@@ -36,6 +37,11 @@ extern void Rotate(
     const B_Matrix &rotateMatrix
 );
 extern B_Vector Rotate(const B_Vector &v, const B_Matrix &rotateMatrix);
+extern void TransformPlane(
+    B_Plane &out,
+    const B_Plane &in,
+    const B_Matrix &matrix
+);
 extern B_IDataFile &operator >>(B_IDataFile &file, B_Matrix &matrix);
 extern B_ODataFile &operator <<(B_ODataFile &file, const B_Matrix &matrix);
 
