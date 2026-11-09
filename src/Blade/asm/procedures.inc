@@ -956,6 +956,8 @@ externdef ?PutToWorld@B_RigidBody@@UAEXXZ: near
 l004AB208 equ ?PutToWorld@B_RigidBody@@UAEXXZ
 externdef ?GetSolid@B_RigidBody@@UAEPAVB_PhysicsTemplateBase@@XZ: near
 l004AB213 equ ?GetSolid@B_RigidBody@@UAEPAVB_PhysicsTemplateBase@@XZ
+externdef ?unknown_method010@B_RigidBody@@UAEHXZ: near
+l004AB224 equ ?unknown_method010@B_RigidBody@@UAEHXZ
 externdef ??0B_ContactList@@QAE@XZ: near
 l004ABE5C equ ??0B_ContactList@@QAE@XZ
 externdef ??1B_ContactList@@QAE@XZ: near

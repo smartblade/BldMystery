@@ -239458,34 +239458,7 @@ l004AB1E0 ENDP
 ;
            call l004AB213; Implemented in c++ code
 ;
-l004AB224 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp-004h]
-           fld qword ptr [eax+0000000D8h]
-           fsub qword ptr [ecx+0000000E0h]
-           fcomp qword ptr [g005BD730]
-           fnstsw ax
-           test ah, 041h
-           jne l004AB251
-           mov eax, 000000001h
-           jmp l004AB253
-;
-;* Jump:
-; 004AB248(C) 
-;
-l004AB251: xor eax, eax
-;
-;* Jump:
-; 004AB24F(U) 
-;
-l004AB253: mov esp, ebp
-           pop ebp
-           ret
-l004AB224 ENDP
+           call l004AB224; Implemented in c++ code
 ;
 ;* Call:
 ; 004AB1D2 

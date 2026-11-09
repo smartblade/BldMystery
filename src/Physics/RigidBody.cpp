@@ -63,6 +63,18 @@ B_PhysicsTemplateBase *B_RigidBody::GetSolid()
 
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x004AB224
+* VC++ mangling:          ?unknown_method010@B_RigidBody@@UAEHXZ
+*/
+
+int B_RigidBody::unknown_method010()
+{
+    return this->unknownField0D8 - this->unknownField0E0 > 1.0;
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
