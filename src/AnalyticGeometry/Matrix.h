@@ -19,9 +19,17 @@ public:
     double m[4][4];
 };
 
-extern B_Vector operator *(const B_Vector& vector, const B_Matrix &matrix);
-extern void TransformPoint(B_Vector &out, const B_Vector &v, const B_Matrix &matrix);
-extern void Rotate(B_Vector &out, const B_Vector &v, const B_Matrix &rotateMatrix);
+extern B_Vector operator *(const B_Vector &vector, const B_Matrix &matrix);
+extern void TransformPoint(
+    B_Vector &out,
+    const B_Vector &v,
+    const B_Matrix &matrix
+);
+extern void Rotate(
+    B_Vector &out,
+    const B_Vector &v,
+    const B_Matrix &rotateMatrix
+);
 extern B_Vector Rotate(const B_Vector &v, const B_Matrix &rotateMatrix);
 extern B_IDataFile &operator >>(B_IDataFile &file, B_Matrix &matrix);
 extern B_ODataFile &operator <<(B_ODataFile &file, const B_Matrix &matrix);

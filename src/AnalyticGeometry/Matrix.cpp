@@ -36,6 +36,7 @@ B_Matrix::B_Matrix()
     )
 }
 
+
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000354D
@@ -62,6 +63,7 @@ B_Matrix::B_Matrix(double scale)
 ................................................................................
 */
 
+
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000377F
@@ -80,6 +82,7 @@ B_Matrix::B_Matrix(const B_Vector &v)
     )
 }
 
+
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x100038A0
@@ -92,16 +95,26 @@ B_Matrix::B_Matrix(const B_Vector &axis, double angle)
 {
     double c = cos(angle);
     double s = sin(angle);
-
     double x = axis.x;
     double y = axis.y;
     double z = axis.z;
-
     DEFINE_MATRIX(
-        x * x * (1.0 - c) + c, x * y * (1.0 - c) + z * s, x * z * (1.0 - c) - y * s, 0.0,
-        x * y * (1.0 - c) - z * s, y * y + (x * x + z * z) * c, y * z * (1.0 - c) + x * s, 0.0,
-        x * z * (1.0 - c) + y * s, y * z * (1.0 - c) - x * s, z * z * (1.0 - c) + c, 0.0,
-        0.0, 0.0, 0.0, 1.0
+        x * x * (1.0 - c) + c,
+        x * y * (1.0 - c) + z * s,
+        x * z * (1.0 - c) - y * s,
+        0.0,
+        x * y * (1.0 - c) - z * s,
+        y * y + (x * x + z * z) * c,
+        y * z * (1.0 - c) + x * s,
+        0.0,
+        x * z * (1.0 - c) + y * s,
+        y * z * (1.0 - c) - x * s,
+        z * z * (1.0 - c) + c,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
     )
 }
 
@@ -112,6 +125,7 @@ B_Matrix::B_Matrix(const B_Vector &axis, double angle)
 ................................................................................
 ................................................................................
 */
+
 
 /*
 * Module:                 rOpenGL.dll
@@ -125,6 +139,7 @@ B_Vector B_Matrix::TranslationVector() const
 {
     return B_Vector(this->m[3][0], this->m[3][1], this->m[3][2]);
 }
+
 
 /*
 * Module:                 rOpenGL.dll
@@ -149,6 +164,7 @@ void B_Matrix::SetOrigin(const B_Vector *origin)
 ................................................................................
 */
 
+
 /*
 * Module:                 rOpenGL.dll
 * Entry point:            0x10005153
@@ -160,10 +176,21 @@ void B_Matrix::SetOrigin(const B_Vector *origin)
 B_Vector operator *(const B_Vector &vector, const B_Matrix &matrix)
 {
     return B_Vector(
-        vector.x * matrix.m[0][0] + vector.y * matrix.m[1][0] + vector.z * matrix.m[2][0] + matrix.m[3][0],
-        vector.x * matrix.m[0][1] + vector.y * matrix.m[1][1] + vector.z * matrix.m[2][1] + matrix.m[3][1],
-        vector.x * matrix.m[0][2] + vector.y * matrix.m[1][2] + vector.z * matrix.m[2][2] + matrix.m[3][2]);
+        vector.x * matrix.m[0][0] +
+            vector.y * matrix.m[1][0] +
+            vector.z * matrix.m[2][0] +
+            matrix.m[3][0],
+        vector.x * matrix.m[0][1] +
+            vector.y * matrix.m[1][1] +
+            vector.z * matrix.m[2][1] +
+            matrix.m[3][1],
+        vector.x * matrix.m[0][2] +
+            vector.y * matrix.m[1][2] +
+            vector.z * matrix.m[2][2] +
+            matrix.m[3][2]
+    );
 }
+
 
 /*
 * Module:                 rOpenGL.dll
@@ -175,10 +202,23 @@ B_Vector operator *(const B_Vector &vector, const B_Matrix &matrix)
 
 void TransformPoint(B_Vector &out, const B_Vector &v, const B_Matrix &matrix)
 {
-    out.x = v.x * matrix.m[0][0] + v.y * matrix.m[1][0] + v.z * matrix.m[2][0] + matrix.m[3][0];
-    out.y = v.x * matrix.m[0][1] + v.y * matrix.m[1][1] + v.z * matrix.m[2][1] + matrix.m[3][1];
-    out.z = v.x * matrix.m[0][2] + v.y * matrix.m[1][2] + v.z * matrix.m[2][2] + matrix.m[3][2];
+    out.x =
+        v.x * matrix.m[0][0] +
+            v.y * matrix.m[1][0] +
+            v.z * matrix.m[2][0] +
+            matrix.m[3][0];
+    out.y =
+        v.x * matrix.m[0][1] +
+            v.y * matrix.m[1][1] +
+            v.z * matrix.m[2][1] +
+            matrix.m[3][1];
+    out.z =
+        v.x * matrix.m[0][2] +
+            v.y * matrix.m[1][2] +
+            v.z * matrix.m[2][2] +
+            matrix.m[3][2];
 }
+
 
 /*
 * Module:                 rOpenGL.dll
@@ -190,10 +230,20 @@ void TransformPoint(B_Vector &out, const B_Vector &v, const B_Matrix &matrix)
 
 void Rotate(B_Vector &out, const B_Vector &v, const B_Matrix &rotateMatrix)
 {
-    out.x = v.x * rotateMatrix.m[0][0] + v.y * rotateMatrix.m[1][0] + v.z * rotateMatrix.m[2][0];
-    out.y = v.x * rotateMatrix.m[0][1] + v.y * rotateMatrix.m[1][1] + v.z * rotateMatrix.m[2][1];
-    out.z = v.x * rotateMatrix.m[0][2] + v.y * rotateMatrix.m[1][2] + v.z * rotateMatrix.m[2][2];
+    out.x =
+        v.x * rotateMatrix.m[0][0] +
+            v.y * rotateMatrix.m[1][0] +
+            v.z * rotateMatrix.m[2][0];
+    out.y =
+        v.x * rotateMatrix.m[0][1] +
+            v.y * rotateMatrix.m[1][1] +
+            v.z * rotateMatrix.m[2][1];
+    out.z =
+        v.x * rotateMatrix.m[0][2] +
+            v.y * rotateMatrix.m[1][2] +
+            v.z * rotateMatrix.m[2][2];
 }
+
 
 /*
 * Module:                 rOpenGL.dll
@@ -206,9 +256,16 @@ void Rotate(B_Vector &out, const B_Vector &v, const B_Matrix &rotateMatrix)
 B_Vector Rotate(const B_Vector &v, const B_Matrix &rotateMatrix)
 {
     return B_Vector(
-        v.x * rotateMatrix.m[0][0] + v.y * rotateMatrix.m[1][0] + v.z * rotateMatrix.m[2][0],
-        v.x * rotateMatrix.m[0][1] + v.y * rotateMatrix.m[1][1] + v.z * rotateMatrix.m[2][1],
-        v.x * rotateMatrix.m[0][2] + v.y * rotateMatrix.m[1][2] + v.z * rotateMatrix.m[2][2]);
+        v.x * rotateMatrix.m[0][0] +
+            v.y * rotateMatrix.m[1][0] +
+            v.z * rotateMatrix.m[2][0],
+        v.x * rotateMatrix.m[0][1] +
+            v.y * rotateMatrix.m[1][1] +
+            v.z * rotateMatrix.m[2][1],
+        v.x * rotateMatrix.m[0][2] +
+            v.y * rotateMatrix.m[1][2] +
+            v.z * rotateMatrix.m[2][2]
+    );
 }
 
 
@@ -218,6 +275,7 @@ B_Vector Rotate(const B_Vector &v, const B_Matrix &rotateMatrix)
 ................................................................................
 ................................................................................
 */
+
 
 /*
 * Module:                 rOpenGL.dll
@@ -232,6 +290,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_Matrix &matrix)
     file.Read(&matrix, sizeof(matrix));
     return file;
 }
+
 
 /*
 * Module:                 rOpenGL.dll
