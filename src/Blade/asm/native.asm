@@ -240161,25 +240161,7 @@ l004ABB8F: pop edi
            ret 00008h
 l004AB806 ENDP
 ;
-l004ABB97 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           push esi
-           push edi
-           mov dword ptr [ebp-004h], ecx
-           mov esi, dword ptr [ebp-004h]
-           add esi, 000000170h
-           mov ecx, 000000006h
-           mov edi, dword ptr [ebp+008h]
-           rep movsd
-           mov eax, dword ptr [ebp+008h]
-           pop edi
-           pop esi
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l004ABB97 ENDP
+           call l004ABB97; Implemented in c++ code
 ;
 l004ABBBE PROC
            push ebp
