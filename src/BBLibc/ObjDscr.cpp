@@ -127,12 +127,24 @@ void B_ObjDscr::SetUpBSP()
 * Entry point:            0x10037E84
 * VC++ mangling:          ?EdgeFaceGrp@B_ObjDscr@@QAEEI@Z
 */
-#ifndef BLD_NATIVE
-unsigned char B_ObjDscr::EdgeFaceGrp(unsigned int)
+
+unsigned char B_ObjDscr::EdgeFaceGrp(unsigned int edge)
 {
+    B_ObjFace *face = this->faces.elements;
+    for (unsigned int i = 0; i < this->faces.size; i++)
+    {
+        if (
+            face->edges[0] == edge ||
+            face->edges[1] == edge ||
+            face->edges[2] == edge
+        )
+        {
+            return this->faceGroups.elements[i];
+        }
+        face++;
+    }
     return 0;
 }
-#endif
 
 /*
 * Module:                 BBLibc.dll

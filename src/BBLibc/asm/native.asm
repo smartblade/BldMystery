@@ -88869,73 +88869,7 @@ l1003737B ENDP
 ;
 ;* Export: ?EdgeFaceGrp@B_ObjDscr@@QAEEI@Z, 00B1
 ;
-l10037E84 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000000Ch
-           mov dword ptr [ebp-00Ch], ecx
-           mov eax, dword ptr [ebp-00Ch]
-           mov ecx, dword ptr [eax+03Ch]
-           mov dword ptr [ebp-004h], ecx
-           mov dword ptr [ebp-008h], 000000000h
-           jmp l10037EA8
-;
-;* Jump:
-; 10037EEB(U) 
-;
-l10037E9F: mov edx, dword ptr [ebp-008h]
-           add edx, 000000001h
-           mov dword ptr [ebp-008h], edx
-;
-;* Jump:
-; 10037E9D(U) 
-;
-l10037EA8: mov eax, dword ptr [ebp-00Ch]
-           mov ecx, dword ptr [ebp-008h]
-           cmp ecx, dword ptr [eax+040h]
-           jnb l10037EED
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [edx+00Ch]
-           cmp eax, dword ptr [ebp+008h]
-           je l10037ED4
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ecx+010h]
-           cmp edx, dword ptr [ebp+008h]
-           je l10037ED4
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [eax+014h]
-           cmp ecx, dword ptr [ebp+008h]
-           jne l10037EE2
-;
-;* Jump:
-; 10037EBC(C), 10037EC7(C) 
-;
-l10037ED4: mov edx, dword ptr [ebp-00Ch]
-           mov eax, dword ptr [edx+068h]
-           mov ecx, dword ptr [ebp-008h]
-           mov al, byte ptr [eax+ecx]
-           jmp l10037EEF
-;
-;* Jump:
-; 10037ED2(C) 
-;
-l10037EE2: mov edx, dword ptr [ebp-004h]
-           add edx, 000000038h
-           mov dword ptr [ebp-004h], edx
-           jmp l10037E9F
-;
-;* Jump:
-; 10037EB1(C) 
-;
-l10037EED: xor al, al
-;
-;* Jump:
-; 10037EE0(U) 
-;
-l10037EEF: mov esp, ebp
-           pop ebp
-           ret 00004h
-l10037E84 ENDP
+           call l10037E84; Implemented in c++ code
 ;
 ;* Call:
 ; 10004024, 10006547 
