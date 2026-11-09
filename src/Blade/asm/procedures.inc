@@ -982,6 +982,12 @@ externdef ??0B_SphereSetTemplate@@QAE@PAV?$array_t@VB_Sphere@@@@@Z: near
 l004B483E equ ??0B_SphereSetTemplate@@QAE@PAV?$array_t@VB_Sphere@@@@@Z
 externdef ??1B_SphereSetTemplate@@UAE@XZ: near
 l004B48F3 equ ??1B_SphereSetTemplate@@UAE@XZ
+externdef ?BindConstraints@B_SphereSetTemplate@@UAEHXZ: near
+l004B550A equ ?BindConstraints@B_SphereSetTemplate@@UAEHXZ
+externdef ?unknown_method008@B_SphereSetTemplate@@UAEHPAVB_PhysicsTemplateBase@@@Z: near
+l004B551A equ ?unknown_method008@B_SphereSetTemplate@@UAEHPAVB_PhysicsTemplateBase@@@Z
+externdef ?unknown_method010@B_SphereSetTemplate@@UAEHH@Z: near
+l004B5529 equ ?unknown_method010@B_SphereSetTemplate@@UAEHH@Z
 externdef _CreateSound: near
 l004BF1EF equ _CreateSound
 externdef _CreateSoundS: near

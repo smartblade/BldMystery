@@ -254993,52 +254993,11 @@ l004B5502: pop edi
            ret 0000Ch
 l004B4E76 ENDP
 ;
-l004B550A PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
+           call l004B550A; Implemented in c++ code
 ;
-;* Control "Cancelar", Dialog 006E
+           call l004B551A; Implemented in c++ code
 ;
-;* Control "Exit", Dialog 0073
-;
-;* Control "Cancel", Dialog 0079
-;
-           mov eax, 000000002h
-           mov esp, ebp
-           pop ebp
-           ret
-l004B550A ENDP
-;
-l004B551A PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           xor eax, eax
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l004B551A ENDP
-;
-l004B5529 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-;
-;* Control "Cancelar", Dialog 006E
-;
-;* Control "Exit", Dialog 0073
-;
-;* Control "Cancel", Dialog 0079
-;
-           mov eax, 000000002h
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l004B5529 ENDP
+           call l004B5529; Implemented in c++ code
 ;
 l004B553B PROC
            push ebp

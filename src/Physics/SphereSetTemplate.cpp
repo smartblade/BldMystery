@@ -41,3 +41,47 @@ B_SphereSetTemplate::~B_SphereSetTemplate()
 ................................................................................
 ................................................................................
 */
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004B550A
+* VC++ mangling:          ?BindConstraints@B_SphereSetTemplate@@UAEHXZ
+*/
+
+int B_SphereSetTemplate::BindConstraints()
+{
+    return 2;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004B551A
+* VC++ mangling:          ?unknown_method008@B_SphereSetTemplate@@UAEHPAVB_PhysicsTemplateBase@@@Z
+*/
+
+int B_SphereSetTemplate::unknown_method008(B_PhysicsTemplateBase *other)
+{
+    return 0;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004B5529
+* VC++ mangling:          ?unknown_method010@B_SphereSetTemplate@@UAEHH@Z
+*/
+
+int B_SphereSetTemplate::unknown_method010(int unknown)
+{
+    return 2;
+}
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
