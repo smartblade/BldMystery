@@ -51,6 +51,18 @@ void B_RigidBody::PutToWorld()
 
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x004AB213
+* VC++ mangling:          ?GetSolid@B_RigidBody@@UAEPAVB_PhysicsTemplateBase@@XZ
+*/
+
+B_PhysicsTemplateBase *B_RigidBody::GetSolid()
+{
+    return this->solid;
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................

@@ -954,6 +954,8 @@ externdef ?RemoveFromWorld@B_RigidBody@@UAEXXZ: near
 l004AB1FD equ ?RemoveFromWorld@B_RigidBody@@UAEXXZ
 externdef ?PutToWorld@B_RigidBody@@UAEXXZ: near
 l004AB208 equ ?PutToWorld@B_RigidBody@@UAEXXZ
+externdef ?GetSolid@B_RigidBody@@UAEPAVB_PhysicsTemplateBase@@XZ: near
+l004AB213 equ ?GetSolid@B_RigidBody@@UAEPAVB_PhysicsTemplateBase@@XZ
 externdef ??0B_ContactList@@QAE@XZ: near
 l004ABE5C equ ??0B_ContactList@@QAE@XZ
 externdef ??1B_ContactList@@QAE@XZ: near
