@@ -946,6 +946,10 @@ externdef ?SetEndTangent@B_Spline@@QAEHHABVB_Vector@@@Z: near
 l00496EBC equ ?SetEndTangent@B_Spline@@QAEHHABVB_Vector@@@Z
 externdef _unknown_00497AE0: near
 l00497AE0 equ _unknown_00497AE0
+externdef ??0B_ContactList@@QAE@XZ: near
+l004ABE5C equ ??0B_ContactList@@QAE@XZ
+externdef ??1B_ContactList@@QAE@XZ: near
+l004ABF07 equ ??1B_ContactList@@QAE@XZ
 externdef _newExclusionGroupId: near
 l004AC6C2 equ _newExclusionGroupId
 externdef _CreateSound: near

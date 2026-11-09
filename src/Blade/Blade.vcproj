@@ -680,6 +680,18 @@
 				</File>
 			</Filter>
 			<Filter
+				Name="Physics"
+				>
+				<File
+					RelativePath="..\Physics\ContactList.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\Physics\ContactList.h"
+					>
+				</File>
+			</Filter>
+			<Filter
 				Name="NetMod"
 				>
 				<File
