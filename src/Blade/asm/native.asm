@@ -254999,48 +254999,11 @@ l004B4E76 ENDP
 ;
            call l004B5529; Implemented in c++ code
 ;
-l004B553B PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           add eax, 0000000E8h
-           mov esp, ebp
-           pop ebp
-           ret
-l004B553B ENDP
+           call l004B553B; Implemented in c++ code
 ;
-l004B554E PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           push esi
-           push edi
-           mov dword ptr [ebp-004h], ecx
-           mov esi, dword ptr [ebp+008h]
-           mov edi, dword ptr [ebp-004h]
-           add edi, 000000068h
-           mov ecx, 000000020h
-           rep movsd
-           pop edi
-           pop esi
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l004B554E ENDP
+           call l004B554E; Implemented in c++ code
 ;
-l004B556F PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           add eax, 000000068h
-           mov esp, ebp
-           pop ebp
-           ret
-l004B556F ENDP
+           call l004B556F; Implemented in c++ code
 ;
 ;* Call:
 ; 004B533D, 004B543C, 004B549C, 004B54E0, 004B54FB 

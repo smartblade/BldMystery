@@ -80,6 +80,42 @@ int B_SphereSetTemplate::unknown_method010(int unknown)
 
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x004B553B
+* VC++ mangling:          ?GetBoundingBox@B_SphereSetTemplate@@UAEABVB_BoundingBox@@XZ
+*/
+
+const B_BoundingBox &B_SphereSetTemplate::GetBoundingBox()
+{
+    return this->boundingBox;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004B554E
+* VC++ mangling:          ?SetPose@B_SphereSetTemplate@@UAEXPBVB_Matrix@@@Z
+*/
+
+void B_SphereSetTemplate::SetPose(const B_Matrix *pose)
+{
+    this->pose = *pose;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004B556F
+* VC++ mangling:          ?GetPose@B_SphereSetTemplate@@UAEAAVB_Matrix@@XZ
+*/
+
+B_Matrix &B_SphereSetTemplate::GetPose()
+{
+    return this->pose;
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................

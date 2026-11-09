@@ -988,6 +988,12 @@ externdef ?unknown_method008@B_SphereSetTemplate@@UAEHPAVB_PhysicsTemplateBase@@
 l004B551A equ ?unknown_method008@B_SphereSetTemplate@@UAEHPAVB_PhysicsTemplateBase@@@Z
 externdef ?unknown_method010@B_SphereSetTemplate@@UAEHH@Z: near
 l004B5529 equ ?unknown_method010@B_SphereSetTemplate@@UAEHH@Z
+externdef ?GetBoundingBox@B_SphereSetTemplate@@UAEABVB_BoundingBox@@XZ: near
+l004B553B equ ?GetBoundingBox@B_SphereSetTemplate@@UAEABVB_BoundingBox@@XZ
+externdef ?SetPose@B_SphereSetTemplate@@UAEXPBVB_Matrix@@@Z: near
+l004B554E equ ?SetPose@B_SphereSetTemplate@@UAEXPBVB_Matrix@@@Z
+externdef ?GetPose@B_SphereSetTemplate@@UAEAAVB_Matrix@@XZ: near
+l004B556F equ ?GetPose@B_SphereSetTemplate@@UAEAAVB_Matrix@@XZ
 externdef _CreateSound: near
 l004BF1EF equ _CreateSound
 externdef _CreateSoundS: near
