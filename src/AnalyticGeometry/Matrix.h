@@ -21,6 +21,7 @@ public:
     double m[4][4];
 };
 
+extern B_Matrix operator *(const B_Matrix &a, const B_Matrix &b);
 extern B_Vector operator *(const B_Vector &vector, const B_Matrix &matrix);
 extern void TransformPoint(
     B_Vector &out,
