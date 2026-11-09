@@ -47,10 +47,9 @@ B_MeshEdge::B_MeshEdge(unsigned int a, unsigned int b, unsigned int node)
 * Entry point:            0x1003227E
 * VC++ mangling:          ??8B_MeshEdge@@QBEIABV0@@Z
 */
-#ifndef BLD_NATIVE
+
 unsigned int B_MeshEdge::operator==(const B_MeshEdge &other) const
 {
-    return 0;
+    return this->vertexA == other.vertexA && this->vertexB == other.vertexB;
 }
-#endif
 

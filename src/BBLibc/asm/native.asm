@@ -80871,37 +80871,7 @@ l100321C8 ENDP
 ;
 ;* Export: ??8B_MeshEdge@@QBEIABV0@@Z, 0074
 ;
-l1003227E PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000008h
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           mov edx, dword ptr [eax+004h]
-           cmp edx, dword ptr [ecx+004h]
-           jne l100322AC
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           mov edx, dword ptr [eax+008h]
-           cmp edx, dword ptr [ecx+008h]
-           jne l100322AC
-           mov dword ptr [ebp-008h], 000000001h
-           jmp l100322B3
-;
-;* Jump:
-; 10032293(C), 100322A1(C) 
-;
-l100322AC: mov dword ptr [ebp-008h], 000000000h
-;
-;* Jump:
-; 100322AA(U) 
-;
-l100322B3: mov eax, dword ptr [ebp-008h]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l1003227E ENDP
+           call l1003227E; Implemented in c++ code
 ;
 ;* Call:
 ; 1003D720 
