@@ -239531,17 +239531,7 @@ l004AB257 PROC
            ret 00008h
 l004AB257 ENDP
 ;
-l004AB33E PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           fld qword ptr [eax+0000000C0h]
-           mov esp, ebp
-           pop ebp
-           ret
-l004AB33E ENDP
+           call l004AB33E; Implemented in c++ code
 ;
 l004AB352 PROC
            push ebp
