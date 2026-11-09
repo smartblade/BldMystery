@@ -139,7 +139,6 @@
 /EXPORT:?Message@B_MessageManager@@QAEIDABVB_Name@@@Z=?Message@B_MessageManager@@QAEIDABVB_Name@@@Z
 /EXPORT:??6@YAAAVB_MessageManager@@AAV0@PBD@Z=??6@YAAAVB_MessageManager@@AAV0@PBD@Z
 /EXPORT:??6@YAAAVB_MessageManager@@AAV0@D@Z=??6@YAAAVB_MessageManager@@AAV0@D@Z
-/EXPORT:??0B_MeshEdge@@QAE@XZ=??0B_MeshEdge@@QAE@XZ
 /EXPORT:??0B_MeshEdge@@QAE@III@Z=??0B_MeshEdge@@QAE@III@Z
 /EXPORT:??8B_MeshEdge@@QBEIABV0@@Z=??8B_MeshEdge@@QBEIABV0@@Z
 /EXPORT:?ClassId@B_ObjDscr@@UBEGXZ=?ClassId@B_ObjDscr@@UBEGXZ

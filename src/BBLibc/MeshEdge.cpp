@@ -19,11 +19,13 @@ B_MeshEdge &B_MeshEdge::operator=(const B_MeshEdge &other)
 * Entry point:            0x100321F0
 * VC++ mangling:          ??0B_MeshEdge@@QAE@XZ
 */
-#ifndef BLD_NATIVE
+
 B_MeshEdge::B_MeshEdge()
 {
+    this->vertexA = 0;
+    this->vertexB = 0;
+    this->sharp = 1;
 }
-#endif
 
 
 /*

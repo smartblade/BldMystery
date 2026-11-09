@@ -80857,22 +80857,7 @@ l100321C8 ENDP
 ;
 ;* Export: ??0B_MeshEdge@@QAE@XZ, 0014
 ;
-l100321F0 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+004h], 000000000h
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+008h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+014h], 000000001h
-           mov eax, dword ptr [ebp-004h]
-           mov esp, ebp
-           pop ebp
-           ret
-l100321F0 ENDP
+           call l100321F0; Implemented in c++ code
 ;
 ;* Call:
 ; 100344F1 
