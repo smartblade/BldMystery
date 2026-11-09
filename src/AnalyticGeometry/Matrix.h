@@ -28,6 +28,7 @@ public:
     double m[4][4];
 };
 
+extern int operator ==(const B_Matrix &a, const B_Matrix &b);
 extern B_Matrix operator *(const B_Matrix &a, const B_Matrix &b);
 extern B_Matrix MulRot_406338(const B_Matrix &a, const B_Matrix &b);
 extern void MatrixMultiply(B_Matrix *out, const B_Matrix *a, const B_Matrix *b);
