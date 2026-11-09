@@ -121,6 +121,35 @@ B_Matrix::B_Matrix(const B_Vector &axis, double angle)
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10003A77
+* Module:                 Blade.exe
+* Entry point:            0x00405227
+* VC++ mangling:          ??0B_Matrix@@QAE@ABVB_Plane@@@Z
+*/
+
+B_Matrix::B_Matrix(const B_Plane &plane)
+{
+    this->m[0][0] = 1.0 - 2.0 * plane.normal.x * plane.normal.x;
+    this->m[1][0] = -2.0 * plane.normal.x * plane.normal.y;
+    this->m[2][0] = -2.0 * plane.normal.x * plane.normal.z;
+    this->m[3][0] = -2.0 * plane.normal.x * plane.p;
+    this->m[0][1] = -2.0 * plane.normal.y * plane.normal.x;
+    this->m[1][1] = 1.0 - 2.0 * plane.normal.y * plane.normal.y;
+    this->m[2][1] = -2.0 * plane.normal.y * plane.normal.z;
+    this->m[3][1] = -2.0 * plane.normal.y * plane.p;
+    this->m[0][2] = -2.0 * plane.normal.z * plane.normal.x;
+    this->m[1][2] = -2.0 * plane.normal.z * plane.normal.y;
+    this->m[2][2] = 1.0 - 2.0 * plane.normal.z * plane.normal.z;
+    this->m[3][2] = -2.0 * plane.normal.z * plane.p;
+    this->m[0][3] = 0.0;
+    this->m[1][3] = 0.0;
+    this->m[2][3] = 0.0;
+    this->m[3][3] = 1.0;
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
