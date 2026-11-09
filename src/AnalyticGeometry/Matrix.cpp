@@ -167,6 +167,39 @@ void B_Matrix::SetOrigin(const B_Vector *origin)
 
 /*
 * Module:                 rOpenGL.dll
+* Entry point:            0x100042F2
+* Module:                 Blade.exe
+* Entry point:            0x00405AA2
+* VC++ mangling:          ?InvertRigid@B_Matrix@@QAEXAAV1@@Z
+*/
+
+void B_Matrix::InvertRigid(B_Matrix &out)
+{
+    for (unsigned int i = 0; i < 3; i++)
+    {
+        for (unsigned int j = 0; j < 3; j++)
+        {
+            out.m[i][j] = this->m[j][i];
+        }
+    }
+    B_Vector translation(this->m[3][0], this->m[3][1], this->m[3][2]);
+    translation = Rotate(translation, out);
+    out.m[3][0] = -translation.x;
+    out.m[3][1] = -translation.y;
+    out.m[3][2] = -translation.z;
+}
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 rOpenGL.dll
 * Entry point:            0x10005153
 * Module:                 Blade.exe
 * Entry point:            0x00406903
