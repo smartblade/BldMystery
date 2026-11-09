@@ -35,3 +35,5 @@ There are still a lot of unrecovered functions. So any contribution is welcome.
 Just choose a function/class method, reconstruct its source code and send pull
 request to this repository. Provided implementation should be as close as
 possible to original binary.
+
+See [docs/code-style.md](docs/code-style.md) for the code style.
