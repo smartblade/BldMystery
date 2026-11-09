@@ -441,10 +441,6 @@
 					RelativePath=".\Blade\Entities\Unknown0049A1EFTests.cpp"
 					>
 				</File>
-				<File
-					RelativePath=".\Blade\Entities\Unknown004ACF58Tests.cpp"
-					>
-				</File>
 			</Filter>
 			<Filter
 				Name="Control"
