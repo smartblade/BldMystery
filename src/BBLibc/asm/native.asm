@@ -83708,73 +83708,7 @@ l100335C3 ENDP
 ;
 ;* Export: ?GetVtxNode@B_ObjDscr@@QAEHI@Z, 00CE
 ;
-l100342BD PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000014h
-           mov dword ptr [ebp-014h], ecx
-           mov dword ptr [ebp-004h], 000000000h
-           jmp l100342D8
-;
-;* Jump:
-; 1003433A(U) 
-;
-l100342CF: mov eax, dword ptr [ebp-004h]
-           add eax, 000000001h
-           mov dword ptr [ebp-004h], eax
-;
-;* Jump:
-; 100342CD(U) 
-;
-l100342D8: mov ecx, dword ptr [ebp-014h]
-           mov edx, dword ptr [ebp-004h]
-           cmp edx, dword ptr [ecx+054h]
-           jnb l1003433C
-           mov eax, dword ptr [ebp-014h]
-           mov ecx, dword ptr [eax+050h]
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [ecx+edx*04h]
-           mov dword ptr [ebp-008h], eax
-           mov ecx, dword ptr [ebp-008h]
-           mov edx, dword ptr [ebp+008h]
-           cmp edx, dword ptr [ecx+0000000A8h]
-           jb l1003433A
-           mov eax, dword ptr [ebp-014h]
-           mov ecx, dword ptr [eax+050h]
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [ecx+edx*04h]
-           mov dword ptr [ebp-00Ch], eax
-           mov ecx, dword ptr [ebp-014h]
-           mov edx, dword ptr [ecx+050h]
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [edx+eax*04h]
-           mov dword ptr [ebp-010h], ecx
-           mov edx, dword ptr [ebp-00Ch]
-           mov eax, dword ptr [edx+0000000A8h]
-           mov ecx, dword ptr [ebp-010h]
-           add eax, dword ptr [ecx+0000000A4h]
-           cmp dword ptr [ebp+008h], eax
-           jnb l1003433A
-           mov eax, dword ptr [ebp-004h]
-           jmp l1003433F
-;
-;* Jump:
-; 100342FE(C), 10034333(C) 
-;
-l1003433A: jmp l100342CF
-;
-;* Jump:
-; 100342E1(C) 
-;
-l1003433C: or eax, 0FFFFFFFFh
-;
-;* Jump:
-; 10034338(U) 
-;
-l1003433F: mov esp, ebp
-           pop ebp
-           ret 00004h
-l100342BD ENDP
+           call l100342BD; Implemented in c++ code
 ;
 l10034345 PROC
            push ebp

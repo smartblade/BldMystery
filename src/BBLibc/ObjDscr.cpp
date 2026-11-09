@@ -66,12 +66,21 @@ void B_ObjDscr::SetUpInertialT()
 * Entry point:            0x100342BD
 * VC++ mangling:          ?GetVtxNode@B_ObjDscr@@QAEHI@Z
 */
-#ifndef BLD_NATIVE
-int B_ObjDscr::GetVtxNode(unsigned int)
+
+int B_ObjDscr::GetVtxNode(unsigned int vertex)
 {
-    return 0;
+    for (unsigned int i = 0; i < this->nodes.size; i++)
+    {
+        if (
+            vertex >= this->nodes[i]->firstVertex &&
+            vertex < this->nodes[i]->firstVertex + this->nodes[i]->vertexCount
+        )
+        {
+            return i;
+        }
+    }
+    return -1;
 }
-#endif
 
 
 /*

@@ -141,7 +141,6 @@
 /EXPORT:??6@YAAAVB_MessageManager@@AAV0@D@Z=??6@YAAAVB_MessageManager@@AAV0@D@Z
 /EXPORT:?SetUpNormals@B_ObjDscr@@QAEXXZ=?SetUpNormals@B_ObjDscr@@QAEXXZ
 /EXPORT:?SetUpInertialT@B_ObjDscr@@QAEXXZ=?SetUpInertialT@B_ObjDscr@@QAEXXZ
-/EXPORT:?GetVtxNode@B_ObjDscr@@QAEHI@Z=?GetVtxNode@B_ObjDscr@@QAEHI@Z
 /EXPORT:?SetUpEdges@B_ObjDscr@@QAEXXZ=?SetUpEdges@B_ObjDscr@@QAEXXZ
 /EXPORT:?Draw@B_ObjDscr@@QAEXPAVB_3DRasterDevice@@MMMMMH@Z=?Draw@B_ObjDscr@@QAEXPAVB_3DRasterDevice@@MMMMMH@Z
 /EXPORT:?SetUpBSP@B_ObjDscr@@QAEXXZ=?SetUpBSP@B_ObjDscr@@QAEXXZ
