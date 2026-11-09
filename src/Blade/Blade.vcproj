@@ -699,6 +699,14 @@
 					>
 				</File>
 				<File
+					RelativePath="..\Physics\RigidBody.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\Physics\RigidBody.h"
+					>
+				</File>
+				<File
 					RelativePath="..\Physics\SphereSetTemplate.cpp"
 					>
 				</File>
