@@ -4,8 +4,22 @@
 
 #include <Entities/ObjectEntity.h>
 #include <BBLibc/Name.h>
+#include <Physics/RigidBody.h>
 
 class B_Vector;
+class B_PhysicSIEntity;
+
+
+class B_PhysicBody : public B_RigidBody
+{
+public:
+    B_PhysicBody(B_PhysicsTemplate *solid, B_PhysicSIEntity *entity);
+    virtual void RemoveFromWorld();
+    virtual void PutToWorld();
+
+    B_PhysicSIEntity *entity;
+};
+
 
 class B_PhysicSIEntity : public B_ObjectEntity
 {
@@ -29,7 +43,8 @@ private:
     char unknownFields[0x18];
     int static1D8;
     int static1DC;
-    char unknownFields1E0[0xC];
+    B_PhysicBody *rigidBody;
+    char unknownFields1E4[0x8];
 };
 
 #endif /* PHYSIC_SI_ENTITY_H */

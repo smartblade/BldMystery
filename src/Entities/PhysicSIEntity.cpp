@@ -3,6 +3,22 @@
 
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x00544700
+* VC++ mangling:          ??0B_PhysicBody@@QAE@PAVB_PhysicsTemplate@@PAVB_PhysicSIEntity@@@Z
+*/
+
+#ifndef BLD_NATIVE
+B_PhysicBody::B_PhysicBody(B_PhysicsTemplate *solid, B_PhysicSIEntity *entity)
+:
+    B_RigidBody(solid),
+    entity(entity)
+{
+}
+#endif
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
