@@ -551,6 +551,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BBLibc\MeshEdgeTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\BBLibc\MessageChannelTests.cpp"
 				>
 			</File>
