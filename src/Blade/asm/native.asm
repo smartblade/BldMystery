@@ -251435,34 +251435,9 @@ g004B3094  dd l004B302B
            dd l004B304D
            dd l004B306C
 l004B3000 ENDP
-l004B30A4 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           xor eax, eax
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l004B30A4 ENDP
+           call l004B30A4; Implemented in c++ code
 ;
-l004B30B3 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-;
-;* Control "Cancelar", Dialog 006E
-;
-;* Control "Exit", Dialog 0073
-;
-;* Control "Cancel", Dialog 0079
-;
-           mov eax, 000000002h
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l004B30B3 ENDP
+           call l004B30B3; Implemented in c++ code
 ;
 ;* Call:
 ; 004B3423, 004B3452, 004B347B, 004B34A2, 004B3626 

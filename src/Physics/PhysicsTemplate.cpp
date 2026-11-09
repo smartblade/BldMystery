@@ -54,3 +54,35 @@ B_PhysicsTemplate::~B_PhysicsTemplate()
 ................................................................................
 ................................................................................
 */
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004B30A4
+* VC++ mangling:          ?unknown_method008@B_PhysicsTemplate@@UAEHPAVB_PhysicsTemplateBase@@@Z
+*/
+
+int B_PhysicsTemplate::unknown_method008(B_PhysicsTemplateBase *other)
+{
+    return 0;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004B30B3
+* VC++ mangling:          ?unknown_method010@B_PhysicsTemplate@@UAEHH@Z
+*/
+
+int B_PhysicsTemplate::unknown_method010(int unknown)
+{
+    return 2;
+}
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
