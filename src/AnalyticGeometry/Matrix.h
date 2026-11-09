@@ -21,6 +21,7 @@ public:
     double ScaleY() const;
     double ScaleZ() const;
     void SetScale(double scale);
+    void RemoveScale();
     void InvertRigid(B_Matrix &out);
     B_Matrix *Invert(B_Matrix *outMatrix) const;
 

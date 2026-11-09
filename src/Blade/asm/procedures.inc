@@ -22,6 +22,8 @@ externdef ?ScaleZ@B_Matrix@@QBENXZ: near
 l0040583A equ ?ScaleZ@B_Matrix@@QBENXZ
 externdef ?SetScale@B_Matrix@@QAEXN@Z: near
 l00405872 equ ?SetScale@B_Matrix@@QAEXN@Z
+externdef ?RemoveScale@B_Matrix@@QAEXXZ: near
+l004059EF equ ?RemoveScale@B_Matrix@@QAEXXZ
 externdef ?InvertRigid@B_Matrix@@QAEXAAV1@@Z: near
 l00405AA2 equ ?InvertRigid@B_Matrix@@QAEXAAV1@@Z
 externdef ?Invert@B_Matrix@@QBEPAV1@PAV1@@Z: near

@@ -279,6 +279,31 @@ void B_Matrix::SetScale(double scale)
 
 /*
 * Module:                 rOpenGL.dll
+* Entry point:            0x1000423F
+* Module:                 Blade.exe
+* Entry point:            0x004059EF
+* VC++ mangling:          ?RemoveScale@B_Matrix@@QAEXXZ
+*/
+
+void B_Matrix::RemoveScale()
+{
+    double scaleX = this->ScaleX();
+    double scaleY = this->ScaleY();
+    double scaleZ = this->ScaleZ();
+    this->m[0][0] /= scaleX;
+    this->m[0][1] /= scaleX;
+    this->m[0][2] /= scaleX;
+    this->m[1][0] /= scaleY;
+    this->m[1][1] /= scaleY;
+    this->m[1][2] /= scaleY;
+    this->m[2][0] /= scaleZ;
+    this->m[2][1] /= scaleZ;
+    this->m[2][2] /= scaleZ;
+}
+
+
+/*
+* Module:                 rOpenGL.dll
 * Entry point:            0x100042F2
 * Module:                 Blade.exe
 * Entry point:            0x00405AA2
