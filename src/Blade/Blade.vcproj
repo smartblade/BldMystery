@@ -691,6 +691,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\Physics\PhysicsState.h"
+					>
+				</File>
+				<File
 					RelativePath="..\Physics\PhysicsTemplate.cpp"
 					>
 				</File>
