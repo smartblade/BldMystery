@@ -109,17 +109,20 @@ B_Vector B_Vector::operator -(const B_Vector &that) const
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10007FEC
 * Module:                 Blade.exe
 * Entry point:            0x0040A67C
 * VC++ mangling:          ??ZB_Vector@@QAEABV0@ABV0@@Z
 */
 
-#ifndef BLD_NATIVE
 const B_Vector &B_Vector::operator -=(const B_Vector &that)
 {
+    this->x -= that.x;
+    this->y -= that.y;
+    this->z -= that.z;
     return *this;
 }
-#endif
 
 
 /*
