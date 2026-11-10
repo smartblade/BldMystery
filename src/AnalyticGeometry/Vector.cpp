@@ -145,7 +145,7 @@ void B_Vector::SetAngle(double angle)
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z
 */
 
-B_IDataFile& operator >>(B_IDataFile& file, B_Vector &vector)
+B_IDataFile &operator >>(B_IDataFile &file, B_Vector &vector)
 {
     file.Read(&vector, sizeof(B_Vector));
     return file;
@@ -158,7 +158,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_Vector &vector)
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@AAVB_Vector@@@Z
 */
 
-B_ODataFile& operator <<(B_ODataFile& file, B_Vector &vector)
+B_ODataFile &operator <<(B_ODataFile &file, B_Vector &vector)
 {
     file.Write(&vector, sizeof(B_Vector));
     return file;

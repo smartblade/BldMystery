@@ -371,7 +371,7 @@ int B_World::SaveEntitiesData(const char *filename)
 * VC++ mangling:          ?AddPoint@B_TriggerSector@@QAEXABVB_Vector@@H@Z
 */
 #ifndef BLD_NATIVE
-void B_TriggerSector::AddPoint(const B_Vector& point, int numPoints)
+void B_TriggerSector::AddPoint(const B_Vector &point, int numPoints)
 {
 }
 #endif
@@ -402,7 +402,7 @@ const char *B_World::GetTriggerSectorName(int index)
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@PAVB_World@@@Z
 */
 
-B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
+B_IDataFile &operator >>(B_IDataFile &file, B_World *world)
 {
         unsigned int num_lights;
         unsigned int i;

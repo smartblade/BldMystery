@@ -94,7 +94,7 @@ B_Vector B_Matrix::TranslationVector() const
 * VC++ mangling:          ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z
 */
 #ifndef BLD_NATIVE
-B_Vector operator *(const B_Vector& vector, const B_Matrix &matrix)
+B_Vector operator *(const B_Vector &vector, const B_Matrix &matrix)
 {
     return vector;
 }

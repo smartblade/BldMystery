@@ -74,7 +74,7 @@ public:
     virtual void SetPyInteractiveString(const char *str);
     virtual const char *Input(const char *text) = 0;
     virtual void CallCdCb(int arg);
-    virtual void ExitWithError(char *title, char* message) = 0;
+    virtual void ExitWithError(char *title, char *message) = 0;
     virtual void PrintWarning(const char *Title, const char *Message) = 0;
     virtual size_t GetWindow() = 0;
     virtual size_t GetModule() = 0;

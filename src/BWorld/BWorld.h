@@ -41,7 +41,7 @@ public:
         this->data = NULL;
         this->groupName = group_name;
     }
-    void AddPoint(const B_Vector& point, int numPoints);
+    void AddPoint(const B_Vector &point, int numPoints);
 
     float minX;
     float minY;
@@ -148,7 +148,7 @@ public:
     B_Vector initial_point_orientation;
 };
 
-B_IDataFile& operator >>(B_IDataFile& file, B_World *gs);
+B_IDataFile &operator >>(B_IDataFile &file, B_World *gs);
 
 #ifdef __cplusplus
 extern "C" {

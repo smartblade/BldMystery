@@ -56,8 +56,8 @@ public:
     long bmpHandle;
 };
 
-extern B_IDataFile& operator >>(B_IDataFile& file, B_Combustion &combustion);
-extern B_ODataFile& operator <<(
+extern B_IDataFile &operator >>(B_IDataFile &file, B_Combustion &combustion);
+extern B_ODataFile &operator <<(
     B_ODataFile &file,
     const B_Combustion &combustion);
 

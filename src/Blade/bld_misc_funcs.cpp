@@ -428,7 +428,7 @@ B_Combustion::B_Combustion(
 
 #ifndef BLD_NATIVE
 
-B_IDataFile& operator >>(B_IDataFile& file, B_Combustion &combustion)
+B_IDataFile &operator >>(B_IDataFile &file, B_Combustion &combustion)
 {
     return file;
 }
@@ -444,7 +444,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_Combustion &combustion)
 
 #ifndef BLD_NATIVE
 
-B_ODataFile& operator <<(B_ODataFile &file, const B_Combustion &combustion)
+B_ODataFile &operator <<(B_ODataFile &file, const B_Combustion &combustion)
 {
     return file;
 }
