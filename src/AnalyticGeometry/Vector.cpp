@@ -247,11 +247,63 @@ int B_Vector::operator ==(const B_Vector &that) const
 
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 rOpenGL.dll
+* Entry point:            0x100081D5
+* Module:                 Blade.exe
+* Entry point:            0x0040A865
+* VC++ mangling:          ??MB_Vector@@QBEHABV0@@Z
 */
+
+int B_Vector::operator <(const B_Vector &that) const
+{
+    return this->x * this->x + this->y * this->y + this->z * this->z <
+        that.x * that.x + that.y * that.y + that.z * that.z;
+}
+
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x1000824C
+* Module:                 Blade.exe
+* Entry point:            0x0040A8DC
+* VC++ mangling:          ??NB_Vector@@QBEHABV0@@Z
+*/
+
+int B_Vector::operator <=(const B_Vector &that) const
+{
+    return this->x * this->x + this->y * this->y + this->z * this->z <=
+        that.x * that.x + that.y * that.y + that.z * that.z;
+}
+
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x100082C3
+* Module:                 Blade.exe
+* Entry point:            0x0040A953
+* VC++ mangling:          ??OB_Vector@@QBEHABV0@@Z
+*/
+
+int B_Vector::operator >(const B_Vector &that) const
+{
+    return this->x * this->x + this->y * this->y + this->z * this->z >
+        that.x * that.x + that.y * that.y + that.z * that.z;
+}
+
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x1000833A
+* Module:                 Blade.exe
+* Entry point:            0x0040A9CA
+* VC++ mangling:          ??PB_Vector@@QBEHABV0@@Z
+*/
+
+int B_Vector::operator >=(const B_Vector &that) const
+{
+    return this->x * this->x + this->y * this->y + this->z * this->z >=
+        that.x * that.x + that.y * that.y + that.z * that.z;
+}
 
 
 /*

@@ -60,6 +60,14 @@ externdef ?Normalize@B_Vector@@QAEXXZ: near
 l0040A7B9 equ ?Normalize@B_Vector@@QAEXXZ
 externdef ??8B_Vector@@QBEHABV0@@Z: near
 l0040A80C equ ??8B_Vector@@QBEHABV0@@Z
+externdef ??MB_Vector@@QBEHABV0@@Z: near
+l0040A865 equ ??MB_Vector@@QBEHABV0@@Z
+externdef ??NB_Vector@@QBEHABV0@@Z: near
+l0040A8DC equ ??NB_Vector@@QBEHABV0@@Z
+externdef ??OB_Vector@@QBEHABV0@@Z: near
+l0040A953 equ ??OB_Vector@@QBEHABV0@@Z
+externdef ??PB_Vector@@QBEHABV0@@Z: near
+l0040A9CA equ ??PB_Vector@@QBEHABV0@@Z
 externdef ?SetAngle@B_Vector@@QAEXN@Z: near
 l0040AA41 equ ?SetAngle@B_Vector@@QAEXN@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z: near

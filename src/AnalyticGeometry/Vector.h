@@ -38,6 +38,10 @@ public:
     double Length() const;
     void Normalize();
     int operator ==(const B_Vector &that) const;
+    int operator <(const B_Vector &that) const;
+    int operator <=(const B_Vector &that) const;
+    int operator >(const B_Vector &that) const;
+    int operator >=(const B_Vector &that) const;
     void SetAngle(double angle);
 
     double x;
