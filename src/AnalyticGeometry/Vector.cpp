@@ -50,17 +50,20 @@ B_Vector B_Vector::operator *(double c) const
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10007E03
 * Module:                 Blade.exe
 * Entry point:            0x0040A493
 * VC++ mangling:          ??XB_Vector@@QAEAAV0@N@Z
 */
 
-#ifndef BLD_NATIVE
 B_Vector &B_Vector::operator *=(double c)
 {
+    this->x = c * this->x;
+    this->y = c * this->y;
+    this->z = c * this->z;
     return *this;
 }
-#endif
 
 
 /*

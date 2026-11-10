@@ -10,6 +10,8 @@ externdef ??D@YA?AVB_Vector@@NABV0@@Z: near
 l10007CE5 equ ??D@YA?AVB_Vector@@NABV0@@Z
 externdef ??DB_Vector@@QBE?AV0@N@Z: near
 l10007D41 equ ??DB_Vector@@QBE?AV0@N@Z
+externdef ??XB_Vector@@QAEAAV0@N@Z: near
+l10007E03 equ ??XB_Vector@@QAEAAV0@N@Z
 externdef ?Read@B_VideoModeSection@@QAEHXZ: near
 l1000CEAB equ ?Read@B_VideoModeSection@@QAEHXZ
 externdef ?SysWrite@B_OpenGLRasterDevice@@UAEXHHPBDEEE@Z: near
