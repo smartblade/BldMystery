@@ -15064,61 +15064,7 @@ l10007CA8 ENDP
 ;* Jump:
 ; 10001500(U) 
 ;
-l10008062 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000001Ch
-           mov dword ptr [ebp-01Ch], ecx
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp-01Ch]
-           fld qword ptr [ecx]
-           fmul qword ptr [eax+008h]
-           mov edx, dword ptr [ebp-01Ch]
-           mov eax, dword ptr [ebp+00Ch]
-           fld qword ptr [edx+008h]
-           fmul qword ptr [eax]
-           fsubp st(01h), st(00h)
-           fstp qword ptr [ebp-018h]
-           mov ecx, dword ptr [ebp-01Ch]
-           mov edx, dword ptr [ebp+00Ch]
-           fld qword ptr [ecx+010h]
-           fmul qword ptr [edx]
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp-01Ch]
-           fld qword ptr [ecx]
-           fmul qword ptr [eax+010h]
-           fsubp st(01h), st(00h)
-           fstp qword ptr [ebp-010h]
-           mov edx, dword ptr [ebp-01Ch]
-           mov eax, dword ptr [ebp+00Ch]
-           fld qword ptr [edx+008h]
-           fmul qword ptr [eax+010h]
-           mov ecx, dword ptr [ebp-01Ch]
-           mov edx, dword ptr [ebp+00Ch]
-           fld qword ptr [ecx+010h]
-           fmul qword ptr [edx+008h]
-           fsubp st(01h), st(00h)
-           fstp qword ptr [ebp-008h]
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-008h]
-           mov dword ptr [eax], ecx
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [eax+004h], edx
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-010h]
-           mov dword ptr [eax+008h], ecx
-           mov edx, dword ptr [ebp-00Ch]
-           mov dword ptr [eax+00Ch], edx
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-018h]
-           mov dword ptr [eax+010h], ecx
-           mov edx, dword ptr [ebp-014h]
-           mov dword ptr [eax+014h], edx
-           mov eax, dword ptr [ebp+008h]
-           mov esp, ebp
-           pop ebp
-           ret 00008h
-l10008062 ENDP
+           call l10008062; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001505(U) 

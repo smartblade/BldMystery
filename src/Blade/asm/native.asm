@@ -13019,61 +13019,7 @@ l0040A338 ENDP
 ; 00546BEF, 00547A5C, 005481EE, 00548CC8, 0054CA12, 0054CCDD, 0054CD20, 0054DBFE, 
 ; 00554FAE, 005739FC, 0057430B, 0057737B 
 ;
-l0040A6F2 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000001Ch
-           mov dword ptr [ebp-01Ch], ecx
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp-01Ch]
-           fld qword ptr [ecx]
-           fmul qword ptr [eax+008h]
-           mov edx, dword ptr [ebp-01Ch]
-           mov eax, dword ptr [ebp+00Ch]
-           fld qword ptr [edx+008h]
-           fmul qword ptr [eax]
-           fsubp st(01h), st(00h)
-           fstp qword ptr [ebp-018h]
-           mov ecx, dword ptr [ebp-01Ch]
-           mov edx, dword ptr [ebp+00Ch]
-           fld qword ptr [ecx+010h]
-           fmul qword ptr [edx]
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp-01Ch]
-           fld qword ptr [ecx]
-           fmul qword ptr [eax+010h]
-           fsubp st(01h), st(00h)
-           fstp qword ptr [ebp-010h]
-           mov edx, dword ptr [ebp-01Ch]
-           mov eax, dword ptr [ebp+00Ch]
-           fld qword ptr [edx+008h]
-           fmul qword ptr [eax+010h]
-           mov ecx, dword ptr [ebp-01Ch]
-           mov edx, dword ptr [ebp+00Ch]
-           fld qword ptr [ecx+010h]
-           fmul qword ptr [edx+008h]
-           fsubp st(01h), st(00h)
-           fstp qword ptr [ebp-008h]
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-008h]
-           mov dword ptr [eax], ecx
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [eax+004h], edx
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-010h]
-           mov dword ptr [eax+008h], ecx
-           mov edx, dword ptr [ebp-00Ch]
-           mov dword ptr [eax+00Ch], edx
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-018h]
-           mov dword ptr [eax+010h], ecx
-           mov edx, dword ptr [ebp-014h]
-           mov dword ptr [eax+014h], edx
-           mov eax, dword ptr [ebp+008h]
-           mov esp, ebp
-           pop ebp
-           ret 00008h
-l0040A6F2 ENDP
+           call l0040A6F2; Implemented in c++ code
 ;
 ;* Call:
 ; 004010E0, 00402919, 00402924, 00402C73, 00402C9F, 004031E5, 004031F6, 004035B7, 

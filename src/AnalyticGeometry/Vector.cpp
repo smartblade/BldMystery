@@ -181,6 +181,24 @@ double B_Vector::operator *(const B_Vector &that) const
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10008062
+* Module:                 Blade.exe
+* Entry point:            0x0040A6F2
+* VC++ mangling:          ??TB_Vector@@QBE?AV0@ABV0@@Z
+*/
+
+B_Vector B_Vector::operator ^(const B_Vector &that) const
+{
+    return B_Vector(
+        this->y * that.z - this->z * that.y,
+        this->z * that.x - this->x * that.z,
+        this->x * that.y - this->y * that.x
+    );
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................

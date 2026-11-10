@@ -28,6 +28,8 @@ externdef ??ZB_Vector@@QAEABV0@ABV0@@Z: near
 l10007FEC equ ??ZB_Vector@@QAEABV0@ABV0@@Z
 externdef ??DB_Vector@@QBENABV0@@Z: near
 l1000802F equ ??DB_Vector@@QBENABV0@@Z
+externdef ??TB_Vector@@QBE?AV0@ABV0@@Z: near
+l10008062 equ ??TB_Vector@@QBE?AV0@ABV0@@Z
 externdef ?SetAngle@B_Vector@@QAEXN@Z: near
 l100083B1 equ ?SetAngle@B_Vector@@QAEXN@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z: near

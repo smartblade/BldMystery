@@ -34,6 +34,7 @@ public:
     const B_Vector &operator -=(const B_Vector &that);
     B_Vector operator -(const B_Vector &that) const;
     double operator *(const B_Vector &that) const;
+    B_Vector operator ^(const B_Vector &that) const;
     void SetAngle(double angle);
 
     double x;
