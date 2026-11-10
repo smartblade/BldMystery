@@ -14,17 +14,17 @@
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10007CE5
 * Module:                 Blade.exe
 * Entry point:            0x0040A375
 * VC++ mangling:          ??D@YA?AVB_Vector@@NABV0@@Z
 */
 
-#ifndef BLD_NATIVE
 B_Vector operator *(double c, const B_Vector &v)
 {
-    return v;
+    return B_Vector(c * v.x, c * v.y, c * v.z);
 }
-#endif
 
 
 /*
