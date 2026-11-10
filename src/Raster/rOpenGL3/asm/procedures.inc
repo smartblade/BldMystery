@@ -16,6 +16,8 @@ externdef ??HB_Vector@@QBE?AV0@ABV0@@Z: near
 l10007ED7 equ ??HB_Vector@@QBE?AV0@ABV0@@Z
 externdef ??ZB_Vector@@QAEABV0@ABV0@@Z: near
 l10007FEC equ ??ZB_Vector@@QAEABV0@ABV0@@Z
+externdef ?SetAngle@B_Vector@@QAEXN@Z: near
+l100083B1 equ ?SetAngle@B_Vector@@QAEXN@Z
 externdef ?Read@B_VideoModeSection@@QAEHXZ: near
 l1000CEAB equ ?Read@B_VideoModeSection@@QAEHXZ
 externdef ?SysWrite@B_OpenGLRasterDevice@@UAEXHHPBDEEE@Z: near

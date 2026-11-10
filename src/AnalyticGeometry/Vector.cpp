@@ -3,6 +3,7 @@
 #include <bld_system.h>
 #include <BBLibc/IDataFile.h>
 #include <BBLibc/ODataFile.h>
+#include <math.h>
 
 
 /*
@@ -134,16 +135,19 @@ const B_Vector &B_Vector::operator -=(const B_Vector &that)
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x100083B1
 * Module:                 Blade.exe
 * Entry point:            0x0040AA41
 * VC++ mangling:          ?SetAngle@B_Vector@@QAEXN@Z
 */
 
-#ifndef BLD_NATIVE
 void B_Vector::SetAngle(double angle)
 {
+    this->x = -sin(angle);
+    this->y = 0.0;
+    this->z = cos(angle);
 }
-#endif
 
 
 /*
