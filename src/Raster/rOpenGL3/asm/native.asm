@@ -15069,30 +15069,7 @@ l10007CA8 ENDP
 ;* Jump:
 ; 10001505(U) 
 ;
-l100080F3 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp-004h]
-           fld qword ptr [eax]
-           fmul qword ptr [ecx]
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [ebp-004h]
-           fld qword ptr [edx+008h]
-           fmul qword ptr [eax+008h]
-           faddp st(01h), st(00h)
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ebp-004h]
-           fld qword ptr [ecx+010h]
-           fmul qword ptr [edx+010h]
-           faddp st(01h), st(00h)
-           call l10035ECA; [MSVCRT._CIsqrt].
-           mov esp, ebp
-           pop ebp
-           ret
-l100080F3 ENDP
+           call l100080F3; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001249(U) 

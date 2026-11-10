@@ -13050,30 +13050,7 @@ l0040A338 ENDP
 ; 0056EBE7, 0056EC02, 0057F634, 00580C55, 00580CAC, 00583871, 005A463B, 005A4646, 
 ; 005AAE1B 
 ;
-l0040A783 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp-004h]
-           fld qword ptr [eax]
-           fmul qword ptr [ecx]
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [ebp-004h]
-           fld qword ptr [edx+008h]
-           fmul qword ptr [eax+008h]
-           faddp st(01h), st(00h)
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ebp-004h]
-           fld qword ptr [ecx+010h]
-           fmul qword ptr [edx+010h]
-           faddp st(01h), st(00h)
-           call l005BC1E2; [BICRT._CIsqrt].
-           mov esp, ebp
-           pop ebp
-           ret
-l0040A783 ENDP
+           call l0040A783; Implemented in c++ code
 ;
 ;* Call:
 ; 0041A625, 0041B4D3, 0041BD85, 0041EF44, 0041FF80, 0043C38F, 0043C48A, 0043C565, 

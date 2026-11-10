@@ -199,6 +199,20 @@ B_Vector B_Vector::operator ^(const B_Vector &that) const
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x100080F3
+* Module:                 Blade.exe
+* Entry point:            0x0040A783
+* VC++ mangling:          ?Length@B_Vector@@QBENXZ
+*/
+
+double B_Vector::Length() const
+{
+    return sqrt(this->x * this->x + this->y * this->y + this->z * this->z);
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
