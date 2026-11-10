@@ -8,6 +8,8 @@ externdef ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ: near
 l10003F6F equ ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ
 externdef ??D@YA?AVB_Vector@@NABV0@@Z: near
 l10007CE5 equ ??D@YA?AVB_Vector@@NABV0@@Z
+externdef ??DB_Vector@@QBE?AV0@N@Z: near
+l10007D41 equ ??DB_Vector@@QBE?AV0@N@Z
 externdef ?Read@B_VideoModeSection@@QAEHXZ: near
 l1000CEAB equ ?Read@B_VideoModeSection@@QAEHXZ
 externdef ?SysWrite@B_OpenGLRasterDevice@@UAEXHHPBDEEE@Z: near

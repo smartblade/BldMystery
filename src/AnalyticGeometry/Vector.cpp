@@ -28,17 +28,17 @@ B_Vector operator *(double c, const B_Vector &v)
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10007D41
 * Module:                 Blade.exe
 * Entry point:            0x0040A3D1
 * VC++ mangling:          ??DB_Vector@@QBE?AV0@N@Z
 */
 
-#ifndef BLD_NATIVE
 B_Vector B_Vector::operator *(double c) const
 {
-    return *this;
+    return B_Vector(c * this->x, c * this->y, c * this->z);
 }
-#endif
 
 
 /*
