@@ -12957,34 +12957,7 @@ l0040A338 ENDP
 ; 00535AE4, 00537D57, 005387A2, 00538A98, 00538D8E, 00539862, 0053987F, 0053989C, 
 ; 00539936, 0054E501, 0054FBA0, 0054FBC9, 00551B3B, 0056D914, 005AB948 
 ;
-l0040A639 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           fld qword ptr [eax]
-           fadd qword ptr [ecx]
-           mov edx, dword ptr [ebp-004h]
-           fstp qword ptr [edx]
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           fld qword ptr [eax+008h]
-           fadd qword ptr [ecx+008h]
-           mov edx, dword ptr [ebp-004h]
-           fstp qword ptr [edx+008h]
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           fld qword ptr [eax+010h]
-           fadd qword ptr [ecx+010h]
-           mov edx, dword ptr [ebp-004h]
-           fstp qword ptr [edx+010h]
-           mov eax, dword ptr [ebp-004h]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l0040A639 ENDP
+           call l0040A639; Implemented in c++ code
 ;
 ;* Call:
 ; 0041A6F6, 004557D4, 00461873, 0046187F, 00461D39, 00461D4B, 00465627, 00465A53, 

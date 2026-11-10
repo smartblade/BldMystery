@@ -133,11 +133,20 @@ B_Vector B_Vector::operator -(const B_Vector &that) const
 
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 rOpenGL.dll
+* Entry point:            0x10007FA9
+* Module:                 Blade.exe
+* Entry point:            0x0040A639
+* VC++ mangling:          ??YB_Vector@@QAEABV0@ABV0@@Z
 */
+
+const B_Vector &B_Vector::operator +=(const B_Vector &that)
+{
+    this->x += that.x;
+    this->y += that.y;
+    this->z += that.z;
+    return *this;
+}
 
 
 /*

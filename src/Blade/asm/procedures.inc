@@ -46,6 +46,8 @@ externdef ??HB_Vector@@QBE?AV0@ABV0@@Z: near
 l0040A567 equ ??HB_Vector@@QBE?AV0@ABV0@@Z
 externdef ??GB_Vector@@QBE?AV0@ABV0@@Z: near
 l0040A5D0 equ ??GB_Vector@@QBE?AV0@ABV0@@Z
+externdef ??YB_Vector@@QAEABV0@ABV0@@Z: near
+l0040A639 equ ??YB_Vector@@QAEABV0@ABV0@@Z
 externdef ??ZB_Vector@@QAEABV0@ABV0@@Z: near
 l0040A67C equ ??ZB_Vector@@QAEABV0@ABV0@@Z
 externdef ?SetAngle@B_Vector@@QAEXN@Z: near
