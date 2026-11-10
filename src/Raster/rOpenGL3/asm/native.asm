@@ -15079,51 +15079,7 @@ l10007CA8 ENDP
 ;* Jump:
 ; 1000161D(U) 
 ;
-l1000817C PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000008h
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           fld qword ptr [eax]
-           fcomp qword ptr [ecx]
-           fnstsw ax
-           test ah, 040h
-           je l100081C5
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [ebp+008h]
-           fld qword ptr [edx+008h]
-           fcomp qword ptr [eax+008h]
-           fnstsw ax
-           test ah, 040h
-           je l100081C5
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ebp+008h]
-           fld qword ptr [ecx+010h]
-           fcomp qword ptr [edx+010h]
-           fnstsw ax
-           test ah, 040h
-           je l100081C5
-;
-;* Control "OK", Dialog 006E
-;
-           mov dword ptr [ebp-008h], 000000001h
-           jmp l100081CC
-;
-;* Jump:
-; 10008194(C), 100081A7(C), 100081BA(C) 
-;
-l100081C5: mov dword ptr [ebp-008h], 000000000h
-;
-;* Jump:
-; 100081C3(U) 
-;
-l100081CC: mov eax, dword ptr [ebp-008h]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l1000817C ENDP
+           call l1000817C; Implemented in c++ code
 ;
 ;* Jump:
 ; 100015BE(U) 

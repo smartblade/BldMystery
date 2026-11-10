@@ -13071,48 +13071,7 @@ l0040A338 ENDP
 ; 004FB3A1, 004FB9D0, 004FBA1D, 005433F3, 00571B09, 00571BFC, 00571DEE, 00575B35, 
 ; 00575E4D, 005771EA, 00578FC6, 005A3F44, 005A6E52, 005A6E93, 005A6EE7 
 ;
-l0040A80C PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000008h
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           fld qword ptr [eax]
-           fcomp qword ptr [ecx]
-           fnstsw ax
-           test ah, 040h
-           je l0040A855
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [ebp+008h]
-           fld qword ptr [edx+008h]
-           fcomp qword ptr [eax+008h]
-           fnstsw ax
-           test ah, 040h
-           je l0040A855
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ebp+008h]
-           fld qword ptr [ecx+010h]
-           fcomp qword ptr [edx+010h]
-           fnstsw ax
-           test ah, 040h
-           je l0040A855
-           mov dword ptr [ebp-008h], 000000001h
-           jmp l0040A85C
-;
-;* Jump:
-; 0040A824(C), 0040A837(C), 0040A84A(C) 
-;
-l0040A855: mov dword ptr [ebp-008h], 000000000h
-;
-;* Jump:
-; 0040A853(U) 
-;
-l0040A85C: mov eax, dword ptr [ebp-008h]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l0040A80C ENDP
+           call l0040A80C; Implemented in c++ code
 ;
 ;* Call:
 ; 0041FA05, 0041FA9C 

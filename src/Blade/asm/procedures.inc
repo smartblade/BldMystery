@@ -58,6 +58,8 @@ externdef ?Length@B_Vector@@QBENXZ: near
 l0040A783 equ ?Length@B_Vector@@QBENXZ
 externdef ?Normalize@B_Vector@@QAEXXZ: near
 l0040A7B9 equ ?Normalize@B_Vector@@QAEXXZ
+externdef ??8B_Vector@@QBEHABV0@@Z: near
+l0040A80C equ ??8B_Vector@@QBEHABV0@@Z
 externdef ?SetAngle@B_Vector@@QAEXN@Z: near
 l0040AA41 equ ?SetAngle@B_Vector@@QAEXN@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z: near

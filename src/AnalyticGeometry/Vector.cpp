@@ -233,6 +233,20 @@ void B_Vector::Normalize()
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x1000817C
+* Module:                 Blade.exe
+* Entry point:            0x0040A80C
+* VC++ mangling:          ??8B_Vector@@QBEHABV0@@Z
+*/
+
+int B_Vector::operator ==(const B_Vector &that) const
+{
+    return this->x == that.x && this->y == that.y && this->z == that.z;
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
