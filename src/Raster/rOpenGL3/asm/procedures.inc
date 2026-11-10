@@ -14,10 +14,16 @@ externdef ??XB_Vector@@QAEAAV0@N@Z: near
 l10007E03 equ ??XB_Vector@@QAEAAV0@N@Z
 externdef ??HB_Vector@@QBE?AV0@ABV0@@Z: near
 l10007ED7 equ ??HB_Vector@@QBE?AV0@ABV0@@Z
+externdef ??GB_Vector@@QBE?AV0@ABV0@@Z: near
+l10007F40 equ ??GB_Vector@@QBE?AV0@ABV0@@Z
 externdef ??ZB_Vector@@QAEABV0@ABV0@@Z: near
 l10007FEC equ ??ZB_Vector@@QAEABV0@ABV0@@Z
 externdef ?SetAngle@B_Vector@@QAEXN@Z: near
 l100083B1 equ ?SetAngle@B_Vector@@QAEXN@Z
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z: near
+l1000864D equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z
+externdef ??6@YAAAVB_ODataFile@@AAV0@AAVB_Vector@@@Z: near
+l10008664 equ ??6@YAAAVB_ODataFile@@AAV0@AAVB_Vector@@@Z
 externdef ?Read@B_VideoModeSection@@QAEHXZ: near
 l1000CEAB equ ?Read@B_VideoModeSection@@QAEHXZ
 externdef ?SysWrite@B_OpenGLRasterDevice@@UAEXHHPBDEEE@Z: near

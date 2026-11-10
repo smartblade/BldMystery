@@ -90,6 +90,8 @@ B_Vector B_Vector::operator +(const B_Vector &that) const
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10007F40
 * Module:                 Blade.exe
 * Entry point:            0x0040A5D0
 * VC++ mangling:          ??GB_Vector@@QBE?AV0@ABV0@@Z
@@ -159,6 +161,8 @@ void B_Vector::SetAngle(double angle)
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x1000864D
 * Module:                 Blade.exe
 * Entry point:            0x0040ACDD
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z
@@ -172,6 +176,8 @@ B_IDataFile &operator >>(B_IDataFile &file, B_Vector &vector)
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10008664
 * Module:                 Blade.exe
 * Entry point:            0x0040ACF4
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@AAVB_Vector@@@Z
