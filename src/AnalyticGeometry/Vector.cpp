@@ -382,6 +382,22 @@ double B_Vector::GetElevation() const
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10008557
+* Module:                 Blade.exe
+* Entry point:            0x0040ABE7
+* VC++ mangling:          ?unknown_0040ABE7@B_Vector@@QBEHXZ
+*/
+
+int B_Vector::unknown_0040ABE7() const
+{
+    return (this->x > -1.0e-6 || this->x < 1.0e-6) &&
+        (this->y > -1.0e-6 || this->y < 1.0e-6) &&
+        (this->z > -1.0e-6 || this->z < 1.0e-6);
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................

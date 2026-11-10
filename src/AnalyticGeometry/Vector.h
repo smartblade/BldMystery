@@ -45,6 +45,7 @@ public:
     void SetAngle(double angle);
     double GetAngle() const;
     double GetElevation() const;
+    int unknown_0040ABE7() const;
 
     double x;
     double y;

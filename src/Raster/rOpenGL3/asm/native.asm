@@ -15119,77 +15119,7 @@ l10007CA8 ENDP
 ;* Jump:
 ; 1000162C(U) 
 ;
-l10008557 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000008h
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           fld qword ptr [eax]
-           fcomp qword ptr [g10037050]
-           fnstsw ax
-           test ah, 041h
-           je l10008584
-           mov ecx, dword ptr [ebp-004h]
-           fld qword ptr [ecx]
-           fcomp qword ptr [g10037040]
-           fnstsw ax
-           test ah, 001h
-           je l100085D9
-;
-;* Jump:
-; 10008570(C) 
-;
-l10008584: mov edx, dword ptr [ebp-004h]
-           fld qword ptr [edx+008h]
-           fcomp qword ptr [g10037050]
-           fnstsw ax
-           test ah, 041h
-           je l100085AA
-           mov eax, dword ptr [ebp-004h]
-           fld qword ptr [eax+008h]
-           fcomp qword ptr [g10037040]
-           fnstsw ax
-           test ah, 001h
-           je l100085D9
-;
-;* Jump:
-; 10008595(C) 
-;
-l100085AA: mov ecx, dword ptr [ebp-004h]
-           fld qword ptr [ecx+010h]
-           fcomp qword ptr [g10037050]
-           fnstsw ax
-           test ah, 041h
-           je l100085D0
-           mov edx, dword ptr [ebp-004h]
-           fld qword ptr [edx+010h]
-           fcomp qword ptr [g10037040]
-           fnstsw ax
-           test ah, 001h
-           je l100085D9
-;
-;* Jump:
-; 100085BB(C) 
-;
-;* Control "OK", Dialog 006E
-;
-l100085D0: mov dword ptr [ebp-008h], 000000001h
-           jmp l100085E0
-;
-;* Jump:
-; 10008582(C), 100085A8(C), 100085CE(C) 
-;
-l100085D9: mov dword ptr [ebp-008h], 000000000h
-;
-;* Jump:
-; 100085D7(U) 
-;
-l100085E0: mov eax, dword ptr [ebp-008h]
-           mov esp, ebp
-           pop ebp
-           ret
-l10008557 ENDP
+           call l10008557; Implemented in c++ code
 ;
 ;* Jump:
 ; 100012C1(U) 

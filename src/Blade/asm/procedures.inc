@@ -74,6 +74,8 @@ externdef ?GetAngle@B_Vector@@QBENXZ: near
 l0040AA7C equ ?GetAngle@B_Vector@@QBENXZ
 externdef ?GetElevation@B_Vector@@QBENXZ: near
 l0040AB60 equ ?GetElevation@B_Vector@@QBENXZ
+externdef ?unknown_0040ABE7@B_Vector@@QBEHXZ: near
+l0040ABE7 equ ?unknown_0040ABE7@B_Vector@@QBEHXZ
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z: near
 l0040ACDD equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z
 externdef ??6@YAAAVB_ODataFile@@AAV0@AAVB_Vector@@@Z: near
