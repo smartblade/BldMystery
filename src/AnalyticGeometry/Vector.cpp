@@ -75,25 +75,17 @@ B_Vector &B_Vector::operator *=(double c)
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10007ED7
 * Module:                 Blade.exe
 * Entry point:            0x0040A567
 * VC++ mangling:          ??HB_Vector@@QBE?AV0@ABV0@@Z
 */
 
-#ifndef BLD_NATIVE
 B_Vector B_Vector::operator +(const B_Vector &that) const
 {
-    return that;
+    return B_Vector(this->x + that.x, this->y + that.y, this->z + that.z);
 }
-#endif
-
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
 
 /*
