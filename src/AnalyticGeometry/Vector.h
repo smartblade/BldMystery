@@ -10,13 +10,17 @@ class B_Vector
 public:
     B_Vector()
     :
-    x(0.0), y(0.0), z(0.0)
+        x(0.0),
+        y(0.0),
+        z(0.0)
     {
     }
 
     B_Vector(double x, double y, double z)
     :
-    x(x), y(y), z(z)
+        x(x),
+        y(y),
+        z(z)
     {
     }
 
@@ -33,8 +37,8 @@ public:
 };
 
 extern B_Vector operator *(double c, const B_Vector &v);
-extern B_IDataFile& operator >>(B_IDataFile& file, B_Vector &vector);
-extern B_ODataFile& operator <<(B_ODataFile& file, B_Vector &vector);
+extern B_IDataFile &operator >>(B_IDataFile &file, B_Vector &vector);
+extern B_ODataFile &operator <<(B_ODataFile &file, B_Vector &vector);
 
 #ifdef __cplusplus
 extern "C" {
