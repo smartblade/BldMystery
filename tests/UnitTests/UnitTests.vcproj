@@ -494,6 +494,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Blade\AnalyticGeometry\VectorTests.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\Blade\AnalyticGeometry\ViewPoseTests.cpp"
 					>
 				</File>
