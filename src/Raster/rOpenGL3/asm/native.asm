@@ -15029,31 +15029,7 @@ l10007CA8 ENDP
 ;* Jump:
 ; 100014E2(U) 
 ;
-l10007E3E PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           fld qword ptr [eax]
-           fdiv qword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-004h]
-           fstp qword ptr [ecx]
-           mov edx, dword ptr [ebp-004h]
-           fld qword ptr [edx+008h]
-           fdiv qword ptr [ebp+008h]
-           mov eax, dword ptr [ebp-004h]
-           fstp qword ptr [eax+008h]
-           mov ecx, dword ptr [ebp-004h]
-           fld qword ptr [ecx+010h]
-           fdiv qword ptr [ebp+008h]
-           mov edx, dword ptr [ebp-004h]
-           fstp qword ptr [edx+010h]
-           mov eax, dword ptr [ebp-004h]
-           mov esp, ebp
-           pop ebp
-           ret 00008h
-l10007E3E ENDP
+           call l10007E3E; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001807(U) 

@@ -74,6 +74,23 @@ B_Vector &B_Vector::operator *=(double c)
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10007E3E
+* Module:                 Blade.exe
+* Entry point:            0x0040A4CE
+* VC++ mangling:          ??_0B_Vector@@QAEAAV0@N@Z
+*/
+
+B_Vector &B_Vector::operator /=(double c)
+{
+    this->x /= c;
+    this->y /= c;
+    this->z /= c;
+    return *this;
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
