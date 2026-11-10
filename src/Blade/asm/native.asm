@@ -13278,45 +13278,7 @@ l0040AC70: mov eax, dword ptr [ebp-008h]
 ;* Call:
 ; 00470C99 
 ;
-l0040AC77 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000000Ch
-           mov dword ptr [ebp-00Ch], ecx
-           fld qword ptr [g005BD730]
-           fsub qword ptr [ebp+00Ch]
-           fstp qword ptr [ebp-008h]
-           mov eax, dword ptr [ebp+008h]
-           fld qword ptr [ebp+00Ch]
-           fmul qword ptr [eax]
-           mov ecx, dword ptr [ebp+014h]
-           fld qword ptr [ebp-008h]
-           fmul qword ptr [ecx]
-           faddp st(01h), st(00h)
-           mov edx, dword ptr [ebp-00Ch]
-           fstp qword ptr [edx]
-           mov eax, dword ptr [ebp+008h]
-           fld qword ptr [ebp+00Ch]
-           fmul qword ptr [eax+008h]
-           mov ecx, dword ptr [ebp+014h]
-           fld qword ptr [ebp-008h]
-           fmul qword ptr [ecx+008h]
-           faddp st(01h), st(00h)
-           mov edx, dword ptr [ebp-00Ch]
-           fstp qword ptr [edx+008h]
-           mov eax, dword ptr [ebp+008h]
-           fld qword ptr [ebp+00Ch]
-           fmul qword ptr [eax+010h]
-           mov ecx, dword ptr [ebp+014h]
-           fld qword ptr [ebp-008h]
-           fmul qword ptr [ecx+010h]
-           faddp st(01h), st(00h)
-           mov edx, dword ptr [ebp-00Ch]
-           fstp qword ptr [edx+010h]
-           mov esp, ebp
-           pop ebp
-           ret 00010h
-l0040AC77 ENDP
+           call l0040AC77; Implemented in c++ code
 ;
 ;* Call:
 ; 00401214, 00407E0B, 00408646, 0040B176, 00440EF6, 00440EFF, 0044D75F, 0044D768, 

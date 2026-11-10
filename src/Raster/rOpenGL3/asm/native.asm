@@ -15124,45 +15124,7 @@ l10007CA8 ENDP
 ;* Jump:
 ; 100012C1(U) 
 ;
-l100085E7 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000000Ch
-           mov dword ptr [ebp-00Ch], ecx
-           fld qword ptr [g10037080]
-           fsub qword ptr [ebp+00Ch]
-           fstp qword ptr [ebp-008h]
-           mov eax, dword ptr [ebp+008h]
-           fld qword ptr [ebp+00Ch]
-           fmul qword ptr [eax]
-           mov ecx, dword ptr [ebp+014h]
-           fld qword ptr [ebp-008h]
-           fmul qword ptr [ecx]
-           faddp st(01h), st(00h)
-           mov edx, dword ptr [ebp-00Ch]
-           fstp qword ptr [edx]
-           mov eax, dword ptr [ebp+008h]
-           fld qword ptr [ebp+00Ch]
-           fmul qword ptr [eax+008h]
-           mov ecx, dword ptr [ebp+014h]
-           fld qword ptr [ebp-008h]
-           fmul qword ptr [ecx+008h]
-           faddp st(01h), st(00h)
-           mov edx, dword ptr [ebp-00Ch]
-           fstp qword ptr [edx+008h]
-           mov eax, dword ptr [ebp+008h]
-           fld qword ptr [ebp+00Ch]
-           fmul qword ptr [eax+010h]
-           mov ecx, dword ptr [ebp+014h]
-           fld qword ptr [ebp-008h]
-           fmul qword ptr [ecx+010h]
-           faddp st(01h), st(00h)
-           mov edx, dword ptr [ebp-00Ch]
-           fstp qword ptr [edx+010h]
-           mov esp, ebp
-           pop ebp
-           ret 00010h
-l100085E7 ENDP
+           call l100085E7; Implemented in c++ code
 ;
 ;* Jump:
 ; 100010A5(U) 

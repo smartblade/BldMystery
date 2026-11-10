@@ -398,11 +398,20 @@ int B_Vector::unknown_0040ABE7() const
 
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 rOpenGL.dll
+* Entry point:            0x100085E7
+* Module:                 Blade.exe
+* Entry point:            0x0040AC77
+* VC++ mangling:          ?Interp@B_Vector@@QAEXABV1@N0@Z
 */
+
+void B_Vector::Interp(const B_Vector &a, double t, const B_Vector &b)
+{
+    double s = 1.0 - t;
+    this->x = t * a.x + s * b.x;
+    this->y = t * a.y + s * b.y;
+    this->z = t * a.z + s * b.z;
+}
 
 
 /*

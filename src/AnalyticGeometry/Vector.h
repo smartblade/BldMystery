@@ -46,6 +46,7 @@ public:
     double GetAngle() const;
     double GetElevation() const;
     int unknown_0040ABE7() const;
+    void Interp(const B_Vector &a, double t, const B_Vector &b);
 
     double x;
     double y;
