@@ -13064,42 +13064,7 @@ l0040A338 ENDP
 ; 0056B103, 0056DBC3, 00570F07, 005759D1, 00577AC2, 00577B9F, 00578F74, 00579092, 
 ; 005796BA, 005799A6, 00579AE3, 0057A000, 0057A922, 00584826, 005848F4, 005A1DE5 
 ;
-l0040A7B9 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000000Ch
-           mov dword ptr [ebp-00Ch], ecx
-           mov ecx, dword ptr [ebp-00Ch]
-           call l0040A783
-           fstp qword ptr [ebp-008h]
-           fld qword ptr [ebp-008h]
-           fcomp qword ptr [g005BD728]
-           fnstsw ax
-           test ah, 040h
-           jne l0040A808
-           mov eax, dword ptr [ebp-00Ch]
-           fld qword ptr [eax]
-           fdiv qword ptr [ebp-008h]
-           mov ecx, dword ptr [ebp-00Ch]
-           fstp qword ptr [ecx]
-           mov edx, dword ptr [ebp-00Ch]
-           fld qword ptr [edx+008h]
-           fdiv qword ptr [ebp-008h]
-           mov eax, dword ptr [ebp-00Ch]
-           fstp qword ptr [eax+008h]
-           mov ecx, dword ptr [ebp-00Ch]
-           fld qword ptr [ecx+010h]
-           fdiv qword ptr [ebp-008h]
-           mov edx, dword ptr [ebp-00Ch]
-           fstp qword ptr [edx+010h]
-;
-;* Jump:
-; 0040A7DB(C) 
-;
-l0040A808: mov esp, ebp
-           pop ebp
-           ret
-l0040A7B9 ENDP
+           call l0040A7B9; Implemented in c++ code
 ;
 ;* Call:
 ; 0041CB0D, 00480604, 004A7C52, 004A7CA2, 004E2141, 004E21BB, 004E2350, 004FB354, 

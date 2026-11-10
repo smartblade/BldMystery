@@ -36,6 +36,7 @@ public:
     double operator *(const B_Vector &that) const;
     B_Vector operator ^(const B_Vector &that) const;
     double Length() const;
+    void Normalize();
     void SetAngle(double angle);
 
     double x;

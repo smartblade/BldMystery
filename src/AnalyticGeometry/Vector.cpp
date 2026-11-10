@@ -213,6 +213,26 @@ double B_Vector::Length() const
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10008129
+* Module:                 Blade.exe
+* Entry point:            0x0040A7B9
+* VC++ mangling:          ?Normalize@B_Vector@@QAEXXZ
+*/
+
+void B_Vector::Normalize()
+{
+    double length = this->Length();
+    if (length != 0.0)
+    {
+        this->x /= length;
+        this->y /= length;
+        this->z /= length;
+    }
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
