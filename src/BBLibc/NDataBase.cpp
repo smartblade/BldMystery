@@ -17,7 +17,8 @@ B_NDataBase<B_ElementCSV> B_csvs;
 * VC++ mangling:          ??1B_ElementCSV@@UAE@XZ
 */
 #ifndef BLD_NATIVE
-B_ElementCSV::~B_ElementCSV() {
+B_ElementCSV::~B_ElementCSV()
+{
     mass = 0;
 }
 #endif
@@ -30,7 +31,8 @@ B_ElementCSV::~B_ElementCSV() {
 */
 
 #ifndef BLD_NATIVE
-unsigned int ReadCSV(const char *file_name, B_NDataBase<B_ElementCSV> *csvs) {
+unsigned int ReadCSV(const char *file_name, B_NDataBase<B_ElementCSV> *csvs)
+{
     return 0;
 }
 #endif

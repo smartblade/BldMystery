@@ -12,17 +12,27 @@
 #undef BUILD_LIB
 
 template <typename T>
-class LIB_EXP B_Array {
+class LIB_EXP B_Array
+{
 public:
-    B_Array() : data_(nullptr), size_(0), capacity_(0) {}
+    B_Array() : data_(nullptr), size_(0), capacity_(0)
+    {
+    }
 
-    B_Array(size_t capacity) : data_(new T[capacity]), size_(0), capacity_(capacity) {}
+    B_Array(size_t capacity) : data_(new T[capacity]), size_(0), capacity_(capacity)
+    {
+    }
 
-    virtual ~B_Array() { delete[] data_; }
+    virtual ~B_Array()
+    {
+        delete[] data_;
+    }
 
     // Add an element to the array
-    void push_back(const T &element) {
-        if (size_ == capacity_) {
+    void push_back(const T &element)
+    {
+        if (size_ == capacity_)
+        {
             // reallocate with double capacity
             capacity_ *= 2;
             T *newData = new T[capacity_];
@@ -34,10 +44,16 @@ public:
     }
 
     // Access an element at a given index
-    T &operator[](size_t index) { return data_[index]; }
+    T &operator[](size_t index)
+    {
+        return data_[index];
+    }
 
     // Get the current size of the array
-    size_t size() const { return size_; }
+    size_t size() const
+    {
+        return size_;
+    }
 
 private:
     T *data_; // pointer to the array data
