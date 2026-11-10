@@ -46,6 +46,8 @@ externdef ??PB_Vector@@QBEHABV0@@Z: near
 l1000833A equ ??PB_Vector@@QBEHABV0@@Z
 externdef ?SetAngle@B_Vector@@QAEXN@Z: near
 l100083B1 equ ?SetAngle@B_Vector@@QAEXN@Z
+externdef ?GetAngle@B_Vector@@QBENXZ: near
+l100083EC equ ?GetAngle@B_Vector@@QBENXZ
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z: near
 l1000864D equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z
 externdef ??6@YAAAVB_ODataFile@@AAV0@AAVB_Vector@@@Z: near

@@ -5,6 +5,8 @@
 #include <BBLibc/ODataFile.h>
 #include <math.h>
 
+#define PI 3.14159265359
+
 
 /*
 ................................................................................
@@ -319,6 +321,40 @@ void B_Vector::SetAngle(double angle)
     this->x = -sin(angle);
     this->y = 0.0;
     this->z = cos(angle);
+}
+
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x100083EC
+* Module:                 Blade.exe
+* Entry point:            0x0040AA7C
+* VC++ mangling:          ?GetAngle@B_Vector@@QBENXZ
+*/
+
+double B_Vector::GetAngle() const
+{
+    if (this->x >= 0.0)
+    {
+        if (this->x == 0.0)
+        {
+            if (this->z > 0.0)
+            {
+                return 0.0;
+            }
+            return PI;
+        }
+        if (this->z >= 0.0)
+        {
+            return atan(this->z / this->x) + 3.0 * PI / 2.0;
+        }
+        return atan(-this->x / this->z) + PI;
+    }
+    if (this->z >= 0.0)
+    {
+        return PI / 2.0 - atan(-this->z / this->x);
+    }
+    return atan(this->z / this->x) + PI / 2.0;
 }
 
 
