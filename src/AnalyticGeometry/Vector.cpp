@@ -359,6 +359,29 @@ double B_Vector::GetAngle() const
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x100084D0
+* Module:                 Blade.exe
+* Entry point:            0x0040AB60
+* VC++ mangling:          ?GetElevation@B_Vector@@QBENXZ
+*/
+
+double B_Vector::GetElevation() const
+{
+    double horizontal = sqrt(this->x * this->x + this->z * this->z);
+    if (this->y == 0.0)
+    {
+        return 0.0;
+    }
+    if (this->y > 0.0)
+    {
+        return atan(horizontal / this->y) - PI / 2.0;
+    }
+    return PI / 2.0 - atan(-horizontal / this->y);
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................

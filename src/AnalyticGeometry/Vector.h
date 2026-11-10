@@ -44,6 +44,7 @@ public:
     int operator >=(const B_Vector &that) const;
     void SetAngle(double angle);
     double GetAngle() const;
+    double GetElevation() const;
 
     double x;
     double y;

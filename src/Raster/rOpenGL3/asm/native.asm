@@ -15114,64 +15114,7 @@ l10007CA8 ENDP
 ;* Jump:
 ; 100010EB(U) 
 ;
-l100084D0 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000000Ch
-           mov dword ptr [ebp-00Ch], ecx
-           mov eax, dword ptr [ebp-00Ch]
-           mov ecx, dword ptr [ebp-00Ch]
-           fld qword ptr [eax]
-           fmul qword ptr [ecx]
-           mov edx, dword ptr [ebp-00Ch]
-           mov eax, dword ptr [ebp-00Ch]
-           fld qword ptr [edx+010h]
-           fmul qword ptr [eax+010h]
-           faddp st(01h), st(00h)
-           call l10035ECA; [MSVCRT._CIsqrt].
-           fstp qword ptr [ebp-008h]
-           mov ecx, dword ptr [ebp-00Ch]
-           fld qword ptr [ecx+008h]
-           fcomp qword ptr [g10037020]
-           fnstsw ax
-           test ah, 040h
-           je l10008514
-           fld qword ptr [g10037020]
-           jmp l10008553
-;
-;* Jump:
-; 1000850A(C) 
-;
-l10008514: mov edx, dword ptr [ebp-00Ch]
-           fld qword ptr [edx+008h]
-           fcomp qword ptr [g10037020]
-           fnstsw ax
-           test ah, 041h
-           jne l1000853D
-           mov eax, dword ptr [ebp-00Ch]
-           fld qword ptr [ebp-008h]
-           fdiv qword ptr [eax+008h]
-           call l10035EEE; [MSVCRT._CIatan].
-           fsub qword ptr [g10037138]
-           jmp l10008553
-;
-;* Jump:
-; 10008525(C) 
-;
-l1000853D: fld qword ptr [ebp-008h]
-           fchs
-           mov ecx, dword ptr [ebp-00Ch]
-           fdiv qword ptr [ecx+008h]
-           call l10035EEE; [MSVCRT._CIatan].
-           fsubr qword ptr [g10037138]
-;
-;* Jump:
-; 10008512(U), 1000853B(U) 
-;
-l10008553: mov esp, ebp
-           pop ebp
-           ret
-l100084D0 ENDP
+           call l100084D0; Implemented in c++ code
 ;
 ;* Jump:
 ; 1000162C(U) 

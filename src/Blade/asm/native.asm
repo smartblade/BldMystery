@@ -13205,64 +13205,7 @@ l0040AA38: mov eax, dword ptr [ebp-008h]
 ; 0041923D, 00419D83, 0041A09E, 0041A377, 0041A443, 0041C7A0, 0041D5DA, 0041E0A9, 
 ; 0056DBA1, 0056DE8B 
 ;
-l0040AB60 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000000Ch
-           mov dword ptr [ebp-00Ch], ecx
-           mov eax, dword ptr [ebp-00Ch]
-           mov ecx, dword ptr [ebp-00Ch]
-           fld qword ptr [eax]
-           fmul qword ptr [ecx]
-           mov edx, dword ptr [ebp-00Ch]
-           mov eax, dword ptr [ebp-00Ch]
-           fld qword ptr [edx+010h]
-           fmul qword ptr [eax+010h]
-           faddp st(01h), st(00h)
-           call l005BC1E2; [BICRT._CIsqrt].
-           fstp qword ptr [ebp-008h]
-           mov ecx, dword ptr [ebp-00Ch]
-           fld qword ptr [ecx+008h]
-           fcomp qword ptr [g005BD728]
-           fnstsw ax
-           test ah, 040h
-           je l0040ABA4
-           fld qword ptr [g005BD728]
-           jmp l0040ABE3
-;
-;* Jump:
-; 0040AB9A(C) 
-;
-l0040ABA4: mov edx, dword ptr [ebp-00Ch]
-           fld qword ptr [edx+008h]
-           fcomp qword ptr [g005BD728]
-           fnstsw ax
-           test ah, 041h
-           jne l0040ABCD
-           mov eax, dword ptr [ebp-00Ch]
-           fld qword ptr [ebp-008h]
-           fdiv qword ptr [eax+008h]
-           call l005BC22C; [BICRT._CIatan].
-           fsub qword ptr [g005BD7D0]
-           jmp l0040ABE3
-;
-;* Jump:
-; 0040ABB5(C) 
-;
-l0040ABCD: fld qword ptr [ebp-008h]
-           fchs
-           mov ecx, dword ptr [ebp-00Ch]
-           fdiv qword ptr [ecx+008h]
-           call l005BC22C; [BICRT._CIatan].
-           fsubr qword ptr [g005BD7D0]
-;
-;* Jump:
-; 0040ABA2(U), 0040ABCB(U) 
-;
-l0040ABE3: mov esp, ebp
-           pop ebp
-           ret
-l0040AB60 ENDP
+           call l0040AB60; Implemented in c++ code
 ;
            push ebp
            mov ebp, esp
