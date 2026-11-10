@@ -501,6 +501,10 @@
 					RelativePath=".\Blade\AnalyticGeometry\WorldPointTests.cpp"
 					>
 				</File>
+				<File
+					RelativePath=".\Blade\AnalyticGeometry\MatrixTests.cpp"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter

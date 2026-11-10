@@ -6021,70 +6021,7 @@ l1000330B ENDP
 ;* Jump:
 ; 10001613(U) 
 ;
-l1000354D PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           mov dword ptr [eax], ecx
-           mov edx, dword ptr [ebp+00Ch]
-           mov dword ptr [eax+004h], edx
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+008h], 000000000h
-           mov dword ptr [eax+00Ch], 000000000h
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+010h], 000000000h
-           mov dword ptr [ecx+014h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+018h], 000000000h
-           mov dword ptr [edx+01Ch], 000000000h
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+020h], 000000000h
-           mov dword ptr [eax+024h], 000000000h
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ebp+008h]
-           mov dword ptr [ecx+028h], edx
-           mov eax, dword ptr [ebp+00Ch]
-           mov dword ptr [ecx+02Ch], eax
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+030h], 000000000h
-           mov dword ptr [ecx+034h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+038h], 000000000h
-           mov dword ptr [edx+03Ch], 000000000h
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+040h], 000000000h
-           mov dword ptr [eax+044h], 000000000h
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+048h], 000000000h
-           mov dword ptr [ecx+04Ch], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [ebp+008h]
-           mov dword ptr [edx+050h], eax
-           mov ecx, dword ptr [ebp+00Ch]
-           mov dword ptr [edx+054h], ecx
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+058h], 000000000h
-           mov dword ptr [edx+05Ch], 000000000h
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+060h], 000000000h
-           mov dword ptr [eax+064h], 000000000h
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+068h], 000000000h
-           mov dword ptr [ecx+06Ch], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+070h], 000000000h
-           mov dword ptr [edx+074h], 000000000h
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+078h], 000000000h
-           mov dword ptr [eax+07Ch], 03FF00000h
-           mov eax, dword ptr [ebp-004h]
-           mov esp, ebp
-           pop ebp
-           ret 00008h
-l1000354D ENDP
+           call l1000354D; Implemented in c++ code
 ;
 ;* Jump:
 ; 100012F3(U) 
@@ -6162,145 +6099,7 @@ l10003666 ENDP
 ;* Jump:
 ; 100010AA(U) 
 ;
-l100038A0 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000002Ch
-           mov dword ptr [ebp-02Ch], ecx
-           fld qword ptr [ebp+00Ch]
-           call l10035EDC; [MSVCRT._CIcos].
-           fstp qword ptr [ebp-010h]
-           fld qword ptr [ebp+00Ch]
-           call l10035ED6; [MSVCRT._CIsin].
-           fstp qword ptr [ebp-008h]
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [eax]
-           mov dword ptr [ebp-018h], ecx
-           mov edx, dword ptr [eax+004h]
-           mov dword ptr [ebp-014h], edx
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [eax+008h]
-           mov dword ptr [ebp-020h], ecx
-           mov edx, dword ptr [eax+00Ch]
-           mov dword ptr [ebp-01Ch], edx
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [eax+010h]
-           mov dword ptr [ebp-028h], ecx
-           mov edx, dword ptr [eax+014h]
-           mov dword ptr [ebp-024h], edx
-           fld qword ptr [ebp-018h]
-           fmul qword ptr [ebp-018h]
-           fld qword ptr [g10037080]
-           fsub qword ptr [ebp-010h]
-           fmulp st(01h), st(00h)
-           fadd qword ptr [ebp-010h]
-           mov eax, dword ptr [ebp-02Ch]
-           fstp qword ptr [eax]
-           fld qword ptr [ebp-018h]
-           fmul qword ptr [ebp-020h]
-           fld qword ptr [g10037080]
-           fsub qword ptr [ebp-010h]
-           fmulp st(01h), st(00h)
-           fld qword ptr [ebp-028h]
-           fmul qword ptr [ebp-008h]
-           faddp st(01h), st(00h)
-           mov ecx, dword ptr [ebp-02Ch]
-           fstp qword ptr [ecx+008h]
-           fld qword ptr [ebp-018h]
-           fmul qword ptr [ebp-028h]
-           fld qword ptr [g10037080]
-           fsub qword ptr [ebp-010h]
-           fmulp st(01h), st(00h)
-           fld qword ptr [ebp-020h]
-           fmul qword ptr [ebp-008h]
-           fsubp st(01h), st(00h)
-           mov edx, dword ptr [ebp-02Ch]
-           fstp qword ptr [edx+010h]
-           mov eax, dword ptr [ebp-02Ch]
-           mov dword ptr [eax+018h], 000000000h
-           mov dword ptr [eax+01Ch], 000000000h
-           fld qword ptr [ebp-018h]
-           fmul qword ptr [ebp-020h]
-           fld qword ptr [g10037080]
-           fsub qword ptr [ebp-010h]
-           fmulp st(01h), st(00h)
-           fld qword ptr [ebp-028h]
-           fmul qword ptr [ebp-008h]
-           fsubp st(01h), st(00h)
-           mov ecx, dword ptr [ebp-02Ch]
-           fstp qword ptr [ecx+020h]
-           fld qword ptr [ebp-020h]
-           fmul qword ptr [ebp-020h]
-           fld qword ptr [ebp-018h]
-           fmul qword ptr [ebp-018h]
-           fld qword ptr [ebp-028h]
-           fmul qword ptr [ebp-028h]
-           faddp st(01h), st(00h)
-           fmul qword ptr [ebp-010h]
-           faddp st(01h), st(00h)
-           mov edx, dword ptr [ebp-02Ch]
-           fstp qword ptr [edx+028h]
-           fld qword ptr [ebp-020h]
-           fmul qword ptr [ebp-028h]
-           fld qword ptr [g10037080]
-           fsub qword ptr [ebp-010h]
-           fmulp st(01h), st(00h)
-           fld qword ptr [ebp-018h]
-           fmul qword ptr [ebp-008h]
-           faddp st(01h), st(00h)
-           mov eax, dword ptr [ebp-02Ch]
-           fstp qword ptr [eax+030h]
-           mov ecx, dword ptr [ebp-02Ch]
-           mov dword ptr [ecx+038h], 000000000h
-           mov dword ptr [ecx+03Ch], 000000000h
-           fld qword ptr [ebp-018h]
-           fmul qword ptr [ebp-028h]
-           fld qword ptr [g10037080]
-           fsub qword ptr [ebp-010h]
-           fmulp st(01h), st(00h)
-           fld qword ptr [ebp-020h]
-           fmul qword ptr [ebp-008h]
-           faddp st(01h), st(00h)
-           mov edx, dword ptr [ebp-02Ch]
-           fstp qword ptr [edx+040h]
-           fld qword ptr [ebp-020h]
-           fmul qword ptr [ebp-028h]
-           fld qword ptr [g10037080]
-           fsub qword ptr [ebp-010h]
-           fmulp st(01h), st(00h)
-           fld qword ptr [ebp-018h]
-           fmul qword ptr [ebp-008h]
-           fsubp st(01h), st(00h)
-           mov eax, dword ptr [ebp-02Ch]
-           fstp qword ptr [eax+048h]
-           fld qword ptr [ebp-028h]
-           fmul qword ptr [ebp-028h]
-           fld qword ptr [g10037080]
-           fsub qword ptr [ebp-010h]
-           fmulp st(01h), st(00h)
-           fadd qword ptr [ebp-010h]
-           mov ecx, dword ptr [ebp-02Ch]
-           fstp qword ptr [ecx+050h]
-           mov edx, dword ptr [ebp-02Ch]
-           mov dword ptr [edx+058h], 000000000h
-           mov dword ptr [edx+05Ch], 000000000h
-           mov eax, dword ptr [ebp-02Ch]
-           mov dword ptr [eax+060h], 000000000h
-           mov dword ptr [eax+064h], 000000000h
-           mov ecx, dword ptr [ebp-02Ch]
-           mov dword ptr [ecx+068h], 000000000h
-           mov dword ptr [ecx+06Ch], 000000000h
-           mov edx, dword ptr [ebp-02Ch]
-           mov dword ptr [edx+070h], 000000000h
-           mov dword ptr [edx+074h], 000000000h
-           mov eax, dword ptr [ebp-02Ch]
-           mov dword ptr [eax+078h], 000000000h
-           mov dword ptr [eax+07Ch], 03FF00000h
-           mov eax, dword ptr [ebp-02Ch]
-           mov esp, ebp
-           pop ebp
-           ret 0000Ch
-l100038A0 ENDP
+           call l100038A0; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001799(U) 
@@ -6664,33 +6463,7 @@ l10003BFC ENDP
 ;* Jump:
 ; 10001569(U) 
 ;
-l10003FDA PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           mov edx, dword ptr [ecx]
-           mov dword ptr [eax+060h], edx
-           mov ecx, dword ptr [ecx+004h]
-           mov dword ptr [eax+064h], ecx
-           mov edx, dword ptr [ebp+008h]
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [edx+008h]
-           mov dword ptr [eax+068h], ecx
-           mov edx, dword ptr [edx+00Ch]
-           mov dword ptr [eax+06Ch], edx
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [eax+010h]
-           mov dword ptr [ecx+070h], edx
-           mov eax, dword ptr [eax+014h]
-           mov dword ptr [ecx+074h], eax
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l10003FDA ENDP
+           call l10003FDA; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001212(U) 
@@ -8298,276 +8071,22 @@ l10004D97 ENDP
 ;* Jump:
 ; 100011AE(U) 
 ;
-l10005153 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000018h
-           mov eax, dword ptr [ebp+010h]
-           mov ecx, dword ptr [ebp+00Ch]
-           fld qword ptr [ecx]
-           fmul qword ptr [eax+010h]
-           mov edx, dword ptr [ebp+00Ch]
-           mov eax, dword ptr [ebp+010h]
-           fld qword ptr [edx+008h]
-           fmul qword ptr [eax+030h]
-           faddp st(01h), st(00h)
-           mov ecx, dword ptr [ebp+00Ch]
-           mov edx, dword ptr [ebp+010h]
-           fld qword ptr [ecx+010h]
-           fmul qword ptr [edx+050h]
-           faddp st(01h), st(00h)
-           mov eax, dword ptr [ebp+010h]
-           fadd qword ptr [eax+070h]
-           fstp qword ptr [ebp-018h]
-           mov ecx, dword ptr [ebp+010h]
-           mov edx, dword ptr [ebp+00Ch]
-           fld qword ptr [edx]
-           fmul qword ptr [ecx+008h]
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp+010h]
-           fld qword ptr [eax+008h]
-           fmul qword ptr [ecx+028h]
-           faddp st(01h), st(00h)
-           mov edx, dword ptr [ebp+00Ch]
-           mov eax, dword ptr [ebp+010h]
-           fld qword ptr [edx+010h]
-           fmul qword ptr [eax+048h]
-           faddp st(01h), st(00h)
-           mov ecx, dword ptr [ebp+010h]
-           fadd qword ptr [ecx+068h]
-           fstp qword ptr [ebp-010h]
-           mov edx, dword ptr [ebp+00Ch]
-           mov eax, dword ptr [ebp+010h]
-           fld qword ptr [edx]
-           fmul qword ptr [eax]
-           mov ecx, dword ptr [ebp+00Ch]
-           mov edx, dword ptr [ebp+010h]
-           fld qword ptr [ecx+008h]
-           fmul qword ptr [edx+020h]
-           faddp st(01h), st(00h)
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp+010h]
-           fld qword ptr [eax+010h]
-           fmul qword ptr [ecx+040h]
-           faddp st(01h), st(00h)
-           mov edx, dword ptr [ebp+010h]
-           fadd qword ptr [edx+060h]
-           fstp qword ptr [ebp-008h]
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-008h]
-           mov dword ptr [eax], ecx
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [eax+004h], edx
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-010h]
-           mov dword ptr [eax+008h], ecx
-           mov edx, dword ptr [ebp-00Ch]
-           mov dword ptr [eax+00Ch], edx
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-018h]
-           mov dword ptr [eax+010h], ecx
-           mov edx, dword ptr [ebp-014h]
-           mov dword ptr [eax+014h], edx
-           mov eax, dword ptr [ebp+008h]
-           mov esp, ebp
-           pop ebp
-           ret
-l10005153 ENDP
+           call l10005153; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001406(U) 
 ;
-l1000521B PROC
-           push ebp
-           mov ebp, esp
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp+010h]
-           fld qword ptr [eax]
-           fmul qword ptr [ecx]
-           mov edx, dword ptr [ebp+00Ch]
-           mov eax, dword ptr [ebp+010h]
-           fld qword ptr [edx+008h]
-           fmul qword ptr [eax+020h]
-           faddp st(01h), st(00h)
-           mov ecx, dword ptr [ebp+00Ch]
-           mov edx, dword ptr [ebp+010h]
-           fld qword ptr [ecx+010h]
-           fmul qword ptr [edx+040h]
-           faddp st(01h), st(00h)
-           mov eax, dword ptr [ebp+010h]
-           fadd qword ptr [eax+060h]
-           mov ecx, dword ptr [ebp+008h]
-           fstp qword ptr [ecx]
-           mov edx, dword ptr [ebp+010h]
-           mov eax, dword ptr [ebp+00Ch]
-           fld qword ptr [eax]
-           fmul qword ptr [edx+008h]
-           mov ecx, dword ptr [ebp+00Ch]
-           mov edx, dword ptr [ebp+010h]
-           fld qword ptr [ecx+008h]
-           fmul qword ptr [edx+028h]
-           faddp st(01h), st(00h)
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp+010h]
-           fld qword ptr [eax+010h]
-           fmul qword ptr [ecx+048h]
-           faddp st(01h), st(00h)
-           mov edx, dword ptr [ebp+010h]
-           fadd qword ptr [edx+068h]
-           mov eax, dword ptr [ebp+008h]
-           fstp qword ptr [eax+008h]
-           mov ecx, dword ptr [ebp+010h]
-           mov edx, dword ptr [ebp+00Ch]
-           fld qword ptr [edx]
-           fmul qword ptr [ecx+010h]
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp+010h]
-           fld qword ptr [eax+008h]
-           fmul qword ptr [ecx+030h]
-           faddp st(01h), st(00h)
-           mov edx, dword ptr [ebp+00Ch]
-           mov eax, dword ptr [ebp+010h]
-           fld qword ptr [edx+010h]
-           fmul qword ptr [eax+050h]
-           faddp st(01h), st(00h)
-           mov ecx, dword ptr [ebp+010h]
-           fadd qword ptr [ecx+070h]
-           mov edx, dword ptr [ebp+008h]
-           fstp qword ptr [edx+010h]
-           pop ebp
-           ret
-l1000521B ENDP
+           call l1000521B; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001460(U) 
 ;
-l100052B7 PROC
-           push ebp
-           mov ebp, esp
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp+010h]
-           fld qword ptr [eax]
-           fmul qword ptr [ecx]
-           mov edx, dword ptr [ebp+00Ch]
-           mov eax, dword ptr [ebp+010h]
-           fld qword ptr [edx+008h]
-           fmul qword ptr [eax+020h]
-           faddp st(01h), st(00h)
-           mov ecx, dword ptr [ebp+00Ch]
-           mov edx, dword ptr [ebp+010h]
-           fld qword ptr [ecx+010h]
-           fmul qword ptr [edx+040h]
-           faddp st(01h), st(00h)
-           mov eax, dword ptr [ebp+008h]
-           fstp qword ptr [eax]
-           mov ecx, dword ptr [ebp+010h]
-           mov edx, dword ptr [ebp+00Ch]
-           fld qword ptr [edx]
-           fmul qword ptr [ecx+008h]
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp+010h]
-           fld qword ptr [eax+008h]
-           fmul qword ptr [ecx+028h]
-           faddp st(01h), st(00h)
-           mov edx, dword ptr [ebp+00Ch]
-           mov eax, dword ptr [ebp+010h]
-           fld qword ptr [edx+010h]
-           fmul qword ptr [eax+048h]
-           faddp st(01h), st(00h)
-           mov ecx, dword ptr [ebp+008h]
-           fstp qword ptr [ecx+008h]
-           mov edx, dword ptr [ebp+010h]
-           mov eax, dword ptr [ebp+00Ch]
-           fld qword ptr [eax]
-           fmul qword ptr [edx+010h]
-           mov ecx, dword ptr [ebp+00Ch]
-           mov edx, dword ptr [ebp+010h]
-           fld qword ptr [ecx+008h]
-           fmul qword ptr [edx+030h]
-           faddp st(01h), st(00h)
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp+010h]
-           fld qword ptr [eax+010h]
-           fmul qword ptr [ecx+050h]
-           faddp st(01h), st(00h)
-           mov edx, dword ptr [ebp+008h]
-           fstp qword ptr [edx+010h]
-           pop ebp
-           ret
-l100052B7 ENDP
+           call l100052B7; Implemented in c++ code
 ;
 ;* Jump:
 ; 1000125D(U) 
 ;
-l10005341 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000018h
-           mov eax, dword ptr [ebp+010h]
-           mov ecx, dword ptr [ebp+00Ch]
-           fld qword ptr [ecx]
-           fmul qword ptr [eax+010h]
-           mov edx, dword ptr [ebp+00Ch]
-           mov eax, dword ptr [ebp+010h]
-           fld qword ptr [edx+008h]
-           fmul qword ptr [eax+030h]
-           faddp st(01h), st(00h)
-           mov ecx, dword ptr [ebp+00Ch]
-           mov edx, dword ptr [ebp+010h]
-           fld qword ptr [ecx+010h]
-           fmul qword ptr [edx+050h]
-           faddp st(01h), st(00h)
-           fstp qword ptr [ebp-018h]
-           mov eax, dword ptr [ebp+010h]
-           mov ecx, dword ptr [ebp+00Ch]
-           fld qword ptr [ecx]
-           fmul qword ptr [eax+008h]
-           mov edx, dword ptr [ebp+00Ch]
-           mov eax, dword ptr [ebp+010h]
-           fld qword ptr [edx+008h]
-           fmul qword ptr [eax+028h]
-           faddp st(01h), st(00h)
-           mov ecx, dword ptr [ebp+00Ch]
-           mov edx, dword ptr [ebp+010h]
-           fld qword ptr [ecx+010h]
-           fmul qword ptr [edx+048h]
-           faddp st(01h), st(00h)
-           fstp qword ptr [ebp-010h]
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [ebp+010h]
-           fld qword ptr [eax]
-           fmul qword ptr [ecx]
-           mov edx, dword ptr [ebp+00Ch]
-           mov eax, dword ptr [ebp+010h]
-           fld qword ptr [edx+008h]
-           fmul qword ptr [eax+020h]
-           faddp st(01h), st(00h)
-           mov ecx, dword ptr [ebp+00Ch]
-           mov edx, dword ptr [ebp+010h]
-           fld qword ptr [ecx+010h]
-           fmul qword ptr [edx+040h]
-           faddp st(01h), st(00h)
-           fstp qword ptr [ebp-008h]
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-008h]
-           mov dword ptr [eax], ecx
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [eax+004h], edx
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-010h]
-           mov dword ptr [eax+008h], ecx
-           mov edx, dword ptr [ebp-00Ch]
-           mov dword ptr [eax+00Ch], edx
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp-018h]
-           mov dword ptr [eax+010h], ecx
-           mov edx, dword ptr [ebp-014h]
-           mov dword ptr [eax+014h], edx
-           mov eax, dword ptr [ebp+008h]
-           mov esp, ebp
-           pop ebp
-           ret
-l10005341 ENDP
+           call l10005341; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001253(U) 
@@ -8648,34 +8167,12 @@ l100053F7 ENDP
 ;* Jump:
 ; 10001028(U) 
 ;
-l100054B9 PROC
-           push ebp
-           mov ebp, esp
-           push 000000080h
-           mov eax, dword ptr [ebp+00Ch]
-           push eax
-           mov ecx, dword ptr [ebp+008h]
-           call [__imp_?Read@B_IDataFile@@QAEXPAXI@Z]; [BBLibc.?Read@B_IDataFile@@QAEXPAXI@Z].
-           mov eax, dword ptr [ebp+008h]
-           pop ebp
-           ret
-l100054B9 ENDP
+           call l100054B9; Implemented in c++ code
 ;
 ;* Jump:
 ; 100011E0(U) 
 ;
-l100054D3 PROC
-           push ebp
-           mov ebp, esp
-           push 000000080h
-           mov eax, dword ptr [ebp+00Ch]
-           push eax
-           mov ecx, dword ptr [ebp+008h]
-           call [__imp_?Write@B_ODataFile@@QAEXPBXI@Z]; [BBLibc.?Write@B_ODataFile@@QAEXPBXI@Z].
-           mov eax, dword ptr [ebp+008h]
-           pop ebp
-           ret
-l100054D3 ENDP
+           call l100054D3; Implemented in c++ code
 ;
 ;* Jump:
 ; 10001299(U) 
