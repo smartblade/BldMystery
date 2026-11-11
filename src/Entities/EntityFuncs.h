@@ -11,7 +11,8 @@ class B_Entity;
 class B_Sound;
 class B_Spline;
 
-typedef struct {
+typedef struct
+{
     const char *name;
     int executed;
 } combo_t;

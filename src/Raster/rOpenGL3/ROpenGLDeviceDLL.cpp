@@ -5,6 +5,7 @@
 #include <AnalyticGeometry/ViewPose.h>
 #include <View/CameraView.h>
 #include <BBLibc/BBLibc.h>
+#include <BBLibc/Config.h>
 #include <BBLibc/MessageManager.h>
 #include <BBLibc/ParticleGType.h>
 #include <BBLibc/Vararg.h>
@@ -1402,7 +1403,7 @@ B_3DRasterDevice *CreateRaster(
 * Entry point:            0x10028A98
 */
 
-int DestroyRaster(B_3DRasterDevice* raster)
+int DestroyRaster(B_3DRasterDevice *raster)
 {
     delete raster;
     return true;

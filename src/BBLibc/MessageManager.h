@@ -16,8 +16,17 @@
 class LIB_EXP B_MessageManager
 {
 public:
-    ~B_MessageManager();
     B_MessageManager();
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10002710
+    * VC++ mangling:          ??1B_MessageManager@@QAE@XZ
+    */
+
+    ~B_MessageManager()
+    {
+    }
 
 
     /*

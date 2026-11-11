@@ -83,7 +83,8 @@ int B_ObjDscr::GetVtxNode(unsigned int)
 * VC++ mangling:          ?SetUpEdges@B_ObjDscr@@QAEXXZ
 */
 #ifndef BLD_NATIVE
-void B_ObjDscr::SetUpEdges() {
+void B_ObjDscr::SetUpEdges()
+{
 }
 #endif
 

@@ -3,7 +3,7 @@
 
 #define BMAP_H
 
-#include <array.h>
+#include <BBLibc/array.h>
 #include <BBLibc/IDataFile.h>
 #include <AnalyticGeometry/BoundingBox.h>
 #include <BWorld/Surface.h>
@@ -30,19 +30,30 @@ public:
 
 B_IDataFile &operator >>(B_IDataFile &file, B_SectorLights &lights);
 
-class B_Sector : public B_PtrArray<B_Surface>
+class B_Sector : public B_Array<B_Surface>
 {
 public:
     B_Sector();
+    virtual ~B_Sector();
     void CalculateBoundingBox();
 
-    char unknownFields[8];
+    int visibilityGroup;
+    int unknownField01C;
     unsigned long groupId;
-    char unknownFields24[56];
+    double unknownField24;
+    B_Plane unknown02C;
+    char unknownFields4C[0x4];
+    unsigned int lastQueryId;
+    int isActive;
     B_BoundingBox boundingBox;
-    char unknownFields08C[0x18];
+    int unknownField08C;
+    int unknownField090;
+    char padding[0x10];
     int atmosphere;
-    char unknownFields0A8[0x014];
+    int unknownField0A8;
+    int unknownField0AC;
+    double ambientIntensity;
+    int unknownField0B8;
     B_SectorLights lights;
     char unknownFields1F4[0x10];
     unknown204 unknown204;
@@ -51,10 +62,10 @@ public:
 
 B_IDataFile &operator >>(B_IDataFile &file, B_Sector &sector);
 
-class B_Map : public B_PtrArray<B_Sector>
+class B_Map : public B_Array<B_Sector>
 {
 private:
-    B_PtrArray<void> unknown018;
+    B_Array<void> unknown018;
     int unknown030;
 };
 

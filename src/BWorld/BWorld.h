@@ -4,7 +4,7 @@
 #define GAME_STATE_H
 
 
-#include <array.h>
+#include <BBLibc/array.h>
 #include <BBLibc/Name.h>
 #include <BBLibc/IDataFile.h>
 #include <Entities/Entity.h>
@@ -19,7 +19,7 @@
 
 class B_ViewPose;
 
-class B_SubscriptionList : public B_PtrArray<B_Entity>, public B_NamedObj
+class B_SubscriptionList : public B_Array<B_Entity>, public B_NamedObj
 {
 };
 
@@ -41,7 +41,7 @@ public:
         this->data = NULL;
         this->groupName = group_name;
     }
-    void AddPoint(const B_Vector& point, int numPoints);
+    void AddPoint(const B_Vector &point, int numPoints);
 
     float minX;
     float minY;
@@ -53,7 +53,7 @@ public:
     float roofHeight;
     array_t<B_Vector> points;
     array_t<B_Vector> a040;
-    B_PtrArray<void> a054;
+    B_Array<void> a054;
     PyObject *onEnter;
     PyObject *onLeave;
     PyObject *data;
@@ -75,7 +75,7 @@ public:
     void GetEnemiesVisibleFrom(
         const B_Vector &position, double radius,
         const B_Vector &direction, double angle,
-        B_PtrArray<B_Entity> *enemies);
+        B_Array<B_Entity> *enemies);
     int FindSectorIndex(const B_Vector &point);
     int IntersectSegment(
         const B_Vector &startPoint, const B_Vector &endPoint,
@@ -124,29 +124,31 @@ public:
         return entities.Get(i);
     }
 
-    B_PtrArray<B_TriggerSector> triggerSectors;
+    B_DataBase<B_TriggerSector> triggerSectors;
     B_Hash<B_Entity> entities;
     int nextEntitySuffix;
-    B_PtrArray<B_SubscriptionList> subscriptions;
-    char unknownFields1840[28];
+    B_DataBase<B_SubscriptionList> subscriptions;
+    B_Array<void*> scheduledFuncs;
+    int unknown1858;
     B_Name world_file_name;
-    char unknownFields1864[24];
-    int unknown187C;
-    int unknown1880;
-    char unknownFields1884[40];
-    B_PtrArray<atmosphere_t> atmospheres;
+    int unknownField1864;
+    int unknownField1868;
+    int unknownField186c;
+    double timeStep;                // (0.015625 = 1/64 sec)
+    unsigned int currentTick;
+    double lastTime;
+    char physicsMgr[0x28];
+    B_DataBase<atmosphere_t> atmospheres;
     B_Map map;
     B_OctTree octTree;
-    B_Vector unknown18FC;
-    double unknown1914;
-    void *unknown191C;
-    B_PtrArray<light_t> lights;
-    char unknownFields1938[28];
+    B_Array<light_t> lights;
+    int unknown1938;
+    B_Vector sunVector;
     B_Vector initial_point_position;
     B_Vector initial_point_orientation;
 };
 
-B_IDataFile& operator >>(B_IDataFile& file, B_World *gs);
+B_IDataFile &operator >>(B_IDataFile &file, B_World *gs);
 
 #ifdef __cplusplus
 extern "C" {

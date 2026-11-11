@@ -24,9 +24,11 @@ public:
     * VC++ mangling:          ??0B_MessageChannel@@QAE@AAVB_Name@@@Z
     */
 
-    B_MessageChannel(B_Name &name) : B_NamedObj(name)
+    B_MessageChannel(B_Name &name)
+    :
+        B_NamedObj(name)
     {
-        unknown0Ch = 1;
+        this->unknown0Ch = 1;
     }
 
 
@@ -35,27 +37,27 @@ public:
     * Entry point:            0x100024F0
     * VC++ mangling:          ??0B_MessageChannel@@QAE@XZ
     */
-#ifndef BLD_NATIVE
+
     B_MessageChannel()
+    :
+        B_NamedObj(B_Name(""))
     {
+        this->unknown0Ch = 1;
     }
-#else
-    B_MessageChannel();
-#endif
+
 
     /*
     * Module:                 BBLibc.dll
     * Entry point:            0x10002540
     * VC++ mangling:          ??8B_MessageChannel@@QBEHABV0@@Z
     */
-#ifndef BLD_NATIVE
-    int operator ==(const B_MessageChannel &arg_1) const
+
+    int operator ==(const B_MessageChannel &that) const
     {
-        return 0;
+        return false;
     }
-#else
-    int operator ==(const B_MessageChannel &arg_1) const;
-#endif
+
+
     /*
     * Module:                 BBLibc.dll
     * Entry point:            0x10002550
@@ -77,7 +79,9 @@ public:
     */
 
     B_MessageChannel(const B_MessageChannel &that)
-        : B_NamedObj(that), unknown0Ch(that.unknown0Ch)
+    :
+        B_NamedObj(that),
+        unknown0Ch(that.unknown0Ch)
     {
     }
 

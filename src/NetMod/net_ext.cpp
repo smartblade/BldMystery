@@ -485,7 +485,8 @@ int ServerSetSendDataState(int state)
 
 int GetNetState(void)
 {
-        if (gbl_net->is_net_game()) {
+        if (gbl_net->is_net_game())
+        {
                 if (gbl_net->is_server())
                         return 1;
 

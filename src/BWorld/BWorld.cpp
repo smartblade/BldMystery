@@ -142,12 +142,12 @@ void B_World::SetSun(int exists, const B_Vector &position)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0043D434
-* VC++ mangling:          ?GetEnemiesVisibleFrom@B_World@@QAEXABVB_Vector@@N0NPAV?$B_PtrArray@VB_Entity@@@@@Z
+* VC++ mangling:          ?GetEnemiesVisibleFrom@B_World@@QAEXABVB_Vector@@N0NPAV?$B_Array@VB_Entity@@@@@Z
 */
 #ifndef BLD_NATIVE
 void B_World::GetEnemiesVisibleFrom(
     const B_Vector &position, double radius,
-    const B_Vector &direction, double angle, B_PtrArray<B_Entity> *enemies)
+    const B_Vector &direction, double angle, B_Array<B_Entity> *enemies)
 {
 }
 #endif
@@ -371,7 +371,7 @@ int B_World::SaveEntitiesData(const char *filename)
 * VC++ mangling:          ?AddPoint@B_TriggerSector@@QAEXABVB_Vector@@H@Z
 */
 #ifndef BLD_NATIVE
-void B_TriggerSector::AddPoint(const B_Vector& point, int numPoints)
+void B_TriggerSector::AddPoint(const B_Vector &point, int numPoints)
 {
 }
 #endif
@@ -402,14 +402,13 @@ const char *B_World::GetTriggerSectorName(int index)
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@PAVB_World@@@Z
 */
 
-B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
+B_IDataFile &operator >>(B_IDataFile &file, B_World *world)
 {
         unsigned int num_lights;
         unsigned int i;
 
-        world->unknown187C = 0;
-        world->unknown1880 = 0;
-        B_PtrArray<atmosphere_t> *atms = &world->atmospheres;
+        world->lastTime = 0;
+        B_Array<atmosphere_t> *atms = &world->atmospheres;
         if (atms->num_alloc != 0)
         {
                 for (i = 0; i < atms->size; i++)
@@ -446,7 +445,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
         file >> gbl_world_points;
         file >> world->map;
 
-        B_PtrArray<light_t> *lights = &world->lights;
+        B_Array<light_t> *lights = &world->lights;
         if (lights->num_alloc != 0)
         {
                 for (i = 0; i < lights->size; i++)
@@ -465,7 +464,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_World *world)
         for(i = 0; i < num_lights; i++)
         {
                 light_t *light = read_light(&file);
-                B_PtrArray<light_t> *lights = &world->lights;
+                B_Array<light_t> *lights = &world->lights;
                 if (lights->num_alloc <= lights->size)
                 {
                         lights->num_alloc += lights->increment;

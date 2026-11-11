@@ -3,7 +3,7 @@
 
 #define POLYGON_H
 
-#include "array.h"
+#include <BBLibc/array.h>
 #include <AnalyticGeometry/Vector.h>
 
 class B_WorldPoint

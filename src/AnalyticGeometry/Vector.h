@@ -24,6 +24,7 @@ public:
     B_Vector &operator *=(double c);
     B_Vector operator +(const B_Vector &that) const;
     const B_Vector &operator -=(const B_Vector &that);
+    B_Vector operator -(const B_Vector &that) const;
     void SetAngle(double angle);
 
     double x;
@@ -32,8 +33,8 @@ public:
 };
 
 extern B_Vector operator *(double c, const B_Vector &v);
-extern B_IDataFile& operator >>(B_IDataFile& file, B_Vector &vector);
-extern B_ODataFile& operator <<(B_ODataFile& file, B_Vector &vector);
+extern B_IDataFile &operator >>(B_IDataFile &file, B_Vector &vector);
+extern B_ODataFile &operator <<(B_ODataFile &file, B_Vector &vector);
 
 #ifdef __cplusplus
 extern "C" {

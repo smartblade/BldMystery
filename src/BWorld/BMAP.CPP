@@ -45,6 +45,19 @@ B_Sector::B_Sector()
 }
 #endif
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0042E26F
+* VC++ mangling:          ??1B_Sector@@UAE@XZ
+*/
+#ifndef BLD_NATIVE
+B_Sector::~B_Sector()
+{
+}
+#endif
+
+
 /*
 ................................................................................
 ................................................................................
@@ -122,7 +135,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_Sector &sector)
 
 B_IDataFile &operator >>(B_IDataFile &file, B_Map &map)
 {
-    return (file >> static_cast<B_PtrArray<B_Sector> &>(map));
+    return (file >> static_cast<B_Array<B_Sector> &>(map));
 }
 
 

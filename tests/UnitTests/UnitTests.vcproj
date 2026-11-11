@@ -341,6 +341,42 @@
 						>
 					</File>
 				</Filter>
+				<Filter
+					Name="OctTree.h"
+					>
+					<File
+						RelativePath=".\Blade\BWorld\OctTree.h\GlobalSurfaceCacheTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\BWorld\OctTree.h\LeafNodeTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\BWorld\OctTree.h\OctTreeSectorsListTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\BWorld\OctTree.h\OctTreeTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\BWorld\OctTree.h\OctantNodeBaseTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\BWorld\OctTree.h\OctantNodeTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\BWorld\OctTree.h\SectorListNodeTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\BWorld\OctTree.h\SectorSurfaceCacheTests.cpp"
+						>
+					</File>
+				</Filter>
 			</Filter>
 			<Filter
 				Name="Entities"
@@ -442,11 +478,19 @@
 				Name="AnalyticGeometry"
 				>
 				<File
+					RelativePath=".\Blade\AnalyticGeometry\BoundingBoxTests.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\Blade\AnalyticGeometry\PlaneTests.cpp"
 					>
 				</File>
 				<File
 					RelativePath=".\Blade\AnalyticGeometry\PolygonTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\AnalyticGeometry\SphereTests.cpp"
 					>
 				</File>
 				<File

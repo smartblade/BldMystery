@@ -35,7 +35,9 @@ public:
     * VC++ mangling:          ??0B_NamedObj@@QAE@ABV0@@Z
     */
 
-    B_NamedObj(const B_NamedObj &that) : name(that.name)
+    B_NamedObj(const B_NamedObj &that)
+    :
+        name(that.name)
     {
     }
 

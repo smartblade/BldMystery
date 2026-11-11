@@ -84,6 +84,25 @@ B_Vector B_Vector::operator +(const B_Vector &that) const
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x0040A5D0
+* VC++ mangling:          ??GB_Vector@@QBE?AV0@ABV0@@Z
+*/
+
+B_Vector B_Vector::operator -(const B_Vector &that) const
+{
+    return B_Vector(this->x - that.x, this->y - that.y, this->z - that.z);
+}
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x0040A67C
 * VC++ mangling:          ??ZB_Vector@@QAEABV0@ABV0@@Z
 */
@@ -126,7 +145,7 @@ void B_Vector::SetAngle(double angle)
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z
 */
 
-B_IDataFile& operator >>(B_IDataFile& file, B_Vector &vector)
+B_IDataFile &operator >>(B_IDataFile &file, B_Vector &vector)
 {
     file.Read(&vector, sizeof(B_Vector));
     return file;
@@ -139,7 +158,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_Vector &vector)
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@AAVB_Vector@@@Z
 */
 
-B_ODataFile& operator <<(B_ODataFile& file, B_Vector &vector)
+B_ODataFile &operator <<(B_ODataFile &file, B_Vector &vector)
 {
     file.Write(&vector, sizeof(B_Vector));
     return file;

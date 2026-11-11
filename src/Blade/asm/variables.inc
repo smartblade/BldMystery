@@ -34,6 +34,12 @@ public _B_world
 g005E0B88 equ _B_world
 public _gbl_action_areas_bit_mask
 g005E2514 equ _gbl_action_areas_bit_mask
+public _gbl_node_count
+g005E338C equ _gbl_node_count
+public _gbl_current_query_box
+g005E3390 equ _gbl_current_query_box
+public _gbl_oct_tree_query_id
+g005E3394 equ _gbl_oct_tree_query_id
 public _gbl_anims
 g007072A8 equ _gbl_anims
 public _climbing_data_list

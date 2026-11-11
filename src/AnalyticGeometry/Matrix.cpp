@@ -332,11 +332,11 @@ void B_Matrix::InvertRigid(B_Matrix &out)
 * Entry point:            0x100043F9
 * Module:                 Blade.exe
 * Entry point:            0x00405BA9
-* VC++ mangling:          ?Invert@B_Matrix@@QBEPAV1@PAV1@@Z
+* VC++ mangling:          ?Invert@B_Matrix@@QBE?AV1@XZ
 */
 
 #ifndef BLD_NATIVE
-B_Matrix *B_Matrix::Invert(B_Matrix *outMatrix) const
+B_Matrix B_Matrix::Invert() const
 {
     B_Matrix temp;
     double det =
@@ -369,8 +369,7 @@ B_Matrix *B_Matrix::Invert(B_Matrix *outMatrix) const
     temp.m[3][0] = -translation.x;
     temp.m[3][1] = -translation.y;
     temp.m[3][2] = -translation.z;
-    *outMatrix = temp;
-    return outMatrix;
+    return temp;
 }
 #endif
 
@@ -501,11 +500,11 @@ B_Matrix operator *(const B_Matrix &a, const B_Matrix &b)
 * Entry point:            0x10004B88
 * Module:                 Blade.exe
 * Entry point:            0x00406338
-* VC++ mangling:          ?MulRot_406338@@YA?AVB_Matrix@@ABV1@0@Z
+* VC++ mangling:          ?MulRot@@YA?AVB_Matrix@@ABV1@0@Z
 */
 
 #ifndef BLD_NATIVE
-B_Matrix MulRot_406338(const B_Matrix &a, const B_Matrix &b)
+B_Matrix MulRot(const B_Matrix &a, const B_Matrix &b)
 {
     B_Matrix result;
     result.m[0][0] =
@@ -543,91 +542,91 @@ B_Matrix MulRot_406338(const B_Matrix &a, const B_Matrix &b)
 * Entry point:            0x10004D97
 * Module:                 Blade.exe
 * Entry point:            0x00406547
-* VC++ mangling:          ?MatrixMultiply@@YAXPAVB_Matrix@@PBV1@1@Z
+* VC++ mangling:          ?MatrixMultiply@@YAXAAVB_Matrix@@ABV1@1@Z
 */
 
-void MatrixMultiply(B_Matrix *out, const B_Matrix *a, const B_Matrix *b)
+void MatrixMultiply(B_Matrix &out, const B_Matrix &a, const B_Matrix &b)
 {
-    out->m[0][0] =
-        a->m[0][0] * b->m[0][0] +
-            a->m[0][1] * b->m[1][0] +
-            a->m[0][2] * b->m[2][0] +
-            a->m[0][3] * b->m[3][0];
-    out->m[0][1] =
-        a->m[0][0] * b->m[0][1] +
-            a->m[0][1] * b->m[1][1] +
-            a->m[0][2] * b->m[2][1] +
-            a->m[0][3] * b->m[3][1];
-    out->m[0][2] =
-        a->m[0][0] * b->m[0][2] +
-            a->m[0][1] * b->m[1][2] +
-            a->m[0][2] * b->m[2][2] +
-            a->m[0][3] * b->m[3][2];
-    out->m[0][3] =
-        a->m[0][0] * b->m[0][3] +
-            a->m[0][1] * b->m[1][3] +
-            a->m[0][2] * b->m[2][3] +
-            a->m[0][3] * b->m[3][3];
-    out->m[1][0] =
-        a->m[1][0] * b->m[0][0] +
-            a->m[1][1] * b->m[1][0] +
-            a->m[1][2] * b->m[2][0] +
-            a->m[1][3] * b->m[3][0];
-    out->m[1][1] =
-        a->m[1][0] * b->m[0][1] +
-            a->m[1][1] * b->m[1][1] +
-            a->m[1][2] * b->m[2][1] +
-            a->m[1][3] * b->m[3][1];
-    out->m[1][2] =
-        a->m[1][0] * b->m[0][2] +
-            a->m[1][1] * b->m[1][2] +
-            a->m[1][2] * b->m[2][2] +
-            a->m[1][3] * b->m[3][2];
-    out->m[1][3] =
-        a->m[1][0] * b->m[0][3] +
-            a->m[1][1] * b->m[1][3] +
-            a->m[1][2] * b->m[2][3] +
-            a->m[1][3] * b->m[3][3];
-    out->m[2][0] =
-        a->m[2][0] * b->m[0][0] +
-            a->m[2][1] * b->m[1][0] +
-            a->m[2][2] * b->m[2][0] +
-            a->m[2][3] * b->m[3][0];
-    out->m[2][1] =
-        a->m[2][0] * b->m[0][1] +
-            a->m[2][1] * b->m[1][1] +
-            a->m[2][2] * b->m[2][1] +
-            a->m[2][3] * b->m[3][1];
-    out->m[2][2] =
-        a->m[2][0] * b->m[0][2] +
-            a->m[2][1] * b->m[1][2] +
-            a->m[2][2] * b->m[2][2] +
-            a->m[2][3] * b->m[3][2];
-    out->m[2][3] =
-        a->m[2][0] * b->m[0][3] +
-            a->m[2][1] * b->m[1][3] +
-            a->m[2][2] * b->m[2][3] +
-            a->m[2][3] * b->m[3][3];
-    out->m[3][0] =
-        a->m[3][0] * b->m[0][0] +
-            a->m[3][1] * b->m[1][0] +
-            a->m[3][2] * b->m[2][0] +
-            a->m[3][3] * b->m[3][0];
-    out->m[3][1] =
-        a->m[3][0] * b->m[0][1] +
-            a->m[3][1] * b->m[1][1] +
-            a->m[3][2] * b->m[2][1] +
-            a->m[3][3] * b->m[3][1];
-    out->m[3][2] =
-        a->m[3][0] * b->m[0][2] +
-            a->m[3][1] * b->m[1][2] +
-            a->m[3][2] * b->m[2][2] +
-            a->m[3][3] * b->m[3][2];
-    out->m[3][3] =
-        a->m[3][0] * b->m[0][3] +
-            a->m[3][1] * b->m[1][3] +
-            a->m[3][2] * b->m[2][3] +
-            a->m[3][3] * b->m[3][3];
+    out.m[0][0] =
+        a.m[0][0] * b.m[0][0] +
+            a.m[0][1] * b.m[1][0] +
+            a.m[0][2] * b.m[2][0] +
+            a.m[0][3] * b.m[3][0];
+    out.m[0][1] =
+        a.m[0][0] * b.m[0][1] +
+            a.m[0][1] * b.m[1][1] +
+            a.m[0][2] * b.m[2][1] +
+            a.m[0][3] * b.m[3][1];
+    out.m[0][2] =
+        a.m[0][0] * b.m[0][2] +
+            a.m[0][1] * b.m[1][2] +
+            a.m[0][2] * b.m[2][2] +
+            a.m[0][3] * b.m[3][2];
+    out.m[0][3] =
+        a.m[0][0] * b.m[0][3] +
+            a.m[0][1] * b.m[1][3] +
+            a.m[0][2] * b.m[2][3] +
+            a.m[0][3] * b.m[3][3];
+    out.m[1][0] =
+        a.m[1][0] * b.m[0][0] +
+            a.m[1][1] * b.m[1][0] +
+            a.m[1][2] * b.m[2][0] +
+            a.m[1][3] * b.m[3][0];
+    out.m[1][1] =
+        a.m[1][0] * b.m[0][1] +
+            a.m[1][1] * b.m[1][1] +
+            a.m[1][2] * b.m[2][1] +
+            a.m[1][3] * b.m[3][1];
+    out.m[1][2] =
+        a.m[1][0] * b.m[0][2] +
+            a.m[1][1] * b.m[1][2] +
+            a.m[1][2] * b.m[2][2] +
+            a.m[1][3] * b.m[3][2];
+    out.m[1][3] =
+        a.m[1][0] * b.m[0][3] +
+            a.m[1][1] * b.m[1][3] +
+            a.m[1][2] * b.m[2][3] +
+            a.m[1][3] * b.m[3][3];
+    out.m[2][0] =
+        a.m[2][0] * b.m[0][0] +
+            a.m[2][1] * b.m[1][0] +
+            a.m[2][2] * b.m[2][0] +
+            a.m[2][3] * b.m[3][0];
+    out.m[2][1] =
+        a.m[2][0] * b.m[0][1] +
+            a.m[2][1] * b.m[1][1] +
+            a.m[2][2] * b.m[2][1] +
+            a.m[2][3] * b.m[3][1];
+    out.m[2][2] =
+        a.m[2][0] * b.m[0][2] +
+            a.m[2][1] * b.m[1][2] +
+            a.m[2][2] * b.m[2][2] +
+            a.m[2][3] * b.m[3][2];
+    out.m[2][3] =
+        a.m[2][0] * b.m[0][3] +
+            a.m[2][1] * b.m[1][3] +
+            a.m[2][2] * b.m[2][3] +
+            a.m[2][3] * b.m[3][3];
+    out.m[3][0] =
+        a.m[3][0] * b.m[0][0] +
+            a.m[3][1] * b.m[1][0] +
+            a.m[3][2] * b.m[2][0] +
+            a.m[3][3] * b.m[3][0];
+    out.m[3][1] =
+        a.m[3][0] * b.m[0][1] +
+            a.m[3][1] * b.m[1][1] +
+            a.m[3][2] * b.m[2][1] +
+            a.m[3][3] * b.m[3][1];
+    out.m[3][2] =
+        a.m[3][0] * b.m[0][2] +
+            a.m[3][1] * b.m[1][2] +
+            a.m[3][2] * b.m[2][2] +
+            a.m[3][3] * b.m[3][2];
+    out.m[3][3] =
+        a.m[3][0] * b.m[0][3] +
+            a.m[3][1] * b.m[1][3] +
+            a.m[3][2] * b.m[2][3] +
+            a.m[3][3] * b.m[3][3];
 }
 
 
