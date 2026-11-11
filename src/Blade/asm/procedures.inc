@@ -18,6 +18,16 @@ externdef ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ: near
 l0040571F equ ?TranslationVector@B_Matrix@@QBE?AVB_Vector@@XZ
 externdef ?SetOrigin@B_Matrix@@QAEXPBVB_Vector@@@Z: near
 l0040578A equ ?SetOrigin@B_Matrix@@QAEXPBVB_Vector@@@Z
+externdef ?InvertRigid@B_Matrix@@QAEXAAV1@@Z: near
+l00405AA2 equ ?InvertRigid@B_Matrix@@QAEXAAV1@@Z
+externdef ?Invert@B_Matrix@@QBE?AV1@XZ: near
+l00405BA9 equ ?Invert@B_Matrix@@QBE?AV1@XZ
+externdef ??D@YA?AVB_Matrix@@ABV0@0@Z: near
+l00405F87 equ ??D@YA?AVB_Matrix@@ABV0@0@Z
+externdef ?MulRot@@YA?AVB_Matrix@@ABV1@0@Z: near
+l00406338 equ ?MulRot@@YA?AVB_Matrix@@ABV1@0@Z
+externdef ?MatrixMultiply@@YAXAAVB_Matrix@@ABV1@1@Z: near
+l00406547 equ ?MatrixMultiply@@YAXAAVB_Matrix@@ABV1@1@Z
 externdef ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z: near
 l00406903 equ ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z
 externdef ?TransformPoint@@YAXAAVB_Vector@@ABV1@ABVB_Matrix@@@Z: near
@@ -26,6 +36,8 @@ externdef ?Rotate@@YAXAAVB_Vector@@ABV1@ABVB_Matrix@@@Z: near
 l00406A67 equ ?Rotate@@YAXAAVB_Vector@@ABV1@ABVB_Matrix@@@Z
 externdef ?Rotate@@YA?AVB_Vector@@ABV1@ABVB_Matrix@@@Z: near
 l00406AF1 equ ?Rotate@@YA?AVB_Vector@@ABV1@ABVB_Matrix@@@Z
+externdef ?TransformPlane@@YAXAAVB_Plane@@ABV1@ABVB_Matrix@@@Z: near
+l00406BA7 equ ?TransformPlane@@YAXAAVB_Plane@@ABV1@ABVB_Matrix@@@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Matrix@@@Z: near
 l00406C69 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Matrix@@@Z
 externdef ??6@YAAAVB_ODataFile@@AAV0@ABVB_Matrix@@@Z: near
