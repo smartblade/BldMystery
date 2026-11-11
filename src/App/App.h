@@ -41,7 +41,7 @@ public:
     B_App(char *cmdLine);
     virtual void ReadArguments(const char *args);
     virtual void StringSplit(
-        const char *str, const char *sep, B_PtrArray<B_Name> *tokens);
+        const char *str, const char *sep, B_Array<B_Name> *tokens);
     virtual bool InitPythonPath();
     virtual void ProcessMessage() = 0;
 
@@ -149,7 +149,7 @@ public:
     B_Clock *clock1;
     B_Clock *clock2;
     PyObject *CDCallback;
-    B_PtrArray<B_Name> arguments;
+    B_Array<B_Name> arguments;
     B_MessageChannel *console;
     B_Widget *rootWidget;
     void *unknown058;
@@ -200,8 +200,8 @@ public:
     double aecGap;
     PyObject *menuTgapFunc;
     int isInputActive;
-    B_PtrArray<B_AfterFrameFunc> afterFrameFuncs;
-    B_PtrArray<B_StringValue> values;
+    B_Array<B_AfterFrameFunc> afterFrameFuncs;
+    B_Array<B_StringValue> values;
     char screenShotFileName[256];
     int screenShotWidth;
     int screenShotHeight;

@@ -33,7 +33,7 @@ public:
 
 private:
     char unknown_fields[0x3C];
-    B_PtrArray<B_CharType> charTypes;
+    B_Array<B_CharType> charTypes;
 };
 
 #endif /* EN_CONTROL_H */

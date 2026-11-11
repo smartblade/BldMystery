@@ -99,7 +99,7 @@ public:
         }
     }
 
-    B_PtrArray<B_CameraMovement> movements;
+    B_Array<B_CameraMovement> movements;
     char unknownFields018[0x080];
     B_Spline source;
     B_Spline target;

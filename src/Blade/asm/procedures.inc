@@ -248,8 +248,8 @@ externdef ?GetMenuTgapFunc@B_App@@QAEPAUPyObject@@XZ: near
 l00416678 equ ?GetMenuTgapFunc@B_App@@QAEPAUPyObject@@XZ
 externdef ?RemoveAfterFrameFunc@B_App@@QAEHPBD@Z: near
 l0041668C equ ?RemoveAfterFrameFunc@B_App@@QAEHPBD@Z
-externdef ?StringSplit@B_App@@UAEXPBD0PAV?$B_PtrArray@VB_Name@@@@@Z: near
-l004167E1 equ ?StringSplit@B_App@@UAEXPBD0PAV?$B_PtrArray@VB_Name@@@@@Z
+externdef ?StringSplit@B_App@@UAEXPBD0PAV?$B_Array@VB_Name@@@@@Z: near
+l004167E1 equ ?StringSplit@B_App@@UAEXPBD0PAV?$B_Array@VB_Name@@@@@Z
 externdef ?SetBloodLevel@B_App@@QAEHH@Z: near
 l00416C0B equ ?SetBloodLevel@B_App@@QAEHH@Z
 externdef ?GetBloodLevel@B_App@@QAEHXZ: near
@@ -612,8 +612,8 @@ externdef ?Update@B_World@@QAEXPAVB_ViewPose@@PAXNH@Z: near
 l0043C5FD equ ?Update@B_World@@QAEXPAVB_ViewPose@@PAXNH@Z
 externdef ?SetSun@B_World@@QAEXHABVB_Vector@@@Z: near
 l0043C8B2 equ ?SetSun@B_World@@QAEXHABVB_Vector@@@Z
-externdef ?GetEnemiesVisibleFrom@B_World@@QAEXABVB_Vector@@N0NPAV?$B_PtrArray@VB_Entity@@@@@Z: near
-l0043D434 equ ?GetEnemiesVisibleFrom@B_World@@QAEXABVB_Vector@@N0NPAV?$B_PtrArray@VB_Entity@@@@@Z
+externdef ?GetEnemiesVisibleFrom@B_World@@QAEXABVB_Vector@@N0NPAV?$B_Array@VB_Entity@@@@@Z: near
+l0043D434 equ ?GetEnemiesVisibleFrom@B_World@@QAEXABVB_Vector@@N0NPAV?$B_Array@VB_Entity@@@@@Z
 externdef ?FindSectorIndex@B_World@@QAEHABVB_Vector@@@Z: near
 l0043DBBE equ ?FindSectorIndex@B_World@@QAEHABVB_Vector@@@Z
 externdef ?IntersectSegment@B_World@@QAEHABVB_Vector@@00HHPAX@Z: near
@@ -676,8 +676,8 @@ externdef _AddHitSoundComb: near
 l0044ED6A equ _AddHitSoundComb
 externdef ?Intersects@B_BoundingBox@@QBEIPBVB_Sector@@@Z: near
 l0044F052 equ ?Intersects@B_BoundingBox@@QBEIPBVB_Sector@@@Z
-externdef ?CollectIntersectingSectors@B_BoundingBox@@QAEXABV?$B_PtrArray@VB_Sector@@@@AAV2@@Z: near
-l004501C1 equ ?CollectIntersectingSectors@B_BoundingBox@@QAEXABV?$B_PtrArray@VB_Sector@@@@AAV2@@Z
+externdef ?CollectIntersectingSectors@B_BoundingBox@@QAEXABV?$B_Array@VB_Sector@@@@AAV2@@Z: near
+l004501C1 equ ?CollectIntersectingSectors@B_BoundingBox@@QAEXABV?$B_Array@VB_Sector@@@@AAV2@@Z
 externdef ??0B_OctantNode@@QAE@XZ: near
 l00450327 equ ??0B_OctantNode@@QAE@XZ
 externdef ??1B_OctantNode@@UAE@XZ: near
@@ -704,8 +704,8 @@ externdef ??1B_OctTree@@QAE@XZ: near
 l004507B9 equ ??1B_OctTree@@QAE@XZ
 externdef ?Clear@B_OctTree@@QAEXXZ: near
 l004507D5 equ ?Clear@B_OctTree@@QAEXXZ
-externdef ?BuildNode@@YAPAVB_OctantNodeBase@@ABV?$B_PtrArray@VB_Sector@@@@NABVB_BoundingBox@@@Z: near
-l00450823 equ ?BuildNode@@YAPAVB_OctantNodeBase@@ABV?$B_PtrArray@VB_Sector@@@@NABVB_BoundingBox@@@Z
+externdef ?BuildNode@@YAPAVB_OctantNodeBase@@ABV?$B_Array@VB_Sector@@@@NABVB_BoundingBox@@@Z: near
+l00450823 equ ?BuildNode@@YAPAVB_OctantNodeBase@@ABV?$B_Array@VB_Sector@@@@NABVB_BoundingBox@@@Z
 externdef ?Build@B_OctTree@@QAEXABVB_Map@@N@Z: near
 l00451A21 equ ?Build@B_OctTree@@QAEXABVB_Map@@N@Z
 externdef ?CollectSectorsAtPoint@LeafNode@@UAEXABVB_Vector@@PAVB_OctTreeSectorsList@@N@Z: near

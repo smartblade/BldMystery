@@ -111,10 +111,10 @@ B_IDataFile &operator >>(B_IDataFile &file, array_t<TYPE> &arr)
 }
 
 template<class TYPE>
-class B_PtrArray
+class B_Array
 {
 public:
-    virtual ~B_PtrArray()
+    virtual ~B_Array()
     {
         if (num_alloc != 0)
         {
@@ -122,7 +122,7 @@ public:
         }
     }
 
-    B_PtrArray(unsigned int increment = 16, int deleteItems = true)
+    B_Array(unsigned int increment = 16, int deleteItems = true)
     {
         elements = NULL;
         size = 0;
@@ -264,7 +264,7 @@ public:
 };
 
 template<class TYPE>
-B_IDataFile &operator >>(B_IDataFile &file, B_PtrArray<TYPE> &arr)
+B_IDataFile &operator >>(B_IDataFile &file, B_Array<TYPE> &arr)
 {
     if (arr.num_alloc != 0)
     {
@@ -294,7 +294,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_PtrArray<TYPE> &arr)
 
 
 template<class TYPE>
-class B_SharedPtrArray : public B_PtrArray<TYPE>
+class B_SharedPtrArray : public B_Array<TYPE>
 {
 public:
     virtual ~B_SharedPtrArray()
@@ -304,7 +304,7 @@ public:
 
     B_SharedPtrArray(unsigned int increment = 16)
         :
-    B_PtrArray(increment)
+    B_Array(increment)
     {
     }
 };

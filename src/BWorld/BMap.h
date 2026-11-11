@@ -30,7 +30,7 @@ public:
 
 B_IDataFile &operator >>(B_IDataFile &file, B_SectorLights &lights);
 
-class B_Sector : public B_PtrArray<B_Surface>
+class B_Sector : public B_Array<B_Surface>
 {
 public:
     B_Sector();
@@ -62,10 +62,10 @@ public:
 
 B_IDataFile &operator >>(B_IDataFile &file, B_Sector &sector);
 
-class B_Map : public B_PtrArray<B_Sector>
+class B_Map : public B_Array<B_Sector>
 {
 private:
-    B_PtrArray<void> unknown018;
+    B_Array<void> unknown018;
     int unknown030;
 };
 
