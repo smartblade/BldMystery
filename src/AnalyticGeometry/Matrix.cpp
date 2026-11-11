@@ -390,87 +390,87 @@ B_Matrix MulRot_406338(const B_Matrix &a, const B_Matrix &b)
 * Entry point:            0x10004D97
 * Module:                 Blade.exe
 * Entry point:            0x00406547
-* VC++ mangling:          ?MatrixMultiply@@YAXPAVB_Matrix@@ABV1@1@Z
+* VC++ mangling:          ?MatrixMultiply@@YAXAAVB_Matrix@@ABV1@1@Z
 */
 
-void MatrixMultiply(B_Matrix *out, const B_Matrix &a, const B_Matrix &b)
+void MatrixMultiply(B_Matrix &out, const B_Matrix &a, const B_Matrix &b)
 {
-    out->m[0][0] =
+    out.m[0][0] =
         a.m[0][0] * b.m[0][0] +
             a.m[0][1] * b.m[1][0] +
             a.m[0][2] * b.m[2][0] +
             a.m[0][3] * b.m[3][0];
-    out->m[0][1] =
+    out.m[0][1] =
         a.m[0][0] * b.m[0][1] +
             a.m[0][1] * b.m[1][1] +
             a.m[0][2] * b.m[2][1] +
             a.m[0][3] * b.m[3][1];
-    out->m[0][2] =
+    out.m[0][2] =
         a.m[0][0] * b.m[0][2] +
             a.m[0][1] * b.m[1][2] +
             a.m[0][2] * b.m[2][2] +
             a.m[0][3] * b.m[3][2];
-    out->m[0][3] =
+    out.m[0][3] =
         a.m[0][0] * b.m[0][3] +
             a.m[0][1] * b.m[1][3] +
             a.m[0][2] * b.m[2][3] +
             a.m[0][3] * b.m[3][3];
-    out->m[1][0] =
+    out.m[1][0] =
         a.m[1][0] * b.m[0][0] +
             a.m[1][1] * b.m[1][0] +
             a.m[1][2] * b.m[2][0] +
             a.m[1][3] * b.m[3][0];
-    out->m[1][1] =
+    out.m[1][1] =
         a.m[1][0] * b.m[0][1] +
             a.m[1][1] * b.m[1][1] +
             a.m[1][2] * b.m[2][1] +
             a.m[1][3] * b.m[3][1];
-    out->m[1][2] =
+    out.m[1][2] =
         a.m[1][0] * b.m[0][2] +
             a.m[1][1] * b.m[1][2] +
             a.m[1][2] * b.m[2][2] +
             a.m[1][3] * b.m[3][2];
-    out->m[1][3] =
+    out.m[1][3] =
         a.m[1][0] * b.m[0][3] +
             a.m[1][1] * b.m[1][3] +
             a.m[1][2] * b.m[2][3] +
             a.m[1][3] * b.m[3][3];
-    out->m[2][0] =
+    out.m[2][0] =
         a.m[2][0] * b.m[0][0] +
             a.m[2][1] * b.m[1][0] +
             a.m[2][2] * b.m[2][0] +
             a.m[2][3] * b.m[3][0];
-    out->m[2][1] =
+    out.m[2][1] =
         a.m[2][0] * b.m[0][1] +
             a.m[2][1] * b.m[1][1] +
             a.m[2][2] * b.m[2][1] +
             a.m[2][3] * b.m[3][1];
-    out->m[2][2] =
+    out.m[2][2] =
         a.m[2][0] * b.m[0][2] +
             a.m[2][1] * b.m[1][2] +
             a.m[2][2] * b.m[2][2] +
             a.m[2][3] * b.m[3][2];
-    out->m[2][3] =
+    out.m[2][3] =
         a.m[2][0] * b.m[0][3] +
             a.m[2][1] * b.m[1][3] +
             a.m[2][2] * b.m[2][3] +
             a.m[2][3] * b.m[3][3];
-    out->m[3][0] =
+    out.m[3][0] =
         a.m[3][0] * b.m[0][0] +
             a.m[3][1] * b.m[1][0] +
             a.m[3][2] * b.m[2][0] +
             a.m[3][3] * b.m[3][0];
-    out->m[3][1] =
+    out.m[3][1] =
         a.m[3][0] * b.m[0][1] +
             a.m[3][1] * b.m[1][1] +
             a.m[3][2] * b.m[2][1] +
             a.m[3][3] * b.m[3][1];
-    out->m[3][2] =
+    out.m[3][2] =
         a.m[3][0] * b.m[0][2] +
             a.m[3][1] * b.m[1][2] +
             a.m[3][2] * b.m[2][2] +
             a.m[3][3] * b.m[3][2];
-    out->m[3][3] =
+    out.m[3][3] =
         a.m[3][0] * b.m[0][3] +
             a.m[3][1] * b.m[1][3] +
             a.m[3][2] * b.m[2][3] +
