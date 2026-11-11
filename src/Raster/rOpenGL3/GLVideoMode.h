@@ -1,6 +1,6 @@
 #pragma once
 
-#include <array.h>
+#include <BBLibc/array.h>
 
 
 struct B_VideoMode

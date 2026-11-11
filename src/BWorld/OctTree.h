@@ -3,7 +3,7 @@
 
 #define OCT_TREE_H
 
-#include <array.h>
+#include <BBLibc/array.h>
 #include <AnalyticGeometry/Vector.h>
 
 

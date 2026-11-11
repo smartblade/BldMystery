@@ -4,7 +4,7 @@
 #define GAME_STATE_H
 
 
-#include <array.h>
+#include <BBLibc/array.h>
 #include <BBLibc/Name.h>
 #include <BBLibc/IDataFile.h>
 #include <Entities/Entity.h>

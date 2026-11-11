@@ -13,7 +13,7 @@
 #include <BBLibc/MessageManager.h>
 #include <Entities/Entity.h>
 #include "Clock.h"
-#include <array.h>
+#include <BBLibc/array.h>
 #include <AnalyticGeometry/ViewPose.h>
 #include "StringValue.h"
 

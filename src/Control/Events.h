@@ -2,7 +2,7 @@
 
 #define EVENTS_H
 
-#include <array.h>
+#include <BBLibc/array.h>
 #include <BBLibc/Name.h>
 
 #include <Control/EventFuncC.h>

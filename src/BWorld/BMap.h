@@ -3,7 +3,7 @@
 
 #define BMAP_H
 
-#include <array.h>
+#include <BBLibc/array.h>
 #include <BBLibc/IDataFile.h>
 #include <AnalyticGeometry/BoundingBox.h>
 #include <BWorld/Surface.h>

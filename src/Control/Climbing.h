@@ -4,7 +4,7 @@
 
 #include <BBLibc/NamedObj.h>
 #include <AnalyticGeometry/Vector.h>
-#include "array.h"
+#include <BBLibc/array.h>
 
 
 class B_BipedAction;

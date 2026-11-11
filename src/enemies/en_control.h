@@ -2,7 +2,7 @@
 
 #define EN_CONTROL_H
 
-#include <array.h>
+#include <BBLibc/array.h>
 #include <enemies/chartype.h>
 
 
