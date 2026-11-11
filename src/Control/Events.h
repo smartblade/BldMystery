@@ -44,7 +44,7 @@ public:
     int GetEventIndex(const char *event_name);
     const B_Name &GetEventName(int eventIndex);
 private:
-    B_Array<B_Event> events;
+    B_SharedPtrArray<B_Event> events;
 };
 
 #endif /* EVENTS_H */

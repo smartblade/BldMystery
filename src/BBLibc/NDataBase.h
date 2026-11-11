@@ -23,7 +23,7 @@ struct LIB_EXP B_ElementCSV : public B_NamedObj
 };
 
 
-template<class T> class B_NDataBase : public B_Array<T>
+template<class T> class B_NDataBase : public B_DataBase<T>
 {
 };
 

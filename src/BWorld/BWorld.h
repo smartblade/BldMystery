@@ -124,10 +124,10 @@ public:
         return entities.Get(i);
     }
 
-    B_Array<B_TriggerSector> triggerSectors;
+    B_DataBase<B_TriggerSector> triggerSectors;
     B_Hash<B_Entity> entities;
     int nextEntitySuffix;
-    B_Array<B_SubscriptionList> subscriptions;
+    B_DataBase<B_SubscriptionList> subscriptions;
     B_Array<void*> scheduledFuncs;
     int unknown1858;
     B_Name world_file_name;
@@ -138,7 +138,7 @@ public:
     unsigned int currentTick;
     double lastTime;
     char physicsMgr[0x28];
-    B_Array<atmosphere_t> atmospheres;
+    B_DataBase<atmosphere_t> atmospheres;
     B_Map map;
     B_OctTree octTree;
     B_Array<light_t> lights;

@@ -99,7 +99,7 @@ public:
     }
 
     unsigned int size;
-    B_Array<T> hash[256];
+    B_DataBase<T> hash[256];
     int unknown1804;
     T *lastItem;
 };

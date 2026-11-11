@@ -379,9 +379,9 @@ private:
     double contrast;
     double brightness;
     byte colorTable[256];
-    B_Array<void> textures;
+    B_DataBase<void> textures;
     int nextTextureId;
-    B_Array<B_Atmosphere> atmospheres;
+    B_DataBase<B_Atmosphere> atmospheres;
     GLfloat fogColor[4];
     float fogDensity;
     float fogFactor;

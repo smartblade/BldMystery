@@ -310,4 +310,15 @@ public:
 };
 
 
+template<class TYPE>
+class B_ObjArray : public B_Array<TYPE>
+{
+};
+
+
+template<class TYPE>
+class B_DataBase : public B_ObjArray<TYPE>
+{
+};
+
 #endif /* ARRAY_H */

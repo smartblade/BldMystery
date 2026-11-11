@@ -91,7 +91,7 @@ extern "C" {
 * Module:                 Blade.exe
 * Data address:           0x007C9878
 */
-extern B_Array<B_BipedData> gbl_bipeds;
+extern B_DataBase<B_BipedData> gbl_bipeds;
 
 #ifdef __cplusplus
 }

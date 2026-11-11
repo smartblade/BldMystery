@@ -45,7 +45,7 @@ int TestClimb(B_Entity *entity, unsigned int eventIndex);
 * Module:                 Blade.exe
 * Data address:           0x007072C8
 */
-extern B_Array<B_ClimbingData> climbing_data_list;
+extern B_DataBase<B_ClimbingData> climbing_data_list;
 
 #ifdef __cplusplus
 }

@@ -29,7 +29,7 @@ public:
         double speed, double livetime
     );
 private:
-    B_Array<void> a00C;
+    B_ObjArray<void> a00C;
     int unknown0024;
     char unknown_fields028[32];
 public:
@@ -212,7 +212,7 @@ extern B_Array<B_Combustion> gbl_combustion_data;
 * Module:                 Blade.exe
 * Data address:           0x007D40D0
 */
-extern B_Array<B_SolidMask> gbl_solid_masks;
+extern B_DataBase<B_SolidMask> gbl_solid_masks;
 
 /*
 * Module:                 Blade.exe
