@@ -18,8 +18,8 @@ externdef ?Invert@B_Matrix@@QBE?AV1@XZ: near
 l100043F9 equ ?Invert@B_Matrix@@QBE?AV1@XZ
 externdef ??D@YA?AVB_Matrix@@ABV0@0@Z: near
 l100047D7 equ ??D@YA?AVB_Matrix@@ABV0@0@Z
-externdef ?MulRot_406338@@YA?AVB_Matrix@@ABV1@0@Z: near
-l10004B88 equ ?MulRot_406338@@YA?AVB_Matrix@@ABV1@0@Z
+externdef ?MulRot@@YA?AVB_Matrix@@ABV1@0@Z: near
+l10004B88 equ ?MulRot@@YA?AVB_Matrix@@ABV1@0@Z
 externdef ?MatrixMultiply@@YAXAAVB_Matrix@@ABV1@1@Z: near
 l10004D97 equ ?MatrixMultiply@@YAXAAVB_Matrix@@ABV1@1@Z
 externdef ??D@YA?AVB_Vector@@ABV0@ABVB_Matrix@@@Z: near

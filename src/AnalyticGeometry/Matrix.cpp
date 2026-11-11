@@ -348,11 +348,11 @@ B_Matrix operator *(const B_Matrix &a, const B_Matrix &b)
 * Entry point:            0x10004B88
 * Module:                 Blade.exe
 * Entry point:            0x00406338
-* VC++ mangling:          ?MulRot_406338@@YA?AVB_Matrix@@ABV1@0@Z
+* VC++ mangling:          ?MulRot@@YA?AVB_Matrix@@ABV1@0@Z
 */
 
 #ifndef BLD_NATIVE
-B_Matrix MulRot_406338(const B_Matrix &a, const B_Matrix &b)
+B_Matrix MulRot(const B_Matrix &a, const B_Matrix &b)
 {
     B_Matrix result;
     result.m[0][0] =

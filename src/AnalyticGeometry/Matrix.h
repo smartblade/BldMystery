@@ -23,7 +23,7 @@ public:
 };
 
 extern B_Matrix operator *(const B_Matrix &a, const B_Matrix &b);
-extern B_Matrix MulRot_406338(const B_Matrix &a, const B_Matrix &b);
+extern B_Matrix MulRot(const B_Matrix &a, const B_Matrix &b);
 extern void MatrixMultiply(B_Matrix &out, const B_Matrix &a, const B_Matrix &b);
 extern B_Vector operator *(const B_Vector &vector, const B_Matrix &matrix);
 extern void TransformPoint(
