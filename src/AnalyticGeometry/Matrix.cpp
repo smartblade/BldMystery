@@ -199,7 +199,6 @@ void B_Matrix::InvertRigid(B_Matrix &out)
 * VC++ mangling:          ?Invert@B_Matrix@@QBE?AV1@XZ
 */
 
-#ifndef BLD_NATIVE
 B_Matrix B_Matrix::Invert() const
 {
     B_Matrix temp;
@@ -235,7 +234,6 @@ B_Matrix B_Matrix::Invert() const
     temp.m[3][2] = -translation.z;
     return temp;
 }
-#endif
 
 
 /*
@@ -254,7 +252,6 @@ B_Matrix B_Matrix::Invert() const
 * VC++ mangling:          ??D@YA?AVB_Matrix@@ABV0@0@Z
 */
 
-#ifndef BLD_NATIVE
 B_Matrix operator *(const B_Matrix &a, const B_Matrix &b)
 {
     B_Matrix result;
@@ -340,7 +337,6 @@ B_Matrix operator *(const B_Matrix &a, const B_Matrix &b)
             a.m[3][3] * b.m[3][3];
     return result;
 }
-#endif
 
 
 /*
@@ -351,7 +347,6 @@ B_Matrix operator *(const B_Matrix &a, const B_Matrix &b)
 * VC++ mangling:          ?MulRot@@YA?AVB_Matrix@@ABV1@0@Z
 */
 
-#ifndef BLD_NATIVE
 B_Matrix MulRot(const B_Matrix &a, const B_Matrix &b)
 {
     B_Matrix result;
@@ -382,7 +377,6 @@ B_Matrix MulRot(const B_Matrix &a, const B_Matrix &b)
     result.m[3][3] = a.m[3][3];
     return result;
 }
-#endif
 
 
 /*
