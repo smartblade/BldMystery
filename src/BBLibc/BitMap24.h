@@ -107,7 +107,14 @@ public:
     unsigned int dimension2;
     void *data;
 private:
+    /*
+    * Exported with the class without the methods of B_Array so warning C4251
+    * is disabled for it.
+    */
+#pragma warning(push)
+#pragma warning(disable: 4251)
     static B_Array<B_BitMap24> BitMap24DataList;
+#pragma warning(pop)
 
 };
 
