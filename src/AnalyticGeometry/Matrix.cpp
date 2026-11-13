@@ -121,6 +121,35 @@ B_Matrix::B_Matrix(const B_Vector &axis, double angle)
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10003A77
+* Module:                 Blade.exe
+* Entry point:            0x00405227
+* VC++ mangling:          ??0B_Matrix@@QAE@ABVB_Plane@@@Z
+*/
+
+B_Matrix::B_Matrix(const B_Plane &plane)
+{
+    this->m[0][0] = 1.0 - 2.0 * plane.normal.x * plane.normal.x;
+    this->m[1][0] = -2.0 * plane.normal.x * plane.normal.y;
+    this->m[2][0] = -2.0 * plane.normal.x * plane.normal.z;
+    this->m[3][0] = -2.0 * plane.normal.x * plane.p;
+    this->m[0][1] = -2.0 * plane.normal.y * plane.normal.x;
+    this->m[1][1] = 1.0 - 2.0 * plane.normal.y * plane.normal.y;
+    this->m[2][1] = -2.0 * plane.normal.y * plane.normal.z;
+    this->m[3][1] = -2.0 * plane.normal.y * plane.p;
+    this->m[0][2] = -2.0 * plane.normal.z * plane.normal.x;
+    this->m[1][2] = -2.0 * plane.normal.z * plane.normal.y;
+    this->m[2][2] = 1.0 - 2.0 * plane.normal.z * plane.normal.z;
+    this->m[3][2] = -2.0 * plane.normal.z * plane.p;
+    this->m[0][3] = 0.0;
+    this->m[1][3] = 0.0;
+    this->m[2][3] = 0.0;
+    this->m[3][3] = 1.0;
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
@@ -159,11 +188,118 @@ void B_Matrix::SetOrigin(const B_Vector *origin)
 
 
 /*
+* Module:                 rOpenGL.dll
+* Entry point:            0x1000401C
+* Module:                 Blade.exe
+* Entry point:            0x004057CC
+* VC++ mangling:          ?ScaleX@B_Matrix@@QBENXZ
+*/
+
+double B_Matrix::ScaleX() const
+{
+    return sqrt(
+        this->m[0][0] * this->m[0][0] +
+            this->m[0][1] * this->m[0][1] +
+            this->m[0][2] * this->m[0][2]
+    );
+}
+
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x10004052
+* Module:                 Blade.exe
+* Entry point:            0x00405802
+* VC++ mangling:          ?ScaleY@B_Matrix@@QBENXZ
+*/
+
+double B_Matrix::ScaleY() const
+{
+    return sqrt(
+        this->m[1][0] * this->m[1][0] +
+            this->m[1][1] * this->m[1][1] +
+            this->m[1][2] * this->m[1][2]
+    );
+}
+
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x1000408A
+* Module:                 Blade.exe
+* Entry point:            0x0040583A
+* VC++ mangling:          ?ScaleZ@B_Matrix@@QBENXZ
+*/
+
+double B_Matrix::ScaleZ() const
+{
+    return sqrt(
+        this->m[2][0] * this->m[2][0] +
+            this->m[2][1] * this->m[2][1] +
+            this->m[2][2] * this->m[2][2]
+    );
+}
+
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x100040C2
+* Module:                 Blade.exe
+* Entry point:            0x00405872
+* VC++ mangling:          ?SetScale@B_Matrix@@QAEXN@Z
+*/
+
+void B_Matrix::SetScale(double scale)
+{
+    double scaleX = this->ScaleX();
+    double scaleY = this->ScaleY();
+    double scaleZ = this->ScaleZ();
+    double factorX = scale / scaleX;
+    double factorY = scale / scaleY;
+    double factorZ = scale / scaleZ;
+    this->m[0][0] = factorX * this->m[0][0];
+    this->m[0][1] = factorX * this->m[0][1];
+    this->m[0][2] = factorX * this->m[0][2];
+    this->m[1][0] = factorY * this->m[1][0];
+    this->m[1][1] = factorY * this->m[1][1];
+    this->m[1][2] = factorY * this->m[1][2];
+    this->m[2][0] = factorZ * this->m[2][0];
+    this->m[2][1] = factorZ * this->m[2][1];
+    this->m[2][2] = factorZ * this->m[2][2];
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
 ................................................................................
 */
+
+
+/*
+* Module:                 rOpenGL.dll
+* Entry point:            0x1000423F
+* Module:                 Blade.exe
+* Entry point:            0x004059EF
+* VC++ mangling:          ?RemoveScale@B_Matrix@@QAEXXZ
+*/
+
+void B_Matrix::RemoveScale()
+{
+    double scaleX = this->ScaleX();
+    double scaleY = this->ScaleY();
+    double scaleZ = this->ScaleZ();
+    this->m[0][0] /= scaleX;
+    this->m[0][1] /= scaleX;
+    this->m[0][2] /= scaleX;
+    this->m[1][0] /= scaleY;
+    this->m[1][1] /= scaleY;
+    this->m[1][2] /= scaleY;
+    this->m[2][0] /= scaleZ;
+    this->m[2][1] /= scaleZ;
+    this->m[2][2] /= scaleZ;
+}
 
 
 /*
@@ -237,11 +373,27 @@ B_Matrix B_Matrix::Invert() const
 
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 rOpenGL.dll
+* Entry point:            0x1000475D
+* Module:                 Blade.exe
+* Entry point:            0x00405F0D
+* VC++ mangling:          ??8@YAHABVB_Matrix@@0@Z
 */
+
+int operator ==(const B_Matrix &a, const B_Matrix &b)
+{
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            if (fabs(a.m[i][j] - b.m[i][j]) > 0.001)
+            {
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
 
 
 /*

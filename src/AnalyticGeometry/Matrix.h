@@ -14,14 +14,21 @@ public:
     B_Matrix(double scale);
     B_Matrix(const B_Vector &v);
     B_Matrix(const B_Vector &axis, double angle);
+    B_Matrix(const B_Plane &plane);
     B_Vector TranslationVector() const;
     void SetOrigin(const B_Vector *origin);
+    double ScaleX() const;
+    double ScaleY() const;
+    double ScaleZ() const;
+    void SetScale(double scale);
+    void RemoveScale();
     void InvertRigid(B_Matrix &out);
     B_Matrix Invert() const;
 
     double m[4][4];
 };
 
+extern int operator ==(const B_Matrix &a, const B_Matrix &b);
 extern B_Matrix operator *(const B_Matrix &a, const B_Matrix &b);
 extern B_Matrix MulRot(const B_Matrix &a, const B_Matrix &b);
 extern void MatrixMultiply(B_Matrix &out, const B_Matrix &a, const B_Matrix &b);
