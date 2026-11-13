@@ -1,4 +1,3 @@
-#define BBLIBC_LIB_EXPORT
 #include "ResourceManager.h"
 #include "IDataFile.h"
 

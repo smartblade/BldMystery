@@ -28,6 +28,7 @@ endif()
 
 target_compile_definitions(
     ${TARGET} PRIVATE
+    BBLIBC_LIB_EXPORT
     _CRT_NONSTDC_NO_DEPRECATE
     _CRT_SECURE_NO_DEPRECATE
 )
