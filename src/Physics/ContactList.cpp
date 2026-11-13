@@ -41,3 +41,15 @@ B_ContactList::~B_ContactList()
 ................................................................................
 ................................................................................
 */
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004AC6C2
+*/
+#ifndef BLD_NATIVE
+int newExclusionGroupId()
+{
+    return 0;
+}
+#endif

@@ -36,4 +36,14 @@ public:
     int type;
 };
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern int newExclusionGroupId();
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* CONTACT_LIST_H */
