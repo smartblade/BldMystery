@@ -5,12 +5,12 @@
 
 #include <BBLibc/array.h>
 #include <AnalyticGeometry/Vector.h>
+#include <BWorld/BMap.h>
 
 
 class B_Sphere;
 class B_Map;
 class B_BoundingBox;
-class B_Sector;
 class B_Surface;
 
 
