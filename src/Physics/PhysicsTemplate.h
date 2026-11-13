@@ -56,11 +56,28 @@ public:
     virtual const B_BoundingBox &GetBoundingBox() = 0;
     virtual void SetPose(const B_Matrix *pose) = 0;
     virtual B_Matrix &GetPose() = 0;
+
+    /*
+    * Module:                 Blade.exe
+    * Entry point:            0x004B4550
+    * VC++ mangling:          ?IntersectSegment@B_PhysicsTemplateBase@@UAEHABVB_Vector@@0AAV2@@Z
+    */
+#ifndef BLD_NATIVE
+    virtual int IntersectSegment(
+        const B_Vector &start,
+        const B_Vector &end,
+        B_Vector &hit
+    )
+    {
+        return 0;
+    }
+#else
     virtual int IntersectSegment(
         const B_Vector &start,
         const B_Vector &end,
         B_Vector &hit
     );
+#endif
 
     B_ContactList contacts;
     int unknownField038;
@@ -95,7 +112,20 @@ class B_PhysicsTemplate : public B_PhysicsTemplateBase
 public:
     B_PhysicsTemplate(const B_Name &name);
     B_PhysicsTemplate(B_ObjDscr *resource);
+
+    /*
+    * Module:                 Blade.exe
+    * Entry point:            0x004B4680
+    * VC++ mangling:          ?ClassId@B_PhysicsTemplate@@UAEHXZ
+    */
+#ifndef BLD_NATIVE
+    virtual int ClassId()
+    {
+        return 0;
+    }
+#else
     virtual int ClassId();
+#endif
     virtual ~B_PhysicsTemplate();
     virtual int unknown_method008(B_PhysicsTemplateBase *other);
     virtual int DetectCollisions(
@@ -107,7 +137,20 @@ public:
     virtual int BindConstraints();
     virtual const B_BoundingBox &GetBoundingBox();
     virtual void SetPose(const B_Matrix *pose);
+
+    /*
+    * Module:                 Blade.exe
+    * Entry point:            0x004B4690
+    * VC++ mangling:          ?GetPose@B_PhysicsTemplate@@UAEAAVB_Matrix@@XZ
+    */
+#ifndef BLD_NATIVE
+    virtual B_Matrix &GetPose()
+    {
+        return this->pose;
+    }
+#else
     virtual B_Matrix &GetPose();
+#endif
     virtual int IntersectSegment(
         const B_Vector &start,
         const B_Vector &end,

@@ -12,7 +12,20 @@ class B_SphereSetTemplate : public B_PhysicsTemplateBase
 {
 public:
     B_SphereSetTemplate(array_t<B_Sphere> *spheres);
+
+    /*
+    * Module:                 Blade.exe
+    * Entry point:            0x004B84C0
+    * VC++ mangling:          ?ClassId@B_SphereSetTemplate@@UAEHXZ
+    */
+#ifndef BLD_NATIVE
+    virtual int ClassId()
+    {
+        return 0;
+    }
+#else
     virtual int ClassId();
+#endif
     virtual ~B_SphereSetTemplate();
     virtual int unknown_method008(B_PhysicsTemplateBase *other);
     virtual int DetectCollisions(

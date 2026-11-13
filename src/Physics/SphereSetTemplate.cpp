@@ -34,6 +34,22 @@ B_SphereSetTemplate::~B_SphereSetTemplate()
 }
 #endif
 
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004B4E76
+* VC++ mangling:          ?DetectCollisions@B_SphereSetTemplate@@UAEHPAV?$array_t@PAVB_Sector@@@@HH@Z
+*/
+#ifndef BLD_NATIVE
+int B_SphereSetTemplate::DetectCollisions(
+    array_t<B_Sector *> *sectors,
+    int unknown2,
+    int unknown3
+)
+{
+    return 0;
+}
+#endif
+
 
 /*
 ................................................................................
@@ -114,6 +130,22 @@ B_Matrix &B_SphereSetTemplate::GetPose()
     return this->pose;
 }
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004B8202
+* VC++ mangling:          ?IntersectSegment@B_SphereSetTemplate@@UAEHABVB_Vector@@0AAV2@@Z
+*/
+#ifndef BLD_NATIVE
+int B_SphereSetTemplate::IntersectSegment(
+    const B_Vector &start,
+    const B_Vector &end,
+    B_Vector &hit
+)
+{
+    return 0;
+}
+#endif
 
 /*
 ................................................................................
