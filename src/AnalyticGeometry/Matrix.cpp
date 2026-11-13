@@ -20,6 +20,8 @@
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002E190
 * Module:                 rOpenGL.dll
 * Entry point:            0x10003430
 * Module:                 Blade.exe
@@ -39,6 +41,8 @@ B_Matrix::B_Matrix()
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002E2AD
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000354D
 * Module:                 Blade.exe
@@ -66,6 +70,8 @@ B_Matrix::B_Matrix(double scale)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002E4DF
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000377F
 * Module:                 Blade.exe
@@ -85,6 +91,8 @@ B_Matrix::B_Matrix(const B_Vector &v)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002E600
 * Module:                 rOpenGL.dll
 * Entry point:            0x100038A0
 * Module:                 Blade.exe
@@ -121,6 +129,8 @@ B_Matrix::B_Matrix(const B_Vector &axis, double angle)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002E7D7
 * Module:                 rOpenGL.dll
 * Entry point:            0x10003A77
 * Module:                 Blade.exe
@@ -158,6 +168,8 @@ B_Matrix::B_Matrix(const B_Plane &plane)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002ECCF
 * Module:                 rOpenGL.dll
 * Entry point:            0x10003F6F
 * Module:                 Blade.exe
@@ -172,6 +184,8 @@ B_Vector B_Matrix::TranslationVector() const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002ED3A
 * Module:                 rOpenGL.dll
 * Entry point:            0x10003FDA
 * Module:                 Blade.exe
@@ -188,6 +202,8 @@ void B_Matrix::SetOrigin(const B_Vector *origin)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002ED7C
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000401C
 * Module:                 Blade.exe
@@ -206,6 +222,8 @@ double B_Matrix::ScaleX() const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002EDB2
 * Module:                 rOpenGL.dll
 * Entry point:            0x10004052
 * Module:                 Blade.exe
@@ -224,6 +242,8 @@ double B_Matrix::ScaleY() const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002EDEA
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000408A
 * Module:                 Blade.exe
@@ -242,6 +262,8 @@ double B_Matrix::ScaleZ() const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002EE22
 * Module:                 rOpenGL.dll
 * Entry point:            0x100040C2
 * Module:                 Blade.exe
@@ -278,6 +300,8 @@ void B_Matrix::SetScale(double scale)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002EF9F
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000423F
 * Module:                 Blade.exe
@@ -303,6 +327,8 @@ void B_Matrix::RemoveScale()
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002F052
 * Module:                 rOpenGL.dll
 * Entry point:            0x100042F2
 * Module:                 Blade.exe
@@ -328,6 +354,8 @@ void B_Matrix::InvertRigid(B_Matrix &out)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002F159
 * Module:                 rOpenGL.dll
 * Entry point:            0x100043F9
 * Module:                 Blade.exe
@@ -373,6 +401,8 @@ B_Matrix B_Matrix::Invert() const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002F4BD
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000475D
 * Module:                 Blade.exe
@@ -397,6 +427,8 @@ int operator ==(const B_Matrix &a, const B_Matrix &b)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002F537
 * Module:                 rOpenGL.dll
 * Entry point:            0x100047D7
 * Module:                 Blade.exe
@@ -492,6 +524,8 @@ B_Matrix operator *(const B_Matrix &a, const B_Matrix &b)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002F8E8
 * Module:                 rOpenGL.dll
 * Entry point:            0x10004B88
 * Module:                 Blade.exe
@@ -532,6 +566,8 @@ B_Matrix MulRot(const B_Matrix &a, const B_Matrix &b)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002FAF7
 * Module:                 rOpenGL.dll
 * Entry point:            0x10004D97
 * Module:                 Blade.exe
@@ -625,6 +661,8 @@ void MatrixMultiply(B_Matrix &out, const B_Matrix &a, const B_Matrix &b)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002FEB3
 * Module:                 rOpenGL.dll
 * Entry point:            0x10005153
 * Module:                 Blade.exe
@@ -652,6 +690,8 @@ B_Vector operator *(const B_Vector &vector, const B_Matrix &matrix)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002FF7B
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000521B
 * Module:                 Blade.exe
@@ -680,6 +720,8 @@ void TransformPoint(B_Vector &out, const B_Vector &v, const B_Matrix &matrix)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10030017
 * Module:                 rOpenGL.dll
 * Entry point:            0x100052B7
 * Module:                 Blade.exe
@@ -705,6 +747,8 @@ void Rotate(B_Vector &out, const B_Vector &v, const B_Matrix &rotateMatrix)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x100300A1
 * Module:                 rOpenGL.dll
 * Entry point:            0x10005341
 * Module:                 Blade.exe
@@ -729,6 +773,8 @@ B_Vector Rotate(const B_Vector &v, const B_Matrix &rotateMatrix)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10030157
 * Module:                 rOpenGL.dll
 * Entry point:            0x100053F7
 * Module:                 Blade.exe
@@ -759,6 +805,8 @@ void TransformPlane(B_Plane &out, const B_Plane &in, const B_Matrix &matrix)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10030219
 * Module:                 rOpenGL.dll
 * Entry point:            0x100054B9
 * Module:                 Blade.exe
@@ -774,6 +822,8 @@ B_IDataFile &operator >>(B_IDataFile &file, B_Matrix &matrix)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10030232
 * Module:                 rOpenGL.dll
 * Entry point:            0x100054D3
 * Module:                 Blade.exe

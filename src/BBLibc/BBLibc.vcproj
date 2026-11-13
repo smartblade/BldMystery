@@ -388,6 +388,42 @@
 				RelativePath=".\ResourceManager.cpp"
 				>
 			</File>
+			<Filter
+				Name="AnalyticGeometry"
+				>
+				<File
+					RelativePath="..\AnalyticGeometry\BoundingBox.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\AnalyticGeometry\BoundingBox.h"
+					>
+				</File>
+				<File
+					RelativePath="..\AnalyticGeometry\Matrix.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\AnalyticGeometry\Matrix.h"
+					>
+				</File>
+				<File
+					RelativePath="..\AnalyticGeometry\Plane.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\AnalyticGeometry\Plane.h"
+					>
+				</File>
+				<File
+					RelativePath="..\AnalyticGeometry\Vector.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\AnalyticGeometry\Vector.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"

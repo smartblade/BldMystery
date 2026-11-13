@@ -2,7 +2,7 @@ set(TARGET BBLibc)
 
 project(${TARGET})
 
-file(GLOB SOURCES *.cpp)
+file(GLOB SOURCES *.cpp ../AnalyticGeometry/*.cpp)
 
 if (BLD_NATIVE)
     enable_language(ASM_MASM)
