@@ -10,22 +10,43 @@ class B_Vector
 public:
     B_Vector()
     :
-    x(0.0), y(0.0), z(0.0)
+        x(0.0),
+        y(0.0),
+        z(0.0)
     {
     }
 
     B_Vector(double x, double y, double z)
     :
-    x(x), y(y), z(z)
+        x(x),
+        y(y),
+        z(z)
     {
     }
 
     B_Vector operator *(double c) const;
+    B_Vector operator /(double c) const;
     B_Vector &operator *=(double c);
+    B_Vector &operator /=(double c);
+    B_Vector operator -() const;
     B_Vector operator +(const B_Vector &that) const;
+    const B_Vector &operator +=(const B_Vector &that);
     const B_Vector &operator -=(const B_Vector &that);
     B_Vector operator -(const B_Vector &that) const;
+    double operator *(const B_Vector &that) const;
+    B_Vector operator ^(const B_Vector &that) const;
+    double Length() const;
+    void Normalize();
+    int operator ==(const B_Vector &that) const;
+    int operator <(const B_Vector &that) const;
+    int operator <=(const B_Vector &that) const;
+    int operator >(const B_Vector &that) const;
+    int operator >=(const B_Vector &that) const;
     void SetAngle(double angle);
+    double GetAngle() const;
+    double GetElevation() const;
+    int unknown_0040ABE7() const;
+    void Interp(const B_Vector &a, double t, const B_Vector &b);
 
     double x;
     double y;
