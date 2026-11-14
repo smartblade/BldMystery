@@ -9,7 +9,7 @@
 * Entry point:            0x005B9B60
 */
 
-B_App* CreateApplication(HINSTANCE module, int nCmdShow, char *cmdLine)
+B_App *CreateApplication(HINSTANCE module, int nCmdShow, char *cmdLine)
 {
     B_BladeApp *new_application = new B_BladeApp(module, nCmdShow, cmdLine);
     gbl_application = new_application;
@@ -33,7 +33,7 @@ B_WinApp *GetWinApplication()
 * Entry point:            0x005B9BB7
 */
 
-B_App* GetApplication()
+B_App *GetApplication()
 {
     return gbl_application;
 }

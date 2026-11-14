@@ -13,6 +13,8 @@
 */
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031505
 * Module:                 Blade.exe
 * Entry point:            0x0040A375
 * VC++ mangling:          ??D@YA?AVB_Vector@@NABV0@@Z
@@ -25,6 +27,8 @@ B_Vector operator *(double c, const B_Vector &v)
 #endif
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031561
 * Module:                 Blade.exe
 * Entry point:            0x0040A3D1
 * VC++ mangling:          ??DB_Vector@@QBE?AV0@N@Z
@@ -45,6 +49,8 @@ B_Vector B_Vector::operator *(double c) const
 */
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031623
 * Module:                 Blade.exe
 * Entry point:            0x0040A493
 * VC++ mangling:          ??XB_Vector@@QAEAAV0@N@Z
@@ -64,6 +70,8 @@ B_Vector &B_Vector::operator *=(double c)
 */
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x100316F7
 * Module:                 Blade.exe
 * Entry point:            0x0040A567
 * VC++ mangling:          ??HB_Vector@@QBE?AV0@ABV0@@Z
@@ -83,6 +91,8 @@ B_Vector B_Vector::operator +(const B_Vector &that) const
 */
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031760
 * Module:                 Blade.exe
 * Entry point:            0x0040A5D0
 * VC++ mangling:          ??GB_Vector@@QBE?AV0@ABV0@@Z
@@ -140,12 +150,14 @@ void B_Vector::SetAngle(double angle)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031E6D
 * Module:                 Blade.exe
 * Entry point:            0x0040ACDD
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z
 */
 
-B_IDataFile& operator >>(B_IDataFile& file, B_Vector &vector)
+B_IDataFile &operator >>(B_IDataFile &file, B_Vector &vector)
 {
     file.Read(&vector, sizeof(B_Vector));
     return file;
@@ -153,12 +165,14 @@ B_IDataFile& operator >>(B_IDataFile& file, B_Vector &vector)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031E83
 * Module:                 Blade.exe
 * Entry point:            0x0040ACF4
 * VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@AAVB_Vector@@@Z
 */
 
-B_ODataFile& operator <<(B_ODataFile& file, B_Vector &vector)
+B_ODataFile &operator <<(B_ODataFile &file, B_Vector &vector)
 {
     file.Write(&vector, sizeof(B_Vector));
     return file;

@@ -50,7 +50,10 @@ for:
     - BUILD_TOOL: cmake
   build_script:
   - cmake -GNinja -DCMAKE_BUILD_TYPE=RelWithDebInfo %NATIVE_ARGS% -S src -B .cmake
-  - cmake --build .cmake
+  # The wrapper of link.exe used by CMake with Ninja prints warnings of the
+  # linker only with VERBOSE, ninja is run directly not to print commands
+  - set VERBOSE=1
+  - ninja -C .cmake
 artifacts:
 - path: install/bin/*.exe
   name: Blade of Darkness main executable

@@ -1,4 +1,3 @@
-#define BBLIBC_LIB_EXPORT
 #include "Vararg.h"
 #include "MessageManager.h"
 #include "MessageChannel.h"

@@ -1,4 +1,3 @@
-#define BBLIBC_LIB_EXPORT
 #include "Color.h"
 #include "ODataFile.h"
 

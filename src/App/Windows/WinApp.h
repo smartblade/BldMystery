@@ -22,7 +22,7 @@ public:
     virtual void LoadLevel(const char *map);
     virtual void ReadLevel(const char *file_name);
     virtual const char *Input(const char *text);
-    virtual void ExitWithError(char *title, char* message);
+    virtual void ExitWithError(char *title, char *message);
     virtual void PrintWarning(const char *Title, const char *Message);
 
 

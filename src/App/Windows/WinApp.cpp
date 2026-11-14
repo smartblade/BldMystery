@@ -389,7 +389,8 @@ void B_WinApp::LoadLevel(const char *map)
 * VC++ mangling:          ?ProcessEvents@B_WinApp@@UAE_NXZ
 */
 
-bool B_WinApp::ProcessEvents() {
+bool B_WinApp::ProcessEvents()
+{
     static int counter = 0;
 
     if (!this->mouseAcquired)

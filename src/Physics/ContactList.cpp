@@ -54,3 +54,15 @@ void B_ContactList::Clear()
 ................................................................................
 ................................................................................
 */
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004AC6C2
+*/
+#ifndef BLD_NATIVE
+int newExclusionGroupId()
+{
+    return 0;
+}
+#endif

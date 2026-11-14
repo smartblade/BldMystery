@@ -5,6 +5,8 @@
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002A5F0
 * Module:                 Blade.exe
 * Entry point:            0x00401000
 * VC++ mangling:          ??0B_Sphere@@QAE@XZ
@@ -18,6 +20,8 @@ B_Sphere::B_Sphere()
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002AB36
 * Module:                 Blade.exe
 * Entry point:            0x00401548
 * VC++ mangling:          ??0B_BoundingBox@@QAE@XZ
@@ -29,6 +33,8 @@ B_BoundingBox::B_BoundingBox()
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002ABB3
 * Module:                 Blade.exe
 * Entry point:            0x004015C5
 * VC++ mangling:          ??0B_BoundingBox@@QAE@ABVB_Vector@@0@Z

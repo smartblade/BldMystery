@@ -2,10 +2,9 @@
 
 #define CONTACT_LIST_H
 
-#include <array.h>
+#include <BBLibc/array.h>
 #include <AnalyticGeometry/Vector.h>
-
-class B_Sector;
+#include <BWorld/BMap.h>
 
 
 class B_ContactPoint
@@ -36,5 +35,15 @@ public:
     B_SharedPtrArray<B_Sector> sectors;
     int type;
 };
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern int newExclusionGroupId();
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* CONTACT_LIST_H */

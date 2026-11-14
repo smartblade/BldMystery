@@ -1403,7 +1403,7 @@ B_3DRasterDevice *CreateRaster(
 * Entry point:            0x10028A98
 */
 
-int DestroyRaster(B_3DRasterDevice* raster)
+int DestroyRaster(B_3DRasterDevice *raster)
 {
     delete raster;
     return true;

@@ -2,6 +2,7 @@
 
 #define RIGID_BODY_H
 
+#include <bld_system.h>
 #include <AnalyticGeometry/Vector.h>
 #include <AnalyticGeometry/Matrix.h>
 

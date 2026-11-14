@@ -1,4 +1,3 @@
-#define BBLIBC_LIB_EXPORT
 #include "BitMap24.h"
 #include "ODataFile.h"
 

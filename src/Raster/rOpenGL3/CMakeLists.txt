@@ -2,7 +2,7 @@ set(TARGET rOpenGL)
 
 project(${TARGET})
 
-file(GLOB SOURCES *.cpp)
+file(GLOB SOURCES *.cpp ../../AnalyticGeometry/*.cpp)
 
 if (BLD_NATIVE)
     enable_language(ASM_MASM)
@@ -36,7 +36,6 @@ target_include_directories(${TARGET} PRIVATE ${BOD_COMMON_INCLUDE_DIR})
 target_link_directories(${TARGET} PRIVATE ${BOD_EXTERNAL_LIB_DIR})
 target_link_libraries(
     ${TARGET} PRIVATE
-    AnalyticGeometry
     BBLibc
     Raster
     bicrt
