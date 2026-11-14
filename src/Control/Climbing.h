@@ -4,7 +4,7 @@
 
 #include <BBLibc/NamedObj.h>
 #include <AnalyticGeometry/Vector.h>
-#include "array.h"
+#include <BBLibc/array.h>
 
 
 class B_BipedAction;
@@ -45,7 +45,7 @@ int TestClimb(B_Entity *entity, unsigned int eventIndex);
 * Module:                 Blade.exe
 * Data address:           0x007072C8
 */
-extern B_PtrArray<B_ClimbingData> climbing_data_list;
+extern B_DataBase<B_ClimbingData> climbing_data_list;
 
 #ifdef __cplusplus
 }

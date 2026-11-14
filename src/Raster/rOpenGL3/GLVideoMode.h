@@ -1,6 +1,6 @@
 #pragma once
 
-#include <array.h>
+#include <BBLibc/array.h>
 
 
 struct B_VideoMode
@@ -16,7 +16,7 @@ struct B_VideoMode
 extern "C" {
 #endif
 
-void GetVideoModes(B_PtrArray<B_VideoMode> &videoModes);
+void GetVideoModes(B_Array<B_VideoMode> &videoModes);
 
 #ifdef __cplusplus
 }

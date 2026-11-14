@@ -1361,7 +1361,7 @@ void B_App::ReadArguments(const char *args)
             this->noSound = true;
         }
     }
-    B_PtrArray<B_Name> mapTokens;
+    B_Array<B_Name> mapTokens;
     const char *mapString = this->mapName;
     this->StringSplit(mapString, ":", &mapTokens);
     if (mapTokens.size != 2)
@@ -1373,7 +1373,7 @@ void B_App::ReadArguments(const char *args)
         const B_Name &map = *mapTokens.elements[1];
         this->mapName = map.String();
     }
-    B_PtrArray<B_Name> rasterTokens;
+    B_Array<B_Name> rasterTokens;
     const char *rasterString = this->rasterName;
     this->StringSplit(rasterString, ":", &rasterTokens);
     if (rasterTokens.size != 2)
@@ -1385,7 +1385,7 @@ void B_App::ReadArguments(const char *args)
         const B_Name &raster = *rasterTokens.elements[1];
         this->rasterName = raster.String();
     }
-    B_PtrArray<B_Name> sndTokens;
+    B_Array<B_Name> sndTokens;
     const char *sndString = this->soundDeviceId;
     this->StringSplit(sndString, ":", &sndTokens);
     if (sndTokens.size != 2)
@@ -1547,11 +1547,11 @@ int B_App::RemoveAfterFrameFunc(const char *name)
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004167E1
-* VC++ mangling:          ?StringSplit@B_App@@UAEXPBD0PAV?$B_PtrArray@VB_Name@@@@@Z
+* VC++ mangling:          ?StringSplit@B_App@@UAEXPBD0PAV?$B_Array@VB_Name@@@@@Z
 */
 
 void B_App::StringSplit(
-    const char *str, const char *sep, B_PtrArray<B_Name> *tokens)
+    const char *str, const char *sep, B_Array<B_Name> *tokens)
 {
     char *Temp = new char[strlen(str) + 1];
     assert(Temp);

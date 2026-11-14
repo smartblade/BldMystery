@@ -6,7 +6,8 @@
 #include <bld_server_info.h>
 
 
-class bld_abstract_net {
+class bld_abstract_net
+{
 public:
         virtual unsigned long get_session_player_dpid() = 0;
         virtual unsigned long get_all_players_id() = 0;

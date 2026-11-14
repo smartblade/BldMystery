@@ -2,7 +2,8 @@
 
 #define BLD_SERVER_INFO_H
 
-typedef struct {
+typedef struct
+{
 	char name[128];
 	int num_players;
 	int max_players;

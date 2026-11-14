@@ -7,6 +7,8 @@ if (BLD_NATIVE)
     string(REGEX REPLACE /EHsc /EHs-c- CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS})
     # Disable RTTI
     string(REGEX REPLACE /GR /GR- CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS})
+    # Disable security check
+    add_compile_options($<$<COMPILE_LANGUAGE:CXX>:/GS->)
     # Set optimisation level
     string(
         REGEX REPLACE /O2 /Od
@@ -33,7 +35,6 @@ set(BOD_EXTERNAL_LIB_DIR "${PROJECT_SOURCE_DIR}/../lib/VC")
 
 set(BOD_RUNTIME_DIR "${PROJECT_SOURCE_DIR}/../install/bin")
 
-add_subdirectory(AnalyticGeometry)
 add_subdirectory(BBLibc)
 add_subdirectory(bicrt)
 add_subdirectory(Blade)

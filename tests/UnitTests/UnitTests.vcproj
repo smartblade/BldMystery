@@ -426,6 +426,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Blade\Entities\PhysicBodyTests.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\Blade\Entities\PhysicSIEntityTests.cpp"
 					>
 				</File>
@@ -441,8 +445,64 @@
 					RelativePath=".\Blade\Entities\Unknown0049A1EFTests.cpp"
 					>
 				</File>
+			</Filter>
+			<Filter
+				Name="Physics"
+				>
+				<Filter
+					Name="ContactList.h"
+					>
+					<File
+						RelativePath=".\Blade\Physics\ContactList.h\ContactListTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\Physics\ContactList.h\ContactPointTests.cpp"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="PhysicsTemplate.h"
+					>
+					<File
+						RelativePath=".\Blade\Physics\PhysicsTemplate.h\PhysicsStateCacheHandleTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\Physics\PhysicsTemplate.h\PhysicsTemplateArrayTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\Physics\PhysicsTemplate.h\PhysicsTemplateBaseTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\Physics\PhysicsTemplate.h\PhysicsTemplatePairTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\Physics\PhysicsTemplate.h\PhysicsTemplateTests.cpp"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="RigidBody.h"
+					>
+					<File
+						RelativePath=".\Blade\Physics\RigidBody.h\PhysicsNodeTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\Physics\RigidBody.h\RigidBodyTests.cpp"
+						>
+					</File>
+				</Filter>
 				<File
-					RelativePath=".\Blade\Entities\Unknown004ACF58Tests.cpp"
+					RelativePath=".\Blade\Physics\PhysicsStateTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\Physics\SphereSetTemplateTests.cpp"
 					>
 				</File>
 			</Filter>
@@ -499,6 +559,10 @@
 				</File>
 				<File
 					RelativePath=".\Blade\AnalyticGeometry\WorldPointTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\AnalyticGeometry\MatrixTests.cpp"
 					>
 				</File>
 			</Filter>
