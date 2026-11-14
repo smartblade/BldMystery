@@ -6,12 +6,14 @@
 * Entry point:            0x10007F70
 * VC++ mangling:          ??4B_MeshEdge@@QAEAAV0@ABV0@@Z
 */
+
 #ifndef BLD_NATIVE
 B_MeshEdge &B_MeshEdge::operator=(const B_MeshEdge &other)
 {
     return *this;
 }
 #endif
+
 
 /*
 * Module:                 BBLibc.dll
@@ -40,6 +42,7 @@ B_MeshEdge::B_MeshEdge(unsigned int a, unsigned int b, unsigned int node)
     this->vertexA = a < b ? a : b;
     this->vertexB = a > b ? a : b;
 }
+
 
 /*
 * Module:                 BBLibc.dll
