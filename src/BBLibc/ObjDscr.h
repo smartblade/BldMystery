@@ -52,10 +52,6 @@ class B_ObjFaceArray : public array_t<B_ObjFace>
 {
 };
 
-class B_ObjNodeArray : public B_PtrArray<B_ObjNode>
-{
-};
-
 class B_ObjFaceGroupArray : public array_t<unsigned char>
 {
 };
@@ -87,7 +83,7 @@ public:
     char unknownFields00C[0x18];
     B_ObjVertexArray vertices;
     B_ObjFaceArray faces;
-    B_ObjNodeArray nodes;
+    B_ObjArray<B_ObjNode> nodes;
     B_ObjFaceGroupArray faceGroups;
     char unknownFields078[0x44];
     B_MeshEdgeArray edges;
