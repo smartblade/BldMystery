@@ -2,7 +2,7 @@
 
 #define PHYSICS_TEMPLATE_H
 
-#include <array.h>
+#include <BBLibc/array.h>
 #include <AnalyticGeometry/Matrix.h>
 #include <Physics/ContactList.h>
 

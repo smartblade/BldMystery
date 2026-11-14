@@ -2,7 +2,7 @@
 
 #define SPHERE_SET_TEMPLATE_H
 
-#include <array.h>
+#include <BBLibc/array.h>
 #include <AnalyticGeometry/Matrix.h>
 #include <AnalyticGeometry/BoundingBox.h>
 #include <Physics/PhysicsTemplate.h>
