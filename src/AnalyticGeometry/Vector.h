@@ -10,13 +10,17 @@ class B_Vector
 public:
     B_Vector()
     :
-    x(0.0), y(0.0), z(0.0)
+        x(0.0),
+        y(0.0),
+        z(0.0)
     {
     }
 
     B_Vector(double x, double y, double z)
     :
-    x(x), y(y), z(z)
+        x(x),
+        y(y),
+        z(z)
     {
     }
 
