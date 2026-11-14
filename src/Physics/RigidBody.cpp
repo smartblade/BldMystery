@@ -117,36 +117,6 @@ void B_RigidBody::unknown_method020()
 }
 #endif
 
-/*
-* Module:                 Blade.exe
-* Entry point:            0x004AB7D9
-* VC++ mangling:          ?unknown_method01C@B_RigidBody@@UAEXN@Z
-*/
-#ifndef BLD_NATIVE
-void B_RigidBody::unknown_method01C(double unknown)
-{
-}
-#endif
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x004AB806
-* VC++ mangling:          ?unknown_method024@B_RigidBody@@UAEHN@Z
-*/
-#ifndef BLD_NATIVE
-int B_RigidBody::unknown_method024(double time)
-{
-    return 0;
-}
-#endif
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
 
 /*
 * Module:                 Blade.exe
@@ -162,11 +132,16 @@ void B_RigidBody::unknown_method01C(double unknown)
 
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x004AB806
+* VC++ mangling:          ?unknown_method024@B_RigidBody@@UAEHN@Z
 */
+#ifndef BLD_NATIVE
+int B_RigidBody::unknown_method024(double time)
+{
+    return 0;
+}
+#endif
 
 
 /*

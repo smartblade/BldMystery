@@ -155,27 +155,6 @@ int B_PhysicsTemplate::IntersectSegment(
 * Entry point:            0x004B3978
 * VC++ mangling:          ?GetBoundingBox@B_PhysicsTemplate@@UAEABVB_BoundingBox@@XZ
 */
-#ifndef BLD_NATIVE
-const B_BoundingBox &B_PhysicsTemplate::GetBoundingBox()
-{
-    static B_BoundingBox stub;
-    return stub;
-}
-#endif
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x004B3978
-* VC++ mangling:          ?GetBoundingBox@B_PhysicsTemplate@@UAEABVB_BoundingBox@@XZ
-*/
 
 const B_BoundingBox &B_PhysicsTemplate::GetBoundingBox()
 {
