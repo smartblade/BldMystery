@@ -4,6 +4,7 @@
 #define B_BITMAP_H
 
 #include <BBLibc/Pal.h>
+#include <BBLibc/Resource.h>
 #include <bld_system.h>
 
 #ifdef BBLIBC_LIB_EXPORT
@@ -53,6 +54,14 @@ public:
     unsigned int dimension2;
     void *data;
     B_Pal *pal;
+};
+
+// The resources of the types 2, 3 and 4 (bitmaps): the bitmap (B_BitMap or
+// B_BitMap24) starts right after B_Resource.
+class B_BitMapResource : public B_Resource
+{
+public:
+    void *data;
 };
 
 LIB_EXP B_IDataFile &operator >>(B_IDataFile &file, B_BitMap &bitMap);

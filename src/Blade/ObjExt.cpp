@@ -1621,15 +1621,15 @@ void RM_FreeResource(B_Resource *resource)
 
 B_BitMap *RM_GetResource(const char *name)
 {
-    B_Resource *resource;
-    resource = B_resource_manager.GetResource(2, name);
+    B_BitMapResource *resource;
+    resource = (B_BitMapResource *)B_resource_manager.GetResource(2, name);
     if (resource != NULL)
     {
         B_BitMap *bitMap = new B_BitMap((B_BitMap &)resource->data);
         B_resource_manager.FreeResource(resource);
         return bitMap;
     }
-    resource = B_resource_manager.GetResource(3, name);
+    resource = (B_BitMapResource *)B_resource_manager.GetResource(3, name);
     if (resource != NULL)
     {
         B_BitMap24 *bitMap24 = (B_BitMap24 *)&resource->data;
@@ -1642,7 +1642,7 @@ B_BitMap *RM_GetResource(const char *name)
         B_resource_manager.FreeResource(resource);
         return bitMap;
     }
-    resource = B_resource_manager.GetResource(4, name);
+    resource = (B_BitMapResource *)B_resource_manager.GetResource(4, name);
     if (resource != NULL)
     {
         B_BitMap24 *bitMap24 = (B_BitMap24 *)&resource->data;

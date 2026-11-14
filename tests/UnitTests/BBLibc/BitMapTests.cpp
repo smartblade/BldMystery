@@ -17,3 +17,8 @@ TEST(BitMapTests, Fields)
     EXPECT_OFFSET_EQ(B_BitMap, data, 0x010);
     EXPECT_OFFSET_EQ(B_BitMap, pal, 0x014);
 }
+
+TEST(BitMapResourceTests, Fields)
+{
+    EXPECT_OFFSET_EQ(B_BitMapResource, data, 0x00C);
+}

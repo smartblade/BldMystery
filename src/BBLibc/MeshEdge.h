@@ -18,9 +18,11 @@ public:
     B_MeshEdge &operator=(const B_MeshEdge&);
     unsigned int operator==(const B_MeshEdge&) const;
 
-    unsigned int field;
-private:
-
+    unsigned int node;
+    unsigned int vertexA;
+    unsigned int vertexB;
+    double invLength;
+    unsigned int sharp;
 };
 
 #endif  // B_MESHEDGE_H

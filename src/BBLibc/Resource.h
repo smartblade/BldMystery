@@ -45,8 +45,6 @@ public:
     virtual ~B_Resource();
     static void Save(B_ODataFile &arg_1, const B_Resource *arg_2);
     static B_Resource *Load(B_IDataFile &arg_1, unsigned short arg_2);
-
-    void *data;
 };
 
 #endif /* B_RESOURCE_H */
