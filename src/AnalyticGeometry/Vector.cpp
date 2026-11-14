@@ -49,6 +49,8 @@ B_Vector B_Vector::operator *(double c) const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x100315C2
 * Module:                 rOpenGL.dll
 * Entry point:            0x10007DA2
 * Module:                 Blade.exe
@@ -82,6 +84,8 @@ B_Vector &B_Vector::operator *=(double c)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1003165E
 * Module:                 rOpenGL.dll
 * Entry point:            0x10007E3E
 * Module:                 Blade.exe
@@ -99,6 +103,8 @@ B_Vector &B_Vector::operator /=(double c)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031699
 * Module:                 rOpenGL.dll
 * Entry point:            0x10007E79
 * Module:                 Blade.exe
@@ -145,6 +151,8 @@ B_Vector B_Vector::operator -(const B_Vector &that) const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x100317C9
 * Module:                 rOpenGL.dll
 * Entry point:            0x10007FA9
 * Module:                 Blade.exe
@@ -181,6 +189,8 @@ const B_Vector &B_Vector::operator -=(const B_Vector &that)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1003184F
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000802F
 * Module:                 Blade.exe
@@ -195,6 +205,8 @@ double B_Vector::operator *(const B_Vector &that) const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031882
 * Module:                 rOpenGL.dll
 * Entry point:            0x10008062
 * Module:                 Blade.exe
@@ -213,6 +225,8 @@ B_Vector B_Vector::operator ^(const B_Vector &that) const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031913
 * Module:                 rOpenGL.dll
 * Entry point:            0x100080F3
 * Module:                 Blade.exe
@@ -227,6 +241,8 @@ double B_Vector::Length() const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031949
 * Module:                 rOpenGL.dll
 * Entry point:            0x10008129
 * Module:                 Blade.exe
@@ -247,6 +263,8 @@ void B_Vector::Normalize()
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1003199C
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000817C
 * Module:                 Blade.exe
@@ -261,6 +279,8 @@ int B_Vector::operator ==(const B_Vector &that) const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x100319F5
 * Module:                 rOpenGL.dll
 * Entry point:            0x100081D5
 * Module:                 Blade.exe
@@ -276,6 +296,8 @@ int B_Vector::operator <(const B_Vector &that) const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031A6C
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000824C
 * Module:                 Blade.exe
@@ -291,6 +313,8 @@ int B_Vector::operator <=(const B_Vector &that) const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031AE3
 * Module:                 rOpenGL.dll
 * Entry point:            0x100082C3
 * Module:                 Blade.exe
@@ -306,6 +330,8 @@ int B_Vector::operator >(const B_Vector &that) const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031B5A
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000833A
 * Module:                 Blade.exe
@@ -339,6 +365,8 @@ void B_Vector::SetAngle(double angle)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031C0C
 * Module:                 rOpenGL.dll
 * Entry point:            0x100083EC
 * Module:                 Blade.exe
@@ -373,6 +401,8 @@ double B_Vector::GetAngle() const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031CF0
 * Module:                 rOpenGL.dll
 * Entry point:            0x100084D0
 * Module:                 Blade.exe
@@ -396,6 +426,8 @@ double B_Vector::GetElevation() const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031D77
 * Module:                 rOpenGL.dll
 * Entry point:            0x10008557
 * Module:                 Blade.exe
@@ -412,6 +444,8 @@ int B_Vector::unknown_0040ABE7() const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031E07
 * Module:                 rOpenGL.dll
 * Entry point:            0x100085E7
 * Module:                 Blade.exe
