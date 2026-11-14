@@ -18,7 +18,7 @@ int B_OpenGLRasterDevice::FullScreen()
 * Entry point:            0x1001BEDC
 */
 
-void GetVideoModes(B_PtrArray<B_VideoMode> &videoModes)
+void GetVideoModes(B_Array<B_VideoMode> &videoModes)
 {
     DEVMODE devMode;
     unsigned int i = 0;

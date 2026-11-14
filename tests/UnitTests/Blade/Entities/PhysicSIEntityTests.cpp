@@ -14,4 +14,5 @@ TEST(PhysicSIEntityTests, Fields)
 {
     EXPECT_OFFSET_EQ(B_PhysicSIEntity, static1D8, 0x1D8);
     EXPECT_OFFSET_EQ(B_PhysicSIEntity, static1DC, 0x1DC);
+    EXPECT_OFFSET_EQ(B_PhysicSIEntity, rigidBody, 0x1E0);
 }

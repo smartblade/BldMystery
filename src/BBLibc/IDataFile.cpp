@@ -1,6 +1,5 @@
 #include <io.h>
 #include <bld_python.h>
-#define BBLIBC_LIB_EXPORT
 #include "BBLibc.h"
 #include "IDataFile.h"
 #include "FileInfo.h"

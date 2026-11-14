@@ -3,7 +3,8 @@
 
 #define BLD_NET_CB_H
 
-class bld_net_cb {
+class bld_net_cb
+{
 public:
         virtual void message_received(
                 unsigned long idFrom, void *message, unsigned long messageSize

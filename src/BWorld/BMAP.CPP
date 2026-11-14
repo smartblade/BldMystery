@@ -135,7 +135,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_Sector &sector)
 
 B_IDataFile &operator >>(B_IDataFile &file, B_Map &map)
 {
-    return (file >> static_cast<B_PtrArray<B_Sector> &>(map));
+    return (file >> static_cast<B_Array<B_Sector> &>(map));
 }
 
 

@@ -17,6 +17,8 @@
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031505
 * Module:                 rOpenGL.dll
 * Entry point:            0x10007CE5
 * Module:                 Blade.exe
@@ -31,6 +33,8 @@ B_Vector operator *(double c, const B_Vector &v)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031561
 * Module:                 rOpenGL.dll
 * Entry point:            0x10007D41
 * Module:                 Blade.exe
@@ -59,6 +63,8 @@ B_Vector B_Vector::operator /(double c) const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031623
 * Module:                 rOpenGL.dll
 * Entry point:            0x10007E03
 * Module:                 Blade.exe
@@ -107,6 +113,8 @@ B_Vector B_Vector::operator -() const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x100316F7
 * Module:                 rOpenGL.dll
 * Entry point:            0x10007ED7
 * Module:                 Blade.exe
@@ -121,6 +129,8 @@ B_Vector B_Vector::operator +(const B_Vector &that) const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031760
 * Module:                 rOpenGL.dll
 * Entry point:            0x10007F40
 * Module:                 Blade.exe
@@ -152,6 +162,8 @@ const B_Vector &B_Vector::operator +=(const B_Vector &that)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1003180C
 * Module:                 rOpenGL.dll
 * Entry point:            0x10007FEC
 * Module:                 Blade.exe
@@ -309,6 +321,8 @@ int B_Vector::operator >=(const B_Vector &that) const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031BD1
 * Module:                 rOpenGL.dll
 * Entry point:            0x100083B1
 * Module:                 Blade.exe
@@ -415,6 +429,8 @@ void B_Vector::Interp(const B_Vector &a, double t, const B_Vector &b)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031E6D
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000864D
 * Module:                 Blade.exe
@@ -430,6 +446,8 @@ B_IDataFile &operator >>(B_IDataFile &file, B_Vector &vector)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031E83
 * Module:                 rOpenGL.dll
 * Entry point:            0x10008664
 * Module:                 Blade.exe

@@ -1,0 +1,68 @@
+#include <Physics/ContactList.h>
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004ABE5C
+* VC++ mangling:          ??0B_ContactList@@QAE@XZ
+*/
+
+#ifndef BLD_NATIVE
+B_ContactList::B_ContactList()
+{
+}
+#endif
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004ABF07
+* VC++ mangling:          ??1B_ContactList@@QAE@XZ
+*/
+
+#ifndef BLD_NATIVE
+B_ContactList::~B_ContactList()
+{
+}
+#endif
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004AC1B9
+* VC++ mangling:          ?Clear@B_ContactList@@QAEXXZ
+*/
+
+#ifndef BLD_NATIVE
+void B_ContactList::Clear()
+{
+}
+#endif
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004AC6C2
+*/
+#ifndef BLD_NATIVE
+int newExclusionGroupId()
+{
+    return 0;
+}
+#endif

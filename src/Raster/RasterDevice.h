@@ -55,7 +55,8 @@ class B_ParticleGType;
 #define TEXT_MODE_SCALE                0x04
 #define TEXT_MODE_BLUR                 0x10
 
-class B_3DRasterDevice {
+class B_3DRasterDevice
+{
 public:
     virtual ~B_3DRasterDevice()
     {

@@ -12,6 +12,8 @@
 */
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x100313A6
 * Module:                 Blade.exe
 * Entry point:            0x00407DF6
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Plane@@@Z

@@ -1,4 +1,3 @@
-#define BBLIBC_LIB_EXPORT
 #include <bld_system.h>
 #include "List.h"
 

@@ -1,4 +1,3 @@
-#define BBLIBC_LIB_EXPORT
 #include "ResourceManager.h"
 #include "IDataFile.h"
 
@@ -144,7 +143,8 @@ B_Resource *B_ResourceManager::GetResource(unsigned short resourceId, const B_Na
     const B_Name &resourceName = name;
 
     // Check if the resourceId is valid
-    if (resources_[id] == 0) {
+    if (resources_[id] == 0)
+    {
         return nullptr;
     }
 
