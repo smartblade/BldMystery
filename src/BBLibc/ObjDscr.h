@@ -80,6 +80,13 @@ public:
     void SetUpBSP();
     unsigned char EdgeFaceGrp(unsigned int);
 
+    /*
+    * The members of classes without dll-interface are exported with the
+    * class without the methods of their classes so warning C4251 is disabled
+    * for them.
+    */
+#pragma warning(push)
+#pragma warning(disable: 4251)
     char unknownFields00C[0x18];
     B_ObjVertexArray vertices;
     B_ObjFaceArray faces;
@@ -94,6 +101,7 @@ public:
     double mass;
     B_Vector centerOfMass;
     B_Sphere boundingSphere;
+#pragma warning(pop)
 };
 
 
