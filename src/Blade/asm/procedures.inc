@@ -1018,6 +1018,8 @@ externdef ??0B_ContactList@@QAE@XZ: near
 l004ABE5C equ ??0B_ContactList@@QAE@XZ
 externdef ??1B_ContactList@@QAE@XZ: near
 l004ABF07 equ ??1B_ContactList@@QAE@XZ
+externdef ?Clear@B_ContactList@@QAEXXZ: near
+l004AC1B9 equ ?Clear@B_ContactList@@QAEXXZ
 externdef _newExclusionGroupId: near
 l004AC6C2 equ _newExclusionGroupId
 externdef ??0B_PhysicsTemplate@@QAE@ABVB_Name@@@Z: near
@@ -1026,6 +1028,8 @@ externdef ??0B_PhysicsTemplate@@QAE@PAVB_ObjDscr@@@Z: near
 l004ACF58 equ ??0B_PhysicsTemplate@@QAE@PAVB_ObjDscr@@@Z
 externdef ??1B_PhysicsTemplate@@UAE@XZ: near
 l004AD047 equ ??1B_PhysicsTemplate@@UAE@XZ
+externdef ?Update@B_PhysicsTemplate@@QAEXXZ: near
+l004AD0E7 equ ?Update@B_PhysicsTemplate@@QAEXXZ
 externdef ?SetPose@B_PhysicsTemplate@@UAEXPBVB_Matrix@@@Z: near
 l004AD615 equ ?SetPose@B_PhysicsTemplate@@UAEXPBVB_Matrix@@@Z
 externdef ?DetectCollisions@B_PhysicsTemplate@@UAEHPAV?$array_t@PAVB_Sector@@@@HH@Z: near

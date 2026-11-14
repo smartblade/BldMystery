@@ -29,6 +29,7 @@ class B_ContactList
 public:
     B_ContactList();
     ~B_ContactList();
+    void Clear();
 
     B_SharedPtrArray<B_ContactPoint> points;
     B_SharedPtrArray<B_Sector> sectors;

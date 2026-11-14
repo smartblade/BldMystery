@@ -498,6 +498,10 @@
 					</File>
 				</Filter>
 				<File
+					RelativePath=".\Blade\Physics\PhysicsStateTests.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\Blade\Physics\SphereSetTemplateTests.cpp"
 					>
 				</File>

@@ -79,18 +79,19 @@ int B_RigidBody::unknown_method010()
 * Entry point:            0x004AB257
 * VC++ mangling:          ?ResetForcesAndPose@B_RigidBody@@UAEXN@Z
 */
-#ifndef BLD_NATIVE
+
 void B_RigidBody::ResetForcesAndPose(double time)
 {
+    this->unknownField0C0 = time;
+    this->unknownField0D8 = time;
+    this->unknownField0C8 = time;
+    this->unknownField0E0 = time;
+    this->pose = this->solid->pose;
+    this->solid->contacts.Clear();
+    B_Vector zero;
+    this->linearImpulse = this->angularImpulse = zero;
+    this->unknown_method020();
 }
-#endif
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
 
 /*
@@ -116,16 +117,19 @@ void B_RigidBody::unknown_method020()
 }
 #endif
 
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004AB7D9
 * VC++ mangling:          ?unknown_method01C@B_RigidBody@@UAEXN@Z
 */
-#ifndef BLD_NATIVE
+
 void B_RigidBody::unknown_method01C(double unknown)
 {
+    this->unknownField0D8 = unknown;
+    this->unknown_method020();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
@@ -138,13 +142,6 @@ int B_RigidBody::unknown_method024(double time)
     return 0;
 }
 #endif
-
-/*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
-*/
 
 
 /*
@@ -176,6 +173,7 @@ void B_RigidBody::CalculateImpulseDeltas(
 }
 #endif
 
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004ABC53
@@ -190,3 +188,11 @@ const B_Vector &B_RigidBody::ApplyImpulseAtPoint(
     return worldPoint;
 }
 #endif
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
