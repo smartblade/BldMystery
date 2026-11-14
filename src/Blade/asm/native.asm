@@ -237291,66 +237291,13 @@ l004AB1E0 PROC
            ret
 l004AB1E0 ENDP
 ;
-l004AB1FD PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov esp, ebp
-           pop ebp
-           ret
-l004AB1FD ENDP
+           call l004AB1FD; Implemented in c++ code
 ;
-l004AB208 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov esp, ebp
-           pop ebp
-           ret
-l004AB208 ENDP
+           call l004AB208; Implemented in c++ code
 ;
-l004AB213 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov eax, dword ptr [eax+03Ch]
-           mov esp, ebp
-           pop ebp
-           ret
-l004AB213 ENDP
+           call l004AB213; Implemented in c++ code
 ;
-l004AB224 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp-004h]
-           fld qword ptr [eax+0000000D8h]
-           fsub qword ptr [ecx+0000000E0h]
-           fcomp qword ptr [g005BD730]
-           fnstsw ax
-           test ah, 041h
-           jne l004AB251
-           mov eax, 000000001h
-           jmp l004AB253
-;
-;* Jump:
-; 004AB248(C) 
-;
-l004AB251: xor eax, eax
-;
-;* Jump:
-; 004AB24F(U) 
-;
-l004AB253: mov esp, ebp
-           pop ebp
-           ret
-l004AB224 ENDP
+           call l004AB224; Implemented in c++ code
 ;
 ;* Call:
 ; 004AB1D2 
@@ -237423,17 +237370,7 @@ l004AB257 PROC
            ret 00008h
 l004AB257 ENDP
 ;
-l004AB33E PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           fld qword ptr [eax+0000000C0h]
-           mov esp, ebp
-           pop ebp
-           ret
-l004AB33E ENDP
+           call l004AB33E; Implemented in c++ code
 ;
 l004AB352 PROC
            push ebp
@@ -238063,25 +238000,7 @@ l004ABB8F: pop edi
            ret 00008h
 l004AB806 ENDP
 ;
-l004ABB97 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           push esi
-           push edi
-           mov dword ptr [ebp-004h], ecx
-           mov esi, dword ptr [ebp-004h]
-           add esi, 000000170h
-           mov ecx, 000000006h
-           mov edi, dword ptr [ebp+008h]
-           rep movsd
-           mov eax, dword ptr [ebp+008h]
-           pop edi
-           pop esi
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l004ABB97 ENDP
+           call l004ABB97; Implemented in c++ code
 ;
 l004ABBBE PROC
            push ebp
@@ -249355,34 +249274,9 @@ g004B3094  dd l004B302B
            dd l004B304D
            dd l004B306C
 l004B3000 ENDP
-l004B30A4 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           xor eax, eax
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l004B30A4 ENDP
+           call l004B30A4; Implemented in c++ code
 ;
-l004B30B3 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-;
-;* Control "Cancelar", Dialog 006E
-;
-;* Control "Exit", Dialog 0073
-;
-;* Control "Cancel", Dialog 0079
-;
-           mov eax, 000000002h
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l004B30B3 ENDP
+           call l004B30B3; Implemented in c++ code
 ;
 ;* Call:
 ; 004B3423, 004B3452, 004B347B, 004B34A2, 004B3626 
@@ -252938,95 +252832,17 @@ l004B5502: pop edi
            ret 0000Ch
 l004B4E76 ENDP
 ;
-l004B550A PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
+           call l004B550A; Implemented in c++ code
 ;
-;* Control "Cancelar", Dialog 006E
+           call l004B551A; Implemented in c++ code
 ;
-;* Control "Exit", Dialog 0073
+           call l004B5529; Implemented in c++ code
 ;
-;* Control "Cancel", Dialog 0079
+           call l004B553B; Implemented in c++ code
 ;
-           mov eax, 000000002h
-           mov esp, ebp
-           pop ebp
-           ret
-l004B550A ENDP
+           call l004B554E; Implemented in c++ code
 ;
-l004B551A PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           xor eax, eax
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l004B551A ENDP
-;
-l004B5529 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-;
-;* Control "Cancelar", Dialog 006E
-;
-;* Control "Exit", Dialog 0073
-;
-;* Control "Cancel", Dialog 0079
-;
-           mov eax, 000000002h
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l004B5529 ENDP
-;
-l004B553B PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           add eax, 0000000E8h
-           mov esp, ebp
-           pop ebp
-           ret
-l004B553B ENDP
-;
-l004B554E PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           push esi
-           push edi
-           mov dword ptr [ebp-004h], ecx
-           mov esi, dword ptr [ebp+008h]
-           mov edi, dword ptr [ebp-004h]
-           add edi, 000000068h
-           mov ecx, 000000020h
-           rep movsd
-           pop edi
-           pop esi
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l004B554E ENDP
-;
-l004B556F PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           add eax, 000000068h
-           mov esp, ebp
-           pop ebp
-           ret
-l004B556F ENDP
+           call l004B556F; Implemented in c++ code
 ;
 ;* Call:
 ; 004B533D, 004B543C, 004B549C, 004B54E0, 004B54FB 
@@ -462783,37 +462599,9 @@ l00544700 PROC
            ret 00008h
 l00544700 ENDP
 ;
-l00544731 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [eax+0000001B8h]
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [edx+0000001B8h]
-           mov edx, dword ptr [eax]
-           call [edx+038h]
-           mov esp, ebp
-           pop ebp
-           ret
-l00544731 ENDP
+           call l00544731; Implemented in c++ code
 ;
-l00544753 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [eax+0000001B8h]
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [edx+0000001B8h]
-           mov edx, dword ptr [eax]
-           call [edx+034h]
-           mov esp, ebp
-           pop ebp
-           ret
-l00544753 ENDP
+           call l00544753; Implemented in c++ code
 ;
 l00544775 PROC
            push ebp

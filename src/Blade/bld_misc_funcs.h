@@ -72,7 +72,6 @@ extern int ShowStartupDialog(
 extern void JumpCB(const B_Name &action, float time, float, void *);
 extern light_t *read_light(B_IDataFile *file);
 extern void unknown_00497AE0();
-extern int newExclusionGroupId();
 extern bool GetCurrentDir(char *buffer, int bufferLength);
 extern void InspectBODList();
 

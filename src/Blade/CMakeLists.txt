@@ -16,6 +16,7 @@ file(
     ../Math/*.cpp
     ../NetMod/*.cpp
     ../Person/*.cpp
+    ../Physics/*.cpp
     ../Sound/*.cpp
 )
 set(RESOURCES Blade.rc)

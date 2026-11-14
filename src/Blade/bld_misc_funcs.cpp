@@ -324,21 +324,21 @@ void unknown_00497AE0()
 
 
 
+/* File:                  Physics/RigidBody.cpp */
+/* Begin of file:         0x004AAF00 */
+/* End of file:           0x004ABD40 */
+
+/* File:                  Physics/ContactList.cpp */
 /* Begin of file:         0x004ABD40 */
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x004AC6C2
-*/
-#ifndef BLD_NATIVE
-int newExclusionGroupId()
-{
-    return 0;
-}
-#endif
-
 /* End of file:           0x004ACB70 */
+
+/* File:                  Physics/PhysicsTemplate.cpp */
+/* Begin of file:         0x004ACB70 */
+/* End of file:           0x004B47B0 */
+
+/* File:                  Physics/SphereSetTemplate.cpp */
+/* Begin of file:         0x004B47B0 */
+/* End of file:           0x004B84D0 */
 
 
 

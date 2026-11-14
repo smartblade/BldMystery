@@ -12,5 +12,5 @@ TEST(ObjectEntityTests, SizeOf)
 
 TEST(ObjectEntityTests, Fields)
 {
-    EXPECT_OFFSET_EQ(B_ObjectEntity, unknown1B8, 0x01B8);
+    EXPECT_OFFSET_EQ(B_ObjectEntity, solid, 0x01B8);
 }

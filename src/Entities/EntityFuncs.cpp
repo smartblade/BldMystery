@@ -10,6 +10,7 @@
 #include <Entities/PhysicSIEntity.h>
 #include <Entities/SparkEntity.h>
 #include <Math/BSpline.h>
+#include <Physics/PhysicsTemplate.h>
 #include <BBLibc/MessageManager.h>
 #include <BBLibc/Vararg.h>
 #include "bld_misc_funcs.h"
@@ -652,7 +653,7 @@ int ChangeEntityStatic(const char *entity_name, int is_static)
         B_ObjectEntity *objectEntity = static_cast<B_ObjectEntity *>(entity);
         B_Name name(objectEntity->name.String());
         B_Name kind(objectEntity->GetKind());
-        B_Matrix pose = objectEntity->unknown1B8->pose;
+        B_Matrix pose = objectEntity->solid->pose;
         PyObject *data = objectEntity->data;
         Py_XINCREF(data);
         int sendSectorMsgs = objectEntity->sendSectorMsgs;
