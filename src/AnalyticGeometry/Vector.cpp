@@ -122,6 +122,8 @@ B_Vector B_Vector::operator -(const B_Vector &that) const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x1003180C
 * Module:                 rOpenGL.dll
 * Entry point:            0x10007FEC
 * Module:                 Blade.exe
@@ -147,6 +149,8 @@ const B_Vector &B_Vector::operator -=(const B_Vector &that)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031BD1
 * Module:                 rOpenGL.dll
 * Entry point:            0x100083B1
 * Module:                 Blade.exe
