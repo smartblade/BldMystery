@@ -29,7 +29,7 @@ public:
         double speed, double livetime
     );
 private:
-    B_PtrArray<void> a00C;
+    B_ObjArray<void> a00C;
     int unknown0024;
     char unknown_fields028[32];
 public:
@@ -56,8 +56,8 @@ public:
     long bmpHandle;
 };
 
-extern B_IDataFile& operator >>(B_IDataFile& file, B_Combustion &combustion);
-extern B_ODataFile& operator <<(
+extern B_IDataFile &operator >>(B_IDataFile &file, B_Combustion &combustion);
+extern B_ODataFile &operator <<(
     B_ODataFile &file,
     const B_Combustion &combustion);
 
@@ -163,7 +163,7 @@ extern int gbl_action_areas_bit_mask;
 * Module:                 Blade.exe
 * Data address:           0x007072A8
 */
-extern B_PtrArray<anim_t> gbl_anims;
+extern B_Array<anim_t> gbl_anims;
 
 /*
 * Module:                 Blade.exe
@@ -187,7 +187,7 @@ extern B_Events gbl_events;
 * Module:                 Blade.exe
 * Data address:           0x00736158
 */
-extern B_PtrArray<B_ParticleGType> gbl_particle_types;
+extern B_Array<B_ParticleGType> gbl_particle_types;
 
 /*
 * Module:                 Blade.exe
@@ -205,13 +205,13 @@ extern B_Sound no_sound;
 * Module:                 Blade.exe
 * Data address:           0x007D1650
 */
-extern B_PtrArray<B_Combustion> gbl_combustion_data;
+extern B_Array<B_Combustion> gbl_combustion_data;
 
 /*
 * Module:                 Blade.exe
 * Data address:           0x007D40D0
 */
-extern B_PtrArray<B_SolidMask> gbl_solid_masks;
+extern B_DataBase<B_SolidMask> gbl_solid_masks;
 
 /*
 * Module:                 Blade.exe
@@ -223,7 +223,7 @@ extern EnControl gbl_en_control;
 * Module:                 Blade.exe
 * Data address:           0x007E988C
 */
-extern B_PtrArray<B_AGTexture> gbl_ag_textures;
+extern B_Array<B_AGTexture> gbl_ag_textures;
 
 /*
 * Module:                 Blade.exe

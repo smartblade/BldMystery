@@ -13,7 +13,7 @@
 #include <BBLibc/MessageManager.h>
 #include <Entities/Entity.h>
 #include "Clock.h"
-#include <array.h>
+#include <BBLibc/array.h>
 #include <AnalyticGeometry/ViewPose.h>
 #include "StringValue.h"
 
@@ -41,7 +41,7 @@ public:
     B_App(char *cmdLine);
     virtual void ReadArguments(const char *args);
     virtual void StringSplit(
-        const char *str, const char *sep, B_PtrArray<B_Name> *tokens);
+        const char *str, const char *sep, B_Array<B_Name> *tokens);
     virtual bool InitPythonPath();
     virtual void ProcessMessage() = 0;
 
@@ -74,7 +74,7 @@ public:
     virtual void SetPyInteractiveString(const char *str);
     virtual const char *Input(const char *text) = 0;
     virtual void CallCdCb(int arg);
-    virtual void ExitWithError(char *title, char* message) = 0;
+    virtual void ExitWithError(char *title, char *message) = 0;
     virtual void PrintWarning(const char *Title, const char *Message) = 0;
     virtual size_t GetWindow() = 0;
     virtual size_t GetModule() = 0;
@@ -149,7 +149,7 @@ public:
     B_Clock *clock1;
     B_Clock *clock2;
     PyObject *CDCallback;
-    B_PtrArray<B_Name> arguments;
+    B_Array<B_Name> arguments;
     B_MessageChannel *console;
     B_Widget *rootWidget;
     void *unknown058;
@@ -200,8 +200,8 @@ public:
     double aecGap;
     PyObject *menuTgapFunc;
     int isInputActive;
-    B_PtrArray<B_AfterFrameFunc> afterFrameFuncs;
-    B_PtrArray<B_StringValue> values;
+    B_DataBase<B_AfterFrameFunc> afterFrameFuncs;
+    B_DataBase<B_StringValue> values;
     char screenShotFileName[256];
     int screenShotWidth;
     int screenShotHeight;

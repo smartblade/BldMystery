@@ -428,7 +428,7 @@ B_Combustion::B_Combustion(
 
 #ifndef BLD_NATIVE
 
-B_IDataFile& operator >>(B_IDataFile& file, B_Combustion &combustion)
+B_IDataFile &operator >>(B_IDataFile &file, B_Combustion &combustion)
 {
     return file;
 }
@@ -444,7 +444,7 @@ B_IDataFile& operator >>(B_IDataFile& file, B_Combustion &combustion)
 
 #ifndef BLD_NATIVE
 
-B_ODataFile& operator <<(B_ODataFile &file, const B_Combustion &combustion)
+B_ODataFile &operator <<(B_ODataFile &file, const B_Combustion &combustion)
 {
     return file;
 }
@@ -679,19 +679,19 @@ int unknown005DFBA4;
 int unknown005DFBA8;
 B_World B_world;
 int gbl_action_areas_bit_mask;
-B_PtrArray<anim_t> gbl_anims;
-B_PtrArray<B_ClimbingData> climbing_data_list;
+B_Array<anim_t> gbl_anims;
+B_DataBase<B_ClimbingData> climbing_data_list;
 B_Hash<B_EventFuncC> gbl_predefined_funcs;
 B_Hash<B_EventFuncs> gbl_event_tables;
 B_Events gbl_events;
-B_PtrArray<B_ParticleGType> gbl_particle_types;
+B_Array<B_ParticleGType> gbl_particle_types;
 B_YSoundDev *gbl_sound_device;
 B_Sound no_sound;
 void *gbl_bipeds;
-B_PtrArray<B_Combustion> gbl_combustion_data;
-B_PtrArray<B_SolidMask> gbl_solid_masks;
+B_Array<B_Combustion> gbl_combustion_data;
+B_DataBase<B_SolidMask> gbl_solid_masks;
 EnControl gbl_en_control;
-B_PtrArray<B_AGTexture> gbl_ag_textures;
+B_Array<B_AGTexture> gbl_ag_textures;
 char client_map_name[128];
 char net_game_name[128];
 int gbl_net_max_players;

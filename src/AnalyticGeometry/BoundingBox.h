@@ -3,7 +3,7 @@
 
 #define BOUNDING_BOX_H
 
-#include <array.h>
+#include <BBLibc/array.h>
 #include <AnalyticGeometry/Vector.h>
 
 class B_Sector;
@@ -23,7 +23,7 @@ public:
     B_BoundingBox();
     B_BoundingBox(const B_Vector &minCoords, const B_Vector &maxCoords);
 
-    void CollectIntersectingSectors(const B_PtrArray<B_Sector> &, B_PtrArray<B_Sector> &);
+    void CollectIntersectingSectors(const B_Array<B_Sector> &, B_Array<B_Sector> &);
     unsigned int Intersects(const B_Sector *sector) const;
 
     B_Vector minCoords;
