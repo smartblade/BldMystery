@@ -2,7 +2,7 @@
 
 #define PHYSICS_STATE_H
 
-#include <array.h>
+#include <BBLibc/array.h>
 #include <AnalyticGeometry/Vector.h>
 #include <AnalyticGeometry/BoundingBox.h>
 
