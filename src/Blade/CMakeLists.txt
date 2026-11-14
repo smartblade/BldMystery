@@ -5,6 +5,7 @@ project(${TARGET})
 file(
     GLOB SOURCES
     *.cpp
+    ../AnalyticGeometry/*.cpp
     ../App/*.cpp
     ../App/Windows/*.cpp
     ../BWorld/*.cpp
@@ -15,6 +16,7 @@ file(
     ../Math/*.cpp
     ../NetMod/*.cpp
     ../Person/*.cpp
+    ../Physics/*.cpp
     ../Sound/*.cpp
 )
 set(RESOURCES Blade.rc)
@@ -51,7 +53,6 @@ target_include_directories(${TARGET} PRIVATE ${BOD_COMMON_INCLUDE_DIR})
 target_link_directories(${TARGET} PRIVATE ${BOD_EXTERNAL_LIB_DIR})
 target_link_libraries(
     ${TARGET} PRIVATE
-    AnalyticGeometry
     BBLibc
     BInputc
     Console

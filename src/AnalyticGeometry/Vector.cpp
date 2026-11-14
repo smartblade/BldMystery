@@ -15,6 +15,8 @@
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031505
 * Module:                 rOpenGL.dll
 * Entry point:            0x10007CE5
 * Module:                 Blade.exe
@@ -29,6 +31,8 @@ B_Vector operator *(double c, const B_Vector &v)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031561
 * Module:                 rOpenGL.dll
 * Entry point:            0x10007D41
 * Module:                 Blade.exe
@@ -51,6 +55,8 @@ B_Vector B_Vector::operator *(double c) const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031623
 * Module:                 rOpenGL.dll
 * Entry point:            0x10007E03
 * Module:                 Blade.exe
@@ -76,6 +82,8 @@ B_Vector &B_Vector::operator *=(double c)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x100316F7
 * Module:                 rOpenGL.dll
 * Entry point:            0x10007ED7
 * Module:                 Blade.exe
@@ -90,6 +98,8 @@ B_Vector B_Vector::operator +(const B_Vector &that) const
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031760
 * Module:                 rOpenGL.dll
 * Entry point:            0x10007F40
 * Module:                 Blade.exe
@@ -161,6 +171,8 @@ void B_Vector::SetAngle(double angle)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031E6D
 * Module:                 rOpenGL.dll
 * Entry point:            0x1000864D
 * Module:                 Blade.exe
@@ -176,6 +188,8 @@ B_IDataFile &operator >>(B_IDataFile &file, B_Vector &vector)
 
 
 /*
+* Module:                 BBLibc.dll
+* Entry point:            0x10031E83
 * Module:                 rOpenGL.dll
 * Entry point:            0x10008664
 * Module:                 Blade.exe

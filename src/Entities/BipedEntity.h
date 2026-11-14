@@ -41,7 +41,7 @@ public:
         B_BipedAction *action, float time, B_Vector *, B_Vector *);
 
     char unknown_fields[0x24];
-    B_PtrArray<B_BipedAction> actions;
+    B_Array<B_BipedAction> actions;
     char unknown_fields48[0x38];
     B_CharType *charType;
     char unknown_fields84[0x78];
@@ -91,7 +91,7 @@ extern "C" {
 * Module:                 Blade.exe
 * Data address:           0x007C9878
 */
-extern B_PtrArray<B_BipedData> gbl_bipeds;
+extern B_DataBase<B_BipedData> gbl_bipeds;
 
 #ifdef __cplusplus
 }

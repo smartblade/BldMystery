@@ -1,4 +1,3 @@
-#define BBLIBC_LIB_EXPORT
 #include "MessageManager.h"
 #include "BBLibc.h"
 #include "ObjDscr.h"

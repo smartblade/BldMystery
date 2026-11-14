@@ -19,7 +19,7 @@ extern "C"
 
 extern B_App *CreateApplication(HINSTANCE module, int nCmdShow, char *cmdLine);
 extern B_WinApp *GetWinApplication();
-extern B_App* GetApplication();
+extern B_App *GetApplication();
 
 }
 

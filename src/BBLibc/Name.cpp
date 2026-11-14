@@ -1,4 +1,3 @@
-#define BBLIBC_LIB_EXPORT
 #include "Name.h"
 #include "ODataFile.h"
 
@@ -176,7 +175,8 @@ unsigned int B_Name::CompareNoCase(const char *str) const
 #ifndef BLD_NATIVE
 B_Name &B_Name::operator =(const B_Name &src)
 {
-    if (this != &src) {
+    if (this != &src)
+    {
         //delete[] string;
         //delete string;
         len = src.len;
@@ -195,7 +195,8 @@ B_Name &B_Name::operator =(const B_Name &src)
 #ifndef BLD_NATIVE
 B_Name B_Name::Right(unsigned int count) const
 {
-    if (count > len) {
+    if (count > len)
+    {
         count = len;
     }
 
@@ -214,7 +215,8 @@ B_Name B_Name::Right(unsigned int count) const
 #ifndef BLD_NATIVE
 B_Name B_Name::Left(unsigned int count) const
 {
-    if (count > len) {
+    if (count > len)
+    {
         count = len;
     }
 
@@ -255,7 +257,8 @@ B_ODataFile &operator <<(B_ODataFile &file, B_Name const &name)
 * VC++ mangling:          ??1B_Name@@QAE@XZ
 */
 
-B_Name::~B_Name() {
+B_Name::~B_Name()
+{
     len = 0;
     delete [] string;
 }
