@@ -4,8 +4,7 @@
 
 #include <BBLibc/array.h>
 #include <AnalyticGeometry/Vector.h>
-
-class B_Sector;
+#include <BWorld/BMap.h>
 
 
 class B_ContactPoint
