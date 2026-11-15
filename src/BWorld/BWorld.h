@@ -6,6 +6,7 @@
 
 #include <BBLibc/array.h>
 #include <BBLibc/Name.h>
+#include <BBLibc/NDataBase.h>
 #include <BBLibc/IDataFile.h>
 #include <Entities/Entity.h>
 #include <BWorld/atmosphere.h>
@@ -218,7 +219,7 @@ public:
     B_DataBase<B_TriggerSector> triggerSectors;
     B_Hash<B_Entity> entities;
     int nextEntitySuffix;
-    B_DataBase<B_SubscriptionList> subscriptions;
+    B_NDataBase<B_SubscriptionList> subscriptions;
     B_Array<B_ScheduledFunc> scheduledFuncs;
     int unknown1858;
     B_Name world_file_name;
@@ -229,7 +230,7 @@ public:
     unsigned int currentTick;
     double lastTime;
     char physicsMgr[0x28];
-    B_DataBase<atmosphere_t> atmospheres;
+    B_NDataBase<atmosphere_t> atmospheres;
     B_Map map;
     B_OctTree octTree;
     B_Array<light_t> lights;
