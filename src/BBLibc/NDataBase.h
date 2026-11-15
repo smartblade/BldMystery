@@ -25,6 +25,12 @@ struct LIB_EXP B_ElementCSV : public B_NamedObj
 
 template<class T> class B_NDataBase : public B_DataBase<T>
 {
+public:
+    B_NDataBase(unsigned int increment = 16, int deleteItems = true)
+    :
+        B_DataBase<T>(increment, deleteItems)
+    {
+    }
 };
 
 extern LIB_EXP B_NDataBase<B_ElementCSV> B_csvs;
