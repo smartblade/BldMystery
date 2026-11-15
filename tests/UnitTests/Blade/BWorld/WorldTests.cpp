@@ -4,6 +4,11 @@
 #include <BWorld/BWorld.h>
 
 
+TEST(WorldTests, SizeOf)
+{
+    EXPECT_EQ(sizeof(B_World), 0x1990);
+}
+
 TEST(WorldTests, Fields)
 {
     EXPECT_OFFSET_EQ(B_World, entities, 0x0018);
@@ -31,4 +36,7 @@ TEST(WorldTests, Fields)
     EXPECT_OFFSET_EQ(B_World, sunVector, 0x193C);
     EXPECT_OFFSET_EQ(B_World, initial_point_position, 0x1954);
     EXPECT_OFFSET_EQ(B_World, initial_point_orientation, 0x196C);
+    EXPECT_OFFSET_EQ(B_World, unknown1984, 0x1984);
+    EXPECT_OFFSET_EQ(B_World, unknown1988, 0x1988);
+    EXPECT_OFFSET_EQ(B_World, unknown198C, 0x198C);
 }

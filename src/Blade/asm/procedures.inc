@@ -646,8 +646,14 @@ externdef ??0B_ScheduledFunc@@QAE@PBDNP6AHPAX@Z1@Z: near
 l00439750 equ ??0B_ScheduledFunc@@QAE@PBDNP6AHPAX@Z1@Z
 externdef ??1B_ScheduledFunc@@UAE@XZ: near
 l004397C3 equ ??1B_ScheduledFunc@@UAE@XZ
+externdef ??0B_World@@QAE@N@Z: near
+l004398A5 equ ??0B_World@@QAE@N@Z
+externdef ??1B_World@@QAE@XZ: near
+l00439B9A equ ??1B_World@@QAE@XZ
 externdef ?unknown_00439F5D@B_World@@QAEXXZ: near
 l00439F5D equ ?unknown_00439F5D@B_World@@QAEXXZ
+externdef ?ClearWorld@B_World@@QAEXH@Z: near
+l0043A184 equ ?ClearWorld@B_World@@QAEXH@Z
 externdef ?GetTime@B_World@@QAENXZ: near
 l0043A6A4 equ ?GetTime@B_World@@QAENXZ
 externdef ?SetTime@B_World@@QAEHN@Z: near

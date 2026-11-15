@@ -710,7 +710,7 @@ float worldUpdateTime;
 int unknown005DFB9C;
 int unknown005DFBA4;
 int unknown005DFBA8;
-B_World B_world;
+B_World B_world(0.0);
 int gbl_action_areas_bit_mask;
 B_Array<anim_t> gbl_anims;
 B_DataBase<B_ClimbingData> climbing_data_list;

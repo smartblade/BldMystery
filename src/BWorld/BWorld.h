@@ -14,6 +14,7 @@
 #include <BWorld/light.h>
 #include <BWorld/OctTree.h>
 #include <Hash.h>
+#include <Physics/PhysicsManager.h>
 #include <AnalyticGeometry/Vector.h>
 #include <bld_python.h>
 
@@ -155,7 +156,10 @@ public:
 class B_World
 {
 public:
+    B_World(double lastTime);
+    ~B_World();
     void unknown_00439F5D();
+    void ClearWorld(int mode);
     double GetTime();
     int SetTime(double time);
     void GoToTime(double time);
@@ -229,7 +233,7 @@ public:
     double timeStep;                // (0.015625 = 1/64 sec)
     unsigned int currentTick;
     double lastTime;
-    char physicsMgr[0x28];
+    B_PhysicsManager physicsMgr;
     B_NDataBase<atmosphere_t> atmospheres;
     B_Map map;
     B_OctTree octTree;
@@ -238,6 +242,9 @@ public:
     B_Vector sunVector;
     B_Vector initial_point_position;
     B_Vector initial_point_orientation;
+    int unknown1984;
+    int unknown1988;
+    int unknown198C;
 };
 
 B_IDataFile &operator >>(B_IDataFile &file, B_World *gs);

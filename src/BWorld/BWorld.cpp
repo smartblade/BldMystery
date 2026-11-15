@@ -187,6 +187,41 @@ B_ScheduledFunc::~B_ScheduledFunc()
 ................................................................................
 */
 
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004398A5
+* VC++ mangling:          ??0B_World@@QAE@N@Z
+*/
+
+B_World::B_World(double lastTime)
+:
+    timeStep(0.015625),
+    currentTick(0),
+    lastTime(lastTime),
+    physicsMgr(0.0166666666),
+    unknown1938(0),
+    unknown1984(1),
+    unknown1988(0),
+    unknown198C(0)
+{
+    this->unknown_00439F5D();
+    this->unknown1858 = 2;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00439B9A
+* VC++ mangling:          ??1B_World@@QAE@XZ
+*/
+
+B_World::~B_World()
+{
+    this->ClearWorld(0);
+}
+
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00439F5D
@@ -207,6 +242,20 @@ void B_World::unknown_00439F5D()
 ................................................................................
 ................................................................................
 */
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043A184
+* VC++ mangling:          ?ClearWorld@B_World@@QAEXH@Z
+*/
+
+#ifndef BLD_NATIVE
+void B_World::ClearWorld(int mode)
+{
+}
+#endif
+
 
 /*
 * Module:                 Blade.exe
