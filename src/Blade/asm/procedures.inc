@@ -1010,6 +1010,10 @@ externdef ?SetEndTangent@B_Spline@@QAEHHABVB_Vector@@@Z: near
 l00496EBC equ ?SetEndTangent@B_Spline@@QAEHHABVB_Vector@@@Z
 externdef _unknown_00497AE0: near
 l00497AE0 equ _unknown_00497AE0
+externdef ??1B_PhysicsGroup@@QAE@XZ: near
+l004A9830 equ ??1B_PhysicsGroup@@QAE@XZ
+externdef ??0B_PhysicsManager@@QAE@N@Z: near
+l004A9C39 equ ??0B_PhysicsManager@@QAE@N@Z
 externdef ??0B_RigidBody@@QAE@PAVB_PhysicsTemplate@@@Z: near
 l004AAF00 equ ??0B_RigidBody@@QAE@PAVB_PhysicsTemplate@@@Z
 externdef ??1B_RigidBody@@UAE@XZ: near

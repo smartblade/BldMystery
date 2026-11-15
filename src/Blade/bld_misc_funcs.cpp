@@ -6,6 +6,7 @@
 #include <BBLibc/Color.h>
 #include <BBLibc/IDataFile.h>
 #include <BBLibc/ODataFile.h>
+#include <Physics/PhysicsManager.h>
 #include "bld_misc_funcs.h"
 
 
@@ -321,6 +322,38 @@ void unknown_00497AE0()
 #endif
 
 /* End of file:           0x00497D10 */
+
+
+
+/* Begin of file:         0x004A7420 */
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004A9830
+* VC++ mangling:          ??1B_PhysicsGroup@@QAE@XZ
+*/
+
+#ifndef BLD_NATIVE
+B_PhysicsGroup::~B_PhysicsGroup()
+{
+}
+#endif
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004A9C39
+* VC++ mangling:          ??0B_PhysicsManager@@QAE@N@Z
+*/
+
+#ifndef BLD_NATIVE
+B_PhysicsManager::B_PhysicsManager(double timeStep)
+{
+}
+#endif
+
+/* End of file:           0x004AAF00 */
 
 
 

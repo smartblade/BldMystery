@@ -474,6 +474,18 @@
 					</File>
 				</Filter>
 				<Filter
+					Name="PhysicsManager.h"
+					>
+					<File
+						RelativePath=".\Blade\Physics\PhysicsManager.h\PhysicsGroupTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\Physics\PhysicsManager.h\PhysicsManagerTests.cpp"
+						>
+					</File>
+				</Filter>
+				<Filter
 					Name="PhysicsTemplate.h"
 					>
 					<File
