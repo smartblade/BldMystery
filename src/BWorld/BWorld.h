@@ -88,6 +88,32 @@ public:
     int lastFrame;
 };
 
+typedef int (*ScheduledNativeFunc)(void *arg);
+
+class B_ScheduledFunc : public B_NamedObj
+{
+public:
+    B_ScheduledFunc(
+        const char *name,
+        double time,
+        PyObject *func,
+        PyObject *args
+    );
+    B_ScheduledFunc(
+        const char *name,
+        double time,
+        ScheduledNativeFunc nativeFunc,
+        void *nativeArg
+    );
+    virtual ~B_ScheduledFunc();
+
+    double time;
+    PyObject *func;
+    PyObject *args;
+    ScheduledNativeFunc nativeFunc;
+    void *nativeArg;
+};
+
 class B_TriggerSector : public B_NamedObj
 {
 public:
@@ -193,7 +219,7 @@ public:
     B_Hash<B_Entity> entities;
     int nextEntitySuffix;
     B_DataBase<B_SubscriptionList> subscriptions;
-    B_Array<void*> scheduledFuncs;
+    B_Array<B_ScheduledFunc> scheduledFuncs;
     int unknown1858;
     B_Name world_file_name;
     int unknownField1864;

@@ -282,6 +282,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Blade\BWorld\ScheduledFuncTests.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\Blade\BWorld\SectorLightsTests.cpp"
 					>
 				</File>

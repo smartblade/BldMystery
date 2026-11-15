@@ -636,6 +636,12 @@ externdef ??0B_FrameList@@QAE@ABVB_Name@@H@Z: near
 l00439637 equ ??0B_FrameList@@QAE@ABVB_Name@@H@Z
 externdef ?SetPeriod@B_FrameList@@QAEXH@Z: near
 l0043968B equ ?SetPeriod@B_FrameList@@QAEXH@Z
+externdef ??0B_ScheduledFunc@@QAE@PBDNPAUPyObject@@1@Z: near
+l004396B3 equ ??0B_ScheduledFunc@@QAE@PBDNPAUPyObject@@1@Z
+externdef ??0B_ScheduledFunc@@QAE@PBDNP6AHPAX@Z1@Z: near
+l00439750 equ ??0B_ScheduledFunc@@QAE@PBDNP6AHPAX@Z1@Z
+externdef ??1B_ScheduledFunc@@UAE@XZ: near
+l004397C3 equ ??1B_ScheduledFunc@@UAE@XZ
 externdef ?unknown_00439F5D@B_World@@QAEXXZ: near
 l00439F5D equ ?unknown_00439F5D@B_World@@QAEXXZ
 externdef ?GetTime@B_World@@QAENXZ: near
