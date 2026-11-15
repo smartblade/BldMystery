@@ -622,6 +622,10 @@ externdef ?CalculateBoundingBox@B_Sector@@QAEXXZ: near
 l0042E464 equ ?CalculateBoundingBox@B_Sector@@QAEXXZ
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Sector@@@Z: near
 l0042FFDC equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Sector@@@Z
+externdef ??0B_Map@@QAE@XZ: near
+l00430281 equ ??0B_Map@@QAE@XZ
+externdef ??1B_Map@@UAE@XZ: near
+l00430323 equ ??1B_Map@@UAE@XZ
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Map@@@Z: near
 l00432379 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Map@@@Z
 externdef ??0B_SubscriptionList@@QAE@XZ: near
