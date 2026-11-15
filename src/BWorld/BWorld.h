@@ -21,6 +21,71 @@ class B_ViewPose;
 
 class B_SubscriptionList : public B_Array<B_Entity>, public B_NamedObj
 {
+public:
+    B_SubscriptionList();
+    B_SubscriptionList(const B_Name &name);
+
+    virtual ~B_SubscriptionList()
+    {
+    }
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00441920
+* VC++ mangling:          ?GetType@B_SubscriptionList@@UAEHXZ
+*/
+
+    virtual int GetType()
+    {
+        return 0;
+    }
+};
+
+class B_TimerList : public B_SubscriptionList
+{
+public:
+    B_TimerList(const B_Name &name, double period);
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00441A60
+* VC++ mangling:          ?GetType@B_TimerList@@UAEHXZ
+*/
+
+    virtual int GetType()
+    {
+        return 1;
+    }
+
+    void SetPeriod(double period);
+
+    double period;
+    double lastTime;
+};
+
+class B_FrameList : public B_SubscriptionList
+{
+public:
+    B_FrameList(const B_Name &name, int period);
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00441A70
+* VC++ mangling:          ?GetType@B_FrameList@@UAEHXZ
+*/
+
+    virtual int GetType()
+    {
+        return 2;
+    }
+
+    void SetPeriod(int period);
+
+    int period;
+    int lastFrame;
 };
 
 class B_TriggerSector : public B_NamedObj

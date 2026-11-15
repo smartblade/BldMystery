@@ -278,6 +278,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Blade\BWorld\FrameListTests.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\Blade\BWorld\SectorLightsTests.cpp"
 					>
 				</File>
@@ -287,6 +291,10 @@
 				</File>
 				<File
 					RelativePath=".\Blade\BWorld\SubscriptionListTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\BWorld\TimerListTests.cpp"
 					>
 				</File>
 				<File

@@ -68732,90 +68732,12 @@ l00439410 ENDP
 ;* Call:
 ; 00439594, 00439645, 0043DD05 
 ;
-l00439518 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+004h], 000000000h
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+008h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+00Ch], 000000010h
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+010h], 000000000h
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+014h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-;
-;* String: "PDB"
-;
-           mov dword ptr [edx], offset g005BDA4C
-           mov eax, dword ptr [ebp+008h]
-           push eax
-           mov ecx, dword ptr [ebp-004h]
-           add ecx, 000000018h
-           call [__imp_??0B_NamedObj@@QAE@ABVB_Name@@@Z]; [BBLibc.??0B_NamedObj@@QAE@ABVB_Name@@@Z].
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx], offset g005BDBE0
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+018h], offset g005BDBDC
-           mov eax, dword ptr [ebp-004h]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l00439518 ENDP
+           call l00439518; Implemented in c++ code
 ;
 ;* Call:
 ; 0043DED1 
 ;
-l00439586 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp+008h]
-           push eax
-           mov ecx, dword ptr [ebp-004h]
-           call l00439518
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx], offset g005BDBEC
-           mov edx, dword ptr [ebp-004h]
-;
-;* String: "p1D"
-;
-           mov dword ptr [edx+018h], offset g005BDBE8
-           fld qword ptr [ebp+00Ch]
-           fcomp qword ptr [g005BD728]
-           fnstsw ax
-           test ah, 041h
-           jne l004395CD
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+00Ch]
-           mov dword ptr [eax+024h], ecx
-           mov edx, dword ptr [ebp+010h]
-           mov dword ptr [eax+028h], edx
-           jmp l004395DE
-;
-;* Jump:
-; 004395BA(C) 
-;
-l004395CD: mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+024h], 000000000h
-           mov dword ptr [eax+028h], 03FF00000h
-;
-;* Jump:
-; 004395CB(U) 
-;
-l004395DE: mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+02Ch], 000000000h
-           mov dword ptr [ecx+030h], 000000000h
-           mov eax, dword ptr [ebp-004h]
-           mov esp, ebp
-           pop ebp
-           ret 0000Ch
-l00439586 ENDP
+           call l00439586; Implemented in c++ code
 ;
            push ebp
            mov ebp, esp
@@ -68850,42 +68772,7 @@ l00439631: mov esp, ebp
 ;* Call:
 ; 0043E03E 
 ;
-l00439637 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp+008h]
-           push eax
-           mov ecx, dword ptr [ebp-004h]
-           call l00439518
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx], offset g005BDBF8
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+018h], offset g005BDBF4
-           cmp dword ptr [ebp+00Ch], 000000000h
-           jl l0043966E
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+00Ch]
-           mov dword ptr [eax+024h], ecx
-           jmp l00439678
-;
-;* Jump:
-; 00439661(C) 
-;
-l0043966E: mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+024h], 000000000h
-;
-;* Jump:
-; 0043966C(U) 
-;
-l00439678: mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+028h], 000000000h
-           mov eax, dword ptr [ebp-004h]
-           mov esp, ebp
-           pop ebp
-           ret 00008h
-l00439637 ENDP
+           call l00439637; Implemented in c++ code
 ;
            push ebp
            mov ebp, esp
@@ -82444,16 +82331,7 @@ l00441760 ENDP
            int 03h
            int 03h
            int 03h
-l00441920 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           xor eax, eax
-           mov esp, ebp
-           pop ebp
-           ret
-l00441920 ENDP
+           call l00441920; Implemented in c++ code
 ;
            int 03h
            int 03h
@@ -82609,34 +82487,9 @@ l00441930 ENDP
            int 03h
            int 03h
            int 03h
-l00441A60 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, 000000001h
-           mov esp, ebp
-           pop ebp
-           ret
-l00441A60 ENDP
+           call l00441A60; Implemented in c++ code
 ;
-l00441A70 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-;
-;* Control "Cancelar", Dialog 006E
-;
-;* Control "Exit", Dialog 0073
-;
-;* Control "Cancel", Dialog 0079
-;
-           mov eax, 000000002h
-           mov esp, ebp
-           pop ebp
-           ret
-l00441A70 ENDP
+           call l00441A70; Implemented in c++ code
 ;
 ;* Call:
 ; 00440846, 004587D3, 00528F99, 00559AB5 
