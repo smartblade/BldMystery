@@ -2,6 +2,7 @@
 #include <Utils/FieldOffset.h>
 #include <bld_system.h>
 #include <BBLibc/BitMap.h>
+#include <BBLibc/Resource.h>
 
 
 TEST(BitMapTests, SizeOf)
