@@ -1,0 +1,4 @@
+EXPORTS
+    ConfigDlg=l10001091
+    CreateRaster=l100010CD
+    DestroyRaster=l100012D5

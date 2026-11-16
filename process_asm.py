@@ -967,7 +967,7 @@ class AsmFiles:
 
     @property
     def output_export(self):
-        return os.path.join(self._dir, "export_cmd.txt")
+        return os.path.join(self._dir, "export.def")
 
     @property
     def uninitialised(self):
@@ -1127,7 +1127,9 @@ def writeExportCmd(asm_files, symbols):
                 exportAddrs.append(addr)
                 exportNames[addr] = exportName
                 internalNames[addr] = internalName
+    # Module-definition file read by the linker in CMake and VS projects
     f = open(asm_files.output_export, "wt")
+    f.write("EXPORTS\n")
     for addr in exportAddrs:
         exportName = exportNames[addr]
         internalName = internalNames[addr]
@@ -1139,7 +1141,7 @@ def writeExportCmd(asm_files, symbols):
             symbolName = "{}".format(exportName)
         else:
             symbolName = "{}={}".format(exportName, internalName)
-        f.write("/EXPORT:{}\n".format(symbolName))
+        f.write("    {}\n".format(symbolName))
     f.close()
 
 def collectProceduresFromFile(fileName):
