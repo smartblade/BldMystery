@@ -4,7 +4,7 @@
 #include <BBLibc/Resource.h>
 
 
-TEST(ResourceTests, Fields)
+TEST(ResourceTests, SizeOf)
 {
-    EXPECT_OFFSET_EQ(B_Resource, data, 0x00C);
+    EXPECT_EQ(sizeof(B_Resource), 0x0C);
 }

@@ -591,6 +591,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BBLibc\BitMapResourceTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\BBLibc\BitMapTests.cpp"
 				>
 			</File>
@@ -612,6 +616,10 @@
 			</File>
 			<File
 				RelativePath=".\BBLibc\ListTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BBLibc\MeshEdgeTests.cpp"
 				>
 			</File>
 			<File
@@ -646,6 +654,26 @@
 				RelativePath=".\BBLibc\ResourceTests.cpp"
 				>
 			</File>
+			<Filter
+				Name="ObjDscr.h"
+				>
+				<File
+					RelativePath=".\BBLibc\ObjDscr.h\ObjDscrTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BBLibc\ObjDscr.h\ObjFaceTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BBLibc\ObjDscr.h\ObjNodeTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BBLibc\ObjDscr.h\ObjVertexTests.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="rOpenGL"

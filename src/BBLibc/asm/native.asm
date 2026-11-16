@@ -79551,118 +79551,21 @@ l100321C8 ENDP
 ;
 ;* Export: ??0B_MeshEdge@@QAE@XZ, 0014
 ;
-l100321F0 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+004h], 000000000h
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+008h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+014h], 000000001h
-           mov eax, dword ptr [ebp-004h]
-           mov esp, ebp
-           pop ebp
-           ret
-l100321F0 ENDP
+           call l100321F0; Implemented in c++ code
 ;
 ;* Call:
 ; 100344F1 
 ;
 ;* Export: ??0B_MeshEdge@@QAE@III@Z, 0013
 ;
-l1003221C PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000000Ch
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+010h]
-           mov dword ptr [eax], ecx
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+014h], 000000001h
-           mov eax, dword ptr [ebp+008h]
-           cmp eax, dword ptr [ebp+00Ch]
-           jnb l10032247
-           mov ecx, dword ptr [ebp+008h]
-           mov dword ptr [ebp-008h], ecx
-           jmp l1003224D
-;
-;* Jump:
-; 1003223D(C) 
-;
-l10032247: mov edx, dword ptr [ebp+00Ch]
-           mov dword ptr [ebp-008h], edx
-;
-;* Jump:
-; 10032245(U) 
-;
-l1003224D: mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp-008h]
-           mov dword ptr [eax+004h], ecx
-           mov edx, dword ptr [ebp+008h]
-           cmp edx, dword ptr [ebp+00Ch]
-           jbe l10032266
-           mov eax, dword ptr [ebp+008h]
-           mov dword ptr [ebp-00Ch], eax
-           jmp l1003226C
-;
-;* Jump:
-; 1003225C(C) 
-;
-l10032266: mov ecx, dword ptr [ebp+00Ch]
-           mov dword ptr [ebp-00Ch], ecx
-;
-;* Jump:
-; 10032264(U) 
-;
-l1003226C: mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [ebp-00Ch]
-           mov dword ptr [edx+008h], eax
-           mov eax, dword ptr [ebp-004h]
-           mov esp, ebp
-           pop ebp
-           ret 0000Ch
-l1003221C ENDP
+           call l1003221C; Implemented in c++ code
 ;
 ;* Call:
 ; 10034535 
 ;
 ;* Export: ??8B_MeshEdge@@QBEIABV0@@Z, 0074
 ;
-l1003227E PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000008h
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           mov edx, dword ptr [eax+004h]
-           cmp edx, dword ptr [ecx+004h]
-           jne l100322AC
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           mov edx, dword ptr [eax+008h]
-           cmp edx, dword ptr [ecx+008h]
-           jne l100322AC
-           mov dword ptr [ebp-008h], 000000001h
-           jmp l100322B3
-;
-;* Jump:
-; 10032293(C), 100322A1(C) 
-;
-l100322AC: mov dword ptr [ebp-008h], 000000000h
-;
-;* Jump:
-; 100322AA(U) 
-;
-l100322B3: mov eax, dword ptr [ebp-008h]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l1003227E ENDP
+           call l1003227E; Implemented in c++ code
 ;
 ;* Call:
 ; 1003D720 
@@ -80603,42 +80506,15 @@ l10032A75 ENDP
 ;
 ;* Export: ?ClassId@B_ObjDscr@@UBEGXZ, 00A2
 ;
-l10032ABD PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov ax, 00001h
-           mov esp, ebp
-           pop ebp
-           ret
-l10032ABD ENDP
+           call l10032ABD; Implemented in c++ code
 ;
 ;* Export: ?CheckSum@B_ObjDscr@@UBEKXZ, 00A1
 ;
-l10032ACC PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           xor eax, eax
-           mov esp, ebp
-           pop ebp
-           ret
-l10032ACC ENDP
+           call l10032ACC; Implemented in c++ code
 ;
 ;* Export: ?SerialSize@B_ObjDscr@@UBEIXZ, 010D
 ;
-l10032AD9 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           xor eax, eax
-           mov esp, ebp
-           pop ebp
-           ret
-l10032AD9 ENDP
+           call l10032AD9; Implemented in c++ code
 ;
 ;* Call:
 ; 10036987 
@@ -82526,73 +82402,7 @@ l100335C3 ENDP
 ;
 ;* Export: ?GetVtxNode@B_ObjDscr@@QAEHI@Z, 00CE
 ;
-l100342BD PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000014h
-           mov dword ptr [ebp-014h], ecx
-           mov dword ptr [ebp-004h], 000000000h
-           jmp l100342D8
-;
-;* Jump:
-; 1003433A(U) 
-;
-l100342CF: mov eax, dword ptr [ebp-004h]
-           add eax, 000000001h
-           mov dword ptr [ebp-004h], eax
-;
-;* Jump:
-; 100342CD(U) 
-;
-l100342D8: mov ecx, dword ptr [ebp-014h]
-           mov edx, dword ptr [ebp-004h]
-           cmp edx, dword ptr [ecx+054h]
-           jnb l1003433C
-           mov eax, dword ptr [ebp-014h]
-           mov ecx, dword ptr [eax+050h]
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [ecx+edx*04h]
-           mov dword ptr [ebp-008h], eax
-           mov ecx, dword ptr [ebp-008h]
-           mov edx, dword ptr [ebp+008h]
-           cmp edx, dword ptr [ecx+0000000A8h]
-           jb l1003433A
-           mov eax, dword ptr [ebp-014h]
-           mov ecx, dword ptr [eax+050h]
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [ecx+edx*04h]
-           mov dword ptr [ebp-00Ch], eax
-           mov ecx, dword ptr [ebp-014h]
-           mov edx, dword ptr [ecx+050h]
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [edx+eax*04h]
-           mov dword ptr [ebp-010h], ecx
-           mov edx, dword ptr [ebp-00Ch]
-           mov eax, dword ptr [edx+0000000A8h]
-           mov ecx, dword ptr [ebp-010h]
-           add eax, dword ptr [ecx+0000000A4h]
-           cmp dword ptr [ebp+008h], eax
-           jnb l1003433A
-           mov eax, dword ptr [ebp-004h]
-           jmp l1003433F
-;
-;* Jump:
-; 100342FE(C), 10034333(C) 
-;
-l1003433A: jmp l100342CF
-;
-;* Jump:
-; 100342E1(C) 
-;
-l1003433C: or eax, 0FFFFFFFFh
-;
-;* Jump:
-; 10034338(U) 
-;
-l1003433F: mov esp, ebp
-           pop ebp
-           ret 00004h
-l100342BD ENDP
+           call l100342BD; Implemented in c++ code
 ;
 l10034345 PROC
            push ebp
@@ -87753,73 +87563,7 @@ l1003737B ENDP
 ;
 ;* Export: ?EdgeFaceGrp@B_ObjDscr@@QAEEI@Z, 00B1
 ;
-l10037E84 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000000Ch
-           mov dword ptr [ebp-00Ch], ecx
-           mov eax, dword ptr [ebp-00Ch]
-           mov ecx, dword ptr [eax+03Ch]
-           mov dword ptr [ebp-004h], ecx
-           mov dword ptr [ebp-008h], 000000000h
-           jmp l10037EA8
-;
-;* Jump:
-; 10037EEB(U) 
-;
-l10037E9F: mov edx, dword ptr [ebp-008h]
-           add edx, 000000001h
-           mov dword ptr [ebp-008h], edx
-;
-;* Jump:
-; 10037E9D(U) 
-;
-l10037EA8: mov eax, dword ptr [ebp-00Ch]
-           mov ecx, dword ptr [ebp-008h]
-           cmp ecx, dword ptr [eax+040h]
-           jnb l10037EED
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [edx+00Ch]
-           cmp eax, dword ptr [ebp+008h]
-           je l10037ED4
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ecx+010h]
-           cmp edx, dword ptr [ebp+008h]
-           je l10037ED4
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [eax+014h]
-           cmp ecx, dword ptr [ebp+008h]
-           jne l10037EE2
-;
-;* Jump:
-; 10037EBC(C), 10037EC7(C) 
-;
-l10037ED4: mov edx, dword ptr [ebp-00Ch]
-           mov eax, dword ptr [edx+068h]
-           mov ecx, dword ptr [ebp-008h]
-           mov al, byte ptr [eax+ecx]
-           jmp l10037EEF
-;
-;* Jump:
-; 10037ED2(C) 
-;
-l10037EE2: mov edx, dword ptr [ebp-004h]
-           add edx, 000000038h
-           mov dword ptr [ebp-004h], edx
-           jmp l10037E9F
-;
-;* Jump:
-; 10037EB1(C) 
-;
-l10037EED: xor al, al
-;
-;* Jump:
-; 10037EE0(U) 
-;
-l10037EEF: mov esp, ebp
-           pop ebp
-           ret 00004h
-l10037E84 ENDP
+           call l10037E84; Implemented in c++ code
 ;
 ;* Call:
 ; 10004024, 10006547 
