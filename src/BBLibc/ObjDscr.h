@@ -60,33 +60,26 @@ class B_MeshEdgeArray : public array_t<B_MeshEdge>
 {
 };
 
-class LIB_EXP B_ObjDscr : public B_Resource
+class B_ObjDscr : public B_Resource
 {
 public:
-    B_ObjDscr();
-    ~B_ObjDscr();
-    virtual unsigned short ClassId() const;
-    virtual unsigned long CheckSum() const;
-    virtual unsigned int SerialSize() const;
-    unsigned int SavePacked(B_ODataFile &arg_1);
-    unsigned int LoadPacked(B_IDataFile &arg_1);
-    void SetUpNormals();
-    void SetUpInertialT();
-    int GetVtxNode(unsigned int);
-    void SetUpEdges();
-    void Draw(
+    LIB_EXP B_ObjDscr();
+    LIB_EXP ~B_ObjDscr();
+    LIB_EXP virtual unsigned short ClassId() const;
+    LIB_EXP virtual unsigned long CheckSum() const;
+    LIB_EXP virtual unsigned int SerialSize() const;
+    LIB_EXP unsigned int SavePacked(B_ODataFile &arg_1);
+    LIB_EXP unsigned int LoadPacked(B_IDataFile &arg_1);
+    LIB_EXP void SetUpNormals();
+    LIB_EXP void SetUpInertialT();
+    LIB_EXP int GetVtxNode(unsigned int);
+    LIB_EXP void SetUpEdges();
+    LIB_EXP void Draw(
         B_3DRasterDevice *raster, float x1, float y1, float x2, float y2,
         float scale, int i_unknown);
-    void SetUpBSP();
-    unsigned char EdgeFaceGrp(unsigned int);
+    LIB_EXP void SetUpBSP();
+    LIB_EXP unsigned char EdgeFaceGrp(unsigned int);
 
-    /*
-    * The members of classes without dll-interface are exported with the
-    * class without the methods of their classes so warning C4251 is disabled
-    * for them.
-    */
-#pragma warning(push)
-#pragma warning(disable: 4251)
     char unknownFields00C[0x18];
     B_ObjVertexArray vertices;
     B_ObjFaceArray faces;
@@ -101,7 +94,6 @@ public:
     double mass;
     B_Vector centerOfMass;
     B_Sphere boundingSphere;
-#pragma warning(pop)
 };
 
 
