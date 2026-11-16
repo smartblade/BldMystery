@@ -47,4 +47,11 @@ public:
     static B_Resource *Load(B_IDataFile &arg_1, unsigned short arg_2);
 };
 
+
+class B_BitMapResource : public B_Resource
+{
+public:
+    void *data;
+};
+
 #endif /* B_RESOURCE_H */
