@@ -102,6 +102,9 @@
 - `&` and `*` are attached to names, not to types:
   `const B_Vector &that`, `B_Sector *sector`,
   `B_IDataFile &operator >>(B_IDataFile &file, B_Matrix &matrix)`.
+  Types without names are separated from them:
+  `static_cast<B_PersonEntity *>(entity)`, `B_Array<void *>`,
+  `SetBits(int, int, const char *, const char *)`.
 - Initializer lists start with `:` on a separate line, each initializer is
   on its own line:
 
