@@ -591,6 +591,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BBLibc\BitMapResourceTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\BBLibc\BitMapTests.cpp"
 				>
 			</File>
