@@ -195,7 +195,7 @@ B_List::B_List(B_ListElement *element)
 * VC++ mangling:          ??0B_List@@QAE@ABV0@@Z
 */
 #ifndef BLD_NATIVE
-B_List::B_List(B_List const&)
+B_List::B_List(B_List const &)
 {
 
 }

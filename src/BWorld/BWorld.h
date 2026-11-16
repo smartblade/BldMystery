@@ -128,7 +128,7 @@ public:
     B_Hash<B_Entity> entities;
     int nextEntitySuffix;
     B_DataBase<B_SubscriptionList> subscriptions;
-    B_Array<void*> scheduledFuncs;
+    B_Array<void *> scheduledFuncs;
     int unknown1858;
     B_Name world_file_name;
     int unknownField1864;

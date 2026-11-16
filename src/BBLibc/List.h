@@ -84,7 +84,7 @@ class LIB_EXP B_List
 {
 public:
     B_List(B_ListElement *element);
-    B_List(B_List const&);
+    B_List(B_List const &);
 
     /*
     * Module:                 BBLibc.dll
