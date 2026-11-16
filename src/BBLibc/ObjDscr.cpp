@@ -17,7 +17,7 @@
 
 unsigned short B_ObjDscr::ClassId() const
 {
-    return 1;
+    return B_RESOURCE_CID_OBJDSCR;
 }
 
 

@@ -12,6 +12,8 @@
 #include <export.h>
 #undef BUILD_LIB
 
+#define B_RESOURCE_CID_OBJDSCR 1
+
 class LIB_EXP B_Resource : public B_NamedObj
 {
 public:
