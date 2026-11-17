@@ -2,7 +2,7 @@
 ; and should not be edited.
 ;File: ropengl.dll
 ;Path: Bin\Raster
-;Size: 434 226
+;Size: 434 226
 ;Type: PE
 ;Base Of Code: 00001000, Code Size: 00036000
 ;Base Of Data: 00037000, Data Size: 00048000

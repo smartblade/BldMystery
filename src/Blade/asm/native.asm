@@ -2,7 +2,7 @@
 ; and should not be edited.
 ;File: Blade_patched.exe
 ;Path: C:\Games\Severence - Blade of Darkness\Bin\
-;Size: 2 187 303
+;Size: 2 187 303
 ;Type: PE
 ;Base Of Code: 00001000, Code Size: 001BC000
 ;Base Of Data: 001BD000, Data Size: 0026A000
