@@ -637,7 +637,7 @@ void B_OctantNode::CollectSectorsInBox(
         {
             if (bb.minCoords.z < 10.0)
             {
-                if (this->children[0])
+                if (this->children[0] != nullptr)
                 {
                     childBox.minCoords =
                         bb.minCoords - B_Vector(-childOffset, -childOffset, -childOffset);
@@ -648,7 +648,7 @@ void B_OctantNode::CollectSectorsInBox(
             }
             if (bb.maxCoords.z > -10.0)
             {
-                if (this->children[1])
+                if (this->children[1] != nullptr)
                 {
                     childBox.minCoords =
                         bb.minCoords - B_Vector(-childOffset, -childOffset, childOffset);
@@ -662,7 +662,7 @@ void B_OctantNode::CollectSectorsInBox(
         {
             if (bb.minCoords.z < 10.0)
             {
-                if (this->children[2])
+                if (this->children[2] != nullptr)
                 {
                     childBox.minCoords =
                         bb.minCoords - B_Vector(-childOffset, childOffset, -childOffset);
@@ -673,7 +673,7 @@ void B_OctantNode::CollectSectorsInBox(
             }
             if (bb.maxCoords.z > -10.0)
             {
-                if (this->children[3])
+                if (this->children[3] != nullptr)
                 {
                     childBox.minCoords =
                         bb.minCoords - B_Vector(-childOffset, childOffset, childOffset);
@@ -690,7 +690,7 @@ void B_OctantNode::CollectSectorsInBox(
         {
             if (bb.minCoords.z < 10.0)
             {
-                if (this->children[4])
+                if (this->children[4] != nullptr)
                 {
                     childBox.minCoords =
                         bb.minCoords - B_Vector(childOffset, -childOffset, -childOffset);
@@ -701,7 +701,7 @@ void B_OctantNode::CollectSectorsInBox(
             }
             if (bb.maxCoords.z > -10.0)
             {
-                if (this->children[5])
+                if (this->children[5] != nullptr)
                 {
                     childBox.minCoords =
                         bb.minCoords - B_Vector(childOffset, -childOffset, childOffset);
@@ -715,7 +715,7 @@ void B_OctantNode::CollectSectorsInBox(
         {
             if (bb.minCoords.z < 10.0)
             {
-                if (this->children[6])
+                if (this->children[6] != nullptr)
                 {
                     childBox.minCoords =
                         bb.minCoords - B_Vector(childOffset, childOffset, -childOffset);
@@ -726,7 +726,7 @@ void B_OctantNode::CollectSectorsInBox(
             }
             if (bb.maxCoords.z > -10.0)
             {
-                if (this->children[7])
+                if (this->children[7] != nullptr)
                 {
                     childBox.minCoords =
                         bb.minCoords - B_Vector(childOffset, childOffset, childOffset);
