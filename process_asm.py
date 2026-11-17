@@ -1097,7 +1097,7 @@ def isCdeclMangling(exportName, internalName):
     return (internalName == '_' + exportName)
 
 def writeExportSymbols(imageMap, exportFileName):
-    f = open(exportFileName, "wt")
+    f = open(exportFileName, "wt", newline="\n")
     exportAddrs = set(imageMap.exports().keys())
     for addr in sorted(exportAddrs):
         exportName = imageMap.exports()[addr]
@@ -1128,7 +1128,7 @@ def writeExportCmd(asm_files, symbols):
                 exportNames[addr] = exportName
                 internalNames[addr] = internalName
     # Module-definition file read by the linker in CMake and VS projects
-    f = open(asm_files.output_export, "wt")
+    f = open(asm_files.output_export, "wt", newline="\n")
     f.write("EXPORTS\n")
     for addr in exportAddrs:
         exportName = exportNames[addr]
@@ -1281,7 +1281,7 @@ def openForWriting(filename):
         start=lineStart,
         file=os.path.basename(__file__)
     )
-    f = open(filename, "wt")
+    f = open(filename, "wt", newline="\n")
     f.write(autoGenMsg)
     return f
 
@@ -1430,7 +1430,7 @@ def process_asm_dir(asm_files, symbols):
     print("Reading code...")
     lines = readAsmCode(asm_files.intermediate_asm)
     print("Writing code...")
-    f = open(asm_files.output_asm, "wt")
+    f = open(asm_files.output_asm, "wt", newline="\n")
     isImplementedProc = False
     isImplementedVar = False
     for line in lines:
@@ -1460,7 +1460,7 @@ def process_asm_dir(asm_files, symbols):
             isImplementedProc = False
     f.close()
     if options.write_proc_dict:
-        with open(asm_files.procedures_dict_json, "wt") as f:
+        with open(asm_files.procedures_dict_json, "wt", newline="\n") as f:
             proc_dict = {}
             for line in lines:
                 if line.startswith("l"):
