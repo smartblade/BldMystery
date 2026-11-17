@@ -685,6 +685,14 @@
 					RelativePath=".\BBLibc\RDataTriangle.h\ModelTriangleDataTests.cpp"
 					>
 				</File>
+				<File
+					RelativePath=".\BBLibc\RDataTriangle.h\RDataTriangleTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BBLibc\RDataTriangle.h\RItemTests.cpp"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter

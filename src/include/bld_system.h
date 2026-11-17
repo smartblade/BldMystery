@@ -33,6 +33,17 @@
 #define override
 #endif
 
+/* Old compilers don't generate move assignment operators. New compilers
+ * generate them unless a copy assignment operator is declared, and exported
+ * classes export them: declare the default copy assignment operator only on
+ * new compilers, so that the classes export the same operators
+ */
+#if _MSC_VER < 1900
+#define DEFAULT_COPY_ASSIGNMENT(type)
+#else
+#define DEFAULT_COPY_ASSIGNMENT(type) type &operator =(const type &) = default;
+#endif
+
 
 #endif /* BLD_SYSTEM_H */
 

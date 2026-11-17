@@ -29,19 +29,6 @@ static char gbl_empty_bmp_name[4];
 
 /*
 * Module:                 BBLibc.dll
-* Entry point:            0x10007F40
-* VC++ mangling:          ??4B_RDataTriangle@@QAEAAV0@ABV0@@Z
-*/
-#ifndef BLD_NATIVE
-B_RDataTriangle &B_RDataTriangle::operator=(const B_RDataTriangle &other)
-{
-    return *this;
-}
-#endif
-
-
-/*
-* Module:                 BBLibc.dll
 * Entry point:            0x10040D58
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_ModelTriangleData@@@Z
 */
@@ -105,12 +92,25 @@ B_ODataFile &operator <<(B_ODataFile &file, const B_ModelTriangleData &data)
 
 /*
 * Module:                 BBLibc.dll
+* Entry point:            0x10040F39
+* VC++ mangling:          ??0B_RItem@@QAE@K@Z
+*/
+
+B_RItem::B_RItem(unsigned long type)
+:
+    type(type)
+{
+}
+
+
+/*
+* Module:                 BBLibc.dll
 * Entry point:            0x10040F51
 * VC++ mangling:          ??0B_RDataTriangle@@QAE@XZ
 */
-#ifndef BLD_NATIVE
-B_RDataTriangle::B_RDataTriangle()
-{
 
+B_RDataTriangle::B_RDataTriangle()
+:
+    B_RItem(B_RITEM_TYPE_TRIANGLE)
+{
 }
-#endif
