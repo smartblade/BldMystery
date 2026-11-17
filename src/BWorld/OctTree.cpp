@@ -241,7 +241,9 @@ void B_OctTree::Clear()
 B_OctantNodeBase *BuildNode(const B_Array<B_Sector> &map, double sizeThreshold, const B_BoundingBox &worldBB)
 {
     if (map.size == 0)
+    {
         return nullptr;
+    }
     if (map.size == 1)
     {
         LeafNode *leaf = new LeafNode();
@@ -252,7 +254,9 @@ B_OctantNodeBase *BuildNode(const B_Array<B_Sector> &map, double sizeThreshold, 
     {
         B_SectorListNode *node = new B_SectorListNode();
         for (unsigned int i = 0; i < map.size; i++)
+        {
             node->Append(map.elements[i]);
+        }
         return node;
     }
     else
