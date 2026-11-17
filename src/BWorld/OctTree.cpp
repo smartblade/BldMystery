@@ -35,7 +35,10 @@ unsigned int B_BoundingBox::Intersects(const B_Sector *sector) const
 * VC++ mangling:          ?CollectIntersectingSectors@B_BoundingBox@@QAEXABV?$B_Array@VB_Sector@@@@AAV2@@Z
 */
 
-void B_BoundingBox::CollectIntersectingSectors(const B_Array<B_Sector> &sectors, B_Array<B_Sector> &outBuffer)
+void B_BoundingBox::CollectIntersectingSectors(
+    const B_Array<B_Sector> &sectors,
+    B_Array<B_Sector> &outBuffer
+)
 {
     for (unsigned int i = 0; i < sectors.size; i++)
     {
@@ -237,7 +240,11 @@ void B_OctTree::Clear()
 * VC++ mangling:          ?BuildNode@@YAPAVB_OctantNodeBase@@ABV?$B_Array@VB_Sector@@@@NABVB_BoundingBox@@@Z
 */
 
-B_OctantNodeBase *BuildNode(const B_Array<B_Sector> &map, double sizeThreshold, const B_BoundingBox &worldBB)
+B_OctantNodeBase *BuildNode(
+    const B_Array<B_Sector> &map,
+    double sizeThreshold,
+    const B_BoundingBox &worldBB
+)
 {
     if (map.size == 0)
     {
@@ -367,7 +374,11 @@ void B_OctTree::Build(const B_Map &map, double minNodeSize)
 * VC++ mangling:          ?CollectSectorsAtPoint@LeafNode@@UAEXABVB_Vector@@PAVB_OctTreeSectorsList@@N@Z
 */
 
-void LeafNode::CollectSectorsAtPoint(const B_Vector &localPos, B_OctTreeSectorsList *outList, double halfSize)
+void LeafNode::CollectSectorsAtPoint(
+    const B_Vector &localPos,
+    B_OctTreeSectorsList *outList,
+    double halfSize
+)
 {
     if (this->sectors->lastQueryId != gbl_oct_tree_query_id && this->sectors->isActive != 0)
     {
@@ -387,7 +398,11 @@ void LeafNode::CollectSectorsAtPoint(const B_Vector &localPos, B_OctTreeSectorsL
 * VC++ mangling:          ?CollectSectorsInBox@LeafNode@@UAEXABVB_BoundingBox@@PAVB_OctTreeSectorsList@@N@Z
 */
 
-void LeafNode::CollectSectorsInBox(const B_BoundingBox &, B_OctTreeSectorsList *outList, double)
+void LeafNode::CollectSectorsInBox(
+    const B_BoundingBox &,
+    B_OctTreeSectorsList *outList,
+    double
+)
 {
     if (this->sectors->lastQueryId != gbl_oct_tree_query_id && this->sectors->isActive != 0)
     {
@@ -425,7 +440,11 @@ void LeafNode::CollectSectorsInBox(const B_BoundingBox &, B_OctTreeSectorsList *
 * VC++ mangling:          ?CollectSectorsAtPoint@B_SectorListNode@@UAEXABVB_Vector@@PAVB_OctTreeSectorsList@@N@Z
 */
 
-void B_SectorListNode::CollectSectorsAtPoint(const B_Vector &localPos, B_OctTreeSectorsList *outList, double halfSize)
+void B_SectorListNode::CollectSectorsAtPoint(
+    const B_Vector &localPos,
+    B_OctTreeSectorsList *outList,
+    double halfSize
+)
 {
     for (unsigned int i = 0; i < this->size; i++)
     {
@@ -448,7 +467,11 @@ void B_SectorListNode::CollectSectorsAtPoint(const B_Vector &localPos, B_OctTree
 * VC++ mangling:          ?CollectSectorsInBox@B_SectorListNode@@UAEXABVB_BoundingBox@@PAVB_OctTreeSectorsList@@N@Z
 */
 
-void B_SectorListNode::CollectSectorsInBox(const B_BoundingBox &, B_OctTreeSectorsList *outList, double)
+void B_SectorListNode::CollectSectorsInBox(
+    const B_BoundingBox &,
+    B_OctTreeSectorsList *outList,
+    double
+)
 {
     for (unsigned int i = 0; i < this->size; i++)
     {
@@ -500,7 +523,8 @@ void B_SectorListNode::CollectSectorsInBox(const B_BoundingBox &, B_OctTreeSecto
 void B_OctantNode::CollectSectorsAtPoint(
     const B_Vector &localPos,
     B_OctTreeSectorsList *outList,
-    double halfSize)
+    double halfSize
+)
 {
     const double childHalfSize = halfSize / 2.0;
     const double childOffset = halfSize / 4.0;
@@ -571,7 +595,11 @@ void B_OctantNode::CollectSectorsAtPoint(
 * VC++ mangling:          ?CollectSectorsInBox@B_OctantNode@@UAEXABVB_BoundingBox@@PAVB_OctTreeSectorsList@@N@Z
 */
 
-void B_OctantNode::CollectSectorsInBox(const B_BoundingBox &bb, B_OctTreeSectorsList *outList, double halfSize)
+void B_OctantNode::CollectSectorsInBox(
+    const B_BoundingBox &bb,
+    B_OctTreeSectorsList *outList,
+    double halfSize
+)
 {
     double childHalfSize = halfSize / 2.0;
     double childOffset = halfSize / 4.0;
@@ -683,7 +711,10 @@ void B_OctantNode::CollectSectorsInBox(const B_BoundingBox &bb, B_OctTreeSectors
 * VC++ mangling:          ?FindSectorsAtPoint@B_OctTree@@UBEXABVB_Vector@@PAVB_OctTreeSectorsList@@@Z
 */
 
-void B_OctTree::FindSectorsAtPoint(const B_Vector &worldPos, B_OctTreeSectorsList *outList) const
+void B_OctTree::FindSectorsAtPoint(
+    const B_Vector &worldPos,
+    B_OctTreeSectorsList *outList
+) const
 {
     outList->size = 0;
     B_Vector localPos = worldPos - this->m_center;
@@ -707,7 +738,10 @@ void B_OctTree::FindSectorsAtPoint(const B_Vector &worldPos, B_OctTreeSectorsLis
 * VC++ mangling:          ?FindSectorsInBox@B_OctTree@@UBEXABVB_BoundingBox@@PAVB_OctTreeSectorsList@@@Z
 */
 
-void B_OctTree::FindSectorsInBox(const B_BoundingBox &bb, B_OctTreeSectorsList *out) const
+void B_OctTree::FindSectorsInBox(
+    const B_BoundingBox &bb,
+    B_OctTreeSectorsList *out
+) const
 {
     out->size = 0;
     gbl_oct_tree_query_id++;
@@ -748,7 +782,10 @@ B_OctTreeSectorsList::B_OctTreeSectorsList()
 * VC++ mangling:          ?BuildSurfaceCache@B_OctTreeSectorsList@@QAEHPAVB_GlobalSurfaceCache@@PBVB_Sphere@@@Z
 */
 
-int B_OctTreeSectorsList::BuildSurfaceCache(B_GlobalSurfaceCache *cache, const B_Sphere *sphere)
+int B_OctTreeSectorsList::BuildSurfaceCache(
+    B_GlobalSurfaceCache *cache,
+    const B_Sphere *sphere
+)
 {
     cache->count = 0;
     unsigned int i = 0;
