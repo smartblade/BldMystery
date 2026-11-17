@@ -256,7 +256,10 @@ B_OctantNodeBase *BuildNode(
         leaf->sectors = map.elements[0];
         return leaf;
     }
-    if (worldBB.maxCoords.x - worldBB.minCoords.x < sizeThreshold || map.size < 8)
+    if (
+        worldBB.maxCoords.x - worldBB.minCoords.x < sizeThreshold ||
+        map.size < 8
+    )
     {
         B_SectorListNode *node = new B_SectorListNode();
         for (unsigned int i = 0; i < map.size; i++)
@@ -380,7 +383,10 @@ void LeafNode::CollectSectorsAtPoint(
     double halfSize
 )
 {
-    if (this->sectors->lastQueryId != gbl_oct_tree_query_id && this->sectors->isActive != 0)
+    if (
+        this->sectors->lastQueryId != gbl_oct_tree_query_id &&
+        this->sectors->isActive != 0
+    )
     {
         this->sectors->lastQueryId = gbl_oct_tree_query_id; // mark as "processed"
         if (outList->size < 0x200)
@@ -404,17 +410,22 @@ void LeafNode::CollectSectorsInBox(
     double
 )
 {
-    if (this->sectors->lastQueryId != gbl_oct_tree_query_id && this->sectors->isActive != 0)
+    if (
+        this->sectors->lastQueryId != gbl_oct_tree_query_id &&
+        this->sectors->isActive != 0
+    )
     {
         this->sectors->lastQueryId = gbl_oct_tree_query_id;
         B_BoundingBox *sectorBB = &this->sectors->boundingBox;
         int intersects;
-        if (gbl_current_query_box->minCoords.x > sectorBB->maxCoords.x ||
+        if (
+            gbl_current_query_box->minCoords.x > sectorBB->maxCoords.x ||
             gbl_current_query_box->minCoords.y > sectorBB->maxCoords.y ||
             gbl_current_query_box->minCoords.z > sectorBB->maxCoords.z ||
             gbl_current_query_box->maxCoords.x < sectorBB->minCoords.x ||
             gbl_current_query_box->maxCoords.y < sectorBB->minCoords.y ||
-            gbl_current_query_box->maxCoords.z < sectorBB->minCoords.z)
+            gbl_current_query_box->maxCoords.z < sectorBB->minCoords.z
+        )
         {
             intersects = 0;
         }
@@ -448,7 +459,10 @@ void B_SectorListNode::CollectSectorsAtPoint(
 {
     for (unsigned int i = 0; i < this->size; i++)
     {
-        if (this->elements[i]->lastQueryId != gbl_oct_tree_query_id && this->elements[i]->isActive != 0)
+        if (
+            this->elements[i]->lastQueryId != gbl_oct_tree_query_id &&
+            this->elements[i]->isActive != 0
+        )
         {
             this->elements[i]->lastQueryId = gbl_oct_tree_query_id;
             if (outList->size < 0x200)
@@ -475,18 +489,22 @@ void B_SectorListNode::CollectSectorsInBox(
 {
     for (unsigned int i = 0; i < this->size; i++)
     {
-        if (this->elements[i]->lastQueryId != gbl_oct_tree_query_id &&
-            this->elements[i]->isActive != 0)
+        if (
+            this->elements[i]->lastQueryId != gbl_oct_tree_query_id &&
+            this->elements[i]->isActive != 0
+        )
         {
             this->elements[i]->lastQueryId = gbl_oct_tree_query_id;
             B_BoundingBox *sectorBB = &this->elements[i]->boundingBox;
             int intersects;
-            if (gbl_current_query_box->minCoords.x > sectorBB->maxCoords.x ||
+            if (
+                gbl_current_query_box->minCoords.x > sectorBB->maxCoords.x ||
                 gbl_current_query_box->minCoords.y > sectorBB->maxCoords.y ||
                 gbl_current_query_box->minCoords.z > sectorBB->maxCoords.z ||
                 gbl_current_query_box->maxCoords.x < sectorBB->minCoords.x ||
                 gbl_current_query_box->maxCoords.y < sectorBB->minCoords.y ||
-                gbl_current_query_box->maxCoords.z < sectorBB->minCoords.z)
+                gbl_current_query_box->maxCoords.z < sectorBB->minCoords.z
+            )
             {
                 intersects = 0;
             }
@@ -721,9 +739,11 @@ void B_OctTree::FindSectorsAtPoint(
     gbl_oct_tree_query_id++;
     if (this->m_root != nullptr)
     {
-        if (fabs(localPos.x) < this->m_halfSize + 10.0 &&
+        if (
+            fabs(localPos.x) < this->m_halfSize + 10.0 &&
             fabs(localPos.y) < this->m_halfSize + 10.0 &&
-            fabs(localPos.z) < this->m_halfSize + 10.0)
+            fabs(localPos.z) < this->m_halfSize + 10.0
+        )
         {
             this->m_root->CollectSectorsAtPoint(localPos, outList, this->m_halfSize);
         }
@@ -749,12 +769,14 @@ void B_OctTree::FindSectorsInBox(
     B_BoundingBox localBB(bb.minCoords - this->m_center, bb.maxCoords - this->m_center);
     if (this->m_root != nullptr)
     {
-        if (localBB.maxCoords.x > -this->m_halfSize * 0.5 - 10.0 &&
+        if (
+            localBB.maxCoords.x > -this->m_halfSize * 0.5 - 10.0 &&
             localBB.maxCoords.y > -this->m_halfSize * 0.5 - 10.0 &&
             localBB.maxCoords.z > -this->m_halfSize * 0.5 - 10.0 &&
             localBB.minCoords.x < this->m_halfSize * 0.5 + 10.0 &&
             localBB.minCoords.y < this->m_halfSize * 0.5 + 10.0 &&
-            localBB.minCoords.z < this->m_halfSize * 0.5 + 10.0)
+            localBB.minCoords.z < this->m_halfSize * 0.5 + 10.0
+        )
         {
             this->m_root->CollectSectorsInBox(localBB, out, this->m_halfSize);
         }
