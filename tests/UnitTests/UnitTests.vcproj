@@ -678,6 +678,14 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="RDataTriangle.h"
+				>
+				<File
+					RelativePath=".\BBLibc\RDataTriangle.h\ModelTriangleDataTests.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="rOpenGL"
