@@ -45,7 +45,6 @@ void B_BoundingBox::CollectIntersectingSectors(const B_Array<B_Sector> &sectors,
             outBuffer.Append(sectors.elements[i]);
         }
     }
-
 }
 
 
@@ -433,7 +432,6 @@ void B_SectorListNode::CollectSectorsAtPoint(const B_Vector &localPos, B_OctTree
         if (this->elements[i]->lastQueryId != gbl_oct_tree_query_id && this->elements[i]->isActive != 0)
         {
             this->elements[i]->lastQueryId = gbl_oct_tree_query_id;
-
             if (outList->size < 0x200)
             {
                 outList->sectors[outList->size] = this->elements[i];
