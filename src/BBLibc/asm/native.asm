@@ -2,7 +2,7 @@
 ; and should not be edited.
 ;File: BBLibc.dll
 ;Path: Bin
-;Size: 311 336
+;Size: 311 336
 ;Type: PE
 ;Base Of Code: 00001000, Code Size: 00041000
 ;Base Of Data: 00042000, Data Size: 0000C000
