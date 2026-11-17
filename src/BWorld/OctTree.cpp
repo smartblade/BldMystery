@@ -195,9 +195,9 @@ B_OctTree::B_OctTree()
 * VC++ mangling:          ??0B_OctTree@@QAE@ABVB_Map@@N@Z
 */
 
-B_OctTree::B_OctTree(const B_Map &map, double minNodeSize) 
-: 
-    m_halfSize(0.0), 
+B_OctTree::B_OctTree(const B_Map &map, double minNodeSize)
+:
+    m_halfSize(0.0),
     m_root(nullptr)
 {
     this->Build(map, minNodeSize);
@@ -496,7 +496,7 @@ void B_SectorListNode::CollectSectorsInBox(const B_BoundingBox &, B_OctTreeSecto
 */
 
 void B_OctantNode::CollectSectorsAtPoint(
-    const B_Vector &localPos, 
+    const B_Vector &localPos,
     B_OctTreeSectorsList *outList,
     double halfSize)
 {
