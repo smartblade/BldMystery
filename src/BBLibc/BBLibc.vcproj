@@ -361,10 +361,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Pal.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\ParticleGType.cpp"
 				>
 			</File>
