@@ -552,6 +552,10 @@ externdef ??HB_Vector@@QBE?AV0@ABV0@@Z: near
 l100316F7 equ ??HB_Vector@@QBE?AV0@ABV0@@Z
 externdef ??GB_Vector@@QBE?AV0@ABV0@@Z: near
 l10031760 equ ??GB_Vector@@QBE?AV0@ABV0@@Z
+externdef ??ZB_Vector@@QAEABV0@ABV0@@Z: near
+l1003180C equ ??ZB_Vector@@QAEABV0@ABV0@@Z
+externdef ?SetAngle@B_Vector@@QAEXN@Z: near
+l10031BD1 equ ?SetAngle@B_Vector@@QAEXN@Z
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z: near
 l10031E6D equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Vector@@@Z
 externdef ??6@YAAAVB_ODataFile@@AAV0@AAVB_Vector@@@Z: near
