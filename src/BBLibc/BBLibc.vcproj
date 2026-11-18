@@ -361,6 +361,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\PythonCall.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\RDataLight.cpp"
 				>
 			</File>
