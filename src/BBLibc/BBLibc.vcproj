@@ -380,10 +380,6 @@
 				RelativePath=".\Resource.cpp"
 				>
 			</File>
-			<File
-				RelativePath=".\ResourceManager.cpp"
-				>
-			</File>
 			<Filter
 				Name="AnalyticGeometry"
 				>
