@@ -235899,19 +235899,7 @@ l004AAF00 ENDP
 ;* Call:
 ; 004ABCEA, 005467FA 
 ;
-l004AB1E0 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax], offset g005BE404
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx], offset g005BE438
-           mov esp, ebp
-           pop ebp
-           ret
-l004AB1E0 ENDP
+           call l004AB1E0; Implemented in c++ code
 ;
            call l004AB1FD; Implemented in c++ code
 ;
@@ -238061,206 +238049,17 @@ l004ACDC3 ENDP
 ;* Call:
 ; 0052E4D8, 0052E94F 
 ;
-l004ACE39 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000000Ch
-           mov dword ptr [ebp-00Ch], ecx
-           mov ecx, dword ptr [ebp-00Ch]
-           add ecx, 000000004h
-           call l004ABE5C
-           mov eax, dword ptr [ebp-00Ch]
-           add eax, 000000044h
-           mov dword ptr [ebp-004h], eax
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+004h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+008h], 000000000h
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+00Ch], 000000001h
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+010h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx], offset g005BE4D4
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax], offset g005BE4D0
-           mov ecx, dword ptr [ebp-00Ch]
-           mov dword ptr [ecx+058h], 000000000h
-           mov edx, dword ptr [ebp-00Ch]
-           mov dword ptr [edx+060h], 000000000h
-           mov eax, dword ptr [ebp-00Ch]
-           mov dword ptr [eax+064h], 000000000h
-           mov ecx, dword ptr [ebp-00Ch]
-           mov dword ptr [ecx], offset g005BE4A8
-           mov edx, dword ptr [ebp-00Ch]
-           add edx, 000000068h
-           mov dword ptr [ebp-008h], edx
-           mov eax, dword ptr [ebp-008h]
-           mov dword ptr [eax], 000000000h
-           mov ecx, dword ptr [ebp-008h]
-           mov dword ptr [ecx+008h], 000000000h
-           mov ecx, dword ptr [ebp-00Ch]
-           add ecx, 000000078h
-           call l00404BE0
-           mov edx, dword ptr [ebp-00Ch]
-           mov dword ptr [edx], offset g005BE480
-           mov eax, dword ptr [ebp+008h]
-           push eax
-           push 000000001h
-           mov ecx, dword ptr [__imp_?B_resource_manager@@3VB_ResourceManager@@A]; [BBLibc.?B_resource_manager@@3VB_ResourceManager@@A].
-           call [__imp_?GetResource@B_ResourceManager@@QAEPAVB_Resource@@GABVB_Name@@@Z]; [BBLibc.?GetResource@B_ResourceManager@@QAEPAVB_Resource@@GABVB_Name@@@Z].
-           mov ecx, dword ptr [ebp-00Ch]
-           mov dword ptr [ecx+074h], eax
-           mov edx, dword ptr [ebp-00Ch]
-           cmp dword ptr [edx+074h], 000000000h
-           jne l004ACF20
-           mov eax, dword ptr [ebp+008h]
-           push eax
-           push 000000005h
-           mov ecx, dword ptr [__imp_?B_resource_manager@@3VB_ResourceManager@@A]; [BBLibc.?B_resource_manager@@3VB_ResourceManager@@A].
-           call [__imp_?GetResource@B_ResourceManager@@QAEPAVB_Resource@@GABVB_Name@@@Z]; [BBLibc.?GetResource@B_ResourceManager@@QAEPAVB_Resource@@GABVB_Name@@@Z].
-           mov ecx, dword ptr [ebp-00Ch]
-           mov dword ptr [ecx+074h], eax
-;
-;* Jump:
-; 004ACF06(C) 
-;
-l004ACF20: mov edx, dword ptr [ebp-00Ch]
-           mov dword ptr [edx+0000000F8h], 000000000h
-           mov dword ptr [edx+0000000FCh], 03FF00000h
-           mov eax, dword ptr [ebp-00Ch]
-           fld qword ptr [g005BD730]
-           fdiv qword ptr [eax+0000000F8h]
-           mov ecx, dword ptr [ebp-00Ch]
-           fstp qword ptr [ecx+000000100h]
-           mov eax, dword ptr [ebp-00Ch]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l004ACE39 ENDP
+           call l004ACE39; Implemented in c++ code
 ;
 ;* Call:
 ; 0052E705 
 ;
-l004ACF58 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000000Ch
-           mov dword ptr [ebp-00Ch], ecx
-           mov ecx, dword ptr [ebp-00Ch]
-           add ecx, 000000004h
-           call l004ABE5C
-           mov eax, dword ptr [ebp-00Ch]
-           add eax, 000000044h
-           mov dword ptr [ebp-004h], eax
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+004h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+008h], 000000000h
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+00Ch], 000000001h
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+010h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx], offset g005BE4D4
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax], offset g005BE4D0
-           mov ecx, dword ptr [ebp-00Ch]
-           mov dword ptr [ecx+058h], 000000000h
-           mov edx, dword ptr [ebp-00Ch]
-           mov dword ptr [edx+060h], 000000000h
-           mov eax, dword ptr [ebp-00Ch]
-           mov dword ptr [eax+064h], 000000000h
-           mov ecx, dword ptr [ebp-00Ch]
-           mov dword ptr [ecx], offset g005BE4A8
-           mov edx, dword ptr [ebp-00Ch]
-           add edx, 000000068h
-           mov dword ptr [ebp-008h], edx
-           mov eax, dword ptr [ebp-008h]
-           mov dword ptr [eax], 000000000h
-           mov ecx, dword ptr [ebp-008h]
-           mov dword ptr [ecx+008h], 000000000h
-           mov edx, dword ptr [ebp-00Ch]
-           mov eax, dword ptr [ebp+008h]
-           mov dword ptr [edx+074h], eax
-           mov ecx, dword ptr [ebp-00Ch]
-           add ecx, 000000078h
-           call l00404BE0
-           mov ecx, dword ptr [ebp-00Ch]
-           mov dword ptr [ecx], offset g005BE480
-           mov edx, dword ptr [ebp-00Ch]
-           mov dword ptr [edx+0000000F8h], 000000000h
-           mov dword ptr [edx+0000000FCh], 03FF00000h
-           mov eax, dword ptr [ebp-00Ch]
-           fld qword ptr [g005BD730]
-           fdiv qword ptr [eax+0000000F8h]
-           mov ecx, dword ptr [ebp-00Ch]
-           fstp qword ptr [ecx+000000100h]
-           mov eax, dword ptr [ebp-00Ch]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l004ACF58 ENDP
+           call l004ACF58; Implemented in c++ code
 ;
 ;* Call:
 ; 004B452A 
 ;
-l004AD047 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000000Ch
-           mov dword ptr [ebp-00Ch], ecx
-           mov eax, dword ptr [ebp-00Ch]
-           mov dword ptr [eax], offset g005BE480
-           mov ecx, dword ptr [ebp-00Ch]
-           mov dword ptr [ecx+070h], 000000000h
-           mov edx, dword ptr [ebp-00Ch]
-           mov eax, dword ptr [edx+074h]
-           push eax
-           mov ecx, dword ptr [__imp_?B_resource_manager@@3VB_ResourceManager@@A]; [BBLibc.?B_resource_manager@@3VB_ResourceManager@@A].
-           call [__imp_?FreeResource@B_ResourceManager@@QAEXPAVB_Resource@@@Z]; [BBLibc.?FreeResource@B_ResourceManager@@QAEXPAVB_Resource@@@Z].
-           mov ecx, dword ptr [ebp-00Ch]
-           mov dword ptr [ecx], offset g005BE4A8
-           mov edx, dword ptr [ebp-00Ch]
-           add edx, 000000044h
-           mov dword ptr [ebp-008h], edx
-           mov eax, dword ptr [ebp-008h]
-           mov dword ptr [eax], offset g005BE4D4
-           mov ecx, dword ptr [ebp-008h]
-           cmp dword ptr [ecx+010h], 000000000h
-           je l004AD0D8
-           mov edx, dword ptr [ebp-008h]
-           cmp dword ptr [edx+010h], 000000000h
-           jne l004AD0A5
-           jmp l004AD0D8
-;
-;* Jump:
-; 004AD0A1(C) 
-;
-l004AD0A5: mov eax, dword ptr [ebp-008h]
-           mov ecx, dword ptr [eax+004h]
-           mov dword ptr [ebp-004h], ecx
-           mov edx, dword ptr [ebp-004h]
-           push edx
-           call l005BBD3D
-           add esp, 000000004h
-           mov eax, dword ptr [ebp-008h]
-           mov dword ptr [eax+004h], 000000000h
-           mov ecx, dword ptr [ebp-008h]
-           mov dword ptr [ecx+008h], 000000000h
-           mov edx, dword ptr [ebp-008h]
-           mov dword ptr [edx+010h], 000000000h
-;
-;* Jump:
-; 004AD098(C), 004AD0A3(U) 
-;
-l004AD0D8: mov ecx, dword ptr [ebp-00Ch]
-           add ecx, 000000004h
-           call l004ABF07
-           mov esp, ebp
-           pop ebp
-           ret
-l004AD047 ENDP
+           call l004AD047; Implemented in c++ code
 ;
 ;* Call:
 ; 004AFC8B, 004AFEFB, 004B03B5, 004B13F6, 004B34DB, 004B36CD, 004B3982, 004B3C17, 
@@ -249583,106 +249382,12 @@ l004B482F ENDP
 ;* Call:
 ; 004D966A, 004D96C4, 004DA656, 004DA6B0, 00572C7E 
 ;
-l004B483E PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000008h
-           mov dword ptr [ebp-008h], ecx
-           mov ecx, dword ptr [ebp-008h]
-           add ecx, 000000004h
-           call l004ABE5C
-           mov eax, dword ptr [ebp-008h]
-           add eax, 000000044h
-           mov dword ptr [ebp-004h], eax
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+004h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx+008h], 000000000h
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax+00Ch], 000000001h
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+010h], 000000000h
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx], offset g005BE4D4
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax], offset g005BE4D0
-           mov ecx, dword ptr [ebp-008h]
-           mov dword ptr [ecx+058h], 000000000h
-           mov edx, dword ptr [ebp-008h]
-           mov dword ptr [edx+060h], 000000000h
-           mov eax, dword ptr [ebp-008h]
-           mov dword ptr [eax+064h], 000000000h
-           mov ecx, dword ptr [ebp-008h]
-           mov dword ptr [ecx], offset g005BE4A8
-           mov ecx, dword ptr [ebp-008h]
-           add ecx, 000000068h
-           call l00404BE0
-           mov ecx, dword ptr [ebp-008h]
-           add ecx, 0000000E8h
-           call l00401548
-           mov edx, dword ptr [ebp-008h]
-           mov eax, dword ptr [ebp+008h]
-           mov dword ptr [edx+000000118h], eax
-           mov ecx, dword ptr [ebp-008h]
-           mov dword ptr [ecx], offset g005BE4D8
-           mov eax, dword ptr [ebp-008h]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l004B483E ENDP
+           call l004B483E; Implemented in c++ code
 ;
 ;* Call:
 ; 004B849A 
 ;
-l004B48F3 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000000Ch
-           mov dword ptr [ebp-00Ch], ecx
-           mov eax, dword ptr [ebp-00Ch]
-           mov dword ptr [eax], offset g005BE4D8
-           mov ecx, dword ptr [ebp-00Ch]
-           mov dword ptr [ecx], offset g005BE4A8
-           mov edx, dword ptr [ebp-00Ch]
-           add edx, 000000044h
-           mov dword ptr [ebp-008h], edx
-           mov eax, dword ptr [ebp-008h]
-           mov dword ptr [eax], offset g005BE4D4
-           mov ecx, dword ptr [ebp-008h]
-           cmp dword ptr [ecx+010h], 000000000h
-           je l004B4967
-           mov edx, dword ptr [ebp-008h]
-           cmp dword ptr [edx+010h], 000000000h
-           jne l004B4934
-           jmp l004B4967
-;
-;* Jump:
-; 004B4930(C) 
-;
-l004B4934: mov eax, dword ptr [ebp-008h]
-           mov ecx, dword ptr [eax+004h]
-           mov dword ptr [ebp-004h], ecx
-           mov edx, dword ptr [ebp-004h]
-           push edx
-           call l005BBD3D
-           add esp, 000000004h
-           mov eax, dword ptr [ebp-008h]
-           mov dword ptr [eax+004h], 000000000h
-           mov ecx, dword ptr [ebp-008h]
-           mov dword ptr [ecx+008h], 000000000h
-           mov edx, dword ptr [ebp-008h]
-           mov dword ptr [edx+010h], 000000000h
-;
-;* Jump:
-; 004B4927(C), 004B4932(U) 
-;
-l004B4967: mov ecx, dword ptr [ebp-00Ch]
-           add ecx, 000000004h
-           call l004ABF07
-           mov esp, ebp
-           pop ebp
-           ret
-l004B48F3 ENDP
+           call l004B48F3; Implemented in c++ code
 ;
 ;* Call:
 ; 00531C5C 

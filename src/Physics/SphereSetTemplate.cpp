@@ -15,11 +15,12 @@
 * VC++ mangling:          ??0B_SphereSetTemplate@@QAE@PAV?$array_t@VB_Sphere@@@@@Z
 */
 
-#ifndef BLD_NATIVE
 B_SphereSetTemplate::B_SphereSetTemplate(array_t<B_Sphere> *spheres)
+:
+    spheres(spheres)
 {
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
@@ -27,11 +28,10 @@ B_SphereSetTemplate::B_SphereSetTemplate(array_t<B_Sphere> *spheres)
 * VC++ mangling:          ??1B_SphereSetTemplate@@UAE@XZ
 */
 
-#ifndef BLD_NATIVE
 B_SphereSetTemplate::~B_SphereSetTemplate()
 {
 }
-#endif
+
 
 /*
 ................................................................................

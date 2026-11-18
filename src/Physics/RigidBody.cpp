@@ -14,17 +14,17 @@ B_RigidBody::B_RigidBody(B_PhysicsTemplate *solid)
 }
 #endif
 
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004AB1E0
 * VC++ mangling:          ??1B_RigidBody@@UAE@XZ
 */
 
-#ifndef BLD_NATIVE
 B_RigidBody::~B_RigidBody()
 {
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe

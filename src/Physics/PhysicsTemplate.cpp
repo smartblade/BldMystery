@@ -1,6 +1,8 @@
 #include <Physics/PhysicsTemplate.h>
 #include <Physics/PhysicsState.h>
 #include <AnalyticGeometry/BoundingBox.h>
+#include <BBLibc/ObjDscr.h>
+#include <BBLibc/ResourceManager.h>
 
 
 /*
@@ -17,11 +19,17 @@
 * VC++ mangling:          ??0B_PhysicsTemplate@@QAE@ABVB_Name@@@Z
 */
 
-#ifndef BLD_NATIVE
 B_PhysicsTemplate::B_PhysicsTemplate(const B_Name &name)
 {
+    this->resource = static_cast<B_ObjDscr *>(B_resource_manager.GetResource(1, name));
+    if (this->resource == nullptr)
+    {
+        this->resource = static_cast<B_ObjDscr *>(B_resource_manager.GetResource(5, name));
+    }
+    this->scale = 1.0;
+    this->invScale = 1.0 / this->scale;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
@@ -29,11 +37,14 @@ B_PhysicsTemplate::B_PhysicsTemplate(const B_Name &name)
 * VC++ mangling:          ??0B_PhysicsTemplate@@QAE@PAVB_ObjDscr@@@Z
 */
 
-#ifndef BLD_NATIVE
 B_PhysicsTemplate::B_PhysicsTemplate(B_ObjDscr *resource)
+:
+    resource(resource)
 {
+    this->scale = 1.0;
+    this->invScale = 1.0 / this->scale;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
@@ -41,11 +52,12 @@ B_PhysicsTemplate::B_PhysicsTemplate(B_ObjDscr *resource)
 * VC++ mangling:          ??1B_PhysicsTemplate@@UAE@XZ
 */
 
-#ifndef BLD_NATIVE
 B_PhysicsTemplate::~B_PhysicsTemplate()
 {
+    this->stateCache.state = nullptr;
+    B_resource_manager.FreeResource(this->resource);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
