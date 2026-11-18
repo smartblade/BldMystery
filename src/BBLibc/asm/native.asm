@@ -77143,32 +77143,7 @@ l100317C9 PROC
            ret 00004h
 l100317C9 ENDP
 ;
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           fld qword ptr [eax]
-           fsub qword ptr [ecx]
-           mov edx, dword ptr [ebp-004h]
-           fstp qword ptr [edx]
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           fld qword ptr [eax+008h]
-           fsub qword ptr [ecx+008h]
-           mov edx, dword ptr [ebp-004h]
-           fstp qword ptr [edx+008h]
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           fld qword ptr [eax+010h]
-           fsub qword ptr [ecx+010h]
-           mov edx, dword ptr [ebp-004h]
-           fstp qword ptr [edx+010h]
-           mov eax, dword ptr [ebp-004h]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
+           call l1003180C; Implemented in c++ code
 ;
 ;* Call:
 ; 1002A85D, 1002A872, 10031173, 100311E9, 1003126F, 100312E7, 10031312, 1003136D, 
@@ -77574,25 +77549,7 @@ l10031BC8: mov eax, dword ptr [ebp-008h]
            pop ebp
            ret 00004h
 ;
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           fld qword ptr [ebp+008h]
-           call l10041678; [BICRT._CIsin].
-           fchs
-           mov eax, dword ptr [ebp-004h]
-           fstp qword ptr [eax]
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx+008h], 000000000h
-           mov dword ptr [ecx+00Ch], 000000000h
-           fld qword ptr [ebp+008h]
-           call l1004167E; [BICRT._CIcos].
-           mov edx, dword ptr [ebp-004h]
-           fstp qword ptr [edx+010h]
-           mov esp, ebp
-           pop ebp
-           ret 00008h
+           call l10031BD1; Implemented in c++ code
 ;
            push ebp
            mov ebp, esp
