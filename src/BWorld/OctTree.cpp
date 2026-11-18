@@ -1,6 +1,5 @@
 #include <BWorld/OctTree.h>
 #include <AnalyticGeometry/BoundingBox.h>
-#include <BBLibc/BBLibc.h>
 #include <BBLibc/MessageManager.h>
 #include <BBLibc/Vararg.h>
 #include "bld_misc_funcs.h"
