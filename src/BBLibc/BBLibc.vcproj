@@ -301,10 +301,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\BBLibc.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\BitMap.cpp"
 				>
 			</File>
@@ -378,6 +374,10 @@
 			</File>
 			<File
 				RelativePath=".\Resource.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Win32Error.cpp"
 				>
 			</File>
 			<Filter
