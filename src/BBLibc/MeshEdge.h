@@ -14,7 +14,7 @@ class LIB_EXP B_MeshEdge
 {
 public:
     B_MeshEdge();
-    B_MeshEdge(unsigned int, unsigned int, unsigned int);
+    B_MeshEdge(unsigned int a, unsigned int b, unsigned int node);
 
     /*
     * Module:                 BBLibc.dll
@@ -29,7 +29,7 @@ public:
 #else
     B_MeshEdge &operator=(const B_MeshEdge &);
 #endif
-    unsigned int operator==(const B_MeshEdge &) const;
+    unsigned int operator==(const B_MeshEdge &other) const;
 
     unsigned int node;
     unsigned int vertexA;

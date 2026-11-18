@@ -72,13 +72,13 @@ public:
     LIB_EXP unsigned int LoadPacked(B_IDataFile &arg_1);
     LIB_EXP void SetUpNormals();
     LIB_EXP void SetUpInertialT();
-    LIB_EXP int GetVtxNode(unsigned int);
+    LIB_EXP int GetVtxNode(unsigned int vertex);
     LIB_EXP void SetUpEdges();
     LIB_EXP void Draw(
         B_3DRasterDevice *raster, float x1, float y1, float x2, float y2,
         float scale, int i_unknown);
     LIB_EXP void SetUpBSP();
-    LIB_EXP unsigned char EdgeFaceGrp(unsigned int);
+    LIB_EXP unsigned char EdgeFaceGrp(unsigned int edge);
 
     char unknownFields00C[0x18];
     B_ObjVertexArray vertices;
