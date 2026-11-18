@@ -337,10 +337,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\MeshEdge.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Name.cpp"
 				>
 			</File>
