@@ -59,7 +59,7 @@ public:
     void EscribeArchivoRAW(const char *) const;
     void ChangeRGBOrder();
     unsigned int GetPixelAt(int arg_1, int arg_2, B_Color &arg_3) const;
-    //B_BitMap24 ReadFromJPEG(const char*);
+    int ReadFromJPEG(const char *arg_1);
     int SaveToJPEG(const char *, int) const;
 
     /*
@@ -112,20 +112,6 @@ public:
     * VC++ mangling:          ??_FB_BitMap24@@QAEXXZ
     */
 
-
-    /*
-    * Module:                 BBLibc.dll
-    * Entry point:            0x10029510
-    * VC++ mangling:          ?ReadFromJPEG@B_BitMap24@@QAEHPBD@Z
-    */
-#ifndef BLD_NATIVE
-    int ReadFromJPEG(const char *arg_1)
-    {
-        return 0;
-    }
-#else
-    int ReadFromJPEG(const char *arg_1);
-#endif
     unsigned int dimension1;
     unsigned int dimension2;
     void *data;

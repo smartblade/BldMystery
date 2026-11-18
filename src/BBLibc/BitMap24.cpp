@@ -192,20 +192,3 @@ unsigned int B_BitMap24::GetPixelAt(int arg_1, int arg_2, B_Color &arg_3) const
 }
 #endif
 
-
-//B_BitMap24 B_BitMap24::ReadFromJPEG(const char*)
-//{
-//}
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10029700
-* VC++ mangling:          ?SaveToJPEG@B_BitMap24@@QBEHPBDH@Z
-*/
-#ifndef BLD_NATIVE
-int B_BitMap24::SaveToJPEG(const char *, int) const
-{
-    return 0;
-}
-#endif
