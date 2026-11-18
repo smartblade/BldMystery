@@ -12,6 +12,30 @@ public _gbl_num_polygon_vertices
 g005DF8B0 equ _gbl_num_polygon_vertices
 public _yDirection
 g005DF908 equ _yDirection
+public _gbl_video_event_code
+g005DFA58 equ _gbl_video_event_code
+public _gbl_video_rect
+g005DFA60 equ _gbl_video_rect
+public _gbl_video_owner_window
+g005DFA70 equ _gbl_video_owner_window
+public _gbl_video_result
+g005DFAF4 equ _gbl_video_result
+public _gbl_video_event_param2
+g005DFAF8 equ _gbl_video_event_param2
+public _gbl_video_event_param1
+g005DFAFC equ _gbl_video_event_param1
+public _gbl_video_unknown_interface
+g005DFB0C equ _gbl_video_unknown_interface
+public _gbl_video_graph_builder
+g005DFB10 equ _gbl_video_graph_builder
+public _gbl_video_media_control
+g005DFB14 equ _gbl_video_media_control
+public _gbl_video_media_event
+g005DFB18 equ _gbl_video_media_event
+public _gbl_video_window
+g005DFB1C equ _gbl_video_window
+public _gbl_video_finished
+g005DFB20 equ _gbl_video_finished
 public _unused_sound_ptr
 g005DFB3C equ _unused_sound_ptr
 public _gbl_sound_device_id

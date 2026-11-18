@@ -100,6 +100,12 @@ externdef _ShowInputDialog: near
 l0040CF10 equ _ShowInputDialog
 externdef _ShowStartupDialog: near
 l0040E8E6 equ _ShowStartupDialog
+externdef ?StartVideo@@YAXPBD@Z: near
+l0040E97A equ ?StartVideo@@YAXPBD@Z
+externdef ?VideoWindowProcedure@@YGJPAUHWND__@@IIJ@Z: near
+l0040EAE5 equ ?VideoWindowProcedure@@YGJPAUHWND__@@IIJ@Z
+externdef ?PlayVideo@@YAXPAUHWND__@@PBD@Z: near
+l0040EE2B equ ?PlayVideo@@YAXPAUHWND__@@PBD@Z
 externdef ??0B_WinApp@@QAE@PAUHINSTANCE__@@HPADP6GJPAUHWND__@@IIJ@Z@Z: near
 l0040F040 equ ??0B_WinApp@@QAE@PAUHINSTANCE__@@HPADP6GJPAUHWND__@@IIJ@Z@Z
 externdef ??1B_WinApp@@UAE@XZ: near
