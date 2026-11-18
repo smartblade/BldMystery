@@ -238505,71 +238505,7 @@ l004AD60F: pop edi
            ret
 l004AD0E7 ENDP
 ;
-l004AD615 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000010h
-           push esi
-           push edi
-           mov dword ptr [ebp-00Ch], ecx
-           mov eax, dword ptr [ebp-00Ch]
-           mov dword ptr [eax+070h], 000000000h
-           mov esi, dword ptr [ebp+008h]
-           mov edi, dword ptr [ebp-00Ch]
-           add edi, 000000078h
-           mov ecx, 000000020h
-           rep movsd
-           mov ecx, dword ptr [ebp-00Ch]
-           mov edx, dword ptr [ecx+0000000F8h]
-           mov dword ptr [ebp-008h], edx
-           mov eax, dword ptr [ecx+0000000FCh]
-           mov dword ptr [ebp-004h], eax
-           mov ecx, dword ptr [ebp-00Ch]
-           mov edx, dword ptr [ebp-00Ch]
-           fld qword ptr [ecx+078h]
-           fmul qword ptr [edx+078h]
-           mov eax, dword ptr [ebp-00Ch]
-           mov ecx, dword ptr [ebp-00Ch]
-           fld qword ptr [eax+000000080h]
-           fmul qword ptr [ecx+000000080h]
-           faddp st(01h), st(00h)
-           mov edx, dword ptr [ebp-00Ch]
-           mov eax, dword ptr [ebp-00Ch]
-           fld qword ptr [edx+000000088h]
-           fmul qword ptr [eax+000000088h]
-           faddp st(01h), st(00h)
-           call l005BC1E2; [BICRT._CIsqrt].
-           fst dword ptr [ebp-010h]
-           mov ecx, dword ptr [ebp-00Ch]
-           fstp qword ptr [ecx+0000000F8h]
-           mov edx, dword ptr [ebp-00Ch]
-           fld qword ptr [edx+0000000F8h]
-           fsub qword ptr [ebp-008h]
-           fabs
-           fcomp qword ptr [g005BD758]
-           fnstsw ax
-           test ah, 001h
-           je l004AD6C4
-           mov eax, dword ptr [ebp-00Ch]
-           mov ecx, dword ptr [ebp-008h]
-           mov dword ptr [eax+0000000F8h], ecx
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [eax+0000000FCh], edx
-;
-;* Jump:
-; 004AD6AD(C) 
-;
-l004AD6C4: mov eax, dword ptr [ebp-00Ch]
-           fld qword ptr [g005BD730]
-           fdiv qword ptr [eax+0000000F8h]
-           mov ecx, dword ptr [ebp-00Ch]
-           fstp qword ptr [ecx+000000100h]
-           pop edi
-           pop esi
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l004AD615 ENDP
+           call l004AD615; Implemented in c++ code
 ;
 ;* Call:
 ; 004B1668 

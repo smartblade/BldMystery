@@ -3,6 +3,7 @@
 #include <AnalyticGeometry/BoundingBox.h>
 #include <BBLibc/ObjDscr.h>
 #include <BBLibc/ResourceManager.h>
+#include <math.h>
 
 
 /*
@@ -76,11 +77,24 @@ void B_PhysicsTemplate::Update()
 * Entry point:            0x004AD615
 * VC++ mangling:          ?SetPose@B_PhysicsTemplate@@UAEXPBVB_Matrix@@@Z
 */
-#ifndef BLD_NATIVE
+
 void B_PhysicsTemplate::SetPose(const B_Matrix *pose)
 {
+    this->stateCache.state = nullptr;
+    this->pose = *pose;
+    double previousScale = this->scale;
+    this->scale = (float)sqrt(
+        this->pose.m[0][0] * this->pose.m[0][0] +
+            this->pose.m[0][1] * this->pose.m[0][1] +
+            this->pose.m[0][2] * this->pose.m[0][2]
+    );
+    if (fabs(this->scale - previousScale) < 0.001)
+    {
+        this->scale = previousScale;
+    }
+    this->invScale = 1.0 / this->scale;
 }
-#endif
+
 
 /*
 ................................................................................
