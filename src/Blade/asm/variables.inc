@@ -52,6 +52,8 @@ public _gbl_events
 g0070A358 equ _gbl_events
 public _gbl_particle_types
 g00736158 equ _gbl_particle_types
+public _gbl_contact_point_pool
+g007362C8 equ _gbl_contact_point_pool
 public _gbl_sound_device
 g007C8ED0 equ _gbl_sound_device
 public _no_sound

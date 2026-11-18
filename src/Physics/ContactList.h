@@ -24,6 +24,19 @@ public:
 };
 
 
+class B_ContactPointPool : public B_Array<B_ContactPoint>
+{
+public:
+    B_ContactPointPool()
+    :
+        freeList(nullptr)
+    {
+    }
+
+    B_ContactPoint *freeList;
+};
+
+
 class B_ContactList
 {
 public:
@@ -39,6 +52,12 @@ public:
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+/*
+* Module:                 Blade.exe
+* Data address:           0x007362C8
+*/
+extern B_ContactPointPool gbl_contact_point_pool;
 
 extern int newExclusionGroupId();
 
