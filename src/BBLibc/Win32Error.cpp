@@ -1,5 +1,5 @@
 #include "MessageManager.h"
-#include "BBLibc.h"
+#include "Win32Error.h"
 #include "ObjDscr.h"
 #include <crtdbg.h>
 #include <direct.h>

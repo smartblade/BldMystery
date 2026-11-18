@@ -507,6 +507,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\PythonCall.h"
+				>
+			</File>
+			<File
 				RelativePath=".\RDataLight.h"
 				>
 			</File>
@@ -524,6 +528,10 @@
 			</File>
 			<File
 				RelativePath=".\Vararg.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Win32Error.h"
 				>
 			</File>
 		</Filter>
