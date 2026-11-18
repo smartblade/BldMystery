@@ -6,6 +6,8 @@ public _clientRectWidth
 g005CCEBC equ _clientRectWidth
 public _clientRectHeight
 g005CCEC0 equ _clientRectHeight
+public _gbl_last_exclusion_group_id
+g005D1C44 equ _gbl_last_exclusion_group_id
 public _gbl_world_points
 g005DF898 equ _gbl_world_points
 public _gbl_num_polygon_vertices

@@ -237191,16 +237191,7 @@ l004AC327 ENDP
 ;* Call:
 ; 0050463F 
 ;
-l004AC6C2 PROC
-           push ebp
-           mov ebp, esp
-           mov eax, dword ptr [g005D1C44]
-           add eax, 000000001h
-           mov dword ptr [g005D1C44], eax
-           mov eax, dword ptr [g005D1C44]
-           pop ebp
-           ret
-l004AC6C2 ENDP
+           call l004AC6C2; Implemented in c++ code
 ;
            int 03h
            int 03h

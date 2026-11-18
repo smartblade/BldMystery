@@ -1,6 +1,13 @@
 #include <Physics/ContactList.h>
 
 
+/*
+* Module:                 Blade.exe
+* Data address:           0x005D1C44
+*/
+static int gbl_last_exclusion_group_id = 1;
+
+
 #ifndef BLD_NATIVE
 
 #ifdef __cplusplus
@@ -80,9 +87,8 @@ void B_ContactList::Clear()
 * Module:                 Blade.exe
 * Entry point:            0x004AC6C2
 */
-#ifndef BLD_NATIVE
+
 int newExclusionGroupId()
 {
-    return 0;
+    return ++gbl_last_exclusion_group_id;
 }
-#endif
