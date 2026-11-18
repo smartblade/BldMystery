@@ -51,22 +51,8 @@ const char *ShowInputDialog(HINSTANCE module, HWND window, const char *text)
 
 /* End of file:           0x0040CFF0 */
 
+/* File:                  App/Windows/Launcher.cpp */
 /* Begin of file:         0x0040CFF0 */
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x0040E8E6
-*/
-#ifndef BLD_NATIVE
-int ShowStartupDialog(
-    HMODULE module, HWND window, B_YSoundDev *sound, B_Name *rasterName,
-    bool showDialog)
-{
-    return false;
-}
-#endif
-
 /* End of file:           0x0040F040 */
 
 /* File:                  WinApp.cpp */

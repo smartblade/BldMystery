@@ -402,6 +402,14 @@
 					Name="Windows"
 					>
 					<File
+						RelativePath="..\App\Windows\Launcher.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\App\Windows\Launcher.h"
+						>
+					</File>
+					<File
 						RelativePath="..\App\Windows\WinApp.cpp"
 						>
 					</File>

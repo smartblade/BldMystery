@@ -15,6 +15,7 @@
 #include <NetMod/gamenet.h>
 #include <NetMod/libnet.h>
 #include "bld_misc_funcs.h"
+#include <App/Windows/Launcher.h>
 #include <fcntl.h>
 
 
