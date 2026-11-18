@@ -317,16 +317,3 @@ void B_ResourceManager::AddBodLink(const char *c, int i, const char *pc, int i1)
 {
 }
 #endif
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10006830
-* VC++ mangling:          ??4B_ResourceManager@@QAEAAV0@ABV0@@Z
-*/
-#ifndef BLD_NATIVE
-B_ResourceManager &B_ResourceManager::operator =(const B_ResourceManager &that)
-{
-    return *this;
-}
-#endif

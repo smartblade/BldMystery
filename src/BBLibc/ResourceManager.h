@@ -50,7 +50,20 @@ public:
     void FreeResource(B_Resource *resource);
     unsigned int NResources(unsigned short);
     void AddBodLink(const char *c, int i, const char *pc, int i1);
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10006830
+    * VC++ mangling:          ??4B_ResourceManager@@QAEAAV0@ABV0@@Z
+    */
+#ifndef BLD_NATIVE
+    B_ResourceManager &operator =(const B_ResourceManager &that)
+    {
+        return *this;
+    }
+#else
     B_ResourceManager &operator =(const B_ResourceManager &that);
+#endif
 
 private:
     B_Resource **resources_;

@@ -20,8 +20,31 @@ class B_ODataFile;
 class LIB_EXP B_BitMap24
 {
 public:
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10006CB0
+    * VC++ mangling:          ??0B_BitMap24@@QAE@HH@Z
+    */
+#ifndef BLD_NATIVE
+    B_BitMap24(int width = 0, int height = 0)
+    {
+    }
+#else
     B_BitMap24(int width = 0, int height = 0);
+#endif
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10006E70
+    * VC++ mangling:          ??1B_BitMap24@@UAE@XZ
+    */
+#ifndef BLD_NATIVE
+    virtual ~B_BitMap24()
+    {
+    }
+#else
     virtual ~B_BitMap24();
+#endif
     B_BitMap24(const B_BitMap24 &that);
     static void ClearBitMap24Data();
     B_BitMap24(const B_BitMap &arg_1);

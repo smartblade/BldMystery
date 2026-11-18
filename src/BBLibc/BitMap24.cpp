@@ -14,32 +14,6 @@ B_Array<B_BitMap24> B_BitMap24::BitMap24DataList(1);
 
 /*
 * Module:                 BBLibc.dll
-* Entry point:            0x10006CB0
-* VC++ mangling:          ??0B_BitMap24@@QAE@HH@Z
-*/
-#ifndef BLD_NATIVE
-B_BitMap24::B_BitMap24(int width, int height)
-{
-
-}
-#endif
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10006E70
-* VC++ mangling:          ??1B_BitMap24@@UAE@XZ
-*/
-#ifndef BLD_NATIVE
-B_BitMap24::~B_BitMap24()
-{
-
-}
-#endif
-
-
-/*
-* Module:                 BBLibc.dll
 * Entry point:            0x10026AD5
 * VC++ mangling:          ??0B_BitMap24@@QAE@ABV0@@Z
 */

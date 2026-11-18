@@ -125,9 +125,47 @@ public:
 
     virtual void MakeCons();
 
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x100068D0
+    * VC++ mangling:          ??HB_Color@@QBE?AV0@ABV0@@Z
+    */
+#ifndef BLD_NATIVE
+    B_Color operator +(B_Color const &color) const
+    {
+        return *this;
+    }
+#else
     B_Color operator +(B_Color const &color) const;
+#endif
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10006950
+    * VC++ mangling:          ??DB_Color@@QBE?AV0@M@Z
+    */
+#ifndef BLD_NATIVE
+    B_Color operator *(float coef) const
+    {
+        return B_Color(static_cast<byte>(r * coef), static_cast<byte>(g * coef), static_cast<byte>(b * coef));
+    }
+#else
     B_Color operator *(float coef) const;
+#endif
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x100069E0
+    * VC++ mangling:          ??KB_Color@@QBE?AV0@M@Z
+    */
+#ifndef BLD_NATIVE
+    B_Color operator /(float f)const
+    {
+        return *this;
+    }
+#else
     B_Color operator /(float f)const;
+#endif
     float DistanceTo(const B_Color &arg_1);
 
     byte r;
