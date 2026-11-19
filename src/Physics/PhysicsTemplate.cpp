@@ -22,10 +22,14 @@
 
 B_PhysicsTemplate::B_PhysicsTemplate(const B_Name &name)
 {
-    this->resource = static_cast<B_ObjDscr *>(B_resource_manager.GetResource(1, name));
+    this->resource = static_cast<B_ObjDscr *>(
+        B_resource_manager.GetResource(1, name)
+    );
     if (this->resource == nullptr)
     {
-        this->resource = static_cast<B_ObjDscr *>(B_resource_manager.GetResource(5, name));
+        this->resource = static_cast<B_ObjDscr *>(
+            B_resource_manager.GetResource(5, name)
+        );
     }
     this->scale = 1.0;
     this->invScale = 1.0 / this->scale;

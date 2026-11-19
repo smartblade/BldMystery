@@ -14,7 +14,6 @@ B_RigidBody::B_RigidBody(B_PhysicsTemplate *solid)
 }
 #endif
 
-
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004AB1E0
