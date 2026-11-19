@@ -640,6 +640,10 @@ externdef ??0B_RDataLight@@QAE@MMMM@Z: near
 l10040CBE equ ??0B_RDataLight@@QAE@MMMM@Z
 externdef ?Interp@B_RDataLight@@QAEXNAAV1@N0@Z: near
 l10040CE6 equ ?Interp@B_RDataLight@@QAEXNAAV1@N0@Z
+externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_ModelTriangleData@@@Z: near
+l10040D58 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_ModelTriangleData@@@Z
+externdef ??6@YAAAVB_ODataFile@@AAV0@ABVB_ModelTriangleData@@@Z: near
+l10040E61 equ ??6@YAAAVB_ODataFile@@AAV0@ABVB_ModelTriangleData@@@Z
 externdef ??0B_RItem@@QAE@K@Z: near
 l10040F39 equ ??0B_RItem@@QAE@K@Z
 externdef ??0B_RDataTriangle@@QAE@XZ: near

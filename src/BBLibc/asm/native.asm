@@ -11640,20 +11640,7 @@ l10007EF0 ENDP
 ;
 ;* Export: ??4B_RItem@@QAEAAV0@ABV0@@Z, 004D
 ;
-l10007F20 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [eax]
-           mov edx, dword ptr [ebp-004h]
-           mov dword ptr [edx], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l10007F20 ENDP
+           call l10007F20; Implemented in c++ code
 ;
            int 03h
            int 03h
@@ -11664,24 +11651,7 @@ l10007F20 ENDP
 ;
 ;* Export: ??4B_RDataTriangle@@QAEAAV0@ABV0@@Z, 004C
 ;
-l10007F40 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           push esi
-           push edi
-           mov dword ptr [ebp-004h], ecx
-           mov esi, dword ptr [ebp+008h]
-           mov ecx, 000000007h
-           mov edi, dword ptr [ebp-004h]
-           rep movsd
-           mov eax, dword ptr [ebp-004h]
-           pop edi
-           pop esi
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l10007F40 ENDP
+           call l10007F40; Implemented in c++ code
 ;
            int 03h
            int 03h
@@ -101656,236 +101626,23 @@ l10040CE6 ENDP
 ;* Call:
 ; 100323AE 
 ;
-l10040D58 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 00000000Ch
-           lea ecx, [ebp-008h]
-           call l10003300
-           lea eax, [ebp-008h]
-           push eax
-           mov ecx, dword ptr [ebp+008h]
-           push ecx
-           call l10003904
-           add esp, 000000008h
-           mov edx, dword ptr [__imp_?B_3D_raster_device@@3PAVB_3DRasterDevice@@A]; [Raster.?B_3D_raster_device@@3PAVB_3DRasterDevice@@A].
-           cmp dword ptr [edx], 000000000h
-           je l10040DA1
-           mov eax, dword ptr [ebp-008h]
-           push eax
-           mov ecx, dword ptr [__imp_?B_3D_raster_device@@3PAVB_3DRasterDevice@@A]; [Raster.?B_3D_raster_device@@3PAVB_3DRasterDevice@@A].
-           mov ecx, dword ptr [ecx]
-           mov edx, dword ptr [__imp_?B_3D_raster_device@@3PAVB_3DRasterDevice@@A]; [Raster.?B_3D_raster_device@@3PAVB_3DRasterDevice@@A].
-           mov eax, dword ptr [edx]
-           mov edx, dword ptr [eax]
-           call [edx+040h]
-           mov ecx, dword ptr [ebp+00Ch]
-           mov dword ptr [ecx], eax
-           jmp l10040DAA
-;
-;* Jump:
-; 10040D7F(C) 
-;
-l10040DA1: mov edx, dword ptr [ebp+00Ch]
-           mov dword ptr [edx], 0FFFFFFFFh
-;
-;* Jump:
-; 10040D9F(U) 
-;
-l10040DAA: mov eax, dword ptr [ebp+00Ch]
-           add eax, 000000018h
-           push eax
-           mov ecx, dword ptr [ebp+00Ch]
-           add ecx, 000000014h
-           push ecx
-           mov edx, dword ptr [ebp+00Ch]
-           add edx, 000000010h
-           push edx
-           mov eax, dword ptr [ebp+00Ch]
-           add eax, 00000000Ch
-           push eax
-           mov ecx, dword ptr [ebp+00Ch]
-           add ecx, 000000008h
-           push ecx
-           mov edx, dword ptr [ebp+00Ch]
-           add edx, 000000004h
-           push edx
-           mov eax, dword ptr [ebp+008h]
-           push eax
-           call l10001C05
-           add esp, 000000008h
-           push eax
-           call l10001C05
-           add esp, 000000008h
-           push eax
-           call l10001C05
-           add esp, 000000008h
-           push eax
-           call l10001C05
-           add esp, 000000008h
-           push eax
-           call l10001C05
-           add esp, 000000008h
-           push eax
-           call l10001C05
-           add esp, 000000008h
-           cmp dword ptr [g1004BF6C], 000000000h
-           jne l10040E4C
-           mov ecx, dword ptr [ebp+00Ch]
-           fld dword ptr [ecx+010h]
-           fmul qword ptr [g10042D20]
-           mov edx, dword ptr [ebp+00Ch]
-           fstp dword ptr [edx+010h]
-           mov eax, dword ptr [ebp+00Ch]
-           fld dword ptr [eax+014h]
-           fmul qword ptr [g10042D20]
-           mov ecx, dword ptr [ebp+00Ch]
-           fstp dword ptr [ecx+014h]
-           mov edx, dword ptr [ebp+00Ch]
-           fld dword ptr [edx+018h]
-           fmul qword ptr [g10042D20]
-           mov eax, dword ptr [ebp+00Ch]
-           fstp dword ptr [eax+018h]
-;
-;* Jump:
-; 10040E14(C) 
-;
-l10040E4C: mov ecx, dword ptr [ebp+008h]
-           mov dword ptr [ebp-00Ch], ecx
-           lea ecx, [ebp-008h]
-           call l100039BA
-           mov eax, dword ptr [ebp-00Ch]
-           mov esp, ebp
-           pop ebp
-           ret
-l10040D58 ENDP
+           call l10040D58; Implemented in c++ code
 ;
 ;* Call:
 ; 10032462 
 ;
-l10040E61 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000014h
-           mov eax, dword ptr [ebp+00Ch]
-           mov ecx, dword ptr [eax]
-           push ecx
-           mov edx, dword ptr [__imp_?B_3D_raster_device@@3PAVB_3DRasterDevice@@A]; [Raster.?B_3D_raster_device@@3PAVB_3DRasterDevice@@A].
-           mov ecx, dword ptr [edx]
-           mov eax, dword ptr [__imp_?B_3D_raster_device@@3PAVB_3DRasterDevice@@A]; [Raster.?B_3D_raster_device@@3PAVB_3DRasterDevice@@A].
-           mov edx, dword ptr [eax]
-           mov eax, dword ptr [edx]
-           call [eax+048h]
-           mov dword ptr [ebp-004h], eax
-           cmp dword ptr [ebp-004h], 000000000h
-           je l10040EAD
-           mov ecx, dword ptr [ebp-004h]
-           push ecx
-           lea ecx, [ebp-00Ch]
-           call l10003337
-           push eax
-           mov edx, dword ptr [ebp+008h]
-           push edx
-           call l1000398A
-           add esp, 000000008h
-           lea ecx, [ebp-00Ch]
-           call l100039BA
-           jmp l10040ECF
-;
-;* Jump:
-; 10040E88(C) 
-;
-l10040EAD: push offset g1004BF70
-           lea ecx, [ebp-014h]
-           call l10003337
-           push eax
-           mov eax, dword ptr [ebp+008h]
-           push eax
-           call l1000398A
-           add esp, 000000008h
-           lea ecx, [ebp-014h]
-           call l100039BA
-;
-;* Jump:
-; 10040EAB(U) 
-;
-l10040ECF: mov ecx, dword ptr [ebp+00Ch]
-           add ecx, 000000018h
-           push ecx
-           mov edx, dword ptr [ebp+00Ch]
-           add edx, 000000014h
-           push edx
-           mov eax, dword ptr [ebp+00Ch]
-           add eax, 000000010h
-           push eax
-           mov ecx, dword ptr [ebp+00Ch]
-           add ecx, 00000000Ch
-           push ecx
-           mov edx, dword ptr [ebp+00Ch]
-           add edx, 000000008h
-           push edx
-           mov eax, dword ptr [ebp+00Ch]
-           add eax, 000000004h
-           push eax
-           mov ecx, dword ptr [ebp+008h]
-           push ecx
-           call l10002034
-           add esp, 000000008h
-           push eax
-           call l10002034
-           add esp, 000000008h
-           push eax
-           call l10002034
-           add esp, 000000008h
-           push eax
-           call l10002034
-           add esp, 000000008h
-           push eax
-           call l10002034
-           add esp, 000000008h
-           push eax
-           call l10002034
-           add esp, 000000008h
-           mov eax, dword ptr [ebp+008h]
-           mov esp, ebp
-           pop ebp
-           ret
-l10040E61 ENDP
+           call l10040E61; Implemented in c++ code
 ;
 ;* Call:
 ; 10040F5D 
 ;
 ;* Export: ??0B_RItem@@QAE@K@Z, 0028
 ;
-l10040F39 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           mov dword ptr [eax], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l10040F39 ENDP
+           call l10040F39; Implemented in c++ code
 ;
 ;* Export: ??0B_RDataTriangle@@QAE@XZ, 0027
 ;
-l10040F51 PROC
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           push 000000001h
-           mov ecx, dword ptr [ebp-004h]
-           call l10040F39
-           mov eax, dword ptr [ebp-004h]
-           mov esp, ebp
-           pop ebp
-           ret
-l10040F51 ENDP
+           call l10040F51; Implemented in c++ code
 ;
 ;* Export: ??0B_ParticleGType@@QAE@ABVB_Name@@0KI@Z, 0024
 ;

@@ -81,8 +81,6 @@ EXPORTS
     ?GetDimension@B_BitMap24@@QBEXAAH0@Z=?GetDimension@B_BitMap24@@QBEXAAH0@Z
     ?GetBits@B_BitMap24@@QBEPBEXZ=?GetBits@B_BitMap24@@QBEPBEXZ
     ??4B_RDataLight@@QAEAAV0@ABV0@@Z=??4B_RDataLight@@QAEAAV0@ABV0@@Z
-    ??4B_RItem@@QAEAAV0@ABV0@@Z=??4B_RItem@@QAEAAV0@ABV0@@Z
-    ??4B_RDataTriangle@@QAEAAV0@ABV0@@Z=??4B_RDataTriangle@@QAEAAV0@ABV0@@Z
     ??4B_MeshEdge@@QAEAAV0@ABV0@@Z=??4B_MeshEdge@@QAEAAV0@ABV0@@Z
     ??0B_BitMap@@QAE@XZ=??0B_BitMap@@QAE@XZ
     ??0B_BitMap@@QAE@W4BitMapType@0@IIPBVB_Pal@@@Z=??0B_BitMap@@QAE@W4BitMapType@0@IIPBVB_Pal@@@Z
@@ -156,8 +154,6 @@ EXPORTS
     ??0B_RDataLight@@QAE@XZ=??0B_RDataLight@@QAE@XZ
     ??0B_RDataLight@@QAE@MMMM@Z=??0B_RDataLight@@QAE@MMMM@Z
     ?Interp@B_RDataLight@@QAEXNAAV1@N0@Z=?Interp@B_RDataLight@@QAEXNAAV1@N0@Z
-    ??0B_RItem@@QAE@K@Z=??0B_RItem@@QAE@K@Z
-    ??0B_RDataTriangle@@QAE@XZ=??0B_RDataTriangle@@QAE@XZ
     ??0B_ParticleGType@@QAE@ABVB_Name@@0KI@Z=??0B_ParticleGType@@QAE@ABVB_Name@@0KI@Z
     ??1B_ParticleGType@@UAE@XZ=??1B_ParticleGType@@UAE@XZ
     ??5@YAAAVB_IDataFile@@AAV0@AAVB_ParticleGType@@@Z=??5@YAAAVB_IDataFile@@AAV0@AAVB_ParticleGType@@@Z
