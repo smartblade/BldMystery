@@ -12,7 +12,11 @@
 #include <export.h>
 #undef BUILD_LIB
 
-#define B_RESOURCE_CID_OBJDSCR 1
+#define B_CID_OBJDSCR                  1
+#define B_CID_BITMAP                   2
+#define B_CID_BMP                      3
+#define B_CID_ALPHABMP                 4
+#define B_CID_AUTO_OBJDSCR             5
 
 class LIB_EXP B_Resource : public B_NamedObj
 {

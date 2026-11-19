@@ -67,7 +67,7 @@ unsigned int B_MeshEdge::operator==(const B_MeshEdge &other) const
 
 unsigned short B_ObjDscr::ClassId() const
 {
-    return B_RESOURCE_CID_OBJDSCR;
+    return B_CID_OBJDSCR;
 }
 
 

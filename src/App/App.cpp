@@ -848,7 +848,11 @@ void B_App::ReadLevel(const char * file_name)
     {
         if (!strcmp(itemKind, "Bitmaps"))
         {
-            B_resource_manager.LocateResourceIn(B_Name(itemName), NULL, 2);
+            B_resource_manager.LocateResourceIn(
+                B_Name(itemName),
+                NULL,
+                B_CID_BITMAP
+            );
         }
         else if (!strcmp(itemKind, "ChromaBitmaps"))
         {
@@ -856,7 +860,11 @@ void B_App::ReadLevel(const char * file_name)
         }
         else if (!strcmp(itemKind, "WorldDome"))
         {
-            B_resource_manager.LocateResourceIn(B_Name(itemName), NULL, 2);
+            B_resource_manager.LocateResourceIn(
+                B_Name(itemName),
+                NULL,
+                B_CID_BITMAP
+            );
             B_3D_raster_device->update_dome();
         }
         else if (!strcmp(itemKind, "World"))
