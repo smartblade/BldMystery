@@ -66,9 +66,6 @@ extern "C" {
 #endif
 
 extern const char *ShowInputDialog(HINSTANCE module, HWND window, const char *text);
-extern int ShowStartupDialog(
-    HMODULE module, HWND window, B_YSoundDev *sound, B_Name *rasterName,
-    bool showDialog);
 extern void JumpCB(const B_Name &action, float time, float, void *);
 extern light_t *read_light(B_IDataFile *file);
 extern void unknown_00497AE0();
