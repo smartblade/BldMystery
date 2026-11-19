@@ -552,7 +552,7 @@ PyObject *B_World::GetTriggerSectorData(const char *trigger_sector_name)
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x000043F98A
+* Entry point:            0x0043F98A
 * VC++ mangling:          ?LoadEntitiesData@B_World@@QAEHPBD@Z
 */
 

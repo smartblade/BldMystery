@@ -14,7 +14,6 @@ B_RigidBody::B_RigidBody(B_PhysicsTemplate *solid)
 }
 #endif
 
-
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004AB1E0
@@ -26,7 +25,6 @@ B_RigidBody::~B_RigidBody()
 {
 }
 #endif
-
 
 /*
 * Module:                 Blade.exe
@@ -117,7 +115,6 @@ void B_RigidBody::unknown_method020()
 }
 #endif
 
-
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004AB7D9
@@ -142,7 +139,6 @@ int B_RigidBody::unknown_method024(double time)
     return 0;
 }
 #endif
-
 
 /*
 * Module:                 Blade.exe
@@ -173,7 +169,6 @@ void B_RigidBody::CalculateImpulseDeltas(
 }
 #endif
 
-
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004ABC53
@@ -188,7 +183,6 @@ const B_Vector &B_RigidBody::ApplyImpulseAtPoint(
     return worldPoint;
 }
 #endif
-
 
 /*
 ................................................................................

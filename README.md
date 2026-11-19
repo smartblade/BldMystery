@@ -37,3 +37,23 @@ request to this repository. Provided implementation should be as close as
 possible to original binary.
 
 See [docs/code-style.md](docs/code-style.md) for the code style.
+
+### Line endings
+Text files are stored with LF line endings and are checked out with the line
+endings of the platform, see [.gitattributes](.gitattributes). `process_asm.py`
+writes the generated files (`src/*/asm/*`, `src/*/asmMain.asm`) with the line
+endings of the platform too, so with the default settings of git they aren't
+listed as modified after regeneration. If `core.eol` is set to `lf` in the
+global settings of git, use the line endings of the platform in this
+repository:
+```
+git config core.eol native
+```
+Then check out the generated files again, e.g. in Git Bash. Git doesn't
+rewrite files that it considers unchanged, so the tracked generated files are
+deleted first (check with `git diff HEAD -- "src/*/asm/*"` that they have no
+changes you need):
+```
+git ls-files -z -- "src/*/asm/*" "src/*/asmMain.asm" | xargs -0 rm --
+git checkout -- "src/*/asm/*" "src/*/asmMain.asm"
+```

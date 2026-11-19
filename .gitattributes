@@ -1,0 +1,9 @@
+# Text files are stored with LF line endings whatever the settings of git
+# of the committer are, and are checked out with the line endings of the
+# platform (core.eol, core.autocrlf)
+* text=auto
+
+*.bmp binary
+*.ico binary
+*.lib binary
+*.LIB binary

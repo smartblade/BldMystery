@@ -1,4 +1,62 @@
 #include "ObjDscr.h"
+#include "MeshEdge.h"
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100321F0
+* VC++ mangling:          ??0B_MeshEdge@@QAE@XZ
+*/
+
+B_MeshEdge::B_MeshEdge()
+{
+    this->vertexA = 0;
+    this->vertexB = 0;
+    this->sharp = 1;
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x1003221C
+* VC++ mangling:          ??0B_MeshEdge@@QAE@III@Z
+*/
+
+B_MeshEdge::B_MeshEdge(unsigned int a, unsigned int b, unsigned int node)
+{
+    this->node = node;
+    this->sharp = 1;
+    this->vertexA = min(a, b);
+    this->vertexB = max(a, b);
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x1003227E
+* VC++ mangling:          ??8B_MeshEdge@@QBEIABV0@@Z
+*/
+
+unsigned int B_MeshEdge::operator==(const B_MeshEdge &other) const
+{
+    return this->vertexA == other.vertexA && this->vertexB == other.vertexB;
+}
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
 
 
 /*
@@ -6,36 +64,36 @@
 * Entry point:            0x10032ABD
 * VC++ mangling:          ?ClassId@B_ObjDscr@@UBEGXZ
 */
-#ifndef BLD_NATIVE
+
 unsigned short B_ObjDscr::ClassId() const
 {
-    return 0;
+    return B_RESOURCE_CID_OBJDSCR;
 }
-#endif
+
 
 /*
 * Module:                 BBLibc.dll
 * Entry point:            0x10032ACC
 * VC++ mangling:          ?CheckSum@B_ObjDscr@@UBEKXZ
 */
-#ifndef BLD_NATIVE
+
 unsigned long B_ObjDscr::CheckSum() const
 {
     return 0;
 }
-#endif
+
 
 /*
 * Module:                 BBLibc.dll
 * Entry point:            0x10032AD9
 * VC++ mangling:          ?SerialSize@B_ObjDscr@@UBEIXZ
 */
-#ifndef BLD_NATIVE
+
 unsigned int B_ObjDscr::SerialSize() const
 {
     return 0;
 }
-#endif
+
 
 /*
 * Module:                 BBLibc.dll
@@ -45,10 +103,8 @@ unsigned int B_ObjDscr::SerialSize() const
 #ifndef BLD_NATIVE
 void B_ObjDscr::SetUpNormals()
 {
-
 }
 #endif
-
 
 /*
 * Module:                 BBLibc.dll
@@ -58,22 +114,37 @@ void B_ObjDscr::SetUpNormals()
 #ifndef BLD_NATIVE
 void B_ObjDscr::SetUpInertialT()
 {
-
 }
 #endif
-
 
 /*
 * Module:                 BBLibc.dll
 * Entry point:            0x100342BD
 * VC++ mangling:          ?GetVtxNode@B_ObjDscr@@QAEHI@Z
 */
-#ifndef BLD_NATIVE
-int B_ObjDscr::GetVtxNode(unsigned int)
+
+int B_ObjDscr::GetVtxNode(unsigned int vertex)
 {
-    return 0;
+    for (unsigned int i = 0; i < this->nodes.size; i++)
+    {
+        if (
+            vertex >= this->nodes[i]->firstVertex &&
+            vertex < this->nodes[i]->firstVertex + this->nodes[i]->vertexCount
+        )
+        {
+            return i;
+        }
+    }
+    return -1;
 }
-#endif
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
 
 
 /*
@@ -87,7 +158,6 @@ void B_ObjDscr::SetUpEdges()
 }
 #endif
 
-
 /*
 * Module:                 BBLibc.dll
 * Entry point:            0x10034D5A
@@ -98,9 +168,15 @@ void B_ObjDscr::Draw(
     B_3DRasterDevice *raster, float x1, float y1, float x2, float y2,
     float scale, int i_unknown)
 {
-
 }
 #endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
 
 
 /*
@@ -111,9 +187,15 @@ void B_ObjDscr::Draw(
 #ifndef BLD_NATIVE
 void B_ObjDscr::SetUpBSP()
 {
-
 }
 #endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
 
 
 /*
@@ -121,12 +203,25 @@ void B_ObjDscr::SetUpBSP()
 * Entry point:            0x10037E84
 * VC++ mangling:          ?EdgeFaceGrp@B_ObjDscr@@QAEEI@Z
 */
-#ifndef BLD_NATIVE
-unsigned char B_ObjDscr::EdgeFaceGrp(unsigned int)
+
+unsigned char B_ObjDscr::EdgeFaceGrp(unsigned int edge)
 {
+    B_ObjFace *face = this->faces.elements;
+    for (unsigned int i = 0; i < this->faces.size; i++)
+    {
+        if (
+            face->edges[0] == edge ||
+            face->edges[1] == edge ||
+            face->edges[2] == edge
+        )
+        {
+            return this->faceGroups.elements[i];
+        }
+        face++;
+    }
     return 0;
 }
-#endif
+
 
 /*
 * Module:                 BBLibc.dll

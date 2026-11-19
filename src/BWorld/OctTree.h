@@ -115,11 +115,11 @@ public:
     B_OctantNode();
 
     virtual int GetTypeID() override;
-    virtual ~B_OctantNode() override; 
+    virtual ~B_OctantNode() override;
 
     void CollectSectorsInBox(
-        const B_BoundingBox &bb, 
-        B_OctTreeSectorsList *outList, 
+        const B_BoundingBox &bb,
+        B_OctTreeSectorsList *outList,
         double halfSize) override;
 
     virtual void CollectSectorsAtPoint(
@@ -152,7 +152,7 @@ public:
     B_SectorListNode();
 
     virtual int GetTypeID() override;
-    virtual ~B_SectorListNode(); 
+    virtual ~B_SectorListNode();
     virtual void CollectSectorsInBox(const B_BoundingBox &, B_OctTreeSectorsList *, double) override;
     virtual void CollectSectorsAtPoint(const B_Vector &, B_OctTreeSectorsList *, double) override;
 };

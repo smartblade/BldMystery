@@ -95,7 +95,7 @@ int B_BipedData::GetRightFootPose(
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x04D7E72
+* Entry point:            0x004D7E72
 * VC++ mangling:          ?GetLeftFootPose@B_BipedData@@QAEHPAVB_BipedAction@@MPAVB_Vector@@1@Z
 */
 #ifndef BLD_NATIVE

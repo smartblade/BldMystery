@@ -23,7 +23,10 @@ public:
     B_BoundingBox();
     B_BoundingBox(const B_Vector &minCoords, const B_Vector &maxCoords);
 
-    void CollectIntersectingSectors(const B_Array<B_Sector> &, B_Array<B_Sector> &);
+    void CollectIntersectingSectors(
+        const B_Array<B_Sector> &sectors,
+        B_Array<B_Sector> &outBuffer
+    );
     unsigned int Intersects(const B_Sector *sector) const;
 
     B_Vector minCoords;

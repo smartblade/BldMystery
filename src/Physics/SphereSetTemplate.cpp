@@ -21,7 +21,6 @@ B_SphereSetTemplate::B_SphereSetTemplate(array_t<B_Sphere> *spheres)
 }
 #endif
 
-
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004B48F3
@@ -33,7 +32,6 @@ B_SphereSetTemplate::~B_SphereSetTemplate()
 {
 }
 #endif
-
 
 /*
 ................................................................................
@@ -58,7 +56,6 @@ int B_SphereSetTemplate::DetectCollisions(
     return 0;
 }
 #endif
-
 
 /*
 * Module:                 Blade.exe

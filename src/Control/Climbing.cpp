@@ -92,7 +92,7 @@ int FindEndPos(
 
 int TestClimb(B_Entity *entity, unsigned int eventIndex)
 {
-    B_PersonEntity *personEntity = static_cast<B_PersonEntity*>(entity);
+    B_PersonEntity *personEntity = static_cast<B_PersonEntity *>(entity);
     B_Vector position = personEntity->GetPose().TranslationVector();
     B_Vector direction;
     direction.SetAngle(personEntity->GetAngle());

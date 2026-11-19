@@ -21,6 +21,10 @@
 
 class B_ViewPose;
 
+#define B_SUBSCRIPTION_LIST_CID_LIST   0
+#define B_SUBSCRIPTION_LIST_CID_TIMER  1
+#define B_SUBSCRIPTION_LIST_CID_FRAME  2
+
 class B_SubscriptionList : public B_Array<B_Entity>, public B_NamedObj
 {
 public:
@@ -35,12 +39,12 @@ public:
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00441920
-* VC++ mangling:          ?GetType@B_SubscriptionList@@UAEHXZ
+* VC++ mangling:          ?ClassId@B_SubscriptionList@@UAEHXZ
 */
 
-    virtual int GetType()
+    virtual int ClassId()
     {
-        return 0;
+        return B_SUBSCRIPTION_LIST_CID_LIST;
     }
 };
 
@@ -53,12 +57,12 @@ public:
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00441A60
-* VC++ mangling:          ?GetType@B_TimerList@@UAEHXZ
+* VC++ mangling:          ?ClassId@B_TimerList@@UAEHXZ
 */
 
-    virtual int GetType()
+    virtual int ClassId()
     {
-        return 1;
+        return B_SUBSCRIPTION_LIST_CID_TIMER;
     }
 
     void SetPeriod(double period);
@@ -76,12 +80,12 @@ public:
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00441A70
-* VC++ mangling:          ?GetType@B_FrameList@@UAEHXZ
+* VC++ mangling:          ?ClassId@B_FrameList@@UAEHXZ
 */
 
-    virtual int GetType()
+    virtual int ClassId()
     {
-        return 2;
+        return B_SUBSCRIPTION_LIST_CID_FRAME;
     }
 
     void SetPeriod(int period);
