@@ -35,6 +35,19 @@ public:
 
     /*
     * Module:                 BBLibc.dll
+    * Entry point:            0x10006E20
+    * VC++ mangling:          ?Clear@B_BitMap24@@QAEXXZ
+    */
+#ifndef BLD_NATIVE
+    void Clear()
+    {
+    }
+#else
+    void Clear();
+#endif
+
+    /*
+    * Module:                 BBLibc.dll
     * Entry point:            0x10006E70
     * VC++ mangling:          ??1B_BitMap24@@UAE@XZ
     */
@@ -61,19 +74,6 @@ public:
     unsigned int GetPixelAt(int arg_1, int arg_2, B_Color &arg_3) const;
     int ReadFromJPEG(const char *arg_1);
     int SaveToJPEG(const char *, int) const;
-
-    /*
-    * Module:                 BBLibc.dll
-    * Entry point:            0x10006E20
-    * VC++ mangling:          ?Clear@B_BitMap24@@QAEXXZ
-    */
-#ifndef BLD_NATIVE
-    void Clear()
-    {
-    }
-#else
-    void Clear();
-#endif
 
     /*
     * Module:                 BBLibc.dll

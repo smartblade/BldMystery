@@ -33,6 +33,20 @@ public:
 
     /*
     * Module:                 BBLibc.dll
+    * Entry point:            0x10002EE0
+    * VC++ mangling:          ?GetList@B_ListElement@@QAEPAVB_List@@XZ
+    */
+#ifndef BLD_NATIVE
+    B_List *GetList()
+    {
+        return nullptr;
+    }
+#else
+    B_List *GetList();
+#endif
+
+    /*
+    * Module:                 BBLibc.dll
     * Entry point:            0x10002F00
     * VC++ mangling:          ?GetNext@B_ListElement@@QAEPAV1@XZ
     */
@@ -85,20 +99,6 @@ public:
     B_ListElement &operator =(const B_ListElement &other);
 #endif
 
-    /*
-    * Module:                 BBLibc.dll
-    * Entry point:            0x10002EE0
-    * VC++ mangling:          ?GetList@B_ListElement@@QAEPAVB_List@@XZ
-    */
-#ifndef BLD_NATIVE
-    B_List *GetList()
-    {
-        return nullptr;
-    }
-#else
-    B_List *GetList();
-#endif
-
     B_List *list;
     B_ListElement *next;
     B_ListElement *prev;
@@ -118,19 +118,6 @@ public:
     }
 #else
     B_List(B_ListElement *element);
-#endif
-
-    /*
-    * Module:                 BBLibc.dll
-    * Entry point:            0x10003160
-    * VC++ mangling:          ??0B_List@@QAE@ABV0@@Z
-    */
-#ifndef BLD_NATIVE
-    B_List(B_List const &)
-    {
-    }
-#else
-    B_List(B_List const &);
 #endif
 
     /*
@@ -184,6 +171,19 @@ public:
     }
 #else
     B_ListElement *GetLast();
+#endif
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10003160
+    * VC++ mangling:          ??0B_List@@QAE@ABV0@@Z
+    */
+#ifndef BLD_NATIVE
+    B_List(B_List const &)
+    {
+    }
+#else
+    B_List(B_List const &);
 #endif
 
     /*
