@@ -8,6 +8,179 @@
 
 
 /*
+* Module:                 Blade.exe
+* Entry point:            0x004394B0
+* VC++ mangling:          ??0B_SubscriptionList@@QAE@XZ
+*/
+
+B_SubscriptionList::B_SubscriptionList()
+:
+    B_Array<B_Entity>(16, false)
+{
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00439518
+* VC++ mangling:          ??0B_SubscriptionList@@QAE@ABVB_Name@@@Z
+*/
+
+B_SubscriptionList::B_SubscriptionList(const B_Name &name)
+:
+    B_Array<B_Entity>(16, false),
+    B_NamedObj(name)
+{
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00439586
+* VC++ mangling:          ??0B_TimerList@@QAE@ABVB_Name@@N@Z
+*/
+
+B_TimerList::B_TimerList(const B_Name &name, double period)
+:
+    B_SubscriptionList(name)
+{
+    if (period > 0.0)
+    {
+        this->period = period;
+    }
+    else
+    {
+        this->period = 1.0;
+    }
+    this->lastTime = 0.0;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004395F8
+* VC++ mangling:          ?SetPeriod@B_TimerList@@QAEXN@Z
+*/
+
+void B_TimerList::SetPeriod(double period)
+{
+    if (period > 0.0)
+    {
+        this->period = period;
+    }
+    else
+    {
+        this->period = 1.0;
+    }
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00439637
+* VC++ mangling:          ??0B_FrameList@@QAE@ABVB_Name@@H@Z
+*/
+
+B_FrameList::B_FrameList(const B_Name &name, int period)
+:
+    B_SubscriptionList(name)
+{
+    if (period >= 0)
+    {
+        this->period = period;
+    }
+    else
+    {
+        this->period = 0;
+    }
+    this->lastFrame = 0;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043968B
+* VC++ mangling:          ?SetPeriod@B_FrameList@@QAEXH@Z
+*/
+
+void B_FrameList::SetPeriod(int period)
+{
+    if (period >= 0)
+    {
+        this->period = period;
+    }
+    else
+    {
+        this->period = 0;
+    }
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004396B3
+* VC++ mangling:          ??0B_ScheduledFunc@@QAE@PBDNPAUPyObject@@1@Z
+*/
+
+B_ScheduledFunc::B_ScheduledFunc(
+    const char *name,
+    double time,
+    PyObject *func,
+    PyObject *args
+)
+:
+    B_NamedObj(name),
+    time(time),
+    func(func),
+    args(args),
+    nativeFunc(nullptr),
+    nativeArg(nullptr)
+{
+    Py_XINCREF(func);
+    Py_XINCREF(args);
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00439750
+* VC++ mangling:          ??0B_ScheduledFunc@@QAE@PBDNP6AHPAX@Z1@Z
+*/
+
+B_ScheduledFunc::B_ScheduledFunc(
+    const char *name,
+    double time,
+    ScheduledNativeFunc nativeFunc,
+    void *nativeArg
+)
+:
+    B_NamedObj(name),
+    time(time),
+    func(nullptr),
+    args(nullptr),
+    nativeFunc(nativeFunc),
+    nativeArg(nativeArg)
+{
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004397C3
+* VC++ mangling:          ??1B_ScheduledFunc@@UAE@XZ
+*/
+
+B_ScheduledFunc::~B_ScheduledFunc()
+{
+    if (this->func != nullptr)
+    {
+        Py_DECREF(this->func);
+        Py_DECREF(this->args);
+    }
+}
+
+
+/*
 ................................................................................
 ................................................................................
 ................................................................................
