@@ -435,9 +435,9 @@ double B_Vector::GetElevation() const
 
 int B_Vector::unknown_0040ABE7() const
 {
-    return (this->x > -1.0e-6 || this->x < 1.0e-6) &&
-        (this->y > -1.0e-6 || this->y < 1.0e-6) &&
-        (this->z > -1.0e-6 || this->z < 1.0e-6);
+    return (this->x > -1e-06 || this->x < 1e-06) &&
+        (this->y > -1e-06 || this->y < 1e-06) &&
+        (this->z > -1e-06 || this->z < 1e-06);
 }
 
 
