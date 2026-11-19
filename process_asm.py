@@ -556,6 +556,12 @@ class ImageMap:
     def itemsMap(self):
         return self._items
 
+    def labeledBlocks(self):
+        return {
+            addr for addr, item in self._items.items()
+            if isinstance(item, CodeBlock) and item.hasLabel()
+        }
+
     def unresolvedAddresses(self):
         return self._unresolvedAddresses
 
@@ -811,7 +817,13 @@ class ImageMap:
     def _isProcStartPattern(self, addr):
         return self.bytes(addr, addr + 3) == "558BEC"
 
-    def makeProcedures(self):
+    def makeProcedures(self, entryPoints=()):
+        """Make procedures of blocks with labels, blocks starting with
+        'push ebp; mov ebp, esp' and blocks at entry points of procedures
+        of sources, e.g. procedures not called in the module."""
+        for addr in sorted(entryPoints):
+            if addr not in self._items:
+                self.splitBlock(addr)
         shortJumpsFrom = {}
         for addr in sorted(self._items.keys()):
             item = self._items[addr]
@@ -823,7 +835,7 @@ class ImageMap:
         for addr in sorted(self._items.keys()):
             item = self._items.get(addr)
             if isinstance(item, CodeBlock):
-                isUsed = item.hasLabel()
+                isUsed = item.hasLabel() or addr in entryPoints
                 if isUsed or self._isProcStartPattern(addr):
                     self._tryMakeProcedure(addr, shortJumpsFrom, isUsed)
 
@@ -950,6 +962,10 @@ class AsmFiles:
         return os.path.join(self._dir, "export_cmd.str")
 
     @property
+    def intermediate_entry_points(self):
+        return os.path.join(self._dir, "entry_points.str")
+
+    @property
     def intermediate_hash(self):
         return os.path.join(self._dir, "hash.str")
 
@@ -967,7 +983,7 @@ class AsmFiles:
 
     @property
     def output_export(self):
-        return os.path.join(self._dir, "export_cmd.txt")
+        return os.path.join(self._dir, "export.def")
 
     @property
     def uninitialised(self):
@@ -1127,7 +1143,9 @@ def writeExportCmd(asm_files, symbols):
                 exportAddrs.append(addr)
                 exportNames[addr] = exportName
                 internalNames[addr] = internalName
+    # Module-definition file read by the linker in CMake and VS projects
     f = open(asm_files.output_export, "wt")
+    f.write("EXPORTS\n")
     for addr in exportAddrs:
         exportName = exportNames[addr]
         internalName = internalNames[addr]
@@ -1139,7 +1157,7 @@ def writeExportCmd(asm_files, symbols):
             symbolName = "{}".format(exportName)
         else:
             symbolName = "{}={}".format(exportName, internalName)
-        f.write("/EXPORT:{}\n".format(symbolName))
+        f.write("    {}\n".format(symbolName))
     f.close()
 
 def collectProceduresFromFile(fileName):
@@ -1283,7 +1301,7 @@ def openForWriting(filename):
     f.write(autoGenMsg)
     return f
 
-def createAsmCode(asm_files):
+def createAsmCode(asm_files, entryPoints=()):
     f = open(asm_files.input_asm)
     lines = f.readlines()
     f.close()
@@ -1341,8 +1359,12 @@ def createAsmCode(asm_files):
     for imageItem in set(imageMap.itemsMap().values()):
         if isinstance(imageItem, DataItem):
             imageItem.applyRelocs(imageMap)
+    # Only entry points of blocks without labels make procedures that
+    # aren't made without them
+    labeledBlocks = imageMap.labeledBlocks()
+    entryPoints = sorted(set(entryPoints) - labeledBlocks)
     print("Make procedures...")
-    imageMap.makeProcedures()
+    imageMap.makeProcedures(entryPoints)
     print("Adjust instructions...")
     for imageItem in set(imageMap.itemsMap().values()):
         if isinstance(imageItem, CodeItem):
@@ -1362,14 +1384,35 @@ def createAsmCode(asm_files):
     writeExportDeclarations(asm_files, imageMap)
     writeExportSymbols(imageMap, asm_files.intermediate_export)
     writeStdcallFunctions(asm_files, imageMap.importReferences())
+    with open(asm_files.intermediate_entry_points, "wt") as f:
+        json.dump(
+            {
+                "labeledBlocks": sorted(labeledBlocks),
+                "entryPoints": entryPoints,
+            },
+            f,
+        )
 
-def ensureAsmCode(asm_files):
+def readCachedEntryPoints(asm_files):
+    try:
+        with open(asm_files.intermediate_entry_points) as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return None
+
+def ensureAsmCode(asm_files, entryPoints):
+    """code.str depends on the entry points of procedures of sources only
+    by the entry points of blocks without labels, which are rare: it is
+    written again only when they change."""
+    cached = None if options.force else readCachedEntryPoints(asm_files)
     if (
-        options.force or
+        cached is None or
         not os.path.exists(asm_files.intermediate_asm) or
-        not os.path.exists(asm_files.intermediate_export)
+        not os.path.exists(asm_files.intermediate_export) or
+        sorted(set(entryPoints) - set(cached["labeledBlocks"])) !=
+            cached["entryPoints"]
     ):
-       createAsmCode(asm_files)
+        createAsmCode(asm_files, entryPoints)
 
 def readAsmCode(codeFileName):
     with open(codeFileName) as f:
@@ -1424,7 +1467,7 @@ def process_asm_dir(asm_files, symbols):
         if not is_hash_changed(asm_files.intermediate_hash, symbols_hash):
             print("Nothing to do...")
             return
-    ensureAsmCode(asm_files)
+    ensureAsmCode(asm_files, symbols.mangledNames.keys())
     print("Reading code...")
     lines = readAsmCode(asm_files.intermediate_asm)
     print("Writing code...")

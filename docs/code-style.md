@@ -38,16 +38,32 @@
   ```
 
 - A declared but not reconstructed procedure is a stub excluded from the
-  native build:
+  native build. The lines `#ifndef BLD_NATIVE` and `#endif` stand for blank
+  lines: the metadata comment is followed by `#ifndef BLD_NATIVE` without a
+  blank line, and `#endif` with one blank line separates the stub from the
+  next procedure, a definition or a block of dots instead of two blank
+  lines:
 
   ```cpp
+  /*
+  * Module:                 Blade.exe
+  * Entry point:            0x0040A375
+  * VC++ mangling:          ??D@YA?AVB_Vector@@NABV0@@Z
+  */
   #ifndef BLD_NATIVE
-  unsigned int B_BoundingBox::Intersects(const B_Sector *sector) const
+  B_Vector operator *(double c, const B_Vector &v)
   {
-      return 0;
+      return v;
   }
   #endif
+
+  /*
+  * Module:                 Blade.exe
+  * Entry point:            0x0040A3D1
   ```
+
+  The lines of a stub which becomes a definition are replaced by blank
+  lines.
 
 - A procedure is defined in the source file of its module in the binary:
   the code of a source file is contiguous, so a procedure placed between
@@ -86,6 +102,9 @@
 - `&` and `*` are attached to names, not to types:
   `const B_Vector &that`, `B_Sector *sector`,
   `B_IDataFile &operator >>(B_IDataFile &file, B_Matrix &matrix)`.
+  Types without names are separated from them:
+  `static_cast<B_PersonEntity *>(entity)`, `B_Array<void *>`,
+  `SetBits(int, int, const char *, const char *)`.
 - Initializer lists start with `:` on a separate line, each initializer is
   on its own line:
 

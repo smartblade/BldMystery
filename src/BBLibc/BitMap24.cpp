@@ -14,32 +14,6 @@ B_Array<B_BitMap24> B_BitMap24::BitMap24DataList(1);
 
 /*
 * Module:                 BBLibc.dll
-* Entry point:            0x10006CB0
-* VC++ mangling:          ??0B_BitMap24@@QAE@HH@Z
-*/
-#ifndef BLD_NATIVE
-B_BitMap24::B_BitMap24(int width, int height)
-{
-
-}
-#endif
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10006E70
-* VC++ mangling:          ??1B_BitMap24@@UAE@XZ
-*/
-#ifndef BLD_NATIVE
-B_BitMap24::~B_BitMap24()
-{
-
-}
-#endif
-
-
-/*
-* Module:                 BBLibc.dll
 * Entry point:            0x10026AD5
 * VC++ mangling:          ??0B_BitMap24@@QAE@ABV0@@Z
 */
@@ -90,7 +64,7 @@ B_BitMap24 &B_BitMap24::operator=(const B_BitMap24 &that)
 * VC++ mangling:          ?SetBits@B_BitMap24@@QAEIHHPBD0@Z
 */
 #ifndef BLD_NATIVE
-unsigned int B_BitMap24::SetBits(int, int, const char*, const char*)
+unsigned int B_BitMap24::SetBits(int, int, const char *, const char *)
 {
     return 0;
 }
@@ -152,7 +126,7 @@ int B_BitMap24::ReadFromFile(const char *arg_1)
 * VC++ mangling:          ?SaveToFile@B_BitMap24@@QBEHPBDH@Z
 */
 #ifndef BLD_NATIVE
-int B_BitMap24::SaveToFile(const char*, int) const
+int B_BitMap24::SaveToFile(const char *, int) const
 {
     return 0;
 }
@@ -189,7 +163,7 @@ B_ODataFile &operator <<(B_ODataFile &file, B_BitMap24 const &bitMap)
 * VC++ mangling:          ?EscribeArchivoRAW@B_BitMap24@@QBEXPBD@Z
 */
 #ifndef BLD_NATIVE
-void B_BitMap24::EscribeArchivoRAW(const char*) const
+void B_BitMap24::EscribeArchivoRAW(const char *) const
 {
 
 }
@@ -218,20 +192,3 @@ unsigned int B_BitMap24::GetPixelAt(int arg_1, int arg_2, B_Color &arg_3) const
 }
 #endif
 
-
-//B_BitMap24 B_BitMap24::ReadFromJPEG(const char*)
-//{
-//}
-
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10029700
-* VC++ mangling:          ?SaveToJPEG@B_BitMap24@@QBEHPBDH@Z
-*/
-#ifndef BLD_NATIVE
-int B_BitMap24::SaveToJPEG(const char*, int) const
-{
-    return 0;
-}
-#endif

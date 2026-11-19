@@ -2,7 +2,9 @@
 
 Rules:
     pointer   '&' and '*' are attached to names, not to types:
-              'const B_Vector &that', not 'const B_Vector& that'
+              'const B_Vector &that', not 'const B_Vector& that', and are
+              separated from types without names: 'static_cast<B_Name *>',
+              'const char *)', not 'static_cast<B_Name*>', 'const char*)'
     braces    opening braces are on separate lines
 
 Usage:
@@ -52,6 +54,11 @@ _EXPRESSION_KEYWORDS = {
 }
 _POINTER_REGEXP = re.compile(
     r"(?P<before>[\w>])(?P<ops>[*&]+)(?P<spaces>[ \t]+)(?=[A-Za-z_~(])")
+# '*' and '&' attached to a type without a name: an argument of a template
+# or a cast, a parameter without a name. Operators of expressions aren't
+# followed by '>', ')' or ','.
+_UNNAMED_POINTER_REGEXP = re.compile(
+    r"(?P<before>[\w>])(?P<ops>[*&]+)(?P<spaces>)(?=[ \t]*[>),])")
 _WORD_BEFORE_REGEXP = re.compile(r"(\w+)$")
 
 
@@ -129,7 +136,10 @@ def _write_lines(path, lines):
 def _pointer_violations(line):
     """Positions of '*' and '&' attached to types in the code of the line."""
     result = []
-    for match in _POINTER_REGEXP.finditer(line.code):
+    matches = list(_POINTER_REGEXP.finditer(line.code))
+    matches += _UNNAMED_POINTER_REGEXP.finditer(line.code)
+    matches.sort(key=lambda match: match.start())
+    for match in matches:
         ops = match.group("ops")
         if ops == "&&" or "&&" in ops:
             continue
@@ -145,8 +155,11 @@ def _pointer_violations(line):
 def _check_pointer(lines):
     for index, line in enumerate(lines):
         for match in _pointer_violations(line):
-            yield index, "'{}' is attached to the type, not to the name".format(
-                match.group("ops"))
+            if match.group("spaces"):
+                message = "'{}' is attached to the type, not to the name"
+            else:
+                message = "'{}' is attached to the type without a name"
+            yield index, message.format(match.group("ops"))
 
 
 def _fix_pointer(lines):
@@ -155,11 +168,13 @@ def _fix_pointer(lines):
         for match in reversed(matches):
             start = match.start("ops")
             end = match.end("spaces")
+            # 'T* name' -> 'T *name', 'T*>' -> 'T *>'
+            spaces = match.group("spaces") or " "
             line.text = (
-                line.text[:start] + match.group("spaces") +
+                line.text[:start] + spaces +
                 match.group("ops") + line.text[end:])
             line.code = (
-                line.code[:start] + match.group("spaces") +
+                line.code[:start] + spaces +
                 match.group("ops") + line.code[end:])
     return lines
 

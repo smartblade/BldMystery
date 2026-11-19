@@ -1,0 +1,28 @@
+#include "MessageManager.h"
+#include "Win32Error.h"
+#include "ObjDscr.h"
+#include <crtdbg.h>
+#include <direct.h>
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x1002A590
+* VC++ mangling:          ?OutputWin32Error@@YAXPBD@Z
+*/
+
+void OutputWin32Error(const char *message)
+{
+    unsigned int errorCode = GetLastError();
+
+    mout << message;
+
+    LPSTR errorString = nullptr;
+    FormatMessage(
+        FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
+        nullptr, errorCode, 0x400, (LPSTR)&errorString, 0, nullptr);
+
+    mout << errorString;
+
+    LocalFree(errorString);
+}

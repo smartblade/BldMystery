@@ -71,9 +71,33 @@ public:
 
     virtual ~B_ListElement();
 
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10002F80
+    * VC++ mangling:          ??4B_ListElement@@QAEAAV0@ABV0@@Z
+    */
+#ifndef BLD_NATIVE
+    B_ListElement &operator =(const B_ListElement &other)
+    {
+        return *this;
+    }
+#else
     B_ListElement &operator =(const B_ListElement &other);
+#endif
 
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10002EE0
+    * VC++ mangling:          ?GetList@B_ListElement@@QAEPAVB_List@@XZ
+    */
+#ifndef BLD_NATIVE
+    B_List *GetList()
+    {
+        return nullptr;
+    }
+#else
     B_List *GetList();
+#endif
 
     B_List *list;
     B_ListElement *next;
@@ -83,8 +107,31 @@ public:
 class LIB_EXP B_List
 {
 public:
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x100030A0
+    * VC++ mangling:          ??0B_List@@QAE@PAVB_ListElement@@@Z
+    */
+#ifndef BLD_NATIVE
+    B_List(B_ListElement *element)
+    {
+    }
+#else
     B_List(B_ListElement *element);
-    B_List(B_List const&);
+#endif
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10003160
+    * VC++ mangling:          ??0B_List@@QAE@ABV0@@Z
+    */
+#ifndef BLD_NATIVE
+    B_List(B_List const &)
+    {
+    }
+#else
+    B_List(B_List const &);
+#endif
 
     /*
     * Module:                 BBLibc.dll

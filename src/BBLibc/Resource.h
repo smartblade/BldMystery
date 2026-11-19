@@ -12,6 +12,8 @@
 #include <export.h>
 #undef BUILD_LIB
 
+#define B_RESOURCE_CID_OBJDSCR 1
+
 class LIB_EXP B_Resource : public B_NamedObj
 {
 public:
@@ -45,7 +47,12 @@ public:
     virtual ~B_Resource();
     static void Save(B_ODataFile &arg_1, const B_Resource *arg_2);
     static B_Resource *Load(B_IDataFile &arg_1, unsigned short arg_2);
+};
 
+
+class B_BitMapResource : public B_Resource
+{
+public:
     void *data;
 };
 

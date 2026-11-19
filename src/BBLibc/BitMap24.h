@@ -20,24 +20,47 @@ class B_ODataFile;
 class LIB_EXP B_BitMap24
 {
 public:
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10006CB0
+    * VC++ mangling:          ??0B_BitMap24@@QAE@HH@Z
+    */
+#ifndef BLD_NATIVE
+    B_BitMap24(int width = 0, int height = 0)
+    {
+    }
+#else
     B_BitMap24(int width = 0, int height = 0);
+#endif
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10006E70
+    * VC++ mangling:          ??1B_BitMap24@@UAE@XZ
+    */
+#ifndef BLD_NATIVE
+    virtual ~B_BitMap24()
+    {
+    }
+#else
     virtual ~B_BitMap24();
+#endif
     B_BitMap24(const B_BitMap24 &that);
     static void ClearBitMap24Data();
     B_BitMap24(const B_BitMap &arg_1);
-    unsigned int SetBits(int, int, const char*, const char*);
+    unsigned int SetBits(int, int, const char *, const char *);
     B_BitMap24 &operator=(const B_BitMap24 &that);
     int SaveToBMP(const char *fileName) const;
     int SaveToBMPSized(const char *fileName, int width, int height) const;
     int ReadFromBMP(const char *arg_1);
     int ReadFromFile(const char *arg_1);
     //B_BitMap24 ReadFromFile(const char*);
-    int SaveToFile(const char*, int) const;
-    void EscribeArchivoRAW(const char*) const;
+    int SaveToFile(const char *, int) const;
+    void EscribeArchivoRAW(const char *) const;
     void ChangeRGBOrder();
     unsigned int GetPixelAt(int arg_1, int arg_2, B_Color &arg_3) const;
-    //B_BitMap24 ReadFromJPEG(const char*);
-    int SaveToJPEG(const char*, int) const;
+    int ReadFromJPEG(const char *arg_1);
+    int SaveToJPEG(const char *, int) const;
 
     /*
     * Module:                 BBLibc.dll
@@ -89,20 +112,6 @@ public:
     * VC++ mangling:          ??_FB_BitMap24@@QAEXXZ
     */
 
-
-    /*
-    * Module:                 BBLibc.dll
-    * Entry point:            0x10029510
-    * VC++ mangling:          ?ReadFromJPEG@B_BitMap24@@QAEHPBD@Z
-    */
-#ifndef BLD_NATIVE
-    int ReadFromJPEG(const char *arg_1)
-    {
-        return 0;
-    }
-#else
-    int ReadFromJPEG(const char *arg_1);
-#endif
     unsigned int dimension1;
     unsigned int dimension2;
     void *data;
