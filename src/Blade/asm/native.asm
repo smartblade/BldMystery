@@ -10917,114 +10917,14 @@ l0040A338 ENDP
 ;
            call l0040A865; Implemented in c++ code
 ;
-           push ebp
-           mov ebp, esp
-           sub esp, 000000008h
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp-004h]
-           fld qword ptr [eax]
-           fmul qword ptr [ecx]
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [ebp-004h]
-           fld qword ptr [edx+008h]
-           fmul qword ptr [eax+008h]
-           faddp st(01h), st(00h)
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ebp-004h]
-           fld qword ptr [ecx+010h]
-           fmul qword ptr [edx+010h]
-           faddp st(01h), st(00h)
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp+008h]
-           fld qword ptr [eax]
-           fmul qword ptr [ecx]
-           mov edx, dword ptr [ebp+008h]
-           mov eax, dword ptr [ebp+008h]
-           fld qword ptr [edx+008h]
-           fmul qword ptr [eax+008h]
-           faddp st(01h), st(00h)
-           mov ecx, dword ptr [ebp+008h]
-           mov edx, dword ptr [ebp+008h]
-           fld qword ptr [ecx+010h]
-           fmul qword ptr [edx+010h]
-           faddp st(01h), st(00h)
-           fcompp
-           fnstsw ax
-           test ah, 001h
-           jne l0040A943
-           mov dword ptr [ebp-008h], 000000001h
-           jmp l0040A94A
-;
-;* Jump:
-; 0040A938(C) 
-;
-l0040A943: mov dword ptr [ebp-008h], 000000000h
-;
-;* Jump:
-; 0040A941(U) 
-;
-l0040A94A: mov eax, dword ptr [ebp-008h]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
+           call l0040A8DC; Implemented in c++ code
 ;
 ;* Call:
 ; 0041EBD4 
 ;
            call l0040A953; Implemented in c++ code
 ;
-           push ebp
-           mov ebp, esp
-           sub esp, 000000008h
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp-004h]
-           fld qword ptr [eax]
-           fmul qword ptr [ecx]
-           mov edx, dword ptr [ebp-004h]
-           mov eax, dword ptr [ebp-004h]
-           fld qword ptr [edx+008h]
-           fmul qword ptr [eax+008h]
-           faddp st(01h), st(00h)
-           mov ecx, dword ptr [ebp-004h]
-           mov edx, dword ptr [ebp-004h]
-           fld qword ptr [ecx+010h]
-           fmul qword ptr [edx+010h]
-           faddp st(01h), st(00h)
-           mov eax, dword ptr [ebp+008h]
-           mov ecx, dword ptr [ebp+008h]
-           fld qword ptr [eax]
-           fmul qword ptr [ecx]
-           mov edx, dword ptr [ebp+008h]
-           mov eax, dword ptr [ebp+008h]
-           fld qword ptr [edx+008h]
-           fmul qword ptr [eax+008h]
-           faddp st(01h), st(00h)
-           mov ecx, dword ptr [ebp+008h]
-           mov edx, dword ptr [ebp+008h]
-           fld qword ptr [ecx+010h]
-           fmul qword ptr [edx+010h]
-           faddp st(01h), st(00h)
-           fcompp
-           fnstsw ax
-           test ah, 041h
-           je l0040AA31
-           mov dword ptr [ebp-008h], 000000001h
-           jmp l0040AA38
-;
-;* Jump:
-; 0040AA26(C) 
-;
-l0040AA31: mov dword ptr [ebp-008h], 000000000h
-;
-;* Jump:
-; 0040AA2F(U) 
-;
-l0040AA38: mov eax, dword ptr [ebp-008h]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
+           call l0040A9CA; Implemented in c++ code
 ;
 ;* Call:
 ; 00479942, 005432A7, 005710E7, 00579328, 0057B45F 
@@ -11046,73 +10946,7 @@ l0040AA38: mov eax, dword ptr [ebp-008h]
 ;
            call l0040AB60; Implemented in c++ code
 ;
-           push ebp
-           mov ebp, esp
-           sub esp, 000000008h
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           fld qword ptr [eax]
-           fcomp qword ptr [g005BD7E8]
-           fnstsw ax
-           test ah, 041h
-           je l0040AC14
-           mov ecx, dword ptr [ebp-004h]
-           fld qword ptr [ecx]
-           fcomp qword ptr [g005BD718]
-           fnstsw ax
-           test ah, 001h
-           je l0040AC69
-;
-;* Jump:
-; 0040AC00(C) 
-;
-l0040AC14: mov edx, dword ptr [ebp-004h]
-           fld qword ptr [edx+008h]
-           fcomp qword ptr [g005BD7E8]
-           fnstsw ax
-           test ah, 041h
-           je l0040AC3A
-           mov eax, dword ptr [ebp-004h]
-           fld qword ptr [eax+008h]
-           fcomp qword ptr [g005BD718]
-           fnstsw ax
-           test ah, 001h
-           je l0040AC69
-;
-;* Jump:
-; 0040AC25(C) 
-;
-l0040AC3A: mov ecx, dword ptr [ebp-004h]
-           fld qword ptr [ecx+010h]
-           fcomp qword ptr [g005BD7E8]
-           fnstsw ax
-           test ah, 041h
-           je l0040AC60
-           mov edx, dword ptr [ebp-004h]
-           fld qword ptr [edx+010h]
-           fcomp qword ptr [g005BD718]
-           fnstsw ax
-           test ah, 001h
-           je l0040AC69
-;
-;* Jump:
-; 0040AC4B(C) 
-;
-l0040AC60: mov dword ptr [ebp-008h], 000000001h
-           jmp l0040AC70
-;
-;* Jump:
-; 0040AC12(C), 0040AC38(C), 0040AC5E(C) 
-;
-l0040AC69: mov dword ptr [ebp-008h], 000000000h
-;
-;* Jump:
-; 0040AC67(U) 
-;
-l0040AC70: mov eax, dword ptr [ebp-008h]
-           mov esp, ebp
-           pop ebp
-           ret
+           call l0040ABE7; Implemented in c++ code
 ;
 ;* Call:
 ; 00470C99 
