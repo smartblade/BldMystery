@@ -21,27 +21,27 @@ B_RigidBody::B_RigidBody(B_PhysicsTemplate *solid)
     B_ElementCSV *csv = B_csvs.Find(solid->resource->name);
     if (csv != nullptr)
     {
-        this->materialId = 9;
+        this->materialId = B_RIGID_BODY_MATERIAL_STONE;
         if (csv->material == "Metal")
         {
-            this->materialId = 7;
+            this->materialId = B_RIGID_BODY_MATERIAL_METAL;
         }
         else if (csv->material == "Madera")
         {
-            this->materialId = 8;
+            this->materialId = B_RIGID_BODY_MATERIAL_WOOD;
         }
         else if (csv->material == "Piedra")
         {
-            this->materialId = 9;
+            this->materialId = B_RIGID_BODY_MATERIAL_STONE;
         }
         else if (csv->material == "Cristal")
         {
-            this->materialId = 10;
+            this->materialId = B_RIGID_BODY_MATERIAL_GLASS;
         }
     }
     else
     {
-        this->materialId = 7;
+        this->materialId = B_RIGID_BODY_MATERIAL_METAL;
     }
     this->ResetForcesAndPose(0.0);
 }
