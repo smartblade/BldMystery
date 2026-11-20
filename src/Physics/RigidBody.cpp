@@ -1,5 +1,7 @@
 #include <Physics/RigidBody.h>
 #include <Physics/PhysicsTemplate.h>
+#include <BBLibc/NDataBase.h>
+#include <BBLibc/ObjDscr.h>
 
 
 /*
@@ -8,11 +10,42 @@
 * VC++ mangling:          ??0B_RigidBody@@QAE@PAVB_PhysicsTemplate@@@Z
 */
 
-#ifndef BLD_NATIVE
 B_RigidBody::B_RigidBody(B_PhysicsTemplate *solid)
+:
+    solid(solid),
+    timeStep(0.04),
+    gravity(0.0, 9800.0, 0.0)
 {
+    this->mass =
+        solid->resource->mass * solid->scale * solid->scale * solid->scale;
+    B_ElementCSV *csv = B_csvs.Find(solid->resource->name);
+    if (csv != nullptr)
+    {
+        this->materialId = 9;
+        if (csv->material == "Metal")
+        {
+            this->materialId = 7;
+        }
+        else if (csv->material == "Madera")
+        {
+            this->materialId = 8;
+        }
+        else if (csv->material == "Piedra")
+        {
+            this->materialId = 9;
+        }
+        else if (csv->material == "Cristal")
+        {
+            this->materialId = 10;
+        }
+    }
+    else
+    {
+        this->materialId = 7;
+    }
+    this->ResetForcesAndPose(0.0);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
@@ -157,7 +190,7 @@ B_Vector B_RigidBody::GetWorldCenterOfMass()
 * Entry point:            0x004ABBBE
 * VC++ mangling:          ?CalculateImpulseDeltas@B_RigidBody@@UAEXABVB_Vector@@0AAV2@11@Z
 */
-#ifndef BLD_NATIVE
+
 void B_RigidBody::CalculateImpulseDeltas(
     const B_Vector &worldPoint,
     const B_Vector &worldImpulse,
@@ -166,23 +199,33 @@ void B_RigidBody::CalculateImpulseDeltas(
     B_Vector &centerOfMass
 )
 {
+    centerOfMass = this->worldCenterOfMass;
+    angularDelta = Rotate(
+        (worldPoint - this->worldCenterOfMass) ^ worldImpulse,
+        this->inverseInertiaWorld
+    );
+    linearDelta = worldImpulse / this->mass;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004ABC53
 * VC++ mangling:          ?ApplyImpulseAtPoint@B_RigidBody@@UAEABVB_Vector@@ABV2@0@Z
 */
-#ifndef BLD_NATIVE
+
 const B_Vector &B_RigidBody::ApplyImpulseAtPoint(
     const B_Vector &worldPoint,
     const B_Vector &worldImpulse
 )
 {
-    return worldPoint;
+    this->linearImpulse += worldImpulse / this->mass;
+    return this->angularImpulse += Rotate(
+        (worldPoint - this->worldCenterOfMass) ^ worldImpulse,
+        this->inverseInertiaWorld
+    );
 }
-#endif
+
 
 /*
 ................................................................................
