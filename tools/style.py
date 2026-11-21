@@ -2,7 +2,8 @@
 
 Rules:
     pointer   '&' and '*' are attached to names, not to types:
-              'const B_Vector &that', not 'const B_Vector& that', and are
+              'const B_Vector &that', not 'const B_Vector& that' or
+              'const B_Vector & that' in declarations, and are
               separated from types without names: 'static_cast<B_Name *>',
               'const char *)', not 'static_cast<B_Name*>', 'const char*)'
     braces    opening braces are on separate lines
@@ -60,6 +61,17 @@ _POINTER_REGEXP = re.compile(
 _UNNAMED_POINTER_REGEXP = re.compile(
     r"(?P<before>[\w>])(?P<ops>[*&]+)(?P<spaces>)(?=[ \t]*[>),])")
 _WORD_BEFORE_REGEXP = re.compile(r"(\w+)$")
+# '*' and '&' separated from a type and from a name: 'T * name' is also a
+# multiplication, so it is a declaration only at the beginning of a
+# statement, after qualifiers, followed by '=', ';', ',', ')' or '[', and
+# in 'new T * [n]'
+_SPACED_POINTER_REGEXP = re.compile(
+    r"(?P<before>[\w>])[ \t]+(?P<ops>[*&]+)(?P<spaces>[ \t]+)"
+    r"(?=(?P<name>[A-Za-z_]\w*[ \t]*[=;,)\[])|\[)")
+_DECLARATION_PREFIX_REGEXP = re.compile(
+    r"^(?:[ \t]*|.*[;{}][ \t]*)"
+    r"(?:(?:const|static|unsigned|signed|struct|class|volatile)[ \t]+)*$")
+_TYPE_REGEXP = re.compile(r"(?:\w+(?:::\w+)*)(?:[ \t]*<[^;()]*>)?$")
 
 
 class _Line:
@@ -133,10 +145,28 @@ def _write_lines(path, lines):
 
 # Rule 'pointer'
 
+def _is_spaced_declaration(code, match):
+    """'T * name' of a declaration or 'new T * [n]'."""
+    type_match = _TYPE_REGEXP.search(code[:match.end("before")])
+    if type_match is None:
+        return False
+    word = re.match(r"\w+", type_match.group(0)).group(0)
+    if word in _EXPRESSION_KEYWORDS or word.isdigit():
+        return False
+    prefix = code[:type_match.start()]
+    if match.group("name") is None:
+        return prefix.rstrip().endswith("new")
+    return _DECLARATION_PREFIX_REGEXP.match(prefix) is not None
+
+
 def _pointer_violations(line):
     """Positions of '*' and '&' attached to types in the code of the line."""
     result = []
     matches = list(_POINTER_REGEXP.finditer(line.code))
+    matches += [
+        match for match in _SPACED_POINTER_REGEXP.finditer(line.code)
+        if _is_spaced_declaration(line.code, match)
+    ]
     matches += _UNNAMED_POINTER_REGEXP.finditer(line.code)
     matches.sort(key=lambda match: match.start())
     for match in matches:
@@ -155,7 +185,9 @@ def _pointer_violations(line):
 def _check_pointer(lines):
     for index, line in enumerate(lines):
         for match in _pointer_violations(line):
-            if match.group("spaces"):
+            if match.re is _SPACED_POINTER_REGEXP:
+                message = "'{}' is separated from the name"
+            elif match.group("spaces"):
                 message = "'{}' is attached to the type, not to the name"
             else:
                 message = "'{}' is attached to the type without a name"
@@ -168,8 +200,10 @@ def _fix_pointer(lines):
         for match in reversed(matches):
             start = match.start("ops")
             end = match.end("spaces")
-            # 'T* name' -> 'T *name', 'T*>' -> 'T *>'
+            # 'T* name' -> 'T *name', 'T*>' -> 'T *>', 'T * name' -> 'T *name'
             spaces = match.group("spaces") or " "
+            if match.re is _SPACED_POINTER_REGEXP:
+                spaces = ""
             line.text = (
                 line.text[:start] + spaces +
                 match.group("ops") + line.text[end:])
