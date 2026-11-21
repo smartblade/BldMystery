@@ -20,11 +20,10 @@ B_RigidBody::B_RigidBody(B_PhysicsTemplate *solid)
 * VC++ mangling:          ??1B_RigidBody@@UAE@XZ
 */
 
-#ifndef BLD_NATIVE
 B_RigidBody::~B_RigidBody()
 {
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
