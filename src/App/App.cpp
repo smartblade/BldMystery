@@ -865,7 +865,7 @@ void B_App::ReadLevel(const char * file_name)
         }
         else if (!strcmp(itemKind, "ANM"))
         {
-            B_IDataFile * file = new B_IDataFile(itemName, O_BINARY);
+            B_IDataFile *file = new B_IDataFile(itemName, O_BINARY);
             if (file->OK())
             {
                 anim_t *anim = new anim_t();
@@ -1570,7 +1570,7 @@ void B_App::StringSplit(
             tokens->num_alloc += tokens->increment;
             if (tokens->size != 0)
             {
-                B_Name ** elements = new B_Name *[tokens->num_alloc];
+                B_Name **elements = new B_Name *[tokens->num_alloc];
                 for (unsigned int i = 0; i < tokens->size; i++)
                 {
                     elements[i] = tokens->elements[i];
@@ -1661,7 +1661,7 @@ int B_App::LoadWorld(const char *file_name)
     mout << vararg("About to load World %s.\n", file_name);
     timeBefore = timeGetTime();
 
-    B_IDataFile * file = new B_IDataFile(file_name, O_BINARY);
+    B_IDataFile *file = new B_IDataFile(file_name, O_BINARY);
     if (!file->OK())
     {
         mout << "B_App::LoadWorld() -> Error trying to load map.\n";

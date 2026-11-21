@@ -149,7 +149,7 @@ public:
             num_alloc += increment;
             if (size != 0)
             {
-                TYPE ** elements = new TYPE *[num_alloc];
+                TYPE **elements = new TYPE *[num_alloc];
                 for (unsigned int i = 0; i < size; i++)
                 {
                     elements[i] = this->elements[i];
@@ -198,7 +198,7 @@ public:
         if (this->num_alloc >= (this->size + this->increment - 1))
         {
             this->num_alloc -= this->increment;
-            TYPE ** elements = new TYPE *[this->num_alloc];
+            TYPE **elements = new TYPE *[this->num_alloc];
             for (unsigned int i = 0; i < index; i++)
             {
                 elements[i] = this->elements[i];
@@ -283,7 +283,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_Array<TYPE> &arr)
     arr.num_alloc = ((arr.increment + arr.size - 1) / arr.increment) * arr.increment;
     if (arr.num_alloc != 0)
     {
-        arr.elements = new TYPE * [arr.num_alloc];
+        arr.elements = new TYPE *[arr.num_alloc];
         for(unsigned int i = 0; i < arr.size; i++)
         {
             arr.elements[i] = new TYPE();

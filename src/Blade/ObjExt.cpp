@@ -29,7 +29,7 @@
 
 int SetAppMode(const char *mode)
 {
-    B_App * App = GetApplication();
+    B_App *App = GetApplication();
     int code;
     assert(App);
     code = App->SetAppMode(mode);
@@ -44,7 +44,7 @@ int SetAppMode(const char *mode)
 
 const char *GetAppMode()
 {
-    B_App * App = GetApplication();
+    B_App *App = GetApplication();
     assert(App);
     return App->GetAppMode().String();
 }
@@ -57,7 +57,7 @@ const char *GetAppMode()
 
 void BeginLoadGame()
 {
-    B_App * App = GetApplication();
+    B_App *App = GetApplication();
     assert(App);
     App->BeginLoadGame();
 }
@@ -70,7 +70,7 @@ void BeginLoadGame()
 
 void DoneLoadGame()
 {
-    B_App * App = GetApplication();
+    B_App *App = GetApplication();
     assert(App);
     App->DoneLoadGame();
 }
@@ -167,7 +167,7 @@ int LoadParticleSystemsData(const char *filename)
     {
             for (unsigned int i = 0; i < gbl_particle_types.size; i++)
             {
-                    B_ParticleGType * p_type = gbl_particle_types.elements[i];
+                    B_ParticleGType *p_type = gbl_particle_types.elements[i];
                     delete p_type;
             }
             delete(gbl_particle_types.elements);
@@ -179,7 +179,7 @@ int LoadParticleSystemsData(const char *filename)
     gbl_particle_types.num_alloc = ((gbl_particle_types.increment + gbl_particle_types.size - 1) / gbl_particle_types.increment) * gbl_particle_types.increment;
     if (gbl_particle_types.num_alloc != 0)
     {
-        gbl_particle_types.elements = new B_ParticleGType * [gbl_particle_types.num_alloc];
+        gbl_particle_types.elements = new B_ParticleGType *[gbl_particle_types.num_alloc];
         for(unsigned int i = 0; i < gbl_particle_types.size; i++)
         {
             gbl_particle_types.elements[i] = new B_ParticleGType();
@@ -223,7 +223,7 @@ int LoadCombustionData(const char *file_name)
     {
             for (unsigned int i = 0; i < gbl_combustion_data.size; i++)
             {
-                    B_Combustion * comb = gbl_combustion_data.elements[i];
+                    B_Combustion *comb = gbl_combustion_data.elements[i];
                     delete comb;
             }
             delete(gbl_combustion_data.elements);
@@ -235,7 +235,7 @@ int LoadCombustionData(const char *file_name)
     gbl_combustion_data.num_alloc = ((gbl_combustion_data.increment + gbl_combustion_data.size - 1) / gbl_combustion_data.increment) * gbl_combustion_data.increment;
     if (gbl_combustion_data.num_alloc != 0)
     {
-        gbl_combustion_data.elements = new B_Combustion * [gbl_combustion_data.num_alloc];
+        gbl_combustion_data.elements = new B_Combustion *[gbl_combustion_data.num_alloc];
         for(unsigned int i = 0; i < gbl_combustion_data.size; i++)
         {
             gbl_combustion_data.elements[i] = new B_Combustion();
@@ -253,7 +253,7 @@ int LoadCombustionData(const char *file_name)
 
 void ReassignCombustionData()
 {
-    B_App * App = GetApplication();
+    B_App *App = GetApplication();
     assert(App);
     App->ReassignCombustionData();
 }
@@ -380,7 +380,7 @@ int SetCurrentMap(const char *map)
 
 int LoadWorld(const char *file_name)
 {
-    B_App * app = GetApplication();
+    B_App *app = GetApplication();
     assert(app);
     return app->LoadWorld(file_name);
 }
@@ -826,7 +826,7 @@ int SetDefaultMass(const char *entity_kind, double mass)
 {
     B_ElementCSV *foundElement;
     B_Name kind(entity_kind);
-    B_NDataBase<B_ElementCSV> * array = &B_csvs;
+    B_NDataBase<B_ElementCSV> *array = &B_csvs;
     for (unsigned int i = 0; i < array->size; i++)
     {
         if (kind == array->elements[i]->Id())
@@ -843,11 +843,11 @@ after_search:
         foundElement->mass = mass;
         return 1;
     }
-    B_ElementCSV * newElement = new B_ElementCSV();
+    B_ElementCSV *newElement = new B_ElementCSV();
     newElement->name = entity_kind;
     newElement->mass = mass;
     newElement->material = "";
-    B_NDataBase<B_ElementCSV> * csvs = &B_csvs;
+    B_NDataBase<B_ElementCSV> *csvs = &B_csvs;
     if (csvs->num_alloc > csvs->size)
     {
         csvs->elements[csvs->size] = newElement;
@@ -858,7 +858,7 @@ after_search:
         csvs->num_alloc += csvs->increment;
         if (csvs->size != 0)
         {
-            B_ElementCSV ** elements = new B_ElementCSV *[csvs->num_alloc];
+            B_ElementCSV **elements = new B_ElementCSV *[csvs->num_alloc];
             for (unsigned int i = 0; i < csvs->size; i++)
             {
                 elements[i] = csvs->elements[i];
@@ -886,7 +886,7 @@ int SetDefaultMaterial(const char *entity_kind, const char *material)
 {
     B_ElementCSV *foundElement;
     B_Name kind(entity_kind);
-    B_NDataBase<B_ElementCSV> * array = &B_csvs;
+    B_NDataBase<B_ElementCSV> *array = &B_csvs;
     for (unsigned int i = 0; i < array->size; i++)
     {
         if (kind == array->elements[i]->Id())
@@ -903,11 +903,11 @@ after_search:
         foundElement->material = material;
         return 1;
     }
-    B_ElementCSV * newElement = new B_ElementCSV();
+    B_ElementCSV *newElement = new B_ElementCSV();
     newElement->name = entity_kind;
     newElement->mass = 10.0;
     newElement->material = material;
-    B_NDataBase<B_ElementCSV> * csvs = &B_csvs;
+    B_NDataBase<B_ElementCSV> *csvs = &B_csvs;
     if (csvs->num_alloc > csvs->size)
     {
         csvs->elements[csvs->size] = newElement;
@@ -918,7 +918,7 @@ after_search:
         csvs->num_alloc += csvs->increment;
         if (csvs->size != 0)
         {
-            B_ElementCSV ** elements = new B_ElementCSV *[csvs->num_alloc];
+            B_ElementCSV **elements = new B_ElementCSV *[csvs->num_alloc];
             for (unsigned int i = 0; i < csvs->size; i++)
             {
                 elements[i] = csvs->elements[i];
@@ -1264,7 +1264,7 @@ after_search:
         gbl_particle_types.num_alloc += gbl_particle_types.increment;
         if (gbl_particle_types.size != 0)
         {
-            B_ParticleGType ** elements = new B_ParticleGType *[gbl_particle_types.num_alloc];
+            B_ParticleGType **elements = new B_ParticleGType *[gbl_particle_types.num_alloc];
             for (unsigned int i = 0; i < gbl_particle_types.size; i++)
             {
                 elements[i] = gbl_particle_types.elements[i];
@@ -1491,7 +1491,7 @@ int SetActionCameraMovement(
             array->num_alloc += array->increment;
             if (array->size != 0)
             {
-                B_CameraMovement ** elements = new B_CameraMovement *[array->num_alloc];
+                B_CameraMovement **elements = new B_CameraMovement *[array->num_alloc];
                 for (unsigned int i = 0; i < array->size; i++)
                 {
                     elements[i] = array->elements[i];
@@ -1582,7 +1582,7 @@ after_search:
             array->num_alloc += array->increment;
             if (array->size != 0)
             {
-                B_Combustion ** elements = new B_Combustion *[array->num_alloc];
+                B_Combustion **elements = new B_Combustion *[array->num_alloc];
                 for (unsigned int i = 0; i < array->size; i++)
                 {
                     elements[i] = array->elements[i];
@@ -2013,7 +2013,7 @@ int CreateTriggerSector(
         TS->AddPoint(B_Vector(x, floor_height, y), num_points);
     }
     assert(TS);
-    char * name = TS->Id().String();
+    char *name = TS->Id().String();
     assert(name);
 
     bool found;

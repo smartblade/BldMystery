@@ -586,7 +586,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_World *world)
         {
                 for (i = 0; i < atms->size; i++)
                 {
-                        atmosphere_t * atm = atms->elements[i];
+                        atmosphere_t *atm = atms->elements[i];
                         delete atm;
                 }
                 delete(atms->elements);
@@ -598,7 +598,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_World *world)
         atms->num_alloc = ((atms->increment + atms->size - 1) / atms->increment) * atms->increment;
         if (atms->num_alloc != 0)
         {
-                atms->elements = new atmosphere_t * [atms->num_alloc];
+                atms->elements = new atmosphere_t *[atms->num_alloc];
                 for(i = 0; i < atms->size; i++)
                 {
                         atms->elements[i] = new atmosphere_t();
@@ -611,7 +611,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_World *world)
 
         for(i = 0; i < atms->size; i++)
         {
-                atmosphere_t * atm = (atmosphere_t *)atms->elements[i];
+                atmosphere_t *atm = (atmosphere_t *)atms->elements[i];
                 B_3D_raster_device->AddAtmosphere(atm->Id(), atm->color, atm->intensity);
         }
 
@@ -623,7 +623,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_World *world)
         {
                 for (i = 0; i < lights->size; i++)
                 {
-                        light_t * light = (light_t *)lights->elements[i];
+                        light_t *light = (light_t *)lights->elements[i];
                         delete light;
                 }
                 delete(lights->elements);
