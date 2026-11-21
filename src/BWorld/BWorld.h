@@ -261,4 +261,3 @@ extern B_World B_world;
 
 
 #endif /* GAME_STATE_H */
-

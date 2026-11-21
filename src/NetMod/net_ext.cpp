@@ -649,4 +649,3 @@ int IsValidProtocol(int protocol)
 {
         return gbl_net->is_valid_protocol(protocol != FALSE);
 }
-

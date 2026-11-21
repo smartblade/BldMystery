@@ -191,4 +191,3 @@ unsigned int B_BitMap24::GetPixelAt(int arg_1, int arg_2, B_Color &arg_3) const
     return 0;
 }
 #endif
-
