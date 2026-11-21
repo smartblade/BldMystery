@@ -52,6 +52,12 @@ public:
 };
 
 
+#define B_RIGID_BODY_MATERIAL_METAL    7
+#define B_RIGID_BODY_MATERIAL_WOOD     8
+#define B_RIGID_BODY_MATERIAL_STONE    9
+#define B_RIGID_BODY_MATERIAL_GLASS    10
+
+
 class B_RigidBody : public B_PhysicsNode
 {
 public:
