@@ -7,14 +7,15 @@ Rules:
               separated from types without names: 'static_cast<B_Name *>',
               'const char *)', not 'static_cast<B_Name*>', 'const char*)'
     braces    opening braces are on separate lines
+    newline   files end with a single newline
 
 Usage:
     python tools/style.py check [--rule RULE] [--github] [PATH...]
     python tools/style.py fix --rule RULE [PATH...]
 
 Options:
-    --rule RULE   the rule to check or apply: pointer or braces ('check'
-                  checks all rules without it, 'fix' requires it)
+    --rule RULE   the rule to check or apply: pointer, braces or newline
+                  ('check' checks all rules without it, 'fix' requires it)
     --github      print violations as error annotations of GitHub Actions
                   ('::error file=FILE,line=LINE,title=RULE::MESSAGE')
 
@@ -46,7 +47,7 @@ IGNORED_PATHS = [
 # Directories with generated code
 IGNORED_DIRECTORY_NAMES = ["asm"]
 
-RULES = ("pointer", "braces")
+RULES = ("pointer", "braces", "newline")
 
 # Words after which '*' and '&' are operators of expressions
 _EXPRESSION_KEYWORDS = {
@@ -310,8 +311,36 @@ def _split_brace_line(line, column):
     return new_lines
 
 
-_CHECKS = {"pointer": _check_pointer, "braces": _check_braces}
-_FIXES = {"pointer": _fix_pointer, "braces": _fix_braces}
+# Rule 'newline'
+
+def _check_newline(lines):
+    if not lines:
+        return
+    if not lines[-1].ending:
+        yield len(lines) - 1, "no newline at end of file"
+    elif not lines[-1].text:
+        yield len(lines) - 1, "trailing empty line at end of file"
+
+
+def _fix_newline(lines):
+    while lines and not lines[-1].text:
+        lines.pop()
+    if lines and not lines[-1].ending:
+        ending = "\r\n" if any(line.ending == "\r\n" for line in lines) else "\n"
+        lines[-1].ending = ending
+    return lines
+
+
+_CHECKS = {
+    "pointer": _check_pointer,
+    "braces": _check_braces,
+    "newline": _check_newline,
+}
+_FIXES = {
+    "pointer": _fix_pointer,
+    "braces": _fix_braces,
+    "newline": _fix_newline,
+}
 
 
 def _is_ignored(rel_path):
