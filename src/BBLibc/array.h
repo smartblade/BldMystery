@@ -314,12 +314,24 @@ public:
 template<class TYPE>
 class B_ObjArray : public B_Array<TYPE>
 {
+public:
+    B_ObjArray(unsigned int increment = 16, int deleteItems = true)
+    :
+        B_Array<TYPE>(increment, deleteItems)
+    {
+    }
 };
 
 
 template<class TYPE>
 class B_DataBase : public B_ObjArray<TYPE>
 {
+public:
+    B_DataBase(unsigned int increment = 16, int deleteItems = true)
+    :
+        B_ObjArray<TYPE>(increment, deleteItems)
+    {
+    }
 };
 
 #endif /* ARRAY_H */

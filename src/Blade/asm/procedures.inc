@@ -656,6 +656,10 @@ externdef ?CalculateBoundingBox@B_Sector@@QAEXXZ: near
 l0042E464 equ ?CalculateBoundingBox@B_Sector@@QAEXXZ
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Sector@@@Z: near
 l0042FFDC equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Sector@@@Z
+externdef ??0B_Map@@QAE@XZ: near
+l00430281 equ ??0B_Map@@QAE@XZ
+externdef ??1B_Map@@UAE@XZ: near
+l00430323 equ ??1B_Map@@UAE@XZ
 externdef ??5@YAAAVB_IDataFile@@AAV0@AAVB_Map@@@Z: near
 l00432379 equ ??5@YAAAVB_IDataFile@@AAV0@AAVB_Map@@@Z
 externdef ??0B_SubscriptionList@@QAE@XZ: near
@@ -676,8 +680,14 @@ externdef ??0B_ScheduledFunc@@QAE@PBDNP6AHPAX@Z1@Z: near
 l00439750 equ ??0B_ScheduledFunc@@QAE@PBDNP6AHPAX@Z1@Z
 externdef ??1B_ScheduledFunc@@UAE@XZ: near
 l004397C3 equ ??1B_ScheduledFunc@@UAE@XZ
+externdef ??0B_World@@QAE@N@Z: near
+l004398A5 equ ??0B_World@@QAE@N@Z
+externdef ??1B_World@@QAE@XZ: near
+l00439B9A equ ??1B_World@@QAE@XZ
 externdef ?unknown_00439F5D@B_World@@QAEXXZ: near
 l00439F5D equ ?unknown_00439F5D@B_World@@QAEXXZ
+externdef ?ClearWorld@B_World@@QAEXH@Z: near
+l0043A184 equ ?ClearWorld@B_World@@QAEXH@Z
 externdef ?GetTime@B_World@@QAENXZ: near
 l0043A6A4 equ ?GetTime@B_World@@QAENXZ
 externdef ?SetTime@B_World@@QAEHN@Z: near
@@ -1044,6 +1054,10 @@ externdef ?SetEndTangent@B_Spline@@QAEHHABVB_Vector@@@Z: near
 l00496EBC equ ?SetEndTangent@B_Spline@@QAEHHABVB_Vector@@@Z
 externdef _unknown_00497AE0: near
 l00497AE0 equ _unknown_00497AE0
+externdef ??1B_PhysicsGroup@@QAE@XZ: near
+l004A9830 equ ??1B_PhysicsGroup@@QAE@XZ
+externdef ??0B_PhysicsManager@@QAE@N@Z: near
+l004A9C39 equ ??0B_PhysicsManager@@QAE@N@Z
 externdef ??0B_RigidBody@@QAE@PAVB_PhysicsTemplate@@@Z: near
 l004AAF00 equ ??0B_RigidBody@@QAE@PAVB_PhysicsTemplate@@@Z
 externdef ??1B_RigidBody@@UAE@XZ: near
