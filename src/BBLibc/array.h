@@ -301,7 +301,10 @@ class B_SharedPtrArray : public B_Array<TYPE>
 public:
     virtual ~B_SharedPtrArray()
     {
-        Clear(false);
+        if (size != 0)
+        {
+            Clear(false);
+        }
     }
 
     B_SharedPtrArray(unsigned int increment = 16)
