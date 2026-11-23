@@ -199,11 +199,12 @@ public:
         {
             this->num_alloc -= this->increment;
             TYPE **elements = new TYPE *[this->num_alloc];
-            for (unsigned int i = 0; i < index; i++)
+            unsigned int i;
+            for (i = 0; i < index; i++)
             {
                 elements[i] = this->elements[i];
             }
-            for (unsigned int i = index + 1; i < this->size; i++)
+            for (i = index + 1; i < this->size; i++)
             {
                 elements[i - 1] = this->elements[i];
             }

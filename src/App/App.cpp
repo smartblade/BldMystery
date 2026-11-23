@@ -563,7 +563,8 @@ bool B_App::ProcessEvents()
     {
         B_CameraView cameraView;
         this->GetCameraView(&cameraView);
-        for (unsigned int i = 0; i < gbl_ag_textures.size; i++)
+        unsigned int i;
+        for (i = 0; i < gbl_ag_textures.size; i++)
         {
             gbl_ag_textures[i]->needUpdate = true;
         }
@@ -588,7 +589,7 @@ bool B_App::ProcessEvents()
             B_3D_raster_device->SetMode(2);
         }
         worldUpdateTime = worldUpdateTime + this->clock1->GetTime();
-        for (unsigned int i = 0; i < this->afterFrameFuncs.size; i++)
+        for (i = 0; i < this->afterFrameFuncs.size; i++)
         {
             B_AfterFrameFunc *func = this->afterFrameFuncs[i];
             func->Call(this->time);
