@@ -17,6 +17,11 @@
 /* The value differs from M_PI in the last digits */
 #define PI 3.14159265359
 
+#if defined(_MSC_VER) && _MSC_VER < 1300
+/* Visual C++ 6.0 has no uintptr_t */
+typedef UINT_PTR uintptr_t;
+#endif
+
 /* FIXME incompatible pointer to integer conversion */
 #define PTR_TO_INT(ptr) ((uintptr_t) ptr)
 /* FIXME incompatible integer to pointer conversion */
