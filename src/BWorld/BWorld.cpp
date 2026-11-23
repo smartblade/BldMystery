@@ -280,7 +280,7 @@ int B_World::GetTriggerSectorFloorHeight(const char *trigger_sector_name)
     if (triggerSector != nullptr)
     {
         float floorHeight = triggerSector->floorHeight;
-        return (int)floorHeight;
+        return static_cast<int>(floorHeight);
     }
     return 0;
 }
@@ -299,7 +299,7 @@ int B_World::GetTriggerSectorRoofHeight(const char *trigger_sector_name)
     if (triggerSector != nullptr)
     {
         float roofHeight = triggerSector->roofHeight;
-        return (int)roofHeight;
+        return static_cast<int>(roofHeight);
     }
     return 0;
 }
@@ -498,7 +498,7 @@ void B_TriggerSector::AddPoint(const B_Vector &point, int numPoints)
 
 const char *B_World::GetTriggerSectorName(int index)
 {
-    if (index < 0 || (unsigned int)index >= this->triggerSectors.size)
+    if (index < 0 || static_cast<unsigned int>(index) >= this->triggerSectors.size)
     {
         return nullptr;
     }
