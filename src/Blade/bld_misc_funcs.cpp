@@ -333,20 +333,17 @@ void unknown_00497AE0()
 * Entry point:            0x004A9830
 * VC++ mangling:          ??1B_PhysicsGroup@@QAE@XZ
 */
-
 #ifndef BLD_NATIVE
 B_PhysicsGroup::~B_PhysicsGroup()
 {
 }
 #endif
 
-
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004A9C39
 * VC++ mangling:          ??0B_PhysicsManager@@QAE@N@Z
 */
-
 #ifndef BLD_NATIVE
 B_PhysicsManager::B_PhysicsManager(double timeStep)
 {

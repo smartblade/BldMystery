@@ -249,13 +249,11 @@ void B_World::unknown_00439F5D()
 * Entry point:            0x0043A184
 * VC++ mangling:          ?ClearWorld@B_World@@QAEXH@Z
 */
-
 #ifndef BLD_NATIVE
 void B_World::ClearWorld(int mode)
 {
 }
 #endif
-
 
 /*
 * Module:                 Blade.exe
