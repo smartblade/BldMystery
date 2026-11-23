@@ -9,7 +9,7 @@
 */
 
 void Cls(byte r, byte g, byte b) {
-        return B_3D_raster_device->ClsRGB(r, g, b);
+        B_3D_raster_device->ClsRGB(r, g, b);
 }
 
 
@@ -19,7 +19,7 @@ void Cls(byte r, byte g, byte b) {
 */
 
 void SwapBuffers() {
-        return B_3D_raster_device->SwapBuffers();
+        B_3D_raster_device->SwapBuffers();
 }
 
 
@@ -114,7 +114,7 @@ float GetGammaCorrection() {
 */
 
 void SetContrast(float contrast) {
-        return B_3D_raster_device->SetContrast(contrast);
+        B_3D_raster_device->SetContrast(contrast);
 }
 
 
