@@ -306,7 +306,7 @@ public:
 
     B_SharedPtrArray(unsigned int increment = 16)
         :
-    B_Array(increment)
+    B_Array<TYPE>(increment)
     {
     }
 };
