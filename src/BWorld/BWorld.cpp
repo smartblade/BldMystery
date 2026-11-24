@@ -442,103 +442,209 @@ const char *B_World::GenerateEntityName(const char *prefix)
 * Entry point:            0x0043EF43
 * VC++ mangling:          ?SetTriggerSectorFunc@B_World@@QAEHPBD0PAUPyObject@@@Z
 */
-#ifndef BLD_NATIVE
+
 int B_World::SetTriggerSectorFunc(
     const char *trigger_sector_name, const char *func_type,
     PyObject *func
 )
 {
+    B_TriggerSector *triggerSector =
+        this->triggerSectors.Find(trigger_sector_name);
+    if (triggerSector != nullptr)
+    {
+        if (!strcmp(func_type, "OnEnter"))
+        {
+            if (func != nullptr)
+            {
+                Py_XDECREF(triggerSector->onEnter);
+                Py_XINCREF(func);
+                triggerSector->onEnter = func;
+            }
+            else
+            {
+                Py_XDECREF(triggerSector->onEnter);
+                triggerSector->onEnter = nullptr;
+            }
+            return 1;
+        }
+        if (!strcmp(func_type, "OnLeave"))
+        {
+            if (func != nullptr)
+            {
+                Py_XDECREF(triggerSector->onLeave);
+                Py_XINCREF(func);
+                triggerSector->onLeave = func;
+            }
+            else
+            {
+                Py_XDECREF(triggerSector->onLeave);
+                triggerSector->onLeave = nullptr;
+            }
+            return 1;
+        }
+    }
     return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0043F172
 * VC++ mangling:          ?GetTriggerSectorFloorHeight@B_World@@QAEHPBD@Z
 */
-#ifndef BLD_NATIVE
+
 int B_World::GetTriggerSectorFloorHeight(const char *trigger_sector_name)
 {
+    B_TriggerSector *triggerSector =
+        this->triggerSectors.Find(trigger_sector_name);
+    if (triggerSector != nullptr)
+    {
+        float floorHeight = triggerSector->floorHeight;
+        return static_cast<int>(floorHeight);
+    }
     return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0043F209
 * VC++ mangling:          ?GetTriggerSectorRoofHeight@B_World@@QAEHPBD@Z
 */
-#ifndef BLD_NATIVE
+
 int B_World::GetTriggerSectorRoofHeight(const char *trigger_sector_name)
 {
+    B_TriggerSector *triggerSector =
+        this->triggerSectors.Find(trigger_sector_name);
+    if (triggerSector != nullptr)
+    {
+        float roofHeight = triggerSector->roofHeight;
+        return static_cast<int>(roofHeight);
+    }
     return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0043F2A0
 * VC++ mangling:          ?GetTriggerSectorGroup@B_World@@QAEPBDPBD@Z
 */
-#ifndef BLD_NATIVE
+
 const char *B_World::GetTriggerSectorGroup(const char *trigger_sector_name)
 {
-    return NULL;
+    B_TriggerSector *triggerSector =
+        this->triggerSectors.Find(trigger_sector_name);
+    if (triggerSector != nullptr)
+    {
+        return triggerSector->groupName.String();
+    }
+    return nullptr;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0043F332
 * VC++ mangling:          ?GetTriggerSectorPoints@B_World@@QAEPANPBD@Z
 */
-#ifndef BLD_NATIVE
+
 double *B_World::GetTriggerSectorPoints(const char *trigger_sector_name)
 {
-    return NULL;
+    B_TriggerSector *triggerSector =
+        this->triggerSectors.Find(trigger_sector_name);
+    if (triggerSector != nullptr)
+    {
+        array_t<B_Vector> &points = triggerSector->points;
+        int numPoints = points.size;
+        double *coords = new double[2 * numPoints + 1];
+        double *coord = coords + 1;
+        coords[0] = numPoints;
+        for (int i = 0; i < numPoints; i++)
+        {
+            *coord = points.elements[i].x;
+            coord++;
+            *coord = points.elements[i].z;
+            coord++;
+        }
+        return coords;
+    }
+    return nullptr;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0043F467
 * VC++ mangling:          ?GetTriggerSectorFunc@B_World@@QAEPAUPyObject@@PBD0@Z
 */
-#ifndef BLD_NATIVE
+
 PyObject *B_World::GetTriggerSectorFunc(
     const char *trigger_sector_name, const char *func_type
 )
 {
-    return NULL;
+    B_TriggerSector *triggerSector =
+        this->triggerSectors.Find(trigger_sector_name);
+    if (triggerSector != nullptr)
+    {
+        if (!strcmp(func_type, "OnEnter"))
+        {
+            Py_XINCREF(triggerSector->onEnter);
+            PyObject *onEnter = triggerSector->onEnter;
+            return onEnter;
+        }
+        if (!strcmp(func_type, "OnLeave"))
+        {
+            Py_XINCREF(triggerSector->onLeave);
+            PyObject *onLeave = triggerSector->onLeave;
+            return onLeave;
+        }
+    }
+    return nullptr;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0043F56D
 * VC++ mangling:          ?SetTriggerSectorData@B_World@@QAEHPBDPAUPyObject@@@Z
 */
-#ifndef BLD_NATIVE
+
 int B_World::SetTriggerSectorData(
     const char *trigger_sector_name, PyObject *data
 )
 {
+    B_TriggerSector *triggerSector =
+        this->triggerSectors.Find(trigger_sector_name);
+    if (triggerSector != nullptr && data != nullptr)
+    {
+        Py_XDECREF(triggerSector->data);
+        Py_XINCREF(data);
+        triggerSector->data = data;
+        return 1;
+    }
     return 0;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0043F65D
 * VC++ mangling:          ?GetTriggerSectorData@B_World@@QAEPAUPyObject@@PBD@Z
 */
-#ifndef BLD_NATIVE
+
 PyObject *B_World::GetTriggerSectorData(const char *trigger_sector_name)
 {
-    return NULL;
+    B_TriggerSector *triggerSector =
+        this->triggerSectors.Find(trigger_sector_name);
+    if (triggerSector != nullptr)
+    {
+        Py_XINCREF(triggerSector->data);
+        PyObject *data = triggerSector->data;
+        return data;
+    }
+    return nullptr;
 }
-#endif
 
 
 /*
@@ -609,12 +715,20 @@ void B_TriggerSector::AddPoint(const B_Vector &point, int numPoints)
 * Entry point:            0x00440A19
 * VC++ mangling:          ?GetTriggerSectorName@B_World@@QAEPBDH@Z
 */
-#ifndef BLD_NATIVE
+
 const char *B_World::GetTriggerSectorName(int index)
 {
-    return NULL;
+    if (
+        index < 0 ||
+        static_cast<unsigned int>(index) >= this->triggerSectors.size
+    )
+    {
+        return nullptr;
+    }
+    B_TriggerSector *triggerSector = this->triggerSectors.elements[index];
+    return triggerSector->Id().String();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
