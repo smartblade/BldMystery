@@ -4,6 +4,7 @@
 #include <AnalyticGeometry/Polygon.h>
 #include <Entities/Entity.h>
 #include <BBLibc/BBLibc.h>
+#include <BBLibc/PythonCall.h>
 #include <bld_python.h>
 #include "bld_misc_funcs.h"
 
