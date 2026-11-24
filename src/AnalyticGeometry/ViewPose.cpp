@@ -13,7 +13,8 @@ B_ViewPose::B_ViewPose(
     const B_Vector &position,
     double rotationX,
     double rotationY,
-    double rotationZ)
+    double rotationZ
+)
 {
 }
 #endif

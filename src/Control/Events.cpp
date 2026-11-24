@@ -49,7 +49,10 @@ B_EventFuncs::B_EventFuncs(const B_Name &name)
 */
 #ifndef BLD_NATIVE
 void B_EventFuncs::AddPyFunc(
-    unsigned int eventIndex, PyObject *func, const char *name)
+    unsigned int eventIndex,
+    PyObject *func,
+    const char *name
+)
 {
 }
 #endif

@@ -298,8 +298,13 @@ LIB_EXP B_Entity *CreateSpark(
     float d_unknown12, float d_unknown13, float d_unknown14, int i_unknown15
 );
 LIB_EXP B_Entity *CreateEntity(
-    const char *name, const char *kind, double x, double y, double z,
-    const char *parent_class, const char *unknown
+    const char *name,
+    const char *kind,
+    double x,
+    double y,
+    double z,
+    const char *parent_class,
+    const char *unknown
 );
 LIB_EXP int DeleteEntity(const char *name);
 LIB_EXP B_Entity *CreateEntityDecal(
@@ -310,27 +315,49 @@ LIB_EXP B_Entity *GetEntity(const char *name);
 LIB_EXP B_Entity *GetEntityI(int index);
 LIB_EXP const char *GetEntityName(B_Entity *entity);
 LIB_EXP int GetEntitiesAt(
-    double x, double y, double z, double radius, char ***entity_names
+    double x,
+    double y,
+    double z,
+    double radius,
+    char ***entity_names
 );
 LIB_EXP int GetEntitiesVisibleFrom(
-    double xc, double yc, double zc, double radius, double xdir,
-    double ydir, double zdir, double angle, char ***entity_names
+    double xc,
+    double yc,
+    double zc,
+    double radius,
+    double xdir,
+    double ydir,
+    double zdir,
+    double angle,
+    char ***entity_names
 );
 LIB_EXP int GetObjectEntitiesVisibleFrom(
-    double xc, double yc, double zc, double radius, double xdir,
-    double ydir, double zdir, double angle, char ***entity_names
+    double xc,
+    double yc,
+    double zc,
+    double radius,
+    double xdir,
+    double ydir,
+    double zdir,
+    double angle,
+    char ***entity_names
 );
 LIB_EXP int GetEnemiesVisibleFrom(
     double xc, double yc, double zc, double radius, double xdir,
     double ydir, double zdir, double angle, char ***enemy_names
 );
 LIB_EXP int SetCombos(
-    const char *person_name, int num_combos, char **combos_names,
+    const char *person_name,
+    int num_combos,
+    char **combos_names,
     int *combos_executed
 );
 LIB_EXP int GetCombos(const char *person_name, combo_t **combos);
 LIB_EXP int GetWeaponCombos(
-    const char *person_name, const char *weapon_kind, combo_t **combos
+    const char *person_name,
+    const char *weapon_kind,
+    combo_t **combos
 );
 LIB_EXP int nEntities(void);
 LIB_EXP int GetNewExclusionGroupId(void);
@@ -378,109 +405,207 @@ LIB_EXP int SetNextAttack(
 );
 LIB_EXP B_Entity *SeverLimb(const char *entity_name, int limb);
 LIB_EXP int SubscribeEntityToList(
-    const char *entity_name, const char *timer_name
+    const char *entity_name,
+    const char *timer_name
 );
 LIB_EXP int MessageEvent(
-    const char *entity_name, int message_type, int unknown1, int unknown2
+    const char *entity_name,
+    int message_type,
+    int unknown1,
+    int unknown2
 );
 LIB_EXP int InterruptCombat(const char *entity_name);
 LIB_EXP const char *GetParticleEntity(const char *entity_name);
 LIB_EXP int Rel2AbsVector(
-    const char *entity_name, double x_rel, double y_rel, double z_rel,
-    double *x_abs, double *y_abs, double *z_abs
+    const char *entity_name,
+    double x_rel,
+    double y_rel,
+    double z_rel,
+    double *x_abs,
+    double *y_abs,
+    double *z_abs
 );
 LIB_EXP int Rel2AbsPoint(
-    const char *entity_name, double x_rel, double y_rel, double z_rel,
-    double *x_abs, double *y_abs, double *z_abs
+    const char *entity_name,
+    double x_rel,
+    double y_rel,
+    double z_rel,
+    double *x_abs,
+    double *y_abs,
+    double *z_abs
 );
 LIB_EXP int Rel2AbsVectorN(
-    const char *entity_name, double x_rel, double y_rel, double z_rel,
-    const char *anchor_name, double *x_abs, double *y_abs, double *z_abs
+    const char *entity_name,
+    double x_rel,
+    double y_rel,
+    double z_rel,
+    const char *anchor_name,
+    double *x_abs,
+    double *y_abs,
+    double *z_abs
 );
 LIB_EXP int Rel2AbsPointN(
-    const char *entity_name, double x_rel, double y_rel, double z_rel,
-    const char *anchor_name, double *x_abs, double *y_abs, double *z_abs
+    const char *entity_name,
+    double x_rel,
+    double y_rel,
+    double z_rel,
+    const char *anchor_name,
+    double *x_abs,
+    double *y_abs,
+    double *z_abs
 );
 LIB_EXP int Abs2RelVector(
-    const char *entity_name, double x_abs, double y_abs, double z_abs,
-    double *x_rel, double *y_rel, double *z_rel
+    const char *entity_name,
+    double x_abs,
+    double y_abs,
+    double z_abs,
+    double *x_rel,
+    double *y_rel,
+    double *z_rel
 );
 LIB_EXP int Abs2RelPoint(
-    const char *entity_name, double x_abs, double y_abs, double z_abs,
-    double *x_rel, double *y_rel, double *z_rel
+    const char *entity_name,
+    double x_abs,
+    double y_abs,
+    double z_abs,
+    double *x_rel,
+    double *y_rel,
+    double *z_rel
 );
 LIB_EXP int Abs2RelVectorN(
-    const char *entity_name, double x_abs, double y_abs, double z_abs,
-    const char *anchor_name, double *x_rel, double *y_rel, double *z_rel
+    const char *entity_name,
+    double x_abs,
+    double y_abs,
+    double z_abs,
+    const char *anchor_name,
+    double *x_rel,
+    double *y_rel,
+    double *z_rel
 );
 LIB_EXP int Abs2RelPointN(
-    const char *entity_name, double x_abs, double y_abs, double z_abs,
-    const char *anchor_name, double *x_rel, double *y_rel, double *z_rel
+    const char *entity_name,
+    double x_abs,
+    double y_abs,
+    double z_abs,
+    const char *anchor_name,
+    double *x_rel,
+    double *y_rel,
+    double *z_rel
 );
 LIB_EXP double SQDistance2(const char *entity_name1, const char *entity_name2);
 LIB_EXP int RemoveEntityFromList(
-    const char *entity_name, const char *timer_name
+    const char *entity_name,
+    const char *timer_name
 );
 LIB_EXP int CreateTimer(const char *timer_name, double period);
 LIB_EXP int GetnTimers(void);
 LIB_EXP int GetTimerInfo(
-    int timer_index, const char **timer_name, double *period
+    int timer_index,
+    const char **timer_name,
+    double *period
 );
 LIB_EXP int GetEntityIntProperty(
-    const char *entity_name, int property_kind, int index, int *value
+    const char *entity_name,
+    int property_kind,
+    int index,
+    int *value
 );
 LIB_EXP int GetEntityFloatProperty(
-    const char *entity_name, int property_kind, int index, double *value
+    const char *entity_name,
+    int property_kind,
+    int index,
+    double *value
 );
 LIB_EXP int GetEntityStringProperty(
-    const char *entity_name, int property_kind, int index,
+    const char *entity_name,
+    int property_kind,
+    int index,
     const char **value
 );
 LIB_EXP int GetEntityVectorProperty(
-    const char *entity_name, int property_kind, int index,
-    double *x, double *y, double *z
+    const char *entity_name,
+    int property_kind,
+    int index,
+    double *x,
+    double *y,
+    double *z
 );
 LIB_EXP int GetEntityQuatProperty(
-    const char *entity_name, int property_kind, int index, double *quat1,
-    double *quat2, double *quat3, double *quat4
+    const char *entity_name,
+    int property_kind,
+    int index,
+    double *quat1,
+    double *quat2,
+    double *quat3,
+    double *quat4
 );
 LIB_EXP int GetEntityFuncProperty(
-    const char *entity_name, int property_kind, int index, PyObject **func
+    const char *entity_name,
+    int property_kind,
+    int index,
+    PyObject **func
 );
 LIB_EXP int SetEntityIntProperty(
-    const char *entity_name, int property_kind, int index, int value
+    const char *entity_name,
+    int property_kind,
+    int index,
+    int value
 );
 LIB_EXP int SetEntityFloatProperty(
-    const char *entity_name, int property_kind, int index, double value
+    const char *entity_name,
+    int property_kind,
+    int index,
+    double value
 );
 LIB_EXP int SetEntityStringProperty(
-    const char *entity_name, int property_kind, int index,
+    const char *entity_name,
+    int property_kind,
+    int index,
     const char *value
 );
 LIB_EXP int SetEntityVectorProperty(
-    const char *entity_name, int property_kind, int index,
-    double x, double y, double z
+    const char *entity_name,
+    int property_kind,
+    int index,
+    double x,
+    double y,
+    double z
 );
 LIB_EXP int SetEntityQuatProperty(
-    const char *entity_name, int property_kind, int index, double quat1,
-    double quat2, double quat3, double quat4
+    const char *entity_name,
+    int property_kind,
+    int index,
+    double quat1,
+    double quat2,
+    double quat3,
+    double quat4
 );
 LIB_EXP int SetEntityData(const char *entity_name, PyObject *data);
 LIB_EXP PyObject *GetEntityData(const char *entity_name);
 LIB_EXP int SetEntityFuncProperty(
-    const char *entity_name, int property_kind, int index, PyObject *func
+    const char *entity_name,
+    int property_kind,
+    int index,
+    PyObject *func
 );
 LIB_EXP int SetEntityInternalState(
-    const char *entity_name, PyObject *internal_state
+    const char *entity_name,
+    PyObject *internal_state
 );
 LIB_EXP int GetEntityInternalState(
-    const char *entity_name, PyObject **internal_state
+    const char *entity_name,
+    PyObject **internal_state
 );
 LIB_EXP int AddSoundAnim(
-    const char *entity_name, const char *anm_event, double time, B_Sound *sound
+    const char *entity_name,
+    const char *anm_event,
+    double time,
+    B_Sound *sound
 );
 LIB_EXP int AddSoundEvent(
-    const char *entity_name, const char *event, B_Sound *sound
+    const char *entity_name,
+    const char *event,
+    B_Sound *sound
 );
 LIB_EXP int AddScheduledFunc(
     double time, PyObject *func, PyObject *args, const char *name
@@ -488,53 +613,104 @@ LIB_EXP int AddScheduledFunc(
 LIB_EXP int RemoveScheduledFunc(const char *name);
 LIB_EXP int GetnScheduledFuncs(void);
 LIB_EXP int GetScheduledFunc(
-    int index, PyObject **func, PyObject **args, const char **name,
+    int index,
+    PyObject **func,
+    PyObject **args,
+    const char **name,
     double *time
 );
 LIB_EXP int EntityRotate(
-    const char *entity_name, double x_dir, double y_dir, double z_dir,
-    double velocity, int unknown
+    const char *entity_name,
+    double x_dir,
+    double y_dir,
+    double z_dir,
+    double velocity,
+    int unknown
 );
 LIB_EXP int EntityRotateAbs(
-    const char *entity_name, double x, double y, double z, double x_dir,
-    double y_dir, double z_dir, double angle, int i_unknown
+    const char *entity_name,
+    double x,
+    double y,
+    double z,
+    double x_dir,
+    double y_dir,
+    double z_dir,
+    double angle,
+    int i_unknown
 );
 LIB_EXP int EntityRotateRel(
-    const char *entity_name, double x, double y, double z, double x_dir,
-    double y_dir, double z_dir, double angle, int i_unknown
+    const char *entity_name,
+    double x,
+    double y,
+    double z,
+    double x_dir,
+    double y_dir,
+    double z_dir,
+    double angle,
+    int i_unknown
 );
 LIB_EXP int EntityMove(
-    const char *entity_name, double x, double y, double z, int unknown
+    const char *entity_name,
+    double x,
+    double y,
+    double z,
+    int unknown
 );
 LIB_EXP int EntitySetPosition(
-    const char *entity_name, double x, double y, double z, int unknown
+    const char *entity_name,
+    double x,
+    double y,
+    double z,
+    int unknown
 );
 LIB_EXP int EntitySetOrientation(
-    const char *entity_name, double quat1, double quat2, double quat3,
-    double quat4, int unknown
+    const char *entity_name,
+    double quat1,
+    double quat2,
+    double quat3,
+    double quat4,
+    int unknown
 );
 LIB_EXP int EntityPutToWorld(const char *entity_name);
 LIB_EXP int EntityAddAnmEventFunc(
-    const char *entity_name, const char *anm_event, PyObject *func
+    const char *entity_name,
+    const char *anm_event,
+    PyObject *func
 );
 LIB_EXP int EntityDelAnmEventFunc(
-    const char *entity_name, const char *anm_event
+    const char *entity_name,
+    const char *anm_event
 );
 LIB_EXP int EntityClearAnmEventFuncs(const char *entity_name);
 LIB_EXP int ClearActorPath(const char *entity_name);
 LIB_EXP int AddActorPathnode(
-    const char *entity_name, double time, double x, double y, double z
+    const char *entity_name,
+    double time,
+    double x,
+    double y,
+    double z
 );
 LIB_EXP int StartActorPath(const char *entity_name);
 LIB_EXP int GoToActorPath(
-    const char *entity_name, int i_unknown, double d_unknown
+    const char *entity_name,
+    int i_unknown,
+    double d_unknown
 );
 LIB_EXP int TestPos(
-    const char *entity_name, double x, double y, double z, double max_fall,
-    int action_area, int *isCorrect
+    const char *entity_name,
+    double x,
+    double y,
+    double z,
+    double max_fall,
+    int action_area,
+    int *isCorrect
 );
 LIB_EXP int TestPosInOwnBox(
-    const char *entity_name, double x, double y, double z, double box_size,
+    const char *entity_name,
+    double x,
+    double y,
+    double z,
+    double box_size,
     int *isCorrect
 );
 LIB_EXP int TurnOnActor(const char *entity_name);
@@ -544,11 +720,17 @@ LIB_EXP PyObject *GetAttackList(const char *entity_name);
 LIB_EXP PyObject *GetGroupMembers(const char *entity_name);
 LIB_EXP PyObject *GetCombatants(const char *entity_name);
 LIB_EXP int SetActorNodeStartTangent(
-    const char *entity_name, int unknown1, double unknown2, double unknown3,
+    const char *entity_name,
+    int unknown1,
+    double unknown2,
+    double unknown3,
     double unknown4
 );
 LIB_EXP int SetActorNodeEndTangent(
-    const char *entity_name, int unknown1, double unknown2, double unknown3,
+    const char *entity_name,
+    int unknown1,
+    double unknown2,
+    double unknown3,
     double unknown4
 );
 LIB_EXP int SetSound(const char *entity_name, const char *sound);
@@ -557,8 +739,11 @@ LIB_EXP int PlayEntitySound(const char *entity_name, int i_unknown);
 LIB_EXP int Stop(const char *entity_name);
 LIB_EXP int StopAt(const char *entity_name, double x, double y, double z);
 LIB_EXP int CheckAnimCol(
-    const char *entity_name, const char *anm_name, const char *obj_name,
-    int unknown, int *res
+    const char *entity_name,
+    const char *anm_name,
+    const char *obj_name,
+    int unknown,
+    int *res
 );
 LIB_EXP int RemoveFromInvent(const char *entity_name, const char *obj_name);
 LIB_EXP int ResetWounds(const char *entity_name);
@@ -569,55 +754,93 @@ LIB_EXP int CanISee(
     const char *entity_name, const char *seen_entity_name, int *canISee
 );
 LIB_EXP int CanISeeFrom(
-    const char *entity_name, const char *seen_entity_name,
-    double x, double y, double z, int *canISee
+    const char *entity_name,
+    const char *seen_entity_name,
+    double x,
+    double y,
+    double z,
+    int *canISee
 );
 LIB_EXP int SetActiveEnemy(
-    const char *entity_name, const char *active_enemy_name, int *unknown
+    const char *entity_name,
+    const char *active_enemy_name,
+    int *unknown
 );
 LIB_EXP int ExcludeHitFor(
-    const char *entity_name, const char *exclude_hit_for_name,
+    const char *entity_name,
+    const char *exclude_hit_for_name,
     void *unknown
 );
 LIB_EXP int ExcludeHitInAnimationFor(
-    const char *entity_name, const char *exclude_hit_for_name, void *unknown
+    const char *entity_name,
+    const char *exclude_hit_for_name,
+    void *unknown
 );
 LIB_EXP int Link(
-    const char *entity_name, const char *child_entity_name, void *unknown
+    const char *entity_name,
+    const char *child_entity_name,
+    void *unknown
 );
 LIB_EXP int LinkToNode(
-    const char *entity_name, const char *child_name, int node_index,
+    const char *entity_name,
+    const char *child_name,
+    int node_index,
     void *unknown
 );
 LIB_EXP int LinkAnchors(
-    const char *entity_name, const char *entity_anchor_name,
-    const char *child_name, const char *child_anchor_name, void *unknown
+    const char *entity_name,
+    const char *entity_anchor_name,
+    const char *child_name,
+    const char *child_anchor_name,
+    void *unknown
 );
 LIB_EXP int UnlinkChilds(const char *entity_name);
 LIB_EXP int GetNodeIndex(
-    const char *entity_name, const char *node_name, int *index
+    const char *entity_name,
+    const char *node_name,
+    int *index
 );
 LIB_EXP int UnlinkChild(
-    const char *entity_name, const char *child_entity_name, void *unknown
+    const char *entity_name,
+    const char *child_entity_name,
+    void *unknown
 );
 LIB_EXP int InsideActionArea(
-    const char *entity_name, int action_area, int *is_inside
+    const char *entity_name,
+    int action_area,
+    int *is_inside
 );
 LIB_EXP int SetTmpAnmFlags(
-    const char *entity_name, int wuea, int mod_y, int solf, int copy_rot,
-    int bng_mov, int headf, int unknown
+    const char *entity_name,
+    int wuea,
+    int mod_y,
+    int solf,
+    int copy_rot,
+    int bng_mov,
+    int headf,
+    int unknown
 );
 LIB_EXP int SetAnmFlags(
-    const char *entity_name, const char *anm_name, int wuea, int mod_y,
-    int solf, int copy_rot, int bng_mov, int headf
+    const char *entity_name,
+    const char *anm_name,
+    int wuea,
+    int mod_y,
+    int solf,
+    int copy_rot,
+    int bng_mov,
+    int headf
 );
 LIB_EXP int LaunchAnimation2(
-    const char *entity_name, const char *anm_name1, const char *anm_name2
+    const char *entity_name,
+    const char *anm_name1,
+    const char *anm_name2
 );
 LIB_EXP int SetEnemy(const char *entity_name, const char *enemy_name);
 LIB_EXP const char *GetEnemy(const char *entity_name);
 LIB_EXP int Chase(
-    const char *entity_name, const char *enemy_name, int action_area
+    const char *entity_name,
+    const char *enemy_name,
+    int action_area
 );
 LIB_EXP int ResetChase(const char *entity_name);
 LIB_EXP int GoTo(const char *entity_name, int x, int y, int z);
@@ -627,7 +850,8 @@ LIB_EXP int Face(const char *entity_name, double angle);
 LIB_EXP int StartLooking(const char *entity_name, int x, int y, int z);
 LIB_EXP int StopLooking(const char *entity_name);
 LIB_EXP int LookAtEntity(
-    const char *entity_name, const char *look_at_entity_name
+    const char *entity_name,
+    const char *look_at_entity_name
 );
 LIB_EXP int LaunchWatch(const char *entity_name);
 LIB_EXP int GetActionMode(const char *entity_name, int *action_mode);
@@ -638,32 +862,51 @@ LIB_EXP int Freeze(const char *entity_name);
 LIB_EXP int UnFreeze(const char *entity_name);
 LIB_EXP int SwitchTo1H(const char *entity_name);
 LIB_EXP int GetDummyAxis(
-    const char *entity_name, const char *anchor_name, double x_dir,
-    double y_dir, double z_dir, double *x_dummy_axis, double *y_dummy_axis,
-    double *z_dummy_axis, int unknown
+    const char *entity_name,
+    const char *anchor_name,
+    double x_dir,
+    double y_dir,
+    double z_dir,
+    double *x_dummy_axis,
+    double *y_dummy_axis,
+    double *z_dummy_axis,
+    int unknown
 );
 LIB_EXP int GraspPos(
-    const char *entity_name, const char *grasp, double *x, double *y,
+    const char *entity_name,
+    const char *grasp,
+    double *x,
+    double *y,
     double *z
 );
 LIB_EXP int SwitchToBow(const char *entity_name);
 LIB_EXP int LaunchBayRoute(const char *entity_name);
 LIB_EXP int EntityCatchOnFire(
-    const char *entity_name, double x, double y, double z
+    const char *entity_name,
+    double x,
+    double y,
+    double z
 );
 LIB_EXP int GetNChildren(const char *entity_name);
 LIB_EXP const char *GetChild(const char *entity_name, int index);
 LIB_EXP int CreateBipedData(const char *biped_name, const char *kind);
 LIB_EXP int AddBipedAction(
-    const char *char_name, const char *action_name,
-    const char *animation_name, double d_unknown1, double d_unknown2,
+    const char *char_name,
+    const char *action_name,
+    const char *animation_name,
+    double d_unknown1,
+    double d_unknown2,
     int i_unknown
 );
 LIB_EXP int RemoveBipedAction(const char *race_name, const char *action_name);
 LIB_EXP int AddBipedActionC(
-    const char *char_name, const char *action_name,
-    const char *animation_name, const char *s_unknown, double d_unknown1,
-    double d_unknown2, int i_unknown
+    const char *char_name,
+    const char *action_name,
+    const char *animation_name,
+    const char *s_unknown,
+    double d_unknown1,
+    double d_unknown2,
+    int i_unknown
 );
 LIB_EXP int SetActionEventTable(
     const char *race_name, const char *action_name, const char *table_name

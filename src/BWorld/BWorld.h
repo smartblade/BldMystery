@@ -170,16 +170,28 @@ public:
     void AddScheduledFunc(
         double time, PyObject *func, PyObject *args, const char *name);
     void Update(
-        B_ViewPose *viewPose, void *cameraView, double time, int updateRaster);
+        B_ViewPose *viewPose,
+        void *cameraView,
+        double time,
+        int updateRaster
+    );
     void SetSun(int exists, const B_Vector &position);
     void GetEnemiesVisibleFrom(
-        const B_Vector &position, double radius,
-        const B_Vector &direction, double angle,
-        B_Array<B_Entity> *enemies);
+        const B_Vector &position,
+        double radius,
+        const B_Vector &direction,
+        double angle,
+        B_Array<B_Entity> *enemies
+    );
     int FindSectorIndex(const B_Vector &point);
     int IntersectSegment(
-        const B_Vector &startPoint, const B_Vector &endPoint,
-        const B_Vector &intersection, int flags, int, void *);
+        const B_Vector &startPoint,
+        const B_Vector &endPoint,
+        const B_Vector &intersection,
+        int flags,
+        int,
+        void *
+    );
     const char *GenerateEntityName(const char *prefix);
     int SetTriggerSectorFunc(
         const char *trigger_sector_name, const char *func_type,

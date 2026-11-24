@@ -41,47 +41,95 @@ extern "C" {
 LIB_EXP int GetSectorByIndex(int index);
 LIB_EXP int GetSectorByPosition(double x, double y, double z);
 LIB_EXP int InitBreakSector(
-        int sectorID, double x_vec1, double y_vec1, double z_vec1,
-        double x_vec2, double y_vec2, double z_vec2, double x_vec3,
-        double y_vec3, double z_vec3, const char *s_unknown, double d_unknown,
-        int i_unknown
+    int sectorID,
+    double x_vec1,
+    double y_vec1,
+    double z_vec1,
+    double x_vec2,
+    double y_vec2,
+    double z_vec2,
+    double x_vec3,
+    double y_vec3,
+    double z_vec3,
+    const char *s_unknown,
+    double d_unknown,
+    int i_unknown
 );
 LIB_EXP int DoBreakSector(
-        int sectorID, double x_impulse, double y_impulse, double z_impulse,
-        double x, double y, double z, double x_unknown, double y_unknown,
-        double z_unknown
+    int sectorID,
+    double x_impulse,
+    double y_impulse,
+    double z_impulse,
+    double x,
+    double y,
+    double z,
+    double x_unknown,
+    double y_unknown,
+    double z_unknown
 );
 LIB_EXP int GetSectorStringProperty(
-        int sectorID, int property_kind, int index, const char **value
+    int sectorID,
+    int property_kind,
+    int index,
+    const char **value
 );
 LIB_EXP int SetSectorStringProperty(
-        int sectorID, int property_kind, int index, const char *value
+    int sectorID,
+    int property_kind,
+    int index,
+    const char *value
 );
 LIB_EXP int GetSectorFloatProperty(
-        int sectorID, int property_kind, int index, double *value
+    int sectorID,
+    int property_kind,
+    int index,
+    double *value
 );
 LIB_EXP int SetSectorFloatProperty(
-        int sectorID, int property_kind, int index, double value
+    int sectorID,
+    int property_kind,
+    int index,
+    double value
 );
 LIB_EXP int GetSectorIntProperty(
-        int sectorID, int property_kind, int index, int *value
+    int sectorID,
+    int property_kind,
+    int index,
+    int *value
 );
 LIB_EXP int SetSectorIntProperty(
-        int sectorID, int property_kind, int index, int value
+    int sectorID,
+    int property_kind,
+    int index,
+    int value
 );
 LIB_EXP int GetSectorVectorProperty(
-        int sectorID, int property_kind, int index,
-        double *x, double *y, double *z
+    int sectorID,
+    int property_kind,
+    int index,
+    double *x,
+    double *y,
+    double *z
 );
 LIB_EXP int SetSectorVectorProperty(
-        int sectorID, int property_kind, int index, double x,
-        double y, double z
+    int sectorID,
+    int property_kind,
+    int index,
+    double x,
+    double y,
+    double z
 );
 LIB_EXP int GetSectorFuncProperty(
-        int sectorID, int property_kind, int index, PyObject **value
+    int sectorID,
+    int property_kind,
+    int index,
+    PyObject **value
 );
 LIB_EXP int SetSectorFuncProperty(
-        int sectorID, int property_kind, int index, PyObject *value
+    int sectorID,
+    int property_kind,
+    int index,
+    PyObject *value
 );
 
 #ifdef __cplusplus

@@ -308,8 +308,11 @@ int SetSSSpeakerConfig(int config)
 */
 #ifndef BLD_NATIVE
 int CreateGhostSector(
-    const char *ghost_sector_name, const char *group_name,
-    double floor_height, double roof_height, int num_points,
+    const char *ghost_sector_name,
+    const char *group_name,
+    double floor_height,
+    double roof_height,
+    int num_points,
     point_2d_t *points
 )
 {
@@ -340,9 +343,14 @@ int SetEAX(int eax_flag)
 */
 #ifndef BLD_NATIVE
 int SetGhostSectorSound(
-        const char *aghost_name, const char *file_name, double volume,
-        double base_volume, double min_dist, double max_dist, double v_max_dist,
-        double scale
+    const char *aghost_name,
+    const char *file_name,
+    double volume,
+    double base_volume,
+    double min_dist,
+    double max_dist,
+    double v_max_dist,
+    double scale
 )
 {
     int (*bld_proc)(
@@ -372,9 +380,14 @@ B_Sound *GetGhostSectorSound(const char *gs_name)
 */
 #ifndef BLD_NATIVE
 int SetGhostSectorGroupSound(
-        const char *group_name, const char *file_name, double volume,
-        double base_volume, double min_dist, double max_dist, double unknown,
-        double scale
+    const char *group_name,
+    const char *file_name,
+    double volume,
+    double base_volume,
+    double min_dist,
+    double max_dist,
+    double unknown,
+    double scale
 )
 {
     int (*bld_proc)(
@@ -568,8 +581,12 @@ int SetSoundIntProperty(int property_kind, B_Sound *sound, int value)
 */
 #ifndef BLD_NATIVE
 void SetSoundPitchVar(
-        B_Sound *sound, int i_unknown, float f_unknown1, float f_unknown2,
-        float f_unknown3, float f_unknown4
+    B_Sound *sound,
+    int i_unknown,
+    float f_unknown1,
+    float f_unknown2,
+    float f_unknown3,
+    float f_unknown4
 )
 {
     void (*bld_proc)(
@@ -658,8 +675,14 @@ int exeMusicEvent(int unknown1, int unknown2)
 */
 #ifndef BLD_NATIVE
 int addMusicEventCD(
-        const char *lpszEventName, int iTrack, double dFIn, double dFOut,
-        float fVolume, float fPriority, int bBackGround, int iNext
+    const char *lpszEventName,
+    int iTrack,
+    double dFIn,
+    double dFOut,
+    float fVolume,
+    float fPriority,
+    int bBackGround,
+    int iNext
 )
 {
     int (*bld_proc)(
@@ -676,9 +699,15 @@ int addMusicEventCD(
 */
 #ifndef BLD_NATIVE
 int addMusicEventMP3(
-        const char *lpszEventName, const char *lpszFile, double dFIn,
-        float fVolume, double dFOut, float fPriority, int bBackGround,
-        int iNext, int unknown
+    const char *lpszEventName,
+    const char *lpszFile,
+    double dFIn,
+    float fVolume,
+    double dFOut,
+    float fPriority,
+    int bBackGround,
+    int iNext,
+    int unknown
 )
 {
     int (*bld_proc)(
@@ -696,9 +725,15 @@ int addMusicEventMP3(
 */
 #ifndef BLD_NATIVE
 int addMusicEventWAV(
-        const char *lpszEventName, const char *lpszFile, double dFIn,
-        float fVolume, double dFOut, float fPriority, int bBackGround,
-        int iNext, int opened
+    const char *lpszEventName,
+    const char *lpszFile,
+    double dFIn,
+    float fVolume,
+    double dFOut,
+    float fPriority,
+    int bBackGround,
+    int iNext,
+    int opened
 )
 {
     int (*bld_proc)(
@@ -716,9 +751,15 @@ int addMusicEventWAV(
 */
 #ifndef BLD_NATIVE
 int addMusicEventADPCM(
-        const char *lpszEventName, const char *lpszFile, double dFIn,
-        float fVolume, double dFOut, float fPriority, int bBackGround,
-        int iNext, int unknown
+    const char *lpszEventName,
+    const char *lpszFile,
+    double dFIn,
+    float fVolume,
+    double dFOut,
+    float fPriority,
+    int bBackGround,
+    int iNext,
+    int unknown
 )
 {
     int (*bld_proc)(

@@ -8,7 +8,12 @@
 * VC++ mangling:          ??0B_ParticleGType@@QAE@ABVB_Name@@0KI@Z
 */
 #ifndef BLD_NATIVE
-B_ParticleGType::B_ParticleGType(const B_Name &new_type, const B_Name &parent_type, unsigned long operation_type, unsigned int duration)
+B_ParticleGType::B_ParticleGType(
+    const B_Name &new_type,
+    const B_Name &parent_type,
+    unsigned long operation_type,
+    unsigned int duration
+)
     : B_NamedObj(new_type), duration(duration), bmpHandle(-1), operation_type(operation_type)
 {
 

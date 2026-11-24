@@ -59,8 +59,11 @@ int LStepEvents(const char *s_unknown1, const char *s_unknown2)
 */
 #ifndef BLD_NATIVE
 int LoadSampledAnimation(
-        const char *file, const char *internal_name, int type,
-        const char *s_unknown, int i_unknown
+    const char *file,
+    const char *internal_name,
+    int type,
+    const char *s_unknown,
+    int i_unknown
 )
 {
     int (*bld_proc)(
@@ -84,7 +87,9 @@ int LoadSampledAnimation(
 */
 #ifndef BLD_NATIVE
 int CreateFCAnimation(
-        const char *file, const char *internal_name, int n_armonics
+    const char *file,
+    const char *internal_name,
+    int n_armonics
 )
 {
     int (*bld_proc)(
@@ -100,8 +105,10 @@ int CreateFCAnimation(
 */
 #ifndef BLD_NATIVE
 int CreateDFCAnimation(
-        const char *file1, const char *file2, const char *internal_name,
-        int n_armonics
+    const char *file1,
+    const char *file2,
+    const char *internal_name,
+    int n_armonics
 )
 {
     int (*bld_proc)(
@@ -165,7 +172,11 @@ int AddLReleaseEvent(const char *animation_name, double d_unknown)
 * Entry point:            0x0046D9A8
 */
 #ifndef BLD_NATIVE
-void AddAnmEvent(const char *anm_name, const char *event_name, double event_frame)
+void AddAnmEvent(
+    const char *anm_name,
+    const char *event_name,
+    double event_frame
+)
 {
     void (*bld_proc)(const char *anm_name, const char *event_name, double event_frame) = NULL;
     bld_proc(anm_name, event_name, event_frame);
@@ -209,8 +220,11 @@ void AddFloorCTolerance(const char *animation_name, double tolerance)
 */
 #ifndef BLD_NATIVE
 int AddTranTime(
-        const char *biped_name, const char *next_anm , const char *prev_anm,
-        double time, int unknown
+    const char *biped_name,
+    const char *next_anm,
+    const char *prev_anm,
+    double time,
+    int unknown
 )
 {
     int (*bld_proc)(

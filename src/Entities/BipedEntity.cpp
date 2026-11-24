@@ -54,7 +54,10 @@ B_BipedData::B_BipedData(const B_Name &bipedName, const B_Name &kind)
 */
 #ifndef BLD_NATIVE
 const B_Matrix &B_BipedData::GetNodePose(
-    B_BipedAction *action, float time, int nodeIndex)
+    B_BipedAction *action,
+    float time,
+    int nodeIndex
+)
 {
     return *(new B_Matrix());
 }
@@ -87,7 +90,11 @@ const B_Matrix &B_BipedData::GetPose(B_BipedAction *action, float time)
 */
 #ifndef BLD_NATIVE
 int B_BipedData::GetRightFootPose(
-    B_BipedAction *action, float time, B_Vector *, B_Vector *)
+    B_BipedAction *action,
+    float time,
+    B_Vector *,
+    B_Vector *
+)
 {
     return 0;
 }
@@ -100,7 +107,11 @@ int B_BipedData::GetRightFootPose(
 */
 #ifndef BLD_NATIVE
 int B_BipedData::GetLeftFootPose(
-    B_BipedAction *action, float time, B_Vector *, B_Vector *)
+    B_BipedAction *action,
+    float time,
+    B_Vector *,
+    B_Vector *
+)
 {
     return 0;
 }
@@ -139,8 +150,11 @@ double B_BipedEntity::GetAngle()
 */
 #ifndef BLD_NATIVE
 void B_BipedEntity::DoAction(
-    const B_Name &action_name, double unknown1, int iUnknown,
-    double *dUnknown)
+    const B_Name &action_name,
+    double unknown1,
+    int iUnknown,
+    double *dUnknown
+)
 {
 }
 #endif
@@ -159,8 +173,13 @@ void B_BipedEntity::DoAction(
 */
 #ifndef BLD_NATIVE
 void B_BipedEntity::DoActionWI(
-    const B_Name &actionName, int interpolationType, double time,
-    double unknown1, double *dUnknown, double unknown2)
+    const B_Name &actionName,
+    int interpolationType,
+    double time,
+    double unknown1,
+    double *dUnknown,
+    double unknown2
+)
 {
 }
 #endif

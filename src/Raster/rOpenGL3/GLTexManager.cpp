@@ -69,9 +69,7 @@ int B_OpenGLRasterDevice::nTextures()
 * VC++ mangling:          ?GetTextureInfo@B_OpenGLRasterDevice@@UAEHHAAH00@Z
 */
 #ifndef BLD_NATIVE
-int B_OpenGLRasterDevice::GetTextureInfo(
-    int index, int &w, int &h, int &depth
-)
+int B_OpenGLRasterDevice::GetTextureInfo(int index, int &w, int &h, int &depth)
 {
     return 0;
 }
@@ -267,7 +265,10 @@ void B_OpenGLRasterDevice::UpdateColorAdjustment()
 */
 #ifndef BLD_NATIVE
 void B_OpenGLRasterDevice::SetVideoSettings(
-    float gamma, float contrast, float brightness)
+    float gamma,
+    float contrast,
+    float brightness
+)
 {
 }
 #endif
@@ -390,7 +391,9 @@ float B_OpenGLRasterDevice::GetBrightness()
 */
 #ifndef BLD_NATIVE
 void B_OpenGLRasterDevice::LoadBitmapWinResource(
-    int resourceId, GLint textureId)
+    int resourceId,
+    GLint textureId
+)
 {
 }
 #endif

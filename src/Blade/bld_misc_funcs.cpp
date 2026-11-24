@@ -443,9 +443,15 @@ bool GetCurrentDir(char *buffer, int bufferLength)
 */
 #ifndef BLD_NATIVE
 B_Combustion::B_Combustion(
-    const B_Name &object_kind, const B_Name &fire_kind, double upper_treshol,
-    double lower_treshold, double flame_height, double flame_size,
-    double speed, double livetime)
+    const B_Name &object_kind,
+    const B_Name &fire_kind,
+    double upper_treshol,
+    double lower_treshold,
+    double flame_height,
+    double flame_size,
+    double speed,
+    double livetime
+)
 {
 }
 #endif

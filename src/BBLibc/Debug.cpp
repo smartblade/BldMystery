@@ -91,7 +91,9 @@ unsigned int B_MessageManager::CloseChannel(const B_Name &channel_name)
 * VC++ mangling:          ?DisconnectChannel@B_MessageManager@@QAEPAVB_MessageChannel@@ABVB_Name@@@Z
 */
 #ifndef BLD_NATIVE
-B_MessageChannel *B_MessageManager::DisconnectChannel(const B_Name &channel_name)
+B_MessageChannel *B_MessageManager::DisconnectChannel(
+    const B_Name &channel_name
+)
 {
     return nullptr;
 }

@@ -46,10 +46,19 @@ void GetNumberOfSectors()
 */
 #ifndef BLD_NATIVE
 int InitBreakSector(
-        int sectorID, double x_vec1, double y_vec1, double z_vec1,
-        double x_vec2, double y_vec2, double z_vec2, double x_vec3,
-        double y_vec3, double z_vec3, const char *s_unknown, double d_unknown,
-        int i_unknown
+    int sectorID,
+    double x_vec1,
+    double y_vec1,
+    double z_vec1,
+    double x_vec2,
+    double y_vec2,
+    double z_vec2,
+    double x_vec3,
+    double y_vec3,
+    double z_vec3,
+    const char *s_unknown,
+    double d_unknown,
+    int i_unknown
 )
 {
     int (*bld_proc)(
@@ -68,9 +77,16 @@ int InitBreakSector(
 */
 #ifndef BLD_NATIVE
 int DoBreakSector(
-        int sectorID, double x_impulse, double y_impulse, double z_impulse,
-        double x, double y, double z, double x_unknown, double y_unknown,
-        double z_unknown
+    int sectorID,
+    double x_impulse,
+    double y_impulse,
+    double z_impulse,
+    double x,
+    double y,
+    double z,
+    double x_unknown,
+    double y_unknown,
+    double z_unknown
 )
 {
     int (*bld_proc)(
@@ -87,9 +103,7 @@ int DoBreakSector(
 * Entry point:            0x0045C1F5
 */
 #ifndef BLD_NATIVE
-int GetSectorIntProperty(
-        int sectorID, int property_kind, int index, int *value
-)
+int GetSectorIntProperty(int sectorID, int property_kind, int index, int *value)
 {
     int (*bld_proc)(
         int sectorID, int property_kind, int index, int *value
@@ -103,9 +117,7 @@ int GetSectorIntProperty(
 * Entry point:            0x0045C34D
 */
 #ifndef BLD_NATIVE
-int SetSectorIntProperty(
-        int sectorID, int property_kind, int index, int value
-)
+int SetSectorIntProperty(int sectorID, int property_kind, int index, int value)
 {
     int (*bld_proc)(
         int sectorID, int property_kind, int index, int value
@@ -120,7 +132,10 @@ int SetSectorIntProperty(
 */
 #ifndef BLD_NATIVE
 int GetSectorFloatProperty(
-        int sectorID, int property_kind, int index, double *value
+    int sectorID,
+    int property_kind,
+    int index,
+    double *value
 )
 {
     int (*bld_proc)(
@@ -136,7 +151,10 @@ int GetSectorFloatProperty(
 */
 #ifndef BLD_NATIVE
 int SetSectorFloatProperty(
-        int sectorID, int property_kind, int index, double value
+    int sectorID,
+    int property_kind,
+    int index,
+    double value
 )
 {
     int (*bld_proc)(
@@ -152,7 +170,10 @@ int SetSectorFloatProperty(
 */
 #ifndef BLD_NATIVE
 int GetSectorStringProperty(
-        int sectorID, int property_kind, int index, const char **value
+    int sectorID,
+    int property_kind,
+    int index,
+    const char **value
 )
 {
     int (*bld_proc)(
@@ -175,7 +196,10 @@ int GetSectorStringProperty(
 */
 #ifndef BLD_NATIVE
 int SetSectorStringProperty(
-        int sectorID, int property_kind, int index, const char *value
+    int sectorID,
+    int property_kind,
+    int index,
+    const char *value
 )
 {
     int (*bld_proc)(
@@ -191,8 +215,12 @@ int SetSectorStringProperty(
 */
 #ifndef BLD_NATIVE
 int SetSectorVectorProperty(
-        int sectorID, int property_kind, int index, double x,
-        double y, double z
+    int sectorID,
+    int property_kind,
+    int index,
+    double x,
+    double y,
+    double z
 )
 {
     int (*bld_proc)(
@@ -209,8 +237,12 @@ int SetSectorVectorProperty(
 */
 #ifndef BLD_NATIVE
 int GetSectorVectorProperty(
-        int sectorID, int property_kind, int index,
-        double *x, double *y, double *z
+    int sectorID,
+    int property_kind,
+    int index,
+    double *x,
+    double *y,
+    double *z
 )
 {
     int (*bld_proc)(
@@ -227,7 +259,10 @@ int GetSectorVectorProperty(
 */
 #ifndef BLD_NATIVE
 int SetSectorFuncProperty(
-        int sectorID, int property_kind, int index, PyObject *value
+    int sectorID,
+    int property_kind,
+    int index,
+    PyObject *value
 )
 {
     int (*bld_proc)(
@@ -243,7 +278,10 @@ int SetSectorFuncProperty(
 */
 #ifndef BLD_NATIVE
 int GetSectorFuncProperty(
-        int sectorID, int property_kind, int index, PyObject **value
+    int sectorID,
+    int property_kind,
+    int index,
+    PyObject **value
 )
 {
     int (*bld_proc)(

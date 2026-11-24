@@ -1314,7 +1314,9 @@ void B_OpenGLRasterDevice::DecModeReflection()
 */
 #ifndef BLD_NATIVE
 int B_OpenGLRasterDevice::SetRasterParameter(
-    const char *parameter, const char *value)
+    const char *parameter,
+    const char *value
+)
 {
     return 0;
 }

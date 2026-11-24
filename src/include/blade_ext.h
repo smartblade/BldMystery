@@ -145,89 +145,172 @@ LIB_EXP int LinkLeftBack(const char *inv_name, const char *obj_name);
 LIB_EXP int LinkBack(const char *inv_name, const char *obj_name);
 LIB_EXP int SetCurrentQuiver(const char *inv_name, const char *quiver_name);
 LIB_EXP int AddObject(
-        const char *inv_name, int obj_type, int unknown, const char *obj_name
+    const char *inv_name,
+    int obj_type,
+    int unknown,
+    const char *obj_name
 );
 LIB_EXP int RemoveObject(
-        const char *inv_name, int obj_type, const char *obj_name
+    const char *inv_name,
+    int obj_type,
+    const char *obj_name
 );
 LIB_EXP const char *GetObject(const char *inv_name, int obj_type, int index);
 LIB_EXP const char *GetObjectByName(
-        const char *inv_name, int obj_type, const char *obj_name
+    const char *inv_name,
+    int obj_type,
+    const char *obj_name
 );
 LIB_EXP const char *GetSelectedObject(const char *inv_name, int obj_type);
 LIB_EXP void Cycle(const char *inv_name, int obj_type);
 LIB_EXP int IsSelected(const char *inv_name, int obj_type, int obj_index);
 LIB_EXP int GetNumberObjectsAt(const char *inv_name, int obj_type, int index);
 LIB_EXP int GetMaxNumberObjectsAt(
-        const char *inv_name, int obj_type, int index
+    const char *inv_name,
+    int obj_type,
+    int index
 );
 LIB_EXP const char *GetActiveShield(const char *inv_name);
 LIB_EXP const char *GetActiveWeapon(const char *inv_name);
 LIB_EXP const char *GetActiveQuiver(const char *inv_name);
 LIB_EXP int AddWeapon(const char *inv_name, int flag, const char *weapon_name);
 LIB_EXP int GetInventoryStringProperty(
-    const char *name, int property_kind, const char **value
+    const char *name,
+    int property_kind,
+    const char **value
 );
 LIB_EXP int GetInventoryIntProperty(
-        const char *name, int property_kind, int *value
+    const char *name,
+    int property_kind,
+    int *value
 );
 LIB_EXP int SetInventoryIntProperty(
-        const char *name, int property_kind, int value
+    const char *name,
+    int property_kind,
+    int value
 );
 LIB_EXP int SetListenerMode(int mode, double x, double y, double z);
 LIB_EXP int GetListenerMode();
 LIB_EXP int GetCharByName(const char *name, const char *short_name);
 LIB_EXP int LoadAllAnimations(int charID);
 LIB_EXP int ChangeAnimation(
-        int charID, const char *old_anm_name, const char *new_anm_name
+    int charID,
+    const char *old_anm_name,
+    const char *new_anm_name
 );
 LIB_EXP int SetAnmDefaultPrefix(int charID, const char *prefix);
-LIB_EXP int AddAttack(int charID, const char *attack_name, const char *anm_name);
+LIB_EXP int AddAttack(
+    int charID,
+    const char *attack_name,
+    const char *anm_name
+);
 LIB_EXP int AttackWindow(
-        int charID, const char *anm_name, float window1, float window2,
-        const char *window_name
+    int charID,
+    const char *anm_name,
+    float window1,
+    float window2,
+    const char *window_name
 );
 LIB_EXP int AttackLevels(
-        int charID, const char *anm_name, float level1, float level2
+    int charID,
+    const char *anm_name,
+    float level1,
+    float level2
 );
-LIB_EXP int AttackEnergyLevel(
-        int charID, const char *anm_name, float  level
-);
+LIB_EXP int AttackEnergyLevel(int charID, const char *anm_name, float level);
 LIB_EXP int AttackTypeFlag(int charID, const char *attack_name, int flag);
 LIB_EXP int AllowAttack(
-        int charID, const char *attack_name, const char *keys,
-        const char *previous, const char *previous_negative,
-        const char *window_name, const char *weapon_kind
+    int charID,
+    const char *attack_name,
+    const char *keys,
+    const char *previous,
+    const char *previous_negative,
+    const char *window_name,
+    const char *weapon_kind
 );
 LIB_EXP int MetaAttack(
-        int charID, const char *meta_attack_name, const char *attack_name
+    int charID,
+    const char *meta_attack_name,
+    const char *attack_name
 );
 LIB_EXP int AssignTrail(
-        int charID, const char *attack_name, const char *unknown,
-        const char *trail_name
+    int charID,
+    const char *attack_name,
+    const char *unknown,
+    const char *trail_name
 );
 LIB_EXP int SetNCDSpheres(int charID, int NCDSpheres);
 LIB_EXP int SetCDSphere(int charID, int index, double h, double r);
-LIB_EXP int GetCharIntProperty(int charID, int property_kind, int index, int *value);
-LIB_EXP int SetCharIntProperty(int charID, int property_kind, int index, int value);
-LIB_EXP int GetCharFloatProperty(int charID, int property_kind, int index, double *value);
-LIB_EXP int SetCharFloatProperty(int charID, int property_kind, int index, double value);
-LIB_EXP int GetCharStringProperty(int charID, int property_kind, int index, const char **value);
-LIB_EXP int SetCharStringProperty(int charID, int property_kind, int index, const char *value);
-LIB_EXP int SetCharFuncProperty(int charID, int property_kind, int index, PyObject *func);
+LIB_EXP int GetCharIntProperty(
+    int charID,
+    int property_kind,
+    int index,
+    int *value
+);
+LIB_EXP int SetCharIntProperty(
+    int charID,
+    int property_kind,
+    int index,
+    int value
+);
+LIB_EXP int GetCharFloatProperty(
+    int charID,
+    int property_kind,
+    int index,
+    double *value
+);
+LIB_EXP int SetCharFloatProperty(
+    int charID,
+    int property_kind,
+    int index,
+    double value
+);
+LIB_EXP int GetCharStringProperty(
+    int charID,
+    int property_kind,
+    int index,
+    const char **value
+);
+LIB_EXP int SetCharStringProperty(
+    int charID,
+    int property_kind,
+    int index,
+    const char *value
+);
+LIB_EXP int SetCharFuncProperty(
+    int charID,
+    int property_kind,
+    int index,
+    PyObject *func
+);
 LIB_EXP int GetTrailByName(const char *name);
 LIB_EXP int GetTrailFloatProperty(
-        int trailID, int property_kind, int index, double *value
+    int trailID,
+    int property_kind,
+    int index,
+    double *value
 );
 LIB_EXP int SetTrailFloatProperty(
-        int trailID, int property_kind, int index, double value
+    int trailID,
+    int property_kind,
+    int index,
+    double value
 );
 LIB_EXP int GetTrailVectorProperty(
-        int trailID, int property_kind, int index,
-        double *x, double *y, double *z
+    int trailID,
+    int property_kind,
+    int index,
+    double *x,
+    double *y,
+    double *z
 );
 LIB_EXP int SetTrailVectorProperty(
-        int trailID, int property_kind, int index, double x, double y, double z
+    int trailID,
+    int property_kind,
+    int index,
+    double x,
+    double y,
+    double z
 );
 LIB_EXP int nSectors(void);
 LIB_EXP double GetTime(void);
@@ -300,22 +383,39 @@ LIB_EXP material_t *GetMaterial(const char *name);
 LIB_EXP material_t *GetMaterialI(int index);
 LIB_EXP material_t *CreateMaterial(const char *name);
 LIB_EXP int AddHitSoundComb(
-    material_t *material1, material_t *material2, B_Sound *sound
+    material_t *material1,
+    material_t *material2,
+    B_Sound *sound
 );
 LIB_EXP int GetMaterialFloatProperty(
-        material_t *material, int property_kind, int index, double *value
+    material_t *material,
+    int property_kind,
+    int index,
+    double *value
 );
 LIB_EXP int SetMaterialFloatProperty(
-        material_t *material, int property_kind, int index, double value
+    material_t *material,
+    int property_kind,
+    int index,
+    double value
 );
 LIB_EXP int GetMaterialStringProperty(
-        material_t *material, int property_kind, int index, const char **value
+    material_t *material,
+    int property_kind,
+    int index,
+    const char **value
 );
 LIB_EXP int GetMaterialSoundProperty(
-        material_t *material, int property_kind, int index, B_Sound **sound
+    material_t *material,
+    int property_kind,
+    int index,
+    B_Sound **sound
 );
 LIB_EXP int SetMaterialSoundProperty(
-    material_t *material, int property_kind, int index, B_Sound *sound
+    material_t *material,
+    int property_kind,
+    int index,
+    B_Sound *sound
 );
 LIB_EXP int nMaterials(void);
 LIB_EXP int CreateTriggerSector(
@@ -404,10 +504,14 @@ LIB_EXP size_t GetWindowId(void);
 LIB_EXP size_t GetProgramId(void);
 LIB_EXP int AddStepSound(const char *name, B_Sound *sound);
 LIB_EXP int AddMaterialStepSound(
-        const char *table, const char *material, const char *step_sound
+    const char *table,
+    const char *material,
+    const char *step_sound
 );
 LIB_EXP int AddActionStepSound(
-        const char *table, const char *action, const char *step_sound_table
+    const char *table,
+    const char *action,
+    const char *step_sound_table
 );
 LIB_EXP int AddTextureMaterial(const char *texture, const char *material);
 LIB_EXP int TakeSnapShot(void);

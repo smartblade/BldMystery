@@ -68,7 +68,10 @@ unsigned int B_List::Add(B_ListElement *element)
 * VC++ mangling:          ?AddAfter@B_List@@QAEIPAVB_ListElement@@0@Z
 */
 #ifndef BLD_NATIVE
-unsigned int B_List::AddAfter(B_ListElement *existing, B_ListElement *newElement)
+unsigned int B_List::AddAfter(
+    B_ListElement *existing,
+    B_ListElement *newElement
+)
 {
     return 0;
 }
@@ -81,7 +84,10 @@ unsigned int B_List::AddAfter(B_ListElement *existing, B_ListElement *newElement
 * VC++ mangling:          ?AddBefore@B_List@@QAEIPAVB_ListElement@@0@Z
 */
 #ifndef BLD_NATIVE
-unsigned int B_List::AddBefore(B_ListElement *existing, B_ListElement *newElement)
+unsigned int B_List::AddBefore(
+    B_ListElement *existing,
+    B_ListElement *newElement
+)
 {
     return 0;
 }

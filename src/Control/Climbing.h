@@ -24,21 +24,33 @@ extern "C" {
 #endif
 
 int FindClimbingTopPosition(
-    const B_Vector &bottomPos, double maxHeight, B_Vector *topFloorPos,
-    double step);
+    const B_Vector &bottomPos,
+    double maxHeight,
+    B_Vector *topFloorPos,
+    double step
+);
 int FindLeanPos(
-    const B_Vector &startPos, const B_Vector &topFloorPos,
-    double leftHandDist, double rightHandDist,
-    B_Vector *leftHandPos, B_Vector *rightHandPos);
+    const B_Vector &startPos,
+    const B_Vector &topFloorPos,
+    double leftHandDist,
+    double rightHandDist,
+    B_Vector *leftHandPos,
+    B_Vector *rightHandPos
+);
 int FindLowClimbingTopPos(
-    const B_Vector &startPos, const B_Vector &topFloorPos,
-    B_Vector *lowClmbTopFloorPos);
+    const B_Vector &startPos,
+    const B_Vector &topFloorPos,
+    B_Vector *lowClmbTopFloorPos
+);
 int ClimbingImpulse(B_Entity *entity, unsigned int eventIndex);
 int LowClimbingImpulse(B_Entity *entity, unsigned int eventIndex);
 int FindEndPos(
-    B_PersonEntity *personEntity, B_BipedAction *action,
-    const B_Vector &leftHandPos, const B_Vector &rightHandPos,
-    B_Vector *topPersonPos);
+    B_PersonEntity *personEntity,
+    B_BipedAction *action,
+    const B_Vector &leftHandPos,
+    const B_Vector &rightHandPos,
+    B_Vector *topPersonPos
+);
 int TestClimb(B_Entity *entity, unsigned int eventIndex);
 
 /*

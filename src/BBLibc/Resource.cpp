@@ -199,7 +199,11 @@ unsigned int B_ResourceManager::AddFile(const B_Name &arg_1)
 * VC++ mangling:          ?LocateResourceIn@B_ResourceManager@@QAEIABVB_Name@@PBV2@H@Z
 */
 #ifndef BLD_NATIVE
-unsigned int B_ResourceManager::LocateResourceIn(const B_Name &id, const B_Name *, int)
+unsigned int B_ResourceManager::LocateResourceIn(
+    const B_Name &id,
+    const B_Name *,
+    int
+)
 {
     return 0;
 }
@@ -227,7 +231,11 @@ unsigned int B_ResourceManager::LocateResourcesIn(
 * VC++ mangling:          ?AddAutoResource@B_ResourceManager@@QAEIABVB_Name@@PAVB_Resource@@H@Z
 */
 #ifndef BLD_NATIVE
-unsigned int B_ResourceManager::AddAutoResource(B_Name const &, B_Resource *, int)
+unsigned int B_ResourceManager::AddAutoResource(
+    B_Name const &,
+    B_Resource *,
+    int
+)
 {
     return 0;
 }
@@ -240,7 +248,10 @@ unsigned int B_ResourceManager::AddAutoResource(B_Name const &, B_Resource *, in
 * VC++ mangling:          ?GetResource@B_ResourceManager@@QAEPAVB_Resource@@GABVB_Name@@@Z
 */
 #ifndef BLD_NATIVE
-B_Resource *B_ResourceManager::GetResource(unsigned short resourceId, const B_Name &name)
+B_Resource *B_ResourceManager::GetResource(
+    unsigned short resourceId,
+    const B_Name &name
+)
 {
     // TODO Implement
     unsigned short id = resourceId;

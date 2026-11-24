@@ -33,7 +33,12 @@ B_RDataLight::B_RDataLight(float a, float b, float c, float d)
 * VC++ mangling:          ?Interp@B_RDataLight@@QAEXNAAV1@N0@Z
 */
 #ifndef BLD_NATIVE
-void B_RDataLight::Interp(double t, B_RDataLight &start, double u, B_RDataLight &end)
+void B_RDataLight::Interp(
+    double t,
+    B_RDataLight &start,
+    double u,
+    B_RDataLight &end
+)
 {
 
 }

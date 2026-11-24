@@ -311,7 +311,11 @@ void B_World::GoToTime(double time)
 */
 #ifndef BLD_NATIVE
 void B_World::AddScheduledFunc(
-    double time, PyObject *func, PyObject *args, const char *name)
+    double time,
+    PyObject *func,
+    PyObject *args,
+    const char *name
+)
 {
 }
 #endif
@@ -331,7 +335,11 @@ void B_World::AddScheduledFunc(
 */
 #ifndef BLD_NATIVE
 void B_World::Update(
-    B_ViewPose *viewPose, void *cameraView, double time, int updateRaster)
+    B_ViewPose *viewPose,
+    void *cameraView,
+    double time,
+    int updateRaster
+)
 {
 }
 #endif
@@ -366,8 +374,12 @@ void B_World::SetSun(int exists, const B_Vector &position)
 */
 #ifndef BLD_NATIVE
 void B_World::GetEnemiesVisibleFrom(
-    const B_Vector &position, double radius,
-    const B_Vector &direction, double angle, B_Array<B_Entity> *enemies)
+    const B_Vector &position,
+    double radius,
+    const B_Vector &direction,
+    double angle,
+    B_Array<B_Entity> *enemies
+)
 {
 }
 #endif
@@ -402,8 +414,13 @@ int B_World::FindSectorIndex(const B_Vector &point)
 */
 #ifndef BLD_NATIVE
 int B_World::IntersectSegment(
-    const B_Vector &startPoint, const B_Vector &endPoint,
-    const B_Vector &intersection, int flags, int, void *)
+    const B_Vector &startPoint,
+    const B_Vector &endPoint,
+    const B_Vector &intersection,
+    int flags,
+    int,
+    void *
+)
 {
     return 0;
 }

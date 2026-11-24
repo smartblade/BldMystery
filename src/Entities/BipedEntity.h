@@ -33,12 +33,23 @@ class B_BipedData : public B_NamedObj
 public:
     B_BipedData(const B_Name &bipedName, const B_Name &kind);
     const B_Matrix &GetNodePose(
-        B_BipedAction *action, float time, int nodeIndex);
+        B_BipedAction *action,
+        float time,
+        int nodeIndex
+    );
     const B_Matrix &GetPose(B_BipedAction *action, float time);
     int GetRightFootPose(
-        B_BipedAction *action, float time, B_Vector *, B_Vector *);
+        B_BipedAction *action,
+        float time,
+        B_Vector *,
+        B_Vector *
+    );
     int GetLeftFootPose(
-        B_BipedAction *action, float time, B_Vector *, B_Vector *);
+        B_BipedAction *action,
+        float time,
+        B_Vector *,
+        B_Vector *
+    );
 
     char unknown_fields[0x24];
     B_Array<B_BipedAction> actions;
@@ -60,12 +71,18 @@ public:
     virtual void unknown_method0EC();
     double GetAngle();
     void DoAction(
-        const B_Name &action_name, double unknown1, int iUnknown,
+        const B_Name &action_name,
+        double unknown1,
+        int iUnknown,
         double *dUnknown
     );
     void DoActionWI(
-        const B_Name &actionName, int interpolationType, double time,
-        double unknown1, double *dUnknown, double unknown2
+        const B_Name &actionName,
+        int interpolationType,
+        double time,
+        double unknown1,
+        double *dUnknown,
+        double unknown2
     );
     int IsIncorrectPosition(const B_Vector &pos);
     void unknown004E5798(const B_Vector &pos);

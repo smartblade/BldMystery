@@ -75,8 +75,14 @@ public:
     LIB_EXP int GetVtxNode(unsigned int vertex);
     LIB_EXP void SetUpEdges();
     LIB_EXP void Draw(
-        B_3DRasterDevice *raster, float x1, float y1, float x2, float y2,
-        float scale, int i_unknown);
+        B_3DRasterDevice *raster,
+        float x1,
+        float y1,
+        float x2,
+        float y2,
+        float scale,
+        int i_unknown
+    );
     LIB_EXP void SetUpBSP();
     LIB_EXP unsigned char EdgeFaceGrp(unsigned int edge);
 

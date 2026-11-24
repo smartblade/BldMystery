@@ -14,7 +14,13 @@
 */
 #ifndef BLD_NATIVE
 void B_OpenGLRasterDevice::SysWrite(
-    int x, int y, const char *text, byte r, byte g, byte b)
+    int x,
+    int y,
+    const char *text,
+    byte r,
+    byte g,
+    byte b
+)
 {
 }
 #endif
@@ -33,7 +39,11 @@ void B_OpenGLRasterDevice::SysWrite(
 */
 #ifndef BLD_NATIVE
 void B_OpenGLRasterDevice::DisplayText(
-    int x, int y, const char *text, unsigned int color)
+    int x,
+    int y,
+    const char *text,
+    unsigned int color
+)
 {
 }
 #endif
@@ -471,7 +481,11 @@ float B_OpenGLRasterDevice::get_text_blur_alpha()
 */
 #ifndef BLD_NATIVE
 void B_OpenGLRasterDevice::DrawChar(
-    B_Font::B_CharSize charLocation, float scaleX, float scaleY, int textMode)
+    B_Font::B_CharSize charLocation,
+    float scaleX,
+    float scaleY,
+    int textMode
+)
 {
 }
 #endif
@@ -490,8 +504,14 @@ void B_OpenGLRasterDevice::DrawChar(
 */
 #ifndef BLD_NATIVE
 int B_OpenGLRasterDevice::GetImage(
-    int x, int y, int w, int h, const char *color_style,
-    const char *stretch_or_centered, int image_size, long image_data
+    int x,
+    int y,
+    int w,
+    int h,
+    const char *color_style,
+    const char *stretch_or_centered,
+    int image_size,
+    long image_data
 )
 {
     return 0;
@@ -512,7 +532,10 @@ int B_OpenGLRasterDevice::GetImage(
 */
 #ifndef BLD_NATIVE
 void B_OpenGLRasterDevice::DrawImage(
-    int w, int h, const char *color_style, const char *is_normal,
+    int w,
+    int h,
+    const char *color_style,
+    const char *is_normal,
     const void *image_data
 )
 {
@@ -533,8 +556,12 @@ void B_OpenGLRasterDevice::DrawImage(
 */
 #ifndef BLD_NATIVE
 void B_OpenGLRasterDevice::SetBackgroundImage(
-    int w, int h, const char *is_rgb, const char *is_normal,
-    const char *stretch_or_centered, long image_data
+    int w,
+    int h,
+    const char *is_rgb,
+    const char *is_normal,
+    const char *stretch_or_centered,
+    long image_data
 )
 {
 }

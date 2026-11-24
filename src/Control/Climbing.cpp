@@ -15,8 +15,11 @@
 */
 #ifndef BLD_NATIVE
 int FindClimbingTopPosition(
-    const B_Vector &bottomPos, double maxHeight, B_Vector *topFloorPos,
-    double step)
+    const B_Vector &bottomPos,
+    double maxHeight,
+    B_Vector *topFloorPos,
+    double step
+)
 {
     return 0;
 }
@@ -28,9 +31,13 @@ int FindClimbingTopPosition(
 */
 #ifndef BLD_NATIVE
 int FindLeanPos(
-    const B_Vector &startPos, const B_Vector &topFloorPos,
-    double leftHandDist, double rightHandDist,
-    B_Vector *leftHandPos, B_Vector *rightHandPos)
+    const B_Vector &startPos,
+    const B_Vector &topFloorPos,
+    double leftHandDist,
+    double rightHandDist,
+    B_Vector *leftHandPos,
+    B_Vector *rightHandPos
+)
 {
     return 0;
 }
@@ -42,8 +49,10 @@ int FindLeanPos(
 */
 #ifndef BLD_NATIVE
 int FindLowClimbingTopPos(
-    const B_Vector &startPos, const B_Vector &topFloorPos,
-    B_Vector *lowClmbTopFloorPos)
+    const B_Vector &startPos,
+    const B_Vector &topFloorPos,
+    B_Vector *lowClmbTopFloorPos
+)
 {
     return 0;
 }
@@ -77,9 +86,12 @@ int LowClimbingImpulse(B_Entity *entity, unsigned int eventIndex)
 */
 #ifndef BLD_NATIVE
 int FindEndPos(
-    B_PersonEntity *personEntity, B_BipedAction *action,
-    const B_Vector &leftHandPos, const B_Vector &rightHandPos,
-    B_Vector *topPersonPos)
+    B_PersonEntity *personEntity,
+    B_BipedAction *action,
+    const B_Vector &leftHandPos,
+    const B_Vector &rightHandPos,
+    B_Vector *topPersonPos
+)
 {
     return 0;
 }

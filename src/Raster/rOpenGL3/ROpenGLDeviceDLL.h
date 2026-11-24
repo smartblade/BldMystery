@@ -46,7 +46,9 @@ public:
     virtual void SetBrightness(float brightness);
     virtual float GetBrightness();
     virtual void SetVideoSettings(
-        float gamma, float contrast, float brightness
+        float gamma,
+        float contrast,
+        float brightness
     );
     virtual void SetFlags(long flags);
     virtual void unknown038();
@@ -58,9 +60,7 @@ public:
     virtual const char *BmpName(long handle);
     virtual B_Name GetAtmosphereName(int atmosphereHandle);
     virtual void update_dome();
-    virtual int GetTextureInfo(
-        int index, int &w, int &h, int &depth
-    );
+    virtual int GetTextureInfo(int index, int &w, int &h, int &depth);
     virtual void unknown058();
     virtual void unknown05C();
     virtual void unknown060();
@@ -114,10 +114,19 @@ public:
     );
     virtual void unknown108();
     virtual void SysWrite(
-        int x, int y, const char *text, byte r, byte g, byte b
+        int x,
+        int y,
+        const char *text,
+        byte r,
+        byte g,
+        byte b
     );
     virtual void DisplayText(
-        int x, int y, const char *text, unsigned int color);
+        int x,
+        int y,
+        const char *text,
+        unsigned int color
+    );
     virtual void SetMode(int mode);
     virtual void unknown118();
     virtual void unknown120();
@@ -146,7 +155,7 @@ public:
     }
 
     virtual void set_pen_color(byte r, byte g, byte b);
-    virtual void unknown164() ;
+    virtual void unknown164();
     virtual void set_fill_color(byte r, byte g, byte b);
     virtual void unknown16C();
     virtual void set_alpha(float alpha);
@@ -178,25 +187,39 @@ public:
     virtual void unknown1D4();
     virtual float get_text_blur_alpha();
     virtual void DrawChar(
-        B_Font::B_CharSize charLocation, float scaleX, float scaleY,
+        B_Font::B_CharSize charLocation,
+        float scaleX,
+        float scaleY,
         int textMode
     );
     virtual void DrawBitmap(long handle, int w, int h);
     virtual void DrawImage(
-        int w, int h, const char *color_style, const char *is_normal,
+        int w,
+        int h,
+        const char *color_style,
+        const char *is_normal,
         const void *image_data
     );
     virtual int GetImage(
-        int x, int y, int w, int h, const char *color_style,
-        const char *stretch_or_centered, int image_size, long image_data
+        int x,
+        int y,
+        int w,
+        int h,
+        const char *color_style,
+        const char *stretch_or_centered,
+        int image_size,
+        long image_data
     );
     virtual void SetBackgroundImage(
-        int w, int h, const char *is_rgb, const char *is_normal,
-        const char *stretch_or_centered, long image_data
+        int w,
+        int h,
+        const char *is_rgb,
+        const char *is_normal,
+        const char *stretch_or_centered,
+        long image_data
     );
     virtual void RemoveBackgroundImage();
-    virtual int SetRasterParameter(
-        const char *parameter, const char *value);
+    virtual int SetRasterParameter(const char *parameter, const char *value);
     virtual const char *GetRasterParameter(const char *parameter);
 
 
@@ -273,8 +296,7 @@ public:
     virtual void unknown244();
 
     void UpdateColorAdjustment();
-    void LoadBitmapWinResource(
-        int resourceId, GLint textureId);
+    void LoadBitmapWinResource(int resourceId, GLint textureId);
     void GetVideoModes();
     int CreateContext();
     int HasWglExtension(const char *extension);
