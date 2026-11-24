@@ -4,6 +4,9 @@
 #include <BWorld/BWorld.h>
 #include <BWorld/BMap.h>
 #include <BWorld/light.h>
+#include <BBLibc/MessageManager.h>
+#include <BBLibc/PythonCall.h>
+#include <BBLibc/Vararg.h>
 #include "bld_misc_funcs.h"
 
 
@@ -304,17 +307,176 @@ void B_World::GoToTime(double time)
 ................................................................................
 */
 
+
 /*
 * Module:                 Blade.exe
 * Entry point:            0x0043B8E6
 * VC++ mangling:          ?AddScheduledFunc@B_World@@QAEXNPAUPyObject@@0PBD@Z
 */
-#ifndef BLD_NATIVE
+
 void B_World::AddScheduledFunc(
-    double time, PyObject *func, PyObject *args, const char *name)
+    double time,
+    PyObject *func,
+    PyObject *args,
+    const char *name
+)
 {
+    if (PyCallable_Check(func))
+    {
+        this->scheduledFuncs.Append(
+            new B_ScheduledFunc(name, time, func, args)
+        );
+    }
+    else
+    {
+        mout << vararg(
+            "Warning: AddScheduledFunc() called for %s with uncalleable "
+            "function.\n",
+            name
+        );
+    }
 }
-#endif
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043BA73
+* VC++ mangling:          ?AddScheduledFunc@B_World@@QAEXNP6AHPAX@Z0PBD@Z
+*/
+
+void B_World::AddScheduledFunc(
+    double time,
+    ScheduledNativeFunc nativeFunc,
+    void *nativeArg,
+    const char *name
+)
+{
+    this->scheduledFuncs.Append(
+        new B_ScheduledFunc(name, time, nativeFunc, nativeArg)
+    );
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043BBC8
+* VC++ mangling:          ?RemoveScheduledFunc@B_World@@QAEXPBD@Z
+*/
+
+void B_World::RemoveScheduledFunc(const char *name)
+{
+    for (unsigned int i = 0; i < this->scheduledFuncs.size; i++)
+    {
+        B_ScheduledFunc *scheduledFunc = this->scheduledFuncs.elements[i];
+        if (scheduledFunc->name == name)
+        {
+            this->scheduledFuncs.Remove(i, true);
+            return;
+        }
+    }
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043BDE1
+* VC++ mangling:          ?ClearScheduledFuncs@B_World@@QAEXXZ
+*/
+
+void B_World::ClearScheduledFuncs()
+{
+    this->scheduledFuncs.Clear(true);
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043BE95
+* VC++ mangling:          ?RunScheduledFuncs@B_World@@QAEXN@Z
+*/
+
+void B_World::RunScheduledFuncs(double time)
+{
+    unsigned int i = 0;
+    while (i < this->scheduledFuncs.size)
+    {
+        if (this->scheduledFuncs[i]->time < time)
+        {
+            B_ScheduledFunc *scheduledFunc =
+                this->scheduledFuncs.elements[i];
+            this->scheduledFuncs.Remove(i, false);
+            if (scheduledFunc->func != nullptr)
+            {
+                PyObject *result = CallPythonObject(
+                    scheduledFunc->func,
+                    scheduledFunc->args
+                );
+                Py_XDECREF(result);
+            }
+            else if (scheduledFunc->nativeFunc != nullptr)
+            {
+                int result =
+                    scheduledFunc->nativeFunc(scheduledFunc->nativeArg);
+            }
+            delete scheduledFunc;
+        }
+        else
+        {
+            i++;
+        }
+    }
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043C14F
+* VC++ mangling:          ?NumScheduledFuncs@B_World@@QAEIXZ
+*/
+
+unsigned int B_World::NumScheduledFuncs()
+{
+    return this->scheduledFuncs.size;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043C163
+* VC++ mangling:          ?GetScheduledFunc@B_World@@QAEHHPAPAUPyObject@@0PAPBDPAN@Z
+*/
+
+int B_World::GetScheduledFunc(
+    int index,
+    PyObject **func,
+    PyObject **args,
+    const char **name,
+    double *time
+)
+{
+    if (
+        index >= 0 &&
+        static_cast<unsigned int>(index) < this->scheduledFuncs.size
+    )
+    {
+        B_ScheduledFunc *scheduledFunc = this->scheduledFuncs.elements[index];
+        *func = scheduledFunc->func;
+        *args = scheduledFunc->args;
+        *name = scheduledFunc->name.String();
+        if (*func != nullptr && *args != nullptr && *name != nullptr)
+        {
+            *time = scheduledFunc->time;
+            Py_XINCREF(*func);
+            Py_XINCREF(*args);
+            return true;
+        }
+    }
+    *func = nullptr;
+    *args = nullptr;
+    *name = nullptr;
+    return false;
+}
+
 
 /*
 ................................................................................
