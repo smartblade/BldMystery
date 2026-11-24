@@ -194,7 +194,8 @@ public:
     );
     const char *GenerateEntityName(const char *prefix);
     int SetTriggerSectorFunc(
-        const char *trigger_sector_name, const char *func_type,
+        const char *trigger_sector_name,
+        const char *func_type,
         PyObject *func
     );
     int GetTriggerSectorFloorHeight(const char *trigger_sector_name);
@@ -202,11 +203,10 @@ public:
     const char *GetTriggerSectorGroup(const char *trigger_sector_name);
     double *GetTriggerSectorPoints(const char *trigger_sector_name);
     PyObject *GetTriggerSectorFunc(
-        const char *trigger_sector_name, const char *func_type
+        const char *trigger_sector_name,
+        const char *func_type
     );
-    int SetTriggerSectorData(
-        const char *trigger_sector_name, PyObject *data
-    );
+    int SetTriggerSectorData(const char *trigger_sector_name, PyObject *data);
     PyObject *GetTriggerSectorData(const char *trigger_sector_name);
     int SaveEntitiesData(const char *filename);
     int LoadEntitiesData(const char *filename);

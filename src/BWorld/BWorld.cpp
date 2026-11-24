@@ -461,7 +461,8 @@ const char *B_World::GenerateEntityName(const char *prefix)
 */
 
 int B_World::SetTriggerSectorFunc(
-    const char *trigger_sector_name, const char *func_type,
+    const char *trigger_sector_name,
+    const char *func_type,
     PyObject *func
 )
 {
@@ -597,7 +598,8 @@ double *B_World::GetTriggerSectorPoints(const char *trigger_sector_name)
 */
 
 PyObject *B_World::GetTriggerSectorFunc(
-    const char *trigger_sector_name, const char *func_type
+    const char *trigger_sector_name,
+    const char *func_type
 )
 {
     B_TriggerSector *triggerSector =
@@ -628,7 +630,8 @@ PyObject *B_World::GetTriggerSectorFunc(
 */
 
 int B_World::SetTriggerSectorData(
-    const char *trigger_sector_name, PyObject *data
+    const char *trigger_sector_name,
+    PyObject *data
 )
 {
     B_TriggerSector *triggerSector =
