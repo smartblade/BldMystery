@@ -155,9 +155,6 @@ EXPORTS
     GetEntityInternalState
     AddSoundAnim
     AddSoundEvent
-    RemoveScheduledFunc
-    GetnScheduledFuncs
-    GetScheduledFunc
     EntityRotate
     EntityRotateAbs
     EntityRotateRel

@@ -394849,49 +394849,15 @@ l00517688 ENDP
 ;
 ;* Export: RemoveScheduledFunc, 016B
 ;
-l00517740 PROC
-           push ebp
-           mov ebp, esp
-           mov eax, dword ptr [ebp+008h]
-           push eax
-           mov ecx, offset g005E0B88
-           call l0043BBC8
-           mov eax, 000000001h
-           pop ebp
-           ret
-l00517740 ENDP
+           call l00517740; Implemented in c++ code
 ;
 ;* Export: GetnScheduledFuncs, 0114
 ;
-l00517758 PROC
-           push ebp
-           mov ebp, esp
-           mov ecx, offset g005E0B88
-           call l0043C14F
-           pop ebp
-           ret
-l00517758 ENDP
+           call l00517758; Implemented in c++ code
 ;
 ;* Export: GetScheduledFunc, 00E7
 ;
-l00517767 PROC
-           push ebp
-           mov ebp, esp
-           mov eax, dword ptr [ebp+018h]
-           push eax
-           mov ecx, dword ptr [ebp+014h]
-           push ecx
-           mov edx, dword ptr [ebp+010h]
-           push edx
-           mov eax, dword ptr [ebp+00Ch]
-           push eax
-           mov ecx, dword ptr [ebp+008h]
-           push ecx
-           mov ecx, offset g005E0B88
-           call l0043C163
-           pop ebp
-           ret
-l00517767 ENDP
+           call l00517767; Implemented in c++ code
 ;
 ;* Export: EntityRotate, 0085
 ;

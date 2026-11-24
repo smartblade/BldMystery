@@ -1380,43 +1380,41 @@ int AddScheduledFunc(
 * Module:                 Blade.exe
 * Entry point:            0x00517740
 */
-#ifndef BLD_NATIVE
+
 int RemoveScheduledFunc(const char *name)
 {
-    int (*bld_proc)(const char *name) = NULL;
-    return bld_proc(name);
+    B_world.RemoveScheduledFunc(name);
+    return true;
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00517758
 */
-#ifndef BLD_NATIVE
+
 int GetnScheduledFuncs()
 {
-    int (*bld_proc)() = NULL;
-    return bld_proc();
+    return B_world.NumScheduledFuncs();
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
 * Entry point:            0x00517767
 */
-#ifndef BLD_NATIVE
+
 int GetScheduledFunc(
-        int index, PyObject **func, PyObject **args, const char **name,
-        double *time
+    int index,
+    PyObject **func,
+    PyObject **args,
+    const char **name,
+    double *time
 )
 {
-    int (*bld_proc)(
-        int index, PyObject **func, PyObject **args, const char **name,
-        double *time
-) = NULL;
-    return bld_proc(index, func, args, name, time);
+    return B_world.GetScheduledFunc(index, func, args, name, time);
 }
-#endif
+
 
 /*
 * Module:                 Blade.exe
