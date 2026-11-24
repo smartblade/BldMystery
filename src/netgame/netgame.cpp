@@ -185,7 +185,7 @@ PyObject *net_BrowseSessions(PyObject *self, PyObject *args) {
         if (!PyArg_ParseTuple(args, "s", &ip_address))
                 return NULL;
 
-        if (!strcmp(ip_address, "[ipx]"))
+        if (strcmp(ip_address, "[ipx]") == 0)
                 ip_address = NULL;
 
         status = BrowseSessions(ip_address);

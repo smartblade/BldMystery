@@ -183,7 +183,12 @@ int TestClimb(B_Entity *entity, unsigned int eventIndex)
                     climbingData->rightPos = rightHandPos;
                     climbingData->height = climbH;
                     climbing_data_list.Append(climbingData);
-                    if (!stricmp(personEntity->per.animName.String(), "Rlx"))
+                    if (
+                        stricmp(
+                            personEntity->per.animName.String(),
+                            "Rlx"
+                        ) == 0
+                    )
                     {
                         personEntity->per.LaunchAnimation(
                             "clmb_high_1h", B_world.GetTime());
@@ -250,7 +255,7 @@ int TestClimb(B_Entity *entity, unsigned int eventIndex)
             climbingData->rightPos = rightHandPos;
             climbingData->height = climbH;
             climbing_data_list.Append(climbingData);
-            if (!stricmp(personEntity->per.animName.String(), "Rlx"))
+            if (stricmp(personEntity->per.animName.String(), "Rlx") == 0)
             {
                 personEntity->per.LaunchAnimation(
                     "clmb_medium_1h", B_world.GetTime());
@@ -320,7 +325,7 @@ int TestClimb(B_Entity *entity, unsigned int eventIndex)
             climbingData->leftPos = climbingData->rightPos;
             climbingData->height = climbH;
             climbing_data_list.Append(climbingData);
-            if (!stricmp(personEntity->per.animName.String(), "Rlx"))
+            if (stricmp(personEntity->per.animName.String(), "Rlx") == 0)
             {
                 personEntity->per.LaunchAnimation(
                     "clmb_medlow_1h", B_world.GetTime());

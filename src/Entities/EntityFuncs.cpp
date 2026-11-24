@@ -2746,7 +2746,7 @@ int CreateBipedData(const char *biped_name, const char *kind)
     gbl_bipeds.Append(newBiped);
     for (int i = 0; i < gbl_en_control.NumCharTypes(); i++)
     {
-        if (!stricmp(gbl_en_control.GetCharType(i)->name.String(), kind))
+        if (stricmp(gbl_en_control.GetCharType(i)->name.String(), kind) == 0)
         {
             gbl_en_control.GetCharType(i)->biped = newBiped;
             newBiped->charType = gbl_en_control.GetCharType(i);

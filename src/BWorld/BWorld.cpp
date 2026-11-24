@@ -470,7 +470,7 @@ int B_World::SetTriggerSectorFunc(
         this->triggerSectors.Find(trigger_sector_name);
     if (triggerSector != nullptr)
     {
-        if (!strcmp(func_type, "OnEnter"))
+        if (strcmp(func_type, "OnEnter") == 0)
         {
             if (func != nullptr)
             {
@@ -485,7 +485,7 @@ int B_World::SetTriggerSectorFunc(
             }
             return 1;
         }
-        if (!strcmp(func_type, "OnLeave"))
+        if (strcmp(func_type, "OnLeave") == 0)
         {
             if (func != nullptr)
             {
@@ -606,13 +606,13 @@ PyObject *B_World::GetTriggerSectorFunc(
         this->triggerSectors.Find(trigger_sector_name);
     if (triggerSector != nullptr)
     {
-        if (!strcmp(func_type, "OnEnter"))
+        if (strcmp(func_type, "OnEnter") == 0)
         {
             Py_XINCREF(triggerSector->onEnter);
             PyObject *onEnter = triggerSector->onEnter;
             return onEnter;
         }
-        if (!strcmp(func_type, "OnLeave"))
+        if (strcmp(func_type, "OnLeave") == 0)
         {
             Py_XINCREF(triggerSector->onLeave);
             PyObject *onLeave = triggerSector->onLeave;

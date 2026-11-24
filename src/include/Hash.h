@@ -49,7 +49,7 @@ public:
 
     T *Get(const char *key)
     {
-        if (lastItem != NULL && !strcmp(lastItem->Id().String(), key))
+        if (lastItem != NULL && strcmp(lastItem->Id().String(), key) == 0)
             return lastItem;
         int hashValue = HashValue(key);
         int index = FindItemIndex(hash[hashValue], key);
@@ -104,7 +104,7 @@ public:
     {
          for(unsigned int i = 0; i < items.size; i++)
          {
-             if (!strcmp(key, items.elements[i]->Id().String()))
+             if (strcmp(key, items.elements[i]->Id().String()) == 0)
                  return i;
          }
          return -1;

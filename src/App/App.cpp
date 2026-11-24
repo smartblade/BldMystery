@@ -474,7 +474,7 @@ bool B_App::ProcessEvents()
         this->ClearLevel(false);
         this->LoadLevel(newMap);
         free(newMap);
-        if (this->mapToLoad != NULL && strcmp(this->mapToLoad, "Casa"))
+        if (this->mapToLoad != NULL && strcmp(this->mapToLoad, "Casa") != 0)
         {
             /* FIXME setting to null before memory deallocation */
             this->mapToLoad = NULL;
@@ -847,24 +847,24 @@ void B_App::ReadLevel(const char * file_name)
     int status = fscanf(file, "%s -> %s", itemKind, itemName);
     while ((status != 0) && (status != EOF))
     {
-        if (!strcmp(itemKind, "Bitmaps"))
+        if (strcmp(itemKind, "Bitmaps") == 0)
         {
             B_resource_manager.LocateResourceIn(B_Name(itemName), NULL, 2);
         }
-        else if (!strcmp(itemKind, "ChromaBitmaps"))
+        else if (strcmp(itemKind, "ChromaBitmaps") == 0)
         {
             this->ExitWithError("Blade", "ChromaBitmaps no longer supported.");
         }
-        else if (!strcmp(itemKind, "WorldDome"))
+        else if (strcmp(itemKind, "WorldDome") == 0)
         {
             B_resource_manager.LocateResourceIn(B_Name(itemName), NULL, 2);
             B_3D_raster_device->update_dome();
         }
-        else if (!strcmp(itemKind, "World"))
+        else if (strcmp(itemKind, "World") == 0)
         {
             this->LoadWorld(itemName);
         }
-        else if (!strcmp(itemKind, "ANM"))
+        else if (strcmp(itemKind, "ANM") == 0)
         {
             B_IDataFile *file = new B_IDataFile(itemName, O_BINARY);
             if (file->OK())
@@ -898,11 +898,11 @@ void B_App::ReadLevel(const char * file_name)
             }
             delete file;
         }
-        else if (!strcmp(itemKind, "Objs"))
+        else if (strcmp(itemKind, "Objs") == 0)
         {
             this->ExitWithError("Blade", "Objs no longer supported.");
         }
-        else if (!strcmp(itemKind, "LoadGammaC"))
+        else if (strcmp(itemKind, "LoadGammaC") == 0)
         {
             this->ExitWithError("Blade", "LoadGammaC no longer supported.");
         }
@@ -1321,34 +1321,46 @@ void B_App::ReadArguments(const char *args)
         {
             this->noSound = true;
         }
-        else if (!strncmp(
-            this->arguments.elements[i]->String(),
-            "map:",
-            sizeof("map:") - 1))
+        else if (
+            strncmp(
+                this->arguments.elements[i]->String(),
+                "map:",
+                sizeof("map:") - 1
+            ) == 0
+        )
         {
             const B_Name &map = *this->arguments.elements[i];
             this->mapName = map;
         }
-        else if (!strncmp(
-            this->arguments.elements[i]->String(),
-            "dev:",
-            sizeof("dev:") - 1))
+        else if (
+            strncmp(
+                this->arguments.elements[i]->String(),
+                "dev:",
+                sizeof("dev:") - 1
+            ) == 0
+        )
         {
             const B_Name &raster = *this->arguments.elements[i];
             this->rasterName = raster;
         }
-        else if (!strncmp(
-            this->arguments.elements[i]->String(),
-            "snd:",
-            sizeof("snd:") - 1))
+        else if (
+            strncmp(
+                this->arguments.elements[i]->String(),
+                "snd:",
+                sizeof("snd:") - 1
+            ) == 0
+        )
         {
             const B_Name &snd = *this->arguments.elements[i];
             this->soundDeviceId = snd;
         }
-        else if (!strncmp(
-            this->arguments.elements[i]->String(),
-            "nogamespy",
-            4))/* FIXME should be whole world comparison*/
+        else if (
+            strncmp(
+                this->arguments.elements[i]->String(),
+                "nogamespy",
+                4
+            ) == 0
+        )/* FIXME should be whole world comparison*/
         {
             SetGameSpySupport(false);
         }

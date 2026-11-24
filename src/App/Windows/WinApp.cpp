@@ -488,10 +488,13 @@ void B_WinApp::ReadArguments(const char *args)
         {
             showStartupDialog = false;
         }
-        else if (!strncmp(
-            this->arguments.elements[i]->String(),
-            "startpath:",
-            sizeof("startpath:") - 1))
+        else if (
+            strncmp(
+                this->arguments.elements[i]->String(),
+                "startpath:",
+                sizeof("startpath:") - 1
+            ) == 0
+        )
         {
             const char *startPathArg = this->arguments.elements[i]->String();
             this->startPath = startPathArg + sizeof("startpath:") - 1;
@@ -865,18 +868,18 @@ const char *B_WinApp::GetInputMode(const char *device)
 
 int B_WinApp::SetInputMode(const char *device, const char *mode)
 {
-    if (!strcmp(device, "Mouse"))
+    if (strcmp(device, "Mouse") == 0)
     {
         B_WinMouse *mouse = static_cast<B_WinMouse *>(
             this->GetAttachedDevice(device));
         if (mouse != NULL)
         {
-            if (!strcmp(mode, "ACQUIRE"))
+            if (strcmp(mode, "ACQUIRE") == 0)
             {
                 mouse->Acquire();
                 ShowCursor(false);
             }
-            if (!strcmp(mode, "UNACQUIRE"))
+            if (strcmp(mode, "UNACQUIRE") == 0)
             {
                 mouse->UnAcquire();
                 ShowCursor(true);
@@ -884,17 +887,17 @@ int B_WinApp::SetInputMode(const char *device, const char *mode)
             return true;
         }
     }
-    if (!strcmp(device, "Keyboard"))
+    if (strcmp(device, "Keyboard") == 0)
     {
         B_DInputKeyb *keyboard = static_cast<B_DInputKeyb *>(
             this->GetAttachedDevice(device));
         if (keyboard != NULL)
         {
-            if (!strcmp(mode, "ACQUIRE"))
+            if (strcmp(mode, "ACQUIRE") == 0)
             {
                 keyboard->Acquire();
             }
-            if (!strcmp(mode, "UNACQUIRE"))
+            if (strcmp(mode, "UNACQUIRE") == 0)
             {
                 keyboard->UnAcquire();
             }
