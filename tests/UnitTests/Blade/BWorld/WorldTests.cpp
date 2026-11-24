@@ -4,12 +4,17 @@
 #include <BWorld/BWorld.h>
 
 
+TEST(WorldTests, SizeOf)
+{
+    EXPECT_EQ(sizeof(B_World), 0x1990);
+}
+
 TEST(WorldTests, Fields)
 {
     EXPECT_OFFSET_EQ(B_World, entities, 0x0018);
     EXPECT_OFFSET_EQ(B_World, entities.size, 0x0018);
     EXPECT_OFFSET_EQ(B_World, entities.hash, 0x001C);
-    EXPECT_OFFSET_EQ(B_World, entities.unknown1804, 0x181C);
+    EXPECT_OFFSET_EQ(B_World, entities.deleteItems, 0x181C);
     EXPECT_OFFSET_EQ(B_World, entities.lastItem, 0x1820);
     EXPECT_OFFSET_EQ(B_World, nextEntitySuffix, 0x1824);
     EXPECT_OFFSET_EQ(B_World, subscriptions, 0x1828);
@@ -31,4 +36,7 @@ TEST(WorldTests, Fields)
     EXPECT_OFFSET_EQ(B_World, sunVector, 0x193C);
     EXPECT_OFFSET_EQ(B_World, initial_point_position, 0x1954);
     EXPECT_OFFSET_EQ(B_World, initial_point_orientation, 0x196C);
+    EXPECT_OFFSET_EQ(B_World, unknown1984, 0x1984);
+    EXPECT_OFFSET_EQ(B_World, unknown1988, 0x1988);
+    EXPECT_OFFSET_EQ(B_World, unknown198C, 0x198C);
 }

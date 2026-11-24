@@ -2,7 +2,9 @@
 #include "WinClock.h"
 
 #include "ProcessorTimer.h"
+#if !defined(_MSC_VER) || _MSC_VER >= 1300
 #include <intrin.h>
+#endif
 #include <bld_system.h>
 
 
@@ -33,6 +35,39 @@ isNotNT(false), hasCpuid(false), hasCpiudFunc(false), hasProcessorTimer(false)
     }
     timeGetDevCaps(&this->timeCaps, sizeof(TIMECAPS));
     /* Try to change 21-th flag of EFLAGS to check support of CPUID command */
+#if defined(_MSC_VER) && _MSC_VER < 1300
+    /* Visual C++ 6.0 has no intrinsics of EFLAGS and CPUID */
+    __asm
+    {
+        pushfd
+        pop eax
+        mov ecx, eax
+        xor eax, 0x200000
+        push eax
+        popfd
+        pushfd
+        pop eax
+        xor eax, ecx
+        je cpuid_checked
+    }
+    this->hasCpuid = true;
+    __asm
+    {
+        mov eax, 0
+        cpuid
+        cmp eax, 1
+        jb cpuid_checked
+        /* Check processor model. Should be "GenuineIntel" */
+        cmp ebx, 0x756E6547
+        jne cpuid_checked
+        cmp edx, 0x49656E69
+        jne cpuid_checked
+        cmp ecx, 0x6C65746E
+        jne cpuid_checked
+    }
+    this->hasCpiudFunc = true;
+cpuid_checked:
+#else
     unsigned int eflags = __readeflags();
     __writeeflags(eflags ^ 0x200000);
     if (__readeflags() ^ eflags)
@@ -49,6 +84,7 @@ isNotNT(false), hasCpuid(false), hasCpiudFunc(false), hasProcessorTimer(false)
             this->hasCpiudFunc = true;
         }
     }
+#endif
     if (this->hasCpiudFunc && this->hasCpuid)
     {
         this->processorTimer = new B_ProcessorTimer();

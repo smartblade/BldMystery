@@ -120,6 +120,10 @@ B_IDataFile &operator >>(B_IDataFile &file, B_Sector &sector);
 
 class B_Map : public B_Array<B_Sector>
 {
+public:
+    B_Map();
+    virtual ~B_Map();
+
 private:
     B_Array<void> unknown018;
     int unknown030;

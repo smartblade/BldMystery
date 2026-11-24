@@ -14,3 +14,14 @@ jobs:
           python-version: "3.x"
       - name: Check code style
         run: python tools/style.py check --github
+      - name: Check line endings
+        # Text files are stored with LF (.gitattributes), CRLF gets into
+        # commits made without .gitattributes in the working tree
+        run: |
+          git ls-files --eol |
+            awk -F '\t' '$1 ~ /^i\/(crlf|mixed) / {print $2}' > crlf.txt
+          while IFS= read -r file; do
+            echo "::error file=$file,title=line endings::CRLF line endings," \
+              "text files are stored with LF"
+          done < crlf.txt
+          test ! -s crlf.txt

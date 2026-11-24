@@ -5,7 +5,7 @@
 
 /*
 * Module:                 Blade.exe
-* Entry point:            0x00040AD10
+* Entry point:            0x0040AD10
 * VC++ mangling:          ??0B_ViewPose@@QAE@ABVB_Vector@@NNN@Z
 */
 #ifndef BLD_NATIVE

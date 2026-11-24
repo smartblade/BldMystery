@@ -291,7 +291,7 @@ bool B_WinApp::Start()
     }
     if (!this->noMouse)
     {
-        B_WinMouse * mouse = new B_WinMouse(
+        B_WinMouse *mouse = new B_WinMouse(
             !this->noExclusiveMouse, this->module, this->window);
         if (mouse == NULL)
         {

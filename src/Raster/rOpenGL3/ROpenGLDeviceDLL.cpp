@@ -4,7 +4,7 @@
 #include "GlExtensions.h"
 #include <AnalyticGeometry/ViewPose.h>
 #include <View/CameraView.h>
-#include <BBLibc/BBLibc.h>
+#include <BBLibc/Win32Error.h>
 #include <BBLibc/Config.h>
 #include <BBLibc/MessageManager.h>
 #include <BBLibc/ParticleGType.h>

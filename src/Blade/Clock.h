@@ -146,4 +146,3 @@ private:
 };
 
 #endif /* B_CLOCK_H */
-

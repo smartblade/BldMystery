@@ -22,8 +22,11 @@ if (BLD_NATIVE)
     target_compile_definitions(
         ${TARGET} PRIVATE WINDOWS_IGNORE_PACKING_MISMATCH BLD_NATIVE
     )
-    set(EXPORT_FUNCTIONS_FILE "${PROJECT_SOURCE_DIR}/asm/export_cmd.txt")
-    target_link_options(${TARGET} PRIVATE "@${EXPORT_FUNCTIONS_FILE}")
+    set(EXPORT_FUNCTIONS_FILE "${PROJECT_SOURCE_DIR}/asm/export.def")
+    target_link_options(${TARGET} PRIVATE "/DEF:${EXPORT_FUNCTIONS_FILE}")
+    set_property(
+        TARGET ${TARGET} APPEND PROPERTY LINK_DEPENDS ${EXPORT_FUNCTIONS_FILE}
+    )
 endif()
 
 target_compile_definitions(

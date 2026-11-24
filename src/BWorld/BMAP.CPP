@@ -132,6 +132,36 @@ B_IDataFile &operator >>(B_IDataFile &file, B_Sector &sector)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x00430281
+* VC++ mangling:          ??0B_Map@@QAE@XZ
+*/
+#ifndef BLD_NATIVE
+B_Map::B_Map()
+{
+}
+#endif
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00430323
+* VC++ mangling:          ??1B_Map@@UAE@XZ
+*/
+#ifndef BLD_NATIVE
+B_Map::~B_Map()
+{
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x00432379
 * VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Map@@@Z
 */

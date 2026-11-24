@@ -6,6 +6,7 @@
 
 #include <BBLibc/array.h>
 #include <BBLibc/Name.h>
+#include <BBLibc/NDataBase.h>
 #include <BBLibc/IDataFile.h>
 #include <Entities/Entity.h>
 #include <BWorld/atmosphere.h>
@@ -13,14 +14,110 @@
 #include <BWorld/light.h>
 #include <BWorld/OctTree.h>
 #include <Hash.h>
+#include <Physics/PhysicsManager.h>
 #include <AnalyticGeometry/Vector.h>
 #include <bld_python.h>
 
 
 class B_ViewPose;
 
+#define B_SUBSCRIPTION_LIST_CID_LIST   0
+#define B_SUBSCRIPTION_LIST_CID_TIMER  1
+#define B_SUBSCRIPTION_LIST_CID_FRAME  2
+
 class B_SubscriptionList : public B_Array<B_Entity>, public B_NamedObj
 {
+public:
+    B_SubscriptionList();
+    B_SubscriptionList(const B_Name &name);
+
+    virtual ~B_SubscriptionList()
+    {
+    }
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00441920
+* VC++ mangling:          ?ClassId@B_SubscriptionList@@UAEHXZ
+*/
+
+    virtual int ClassId()
+    {
+        return B_SUBSCRIPTION_LIST_CID_LIST;
+    }
+};
+
+class B_TimerList : public B_SubscriptionList
+{
+public:
+    B_TimerList(const B_Name &name, double period);
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00441A60
+* VC++ mangling:          ?ClassId@B_TimerList@@UAEHXZ
+*/
+
+    virtual int ClassId()
+    {
+        return B_SUBSCRIPTION_LIST_CID_TIMER;
+    }
+
+    void SetPeriod(double period);
+
+    double period;
+    double lastTime;
+};
+
+class B_FrameList : public B_SubscriptionList
+{
+public:
+    B_FrameList(const B_Name &name, int period);
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00441A70
+* VC++ mangling:          ?ClassId@B_FrameList@@UAEHXZ
+*/
+
+    virtual int ClassId()
+    {
+        return B_SUBSCRIPTION_LIST_CID_FRAME;
+    }
+
+    void SetPeriod(int period);
+
+    int period;
+    int lastFrame;
+};
+
+typedef int (*ScheduledNativeFunc)(void *arg);
+
+class B_ScheduledFunc : public B_NamedObj
+{
+public:
+    B_ScheduledFunc(
+        const char *name,
+        double time,
+        PyObject *func,
+        PyObject *args
+    );
+    B_ScheduledFunc(
+        const char *name,
+        double time,
+        ScheduledNativeFunc nativeFunc,
+        void *nativeArg
+    );
+    virtual ~B_ScheduledFunc();
+
+    double time;
+    PyObject *func;
+    PyObject *args;
+    ScheduledNativeFunc nativeFunc;
+    void *nativeArg;
 };
 
 class B_TriggerSector : public B_NamedObj
@@ -63,7 +160,10 @@ public:
 class B_World
 {
 public:
+    B_World(double lastTime);
+    ~B_World();
     void unknown_00439F5D();
+    void ClearWorld(int mode);
     double GetTime();
     int SetTime(double time);
     void GoToTime(double time);
@@ -127,8 +227,8 @@ public:
     B_DataBase<B_TriggerSector> triggerSectors;
     B_Hash<B_Entity> entities;
     int nextEntitySuffix;
-    B_DataBase<B_SubscriptionList> subscriptions;
-    B_Array<void*> scheduledFuncs;
+    B_NDataBase<B_SubscriptionList> subscriptions;
+    B_Array<B_ScheduledFunc> scheduledFuncs;
     int unknown1858;
     B_Name world_file_name;
     int unknownField1864;
@@ -137,8 +237,8 @@ public:
     double timeStep;                // (0.015625 = 1/64 sec)
     unsigned int currentTick;
     double lastTime;
-    char physicsMgr[0x28];
-    B_DataBase<atmosphere_t> atmospheres;
+    B_PhysicsManager physicsMgr;
+    B_NDataBase<atmosphere_t> atmospheres;
     B_Map map;
     B_OctTree octTree;
     B_Array<light_t> lights;
@@ -146,6 +246,9 @@ public:
     B_Vector sunVector;
     B_Vector initial_point_position;
     B_Vector initial_point_orientation;
+    int unknown1984;
+    int unknown1988;
+    int unknown198C;
 };
 
 B_IDataFile &operator >>(B_IDataFile &file, B_World *gs);
@@ -166,4 +269,3 @@ extern B_World B_world;
 
 
 #endif /* GAME_STATE_H */
-

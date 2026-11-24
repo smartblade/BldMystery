@@ -2775,7 +2775,7 @@ int DoActionWI(
 
 int SetOnFloor(const char *entity_name)
 {
-    B_Entity * entity = GetEntity(entity_name);
+    B_Entity *entity = GetEntity(entity_name);
     if (entity == NULL)
     {
         mout << vararg(
@@ -2960,7 +2960,7 @@ int SetAuraParams(
     int alpha_mode
 )
 {
-    B_Entity * entity = GetEntity(entity_name);
+    B_Entity *entity = GetEntity(entity_name);
     if (entity == NULL)
     {
         mout << vararg(
