@@ -498,7 +498,10 @@ void B_TriggerSector::AddPoint(const B_Vector &point, int numPoints)
 
 const char *B_World::GetTriggerSectorName(int index)
 {
-    if (index < 0 || static_cast<unsigned int>(index) >= this->triggerSectors.size)
+    if (
+        index < 0 ||
+        static_cast<unsigned int>(index) >= this->triggerSectors.size
+    )
     {
         return nullptr;
     }
