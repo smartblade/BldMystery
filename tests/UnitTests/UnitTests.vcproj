@@ -469,6 +469,10 @@
 						>
 					</File>
 					<File
+						RelativePath=".\Blade\Physics\ContactList.h\ContactPointPoolTests.cpp"
+						>
+					</File>
+					<File
 						RelativePath=".\Blade\Physics\ContactList.h\ContactPointTests.cpp"
 						>
 					</File>
