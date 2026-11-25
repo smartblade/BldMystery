@@ -266,7 +266,7 @@ void ReassignCombustionData()
 #ifndef BLD_NATIVE
 int SaveAnmRaceData(const char *file_name, const char *race)
 {
-    int (*bld_proc)(const char *file_name, const char *race);
+    int (*bld_proc)(const char *file_name, const char *race) = NULL;
     return bld_proc(file_name, race);
 }
 #endif
@@ -278,7 +278,7 @@ int SaveAnmRaceData(const char *file_name, const char *race)
 #ifndef BLD_NATIVE
 int LoadAnmRaceData(const char *file_name)
 {
-    int (*bld_proc)(const char *file_name);
+    int (*bld_proc)(const char *file_name) = NULL;
     return bld_proc(file_name);
 }
 #endif
@@ -317,7 +317,7 @@ const char *GetRaceName(int index)
 #ifndef BLD_NATIVE
 int SaveAnmSoundData(const char *file_name, const char *race)
 {
-    int (*bld_proc)(const char *file_name, const char *race);
+    int (*bld_proc)(const char *file_name, const char *race) = NULL;
     return bld_proc(file_name, race);
 }
 #endif
@@ -329,7 +329,7 @@ int SaveAnmSoundData(const char *file_name, const char *race)
 #ifndef BLD_NATIVE
 int LoadAnmSoundData(const char *file_name)
 {
-    int (*bld_proc)(const char *file_name);
+    int (*bld_proc)(const char *file_name) = NULL;
     return bld_proc(file_name);
 }
 #endif
