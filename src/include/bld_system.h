@@ -5,10 +5,10 @@
 
 
 #include <windows.h>
-#ifdef _MSC_VER
-    #include <bld_assert.h>
-#else
+#if defined(_MSC_VER) && _MSC_VER < 1300
     #include <assert.h>
+#else
+    #include <bld_assert.h>
 #endif
 
 
