@@ -130,8 +130,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				InlineFunctionExpansion="1"
+				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories="..;..\include;&quot;..\Python-1.5.2\Include&quot;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;BBLIBC_LIB_EXPORT;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;WINDOWS_IGNORE_PACKING_MISMATCH"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_USRDLL;BBLIBC_LIB_EXPORT;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;WINDOWS_IGNORE_PACKING_MISMATCH"
 				ExceptionHandling="0"
 				RuntimeLibrary="2"
 				StructMemberAlignment="3"
