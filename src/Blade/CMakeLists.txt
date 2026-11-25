@@ -34,7 +34,7 @@ if (BLD_NATIVE)
         ${TARGET} PRIVATE $<$<COMPILE_LANGUAGE:ASM_MASM>:/Zi>
     )
     target_include_directories(${TARGET} PRIVATE asm)
-    target_link_libraries(${TARGET} PRIVATE ddraw Mss32 shw32 wsock32)
+    target_link_libraries(${TARGET} PRIVATE Mss32 shw32 wsock32)
     # Struct member alignment
     target_compile_options(${TARGET} PRIVATE "/Zp4")
     target_compile_definitions(
@@ -59,8 +59,10 @@ target_link_libraries(
     BBLibc
     BInputc
     Console
+    ddraw
     python15
     Raster
+    strmiids
     winmm
 )
 set_target_properties(

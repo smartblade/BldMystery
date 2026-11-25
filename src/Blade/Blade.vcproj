@@ -67,7 +67,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="bicrt.lib BBLibc.lib raster.lib binputc.lib console.lib python15.lib mss32.lib shw32.lib wsock32.lib winmm.lib ddraw.lib"
+				AdditionalDependencies="bicrt.lib BBLibc.lib raster.lib binputc.lib console.lib python15.lib mss32.lib shw32.lib wsock32.lib winmm.lib ddraw.lib strmiids.lib"
 				AdditionalLibraryDirectories="..\..\lib;..\..\lib\VC"
 				IgnoreDefaultLibraryNames="msvcrt.lib"
 				GenerateDebugInformation="true"
@@ -153,7 +153,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="BBLibc.lib raster.lib binputc.lib console.lib python15.lib mss32.lib shw32.lib wsock32.lib winmm.lib ddraw.lib"
+				AdditionalDependencies="BBLibc.lib raster.lib binputc.lib console.lib python15.lib mss32.lib shw32.lib wsock32.lib winmm.lib ddraw.lib strmiids.lib"
 				AdditionalLibraryDirectories="..\..\lib;..\..\lib\VC"
 				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="true"
@@ -238,7 +238,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				ModuleDefinitionFile="asm\export.def"
-				AdditionalDependencies="bicrt.lib BBLibc.lib raster.lib binputc.lib console.lib python15.lib mss32.lib shw32.lib wsock32.lib winmm.lib ddraw.lib"
+				AdditionalDependencies="bicrt.lib BBLibc.lib raster.lib binputc.lib console.lib python15.lib mss32.lib shw32.lib wsock32.lib winmm.lib ddraw.lib strmiids.lib"
 				AdditionalLibraryDirectories="..\..\lib;..\..\lib\VC"
 				IgnoreDefaultLibraryNames="msvcrt.lib"
 				GenerateDebugInformation="true"
@@ -403,6 +403,14 @@
 				<Filter
 					Name="Windows"
 					>
+					<File
+						RelativePath="..\App\Windows\Launcher.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\App\Windows\Launcher.h"
+						>
+					</File>
 					<File
 						RelativePath="..\App\Windows\WinApp.cpp"
 						>
