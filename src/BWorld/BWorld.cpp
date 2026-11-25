@@ -577,7 +577,7 @@ double *B_World::GetTriggerSectorPoints(const char *trigger_sector_name)
         int numPoints = static_cast<int>(points.size);
         double *coords = new double[2 * numPoints + 1];
         double *coord = coords + 1;
-        coords[0] = static_cast<double>(numPoints);
+        *coords = static_cast<double>(numPoints);
         for (int i = 0; i < numPoints; i++)
         {
             *coord = points.elements[i].x;
