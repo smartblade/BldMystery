@@ -580,9 +580,9 @@ double *B_World::GetTriggerSectorPoints(const char *trigger_sector_name)
         *coords = static_cast<double>(numPoints);
         for (int i = 0; i < numPoints; i++)
         {
-            *coord = points.elements[i].x;
+            *coord = points[i].x;
             coord++;
-            *coord = points.elements[i].z;
+            *coord = points[i].z;
             coord++;
         }
         return coords;
