@@ -87,7 +87,10 @@ bool FreeNetData(bool freeNetLibrary)
 */
 #ifndef BLD_NATIVE
 void B_NetCallbacks::message_received(
-    unsigned long idFrom, void *message, unsigned long messageSize)
+    unsigned long idFrom,
+    void *message,
+    unsigned long messageSize
+)
 {
 }
 #endif

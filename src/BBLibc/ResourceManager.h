@@ -30,9 +30,9 @@ public:
     unsigned int GetnFiles();
     const char *GetFile(unsigned int arg_1);
     unsigned int AddFile(const B_Name &arg_1);
-    unsigned int LocateResourceIn(const B_Name &id, const B_Name*, int);
+    unsigned int LocateResourceIn(const B_Name &id, const B_Name *, int);
     unsigned int LocateResourcesIn(const B_Name &arg_1, B_IDataFile &arg_2);
-    unsigned int AddAutoResource(B_Name const&, B_Resource*, int);
+    unsigned int AddAutoResource(B_Name const &, B_Resource *, int);
     B_Resource *GetResource(unsigned short resourceId, const B_Name &name);
     unsigned int GetResourceIndex(unsigned short arg_1, const B_Name &arg_2);
     B_Resource *GetResource(unsigned short arg_1, unsigned int arg_2);
@@ -50,7 +50,20 @@ public:
     void FreeResource(B_Resource *resource);
     unsigned int NResources(unsigned short);
     void AddBodLink(const char *c, int i, const char *pc, int i1);
+
+    /*
+    * Module:                 BBLibc.dll
+    * Entry point:            0x10006830
+    * VC++ mangling:          ??4B_ResourceManager@@QAEAAV0@ABV0@@Z
+    */
+#ifndef BLD_NATIVE
+    B_ResourceManager &operator =(const B_ResourceManager &that)
+    {
+        return *this;
+    }
+#else
     B_ResourceManager &operator =(const B_ResourceManager &that);
+#endif
 
 private:
     B_Resource **resources_;

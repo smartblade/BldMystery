@@ -6,6 +6,23 @@ template<class T>
 class B_Hash
 {
 public:
+    B_Hash()
+    {
+        this->size = 0;
+        this->deleteItems = true;
+        this->lastItem = nullptr;
+    }
+
+    ~B_Hash()
+    {
+        this->lastItem = nullptr;
+        for (int i = 0; i < 256; i++)
+        {
+            this->hash[i].Clear(this->deleteItems);
+        }
+        this->size = 0;
+    }
+
     void Add(T *item)
     {
         int hashValue = HashValue(item->Id());
@@ -32,7 +49,7 @@ public:
 
     T *Get(const char *key)
     {
-        if (lastItem != NULL && !strcmp(lastItem->Id().String(), key))
+        if (lastItem != NULL && strcmp(lastItem->Id().String(), key) == 0)
             return lastItem;
         int hashValue = HashValue(key);
         int index = FindItemIndex(hash[hashValue], key);
@@ -87,7 +104,7 @@ public:
     {
          for(unsigned int i = 0; i < items.size; i++)
          {
-             if (!strcmp(key, items.elements[i]->Id().String()))
+             if (strcmp(key, items.elements[i]->Id().String()) == 0)
                  return i;
          }
          return -1;
@@ -100,7 +117,7 @@ public:
 
     unsigned int size;
     B_DataBase<T> hash[256];
-    int unknown1804;
+    int deleteItems;
     T *lastItem;
 };
 

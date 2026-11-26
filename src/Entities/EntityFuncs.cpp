@@ -101,8 +101,13 @@ B_Entity *CreateSpark(
 */
 #ifndef BLD_NATIVE
 B_Entity *CreateEntity(
-        const char *name, const char *kind, double x, double y, double z,
-        const char *parent_class, const char *unknown
+    const char *name,
+    const char *kind,
+    double x,
+    double y,
+    double z,
+    const char *parent_class,
+    const char *unknown
 )
 {
     B_Entity *(*bld_proc)(
@@ -190,7 +195,11 @@ const char *GetEntityName(B_Entity *entity)
 */
 #ifndef BLD_NATIVE
 int GetEntitiesAt(
-        double x, double y, double z, double radius, char ***entity_names
+    double x,
+    double y,
+    double z,
+    double radius,
+    char ***entity_names
 )
 {
     int (*bld_proc)(
@@ -206,8 +215,15 @@ int GetEntitiesAt(
 */
 #ifndef BLD_NATIVE
 int GetEntitiesVisibleFrom(
-        double xc, double yc, double zc, double radius, double xdir,
-        double ydir, double zdir, double angle, char ***entity_names
+    double xc,
+    double yc,
+    double zc,
+    double radius,
+    double xdir,
+    double ydir,
+    double zdir,
+    double angle,
+    char ***entity_names
 )
 {
     int (*bld_proc)(
@@ -224,8 +240,15 @@ int GetEntitiesVisibleFrom(
 */
 #ifndef BLD_NATIVE
 int GetObjectEntitiesVisibleFrom(
-        double xc, double yc, double zc, double radius, double xdir,
-        double ydir, double zdir, double angle, char ***entity_names
+    double xc,
+    double yc,
+    double zc,
+    double radius,
+    double xdir,
+    double ydir,
+    double zdir,
+    double angle,
+    char ***entity_names
 )
 {
     int (*bld_proc)(
@@ -279,8 +302,10 @@ int GetEnemiesVisibleFrom(
 */
 #ifndef BLD_NATIVE
 int SetCombos(
-        const char *person_name, int num_combos, char **combos_names,
-        int *combos_executed
+    const char *person_name,
+    int num_combos,
+    char **combos_names,
+    int *combos_executed
 )
 {
     int (*bld_proc)(
@@ -309,7 +334,9 @@ int GetCombos(const char *person_name, combo_t **combos)
 */
 #ifndef BLD_NATIVE
 int GetWeaponCombos(
-        const char *person_name, const char *weapon_kind, combo_t **combos
+    const char *person_name,
+    const char *weapon_kind,
+    combo_t **combos
 )
 {
     int (*bld_proc)(
@@ -800,9 +827,7 @@ void SetCombatGroup()
 * Entry point:            0x00508B11
 */
 #ifndef BLD_NATIVE
-int SubscribeEntityToList(
-        const char *entity_name, const char *timer_name
-)
+int SubscribeEntityToList(const char *entity_name, const char *timer_name)
 {
     int (*bld_proc)(
         const char *entity_name, const char *timer_name
@@ -817,7 +842,10 @@ int SubscribeEntityToList(
 */
 #ifndef BLD_NATIVE
 int MessageEvent(
-        const char *entity_name, int message_type, int unknown1, int unknown2
+    const char *entity_name,
+    int message_type,
+    int unknown1,
+    int unknown2
 )
 {
     int (*bld_proc)(
@@ -857,8 +885,13 @@ const char *GetParticleEntity(const char *entity_name)
 */
 #ifndef BLD_NATIVE
 int Rel2AbsVector(
-        const char *entity_name, double x_rel, double y_rel, double z_rel,
-        double *x_abs, double *y_abs, double *z_abs
+    const char *entity_name,
+    double x_rel,
+    double y_rel,
+    double z_rel,
+    double *x_abs,
+    double *y_abs,
+    double *z_abs
 )
 {
     int (*bld_proc)(
@@ -875,8 +908,13 @@ int Rel2AbsVector(
 */
 #ifndef BLD_NATIVE
 int Rel2AbsPoint(
-        const char *entity_name, double x_rel, double y_rel, double z_rel,
-        double *x_abs, double *y_abs, double *z_abs
+    const char *entity_name,
+    double x_rel,
+    double y_rel,
+    double z_rel,
+    double *x_abs,
+    double *y_abs,
+    double *z_abs
 )
 {
     int (*bld_proc)(
@@ -893,8 +931,14 @@ int Rel2AbsPoint(
 */
 #ifndef BLD_NATIVE
 int Rel2AbsVectorN(
-        const char *entity_name, double x_rel, double y_rel, double z_rel,
-        const char *anchor_name, double *x_abs, double *y_abs, double *z_abs
+    const char *entity_name,
+    double x_rel,
+    double y_rel,
+    double z_rel,
+    const char *anchor_name,
+    double *x_abs,
+    double *y_abs,
+    double *z_abs
 )
 {
     int (*bld_proc)(
@@ -911,8 +955,14 @@ int Rel2AbsVectorN(
 */
 #ifndef BLD_NATIVE
 int Rel2AbsPointN(
-        const char *entity_name, double x_rel, double y_rel, double z_rel,
-        const char *anchor_name, double *x_abs, double *y_abs, double *z_abs
+    const char *entity_name,
+    double x_rel,
+    double y_rel,
+    double z_rel,
+    const char *anchor_name,
+    double *x_abs,
+    double *y_abs,
+    double *z_abs
 )
 {
     int (*bld_proc)(
@@ -929,8 +979,13 @@ int Rel2AbsPointN(
 */
 #ifndef BLD_NATIVE
 int Abs2RelVector(
-        const char *entity_name, double x_abs, double y_abs, double z_abs,
-        double *x_rel, double *y_rel, double *z_rel
+    const char *entity_name,
+    double x_abs,
+    double y_abs,
+    double z_abs,
+    double *x_rel,
+    double *y_rel,
+    double *z_rel
 )
 {
     int (*bld_proc)(
@@ -947,8 +1002,13 @@ int Abs2RelVector(
 */
 #ifndef BLD_NATIVE
 int Abs2RelPoint(
-        const char *entity_name, double x_abs, double y_abs, double z_abs,
-        double *x_rel, double *y_rel, double *z_rel
+    const char *entity_name,
+    double x_abs,
+    double y_abs,
+    double z_abs,
+    double *x_rel,
+    double *y_rel,
+    double *z_rel
 )
 {
     int (*bld_proc)(
@@ -965,8 +1025,14 @@ int Abs2RelPoint(
 */
 #ifndef BLD_NATIVE
 int Abs2RelVectorN(
-        const char *entity_name, double x_abs, double y_abs, double z_abs,
-        const char *anchor_name, double *x_rel, double *y_rel, double *z_rel
+    const char *entity_name,
+    double x_abs,
+    double y_abs,
+    double z_abs,
+    const char *anchor_name,
+    double *x_rel,
+    double *y_rel,
+    double *z_rel
 )
 {
     int (*bld_proc)(
@@ -983,8 +1049,14 @@ int Abs2RelVectorN(
 */
 #ifndef BLD_NATIVE
 int Abs2RelPointN(
-        const char *entity_name, double x_abs, double y_abs, double z_abs,
-        const char *anchor_name, double *x_rel, double *y_rel, double *z_rel
+    const char *entity_name,
+    double x_abs,
+    double y_abs,
+    double z_abs,
+    const char *anchor_name,
+    double *x_rel,
+    double *y_rel,
+    double *z_rel
 )
 {
     int (*bld_proc)(
@@ -1012,9 +1084,7 @@ double SQDistance2(const char *entity_name1, const char *entity_name2)
 * Entry point:            0x0050973E
 */
 #ifndef BLD_NATIVE
-int RemoveEntityFromList(
-        const char *entity_name, const char *timer_name
-)
+int RemoveEntityFromList(const char *entity_name, const char *timer_name)
 {
     int (*bld_proc)(
         const char *entity_name, const char *timer_name
@@ -1052,9 +1122,7 @@ int GetnTimers()
 * Entry point:            0x005097FA
 */
 #ifndef BLD_NATIVE
-int GetTimerInfo(
-        int timer_index, const char **timer_name, double *period
-)
+int GetTimerInfo(int timer_index, const char **timer_name, double *period)
 {
     int (*bld_proc)(
         int timer_index, const char **timer_name, double *period
@@ -1069,7 +1137,10 @@ int GetTimerInfo(
 */
 #ifndef BLD_NATIVE
 int GetEntityIntProperty(
-        const char *entity_name, int property_kind, int index, int *value
+    const char *entity_name,
+    int property_kind,
+    int index,
+    int *value
 )
 {
     int (*bld_proc)(
@@ -1085,7 +1156,10 @@ int GetEntityIntProperty(
 */
 #ifndef BLD_NATIVE
 int GetEntityFloatProperty(
-        const char *entity_name, int property_kind, int index, double *value
+    const char *entity_name,
+    int property_kind,
+    int index,
+    double *value
 )
 {
     int (*bld_proc)(
@@ -1108,8 +1182,10 @@ int GetEntityFloatProperty(
 */
 #ifndef BLD_NATIVE
 int GetEntityStringProperty(
-        const char *entity_name, int property_kind, int index,
-        const char **value
+    const char *entity_name,
+    int property_kind,
+    int index,
+    const char **value
 )
 {
     int (*bld_proc)(
@@ -1126,8 +1202,12 @@ int GetEntityStringProperty(
 */
 #ifndef BLD_NATIVE
 int GetEntityVectorProperty(
-        const char *entity_name, int property_kind, int index,
-        double *x, double *y, double *z
+    const char *entity_name,
+    int property_kind,
+    int index,
+    double *x,
+    double *y,
+    double *z
 )
 {
     int (*bld_proc)(
@@ -1144,8 +1224,13 @@ int GetEntityVectorProperty(
 */
 #ifndef BLD_NATIVE
 int GetEntityQuatProperty(
-        const char *entity_name, int property_kind, int index, double *quat1,
-        double *quat2, double *quat3, double *quat4
+    const char *entity_name,
+    int property_kind,
+    int index,
+    double *quat1,
+    double *quat2,
+    double *quat3,
+    double *quat4
 )
 {
     int (*bld_proc)(
@@ -1162,7 +1247,10 @@ int GetEntityQuatProperty(
 */
 #ifndef BLD_NATIVE
 int GetEntityFuncProperty(
-        const char *entity_name, int property_kind, int index, PyObject **func
+    const char *entity_name,
+    int property_kind,
+    int index,
+    PyObject **func
 )
 {
     int (*bld_proc)(
@@ -1178,7 +1266,10 @@ int GetEntityFuncProperty(
 */
 #ifndef BLD_NATIVE
 int SetEntityIntProperty(
-        const char *entity_name, int property_kind, int index, int value
+    const char *entity_name,
+    int property_kind,
+    int index,
+    int value
 )
 {
     int (*bld_proc)(
@@ -1194,7 +1285,10 @@ int SetEntityIntProperty(
 */
 #ifndef BLD_NATIVE
 int SetEntityFloatProperty(
-        const char *entity_name, int property_kind, int index, double value
+    const char *entity_name,
+    int property_kind,
+    int index,
+    double value
 )
 {
     int (*bld_proc)(
@@ -1210,8 +1304,10 @@ int SetEntityFloatProperty(
 */
 #ifndef BLD_NATIVE
 int SetEntityStringProperty(
-        const char *entity_name, int property_kind, int index,
-        const char *value
+    const char *entity_name,
+    int property_kind,
+    int index,
+    const char *value
 )
 {
     int (*bld_proc)(
@@ -1228,8 +1324,12 @@ int SetEntityStringProperty(
 */
 #ifndef BLD_NATIVE
 int SetEntityVectorProperty(
-        const char *entity_name, int property_kind, int index,
-        double x, double y, double z
+    const char *entity_name,
+    int property_kind,
+    int index,
+    double x,
+    double y,
+    double z
 )
 {
     int (*bld_proc)(
@@ -1246,8 +1346,13 @@ int SetEntityVectorProperty(
 */
 #ifndef BLD_NATIVE
 int SetEntityQuatProperty(
-        const char *entity_name, int property_kind, int index, double quat1,
-        double quat2, double quat3, double quat4
+    const char *entity_name,
+    int property_kind,
+    int index,
+    double quat1,
+    double quat2,
+    double quat3,
+    double quat4
 )
 {
     int (*bld_proc)(
@@ -1288,7 +1393,10 @@ PyObject *GetEntityData(const char *entity_name)
 */
 #ifndef BLD_NATIVE
 int SetEntityFuncProperty(
-        const char *entity_name, int property_kind, int index, PyObject *func
+    const char *entity_name,
+    int property_kind,
+    int index,
+    PyObject *func
 )
 {
     int (*bld_proc)(
@@ -1303,9 +1411,7 @@ int SetEntityFuncProperty(
 * Entry point:            0x00517526
 */
 #ifndef BLD_NATIVE
-int SetEntityInternalState(
-        const char *entity_name, PyObject *internal_state
-)
+int SetEntityInternalState(const char *entity_name, PyObject *internal_state)
 {
     int (*bld_proc)(
         const char *entity_name, PyObject *internal_state
@@ -1319,9 +1425,7 @@ int SetEntityInternalState(
 * Entry point:            0x0051758B
 */
 #ifndef BLD_NATIVE
-int GetEntityInternalState(
-        const char *entity_name, PyObject **internal_state
-)
+int GetEntityInternalState(const char *entity_name, PyObject **internal_state)
 {
     int (*bld_proc)(
         const char *entity_name, PyObject **internal_state
@@ -1336,7 +1440,10 @@ int GetEntityInternalState(
 */
 #ifndef BLD_NATIVE
 int AddSoundAnim(
-    const char *entity_name, const char *anm_event, double time, B_Sound *sound
+    const char *entity_name,
+    const char *anm_event,
+    double time,
+    B_Sound *sound
 )
 {
     int (*bld_proc)(
@@ -1351,9 +1458,7 @@ int AddSoundAnim(
 * Entry point:            0x00517688
 */
 #ifndef BLD_NATIVE
-int AddSoundEvent(
-        const char *entity_name, const char *event, B_Sound *sound
-)
+int AddSoundEvent(const char *entity_name, const char *event, B_Sound *sound)
 {
     int (*bld_proc)(
         const char *entity_name, const char *event, B_Sound *sound
@@ -1406,8 +1511,11 @@ int GetnScheduledFuncs()
 */
 #ifndef BLD_NATIVE
 int GetScheduledFunc(
-        int index, PyObject **func, PyObject **args, const char **name,
-        double *time
+    int index,
+    PyObject **func,
+    PyObject **args,
+    const char **name,
+    double *time
 )
 {
     int (*bld_proc)(
@@ -1424,8 +1532,12 @@ int GetScheduledFunc(
 */
 #ifndef BLD_NATIVE
 int EntityRotate(
-        const char *entity_name, double x_dir, double y_dir, double z_dir,
-        double velocity, int unknown
+    const char *entity_name,
+    double x_dir,
+    double y_dir,
+    double z_dir,
+    double velocity,
+    int unknown
 )
 {
     int (*bld_proc)(
@@ -1442,8 +1554,15 @@ int EntityRotate(
 */
 #ifndef BLD_NATIVE
 int EntityRotateAbs(
-        const char *entity_name, double x, double y, double z, double x_dir,
-        double y_dir, double z_dir, double angle, int i_unknown
+    const char *entity_name,
+    double x,
+    double y,
+    double z,
+    double x_dir,
+    double y_dir,
+    double z_dir,
+    double angle,
+    int i_unknown
 )
 {
     int (*bld_proc)(
@@ -1460,8 +1579,15 @@ int EntityRotateAbs(
 */
 #ifndef BLD_NATIVE
 int EntityRotateRel(
-        const char *entity_name, double x, double y, double z, double x_dir,
-        double y_dir, double z_dir, double angle, int i_unknown
+    const char *entity_name,
+    double x,
+    double y,
+    double z,
+    double x_dir,
+    double y_dir,
+    double z_dir,
+    double angle,
+    int i_unknown
 )
 {
     int (*bld_proc)(
@@ -1478,7 +1604,11 @@ int EntityRotateRel(
 */
 #ifndef BLD_NATIVE
 int EntityMove(
-        const char *entity_name, double x, double y, double z, int unknown
+    const char *entity_name,
+    double x,
+    double y,
+    double z,
+    int unknown
 )
 {
     int (*bld_proc)(
@@ -1494,7 +1624,11 @@ int EntityMove(
 */
 #ifndef BLD_NATIVE
 int EntitySetPosition(
-        const char *entity_name, double x, double y, double z, int unknown
+    const char *entity_name,
+    double x,
+    double y,
+    double z,
+    int unknown
 )
 {
     int (*bld_proc)(
@@ -1510,8 +1644,12 @@ int EntitySetPosition(
 */
 #ifndef BLD_NATIVE
 int EntitySetOrientation(
-        const char *entity_name, double quat1, double quat2, double quat3,
-        double quat4, int unknown
+    const char *entity_name,
+    double quat1,
+    double quat2,
+    double quat3,
+    double quat4,
+    int unknown
 )
 {
     int (*bld_proc)(
@@ -1540,7 +1678,9 @@ int EntityPutToWorld(const char *entity_name)
 */
 #ifndef BLD_NATIVE
 int EntityAddAnmEventFunc(
-        const char *entity_name, const char *anm_event, PyObject *func
+    const char *entity_name,
+    const char *anm_event,
+    PyObject *func
 )
 {
     int (*bld_proc)(
@@ -1555,9 +1695,7 @@ int EntityAddAnmEventFunc(
 * Entry point:            0x00517F32
 */
 #ifndef BLD_NATIVE
-int EntityDelAnmEventFunc(
-        const char *entity_name, const char *anm_event
-)
+int EntityDelAnmEventFunc(const char *entity_name, const char *anm_event)
 {
     int (*bld_proc)(
         const char *entity_name, const char *anm_event
@@ -1603,7 +1741,11 @@ int ClearActorPath(const char *entity_name)
 */
 #ifndef BLD_NATIVE
 int AddActorPathnode(
-        const char *entity_name, double time, double x, double y, double z
+    const char *entity_name,
+    double time,
+    double x,
+    double y,
+    double z
 )
 {
     int (*bld_proc)(
@@ -1630,9 +1772,7 @@ int StartActorPath(const char *entity_name)
 * Entry point:            0x005181BA
 */
 #ifndef BLD_NATIVE
-int GoToActorPath(
-        const char *entity_name, int i_unknown, double d_unknown
-)
+int GoToActorPath(const char *entity_name, int i_unknown, double d_unknown)
 {
     int (*bld_proc)(
         const char *entity_name, int i_unknown, double d_unknown
@@ -1647,8 +1787,13 @@ int GoToActorPath(
 */
 #ifndef BLD_NATIVE
 int TestPos(
-        const char *entity_name, double x, double y, double z, double max_fall,
-        int action_area, int *isCorrect
+    const char *entity_name,
+    double x,
+    double y,
+    double z,
+    double max_fall,
+    int action_area,
+    int *isCorrect
 )
 {
     int (*bld_proc)(
@@ -1665,8 +1810,12 @@ int TestPos(
 */
 #ifndef BLD_NATIVE
 int TestPosInOwnBox(
-        const char *entity_name, double x, double y, double z, double box_size,
-        int *isCorrect
+    const char *entity_name,
+    double x,
+    double y,
+    double z,
+    double box_size,
+    int *isCorrect
 )
 {
     int (*bld_proc)(
@@ -1755,8 +1904,11 @@ PyObject *GetCombatants(const char *entity_name)
 */
 #ifndef BLD_NATIVE
 int SetActorNodeStartTangent(
-        const char *entity_name, int unknown1, double unknown2, double unknown3,
-        double unknown4
+    const char *entity_name,
+    int unknown1,
+    double unknown2,
+    double unknown3,
+    double unknown4
 )
 {
     int (*bld_proc)(
@@ -1773,8 +1925,11 @@ int SetActorNodeStartTangent(
 */
 #ifndef BLD_NATIVE
 int SetActorNodeEndTangent(
-        const char *entity_name, int unknown1, double unknown2, double unknown3,
-        double unknown4
+    const char *entity_name,
+    int unknown1,
+    double unknown2,
+    double unknown3,
+    double unknown4
 )
 {
     int (*bld_proc)(
@@ -1858,8 +2013,11 @@ int StopAt(const char *entity_name, double x, double y, double z)
 */
 #ifndef BLD_NATIVE
 int CheckAnimCol(
-        const char *entity_name, const char *anm_name, const char *obj_name,
-        int unknown, int *res
+    const char *entity_name,
+    const char *anm_name,
+    const char *obj_name,
+    int unknown,
+    int *res
 )
 {
     int (*bld_proc)(
@@ -1973,8 +2131,12 @@ int CanISee(
 */
 #ifndef BLD_NATIVE
 int CanISeeFrom(
-        const char *entity_name, const char *seen_entity_name,
-        double x, double y, double z, int *canISee
+    const char *entity_name,
+    const char *seen_entity_name,
+    double x,
+    double y,
+    double z,
+    int *canISee
 )
 {
     int (*bld_proc)(
@@ -1991,7 +2153,9 @@ int CanISeeFrom(
 */
 #ifndef BLD_NATIVE
 int SetActiveEnemy(
-        const char *entity_name, const char *active_enemy_name, int *unknown
+    const char *entity_name,
+    const char *active_enemy_name,
+    int *unknown
 )
 {
     int (*bld_proc)(
@@ -2007,8 +2171,9 @@ int SetActiveEnemy(
 */
 #ifndef BLD_NATIVE
 int ExcludeHitFor(
-        const char *entity_name, const char *exclude_hit_for_name,
-        void *unknown
+    const char *entity_name,
+    const char *exclude_hit_for_name,
+    void *unknown
 )
 {
     int (*bld_proc)(
@@ -2025,7 +2190,9 @@ int ExcludeHitFor(
 */
 #ifndef BLD_NATIVE
 int ExcludeHitInAnimationFor(
-        const char *entity_name, const char *exclude_hit_for_name, void *unknown
+    const char *entity_name,
+    const char *exclude_hit_for_name,
+    void *unknown
 )
 {
     int (*bld_proc)(
@@ -2040,9 +2207,7 @@ int ExcludeHitInAnimationFor(
 * Entry point:            0x00519792
 */
 #ifndef BLD_NATIVE
-int Link(
-        const char *entity_name, const char *child_entity_name, void *unknown
-)
+int Link(const char *entity_name, const char *child_entity_name, void *unknown)
 {
     int (*bld_proc)(
         const char *entity_name, const char *child_entity_name, void *unknown
@@ -2057,8 +2222,10 @@ int Link(
 */
 #ifndef BLD_NATIVE
 int LinkToNode(
-        const char *entity_name, const char *child_name, int node_index,
-        void *unknown
+    const char *entity_name,
+    const char *child_name,
+    int node_index,
+    void *unknown
 )
 {
     int (*bld_proc)(
@@ -2075,8 +2242,11 @@ int LinkToNode(
 */
 #ifndef BLD_NATIVE
 int LinkAnchors(
-        const char *entity_name, const char *entity_anchor_name,
-        const char *child_name, const char *child_anchor_name, void *unknown
+    const char *entity_name,
+    const char *entity_anchor_name,
+    const char *child_name,
+    const char *child_anchor_name,
+    void *unknown
 )
 {
     int (*bld_proc)(
@@ -2104,9 +2274,7 @@ int UnlinkChilds(const char *entity_name)
 * Entry point:            0x00519ACF
 */
 #ifndef BLD_NATIVE
-int GetNodeIndex(
-        const char *entity_name, const char *node_name, int *index
-)
+int GetNodeIndex(const char *entity_name, const char *node_name, int *index)
 {
     int (*bld_proc)(
         const char *entity_name, const char *node_name, int *index
@@ -2121,7 +2289,9 @@ int GetNodeIndex(
 */
 #ifndef BLD_NATIVE
 int UnlinkChild(
-        const char *entity_name, const char *child_entity_name, void *unknown
+    const char *entity_name,
+    const char *child_entity_name,
+    void *unknown
 )
 {
     int (*bld_proc)(
@@ -2136,9 +2306,7 @@ int UnlinkChild(
 * Entry point:            0x00519C0D
 */
 #ifndef BLD_NATIVE
-int InsideActionArea(
-        const char *entity_name, int action_area, int *is_inside
-)
+int InsideActionArea(const char *entity_name, int action_area, int *is_inside)
 {
     int (*bld_proc)(
         const char *entity_name, int action_area, int *is_inside
@@ -2153,8 +2321,14 @@ int InsideActionArea(
 */
 #ifndef BLD_NATIVE
 int SetTmpAnmFlags(
-        const char *entity_name, int wuea, int mod_y, int solf, int copy_rot,
-        int bng_mov, int headf, int unknown
+    const char *entity_name,
+    int wuea,
+    int mod_y,
+    int solf,
+    int copy_rot,
+    int bng_mov,
+    int headf,
+    int unknown
 )
 {
     int (*bld_proc)(
@@ -2171,8 +2345,14 @@ int SetTmpAnmFlags(
 */
 #ifndef BLD_NATIVE
 int SetAnmFlags(
-        const char *entity_name, const char *anm_name, int wuea, int mod_y,
-        int solf, int copy_rot, int bng_mov, int headf
+    const char *entity_name,
+    const char *anm_name,
+    int wuea,
+    int mod_y,
+    int solf,
+    int copy_rot,
+    int bng_mov,
+    int headf
 )
 {
     int (*bld_proc)(
@@ -2189,7 +2369,9 @@ int SetAnmFlags(
 */
 #ifndef BLD_NATIVE
 int LaunchAnimation2(
-        const char *entity_name, const char *anm_name1, const char *anm_name2
+    const char *entity_name,
+    const char *anm_name1,
+    const char *anm_name2
 )
 {
     int (*bld_proc)(
@@ -2228,9 +2410,7 @@ const char *GetEnemy(const char *entity_name)
 * Entry point:            0x00519FD6
 */
 #ifndef BLD_NATIVE
-int Chase(
-        const char *entity_name, const char *enemy_name, int action_area
-)
+int Chase(const char *entity_name, const char *enemy_name, int action_area)
 {
     int (*bld_proc)(
         const char *entity_name, const char *enemy_name, int action_area
@@ -2328,9 +2508,7 @@ int StopLooking(const char *entity_name)
 * Entry point:            0x0051A47A
 */
 #ifndef BLD_NATIVE
-int LookAtEntity(
-        const char *entity_name, const char *look_at_entity_name
-)
+int LookAtEntity(const char *entity_name, const char *look_at_entity_name)
 {
     int (*bld_proc)(
         const char *entity_name, const char *look_at_entity_name
@@ -2448,9 +2626,15 @@ int SwitchTo1H(const char *entity_name)
 */
 #ifndef BLD_NATIVE
 int GetDummyAxis(
-        const char *entity_name, const char *anchor_name, double x_dir,
-        double y_dir, double z_dir, double *x_dummy_axis, double *y_dummy_axis,
-        double *z_dummy_axis, int unknown
+    const char *entity_name,
+    const char *anchor_name,
+    double x_dir,
+    double y_dir,
+    double z_dir,
+    double *x_dummy_axis,
+    double *y_dummy_axis,
+    double *z_dummy_axis,
+    int unknown
 )
 {
     int (*bld_proc)(
@@ -2468,8 +2652,11 @@ int GetDummyAxis(
 */
 #ifndef BLD_NATIVE
 int GraspPos(
-        const char *entity_name, const char *grasp, double *x, double *y,
-        double *z
+    const char *entity_name,
+    const char *grasp,
+    double *x,
+    double *y,
+    double *z
 )
 {
     int (*bld_proc)(
@@ -2509,9 +2696,7 @@ int LaunchBayRoute(const char *entity_name)
 * Entry point:            0x0051B09A
 */
 #ifndef BLD_NATIVE
-int EntityCatchOnFire(
-        const char *entity_name, double x, double y, double z
-)
+int EntityCatchOnFire(const char *entity_name, double x, double y, double z)
 {
     int (*bld_proc)(
         const char *entity_name, double x, double y, double z
@@ -2561,7 +2746,7 @@ int CreateBipedData(const char *biped_name, const char *kind)
     gbl_bipeds.Append(newBiped);
     for (int i = 0; i < gbl_en_control.NumCharTypes(); i++)
     {
-        if (!stricmp(gbl_en_control.GetCharType(i)->name.String(), kind))
+        if (stricmp(gbl_en_control.GetCharType(i)->name.String(), kind) == 0)
         {
             gbl_en_control.GetCharType(i)->biped = newBiped;
             newBiped->charType = gbl_en_control.GetCharType(i);
@@ -2577,9 +2762,12 @@ int CreateBipedData(const char *biped_name, const char *kind)
 */
 #ifndef BLD_NATIVE
 int AddBipedAction(
-        const char *char_name, const char *action_name,
-        const char *animation_name, double d_unknown1, double d_unknown2,
-        int i_unknown
+    const char *char_name,
+    const char *action_name,
+    const char *animation_name,
+    double d_unknown1,
+    double d_unknown2,
+    int i_unknown
 )
 {
     int (*bld_proc)(
@@ -2618,9 +2806,13 @@ int RemoveBipedAction(const char *race_name, const char *action_name)
 */
 #ifndef BLD_NATIVE
 int AddBipedActionC(
-        const char *char_name, const char *action_name,
-        const char *animation_name, const char *s_unknown, double d_unknown1,
-        double d_unknown2, int i_unknown
+    const char *char_name,
+    const char *action_name,
+    const char *animation_name,
+    const char *s_unknown,
+    double d_unknown1,
+    double d_unknown2,
+    int i_unknown
 )
 {
     int (*bld_proc)(
@@ -2775,7 +2967,7 @@ int DoActionWI(
 
 int SetOnFloor(const char *entity_name)
 {
-    B_Entity * entity = GetEntity(entity_name);
+    B_Entity *entity = GetEntity(entity_name);
     if (entity == NULL)
     {
         mout << vararg(
@@ -2960,7 +3152,7 @@ int SetAuraParams(
     int alpha_mode
 )
 {
-    B_Entity * entity = GetEntity(entity_name);
+    B_Entity *entity = GetEntity(entity_name);
     if (entity == NULL)
     {
         mout << vararg(

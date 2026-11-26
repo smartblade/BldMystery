@@ -5,7 +5,8 @@
 
 
 #include <bld_python.h>
-#include <BBLibc/BBLibc.h>
+#include <BBLibc/PythonCall.h>
+#include <BBLibc/Win32Error.h>
 #include <BBLibc/NDataBase.h>
 #include <BBLibc/Name.h>
 #include <BBLibc/NamedObj.h>
@@ -208,4 +209,3 @@ public:
 };
 
 #endif /* APPLICATION_H */
-

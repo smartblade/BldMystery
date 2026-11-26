@@ -10,7 +10,8 @@ public:
         const B_Vector &position,
         double rotationX,
         double rotationY,
-        double rotationZ);
+        double rotationZ
+    );
     ~B_ViewPose();
     void setPosition(const B_Vector &pos);
     void setOrientation(const B_Vector &orientation);

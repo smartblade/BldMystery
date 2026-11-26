@@ -1,0 +1,30 @@
+name: Generated files
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  process-asm:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Generate the files of the modules
+        run: python process_asm.py --force=yes
+      - name: Check that the generated files don't change
+        # native.asm, procedures.inc and the other files written by
+        # process_asm.py must be committed as it writes them, its
+        # intermediate files are ignored by git
+        shell: bash
+        run: |
+          git status --porcelain > "$RUNNER_TEMP/changed.txt"
+          while IFS= read -r line; do
+            file=${line:3}
+            echo "::error file=$file,title=generated file::$file differs" \
+              "from the output of process_asm.py --force=yes"
+          done < "$RUNNER_TEMP/changed.txt"
+          git diff --stat
+          test ! -s "$RUNNER_TEMP/changed.txt"

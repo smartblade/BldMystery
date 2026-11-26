@@ -24,9 +24,14 @@ public:
     {
     }
     B_Combustion(
-        const B_Name &object_kind, const B_Name &fire_kind, double upper_treshol,
-        double lower_treshold, double flame_height, double flame_size,
-        double speed, double livetime
+        const B_Name &object_kind,
+        const B_Name &fire_kind,
+        double upper_treshol,
+        double lower_treshold,
+        double flame_height,
+        double flame_size,
+        double speed,
+        double livetime
     );
 private:
     B_ObjArray<void> a00C;
@@ -59,7 +64,8 @@ public:
 extern B_IDataFile &operator >>(B_IDataFile &file, B_Combustion &combustion);
 extern B_ODataFile &operator <<(
     B_ODataFile &file,
-    const B_Combustion &combustion);
+    const B_Combustion &combustion
+);
 
 #ifdef __cplusplus
 extern "C" {

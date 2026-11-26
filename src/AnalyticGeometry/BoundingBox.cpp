@@ -40,7 +40,10 @@ B_BoundingBox::B_BoundingBox()
 * VC++ mangling:          ??0B_BoundingBox@@QAE@ABVB_Vector@@0@Z
 */
 
-B_BoundingBox::B_BoundingBox(const B_Vector &minCoords, const B_Vector &maxCoords)
+B_BoundingBox::B_BoundingBox(
+    const B_Vector &minCoords,
+    const B_Vector &maxCoords
+)
 :
     minCoords(minCoords),
     maxCoords(maxCoords)

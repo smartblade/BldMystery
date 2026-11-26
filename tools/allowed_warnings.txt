@@ -5,4 +5,3 @@ C4996  # deprecated functions, e.g. unsafe functions of CRT and POSIX names
 C4477  # arguments of format strings not matching their specifications
 LNK4086  # entry point of a module is not __stdcall
 C4244  # conversions of numbers which may lose data, e.g. double to int
-C4700  # uninitialized local variables used, e.g. in stubs

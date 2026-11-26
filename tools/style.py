@@ -2,16 +2,20 @@
 
 Rules:
     pointer   '&' and '*' are attached to names, not to types:
-              'const B_Vector &that', not 'const B_Vector& that'
+              'const B_Vector &that', not 'const B_Vector& that' or
+              'const B_Vector & that' in declarations, and are
+              separated from types without names: 'static_cast<B_Name *>',
+              'const char *)', not 'static_cast<B_Name*>', 'const char*)'
     braces    opening braces are on separate lines
+    newline   files end with a single newline
 
 Usage:
     python tools/style.py check [--rule RULE] [--github] [PATH...]
     python tools/style.py fix --rule RULE [PATH...]
 
 Options:
-    --rule RULE   the rule to check or apply: pointer or braces ('check'
-                  checks all rules without it, 'fix' requires it)
+    --rule RULE   the rule to check or apply: pointer, braces or newline
+                  ('check' checks all rules without it, 'fix' requires it)
     --github      print violations as error annotations of GitHub Actions
                   ('::error file=FILE,line=LINE,title=RULE::MESSAGE')
 
@@ -43,7 +47,7 @@ IGNORED_PATHS = [
 # Directories with generated code
 IGNORED_DIRECTORY_NAMES = ["asm"]
 
-RULES = ("pointer", "braces")
+RULES = ("pointer", "braces", "newline")
 
 # Words after which '*' and '&' are operators of expressions
 _EXPRESSION_KEYWORDS = {
@@ -52,7 +56,23 @@ _EXPRESSION_KEYWORDS = {
 }
 _POINTER_REGEXP = re.compile(
     r"(?P<before>[\w>])(?P<ops>[*&]+)(?P<spaces>[ \t]+)(?=[A-Za-z_~(])")
+# '*' and '&' attached to a type without a name: an argument of a template
+# or a cast, a parameter without a name. Operators of expressions aren't
+# followed by '>', ')' or ','.
+_UNNAMED_POINTER_REGEXP = re.compile(
+    r"(?P<before>[\w>])(?P<ops>[*&]+)(?P<spaces>)(?=[ \t]*[>),])")
 _WORD_BEFORE_REGEXP = re.compile(r"(\w+)$")
+# '*' and '&' separated from a type and from a name: 'T * name' is also a
+# multiplication, so it is a declaration only at the beginning of a
+# statement, after qualifiers, followed by '=', ';', ',', ')' or '[', and
+# in 'new T * [n]'
+_SPACED_POINTER_REGEXP = re.compile(
+    r"(?P<before>[\w>])[ \t]+(?P<ops>[*&]+)(?P<spaces>[ \t]+)"
+    r"(?=(?P<name>[A-Za-z_]\w*[ \t]*[=;,)\[])|\[)")
+_DECLARATION_PREFIX_REGEXP = re.compile(
+    r"^(?:[ \t]*|.*[;{}][ \t]*)"
+    r"(?:(?:const|static|unsigned|signed|struct|class|volatile)[ \t]+)*$")
+_TYPE_REGEXP = re.compile(r"(?:\w+(?:::\w+)*)(?:[ \t]*<[^;()]*>)?$")
 
 
 class _Line:
@@ -126,10 +146,31 @@ def _write_lines(path, lines):
 
 # Rule 'pointer'
 
+def _is_spaced_declaration(code, match):
+    """'T * name' of a declaration or 'new T * [n]'."""
+    type_match = _TYPE_REGEXP.search(code[:match.end("before")])
+    if type_match is None:
+        return False
+    word = re.match(r"\w+", type_match.group(0)).group(0)
+    if word in _EXPRESSION_KEYWORDS or word.isdigit():
+        return False
+    prefix = code[:type_match.start()]
+    if match.group("name") is None:
+        return prefix.rstrip().endswith("new")
+    return _DECLARATION_PREFIX_REGEXP.match(prefix) is not None
+
+
 def _pointer_violations(line):
     """Positions of '*' and '&' attached to types in the code of the line."""
     result = []
-    for match in _POINTER_REGEXP.finditer(line.code):
+    matches = list(_POINTER_REGEXP.finditer(line.code))
+    matches += [
+        match for match in _SPACED_POINTER_REGEXP.finditer(line.code)
+        if _is_spaced_declaration(line.code, match)
+    ]
+    matches += _UNNAMED_POINTER_REGEXP.finditer(line.code)
+    matches.sort(key=lambda match: match.start())
+    for match in matches:
         ops = match.group("ops")
         if ops == "&&" or "&&" in ops:
             continue
@@ -145,8 +186,13 @@ def _pointer_violations(line):
 def _check_pointer(lines):
     for index, line in enumerate(lines):
         for match in _pointer_violations(line):
-            yield index, "'{}' is attached to the type, not to the name".format(
-                match.group("ops"))
+            if match.re is _SPACED_POINTER_REGEXP:
+                message = "'{}' is separated from the name"
+            elif match.group("spaces"):
+                message = "'{}' is attached to the type, not to the name"
+            else:
+                message = "'{}' is attached to the type without a name"
+            yield index, message.format(match.group("ops"))
 
 
 def _fix_pointer(lines):
@@ -155,11 +201,15 @@ def _fix_pointer(lines):
         for match in reversed(matches):
             start = match.start("ops")
             end = match.end("spaces")
+            # 'T* name' -> 'T *name', 'T*>' -> 'T *>', 'T * name' -> 'T *name'
+            spaces = match.group("spaces") or " "
+            if match.re is _SPACED_POINTER_REGEXP:
+                spaces = ""
             line.text = (
-                line.text[:start] + match.group("spaces") +
+                line.text[:start] + spaces +
                 match.group("ops") + line.text[end:])
             line.code = (
-                line.code[:start] + match.group("spaces") +
+                line.code[:start] + spaces +
                 match.group("ops") + line.code[end:])
     return lines
 
@@ -261,8 +311,36 @@ def _split_brace_line(line, column):
     return new_lines
 
 
-_CHECKS = {"pointer": _check_pointer, "braces": _check_braces}
-_FIXES = {"pointer": _fix_pointer, "braces": _fix_braces}
+# Rule 'newline'
+
+def _check_newline(lines):
+    if not lines:
+        return
+    if not lines[-1].ending:
+        yield len(lines) - 1, "no newline at end of file"
+    elif not lines[-1].text:
+        yield len(lines) - 1, "trailing empty line at end of file"
+
+
+def _fix_newline(lines):
+    while lines and not lines[-1].text:
+        lines.pop()
+    if lines and not lines[-1].ending:
+        ending = "\r\n" if any(line.ending == "\r\n" for line in lines) else "\n"
+        lines[-1].ending = ending
+    return lines
+
+
+_CHECKS = {
+    "pointer": _check_pointer,
+    "braces": _check_braces,
+    "newline": _check_newline,
+}
+_FIXES = {
+    "pointer": _fix_pointer,
+    "braces": _fix_braces,
+    "newline": _fix_newline,
+}
 
 
 def _is_ignored(rel_path):

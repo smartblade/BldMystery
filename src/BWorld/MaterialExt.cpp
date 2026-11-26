@@ -58,7 +58,10 @@ material_t *GetMaterialI(int index)
 */
 #ifndef BLD_NATIVE
 int SetMaterialSoundProperty(
-    material_t *material, int property_kind, int index, B_Sound *sound
+    material_t *material,
+    int property_kind,
+    int index,
+    B_Sound *sound
 )
 {
     int (*bld_proc)(
@@ -74,7 +77,10 @@ int SetMaterialSoundProperty(
 */
 #ifndef BLD_NATIVE
 int GetMaterialSoundProperty(
-        material_t *material, int property_kind, int index, B_Sound **sound
+    material_t *material,
+    int property_kind,
+    int index,
+    B_Sound **sound
 )
 {
     int (*bld_proc)(
@@ -90,7 +96,10 @@ int GetMaterialSoundProperty(
 */
 #ifndef BLD_NATIVE
 int GetMaterialStringProperty(
-        material_t *material, int property_kind, int index, const char **value
+    material_t *material,
+    int property_kind,
+    int index,
+    const char **value
 )
 {
     int (*bld_proc)(
@@ -106,7 +115,10 @@ int GetMaterialStringProperty(
 */
 #ifndef BLD_NATIVE
 int SetMaterialFloatProperty(
-        material_t *material, int property_kind, int index, double value
+    material_t *material,
+    int property_kind,
+    int index,
+    double value
 )
 {
     int (*bld_proc)(
@@ -122,7 +134,10 @@ int SetMaterialFloatProperty(
 */
 #ifndef BLD_NATIVE
 int GetMaterialFloatProperty(
-        material_t *material, int property_kind, int index, double *value
+    material_t *material,
+    int property_kind,
+    int index,
+    double *value
 )
 {
     int (*bld_proc)(
@@ -138,7 +153,9 @@ int GetMaterialFloatProperty(
 */
 #ifndef BLD_NATIVE
 int AddHitSoundComb(
-    material_t *material1, material_t *material2, B_Sound *sound
+    material_t *material1,
+    material_t *material2,
+    B_Sound *sound
 )
 {
     int (*bld_proc)(

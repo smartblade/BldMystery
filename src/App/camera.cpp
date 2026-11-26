@@ -53,7 +53,10 @@ int B_Camera::SetPersonView(const char *person_name)
 */
 #ifndef BLD_NATIVE
 int B_Camera::Read3dsMaxAnimation(
-    const char *cam_file_name, int i_unknown, int num_frames)
+    const char *cam_file_name,
+    int i_unknown,
+    int num_frames
+)
 {
     return 0;
 }

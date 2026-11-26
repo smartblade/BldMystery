@@ -278,6 +278,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Blade\BWorld\FrameListTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\BWorld\ScheduledFuncTests.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\Blade\BWorld\SectorLightsTests.cpp"
 					>
 				</File>
@@ -291,6 +299,10 @@
 				</File>
 				<File
 					RelativePath=".\Blade\BWorld\SubscriptionListTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Blade\BWorld\TimerListTests.cpp"
 					>
 				</File>
 				<File
@@ -466,6 +478,18 @@
 					</File>
 				</Filter>
 				<Filter
+					Name="PhysicsManager.h"
+					>
+					<File
+						RelativePath=".\Blade\Physics\PhysicsManager.h\PhysicsGroupTests.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Blade\Physics\PhysicsManager.h\PhysicsManagerTests.cpp"
+						>
+					</File>
+				</Filter>
+				<Filter
 					Name="PhysicsTemplate.h"
 					>
 					<File
@@ -558,6 +582,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Blade\AnalyticGeometry\VectorTests.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\Blade\AnalyticGeometry\ViewPoseTests.cpp"
 					>
 				</File>
@@ -595,6 +623,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BBLibc\BitMapResourceTests.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\BBLibc\BitMapTests.cpp"
 				>
 			</File>
@@ -616,6 +648,10 @@
 			</File>
 			<File
 				RelativePath=".\BBLibc\ListTests.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BBLibc\MeshEdgeTests.cpp"
 				>
 			</File>
 			<File
@@ -650,6 +686,26 @@
 				RelativePath=".\BBLibc\ResourceTests.cpp"
 				>
 			</File>
+			<Filter
+				Name="ObjDscr.h"
+				>
+				<File
+					RelativePath=".\BBLibc\ObjDscr.h\ObjDscrTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BBLibc\ObjDscr.h\ObjFaceTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BBLibc\ObjDscr.h\ObjNodeTests.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\BBLibc\ObjDscr.h\ObjVertexTests.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="rOpenGL"

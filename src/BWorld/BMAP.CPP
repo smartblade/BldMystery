@@ -3,7 +3,7 @@
 #include <Raster/RasterDevice.h>
 #include <AnalyticGeometry/Polygon.h>
 #include <Entities/Entity.h>
-#include <BBLibc/BBLibc.h>
+#include <BBLibc/PythonCall.h>
 #include <bld_python.h>
 #include "bld_misc_funcs.h"
 
@@ -121,6 +121,36 @@ B_IDataFile &operator >>(B_IDataFile &file, B_Sector &sector)
     return file;
 }
 
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00430281
+* VC++ mangling:          ??0B_Map@@QAE@XZ
+*/
+#ifndef BLD_NATIVE
+B_Map::B_Map()
+{
+}
+#endif
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00430323
+* VC++ mangling:          ??1B_Map@@UAE@XZ
+*/
+#ifndef BLD_NATIVE
+B_Map::~B_Map()
+{
+}
+#endif
 
 /*
 ................................................................................

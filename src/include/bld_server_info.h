@@ -10,4 +10,3 @@ typedef struct
 } bld_server_info;
 
 #endif /* BLD_SERVER_INFO_H */
-

@@ -474,7 +474,7 @@ bool B_App::ProcessEvents()
         this->ClearLevel(false);
         this->LoadLevel(newMap);
         free(newMap);
-        if (this->mapToLoad != NULL && strcmp(this->mapToLoad, "Casa"))
+        if (this->mapToLoad != NULL && strcmp(this->mapToLoad, "Casa") != 0)
         {
             /* FIXME setting to null before memory deallocation */
             this->mapToLoad = NULL;
@@ -563,7 +563,8 @@ bool B_App::ProcessEvents()
     {
         B_CameraView cameraView;
         this->GetCameraView(&cameraView);
-        for (unsigned int i = 0; i < gbl_ag_textures.size; i++)
+        unsigned int i;
+        for (i = 0; i < gbl_ag_textures.size; i++)
         {
             gbl_ag_textures[i]->needUpdate = true;
         }
@@ -588,7 +589,7 @@ bool B_App::ProcessEvents()
             B_3D_raster_device->SetMode(2);
         }
         worldUpdateTime = worldUpdateTime + this->clock1->GetTime();
-        for (unsigned int i = 0; i < this->afterFrameFuncs.size; i++)
+        for (i = 0; i < this->afterFrameFuncs.size; i++)
         {
             B_AfterFrameFunc *func = this->afterFrameFuncs[i];
             func->Call(this->time);
@@ -846,26 +847,26 @@ void B_App::ReadLevel(const char * file_name)
     int status = fscanf(file, "%s -> %s", itemKind, itemName);
     while ((status != 0) && (status != EOF))
     {
-        if (!strcmp(itemKind, "Bitmaps"))
+        if (strcmp(itemKind, "Bitmaps") == 0)
         {
             B_resource_manager.LocateResourceIn(B_Name(itemName), NULL, 2);
         }
-        else if (!strcmp(itemKind, "ChromaBitmaps"))
+        else if (strcmp(itemKind, "ChromaBitmaps") == 0)
         {
             this->ExitWithError("Blade", "ChromaBitmaps no longer supported.");
         }
-        else if (!strcmp(itemKind, "WorldDome"))
+        else if (strcmp(itemKind, "WorldDome") == 0)
         {
             B_resource_manager.LocateResourceIn(B_Name(itemName), NULL, 2);
             B_3D_raster_device->update_dome();
         }
-        else if (!strcmp(itemKind, "World"))
+        else if (strcmp(itemKind, "World") == 0)
         {
             this->LoadWorld(itemName);
         }
-        else if (!strcmp(itemKind, "ANM"))
+        else if (strcmp(itemKind, "ANM") == 0)
         {
-            B_IDataFile * file = new B_IDataFile(itemName, O_BINARY);
+            B_IDataFile *file = new B_IDataFile(itemName, O_BINARY);
             if (file->OK())
             {
                 anim_t *anim = new anim_t();
@@ -897,11 +898,11 @@ void B_App::ReadLevel(const char * file_name)
             }
             delete file;
         }
-        else if (!strcmp(itemKind, "Objs"))
+        else if (strcmp(itemKind, "Objs") == 0)
         {
             this->ExitWithError("Blade", "Objs no longer supported.");
         }
-        else if (!strcmp(itemKind, "LoadGammaC"))
+        else if (strcmp(itemKind, "LoadGammaC") == 0)
         {
             this->ExitWithError("Blade", "LoadGammaC no longer supported.");
         }
@@ -1320,34 +1321,46 @@ void B_App::ReadArguments(const char *args)
         {
             this->noSound = true;
         }
-        else if (!strncmp(
-            this->arguments.elements[i]->String(),
-            "map:",
-            sizeof("map:") - 1))
+        else if (
+            strncmp(
+                this->arguments.elements[i]->String(),
+                "map:",
+                sizeof("map:") - 1
+            ) == 0
+        )
         {
             const B_Name &map = *this->arguments.elements[i];
             this->mapName = map;
         }
-        else if (!strncmp(
-            this->arguments.elements[i]->String(),
-            "dev:",
-            sizeof("dev:") - 1))
+        else if (
+            strncmp(
+                this->arguments.elements[i]->String(),
+                "dev:",
+                sizeof("dev:") - 1
+            ) == 0
+        )
         {
             const B_Name &raster = *this->arguments.elements[i];
             this->rasterName = raster;
         }
-        else if (!strncmp(
-            this->arguments.elements[i]->String(),
-            "snd:",
-            sizeof("snd:") - 1))
+        else if (
+            strncmp(
+                this->arguments.elements[i]->String(),
+                "snd:",
+                sizeof("snd:") - 1
+            ) == 0
+        )
         {
             const B_Name &snd = *this->arguments.elements[i];
             this->soundDeviceId = snd;
         }
-        else if (!strncmp(
-            this->arguments.elements[i]->String(),
-            "nogamespy",
-            4))/* FIXME should be whole world comparison*/
+        else if (
+            strncmp(
+                this->arguments.elements[i]->String(),
+                "nogamespy",
+                4
+            ) == 0
+        )/* FIXME should be whole world comparison*/
         {
             SetGameSpySupport(false);
         }
@@ -1570,7 +1583,7 @@ void B_App::StringSplit(
             tokens->num_alloc += tokens->increment;
             if (tokens->size != 0)
             {
-                B_Name ** elements = new B_Name *[tokens->num_alloc];
+                B_Name **elements = new B_Name *[tokens->num_alloc];
                 for (unsigned int i = 0; i < tokens->size; i++)
                 {
                     elements[i] = tokens->elements[i];
@@ -1661,7 +1674,7 @@ int B_App::LoadWorld(const char *file_name)
     mout << vararg("About to load World %s.\n", file_name);
     timeBefore = timeGetTime();
 
-    B_IDataFile * file = new B_IDataFile(file_name, O_BINARY);
+    B_IDataFile *file = new B_IDataFile(file_name, O_BINARY);
     if (!file->OK())
     {
         mout << "B_App::LoadWorld() -> Error trying to load map.\n";

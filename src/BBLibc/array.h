@@ -123,12 +123,13 @@ public:
     }
 
     B_Array(unsigned int increment = 16, int deleteItems = true)
+    :
+        elements(NULL),
+        size(0),
+        increment(increment),
+        num_alloc(0),
+        deleteItems(deleteItems)
     {
-        elements = NULL;
-        size = 0;
-        this->increment = increment;
-        num_alloc = 0;
-        this->deleteItems = deleteItems;
     }
 
     TYPE *operator[](unsigned int index)
@@ -148,7 +149,7 @@ public:
             num_alloc += increment;
             if (size != 0)
             {
-                TYPE ** elements = new TYPE *[num_alloc];
+                TYPE **elements = new TYPE *[num_alloc];
                 for (unsigned int i = 0; i < size; i++)
                 {
                     elements[i] = this->elements[i];
@@ -197,12 +198,13 @@ public:
         if (this->num_alloc >= (this->size + this->increment - 1))
         {
             this->num_alloc -= this->increment;
-            TYPE ** elements = new TYPE *[this->num_alloc];
-            for (unsigned int i = 0; i < index; i++)
+            TYPE **elements = new TYPE *[this->num_alloc];
+            unsigned int i;
+            for (i = 0; i < index; i++)
             {
                 elements[i] = this->elements[i];
             }
-            for (unsigned int i = index + 1; i < this->size; i++)
+            for (i = index + 1; i < this->size; i++)
             {
                 elements[i - 1] = this->elements[i];
             }
@@ -258,7 +260,7 @@ public:
 
     TYPE **elements;
     unsigned int size;
-    int increment;
+    unsigned int increment;
     unsigned int num_alloc;
     int deleteItems;
 };
@@ -282,7 +284,7 @@ B_IDataFile &operator >>(B_IDataFile &file, B_Array<TYPE> &arr)
     arr.num_alloc = ((arr.increment + arr.size - 1) / arr.increment) * arr.increment;
     if (arr.num_alloc != 0)
     {
-        arr.elements = new TYPE * [arr.num_alloc];
+        arr.elements = new TYPE *[arr.num_alloc];
         for(unsigned int i = 0; i < arr.size; i++)
         {
             arr.elements[i] = new TYPE();
@@ -299,12 +301,15 @@ class B_SharedPtrArray : public B_Array<TYPE>
 public:
     virtual ~B_SharedPtrArray()
     {
-        Clear(false);
+        if (size != 0)
+        {
+            Clear(false);
+        }
     }
 
     B_SharedPtrArray(unsigned int increment = 16)
         :
-    B_Array(increment)
+    B_Array<TYPE>(increment)
     {
     }
 };
@@ -313,12 +318,24 @@ public:
 template<class TYPE>
 class B_ObjArray : public B_Array<TYPE>
 {
+public:
+    B_ObjArray(unsigned int increment = 16, int deleteItems = true)
+    :
+        B_Array<TYPE>(increment, deleteItems)
+    {
+    }
 };
 
 
 template<class TYPE>
 class B_DataBase : public B_ObjArray<TYPE>
 {
+public:
+    B_DataBase(unsigned int increment = 16, int deleteItems = true)
+    :
+        B_ObjArray<TYPE>(increment, deleteItems)
+    {
+    }
 };
 
 #endif /* ARRAY_H */

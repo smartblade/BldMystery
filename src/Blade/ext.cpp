@@ -36,7 +36,9 @@ int AddStepSound(const char *name, B_Sound *sound)
 */
 #ifndef BLD_NATIVE
 int AddMaterialStepSound(
-        const char *table, const char *material, const char *step_sound
+    const char *table,
+    const char *material,
+    const char *step_sound
 )
 {
     int (*bld_proc)(
@@ -78,7 +80,9 @@ int AddTextureMaterial(const char *texture, const char *material)
 */
 #ifndef BLD_NATIVE
 int AddActionStepSound(
-        const char *table, const char *action, const char *step_sound_table
+    const char *table,
+    const char *action,
+    const char *step_sound_table
 )
 {
     int (*bld_proc)(
@@ -140,7 +144,9 @@ int LoadAllAnimations(int charID)
 */
 #ifndef BLD_NATIVE
 int ChangeAnimation(
-        int charID, const char *old_anm_name, const char *new_anm_name
+    int charID,
+    const char *old_anm_name,
+    const char *new_anm_name
 )
 {
     int (*bld_proc)(
@@ -201,8 +207,11 @@ int AddAttack(int charID, const char *attack_name, const char *anm_name)
 */
 #ifndef BLD_NATIVE
 int AttackWindow(
-        int charID, const char *anm_name, float window1, float window2,
-        const char *window_name
+    int charID,
+    const char *anm_name,
+    float window1,
+    float window2,
+    const char *window_name
 )
 {
     int (*bld_proc)(
@@ -225,9 +234,7 @@ int AttackWindow(
 * Entry point:            0x00585853
 */
 #ifndef BLD_NATIVE
-int AttackLevels(
-        int charID, const char *anm_name, float level1, float level2
-)
+int AttackLevels(int charID, const char *anm_name, float level1, float level2)
 {
     int (*bld_proc)(
         int charID, const char *anm_name, float level1, float level2
@@ -248,9 +255,7 @@ int AttackLevels(
 * Entry point:            0x0058589B
 */
 #ifndef BLD_NATIVE
-int AttackEnergyLevel(
-        int charID, const char *anm_name, float  level
-)
+int AttackEnergyLevel(int charID, const char *anm_name, float level)
 {
     int (*bld_proc)(
         int charID, const char *anm_name, float  level
@@ -309,9 +314,13 @@ int AttackTypeFlag(int charID, const char *attack_name, int flag)
 */
 #ifndef BLD_NATIVE
 int AllowAttack(
-        int charID, const char *attack_name, const char *keys,
-        const char *previous, const char *previous_negative,
-        const char *window_name, const char *weapon_kind
+    int charID,
+    const char *attack_name,
+    const char *keys,
+    const char *previous,
+    const char *previous_negative,
+    const char *window_name,
+    const char *weapon_kind
 )
 {
     int (*bld_proc)(
@@ -336,7 +345,9 @@ int AllowAttack(
 */
 #ifndef BLD_NATIVE
 int MetaAttack(
-        int charID, const char *meta_attack_name, const char *attack_name
+    int charID,
+    const char *meta_attack_name,
+    const char *attack_name
 )
 {
     int (*bld_proc)(
@@ -359,8 +370,10 @@ int MetaAttack(
 */
 #ifndef BLD_NATIVE
 int AssignTrail(
-        int charID, const char *attack_name, const char *unknown,
-        const char *trail_name
+    int charID,
+    const char *attack_name,
+    const char *unknown,
+    const char *trail_name
 )
 {
     int (*bld_proc)(
@@ -459,7 +472,12 @@ int SetCharIntProperty(int charID, int property_kind, int index, int value)
 * Entry point:            0x00585DB4
 */
 #ifndef BLD_NATIVE
-int GetCharFloatProperty(int charID, int property_kind, int index, double *value)
+int GetCharFloatProperty(
+    int charID,
+    int property_kind,
+    int index,
+    double *value
+)
 {
     int (*bld_proc)(int charID, int property_kind, int index, double *value) = NULL;
     return bld_proc(charID, property_kind, index, value);
@@ -497,7 +515,12 @@ int SetCharFloatProperty(int charID, int property_kind, int index, double value)
 * Entry point:            0x00586518
 */
 #ifndef BLD_NATIVE
-int GetCharStringProperty(int charID, int property_kind, int index, const char **value)
+int GetCharStringProperty(
+    int charID,
+    int property_kind,
+    int index,
+    const char **value
+)
 {
     int (*bld_proc)(int charID, int property_kind, int index, const char **value) = NULL;
     return bld_proc(charID, property_kind, index, value);
@@ -516,7 +539,12 @@ int GetCharStringProperty(int charID, int property_kind, int index, const char *
 * Entry point:            0x00586614
 */
 #ifndef BLD_NATIVE
-int SetCharStringProperty(int charID, int property_kind, int index, const char *value)
+int SetCharStringProperty(
+    int charID,
+    int property_kind,
+    int index,
+    const char *value
+)
 {
     int (*bld_proc)(int charID, int property_kind, int index, const char *value) = NULL;
     return bld_proc(charID, property_kind, index, value);
@@ -535,7 +563,12 @@ int SetCharStringProperty(int charID, int property_kind, int index, const char *
 * Entry point:            0x005867AB
 */
 #ifndef BLD_NATIVE
-int SetCharFuncProperty(int charID, int property_kind, int index, PyObject *func)
+int SetCharFuncProperty(
+    int charID,
+    int property_kind,
+    int index,
+    PyObject *func
+)
 {
     int (*bld_proc)(int charID, int property_kind, int index, PyObject *func) = NULL;
     return bld_proc(charID, property_kind, index, func);
@@ -610,7 +643,10 @@ void SetTrailIntProperty()
 */
 #ifndef BLD_NATIVE
 int GetTrailFloatProperty(
-        int trailID, int property_kind, int index, double *value
+    int trailID,
+    int property_kind,
+    int index,
+    double *value
 )
 {
     int (*bld_proc)(
@@ -633,7 +669,10 @@ int GetTrailFloatProperty(
 */
 #ifndef BLD_NATIVE
 int SetTrailFloatProperty(
-        int trailID, int property_kind, int index, double value
+    int trailID,
+    int property_kind,
+    int index,
+    double value
 )
 {
     int (*bld_proc)(
@@ -674,8 +713,12 @@ void GetTrailStringProperty()
 */
 #ifndef BLD_NATIVE
 int GetTrailVectorProperty(
-        int trailID, int property_kind, int index,
-        double *x, double *y, double *z
+    int trailID,
+    int property_kind,
+    int index,
+    double *x,
+    double *y,
+    double *z
 )
 {
     int (*bld_proc)(
@@ -717,7 +760,12 @@ void SetTrailFuncProperty()
 */
 #ifndef BLD_NATIVE
 int SetTrailVectorProperty(
-        int trailID, int property_kind, int index, double x, double y, double z
+    int trailID,
+    int property_kind,
+    int index,
+    double x,
+    double y,
+    double z
 )
 {
     int (*bld_proc)(
@@ -794,7 +842,9 @@ void SetInventoryFloatProperty()
 */
 #ifndef BLD_NATIVE
 int GetInventoryStringProperty(
-    const char *name, int property_kind, const char **value
+    const char *name,
+    int property_kind,
+    const char **value
 )
 {
     int (*bld_proc)(
@@ -834,9 +884,7 @@ void SetInventoryStringProperty()
 * Entry point:            0x0059D93F
 */
 #ifndef BLD_NATIVE
-int GetInventoryIntProperty(
-        const char *name, int property_kind, int *value
-)
+int GetInventoryIntProperty(const char *name, int property_kind, int *value)
 {
     int (*bld_proc)(
         const char *name, int property_kind, int *value
@@ -857,9 +905,7 @@ int GetInventoryIntProperty(
 * Entry point:            0x0059DCFF
 */
 #ifndef BLD_NATIVE
-int SetInventoryIntProperty(
-        const char *name, int property_kind, int value
-)
+int SetInventoryIntProperty(const char *name, int property_kind, int value)
 {
     int (*bld_proc)(
         const char *name, int property_kind, int value
@@ -1033,7 +1079,10 @@ int AddWeapon(const char *inv_name, int flag, const char *weapon_name)
 */
 #ifndef BLD_NATIVE
 int AddObject(
-        const char *inv_name, int obj_type, int unknown, const char *obj_name
+    const char *inv_name,
+    int obj_type,
+    int unknown,
+    const char *obj_name
 )
 {
     int (*bld_proc)(
@@ -1055,9 +1104,7 @@ int AddObject(
 * Entry point:            0x0059F2C7
 */
 #ifndef BLD_NATIVE
-int RemoveObject(
-        const char *inv_name, int obj_type, const char *obj_name
-)
+int RemoveObject(const char *inv_name, int obj_type, const char *obj_name)
 {
     int (*bld_proc)(
         const char *inv_name, int obj_type, const char *obj_name
@@ -1098,7 +1145,9 @@ const char *GetObject(const char *inv_name, int obj_type, int index)
 */
 #ifndef BLD_NATIVE
 const char *GetObjectByName(
-        const char *inv_name, int obj_type, const char *obj_name
+    const char *inv_name,
+    int obj_type,
+    const char *obj_name
 )
 {
     const char *(*bld_proc)(
@@ -1290,9 +1339,7 @@ int GetNumberObjectsAt(const char *inv_name, int obj_type, int index)
 * Entry point:            0x0059F5E1
 */
 #ifndef BLD_NATIVE
-int GetMaxNumberObjectsAt(
-        const char *inv_name, int obj_type, int index
-)
+int GetMaxNumberObjectsAt(const char *inv_name, int obj_type, int index)
 {
     int (*bld_proc)(
         const char *inv_name, int obj_type, int index
@@ -1345,5 +1392,3 @@ int CarringObject(const char *inv_name, const char *obj_name)
 ................................................................................
 ................................................................................
 */
-
-

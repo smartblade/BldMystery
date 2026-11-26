@@ -6,6 +6,7 @@
 #include <BBLibc/Color.h>
 #include <BBLibc/IDataFile.h>
 #include <BBLibc/ODataFile.h>
+#include <Physics/PhysicsManager.h>
 #include "bld_misc_funcs.h"
 
 
@@ -324,6 +325,35 @@ void unknown_00497AE0()
 
 
 
+/* Begin of file:         0x004A7420 */
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004A9830
+* VC++ mangling:          ??1B_PhysicsGroup@@QAE@XZ
+*/
+#ifndef BLD_NATIVE
+B_PhysicsGroup::~B_PhysicsGroup()
+{
+}
+#endif
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004A9C39
+* VC++ mangling:          ??0B_PhysicsManager@@QAE@N@Z
+*/
+#ifndef BLD_NATIVE
+B_PhysicsManager::B_PhysicsManager(double timeStep)
+{
+}
+#endif
+
+/* End of file:           0x004AAF00 */
+
+
+
 /* File:                  Physics/RigidBody.cpp */
 /* Begin of file:         0x004AAF00 */
 /* End of file:           0x004ABD40 */
@@ -413,9 +443,15 @@ bool GetCurrentDir(char *buffer, int bufferLength)
 */
 #ifndef BLD_NATIVE
 B_Combustion::B_Combustion(
-    const B_Name &object_kind, const B_Name &fire_kind, double upper_treshol,
-    double lower_treshold, double flame_height, double flame_size,
-    double speed, double livetime)
+    const B_Name &object_kind,
+    const B_Name &fire_kind,
+    double upper_treshol,
+    double lower_treshold,
+    double flame_height,
+    double flame_size,
+    double speed,
+    double livetime
+)
 {
 }
 #endif
@@ -677,7 +713,7 @@ float worldUpdateTime;
 int unknown005DFB9C;
 int unknown005DFBA4;
 int unknown005DFBA8;
-B_World B_world;
+B_World B_world(0.0);
 int gbl_action_areas_bit_mask;
 B_Array<anim_t> gbl_anims;
 B_DataBase<B_ClimbingData> climbing_data_list;

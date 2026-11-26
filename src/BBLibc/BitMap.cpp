@@ -19,7 +19,12 @@ B_BitMap::B_BitMap()
 * VC++ mangling:          ??0B_BitMap@@QAE@W4BitMapType@0@IIPBVB_Pal@@@Z
 */
 #ifndef BLD_NATIVE
-B_BitMap::B_BitMap(BitMapType type, unsigned int, unsigned int, const B_Pal *pal)
+B_BitMap::B_BitMap(
+    BitMapType type,
+    unsigned int,
+    unsigned int,
+    const B_Pal *pal
+)
 {
 }
 #endif

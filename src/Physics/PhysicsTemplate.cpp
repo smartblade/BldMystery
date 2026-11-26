@@ -23,7 +23,6 @@ B_PhysicsTemplate::B_PhysicsTemplate(const B_Name &name)
 }
 #endif
 
-
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004ACF58
@@ -35,7 +34,6 @@ B_PhysicsTemplate::B_PhysicsTemplate(B_ObjDscr *resource)
 {
 }
 #endif
-
 
 /*
 * Module:                 Blade.exe
@@ -49,7 +47,6 @@ B_PhysicsTemplate::~B_PhysicsTemplate()
 }
 #endif
 
-
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004AD0E7
@@ -62,7 +59,6 @@ void B_PhysicsTemplate::Update()
 }
 #endif
 
-
 /*
 * Module:                 Blade.exe
 * Entry point:            0x004AD615
@@ -73,7 +69,6 @@ void B_PhysicsTemplate::SetPose(const B_Matrix *pose)
 {
 }
 #endif
-
 
 /*
 ................................................................................
@@ -99,7 +94,6 @@ int B_PhysicsTemplate::DetectCollisions(
 }
 #endif
 
-
 /*
 ................................................................................
 ................................................................................
@@ -119,7 +113,6 @@ int B_PhysicsTemplate::BindConstraints()
     return 0;
 }
 #endif
-
 
 /*
 * Module:                 Blade.exe
@@ -168,7 +161,6 @@ int B_PhysicsTemplate::IntersectSegment(
     return 0;
 }
 #endif
-
 
 /*
 ................................................................................
