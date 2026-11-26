@@ -1,0 +1,21 @@
+LIBRARY     SHW32.DLL
+
+; Functions of SmartHeap imported by Blade.exe by the ordinals of shw32.lib
+EXPORTS
+    shi_MemFreeDefaultPool   @253
+    shi_MemInitDefaultPool   @261
+    shi_calloc               @265
+    shi_delete               @250
+    shi_deletePtrStdcall     @267
+    shi_expand               @252
+    shi_free                 @259
+    shi_heapadd              @262
+    shi_heapchk              @264
+    shi_heapmin              @254
+    shi_heapset              @260
+    shi_heapused             @263
+    shi_heapwalk             @256
+    shi_malloc               @258
+    shi_msize                @255
+    shi_new                  @251
+    shi_realloc              @257

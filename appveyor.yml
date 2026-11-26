@@ -33,6 +33,8 @@ for:
   build_script:
   - devenv /Upgrade Mss32dummy.sln
   - msbuild %MSBUILD_ARGS% /p:Configuration=Debug /p:Platform=Win32 Mss32dummy.sln
+  - devenv /Upgrade Shw32dummy.sln
+  - '%CHECK_WARNINGS% msbuild %MSBUILD_ARGS% /p:Configuration=Release /p:Platform=Win32 Shw32dummy.sln'
   - devenv /Upgrade src/BOD.sln
   - '%CHECK_WARNINGS% msbuild %MSBUILD_ARGS% /p:Platform=Win32 src/BOD.sln'
   - devenv /Upgrade tests/UnitTests.sln
