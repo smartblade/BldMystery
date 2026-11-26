@@ -290,6 +290,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Blade\BWorld\SectorFuncsTests.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\Blade\BWorld\SectorTests.cpp"
 					>
 				</File>
