@@ -56366,63 +56366,7 @@ l00432504 ENDP
 ;
            call l00432797; Implemented in c++ code
 ;
-           push ebp
-           mov ebp, esp
-           sub esp, 00000000Ch
-           mov dword ptr [ebp-008h], ecx
-           mov eax, dword ptr [ebp-008h]
-           cmp dword ptr [eax+018h], 000000000h
-           jne l00432847
-           push 000000024h
-           call l005BBD38
-           add esp, 000000004h
-           mov dword ptr [ebp-004h], eax
-           cmp dword ptr [ebp-004h], 000000000h
-           je l00432837
-           mov ecx, dword ptr [ebp+00Ch]
-           push ecx
-           mov ecx, dword ptr [ebp-004h]
-           call l00432EEB
-           mov dword ptr [ebp-00Ch], eax
-           jmp l0043283E
-;
-;* Jump:
-; 00432824(C) 
-;
-l00432837: mov dword ptr [ebp-00Ch], 000000000h
-;
-;* Jump:
-; 00432835(U) 
-;
-l0043283E: mov edx, dword ptr [ebp-008h]
-           mov eax, dword ptr [ebp-00Ch]
-           mov dword ptr [edx+018h], eax
-;
-;* Jump:
-; 00432811(C) 
-;
-l00432847: mov ecx, dword ptr [ebp-008h]
-           cmp dword ptr [ecx+018h], 000000000h
-           jne l00432854
-           xor eax, eax
-           jmp l00432865
-;
-;* Jump:
-; 0043284E(C) 
-;
-l00432854: mov edx, dword ptr [ebp+008h]
-           push edx
-           mov eax, dword ptr [ebp-008h]
-           mov ecx, dword ptr [eax+018h]
-           call l004331B9
-           xor eax, eax
-;
-;* Jump:
-; 00432852(U) 
-;
-l00432865: mov esp, ebp
-           pop ebp
-           ret 00008h
+           call l00432801; Implemented in c++ code
 ;
 ;* Call:
 ; 00432643 
@@ -56444,63 +56388,7 @@ l00432865: mov esp, ebp
 ;
            call l004329F4; Implemented in c++ code
 ;
-           push ebp
-           mov ebp, esp
-           sub esp, 00000000Ch
-           mov dword ptr [ebp-008h], ecx
-           mov eax, dword ptr [ebp-008h]
-           cmp dword ptr [eax+018h], 000000000h
-           jne l00432AA4
-           push 000000024h
-           call l005BBD38
-           add esp, 000000004h
-           mov dword ptr [ebp-004h], eax
-           cmp dword ptr [ebp-004h], 000000000h
-           je l00432A94
-           mov ecx, dword ptr [ebp+00Ch]
-           push ecx
-           mov ecx, dword ptr [ebp-004h]
-           call l00432EEB
-           mov dword ptr [ebp-00Ch], eax
-           jmp l00432A9B
-;
-;* Jump:
-; 00432A81(C) 
-;
-l00432A94: mov dword ptr [ebp-00Ch], 000000000h
-;
-;* Jump:
-; 00432A92(U) 
-;
-l00432A9B: mov edx, dword ptr [ebp-008h]
-           mov eax, dword ptr [ebp-00Ch]
-           mov dword ptr [edx+018h], eax
-;
-;* Jump:
-; 00432A6E(C) 
-;
-l00432AA4: mov ecx, dword ptr [ebp-008h]
-           cmp dword ptr [ecx+018h], 000000000h
-           jne l00432AB1
-           xor eax, eax
-           jmp l00432AC2
-;
-;* Jump:
-; 00432AAB(C) 
-;
-l00432AB1: mov edx, dword ptr [ebp+008h]
-           push edx
-           mov eax, dword ptr [ebp-008h]
-           mov ecx, dword ptr [eax+018h]
-           call l00433414
-           xor eax, eax
-;
-;* Jump:
-; 00432AAF(U) 
-;
-l00432AC2: mov esp, ebp
-           pop ebp
-           ret 00008h
+           call l00432A5E; Implemented in c++ code
 ;
 ;* Call:
 ; 0043267B 
@@ -56512,63 +56400,7 @@ l00432AC2: mov esp, ebp
 ;
            call l00432B4B; Implemented in c++ code
 ;
-           push ebp
-           mov ebp, esp
-           sub esp, 00000000Ch
-           mov dword ptr [ebp-008h], ecx
-           mov eax, dword ptr [ebp-008h]
-           cmp dword ptr [eax+018h], 000000000h
-           jne l00432BFB
-           push 000000024h
-           call l005BBD38
-           add esp, 000000004h
-           mov dword ptr [ebp-004h], eax
-           cmp dword ptr [ebp-004h], 000000000h
-           je l00432BEB
-           mov ecx, dword ptr [ebp+00Ch]
-           push ecx
-           mov ecx, dword ptr [ebp-004h]
-           call l00432EEB
-           mov dword ptr [ebp-00Ch], eax
-           jmp l00432BF2
-;
-;* Jump:
-; 00432BD8(C) 
-;
-l00432BEB: mov dword ptr [ebp-00Ch], 000000000h
-;
-;* Jump:
-; 00432BE9(U) 
-;
-l00432BF2: mov edx, dword ptr [ebp-008h]
-           mov eax, dword ptr [ebp-00Ch]
-           mov dword ptr [edx+018h], eax
-;
-;* Jump:
-; 00432BC5(C) 
-;
-l00432BFB: mov ecx, dword ptr [ebp-008h]
-           cmp dword ptr [ecx+018h], 000000000h
-           jne l00432C08
-           xor eax, eax
-           jmp l00432C19
-;
-;* Jump:
-; 00432C02(C) 
-;
-l00432C08: mov edx, dword ptr [ebp+008h]
-           push edx
-           mov eax, dword ptr [ebp-008h]
-           mov ecx, dword ptr [eax+018h]
-           call l004335CB
-           xor eax, eax
-;
-;* Jump:
-; 00432C06(U) 
-;
-l00432C19: mov esp, ebp
-           pop ebp
-           ret 00008h
+           call l00432BB5; Implemented in c++ code
 ;
 ;* Call:
 ; 004326B3 
