@@ -141,18 +141,16 @@ class B_Map : public B_Array<B_Sector>
 public:
     B_Map();
     virtual ~B_Map();
-
-private:
-    B_Array<void> unknown018;
-    int unknown030;
-
-public:
     int SetSectorOnEnterFunc(PyObject *func, unsigned int sectorIndex);
     int SetSectorOnLeaveFunc(PyObject *func, unsigned int sectorIndex);
     int SetSectorOnHitFunc(PyObject *func, unsigned int sectorIndex);
     int ClearSectorOnEnterFunc(unsigned int sectorIndex);
     int ClearSectorOnLeaveFunc(unsigned int sectorIndex);
     int ClearSectorOnHitFunc(unsigned int sectorIndex);
+
+private:
+    B_Array<void> unknown018;
+    int unknown030;
 };
 
 B_IDataFile &operator >>(B_IDataFile &file, B_Map &map);
