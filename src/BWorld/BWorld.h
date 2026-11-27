@@ -169,6 +169,23 @@ public:
     void GoToTime(double time);
     void AddScheduledFunc(
         double time, PyObject *func, PyObject *args, const char *name);
+    void AddScheduledFunc(
+        double time,
+        ScheduledNativeFunc nativeFunc,
+        void *nativeArg,
+        const char *name
+    );
+    void RemoveScheduledFunc(const char *name);
+    void ClearScheduledFuncs();
+    void RunScheduledFuncs(double time);
+    unsigned int NumScheduledFuncs();
+    int GetScheduledFunc(
+        int index,
+        PyObject **func,
+        PyObject **args,
+        const char **name,
+        double *time
+    );
     void Update(
         B_ViewPose *viewPose,
         void *cameraView,
