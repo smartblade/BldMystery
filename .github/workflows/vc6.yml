@@ -26,6 +26,12 @@ jobs:
 
       - name: Build solution
         shell: cmd
+        # The linker writes the maps of the binaries for the comparison
+        env:
+          LINK: /MAP
         run: >-
            VC6-SP6-Enterprise\Common\MSDev98\Bin\MSDEV.EXE src\BOD.dsw
            /MAKE "ALL - Win32 Release"
+
+      - name: Compare with the original binaries
+        run: python tools/vc6_compare.py --check tools/vc6_statuses.txt
