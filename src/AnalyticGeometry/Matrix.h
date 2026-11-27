@@ -4,6 +4,7 @@
 
 class B_Vector;
 class B_Plane;
+class B_Quaternion;
 class B_IDataFile;
 class B_ODataFile;
 
@@ -15,6 +16,7 @@ public:
     B_Matrix(const B_Vector &v);
     B_Matrix(const B_Vector &axis, double angle);
     B_Matrix(const B_Plane &plane);
+    B_Matrix(const B_Quaternion &q);
     B_Vector TranslationVector() const;
     void SetOrigin(const B_Vector *origin);
     double ScaleX() const;

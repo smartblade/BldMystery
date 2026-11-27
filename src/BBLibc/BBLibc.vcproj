@@ -410,6 +410,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\AnalyticGeometry\Quaternion.h"
+					>
+				</File>
+				<File
 					RelativePath="..\AnalyticGeometry\Vector.cpp"
 					>
 				</File>

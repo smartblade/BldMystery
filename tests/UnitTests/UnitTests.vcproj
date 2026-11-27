@@ -574,6 +574,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Blade\AnalyticGeometry\QuaternionTests.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\Blade\AnalyticGeometry\PolygonTests.cpp"
 					>
 				</File>
