@@ -92,8 +92,26 @@ public:
     B_Sector();
     virtual ~B_Sector();
     void CalculateBoundingBox();
+    int SetOnEnterFunc(PyObject *func, int sectorIndex);
+    int SetOnWalkOnFunc(PyObject *func, int sectorIndex);
+    int SetOnWalkOutFunc(PyObject *func, int sectorIndex);
+    int SetOnEnterFunc(SectorEntityFunc func, int sectorIndex);
+    int ClearOnEnterFunc();
+    int ClearOnWalkOnFunc();
+    int ClearOnWalkOutFunc();
+    int SetOnLeaveFunc(PyObject *func, int sectorIndex);
+    int SetOnLeaveFunc(SectorEntityFunc func, int sectorIndex);
+    int ClearOnLeaveFunc();
+    int SetOnHitFunc(PyObject *func, int sectorIndex);
+    int SetOnHitFunc(SectorHitFunc func, int sectorIndex);
+    int ClearOnHitFunc();
+    PyObject *GetOnEnterFunc();
+    PyObject *GetOnWalkOnFunc();
+    PyObject *GetOnWalkOutFunc();
+    PyObject *GetOnLeaveFunc();
+    PyObject *GetOnHitFunc();
 
-    int visibilityGroup;
+    B_SectorFuncs *funcs;
     int unknownField01C;
     unsigned long groupId;
     double unknownField24;
@@ -123,6 +141,12 @@ class B_Map : public B_Array<B_Sector>
 public:
     B_Map();
     virtual ~B_Map();
+    int SetSectorOnEnterFunc(PyObject *func, unsigned int sectorIndex);
+    int SetSectorOnLeaveFunc(PyObject *func, unsigned int sectorIndex);
+    int SetSectorOnHitFunc(PyObject *func, unsigned int sectorIndex);
+    int ClearSectorOnEnterFunc(unsigned int sectorIndex);
+    int ClearSectorOnLeaveFunc(unsigned int sectorIndex);
+    int ClearSectorOnHitFunc(unsigned int sectorIndex);
 
 private:
     B_Array<void> unknown018;

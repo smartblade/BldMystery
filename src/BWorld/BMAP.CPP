@@ -182,6 +182,389 @@ B_IDataFile &operator >>(B_IDataFile &file, B_Map &map)
 
 /*
 * Module:                 Blade.exe
+* Entry point:            0x0043255B
+* VC++ mangling:          ?SetSectorOnEnterFunc@B_Map@@QAEHPAUPyObject@@I@Z
+*/
+
+int B_Map::SetSectorOnEnterFunc(PyObject *func, unsigned int sectorIndex)
+{
+    if (sectorIndex >= this->size || sectorIndex < 0)
+    {
+        return 0;
+    }
+    this->elements[sectorIndex]->SetOnEnterFunc(func, sectorIndex);
+    return 1;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043259B
+* VC++ mangling:          ?SetSectorOnLeaveFunc@B_Map@@QAEHPAUPyObject@@I@Z
+*/
+
+int B_Map::SetSectorOnLeaveFunc(PyObject *func, unsigned int sectorIndex)
+{
+    if (sectorIndex >= this->size || sectorIndex < 0)
+    {
+        return 0;
+    }
+    this->elements[sectorIndex]->SetOnLeaveFunc(func, sectorIndex);
+    return 1;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004325DB
+* VC++ mangling:          ?SetSectorOnHitFunc@B_Map@@QAEHPAUPyObject@@I@Z
+*/
+
+int B_Map::SetSectorOnHitFunc(PyObject *func, unsigned int sectorIndex)
+{
+    if (sectorIndex >= this->size || sectorIndex < 0)
+    {
+        return 0;
+    }
+    this->elements[sectorIndex]->SetOnHitFunc(func, sectorIndex);
+    return 1;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043261B
+* VC++ mangling:          ?ClearSectorOnEnterFunc@B_Map@@QAEHI@Z
+*/
+
+int B_Map::ClearSectorOnEnterFunc(unsigned int sectorIndex)
+{
+    if (sectorIndex >= this->size || sectorIndex < 0)
+    {
+        return 0;
+    }
+    this->elements[sectorIndex]->ClearOnEnterFunc();
+    return 1;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00432653
+* VC++ mangling:          ?ClearSectorOnLeaveFunc@B_Map@@QAEHI@Z
+*/
+
+int B_Map::ClearSectorOnLeaveFunc(unsigned int sectorIndex)
+{
+    if (sectorIndex >= this->size || sectorIndex < 0)
+    {
+        return 0;
+    }
+    this->elements[sectorIndex]->ClearOnLeaveFunc();
+    return 1;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043268B
+* VC++ mangling:          ?ClearSectorOnHitFunc@B_Map@@QAEHI@Z
+*/
+
+int B_Map::ClearSectorOnHitFunc(unsigned int sectorIndex)
+{
+    if (sectorIndex >= this->size || sectorIndex < 0)
+    {
+        return 0;
+    }
+    this->elements[sectorIndex]->ClearOnHitFunc();
+    return 1;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004326C3
+* VC++ mangling:          ?SetOnEnterFunc@B_Sector@@QAEHPAUPyObject@@H@Z
+*/
+
+int B_Sector::SetOnEnterFunc(PyObject *func, int sectorIndex)
+{
+    if (this->funcs == nullptr)
+    {
+        this->funcs = new B_SectorFuncs(sectorIndex);
+    }
+    if (this->funcs == nullptr)
+    {
+        return 0;
+    }
+    this->funcs->SetOnEnterFunc(func);
+    return 0;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043272D
+* VC++ mangling:          ?SetOnWalkOnFunc@B_Sector@@QAEHPAUPyObject@@H@Z
+*/
+
+int B_Sector::SetOnWalkOnFunc(PyObject *func, int sectorIndex)
+{
+    if (this->funcs == nullptr)
+    {
+        this->funcs = new B_SectorFuncs(sectorIndex);
+    }
+    if (this->funcs == nullptr)
+    {
+        return 0;
+    }
+    this->funcs->SetOnWalkOnFunc(func);
+    return 0;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00432797
+* VC++ mangling:          ?SetOnWalkOutFunc@B_Sector@@QAEHPAUPyObject@@H@Z
+*/
+
+int B_Sector::SetOnWalkOutFunc(PyObject *func, int sectorIndex)
+{
+    if (this->funcs == nullptr)
+    {
+        this->funcs = new B_SectorFuncs(sectorIndex);
+    }
+    if (this->funcs == nullptr)
+    {
+        return 0;
+    }
+    this->funcs->SetOnWalkOutFunc(func);
+    return 0;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00432801
+* VC++ mangling:          ?SetOnEnterFunc@B_Sector@@QAEHP6AHHABVB_Entity@@@ZH@Z
+*/
+
+int B_Sector::SetOnEnterFunc(SectorEntityFunc func, int sectorIndex)
+{
+    if (this->funcs == nullptr)
+    {
+        this->funcs = new B_SectorFuncs(sectorIndex);
+    }
+    if (this->funcs == nullptr)
+    {
+        return 0;
+    }
+    this->funcs->SetOnEnterFunc(func);
+    return 0;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0043286B
+* VC++ mangling:          ?ClearOnEnterFunc@B_Sector@@QAEHXZ
+*/
+
+int B_Sector::ClearOnEnterFunc()
+{
+    if (this->funcs != nullptr)
+    {
+        this->funcs->ClearOnEnterFunc();
+        if (this->funcs->IsEmpty())
+        {
+            delete this->funcs;
+            this->funcs = nullptr;
+        }
+    }
+    return 1;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004328EE
+* VC++ mangling:          ?ClearOnWalkOnFunc@B_Sector@@QAEHXZ
+*/
+
+int B_Sector::ClearOnWalkOnFunc()
+{
+    if (this->funcs != nullptr)
+    {
+        this->funcs->ClearOnWalkOnFunc();
+        if (this->funcs->IsEmpty())
+        {
+            delete this->funcs;
+            this->funcs = nullptr;
+        }
+    }
+    return 1;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00432971
+* VC++ mangling:          ?ClearOnWalkOutFunc@B_Sector@@QAEHXZ
+*/
+
+int B_Sector::ClearOnWalkOutFunc()
+{
+    if (this->funcs != nullptr)
+    {
+        this->funcs->ClearOnWalkOutFunc();
+        if (this->funcs->IsEmpty())
+        {
+            delete this->funcs;
+            this->funcs = nullptr;
+        }
+    }
+    return 1;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x004329F4
+* VC++ mangling:          ?SetOnLeaveFunc@B_Sector@@QAEHPAUPyObject@@H@Z
+*/
+
+int B_Sector::SetOnLeaveFunc(PyObject *func, int sectorIndex)
+{
+    if (this->funcs == nullptr)
+    {
+        this->funcs = new B_SectorFuncs(sectorIndex);
+    }
+    if (this->funcs == nullptr)
+    {
+        return 0;
+    }
+    this->funcs->SetOnLeaveFunc(func);
+    return 0;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00432A5E
+* VC++ mangling:          ?SetOnLeaveFunc@B_Sector@@QAEHP6AHHABVB_Entity@@@ZH@Z
+*/
+
+int B_Sector::SetOnLeaveFunc(SectorEntityFunc func, int sectorIndex)
+{
+    if (this->funcs == nullptr)
+    {
+        this->funcs = new B_SectorFuncs(sectorIndex);
+    }
+    if (this->funcs == nullptr)
+    {
+        return 0;
+    }
+    this->funcs->SetOnLeaveFunc(func);
+    return 0;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00432AC8
+* VC++ mangling:          ?ClearOnLeaveFunc@B_Sector@@QAEHXZ
+*/
+
+int B_Sector::ClearOnLeaveFunc()
+{
+    if (this->funcs != nullptr)
+    {
+        this->funcs->ClearOnLeaveFunc();
+        if (this->funcs->IsEmpty())
+        {
+            delete this->funcs;
+            this->funcs = nullptr;
+        }
+    }
+    return 1;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00432B4B
+* VC++ mangling:          ?SetOnHitFunc@B_Sector@@QAEHPAUPyObject@@H@Z
+*/
+
+int B_Sector::SetOnHitFunc(PyObject *func, int sectorIndex)
+{
+    if (this->funcs == nullptr)
+    {
+        this->funcs = new B_SectorFuncs(sectorIndex);
+    }
+    if (this->funcs == nullptr)
+    {
+        return 0;
+    }
+    this->funcs->SetOnHitFunc(func);
+    return 0;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00432BB5
+* VC++ mangling:          ?SetOnHitFunc@B_Sector@@QAEHP6AHHPAVB_Entity@@PBVB_Vector@@@ZH@Z
+*/
+
+int B_Sector::SetOnHitFunc(SectorHitFunc func, int sectorIndex)
+{
+    if (this->funcs == nullptr)
+    {
+        this->funcs = new B_SectorFuncs(sectorIndex);
+    }
+    if (this->funcs == nullptr)
+    {
+        return 0;
+    }
+    this->funcs->SetOnHitFunc(func);
+    return 0;
+}
+
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00432C1F
+* VC++ mangling:          ?ClearOnHitFunc@B_Sector@@QAEHXZ
+*/
+
+int B_Sector::ClearOnHitFunc()
+{
+    if (this->funcs != nullptr)
+    {
+        this->funcs->ClearOnHitFunc();
+        if (this->funcs->IsEmpty())
+        {
+            delete this->funcs;
+            this->funcs = nullptr;
+        }
+    }
+    return 1;
+}
+
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+
+/*
+* Module:                 Blade.exe
 * Entry point:            0x00432EEB
 * VC++ mangling:          ??0B_SectorFuncs@@QAE@H@Z
 */
@@ -235,11 +618,19 @@ int B_SectorFuncs::SetOnEnterFunc(PyObject *_OnEnterFunc)
 
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x00433010
+* VC++ mangling:          ?GetOnEnterFunc@B_Sector@@QAEPAUPyObject@@XZ
 */
+
+PyObject *B_Sector::GetOnEnterFunc()
+{
+    if (this->funcs != nullptr)
+    {
+        return this->funcs->GetOnEnterFunc();
+    }
+    return nullptr;
+}
 
 
 /*
@@ -283,11 +674,19 @@ PyObject *B_SectorFuncs::GetOnWalkOnFunc()
 
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x004330DB
+* VC++ mangling:          ?GetOnWalkOnFunc@B_Sector@@QAEPAUPyObject@@XZ
 */
+
+PyObject *B_Sector::GetOnWalkOnFunc()
+{
+    if (this->funcs != nullptr)
+    {
+        return this->funcs->GetOnWalkOnFunc();
+    }
+    return nullptr;
+}
 
 
 /*
@@ -307,11 +706,19 @@ int B_SectorFuncs::SetOnWalkOutFunc(PyObject *_OnWalkOutFunc)
 
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x00433185
+* VC++ mangling:          ?GetOnWalkOutFunc@B_Sector@@QAEPAUPyObject@@XZ
 */
+
+PyObject *B_Sector::GetOnWalkOutFunc()
+{
+    if (this->funcs != nullptr)
+    {
+        return this->funcs->GetOnWalkOutFunc();
+    }
+    return nullptr;
+}
 
 
 /*
@@ -415,11 +822,19 @@ int B_SectorFuncs::SetOnLeaveFunc(PyObject *_OnLeaveFunc)
 
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x004333E0
+* VC++ mangling:          ?GetOnLeaveFunc@B_Sector@@QAEPAUPyObject@@XZ
 */
+
+PyObject *B_Sector::GetOnLeaveFunc()
+{
+    if (this->funcs != nullptr)
+    {
+        return this->funcs->GetOnLeaveFunc();
+    }
+    return nullptr;
+}
 
 
 /*
@@ -489,11 +904,19 @@ int B_SectorFuncs::SetOnHitFunc(PyObject *_OnHitFunc)
 
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 Blade.exe
+* Entry point:            0x00433597
+* VC++ mangling:          ?GetOnHitFunc@B_Sector@@QAEPAUPyObject@@XZ
 */
+
+PyObject *B_Sector::GetOnHitFunc()
+{
+    if (this->funcs != nullptr)
+    {
+        return this->funcs->GetOnHitFunc();
+    }
+    return nullptr;
+}
 
 
 /*

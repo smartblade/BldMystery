@@ -11,6 +11,7 @@ TEST(SectorTests, SizeOf)
 
 TEST(SectorTests, Fields)
 {
+    EXPECT_OFFSET_EQ(B_Sector, funcs, 0x018);
     EXPECT_OFFSET_EQ(B_Sector, groupId, 0x020);
     EXPECT_OFFSET_EQ(B_Sector, lastQueryId, 0x054);
     EXPECT_OFFSET_EQ(B_Sector, isActive, 0x058);
