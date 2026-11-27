@@ -428,6 +428,10 @@
 					RelativePath="..\Sound\SoundFuncs.h"
 					>
 				</File>
+				<File
+					RelativePath="..\Sound\YSound.cpp"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="BWorld"

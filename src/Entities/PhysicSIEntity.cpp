@@ -67,3 +67,83 @@ B_PhysicSIEntity::B_PhysicSIEntity(
 ................................................................................
 ................................................................................
 */
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x005453E5
+* VC++ mangling:          ?unknown_method0D4@B_PhysicSIEntity@@UAEXXZ
+*/
+#ifndef BLD_NATIVE
+void B_PhysicSIEntity::unknown_method0D4()
+{
+}
+#endif
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0054540B
+* VC++ mangling:          ?unknown_method0D8@B_PhysicSIEntity@@UAEXXZ
+*/
+#ifndef BLD_NATIVE
+void B_PhysicSIEntity::unknown_method0D8()
+{
+}
+#endif
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00545447
+* VC++ mangling:          ?unknown_method0DC@B_PhysicSIEntity@@UAEXXZ
+*/
+#ifndef BLD_NATIVE
+void B_PhysicSIEntity::unknown_method0DC()
+{
+}
+#endif
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x0054551A
+* VC++ mangling:          ?unknown_method0E4@B_PhysicSIEntity@@UAEXXZ
+*/
+#ifndef BLD_NATIVE
+void B_PhysicSIEntity::unknown_method0E4()
+{
+}
+#endif
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x005455B6
+* VC++ mangling:          ?ImpulseC@B_PhysicSIEntity@@UAEXAAVB_Vector@@0@Z
+*/
+#ifndef BLD_NATIVE
+void B_PhysicSIEntity::ImpulseC(B_Vector &position, B_Vector &direction)
+{
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/
+
+/*
+* Module:                 Blade.exe
+* Entry point:            0x00546671
+* VC++ mangling:          ?unknown_method0E8@B_PhysicSIEntity@@UAEXXZ
+*/
+#ifndef BLD_NATIVE
+void B_PhysicSIEntity::unknown_method0E8()
+{
+}
+#endif
+
+/*
+................................................................................
+................................................................................
+................................................................................
+................................................................................
+*/

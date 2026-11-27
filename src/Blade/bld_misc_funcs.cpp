@@ -378,20 +378,8 @@ B_PhysicsManager::B_PhysicsManager(double timeStep)
 
 
 
+/* File:                  Sound/YSound.cpp */
 /* Begin of file:         0x004C2160 */
-
-
-/*
-* Module:                 Blade.exe
-* Entry point:            0x004C21C6
-* VC++ mangling:          ??0B_YSoundDev@@QAE@XZ
-*/
-#ifdef BLD_NATIVE_CONSTRUCTOR
-B_YSoundDev::B_YSoundDev()
-{
-}
-#endif
-
 /* End of file:           0x004C5F40 */
 
 

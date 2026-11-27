@@ -31,7 +31,19 @@ public:
     virtual void ImpulseC(B_Vector &position, B_Vector &direction);
     virtual void unknown_method0E4();
     virtual void unknown_method0E8();
+
+    /*
+    * Module:                 Blade.exe
+    * Entry point:            0x004D3020
+    * VC++ mangling:          ?unknown_method0EC@B_PhysicSIEntity@@UAEXXZ
+    */
+#ifndef BLD_NATIVE
+    virtual void unknown_method0EC()
+    {
+    }
+#else
     virtual void unknown_method0EC();
+#endif
 
     void SetStatic(int isStatic)
     {
