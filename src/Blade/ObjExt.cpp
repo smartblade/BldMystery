@@ -716,7 +716,11 @@ int ReadLevel(const char *filename)
 unsigned int ReadBitMap(const char *filename, const char *internalname)
 {
     assert(filename);
-    return B_resource_manager.LocateResourceIn(filename, &B_Name(internalname), 3);
+    return B_resource_manager.LocateResourceIn(
+        filename,
+        &B_Name(internalname),
+        B_CID_BMP
+    );
 }
 
 
@@ -728,7 +732,11 @@ unsigned int ReadBitMap(const char *filename, const char *internalname)
 unsigned int ReadAlphaBitMap(const char *filename, const char *internalname)
 {
     assert(filename);
-    return B_resource_manager.LocateResourceIn(filename, &B_Name(internalname), 4);
+    return B_resource_manager.LocateResourceIn(
+        filename,
+        &B_Name(internalname),
+        B_CID_ALPHABMP
+    );
 }
 
 
@@ -1622,14 +1630,18 @@ void RM_FreeResource(B_Resource *resource)
 B_BitMap *RM_GetResource(const char *name)
 {
     B_BitMapResource *resource;
-    resource = static_cast<B_BitMapResource *>(B_resource_manager.GetResource(2, name));
+    resource = static_cast<B_BitMapResource *>(
+        B_resource_manager.GetResource(B_CID_BITMAP, name)
+    );
     if (resource != NULL)
     {
         B_BitMap *bitMap = new B_BitMap((B_BitMap &)resource->data);
         B_resource_manager.FreeResource(resource);
         return bitMap;
     }
-    resource = static_cast<B_BitMapResource *>(B_resource_manager.GetResource(3, name));
+    resource = static_cast<B_BitMapResource *>(
+        B_resource_manager.GetResource(B_CID_BMP, name)
+    );
     if (resource != NULL)
     {
         B_BitMap24 *bitMap24 = (B_BitMap24 *)&resource->data;
@@ -1642,7 +1654,9 @@ B_BitMap *RM_GetResource(const char *name)
         B_resource_manager.FreeResource(resource);
         return bitMap;
     }
-    resource = static_cast<B_BitMapResource *>(B_resource_manager.GetResource(4, name));
+    resource = static_cast<B_BitMapResource *>(
+        B_resource_manager.GetResource(B_CID_ALPHABMP, name)
+    );
     if (resource != NULL)
     {
         B_BitMap24 *bitMap24 = (B_BitMap24 *)&resource->data;
@@ -1983,7 +1997,9 @@ int DrawBOD(
     int i_unknown
 )
 {
-    B_ObjDscr *bod = (B_ObjDscr *)B_resource_manager.GetResource(1, BODName);
+    B_ObjDscr *bod = static_cast<B_ObjDscr *>(
+        B_resource_manager.GetResource(B_CID_OBJDSCR, BODName)
+    );
     if (bod == NULL)
         return 0;
     bod->Draw(B_3D_raster_device, x, y, (x + w), (y + h), scale, i_unknown);
