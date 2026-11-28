@@ -3,6 +3,7 @@
 #include <bld_system.h>
 #include <AnalyticGeometry/Vector.h>
 #include <AnalyticGeometry/Plane.h>
+#include <AnalyticGeometry/Quaternion.h>
 #include <BBLibc/IDataFile.h>
 #include <BBLibc/ODataFile.h>
 #include <math.h>
@@ -160,11 +161,60 @@ B_Matrix::B_Matrix(const B_Plane &plane)
 
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 BBLibc.dll
+* Entry point:            0x1002E95C
+* Module:                 rOpenGL.dll
+* Entry point:            0x10003BFC
+* Module:                 Blade.exe
+* Entry point:            0x004053AC
+* VC++ mangling:          ??0B_Matrix@@QAE@ABVB_Quaternion@@@Z
 */
+
+B_Matrix::B_Matrix(const B_Quaternion &q)
+{
+    if (q.w > 0.999999)
+    {
+        DEFINE_MATRIX(
+            1.0, 0.0, 0.0, 0.0,
+            0.0, 1.0, 0.0, 0.0,
+            0.0, 0.0, 1.0, 0.0,
+            0.0, 0.0, 0.0, 1.0
+        )
+    }
+    else
+    {
+        double s = sqrt(q.x * q.x + q.y * q.y + q.z * q.z);
+        double x = 1.0;
+        double y = 0.0;
+        double z = 0.0;
+        if (s > 0.000001)
+        {
+            x = q.x / s;
+            y = q.y / s;
+            z = q.z / s;
+        }
+        double c = q.w * q.w - s * s;
+        s = 2.0f * q.w * s;
+        DEFINE_MATRIX(
+            x * x * (1.0 - c) + c,
+            x * y * (1.0 - c) + z * s,
+            x * z * (1.0 - c) - y * s,
+            0.0,
+            x * y * (1.0 - c) - z * s,
+            y * y + (x * x + z * z) * c,
+            y * z * (1.0 - c) + x * s,
+            0.0,
+            x * z * (1.0 - c) + y * s,
+            y * z * (1.0 - c) - x * s,
+            z * z * (1.0 - c) + c,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+        )
+    }
+}
 
 
 /*
@@ -839,8 +889,444 @@ B_ODataFile &operator <<(B_ODataFile &file, const B_Matrix &matrix)
 
 
 /*
-................................................................................
-................................................................................
-................................................................................
-................................................................................
+* Module:                 BBLibc.dll
+* Entry point:            0x1003024B
+* Module:                 rOpenGL.dll
+* Entry point:            0x100054ED
+* Module:                 Blade.exe
+* Entry point:            0x00406C9D
+* VC++ mangling:          ??0B_Quaternion@@QAE@ABVB_Vector@@N@Z
 */
+
+B_Quaternion::B_Quaternion(const B_Vector &axis, double angle)
+{
+    double sine = sin(angle / 2.0);
+    double cosine = cos(angle / 2.0);
+    this->w = cosine;
+    this->x = sine * axis.x;
+    this->y = sine * axis.y;
+    this->z = sine * axis.z;
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100302B0
+* Module:                 rOpenGL.dll
+* Entry point:            0x10005552
+* Module:                 Blade.exe
+* Entry point:            0x00406D02
+* VC++ mangling:          ??0B_Quaternion@@QAE@ABVB_Matrix@@@Z
+*/
+
+B_Quaternion::B_Quaternion(const B_Matrix &matrix)
+{
+    double c = (matrix.m[0][0] + matrix.m[1][1] + matrix.m[2][2] - 1.0) / 2.0;
+    if (c > 0.9999)
+    {
+        this->w = 1.0f;
+        this->x = 0.0f;
+        this->y = 0.0f;
+        this->z = 0.0f;
+    }
+    else if (c < -0.9999)
+    {
+        double s = 1.0;
+        double x = sqrt(
+            (matrix.m[0][0] + 1.0) / 2.0 > 0.0 ?
+                (matrix.m[0][0] + 1.0) / 2.0 :
+                0.0
+        );
+        double z = sqrt(
+            (matrix.m[2][2] + 1.0) / 2.0 > 0.0 ?
+                (matrix.m[2][2] + 1.0) / 2.0 :
+                0.0
+        );
+        double y = sqrt(
+            matrix.m[1][1] + x * x + z * z > 0.0 ?
+                matrix.m[1][1] + x * x + z * z :
+                0.0
+        );
+        if (x > 0.000001)
+        {
+            if (matrix.m[2][0] + matrix.m[0][2] < 0.0)
+            {
+                z *= -1.0;
+            }
+            if (matrix.m[0][1] + matrix.m[1][0] < 0.0)
+            {
+                y *= -1.0;
+            }
+        }
+        else
+        {
+            if (matrix.m[1][2] + matrix.m[2][1] < 0.0)
+            {
+                z *= -1.0;
+            }
+        }
+        this->w = 0.0f;
+        this->x = x * s;
+        this->y = y * s;
+        this->z = z * s;
+        double len = sqrt(
+            this->w * this->w +
+            this->x * this->x +
+            this->y * this->y +
+            this->z * this->z
+        );
+        this->w /= len;
+        this->x /= len;
+        this->y /= len;
+        this->z /= len;
+    }
+    else
+    {
+        double sine = sqrt((1.0 - c) / 2.0);
+        double s = sqrt(1.0 - c * c);
+        double x = (matrix.m[1][2] - matrix.m[2][1]) / (2.0 * s);
+        double y = (matrix.m[2][0] - matrix.m[0][2]) / (2.0 * s);
+        double z = (matrix.m[0][1] - matrix.m[1][0]) / (2.0 * s);
+        this->w = sqrt((1.0 + c) / 2.0);
+        this->x = x * sine;
+        this->y = y * sine;
+        this->z = z * sine;
+        double len = sqrt(
+            this->w * this->w +
+            this->x * this->x +
+            this->y * this->y +
+            this->z * this->z
+        );
+        this->w /= len;
+        this->x /= len;
+        this->y /= len;
+        this->z /= len;
+    }
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10030684
+* Module:                 rOpenGL.dll
+* Entry point:            0x10005926
+* Module:                 Blade.exe
+* Entry point:            0x004070D6
+* VC++ mangling:          ??0B_Quaternion@@QAE@MMMM@Z
+*/
+
+B_Quaternion::B_Quaternion(float w, float x, float y, float z)
+{
+    this->w = w;
+    this->x = x;
+    this->y = y;
+    this->z = z;
+    float length = sqrt(
+        this->w * this->w +
+        this->x * this->x +
+        this->y * this->y +
+        this->z * this->z
+    );
+    if (length > 0.000001)
+    {
+        this->w /= length;
+        this->x /= length;
+        this->y /= length;
+        this->z /= length;
+    }
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x1003073F
+* Module:                 rOpenGL.dll
+* Entry point:            0x100059E1
+* Module:                 Blade.exe
+* Entry point:            0x00407191
+* VC++ mangling:          ??0B_Quaternion@@QAE@ABV0@0M@Z
+*/
+
+B_Quaternion::B_Quaternion(
+    const B_Quaternion &a,
+    const B_Quaternion &b,
+    float t
+)
+{
+    float u = 1.0f - t;
+    float difference =
+        (a.w - b.w) * (a.w - b.w) +
+        (a.x - b.x) * (a.x - b.x) +
+        (a.y - b.y) * (a.y - b.y) +
+        (a.z - b.z) * (a.z - b.z);
+    float sum =
+        (a.w + b.w) * (a.w + b.w) +
+        (a.x + b.x) * (a.x + b.x) +
+        (a.y + b.y) * (a.y + b.y) +
+        (a.z + b.z) * (a.z + b.z);
+    if (difference <= sum)
+    {
+        this->w = u * a.w + t * b.w;
+        this->x = u * a.x + t * b.x;
+        this->y = u * a.y + t * b.y;
+        this->z = u * a.z + t * b.z;
+    }
+    else
+    {
+        this->w = u * a.w - t * b.w;
+        this->x = u * a.x - t * b.x;
+        this->y = u * a.y - t * b.y;
+        this->z = u * a.z - t * b.z;
+    }
+    float length = sqrt(
+        this->w * this->w +
+        this->x * this->x +
+        this->y * this->y +
+        this->z * this->z
+    );
+    if (length > 0.000001)
+    {
+        this->w /= length;
+        this->x /= length;
+        this->y /= length;
+        this->z /= length;
+    }
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10030996
+* Module:                 rOpenGL.dll
+* Entry point:            0x10005C38
+* Module:                 Blade.exe
+* Entry point:            0x004073E8
+* VC++ mangling:          ?GetMatrix@B_Quaternion@@QBEXAAVB_Matrix@@@Z
+*/
+
+void B_Quaternion::GetMatrix(B_Matrix &matrix) const
+{
+    if (this->w > 0.999999)
+    {
+        matrix = B_Matrix();
+    }
+    else
+    {
+        double s = sqrt(
+            this->x * this->x + this->y * this->y + this->z * this->z
+        );
+        double x = 1.0;
+        double y = 0.0;
+        double z = 0.0;
+        if (s > 0.000001)
+        {
+            x = this->x / s;
+            y = this->y / s;
+            z = this->z / s;
+        }
+        double c = this->w * this->w - s * s;
+        s = 2.0f * this->w * s;
+        matrix.m[0][0] = x * x * (1.0 - c) + c;
+        matrix.m[0][1] = x * y * (1.0 - c) + z * s;
+        matrix.m[0][2] = x * z * (1.0 - c) - y * s;
+        matrix.m[0][3] = 0.0;
+        matrix.m[1][0] = x * y * (1.0 - c) - z * s;
+        matrix.m[1][1] = y * y + (x * x + z * z) * c;
+        matrix.m[1][2] = y * z * (1.0 - c) + x * s;
+        matrix.m[1][3] = 0.0;
+        matrix.m[2][0] = x * z * (1.0 - c) + y * s;
+        matrix.m[2][1] = y * z * (1.0 - c) - x * s;
+        matrix.m[2][2] = z * z * (1.0 - c) + c;
+        matrix.m[2][3] = 0.0;
+        matrix.m[3][0] = 0.0;
+        matrix.m[3][1] = 0.0;
+        matrix.m[3][2] = 0.0;
+        matrix.m[3][3] = 1.0;
+    }
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10030C3B
+* Module:                 rOpenGL.dll
+* Entry point:            0x10005EDD
+* Module:                 Blade.exe
+* Entry point:            0x0040768D
+* VC++ mangling:          ??GB_Quaternion@@QBE?AV0@XZ
+*/
+
+B_Quaternion B_Quaternion::operator -() const
+{
+    B_Quaternion q;
+    q.w = -this->w;
+    q.x = -this->x;
+    q.y = -this->y;
+    q.z = -this->z;
+    return q;
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10030C92
+* Module:                 rOpenGL.dll
+* Entry point:            0x10005F34
+* Module:                 Blade.exe
+* Entry point:            0x004076E4
+* VC++ mangling:          ?SquaredDistance@B_Quaternion@@QBEMABV1@@Z
+*/
+
+float B_Quaternion::SquaredDistance(const B_Quaternion &q) const
+{
+    return
+        (this->w - q.w) * (this->w - q.w) +
+        (this->x - q.x) * (this->x - q.x) +
+        (this->y - q.y) * (this->y - q.y) +
+        (this->z - q.z) * (this->z - q.z);
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10030D09
+* Module:                 rOpenGL.dll
+* Entry point:            0x10005FAB
+* Module:                 Blade.exe
+* Entry point:            0x0040775B
+* VC++ mangling:          ?Interpolate@B_Quaternion@@QAEXABV1@M0@Z
+*/
+
+void B_Quaternion::Interpolate(
+    const B_Quaternion &a,
+    float t,
+    const B_Quaternion &b
+)
+{
+    float u = 1.0f - t;
+    this->w = t * a.w + u * b.w;
+    this->x = t * a.x + u * b.x;
+    this->y = t * a.y + u * b.y;
+    this->z = t * a.z + u * b.z;
+    float invLength = 1.0 / sqrt(
+        this->w * this->w +
+        this->x * this->x +
+        this->y * this->y +
+        this->z * this->z
+    );
+    this->w = invLength * this->w;
+    this->x = invLength * this->x;
+    this->y = invLength * this->y;
+    this->z = invLength * this->z;
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10030E05
+* Module:                 rOpenGL.dll
+* Entry point:            0x100060A7
+* Module:                 Blade.exe
+* Entry point:            0x00407857
+* VC++ mangling:          ?Multiply@@YAAAVB_Quaternion@@AAV1@ABV1@1@Z
+*/
+
+B_Quaternion &Multiply(
+    B_Quaternion &out,
+    const B_Quaternion &a,
+    const B_Quaternion &b
+)
+{
+    out.w = b.w * a.w - b.x * a.x - b.y * a.y - b.z * a.z;
+    out.x = b.w * a.x + b.x * a.w + b.y * a.z - b.z * a.y;
+    out.y = b.w * a.y - b.x * a.z + b.y * a.w + b.z * a.x;
+    out.z = b.w * a.z + b.x * a.y - b.y * a.x + b.z * a.w;
+    return out;
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10030EF4
+* Module:                 rOpenGL.dll
+* Entry point:            0x10006196
+* Module:                 Blade.exe
+* Entry point:            0x00407946
+* VC++ mangling:          ?SetTwist@B_Quaternion@@QAEXABVB_Vector@@@Z
+*/
+
+void B_Quaternion::SetTwist(const B_Vector &axis)
+{
+    double t = 1.0 / (
+        (this->x * axis.x + this->y * axis.y + this->z * axis.z) / this->w *
+        ((this->x * axis.x + this->y * axis.y + this->z * axis.z) / this->w) +
+        1.0
+    );
+    double s = sqrt(1.0 - t);
+    t = sqrt(t);
+    this->w = t;
+    this->x = s * axis.x;
+    this->y = s * axis.y;
+    this->z = s * axis.z;
+    {
+        // Unreferenced locals to fill the original stack slots [ebp-20h] to [ebp-11h]
+        double unused1;
+        double unused2;
+    }
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10030FB9
+* Module:                 rOpenGL.dll
+* Entry point:            0x1000625B
+* Module:                 Blade.exe
+* Entry point:            0x00407A0B
+* VC++ mangling:          ?Conjugate@B_Quaternion@@QAEXXZ
+*/
+
+void B_Quaternion::Conjugate()
+{
+    this->x = -this->x;
+    this->y = -this->y;
+    this->z = -this->z;
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x10030FEE
+* Module:                 rOpenGL.dll
+* Entry point:            0x10006290
+* Module:                 Blade.exe
+* Entry point:            0x00407A40
+* VC++ mangling:          ??5@YAAAVB_IDataFile@@AAV0@AAVB_Quaternion@@@Z
+*/
+
+B_IDataFile &operator >>(B_IDataFile &file, B_Quaternion &q)
+{
+    file >> q.w >> q.x >> q.y >> q.z;
+    float length = sqrt(q.w * q.w + q.x * q.x + q.y * q.y + q.z * q.z);
+    q.w /= length;
+    q.x /= length;
+    q.y /= length;
+    q.z /= length;
+    return file;
+}
+
+
+/*
+* Module:                 BBLibc.dll
+* Entry point:            0x100310AF
+* Module:                 rOpenGL.dll
+* Entry point:            0x10006355
+* Module:                 Blade.exe
+* Entry point:            0x00407B05
+* VC++ mangling:          ??6@YAAAVB_ODataFile@@AAV0@ABVB_Quaternion@@@Z
+*/
+
+B_ODataFile &operator <<(B_ODataFile &file, const B_Quaternion &q)
+{
+    return file << q.w << q.x << q.y << q.z;
+}
