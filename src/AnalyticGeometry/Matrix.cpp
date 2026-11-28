@@ -900,12 +900,12 @@ B_ODataFile &operator <<(B_ODataFile &file, const B_Matrix &matrix)
 
 B_Quaternion::B_Quaternion(const B_Vector &axis, double angle)
 {
-    double s = sin(angle / 2.0);
-    double c = cos(angle / 2.0);
-    this->w = c;
-    this->x = s * axis.x;
-    this->y = s * axis.y;
-    this->z = s * axis.z;
+    double sine = sin(angle / 2.0);
+    double cosine = cos(angle / 2.0);
+    this->w = cosine;
+    this->x = sine * axis.x;
+    this->y = sine * axis.y;
+    this->z = sine * axis.z;
 }
 
 
@@ -969,38 +969,38 @@ B_Quaternion::B_Quaternion(const B_Matrix &matrix)
         this->x = x * s;
         this->y = y * s;
         this->z = z * s;
-        double length = sqrt(
+        double len = sqrt(
             this->w * this->w +
             this->x * this->x +
             this->y * this->y +
             this->z * this->z
         );
-        this->w /= length;
-        this->x /= length;
-        this->y /= length;
-        this->z /= length;
+        this->w /= len;
+        this->x /= len;
+        this->y /= len;
+        this->z /= len;
     }
     else
     {
-        double sinHalf = sqrt((1.0 - c) / 2.0);
+        double sine = sqrt((1.0 - c) / 2.0);
         double s = sqrt(1.0 - c * c);
         double x = (matrix.m[1][2] - matrix.m[2][1]) / (2.0 * s);
         double y = (matrix.m[2][0] - matrix.m[0][2]) / (2.0 * s);
         double z = (matrix.m[0][1] - matrix.m[1][0]) / (2.0 * s);
         this->w = sqrt((1.0 + c) / 2.0);
-        this->x = x * sinHalf;
-        this->y = y * sinHalf;
-        this->z = z * sinHalf;
-        double length = sqrt(
+        this->x = x * sine;
+        this->y = y * sine;
+        this->z = z * sine;
+        double len = sqrt(
             this->w * this->w +
             this->x * this->x +
             this->y * this->y +
             this->z * this->z
         );
-        this->w /= length;
-        this->x /= length;
-        this->y /= length;
-        this->z /= length;
+        this->w /= len;
+        this->x /= len;
+        this->y /= len;
+        this->z /= len;
     }
 }
 
@@ -1208,16 +1208,16 @@ void B_Quaternion::Interpolate(
     this->x = t * a.x + u * b.x;
     this->y = t * a.y + u * b.y;
     this->z = t * a.z + u * b.z;
-    float scale = 1.0 / sqrt(
+    float invLength = 1.0 / sqrt(
         this->w * this->w +
         this->x * this->x +
         this->y * this->y +
         this->z * this->z
     );
-    this->w = scale * this->w;
-    this->x = scale * this->x;
-    this->y = scale * this->y;
-    this->z = scale * this->z;
+    this->w = invLength * this->w;
+    this->x = invLength * this->x;
+    this->y = invLength * this->y;
+    this->z = invLength * this->z;
 }
 
 
@@ -1268,6 +1268,11 @@ void B_Quaternion::SetTwist(const B_Vector &axis)
     this->x = s * axis.x;
     this->y = s * axis.y;
     this->z = s * axis.z;
+    {
+        // Unreferenced locals to fill the original stack slots [ebp-20h] to [ebp-11h]
+        double unused1;
+        double unused2;
+    }
 }
 
 
