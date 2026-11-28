@@ -76563,309 +76563,33 @@ l10030C33: pop edi
            int 03h
            int 03h
            int 03h
-           push ebp
-           mov ebp, esp
-           push ecx
-           push esi
-           push edi
-           mov dword ptr [ebp-004h], ecx
-           mov esi, dword ptr [ebp+010h]
-           mov edi, dword ptr [ebp-004h]
-           add edi, 000000004h
-           mov ecx, 000000006h
-           rep movsd
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           mov dword ptr [eax+01Ch], ecx
-           mov edx, dword ptr [ebp+00Ch]
-           mov dword ptr [eax+020h], edx
-           mov eax, dword ptr [ebp-004h]
-           mov dword ptr [eax], offset g10042D3C
-           mov eax, dword ptr [ebp-004h]
-           pop edi
-           pop esi
-           mov esp, ebp
-           pop ebp
-           ret 0000Ch
+           call l10031100; Implemented in c++ code
 ;
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov ecx, dword ptr [ebp+00Ch]
-           call l10031913
-           sub esp, 000000008h
-           fstp qword ptr [esp]
-           mov eax, dword ptr [ebp-004h]
-           add eax, 000000004h
-           push eax
-           mov ecx, dword ptr [ebp+00Ch]
-           call l100315C2
-           mov ecx, dword ptr [ebp-004h]
-           mov dword ptr [ecx], offset g10042D3C
-           mov edx, dword ptr [ebp-004h]
-           add edx, 000000004h
-           push edx
-           mov ecx, dword ptr [ebp+008h]
-           call l1003184F
-           fchs
-           mov eax, dword ptr [ebp-004h]
-           fstp qword ptr [eax+01Ch]
-           mov eax, dword ptr [ebp-004h]
-           mov esp, ebp
-           pop ebp
-           ret 00008h
+           call l1003113C; Implemented in c++ code
 ;
-           push ebp
-           mov ebp, esp
-           sub esp, 00000001Ch
-           push esi
-           push edi
-           mov dword ptr [ebp-01Ch], ecx
-           mov eax, dword ptr [ebp+010h]
-           push eax
-           mov ecx, dword ptr [ebp-01Ch]
-           add ecx, 000000004h
-           push ecx
-           mov ecx, dword ptr [ebp+00Ch]
-           call l10031882
-           mov edx, dword ptr [ebp-01Ch]
-           mov dword ptr [edx], offset g10042D3C
-           mov ecx, dword ptr [ebp-01Ch]
-           add ecx, 000000004h
-           call l10031913
-           sub esp, 000000008h
-           fstp qword ptr [esp]
-           lea eax, [ebp-018h]
-           push eax
-           mov ecx, dword ptr [ebp-01Ch]
-           add ecx, 000000004h
-           call l100315C2
-           mov esi, eax
-           mov edi, dword ptr [ebp-01Ch]
-           add edi, 000000004h
-           mov ecx, 000000006h
-           rep movsd
-           mov ecx, dword ptr [ebp-01Ch]
-           add ecx, 000000004h
-           push ecx
-           mov ecx, dword ptr [ebp+008h]
-           call l1003184F
-           fchs
-           mov edx, dword ptr [ebp-01Ch]
-           fstp qword ptr [edx+01Ch]
-           mov eax, dword ptr [ebp-01Ch]
-           pop edi
-           pop esi
-           mov esp, ebp
-           pop ebp
-           ret 0000Ch
+           call l10031189; Implemented in c++ code
 ;
-           push ebp
-           mov ebp, esp
-           push ecx
-           push esi
-           push edi
-           mov dword ptr [ebp-004h], ecx
-           mov esi, dword ptr [ebp+010h]
-           mov edi, dword ptr [ebp-004h]
-           add edi, 000000004h
-           mov ecx, 000000006h
-           rep movsd
-           mov eax, dword ptr [ebp-004h]
-           mov ecx, dword ptr [ebp+008h]
-           mov dword ptr [eax+01Ch], ecx
-           mov edx, dword ptr [ebp+00Ch]
-           mov dword ptr [eax+020h], edx
-           pop edi
-           pop esi
-           mov esp, ebp
-           pop ebp
-           ret 0000Ch
+           call l10031201; Implemented in c++ code
 ;
-           push ebp
-           mov ebp, esp
-           sub esp, 00000001Ch
-           push esi
-           push edi
-           mov dword ptr [ebp-01Ch], ecx
-           mov ecx, dword ptr [ebp+00Ch]
-           call l10031913
-           sub esp, 000000008h
-           fstp qword ptr [esp]
-           lea eax, [ebp-018h]
-           push eax
-           mov ecx, dword ptr [ebp+00Ch]
-           call l100315C2
-           mov esi, eax
-           mov edi, dword ptr [ebp-01Ch]
-           add edi, 000000004h
-           mov ecx, 000000006h
-           rep movsd
-           mov ecx, dword ptr [ebp-01Ch]
-           add ecx, 000000004h
-           push ecx
-           mov ecx, dword ptr [ebp+008h]
-           call l1003184F
-           fchs
-           mov edx, dword ptr [ebp-01Ch]
-           fstp qword ptr [edx+01Ch]
-           pop edi
-           pop esi
-           mov esp, ebp
-           pop ebp
-           ret 00008h
+           call l10031231; Implemented in c++ code
 ;
 ;* Call:
 ; 10034C48, 1003701D 
 ;
-l10031284 PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000034h
-           push esi
-           push edi
-           mov dword ptr [ebp-034h], ecx
-           mov eax, dword ptr [ebp+010h]
-           push eax
-           lea ecx, [ebp-018h]
-           push ecx
-           mov ecx, dword ptr [ebp+00Ch]
-           call l10031882
-           mov esi, eax
-           mov edi, dword ptr [ebp-034h]
-           add edi, 000000004h
-           mov ecx, 000000006h
-           rep movsd
-           mov ecx, dword ptr [ebp-034h]
-           add ecx, 000000004h
-           call l10031913
-           sub esp, 000000008h
-           fstp qword ptr [esp]
-           lea edx, [ebp-030h]
-           push edx
-           mov ecx, dword ptr [ebp-034h]
-           add ecx, 000000004h
-           call l100315C2
-           mov esi, eax
-           mov edi, dword ptr [ebp-034h]
-           add edi, 000000004h
-           mov ecx, 000000006h
-           rep movsd
-           mov eax, dword ptr [ebp-034h]
-           add eax, 000000004h
-           push eax
-           mov ecx, dword ptr [ebp+008h]
-           call l1003184F
-           fchs
-           mov ecx, dword ptr [ebp-034h]
-           fstp qword ptr [ecx+01Ch]
-           pop edi
-           pop esi
-           mov esp, ebp
-           pop ebp
-           ret 0000Ch
-l10031284 ENDP
+           call l10031284; Implemented in c++ code
 ;
 ;* Call:
 ; 10034563 
 ;
-l100312FC PROC
-           push ebp
-           mov ebp, esp
-           sub esp, 000000008h
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp-004h]
-           add eax, 000000004h
-           push eax
-           mov ecx, dword ptr [ebp+008h]
-           add ecx, 000000004h
-           call l1003184F
-           fcomp qword ptr [g10042D10]
-           fnstsw ax
-           test ah, 041h
-           jne l10031348
-           mov ecx, dword ptr [ebp+008h]
-           mov edx, dword ptr [ebp-004h]
-           fld qword ptr [ecx+01Ch]
-           fsub qword ptr [edx+01Ch]
-           fabs
-           fcomp qword ptr [g10042CE8]
-           fnstsw ax
-           test ah, 001h
-           je l10031348
-           mov dword ptr [ebp-008h], 000000001h
-           jmp l1003134F
+           call l100312FC; Implemented in c++ code
 ;
-;* Jump:
-; 10031322(C), 1003133D(C) 
+           call l10031358; Implemented in c++ code
 ;
-l10031348: mov dword ptr [ebp-008h], 000000000h
-;
-;* Jump:
-; 10031346(U) 
-;
-l1003134F: mov eax, dword ptr [ebp-008h]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-l100312FC ENDP
-;
-           push ebp
-           mov ebp, esp
-           push ecx
-           push esi
-           mov dword ptr [ebp-004h], ecx
-           mov esi, dword ptr [ebp-004h]
-           mov eax, dword ptr [ebp+008h]
-           push eax
-           mov ecx, dword ptr [ebp-004h]
-           add ecx, 000000004h
-           call l1003184F
-           fsubr qword ptr [esi+01Ch]
-           mov ecx, dword ptr [ebp-004h]
-           fstp qword ptr [ecx+01Ch]
-           pop esi
-           mov esp, ebp
-           pop ebp
-           ret 00004h
-;
-           push ebp
-           mov ebp, esp
-           push ecx
-           mov dword ptr [ebp-004h], ecx
-           mov eax, dword ptr [ebp+008h]
-           push eax
-           mov ecx, dword ptr [ebp-004h]
-           add ecx, 000000004h
-           call l1003184F
-           fchs
-           mov ecx, dword ptr [ebp-004h]
-           fstp qword ptr [ecx+01Ch]
-           mov esp, ebp
-           pop ebp
-           ret 00004h
+           call l10031382; Implemented in c++ code
 ;
            call l100313A6; Implemented in c++ code
 ;
-           push ebp
-           mov ebp, esp
-           mov eax, dword ptr [ebp+00Ch]
-           add eax, 00000001Ch
-           push eax
-           mov ecx, dword ptr [ebp+00Ch]
-           add ecx, 000000004h
-           push ecx
-           mov edx, dword ptr [ebp+008h]
-           push edx
-           call l10031E83
-           add esp, 000000008h
-           push eax
-           call l1000204A
-           add esp, 000000008h
-           mov eax, dword ptr [ebp+008h]
-           pop ebp
-           ret
+           call l100313D1; Implemented in c++ code
 ;
            int 03h
            int 03h
