@@ -13,5 +13,6 @@ TEST(ObjFaceTests, Fields)
 {
     EXPECT_OFFSET_EQ(B_ObjFace, vertices, 0x000);
     EXPECT_OFFSET_EQ(B_ObjFace, edges, 0x00C);
+    EXPECT_OFFSET_EQ(B_ObjFace, data, 0x018);
     EXPECT_OFFSET_EQ(B_ObjFace, unknownField034, 0x034);
 }

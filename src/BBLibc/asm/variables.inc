@@ -28,3 +28,7 @@ public ?mout@@3VB_MessageManager@@A
 g1004A53C equ ?mout@@3VB_MessageManager@@A
 public ?B_csvs@@3V?$B_NDataBase@UB_ElementCSV@@@@A
 g1004A9D0 equ ?B_csvs@@3V?$B_NDataBase@UB_ElementCSV@@@@A
+public _gbl_loading_packed
+g1004BF6C equ _gbl_loading_packed
+public _gbl_empty_bmp_name
+g1004BF70 equ _gbl_empty_bmp_name

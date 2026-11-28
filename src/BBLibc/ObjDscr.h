@@ -5,6 +5,7 @@
 
 #include "array.h"
 #include "MeshEdge.h"
+#include "RDataTriangle.h"
 #include "Resource.h"
 #include <AnalyticGeometry/BoundingBox.h>
 #include <AnalyticGeometry/Matrix.h>
@@ -30,7 +31,7 @@ class B_ObjFace
 public:
     unsigned int vertices[3];
     unsigned int edges[3];
-    char unknownFields018[0x1C];
+    B_ModelTriangleData data;
     unsigned long unknownField034;
 };
 

@@ -43,14 +43,3 @@ void B_RDataLight::Interp(
 
 }
 #endif
-
-/*
-* Module:                 BBLibc.dll
-* Entry point:            0x10040F39
-* VC++ mangling:          ??0B_RItem@@QAE@K@Z
-*/
-#ifndef BLD_NATIVE
-B_RItem::B_RItem(unsigned long)
-{
-}
-#endif
