@@ -15,9 +15,9 @@
 #undef BUILD_LIB
 
 
-struct LIB_EXP B_ElementCSV : public B_NamedObj
+struct B_ElementCSV : public B_NamedObj
 {
-    virtual ~B_ElementCSV();
+    LIB_EXP virtual ~B_ElementCSV();
     float mass;
     B_Name material;
 };

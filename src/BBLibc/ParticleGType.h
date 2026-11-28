@@ -42,7 +42,7 @@ class B_ParticleGType : public B_NamedObj
 {
 public:
     LIB_EXP virtual ~B_ParticleGType();
-    LIB_EXP B_ParticleGType() : duration(0), bmpHandle(-1), operation_type(0)
+    B_ParticleGType() : duration(0), bmpHandle(-1), operation_type(0)
     {
     }
     LIB_EXP B_ParticleGType(
